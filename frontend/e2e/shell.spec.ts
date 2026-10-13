@@ -25,3 +25,88 @@ test.describe('App shell', () => {
     await expect(shell.main).toBeFocused();
   });
 });
+
+test.describe('Site header', () => {
+  test('shows the primary links inline on a desktop', async ({ page }) => {
+    // Given a desktop-width window
+    const shell = new ShellPage(page);
+    await shell.useDesktopWidth();
+    // When the home page loads
+    await shell.open();
+    // Then the primary links show inline and there is no Menu button
+    await expect(shell.headerLink('Studios')).toBeVisible();
+    await expect(shell.headerLink('Compare')).toBeVisible();
+    await expect(shell.menuButton).toBeHidden();
+  });
+
+  test('collapses the links into a Menu at phone width', async ({ page }) => {
+    // Given a 320px-wide window
+    const shell = new ShellPage(page);
+    await shell.usePhoneWidth();
+    await shell.open();
+    // Then the links are hidden behind a closed Menu button at least 44px tall
+    await expect(shell.headerLink('Studios')).toBeHidden();
+    await expect(shell.menuButton).toHaveAttribute('aria-expanded', 'false');
+    expect(await shell.menuButtonHeight()).toBeGreaterThanOrEqual(44);
+    // When the visitor opens the menu
+    await shell.openMenu();
+    // Then the menu lists the site's pages and reports it is open
+    await expect(shell.menuDialog).toBeVisible();
+    await expect(shell.menuLink('Studios')).toBeVisible();
+    await expect(shell.menuLink('Compare')).toBeVisible();
+    await expect(shell.menuButton).toHaveAttribute('aria-expanded', 'true');
+  });
+
+  test('closes the menu with Escape and returns focus to the Menu button', async ({ page }) => {
+    // Given the menu is open at phone width
+    const shell = new ShellPage(page);
+    await shell.usePhoneWidth();
+    await shell.open();
+    await shell.openMenu();
+    await expect(shell.menuDialog).toBeVisible();
+    // When the visitor presses Escape
+    await shell.pressEscape();
+    // Then the menu closes and focus returns to the Menu button
+    await expect(shell.menuDialog).toBeHidden();
+    await expect(shell.menuButton).toBeFocused();
+    await expect(shell.menuButton).toHaveAttribute('aria-expanded', 'false');
+  });
+
+  test('closes the menu with the Close button', async ({ page }) => {
+    // Given the menu is open at phone width
+    const shell = new ShellPage(page);
+    await shell.usePhoneWidth();
+    await shell.open();
+    await shell.openMenu();
+    // When the visitor presses Close
+    await shell.menuCloseButton.click();
+    // Then the menu closes and focus returns to the Menu button
+    await expect(shell.menuDialog).toBeHidden();
+    await expect(shell.menuButton).toBeFocused();
+  });
+
+  for (const width of [320, 1280]) {
+    test(`lays out without horizontal scrolling or accessibility violations at ${width}px`, async ({ page }) => {
+      // Given a window of this width
+      const shell = new ShellPage(page);
+      await page.setViewportSize({ width, height: 800 });
+      // When the home page loads
+      await shell.open();
+      await expect(shell.skipLink).toBeAttached();
+      // Then the page does not scroll sideways and axe finds no WCAG A/AA violations
+      expect(await shell.hasHorizontalScroll()).toBe(false);
+      expect(await shell.accessibilityViolations()).toEqual([]);
+    });
+  }
+
+  test('keeps working at 200% zoom', async ({ page }) => {
+    // Given a 1280px window at 200% zoom (a 640px CSS viewport)
+    const shell = new ShellPage(page);
+    await page.setViewportSize({ width: 640, height: 400 });
+    // When the home page loads
+    await shell.open();
+    // Then the menu is still reachable and nothing scrolls sideways
+    await expect(shell.menuButton).toBeVisible();
+    expect(await shell.hasHorizontalScroll()).toBe(false);
+  });
+});
