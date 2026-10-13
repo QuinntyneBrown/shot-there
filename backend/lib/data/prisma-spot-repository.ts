@@ -1,6 +1,6 @@
 import type { Prisma, PrismaClient } from '@/generated/prisma/client';
 import { toImageRecord } from '@/lib/data/prisma-studio-repository';
-import { toIsoDate } from '@/lib/data/prisma-values';
+import { fromIsoDate, toIsoDate } from '@/lib/data/prisma-values';
 import type { SpotLightBySeasonRecord } from '@/lib/spots/spot-light-by-season-record';
 import type { SpotLightByTimeRecord } from '@/lib/spots/spot-light-by-time-record';
 import type { SpotRecord } from '@/lib/spots/spot-record';
@@ -29,6 +29,30 @@ export class PrismaSpotRepository implements SpotRepository {
   async listAll(): Promise<SpotRecord[]> {
     const rows = await this.prisma.spot.findMany({ include: spotInclude });
     return rows.map(toSpotRecord);
+  }
+
+  async findById(id: string): Promise<SpotRecord | null> {
+    const row = await this.prisma.spot.findUnique({ where: { id }, include: spotInclude });
+    return row ? toSpotRecord(row) : null;
+  }
+
+  async isSlugTaken(slug: string): Promise<boolean> {
+    return (await this.prisma.spot.count({ where: { slug } })) > 0;
+  }
+
+  async save(spot: SpotRecord): Promise<void> {
+    const { id, permits, images: _images, lightByTime, lightBySeason, permitVerifiedAt, ...fields } = spot;
+    const data = {
+      ...fields,
+      lightByTime: lightByTime as unknown as Prisma.InputJsonValue,
+      lightBySeason: lightBySeason as unknown as Prisma.InputJsonValue,
+      permitVerifiedAt: fromIsoDate(permitVerifiedAt),
+    };
+    await this.prisma.$transaction([
+      this.prisma.spot.upsert({ where: { id }, create: { id, ...data }, update: data }),
+      this.prisma.permitStatus.deleteMany({ where: { spotId: id } }),
+      this.prisma.permitStatus.createMany({ data: permits.map((permit) => ({ spotId: id, ...permit })) }),
+    ]);
   }
 }
 

@@ -59,3 +59,15 @@ export const slugField = () =>
     .string({ error: 'Use lowercase letters, numbers and single hyphens' })
     .regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, { error: 'Use lowercase letters, numbers and single hyphens' })
     .max(200);
+
+/** A superRefine check that items do not repeat a key; a repeat is reported on `<index>.<keyName>`, or `<index>` for plain values. */
+export const uniqueBy =
+  <T>(key: (item: T) => unknown, keyName: string | null, message: string) =>
+  (items: T[], context: z.RefinementCtx) => {
+    const seen = new Set<unknown>();
+    items.forEach((item, index) => {
+      const value = key(item);
+      if (seen.has(value)) context.addIssue({ code: 'custom', message, path: keyName ? [index, keyName] : [index] });
+      seen.add(value);
+    });
+  };

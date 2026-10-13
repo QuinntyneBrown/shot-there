@@ -15,4 +15,21 @@ export class InMemorySpotRepository implements SpotRepository {
   async listAll(): Promise<SpotRecord[]> {
     return structuredClone(this.rows);
   }
+
+  async findById(id: string): Promise<SpotRecord | null> {
+    return structuredClone(this.rows.find((row) => row.id === id) ?? null);
+  }
+
+  async isSlugTaken(slug: string): Promise<boolean> {
+    return this.rows.some((row) => row.slug === slug);
+  }
+
+  async save(spot: SpotRecord): Promise<void> {
+    const index = this.rows.findIndex((row) => row.id === spot.id);
+    if (index === -1) {
+      this.rows.push(structuredClone({ ...spot, images: [] }));
+    } else {
+      this.rows[index] = structuredClone({ ...spot, images: this.rows[index].images });
+    }
+  }
 }
