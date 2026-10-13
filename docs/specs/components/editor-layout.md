@@ -287,7 +287,8 @@ are the contract page objects use; the chevron is CSS and not in the DOM.
   `--text-h4`. Chevron `::after`: `--space-2` square of `--border-width-thick`
   right and bottom borders in `currentColor`, `margin-left: auto`, `rotate:
   45deg`, `225deg` when open, `transition: rotate --duration-fast
-  --ease-standard`. With the error count, the count takes `margin-left: auto`
+  --ease-standard`. The heading takes `--text-h4` at every `headingLevel`
+  (D-9). With the error count, the count takes `margin-left: auto`
   and the chevron follows it.
 - Error count `--text-body-sm`, `--color-danger-fg`.
 - Body flex column, `gap: --space-5`, padding `--space-2 --space-5 --space-6`.
@@ -519,3 +520,4 @@ Accessibility › Motion).
 - **D-6** *The editor error mock renders the empty state's title as an `h1`, but `st-empty-state` takes `headingLevel` 2–4 and only two library components may render an `h1` (ICD-A11Y-3).* The application renders a visually hidden `h1` naming the screen ("Studio editor") and `st-empty-state` with `headingLevel` 2 and the title "We couldn't open this studio"; the page keeps one `h1` and looks as the mock does.
 - **D-7** *The guide's error summary links "Add at least one entry before publishing" to `#entries`, the section's `details`, which is not focusable and is rendered by the library.* The link targets the "Add entry" button inside the open "Entries" section (`targetId` of that button), so activating it focuses a control, as ICD-FORM-7 requires.
 - **D-8** *Does an invalid section force itself open?* No. The application sets `open` true for every section the server's errors touch (the component holds no rules, ICD-API-10); the owner may still close it, and the error summary links reopen nothing because they only target open sections.
+- **D-9** *The DS styles only `summary h2`; what does an `h3` or `h4` heading look like?* The same `--text-h4`: the heading level follows the page outline (ICD-API-13), not the look, so a section looks the same at every level.
