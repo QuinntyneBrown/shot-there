@@ -1,3 +1,4 @@
+import { Dialog } from '@angular/cdk/dialog';
 import { Component, computed, effect, inject, linkedSignal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -7,6 +8,8 @@ import { BehaviorSubject, catchError, combineLatest, map, of, startWith, switchM
 import { AnnouncerService } from '../../../core/a11y/announcer.service';
 import { StudioCardComponent } from '../studio-card/studio-card.component';
 import { StudioFiltersComponent } from '../studio-filters/studio-filters.component';
+import { StudioFiltersDialogComponent } from '../studio-filters-dialog/studio-filters-dialog.component';
+import { StudioFiltersDialogData } from '../studio-filters-dialog/studio-filters-dialog-data';
 import { StudioSortControlComponent } from '../studio-sort-control/studio-sort-control.component';
 import { countActiveFilters } from './count-active-filters';
 import { parseStudioListQuery } from './parse-studio-list-query';
@@ -27,12 +30,17 @@ export class StudioListPageComponent {
   private readonly route = inject(ActivatedRoute);
   private readonly router = inject(Router);
   private readonly announcer = inject(AnnouncerService);
+  private readonly dialog = inject(Dialog);
   private readonly retries = new BehaviorSubject<void>(undefined);
   private readonly query$ = this.route.queryParamMap.pipe(map(parseStudioListQuery));
   private announceNextCount = false;
 
   protected readonly query = toSignal(this.query$, { requireSync: true });
   protected readonly activeFilterCount = computed(() => countActiveFilters(this.query()));
+  protected readonly filtersButtonLabel = computed(() => {
+    const count = this.activeFilterCount();
+    return count > 0 ? $localize`Filters, ${count}:count: active` : $localize`Filters`;
+  });
   /** The sidebar's unapplied filters; reset whenever the URL changes. */
   protected readonly sidebarDraft = linkedSignal(() => this.query());
   protected readonly state = toSignal(
@@ -53,6 +61,8 @@ export class StudioListPageComponent {
     const state = this.state();
     return state.status === 'loaded' ? state.studios : [];
   });
+  /** Nothing is published at all, so there is nothing to filter or sort. */
+  protected readonly noStudiosYet = computed(() => this.state().status === 'loaded' && this.studios().length === 0 && this.activeFilterCount() === 0);
 
   constructor() {
     effect(() => {
@@ -75,6 +85,22 @@ export class StudioListPageComponent {
   applyFilters(query: StudioListQuery): void {
     this.announceNextCount = true;
     this.applyQuery(query);
+  }
+
+  openFiltersDialog(): void {
+    const ref = this.dialog.open<StudioListQuery, StudioFiltersDialogData>(StudioFiltersDialogComponent, {
+      data: { query: this.query() },
+      ariaLabelledBy: 'studio-filters-title',
+      ariaDescribedBy: 'studio-filters-description',
+      width: '100%',
+      height: '100%',
+      maxWidth: '100%'
+    });
+    ref.closed.subscribe((query) => {
+      if (query) {
+        this.applyFilters(query);
+      }
+    });
   }
 
   clearFilters(): void {

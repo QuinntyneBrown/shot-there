@@ -9,7 +9,10 @@
     </div>
     <div class="field">
       <label class="field__label" [for]="id + '-cost-max'" i18n>Maximum</label>
-      <span class="input-group"><span class="addon" aria-hidden="true">$</span><input class="input" [id]="id + '-cost-max'" type="number" inputmode="decimal" min="0" step="10" autocomplete="off" [value]="q.costMax ?? ''" (input)="setCost('costMax', $any($event.target).value)" /></span>
+      <span class="input-group"><span class="addon" aria-hidden="true">$</span><input class="input" [id]="id + '-cost-max'" type="number" inputmode="decimal" min="0" step="10" autocomplete="off" [value]="q.costMax ?? ''" (input)="setCost('costMax', $any($event.target).value)" [attr.aria-invalid]="costError() ? 'true' : null" [attr.aria-describedby]="costError() ? id + '-cost-max-error' : null" /></span>
+      @if (costError(); as message) {
+        <p class="field__error" [id]="id + '-cost-max-error'">{{ message }}</p>
+      }
     </div>
   </div>
 </fieldset>

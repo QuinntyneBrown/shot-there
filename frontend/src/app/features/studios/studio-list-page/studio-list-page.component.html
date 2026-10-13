@@ -14,57 +14,73 @@
 
   <section class="browse__results" aria-labelledby="results-title" [attr.aria-busy]="state().status === 'loading' ? 'true' : null">
     <h2 class="st-visually-hidden" id="results-title" i18n>Results</h2>
-    @if (state().status === 'loading') {
+    @if (!noStudiosYet()) {
       <div class="results-head">
-        <p class="result-count" role="status" aria-live="polite" i18n>Loading studios…</p>
-      </div>
-      <ul class="location-grid" aria-hidden="true">
-        @for (placeholder of skeletons; track placeholder) {
-          <li class="location-card location-card--skeleton">
-            <div class="location-card__media"><span class="skeleton skeleton--rect"></span></div>
-            <span class="skeleton skeleton--title"></span>
-            <span class="skeleton skeleton--text"></span>
-          </li>
-        }
-      </ul>
-    }
-    @if (state().status === 'error') {
-      <div class="empty empty--error" role="alert">
-        <div class="empty__icon"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" /><path d="M12 7v6M12 16h.01" /></svg></div>
-        <h3 class="empty__title" i18n>We couldn't load the studios</h3>
-        <p class="empty__text" i18n>The studio list didn't arrive. Check your connection and try again; your filters are kept.</p>
-        <div class="empty__actions">
-          <button class="btn" type="button" (click)="retry()">
-            <svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.3-5.6" /><path d="M20 4v5h-5" /></svg>
-            <ng-container i18n>Try again</ng-container>
+        <p class="result-count" role="status" aria-live="polite">
+          @if (state().status === 'loading') {
+            <ng-container i18n>Loading studios…</ng-container>
+          } @else if (state().status === 'loaded') {
+            <ng-container i18n>{studios().length, plural, =1 {1 studio} other {{{studios().length}} studios}}</ng-container>
+          }
+        </p>
+        <div class="results-actions">
+          <button class="filter-trigger until-lg" type="button" aria-haspopup="dialog" [attr.aria-label]="filtersButtonLabel()" (click)="openFiltersDialog()">
+            <svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><path d="M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12M20 18h0" /><circle cx="16" cy="6" r="2" /><circle cx="10" cy="12" r="2" /><circle cx="18" cy="18" r="2" /></svg>
+            <ng-container i18n>Filters</ng-container>
+            @if (activeFilterCount() > 0) {
+              <span class="filter-trigger__count">{{ activeFilterCount() }}</span>
+            }
           </button>
-        </div>
-      </div>
-    }
-    @if (state().status === 'loaded') {
-      @if (studios().length === 0 && activeFilterCount() > 0) {
-        <div class="empty">
-          <div class="empty__icon"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6" /><path d="m20 20-4.5-4.5" /></svg></div>
-          <h3 class="empty__title" i18n>No studios match these filters</h3>
-          <p class="empty__text" i18n>Try removing a filter, or clear them all to see every studio.</p>
-          <div class="empty__actions"><button class="btn" type="button" (click)="clearFilters()" i18n>Clear filters</button></div>
-        </div>
-      } @else if (studios().length === 0) {
-        <div class="empty">
-          <div class="empty__icon"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M4 8h3l2-3h6l2 3h3v11H4z" /><circle cx="12" cy="13" r="3.5" /></svg></div>
-          <h3 class="empty__title" i18n>No studio reviews yet</h3>
-          <p class="empty__text" i18n>The first reviews are being shot now. Each one goes up only after a full test shoot.</p>
-        </div>
-      } @else {
-        <div class="results-head">
-          <p class="result-count" role="status" aria-live="polite" i18n>{studios().length, plural, =1 {1 studio} other {{{studios().length}} studios}}</p>
           <st-studio-sort-control [sort]="query().sort" (sortChange)="changeSort($event)" />
         </div>
-        <ul class="location-grid" aria-label="Studios" i18n-aria-label>
-          @for (studio of studios(); track studio.slug; let i = $index) {
-            <li><st-studio-card [studio]="studio" [eager]="i < 3" /></li>
+      </div>
+    }
+    @switch (state().status) {
+      @case ('loading') {
+        <ul class="location-grid" aria-hidden="true">
+          @for (placeholder of skeletons; track placeholder) {
+            <li class="location-card location-card--skeleton">
+              <div class="location-card__media"><span class="skeleton skeleton--rect"></span></div>
+              <span class="skeleton skeleton--title"></span>
+              <span class="skeleton skeleton--text"></span>
+            </li>
           }
         </ul>
+      }
+      @case ('error') {
+        <div class="empty empty--error" role="alert">
+          <div class="empty__icon"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" /><path d="M12 7v6M12 16h.01" /></svg></div>
+          <h3 class="empty__title" i18n>We couldn't load the studios</h3>
+          <p class="empty__text" i18n>The studio list didn't arrive. Check your connection and try again; your filters are kept.</p>
+          <div class="empty__actions">
+            <button class="btn" type="button" (click)="retry()">
+              <svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.3-5.6" /><path d="M20 4v5h-5" /></svg>
+              <ng-container i18n>Try again</ng-container>
+            </button>
+          </div>
+        </div>
+      }
+      @case ('loaded') {
+        @if (noStudiosYet()) {
+          <div class="empty">
+            <div class="empty__icon"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M4 8h3l2-3h6l2 3h3v11H4z" /><circle cx="12" cy="13" r="3.5" /></svg></div>
+            <h3 class="empty__title" i18n>No studio reviews yet</h3>
+            <p class="empty__text" i18n>The first reviews are being shot now. Each one goes up only after a full test shoot.</p>
+          </div>
+        } @else if (studios().length === 0) {
+          <div class="empty">
+            <div class="empty__icon"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6" /><path d="m20 20-4.5-4.5" /></svg></div>
+            <h3 class="empty__title" i18n>No studios match these filters</h3>
+            <p class="empty__text" i18n>Try removing a filter, or clear them all to see every studio.</p>
+            <div class="empty__actions"><button class="btn" type="button" (click)="clearFilters()" i18n>Clear filters</button></div>
+          </div>
+        } @else {
+          <ul class="location-grid" aria-label="Studios" i18n-aria-label>
+            @for (studio of studios(); track studio.slug; let i = $index) {
+              <li><st-studio-card [studio]="studio" [eager]="i < 3" /></li>
+            }
+          </ul>
+        }
       }
     }
   </section>

@@ -15,6 +15,8 @@ export class StudioFiltersComponent {
   readonly query = input.required<StudioListQuery>();
   /** Keeps ids unique when the sidebar and the dialog are both in the page. */
   readonly idPrefix = input.required<string>();
+  /** A message about the cost range, shown under Maximum. */
+  readonly costError = input<string | null>(null);
   readonly queryChange = output<StudioListQuery>();
 
   protected readonly neighbourhoods = NEIGHBOURHOOD_OPTIONS;
