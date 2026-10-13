@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import { expectProblem } from '@/tests/support/expect-problem';
 import { PUT as updateStudio } from '@/app/api/admin/studios/[id]/route';
 import { GET as findRedirect } from '@/app/api/slug-redirects/[type]/[slug]/route';
 import { adminRequest, idParams, stubSiteOriginPerTest, useSignedInOwner } from '@/tests/support/admin-session';
@@ -71,14 +72,14 @@ describe('L2-075 stable URLs for published studios', () => {
   });
 
   it.each([
-    ['taken-loft', 'This address is already used by another studio'],
-    ['Not A Slug', 'Use lowercase letters, numbers and single hyphens'],
-  ])('Given the slug %s, when saved, then the save is refused naming slug', async (slug, message) => {
+    ['taken-loft', 'already_in_use'],
+    ['Not A Slug', 'invalid_format'],
+  ])('Given the slug %s, when saved, then the save is refused naming slug with %s', async (slug, code) => {
     useSignedInOwner({ studios: [aStudio({ id: 's1', slug: 'old-loft' }), aStudio({ id: 's2', slug: 'taken-loft' })] });
 
     const response = await update('s1', aStudioInput({ slug }));
 
-    expect(response.status).toBe(400);
-    expect((await response.json()).errors).toContainEqual({ field: 'slug', message });
+    const problem = await expectProblem(response, 'validation-failed', 400);
+    expect(problem.errors).toContainEqual({ field: 'slug', code, message: expect.any(String) });
   });
 });

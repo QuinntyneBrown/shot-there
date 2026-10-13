@@ -12,6 +12,7 @@ export const uploadFieldsSchema = z
   .refine((fields) => (fields.studioId === undefined) !== (fields.spotId === undefined), {
     message: 'Choose the studio or spot the image belongs to',
     path: ['studioId'],
+    params: { code: 'required' },
   });
 
 /** One image's place and alt text in the editor's save body. */

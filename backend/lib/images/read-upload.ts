@@ -1,5 +1,5 @@
-import { HttpProblem } from '@/lib/http/http-problem';
 import { parseWithSchema } from '@/lib/http/parse-with-schema';
+import { payloadTooLarge } from '@/lib/http/payload-too-large';
 import { validationFailed } from '@/lib/http/validation-failed';
 import { MAX_UPLOAD_BYTES } from '@/lib/images/max-upload-bytes';
 import { uploadFieldsSchema } from '@/lib/images/schemas';
@@ -15,7 +15,7 @@ async function readBody(request: Request): Promise<Buffer> {
       size += chunk.value.byteLength;
       if (size > MAX_UPLOAD_BYTES) {
         reader.releaseLock();
-        throw new HttpProblem(Response.json({ status: 413 }, { status: 413 }));
+        throw payloadTooLarge();
       }
       chunks.push(chunk.value);
     }
@@ -31,11 +31,11 @@ export async function readUpload(request: Request): Promise<UploadImageInput> {
   })
     .formData()
     .catch(() => {
-      throw validationFailed([{ field: 'file', message: 'Send the image as multipart form data' }]);
+      throw validationFailed([{ field: 'file', code: 'invalid_format', message: 'Send the image as multipart form data' }]);
     });
 
   const file = form.get('file');
-  if (!(file instanceof File)) throw validationFailed([{ field: 'file', message: 'Choose an image to upload' }]);
+  if (!(file instanceof File)) throw validationFailed([{ field: 'file', code: 'required', message: 'Choose an image to upload' }]);
   const fields = Object.fromEntries([...form.entries()].filter(([name]) => name !== 'file'));
   const { role, studioId, spotId } = parseWithSchema(uploadFieldsSchema, fields);
 

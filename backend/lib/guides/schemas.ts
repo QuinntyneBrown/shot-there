@@ -27,7 +27,12 @@ export const guideInputSchema = z.strictObject({
       entries.forEach((entry, index) => {
         const key = `${entry.kind}:${entry.locationId}`;
         if (seen.has(key)) {
-          context.addIssue({ code: 'custom', message: DUPLICATE_MESSAGE[entry.kind], path: [index, 'locationId'] });
+          context.addIssue({
+            code: 'custom',
+            message: DUPLICATE_MESSAGE[entry.kind],
+            path: [index, 'locationId'],
+            params: { code: 'duplicate' },
+          });
         }
         seen.add(key);
       });

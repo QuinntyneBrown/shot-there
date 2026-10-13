@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import { expectProblem } from '@/tests/support/expect-problem';
 import { DELETE as deleteGuide } from '@/app/api/admin/guides/[id]/route';
 import { DELETE as deleteSpot } from '@/app/api/admin/spots/[id]/route';
 import { DELETE as deleteStudio } from '@/app/api/admin/studios/[id]/route';
@@ -50,8 +51,7 @@ describe('L2-061 delete a draft studio', () => {
 
     const response = await removeStudio('s1');
 
-    expect(response.status).toBe(409);
-    expect(await response.json()).toEqual({ status: 409, message: 'Unpublish before deleting' });
+    await expectProblem(response, 'conflict', 409);
     expect(studioRows(dependencies)).toHaveLength(1);
   });
 

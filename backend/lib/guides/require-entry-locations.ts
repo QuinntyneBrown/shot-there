@@ -15,7 +15,7 @@ export async function requireEntryLocations(entries: GuideEntryRecord[]): Promis
     ),
   );
   const errors = entries.flatMap((entry, index) =>
-    exists[index] ? [] : [{ field: `entries.${index}.locationId`, message: MISSING_MESSAGE[entry.kind] }],
+    exists[index] ? [] : [{ field: `entries.${index}.locationId`, code: 'not_found' as const, message: MISSING_MESSAGE[entry.kind] }],
   );
   if (errors.length > 0) throw validationFailed(errors);
 }

@@ -1,4 +1,5 @@
 import { beforeAll, describe, expect, it } from 'vitest';
+import { expectProblem } from '@/tests/support/expect-problem';
 import type { OwnerRecord } from '@/lib/auth/owner-record';
 import type { SignInAttemptRecord } from '@/lib/auth/sign-in-attempt-record';
 import { useFakeDependencies } from '@/tests/support/fake-dependencies';
@@ -27,8 +28,7 @@ describe('L2-050 sign-in rate limiting', () => {
 
     const response = await signIn({ email: OWNER_EMAIL, password: OWNER_PASSWORD }, '198.51.100.7');
 
-    expect(response.status).toBe(429);
-    expect(await response.json()).toEqual({ status: 429 });
+    await expectProblem(response, 'rate-limited', 429);
   });
 
   it('Given four failed attempts from one client, when a fifth try arrives, then it is still evaluated', async () => {

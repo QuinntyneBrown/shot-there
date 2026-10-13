@@ -1,5 +1,5 @@
 import { getDependencies } from '@/lib/data/dependency-container';
-import { HttpProblem } from '@/lib/http/http-problem';
+import { conflict } from '@/lib/http/conflict';
 import type { ImageRole } from '@/lib/images/image-role';
 import { deleteStoredObjects } from '@/lib/storage/delete-stored-objects';
 
@@ -23,7 +23,7 @@ export async function removeImage(id: string): Promise<boolean> {
   const sameRole = location?.images.filter((other) => other.role === image.role) ?? [];
   const message = REQUIRED_WHILE_PUBLISHED[image.role];
   if (location?.status === 'published' && message && sameRole.length === 1) {
-    throw new HttpProblem(Response.json({ status: 409, message }, { status: 409 }));
+    throw conflict(message);
   }
 
   await images.remove(id);

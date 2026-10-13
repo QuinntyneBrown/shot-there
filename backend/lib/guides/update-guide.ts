@@ -16,7 +16,7 @@ export async function updateGuide(id: string, input: GuideInput): Promise<GuideR
   const slug = input.slug ?? stored.slug;
   const slugChanged = slug !== stored.slug;
   if (slugChanged && (await guides.isSlugTaken(slug))) {
-    throw validationFailed([{ field: 'slug', message: 'This address is already used by another guide' }]);
+    throw validationFailed([{ field: 'slug', code: 'already_in_use', message: 'This address is already used by another guide' }]);
   }
   await requireEntryLocations(input.entries);
 

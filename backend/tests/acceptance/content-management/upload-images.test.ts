@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import { expectProblem } from '@/tests/support/expect-problem';
 import { POST as upload } from '@/app/api/admin/images/route';
 import type { Dependencies } from '@/lib/data/dependencies';
 import { stubSiteOriginPerTest, useSignedInOwner } from '@/tests/support/admin-session';
@@ -92,17 +93,14 @@ describe('L2-057 image upload', () => {
     { label: 'an SVG', file: SVG_IMAGE, fileName: 'logo.jpg' },
     { label: 'an executable', file: EXE_FILE, fileName: 'setup.jpg' },
   ])(
-    'Given $label named as a JPEG, when uploaded, then content inspection rejects it with 400 naming the accepted types',
+    'Given $label named as a JPEG, when uploaded, then content inspection rejects it with 400 unsupported_image_type',
     async ({ file, fileName }) => {
       const dependencies = useStudioEditor();
 
       const response = await upload(uploadRequest({ file, fileName, studioId: 's1' }));
 
-      expect(response.status).toBe(400);
-      expect(await response.json()).toEqual({
-        status: 400,
-        errors: [{ field: 'file', message: 'Upload a JPEG, PNG, WebP or AVIF image' }],
-      });
+      const problem = await expectProblem(response, 'validation-failed', 400);
+      expect(problem.errors).toEqual([{ field: 'file', code: 'unsupported_image_type', message: expect.any(String) }]);
       expect(storeOf(dependencies).size).toBe(0);
     },
   );

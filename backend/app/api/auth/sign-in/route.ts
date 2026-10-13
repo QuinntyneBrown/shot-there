@@ -3,6 +3,7 @@ import { csrfCookie, sessionCookie } from '@/lib/auth/session-cookies';
 import { signInOwner } from '@/lib/auth/sign-in-owner';
 import { clientIp } from '@/lib/http/client-ip';
 import { parseWithSchema } from '@/lib/http/parse-with-schema';
+import { rateLimited } from '@/lib/http/rate-limited';
 import { readJsonBody } from '@/lib/http/read-json-body';
 import { withRequestLogging } from '@/lib/logging/with-request-logging';
 
@@ -12,7 +13,7 @@ export const POST = withRequestLogging(async (request: Request) => {
   const input = parseWithSchema(signInSchema, await readJsonBody(request));
   const result = await signInOwner(input, clientIp(request));
 
-  if (result.outcome === 'rateLimited') return Response.json({ status: 429 }, { status: 429 });
+  if (result.outcome === 'rateLimited') throw rateLimited();
   if (result.outcome === 'invalidCredentials') {
     return Response.json({ status: 401, message: INVALID_CREDENTIALS }, { status: 401 });
   }

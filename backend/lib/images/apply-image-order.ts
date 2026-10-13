@@ -10,7 +10,7 @@ export function applyImageOrder(images: ImageRecord[], items: ImageOrderItem[] =
   const unknown = items.flatMap((item, index) =>
     images.some((image) => image.id === item.id)
       ? []
-      : [{ field: `images.${index}.id`, message: 'This image does not belong to this location' }],
+      : [{ field: `images.${index}.id`, code: 'invalid_value' as const, message: 'This image does not belong to this location' }],
   );
   if (unknown.length > 0) throw validationFailed(unknown);
 

@@ -5,6 +5,7 @@ import { POST as signOut } from '@/app/api/auth/sign-out/route';
 import { requireOwnerSession } from '@/lib/auth/require-owner-session';
 import { verifyCsrf } from '@/lib/auth/verify-csrf';
 import { HttpProblem } from '@/lib/http/http-problem';
+import { problemResponse } from '@/lib/http/problem-response';
 import { proxy } from '@/proxy';
 import { useFakeDependencies } from '@/tests/support/fake-dependencies';
 import { fixedClock } from '@/tests/support/fixed-clock';
@@ -35,7 +36,7 @@ async function rejection(action: () => unknown): Promise<Response> {
   try {
     await action();
   } catch (error) {
-    if (error instanceof HttpProblem) return error.response;
+    if (error instanceof HttpProblem) return problemResponse(error, 'test');
     throw error;
   }
   throw new Error('Expected the request to be refused');

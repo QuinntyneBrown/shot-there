@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import { expectProblem } from '@/tests/support/expect-problem';
 import { DELETE as removeImage } from '@/app/api/admin/images/[id]/route';
 import { PUT as saveSpot } from '@/app/api/admin/spots/[id]/route';
 import { PUT as saveStudio } from '@/app/api/admin/studios/[id]/route';
@@ -103,11 +104,8 @@ describe('L2-057 alt text is required', () => {
 
     const response = await putStudio('s1', aStudioInput({ images: [{ id: 'a', altText: '  ', sortOrder: 0 }] }));
 
-    expect(response.status).toBe(400);
-    expect(await response.json()).toEqual({
-      status: 400,
-      errors: [{ field: 'images.0.altText', message: 'Describe this image' }],
-    });
+    const problem = await expectProblem(response, 'validation-failed', 400);
+    expect(problem.errors).toEqual([{ field: 'images.0.altText', code: 'required', message: 'Describe this image' }]);
     expect(studioRows(dependencies)[0].images[0].altText).toBe('Window wall');
   });
 
@@ -116,8 +114,8 @@ describe('L2-057 alt text is required', () => {
 
     const response = await putStudio('s1', aStudioInput({ images: [{ id: 'elsewhere', altText: 'Hm', sortOrder: 0 }] }));
 
-    expect(response.status).toBe(400);
-    expect((await response.json()).errors[0].field).toBe('images.0.id');
+    const problem = await expectProblem(response, 'validation-failed', 400);
+    expect(problem.errors[0]).toMatchObject({ field: 'images.0.id', code: 'invalid_value' });
   });
 });
 
@@ -144,11 +142,7 @@ describe('L2-058 image removal', () => {
 
     const response = await remove('t');
 
-    expect(response.status).toBe(409);
-    expect(await response.json()).toEqual({
-      status: 409,
-      message: 'At least one standard test shot is required while the studio is published',
-    });
+    await expectProblem(response, 'conflict', 409);
     expect(studioRows(dependencies)[0].images.some((image) => image.id === 't')).toBe(true);
   });
 

@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import { expectProblem } from '@/tests/support/expect-problem';
 import { GET as searchCandidates } from '@/app/api/admin/guide-candidates/route';
 import { GET as getGuideForEdit, PUT as saveGuide } from '@/app/api/admin/guides/[id]/route';
 import { DELETE as unpublishGuide, POST as publishGuide } from '@/app/api/admin/guides/[id]/publish/route';
@@ -72,10 +73,8 @@ describe('L2-060 create and edit a guide', () => {
       ],
     });
 
-    expect(response.status).toBe(400);
-    expect((await response.json()).errors).toEqual([
-      { field: 'entries.1.locationId', message: 'This studio is already in the guide' },
-    ]);
+    const problem = await expectProblem(response, 'validation-failed', 400);
+    expect(problem.errors).toEqual([{ field: 'entries.1.locationId', code: 'duplicate', message: expect.any(String) }]);
     expect(guideRows(dependencies)).toEqual([]);
   });
 
@@ -150,8 +149,8 @@ describe('L2-060 create and edit a guide', () => {
 
     const response = await create({ title: 'Guide', entries: [], isSponsored: true });
 
-    expect(response.status).toBe(400);
-    expect((await response.json()).errors).toEqual([{ field: 'isSponsored', message: 'This field is not allowed' }]);
+    const problem = await expectProblem(response, 'validation-failed', 400);
+    expect(problem.errors).toEqual([{ field: 'isSponsored', code: 'unrecognized_key', message: expect.any(String) }]);
   });
 
   it('Given an unknown guide id, when opened or saved, then the response is 404', async () => {
@@ -175,8 +174,8 @@ describe('L2-060 publish and unpublish a guide', () => {
 
     const response = await publish('g1');
 
-    expect(response.status).toBe(422);
-    expect(await response.json()).toEqual({ status: 422, missingFields: ['entries'] });
+    const problem = await expectProblem(response, 'publish-incomplete', 422);
+    expect(problem.missingFields).toEqual(['entries']);
     expect(guideRows(dependencies)[0].status).toBe('draft');
   });
 

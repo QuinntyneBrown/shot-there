@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import { expectProblem } from '@/tests/support/expect-problem';
 import { GET as getMapLocations } from '@/app/api/map/locations/route';
 import { GET as getPublicRoutes } from '@/app/api/public-routes/route';
 import { GET as getSitemapEntries } from '@/app/api/sitemap-entries/route';
@@ -48,10 +49,8 @@ describe('L2-040 signup validation and storage', () => {
 
     const response = await signUp({ email: `${'a'.repeat(250)}@example.com`, sourcePath: '/' });
 
-    expect(response.status).toBe(400);
-    const problem = await response.json();
-    expect(problem.status).toBe(400);
-    expect(problem.errors).toEqual([{ field: 'email', message: expect.any(String) }]);
+    const problem = await expectProblem(response, 'validation-failed', 400);
+    expect(problem.errors).toEqual([{ field: 'email', code: 'out_of_range', message: expect.any(String) }]);
   });
 
   it('Given a syntactically invalid email, when submitted, then the response is 400 and nothing is stored', async () => {
@@ -105,8 +104,8 @@ describe('L2-078 strict input', () => {
 
     const response = await signUp({ email: 'jane@example.com', sourcePath: '/', isAdmin: true });
 
-    expect(response.status).toBe(400);
-    expect((await response.json()).errors).toContainEqual({ field: 'isAdmin', message: expect.any(String) });
+    const problem = await expectProblem(response, 'validation-failed', 400);
+    expect(problem.errors).toContainEqual({ field: 'isAdmin', code: 'unrecognized_key', message: expect.any(String) });
   });
 
   it('Given a body that is not JSON, when submitted, then the response is 400', async () => {

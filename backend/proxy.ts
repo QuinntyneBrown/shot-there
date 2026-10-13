@@ -1,6 +1,8 @@
 import { NextResponse, type NextRequest } from 'next/server';
 import { SESSION_COOKIE } from '@/lib/auth/session-cookies';
 import { MAX_JSON_BODY_BYTES } from '@/lib/http/max-json-body-bytes';
+import { payloadTooLarge } from '@/lib/http/payload-too-large';
+import { problemResponse } from '@/lib/http/problem-response';
 import { securityHeaders } from '@/lib/http/security-headers';
 
 const UPLOAD_PATH = '/api/admin/images';
@@ -19,7 +21,8 @@ function route(request: NextRequest): NextResponse {
 
   const contentLength = Number(request.headers.get('content-length') ?? 0);
   if (request.nextUrl.pathname !== UPLOAD_PATH && contentLength > MAX_JSON_BODY_BYTES) {
-    return NextResponse.json({ status: 413 }, { status: 413 });
+    const problem = problemResponse(payloadTooLarge(), crypto.randomUUID());
+    return new NextResponse(problem.body, problem);
   }
 
   // Cheap first gate; every admin handler still validates the session with requireOwnerSession.

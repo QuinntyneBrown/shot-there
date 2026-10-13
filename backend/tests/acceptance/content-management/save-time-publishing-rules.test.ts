@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import { expectProblem } from '@/tests/support/expect-problem';
 import { PUT as updateSpot } from '@/app/api/admin/spots/[id]/route';
 import { POST as createStudio } from '@/app/api/admin/studios/route';
 import { PUT as updateStudio } from '@/app/api/admin/studios/[id]/route';
@@ -23,11 +24,8 @@ describe('L2-045 disclosure values on save', () => {
 
       const response = await create(aStudioInput({ disclosure, disclosureProvider: null }));
 
-      expect(response.status).toBe(400);
-      expect((await response.json()).errors).toContainEqual({
-        field: 'disclosureProvider',
-        message: 'The provider is required for a discounted or comped session',
-      });
+      const problem = await expectProblem(response, 'validation-failed', 400);
+      expect(problem.errors).toContainEqual({ field: 'disclosureProvider', code: 'required', message: expect.any(String) });
     },
   );
 
@@ -58,10 +56,8 @@ describe('L2-002 a published location keeps its standard data set', () => {
 
     const response = await saveStudio('s1', aStudioInput({ ceilingHeightM: null }));
 
-    expect(response.status).toBe(400);
-    expect((await response.json()).errors).toEqual([
-      { field: 'ceilingHeight', message: 'This is required while the location is published' },
-    ]);
+    const problem = await expectProblem(response, 'validation-failed', 400);
+    expect(problem.errors).toEqual([{ field: 'ceilingHeight', code: 'required_while_published', message: expect.any(String) }]);
     const [stored] = (dependencies.studios as InMemoryStudioRepository).rows;
     expect(stored).toMatchObject({ status: 'published', ceilingHeightM: 3.4 });
   });

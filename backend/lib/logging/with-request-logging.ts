@@ -1,4 +1,5 @@
 import { HttpProblem } from '@/lib/http/http-problem';
+import { problemResponse } from '@/lib/http/problem-response';
 import { correlationContext } from '@/lib/logging/correlation-context';
 import { log } from '@/lib/logging/logger';
 
@@ -21,11 +22,11 @@ export function withRequestLogging<C = unknown>(
       response = await correlationContext.run(correlationId, () => handler(request, context as C));
     } catch (error) {
       if (error instanceof HttpProblem) {
-        response = error.response;
+        response = problemResponse(error, correlationId);
       } else {
         const failure = error instanceof Error ? error : new Error(String(error));
         log('error', correlationId, { errorName: failure.name, message: failure.message, stack: failure.stack });
-        response = Response.json({ status: 500 }, { status: 500 });
+        response = problemResponse(new HttpProblem(500, 'urn:shotthere:problem:internal-error'), correlationId);
       }
     }
 

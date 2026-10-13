@@ -37,6 +37,7 @@ export const optionalWebAddress = () =>
     .max(2000)
     .refine((value) => value === '' || (WEB_ADDRESS.test(value) && URL.canParse(value)), {
       error: 'Enter a valid web address starting with http:// or https://',
+      params: { code: 'invalid_format' },
     })
     .transform((value) => (value === '' ? null : value))
     .nullable()
@@ -46,7 +47,7 @@ export const optionalWebAddress = () =>
 export const pastOrTodayDate = (today: string, futureMessage: string) =>
   z.iso
     .date({ error: 'Enter a date as YYYY-MM-DD' })
-    .refine((value) => value <= today, { error: futureMessage });
+    .refine((value) => value <= today, { error: futureMessage, params: { code: 'date_in_future' } });
 
 export const optionalEnum = <const T extends readonly [string, ...string[]]>(values: T) =>
   z.enum(values).nullable().default(null);
@@ -67,7 +68,7 @@ export const uniqueBy =
     const seen = new Set<unknown>();
     items.forEach((item, index) => {
       const value = key(item);
-      if (seen.has(value)) context.addIssue({ code: 'custom', message, path: keyName ? [index, keyName] : [index] });
+      if (seen.has(value)) context.addIssue({ code: 'custom', message, path: keyName ? [index, keyName] : [index], params: { code: 'duplicate' } });
       seen.add(value);
     });
   };

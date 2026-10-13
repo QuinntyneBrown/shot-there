@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import { expectProblem } from '@/tests/support/expect-problem';
 import { GET as getStudioForEdit, PUT as updateStudio } from '@/app/api/admin/studios/[id]/route';
 import { POST as createStudio } from '@/app/api/admin/studios/route';
 import { adminRequest, idParams, stubSiteOriginPerTest, useSignedInOwner } from '@/tests/support/admin-session';
@@ -140,8 +141,8 @@ describe('L2-054 studio editor: read and update', () => {
     const write = await update('nope', aStudioInput());
 
     expect(read.status).toBe(404);
-    expect(write.status).toBe(404);
-    expect(await write.json()).toEqual({ status: 404 });
+    const problem = await expectProblem(write, 'not-found', 404);
+    expect(problem.detail).toBeNull();
   });
 
   it('Given an existing studio, when the owner saves changes, then fields, fees and gear are replaced and the slug is kept', async () => {

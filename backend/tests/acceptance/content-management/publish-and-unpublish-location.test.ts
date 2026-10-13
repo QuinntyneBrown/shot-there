@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import { expectProblem } from '@/tests/support/expect-problem';
 import {
   DELETE as unpublishSpot,
   POST as publishSpot,
@@ -45,8 +46,8 @@ describe('L2-056 and L2-002 publish a studio', () => {
 
     const response = await publish('s1');
 
-    expect(response.status).toBe(422);
-    expect(await response.json()).toEqual({ status: 422, missingFields: ['ceilingHeight'] });
+    const problem = await expectProblem(response, 'publish-incomplete', 422);
+    expect(problem.missingFields).toEqual(['ceilingHeight']);
     expect((dependencies.studios as InMemoryStudioRepository).rows[0].status).toBe('draft');
     expect(revalidatedRoutes(dependencies)).toEqual([]);
   });

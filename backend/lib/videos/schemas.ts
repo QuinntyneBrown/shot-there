@@ -12,7 +12,7 @@ export const videoIdField = () =>
     .transform((value, context) => {
       if (value === '') return null;
       const id = extractVideoId(value);
-      if (id === null) context.addIssue({ code: 'custom', message: MESSAGE });
+      if (id === null) context.addIssue({ code: 'custom', message: MESSAGE, params: { code: 'invalid_video_link' } });
       return id;
     })
     .nullable()

@@ -9,5 +9,5 @@ export function verifyCsrf(request: Request, session: OwnerSessionRecord): void 
   const expectedToken = Buffer.from(session.csrfToken);
   const tokenMatches = sentToken.length === expectedToken.length && timingSafeEqual(sentToken, expectedToken);
   const originMatches = Boolean(process.env.SITE_ORIGIN) && origin === process.env.SITE_ORIGIN;
-  if (!tokenMatches || !originMatches) throw new HttpProblem(Response.json({ status: 403 }, { status: 403 }));
+  if (!tokenMatches || !originMatches) throw new HttpProblem(403, 'urn:shotthere:problem:csrf-rejected');
 }

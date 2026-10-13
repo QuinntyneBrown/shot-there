@@ -18,7 +18,7 @@ export async function updateStudio(id: string, input: StudioInput): Promise<Stud
   const { priceVerifiedAt, slug = stored.slug, videoLink, images, ...fields } = input;
   const slugChanged = slug !== stored.slug;
   if (slugChanged && (await studios.isSlugTaken(slug))) {
-    throw validationFailed([{ field: 'slug', message: 'This address is already used by another studio' }]);
+    throw validationFailed([{ field: 'slug', code: 'already_in_use', message: 'This address is already used by another studio' }]);
   }
 
   const studio: StudioRecord = {
