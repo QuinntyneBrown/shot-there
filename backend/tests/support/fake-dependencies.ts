@@ -9,6 +9,8 @@ import type { SpotRecord } from '@/lib/spots/spot-record';
 import type { StudioRecord } from '@/lib/studios/studio-record';
 import type { SubscriberRecord } from '@/lib/subscribers/subscriber-record';
 import { fixedClock } from '@/tests/support/fixed-clock';
+import { InMemoryImageRepository } from '@/tests/support/in-memory-image-repository';
+import { InMemoryObjectStore } from '@/tests/support/in-memory-object-store';
 import { InMemoryOwnerRepository } from '@/tests/support/in-memory-owner-repository';
 import { InMemoryOwnerSessionRepository } from '@/tests/support/in-memory-owner-session-repository';
 import { InMemorySignInAttemptRepository } from '@/tests/support/in-memory-sign-in-attempt-repository';
@@ -34,17 +36,21 @@ export interface FakeSeed {
 
 /** Installs in-memory dependencies seeded with the given data. No database is involved. */
 export function useFakeDependencies(seed: FakeSeed = {}): Dependencies {
+  const studios = new InMemoryStudioRepository(seed.studios ?? []);
+  const spots = new InMemorySpotRepository(seed.spots ?? []);
   const dependencies: Dependencies = {
     probeDatabase: seed.probeDatabase ?? (async () => {}),
     clock: fixedClock(seed.today ?? '2026-10-13'),
-    studios: new InMemoryStudioRepository(seed.studios ?? []),
-    spots: new InMemorySpotRepository(seed.spots ?? []),
+    studios,
+    spots,
     guides: new InMemoryGuideRepository(seed.guides ?? []),
     slugRedirects: new InMemorySlugRedirectRepository(seed.slugRedirects ?? []),
     subscribers: new InMemorySubscriberRepository(seed.subscribers ?? []),
     owners: new InMemoryOwnerRepository(seed.owners ?? []),
     ownerSessions: new InMemoryOwnerSessionRepository(seed.ownerSessions ?? []),
     signInAttempts: new InMemorySignInAttemptRepository(seed.signInAttempts ?? []),
+    images: new InMemoryImageRepository(studios, spots),
+    objectStore: new InMemoryObjectStore(),
     pageRevalidator: new RecordingPageRevalidator(),
   };
   setDependencies(dependencies);
