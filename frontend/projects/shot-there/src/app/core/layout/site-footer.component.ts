@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
+import { EmailSignupComponent } from '../email-signup/email-signup.component';
 import { APP_PATHS } from '../routing/app-paths';
 
 @Component({
   selector: 'st-site-footer',
-  imports: [RouterLink],
+  imports: [RouterLink, EmailSignupComponent],
   templateUrl: './site-footer.component.html',
   styleUrl: './site-footer.component.css'
 })

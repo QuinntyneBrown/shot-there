@@ -31,3 +31,6 @@ export * from './lib/compare/rubric-category';
 export * from './lib/compare/rubric-score-dto';
 export * from './lib/compare/compare.service';
 export * from './lib/compare/http-compare.service';
+export * from './lib/subscribers/subscribe-request';
+export * from './lib/subscribers/subscriber.service';
+export * from './lib/subscribers/http-subscriber.service';

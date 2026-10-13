@@ -9,8 +9,10 @@ import {
   HttpCompareService,
   HttpStudioService,
   HttpStudiosService,
+  HttpSubscriberService,
   StudioService,
-  StudiosService
+  StudiosService,
+  SubscriberService
 } from '@shot-there/api';
 
 import { routes } from './app.routes';
@@ -28,6 +30,7 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(withFetch()),
     { provide: StudiosService, useClass: HttpStudiosService },
     { provide: StudioService, useClass: HttpStudioService },
-    { provide: CompareService, useClass: HttpCompareService }
+    { provide: CompareService, useClass: HttpCompareService },
+    { provide: SubscriberService, useClass: HttpSubscriberService }
   ]
 };
