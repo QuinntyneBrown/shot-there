@@ -220,7 +220,7 @@ onShotActivated(index: number): void {
 - Viewer (`.viewer`): fixed, inset 0, `--z-modal`, flex column, `--color-bg-canvas`; animation `fade-in` over `--duration-base` with `--ease-enter`.
 - Bar: flex, centred, gap `--space-4`, padding `--space-4` `--layout-margin`, top padding `--space-4` plus `env(safe-area-inset-top)`. Count `flex: 1`, `--text-label` at `--font-size-md`, `--color-fg-muted`.
 - Stage: `flex: 1`, grid `auto minmax(0, 1fr) auto`, centred, gap `--space-2`, padding `--space-2`, `min-height: 0`; from 48rem gap `--space-8` and side padding `--layout-margin`.
-- Frame: centred grid, width 100 %, at least 12rem tall. The photo is at most 100 % of the stage width and `100dvh` minus 13rem tall, `object-fit: contain`, `--radius-md` corners (D-5).
+- Frame: centred grid, width 100 %, at least 12rem tall; with a single photo (no arrows) it spans the whole stage (`grid-column: 1 / -1`, D-2). The photo is at most 100 % of the stage width and `100dvh` minus 13rem tall, `object-fit: contain`, `--radius-md` corners (D-5).
 - Caption (`.lightbox .viewer__caption`): centred flex column, gap `--space-1`, `--text-body`, padding `--space-4` `--layout-margin` `--space-8` plus `env(safe-area-inset-bottom)`; below 48rem bottom padding `--space-4`.
 - Pager: flex, centred, gap `--space-4`, side padding `--layout-margin`; below 48rem bottom padding `--space-8` plus `env(safe-area-inset-bottom)`; hidden from 48rem.
 - Controls: icon buttons `--target-comfortable` square with a `--border-width-hairline` `--color-border-default` edge; pager buttons are md secondary buttons (44 px).
