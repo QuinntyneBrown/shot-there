@@ -6,3 +6,162 @@ generator client {
 datasource db {
   provider = "postgresql"
 }
+
+enum LocationStatus {
+  draft
+  published
+}
+
+enum Disclosure {
+  paid_in_full
+  discounted
+  comped
+}
+
+enum LightRating {
+  none
+  low
+  medium
+  strong
+}
+
+enum LoadIn {
+  stairs
+  elevator
+  freightElevator
+}
+
+enum ParkingOption {
+  onSite
+  street
+  none
+}
+
+enum GearCategory {
+  lights
+  modifiers
+  stands
+  other
+}
+
+enum ImageRole {
+  testShot
+  gallery
+  sampleShot
+}
+
+enum ImageFormat {
+  avif
+  webp
+  jpeg
+}
+
+model Studio {
+  id                    String          @id @default(uuid())
+  slug                  String          @unique
+  status                LocationStatus  @default(draft)
+  name                  String
+  neighbourhood         String?
+  addressOrCrossStreets String?
+  bookingUrl            String?
+  latitude              Float?
+  longitude             Float?
+  hourlyRate            Decimal?        @db.Decimal(10, 2)
+  minBookingHours       Decimal?        @db.Decimal(4, 2)
+  priceVerifiedAt       DateTime        @db.Date
+  usableWidthM          Decimal?        @db.Decimal(6, 2)
+  usableDepthM          Decimal?        @db.Decimal(6, 2)
+  ceilingHeightM        Decimal?        @db.Decimal(6, 2)
+  windowDirection       String?
+  lightMorning          LightRating?
+  lightMidday           LightRating?
+  lightAfternoon        LightRating?
+  lightEvening          LightRating?
+  outletCount           Int?
+  outletType            String?
+  has20ACircuits        Boolean?
+  hasCycWall            Boolean?
+  cycWallCondition      String?
+  backdrops             String?
+  loadIn                LoadIn?
+  loadInNote            String?
+  parking               ParkingOption?
+  parkingNote           String?
+  transit               String?
+  washroom              String?
+  changingArea          String?
+  clientSeating         String?
+  noise                 String?
+  whoItsFor             String?
+  whoShouldSkip         String?
+  scoreValue            Int?
+  scoreLight            Int?
+  scoreSpace            Int?
+  scoreGear             Int?
+  scoreLogistics        Int?
+  scoreCondition        Int?
+  disclosure            Disclosure?
+  disclosureProvider    String?
+  videoId               String?
+  episodeTitle          String?
+  reviewedAt            DateTime?       @db.Date
+  publishedAt           DateTime?
+  createdAt             DateTime        @default(now())
+  updatedAt             DateTime        @updatedAt
+  fees                  StudioFee[]
+  gear                  GearItem[]
+  images                Image[]
+
+  @@index([name])
+}
+
+model StudioFee {
+  id        String  @id @default(uuid())
+  studioId  String
+  studio    Studio  @relation(fields: [studioId], references: [id], onDelete: Cascade)
+  position  Int
+  name      String
+  amount    Decimal @db.Decimal(10, 2)
+  mandatory Boolean
+}
+
+model GearItem {
+  id        String       @id @default(uuid())
+  studioId  String
+  studio    Studio       @relation(fields: [studioId], references: [id], onDelete: Cascade)
+  position  Int
+  name      String
+  category  GearCategory
+  quantity  Int
+  included  Boolean
+  extraCost Decimal?     @db.Decimal(10, 2)
+}
+
+model Image {
+  id            String         @id @default(uuid())
+  studioId      String?
+  studio        Studio?        @relation(fields: [studioId], references: [id], onDelete: Cascade)
+  role          ImageRole
+  sortOrder     Int
+  altText       String
+  caption       String?
+  focalLengthMm Int?
+  angleNote     String?
+  width         Int
+  height        Int
+  storageKey    String         @unique
+  contentType   String
+  originalName  String
+  createdAt     DateTime       @default(now())
+  variants      ImageVariant[]
+}
+
+model ImageVariant {
+  id         String      @id @default(uuid())
+  imageId    String
+  image      Image       @relation(fields: [imageId], references: [id], onDelete: Cascade)
+  width      Int
+  format     ImageFormat
+  storageKey String      @unique
+  url        String
+}
