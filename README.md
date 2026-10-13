@@ -120,10 +120,13 @@ npm run typecheck
 shot-there/
 ├── backend/        HTTP API: Next.js, Prisma and PostgreSQL
 ├── frontend/       Angular workspace (standalone, signals, zoneless, SSR)
-│   ├── src/app/features/   one folder per product area, each with routes.ts
-│   ├── src/app/core/       auth, SEO and app-wide services
-│   ├── src/server/         SSR server: sitemap, redirects, cache headers
-│   ├── libs/               API and design-system component libraries
+│   ├── projects/
+│   │   ├── shot-there/     application project
+│   │   │   ├── src/app/features/   one folder per product area, each with routes.ts
+│   │   │   ├── src/app/core/       auth, SEO and app-wide services
+│   │   │   └── src/server/         SSR server: sitemap, redirects, cache headers
+│   │   ├── api/            library project: backend API services and DTOs
+│   │   └── components/     library project: design-system components
 │   └── e2e/                Playwright acceptance suite (page objects)
 ├── docs/
 │   ├── specs/              L1/L2 requirements

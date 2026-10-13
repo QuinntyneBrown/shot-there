@@ -69,7 +69,7 @@ are used as defined in RFC 2119 and RFC 8174.
 | Party | Runs | Role on this interface |
 |-------|------|------------------------|
 | **Browser** | Angular client bundle | Calls the API for list refinements, the email signup, owner sign-in and every administration screen. |
-| **SSR server** | `frontend/src/server.ts` (Express + `@angular/ssr`) | Calls the API while rendering public pages, resolving slug redirects and building `/sitemap.xml`. |
+| **SSR server** | `frontend/projects/shot-there/src/server.ts` (Express + `@angular/ssr`) | Calls the API while rendering public pages, resolving slug redirects and building `/sitemap.xml`. |
 | **Prerender** | `ng build` | Calls the API at build time to list public routes and render them. |
 | **API** | `backend/` Next.js route handlers | Provider. Sole authority for every business rule and every stored value. |
 
@@ -377,7 +377,7 @@ purge is missed.
 
 ### 12.1 Summary
 
-| # | Method and path | Auth | Request | Success | Frontend service (`libs/api`) |
+| # | Method and path | Auth | Request | Success | Frontend service (`projects/api`) |
 |---|-----------------|------|---------|---------|-------------------------------|
 | E1 | `GET /api/studios` | — | `StudioListQuery` | `200 StudioSummary[]` | `StudiosService.listStudios` |
 | E2 | `GET /api/studios/{slug}` | — | — | `200 StudioDetailDto` | `StudioService.getStudio` |
@@ -679,7 +679,7 @@ the owner retry each failed file on its own.
 ## 13. Data types
 
 Both sides declare each type below with the same name and shape: the
-backend in `backend/lib/<area>/`, the frontend in `frontend/libs/api/src/`,
+backend in `backend/lib/<area>/`, the frontend in `frontend/projects/api/src/lib/`,
 one type per kebab-case file. Comments state the constraints the API
 guarantees on responses.
 
@@ -1588,7 +1588,7 @@ Compatibility therefore rests on the rules below.
    and adding a row to [§19](#19-revision-history).
 2. A pull request that changes a route handler under `backend/app/api/`, a DTO
    or enumeration under `backend/lib/`, or a service, DTO or enumeration under
-   `frontend/libs/api/` **MUST** name the section of this document it
+   `frontend/projects/api/` **MUST** name the section of this document it
    implements.
 3. A change that needs a new requirement follows the repository's normal
    order: requirement, detailed design, mock, then this document and the
@@ -1601,7 +1601,7 @@ Adherence is proven by behaviour tests, not by inspecting code structure.
 | Side | How |
 |------|-----|
 | Backend | API tests call each endpoint and assert its status codes, headers (`Content-Type`, `Cache-Control`, `X-Correlation-Id`, cookies, `Retry-After`, `Location`) and body shape against the types in [§13](#13-data-types). They cover every status listed for that endpoint in [§12](#12-endpoint-catalogue). |
-| Frontend | Playwright acceptance tests drive each screen against the API, or against route-intercepted fixtures typed with the `libs/api` DTOs. They cover each status the screen handles: `404` page, list error state, `401` redirect, `422` dialog, `429` message. |
+| Frontend | Playwright acceptance tests drive each screen against the API, or against route-intercepted fixtures typed with the `projects/api` DTOs. They cover each status the screen handles: `404` page, list error state, `401` redirect, `422` dialog, `429` message. |
 | Both | One end-to-end smoke test runs the prerendered build against a seeded API and checks a studio page, a spot page, the studio list and a sign-in. |
 
 ## 18. Open items
