@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Site menu · default — ShotThere mocks</title>
+<meta name="mock:kind" content="dialog">
+<meta name="mock:screen" content="site-menu">
+<meta name="mock:state" content="default">
+<meta name="mock:requirements" content="L2-064 L2-035 L2-052">
+<meta name="description" content="Public site menu at phone width over the home page: Studios, Spots, Map, Compare and Guides, then the editorial policy.">
+<link rel="stylesheet" href="../../../design-system/tokens/tokens.css">
+<link rel="stylesheet" href="../../../design-system/assets/components.css">
+<link rel="stylesheet" href="../../assets/mock.css">
+</head>
+<body>
+
+<!-- The page behind is inert while the menu is open. -->
+<div inert aria-hidden="true">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <a class="wordmark" href="../../pages/home/default.html">ShotThere <span class="wordmark__tag">Toronto</span></a>
+    <nav class="site-nav" aria-label="Primary">
+      <a class="site-nav__link site-nav__extra" href="../../pages/studios/default.html">Studios</a>
+      <a class="site-nav__link site-nav__extra" href="../../pages/spots/default.html">Spots</a>
+      <a class="site-nav__link site-nav__extra" href="../../pages/map/default.html">Map</a>
+      <a class="site-nav__link site-nav__extra" href="../../pages/compare/default.html">Compare</a>
+      <a class="site-nav__link site-nav__extra" href="../../pages/guides/default.html">Guides</a>
+      <a class="btn btn--ghost site-nav__menu" href="../../dialogs/site-menu/default.html" aria-haspopup="dialog" aria-expanded="true">
+        <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>Menu
+      </a>
+    </nav>
+  </header>
+  <main id="main" class="container">
+    <section class="home-hero" aria-labelledby="home-title">
+      <h1 id="home-title">Toronto photo studios and outdoor spots, reviewed first-hand</h1>
+      <p class="subtitle">Nothing is listed unless it has been shot there. Same measurements, same test setup, side by side.</p>
+    </section>
+    <section class="section-gap" aria-labelledby="latest-title">
+      <div class="section-head"><h2 id="latest-title">Latest reviews</h2><span>All studios</span></div>
+      <ul class="location-grid">
+        <li class="location-card">
+          <div class="location-card__media"><img src="../../assets/img/studio-kensington-window-room.svg" alt="" width="1200" height="800" loading="lazy"></div>
+          <h3 class="location-card__name"><a href="../../pages/studio/default.html">Kensington Window Room</a></h3>
+          <p class="location-card__meta">Kensington Market · Reviewed 3 Oct 2026</p>
+          <dl class="location-card__facts">
+            <div><dt>All-in 2 h</dt><dd>$80.00</dd></div>
+            <div><dt>Score</dt><dd>3.2<span class="visually-hidden"> out of 5</span></dd></div>
+          </dl>
+        </li>
+        <li class="location-card">
+          <div class="location-card__media"><img src="../../assets/img/studio-the-junction-loft.svg" alt="" width="1200" height="800" loading="lazy"></div>
+          <h3 class="location-card__name"><a href="../../pages/studio/default.html">The Junction Loft</a></h3>
+          <p class="location-card__meta">Junction · Reviewed 29 Sep 2026</p>
+          <dl class="location-card__facts">
+            <div><dt>All-in 2 h</dt><dd>$145.00</dd></div>
+            <div><dt>Score</dt><dd>3.8<span class="visually-hidden"> out of 5</span></dd></div>
+          </dl>
+        </li>
+        <li class="location-card">
+          <div class="location-card__media"><img src="../../assets/img/studio-leslieville-daylight-studio.svg" alt="" width="1200" height="800" loading="lazy"></div>
+          <h3 class="location-card__name"><a href="../../pages/studio/default.html">Leslieville Daylight Studio</a></h3>
+          <p class="location-card__meta">Leslieville · Reviewed 14 Aug 2026</p>
+          <dl class="location-card__facts">
+            <div><dt>All-in 2 h</dt><dd>$91.00</dd></div>
+            <div><dt>Score</dt><dd>4.0<span class="visually-hidden"> out of 5</span></dd></div>
+          </dl>
+        </li>
+      </ul>
+    </section>
+  </main>
+</div>
+
+<div class="sheet" role="dialog" aria-modal="true" aria-labelledby="dlg-title" aria-describedby="dlg-desc" data-dismiss-on-escape>
+  <div class="sheet__header">
+    <h2 class="sheet__title" id="dlg-title">Menu</h2>
+    <a class="btn btn--ghost btn--icon" href="../../pages/home/default.html" aria-label="Close" autofocus>
+      <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg>
+    </a>
+  </div>
+  <div class="sheet__body">
+    <p class="visually-hidden" id="dlg-desc">Site navigation</p>
+    <nav aria-label="Primary">
+      <ul class="section-list">
+      <li><a class="section-link" href="../../pages/studios/default.html"><span class="section-link__body"><span class="section-link__title">Studios</span><span class="section-link__meta">7 rental studios, measured the same way</span></span></a></li>
+      <li><a class="section-link" href="../../pages/spots/default.html"><span class="section-link__body"><span class="section-link__title">Spots</span><span class="section-link__meta">5 outdoor locations with permit notes</span></span></a></li>
+      <li><a class="section-link" href="../../pages/map/default.html"><span class="section-link__body"><span class="section-link__title">Map</span><span class="section-link__meta">Every studio and spot on one map</span></span></a></li>
+      <li><a class="section-link" href="../../pages/compare/default.html"><span class="section-link__body"><span class="section-link__title">Compare</span><span class="section-link__meta">Up to 4 studios side by side</span></span></a></li>
+      <li><a class="section-link" href="../../pages/guides/default.html"><span class="section-link__body"><span class="section-link__title">Guides</span><span class="section-link__meta">Short lists, like the best studios under $120</span></span></a></li>
+      </ul>
+    </nav>
+    <nav aria-label="About ShotThere">
+      <ul class="section-list">
+      <li><a class="section-link" href="../../pages/editorial-policy/default.html"><span class="section-link__body"><span class="section-link__title">Editorial policy</span><span class="section-link__meta">How reviews are made, paid for and corrected</span></span></a></li>
+      </ul>
+    </nav>
+  </div>
+</div>
+
+<p class="mock-note" style="top: 5rem; right: 1rem;">Menu replaces the inline links at XS and SM (L2-064.2). Escape or Close returns focus to Menu.</p>
+<nav class="mock-bar" aria-label="Mock navigation">
+  <a class="mock-bar__home" href="../../index.html" aria-label="All mocks">⌂</a>
+  <span class="mock-bar__screen">Site menu</span>
+  <ul class="mock-bar__states">
+    <li><a href="default.html" aria-current="page">default</a></li>
+    <li><a href="admin.html">admin</a></li>
+  </ul>
+  <button type="button" data-theme-toggle aria-pressed="false">☾ Dark</button>
+  <button type="button" data-chrome-toggle aria-label="Hide mock chrome">×</button>
+</nav>
+<script src="../../assets/mock.js"></script>
+</body>
+</html>

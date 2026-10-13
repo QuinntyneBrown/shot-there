@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Studio filters · invalid — ShotThere mocks</title>
+<meta name="mock:kind" content="dialog">
+<meta name="mock:screen" content="studio-filters">
+<meta name="mock:state" content="invalid">
+<meta name="mock:requirements" content="L2-022 L2-023 L2-025 L2-067">
+<meta name="description" content="Filters dialog with a minimum above the maximum: the maximum field explains the problem and Show is disabled.">
+<link rel="stylesheet" href="../../../design-system/tokens/tokens.css">
+<link rel="stylesheet" href="../../../design-system/assets/components.css">
+<link rel="stylesheet" href="../../assets/mock.css">
+</head>
+<body>
+
+<!-- The studio list behind is inert while the dialog is open. -->
+<div inert aria-hidden="true">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <a class="wordmark" href="../../pages/home/default.html">ShotThere <span class="wordmark__tag">Toronto</span></a>
+    <nav class="site-nav" aria-label="Primary">
+      <a class="site-nav__link site-nav__extra" href="../../pages/studios/default.html" aria-current="page">Studios</a>
+      <a class="site-nav__link site-nav__extra" href="../../pages/spots/default.html">Spots</a>
+      <a class="site-nav__link site-nav__extra" href="../../pages/map/default.html">Map</a>
+      <a class="site-nav__link site-nav__extra" href="../../pages/compare/default.html">Compare</a>
+      <a class="site-nav__link site-nav__extra" href="../../pages/guides/default.html">Guides</a>
+      <a class="btn btn--ghost site-nav__menu" href="../../dialogs/site-menu/default.html" aria-haspopup="dialog" aria-expanded="false">
+        <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>Menu
+      </a>
+    </nav>
+  </header>
+  <main id="main" class="container" tabindex="-1">
+    <div class="browse">
+      <div class="browse__title">
+        <h1>Studios</h1>
+        <p class="subtitle">Every studio here was shot in with the same test setup. All-in is the cost of a 2-hour shoot with mandatory fees.</p>
+      </div>
+
+      <aside class="browse__aside" aria-labelledby="filters-title">
+        <form class="stack stack--lg" action="../../pages/studios/default.html" method="get">
+          <h2 class="filter-group__title" id="filters-title" style="font: var(--text-h4); color: var(--color-fg-default);">Filter studios</h2>
+          <fieldset class="filter-group">
+            <legend class="filter-group__title">All-in cost for 2 hours</legend>
+            <div class="field-row" style="grid-template-columns: repeat(2, minmax(0, 1fr));">
+              <div class="field"><label class="field__label" for="aside-cost-min">Minimum</label><span class="input-group"><span class="addon" aria-hidden="true">$</span><input class="input" id="aside-cost-min" type="number" inputmode="decimal" min="0" step="10" name="costMin" autocomplete="off"></span></div>
+              <div class="field"><label class="field__label" for="aside-cost-max">Maximum</label><span class="input-group"><span class="addon" aria-hidden="true">$</span><input class="input" id="aside-cost-max" type="number" inputmode="decimal" min="0" step="10" name="costMax" autocomplete="off"></span></div>
+            </div>
+          </fieldset>
+          <fieldset class="filter-group">
+            <legend class="filter-group__title">Neighbourhood</legend>
+            <label class="choice"><input type="checkbox" name="hood" value="bloordale"><span>Bloordale</span></label>
+            <label class="choice"><input type="checkbox" name="hood" value="junction"><span>Junction</span></label>
+            <label class="choice"><input type="checkbox" name="hood" value="kensington-market"><span>Kensington Market</span></label>
+            <label class="choice"><input type="checkbox" name="hood" value="leslieville"><span>Leslieville</span></label>
+            <label class="choice"><input type="checkbox" name="hood" value="liberty-village"><span>Liberty Village</span></label>
+            <label class="choice"><input type="checkbox" name="hood" value="ossington"><span>Ossington</span></label>
+            <label class="choice"><input type="checkbox" name="hood" value="riverside"><span>Riverside</span></label>
+          </fieldset>
+          <fieldset class="filter-group">
+            <legend class="filter-group__title">Space and light</legend>
+            <label class="choice"><input type="checkbox" name="light" value="medium"><span class="choice__text">Natural light<small>At least medium at some time of day</small></span></label>
+            <label class="choice"><input type="checkbox" name="cyc" value="yes"><span>Cyc wall</span></label>
+            <div class="field" style="margin-top: var(--space-2);"><label class="field__label" for="aside-space">Minimum usable space</label>
+              <select class="select" id="aside-space" name="space"><option value="">Any size</option><option value="20">20 m² or more</option><option value="30">30 m² or more</option><option value="50">50 m² or more</option></select>
+            </div>
+          </fieldset>
+          <fieldset class="filter-group">
+            <legend class="filter-group__title">Included gear</legend>
+            <label class="choice"><input type="checkbox" name="gear" value="lights"><span>Lights</span></label>
+            <label class="choice"><input type="checkbox" name="gear" value="modifiers"><span>Modifiers</span></label>
+            <label class="choice"><input type="checkbox" name="gear" value="stands"><span>Stands</span></label>
+            <label class="choice"><input type="checkbox" name="gear" value="backdrops"><span>Backdrops</span></label>
+          </fieldset>
+          <fieldset class="filter-group">
+            <legend class="filter-group__title">Parking</legend>
+            <label class="choice"><input type="radio" name="parking" value="" checked><span>Any</span></label>
+            <label class="choice"><input type="radio" name="parking" value="on-site"><span>On-site</span></label>
+            <label class="choice"><input type="radio" name="parking" value="street"><span>Street</span></label>
+            <label class="choice"><input type="radio" name="parking" value="none"><span>None</span></label>
+          </fieldset>
+          <div class="cluster">
+            <button class="btn" type="submit">Apply filters</button>
+          </div>
+        </form>
+      </aside>
+
+      <section class="browse__results" aria-labelledby="results-title">
+        <h2 class="visually-hidden" id="results-title">Results</h2>
+        <div class="cluster cluster--between" style="margin-bottom: var(--space-8);">
+          <p class="result-count" role="status" aria-live="polite">7 studios</p>
+          <div class="cluster">
+            <a class="filter-trigger until-lg" href="../../dialogs/studio-filters/default.html" aria-haspopup="dialog">
+              <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12M20 18h0"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/></svg>Filters
+            </a>
+            <div class="field field--inline">
+              <label class="field__label" for="sort">Sort by</label>
+              <select class="select" id="sort" name="sort"><option value="recent" selected>Most recent review</option><option value="cost">All-in cost, low to high</option><option value="score">Overall score, high to low</option></select>
+            </div>
+          </div>
+        </div>
+        <ul class="location-grid">
+          <li class="location-card">
+            <div class="location-card__media"><img src="../../assets/img/studio-kensington-window-room.svg" alt="" width="1200" height="800" loading="eager" fetchpriority="high"></div>
+            <h3 class="location-card__name"><a href="../../pages/studio/default.html">Kensington Window Room</a></h3>
+            <p class="location-card__meta">Kensington Market · Reviewed 3 Oct 2026</p>
+            <dl class="location-card__facts">
+              <div><dt>All-in 2 h</dt><dd>$80.00</dd></div>
+              <div><dt>Score</dt><dd>3.2<span class="visually-hidden"> out of 5</span></dd></div>
+            </dl>
+            <div class="location-card__actions"><button class="btn btn--sm compare-toggle" type="button" aria-pressed="false">Compare<span class="visually-hidden"> Kensington Window Room</span></button></div>
+          </li>
+          <li class="location-card">
+            <div class="location-card__media"><img src="../../assets/img/studio-the-junction-loft.svg" alt="" width="1200" height="800" loading="eager"></div>
+            <h3 class="location-card__name"><a href="../../pages/studio/default.html">The Junction Loft</a></h3>
+            <p class="location-card__meta">Junction · Reviewed 29 Sep 2026</p>
+            <dl class="location-card__facts">
+              <div><dt>All-in 2 h</dt><dd>$145.00</dd></div>
+              <div><dt>Score</dt><dd>3.8<span class="visually-hidden"> out of 5</span></dd></div>
+            </dl>
+            <div class="location-card__actions"><button class="btn btn--sm compare-toggle" type="button" aria-pressed="false">Compare<span class="visually-hidden"> The Junction Loft</span></button></div>
+          </li>
+          <li class="location-card">
+            <div class="location-card__media"><img src="../../assets/img/studio-leslieville-daylight-studio.svg" alt="" width="1200" height="800" loading="eager"></div>
+            <h3 class="location-card__name"><a href="../../pages/studio/default.html">Leslieville Daylight Studio</a></h3>
+            <p class="location-card__meta">Leslieville · Reviewed 14 Aug 2026</p>
+            <dl class="location-card__facts">
+              <div><dt>All-in 2 h</dt><dd>$91.00</dd></div>
+              <div><dt>Score</dt><dd>4.0<span class="visually-hidden"> out of 5</span></dd></div>
+            </dl>
+            <div class="location-card__actions"><button class="btn btn--sm compare-toggle" type="button" aria-pressed="false">Compare<span class="visually-hidden"> Leslieville Daylight Studio</span></button></div>
+          </li>
+          <li class="location-card">
+            <div class="location-card__media"><img src="../../assets/img/studio-bloordale-sun-studio.svg" alt="" width="1200" height="800" loading="lazy"></div>
+            <h3 class="location-card__name"><a href="../../pages/studio/minimal.html">Bloordale Sun Studio</a></h3>
+            <p class="location-card__meta">Bloordale · Reviewed 20 Jul 2026</p>
+            <dl class="location-card__facts">
+              <div><dt>All-in 2 h</dt><dd>$130.00</dd></div>
+              <div><dt>Score</dt><dd>4.0<span class="visually-hidden"> out of 5</span></dd></div>
+            </dl>
+            <div class="location-card__actions"><button class="btn btn--sm compare-toggle" type="button" aria-pressed="false">Compare<span class="visually-hidden"> Bloordale Sun Studio</span></button></div>
+          </li>
+          <li class="location-card">
+            <div class="location-card__media"><img src="../../assets/img/studio-riverside-rooftop-studio.svg" alt="" width="1200" height="800" loading="lazy"></div>
+            <h3 class="location-card__name"><a href="../../pages/studio/default.html">Riverside Rooftop Studio</a></h3>
+            <p class="location-card__meta">Riverside · Reviewed 9 Jun 2026</p>
+            <dl class="location-card__facts">
+              <div><dt>All-in 2 h</dt><dd>$100.00</dd></div>
+              <div><dt>Score</dt><dd>3.5<span class="visually-hidden"> out of 5</span></dd></div>
+            </dl>
+            <div class="location-card__actions"><button class="btn btn--sm compare-toggle" type="button" aria-pressed="false">Compare<span class="visually-hidden"> Riverside Rooftop Studio</span></button></div>
+          </li>
+          <li class="location-card">
+            <div class="location-card__media"><img src="../../assets/img/studio-liberty-cyc-house.svg" alt="" width="1200" height="800" loading="lazy"></div>
+            <h3 class="location-card__name"><a href="../../pages/studio/default.html">Liberty Cyc House</a></h3>
+            <p class="location-card__meta">Liberty Village · Reviewed 2 May 2026</p>
+            <dl class="location-card__facts">
+              <div><dt>All-in 2 h</dt><dd>$185.00</dd></div>
+              <div><dt>Score</dt><dd>4.2<span class="visually-hidden"> out of 5</span></dd></div>
+            </dl>
+            <div class="location-card__actions"><button class="btn btn--sm compare-toggle" type="button" aria-pressed="false">Compare<span class="visually-hidden"> Liberty Cyc House</span></button></div>
+          </li>
+          <li class="location-card">
+            <div class="location-card__media"><img src="../../assets/img/studio-ossington-blackbox.svg" alt="" width="1200" height="800" loading="lazy"></div>
+            <h3 class="location-card__name"><a href="../../pages/studio/stale.html">Ossington Blackbox</a></h3>
+            <p class="location-card__meta">Ossington · Reviewed 6 Mar 2026</p>
+            <dl class="location-card__facts">
+              <div><dt>All-in 2 h</dt><dd>$270.00</dd></div>
+              <div><dt>Score</dt><dd>3.8<span class="visually-hidden"> out of 5</span></dd></div>
+            </dl>
+            <p><span class="badge badge--warning">Prices may be out of date</span></p>
+            <div class="location-card__actions"><button class="btn btn--sm compare-toggle" type="button" aria-pressed="false">Compare<span class="visually-hidden"> Ossington Blackbox</span></button></div>
+          </li>
+        </ul>
+      </section>
+    </div>
+  </main>
+</div>
+
+<div class="sheet" role="dialog" aria-modal="true" aria-labelledby="dlg-title" aria-describedby="dlg-desc" data-dismiss-on-escape>
+  <div class="sheet__header">
+    <h2 class="sheet__title" id="dlg-title">Filters</h2>
+    <a class="btn btn--ghost btn--icon" href="../../pages/studios/default.html" aria-label="Close">
+      <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg>
+    </a>
+  </div>
+  <form class="sheet__body" id="studio-filters" action="../../pages/studios/default.html" method="get">
+    <p class="subtitle" id="dlg-desc">Choose what matters for this shoot. The list updates when you show the results.</p>
+    <div class="field">
+      <label class="field__label" for="f-sort">Sort by</label>
+      <select class="select" id="f-sort" name="sort"><option value="recent" selected>Most recent review</option><option value="cost">All-in cost, low to high</option><option value="score">Overall score, high to low</option></select>
+    </div>
+    <fieldset class="filter-group">
+      <legend class="filter-group__title">All-in cost for 2 hours</legend>
+      <div class="field-row" style="grid-template-columns: repeat(2, minmax(0, 1fr));">
+        <div class="field"><label class="field__label" for="f-cost-min">Minimum</label><span class="input-group"><span class="addon" aria-hidden="true">$</span><input class="input" id="f-cost-min" type="number" inputmode="decimal" min="0" step="10" name="costMin" autocomplete="off" value="200"></span></div>
+        <div class="field"><label class="field__label" for="f-cost-max">Maximum</label><span class="input-group"><span class="addon" aria-hidden="true">$</span><input class="input" id="f-cost-max" type="number" inputmode="decimal" min="0" step="10" name="costMax" autocomplete="off" value="100" aria-invalid="true" aria-describedby="f-cost-max-error" autofocus></span>
+          <p class="field__error" id="f-cost-max-error">The minimum must be lower than the maximum</p></div>
+      </div>
+    </fieldset>
+    <fieldset class="filter-group">
+      <legend class="filter-group__title">Neighbourhood</legend>
+      <label class="choice"><input type="checkbox" name="hood" value="bloordale"><span>Bloordale</span></label>
+      <label class="choice"><input type="checkbox" name="hood" value="junction"><span>Junction</span></label>
+      <label class="choice"><input type="checkbox" name="hood" value="kensington-market"><span>Kensington Market</span></label>
+      <label class="choice"><input type="checkbox" name="hood" value="leslieville"><span>Leslieville</span></label>
+      <label class="choice"><input type="checkbox" name="hood" value="liberty-village"><span>Liberty Village</span></label>
+      <label class="choice"><input type="checkbox" name="hood" value="ossington"><span>Ossington</span></label>
+      <label class="choice"><input type="checkbox" name="hood" value="riverside"><span>Riverside</span></label>
+    </fieldset>
+    <fieldset class="filter-group">
+      <legend class="filter-group__title">Space and light</legend>
+      <label class="choice"><input type="checkbox" name="light" value="medium"><span class="choice__text">Natural light<small>At least medium at some time of day</small></span></label>
+      <label class="choice"><input type="checkbox" name="cyc" value="yes"><span>Cyc wall</span></label>
+      <div class="field" style="margin-top: var(--space-2);"><label class="field__label" for="f-space">Minimum usable space</label>
+        <select class="select" id="f-space" name="space"><option value="">Any size</option><option value="20">20 m² or more</option><option value="30">30 m² or more</option><option value="50">50 m² or more</option></select>
+      </div>
+    </fieldset>
+    <fieldset class="filter-group">
+      <legend class="filter-group__title">Included gear</legend>
+      <label class="choice"><input type="checkbox" name="gear" value="lights"><span>Lights</span></label>
+      <label class="choice"><input type="checkbox" name="gear" value="modifiers"><span>Modifiers</span></label>
+      <label class="choice"><input type="checkbox" name="gear" value="stands"><span>Stands</span></label>
+      <label class="choice"><input type="checkbox" name="gear" value="backdrops"><span>Backdrops</span></label>
+    </fieldset>
+    <fieldset class="filter-group">
+      <legend class="filter-group__title">Parking</legend>
+      <label class="choice"><input type="radio" name="parking" value="" checked><span>Any</span></label>
+      <label class="choice"><input type="radio" name="parking" value="on-site"><span>On-site</span></label>
+      <label class="choice"><input type="radio" name="parking" value="street"><span>Street</span></label>
+      <label class="choice"><input type="radio" name="parking" value="none"><span>None</span></label>
+    </fieldset>
+  </form>
+  <div class="sheet__footer">
+    <a class="btn" href="default.html">Clear all</a>
+    <button class="btn btn--primary" type="submit" form="studio-filters" disabled aria-describedby="f-cost-max-error">Show studios</button>
+  </div>
+</div>
+
+<p class="mock-note" style="top: 5rem; right: 1rem;">README open question 5: L2-025.4 ignores min &gt; max in a URL; here the dialog explains it before applying. Confirm.</p>
+<nav class="mock-bar" aria-label="Mock navigation">
+  <a class="mock-bar__home" href="../../index.html" aria-label="All mocks">⌂</a>
+  <span class="mock-bar__screen">Studio filters</span>
+  <ul class="mock-bar__states">
+    <li><a href="default.html">default</a></li>
+    <li><a href="selected.html">selected</a></li>
+    <li><a href="invalid.html" aria-current="page">invalid</a></li>
+  </ul>
+  <button type="button" data-theme-toggle aria-pressed="false">☾ Dark</button>
+  <button type="button" data-chrome-toggle aria-label="Hide mock chrome">×</button>
+</nav>
+<script src="../../assets/mock.js"></script>
+</body>
+</html>

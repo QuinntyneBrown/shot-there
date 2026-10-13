@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Studio editor · price-changed — ShotThere mocks</title>
+<meta name="mock:kind" content="page">
+<meta name="mock:screen" content="studio-editor">
+<meta name="mock:state" content="price-changed">
+<meta name="mock:requirements" content="L2-054 L2-042 L2-045 L2-057 L2-058 L2-059 L2-002 L2-056 L2-061 L2-062">
+<meta name="description" content="Corktown Garage Studio after the hourly rate changed from $65.00 to $70.00: Prices last verified is highlighted, required and focused, asking to confirm the date.">
+<link rel="stylesheet" href="../../../design-system/tokens/tokens.css">
+<link rel="stylesheet" href="../../../design-system/assets/components.css">
+<link rel="stylesheet" href="../../assets/mock.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <a class="wordmark" href="../admin-dashboard/default.html">ShotThere <span class="wordmark__tag">Admin</span></a>
+  <nav class="site-nav" aria-label="Administration">
+    <a class="site-nav__link site-nav__extra" href="../admin-dashboard/default.html">Dashboard</a>
+    <a class="site-nav__link site-nav__extra" href="../admin-studios/default.html" aria-current="page">Studios</a>
+    <a class="site-nav__link site-nav__extra" href="../admin-spots/default.html">Spots</a>
+    <a class="site-nav__link site-nav__extra" href="../admin-guides/default.html">Guides</a>
+    <a class="site-nav__link site-nav__extra" href="../home/default.html">View site</a>
+    <form class="site-nav__extra" action="../sign-in/signed-out.html" method="post"><button class="btn btn--ghost" type="submit">Sign out</button></form>
+    <a class="btn btn--ghost site-nav__menu" href="../../dialogs/site-menu/admin.html" aria-haspopup="dialog" aria-expanded="false">
+      <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>Menu
+    </a>
+  </nav>
+</header>
+
+<main id="main" class="container" tabindex="-1">
+  <nav aria-label="Breadcrumb" style="margin-top: var(--space-4);"><ol class="breadcrumb"><li><a href="../admin-studios/default.html">Studios</a></li><li aria-current="page">Corktown Garage Studio</li></ol></nav>
+  <div class="page-header">
+    <div>
+      <h1>Corktown Garage Studio</h1>
+      <p class="subtitle"><span class="status status--draft">Draft</span> · Last saved 11 Oct 2026, 4:12 pm</p>
+    </div>
+  </div>
+
+  <div class="editor-layout">
+    <aside class="editor-aside" aria-labelledby="status-title">
+      <h2 id="status-title" style="font: var(--text-h4);">Status</h2>
+      <dl class="editor-aside__meta">
+        <dt>Visibility</dt><dd><span class="status status--draft">Draft</span> · not on the public site</dd>
+        <dt>Public address once published</dt><dd><code>/studios/corktown-garage-studio</code></dd>
+      </dl>
+      <a class="btn" href="../../dialogs/missing-fields/default.html">Publish</a>
+      <a class="btn btn--ghost" href="../../dialogs/delete-content/default.html" style="color: var(--color-danger-fg);">Delete studio</a>
+    </aside>
+
+    <form class="editor-form" action="success.html" method="post" novalidate aria-labelledby="form-title">
+      <h2 class="visually-hidden" id="form-title">Studio details</h2>
+
+      <details class="editor-section" open>
+        <summary><h2>Basics</h2></summary>
+        <div class="editor-section__body">
+          <label class="field"><span class="field__label">Name</span><input class="input" name="name" value="Corktown Garage Studio" autocomplete="off"></label>
+          <div class="field-row">
+            <label class="field"><span class="field__label">Neighbourhood</span><input class="input" name="neighbourhood" value="Corktown" autocomplete="off"></label>
+            <label class="field"><span class="field__label">Address or cross streets</span><input class="input" name="address" value="King St E at Sumach St, rear lane" autocomplete="off"></label>
+          </div>
+          <label class="field"><span class="field__label">Booking link</span><input class="input" name="bookingUrl" type="url" value="https://corktowngarage.example/book" aria-describedby="booking-help"><span class="field__help" id="booking-help">The studio's own booking page. Opens in a new tab for visitors.</span></label>
+        </div>
+      </details>
+
+      <details class="editor-section" open>
+        <summary><h2>Pricing and fees</h2></summary>
+        <div class="editor-section__body">
+          <div class="field-row">
+            <label class="field"><span class="field__label">Hourly rate</span><span class="input-group"><span class="addon" aria-hidden="true">$</span><input class="input" name="hourlyRate" type="number" inputmode="decimal" min="0" step="0.5" value="70.00"></span></label>
+            <label class="field"><span class="field__label">Minimum booking (hours)</span><input class="input" name="minimumHours" type="number" inputmode="numeric" min="1" step="1" value="2"></label>
+          </div>
+          <div class="field" style="padding: var(--space-4); border-radius: var(--radius-md); background: var(--color-warning-bg);"><label class="field__label" for="priceVerifiedAt">Prices last verified <span class="optional">(required)</span></label><input class="input" id="priceVerifiedAt" name="priceVerifiedAt" type="date" max="2026-10-13" required data-state="focus" aria-describedby="verified-warning verified-help"><span class="field__warning" id="verified-warning">You changed a price. Confirm the date you verified it.</span><span class="field__help" id="verified-help">Previously 11 Oct 2026. Visitors see a warning after 183 days.</span></div>
+          <fieldset class="stack stack--sm">
+            <legend>Fees</legend>
+            <div class="fee-row">
+              <label class="field"><span class="field__label">Fee name</span><input class="input" name="fees[0].name" value="Cleaning"></label>
+              <label class="field"><span class="field__label">Amount</span><span class="input-group"><span class="addon" aria-hidden="true">$</span><input class="input" name="fees[0].amount" type="number" inputmode="decimal" min="0" value="20.00"></span></label>
+              <label class="field"><span class="field__label">Type</span><select class="select" name="fees[0].mandatory"><option selected>Mandatory</option><option>Optional</option></select></label>
+              <button class="btn btn--ghost" type="button">Remove<span class="visually-hidden"> Cleaning fee</span></button>
+            </div>
+            <div><button class="btn btn--sm" type="button"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>Add fee</button></div>
+          </fieldset>
+          <p class="text-muted">All-in for 2 hours: <strong class="num">$150.00</strong>, calculated by the server when you save.</p>
+        </div>
+      </details>
+
+      <details class="editor-section" open>
+        <summary><h2>Measured specifications</h2></summary>
+        <div class="editor-section__body">
+          <div class="field-row">
+            <label class="field"><span class="field__label">Usable width (m)</span><input class="input" name="spaceWidth" type="number" inputmode="decimal" step="0.1" value="7.6"></label>
+            <label class="field"><span class="field__label">Usable depth (m)</span><input class="input" name="spaceDepth" type="number" inputmode="decimal" step="0.1" value="5.2"></label>
+          </div>
+          <div class="field-row">
+            <label class="field"><span class="field__label">Ceiling height (m)</span><input class="input" name="ceilingHeight" type="number" inputmode="decimal" step="0.1"></label>
+            <label class="field"><span class="field__label">Window direction</span><select class="select" name="windowDirection"><option value="">No windows</option><option>North</option><option>East</option><option selected>South</option><option>West</option></select></label>
+          </div>
+          <fieldset>
+            <legend>Natural light</legend>
+            <div class="field-row" style="grid-template-columns: repeat(auto-fit, minmax(min(100%, 9rem), 1fr));">
+              <label class="field"><span class="field__label">Morning</span><select class="select" name="light.morning"><option>None</option><option selected>Low</option><option>Medium</option><option>Strong</option></select></label>
+              <label class="field"><span class="field__label">Midday</span><select class="select" name="light.midday"><option>None</option><option>Low</option><option selected>Medium</option><option>Strong</option></select></label>
+              <label class="field"><span class="field__label">Afternoon</span><select class="select" name="light.afternoon"><option>None</option><option>Low</option><option selected>Medium</option><option>Strong</option></select></label>
+              <label class="field"><span class="field__label">Evening</span><select class="select" name="light.evening"><option>None</option><option selected>Low</option><option>Medium</option><option>Strong</option></select></label>
+            </div>
+          </fieldset>
+          <div class="field-row">
+            <label class="field"><span class="field__label">Outlets</span><input class="input" name="power.outlets" type="number" inputmode="numeric" value="10"></label>
+            <label class="field"><span class="field__label">Outlet type</span><input class="input" name="power.type" value="Standard 15 A"></label>
+          </div>
+          <label class="choice"><input type="checkbox" name="power.has20A" checked><span>20 A circuits available</span></label>
+          <div class="field-row">
+            <label class="field"><span class="field__label">Cyc wall</span><select class="select" name="cyc"><option>No</option><option selected>Yes</option></select></label>
+            <label class="field"><span class="field__label">Cyc condition</span><input class="input" name="cycCondition" value="Freshly painted"></label>
+          </div>
+          <label class="field"><span class="field__label">Backdrops <span class="optional">(optional)</span></span><input class="input" name="backdrops" value="White and grey seamless, 2.7 m"></label>
+        </div>
+      </details>
+
+      <details class="editor-section">
+        <summary><h2>Gear</h2></summary>
+        <div class="editor-section__body">
+          <fieldset class="stack stack--sm">
+            <legend>Included in the hourly rate</legend>
+            <div class="fee-row">
+              <label class="field"><span class="field__label">Category</span><select class="select" name="included[0].category"><option selected>Lights</option><option>Modifiers</option><option>Stands</option><option>Other</option></select></label>
+              <label class="field"><span class="field__label">Item</span><input class="input" name="included[0].name" value="Profoto D2 strobe"></label>
+              <label class="field"><span class="field__label">Quantity</span><input class="input" name="included[0].quantity" type="number" inputmode="numeric" min="1" value="3"></label>
+              <button class="btn btn--ghost" type="button">Remove<span class="visually-hidden"> Profoto D2 strobe</span></button>
+            </div>
+            <div><button class="btn btn--sm" type="button"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>Add included item</button></div>
+          </fieldset>
+          <fieldset class="stack stack--sm">
+            <legend>Costs extra</legend>
+            <p class="field__help">Nothing yet. Visitors will see "Nothing costs extra".</p>
+            <div><button class="btn btn--sm" type="button"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>Add extra</button></div>
+          </fieldset>
+        </div>
+      </details>
+
+      <details class="editor-section">
+        <summary><h2>Logistics</h2></summary>
+        <div class="editor-section__body">
+          <div class="field-row">
+            <label class="field"><span class="field__label">Load-in</span><select class="select" name="loadIn"><option selected>Stairs</option><option>Elevator</option><option>Freight elevator</option><option>Ground level</option></select></label>
+            <label class="field"><span class="field__label">Load-in note <span class="optional">(optional)</span></span><input class="input" name="loadInNote" value="Roll-up garage door off the lane"></label>
+          </div>
+          <div class="field-row">
+            <label class="field"><span class="field__label">Parking</span><select class="select" name="parking"><option selected>On-site</option><option>Street</option><option>None</option></select></label>
+            <label class="field"><span class="field__label">Parking note <span class="optional">(optional)</span></span><input class="input" name="parkingNote" value="2 spots in the lane"></label>
+          </div>
+          <label class="field"><span class="field__label">Transit</span><input class="input" name="transit" value="504 King streetcar at Sumach, 2-minute walk"></label>
+          <div class="field-row">
+            <label class="field"><span class="field__label">Washroom</span><input class="input" name="washroom" value="Shared, down the hall"></label>
+            <label class="field"><span class="field__label">Changing area</span><input class="input" name="changingArea" value="None" aria-describedby="changing-help"><span class="field__help" id="changing-help">Write "None" rather than leaving it empty.</span></label>
+          </div>
+          <div class="field-row">
+            <label class="field"><span class="field__label">Client seating</span><input class="input" name="clientSeating" value="Bench for 3"></label>
+            <label class="field"><span class="field__label">Noise</span><input class="input" name="noise" value="Quiet; garage door rattles in wind"></label>
+          </div>
+        </div>
+      </details>
+
+      <details class="editor-section" open>
+        <summary><h2>Images</h2></summary>
+        <div class="editor-section__body">
+          <fieldset class="stack">
+            <legend>Standard test shots</legend>
+            <ol class="image-list">
+              <li class="image-row">
+                <div class="image-row__thumb"><img src="../../assets/img/test-liberty-cyc-house-1.svg" alt="" width="800" height="1000"></div>
+                <div class="image-row__body">
+                  <span class="image-row__meta">1 of 2 · headshot.jpg · 3.8 MB</span>
+                  <label class="field"><span class="field__label">Alt text</span><input class="input" name="testShots[0].alt" value="Test shot 1, headshot: soft falloff on white seamless, slight warm cast from the south window."></label>
+                </div>
+                <div class="image-row__actions">
+                  <button class="btn btn--sm" type="button" aria-disabled="true">Move up<span class="visually-hidden">: test shot 1</span></button>
+                  <button class="btn btn--sm" type="button">Move down<span class="visually-hidden">: test shot 1</span></button>
+                  <a class="btn btn--sm btn--ghost" href="../../dialogs/remove-image/default.html">Remove<span class="visually-hidden"> test shot 1</span></a>
+                </div>
+              </li>
+              <li class="image-row">
+                <div class="image-row__thumb"><img src="../../assets/img/test-liberty-cyc-house-2.svg" alt="" width="800" height="1000"></div>
+                <div class="image-row__body">
+                  <span class="image-row__meta">2 of 2 · full-length.jpg · 4.1 MB</span>
+                  <label class="field"><span class="field__label">Alt text</span><input class="input" name="testShots[1].alt" value="Test shot 2, full length on the cyc with an even floor sweep."></label>
+                </div>
+                <div class="image-row__actions">
+                  <button class="btn btn--sm" type="button">Move up<span class="visually-hidden">: test shot 2</span></button>
+                  <button class="btn btn--sm" type="button" aria-disabled="true">Move down<span class="visually-hidden">: test shot 2</span></button>
+                  <a class="btn btn--sm btn--ghost" href="../../dialogs/remove-image/default.html">Remove<span class="visually-hidden"> test shot 2</span></a>
+                </div>
+              </li>
+            </ol>
+            <div class="upload-drop">
+              <input class="file-input visually-hidden" id="test-upload" type="file" accept="image/jpeg,image/png,image/webp,image/avif" multiple>
+              <label class="btn btn--sm" for="test-upload">Add test shots</label>
+              <span>JPEG, PNG, WebP or AVIF, up to 20 MB each.</span>
+            </div>
+          </fieldset>
+          <fieldset class="stack">
+            <legend>Gallery</legend>
+            <p class="text-muted">No gallery images yet. Publishing needs at least one.</p>
+            <div class="upload-drop">
+              <input class="file-input visually-hidden" id="gallery-upload" type="file" accept="image/jpeg,image/png,image/webp,image/avif" multiple>
+              <label class="btn btn--sm" for="gallery-upload">Add gallery images</label>
+              <span>JPEG, PNG, WebP or AVIF, up to 20 MB each.</span>
+            </div>
+          </fieldset>
+        </div>
+      </details>
+
+      <details class="editor-section" open>
+        <summary><h2>Rubric scores</h2></summary>
+        <div class="editor-section__body">
+          <p class="field__help">Whole numbers from 1 to 5. The overall score is calculated by the server.</p>
+          <div class="field-row" style="grid-template-columns: repeat(auto-fit, minmax(min(100%, 7rem), 1fr));">
+            <label class="field"><span class="field__label">Value</span><input class="input" name="scores.value" type="number" inputmode="numeric" min="1" max="5" value="4"></label>
+            <label class="field"><span class="field__label">Light</span><input class="input" name="scores.light" type="number" inputmode="numeric" min="1" max="5" value="3"></label>
+            <label class="field"><span class="field__label">Space</span><input class="input" name="scores.space" type="number" inputmode="numeric" min="1" max="5" value="4"></label>
+            <label class="field"><span class="field__label">Gear</span><input class="input" name="scores.gear" type="number" inputmode="numeric" min="1" max="5" value="3"></label>
+            <label class="field"><span class="field__label">Logistics</span><input class="input" name="scores.logistics" type="number" inputmode="numeric" min="1" max="5" value="5"></label>
+            <label class="field"><span class="field__label">Condition</span><input class="input" name="scores.condition" type="number" inputmode="numeric" min="1" max="5" value="4"></label>
+          </div>
+        </div>
+      </details>
+
+      <details class="editor-section">
+        <summary><h2>Verdict</h2></summary>
+        <div class="editor-section__body">
+          <label class="field"><span class="field__label">Who it's for</span><textarea class="textarea" name="verdictFor" rows="3">Crews who need to drive gear right up to the set.</textarea></label>
+          <label class="field"><span class="field__label">Who should skip it</span><textarea class="textarea" name="verdictSkip" rows="3">Anyone chasing window light: one small south window.</textarea></label>
+        </div>
+      </details>
+
+      <details class="editor-section" open>
+        <summary><h2>Disclosure</h2></summary>
+        <div class="editor-section__body">
+          <fieldset>
+            <legend>How was this session paid for?</legend>
+            <label class="choice"><input type="radio" name="disclosure" value="paid_in_full" checked><span>I paid the full rate</span></label>
+            <label class="choice"><input type="radio" name="disclosure" value="discounted"><span>Discounted</span></label>
+            <label class="choice"><input type="radio" name="disclosure" value="comped"><span>Comped (free of charge)</span></label>
+          </fieldset>
+          <label class="field"><span class="field__label">Provided by <span class="optional">(needed when discounted or comped)</span></span><input class="input" name="disclosureProvider" disabled></label>
+        </div>
+      </details>
+
+      <details class="editor-section">
+        <summary><h2>Episode video</h2></summary>
+        <div class="editor-section__body">
+          <label class="field"><span class="field__label">YouTube link or video ID <span class="optional">(optional)</span></span><input class="input" name="video" aria-describedby="video-help"><span class="field__help" id="video-help">Paste a youtube.com or youtu.be link, or the 11-character ID. Leave empty for no video section.</span></label>
+        </div>
+      </details>
+
+      <div class="form-actions form-actions--sticky">
+        <button class="btn btn--primary" type="submit">Save changes</button>
+        <a class="btn btn--ghost" href="../../dialogs/discard-changes/default.html">Cancel</a>
+        <span class="save-status" role="status">Unsaved changes</span>
+      </div>
+    </form>
+  </div>
+</main>
+
+<p class="mock-note" style="top: 22rem; right: 1rem;">Changing the rate, the minimum or a fee asks for the date again (L2-042.2). Editing only images or text keeps the saved date (L2-042.3).</p>
+
+<nav class="mock-bar" aria-label="Mock navigation">
+  <a class="mock-bar__home" href="../../index.html" aria-label="All mocks">⌂</a>
+  <span class="mock-bar__screen">Studio editor</span>
+  <ul class="mock-bar__states">
+    <li><a href="new.html">new</a></li>
+    <li><a href="default.html">default</a></li>
+    <li><a href="published.html">published</a></li>
+    <li><a href="loading.html">loading</a></li>
+    <li><a href="error.html">error</a></li>
+    <li><a href="invalid.html">invalid</a></li>
+    <li><a href="submitting.html">submitting</a></li>
+    <li><a href="success.html">success</a></li>
+    <li><a href="uploading.html">uploading</a></li>
+    <li><a href="upload-failed.html">upload-failed</a></li>
+    <li><a href="price-changed.html" aria-current="page">price-changed</a></li>
+  </ul>
+  <button type="button" data-theme-toggle aria-pressed="false">☾ Dark</button>
+  <button type="button" data-chrome-toggle aria-label="Hide mock chrome">×</button>
+</nav>
+<script src="../../assets/mock.js"></script>
+</body>
+</html>

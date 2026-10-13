@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Video 01 Slides</title>
+<link rel="stylesheet" href="../assets/slides.css">
+</head>
+<body data-video-number="01" data-video-title="The plan, in plain words" data-parts="Introduction|The problem|Four hats|Four jars|Year by year|90 days|The rules|Recap">
+
+<!-- Pictures are inline SVG drawn with design-system colour roles. -->
+<template id="jars"><div style="display:grid;grid-template-columns:repeat(4,1fr);gap:36px;align-items:start">
+  <div class="item" style="display:grid;justify-items:center;gap:10px;text-align:center"><svg width="200" height="240" viewBox="0 0 200 240" aria-hidden="true"><rect x="56" y="8" width="88" height="26" rx="8" fill="var(--color-border-strong)"/><path d="M64 34 h72 v14 q44 10 44 52 v100 q0 32 -32 32 h-96 q-32 0 -32 -32 v-100 q0 -42 44 -52 z" fill="var(--color-accent-subtle)" stroke="var(--color-accent)" stroke-width="6"/><circle cx="100" cy="130" r="42" fill="var(--color-fg-default)"/><path d="M88 108 l38 22 l-38 22 z" fill="var(--color-bg-canvas)"/><ellipse cx="64" cy="212" rx="15" ry="7" fill="var(--color-warning-icon)" stroke="var(--color-fg-default)" stroke-width="2"/><ellipse cx="100" cy="212" rx="15" ry="7" fill="var(--color-warning-icon)" stroke="var(--color-fg-default)" stroke-width="2"/><ellipse cx="136" cy="212" rx="15" ry="7" fill="var(--color-warning-icon)" stroke="var(--color-fg-default)" stroke-width="2"/><ellipse cx="82" cy="198" rx="15" ry="7" fill="var(--color-warning-icon)" stroke="var(--color-fg-default)" stroke-width="2"/><ellipse cx="118" cy="198" rx="15" ry="7" fill="var(--color-warning-icon)" stroke="var(--color-fg-default)" stroke-width="2"/></svg><strong style="font-size:42px">The channel</strong><span class="muted" style="font-size:28px">Ads · sponsors · affiliates · $5 members</span></div>
+  <div class="item" style="display:grid;justify-items:center;gap:10px;text-align:center"><svg width="200" height="240" viewBox="0 0 200 240" aria-hidden="true"><rect x="56" y="8" width="88" height="26" rx="8" fill="var(--color-border-strong)"/><path d="M64 34 h72 v14 q44 10 44 52 v100 q0 32 -32 32 h-96 q-32 0 -32 -32 v-100 q0 -42 44 -52 z" fill="var(--color-accent-subtle)" stroke="var(--color-accent)" stroke-width="6"/><path d="M58 108 h18 l8 -14 h32 l8 14 h18 c5 0 8 3 8 8 v46 c0 5 -3 8 -8 8 h-84 c-5 0 -8 -3 -8 -8 v-46 c0 -5 3 -8 8 -8 z" fill="var(--color-fg-default)"/><circle cx="100" cy="138" r="20" fill="var(--color-bg-canvas)"/><circle cx="100" cy="138" r="11" fill="var(--color-fg-default)"/><ellipse cx="64" cy="212" rx="15" ry="7" fill="var(--color-warning-icon)" stroke="var(--color-fg-default)" stroke-width="2"/><ellipse cx="100" cy="212" rx="15" ry="7" fill="var(--color-warning-icon)" stroke="var(--color-fg-default)" stroke-width="2"/><ellipse cx="136" cy="212" rx="15" ry="7" fill="var(--color-warning-icon)" stroke="var(--color-fg-default)" stroke-width="2"/><ellipse cx="82" cy="198" rx="15" ry="7" fill="var(--color-warning-icon)" stroke="var(--color-fg-default)" stroke-width="2"/><ellipse cx="118" cy="198" rx="15" ry="7" fill="var(--color-warning-icon)" stroke="var(--color-fg-default)" stroke-width="2"/></svg><strong style="font-size:42px">The camera</strong><span class="muted" style="font-size:28px">Client sessions · studio photos · workshops</span></div>
+  <div class="item" style="display:grid;justify-items:center;gap:10px;text-align:center"><svg width="200" height="240" viewBox="0 0 200 240" aria-hidden="true"><rect x="56" y="8" width="88" height="26" rx="8" fill="var(--color-border-strong)"/><path d="M64 34 h72 v14 q44 10 44 52 v100 q0 32 -32 32 h-96 q-32 0 -32 -32 v-100 q0 -42 44 -52 z" fill="var(--color-accent-subtle)" stroke="var(--color-accent)" stroke-width="6"/><path d="M56 110 l30 -10 l28 10 l30 -10 v64 l-30 10 l-28 -10 l-30 10 z" fill="var(--color-bg-canvas)" stroke="var(--color-fg-default)" stroke-width="5" stroke-linejoin="round"/><line x1="86" y1="100" x2="86" y2="164" stroke="var(--color-fg-default)" stroke-width="4"/><line x1="114" y1="110" x2="114" y2="174" stroke="var(--color-fg-default)" stroke-width="4"/><path d="M100 86 c-14 0 -24 10 -24 24 c0 18 24 42 24 42 s24 -24 24 -42 c0 -14 -10 -24 -24 -24 z" fill="var(--color-accent)"/><circle cx="100" cy="110" r="9" fill="var(--color-bg-canvas)"/><ellipse cx="64" cy="212" rx="15" ry="7" fill="var(--color-warning-icon)" stroke="var(--color-fg-default)" stroke-width="2"/><ellipse cx="100" cy="212" rx="15" ry="7" fill="var(--color-warning-icon)" stroke="var(--color-fg-default)" stroke-width="2"/><ellipse cx="136" cy="212" rx="15" ry="7" fill="var(--color-warning-icon)" stroke="var(--color-fg-default)" stroke-width="2"/><ellipse cx="82" cy="198" rx="15" ry="7" fill="var(--color-warning-icon)" stroke="var(--color-fg-default)" stroke-width="2"/><ellipse cx="118" cy="198" rx="15" ry="7" fill="var(--color-warning-icon)" stroke="var(--color-fg-default)" stroke-width="2"/></svg><strong style="font-size:42px">The maps</strong><span class="muted" style="font-size:28px">$15 shoot maps · studio report · scouting</span></div>
+  <div class="item" style="display:grid;justify-items:center;gap:10px;text-align:center"><svg width="200" height="240" viewBox="0 0 200 240" aria-hidden="true"><rect x="56" y="8" width="88" height="26" rx="8" fill="var(--color-border-strong)"/><path d="M64 34 h72 v14 q44 10 44 52 v100 q0 32 -32 32 h-96 q-32 0 -32 -32 v-100 q0 -42 44 -52 z" fill="var(--color-accent-subtle)" stroke="var(--color-accent)" stroke-width="6"/><rect x="60" y="96" width="80" height="56" rx="6" fill="var(--color-fg-default)"/><rect x="68" y="104" width="64" height="40" rx="3" fill="var(--color-bg-canvas)"/><path d="M50 156 h100 l8 12 h-116 z" fill="var(--color-fg-default)"/><text x="100" y="134" text-anchor="middle" font-size="26" font-weight="800" fill="var(--color-accent)">&lt;/&gt;</text><ellipse cx="64" cy="212" rx="15" ry="7" fill="var(--color-warning-icon)" stroke="var(--color-fg-default)" stroke-width="2"/><ellipse cx="100" cy="212" rx="15" ry="7" fill="var(--color-warning-icon)" stroke="var(--color-fg-default)" stroke-width="2"/><ellipse cx="136" cy="212" rx="15" ry="7" fill="var(--color-warning-icon)" stroke="var(--color-fg-default)" stroke-width="2"/><ellipse cx="82" cy="198" rx="15" ry="7" fill="var(--color-warning-icon)" stroke="var(--color-fg-default)" stroke-width="2"/><ellipse cx="118" cy="198" rx="15" ry="7" fill="var(--color-warning-icon)" stroke="var(--color-fg-default)" stroke-width="2"/></svg><strong style="font-size:42px">The computer</strong><span class="muted" style="font-size:28px">Other cities · data · $19 spec sheet</span></div>
+</div></template>
+
+<!-- Revenue by year: accent = channel, maps and computer (few founder hours); grey = the camera. Heights scale $345K to 400px. -->
+<template id="years"><div style="display:grid;grid-template-columns:repeat(3,320px);gap:80px;justify-content:center">
+  <div class="item" style="display:grid;justify-items:center;gap:6px"><svg width="300" height="480" viewBox="0 0 300 480" aria-hidden="true"><rect x="60" y="415.5" width="180" height="33.6" rx="6" fill="var(--color-border-strong)"/><rect x="60" y="449.1" width="180" height="20.9" fill="var(--color-accent)"/><text x="150" y="397" text-anchor="middle" font-size="48" font-weight="800" fill="var(--color-fg-default)">$47K</text><line x1="20" y1="470" x2="280" y2="470" stroke="var(--color-fg-default)" stroke-width="4"/></svg><strong style="font-size:38px">Year 1</strong><span class="muted" style="font-size:26px">about half the week</span></div>
+  <div class="item" style="display:grid;justify-items:center;gap:6px"><svg width="300" height="480" viewBox="0 0 300 480" aria-hidden="true"><rect x="60" y="268.3" width="180" height="82.3" rx="6" fill="var(--color-border-strong)"/><rect x="60" y="350.6" width="180" height="119.4" fill="var(--color-accent)"/><text x="150" y="250" text-anchor="middle" font-size="48" font-weight="800" fill="var(--color-fg-default)">$174K</text><line x1="20" y1="470" x2="280" y2="470" stroke="var(--color-fg-default)" stroke-width="4"/></svg><strong style="font-size:38px">Year 2</strong><span class="muted" style="font-size:26px">full time</span></div>
+  <div class="item" style="display:grid;justify-items:center;gap:6px"><svg width="300" height="480" viewBox="0 0 300 480" aria-hidden="true"><rect x="60" y="70" width="180" height="117.1" rx="6" fill="var(--color-border-strong)"/><rect x="60" y="187.1" width="180" height="282.9" fill="var(--color-accent)"/><text x="150" y="52" text-anchor="middle" font-size="48" font-weight="800" fill="var(--color-fg-default)">$345K</text><line x1="20" y1="470" x2="280" y2="470" stroke="var(--color-fg-default)" stroke-width="4"/></svg><strong style="font-size:38px">Year 3</strong><span class="muted" style="font-size:26px">full time</span></div>
+</div></template>
+
+<section id="title" data-part="0">
+  <img class="mark" src="../assets/mark.svg" alt="">
+  <div class="kicker">ShotThere · Video 01</div>
+  <h1>The plan, in plain words</h1>
+  <p class="lead">How a free review site pays the bills, and what three years might look like</p>
+</section>
+
+<section id="map" data-part="0" data-cue="That map is ShotThere">
+  <div class="cols" style="grid-template-columns:900px 1fr;align-items:center;gap:80px">
+    <svg width="900" height="640" viewBox="0 0 900 640" aria-hidden="true"><defs><clipPath id="mapclip"><rect x="10" y="10" width="880" height="620" rx="40"/></clipPath></defs><rect x="10" y="10" width="880" height="620" rx="40" fill="var(--color-bg-surface-sunken)"/><path d="M10 560 q220 -80 440 20 t440 -40 v100 h-880 z" fill="var(--color-info-bg)" clip-path="url(#mapclip)"/><g stroke="var(--color-border-default)" stroke-width="10" stroke-linecap="round"><line x1="60" y1="170" x2="840" y2="170"/><line x1="60" y1="330" x2="840" y2="330"/><line x1="60" y1="490" x2="840" y2="490"/><line x1="230" y1="40" x2="230" y2="600"/><line x1="450" y1="40" x2="450" y2="600"/><line x1="670" y1="40" x2="670" y2="600"/></g><rect x="10" y="10" width="880" height="620" rx="40" fill="none" stroke="var(--color-border-strong)" stroke-width="4"/><g fill="var(--color-accent)"><path d="M150 100 c-26 0 -46 20 -46 46 c0 34 46 84 46 84 s46 -50 46 -84 c0 -26 -20 -46 -46 -46 z"/><path d="M560 60 c-26 0 -46 20 -46 46 c0 34 46 84 46 84 s46 -50 46 -84 c0 -26 -20 -46 -46 -46 z"/><path d="M340 250 c-26 0 -46 20 -46 46 c0 34 46 84 46 84 s46 -50 46 -84 c0 -26 -20 -46 -46 -46 z"/><path d="M760 230 c-26 0 -46 20 -46 46 c0 34 46 84 46 84 s46 -50 46 -84 c0 -26 -20 -46 -46 -46 z"/><path d="M560 400 c-26 0 -46 20 -46 46 c0 34 46 84 46 84 s46 -50 46 -84 c0 -26 -20 -46 -46 -46 z"/><path d="M170 400 c-26 0 -46 20 -46 46 c0 34 46 84 46 84 s46 -50 46 -84 c0 -26 -20 -46 -46 -46 z"/></g><g fill="var(--color-bg-canvas)"><circle cx="150" cy="146" r="18"/><circle cx="560" cy="106" r="18"/><circle cx="340" cy="296" r="18"/><circle cx="760" cy="276" r="18"/><circle cx="560" cy="446" r="18"/><circle cx="170" cy="446" r="18"/></g><g fill="var(--color-fg-default)"><path d="M131 139 h7 l4 -7 h16 l4 7 h7 c2 0 3 1 3 3 v18 c0 2 -1 3 -3 3 h-38 c-2 0 -3 -1 -3 -3 v-18 c0 -2 1 -3 3 -3 z"/><path d="M541 99 h7 l4 -7 h16 l4 7 h7 c2 0 3 1 3 3 v18 c0 2 -1 3 -3 3 h-38 c-2 0 -3 -1 -3 -3 v-18 c0 -2 1 -3 3 -3 z"/><path d="M321 289 h7 l4 -7 h16 l4 7 h7 c2 0 3 1 3 3 v18 c0 2 -1 3 -3 3 h-38 c-2 0 -3 -1 -3 -3 v-18 c0 -2 1 -3 3 -3 z"/><path d="M741 269 h7 l4 -7 h16 l4 7 h7 c2 0 3 1 3 3 v18 c0 2 -1 3 -3 3 h-38 c-2 0 -3 -1 -3 -3 v-18 c0 -2 1 -3 3 -3 z"/><path d="M541 439 h7 l4 -7 h16 l4 7 h7 c2 0 3 1 3 3 v18 c0 2 -1 3 -3 3 h-38 c-2 0 -3 -1 -3 -3 v-18 c0 -2 1 -3 3 -3 z"/><path d="M151 439 h7 l4 -7 h16 l4 7 h7 c2 0 3 1 3 3 v18 c0 2 -1 3 -3 3 h-38 c-2 0 -3 -1 -3 -3 v-18 c0 -2 1 -3 3 -3 z"/></g><g fill="var(--color-bg-canvas)"><circle cx="150" cy="150" r="5"/><circle cx="560" cy="110" r="5"/><circle cx="340" cy="300" r="5"/><circle cx="760" cy="280" r="5"/><circle cx="560" cy="450" r="5"/><circle cx="170" cy="450" r="5"/></g></svg>
+    <div style="display:grid;gap:28px"><h2>Every place to shoot</h2><p class="lead">Same test. Same measurements. Real price.</p><p><span class="tag" style="font-size:32px">Free to read</span></p><p class="muted" style="font-size:34px">Nothing is listed unless it has been shot there.</p></div>
+  </div>
+</section>
+
+<section id="question" data-part="0" data-cue="So how does a free map pay the bills">
+  <p class="question" style="font-size:96px;line-height:1.1">How does free pay the bills?</p><p class="lead">The plan in plain words, and what three years might look like.</p><p><span class="tag">The plan as of October 2026</span></p>
+</section>
+
+<section id="numbers" data-part="1" data-cue="The problem">
+  <h2>Lots of photographers. Lots of rooms. No test.</h2><div class="cols three"><div class="card" style="justify-items:center;text-align:center;gap:8px"><span style="font-size:88px;font-weight:800;line-height:1.05;color:var(--color-accent)">4,600</span><span style="font-size:32px">photographers working in Toronto</span></div><div class="card" style="justify-items:center;text-align:center;gap:8px"><span style="font-size:88px;font-weight:800;line-height:1.05;color:var(--color-accent)">100s</span><span style="font-size:32px">of studios you can rent by the hour</span></div><div class="card" style="justify-items:center;text-align:center;gap:8px"><span style="font-size:88px;font-weight:800;line-height:1.05;color:var(--color-accent)">0</span><span style="font-size:32px">reviews that test them all the same way</span></div></div>
+</section>
+
+<section id="star-rating" data-part="1" data-cue="Today, you pick a studio from the owner's own photos">
+  <h2>A star rating is not a measurement</h2>
+  <div class="cols" style="align-items:stretch">
+    <div class="card" style="justify-items:center;text-align:center;gap:20px"><svg width="420" height="200" viewBox="0 0 420 200" aria-hidden="true"><g fill="var(--color-star)"><path d="M50 20 l12 26 l28 3 l-21 19 l6 28 l-25 -14 l-25 14 l6 -28 l-21 -19 l28 -3 z"/><path d="M130 20 l12 26 l28 3 l-21 19 l6 28 l-25 -14 l-25 14 l6 -28 l-21 -19 l28 -3 z"/><path d="M210 20 l12 26 l28 3 l-21 19 l6 28 l-25 -14 l-25 14 l6 -28 l-21 -19 l28 -3 z"/><path d="M290 20 l12 26 l28 3 l-21 19 l6 28 l-25 -14 l-25 14 l6 -28 l-21 -19 l28 -3 z"/></g><path d="M370 20 l12 26 l28 3 l-21 19 l6 28 l-25 -14 l-25 14 l6 -28 l-21 -19 l28 -3 z" fill="var(--color-star-empty)"/><text x="210" y="170" text-anchor="middle" font-size="100" font-weight="800" fill="var(--color-fg-muted)">?</text></svg><span style="font-size:34px">Today: the owner's photos and a star rating</span><span class="muted" style="font-size:28px">Low ceiling. Tiny elevator. Cleaning fee. Surprise.</span></div>
+    <div class="card" style="justify-items:center;text-align:center;gap:20px;border-color:var(--color-accent)"><svg width="420" height="200" viewBox="0 0 420 200" aria-hidden="true"><rect x="20" y="30" width="200" height="54" rx="8" fill="var(--color-bg-canvas)" stroke="var(--color-fg-default)" stroke-width="5"/><g stroke="var(--color-fg-default)" stroke-width="4"><line x1="50" y1="30" x2="50" y2="52"/><line x1="80" y1="30" x2="80" y2="62"/><line x1="110" y1="30" x2="110" y2="52"/><line x1="140" y1="30" x2="140" y2="62"/><line x1="170" y1="30" x2="170" y2="52"/><line x1="200" y1="30" x2="200" y2="62"/></g><circle cx="300" cy="57" r="30" fill="var(--color-warning-icon)"/><g stroke="var(--color-warning-icon)" stroke-width="6" stroke-linecap="round"><line x1="300" y1="8" x2="300" y2="18"/><line x1="300" y1="96" x2="300" y2="106"/><line x1="251" y1="57" x2="261" y2="57"/><line x1="339" y1="57" x2="349" y2="57"/><line x1="265" y1="22" x2="272" y2="29"/><line x1="328" y1="85" x2="335" y2="92"/><line x1="265" y1="92" x2="272" y2="85"/><line x1="328" y1="29" x2="335" y2="22"/></g><path d="M20 130 h190 l40 30 l-40 30 h-190 z" fill="var(--color-accent)"/><text x="118" y="171" text-anchor="middle" font-size="30" font-weight="800" fill="var(--color-fg-on-accent)">$145 all-in</text><path d="M290 125 h110 c6 0 10 4 10 10 v50 c0 6 -4 10 -10 10 h-110 c-6 0 -10 -4 -10 -10 v-50 c0 -6 4 -10 10 -10 z" fill="var(--color-fg-default)"/><circle cx="345" cy="160" r="18" fill="var(--color-bg-canvas)"/><circle cx="345" cy="160" r="9" fill="var(--color-fg-default)"/></svg><span style="font-size:34px">ShotThere: the same test shot, the same tape measure, the same all-in price</span></div>
+  </div>
+</section>
+
+<section id="hats" data-part="2" data-cue="One person, four hats">
+  <h2>One founder, four hats</h2>
+  <div class="cols" style="grid-template-columns:repeat(4,1fr);gap:40px;align-items:stretch">
+    <div class="card" style="justify-items:center;text-align:center;gap:14px"><svg width="160" height="140" viewBox="0 0 160 140" aria-hidden="true"><path d="M30 50 h22 l12 -20 h32 l12 20 h22 c6 0 10 4 10 10 v60 c0 6 -4 10 -10 10 h-100 c-6 0 -10 -4 -10 -10 v-60 c0 -6 4 -10 10 -10 z" fill="var(--color-fg-default)"/><circle cx="80" cy="85" r="26" fill="var(--color-bg-canvas)"/><circle cx="80" cy="85" r="14" fill="var(--color-accent)"/></svg><strong style="font-size:36px">Photographer</strong><span class="muted" style="font-size:26px">does every review</span></div>
+    <div class="card" style="justify-items:center;text-align:center;gap:14px"><svg width="160" height="140" viewBox="0 0 160 140" aria-hidden="true"><rect x="16" y="20" width="128" height="86" rx="10" fill="var(--color-fg-default)"/><rect x="26" y="30" width="108" height="66" rx="4" fill="var(--color-bg-canvas)"/><path d="M6 110 h148 l10 14 h-168 z" fill="var(--color-fg-default)"/><text x="80" y="76" text-anchor="middle" font-size="40" font-weight="800" fill="var(--color-accent)">&lt;/&gt;</text></svg><strong style="font-size:36px">Architect</strong><span class="muted" style="font-size:26px">builds the site</span></div>
+    <div class="card" style="justify-items:center;text-align:center;gap:14px"><svg width="160" height="140" viewBox="0 0 160 140" aria-hidden="true"><path d="M30 20 h100 c10 0 18 8 18 18 v50 c0 10 -8 18 -18 18 h-50 l-30 26 v-26 h-20 c-10 0 -18 -8 -18 -18 v-50 c0 -10 8 -18 18 -18 z" fill="var(--color-fg-default)"/><text x="80" y="80" text-anchor="middle" font-size="54" font-weight="800" fill="var(--color-bg-canvas)">$</text></svg><strong style="font-size:36px">Salesperson</strong><span class="muted" style="font-size:26px">signs sponsors and licences</span></div>
+    <div class="card" style="justify-items:center;text-align:center;gap:14px"><svg width="160" height="140" viewBox="0 0 160 140" aria-hidden="true"><rect x="58" y="10" width="44" height="76" rx="22" fill="var(--color-fg-default)"/><path d="M40 60 c0 24 18 40 40 40 s40 -16 40 -40" fill="none" stroke="var(--color-fg-default)" stroke-width="8" stroke-linecap="round"/><line x1="80" y1="100" x2="80" y2="126" stroke="var(--color-fg-default)" stroke-width="8" stroke-linecap="round"/><line x1="54" y1="128" x2="106" y2="128" stroke="var(--color-fg-default)" stroke-width="8" stroke-linecap="round"/></svg><strong style="font-size:36px">Communicator</strong><span class="muted" style="font-size:26px">hosts the channel</span></div>
+  </div>
+</section>
+
+<section id="ai" data-part="2" data-cue="And AI carries about half of each hat">
+  <h2>AI carries half of each hat</h2>
+  <div class="cols">
+    <div class="card" style="gap:22px;border-color:var(--color-success-border)"><h3 style="color:var(--color-success-fg)">AI does</h3><ul style="font-size:34px"><li>Builds the site from the written requirements</li><li>Drafts the scripts, captions and chapters</li><li>Drafts the search pages from the measurement sheet</li><li>Drafts the replies in the inbox</li></ul></div>
+    <div class="card" style="gap:22px;border-color:var(--color-danger-border)"><h3 style="color:var(--color-danger-fg)">AI never</h3><ul style="font-size:34px"><li>Visits a room</li><li>Measures a room</li><li>Scores a room</li><li>Writes the verdict</li></ul><p class="muted" style="font-size:30px">The founder is in every room, every time.</p></div>
+  </div>
+</section>
+
+<section id="jars" data-part="3" data-cue="Think of the money as four jars" data-template="jars">
+  <div style="display:flex;justify-content:space-between;align-items:center"><h2>Four jars of money</h2><span class="tag" style="font-size:32px">Reading: always free · No jar buys a score</span></div>
+</section>
+
+<section id="jar-channel" data-part="3" data-cue="The first jar is the channel" data-template="jars" data-highlight="1">
+  <h2>Jar 1 · The channel</h2><p class="lead">Ads · sponsors, never a place under review · affiliate links on the test kit · members at $5 a month</p>
+</section>
+
+<section id="jar-camera" data-part="3" data-cue="The second jar is the camera" data-template="jars" data-highlight="2">
+  <h2>Jar 2 · The camera</h2><p class="lead">The review shoot is a paid client session · studio photos at one fixed price, after publication · workshops</p>
+</section>
+
+<section id="jar-maps" data-part="3" data-cue="The third jar is the maps" data-template="jars" data-highlight="3">
+  <h2>Jar 3 · The maps</h2><p class="lead">Illustrated shoot maps at $15 · the yearly Toronto studio report · location scouting for brands</p>
+</section>
+
+<section id="jar-computer" data-part="3" data-cue="The fourth jar is the computer" data-template="jars" data-highlight="4">
+  <h2>Jar 4 · The computer</h2><p class="lead">Other cities rent the method at $800 a month · data licensed to apps · a $19 spec sheet for a studio's own site</p>
+</section>
+
+<section id="cycle" data-part="3" data-cue="The jars feed each other">
+  <h2>The jars feed each other</h2>
+  <svg width="1500" height="620" viewBox="0 0 1500 620" aria-hidden="true" style="align-self:center"><defs><marker id="arr" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="4" markerHeight="4" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="var(--color-accent)"/></marker></defs>
+    <g stroke="var(--color-accent)" stroke-width="6" fill="none" marker-end="url(#arr)"><path d="M352 90 h180"/><path d="M842 90 h180"/><path d="M1180 136 q140 170 -40 310"/><path d="M1000 480 h-150"/><path d="M520 480 h-110"/><path d="M230 440 q-140 -170 40 -310"/></g>
+    <g fill="var(--color-bg-canvas)" stroke="var(--color-fg-default)" stroke-width="4"><rect x="100" y="48" width="250" height="84" rx="42"/><rect x="540" y="48" width="300" height="84" rx="42"/><rect x="1030" y="48" width="300" height="84" rx="42"/><rect x="1000" y="438" width="340" height="84" rx="42"/><rect x="520" y="438" width="320" height="84" rx="42"/><rect x="100" y="438" width="300" height="84" rx="42"/></g>
+    <g font-size="34" font-weight="700" fill="var(--color-fg-default)" text-anchor="middle"><text x="225" y="102">A review</text><text x="690" y="102">An episode</text><text x="1180" y="102">Viewers</text><text x="1170" y="492">Sessions and maps</text><text x="680" y="492">The next gallery</text><text x="250" y="492">A better compare</text></g>
+    <rect x="500" y="236" width="500" height="130" rx="24" fill="var(--color-accent-subtle)" stroke="var(--color-accent)" stroke-width="4"/><text x="750" y="290" text-anchor="middle" font-size="32" font-weight="700" fill="var(--color-fg-default)">…and a better compare tool</text><text x="750" y="334" text-anchor="middle" font-size="32" font-weight="700" fill="var(--color-accent)">is what another city rents</text>
+  </svg>
+</section>
+
+<section id="year-1" data-part="4" data-cue="Year by year" data-template="years" data-show="1">
+  <h2>Year one: the camera pays</h2><div style="display:flex;gap:48px;font-size:32px;align-items:center"><span style="display:flex;gap:14px;align-items:center"><svg width="32" height="32" aria-hidden="true"><rect width="32" height="32" rx="6" fill="var(--color-accent)"/></svg>Channel, maps and computer</span><span style="display:flex;gap:14px;align-items:center"><svg width="32" height="32" aria-hidden="true"><rect width="32" height="32" rx="6" fill="var(--color-border-strong)"/></svg>The camera</span></div>
+</section>
+
+<section id="year-2" data-part="4" data-cue="In year two, the channel and the maps catch up" data-template="years" data-show="2">
+  <h2>Year two: the channel and maps catch up</h2><div style="display:flex;gap:48px;font-size:32px;align-items:center"><span style="display:flex;gap:14px;align-items:center"><svg width="32" height="32" aria-hidden="true"><rect width="32" height="32" rx="6" fill="var(--color-accent)"/></svg>Channel, maps and computer</span><span style="display:flex;gap:14px;align-items:center"><svg width="32" height="32" aria-hidden="true"><rect width="32" height="32" rx="6" fill="var(--color-border-strong)"/></svg>The camera</span></div>
+</section>
+
+<section id="year-3" data-part="4" data-cue="In year three, the channel, the maps and the computer" data-template="years" data-show="3">
+  <h2>Year three: two thirds needs no founder hours</h2><div style="display:flex;gap:48px;font-size:32px;align-items:center"><span style="display:flex;gap:14px;align-items:center"><svg width="32" height="32" aria-hidden="true"><rect width="32" height="32" rx="6" fill="var(--color-accent)"/></svg>Channel, maps and computer</span><span style="display:flex;gap:14px;align-items:center"><svg width="32" height="32" aria-hidden="true"><rect width="32" height="32" rx="6" fill="var(--color-border-strong)"/></svg>The camera</span></div>
+</section>
+
+<section id="costs" data-part="4" data-cue="Costs stay small">
+  <h2>Small costs, careful numbers</h2><div class="cols"><div class="card" style="justify-items:center;text-align:center;gap:8px"><span style="font-size:120px;font-weight:800;line-height:1.05;color:var(--color-accent)">$17K</span><span style="font-size:32px">costs in year one</span></div><div class="card" style="justify-items:center;text-align:center;gap:8px"><span style="font-size:120px;font-weight:800;line-height:1.05;color:var(--color-accent)">× 0.5</span><span style="font-size:32px">the careful case: cut every number in half</span></div></div>
+</section>
+
+<section id="timeline" data-part="5" data-cue="The first ninety days">
+  <h2>One date: launch day</h2>
+  <div class="cols" style="grid-template-columns:420px 1fr;align-items:center;gap:100px">
+    <svg width="420" height="420" viewBox="0 0 420 420" aria-hidden="true"><rect x="20" y="40" width="380" height="360" rx="32" fill="var(--color-bg-canvas)" stroke="var(--color-fg-default)" stroke-width="6"/><rect x="20" y="40" width="380" height="90" rx="32" fill="var(--color-accent)"/><rect x="20" y="100" width="380" height="30" fill="var(--color-accent)"/><rect x="90" y="14" width="24" height="60" rx="12" fill="var(--color-fg-default)"/><rect x="306" y="14" width="24" height="60" rx="12" fill="var(--color-fg-default)"/><text x="210" y="102" text-anchor="middle" font-size="40" font-weight="800" fill="var(--color-fg-on-accent)">JANUARY 2027</text><text x="210" y="300" text-anchor="middle" font-size="170" font-weight="800" fill="var(--color-fg-default)">15</text><text x="210" y="365" text-anchor="middle" font-size="30" fill="var(--color-fg-muted)">headshot season</text></svg>
+    <div style="display:grid;gap:30px"><p class="lead" style="font-size:54px;color:var(--color-fg-default)">Launch when everyone wants a new headshot</p><p class="muted" style="font-size:34px">Before then: two studios a week, shot, measured and filmed, with a paying client wherever possible.</p></div>
+  </div>
+</section>
+
+<section id="launch-day" data-part="5" data-cue="By launch day, ten studios">
+  <h2>Live on launch day</h2><div class="cols three"><div class="card" style="justify-items:center;text-align:center;gap:8px"><span style="font-size:120px;font-weight:800;line-height:1.05;color:var(--color-accent)">10</span><span style="font-size:34px">studios reviewed</span></div><div class="card" style="justify-items:center;text-align:center;gap:8px"><span style="font-size:120px;font-weight:800;line-height:1.05;color:var(--color-accent)">5</span><span style="font-size:34px">outdoor spots</span></div><div class="card" style="justify-items:center;text-align:center;gap:8px"><span style="font-size:120px;font-weight:800;line-height:1.05;color:var(--color-accent)">10</span><span style="font-size:34px">episodes on the channel</span></div></div><p class="muted" style="font-size:30px">The site is built from the requirements, designs and mocks that already exist.</p>
+</section>
+
+<section id="targets" data-part="5" data-cue="After ninety days, the plan checks six targets">
+  <h2>Six targets at ninety days</h2>
+  <div class="cols three" style="gap:30px">
+    <div class="card" style="justify-items:center;text-align:center;gap:6px;padding:28px"><span style="font-size:72px;font-weight:800;line-height:1.05;color:var(--color-accent)">15</span><span style="font-size:30px">studios live</span></div>
+    <div class="card" style="justify-items:center;text-align:center;gap:6px;padding:28px"><span style="font-size:72px;font-weight:800;line-height:1.05;color:var(--color-accent)">2,000</span><span style="font-size:30px">subscribers</span></div>
+    <div class="card" style="justify-items:center;text-align:center;gap:6px;padding:28px"><span style="font-size:72px;font-weight:800;line-height:1.05;color:var(--color-accent)">100K</span><span style="font-size:30px">views</span></div>
+    <div class="card" style="justify-items:center;text-align:center;gap:6px;padding:28px"><span style="font-size:72px;font-weight:800;line-height:1.05;color:var(--color-accent)">1,000</span><span style="font-size:30px">email signups</span></div>
+    <div class="card" style="justify-items:center;text-align:center;gap:6px;padding:28px"><span style="font-size:72px;font-weight:800;line-height:1.05;color:var(--color-accent)">1</span><span style="font-size:30px">sponsor signed</span></div>
+    <div class="card" style="justify-items:center;text-align:center;gap:6px;padding:28px"><span style="font-size:72px;font-weight:800;line-height:1.05;color:var(--color-accent)">1</span><span style="font-size:30px">workshop sold out</span></div>
+  </div>
+  <p class="muted" style="font-size:30px">Miss two or more, and some jars get dropped.</p>
+</section>
+
+<section id="trust" data-part="6" data-cue="The rules">
+  <div class="cols" style="grid-template-columns:420px 1fr;align-items:center;gap:100px">
+    <svg width="420" height="420" viewBox="0 0 420 420" aria-hidden="true"><path d="M210 30 l150 50 v120 c0 100 -70 170 -150 200 c-80 -30 -150 -100 -150 -200 v-120 z" fill="var(--color-accent-subtle)" stroke="var(--color-accent)" stroke-width="8" stroke-linejoin="round"/><path d="M140 215 l50 50 l100 -110" fill="none" stroke="var(--color-accent)" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <div style="display:grid;gap:30px"><p class="question" style="font-size:80px;line-height:1.1">The biggest risk isn't money. It's trust.</p><p class="lead">A review site that gets paid by the places it reviews stops being a review site.</p></div>
+  </div>
+</section>
+
+<section id="never" data-part="6" data-cue="So ShotThere has a list of things the founder never does">
+  <h2>The founder never…</h2>
+  <ul style="list-style:none;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:26px 60px;font-size:36px">
+    <li style="display:grid;grid-template-columns:64px 1fr;gap:22px;align-items:center"><svg width="64" height="64" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="28" fill="none" stroke="var(--color-danger-icon)" stroke-width="7"/><line x1="13" y1="13" x2="51" y2="51" stroke="var(--color-danger-icon)" stroke-width="7" stroke-linecap="round"/></svg>sells a score or a position</li>
+    <li style="display:grid;grid-template-columns:64px 1fr;gap:22px;align-items:center"><svg width="64" height="64" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="28" fill="none" stroke="var(--color-danger-icon)" stroke-width="7"/><line x1="13" y1="13" x2="51" y2="51" stroke="var(--color-danger-icon)" stroke-width="7" stroke-linecap="round"/></svg>lets a studio see a review early, except to check the facts</li>
+    <li style="display:grid;grid-template-columns:64px 1fr;gap:22px;align-items:center"><svg width="64" height="64" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="28" fill="none" stroke="var(--color-danger-icon)" stroke-width="7"/><line x1="13" y1="13" x2="51" y2="51" stroke="var(--color-danger-icon)" stroke-width="7" stroke-linecap="round"/></svg>takes a sponsor from a place under review</li>
+    <li style="display:grid;grid-template-columns:64px 1fr;gap:22px;align-items:center"><svg width="64" height="64" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="28" fill="none" stroke="var(--color-danger-icon)" stroke-width="7"/><line x1="13" y1="13" x2="51" y2="51" stroke="var(--color-danger-icon)" stroke-width="7" stroke-linecap="round"/></svg>lets AI measure or score a room</li>
+    <li style="display:grid;grid-template-columns:64px 1fr;gap:22px;align-items:center"><svg width="64" height="64" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="28" fill="none" stroke="var(--color-danger-icon)" stroke-width="7"/><line x1="13" y1="13" x2="51" y2="51" stroke="var(--color-danger-icon)" stroke-width="7" stroke-linecap="round"/></svg>lists a place that hasn't been shot there</li>
+    <li style="display:grid;grid-template-columns:64px 1fr;gap:22px;align-items:center"><svg width="64" height="64" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="28" fill="none" stroke="var(--color-danger-icon)" stroke-width="7"/><line x1="13" y1="13" x2="51" y2="51" stroke="var(--color-danger-icon)" stroke-width="7" stroke-linecap="round"/></svg>hides a bad finding</li>
+  </ul>
+</section>
+
+<section id="dated" data-part="6" data-cue="Every price and every permit carries the date">
+  <h2>Every number has a date</h2>
+  <div class="cols" style="align-items:center">
+    <svg width="800" height="300" viewBox="0 0 800 300" aria-hidden="true"><path d="M20 60 h520 l60 50 l-60 50 h-520 z" fill="var(--color-bg-canvas)" stroke="var(--color-fg-default)" stroke-width="5"/><circle cx="580" cy="110" r="10" fill="var(--color-fg-default)"/><text x="50" y="98" font-size="40" font-weight="800" fill="var(--color-fg-default)">$145.00 all-in</text><text x="50" y="140" font-size="26" fill="var(--color-success-fg)">Price verified 22 Sep 2026</text><path d="M20 190 h520 l60 50 l-60 50 h-520 z" fill="var(--color-warning-bg)" stroke="var(--color-warning-border)" stroke-width="5"/><circle cx="580" cy="240" r="10" fill="var(--color-fg-default)"/><text x="50" y="228" font-size="40" font-weight="800" fill="var(--color-fg-default)">$270.00 all-in</text><text x="50" y="270" font-size="26" fill="var(--color-warning-fg)">Verified 2 Mar 2026 · over six months old</text><line x1="680" y1="180" x2="680" y2="300" stroke="var(--color-fg-default)" stroke-width="8" stroke-linecap="round"/><path d="M684 180 h90 l-24 30 l24 30 h-90 z" fill="var(--color-warning-icon)"/></svg>
+    <div style="display:grid;gap:24px"><p class="lead" style="font-size:44px;color:var(--color-fg-default)">Older than six months? It gets a flag on the page.</p><p class="muted" style="font-size:34px">The map stays honest, or it isn't worth anything.</p></div>
+  </div>
+</section>
+
+<section id="recap" data-part="7" data-cue="Things to remember">
+  <h2>Things to remember</h2>
+  <ul class="recap"><li>Free to read, and nothing is listed unless it has been shot there.</li><li>One founder, four hats, AI carrying half of each. AI never measures, never scores.</li><li>Four jars: the channel, the camera, the maps and the computer.</li><li>The camera pays first. The other three pay most by year three.</li><li>Trust is the product. No jar buys a score.</li></ul>
+</section>
+
+<section id="end" data-part="7" data-cue="Next time: the ninety-day review">
+  <img class="mark" src="../assets/mark.svg" alt="" style="width:140px;height:140px">
+  <h2>Next: the ninety-day review</h2>
+  <p class="lead">Which jars earned their place?</p>
+  <p class="file">docs/plans/business-plan.md</p>
+</section>
+
+<script src="../assets/slides.js"></script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Photo lightbox · last — ShotThere mocks</title>
+<meta name="mock:kind" content="dialog">
+<meta name="mock:screen" content="lightbox">
+<meta name="mock:state" content="last">
+<meta name="mock:requirements" content="L2-010 L2-016 L2-067 L2-086">
+<meta name="description" content="The last gallery photo, 8 of 8, from The Junction Loft; Next wraps to the first photo.">
+<link rel="stylesheet" href="../../../design-system/tokens/tokens.css">
+<link rel="stylesheet" href="../../../design-system/assets/components.css">
+<link rel="stylesheet" href="../../assets/mock.css">
+</head>
+<body>
+
+<div inert aria-hidden="true">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <span class="wordmark">ShotThere <span class="wordmark__tag">Toronto</span></span>
+    <nav class="site-nav" aria-label="Primary">
+      <span class="site-nav__link site-nav__extra" aria-current="page">Studios</span>
+      <span class="site-nav__link site-nav__extra">Spots</span>
+      <span class="site-nav__link site-nav__extra">Map</span>
+      <span class="site-nav__link site-nav__extra">Compare</span>
+      <span class="site-nav__link site-nav__extra">Guides</span>
+      <span class="btn btn--ghost site-nav__menu"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>Menu</span>
+    </nav>
+  </header>
+  <main id="main" class="container">
+    <div class="review-head"><h1>The Junction Loft</h1><ul class="review-head__meta"><li>Junction</li><li>Dundas St W at Pacific Ave, 2nd floor</li></ul></div>
+    <section class="review-section"><h2>From a real shoot</h2>
+      <ul class="shot-grid">
+        <li><span class="shot"><img src="../../assets/img/gallery-1.svg" alt="" width="800" height="1000"></span></li>
+        <li><span class="shot"><img src="../../assets/img/gallery-2.svg" alt="" width="800" height="1000"></span></li>
+        <li><span class="shot"><img src="../../assets/img/gallery-3.svg" alt="" width="800" height="1000"></span></li>
+        <li><span class="shot"><img src="../../assets/img/gallery-4.svg" alt="" width="800" height="1000"></span></li>
+      </ul>
+    </section>
+  </main>
+</div>
+
+<div class="viewer lightbox" role="dialog" aria-modal="true" aria-labelledby="lb-title" aria-describedby="lb-caption" data-dismiss-on-escape>
+  <h2 class="visually-hidden" id="lb-title">Photo viewer: The Junction Loft</h2>
+  <div class="viewer__bar">
+    <p class="viewer__count" aria-live="polite">Photo 8 of 8</p>
+    <a class="icon-btn" href="../../pages/studio/default.html" aria-label="Close" autofocus><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></a>
+  </div>
+  <div class="viewer__stage">
+    <button class="icon-btn" type="button" aria-label="Previous photo"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m15 6-6 6 6 6"/></svg></button>
+    <div class="lightbox__frame">
+      <img src="../../assets/img/gallery-8.svg" alt="Wide frame of the whole space showing the cyc, the windows and the light stands." width="800" height="1000">
+    </div>
+    <button class="icon-btn" type="button" aria-label="Next photo"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></button>
+  </div>
+  <div class="viewer__caption" id="lb-caption"><p>Wide frame of the whole space showing the cyc, the windows and the light stands.</p></div>
+  <div class="lightbox__pager">
+    <button class="btn" type="button"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m15 6-6 6 6 6"/></svg>Previous<span class="visually-hidden"> photo</span></button>
+    <button class="btn" type="button">Next<span class="visually-hidden"> photo</span><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></button>
+  </div>
+</div>
+
+<p class="mock-note" style="top: 5rem; right: 1rem;">Next on the last photo wraps to photo 1; Previous on photo 1 wraps to photo 8. Neither arrow is ever disabled (L2-010.3).</p>
+
+<nav class="mock-bar" aria-label="Mock navigation">
+  <a class="mock-bar__home" href="../../index.html" aria-label="All mocks">⌂</a>
+  <span class="mock-bar__screen">Photo lightbox</span>
+  <ul class="mock-bar__states">
+    <li><a href="default.html">default</a></li>
+    <li><a href="sample-shot.html">sample-shot</a></li>
+    <li><a href="last.html" aria-current="page">last</a></li>
+    <li><a href="image-failed.html">image-failed</a></li>
+  </ul>
+  <button type="button" data-theme-toggle aria-pressed="false">☾ Dark</button>
+  <button type="button" data-chrome-toggle aria-label="Hide mock chrome">×</button>
+</nav>
+<script src="../../assets/mock.js"></script>
+</body>
+</html>

@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Spot editor · published — ShotThere mocks</title>
+<meta name="mock:kind" content="page">
+<meta name="mock:screen" content="spot-editor">
+<meta name="mock:state" content="published">
+<meta name="mock:requirements" content="L2-055 L2-042 L2-045 L2-056 L2-057 L2-059 L2-061 L2-062">
+<meta name="description" content="Editing the published Evergreen Brick Works: Basics and Location open, other sections collapsed, Unpublish available and Delete disabled with a hint.">
+<link rel="stylesheet" href="../../../design-system/tokens/tokens.css">
+<link rel="stylesheet" href="../../../design-system/assets/components.css">
+<link rel="stylesheet" href="../../assets/mock.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <a class="wordmark" href="../admin-dashboard/default.html">ShotThere <span class="wordmark__tag">Admin</span></a>
+  <nav class="site-nav" aria-label="Administration">
+    <a class="site-nav__link site-nav__extra" href="../admin-dashboard/default.html">Dashboard</a>
+    <a class="site-nav__link site-nav__extra" href="../admin-studios/default.html">Studios</a>
+    <a class="site-nav__link site-nav__extra" href="../admin-spots/default.html" aria-current="page">Spots</a>
+    <a class="site-nav__link site-nav__extra" href="../admin-guides/default.html">Guides</a>
+    <a class="site-nav__link site-nav__extra" href="../home/default.html">View site</a>
+    <form class="site-nav__extra" action="../sign-in/signed-out.html" method="post"><button class="btn btn--ghost" type="submit">Sign out</button></form>
+    <a class="btn btn--ghost site-nav__menu" href="../../dialogs/site-menu/admin.html" aria-haspopup="dialog" aria-expanded="false">
+      <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>Menu
+    </a>
+  </nav>
+</header>
+
+<main id="main" class="container" tabindex="-1">
+  <nav aria-label="Breadcrumb" style="margin-top: var(--space-4);"><ol class="breadcrumb"><li><a href="../admin-spots/default.html">Spots</a></li><li aria-current="page">Evergreen Brick Works</li></ol></nav>
+  <div class="page-header">
+    <div>
+      <h1>Evergreen Brick Works</h1>
+      <p class="subtitle"><span class="status status--published">Published</span> · Last saved 1 Sep 2026, 3:20 pm</p>
+    </div>
+  </div>
+
+  <div class="editor-layout">
+    <aside class="editor-aside" aria-labelledby="status-title">
+      <h2 id="status-title" style="font: var(--text-h4);">Status</h2>
+      <dl class="editor-aside__meta">
+        <dt>Visibility</dt><dd><span class="status status--published">Published</span></dd>
+        <dt>Public address</dt><dd><a href="../spot/default.html"><code>/spots/evergreen-brick-works</code></a></dd>
+      </dl>
+      <a class="btn" href="../../dialogs/unpublish/default.html">Unpublish</a>
+      <button class="btn btn--ghost" type="button" disabled aria-describedby="delete-hint">Delete spot</button>
+      <p class="text-caption" id="delete-hint">Unpublish before deleting.</p>
+    </aside>
+    <form class="editor-form" action="success.html" method="post" novalidate aria-labelledby="form-title">
+      <h2 class="visually-hidden" id="form-title">Spot details</h2>
+
+      <details class="editor-section" open>
+        <summary><h2>Basics</h2></summary>
+        <div class="editor-section__body">
+          <label class="field"><span class="field__label">Name</span><input class="input" id="name" name="name" value="Evergreen Brick Works" autocomplete="off"></label>
+          <div class="field-row">
+            <label class="field"><span class="field__label">Neighbourhood</span><input class="input" id="neighbourhood" name="neighbourhood" value="Don Valley" autocomplete="off"></label>
+            <label class="field"><span class="field__label">Type</span><select class="select" id="type" name="type"><option selected>Park</option><option>Architecture</option><option>Waterfront</option><option>Indoor public</option></select></label>
+          </div>
+        </div>
+      </details>
+
+      <details class="editor-section" open>
+        <summary><h2>Location</h2></summary>
+        <div class="editor-section__body">
+          <div class="field-row">
+            <label class="field"><span class="field__label">Latitude</span><input class="input" id="latitude" name="latitude" type="number" value="43.6846" inputmode="decimal" step="0.0001" min="-90" max="90"></label>
+            <label class="field"><span class="field__label">Longitude</span><input class="input" id="longitude" name="longitude" type="number" value="-79.3653" inputmode="decimal" step="0.0001" min="-180" max="180"></label>
+          </div>
+          <div class="stack stack--sm">
+            <div class="static-map preview-map" aria-describedby="map-help">
+              <img class="static-map__tiles" src="../../assets/img/map-spot.svg" alt="" width="1200" height="675">
+              <span class="map-marker map-marker--spot" role="img" aria-label="Preview position" style="top: 50%; left: 50%;"></span>
+            </div>
+            <p class="field__help" id="map-help">The preview moves as you type.</p>
+          </div>
+        </div>
+      </details>
+
+      <details class="editor-section">
+        <summary><h2>How to get there</h2></summary>
+        <div class="editor-section__body">
+          <label class="field"><span class="field__label">Transit</span><textarea class="textarea" id="transit" name="directions.transit" rows="2">TTC 28A shuttle from Davisville or Broadview station.</textarea></label>
+          <label class="field"><span class="field__label">Driving</span><textarea class="textarea" id="driving" name="directions.driving" rows="2">Via Bayview Ave. Paid lot on site.</textarea></label>
+          <label class="field"><span class="field__label">Walking</span><textarea class="textarea" id="walking" name="directions.walking" rows="2">20 minutes down the Beltline from Moore Park.</textarea></label>
+        </div>
+      </details>
+
+      <details class="editor-section">
+        <summary><h2>Best light</h2></summary>
+        <div class="editor-section__body">
+          <fieldset class="stack">
+            <legend>Time of day</legend>
+            <div class="field-row">
+              <label class="field"><span class="field__label">Morning</span><select class="select" id="light-morning" name="light.morning.rating"><option>None</option><option>Low</option><option selected>Medium</option><option>Strong</option></select></label>
+              <label class="field"><span class="field__label">Morning note <span class="optional">(optional)</span></span><input class="input" id="light-morning-note" name="light.morning.note" value="East-facing kiln walls"></label>
+            </div>
+            <div class="field-row">
+              <label class="field"><span class="field__label">Midday</span><select class="select" id="light-midday" name="light.midday.rating"><option>None</option><option selected>Low</option><option>Medium</option><option>Strong</option></select></label>
+              <label class="field"><span class="field__label">Midday note <span class="optional">(optional)</span></span><input class="input" id="light-midday-note" name="light.midday.note" value="Harsh; little shade in the courtyard"></label>
+            </div>
+            <div class="field-row">
+              <label class="field"><span class="field__label">Afternoon</span><select class="select" id="light-afternoon" name="light.afternoon.rating"><option>None</option><option>Low</option><option selected>Medium</option><option>Strong</option></select></label>
+              <label class="field"><span class="field__label">Afternoon note <span class="optional">(optional)</span></span><input class="input" id="light-afternoon-note" name="light.afternoon.note"></label>
+            </div>
+            <div class="field-row">
+              <label class="field"><span class="field__label">Golden hour</span><select class="select" id="light-goldenHour" name="light.goldenHour.rating"><option>None</option><option>Low</option><option>Medium</option><option selected>Strong</option></select></label>
+              <label class="field"><span class="field__label">Golden hour note <span class="optional">(optional)</span></span><input class="input" id="light-goldenHour-note" name="light.goldenHour.note" value="West light rakes the brick"></label>
+            </div>
+            <div class="field-row">
+              <label class="field"><span class="field__label">Blue hour</span><select class="select" id="light-blueHour" name="light.blueHour.rating"><option>None</option><option selected>Low</option><option>Medium</option><option>Strong</option></select></label>
+              <label class="field"><span class="field__label">Blue hour note <span class="optional">(optional)</span></span><input class="input" id="light-blueHour-note" name="light.blueHour.note" value="Few lights after closing"></label>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend>Seasons</legend>
+            <div class="field-row">
+              <label class="field"><span class="field__label">Spring</span><input class="input" id="season-spring" name="seasons.spring" value="Wet paths; quarry garden green by May"></label>
+              <label class="field"><span class="field__label">Summer</span><input class="input" id="season-summer" name="seasons.summer" value="Saturday farmers&#x27; market crowds"></label>
+              <label class="field"><span class="field__label">Autumn</span><input class="input" id="season-autumn" name="seasons.autumn" value="Valley colour peaks mid-October"></label>
+              <label class="field"><span class="field__label">Winter</span><input class="input" id="season-winter" name="seasons.winter" value="Skating rink; icy paths"></label>
+            </div>
+          </fieldset>
+        </div>
+      </details>
+
+      <details class="editor-section">
+        <summary><h2>Practical conditions</h2></summary>
+        <div class="editor-section__body">
+          <div class="field-row">
+            <label class="field"><span class="field__label">Weekday crowds</span><select class="select" id="crowds-weekday" name="crowds.weekday"><option selected>Low</option><option>Medium</option><option>High</option></select></label>
+            <label class="field"><span class="field__label">Weekend crowds</span><select class="select" id="crowds-weekend" name="crowds.weekend"><option>Low</option><option>Medium</option><option selected>High</option></select></label>
+          </div>
+          <label class="field"><span class="field__label">Parking</span><input class="input" id="parking" name="parking" value="Paid lot"></label>
+          <div class="field-row">
+            <label class="field"><span class="field__label">Washrooms</span><input class="input" id="washrooms" name="washrooms" value="In the main building"></label>
+            <label class="field"><span class="field__label">Changing</span><input class="input" id="changing" name="changing" value="Washrooms only" aria-describedby="changing-help"><span class="field__help" id="changing-help">Write "None" rather than leaving it empty.</span></label>
+          </div>
+        </div>
+      </details>
+
+      <details class="editor-section">
+        <summary><h2>Permits</h2></summary>
+        <div class="editor-section__body">
+          <fieldset>
+            <legend>Permit needed for</legend>
+            <div class="field-row">
+              <label class="field"><span class="field__label">Portrait</span><select class="select" id="permit-portrait" name="permits.portrait"><option selected>Not required</option><option>Required</option></select></label>
+              <label class="field"><span class="field__label">Wedding or engagement</span><select class="select" id="permit-wedding" name="permits.wedding"><option>Not required</option><option selected>Required</option></select></label>
+              <label class="field"><span class="field__label">Commercial</span><select class="select" id="permit-commercial" name="permits.commercial"><option>Not required</option><option selected>Required</option></select></label>
+              <label class="field"><span class="field__label">Video</span><select class="select" id="permit-video" name="permits.video"><option>Not required</option><option selected>Required</option></select></label>
+            </div>
+          </fieldset>
+          <label class="field"><span class="field__label">Permit source link</span><input class="input" id="permit-source" name="permitSourceUrl" type="url" value="https://www.evergreen.ca/" aria-describedby="permit-source-help"><span class="field__help" id="permit-source-help">The page where you checked the rules, such as the City of Toronto or the site owner.</span></label>
+          <label class="field"><span class="field__label">Permits last verified</span><input class="input" id="permit-verified" name="permitVerifiedAt" type="date" value="2026-09-01" max="2026-10-13" aria-describedby="permit-verified-help"><span class="field__help" id="permit-verified-help">Change this only when you have checked the permits again. Visitors see a warning after 183 days.</span></label>
+        </div>
+      </details>
+
+      <details class="editor-section">
+        <summary><h2>Best uses</h2></summary>
+        <div class="editor-section__body">
+          <fieldset id="uses">
+            <legend>Best for</legend>
+            <label class="choice"><input type="checkbox" name="bestUses" value="engagement" checked><span>Engagement</span></label>
+            <label class="choice"><input type="checkbox" name="bestUses" value="family" checked><span>Family</span></label>
+            <label class="choice"><input type="checkbox" name="bestUses" value="portrait" checked><span>Portrait</span></label>
+            <label class="choice"><input type="checkbox" name="bestUses" value="brand" checked><span>Brand</span></label>
+            <label class="choice"><input type="checkbox" name="bestUses" value="video"><span>Video</span></label>
+          </fieldset>
+          <p class="field__help">Choose at least one before publishing.</p>
+        </div>
+      </details>
+
+      <details class="editor-section">
+        <summary><h2>Sample shots</h2></summary>
+        <div class="editor-section__body">
+          <fieldset class="stack">
+            <legend class="visually-hidden">Sample shots</legend>
+            <p class="field__help">Each shot keeps its focal length and where you stood, so visitors can repeat it.</p>
+            <ol class="image-list">
+              <li class="image-row">
+                <div class="image-row__thumb"><img src="../../assets/img/sample-1.svg" alt="" width="1200" height="800"></div>
+                <div class="image-row__body">
+                  <span class="image-row__meta">1 of 5 · lower-steps.jpg · 4.9 MB</span>
+                  <label class="field"><span class="field__label">Alt text</span><input class="input" id="sample-1-alt" name="samples[0].alt" value="Sample shot at 85 mm: couple on the lower steps, shot facing north."></label>
+                  <div class="field-row">
+                    <label class="field"><span class="field__label">Focal length (mm)</span><input class="input" id="sample-1-focal" name="samples[0].focalLength" type="number" value="85" inputmode="numeric" min="1" step="1"></label>
+                    <label class="field"><span class="field__label">Angle note</span><input class="input" id="sample-1-angle" name="samples[0].angle" value="Shoot north from the lower steps"></label>
+                  </div>
+                </div>
+                <div class="image-row__actions">
+                  <button class="btn btn--sm" type="button" aria-disabled="true">Move up<span class="visually-hidden">: sample shot 1</span></button>
+                  <button class="btn btn--sm" type="button">Move down<span class="visually-hidden">: sample shot 1</span></button>
+                  <a class="btn btn--sm btn--ghost" href="../../dialogs/remove-image/default.html">Remove<span class="visually-hidden"> sample shot 1</span></a>
+                </div>
+              </li>
+              <li class="image-row">
+                <div class="image-row__thumb"><img src="../../assets/img/sample-2.svg" alt="" width="1200" height="800" loading="lazy"></div>
+                <div class="image-row__body">
+                  <span class="image-row__meta">2 of 5 · kiln-tunnel.jpg · 5.4 MB</span>
+                  <label class="field"><span class="field__label">Alt text</span><input class="input" id="sample-2-alt" name="samples[1].alt" value="Sample shot at 35 mm: the kiln tunnel, backlit from the west door."></label>
+                  <div class="field-row">
+                    <label class="field"><span class="field__label">Focal length (mm)</span><input class="input" id="sample-2-focal" name="samples[1].focalLength" type="number" value="35" inputmode="numeric" min="1" step="1"></label>
+                    <label class="field"><span class="field__label">Angle note</span><input class="input" id="sample-2-angle" name="samples[1].angle" value="Kiln tunnel, backlit from the west door"></label>
+                  </div>
+                </div>
+                <div class="image-row__actions">
+                  <button class="btn btn--sm" type="button">Move up<span class="visually-hidden">: sample shot 2</span></button>
+                  <button class="btn btn--sm" type="button">Move down<span class="visually-hidden">: sample shot 2</span></button>
+                  <a class="btn btn--sm btn--ghost" href="../../dialogs/remove-image/default.html">Remove<span class="visually-hidden"> sample shot 2</span></a>
+                </div>
+              </li>
+              <li class="image-row">
+                <div class="image-row__thumb"><img src="../../assets/img/sample-3.svg" alt="" width="1200" height="800" loading="lazy"></div>
+                <div class="image-row__body">
+                  <span class="image-row__meta">3 of 5 · quarry-boardwalk.jpg · 4.2 MB</span>
+                  <label class="field"><span class="field__label">Alt text</span><input class="input" id="sample-3-alt" name="samples[2].alt" value="Sample shot at 50 mm: the quarry boardwalk with the skyline behind."></label>
+                  <div class="field-row">
+                    <label class="field"><span class="field__label">Focal length (mm)</span><input class="input" id="sample-3-focal" name="samples[2].focalLength" type="number" value="50" inputmode="numeric" min="1" step="1"></label>
+                    <label class="field"><span class="field__label">Angle note</span><input class="input" id="sample-3-angle" name="samples[2].angle" value="Quarry boardwalk, facing the skyline"></label>
+                  </div>
+                </div>
+                <div class="image-row__actions">
+                  <button class="btn btn--sm" type="button">Move up<span class="visually-hidden">: sample shot 3</span></button>
+                  <button class="btn btn--sm" type="button">Move down<span class="visually-hidden">: sample shot 3</span></button>
+                  <a class="btn btn--sm btn--ghost" href="../../dialogs/remove-image/default.html">Remove<span class="visually-hidden"> sample shot 3</span></a>
+                </div>
+              </li>
+              <li class="image-row">
+                <div class="image-row__thumb"><img src="../../assets/img/sample-4.svg" alt="" width="1200" height="800" loading="lazy"></div>
+                <div class="image-row__body">
+                  <span class="image-row__meta">4 of 5 · chimney-courtyard.jpg · 5.0 MB</span>
+                  <label class="field"><span class="field__label">Alt text</span><input class="input" id="sample-4-alt" name="samples[3].alt" value="Sample shot at 24 mm: the chimney courtyard from the north-east corner."></label>
+                  <div class="field-row">
+                    <label class="field"><span class="field__label">Focal length (mm)</span><input class="input" id="sample-4-focal" name="samples[3].focalLength" type="number" value="24" inputmode="numeric" min="1" step="1"></label>
+                    <label class="field"><span class="field__label">Angle note</span><input class="input" id="sample-4-angle" name="samples[3].angle" value="Chimney courtyard from the north-east corner"></label>
+                  </div>
+                </div>
+                <div class="image-row__actions">
+                  <button class="btn btn--sm" type="button">Move up<span class="visually-hidden">: sample shot 4</span></button>
+                  <button class="btn btn--sm" type="button">Move down<span class="visually-hidden">: sample shot 4</span></button>
+                  <a class="btn btn--sm btn--ghost" href="../../dialogs/remove-image/default.html">Remove<span class="visually-hidden"> sample shot 4</span></a>
+                </div>
+              </li>
+              <li class="image-row">
+                <div class="image-row__thumb"><img src="../../assets/img/sample-5.svg" alt="" width="1200" height="800" loading="lazy"></div>
+                <div class="image-row__body">
+                  <span class="image-row__meta">5 of 5 · valley-compressed.jpg · 3.9 MB</span>
+                  <label class="field"><span class="field__label">Alt text</span><input class="input" id="sample-5-alt" name="samples[4].alt" value="Sample shot at 135 mm: the valley compressed from the top of the Beltline."></label>
+                  <div class="field-row">
+                    <label class="field"><span class="field__label">Focal length (mm)</span><input class="input" id="sample-5-focal" name="samples[4].focalLength" type="number" value="135" inputmode="numeric" min="1" step="1"></label>
+                    <label class="field"><span class="field__label">Angle note</span><input class="input" id="sample-5-angle" name="samples[4].angle" value="Compress the valley from the top of the Beltline"></label>
+                  </div>
+                </div>
+                <div class="image-row__actions">
+                  <button class="btn btn--sm" type="button">Move up<span class="visually-hidden">: sample shot 5</span></button>
+                  <button class="btn btn--sm" type="button" aria-disabled="true">Move down<span class="visually-hidden">: sample shot 5</span></button>
+                  <a class="btn btn--sm btn--ghost" href="../../dialogs/remove-image/default.html">Remove<span class="visually-hidden"> sample shot 5</span></a>
+                </div>
+              </li>
+            </ol>
+            <div class="upload-drop">
+              <input class="file-input visually-hidden" id="sample-upload" type="file" accept="image/jpeg,image/png,image/webp,image/avif" multiple>
+              <label class="btn btn--sm" for="sample-upload">Add sample shots</label>
+              <span>JPEG, PNG, WebP or AVIF, up to 20 MB each.</span>
+            </div>
+          </fieldset>
+        </div>
+      </details>
+
+      <details class="editor-section">
+        <summary><h2>Disclosure</h2></summary>
+        <div class="editor-section__body">
+          <fieldset>
+            <legend>How was this session paid for?</legend>
+            <label class="choice"><input type="radio" name="disclosure" value="paid_in_full" checked><span>I paid the full rate</span></label>
+            <label class="choice"><input type="radio" name="disclosure" value="discounted"><span>Discounted</span></label>
+            <label class="choice"><input type="radio" name="disclosure" value="comped"><span>Comped (free of charge)</span></label>
+          </fieldset>
+          <label class="field"><span class="field__label">Provided by <span class="optional">(needed when discounted or comped)</span></span><input class="input" name="disclosureProvider" disabled></label>
+        </div>
+      </details>
+
+      <details class="editor-section">
+        <summary><h2>Episode video</h2></summary>
+        <div class="editor-section__body">
+          <label class="field"><span class="field__label">YouTube link or video ID <span class="optional">(optional)</span></span><input class="input" id="video" name="video" value="https://www.youtube.com/watch?v=Ev7Bw3kGh2Q" aria-describedby="video-help"><span class="field__help" id="video-help">Paste a youtube.com or youtu.be link, or the 11-character ID. Leave empty for no video section.</span></label>
+        </div>
+      </details>
+
+      <div class="form-actions form-actions--sticky">
+        <button class="btn btn--primary" type="submit">Save changes</button>
+        <a class="btn btn--ghost" href="../admin-spots/default.html">Cancel</a>
+        <span class="save-status" role="status">All changes saved</span>
+      </div>
+    </form>
+  </div>
+</main>
+
+<p class="mock-note" style="top: 13rem; right: 1rem;">Saving a published spot updates the public page within a minute. Delete stays disabled until the spot is unpublished (L2-061.2).</p>
+
+<nav class="mock-bar" aria-label="Mock navigation">
+  <a class="mock-bar__home" href="../../index.html" aria-label="All mocks">⌂</a>
+  <span class="mock-bar__screen">Spot editor</span>
+  <ul class="mock-bar__states">
+    <li><a href="new.html">new</a></li>
+    <li><a href="default.html">default</a></li>
+    <li><a href="published.html" aria-current="page">published</a></li>
+    <li><a href="loading.html">loading</a></li>
+    <li><a href="error.html">error</a></li>
+    <li><a href="invalid.html">invalid</a></li>
+    <li><a href="submitting.html">submitting</a></li>
+    <li><a href="success.html">success</a></li>
+  </ul>
+  <button type="button" data-theme-toggle aria-pressed="false">☾ Dark</button>
+  <button type="button" data-chrome-toggle aria-label="Hide mock chrome">×</button>
+</nav>
+<script src="../../assets/mock.js"></script>
+</body>
+</html>

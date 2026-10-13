@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Guides (admin) · default — ShotThere mocks</title>
+<meta name="mock:kind" content="page">
+<meta name="mock:screen" content="admin-guides">
+<meta name="mock:state" content="default">
+<meta name="mock:requirements" content="L2-063">
+<meta name="description" content="Admin list of all 4 guides, newest update first, with status, last updated date, entries and Edit; rows stack into cards on phones.">
+<link rel="stylesheet" href="../../../design-system/tokens/tokens.css">
+<link rel="stylesheet" href="../../../design-system/assets/components.css">
+<link rel="stylesheet" href="../../assets/mock.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <a class="wordmark" href="../admin-dashboard/default.html">ShotThere <span class="wordmark__tag">Admin</span></a>
+  <nav class="site-nav" aria-label="Administration">
+    <a class="site-nav__link site-nav__extra" href="../admin-dashboard/default.html">Dashboard</a>
+    <a class="site-nav__link site-nav__extra" href="../admin-studios/default.html">Studios</a>
+    <a class="site-nav__link site-nav__extra" href="../admin-spots/default.html">Spots</a>
+    <a class="site-nav__link site-nav__extra" href="../admin-guides/default.html" aria-current="page">Guides</a>
+    <a class="site-nav__link site-nav__extra" href="../home/default.html">View site</a>
+    <form class="site-nav__extra" action="../sign-in/signed-out.html" method="post"><button class="btn btn--ghost" type="submit">Sign out</button></form>
+    <a class="btn btn--ghost site-nav__menu" href="../../dialogs/site-menu/admin.html" aria-haspopup="dialog" aria-expanded="false">
+      <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>Menu
+    </a>
+  </nav>
+</header>
+
+<main id="main" class="container" tabindex="-1">
+  <div class="page-header">
+    <div>
+      <h1>Guides</h1>
+      <p class="subtitle">4 guides · 3 published · 1 draft</p>
+    </div>
+    <a class="btn btn--primary" href="../guide-editor/new.html"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>New guide</a>
+  </div>
+  <form role="search" action="default.html" method="get" style="max-width: 28rem; margin-bottom: var(--space-6);">
+    <div class="field">
+      <label class="field__label" for="q">Search by title</label>
+      <span class="search"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input class="input" id="q" name="q" type="search" autocomplete="off" spellcheck="false"></span>
+    </div>
+  </form>
+  <p class="result-count visually-hidden" role="status" aria-live="polite">4 guides</p>
+  <div class="table-wrap">
+    <table class="table table--stack">
+      <caption class="visually-hidden">Guides, most recently updated first</caption>
+      <thead>
+        <tr>
+          <th scope="col">Title</th>
+          <th scope="col">Status</th>
+          <th scope="col" aria-sort="descending">Last updated</th>
+          <th scope="col">Entries</th>
+          <th scope="col"><span class="visually-hidden">Actions</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row"><a href="../guide-editor/default.html">Best for headshots</a></th>
+          <td data-label="Status"><span class="status status--draft">Draft</span></td>
+          <td data-label="Last updated"><time datetime="2026-10-09">9 Oct 2026</time></td>
+          <td data-label="Entries">2</td>
+          <td><a class="btn btn--sm" href="../guide-editor/default.html">Edit<span class="visually-hidden"> Best for headshots</span></a></td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="../guide-editor/published.html">Best natural light</a></th>
+          <td data-label="Status"><span class="status status--published">Published</span></td>
+          <td data-label="Last updated"><time datetime="2026-09-25">25 Sep 2026</time></td>
+          <td data-label="Entries">3</td>
+          <td><a class="btn btn--sm" href="../guide-editor/published.html">Edit<span class="visually-hidden"> Best natural light</span></a></td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="../guide-editor/published.html">Best studios under $120 for 2 hours</a></th>
+          <td data-label="Status"><span class="status status--published">Published</span></td>
+          <td data-label="Last updated"><time datetime="2026-09-18">18 Sep 2026</time></td>
+          <td data-label="Entries">3</td>
+          <td><a class="btn btn--sm" href="../guide-editor/published.html">Edit<span class="visually-hidden"> Best studios under $120 for 2 hours</span></a></td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="../guide-editor/published.html">Best for a large crew</a></th>
+          <td data-label="Status"><span class="status status--published">Published</span></td>
+          <td data-label="Last updated"><time datetime="2026-09-02">2 Sep 2026</time></td>
+          <td data-label="Entries">2</td>
+          <td><a class="btn btn--sm" href="../guide-editor/published.html">Edit<span class="visually-hidden"> Best for a large crew</span></a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</main>
+
+<p class="mock-note" style="top: 18rem; right: 1rem;">The list filters as you type; the count is announced. Below 48rem each row becomes a card with name, status, flags and Edit (L2-063.3).</p>
+
+<nav class="mock-bar" aria-label="Mock navigation">
+  <a class="mock-bar__home" href="../../index.html" aria-label="All mocks">⌂</a>
+  <span class="mock-bar__screen">Guides (admin)</span>
+  <ul class="mock-bar__states">
+    <li><a href="default.html" aria-current="page">default</a></li>
+    <li><a href="loading.html">loading</a></li>
+    <li><a href="empty.html">empty</a></li>
+    <li><a href="error.html">error</a></li>
+    <li><a href="no-results.html">no-results</a></li>
+  </ul>
+  <button type="button" data-theme-toggle aria-pressed="false">☾ Dark</button>
+  <button type="button" data-chrome-toggle aria-label="Hide mock chrome">×</button>
+</nav>
+<script src="../../assets/mock.js"></script>
+</body>
+</html>

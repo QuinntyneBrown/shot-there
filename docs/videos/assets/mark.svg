@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120" role="img" aria-labelledby="title">
+  <title id="title">ShotThere</title>
+  <rect x="4" y="4" width="112" height="112" rx="28" fill="#b5381f"/>
+  <path d="M30 40 H44 L50 30 H70 L76 40 H90 C94 40 97 43 97 47 V84 C97 88 94 91 90 91 H30 C26 91 23 88 23 84 V47 C23 43 26 40 30 40 Z" fill="#ffffff"/>
+  <circle cx="60" cy="65" r="17" fill="#b5381f"/>
+  <circle cx="60" cy="65" r="10" fill="#ffffff"/>
+  <circle cx="60" cy="65" r="4" fill="#b5381f"/>
+  <circle cx="86" cy="49" r="4" fill="#b5381f"/>
+</svg>

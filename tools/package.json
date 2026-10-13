@@ -1,0 +1,8 @@
+{
+  "name": "shot-there-tools",
+  "private": true,
+  "description": "Video tooling for docs/videos (creating-videos skill): Playwright drives the slide renderer.",
+  "devDependencies": {
+    "playwright": "1.56.1"
+  }
+}

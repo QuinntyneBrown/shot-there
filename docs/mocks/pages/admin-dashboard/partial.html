@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Dashboard · partial — ShotThere mocks</title>
+<meta name="mock:kind" content="page">
+<meta name="mock:screen" content="admin-dashboard">
+<meta name="mock:state" content="partial">
+<meta name="mock:requirements" content="L2-053 L2-044 L2-052">
+<meta name="description" content="Counts loaded but the re-verification list failed: an inline danger alert in that section offers Try again.">
+<link rel="stylesheet" href="../../../design-system/tokens/tokens.css">
+<link rel="stylesheet" href="../../../design-system/assets/components.css">
+<link rel="stylesheet" href="../../assets/mock.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <a class="wordmark" href="../admin-dashboard/default.html">ShotThere <span class="wordmark__tag">Admin</span></a>
+  <nav class="site-nav" aria-label="Administration">
+    <a class="site-nav__link site-nav__extra" href="../admin-dashboard/default.html" aria-current="page">Dashboard</a>
+    <a class="site-nav__link site-nav__extra" href="../admin-studios/default.html">Studios</a>
+    <a class="site-nav__link site-nav__extra" href="../admin-spots/default.html">Spots</a>
+    <a class="site-nav__link site-nav__extra" href="../admin-guides/default.html">Guides</a>
+    <a class="site-nav__link site-nav__extra" href="../home/default.html">View site</a>
+    <form class="site-nav__extra" action="../sign-in/signed-out.html" method="post"><button class="btn btn--ghost" type="submit">Sign out</button></form>
+    <a class="btn btn--ghost site-nav__menu" href="../../dialogs/site-menu/admin.html" aria-haspopup="dialog" aria-expanded="false">
+      <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>Menu
+    </a>
+  </nav>
+</header>
+
+<main id="main" class="container" tabindex="-1">
+  <div class="page-header">
+    <div>
+      <h1>Dashboard</h1>
+      <p class="subtitle">Signed in as owner@shotthere.ca</p>
+    </div>
+  </div>
+  <section aria-labelledby="content-title">
+    <h2 class="visually-hidden" id="content-title">Content</h2>
+    <ul class="stat-grid">
+      <li class="stat-tile">
+        <h3 class="stat-tile__title"><a href="../admin-studios/default.html">Studios</a></h3>
+        <p class="stat-tile__counts">7 published, 2 draft</p>
+        <a class="btn btn--primary" href="../studio-editor/new.html"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>New studio</a>
+      </li>
+      <li class="stat-tile">
+        <h3 class="stat-tile__title"><a href="../admin-spots/default.html">Spots</a></h3>
+        <p class="stat-tile__counts">5 published, 1 draft</p>
+        <a class="btn" href="../spot-editor/new.html"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>New spot</a>
+      </li>
+      <li class="stat-tile">
+        <h3 class="stat-tile__title"><a href="../admin-guides/default.html">Guides</a></h3>
+        <p class="stat-tile__counts">3 published, 1 draft</p>
+        <a class="btn" href="../guide-editor/new.html"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>New guide</a>
+      </li>
+    </ul>
+  </section>
+  <section aria-labelledby="reverify-title" style="margin-top: var(--space-12);">
+    <div class="section-head">
+      <h2 id="reverify-title">Needs re-verification</h2>
+    </div>
+    <div class="alert alert--danger" role="alert">
+    <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16.5v.5"/></svg>
+    <div class="alert__body"><p class="alert__title">We couldn't load the re-verification list.</p><p>The counts above are current. Try again to see what needs checking.</p><div class="alert__actions"><button class="btn btn--sm" type="button"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.3-5.7M20 4v5h-5"/></svg>Try again</button></div></div>
+  </div>
+  </section>
+</main>
+
+<nav class="mock-bar" aria-label="Mock navigation">
+  <a class="mock-bar__home" href="../../index.html" aria-label="All mocks">⌂</a>
+  <span class="mock-bar__screen">Dashboard</span>
+  <ul class="mock-bar__states">
+    <li><a href="default.html">default</a></li>
+    <li><a href="loading.html">loading</a></li>
+    <li><a href="empty.html">empty</a></li>
+    <li><a href="error.html">error</a></li>
+    <li><a href="up-to-date.html">up-to-date</a></li>
+    <li><a href="partial.html" aria-current="page">partial</a></li>
+  </ul>
+  <button type="button" data-theme-toggle aria-pressed="false">☾ Dark</button>
+  <button type="button" data-chrome-toggle aria-label="Hide mock chrome">×</button>
+</nav>
+<script src="../../assets/mock.js"></script>
+</body>
+</html>
