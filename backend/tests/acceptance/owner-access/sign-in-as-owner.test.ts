@@ -20,14 +20,19 @@ function useOwnerAccount() {
 }
 
 /** Median response time over several runs, so one slow run on a busy machine does not decide the result. */
-async function medianMs(action: () => Promise<Response>, runs = 5) {
-  const times: number[] = [];
-  for (let run = 0; run < runs; run++) {
-    const started = performance.now();
-    await action();
-    times.push(performance.now() - started);
+const median = (times: number[]) => [...times].sort((a, b) => a - b)[Math.floor(times.length / 2)];
+
+/** Times each path once per round, interleaved, so load from other test files affects every path alike. */
+async function medianMsInterleaved(paths: ((round: number) => Promise<Response>)[], rounds = 7) {
+  const times = paths.map(() => [] as number[]);
+  for (let round = 0; round < rounds; round++) {
+    for (const [index, path] of paths.entries()) {
+      const started = performance.now();
+      await path(round);
+      times[index].push(performance.now() - started);
+    }
   }
-  return times.sort((a, b) => a - b)[Math.floor(runs / 2)];
+  return times.map(median);
 }
 
 describe('L2-049 owner sign-in', () => {
@@ -74,9 +79,11 @@ describe('L2-049 owner sign-in', () => {
     useOwnerAccount();
     await signIn({ email: OWNER_EMAIL, password: OWNER_PASSWORD });
 
-    const success = await medianMs(() => signIn({ email: OWNER_EMAIL, password: OWNER_PASSWORD }));
-    const wrongPassword = await medianMs(() => signIn({ email: OWNER_EMAIL, password: 'wrong password' }, '198.51.100.20'));
-    const unknownEmail = await medianMs(() => signIn({ email: 'someone@example.com', password: 'whatever' }, '198.51.100.21'));
+    const [success, wrongPassword, unknownEmail] = await medianMsInterleaved([
+      () => signIn({ email: OWNER_EMAIL, password: OWNER_PASSWORD }),
+      (round) => signIn({ email: OWNER_EMAIL, password: 'wrong password' }, `198.51.100.${20 + round}`),
+      (round) => signIn({ email: 'someone@example.com', password: 'whatever' }, `198.51.100.${40 + round}`),
+    ]);
 
     expect(Math.abs(wrongPassword - success)).toBeLessThan(100);
     expect(Math.abs(unknownEmail - success)).toBeLessThan(100);
