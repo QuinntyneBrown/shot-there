@@ -223,8 +223,9 @@ apply with nothing lost.
 ## Responsive behaviour
 
 - The column is centred in `.container` and stops at 34rem on wide screens.
-- The heading is 48 px on phones and 64 px from 62rem, and wraps: at 360 px
-  "We couldn't find that page" is two lines (L2-083.3).
+- The heading is 48 px on phones and 64 px from 62rem, and wraps between
+  words: at 360 px "We couldn't find that page" takes two or three lines,
+  never truncated, hyphenated or scrolled (L2-083.3).
 - The two actions sit side by side when they fit and stack, centred, when they
   do not.
 - The code and reference lines wrap at any character only when they would
@@ -329,7 +330,7 @@ None. The design-system page specifies no animation.
 
 ### Responsive
 
-- **AC-10** Given the 404 page at 360 px, when it renders, then "We couldn't find that page" wraps to two lines at 48 px, the two actions stack centred if they do not fit side by side, and `document.documentElement.scrollWidth` equals the viewport width. (L2-083)
+- **AC-10** Given the 404 page at 360 px, when it renders, then "We couldn't find that page" wraps between words at 48 px with no truncation, the two actions stack centred if they do not fit side by side, and `document.documentElement.scrollWidth` equals the viewport width. (L2-083)
 - **AC-11** Given the 500 page at 320 px with `reference="Reference 3b241101-e2bb-4255-8caf-4136c566a962"`, when it renders, then the reference wraps inside the column and nothing scrolls horizontally. (L2-064)
 - **AC-12** Given the 404 page at 1280 px, when it renders, then the `h1` is 64 px (`--font-size-5xl` from 62rem) and the column is at most 34rem wide and centred. (L2-064)
 - **AC-13** Given the 500 page at 200 % zoom in a 1280 px viewport, when it renders, then the heading, paragraph, reference and both actions are visible and operable with no horizontal page scroll. (L2-066)
