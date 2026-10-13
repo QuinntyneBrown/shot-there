@@ -50,6 +50,7 @@
               }
             ],
             "styles": [
+              "dist/components/styles/shot-there.css",
               "projects/shot-there/src/styles.css"
             ],
             "server": "projects/shot-there/src/main.server.ts",

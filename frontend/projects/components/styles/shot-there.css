@@ -1,0 +1,4 @@
+/* The only global stylesheet (ICD-002 §11.1): tokens, then foundations, then utilities. */
+@import "./tokens.css";
+@import "./foundations.css";
+@import "./utilities.css";

@@ -1,6 +1,6 @@
 @let photo = image();
 <div class="viewer">
-  <h2 class="st-visually-hidden" id="lightbox-title" i18n>Photo viewer: {{ data.studioName }}</h2>
+  <h2 class="visually-hidden" id="lightbox-title" i18n>Photo viewer: {{ data.studioName }}</h2>
   <div class="viewer__bar">
     <p class="viewer__count" aria-live="polite" i18n>Photo {{ index() + 1 }} of {{ data.images.length }}</p>
     <button type="button" class="icon-btn" aria-label="Close" i18n-aria-label (click)="close()">
@@ -24,10 +24,10 @@
   <div class="lightbox__pager">
     <button class="btn" type="button" (click)="previous()">
       <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m15 6-6 6 6 6" /></svg>
-      <ng-container i18n>Previous<span class="st-visually-hidden"> photo</span></ng-container>
+      <ng-container i18n>Previous<span class="visually-hidden"> photo</span></ng-container>
     </button>
     <button class="btn" type="button" (click)="next()">
-      <ng-container i18n>Next<span class="st-visually-hidden"> photo</span></ng-container>
+      <ng-container i18n>Next<span class="visually-hidden"> photo</span></ng-container>
       <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6" /></svg>
     </button>
   </div>

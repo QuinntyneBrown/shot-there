@@ -30,7 +30,6 @@
 .choice input:disabled, .choice input[data-state="disabled"] { background: var(--color-bg-subtle); border-color: var(--color-border-default); cursor: not-allowed; }
 .choice__text { display: flex; flex-direction: column; gap: var(--space-0-5); }
 .choice__text small { color: var(--color-fg-muted); }
-.field-row { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-4); }
 .field__error { font: var(--text-body-sm); color: var(--color-danger-fg); display: flex; gap: var(--space-1); align-items: flex-start; }
 .field__error::before { content: "⚠\FE0E"; content: "⚠\FE0E" / ""; flex: none; }
 .field--inline { flex-direction: row; flex-wrap: wrap; align-items: center; gap: var(--space-2); }

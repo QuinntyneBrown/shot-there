@@ -29,7 +29,7 @@ export class CompareBarPanel {
 
   /** With the page scrolled to the end, whether the last of the page content sits clear of the bar. */
   async leavesPageEndUncovered(): Promise<boolean> {
-    await this.page.evaluate(() => window.scrollTo(0, document.documentElement.scrollHeight));
+    await this.page.evaluate(() => window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'instant' }));
     const bar = await this.root.boundingBox();
     const lastLine = await this.page.getByRole('contentinfo').locator('p').last().boundingBox();
     return !!bar && !!lastLine && lastLine.y + lastLine.height <= bar.y;

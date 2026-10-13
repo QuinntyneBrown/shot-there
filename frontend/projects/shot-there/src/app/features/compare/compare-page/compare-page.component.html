@@ -29,7 +29,7 @@
   }
   <div class="table-wrap" role="region" [attr.aria-labelledby]="'compare-caption'" tabindex="0">
     <table class="table compare-table" [style.--compare-cols]="v.columns.length">
-      <caption class="st-visually-hidden" id="compare-caption" i18n>Comparison of {{ v.namesList }}</caption>
+      <caption class="visually-hidden" id="compare-caption" i18n>Comparison of {{ v.namesList }}</caption>
       <colgroup>
         <col class="compare-table__labels" />
         @for (column of v.columns; track column.slug) {
@@ -61,9 +61,9 @@
                       }
                     } @else if (cell.isScore) {
                       @if (cell.isStrong) {
-                        <strong>{{ cell.text }}<span aria-hidden="true"> / 5</span><span class="st-visually-hidden" i18n> out of 5</span></strong>
+                        <strong>{{ cell.text }}<span aria-hidden="true"> / 5</span><span class="visually-hidden" i18n> out of 5</span></strong>
                       } @else {
-                        <span>{{ cell.text }}<span aria-hidden="true"> / 5</span><span class="st-visually-hidden" i18n> out of 5</span></span>
+                        <span>{{ cell.text }}<span aria-hidden="true"> / 5</span><span class="visually-hidden" i18n> out of 5</span></span>
                       }
                     } @else if (cell.isStrong) {
                       <strong>{{ cell.text }}</strong>

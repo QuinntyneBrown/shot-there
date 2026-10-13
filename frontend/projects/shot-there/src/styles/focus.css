@@ -1,9 +1,0 @@
-/* One focus ring everywhere (WCAG 2.4.7, 2.4.11). */
-:focus-visible {
-  outline: var(--focus-ring-width) solid var(--color-focus-ring);
-  outline-offset: var(--focus-ring-offset);
-  border-radius: var(--radius-sm);
-}
-:focus:not(:focus-visible) { outline: none; }
-/* The skip link's jump target is a landmark, not a control: it shows no ring. */
-main[tabindex="-1"]:focus { outline: none; }

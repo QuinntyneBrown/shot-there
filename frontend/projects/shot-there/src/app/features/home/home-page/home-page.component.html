@@ -22,13 +22,13 @@
             <p class="location-card__meta" i18n>{{ studio.neighbourhood }} · Reviewed {{ studio.reviewedAt | date: 'd MMM y' }}</p>
             <dl class="location-card__facts">
               <div><dt i18n>All-in 2 h</dt><dd>{{ studio.allInCost2h | currency: 'CAD' : 'symbol-narrow' : '1.2-2' }}</dd></div>
-              <div><dt i18n>Score</dt><dd>{{ studio.overallScore | number: '1.1-1' }}<span class="st-visually-hidden" i18n> out of 5</span></dd></div>
+              <div><dt i18n>Score</dt><dd>{{ studio.overallScore | number: '1.1-1' }}<span class="visually-hidden" i18n> out of 5</span></dd></div>
             </dl>
           </li>
         }
       </ul>
     } @else {
-      <h2 class="st-visually-hidden" id="latest-title" i18n>Latest reviews</h2>
+      <h2 class="visually-hidden" id="latest-title" i18n>Latest reviews</h2>
       <div class="empty">
         <div class="empty__icon">
           <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M4 8h3l2-3h6l2 3h3v11H4z" /><circle cx="12" cy="13" r="3.5" /></svg>

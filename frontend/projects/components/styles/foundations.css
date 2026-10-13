@@ -1,0 +1,42 @@
+/* Foundations: reset, document typography and colours, native elements and the focus ring.
+   Ported from docs/design-system/assets/components.css (Base, Form layout) without the
+   documentation-only data-state hooks (ICD-002 §11.1, ICD-DOM-2). */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-top: var(--layout-topbar-height); }
+body {
+  margin: 0;
+  font: var(--text-body);
+  color: var(--color-fg-default);
+  background: var(--color-bg-canvas);
+  -webkit-font-smoothing: antialiased;
+  min-height: 100dvh;
+}
+h1, h2, h3, h4, p, ul, ol, figure, blockquote { margin: 0; }
+h1 { font: var(--text-h1); letter-spacing: var(--letter-spacing-tight); text-wrap: balance; }
+h2 { font: var(--text-h2); letter-spacing: var(--letter-spacing-tight); text-wrap: balance; }
+h3 { font: var(--text-h3); text-wrap: balance; }
+h4 { font: var(--text-h4); }
+p { max-width: var(--layout-measure); text-wrap: pretty; }
+small { font: var(--text-body-sm); }
+code, kbd, pre { font: var(--text-code); }
+code { background: var(--color-bg-subtle); padding: 0.1em 0.35em; border-radius: var(--radius-sm); }
+kbd { background: var(--color-bg-surface); border: var(--border-width-hairline) solid var(--color-border-strong); border-bottom-width: var(--border-width-thick); border-radius: var(--radius-sm); padding: 0.05em 0.4em; }
+pre { background: var(--color-bg-surface-sunken); padding: var(--space-4); border-radius: var(--radius-md); overflow: auto; }
+img, svg, video { max-width: 100%; height: auto; display: block; }
+/* The display rule above would otherwise show an image hidden with the hidden attribute. */
+img[hidden] { display: none; }
+::selection { background: var(--color-accent-subtle-hover); }
+
+/* One focus ring everywhere (WCAG 2.4.7, 2.4.11). */
+:focus-visible {
+  outline: var(--focus-ring-width) solid var(--color-focus-ring);
+  outline-offset: var(--focus-ring-offset);
+  border-radius: var(--radius-sm);
+}
+:focus:not(:focus-visible) { outline: none; }
+/* The skip link's jump target is a landmark, not a control: it shows no ring (skip-link D-5). */
+main[tabindex="-1"]:focus { outline: none; }
+
+fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
+legend { font: var(--text-label); padding: 0; margin-bottom: var(--space-2); }
+legend > h2, legend > h3 { font: var(--text-h3); margin: 0; }

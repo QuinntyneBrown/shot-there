@@ -7,7 +7,7 @@
   <p class="location-card__meta" i18n>{{ s.neighbourhood }} · Reviewed {{ s.reviewedAt | date: 'd MMM y' }}</p>
   <dl class="location-card__facts">
     <div><dt i18n>All-in 2 h</dt><dd>{{ s.allInCost2h | currency: 'CAD' : 'symbol-narrow' : '1.2-2' }}</dd></div>
-    <div><dt i18n>Score</dt><dd>{{ s.overallScore | number: '1.1-1' }}<span class="st-visually-hidden" i18n> out of 5</span></dd></div>
+    <div><dt i18n>Score</dt><dd>{{ s.overallScore | number: '1.1-1' }}<span class="visually-hidden" i18n> out of 5</span></dd></div>
   </dl>
   @if (s.priceStale) {
     <p><span class="badge badge--warning" i18n>Prices may be out of date</span></p>

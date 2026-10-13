@@ -13,7 +13,7 @@
   </aside>
 
   <section class="browse__results" aria-labelledby="results-title" [attr.aria-busy]="state().status === 'loading' ? 'true' : null">
-    <h2 class="st-visually-hidden" id="results-title" i18n>Results</h2>
+    <h2 class="visually-hidden" id="results-title" i18n>Results</h2>
     @if (!noStudiosYet()) {
       <div class="results-head">
         <p class="result-count" role="status" aria-live="polite">
