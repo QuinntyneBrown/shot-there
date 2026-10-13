@@ -213,7 +213,7 @@
 
       <h3>Not an error page</h3>
       <div class="ds-example">
-        <div class="ds-example__canvas ds-example__canvas--stack" style="flex-wrap: nowrap; max-width: 40rem;">
+        <div class="ds-example__canvas ds-example__canvas--stack" style="max-width: 40rem;">
           <div class="alert alert--info" role="status">
             <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h0"/></svg>
             <div class="alert__body"><p>One studio in this link couldn't be found, so we're comparing the other two.</p></div>
@@ -304,7 +304,7 @@
       <h3>Labelling</h3>
       <p>The <code>h1</code> is the message. Action labels say where they go ("Go to the home page", "Browse studios"), and Try again reloads the same URL. The reference code is plain text so it can be selected and copied.</p>
       <h3>Contrast</h3>
-      <div class="ds-example__canvas ds-example__canvas--stack" style="flex-wrap: nowrap; padding: 0; gap: var(--space-2);">
+      <div class="ds-example__canvas ds-example__canvas--stack" style="padding: 0; gap: var(--space-2);">
         <div class="ds-pair"><span>Heading and text on the page</span><span class="ds-pair__ratio" data-contrast="--color-fg-default|--color-bg-canvas" data-min="4.5"></span></div>
         <div class="ds-pair"><span>Code line on the page</span><span class="ds-pair__ratio" data-contrast="--color-fg-subtle|--color-bg-canvas" data-min="4.5"></span></div>
         <div class="ds-pair"><span>Mail link on the page</span><span class="ds-pair__ratio" data-contrast="--color-fg-link|--color-bg-canvas" data-min="4.5"></span></div>
@@ -334,7 +334,7 @@
         <figure class="ds-dont"><div class="ds-example__canvas" style="justify-content: center;"><div class="system-page" style="padding-block: 0;"><p style="font: var(--text-h3);">Corktown Garage Studio is a draft</p><p>It will be published soon.</p></div></div><figcaption>Don't confirm that a draft exists; it leaks unpublished work to anyone guessing slugs (L2-001).</figcaption></figure>
         <figure class="ds-do"><div class="ds-example__canvas" style="justify-content: center;"><div class="system-page" style="padding-block: 0;"><p style="font: var(--text-h3);">Something went wrong on our side</p><p class="system-page__code">Reference 7f3a-91c2</p></div></div><figcaption>Give a reference the owner can find in the logs.</figcaption></figure>
         <figure class="ds-dont"><div class="ds-example__canvas" style="justify-content: center;"><div class="system-page" style="padding-block: 0;"><p style="font: var(--text-h3);">500 Internal Server Error</p><p class="system-page__code">TypeError: Cannot read properties of undefined (reading 'slug') at renderStudio</p></div></div><figcaption>Don't show status jargon or a stack trace (L2-083.2).</figcaption></figure>
-        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--stack" style="flex-wrap: nowrap;"><div class="alert alert--info"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h0"/></svg><div class="alert__body"><p>One studio in this link couldn't be found, so we're comparing the other two.</p></div></div></div><figcaption>Keep the comparison when one slug is unknown, and say so.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--stack"><div class="alert alert--info"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h0"/></svg><div class="alert__body"><p>One studio in this link couldn't be found, so we're comparing the other two.</p></div></div></div><figcaption>Keep the comparison when one slug is unknown, and say so.</figcaption></figure>
         <figure class="ds-dont"><div class="ds-example__canvas" style="justify-content: center;"><div class="system-page" style="padding-block: 0;"><p class="system-page__code">Error 404</p><p style="font: var(--text-h3);">We couldn't find that page</p></div></div><figcaption>Don't send a shared compare link to a 404 when two of its studios are still published.</figcaption></figure>
       </div>
     </section>

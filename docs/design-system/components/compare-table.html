@@ -138,12 +138,12 @@
               <thead>
                 <tr>
                   <td class="compare-table__label"></td>
-                  <th scope="col"><img src="../assets/img/studio-the-junction-loft.svg" alt="" width="1200" height="800"><a href="../../mocks/pages/studio/default.html">The Junction Loft</a><span class="text-caption" style="display: block;">Junction</span></th>
-                  <th scope="col"><img src="../assets/img/studio-leslieville-daylight-studio.svg" alt="" width="1200" height="800"><a href="../../mocks/pages/studio/default.html">Leslieville Daylight Studio</a><span class="text-caption" style="display: block;">Leslieville</span></th>
+                  <th scope="col"><img src="../assets/img/studio-the-junction-loft.svg" alt="" width="1200" height="800"><a href="../../mocks/pages/studio/default.html">The Junction Loft</a><span class="text-caption">Junction</span></th>
+                  <th scope="col"><img src="../assets/img/studio-leslieville-daylight-studio.svg" alt="" width="1200" height="800"><a href="../../mocks/pages/studio/default.html">Leslieville Daylight Studio</a><span class="text-caption">Leslieville</span></th>
                 </tr>
               </thead>
               <tbody>
-                <tr class="compare-table__group"><th scope="rowgroup" colspan="3">Cost</th></tr>
+                <tr class="compare-table__group"><th scope="rowgroup" colspan="3"><span>Cost</span></th></tr>
                 <tr><th scope="row" class="compare-table__label">All-in, 2 hours</th><td><div class="compare-table__value"><strong>$145.00</strong></div></td><td><div class="compare-table__value"><strong>$91.00</strong><span class="badge badge--success">Lowest</span></div></td></tr>
                 <tr><th scope="row" class="compare-table__label">Mandatory fees</th><td><div class="compare-table__value">Cleaning $25.00</div></td><td><div class="compare-table__value">—</div></td></tr>
               </tbody>
@@ -160,7 +160,7 @@
         <ol class="ds-anatomy__list">
           <li><div><b>Corner cell</b><small>An empty <code>&lt;td class="compare-table__label"&gt;</code>, so the label column starts under it and stays opaque while studios scroll.</small></div></li>
           <li><div><b>Studio header</b><small><code>&lt;th scope="col"&gt;</code>: 3:2 photo (<code>alt=""</code>, <code>--radius-md</code>), the studio's name as a link to its review, the neighbourhood as a caption.</small></div></li>
-          <li><div><b>Group row</b><small><code>.compare-table__group</code>: a <code>&lt;th scope="rowgroup"&gt;</code> spanning every column, meant for the sunken surface (overridden today; see <a href="#sources">Sources</a>). Each group is its own <code>&lt;tbody&gt;</code>.</small></div></li>
+          <li><div><b>Group row</b><small><code>.compare-table__group</code>: a <code>&lt;th scope="rowgroup"&gt;</code> spanning every column, on the sunken surface. The label sits in a <code>&lt;span&gt;</code> that stays in view while the studio columns scroll. Each group is its own <code>&lt;tbody&gt;</code>.</small></div></li>
           <li><div><b>Row label</b><small><code>&lt;th scope="row" class="compare-table__label"&gt;</code>: muted label type, sticky at <code>left: 0</code>, with a hairline inner edge on its right.</small></div></li>
           <li><div><b>Value</b><small><code>.compare-table__value</code> inside each <code>&lt;td&gt;</code>: a column of value lines, tabular figures, 4px apart.</small></div></li>
           <li><div><b>Marker</b><small>A <a href="badge.html">badge</a> under the value: success "Lowest" on the lowest all-in cost (L2-031.2), warning "Prices may be out of date" on stale prices.</small></div></li>
@@ -174,7 +174,7 @@
 
       <h3>Three studios</h3>
       <div class="ds-example">
-        <div class="ds-example__canvas ds-example__canvas--stack ds-example__canvas--canvas" style="flex-wrap: nowrap;">
+        <div class="ds-example__canvas ds-example__canvas--stack ds-example__canvas--canvas">
           <div class="table-wrap" tabindex="0" role="region" aria-labelledby="cmp3-cap">
               <table class="table compare-table" style="--compare-cols: 3;">
                 <caption class="visually-hidden" id="cmp3-cap">Comparison of The Junction Loft, Leslieville Daylight Studio and Ossington Blackbox</caption>
@@ -182,34 +182,34 @@
                 <thead>
                   <tr>
                     <td class="compare-table__label"></td>
-                    <th scope="col"><img src="../assets/img/studio-the-junction-loft.svg" alt="" width="1200" height="800"><a href="../../mocks/pages/studio/default.html">The Junction Loft</a><span class="text-caption" style="display: block;">Junction</span></th>
-                    <th scope="col"><img src="../assets/img/studio-leslieville-daylight-studio.svg" alt="" width="1200" height="800"><a href="../../mocks/pages/studio/default.html">Leslieville Daylight Studio</a><span class="text-caption" style="display: block;">Leslieville</span></th>
-                    <th scope="col"><img src="../assets/img/studio-ossington-blackbox.svg" alt="" width="1200" height="800"><a href="../../mocks/pages/studio/stale.html">Ossington Blackbox</a><span class="text-caption" style="display: block;">Ossington</span></th>
+                    <th scope="col"><img src="../assets/img/studio-the-junction-loft.svg" alt="" width="1200" height="800"><a href="../../mocks/pages/studio/default.html">The Junction Loft</a><span class="text-caption">Junction</span></th>
+                    <th scope="col"><img src="../assets/img/studio-leslieville-daylight-studio.svg" alt="" width="1200" height="800"><a href="../../mocks/pages/studio/default.html">Leslieville Daylight Studio</a><span class="text-caption">Leslieville</span></th>
+                    <th scope="col"><img src="../assets/img/studio-ossington-blackbox.svg" alt="" width="1200" height="800"><a href="../../mocks/pages/studio/stale.html">Ossington Blackbox</a><span class="text-caption">Ossington</span></th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr class="compare-table__group"><th scope="rowgroup" colspan="4">Cost</th></tr>
-                  <tr><th scope="row" class="compare-table__label">All-in, 2 hours</th><td><div class="compare-table__value"><strong>$145.00</strong></div></td><td><div class="compare-table__value"><strong>$91.00</strong><span class="badge badge--success">Lowest</span></div></td><td><div class="compare-table__value"><strong>$270.00</strong><span class="badge badge--warning" style="white-space: normal;">Prices may be out of date</span></div></td></tr>
+                  <tr class="compare-table__group"><th scope="rowgroup" colspan="4"><span>Cost</span></th></tr>
+                  <tr><th scope="row" class="compare-table__label">All-in, 2 hours</th><td><div class="compare-table__value"><strong>$145.00</strong></div></td><td><div class="compare-table__value"><strong>$91.00</strong><span class="badge badge--success">Lowest</span></div></td><td><div class="compare-table__value"><strong>$270.00</strong><span class="badge badge--warning">Prices may be out of date</span></div></td></tr>
                   <tr><th scope="row" class="compare-table__label">Hourly rate</th><td><div class="compare-table__value">$60.00</div></td><td><div class="compare-table__value">$45.50</div></td><td><div class="compare-table__value">$90.00</div></td></tr>
                   <tr><th scope="row" class="compare-table__label">Minimum booking</th><td><div class="compare-table__value">2 hours</div></td><td><div class="compare-table__value">2 hours</div></td><td><div class="compare-table__value">3 hours</div></td></tr>
                   <tr><th scope="row" class="compare-table__label">Mandatory fees</th><td><div class="compare-table__value">Cleaning $25.00</div></td><td><div class="compare-table__value">—</div></td><td><div class="compare-table__value">—</div></td></tr>
                   <tr><th scope="row" class="compare-table__label">Prices verified</th><td><div class="compare-table__value">22 Sep 2026</div></td><td><div class="compare-table__value">10 Aug 2026</div></td><td><div class="compare-table__value">2 Mar 2026</div></td></tr>
                 </tbody>
                 <tbody>
-                  <tr class="compare-table__group"><th scope="rowgroup" colspan="4">Space and light</th></tr>
+                  <tr class="compare-table__group"><th scope="rowgroup" colspan="4"><span>Space and light</span></th></tr>
                   <tr><th scope="row" class="compare-table__label">Usable space</th><td><div class="compare-table__value">6.1 m × 4.3 m</div></td><td><div class="compare-table__value">6.4 m × 4.9 m</div></td><td><div class="compare-table__value">9.1 m × 7.3 m</div></td></tr>
                   <tr><th scope="row" class="compare-table__label">Ceiling height</th><td><div class="compare-table__value">4.0 m</div></td><td><div class="compare-table__value">3.7 m</div></td><td><div class="compare-table__value">5.5 m</div></td></tr>
                   <tr><th scope="row" class="compare-table__label">Natural light</th><td><div class="compare-table__value"><span>Morning: Medium</span><span>Midday: Strong</span><span>Afternoon: Strong</span><span>Evening: Low</span></div></td><td><div class="compare-table__value"><span>Morning: Strong</span><span>Midday: Strong</span><span>Afternoon: Medium</span><span>Evening: Low</span></div></td><td><div class="compare-table__value"><span>Morning: None</span><span>Midday: None</span><span>Afternoon: None</span><span>Evening: None</span></div></td></tr>
                   <tr><th scope="row" class="compare-table__label">Cyc wall</th><td><div class="compare-table__value">Yes · scuffed</div></td><td><div class="compare-table__value">No</div></td><td><div class="compare-table__value">Yes · good</div></td></tr>
                 </tbody>
                 <tbody>
-                  <tr class="compare-table__group"><th scope="rowgroup" colspan="4">Gear and logistics</th></tr>
+                  <tr class="compare-table__group"><th scope="rowgroup" colspan="4"><span>Gear and logistics</span></th></tr>
                   <tr><th scope="row" class="compare-table__label">Included gear</th><td><div class="compare-table__value">2 strobes, LED panel, octabox, 2 reflectors, 4 C-stands</div></td><td><div class="compare-table__value">2 LED panels, 2 reflectors, 3 light stands</div></td><td><div class="compare-table__value">4 strobes, 2 LED panels, octabox, 2 stripboxes, beauty dish, 8 C-stands</div></td></tr>
                   <tr><th scope="row" class="compare-table__label">Parking</th><td><div class="compare-table__value">Street, paid</div></td><td><div class="compare-table__value">Street, paid</div></td><td><div class="compare-table__value">On-site, 2 spots</div></td></tr>
                   <tr><th scope="row" class="compare-table__label">Load-in</th><td><div class="compare-table__value">Freight elevator, small</div></td><td><div class="compare-table__value">Ground level</div></td><td><div class="compare-table__value">Ground level, roll-up door</div></td></tr>
                 </tbody>
                 <tbody>
-                  <tr class="compare-table__group"><th scope="rowgroup" colspan="4">Scores</th></tr>
+                  <tr class="compare-table__group"><th scope="rowgroup" colspan="4"><span>Scores</span></th></tr>
                   <tr><th scope="row" class="compare-table__label">Value</th><td><div class="compare-table__value"><span>4<span aria-hidden="true"> / 5</span><span class="visually-hidden"> out of 5</span></span></div></td><td><div class="compare-table__value"><span>5<span aria-hidden="true"> / 5</span><span class="visually-hidden"> out of 5</span></span></div></td><td><div class="compare-table__value"><span>3<span aria-hidden="true"> / 5</span><span class="visually-hidden"> out of 5</span></span></div></td></tr>
                   <tr><th scope="row" class="compare-table__label">Light</th><td><div class="compare-table__value"><span>5<span aria-hidden="true"> / 5</span><span class="visually-hidden"> out of 5</span></span></div></td><td><div class="compare-table__value"><span>5<span aria-hidden="true"> / 5</span><span class="visually-hidden"> out of 5</span></span></div></td><td><div class="compare-table__value"><span>2<span aria-hidden="true"> / 5</span><span class="visually-hidden"> out of 5</span></span></div></td></tr>
                   <tr><th scope="row" class="compare-table__label">Space</th><td><div class="compare-table__value"><span>3<span aria-hidden="true"> / 5</span><span class="visually-hidden"> out of 5</span></span></div></td><td><div class="compare-table__value"><span>3<span aria-hidden="true"> / 5</span><span class="visually-hidden"> out of 5</span></span></div></td><td><div class="compare-table__value"><span>5<span aria-hidden="true"> / 5</span><span class="visually-hidden"> out of 5</span></span></div></td></tr>
@@ -219,7 +219,7 @@
                   <tr><th scope="row" class="compare-table__label">Overall</th><td><div class="compare-table__value"><strong><span>3.8<span aria-hidden="true"> / 5</span><span class="visually-hidden"> out of 5</span></span></strong></div></td><td><div class="compare-table__value"><strong><span>4.0<span aria-hidden="true"> / 5</span><span class="visually-hidden"> out of 5</span></span></strong></div></td><td><div class="compare-table__value"><strong><span>3.8<span aria-hidden="true"> / 5</span><span class="visually-hidden"> out of 5</span></span></strong></div></td></tr>
                 </tbody>
                 <tbody>
-                  <tr class="compare-table__group"><th scope="rowgroup" colspan="4">Test shots</th></tr>
+                  <tr class="compare-table__group"><th scope="rowgroup" colspan="4"><span>Test shots</span></th></tr>
                   <tr><th scope="row" class="compare-table__label">Shot 1 · Headshot</th><td><div class="compare-table__value"><img src="../assets/img/test-the-junction-loft-1.svg" alt="The Junction Loft, test shot 1, headshot: even falloff on grey seamless." width="800" height="1000" loading="lazy"></div></td><td><div class="compare-table__value"><img src="../assets/img/test-leslieville-daylight-studio-1.svg" alt="Leslieville Daylight Studio, test shot 1, headshot: soft light, slightly warm from the windows." width="800" height="1000" loading="lazy"></div></td><td><div class="compare-table__value"><img src="../assets/img/test-ossington-blackbox-1.svg" alt="Ossington Blackbox, test shot 1, headshot: fast falloff into black." width="800" height="1000" loading="lazy"></div></td></tr>
                   <tr><th scope="row" class="compare-table__label">Shot 2 · Full length</th><td><div class="compare-table__value"><img src="../assets/img/test-the-junction-loft-2.svg" alt="The Junction Loft, test shot 2, full length: faint scuffs on the cyc behind the feet." width="800" height="1000" loading="lazy"></div></td><td><div class="compare-table__value"><img src="../assets/img/test-leslieville-daylight-studio-2.svg" alt="Leslieville Daylight Studio, test shot 2, full length: grey seamless, paper edge visible." width="800" height="1000" loading="lazy"></div></td><td><div class="compare-table__value"><img src="../assets/img/test-ossington-blackbox-2.svg" alt="Ossington Blackbox, test shot 2, full length: clean white sweep with no seams." width="800" height="1000" loading="lazy"></div></td></tr>
                   <tr><th scope="row" class="compare-table__label">Shot 3 · Product on table</th><td><div class="compare-table__value"><img src="../assets/img/test-the-junction-loft-3.svg" alt="The Junction Loft, test shot 3, product on table: clean highlight on the bottle." width="800" height="1000" loading="lazy"></div></td><td><div class="compare-table__value"><img src="../assets/img/test-leslieville-daylight-studio-3.svg" alt="Leslieville Daylight Studio, test shot 3, product on table: neutral background, soft shadow." width="800" height="1000" loading="lazy"></div></td><td><div class="compare-table__value"><img src="../assets/img/test-ossington-blackbox-3.svg" alt="Ossington Blackbox, test shot 3, product on table: deep blacks and a crisp edge highlight." width="800" height="1000" loading="lazy"></div></td></tr>
@@ -232,7 +232,7 @@
 
       <h3>Two studios, one slug not found</h3>
       <div class="ds-example">
-        <div class="ds-example__canvas ds-example__canvas--stack ds-example__canvas--canvas" style="flex-wrap: nowrap;">
+        <div class="ds-example__canvas ds-example__canvas--stack ds-example__canvas--canvas">
           <div class="alert alert--info" role="status">
             <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h0"/></svg>
             <div class="alert__body"><p>One studio in this link couldn't be found, so we're comparing the other two.</p></div>
@@ -244,12 +244,12 @@
                 <thead>
                   <tr>
                     <td class="compare-table__label"></td>
-                    <th scope="col"><img src="../assets/img/studio-the-junction-loft.svg" alt="" width="1200" height="800"><a href="../../mocks/pages/studio/default.html">The Junction Loft</a><span class="text-caption" style="display: block;">Junction</span></th>
-                    <th scope="col"><img src="../assets/img/studio-leslieville-daylight-studio.svg" alt="" width="1200" height="800"><a href="../../mocks/pages/studio/default.html">Leslieville Daylight Studio</a><span class="text-caption" style="display: block;">Leslieville</span></th>
+                    <th scope="col"><img src="../assets/img/studio-the-junction-loft.svg" alt="" width="1200" height="800"><a href="../../mocks/pages/studio/default.html">The Junction Loft</a><span class="text-caption">Junction</span></th>
+                    <th scope="col"><img src="../assets/img/studio-leslieville-daylight-studio.svg" alt="" width="1200" height="800"><a href="../../mocks/pages/studio/default.html">Leslieville Daylight Studio</a><span class="text-caption">Leslieville</span></th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr class="compare-table__group"><th scope="rowgroup" colspan="3">Cost</th></tr>
+                  <tr class="compare-table__group"><th scope="rowgroup" colspan="3"><span>Cost</span></th></tr>
                   <tr><th scope="row" class="compare-table__label">All-in, 2 hours</th><td><div class="compare-table__value"><strong>$145.00</strong></div></td><td><div class="compare-table__value"><strong>$91.00</strong><span class="badge badge--success">Lowest</span></div></td></tr>
                   <tr><th scope="row" class="compare-table__label">Hourly rate</th><td><div class="compare-table__value">$60.00</div></td><td><div class="compare-table__value">$45.50</div></td></tr>
                   <tr><th scope="row" class="compare-table__label">Minimum booking</th><td><div class="compare-table__value">2 hours</div></td><td><div class="compare-table__value">2 hours</div></td></tr>
@@ -257,7 +257,7 @@
                   <tr><th scope="row" class="compare-table__label">Prices verified</th><td><div class="compare-table__value">22 Sep 2026</div></td><td><div class="compare-table__value">10 Aug 2026</div></td></tr>
                 </tbody>
                 <tbody>
-                  <tr class="compare-table__group"><th scope="rowgroup" colspan="3">Test shots</th></tr>
+                  <tr class="compare-table__group"><th scope="rowgroup" colspan="3"><span>Test shots</span></th></tr>
                   <tr><th scope="row" class="compare-table__label">Shot 1 · Headshot</th><td><div class="compare-table__value"><img src="../assets/img/test-the-junction-loft-1.svg" alt="The Junction Loft, test shot 1, headshot: even falloff on grey seamless." width="800" height="1000" loading="lazy"></div></td><td><div class="compare-table__value"><img src="../assets/img/test-leslieville-daylight-studio-1.svg" alt="Leslieville Daylight Studio, test shot 1, headshot: soft light, slightly warm from the windows." width="800" height="1000" loading="lazy"></div></td></tr>
                   <tr><th scope="row" class="compare-table__label">Shot 2 · Full length</th><td><div class="compare-table__value"><img src="../assets/img/test-the-junction-loft-2.svg" alt="The Junction Loft, test shot 2, full length: faint scuffs on the cyc behind the feet." width="800" height="1000" loading="lazy"></div></td><td><div class="compare-table__value"><img src="../assets/img/test-leslieville-daylight-studio-2.svg" alt="Leslieville Daylight Studio, test shot 2, full length: grey seamless, paper edge visible." width="800" height="1000" loading="lazy"></div></td></tr>
                   <tr><th scope="row" class="compare-table__label">Shot 3 · Product on table</th><td><div class="compare-table__value"><img src="../assets/img/test-the-junction-loft-3.svg" alt="The Junction Loft, test shot 3, product on table: clean highlight on the bottle." width="800" height="1000" loading="lazy"></div></td><td><div class="compare-table__value"><img src="../assets/img/test-leslieville-daylight-studio-3.svg" alt="Leslieville Daylight Studio, test shot 3, product on table: neutral background, soft shadow." width="800" height="1000" loading="lazy"></div></td></tr>
@@ -270,7 +270,7 @@
 
       <h3>Four studios, from a link with six</h3>
       <div class="ds-example">
-        <div class="ds-example__canvas ds-example__canvas--stack ds-example__canvas--canvas" style="flex-wrap: nowrap;">
+        <div class="ds-example__canvas ds-example__canvas--stack ds-example__canvas--canvas">
           <div class="alert alert--info" role="status">
             <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h0"/></svg>
             <div class="alert__body"><p>You can compare up to 4 studios. We're showing the first 4 from this link.</p></div>
@@ -282,22 +282,22 @@
                 <thead>
                   <tr>
                     <td class="compare-table__label"></td>
-                    <th scope="col"><img src="../assets/img/studio-the-junction-loft.svg" alt="" width="1200" height="800"><a href="../../mocks/pages/studio/default.html">The Junction Loft</a><span class="text-caption" style="display: block;">Junction</span></th>
-                    <th scope="col"><img src="../assets/img/studio-leslieville-daylight-studio.svg" alt="" width="1200" height="800"><a href="../../mocks/pages/studio/default.html">Leslieville Daylight Studio</a><span class="text-caption" style="display: block;">Leslieville</span></th>
-                    <th scope="col"><img src="../assets/img/studio-ossington-blackbox.svg" alt="" width="1200" height="800"><a href="../../mocks/pages/studio/stale.html">Ossington Blackbox</a><span class="text-caption" style="display: block;">Ossington</span></th>
-                    <th scope="col"><img src="../assets/img/studio-liberty-cyc-house.svg" alt="" width="1200" height="800"><a href="../../mocks/pages/studio/default.html">Liberty Cyc House</a><span class="text-caption" style="display: block;">Liberty Village</span></th>
+                    <th scope="col"><img src="../assets/img/studio-the-junction-loft.svg" alt="" width="1200" height="800"><a href="../../mocks/pages/studio/default.html">The Junction Loft</a><span class="text-caption">Junction</span></th>
+                    <th scope="col"><img src="../assets/img/studio-leslieville-daylight-studio.svg" alt="" width="1200" height="800"><a href="../../mocks/pages/studio/default.html">Leslieville Daylight Studio</a><span class="text-caption">Leslieville</span></th>
+                    <th scope="col"><img src="../assets/img/studio-ossington-blackbox.svg" alt="" width="1200" height="800"><a href="../../mocks/pages/studio/stale.html">Ossington Blackbox</a><span class="text-caption">Ossington</span></th>
+                    <th scope="col"><img src="../assets/img/studio-liberty-cyc-house.svg" alt="" width="1200" height="800"><a href="../../mocks/pages/studio/default.html">Liberty Cyc House</a><span class="text-caption">Liberty Village</span></th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr class="compare-table__group"><th scope="rowgroup" colspan="5">Cost</th></tr>
-                  <tr><th scope="row" class="compare-table__label">All-in, 2 hours</th><td><div class="compare-table__value"><strong>$145.00</strong></div></td><td><div class="compare-table__value"><strong>$91.00</strong><span class="badge badge--success">Lowest</span></div></td><td><div class="compare-table__value"><strong>$270.00</strong><span class="badge badge--warning" style="white-space: normal;">Prices may be out of date</span></div></td><td><div class="compare-table__value"><strong>$185.00</strong></div></td></tr>
+                  <tr class="compare-table__group"><th scope="rowgroup" colspan="5"><span>Cost</span></th></tr>
+                  <tr><th scope="row" class="compare-table__label">All-in, 2 hours</th><td><div class="compare-table__value"><strong>$145.00</strong></div></td><td><div class="compare-table__value"><strong>$91.00</strong><span class="badge badge--success">Lowest</span></div></td><td><div class="compare-table__value"><strong>$270.00</strong><span class="badge badge--warning">Prices may be out of date</span></div></td><td><div class="compare-table__value"><strong>$185.00</strong></div></td></tr>
                   <tr><th scope="row" class="compare-table__label">Hourly rate</th><td><div class="compare-table__value">$60.00</div></td><td><div class="compare-table__value">$45.50</div></td><td><div class="compare-table__value">$90.00</div></td><td><div class="compare-table__value">$75.00</div></td></tr>
                   <tr><th scope="row" class="compare-table__label">Minimum booking</th><td><div class="compare-table__value">2 hours</div></td><td><div class="compare-table__value">2 hours</div></td><td><div class="compare-table__value">3 hours</div></td><td><div class="compare-table__value">2 hours</div></td></tr>
                   <tr><th scope="row" class="compare-table__label">Mandatory fees</th><td><div class="compare-table__value">Cleaning $25.00</div></td><td><div class="compare-table__value">—</div></td><td><div class="compare-table__value">—</div></td><td><div class="compare-table__value">Cyc touch-up $35.00</div></td></tr>
                   <tr><th scope="row" class="compare-table__label">Prices verified</th><td><div class="compare-table__value">22 Sep 2026</div></td><td><div class="compare-table__value">10 Aug 2026</div></td><td><div class="compare-table__value">2 Mar 2026</div></td><td><div class="compare-table__value">28 Apr 2026</div></td></tr>
                 </tbody>
                 <tbody>
-                  <tr class="compare-table__group"><th scope="rowgroup" colspan="5">Test shots</th></tr>
+                  <tr class="compare-table__group"><th scope="rowgroup" colspan="5"><span>Test shots</span></th></tr>
                   <tr><th scope="row" class="compare-table__label">Shot 1 · Headshot</th><td><div class="compare-table__value"><img src="../assets/img/test-the-junction-loft-1.svg" alt="The Junction Loft, test shot 1, headshot: even falloff on grey seamless." width="800" height="1000" loading="lazy"></div></td><td><div class="compare-table__value"><img src="../assets/img/test-leslieville-daylight-studio-1.svg" alt="Leslieville Daylight Studio, test shot 1, headshot: soft light, slightly warm from the windows." width="800" height="1000" loading="lazy"></div></td><td><div class="compare-table__value"><img src="../assets/img/test-ossington-blackbox-1.svg" alt="Ossington Blackbox, test shot 1, headshot: fast falloff into black." width="800" height="1000" loading="lazy"></div></td><td><div class="compare-table__value"><img src="../assets/img/test-liberty-cyc-house-1.svg" alt="Liberty Cyc House, test shot 1, headshot: even light on white." width="800" height="1000" loading="lazy"></div></td></tr>
                   <tr><th scope="row" class="compare-table__label">Shot 2 · Full length</th><td><div class="compare-table__value"><img src="../assets/img/test-the-junction-loft-2.svg" alt="The Junction Loft, test shot 2, full length: faint scuffs on the cyc behind the feet." width="800" height="1000" loading="lazy"></div></td><td><div class="compare-table__value"><img src="../assets/img/test-leslieville-daylight-studio-2.svg" alt="Leslieville Daylight Studio, test shot 2, full length: grey seamless, paper edge visible." width="800" height="1000" loading="lazy"></div></td><td><div class="compare-table__value"><img src="../assets/img/test-ossington-blackbox-2.svg" alt="Ossington Blackbox, test shot 2, full length: clean white sweep with no seams." width="800" height="1000" loading="lazy"></div></td><td><div class="compare-table__value"><img src="../assets/img/test-liberty-cyc-house-2.svg" alt="Liberty Cyc House, test shot 2, full length: seamless cyc with no visible corner." width="800" height="1000" loading="lazy"></div></td></tr>
                   <tr><th scope="row" class="compare-table__label">Shot 3 · Product on table</th><td><div class="compare-table__value"><img src="../assets/img/test-the-junction-loft-3.svg" alt="The Junction Loft, test shot 3, product on table: clean highlight on the bottle." width="800" height="1000" loading="lazy"></div></td><td><div class="compare-table__value"><img src="../assets/img/test-leslieville-daylight-studio-3.svg" alt="Leslieville Daylight Studio, test shot 3, product on table: neutral background, soft shadow." width="800" height="1000" loading="lazy"></div></td><td><div class="compare-table__value"><img src="../assets/img/test-ossington-blackbox-3.svg" alt="Ossington Blackbox, test shot 3, product on table: deep blacks and a crisp edge highlight." width="800" height="1000" loading="lazy"></div></td><td><div class="compare-table__value"><img src="../assets/img/test-liberty-cyc-house-3.svg" alt="Liberty Cyc House, test shot 3, product on table: bright, shadowless white background." width="800" height="1000" loading="lazy"></div></td></tr>
@@ -310,7 +310,7 @@
 
       <h3>Fewer than two: no table</h3>
       <div class="ds-example">
-        <div class="ds-example__canvas ds-example__canvas--stack ds-example__canvas--canvas" style="flex-wrap: nowrap;">
+        <div class="ds-example__canvas ds-example__canvas--stack ds-example__canvas--canvas">
           <div class="empty">
             <div class="empty__icon"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="4" width="7" height="16" rx="1.5"/><rect x="14" y="4" width="7" height="16" rx="1.5"/></svg></div>
             <h3 class="empty__title">Pick at least two studios to compare</h3>
@@ -363,15 +363,15 @@
       <p>The studio names keep <code>--color-fg-default</code> inside the table header (<code>.compare-table thead th a</code>); it is set inline above only because these cells sit outside a table header.</p>
       <h3>Rows in place</h3>
       <div class="ds-example">
-        <div class="ds-example__canvas ds-example__canvas--stack ds-example__canvas--canvas" style="flex-wrap: nowrap;">
+        <div class="ds-example__canvas ds-example__canvas--stack ds-example__canvas--canvas">
           <div class="table-wrap" tabindex="0" role="region" aria-labelledby="states-cap">
             <table class="table compare-table" style="--compare-cols: 3;">
               <caption class="visually-hidden" id="states-cap">Row states: The Junction Loft, Leslieville Daylight Studio and Ossington Blackbox</caption>
               <colgroup><col class="compare-table__labels"><col><col><col></colgroup>
               <tbody>
-                <tr class="compare-table__group"><th scope="rowgroup" colspan="4">Cost</th></tr>
-                <tr><th scope="row" class="compare-table__label">All-in, 2 hours</th><td><div class="compare-table__value"><strong>$145.00</strong></div></td><td><div class="compare-table__value"><strong>$91.00</strong><span class="badge badge--success">Lowest</span></div></td><td><div class="compare-table__value"><strong>$270.00</strong><span class="badge badge--warning" style="white-space: normal;">Prices may be out of date</span></div></td></tr>
-                <tr data-state="hover"><th scope="row" class="compare-table__label" style="background: var(--color-bg-subtle);">Hourly rate</th><td><div class="compare-table__value">$60.00</div></td><td><div class="compare-table__value">$45.50</div></td><td><div class="compare-table__value">$90.00</div></td></tr>
+                <tr class="compare-table__group"><th scope="rowgroup" colspan="4"><span>Cost</span></th></tr>
+                <tr><th scope="row" class="compare-table__label">All-in, 2 hours</th><td><div class="compare-table__value"><strong>$145.00</strong></div></td><td><div class="compare-table__value"><strong>$91.00</strong><span class="badge badge--success">Lowest</span></div></td><td><div class="compare-table__value"><strong>$270.00</strong><span class="badge badge--warning">Prices may be out of date</span></div></td></tr>
+                <tr data-state="hover"><th scope="row" class="compare-table__label">Hourly rate</th><td><div class="compare-table__value">$60.00</div></td><td><div class="compare-table__value">$45.50</div></td><td><div class="compare-table__value">$90.00</div></td></tr>
                 <tr><th scope="row" class="compare-table__label">Mandatory fees</th><td><div class="compare-table__value">Cleaning $25.00</div></td><td><div class="compare-table__value">—</div></td><td><div class="compare-table__value">—</div></td></tr>
               </tbody>
             </table>
@@ -389,7 +389,7 @@
       <div class="ds-themes">
         <div data-theme="light">
           <div class="table-wrap"><table class="table compare-table" style="--compare-cols: 1;"><tbody>
-            <tr class="compare-table__group"><th scope="rowgroup" colspan="2">Cost</th></tr>
+            <tr class="compare-table__group"><th scope="rowgroup" colspan="2"><span>Cost</span></th></tr>
             <tr><th scope="row" class="compare-table__label">All-in, 2 hours</th><td><div class="compare-table__value"><strong>$91.00</strong><span class="badge badge--success">Lowest</span></div></td></tr>
             <tr><th scope="row" class="compare-table__label">Mandatory fees</th><td><div class="compare-table__value">—</div></td></tr>
             <tr><th scope="row" class="compare-table__label">Prices verified</th><td><div class="compare-table__value">10 Aug 2026</div></td></tr>
@@ -397,7 +397,7 @@
         </div>
         <div data-theme="dark">
           <div class="table-wrap"><table class="table compare-table" style="--compare-cols: 1;"><tbody>
-            <tr class="compare-table__group"><th scope="rowgroup" colspan="2">Cost</th></tr>
+            <tr class="compare-table__group"><th scope="rowgroup" colspan="2"><span>Cost</span></th></tr>
             <tr><th scope="row" class="compare-table__label">All-in, 2 hours</th><td><div class="compare-table__value"><strong>$91.00</strong><span class="badge badge--success">Lowest</span></div></td></tr>
             <tr><th scope="row" class="compare-table__label">Mandatory fees</th><td><div class="compare-table__value">—</div></td></tr>
             <tr><th scope="row" class="compare-table__label">Prices verified</th><td><div class="compare-table__value">10 Aug 2026</div></td></tr>
@@ -410,8 +410,8 @@
       <ul>
         <li><b>XS to MD (below 62rem)</b>: the table keeps every column and scrolls sideways inside <code>.table-wrap</code>; the label column stays fixed at the left edge and the page itself never scrolls sideways (L2-031.4). Each studio column is at least 160px.</li>
         <li><b>LG and up (62rem)</b>: the minimum width is dropped and up to four studios fit the container without scrolling (L2-031.5). The layout is fixed (<code>table-layout: fixed</code>), so every studio column is the same width whatever its content.</li>
-        <li><b>Long values</b> wrap inside their cell ("4 strobes, 2 LED panels, octabox, 2 stripboxes, beauty dish, 8 C-stands"); badges in a cell wrap too (inline <code>white-space: normal</code> today; class rule proposed under <a href="#sources">Sources</a>).</li>
-        <li><b>Group labels</b> span the full table, so after scrolling sideways on a phone the label ("Cost") is out of view and the group row looks empty. Proposed fix under <a href="#sources">Sources</a>.</li>
+        <li><b>Long values</b> wrap inside their cell ("4 strobes, 2 LED panels, octabox, 2 stripboxes, beauty dish, 8 C-stands"); badges in a cell wrap too (<code>.compare-table .badge</code>).</li>
+        <li><b>Group labels</b> span the full table, so the label ("Cost") sits in a <code>&lt;span&gt;</code> that <code>.compare-table__group th &gt; span</code> makes sticky at <code>left: var(--space-3)</code>; after scrolling sideways on a phone it stays in view.</li>
         <li>The page header's Copy link and Change studios wrap below the title on phones, as every page header does.</li>
       </ul>
       <div class="ds-iframes">
@@ -493,8 +493,8 @@
         <figure class="ds-dont"><div class="ds-example__canvas"><table class="table compare-table" style="--compare-cols: 1;"><tbody><tr><th scope="row" class="compare-table__label">Mandatory fees</th><td><div class="compare-table__value"></div></td></tr></tbody></table></div><figcaption>An empty cell: it reads as a rendering fault and a screen reader says "blank" (L2-031.3).</figcaption></figure>
         <figure class="ds-do"><div class="ds-example__canvas"><table class="table compare-table" style="--compare-cols: 1;"><tbody><tr><th scope="row" class="compare-table__label">All-in, 2 hours</th><td><div class="compare-table__value"><strong>$91.00</strong><span class="badge badge--success">Lowest</span></div></td></tr></tbody></table></div><figcaption>"Lowest" in words, in a success badge.</figcaption></figure>
         <figure class="ds-dont"><div class="ds-example__canvas"><table class="table compare-table" style="--compare-cols: 1;"><tbody><tr><th scope="row" class="compare-table__label">All-in, 2 hours</th><td><div class="compare-table__value"><strong style="color: var(--color-success-fg);">$91.00</strong></div></td></tr></tbody></table></div><figcaption>The lowest price in green only: invisible to anyone who cannot tell the colours apart (WCAG 1.4.1).</figcaption></figure>
-        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--stack" style="flex-wrap: nowrap;"><div class="table-wrap" tabindex="0" role="region" aria-label="Three studios at phone width, scrolling" style="max-width: 20.5rem;"><table class="table compare-table" style="--compare-cols: 3; min-width: 39rem;"><thead><tr><td class="compare-table__label"></td><th scope="col"><a href="../../mocks/pages/studio/default.html">The Junction Loft</a></th><th scope="col"><a href="../../mocks/pages/studio/default.html">Leslieville Daylight Studio</a></th><th scope="col"><a href="../../mocks/pages/studio/stale.html">Ossington Blackbox</a></th></tr></thead><tbody><tr><th scope="row" class="compare-table__label">All-in, 2 hours</th><td><div class="compare-table__value"><strong>$145.00</strong></div></td><td><div class="compare-table__value"><strong>$91.00</strong></div></td><td><div class="compare-table__value"><strong>$270.00</strong></div></td></tr></tbody></table></div></div><figcaption>At phone width the table keeps 160px studio columns and scrolls inside <code>.table-wrap</code>, the labels pinned (the 39rem minimum is forced here to show a 328px phone wrapper).</figcaption></figure>
-        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--stack" style="flex-wrap: nowrap;"><div class="table-wrap" style="max-width: 20.5rem;"><table class="table compare-table" style="--compare-cols: 3; min-width: 0;"><thead><tr><td class="compare-table__label"></td><th scope="col"><a href="../../mocks/pages/studio/default.html">The Junction Loft</a></th><th scope="col"><a href="../../mocks/pages/studio/default.html">Leslieville Daylight Studio</a></th><th scope="col"><a href="../../mocks/pages/studio/stale.html">Ossington Blackbox</a></th></tr></thead><tbody><tr><th scope="row" class="compare-table__label">All-in, 2 hours</th><td><div class="compare-table__value"><strong>$145.00</strong></div></td><td><div class="compare-table__value"><strong>$91.00</strong></div></td><td><div class="compare-table__value"><strong>$270.00</strong></div></td></tr></tbody></table></div></div><figcaption>Overriding the minimum to squeeze three studios into 328px: names wrap onto three lines and the last one is clipped. Hiding a column instead would break "the same studios as the link" (L2-032.1).</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--stack"><div class="table-wrap" tabindex="0" role="region" aria-label="Three studios at phone width, scrolling" style="max-width: 20.5rem;"><table class="table compare-table" style="--compare-cols: 3; min-width: 39rem;"><thead><tr><td class="compare-table__label"></td><th scope="col"><a href="../../mocks/pages/studio/default.html">The Junction Loft</a></th><th scope="col"><a href="../../mocks/pages/studio/default.html">Leslieville Daylight Studio</a></th><th scope="col"><a href="../../mocks/pages/studio/stale.html">Ossington Blackbox</a></th></tr></thead><tbody><tr><th scope="row" class="compare-table__label">All-in, 2 hours</th><td><div class="compare-table__value"><strong>$145.00</strong></div></td><td><div class="compare-table__value"><strong>$91.00</strong></div></td><td><div class="compare-table__value"><strong>$270.00</strong></div></td></tr></tbody></table></div></div><figcaption>At phone width the table keeps 160px studio columns and scrolls inside <code>.table-wrap</code>, the labels pinned (the 39rem minimum is forced here to show a 328px phone wrapper).</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--stack"><div class="table-wrap" style="max-width: 20.5rem;"><table class="table compare-table" style="--compare-cols: 3; min-width: 0;"><thead><tr><td class="compare-table__label"></td><th scope="col"><a href="../../mocks/pages/studio/default.html">The Junction Loft</a></th><th scope="col"><a href="../../mocks/pages/studio/default.html">Leslieville Daylight Studio</a></th><th scope="col"><a href="../../mocks/pages/studio/stale.html">Ossington Blackbox</a></th></tr></thead><tbody><tr><th scope="row" class="compare-table__label">All-in, 2 hours</th><td><div class="compare-table__value"><strong>$145.00</strong></div></td><td><div class="compare-table__value"><strong>$91.00</strong></div></td><td><div class="compare-table__value"><strong>$270.00</strong></div></td></tr></tbody></table></div></div><figcaption>Overriding the minimum to squeeze three studios into 328px: names wrap onto three lines and the last one is clipped. Hiding a column instead would break "the same studios as the link" (L2-032.1).</figcaption></figure>
       </div>
     </section>
 
@@ -534,7 +534,7 @@
       &lt;/tr&gt;
     &lt;/thead&gt;
     &lt;tbody&gt;
-      &lt;tr class="compare-table__group"&gt;&lt;th scope="rowgroup" colspan="4"&gt;Cost&lt;/th&gt;&lt;/tr&gt;
+      &lt;tr class="compare-table__group"&gt;&lt;th scope="rowgroup" colspan="4"&gt;&lt;span&gt;Cost&lt;/span&gt;&lt;/th&gt;&lt;/tr&gt;
       &lt;tr&gt;
         &lt;th scope="row" class="compare-table__label"&gt;All-in, 2 hours&lt;/th&gt;
         &lt;td&gt;&lt;div class="compare-table__value"&gt;&lt;strong&gt;$145.00&lt;/strong&gt;&lt;/div&gt;&lt;/td&gt;
@@ -568,14 +568,14 @@
         <li><a href="../../mocks/pages/compare/empty.html">pages/compare/empty</a> (fewer than two: empty state)</li>
         <li><a href="../../mocks/notifications/public-toast/success.html">notifications/public-toast/success</a> and <a href="../../mocks/notifications/public-toast/danger.html">notifications/public-toast/danger</a> (Copy link)</li>
       </ul>
-      <p>Drift found during extraction (the CSS was not changed; each proposal is in the extraction report):</p>
+      <p>Drift found during extraction. The CSS ones are fixed in <code>components.css</code>; the mocks still carry their inline styles:</p>
       <ul>
-        <li><b>Group rows never get their fill.</b> <code>.table tbody th</code> (0,1,2) outranks <code>.compare-table__group th</code> (0,1,1), so the sunken background and the 16px label type lose to <code>background: none</code> and the small row-header type; group rows render as plain rows in every compare mock and in the examples on this page, and turn sunken only on hover, where <code>.compare-table__group:hover th</code> (0,2,1) happens to win. Proposed: raise the base selector to <code>.compare-table .compare-table__group th</code>.</li>
-        <li><b>Inline badge wrapping.</b> Every compare mock sets <code>style="white-space: normal;"</code> on the stale badge. Proposed: <code>.compare-table .badge { white-space: normal; }</code>.</li>
-        <li><b>Inline caption display.</b> Every studio header sets <code>style="display: block;"</code> on the neighbourhood caption. Proposed: <code>.compare-table thead .text-caption { display: block; }</code>.</li>
+        <li><b>Group rows never get their fill.</b> <code>.table tbody th</code> (0,1,2) outranks <code>.compare-table__group th</code> (0,1,1), so the sunken background and the 16px label type lose to <code>background: none</code> and the small row-header type; group rows rendered as plain rows in every compare mock, and turned sunken only on hover, where <code>.compare-table__group:hover th</code> (0,2,1) happened to win. Fixed: the base selector is now <code>.compare-table .compare-table__group th</code>.</li>
+        <li><b>Inline badge wrapping.</b> Every compare mock sets <code>style="white-space: normal;"</code> on the stale badge. Fixed: <code>.compare-table .badge { white-space: normal; }</code> does it, so the examples here drop the inline style.</li>
+        <li><b>Inline caption display.</b> Every studio header sets <code>style="display: block;"</code> on the neighbourhood caption. Fixed: <code>.compare-table thead .text-caption { display: block; }</code> does it, so the examples here drop the inline style.</li>
         <li><b>Scroll region missing.</b> The mocks' <code>.table-wrap</code> has no <code>tabindex</code>, role or label, so keyboard users without a header link in view cannot scroll it. Resolution: <code>tabindex="0" role="region" aria-labelledby="&lt;caption id&gt;"</code>, as on the <a href="table.html">table</a> page; used in the examples here.</li>
-        <li><b>Group label scrolls away.</b> At 360px, after scrolling sideways the full-width group cell's text is off-screen (checked in pages/compare/default). Proposed: wrap the label in a span and add <code>.compare-table__group th &gt; span { position: sticky; left: var(--space-3); }</code>.</li>
-        <li><b>No static hover hook for the label cell.</b> <code>.compare-table tbody tr:hover .compare-table__label</code> has no <code>tr[data-state="hover"]</code> twin, so a forced hover row keeps a white label. Proposed: add <code>.compare-table tbody tr[data-state="hover"] .compare-table__label</code> to that rule.</li>
+        <li><b>Group label scrolls away.</b> At 360px, after scrolling sideways the full-width group cell's text was off-screen (checked in pages/compare/default). Fixed: <code>.compare-table__group th &gt; span { position: sticky; left: var(--space-3); }</code>; the label goes in a <code>&lt;span&gt;</code>, as in the examples here. The mocks still need the span.</li>
+        <li><b>No static hover hook for the label cell.</b> <code>.compare-table tbody tr:hover .compare-table__label</code> had no <code>tr[data-state="hover"]</code> twin, so a forced hover row kept a white label. Fixed: <code>.compare-table tbody tr[data-state="hover"] .compare-table__label</code> is part of that rule.</li>
         <li><b>Alert spacing inline.</b> pages/compare/over-limit and unknown-slug set <code>style="margin-bottom: var(--space-6);"</code> on the alert. Resolution: page layout, not this component; a <code>.stack</code> around the alert and table would remove it.</li>
         <li><b>Copy link is a link in the mock</b> (<code>&lt;a class="btn" href="…toast"&gt;</code>) only so the mock can navigate to its toast; in the product it is a <code>&lt;button type="button"&gt;</code> because it acts and does not navigate.</li>
         <li><b>Metric only.</b> Usable space and ceiling height omit the imperial in brackets that the content rules ask for elsewhere ("6.1 m × 4.3 m (20 ft × 14 ft)"), presumably to fit 160px columns. Recorded for a content decision.</li>

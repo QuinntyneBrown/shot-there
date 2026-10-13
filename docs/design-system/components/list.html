@@ -322,7 +322,7 @@
       </table></div>
       <ul>
         <li><b>Selected</b> (<code>aria-selected="true"</code> or <code>data-state="selected"</code>) fills the row with <code>--color-accent-subtle</code>. Only use <code>aria-selected</code> on a row with <code>role="option"</code> inside a <code>role="listbox"</code>; a list of links shows "you are here" with <code>aria-current</code> instead.</li>
-        <li><b>Current</b> (<code>aria-current="page"</code>) is announced but has no visual treatment in the stylesheet yet; the menu row for the current screen looks like the others. A style is proposed (see Sources).</li>
+        <li><b>Current</b> (<code>aria-current="page"</code>) is announced, and <code>.section-link[aria-current="page"]</code> marks it with a 2px accent bar on the left edge and an accent title, so the menu row for the current screen stands out without relying on colour alone.</li>
         <li><b>Loading</b> admin rows use <code>.admin-row--skeleton</code>: a title bar at 40%, a meta bar at 25% and a button-sized block (44px tall on phones, 36px from 48rem). The busy region around them carries <code>aria-busy="true"</code> and a hidden status message.</li>
         <li><b>Empty</b> lists are not drawn. "Everything is up to date" replaces the re-verification list (a compact success <a href="empty-state.html">empty state</a>); a spot with no studio nearby shows a sentence instead of a rain backup list.</li>
       </ul>
@@ -389,7 +389,7 @@
         <div class="ds-pair"><span>Focus ring in the sheet</span><span class="ds-pair__ratio" data-contrast="--color-focus-ring|--color-bg-surface-raised" data-min="3"></span></div>
         <div class="ds-pair"><span>Focus ring on a hovered row</span><span class="ds-pair__ratio" data-contrast="--color-focus-ring|--color-bg-subtle" data-min="3"></span></div>
       </div>
-      <p>Dividers (<code>--color-border-default</code>) separate rows but mark no control, so they are decorative under 1.4.11. Meta on a selected row (<code>--color-fg-muted</code> on <code>--color-accent-subtle</code>) has no declared pair yet; keep selected rows to a title until it is added.</p>
+      <p>Dividers (<code>--color-border-default</code>) separate rows but mark no control, so they are decorative under 1.4.11. Meta on a selected row (<code>--color-fg-muted</code> on <code>--color-accent-subtle</code>) is a checked pair in <code>contrast-pairs.json</code>.</p>
       <h3>Motion</h3>
       <p>Hover fills change instantly; only the admin row skeleton shimmers, and that stops under <code>prefers-reduced-motion</code>.</p>
       <h3>Touch</h3>
@@ -471,7 +471,7 @@
         <tr><td><code>.section-list</code> · <code>.section-link</code></td><td>Top-ruled list of 72px full-row links with a sunken hover.</td></tr>
         <tr><td><code>.section-link__body</code> · <code>__title</code> · <code>__meta</code></td><td>Title over one line of description.</td></tr>
         <tr><td><code>[data-highlight]</code> · <code>.section-link__meta--error</code></td><td>Meta in danger red for a section that needs attention.</td></tr>
-        <tr><td><code>aria-current="page"</code></td><td>Marks the menu row for the current screen (announced; no visual yet).</td></tr>
+        <tr><td><code>aria-current="page"</code></td><td>Marks the menu row for the current screen: announced, with an accent bar and accent title on <code>.section-link</code>.</td></tr>
         <tr><td><code>data-state="hover|focus|active"</code></td><td>Documentation and mocks only.</td></tr>
       </tbody></table></div>
     </section>
@@ -488,9 +488,9 @@
       <p>Drift found during extraction:</p>
       <ul>
         <li>The admin menu writes counts as "7 published · 2 drafts" while the dashboard and L2-053.1 say "7 published, 2 draft". The example above copies the mock; the menu should use the dashboard wording.</li>
-        <li><code>aria-current="page"</code> on the menu's Dashboard row has no visual style, so sighted users can't see where they are. A rule is proposed: an accent bar and accent title on <code>.section-link[aria-current="page"]</code>.</li>
-        <li><code>.list__item:last-child</code> removes the divider from every full-row link, because each <code>&lt;a&gt;</code> is the last child of its own <code>&lt;li&gt;</code>. A fix targeting <code>.list &gt; li:last-child &gt; .list__item</code> is proposed; until then full-row lists show no dividers above 48rem.</li>
-        <li>The missing-fields dialog styles its list inline (<code>padding-left</code>, <code>display: grid</code>); it is prose, not a list component, and stays as it is.</li>
+        <li><code>aria-current="page"</code> on the menu's Dashboard row had no visual style, so sighted users couldn't see where they were. Fixed: <code>.section-link[aria-current="page"]</code> adds an accent bar and accent title.</li>
+        <li><code>.list__item:last-child</code> removed the divider from every full-row link, because each <code>&lt;a&gt;</code> is the last child of its own <code>&lt;li&gt;</code>. Fixed: <code>.list &gt; li:not(:last-child) &gt; .list__item</code> puts the divider back and <code>.list &gt; li:last-child &gt; .list__item</code> drops it only from the last row, so full-row lists show their dividers at every width.</li>
+        <li>The missing-fields dialog styles its list inline (<code>padding-left</code>, <code>display: grid</code>); it is prose, not a list component. <code>.dialog__body ul</code> now sets that spacing, so the inline style can go.</li>
       </ul>
     </section>
 

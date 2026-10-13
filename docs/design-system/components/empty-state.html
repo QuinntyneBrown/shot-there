@@ -244,14 +244,19 @@
             <p class="empty__text">When we've shot in studios nearby, the closest three will show here.</p>
             <div class="empty__actions"><a class="btn" href="../../mocks/pages/studios/empty.html">Browse studios</a></div>
           </div>
-          <div class="empty empty--compact empty--error" style="background: var(--color-bg-surface-raised); border-radius: var(--radius-lg); box-shadow: var(--shadow-3); max-width: 24rem;">
-            <div class="empty__icon"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16h.01"/></svg></div>
-            <h4 class="empty__title">We couldn't load the locations</h4>
-            <p class="empty__text">The map is here, but the studio and spot data didn't arrive. Try again in a moment.</p>
-            <div class="empty__actions"><button class="btn" type="button"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.3-5.6"/><path d="M20 4v5h-5"/></svg>Try again</button><a class="btn btn--ghost" href="../../mocks/pages/studios/default.html">Browse studios</a></div>
+          <div class="static-map" style="flex: 1 1 18rem; height: 30rem;">
+            <img class="static-map__tiles" src="../assets/img/map-toronto.svg" alt="" width="1600" height="1000">
+            <div class="static-map__overlay">
+              <div class="empty empty--compact empty--error">
+                <div class="empty__icon"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16h.01"/></svg></div>
+                <h4 class="empty__title">We couldn't load the locations</h4>
+                <p class="empty__text">The map is here, but the studio and spot data didn't arrive. Try again in a moment.</p>
+                <div class="empty__actions"><button class="btn" type="button"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.3-5.6"/><path d="M20 4v5h-5"/></svg>Try again</button><a class="btn btn--ghost" href="../../mocks/pages/studios/default.html">Browse studios</a></div>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="ds-example__caption"><span>A spot page's Rain backup section before any studio is published (L2-038), and the map's error card floating over the map tiles.</span></div>
+        <div class="ds-example__caption"><span>A spot page's Rain backup section before any studio is published (L2-038), and the map's error card floating over the map tiles (<code>.static-map__overlay</code> centres it and gives it its raised card).</span></div>
       </div>
       <p><code>.empty--info</code> is still in the stylesheet but no ShotThere screen uses it; a neutral empty state uses the default stone circle.</p>
     </section>
@@ -304,12 +309,12 @@
       </table></div>
       <h3>Both themes</h3>
       <div class="ds-themes">
-        <div data-theme="light"><div class="ds-example__canvas ds-example__canvas--stack" style="flex-wrap: nowrap; padding: 0;">
+        <div data-theme="light"><div class="ds-example__canvas ds-example__canvas--stack" style="padding: 0;">
           <div class="empty empty--compact"><div class="empty__icon"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3 6 12h4l-4 6h12l-4-6h4z"/><path d="M12 18v3"/></svg></div><p class="empty__title">No outdoor spots yet</p><p class="empty__text">The first spots are being scouted and shot now. Studio reviews are already up.</p></div>
           <div class="empty empty--compact empty--error"><div class="empty__icon"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16h.01"/></svg></div><p class="empty__title">We couldn't load the dashboard</p><p class="empty__text">Your content is safe. Check your connection, then try again.</p></div>
           <div class="empty empty--compact empty--success"><div class="empty__icon"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg></div><p class="empty__title">Everything is up to date</p></div>
         </div></div>
-        <div data-theme="dark"><div class="ds-example__canvas ds-example__canvas--stack" style="flex-wrap: nowrap; padding: 0;">
+        <div data-theme="dark"><div class="ds-example__canvas ds-example__canvas--stack" style="padding: 0;">
           <div class="empty empty--compact"><div class="empty__icon"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3 6 12h4l-4 6h12l-4-6h4z"/><path d="M12 18v3"/></svg></div><p class="empty__title">No outdoor spots yet</p><p class="empty__text">The first spots are being scouted and shot now. Studio reviews are already up.</p></div>
           <div class="empty empty--compact empty--error"><div class="empty__icon"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16h.01"/></svg></div><p class="empty__title">We couldn't load the dashboard</p><p class="empty__text">Your content is safe. Check your connection, then try again.</p></div>
           <div class="empty empty--compact empty--success"><div class="empty__icon"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg></div><p class="empty__title">Everything is up to date</p></div>
@@ -349,7 +354,7 @@
       <h3>Labelling</h3>
       <p>The title is a real heading at the right level: <code>h3</code> under the visually hidden "Results" <code>h2</code> in the lists, <code>h2</code> on admin pages, compare, guides and the map, <code>h1</code> when the editor has nothing else to show. Icons are decorative. Try again names what it retries through the title above it; it needs no hidden text.</p>
       <h3>Contrast</h3>
-      <div class="ds-example__canvas ds-example__canvas--stack" style="flex-wrap: nowrap; padding: 0; gap: var(--space-2);">
+      <div class="ds-example__canvas ds-example__canvas--stack" style="padding: 0; gap: var(--space-2);">
         <div class="ds-pair"><span>Neutral icon on its circle</span><span class="ds-pair__ratio" data-contrast="--color-fg-default|--color-bg-subtle" data-min="3"></span></div>
         <div class="ds-pair"><span>Error icon on its circle</span><span class="ds-pair__ratio" data-contrast="--color-danger-icon|--color-danger-bg" data-min="3"></span></div>
         <div class="ds-pair"><span>Success icon on its circle</span><span class="ds-pair__ratio" data-contrast="--color-success-icon|--color-success-bg" data-min="3"></span></div>

@@ -112,7 +112,7 @@
       <h1>Theming</h1>
       <p class="ds-lead">ShotThere ships a light theme and a dark theme from one set of semantic tokens. A theme changes what the roles resolve to; components never know which theme they are in, and the photos, map tiles and episode posters never change at all.</p>
       <div class="ds-meta"><span class="ds-pill ds-pill--ok">WCAG 2.2 AA</span><span class="ds-pill">Light and dark</span><span class="ds-pill">3 token tiers</span><span class="ds-pill">DTCG <code>tokens.json</code></span></div>
-      <ul class="ds-toc"><li><a href="#overview">Overview</a></li><li><a href="#switching">How themes apply</a></li><li><a href="#tiers">Token tiers</a></li><li><a href="#dark">Dark is not inverted</a></li><li><a href="#media">Photos and map tiles</a></li><li><a href="#preferences">Contrast and forced colours</a></li><li><a href="#adding">Adding a theme</a></li><li><a href="#tokens-json">Consuming tokens.json</a></li><li><a href="#usage">Usage</a></li><li><a href="#accessibility">Accessibility</a></li><li><a href="#tokens">Tokens</a></li></ul>
+      <ul class="ds-toc"><li><a href="#overview">Overview</a></li><li><a href="#switching">How themes apply</a></li><li><a href="#tiers">Token tiers</a></li><li><a href="#dark">Dark is not inverted</a></li><li><a href="#media">Photos and map tiles</a></li><li><a href="#preferences">Contrast and forced colours</a></li><li><a href="#adding">Adding a theme</a></li><li><a href="#tokens-json">Consuming tokens.json</a></li><li><a href="#usage">Usage</a></li><li><a href="#accessibility">Accessibility</a></li><li><a href="#key-tokens">Key tokens in both themes</a></li><li><a href="#tokens">Tokens</a></li></ul>
     </header>
 
     <section class="ds-section" id="overview"><h2><a href="#overview">Overview</a></h2>
@@ -253,7 +253,7 @@
           <tr><td>Location card, review hero, test shots, gallery, sample shots, lightbox</td><td>The photo</td><td>The slot behind it (<code>--color-bg-photo</code>), the name and metadata, the lightbox canvas</td></tr>
           <tr><td>Map (studio list map, spot map, map page)</td><td>The tiles</td><td>Markers (studio: <code>--color-action</code> square; spot: surface circle with an ink ring), the 2px <code>--color-bg-surface</code> halo that keeps markers apart from any tile colour, the legend card, the popup, "The map didn't load"</td></tr>
           <tr><td>Episode poster</td><td>The poster frame</td><td>The "Play episode" pill (<code>--color-action</code>), the letterbox behind the poster (<code>--color-bg-inverse</code>)</td></tr>
-          <tr><td>Image that failed to load</td><td>–</td><td><code>.media-fallback</code> shows the alt text on the sunken surface in both themes (L2-086.1)</td></tr>
+          <tr><td>Image that failed to load</td><td>–</td><td><code>.media-fallback</code> shows the alt text on <code>--color-bg-photo</code> in both themes (L2-086.1)</td></tr>
           <tr><td>Image manager thumbnail</td><td>The uploaded photo</td><td>Its slot; an uploading thumbnail is shown at 50% opacity as a state, not a theme effect</td></tr>
         </tbody>
       </table></div>
@@ -349,8 +349,8 @@
       </ul>
     </section>
 
-    <section class="ds-section" id="tokens"><h2><a href="#tokens">Tokens</a></h2>
-      <p>Theming has no tokens of its own. The themed tokens are the semantic colours (<code>--color-*</code>), documented on <a href="color.html">Color</a>, and the shadows (<code>--shadow-color</code>, <code>--shadow-1</code> to <code>--shadow-4</code>), documented on <a href="elevation.html">Elevation</a>. The roles this page leans on, resolved live in each theme:</p>
+    <section class="ds-section" id="key-tokens"><h2><a href="#key-tokens">Key tokens in both themes</a></h2>
+      <p>The roles that change most between themes, side by side. Each is owned and fully documented on <a href="color.html#tokens">Color</a>.</p>
       <div class="ds-table-wrap"><table class="ds-table">
         <thead><tr><th scope="col">Role</th><th scope="col">Token</th><th scope="col">Light</th><th scope="col">Dark</th></tr></thead>
         <tbody>
@@ -365,6 +365,10 @@
         </tbody>
       </table></div>
       <p>Sources: every mock in both themes, in particular <a href="../../mocks/pages/studio/default.html">pages/studio/default</a>, <a href="../../mocks/pages/map/default.html">pages/map/default</a>, <a href="../../mocks/pages/compare/default.html">pages/compare/default</a> and <a href="../../mocks/notifications/public-toast/success.html">notifications/public-toast/success</a>. Drift found: none; no mock filters a photo or tile in either theme.</p>
+    </section>
+
+    <section class="ds-section" id="tokens"><h2><a href="#tokens">Tokens</a></h2>
+      <p>Theming has no tokens of its own. The themed tokens are the semantic colours (<code>--color-*</code>), documented on <a href="color.html">Color</a>, and the shadows (<code>--shadow-color</code>, <code>--shadow-1</code> to <code>--shadow-4</code>), documented on <a href="elevation.html">Elevation</a>. The roles this page leans on, resolved live in each theme:</p>
     </section>
 
     <footer class="ds-footer"><span>ShotThere design system · extracted from <a href="../../mocks/index.html">docs/mocks</a> on 13 October 2026</span><a href="#top">Back to top</a></footer>

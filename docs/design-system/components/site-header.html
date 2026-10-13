@@ -150,7 +150,7 @@
           <li><div><b>Wordmark</b><small>"ShotThere" in <code>--text-wordmark</code> (bold, <code>--font-size-2xl</code>), <code>--color-fg-default</code>. A link to the home page (public) or the dashboard (admin), at least 44px tall.</small></div></li>
           <li><div><b>Area tag</b><small><code>.wordmark__tag</code>: "Toronto" on public pages, "Admin" on admin screens. <code>--text-label</code> in <code>--color-fg-muted</code> inside a hairline pill. Part of the wordmark link's name ("ShotThere Toronto"). Hidden below 24rem.</small></div></li>
           <li><div><b>Current link</b><small><code>.site-nav__link[aria-current="page"]</code>: <code>--color-fg-default</code>, semibold. Weight, not colour alone, marks it.</small></div></li>
-          <li><div><b>Nav links</b><small><code>.site-nav__link.site-nav__extra</code> in <code>--text-nav</code>, <code>--color-fg-muted</code>, 44px tall, <code>--space-3</code> side padding. Shown from 48rem; below it they move into the site menu.</small></div></li>
+          <li><div><b>Nav links</b><small><code>.site-nav__link.site-nav__extra</code> in <code>--text-nav</code>, <code>--color-fg-muted</code>, 44px tall, <code>--space-3</code> side padding (<code>--space-2</code> at MD, 48–62rem, so the admin header fits 768px). Shown from 48rem; below it they move into the site menu.</small></div></li>
           <li><div><b>Menu button (XS and SM only)</b><small><code>.btn.btn--ghost.site-nav__menu</code> with the three-line icon and the word "Menu". Opens <a href="../../mocks/dialogs/site-menu/default.html">dialogs/site-menu</a>. Hidden from 48rem, so it is not visible in this figure; see <a href="#responsive">Responsive behaviour</a>.</small></div></li>
         </ol>
       </div>
@@ -395,7 +395,7 @@
         <tr><td><code>.wordmark</code></td><td>The bold ink name; 44px tall link.</td></tr>
         <tr><td><code>.wordmark__tag</code></td><td>"Toronto" or "Admin" in a hairline pill; hidden below 24rem.</td></tr>
         <tr><td><code>.site-nav</code></td><td>Pushed to the right edge; 4px gaps, 8px on phones.</td></tr>
-        <tr><td><code>.site-nav__link</code></td><td>Muted text link, 44px tall; ink on hover.</td></tr>
+        <tr><td><code>.site-nav__link</code></td><td>Muted text link, 44px tall; ink on hover. Side padding narrows to <code>--space-2</code> between 48rem and 62rem.</td></tr>
         <tr><td><code>.site-nav__extra</code></td><td>Hidden below 48rem; inline from 48rem. Put it on every link and on the Sign out form.</td></tr>
         <tr><td><code>.site-nav__menu</code></td><td>Shown below 48rem only. Goes on the ghost Menu button.</td></tr>
         <tr><td><code>aria-current="page"</code></td><td>Current section: ink and semibold.</td></tr>
@@ -419,7 +419,7 @@
       <ul>
         <li>All 119 mocks with a Menu trigger use <code>&lt;a href="…/site-menu/…"&gt;</code> with <code>aria-haspopup</code> and <code>aria-expanded</code>, because static mocks can only link to the open state. The system specifies a <code>&lt;button type="button"&gt;</code>.</li>
         <li>The public site menu (<a href="../../mocks/dialogs/site-menu/default.html">dialogs/site-menu/default</a>) marks no link current; the admin menu marks Dashboard. The system puts <code>aria-current="page"</code> in both.</li>
-        <li>At exactly 768px (the first MD width) the admin header is 1px wider than the viewport (six items plus "ShotThere Admin"); a narrower link padding between 48rem and 62rem is proposed as a CSS fix. The 16 admin dialog mocks (delete, unpublish, discard and others) also leave the Menu button out of the inert header behind the dialog; the header is the same as on the page underneath.</li>
+        <li>At exactly 768px (the first MD width) the admin header was 1px wider than the viewport (six items plus "ShotThere Admin"); fixed in <code>components.css</code> with <code>--space-2</code> link padding between 48rem and 62rem. The 16 admin dialog mocks (delete, unpublish, discard and others) also leave the Menu button out of the inert header behind the dialog; the header is the same as on the page underneath.</li>
         <li>L2-064.2 asks for "an accessible disclosure"; every mock opens a modal sheet dialog instead. The system follows the mocks (focus trapped, page inert, Escape closes) and this is listed as an open question.</li>
       </ul>
     </section>

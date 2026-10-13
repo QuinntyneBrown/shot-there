@@ -159,7 +159,7 @@
       <h3>Shapes</h3>
       <p>Four shape modifiers on <code>.skeleton</code>. Width is set by the composite (card, row, tile) or by an inline width on the placeholder; height comes from the shape or the box it fills.</p>
       <div class="ds-example">
-        <div class="ds-example__canvas ds-example__canvas--stack" style="flex-wrap: nowrap; max-width: 28rem;">
+        <div class="ds-example__canvas ds-example__canvas--stack" style="max-width: 28rem;">
           <span class="skeleton skeleton--title" aria-hidden="true"></span>
           <span class="skeleton skeleton--text" aria-hidden="true" style="width: 85%;"></span>
           <span class="skeleton skeleton--text" aria-hidden="true"></span>
@@ -176,7 +176,7 @@
       <h3>Studio and spot cards</h3>
       <p>The results list goes busy, the grid itself is hidden from assistive technology, and the result count turns into the status line "Loading studios…". Filters and sort stay usable.</p>
       <div class="ds-example">
-        <div class="ds-example__canvas ds-example__canvas--stack" style="flex-wrap: nowrap;">
+        <div class="ds-example__canvas ds-example__canvas--stack">
           <section class="browse__results" aria-label="Results, loading" aria-busy="true">
             <p class="result-count" role="status" style="margin-bottom: var(--space-6);">Loading studios…</p>
             <ul class="location-grid" aria-hidden="true">
@@ -203,7 +203,7 @@
 
       <h3>Map list and map area</h3>
       <div class="ds-example">
-        <div class="ds-example__canvas ds-example__canvas--stack" style="flex-wrap: nowrap; max-width: 40rem;">
+        <div class="ds-example__canvas ds-example__canvas--stack" style="max-width: 40rem;">
           <ul class="location-grid" aria-hidden="true" style="grid-template-columns: minmax(0, 1fr); gap: var(--space-6);">
             <li class="map-list-item location-card--skeleton"><div class="location-card__media"><span class="skeleton skeleton--rect"></span></div><span class="skeleton skeleton--title"></span><span class="skeleton skeleton--text"></span><span class="skeleton skeleton--text"></span></li>
             <li class="map-list-item location-card--skeleton"><div class="location-card__media"><span class="skeleton skeleton--rect"></span></div><span class="skeleton skeleton--title"></span><span class="skeleton skeleton--text"></span><span class="skeleton skeleton--text"></span></li>
@@ -225,7 +225,7 @@
 
       <h3>Admin rows and table rows</h3>
       <div class="ds-example">
-        <div class="ds-example__canvas ds-example__canvas--stack" style="flex-wrap: nowrap;">
+        <div class="ds-example__canvas ds-example__canvas--stack">
           <ul class="admin-list" aria-hidden="true">
             <li class="admin-row admin-row--skeleton"><div class="admin-row__body"><span class="skeleton skeleton--title"></span><span class="skeleton skeleton--text"></span></div><span class="skeleton skeleton--rect"></span></li>
             <li class="admin-row admin-row--skeleton"><div class="admin-row__body"><span class="skeleton skeleton--title"></span><span class="skeleton skeleton--text"></span></div><span class="skeleton skeleton--rect"></span></li>
@@ -249,11 +249,11 @@
 
       <h3>Dashboard tiles</h3>
       <div class="ds-example">
-        <div class="ds-example__canvas ds-example__canvas--stack" style="flex-wrap: nowrap;">
+        <div class="ds-example__canvas ds-example__canvas--stack">
           <ul class="stat-grid" aria-hidden="true">
-            <li class="stat-tile"><span class="skeleton skeleton--title"></span><span class="skeleton skeleton--text" style="width: 70%;"></span><span class="skeleton skeleton--pill" style="width: 8rem; height: var(--control-height-md);"></span></li>
-            <li class="stat-tile"><span class="skeleton skeleton--title"></span><span class="skeleton skeleton--text" style="width: 70%;"></span><span class="skeleton skeleton--pill" style="width: 8rem; height: var(--control-height-md);"></span></li>
-            <li class="stat-tile"><span class="skeleton skeleton--title"></span><span class="skeleton skeleton--text" style="width: 70%;"></span><span class="skeleton skeleton--pill" style="width: 8rem; height: var(--control-height-md);"></span></li>
+            <li class="stat-tile stat-tile--skeleton"><span class="skeleton skeleton--title"></span><span class="skeleton skeleton--text"></span><span class="skeleton skeleton--pill"></span></li>
+            <li class="stat-tile stat-tile--skeleton"><span class="skeleton skeleton--title"></span><span class="skeleton skeleton--text"></span><span class="skeleton skeleton--pill"></span></li>
+            <li class="stat-tile stat-tile--skeleton"><span class="skeleton skeleton--title"></span><span class="skeleton skeleton--text"></span><span class="skeleton skeleton--pill"></span></li>
           </ul>
         </div>
         <div class="ds-example__caption"><span>Studios, Spots and Guides tiles: title, the "7 published, 2 draft" line and the New studio button.</span></div>
@@ -262,7 +262,7 @@
       <h3>Editor</h3>
       <p>The breadcrumb and heading keep real, visually hidden words ("Loading", "Loading studio") so the page still has a current crumb and an <code>h1</code>; the status panel and section bars are skeletons.</p>
       <div class="ds-example">
-        <div class="ds-example__canvas ds-example__canvas--stack" style="flex-wrap: nowrap;">
+        <div class="ds-example__canvas ds-example__canvas--stack">
           <div class="editor-layout" aria-hidden="true">
             <div class="editor-aside">
               <span class="skeleton skeleton--title" style="width: 35%;"></span>
@@ -272,9 +272,9 @@
               <span class="skeleton skeleton--pill" style="height: var(--target-comfortable);"></span>
             </div>
             <div class="editor-form">
-              <div class="editor-section" style="display: flex; align-items: center; min-height: var(--control-height-lg); padding: var(--space-3) var(--space-5);"><span class="skeleton skeleton--title" style="width: 18%; margin: 0;"></span></div>
-              <div class="editor-section" style="display: flex; align-items: center; min-height: var(--control-height-lg); padding: var(--space-3) var(--space-5);"><span class="skeleton skeleton--title" style="width: 32%; margin: 0;"></span></div>
-              <div class="editor-section" style="display: flex; align-items: center; min-height: var(--control-height-lg); padding: var(--space-3) var(--space-5);"><span class="skeleton skeleton--title" style="width: 42%; margin: 0;"></span></div>
+              <div class="editor-section editor-section--skeleton"><span class="skeleton skeleton--title" style="width: 18%; margin: 0;"></span></div>
+              <div class="editor-section editor-section--skeleton"><span class="skeleton skeleton--title" style="width: 32%; margin: 0;"></span></div>
+              <div class="editor-section editor-section--skeleton"><span class="skeleton skeleton--title" style="width: 42%; margin: 0;"></span></div>
             </div>
           </div>
         </div>
@@ -320,7 +320,7 @@
             <td><ul class="admin-list" style="width: 18rem;"><li class="admin-row"><div class="admin-row__body"><span class="admin-row__title">Ossington Blackbox <span class="badge badge--warning">Stale</span></span><span class="admin-row__meta">Studio · Prices verified <time datetime="2026-03-02">2 Mar 2026</time> (225 days ago)</span></div><div class="admin-row__actions"><a class="btn btn--sm" href="../../mocks/pages/studio-editor/published.html">Edit<span class="visually-hidden"> Ossington Blackbox prices</span></a></div></li></ul></td>
           </tr>
           <tr><th scope="row">Editor section</th>
-            <td><div class="editor-section" aria-hidden="true" style="display: flex; align-items: center; min-height: var(--control-height-lg); padding: var(--space-3) var(--space-5); width: 18rem;"><span class="skeleton skeleton--title" style="width: 32%; margin: 0;"></span></div></td>
+            <td><div class="editor-section editor-section--skeleton" aria-hidden="true" style="width: 18rem;"><span class="skeleton skeleton--title" style="width: 32%; margin: 0;"></span></div></td>
             <td><span class="ds-na">Not interactive</span></td>
             <td><div class="editor-section" style="display: flex; align-items: center; min-height: var(--control-height-lg); padding: var(--space-3) var(--space-5); width: 18rem;"><span style="font: var(--text-h4);">Pricing and fees</span></div></td>
           </tr>
@@ -328,11 +328,11 @@
       </table></div>
       <h3>Both themes</h3>
       <div class="ds-themes">
-        <div data-theme="light"><div class="ds-example__canvas ds-example__canvas--stack" style="flex-wrap: nowrap; padding: 0;">
+        <div data-theme="light"><div class="ds-example__canvas ds-example__canvas--stack" style="padding: 0;">
           <ul class="location-grid" aria-hidden="true" style="grid-template-columns: minmax(0, 1fr);"><li class="location-card location-card--skeleton"><div class="location-card__media"><span class="skeleton skeleton--rect"></span></div><span class="skeleton skeleton--title"></span><span class="skeleton skeleton--text"></span><span class="skeleton skeleton--text"></span></li></ul>
           <ul class="admin-list" aria-hidden="true"><li class="admin-row admin-row--skeleton"><div class="admin-row__body"><span class="skeleton skeleton--title"></span><span class="skeleton skeleton--text"></span></div><span class="skeleton skeleton--rect"></span></li></ul>
         </div></div>
-        <div data-theme="dark"><div class="ds-example__canvas ds-example__canvas--stack" style="flex-wrap: nowrap; padding: 0;">
+        <div data-theme="dark"><div class="ds-example__canvas ds-example__canvas--stack" style="padding: 0;">
           <ul class="location-grid" aria-hidden="true" style="grid-template-columns: minmax(0, 1fr);"><li class="location-card location-card--skeleton"><div class="location-card__media"><span class="skeleton skeleton--rect"></span></div><span class="skeleton skeleton--title"></span><span class="skeleton skeleton--text"></span><span class="skeleton skeleton--text"></span></li></ul>
           <ul class="admin-list" aria-hidden="true"><li class="admin-row admin-row--skeleton"><div class="admin-row__body"><span class="skeleton skeleton--title"></span><span class="skeleton skeleton--text"></span></div><span class="skeleton skeleton--rect"></span></li></ul>
         </div></div>
@@ -372,7 +372,7 @@
       <h3>Labelling</h3>
       <p>One message per region, not one per placeholder. In the editors, the breadcrumb's current item and the <code>h1</code> carry visually hidden words ("Loading", "Loading studio") so headings navigation still works.</p>
       <h3>Contrast</h3>
-      <div class="ds-example__canvas ds-example__canvas--stack" style="flex-wrap: nowrap; padding: 0; gap: var(--space-2);">
+      <div class="ds-example__canvas ds-example__canvas--stack" style="padding: 0; gap: var(--space-2);">
         <div class="ds-pair"><span>"Loading studios…" status on the page</span><span class="ds-pair__ratio" data-contrast="--color-fg-muted|--color-bg-canvas" data-min="4.5"></span></div>
         <div class="ds-pair"><span>Real text that replaces a skeleton on a hovered row</span><span class="ds-pair__ratio" data-contrast="--color-fg-default|--color-bg-subtle" data-min="4.5"></span></div>
       </div>
@@ -393,10 +393,10 @@
 
     <section class="ds-section" id="do-dont"><h2><a href="#do-dont">Do and don't</a></h2>
       <div class="ds-dodont">
-        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--stack" style="flex-wrap: nowrap;"><ul class="location-grid" aria-hidden="true" style="grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-4);"><li class="location-card location-card--skeleton"><div class="location-card__media"><span class="skeleton skeleton--rect"></span></div><span class="skeleton skeleton--title"></span><span class="skeleton skeleton--text"></span></li><li class="location-card location-card--skeleton"><div class="location-card__media"><span class="skeleton skeleton--rect"></span></div><span class="skeleton skeleton--title"></span><span class="skeleton skeleton--text"></span></li></ul></div><figcaption>Fill the card's 3:2 media box with a <code>--rect</code>, so the photo lands in the same place.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--stack"><ul class="location-grid" aria-hidden="true" style="grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-4);"><li class="location-card location-card--skeleton"><div class="location-card__media"><span class="skeleton skeleton--rect"></span></div><span class="skeleton skeleton--title"></span><span class="skeleton skeleton--text"></span></li><li class="location-card location-card--skeleton"><div class="location-card__media"><span class="skeleton skeleton--rect"></span></div><span class="skeleton skeleton--title"></span><span class="skeleton skeleton--text"></span></li></ul></div><figcaption>Fill the card's 3:2 media box with a <code>--rect</code>, so the photo lands in the same place.</figcaption></figure>
         <figure class="ds-dont"><div class="ds-example__canvas" style="justify-content: center;"><span class="skeleton skeleton--circle" aria-hidden="true" style="width: 6rem; height: 6rem;"></span></div><figcaption>Don't use round placeholders: ShotThere photos are 3:2 and 4:5 rectangles, and <code>--circle</code> has no ShotThere use.</figcaption></figure>
-        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--stack" style="flex-wrap: nowrap;"><p class="result-count" role="status">Loading studios…</p><ul class="admin-list" aria-hidden="true"><li class="admin-row admin-row--skeleton"><div class="admin-row__body"><span class="skeleton skeleton--title"></span><span class="skeleton skeleton--text"></span></div><span class="skeleton skeleton--rect"></span></li></ul></div><figcaption>Hide the placeholders and announce the region once.</figcaption></figure>
-        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--stack" style="flex-wrap: nowrap;"><span class="skeleton skeleton--text" role="img" aria-label="Loading"></span><span class="skeleton skeleton--text" role="img" aria-label="Loading"></span><span class="skeleton skeleton--text" role="img" aria-label="Loading"></span></div><figcaption>Don't label each placeholder "Loading": a screen reader hears it once per line, 18 times for six cards.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--stack"><p class="result-count" role="status">Loading studios…</p><ul class="admin-list" aria-hidden="true"><li class="admin-row admin-row--skeleton"><div class="admin-row__body"><span class="skeleton skeleton--title"></span><span class="skeleton skeleton--text"></span></div><span class="skeleton skeleton--rect"></span></li></ul></div><figcaption>Hide the placeholders and announce the region once.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--stack"><span class="skeleton skeleton--text" role="img" aria-label="Loading"></span><span class="skeleton skeleton--text" role="img" aria-label="Loading"></span><span class="skeleton skeleton--text" role="img" aria-label="Loading"></span></div><figcaption>Don't label each placeholder "Loading": a screen reader hears it once per line, 18 times for six cards.</figcaption></figure>
       </div>
     </section>
 
@@ -426,6 +426,8 @@
         <tr><td><code>.skeleton--text</code> <code>--title</code> <code>--rect</code> <code>--pill</code></td><td>Shapes; see Sizes.</td></tr>
         <tr><td><code>.location-card--skeleton</code></td><td>On a <code>.location-card</code> or <code>.map-list-item</code>: media rect fills the photo box, title 70%, text 50%.</td></tr>
         <tr><td><code>.admin-row--skeleton</code></td><td>On an <code>.admin-row</code>: title 40%, text 25%, rect sized like the Edit button.</td></tr>
+        <tr><td><code>.stat-tile--skeleton</code></td><td>On a <code>.stat-tile</code>: text 70%, pill 8rem wide and as tall as a button.</td></tr>
+        <tr><td><code>.editor-section--skeleton</code></td><td>On a <code>div.editor-section</code>: the 52px summary row holding a title placeholder.</td></tr>
         <tr><td><code>aria-hidden="true"</code></td><td>On the list or layout holding the placeholders.</td></tr>
         <tr><td><code>aria-busy="true"</code></td><td>On the region being loaded; remove when content arrives.</td></tr>
         <tr><td><code>role="status"</code></td><td>One message per region.</td></tr>
@@ -441,7 +443,7 @@
         <li><a href="../../mocks/pages/admin-studios/loading.html">pages/admin-studios/loading</a>, <a href="../../mocks/pages/admin-spots/loading.html">pages/admin-spots/loading</a> and <a href="../../mocks/pages/admin-guides/loading.html">pages/admin-guides/loading</a>: skeleton table rows.</li>
         <li><a href="../../mocks/pages/studio-editor/loading.html">pages/studio-editor/loading</a>, <a href="../../mocks/pages/spot-editor/loading.html">pages/spot-editor/loading</a> and <a href="../../mocks/pages/guide-editor/loading.html">pages/guide-editor/loading</a>: editor skeletons with hidden "Loading" words.</li>
       </ul>
-      <p>Drift found during extraction, documented here and left in the mocks for their owner: the map list rows repeat the card skeleton widths with inline styles; the system adds <code>location-card--skeleton</code> to <code>.map-list-item</code>, which gives the same result with no new CSS. The dashboard's Edit placeholder is <code>--rect</code> (rounded corners) while the real Edit button and every other button placeholder are pills. The studio and spot lists mark the status <code>role="status" aria-live="polite"</code>, the admin lists <code>role="status"</code> alone; both work, <code>role="status"</code> is enough. <code>.skeleton--circle</code> is still in the stylesheet with no ShotThere use.</p>
+      <p>Drift found during extraction, documented here and left in the mocks for their owner: the map list rows repeat the card skeleton widths with inline styles; the system adds <code>location-card--skeleton</code> to <code>.map-list-item</code>, which gives the same result with no new CSS. The dashboard's Edit placeholder is <code>--rect</code> (rounded corners) while the real Edit button and every other button placeholder are pills. The studio and spot lists mark the status <code>role="status" aria-live="polite"</code>, the admin lists <code>role="status"</code> alone; both work, <code>role="status"</code> is enough. The dashboard and editor loading mocks size their placeholders inline; <code>.stat-tile--skeleton</code> and <code>.editor-section--skeleton</code> now do it, and the examples here use them. <code>.skeleton--circle</code> is still in the stylesheet with no ShotThere use.</p>
     </section>
 
     <footer class="ds-footer"><span>ShotThere design system · extracted from <a href="../../mocks/index.html">docs/mocks</a> on 13 October 2026</span><a href="#top">Back to top</a></footer>

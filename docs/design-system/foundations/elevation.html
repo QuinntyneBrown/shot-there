@@ -222,8 +222,8 @@
       </table></div>
 
       <h3>The compare bar and a toast</h3>
-      <p>Page content (0), the compare bar fixed to the bottom (100) and the limit toast (1500) raised above the bar, as in <a href="../../mocks/notifications/public-toast/warning.html">notifications/public-toast/warning</a>:</p>
-      <div class="ds-frame">
+      <p>Page content (0), the compare bar fixed to the bottom (100) and the limit toast (1500) raised above the bar by <code>.has-compare-bar .toast-region</code>, as in <a href="../../mocks/notifications/public-toast/warning.html">notifications/public-toast/warning</a>:</p>
+      <div class="ds-frame has-compare-bar">
         <div class="ds-frame__page"><p><b>Studios</b></p><p>7 studios · Most recent review</p><p>Kensington Window Room · The Junction Loft · Leslieville Daylight Studio · Bloordale Sun Studio</p></div>
         <aside class="compare-bar" aria-label="Studios to compare, example">
           <div class="compare-bar__inner">
@@ -231,7 +231,7 @@
             <div class="compare-bar__actions"><button class="btn btn--ghost" type="button">Clear</button><a class="btn btn--primary" href="../../mocks/pages/compare/four.html">Compare</a></div>
           </div>
         </aside>
-        <div class="toast-region" role="status" aria-live="off" style="bottom: calc(var(--space-24) + env(safe-area-inset-bottom));">
+        <div class="toast-region" role="status" aria-live="off">
           <div class="toast toast--warning">
             <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3 2 20h20L12 3z"/><path d="M12 10v4M12 17h.01"/></svg>
             <div class="toast__body"><div class="toast__title">You can compare up to 4 studios</div><div class="toast__text">Remove one from the bar to add Ossington Blackbox.</div></div>
@@ -295,7 +295,7 @@
     <section class="ds-section" id="accessibility"><h2><a href="#accessibility">Accessibility</a></h2>
       <ul>
         <li><b>Shadows are never the only edge.</b> Dialog panels sit on a backdrop; the compare bar has a hairline top edge; popovers and the map popup have a 1px border; markers have a surface halo. In forced-colours mode shadows disappear and those edges become <code>CanvasText</code>, and dialogs and sheets add an outline.</li>
-        <li><b>Focus not obscured (2.4.11).</b> The compare bar (100) never hides the focused element: pages that show it reserve <code>--space-24</code> plus the safe-area inset at the bottom (L2-030.6). A focused control inside a dialog is never under the sticky dialog footer, because the footer is part of the scroll container.</li>
+        <li><b>Focus not obscured (2.4.11).</b> The compare bar (100) never hides the focused element: pages that show it reserve <code>--space-24</code> plus the safe-area inset at the bottom (160px below 36rem, where the bar wraps to two rows) and a 160px bottom scroll padding plus the inset, so a focused element scrolls clear of the bar (L2-030.6). A focused control inside a dialog is never under the sticky dialog footer, because the footer is part of the scroll container.</li>
         <li><b>Modal means inert.</b> Content under the backdrop is inert and hidden from assistive technology while a dialog, sheet or the lightbox is open; z-order alone does not make something modal. Focus is trapped and returns to the invoking control on close (L2-067.3).</li>
         <li><b>The map popup is not modal.</b> It is a non-modal dialog: Escape closes it and returns focus to its marker (L2-028.2), and the rest of the map stays operable.</li>
         <li><b>Toasts do not steal focus.</b> They announce through a live region that exists before the first toast, even when they sit above a dialog.</li>

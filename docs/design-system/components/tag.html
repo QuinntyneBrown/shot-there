@@ -176,11 +176,11 @@
         <div class="ds-example__canvas ds-example__canvas--stack">
           <section aria-labelledby="v-uses">
             <h4 id="v-uses">Best uses</h4>
-            <ul class="tags"><li><a class="tag" href="../../mocks/pages/spots/filtered.html" style="font: var(--text-body); padding-inline: var(--space-3); min-height: var(--target-comfortable);">Engagement</a></li><li><a class="tag" href="../../mocks/pages/spots/filtered.html" style="font: var(--text-body); padding-inline: var(--space-3); min-height: var(--target-comfortable);">Family</a></li><li><a class="tag" href="../../mocks/pages/spots/filtered.html" style="font: var(--text-body); padding-inline: var(--space-3); min-height: var(--target-comfortable);">Portrait</a></li><li><a class="tag" href="../../mocks/pages/spots/filtered.html" style="font: var(--text-body); padding-inline: var(--space-3); min-height: var(--target-comfortable);">Brand</a></li></ul>
+            <ul class="tags"><li><a class="tag" href="../../mocks/pages/spots/filtered.html">Engagement</a></li><li><a class="tag" href="../../mocks/pages/spots/filtered.html">Family</a></li><li><a class="tag" href="../../mocks/pages/spots/filtered.html">Portrait</a></li><li><a class="tag" href="../../mocks/pages/spots/filtered.html">Brand</a></li></ul>
           </section>
           <section aria-labelledby="v-featured">
             <h4 id="v-featured">Featured in</h4>
-            <ul class="tags"><li><a class="tag" href="../../mocks/pages/guide/default.html" style="font: var(--text-body); padding-inline: var(--space-3); min-height: var(--target-comfortable);">Best studios under $120 for 2 hours</a></li><li><a class="tag" href="../../mocks/pages/guide/default.html" style="font: var(--text-body); padding-inline: var(--space-3); min-height: var(--target-comfortable);">Best natural light</a></li></ul>
+            <ul class="tags"><li><a class="tag" href="../../mocks/pages/guide/default.html">Best studios under $120 for 2 hours</a></li><li><a class="tag" href="../../mocks/pages/guide/default.html">Best natural light</a></li></ul>
           </section>
         </div>
         <div class="ds-example__caption"><span>Evergreen Brick Works' best uses link to the spot list filtered to that use; Leslieville Daylight Studio is featured in two guides. Link tags are the large size (see Sizes).</span></div>
@@ -200,11 +200,11 @@
       <div class="ds-example">
         <div class="ds-example__canvas">
           <ul class="tags" aria-label="Compact" style="margin: 0;"><li class="tag">Portrait · 24px</li></ul>
-          <ul class="tags" style="margin: 0;"><li><a class="tag" href="../../mocks/pages/spots/filtered.html" style="font: var(--text-body); padding-inline: var(--space-3); min-height: var(--target-comfortable);">Portrait · 44px</a></li></ul>
+          <ul class="tags" style="margin: 0;"><li><a class="tag" href="../../mocks/pages/spots/filtered.html">Portrait · 44px</a></li></ul>
         </div>
         <div class="ds-example__caption"><span>Compact: <code>--text-caption</code>, <code>--target-min</code>, <code>--space-2</code>. Large: <code>--text-body</code>, <code>--target-comfortable</code>, <code>--space-3</code>.</span></div>
       </div>
-      <p>The large size is not yet a class. Every mock writes it inline (<code>style="font: var(--text-body); padding-inline: var(--space-3); min-height: var(--target-comfortable);"</code>) on each link tag; the examples here copy that until the proposed <code>a.tag</code> rule moves it into <code>components.css</code>.</p>
+      <p>Large is the default for <code>a.tag</code>: the rule sets the body type, the 12px padding and the 44px target, so a link tag needs no extra class. Every mock still writes it inline (<code>style="font: var(--text-body); padding-inline: var(--space-3); min-height: var(--target-comfortable);"</code>) on each link tag; the examples here do not.</p>
     </section>
 
     <section class="ds-section" id="states"><h2><a href="#states">States</a></h2>
@@ -221,9 +221,9 @@
             <td><small class="text-muted" style="display: block; min-width: 9rem;">None. A use that does not apply is left out.</small></td>
           </tr>
           <tr><th scope="row">Link</th>
-            <td><ul class="tags" style="margin: 0;"><li><a class="tag" href="../../mocks/pages/guide/default.html" style="font: var(--text-body); padding-inline: var(--space-3); min-height: var(--target-comfortable);">Best for a large crew</a></li></ul></td>
-            <td><ul class="tags" style="margin: 0;"><li><a class="tag" href="../../mocks/pages/guide/default.html" data-state="hover" style="font: var(--text-body); padding-inline: var(--space-3); min-height: var(--target-comfortable);">Best for a large crew</a></li></ul></td>
-            <td><ul class="tags" style="margin: 0;"><li><a class="tag" href="../../mocks/pages/guide/default.html" data-state="focus" style="font: var(--text-body); padding-inline: var(--space-3); min-height: var(--target-comfortable);">Best for a large crew</a></li></ul></td>
+            <td><ul class="tags" style="margin: 0;"><li><a class="tag" href="../../mocks/pages/guide/default.html">Best for a large crew</a></li></ul></td>
+            <td><ul class="tags" style="margin: 0;"><li><a class="tag" href="../../mocks/pages/guide/default.html" data-state="hover">Best for a large crew</a></li></ul></td>
+            <td><ul class="tags" style="margin: 0;"><li><a class="tag" href="../../mocks/pages/guide/default.html" data-state="focus">Best for a large crew</a></li></ul></td>
             <td><small class="text-muted" style="display: block; min-width: 9rem;">Same as hover; no pressed style.</small></td>
             <td><small class="text-muted" style="display: block; min-width: 9rem;">Never disabled. A draft guide is not listed.</small></td>
           </tr>
@@ -232,8 +232,8 @@
       <p>Hover darkens the label to <code>--color-fg-default</code> and the edge to <code>--color-border-strong</code>; there is no underline and no fill, so a hovered tag never reads as a selected chip.</p>
       <h3>Both themes</h3>
       <div class="ds-themes">
-        <div data-theme="light"><ul class="tags" aria-label="Best uses, light theme"><li class="tag">Engagement</li><li class="tag">Portrait</li><li class="tag">Video</li></ul><ul class="tags" style="margin-top: var(--space-4);"><li><a class="tag" href="../../mocks/pages/guide/default.html" style="font: var(--text-body); padding-inline: var(--space-3); min-height: var(--target-comfortable);">Best natural light</a></li><li><a class="tag" href="../../mocks/pages/guide/default.html" data-state="hover" style="font: var(--text-body); padding-inline: var(--space-3); min-height: var(--target-comfortable);">Best for a large crew</a></li></ul></div>
-        <div data-theme="dark"><ul class="tags" aria-label="Best uses, dark theme"><li class="tag">Engagement</li><li class="tag">Portrait</li><li class="tag">Video</li></ul><ul class="tags" style="margin-top: var(--space-4);"><li><a class="tag" href="../../mocks/pages/guide/default.html" style="font: var(--text-body); padding-inline: var(--space-3); min-height: var(--target-comfortable);">Best natural light</a></li><li><a class="tag" href="../../mocks/pages/guide/default.html" data-state="hover" style="font: var(--text-body); padding-inline: var(--space-3); min-height: var(--target-comfortable);">Best for a large crew</a></li></ul></div>
+        <div data-theme="light"><ul class="tags" aria-label="Best uses, light theme"><li class="tag">Engagement</li><li class="tag">Portrait</li><li class="tag">Video</li></ul><ul class="tags" style="margin-top: var(--space-4);"><li><a class="tag" href="../../mocks/pages/guide/default.html">Best natural light</a></li><li><a class="tag" href="../../mocks/pages/guide/default.html" data-state="hover">Best for a large crew</a></li></ul></div>
+        <div data-theme="dark"><ul class="tags" aria-label="Best uses, dark theme"><li class="tag">Engagement</li><li class="tag">Portrait</li><li class="tag">Video</li></ul><ul class="tags" style="margin-top: var(--space-4);"><li><a class="tag" href="../../mocks/pages/guide/default.html">Best natural light</a></li><li><a class="tag" href="../../mocks/pages/guide/default.html" data-state="hover">Best for a large crew</a></li></ul></div>
       </div>
     </section>
 
@@ -271,7 +271,7 @@
         <div class="ds-pair"><span>Hovered edge</span><span class="ds-pair__ratio" data-contrast="--color-border-strong|--color-bg-canvas" data-min="3"></span></div>
         <div class="ds-pair"><span>Focus ring on page</span><span class="ds-pair__ratio" data-contrast="--color-focus-ring|--color-bg-canvas" data-min="3"></span></div>
       </div>
-      <p>The resting edge (<code>--color-border-default</code>) is decorative: the label carries the meaning and is 4.5:1. That pair is not yet listed in <code>contrast-pairs.json</code> and is reported as a need (minimum 1, decorative).</p>
+      <p>The resting edge (<code>--color-border-default</code>) is decorative: the label carries the meaning and is 4.5:1. That pair is listed in <code>contrast-pairs.json</code> as decorative (minimum 1).</p>
       <h3>Motion</h3>
       <p>None. Hover changes colour without a transition.</p>
       <h3>Touch</h3>
@@ -290,8 +290,8 @@
 
     <section class="ds-section" id="do-dont"><h2><a href="#do-dont">Do and don't</a></h2>
       <div class="ds-dodont">
-        <figure class="ds-do"><div class="ds-example__canvas"><ul class="tags" style="margin: 0;"><li><a class="tag" href="../../mocks/pages/spots/filtered.html" style="font: var(--text-body); padding-inline: var(--space-3); min-height: var(--target-comfortable);">Engagement</a></li><li><a class="tag" href="../../mocks/pages/spots/filtered.html" style="font: var(--text-body); padding-inline: var(--space-3); min-height: var(--target-comfortable);">Family</a></li></ul></div><figcaption>Make link tags the large size so each one is a 44px target on phones.</figcaption></figure>
-        <figure class="ds-dont"><div class="ds-example__canvas"><ul class="tags" style="margin: 0;"><li><a class="tag" href="../../mocks/pages/spots/filtered.html">Engagement</a></li><li><a class="tag" href="../../mocks/pages/spots/filtered.html">Family</a></li></ul></div><figcaption>Link a compact tag. At 24px it fails the 44px phone target, which is why every mock enlarges its link tags.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas"><ul class="tags" style="margin: 0;"><li><a class="tag" href="../../mocks/pages/spots/filtered.html">Engagement</a></li><li><a class="tag" href="../../mocks/pages/spots/filtered.html">Family</a></li></ul></div><figcaption>Make link tags the large size so each one is a 44px target on phones.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas"><ul class="tags" style="margin: 0;"><li><a class="tag" href="../../mocks/pages/spots/filtered.html" style="font: var(--text-caption); padding-inline: var(--space-2); min-height: var(--target-min);">Engagement</a></li><li><a class="tag" href="../../mocks/pages/spots/filtered.html" style="font: var(--text-caption); padding-inline: var(--space-2); min-height: var(--target-min);">Family</a></li></ul></div><figcaption>Shrink a link tag to the compact size. At 24px it fails the 44px phone target, which is why <code>a.tag</code> is large by default.</figcaption></figure>
         <figure class="ds-do"><div class="ds-example__canvas"><span class="chip chip--filter">Family<button class="remove" type="button" aria-label="Remove filter: Family"><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></span></div><figcaption>Use a filter chip for an applied filter the visitor can remove, as on the filtered spot list.</figcaption></figure>
         <figure class="ds-dont"><div class="ds-example__canvas"><ul class="tags" aria-label="Applied filters" style="margin: 0;"><li class="tag">Family</li><li class="tag">Waterfront</li></ul></div><figcaption>Show applied filters as tags. They look like descriptions and give no way to remove them.</figcaption></figure>
       </div>
@@ -328,7 +328,7 @@
       <table class="ds-table"><thead><tr><th scope="col">Class / attribute</th><th scope="col">Effect</th></tr></thead><tbody>
         <tr><td><code>.tags</code></td><td>Wrapping list of tags with <code>--space-2</code> gaps and a <code>--space-1</code> top margin.</td></tr>
         <tr><td><code>.tag</code></td><td>Compact outlined pill; on an <code>&lt;li&gt;</code> or a <code>&lt;span&gt;</code> inside one.</td></tr>
-        <tr><td><code>a.tag</code></td><td>Link tag: no underline, muted label, darker label and edge on hover.</td></tr>
+        <tr><td><code>a.tag</code></td><td>Link tag at the large size (body type, <code>--space-3</code> padding, 44px target): no underline, muted label, darker label and edge on hover.</td></tr>
         <tr><td><code>.tag .icon</code></td><td>Sizes an optional leading icon to 14px. No ShotThere screen uses one yet.</td></tr>
         <tr><td><code>aria-label</code> on <code>.tags</code></td><td>Names the group when no visible heading or caption does.</td></tr>
         <tr><td><code>data-state="hover|focus"</code></td><td>Documentation only: forces a link tag's pointer or focus state.</td></tr>
@@ -347,7 +347,7 @@
       </ul>
       <p>Drift found during extraction:</p>
       <ul>
-        <li>Every link tag in <code>pages/spot/*</code> and <code>pages/studio/*</code> carries the same inline style to reach the large size and the 44px target. Documented as the large size; proposed as an <code>a.tag</code> rule so the inline style can go.</li>
+        <li>Every link tag in <code>pages/spot/*</code> and <code>pages/studio/*</code> carries the same inline style to reach the large size and the 44px target. Documented as the large size; the <code>a.tag</code> rule now sets it, so the inline style can go.</li>
         <li>The spot cards use <code>&lt;li class="tag"&gt;</code> while the spot summary panel uses <code>&lt;li&gt;&lt;span class="tag"&gt;</code>. Both render the same; either is allowed.</li>
         <li><code>.tag .icon</code> is defined but no mock uses a tag icon.</li>
       </ul>

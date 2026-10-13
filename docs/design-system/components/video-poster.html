@@ -240,12 +240,12 @@
             <td><div style="width: 14rem;"><a class="video-poster" href="https://www.youtube.com/watch?v=Jx7Lq2pT9aE"><img src="../assets/img/episode-the-junction-loft.svg" alt="" width="1200" height="800" loading="lazy"><span class="video-poster__play"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor" stroke="none"/></svg>Play episode<span class="visually-hidden">: Episode 4 (default)</span></span></a></div></td>
             <td><div style="width: 14rem;"><a class="video-poster" href="https://www.youtube.com/watch?v=Jx7Lq2pT9aE" data-state="hover"><img src="../assets/img/episode-the-junction-loft.svg" alt="" width="1200" height="800" loading="lazy"><span class="video-poster__play"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor" stroke="none"/></svg>Play episode<span class="visually-hidden">: Episode 4 (hover)</span></span></a></div></td>
             <td><div style="width: 14rem;"><a class="video-poster" href="https://www.youtube.com/watch?v=Jx7Lq2pT9aE" data-state="focus"><img src="../assets/img/episode-the-junction-loft.svg" alt="" width="1200" height="800" loading="lazy"><span class="video-poster__play"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor" stroke="none"/></svg>Play episode<span class="visually-hidden">: Episode 4 (focus)</span></span></a></div></td>
-            <td><div style="width: 14rem;"><a class="video-poster" href="https://www.youtube.com/watch?v=Jx7Lq2pT9aE" data-state="hover"><img src="../assets/img/episode-the-junction-loft.svg" alt="" width="1200" height="800" loading="lazy"><span class="video-poster__play"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor" stroke="none"/></svg>Play episode<span class="visually-hidden">: Episode 4 (active)</span></span></a></div></td>
+            <td><div style="width: 14rem;"><a class="video-poster" href="https://www.youtube.com/watch?v=Jx7Lq2pT9aE" data-state="active"><img src="../assets/img/episode-the-junction-loft.svg" alt="" width="1200" height="800" loading="lazy"><span class="video-poster__play"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor" stroke="none"/></svg>Play episode<span class="visually-hidden">: Episode 4 (active)</span></span></a></div></td>
             <td><span class="text-muted text-sm" style="display: block; width: 12rem;">Never disabled. With no video ID there is no section (L2-020.1).</span></td>
           </tr>
         </tbody>
       </table></div>
-      <p class="text-muted text-sm">Active has no style of its own yet: while the pointer is down the pill keeps its hover fill (<code>--color-action-hover</code>). A pressed fill in <code>--color-action-active</code> is proposed for <code>components.css</code>.</p>
+      <p class="text-muted text-sm">Active: while the pointer is down the pill takes the pressed fill, <code>--color-action-active</code> (<code>.video-poster:active</code>, forced here with <code>data-state="active"</code>).</p>
       <h3>Content and loading states</h3>
       <div class="ds-matrix"><table>
         <caption class="visually-hidden">Episode poster content states</caption>
@@ -260,7 +260,7 @@
       </table></div>
       <ul>
         <li><b>Playing</b>: the <code>&lt;a&gt;</code> is replaced by <code>&lt;iframe class="video-frame"&gt;</code>; the video waits for the visitor to press play inside YouTube's player. <code>.episode__links</code> stays. There is no way back to the poster, and none is needed.</li>
-        <li><b>Poster failed</b> (L2-086.3): the still is replaced by <code>.media-fallback</code> on the inverse ground with a broken-image glyph and the short episode title at the top, so the centred pill stays clear on a wide poster. The link and "Play episode" still work. <b>Known gap</b>: on a poster narrower than about 380px (every phone) the centred pill covers the title; moving the pill to the bottom of a failed poster is proposed (see <a href="#sources">Sources</a>).</li>
+        <li><b>Poster failed</b> (L2-086.3): the still is replaced by <code>.media-fallback</code> on the inverse ground with a broken-image glyph and the short episode title at the top, and the play pill moves from the centre to the bottom of the poster (<code>.video-poster:has(&gt; .media-fallback)</code>), so the title stays readable at every width, phones included. The link and "Play episode" still work.</li>
         <li><b>No video</b>: see <a href="../../mocks/pages/spot/no-video.html">pages/spot/no-video</a> (Trinity Bellwoods Park) and <a href="../../mocks/pages/studio/minimal.html">pages/studio/minimal</a> (Bloordale Sun Studio).</li>
         <li><b>Loading</b>: the slot is already sized and filled with the inverse ground, so a still that is slow to arrive needs no skeleton. The player has no loading state of ours; YouTube draws its own.</li>
       </ul>
@@ -289,7 +289,7 @@
     </section>
 
     <section class="ds-section" id="theming"><h2><a href="#theming">Theming</a></h2>
-      <p>The poster reads semantic tokens directly: <code>--color-bg-inverse</code> for the slot ground, <code>--color-action</code> / <code>--color-action-hover</code> / <code>--color-fg-on-action</code> for the pill (it is the same ink as a primary <a href="button.html">button</a>), <code>--color-fg-inverse</code> for the failed-poster text and <code>--shadow-3</code> for the pill's lift.</p>
+      <p>The poster reads semantic tokens directly: <code>--color-bg-inverse</code> for the slot ground, <code>--color-action</code> / <code>--color-action-hover</code> / <code>--color-action-active</code> / <code>--color-fg-on-action</code> for the pill (it is the same ink as a primary <a href="button.html">button</a>), <code>--color-fg-inverse</code> for the failed-poster text and <code>--shadow-3</code> for the pill's lift.</p>
       <p>In dark the inverse ground turns light stone (<code>--palette-stone-50</code>) and the pill flips to light stone with near-black text, so the failed poster becomes a pale slot with dark text and the pill still stands out from it by its shadow and fill. The still itself is content and keeps its own colours in both themes. YouTube's player is outside our theming; the inverse ground only shows while it loads.</p>
       <p>To re-skin the pill without touching <code>.video-poster__play</code>, override the action tokens on a wrapper: <code>.review-section { --color-action: …; --color-fg-on-action: …; }</code>.</p>
     </section>
@@ -311,6 +311,7 @@
       <div class="ds-example__canvas ds-example__canvas--stack" style="padding: 0; gap: var(--space-2);">
         <div class="ds-pair"><span>Play label on the pill</span><span class="ds-pair__ratio" data-contrast="--color-fg-on-action|--color-action" data-min="4.5"></span></div>
         <div class="ds-pair"><span>Play label on the pill (hover)</span><span class="ds-pair__ratio" data-contrast="--color-fg-on-action|--color-action-hover" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Play label on the pill (pressed)</span><span class="ds-pair__ratio" data-contrast="--color-fg-on-action|--color-action-active" data-min="4.5"></span></div>
         <div class="ds-pair"><span>Failed-poster text on the inverse ground</span><span class="ds-pair__ratio" data-contrast="--color-fg-inverse|--color-bg-inverse" data-min="4.5"></span></div>
         <div class="ds-pair"><span>Episode title on page</span><span class="ds-pair__ratio" data-contrast="--color-fg-muted|--color-bg-canvas" data-min="4.5"></span></div>
         <div class="ds-pair"><span>"Watch on YouTube" on page</span><span class="ds-pair__ratio" data-contrast="--color-fg-link|--color-bg-canvas" data-min="4.5"></span></div>
@@ -351,6 +352,7 @@
           <tr><td>Failed-poster text</td><td><code>--color-fg-inverse</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-inverse" data-swatch></i><span data-token="--color-fg-inverse"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-inverse" data-swatch></i><span data-token="--color-fg-inverse"></span></span></td></tr>
           <tr><td>Pill fill</td><td><code>--color-action</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-action" data-swatch></i><span data-token="--color-action"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-action" data-swatch></i><span data-token="--color-action"></span></span></td></tr>
           <tr><td>Pill fill, hover</td><td><code>--color-action-hover</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-action-hover" data-swatch></i><span data-token="--color-action-hover"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-action-hover" data-swatch></i><span data-token="--color-action-hover"></span></span></td></tr>
+          <tr><td>Pill fill, pressed</td><td><code>--color-action-active</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-action-active" data-swatch></i><span data-token="--color-action-active"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-action-active" data-swatch></i><span data-token="--color-action-active"></span></span></td></tr>
           <tr><td>Pill label and glyph</td><td><code>--color-fg-on-action</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-on-action" data-swatch></i><span data-token="--color-fg-on-action"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-on-action" data-swatch></i><span data-token="--color-fg-on-action"></span></span></td></tr>
           <tr><td>Focus ring</td><td><code>--color-focus-ring</code>, <code>--focus-ring-width</code>, <code>--focus-ring-offset</code></td><td><span data-token="--color-focus-ring"></span></td><td><span data-theme="dark" data-token="--color-focus-ring"></span></td></tr>
           <tr><td>Pill height / padding</td><td><code>--control-height-lg</code>, <code>--space-6</code></td><td colspan="2"><span data-token="--control-height-lg"></span> / <span data-token="--space-6"></span></td></tr>
@@ -381,11 +383,11 @@
 &lt;/a&gt;</code></pre>
       <div class="ds-table-wrap"><table class="ds-table"><thead><tr><th scope="col">Class / attribute</th><th scope="col">Effect</th></tr></thead><tbody>
         <tr><td><code>.video-poster</code></td><td>16:9 link (or button) slot on the inverse ground; its <code>img</code> covers it.</td></tr>
-        <tr><td><code>.video-poster__play</code></td><td>Centred 52px ink pill with glyph and label; hover fill from <code>:hover</code> or <code>data-state="hover"</code>.</td></tr>
-        <tr><td><code>.video-poster .media-fallback</code></td><td>Failed still: inverse ground, text at the top so the pill stays clear.</td></tr>
+        <tr><td><code>.video-poster__play</code></td><td>Centred 52px ink pill with glyph and label; hover fill from <code>:hover</code> or <code>data-state="hover"</code>, pressed fill from <code>:active</code> or <code>data-state="active"</code>.</td></tr>
+        <tr><td><code>.video-poster .media-fallback</code></td><td>Failed still: inverse ground, text at the top; the pill moves to the bottom so it never covers the text.</td></tr>
         <tr><td><code>.video-frame</code></td><td>The player iframe in the same 16:9, rounded, inverse slot.</td></tr>
         <tr><td><code>.episode__links</code></td><td>Wrapping row under the slot: episode title and "Watch on YouTube".</td></tr>
-        <tr><td><code>data-state="hover|focus"</code></td><td>Documentation and mocks only: forces the state statically.</td></tr>
+        <tr><td><code>data-state="hover|focus|active"</code></td><td>Documentation and mocks only: forces the state statically.</td></tr>
       </tbody></table></div>
       <p>Implementation: <code>EpisodePlayerComponent</code> (<code>features/video/</code>) takes <code>videoId</code>, <code>episodeTitle</code> and <code>posterUrl</code>; a <code>playing</code> signal switches poster for iframe; <code>embedUrl()</code> and <code>watchUrl()</code> in <code>episode-urls.ts</code> build the two URLs. Review pages place it only when an episode exists.</p>
     </section>
@@ -404,8 +406,8 @@
       <ul>
         <li>The studio mocks point the poster at <code>playing.html</code> so the mock set can be clicked through, while the spot mock points at the YouTube watch URL. The system's poster <code>href</code> is always the watch URL (L2-047.3).</li>
         <li>Poster stills are 1200 × 800 (3:2) in the mocks and get cropped into the 16:9 slot. Supply stills at 16:9 (for example 1280 × 720) so nothing important is cut.</li>
-        <li>On <a href="../../mocks/pages/studio/media-failed.html">pages/studio/media-failed</a> at 320px and 360px the centred pill sits on top of the fallback title (title 7072–7093px, pill 7086–7138px at 360px). A rule that moves the pill to the bottom of a failed poster is proposed; until it lands the title is still in the link's hidden name, so nothing is lost for assistive technology.</li>
-        <li><code>.video-poster</code> has no pressed style; the pages show active as the hover fill, and a <code>--color-action-active</code> pressed fill is proposed for <code>components.css</code>.</li>
+        <li>On <a href="../../mocks/pages/studio/media-failed.html">pages/studio/media-failed</a> at 320px and 360px the centred pill sat on top of the fallback title (title 7072–7093px, pill 7086–7138px at 360px). Fixed: <code>.video-poster:has(&gt; .media-fallback) .video-poster__play</code> moves the pill to the bottom of a failed poster. The title was always in the link's hidden name, so nothing was lost for assistive technology.</li>
+        <li><code>.video-poster</code> had no pressed style; the pages show active as the hover fill. Fixed: <code>.video-poster:active</code> and <code>[data-state="active"]</code> give the pill <code>--color-action-active</code>.</li>
       </ul>
     </section>
 

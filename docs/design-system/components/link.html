@@ -169,7 +169,7 @@
           <p class="price-block__verified">Permit rules verified <time datetime="2026-09-01">1 September 2026</time> · Source: <a class="link--external" href="https://www.evergreen.ca/" target="_blank" rel="noopener">Evergreen: photography and filming<svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v6H4V6h6"/></svg><span class="visually-hidden"> (opens in a new tab)</span></a></p>
         </div>
         <div class="ds-example__caption"><span>The episode link for The Junction Loft, the directions link and permit source for Evergreen Brick Works. Every external link opens a new tab with <code>rel="noopener"</code>.</span></div>
-        <p class="ds-note">Known gap: <code>components.css</code> makes every <code>svg</code> a block, and <code>.link--external .icon</code> only sizes the arrow, so the arrow drops onto its own line, as above and in the spot mocks. A fix keeping it inline after the last word is proposed; until it lands, don't work round it with inline styles.</p>
+        <p class="ds-note"><code>components.css</code> makes every <code>svg</code> a block, so <code>.link--external .icon</code> sets the arrow back to <code>inline-block</code>, 0.9em square, 4px (<code>--space-1</code>) after the last word and nudged onto the text's baseline. It stays beside the last word and wraps with it; the spot mocks still show it on its own line.</p>
         <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;a class="link--external" href="https://www.youtube.com/watch?v=Jx7Lq2pT9aE" target="_blank" rel="noopener"&gt;Watch on YouTube
   &lt;svg class="icon" aria-hidden="true" viewBox="0 0 24 24"&gt;&lt;path d="M14 4h6v6M20 4l-9 9M18 14v6H4V6h6"/&gt;&lt;/svg&gt;
   &lt;span class="visually-hidden"&gt; (opens in a new tab)&lt;/span&gt;&lt;/a&gt;</code></pre></details>
@@ -232,7 +232,7 @@
         <li>Inline links wrap with their sentence. A long unbroken string (an email address, a URL) needs <code>overflow-wrap: anywhere</code> on its container so it never forces a sideways scroll at 320px.</li>
         <li>Standalone links keep their 44px box at every width and wrap their label if it is longer than the column.</li>
         <li>On review pages the episode's "Watch on YouTube" sits beside the episode title in <code>.episode__links</code>, which wraps under it on phones.</li>
-        <li>An external link's arrow belongs after the last word; keep the label, icon and hidden suffix together with no whitespace between them. Today it wraps onto its own line (see the known gap under External).</li>
+        <li>An external link's arrow belongs after the last word; keep the label, icon and hidden suffix together with no whitespace between them, so the arrow wraps with the last word instead of on its own.</li>
       </ul>
     </section>
 
@@ -311,7 +311,7 @@
       <div class="ds-table-wrap"><table class="ds-table"><thead><tr><th scope="col">Class / attribute</th><th scope="col">Effect</th></tr></thead><tbody>
         <tr><td><code>a</code></td><td>Inline link: ink, underlined, accent red and thicker underline on hover.</td></tr>
         <tr><td><code>.link--standalone</code></td><td>Label weight, inline-flex, 44px tall.</td></tr>
-        <tr><td><code>.link--external</code> + <code>target="_blank" rel="noopener"</code></td><td>Sizes the trailing arrow to 0.9em. Add the hidden " (opens in a new tab)".</td></tr>
+        <tr><td><code>.link--external</code> + <code>target="_blank" rel="noopener"</code></td><td>Keeps the trailing arrow inline after the last word at 0.9em. Add the hidden " (opens in a new tab)".</td></tr>
         <tr><td><code>.eyebrow</code></td><td>Muted back link, underlined on hover, 44px tall. No mock uses it yet.</td></tr>
         <tr><td><code>data-state="hover|focus"</code></td><td>Documentation and mocks only.</td></tr>
       </tbody></table></div>
@@ -333,7 +333,7 @@
         <li>"Watch on YouTube" carries <code>.link--external</code> and the hidden "(opens in a new tab)" but no arrow in seven mocks (studio/default, playing, in-compare, media-failed; spot/default, map-failed, no-rain-backup), while every other external link shows it. The system always shows the arrow.</li>
         <li>The map popup's "View the review" is a bare inline <code>&lt;a&gt;</code> on its own line, about 24px tall. As the popup's only way on it should be <code>.link--standalone</code> (44px).</li>
         <li>The footer's "YouTube channel" opens a new tab with no arrow; the <a href="footer.html">footer</a> page decides its treatment.</li>
-        <li>Not fixed: the external arrow renders on its own line because <code>svg</code> is <code>display: block</code> and nothing in <code>.link--external</code> overrides it. This may be why "Watch on YouTube" dropped the arrow. A CSS rule is proposed.</li>
+        <li>The external arrow rendered on its own line in the mocks because <code>svg</code> is <code>display: block</code> and nothing in <code>.link--external</code> overrode it. This may be why "Watch on YouTube" dropped the arrow. Fixed in <code>components.css</code>: <code>.link--external .icon</code> is now an inline block after the last word.</li>
       </ul>
     </section>
 

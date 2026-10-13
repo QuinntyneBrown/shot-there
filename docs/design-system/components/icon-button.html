@@ -337,7 +337,7 @@
       <p>Drift fixed during extraction:</p>
       <ul>
         <li>Close is drawn two ways: <code>.icon-btn</code> in the lightbox and map popup, <code>.btn.btn--ghost.btn--icon</code> in the dialogs, sheets and site menu. Both are 44px and look alike at rest; the page documents which belongs where rather than merging them.</li>
-        <li><code>components.css</code> styles <code>.viewer .icon-btn[aria-disabled="true"]</code> for "end arrows", but L2-010.3 and <a href="../../mocks/dialogs/lightbox/last.html">dialogs/lightbox/last</a> wrap the gallery and never disable an arrow. The rule is unused; removal is proposed.</li>
+        <li><code>components.css</code> styled <code>.viewer .icon-btn[aria-disabled="true"]</code> for "end arrows", but L2-010.3 and <a href="../../mocks/dialogs/lightbox/last.html">dialogs/lightbox/last</a> wrap the gallery and never disable an arrow. The unused rule has been removed.</li>
         <li>The mocks draw Close as <code>&lt;a href&gt;</code> back to the page because they are static. The product uses <code>&lt;button&gt;</code> so focus can return to the opener.</li>
       </ul>
     </section>

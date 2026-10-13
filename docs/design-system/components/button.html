@@ -345,7 +345,7 @@
 &lt;button class="btn btn--sm" type="button" aria-disabled="true"&gt;Move up&lt;span class="visually-hidden"&gt;: test shot 1&lt;/span&gt;&lt;/button&gt;</code></pre>
       <div class="ds-table-wrap"><table class="ds-table"><thead><tr><th scope="col">Class / attribute</th><th scope="col">Effect</th></tr></thead><tbody>
         <tr><td><code>.btn</code></td><td>Base: secondary look, medium size, pill.</td></tr>
-        <tr><td><code>.btn--primary</code> <code>.btn--ghost</code> <code>.btn--link</code> <code>.btn--danger</code></td><td>Variant.</td></tr>
+        <tr><td><code>.btn--primary</code> <code>.btn--ghost</code> <code>.btn--link</code> <code>.btn--danger</code> <code>.btn--ghost-danger</code></td><td>Variant. Ghost danger is the quiet "Delete studio" in the editor's status panel; it opens the confirmation, whose button is <code>.btn--danger</code>.</td></tr>
         <tr><td><code>.compare-toggle</code> + <code>aria-pressed</code></td><td>Compare toggle: accent tint, edge and label while pressed. Pair with <code>.btn</code> (and <code>.btn--sm</code> on cards).</td></tr>
         <tr><td><code>.btn--sm</code> <code>.btn--lg</code></td><td>Size; omit for medium. Small grows to 44px below 48rem.</td></tr>
         <tr><td><code>.btn--icon</code></td><td>Square icon-only button (dialog and sheet Close); requires <code>aria-label</code>.</td></tr>
@@ -373,7 +373,7 @@
       <p>Drift fixed during extraction:</p>
       <ul>
         <li>Busy buttons swap their label in <a href="../../mocks/pages/spot-editor/submitting.html">pages/spot-editor/submitting</a> ("Saving…") and <a href="../../mocks/pages/sign-in/submitting.html">pages/sign-in/submitting</a> ("Signing in") but keep it in studio-editor/submitting, unpublish/busy, delete-content/busy and home/submitting. The system keeps the label.</li>
-        <li>The editors' ghost "Delete studio / spot / guide" is coloured with an inline <code>style="color: var(--color-danger-fg)"</code> in 14 mocks, and not at all in spot-editor/published and guide-editor/published. There is no class for it; a danger ghost modifier is proposed for <code>components.css</code>.</li>
+        <li>The editors' ghost "Delete studio / spot / guide" is coloured with an inline <code>style="color: var(--color-danger-fg)"</code> in 14 mocks, and not at all in spot-editor/published and guide-editor/published. <code>.btn--ghost-danger</code> now gives it the danger colour on a ghost button, so the inline style goes and every editor's Delete looks the same.</li>
         <li>The compare bar puts "Clear" before "Compare" in studios/selected but after it in studio/in-compare. The confirming action goes last.</li>
         <li><a href="../../mocks/dialogs/missing-fields/default.html">dialogs/missing-fields/default</a> closes with "OK" while <a href="../../mocks/dialogs/remove-image/refused.html">dialogs/remove-image/refused</a> uses "Got it". The system uses "Got it".</li>
       </ul>

@@ -277,7 +277,7 @@
 
     <section class="ds-section" id="tokens"><h2><a href="#tokens">Tokens</a></h2>
       <p>Responsive behaviour has no tokens of its own. The breakpoint, column, gutter, margin, container, sidebar, panel, dialog, sheet and header tokens (<code>--layout-*</code>) are documented on <a href="layout.html">Layout</a>; the target sizes on <a href="accessibility.html#tokens">Accessibility</a>; the display type sizes that grow at 62rem on <a href="typography.html">Typography</a>.</p>
-      <p>Drift found during extraction: below LG the summary panel on review pages is moved above the review sections by CSS <code>order</code> while it stays last in the DOM; the toast above the compare bar is lifted by an inline style in <a href="../../mocks/notifications/public-toast/warning.html">notifications/public-toast/warning</a> rather than a class. Both are reported for a fix in the mocks and the stylesheet.</p>
+      <p>Drift found during extraction: below LG the summary panel on review pages is moved above the review sections by CSS <code>order</code> while it stays last in the DOM; the toast above the compare bar is lifted by an inline style in <a href="../../mocks/notifications/public-toast/warning.html">notifications/public-toast/warning</a> rather than a class. The toast is fixed in the stylesheet (<code>.has-compare-bar .toast-region</code> raises it; the mock's inline style can go); the summary panel order still needs the mocks changed.</p>
     </section>
 
     <footer class="ds-footer"><span>ShotThere design system · extracted from <a href="../../mocks/index.html">docs/mocks</a> on 13 October 2026</span><a href="#top">Back to top</a></footer>

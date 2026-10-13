@@ -244,7 +244,7 @@
               <p class="location-card__meta">Distillery District · Architecture</p>
               <ul class="tags" aria-label="Best uses"><li class="tag">Engagement</li><li class="tag">Brand</li><li class="tag">Portrait</li></ul>
               <p class="location-card__meta">Portraits: permit required · Commercial: permit required</p>
-              <p><span class="badge badge--warning">Permit info may be out of date</span></p>
+              <p><span class="badge badge--warning">Permit rules may be out of date</span></p>
             </li>
           </ul>
         </div>
@@ -264,19 +264,19 @@
           <ul class="location-grid" style="grid-template-columns: minmax(0, 1fr); gap: var(--space-6); max-width: 24rem;">
             <li class="map-list-item">
               <div class="location-card__media"><img src="../assets/img/spot-allan-gardens-conservatory.svg" alt="" width="1200" height="800"></div>
-              <h3 class="location-card__name" style="font: var(--text-label); font-size: var(--font-size-md);"><a href="../../mocks/pages/spot/default.html">Allan Gardens Conservatory</a></h3>
+              <h3 class="location-card__name"><a href="../../mocks/pages/spot/default.html">Allan Gardens Conservatory</a></h3>
               <p class="location-card__meta">Outdoor spot · Garden District</p>
               <p class="location-card__meta">Portraits: no permit needed</p>
             </li>
             <li class="map-list-item">
               <div class="location-card__media"><img src="../assets/img/studio-bloordale-sun-studio.svg" alt="" width="1200" height="800"></div>
-              <h3 class="location-card__name" style="font: var(--text-label); font-size: var(--font-size-md);"><a href="../../mocks/pages/studio/minimal.html">Bloordale Sun Studio</a></h3>
+              <h3 class="location-card__name"><a href="../../mocks/pages/studio/minimal.html">Bloordale Sun Studio</a></h3>
               <p class="location-card__meta">Studio · Bloordale</p>
               <p class="location-card__meta">All-in 2 h: $130.00</p>
             </li>
           </ul>
         </div>
-        <div class="ds-example__caption"><span><code>.map-list-item</code>: a 5.5rem thumbnail beside three lines. The type comes first in the meta because studios and spots share this list. The name's inline font is the mocks' drift, kept here until the class rule lands (see <a href="#sources">Sources</a>).</span><span>pages/map/list</span></div>
+        <div class="ds-example__caption"><span><code>.map-list-item</code>: a 5.5rem thumbnail beside three lines. The type comes first in the meta because studios and spots share this list. <code>.map-list-item .location-card__name</code> sets the name's label font; the mocks set it inline on every name (see <a href="#sources">Sources</a>).</span><span>pages/map/list</span></div>
         <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;ul class="location-grid"&gt;
   &lt;li class="map-list-item"&gt;
     &lt;div class="location-card__media"&gt;&lt;img src="studio-bloordale-sun-studio.svg" alt="" width="1200" height="800" loading="lazy"&gt;&lt;/div&gt;
@@ -325,16 +325,16 @@
             <td><p class="text-muted" style="width: 10rem;">Never.</p></td>
             <td><div class="location-card location-card--skeleton" aria-hidden="true" style="width: 14rem;"><div class="location-card__media"><span class="skeleton skeleton--rect"></span></div><span class="skeleton skeleton--title"></span><span class="skeleton skeleton--text"></span><span class="skeleton skeleton--text"></span></div></td>
             <td><div class="location-card" style="width: 14rem;"><div class="location-card__media"><div class="media-fallback"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 16 5-5 4 4 2-2 7 7"/><path d="M3 3l18 18"/></svg></div></div><h3 class="location-card__name"><a href="../../mocks/pages/spot/default.html">Trinity Bellwoods Park</a></h3><p class="location-card__meta">Trinity Bellwoods · Park</p><ul class="tags" aria-label="Best uses"><li class="tag">Family</li><li class="tag">Portrait</li><li class="tag">Engagement</li></ul></div></td>
-            <td><div class="location-card" style="width: 14rem;"><div class="location-card__media"><img src="../assets/img/spot-distillery-district.svg" alt="" width="1200" height="800"></div><h3 class="location-card__name"><a href="../../mocks/pages/spot/stale-permit.html">Distillery District</a></h3><p class="location-card__meta">Distillery District · Architecture</p><p><span class="badge badge--warning">Permit info may be out of date</span></p></div></td>
+            <td><div class="location-card" style="width: 14rem;"><div class="location-card__media"><img src="../assets/img/spot-distillery-district.svg" alt="" width="1200" height="800"></div><h3 class="location-card__name"><a href="../../mocks/pages/spot/stale-permit.html">Distillery District</a></h3><p class="location-card__meta">Distillery District · Architecture</p><p><span class="badge badge--warning">Permit rules may be out of date</span></p></div></td>
           </tr>
           <tr><th scope="row">Compact</th>
-            <td><div class="map-list-item" style="width: 18rem;"><div class="location-card__media"><img src="../assets/img/studio-the-junction-loft.svg" alt="" width="1200" height="800"></div><h3 class="location-card__name" style="font: var(--text-label); font-size: var(--font-size-md);"><a href="../../mocks/pages/studio/default.html">The Junction Loft</a></h3><p class="location-card__meta">Studio · Junction</p><p class="location-card__meta">All-in 2 h: $145.00</p></div></td>
+            <td><div class="map-list-item" style="width: 18rem;"><div class="location-card__media"><img src="../assets/img/studio-the-junction-loft.svg" alt="" width="1200" height="800"></div><h3 class="location-card__name"><a href="../../mocks/pages/studio/default.html">The Junction Loft</a></h3><p class="location-card__meta">Studio · Junction</p><p class="location-card__meta">All-in 2 h: $145.00</p></div></td>
             <td><p class="text-muted" style="width: 10rem;">The name underlines on real <code>:hover</code>; there is no <code>data-state</code> hook and no photo zoom.</p></td>
-            <td><p class="text-muted" style="width: 10rem;">No ring today: the CSS gap is listed under <a href="#sources">Sources</a>.</p></td>
+            <td><div class="map-list-item" data-state="focus" style="width: 18rem;"><div class="location-card__media"><img src="../assets/img/studio-the-junction-loft.svg" alt="" width="1200" height="800"></div><h3 class="location-card__name"><a href="../../mocks/pages/studio/default.html">The Junction Loft</a></h3><p class="location-card__meta">Studio · Junction</p><p class="location-card__meta">All-in 2 h: $145.00</p></div></td>
             <td><p class="text-muted" style="width: 10rem;">Same as hover.</p></td>
             <td><p class="text-muted" style="width: 10rem;">Never.</p></td>
-            <td><div class="map-list-item" aria-hidden="true" style="width: 18rem;"><div class="location-card__media"><span class="skeleton skeleton--rect" style="height: 100%; margin: 0;"></span></div><span class="skeleton skeleton--title"></span><span class="skeleton skeleton--text"></span><span class="skeleton skeleton--text"></span></div></td>
-            <td><div class="map-list-item" style="width: 18rem;"><div class="location-card__media"><div class="media-fallback"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 16 5-5 4 4 2-2 7 7"/><path d="M3 3l18 18"/></svg></div></div><h3 class="location-card__name" style="font: var(--text-label); font-size: var(--font-size-md);"><a href="../../mocks/pages/studio/default.html">The Junction Loft</a></h3><p class="location-card__meta">Studio · Junction</p><p class="location-card__meta">All-in 2 h: $145.00</p></div></td>
+            <td><div class="map-list-item" aria-hidden="true" style="width: 18rem;"><div class="location-card__media"><span class="skeleton skeleton--rect"></span></div><span class="skeleton skeleton--title"></span><span class="skeleton skeleton--text"></span><span class="skeleton skeleton--text"></span></div></td>
+            <td><div class="map-list-item" style="width: 18rem;"><div class="location-card__media"><div class="media-fallback"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 16 5-5 4 4 2-2 7 7"/><path d="M3 3l18 18"/></svg></div></div><h3 class="location-card__name"><a href="../../mocks/pages/studio/default.html">The Junction Loft</a></h3><p class="location-card__meta">Studio · Junction</p><p class="location-card__meta">All-in 2 h: $145.00</p></div></td>
             <td><p class="text-muted" style="width: 10rem;">Not shown in the compact list; the review page carries the stale notice.</p></td>
           </tr>
         </tbody>
@@ -353,7 +353,7 @@
         <li><b>Focus</b> lands on the name link; the ring is drawn around the whole card (8px offset, <code>--radius-lg</code>) and the link's own outline is removed, so there is one ring, not two.</li>
         <li><b>Loading</b> (pages/studios/loading, pages/spots/loading) shows six <code>.location-card--skeleton</code> cards, two rows at LG; the grid has <code>aria-hidden="true"</code> and the result count announces when the list arrives. See <a href="skeleton.html">Skeleton</a>.</li>
         <li><b>Image failed</b> keeps the 3:2 slot and fills it with <code>.media-fallback</code> so the grid never shifts (L2-086.1). Card photos are decorative, so the fallback shows only the crossed-out image icon; where a photo carries meaning (a gallery shot), the fallback also prints its alt text.</li>
-        <li><b>Stale</b> adds a warning <a href="badge.html">badge</a> in words after the facts: "Prices may be out of date" when a studio's prices were verified more than 183 days ago (L2-021.3), "Permit info may be out of date" for a spot's permit rules.</li>
+        <li><b>Stale</b> adds a warning <a href="badge.html">badge</a> in words after the facts: "Prices may be out of date" when a studio's prices were verified more than 183 days ago (L2-021.3), "Permit rules may be out of date" for a spot's permit rules.</li>
         <li><b>Selected for comparison</b> is a state of the compare toggle, not of the card; see <a href="compare-bar.html">Compare toggle and bar</a>.</li>
       </ul>
     </section>
@@ -383,7 +383,7 @@
     </section>
 
     <section class="ds-section" id="theming"><h2><a href="#theming">Theming</a></h2>
-      <p>The card has no surface of its own: it sits on the page canvas and reads semantic tokens only, so it follows the theme with no component tokens. Photos are content and keep their own colours in both themes; only the empty frame behind them (<code>--color-bg-photo</code>) and the failed-image fill (<code>--color-bg-surface-sunken</code>) change.</p>
+      <p>The card has no surface of its own: it sits on the page canvas and reads semantic tokens only, so it follows the theme with no component tokens. Photos are content and keep their own colours in both themes; only the empty frame behind them and the failed-image fill (both <code>--color-bg-photo</code>) change.</p>
       <pre><code>/* A denser list on a partner page: smaller title, tighter rows, no new classes */
 .partner-list .location-card { --text-card-title: var(--font-weight-medium) var(--font-size-lg) / var(--line-height-snug) var(--font-family-sans); }
 .partner-list .location-grid { gap: var(--space-6) var(--space-4); }</code></pre>
@@ -400,7 +400,7 @@
         <tr><td><kbd>Space</kbd></td><td>On the compare toggle: adds or removes the studio. On the name it scrolls the page, as on any link.</td></tr>
       </tbody></table>
       <h3>Focus</h3>
-      <p>The name link's own outline is removed and the shared ring (<code>2px --color-focus-ring</code>) is drawn around the whole card through <code>.location-card:has(.location-card__name a:focus-visible)</code>, 8px out, so the ring outlines what a click would open. Focusing the compare toggle rings only the toggle. <code>:has()</code> is supported in every current browser; without it the link would show no ring, so do not remove the selector.</p>
+      <p>The name link's own outline is removed and the shared ring (<code>2px --color-focus-ring</code>) is drawn around the whole card through <code>.location-card:has(.location-card__name a:focus-visible)</code>, 8px out, so the ring outlines what a click would open. A compact <code>.map-list-item</code> gets the same ring through <code>.map-list-item:has(.location-card__name a:focus-visible)</code>, with <code>--radius-md</code> corners. Focusing the compare toggle rings only the toggle. <code>:has()</code> is supported in every current browser; without it the link would show no ring, so do not remove the selector.</p>
       <h3>Labelling</h3>
       <ul>
         <li>The accessible name of the card's link is the location's name only; meta and facts are read after it in order, not folded into the link.</li>
@@ -416,7 +416,7 @@
           <div class="ds-pair"><span>Name and facts on page</span><span class="ds-pair__ratio" data-contrast="--color-fg-default|--color-bg-canvas" data-min="4.5"></span></div>
           <div class="ds-pair"><span>Meta, tag text on page</span><span class="ds-pair__ratio" data-contrast="--color-fg-muted|--color-bg-canvas" data-min="4.5"></span></div>
           <div class="ds-pair"><span>Stale badge</span><span class="ds-pair__ratio" data-contrast="--color-warning-fg|--color-warning-bg" data-min="4.5"></span></div>
-          <div class="ds-pair"><span>Failed-image icon</span><span class="ds-pair__ratio" data-contrast="--color-fg-subtle|--color-bg-surface-sunken" data-min="4.5"></span></div>
+          <div class="ds-pair"><span>Failed-image icon</span><span class="ds-pair__ratio" data-contrast="--color-fg-subtle|--color-bg-photo" data-min="4.5"></span></div>
           <div class="ds-pair"><span>Compare toggle edge</span><span class="ds-pair__ratio" data-contrast="--color-border-strong|--color-bg-canvas" data-min="3"></span></div>
           <div class="ds-pair"><span>Focus ring on page</span><span class="ds-pair__ratio" data-contrast="--color-focus-ring|--color-bg-canvas" data-min="3"></span></div>
         </div></div>
@@ -424,16 +424,16 @@
           <div class="ds-pair"><span>Name and facts on page</span><span class="ds-pair__ratio" data-contrast="--color-fg-default|--color-bg-canvas" data-min="4.5"></span></div>
           <div class="ds-pair"><span>Meta, tag text on page</span><span class="ds-pair__ratio" data-contrast="--color-fg-muted|--color-bg-canvas" data-min="4.5"></span></div>
           <div class="ds-pair"><span>Stale badge</span><span class="ds-pair__ratio" data-contrast="--color-warning-fg|--color-warning-bg" data-min="4.5"></span></div>
-          <div class="ds-pair"><span>Failed-image icon</span><span class="ds-pair__ratio" data-contrast="--color-fg-subtle|--color-bg-surface-sunken" data-min="4.5"></span></div>
+          <div class="ds-pair"><span>Failed-image icon</span><span class="ds-pair__ratio" data-contrast="--color-fg-subtle|--color-bg-photo" data-min="4.5"></span></div>
           <div class="ds-pair"><span>Compare toggle edge</span><span class="ds-pair__ratio" data-contrast="--color-border-strong|--color-bg-canvas" data-min="3"></span></div>
           <div class="ds-pair"><span>Focus ring on page</span><span class="ds-pair__ratio" data-contrast="--color-focus-ring|--color-bg-canvas" data-min="3"></span></div>
         </div></div>
       </div>
       <p>The tag outline (<code>--color-border-default</code>) is decorative: the tag's text carries the meaning.</p>
       <h3>Motion</h3>
-      <p>The photo zoom runs over <code>--duration-slow</code> (320 ms) with <code>--ease-standard</code>. Under <code>prefers-reduced-motion</code> the token drops to 0.01 ms, so the zoom applies at once with no animation. Skeleton shimmer stops under reduced motion.</p>
+      <p>The photo zoom runs over <code>--duration-slow</code> (320 ms) with <code>--ease-standard</code>. Under <code>prefers-reduced-motion</code> the photo does not zoom at all (<code>scale: none</code>), so nothing moves on hover. Skeleton shimmer stops under reduced motion.</p>
       <h3>Touch</h3>
-      <p>The whole card is one target, far above 44 × 44px. The compare toggle sits above the stretched link and is 44px tall on phones. Because the actions row and the tag list are raised as whole boxes, the empty space beside the toggle and between plain tags is not part of the link today; the fix is listed under <a href="#sources">Sources</a>. Hover-only cues (zoom, underline) carry no information, so nothing is lost without a pointer.</p>
+      <p>The whole card is one target, far above 44 × 44px. The compare toggle sits above the stretched link and is 44px tall on phones. The actions row and the tag list are raised above the link, but they pass taps through (<code>pointer-events: none</code>, restored on their controls and linked tags), so the empty space beside the toggle and plain tags still open the card. Hover-only cues (zoom, underline) carry no information, so nothing is lost without a pointer.</p>
     </section>
 
     <section class="ds-section" id="content"><h2><a href="#content">Content</a></h2>
@@ -442,7 +442,7 @@
         <li><b>Studio meta</b>: <code>Neighbourhood · Reviewed 3 Oct 2026</code>. <b>Spot meta</b>: <code>Neighbourhood · Type</code>, then the permit line <code>Portraits: no permit needed · Commercial: permit required</code>.</li>
         <li><b>Facts</b>: "All-in 2 h" with the price to the cent ("$145.00": rate × max(2, minimum hours) + mandatory fees), and "Score" with one decimal ("3.8").</li>
         <li><b>Tags</b>: best uses in sentence case, in the order the review lists them; at most four.</li>
-        <li><b>Stale</b>: "Prices may be out of date" (studios) and "Permit info may be out of date" (spots). No dates in the badge; the review shows the date.</li>
+        <li><b>Stale</b>: "Prices may be out of date" (studios) and "Permit rules may be out of date" (spots). No dates in the badge; the review shows the date.</li>
         <li><b>Compact meta</b>: the type first because the list mixes both ("Studio · Bloordale", "Outdoor spot · Garden District"), then one deciding fact ("All-in 2 h: $130.00", "Portraits: no permit needed").</li>
         <li><b>Order</b> comes only from the visitor's sort (most recent review by default); a card never says "featured" or "sponsored".</li>
       </ul>
@@ -466,7 +466,7 @@
           <tr><td>Empty photo frame</td><td><code>--color-bg-photo</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-bg-photo" data-swatch></i><span data-token="--color-bg-photo"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-bg-photo" data-swatch></i><span data-token="--color-bg-photo"></span></span></td></tr>
           <tr><td>Name, fact values</td><td><code>--color-fg-default</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-default" data-swatch></i><span data-token="--color-fg-default"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-default" data-swatch></i><span data-token="--color-fg-default"></span></span></td></tr>
           <tr><td>Meta, fact labels, tag text</td><td><code>--color-fg-muted</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-muted" data-swatch></i><span data-token="--color-fg-muted"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-muted" data-swatch></i><span data-token="--color-fg-muted"></span></span></td></tr>
-          <tr><td>Failed-image fill</td><td><code>--color-bg-surface-sunken</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-bg-surface-sunken" data-swatch></i><span data-token="--color-bg-surface-sunken"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-bg-surface-sunken" data-swatch></i><span data-token="--color-bg-surface-sunken"></span></span></td></tr>
+          <tr><td>Failed-image fill</td><td><code>--color-bg-photo</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-bg-photo" data-swatch></i><span data-token="--color-bg-photo"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-bg-photo" data-swatch></i><span data-token="--color-bg-photo"></span></span></td></tr>
           <tr><td>Failed-image icon</td><td><code>--color-fg-subtle</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-subtle" data-swatch></i><span data-token="--color-fg-subtle"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-subtle" data-swatch></i><span data-token="--color-fg-subtle"></span></span></td></tr>
           <tr><td>Tag outline</td><td><code>--color-border-default</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-border-default" data-swatch></i><span data-token="--color-border-default"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-border-default" data-swatch></i><span data-token="--color-border-default"></span></span></td></tr>
           <tr><td>Focus ring</td><td><code>--color-focus-ring</code>, <code>--focus-ring-width</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-focus-ring" data-swatch></i><span data-token="--color-focus-ring"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-focus-ring" data-swatch></i><span data-token="--color-focus-ring"></span></span></td></tr>
@@ -515,10 +515,10 @@
         <tr><td><code>.location-card__actions</code></td><td>Row for the compare toggle, raised above the stretched link.</td></tr>
         <tr><td><code>.location-card .tags</code></td><td>Best-use tags; raised above the stretched link.</td></tr>
         <tr><td><code>.location-card--skeleton</code></td><td>Loading placeholder; the skeleton fills the media frame.</td></tr>
-        <tr><td><code>.media-fallback</code></td><td>Failed-image fill: sunken surface, centred icon and optional alt text (L2-086.1).</td></tr>
-        <tr><td><code>.map-list-item</code></td><td>Compact two-column item: 5.5rem thumbnail spanning three text rows.</td></tr>
-        <tr><td><code>a.tag</code></td><td>A linked tag (review pages); muted, darker on hover.</td></tr>
-        <tr><td><code>data-state="hover|focus"</code></td><td>Documentation only: forces hover or focus on <code>.location-card</code>.</td></tr>
+        <tr><td><code>.media-fallback</code></td><td>Failed-image fill: the photo-grey ground (<code>--color-bg-photo</code>), centred icon and optional alt text (L2-086.1).</td></tr>
+        <tr><td><code>.map-list-item</code></td><td>Compact two-column item: 5.5rem thumbnail spanning three text rows, the name in label type at 16px; the focus ring goes round the item.</td></tr>
+        <tr><td><code>a.tag</code></td><td>A linked tag (review pages) at the large size: body type, 44px target; muted, darker on hover.</td></tr>
+        <tr><td><code>data-state="hover|focus"</code></td><td>Documentation only: forces hover or focus on <code>.location-card</code> (focus also on <code>.map-list-item</code>).</td></tr>
       </tbody></table>
     </section>
 
@@ -535,12 +535,12 @@
         <li><a href="../../mocks/pages/guide/default.html">pages/guide/default</a> (card inside a guide entry)</li>
         <li><a href="../../mocks/pages/spot/default.html#rain">pages/spot/default, rain backup</a> (the list-row alternative)</li>
       </ul>
-      <p>Drift found during extraction (the CSS was not changed; each proposal is in the extraction report):</p>
+      <p>Drift found during extraction. The CSS fixes have landed in <code>components.css</code>; the mocks still carry their inline styles:</p>
       <ul>
-        <li><b>Inline name size on compact items.</b> Every <code>.map-list-item</code> in pages/map/* and dialogs/map-popup/* sets <code>style="font: var(--text-label); font-size: var(--font-size-md);"</code> on <code>.location-card__name</code>. Proposed rule: <code>.map-list-item .location-card__name { font: var(--text-label); font-size: var(--font-size-md); }</code>, then delete the inline styles.</li>
-        <li><b>Inline skeleton size on compact items.</b> pages/map/loading sets <code>style="height: 100%; margin: 0;"</code> on each thumbnail skeleton. Proposed: extend the <code>.location-card--skeleton .location-card__media .skeleton</code> rule to <code>.map-list-item .location-card__media .skeleton</code>.</li>
-        <li><b>No focus ring on compact items.</b> <code>.location-card__name a:focus-visible</code> removes the link's outline, but the replacement ring only matches <code>.location-card:has(…)</code>, so a focused <code>.map-list-item</code> shows nothing (WCAG 2.4.7). Proposed: add <code>.map-list-item:has(.location-card__name a:focus-visible)</code> and <code>.map-list-item[data-state="focus"]</code> to that rule with <code>border-radius: var(--radius-md)</code>.</li>
-        <li><b>Dead zones over raised boxes.</b> <code>.location-card__actions</code> and <code>.location-card .tags</code> are raised above the stretched link as whole boxes, so a tap on a plain best-use tag (every spot card in the mocks) or on the empty width beside the compare toggle opens nothing. Proposed: <code>.location-card__actions, .location-card .tags { pointer-events: none; }</code> plus <code>.location-card__actions &gt; *, .location-card .tags a { pointer-events: auto; }</code>.</li>
+        <li><b>Inline name size on compact items.</b> Every <code>.map-list-item</code> in pages/map/* and dialogs/map-popup/* sets <code>style="font: var(--text-label); font-size: var(--font-size-md);"</code> on <code>.location-card__name</code>. Fixed: <code>.map-list-item .location-card__name { font: var(--text-label); font-size: var(--font-size-md); }</code>, so the inline styles can go; the examples here drop them.</li>
+        <li><b>Inline skeleton size on compact items.</b> pages/map/loading sets <code>style="height: 100%; margin: 0;"</code> on each thumbnail skeleton. Fixed: the <code>.location-card--skeleton .location-card__media .skeleton</code> rule now covers <code>.map-list-item .location-card__media .skeleton</code>.</li>
+        <li><b>No focus ring on compact items.</b> <code>.location-card__name a:focus-visible</code> removes the link's outline, but the replacement ring only matches <code>.location-card:has(…)</code>, so a focused <code>.map-list-item</code> showed nothing (WCAG 2.4.7). Fixed: <code>.map-list-item:has(.location-card__name a:focus-visible)</code> and <code>.map-list-item[data-state="focus"]</code> draw the ring with <code>border-radius: var(--radius-md)</code>.</li>
+        <li><b>Dead zones over raised boxes.</b> <code>.location-card__actions</code> and <code>.location-card .tags</code> are raised above the stretched link as whole boxes, so a tap on a plain best-use tag (every spot card in the mocks) or on the empty width beside the compare toggle opened nothing. Fixed: <code>.location-card__actions, .location-card .tags { pointer-events: none; }</code> plus <code>.location-card__actions &gt; *, .location-card .tags a { pointer-events: auto; }</code>.</li>
         <li><b>Two columns at LG on the studio list.</b> Beside the 15rem filter sidebar the grid shows 2 columns from 62rem and 3 from 75rem; L2-021.4 asks for 3 "at LG and above". Recorded for a decision: amend L2-021.4 or accept three narrow columns at 992px.</li>
         <li>The brief pointed at the rain-backup list on pages/spot/default as a card use; it is a <a href="list.html">list row</a> (<code>.list__item</code>) and has no card overrides. The inline <code>style</code> on that page's <code>a.tag</code> best-use links belongs to <a href="tag.html">Tag</a>.</li>
       </ul>

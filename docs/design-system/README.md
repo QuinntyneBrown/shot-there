@@ -198,7 +198,7 @@ What the mocks do differently from the system, and how the system resolves it. W
 | studio-, spot-, guide-editor/invalid | Error summary heading worded three ways | "Fix N things before saving" |
 | dialogs/missing-fields/* | Links have no field fragment (L2-056.3); the only button says "OK" | Link to each field; button says "Close" |
 | studio-editor/loading, price-changed | Inline layout styles | `.editor-section--skeleton` and `.field--warning` added |
-| `.fee-row` between 62rem and 75rem | Amount column shrinks to about 5rem | Amount column has a 7rem minimum |
+| `.fee-row` between 62rem and 75rem | Amount and Type columns squeeze to about 5rem beside the status panel | The row goes four-up only when it is 34rem wide (container query); the amount column has a 7rem minimum |
 | studios/*, spots/*, dialogs/*-filters/* (17 mocks) | Filter column heading overrides `.filter-group__title` inline | `.browse__aside h2` rule added |
 | studios and spots list mocks | `.filter-trigger` is an `<a>` with no aria-expanded; the open state never appears | A button with aria-expanded |
 | dialogs/studio-filters/*, spot-filters/* | Close, Clear all and Show N are links; the invalid state uses a disabled button | All buttons; Close is named "Close filters" |
@@ -322,10 +322,15 @@ Decisions the mocks and requirements leave open. Each is noted on the page it af
 
 ## Verification
 
-Run on Tuesday 13 October 2026 against this folder:
+Run on Tuesday 13 October 2026 against this folder and `docs/mocks`:
 
 | Check | Command | Result |
 |---|---|---|
 | Contrast, both themes | `python .claude/skills/extracting-design-systems/scripts/check_contrast.py docs/design-system/tokens/tokens.css` | 236 checks passed (118 pairs × 2 themes), 0 failed, 0 unresolved |
 | Structure, sections, labels, links, raw colours | `python .claude/skills/extracting-design-systems/scripts/check_design_system.py docs/design-system` | 76 pages (12 foundations, 55 components, 8 patterns, index), 0 errors, 0 warnings |
+| Token coverage | script over every foundation page's `#tokens` section | all 221 tokens documented on exactly one foundation page |
+| Mocks against this system | `python .claude/skills/writing-html-mocks/scripts/check_mocks.py docs/mocks` | 33 screens, 143 mocks, 0 errors, 0 warnings |
+| Overflow and script errors | Chromium (Playwright): every design-system page at 360px; every mock at 360, 768 and 1280px with `?chrome=0` | no horizontal page scroll, no script errors |
+| Visual review | Chromium screenshots of the index, Color, Location card, Comparison table, Editor layout, Map and Forms pages at 360 and 1280px in light and dark | reviewed; the squeezed fee row it found is fixed (container query) |
 
+The mocks still carry the inline styles and link-for-button markup listed in the drift log; the CSS resolutions already apply to them through this stylesheet, and the markup changes are for the next pass over the mocks.

@@ -208,7 +208,7 @@
           <div class="field"><label class="field__label" for="t-rate">Hourly rate</label><span class="input-group"><span class="addon" aria-hidden="true">$</span><input class="input" id="t-rate" name="hourlyRate" type="number" inputmode="decimal" min="0" step="0.5" value="65.00"></span></div>
           <fieldset class="filter-group">
             <legend class="filter-group__title">All-in cost for 2 hours</legend>
-            <div class="field-row" style="grid-template-columns: repeat(2, minmax(0, 1fr));">
+            <div class="field-row field-row--pair">
               <div class="field"><label class="field__label" for="t-cost-min">Minimum</label><span class="input-group"><span class="addon" aria-hidden="true">$</span><input class="input" id="t-cost-min" name="costMin" type="number" inputmode="decimal" min="0" step="10" autocomplete="off"></span></div>
               <div class="field"><label class="field__label" for="t-cost-max">Maximum</label><span class="input-group"><span class="addon" aria-hidden="true">$</span><input class="input" id="t-cost-max" name="costMax" type="number" inputmode="decimal" min="0" step="10" autocomplete="off" value="150"></span></div>
             </div>
@@ -450,7 +450,7 @@
       <table class="ds-table"><thead><tr><th scope="col">Class / attribute</th><th scope="col">Effect</th></tr></thead><tbody>
         <tr><td><code>.input</code></td><td>Base field, medium (44px).</td></tr>
         <tr><td><code>.input--lg</code> / <code>.input--sm</code></td><td>52px (sign-in) / 36px from 48rem, 44px below (unused).</td></tr>
-        <tr><td><code>.input-group</code> + <code>.addon</code></td><td>Joined prefix or suffix, or a joined button; inner corners squared.</td></tr>
+        <tr><td><code>.input-group</code> + <code>.addon</code></td><td>Joined prefix or suffix, or a joined button; inner corners squared, 1px seams, and the focused part drawn on top so its ring shows in full.</td></tr>
         <tr><td><code>.search</code></td><td>Wrapper adding a leading search icon.</td></tr>
         <tr><td><code>.read-only-value</code></td><td>Value as 18px text, replacing the input.</td></tr>
         <tr><td><code>inputmode="decimal|numeric|email"</code></td><td>Phone keyboard: decimal point, digits, or @.</td></tr>
@@ -473,7 +473,7 @@
         <li><a href="../../mocks/pages/admin-studios/default.html">pages/admin-studios/default</a>, <a href="../../mocks/pages/admin-studios/loading.html">loading</a> and <a href="../../mocks/pages/admin-studios/no-results.html">no-results</a>, <a href="../../mocks/pages/admin-guides/default.html">pages/admin-guides/default</a> (search)</li>
         <li><a href="../../mocks/dialogs/missing-fields/default.html">dialogs/missing-fields/default</a> (read-only values)</li>
       </ul>
-      <p>Drift fixed during extraction: every sign-in state puts <code>style="flex: 1; min-width: 0;"</code> on the password; the group already fits at 320px without it, so it is dropped. The joined Show button and any suffix addon sit beside the input with both edges showing, a 2px seam where a prefix has 1px (CSS need reported). Fee and extra amounts in the studio editor have no <code>step</code>, so cents are a step mismatch; money fields now take <code>step="0.01"</code> (the hourly rate's <code>step="0.5"</code> also rejects $45.25). No mock uses a suffix addon, <code>.input--sm</code> or a placeholder; they are kept from the stylesheet and marked unused. The admin search form has an inline <code>max-width</code> and margin; that is page layout, documented here as a 28rem cap.</p>
+      <p>Drift fixed during extraction: every sign-in state puts <code>style="flex: 1; min-width: 0;"</code> on the password; the group already fits at 320px without it, so it is dropped. The joined Show button and any suffix addon sat beside the input with both edges showing, a 2px seam where a prefix has 1px; <code>.input-group</code> now overlaps every joined part by 1px, and the focused part rises above its neighbour so its ring is never clipped. Fee and extra amounts in the studio editor have no <code>step</code>, so cents are a step mismatch; money fields now take <code>step="0.01"</code> (the hourly rate's <code>step="0.5"</code> also rejects $45.25). No mock uses a suffix addon, <code>.input--sm</code> or a placeholder; they are kept from the stylesheet and marked unused. The admin search form has an inline <code>max-width</code> and margin; that is page layout, documented here as a 28rem cap.</p>
     </section>
 
     <footer class="ds-footer"><span>ShotThere design system · extracted from <a href="../../mocks/index.html">docs/mocks</a> on 13 October 2026</span><a href="#top">Back to top</a></footer>

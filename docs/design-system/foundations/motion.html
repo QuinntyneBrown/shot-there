@@ -346,7 +346,8 @@
         <tbody>
           <tr><td>Hover, press and colour transitions (compare toggle, header links, buttons)</td><td>Instant</td><td>Durations zeroed in tokens</td></tr>
           <tr><td>Dialog, filters sheet, site menu, lightbox, map popup and toast entrances</td><td>Appear in place, no slide or scale</td><td>Durations zeroed in tokens</td></tr>
-          <tr><td>Location-card and shot photo zoom; map marker growth</td><td>No movement: the photo or marker steps to its hover size at once</td><td>Durations zeroed in tokens; nothing glides</td></tr>
+          <tr><td>Location-card and shot photo zoom</td><td>Off: <code>scale: none</code>; the photo stays its size on hover</td><td>Movement that adds nothing; the last rule in <code>components.css</code></td></tr>
+          <tr><td>Map marker growth</td><td>No movement: the marker steps to its hover size at once</td><td>Durations zeroed in tokens; nothing glides</td></tr>
           <tr><td>Editor-section chevron</td><td>Flips at once</td><td>Durations zeroed in tokens</td></tr>
           <tr><td>Button press nudge</td><td>Off: <code>transform: none</code></td><td>Movement that adds nothing</td></tr>
           <tr><td>Skeleton shimmer</td><td>Stops: <code>animation: none</code>; the grey shapes stay</td><td>Decorative loop</td></tr>

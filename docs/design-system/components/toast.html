@@ -288,7 +288,7 @@
     <section class="ds-section" id="responsive"><h2><a href="#responsive">Responsive behaviour</a></h2>
       <table class="ds-table"><thead><tr><th scope="col">Region</th><th scope="col">Placement</th><th scope="col">Used on</th></tr></thead><tbody>
         <tr><td><code>.toast-region</code></td><td>Fixed at the bottom; 16px from each side below 36rem, 24rem wide at the bottom right (24px in) from 36rem; padded by the bottom safe-area inset.</td><td>Every screen: the comparison page, every editor.</td></tr>
-        <tr><td>Above the compare bar</td><td>Raised by the compare bar's height plus the safe-area inset, so the toast never covers Clear or Compare (L2-030.6).</td><td>Studio list and studio page while the compare bar is showing.</td></tr>
+        <tr><td>Above the compare bar</td><td><code>.has-compare-bar .toast-region</code>: raised by the compare bar's height plus the safe-area inset, so the toast never covers Clear or Compare (L2-030.6).</td><td>Studio list and studio page while the compare bar is showing.</td></tr>
         <tr><td><code>.toast-region--top</code></td><td>Fixed at the top.</td><td>In the stylesheet; no ShotThere mock needs it.</td></tr>
         <tr><td><code>.toast-region--static</code></td><td>In the flow, pointer events on.</td><td>Documentation only.</td></tr>
       </tbody></table>
@@ -410,7 +410,7 @@
       </ul>
       <p>Drift found during extraction:</p>
       <ul>
-        <li>public-toast/warning raises the region with an inline <code>style="bottom: calc(var(--space-24) + env(safe-area-inset-bottom))"</code>; no class does this. Documented as "above the compare bar"; a rule is proposed for the stylesheet.</li>
+        <li>public-toast/warning raises the region with an inline <code>style="bottom: calc(var(--space-24) + env(safe-area-inset-bottom))"</code>. Documented as "above the compare bar"; <code>.has-compare-bar .toast-region</code> now does it whenever the page carries the bar, so the inline style can go.</li>
         <li>public-toast/warning draws the triangle as <code>M12 3 2 20h20L12 3z</code>; the admin toasts use <code>M12 4 2.5 20h19L12 4z</code>. Documented with the admin path.</li>
         <li>Danger toasts nest <code>role="alert"</code> inside the polite <code>role="status"</code> region in every mock; kept, with the double-announcement test noted under Accessibility.</li>
         <li><code>.toast__progress</code> has a fixed 60% width in the stylesheet; the countdown animation is left to the script.</li>

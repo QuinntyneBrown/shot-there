@@ -280,13 +280,13 @@
           <ul class="location-grid" style="grid-template-columns: minmax(0, 1fr); gap: var(--space-6); max-width: 24rem;">
             <li class="map-list-item">
               <div class="location-card__media"><img src="../assets/img/studio-the-junction-loft.svg" alt="" width="1200" height="800" loading="lazy"></div>
-              <h3 class="location-card__name" style="font: var(--text-label); font-size: var(--font-size-md);"><a href="../../mocks/pages/studio/default.html">The Junction Loft</a></h3>
+              <h3 class="location-card__name"><a href="../../mocks/pages/studio/default.html">The Junction Loft</a></h3>
               <p class="location-card__meta">Studio · Junction</p>
               <p class="location-card__meta">All-in for 2 hours: $145.00</p>
             </li>
             <li class="map-list-item">
               <div class="location-card__media"><img src="../assets/img/spot-evergreen-brick-works.svg" alt="" width="1200" height="800" loading="lazy"></div>
-              <h3 class="location-card__name" style="font: var(--text-label); font-size: var(--font-size-md);"><a href="../../mocks/pages/spot/default.html">Evergreen Brick Works</a></h3>
+              <h3 class="location-card__name"><a href="../../mocks/pages/spot/default.html">Evergreen Brick Works</a></h3>
               <p class="location-card__meta">Outdoor spot · Don Valley</p>
               <p class="location-card__meta">Portraits: no permit needed</p>
             </li>
@@ -397,13 +397,13 @@
       <h3>Loading, empty and error</h3>
       <div class="ds-example">
         <div class="ds-example__canvas" style="align-items: flex-start;">
-          <div class="static-map" aria-busy="true" style="flex: 1 1 18rem; height: 24rem;">
+          <div class="static-map" aria-busy="true" style="flex: 1 1 18rem; height: 30rem;">
             <span class="skeleton" style="position: absolute; inset: 0; margin: 0; border-radius: 0;"></span>
           </div>
-          <div class="static-map" style="flex: 1 1 18rem; height: 24rem;">
+          <div class="static-map" style="flex: 1 1 18rem; height: 30rem;">
             <img class="static-map__tiles" src="../assets/img/map-toronto.svg" alt="" width="1600" height="1000">
-            <div style="position: absolute; inset: 0; display: grid; place-items: center; padding: var(--space-4);">
-              <div class="empty empty--compact" style="background: var(--color-bg-surface-raised); border-radius: var(--radius-lg); box-shadow: var(--shadow-3); max-width: 24rem;">
+            <div class="static-map__overlay">
+              <div class="empty empty--compact">
                 <div class="empty__icon"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 21s-7-6.5-7-12a7 7 0 0 1 14 0c0 5.5-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg></div>
                 <h3 class="empty__title">No locations on the map yet</h3>
                 <p class="empty__text">The first studio and spot reviews are being shot now. Each appears here once it is published.</p>
@@ -411,10 +411,10 @@
               </div>
             </div>
           </div>
-          <div class="static-map" style="flex: 1 1 18rem; height: 24rem;">
+          <div class="static-map" style="flex: 1 1 18rem; height: 30rem;">
             <img class="static-map__tiles" src="../assets/img/map-toronto.svg" alt="" width="1600" height="1000">
-            <div style="position: absolute; inset: 0; display: grid; place-items: center; padding: var(--space-4);">
-              <div class="empty empty--compact empty--error" style="background: var(--color-bg-surface-raised); border-radius: var(--radius-lg); box-shadow: var(--shadow-3); max-width: 24rem;">
+            <div class="static-map__overlay">
+              <div class="empty empty--compact empty--error">
                 <div class="empty__icon"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16h.01"/></svg></div>
                 <h3 class="empty__title">We couldn't load the locations</h3>
                 <p class="empty__text">The map is here, but the studio and spot data didn't arrive. Try again in a moment.</p>
@@ -559,7 +559,7 @@
         <tr><td><kbd>Esc</kbd></td><td>Closes the popup and returns focus to its marker (L2-028.2). Close does the same.</td></tr>
       </tbody></table>
       <h3>Focus</h3>
-      <p>The shared ring draws round the marker's 44px target (<code>border-radius: full</code>), outside the halo, so it is visible on any tile. Popup controls use the ring on the raised surface. Focus never lands on the tiles. <b>Known gap</b>: <code>.map-list-item</code> removes its link's outline (inherited from the location card) but has no row ring to replace it; a fix is proposed (see <a href="#sources">Sources</a>).</p>
+      <p>The shared ring draws round the marker's 44px target (<code>border-radius: full</code>), outside the halo, so it is visible on any tile. Popup controls use the ring on the raised surface. Focus never lands on the tiles. In the list view <code>.map-list-item</code> removes its link's outline (inherited from the location card) and draws the ring round the whole row instead (<code>.map-list-item:has(.location-card__name a:focus-visible)</code>, 8px offset, <code>--radius-md</code>).</p>
       <h3>Labelling</h3>
       <p>Each marker's name is the location and its kind, "The Junction Loft, studio" or "Evergreen Brick Works, outdoor spot", because the shape that tells them apart is visual. The popup is named by its heading; its link reads "View the review: The Junction Loft"; the icon button is "Close". The spot marker's name is just the spot name; the region adds "Map centred on". The tiles image is decorative (<code>alt=""</code>).</p>
       <h3>Contrast</h3>
@@ -575,7 +575,7 @@
         <div class="ds-pair"><span>Tiles-failed message text</span><span class="ds-pair__ratio" data-contrast="--color-fg-muted|--color-bg-surface-sunken" data-min="4.5"></span></div>
         <div class="ds-pair"><span>Pressed filter segment on page</span><span class="ds-pair__ratio" data-contrast="--color-fg-accent|--color-bg-canvas" data-min="4.5"></span></div>
       </div>
-      <p class="text-muted text-sm">Marks sit on tiles, which no token controls; the surface halo and shadow separate them from any tile colour. The popup link and the "Open in Google Maps" link on the sunken panel use <code>--color-fg-link</code>, which is not yet a checked pair on those surfaces.</p>
+      <p class="text-muted text-sm">Marks sit on tiles, which no token controls; the surface halo and shadow separate them from any tile colour. The popup link and the "Open in Google Maps" link on the sunken panel use <code>--color-fg-link</code>, checked at 4.5:1 on both surfaces in <code>contrast-pairs.json</code>.</p>
       <h3>Motion</h3>
       <p>Marks scale on hover and selection over <code>--duration-fast</code>; the popup enters with the popover's <code>scale-in</code>. Reduced motion zeroes both durations, so the change still happens, instantly. The loading skeleton's shimmer stops under reduced motion.</p>
       <h3>Touch</h3>
@@ -690,7 +690,8 @@
         <tr><td><code>.map-unavailable</code></td><td>Fills the frame with the tiles-failed message.</td></tr>
         <tr><td><code>.map-page</code>, <code>__bar</code>, <code>__toggle</code>, <code>__list</code>, <code>__map</code></td><td>Map page layout: one view at a time below LG, side by side from LG.</td></tr>
         <tr><td><code>data-view="map|list"</code> on <code>.map-page</code></td><td>Which view shows below LG.</td></tr>
-        <tr><td><code>.map-list-item</code></td><td>Thumbnail row in the list column; reuses <code>.location-card__media</code>, <code>__name</code>, <code>__meta</code>.</td></tr>
+        <tr><td><code>.map-list-item</code></td><td>Thumbnail row in the list column; reuses <code>.location-card__media</code>, <code>__name</code> (label type at 16px), <code>__meta</code>. The focus ring goes round the row.</td></tr>
+        <tr><td><code>.static-map__overlay</code></td><td>Centres an empty, error or loading notice over the map; a <code>.empty</code> inside it becomes a raised card up to 24rem wide.</td></tr>
         <tr><td><code>data-state="hover|focus"</code></td><td>Documentation and mocks only: forces a marker state statically.</td></tr>
       </tbody></table></div>
     </section>
@@ -707,9 +708,9 @@
       <ul>
         <li>Markers are <code>&lt;a href&gt;</code> elements pointing at the popup mock so the set can be clicked through, yet they carry <code>aria-expanded</code> and <code>aria-haspopup</code>. A marker opens a popup in place, so the system makes it a <code>&lt;button type="button"&gt;</code> (the CSS already resets button chrome). The popup's Close is likewise a <code>&lt;button&gt;</code>, not a link back to the map.</li>
         <li>The key fact is worded "All-in for 2 hours: $145.00" in the popup but "All-in 2 h: $145.00" in the map list rows. The system uses the popup's wording in both.</li>
-        <li>Every <code>.map-list-item</code> heading carries the same inline <code>style="font: var(--text-label); font-size: var(--font-size-md)"</code>; a rule is proposed for <code>components.css</code>.</li>
-        <li><code>.map-list-item</code> has no visible focus: <code>.location-card__name a:focus-visible</code> removes the link outline and the replacement ring is only defined for <code>.location-card</code>. A row ring is proposed.</li>
-        <li>The empty, error and loading overlays are positioned with inline styles in the mocks; a <code>.static-map__overlay</code> rule is proposed. This page copies the mocks' inline styles until it lands.</li>
+        <li>Every <code>.map-list-item</code> heading carries the same inline <code>style="font: var(--text-label); font-size: var(--font-size-md)"</code>; <code>.map-list-item .location-card__name</code> now sets that font, so the examples here drop it.</li>
+        <li><code>.map-list-item</code> had no visible focus: <code>.location-card__name a:focus-visible</code> removes the link outline and the replacement ring was only defined for <code>.location-card</code>. <code>.map-list-item:has(.location-card__name a:focus-visible)</code> now rings the row.</li>
+        <li>The empty, error and loading overlays are positioned with inline styles in the mocks; <code>.static-map__overlay</code> now centres the notice over the map and <code>.static-map__overlay &gt; .empty</code> gives it its raised card, so the examples here use the class.</li>
         <li>The map-page tiles image has no <code>width</code>/<code>height</code>; the system gives it 1600 × 1000.</li>
         <li>The spot editor puts <code>aria-describedby</code> on a plain <code>&lt;div&gt;</code>, where it is ignored. The system gives the preview <code>role="group"</code> and <code>aria-label="Map preview"</code> so the help text is announced.</li>
         <li><code>.map-unavailable</code> has <code>role="status"</code> on the spot review but no role on the map page. Tiles fail after the page loads, so the system announces it politely on both.</li>

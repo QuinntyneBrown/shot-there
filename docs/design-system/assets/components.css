@@ -1084,6 +1084,8 @@ a.filter-trigger { text-decoration: none; color: var(--color-fg-default); }
 .editor-section > summary::-webkit-details-marker { display: none; }
 .editor-section > summary::after { content: ""; margin-left: auto; width: var(--space-2); height: var(--space-2); border-right: var(--border-width-thick) solid currentColor; border-bottom: var(--border-width-thick) solid currentColor; rotate: 45deg; transition: rotate var(--duration-fast) var(--ease-standard); flex: none; }
 .editor-section[open] > summary::after { rotate: 225deg; }
+/* The error count takes the free space; the chevron sits right after it. */
+.editor-section > summary:has(.editor-section__errors)::after { margin-left: 0; }
 .editor-section > summary h2 { font: var(--text-h4); }
 /* Invalid sections say so in words, not only with the border colour (WCAG 1.4.1). */
 .editor-section__errors { margin-left: auto; font: var(--text-body-sm); color: var(--color-danger-fg); }
@@ -1091,7 +1093,9 @@ a.filter-trigger { text-decoration: none; color: var(--color-fg-default); }
 .editor-section__body { display: flex; flex-direction: column; gap: var(--space-5); padding: var(--space-2) var(--space-5) var(--space-6); }
 .editor-section[data-invalid] { border-color: var(--color-danger-border); }
 .fee-row { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-3); padding: var(--space-4); background: var(--color-bg-surface-sunken); border-radius: var(--radius-md); }
-@media (min-width: 48rem) { .fee-row { grid-template-columns: minmax(0, 2fr) minmax(7rem, 1fr) minmax(0, 1.4fr) auto; align-items: end; } }
+/* Four up only when the row itself has room: beside the status panel (62–75rem) the form column is narrow. */
+:has(> .fee-row) { container-type: inline-size; }
+@container (min-width: 34rem) { .fee-row { grid-template-columns: minmax(0, 2fr) minmax(7rem, 1fr) minmax(0, 1.4fr) auto; align-items: end; } }
 /* Image manager: thumbnail, alt text, reorder, remove, per-file progress (L2-057, L2-058). */
 .image-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: var(--space-3); }
 .image-row { display: grid; grid-template-columns: 5rem minmax(0, 1fr); gap: var(--space-3) var(--space-4); align-items: start; padding: var(--space-3); border: var(--border-width-hairline) solid var(--color-border-default); border-radius: var(--radius-md); }

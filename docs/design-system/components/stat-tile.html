@@ -231,7 +231,7 @@
             <td><div class="stat-tile" style="min-width: 15rem;"><h3 class="stat-tile__title"><a href="../../mocks/pages/admin-studios/default.html">Studios</a></h3><p class="stat-tile__counts">7 published, 2 draft</p><a class="btn btn--primary" href="../../mocks/pages/studio-editor/new.html" data-state="focus">New studio</a></div></td>
             <td><div class="stat-tile" style="min-width: 15rem;"><h3 class="stat-tile__title"><a href="../../mocks/pages/admin-studios/default.html">Studios</a></h3><p class="stat-tile__counts">7 published, 2 draft</p><a class="btn btn--primary" href="../../mocks/pages/studio-editor/new.html" data-state="active">New studio</a></div></td>
             <td><span class="text-muted">Never disabled: creating a studio is always allowed.</span></td>
-            <td><div class="stat-tile" style="min-width: 15rem;" aria-busy="true"><span class="skeleton skeleton--title"></span><span class="skeleton skeleton--text" style="width: 70%;"></span><span class="skeleton skeleton--pill" style="width: 8rem; height: var(--control-height-md);"></span></div></td>
+            <td><div class="stat-tile stat-tile--skeleton" style="min-width: 15rem;" aria-busy="true"><span class="skeleton skeleton--title"></span><span class="skeleton skeleton--text"></span><span class="skeleton skeleton--pill"></span></div></td>
             <td><div class="stat-tile" style="min-width: 15rem;"><h3 class="stat-tile__title"><a href="../../mocks/pages/admin-studios/default.html">Studios</a></h3><p class="stat-tile__counts">0 published, 0 draft</p><a class="btn" href="../../mocks/pages/studio-editor/new.html">New studio</a></div></td>
           </tr>
           <tr><th scope="row">Title link</th>
@@ -362,10 +362,10 @@
 &lt;div aria-busy="true"&gt;
   &lt;p class="visually-hidden" role="status"&gt;Loading the dashboard&lt;/p&gt;
   &lt;ul class="stat-grid"&gt;
-    &lt;li class="stat-tile"&gt;
+    &lt;li class="stat-tile stat-tile--skeleton"&gt;
       &lt;span class="skeleton skeleton--title"&gt;&lt;/span&gt;
-      &lt;span class="skeleton skeleton--text" style="width: 70%;"&gt;&lt;/span&gt;
-      &lt;span class="skeleton skeleton--pill" style="width: 8rem; height: var(--control-height-md);"&gt;&lt;/span&gt;
+      &lt;span class="skeleton skeleton--text"&gt;&lt;/span&gt;
+      &lt;span class="skeleton skeleton--pill"&gt;&lt;/span&gt;
     &lt;/li&gt;
   &lt;/ul&gt;
 &lt;/div&gt;</code></pre>
@@ -376,6 +376,7 @@
         <tr><td><code>.stat-tile__counts</code></td><td>Muted large body text with tabular figures.</td></tr>
         <tr><td><code>.stat-tile .btn</code></td><td>Natural width, pinned to the bottom of the tile.</td></tr>
         <tr><td><code>aria-busy="true"</code> (wrapper)</td><td>Loading: tiles hold skeletons; pair it with a <code>role="status"</code> message.</td></tr>
+        <tr><td><code>.stat-tile--skeleton</code></td><td>Loading tile: sizes the text placeholder to 70% and the button placeholder to an 8rem pill.</td></tr>
         <tr><td><code>data-state="hover|focus|active"</code></td><td>Documentation and mocks only: forces a state on the title link or action.</td></tr>
       </tbody></table></div>
     </section>
@@ -392,7 +393,7 @@
         <li><a href="../../mocks/dialogs/site-menu/admin.html">dialogs/site-menu/admin</a> (the inert dashboard behind the admin menu)</li>
       </ul>
       <p>Requirements: L2-053 (counts, New actions, one column at XS), L2-044 (the list beside the tiles).</p>
-      <p>Drift found during extraction: the dashboard drawn behind <a href="../../mocks/dialogs/site-menu/admin.html">dialogs/site-menu/admin</a> uses <code>&lt;h2&gt;</code> titles with no link and no action, and writes "7 published · 2 drafts"; the system follows the dashboard mocks and L2-053.1 ("7 published, 2 draft", <code>&lt;h3&gt;</code> link, New action). The loading skeleton sizes its counts line and button pill with inline styles; a <code>.stat-tile--skeleton</code> modifier, like <code>.admin-row--skeleton</code>, is proposed so pages stop repeating them.</p>
+      <p>Drift found during extraction: the dashboard drawn behind <a href="../../mocks/dialogs/site-menu/admin.html">dialogs/site-menu/admin</a> uses <code>&lt;h2&gt;</code> titles with no link and no action, and writes "7 published · 2 drafts"; the system follows the dashboard mocks and L2-053.1 ("7 published, 2 draft", <code>&lt;h3&gt;</code> link, New action). The loading skeleton sizes its counts line and button pill with inline styles; <code>.stat-tile--skeleton</code>, like <code>.admin-row--skeleton</code>, now sizes them, so the examples here drop the inline styles.</p>
     </section>
 
     <footer class="ds-footer"><span>ShotThere design system · extracted from <a href="../../mocks/index.html">docs/mocks</a> on 13 October 2026</span><a href="#top">Back to top</a></footer>

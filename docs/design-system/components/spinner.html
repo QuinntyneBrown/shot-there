@@ -150,7 +150,7 @@
       <h3>Busy button in a confirm dialog</h3>
       <p>The confirming button gets <code>aria-busy="true"</code> and the ring; every other control in the dialog (Cancel, Close) is disabled, and Escape waits for the answer. The label stays the same; a hidden status line says what is happening.</p>
       <div class="ds-example">
-        <div class="ds-example__canvas ds-example__canvas--stack" style="flex-wrap: nowrap; max-width: 26rem; background: var(--color-bg-canvas);">
+        <div class="ds-example__canvas ds-example__canvas--stack" style="max-width: 26rem; background: var(--color-bg-canvas);">
           <div class="dialog__panel dialog__panel--sm" style="animation: none;">
             <div class="dialog__header">
               <div class="dialog__heading">
@@ -186,7 +186,7 @@
 
       <h3>Busy submit button in a form</h3>
       <div class="ds-example">
-        <div class="ds-example__canvas ds-example__canvas--stack" style="flex-wrap: nowrap; max-width: 28rem;">
+        <div class="ds-example__canvas ds-example__canvas--stack" style="max-width: 28rem;">
           <button class="btn btn--primary btn--lg btn--block" type="button" aria-busy="true" disabled>Signing in</button>
           <p class="visually-hidden" role="status">Signing in</p>
           <div class="form-actions" style="padding-top: 0;">
@@ -206,7 +206,7 @@
       <h3>Inline spinner with a caption</h3>
       <p>Small spinner, visible caption hidden from assistive technology, and a hidden status with the full words, so the caption is short on screen and the announcement is complete.</p>
       <div class="ds-example">
-        <div class="ds-example__canvas ds-example__canvas--stack" style="flex-wrap: nowrap; max-width: 32rem; background: var(--color-bg-surface-raised);">
+        <div class="ds-example__canvas ds-example__canvas--stack" style="max-width: 32rem; background: var(--color-bg-surface-raised);">
           <div class="field">
             <label class="field__label" for="sp-entry-search">Studio or spot</label>
             <div class="search-field">
@@ -327,7 +327,7 @@
       <h3>Labelling</h3>
       <p>Say what is happening, with the item's name: "Deleting Corktown Garage Studio…", "Unpublishing The Junction Loft…", "Searching…". Keep the button's own label as it was ("Delete studio", "Save changes"): it is invisible while busy, and changing it to "Saving…" makes screen readers hear the same word twice.</p>
       <h3>Contrast</h3>
-      <div class="ds-example__canvas ds-example__canvas--stack" style="flex-wrap: nowrap; padding: 0; gap: var(--space-2);">
+      <div class="ds-example__canvas ds-example__canvas--stack" style="padding: 0; gap: var(--space-2);">
         <div class="ds-pair"><span>Ring in a default button</span><span class="ds-pair__ratio" data-contrast="--color-fg-default|--color-bg-surface" data-min="3"></span></div>
         <div class="ds-pair"><span>Ring in a primary button</span><span class="ds-pair__ratio" data-contrast="--color-fg-on-action|--color-action" data-min="3"></span></div>
         <div class="ds-pair"><span>Ring in a danger button</span><span class="ds-pair__ratio" data-contrast="--color-fg-on-danger|--color-danger-solid" data-min="3"></span></div>
@@ -354,7 +354,7 @@
       <div class="ds-dodont">
         <figure class="ds-do"><div class="ds-example__canvas"><button class="btn btn--primary" type="button" aria-busy="true" disabled>Save changes</button><span class="save-status" role="status">Saving…</span></div><figcaption>Keep the button's label and say "Saving…" once, in the status line (studio editor, submitting).</figcaption></figure>
         <figure class="ds-dont"><div class="ds-example__canvas"><button class="btn btn--primary" type="button" aria-busy="true" disabled>Saving…</button><span class="save-status">Saving…</span></div><figcaption>Don't rename the busy button to "Saving…" next to a "Saving…" status (spot and guide editor mocks): the word is announced twice and the button loses its name.</figcaption></figure>
-        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--stack" style="flex-wrap: nowrap;"><ul class="location-grid" aria-hidden="true" style="grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-4);"><li class="location-card location-card--skeleton"><div class="location-card__media"><span class="skeleton skeleton--rect"></span></div><span class="skeleton skeleton--title"></span><span class="skeleton skeleton--text"></span></li><li class="location-card location-card--skeleton"><div class="location-card__media"><span class="skeleton skeleton--rect"></span></div><span class="skeleton skeleton--title"></span><span class="skeleton skeleton--text"></span></li></ul></div><figcaption>Load a list of studios as skeleton cards in the final grid.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--stack"><ul class="location-grid" aria-hidden="true" style="grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-4);"><li class="location-card location-card--skeleton"><div class="location-card__media"><span class="skeleton skeleton--rect"></span></div><span class="skeleton skeleton--title"></span><span class="skeleton skeleton--text"></span></li><li class="location-card location-card--skeleton"><div class="location-card__media"><span class="skeleton skeleton--rect"></span></div><span class="skeleton skeleton--title"></span><span class="skeleton skeleton--text"></span></li></ul></div><figcaption>Load a list of studios as skeleton cards in the final grid.</figcaption></figure>
         <figure class="ds-dont"><div class="ds-example__canvas" style="justify-content: center;"><span class="spinner spinner--lg" aria-hidden="true"></span></div><figcaption>Don't put one big spinner where the studio cards will appear; everything jumps when it ends.</figcaption></figure>
         <figure class="ds-do"><div class="ds-example__canvas"><button class="btn btn--danger" type="button" aria-busy="true" disabled>Delete studio</button></div><figcaption>Busy keeps full opacity so the ring reaches 3:1.</figcaption></figure>
         <figure class="ds-dont"><div class="ds-example__canvas"><button class="btn btn--danger" type="button" disabled>Delete studio <span class="spinner spinner--sm" aria-hidden="true"></span></button></div><figcaption>Don't drop a <code>.spinner</code> into a dimmed, disabled button: the ring falls below 3:1 and the button no longer reports that it is busy.</figcaption></figure>

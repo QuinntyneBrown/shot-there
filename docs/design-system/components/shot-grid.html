@@ -263,7 +263,7 @@
         <li><b>Hover</b> zooms the photo to 104% inside its clipped slot over <code>--duration-slow</code>. The slot itself does not move.</li>
         <li><b>Focus</b> draws the shared ring around the slot, following its 12 px corners.</li>
         <li><b>Loading</b> is the empty slot in <code>--color-bg-photo</code> at its final size. Images below the first screen use <code>loading="lazy"</code>.</li>
-        <li><b>Failed</b> (HTTP 404 or a network error) keeps the slot and shows an image-off icon with the photo's alt text on the sunken surface (L2-086.1). The button still opens the lightbox, which shows the same fallback.</li>
+        <li><b>Failed</b> (HTTP 404 or a network error) keeps the slot and shows an image-off icon with the photo's alt text on the photo-grey ground (<code>--color-bg-photo</code>, L2-086.1). The button still opens the lightbox, which shows the same fallback.</li>
       </ul>
       <h3>Both themes</h3>
       <div class="ds-themes">
@@ -300,7 +300,7 @@
     </section>
 
     <section class="ds-section" id="theming"><h2><a href="#theming">Theming</a></h2>
-      <p>Photos are content and keep their own colours in both themes. The chrome around them is themed: the loading slot uses <code>--color-bg-photo</code>, captions and the setup line use <code>--color-fg-muted</code> with <code>--color-fg-default</code> for the strong part, and the failed slot uses <code>--color-bg-surface-sunken</code> with muted text and a subtle icon. In the dark theme the slot darkens to stone-800 so an unloaded photo does not flash white. The grid has no component tokens. To re-theme it, change the semantic roles.</p>
+      <p>Photos are content and keep their own colours in both themes. The chrome around them is themed: the loading slot uses <code>--color-bg-photo</code>, captions and the setup line use <code>--color-fg-muted</code> with <code>--color-fg-default</code> for the strong part, and the failed slot keeps <code>--color-bg-photo</code> with muted text and a subtle icon. In the dark theme the slot darkens to stone-800 so an unloaded photo does not flash white. The grid has no component tokens. To re-theme it, change the semantic roles.</p>
       <p>Forced colours: images still show and the focus outline becomes the system highlight. The fallback text stays readable because it is real text.</p>
     </section>
 
@@ -321,12 +321,12 @@
       <div class="ds-example__canvas ds-example__canvas--stack" style="padding: 0; gap: var(--space-2);">
         <div class="ds-pair"><span>Caption and setup line on the page</span><span class="ds-pair__ratio" data-contrast="--color-fg-muted|--color-bg-canvas" data-min="4.5"></span></div>
         <div class="ds-pair"><span>Caption strong part on the page</span><span class="ds-pair__ratio" data-contrast="--color-fg-default|--color-bg-canvas" data-min="4.5"></span></div>
-        <div class="ds-pair"><span>Fallback alt text on the failed slot</span><span class="ds-pair__ratio" data-contrast="--color-fg-muted|--color-bg-surface-sunken" data-min="4.5"></span></div>
-        <div class="ds-pair"><span>Fallback icon on the failed slot</span><span class="ds-pair__ratio" data-contrast="--color-fg-subtle|--color-bg-surface-sunken" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Fallback alt text on the failed slot</span><span class="ds-pair__ratio" data-contrast="--color-fg-muted|--color-bg-photo" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Fallback icon on the failed slot</span><span class="ds-pair__ratio" data-contrast="--color-fg-subtle|--color-bg-photo" data-min="4.5"></span></div>
         <div class="ds-pair"><span>Focus ring on the page</span><span class="ds-pair__ratio" data-contrast="--color-focus-ring|--color-bg-canvas" data-min="3"></span></div>
       </div>
       <h3>Motion</h3>
-      <p>The hover zoom (104%, <code>--duration-slow</code>, <code>--ease-standard</code>) is the only motion. Under <code>prefers-reduced-motion</code> the duration token is zeroed, so the zoom happens without animating. Nothing moves on its own.</p>
+      <p>The hover zoom (104%, <code>--duration-slow</code>, <code>--ease-standard</code>) is the only motion. Under <code>prefers-reduced-motion</code> the photo does not zoom at all (<code>scale: none</code>). Nothing moves on its own.</p>
       <h3>Touch</h3>
       <p>Each shot is a large target, at least 136 × 170 px at 320 px wide, with 16 px between shots. There is no hover on touch, so nothing depends on it: a tap opens the lightbox.</p>
     </section>
@@ -359,7 +359,7 @@
           <tr><td>Slot while loading</td><td><code>--color-bg-photo</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-bg-photo" data-swatch></i><span data-token="--color-bg-photo"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-bg-photo" data-swatch></i><span data-token="--color-bg-photo"></span></span></td></tr>
           <tr><td>Caption, setup line, fallback text</td><td><code>--color-fg-muted</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-muted" data-swatch></i><span data-token="--color-fg-muted"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-muted" data-swatch></i><span data-token="--color-fg-muted"></span></span></td></tr>
           <tr><td>Caption strong part</td><td><code>--color-fg-default</code>, <code>--font-weight-semibold</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-default" data-swatch></i><span data-token="--color-fg-default"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-default" data-swatch></i><span data-token="--color-fg-default"></span></span></td></tr>
-          <tr><td>Failed slot</td><td><code>--color-bg-surface-sunken</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-bg-surface-sunken" data-swatch></i><span data-token="--color-bg-surface-sunken"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-bg-surface-sunken" data-swatch></i><span data-token="--color-bg-surface-sunken"></span></span></td></tr>
+          <tr><td>Failed slot</td><td><code>--color-bg-photo</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-bg-photo" data-swatch></i><span data-token="--color-bg-photo"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-bg-photo" data-swatch></i><span data-token="--color-bg-photo"></span></span></td></tr>
           <tr><td>Failed slot icon</td><td><code>--color-fg-subtle</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-subtle" data-swatch></i><span data-token="--color-fg-subtle"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-subtle" data-swatch></i><span data-token="--color-fg-subtle"></span></span></td></tr>
           <tr><td>Focus ring</td><td><code>--color-focus-ring</code>, <code>--focus-ring-width</code>, <code>--focus-ring-offset</code></td><td><span data-token="--color-focus-ring"></span></td><td><span data-theme="dark" data-token="--color-focus-ring"></span></td></tr>
           <tr><td>Grid gap</td><td><code>--space-4</code></td><td colspan="2"><span data-token="--space-4"></span></td></tr>
@@ -391,7 +391,7 @@
         <tr><td><code>.shot-grid figure</code>, <code>figcaption</code></td><td>Stacks shot and caption 8 px apart. Caption is small and muted; <code>&lt;strong&gt;</code> inside is ink and semibold.</td></tr>
         <tr><td><code>.shot-grid__setup</code></td><td>The standard setup line above the test shots, 16 px above the grid.</td></tr>
         <tr><td><code>.shot</code></td><td>Resets a <code>&lt;button&gt;</code> into a 4:5 photo slot with 12 px corners and a zoom cursor. The image covers the slot and zooms on hover.</td></tr>
-        <tr><td><code>.media-fallback</code></td><td>Fills a slot whose image failed: sunken surface, centred icon and alt text, wraps long words.</td></tr>
+        <tr><td><code>.media-fallback</code></td><td>Fills a slot whose image failed: photo-grey ground, centred icon and alt text, wraps long words.</td></tr>
         <tr><td><code>data-state="hover|focus"</code></td><td>Documentation only: forces the state in static pages.</td></tr>
       </tbody></table>
       <p>In Angular, <code>StudioTestShotsComponent</code>, <code>StudioGalleryComponent</code> and the spot sample-shot section render this markup. Each button calls the lightbox dialog with the list and its index. An <code>(error)</code> handler on the image swaps in the fallback.</p>

@@ -268,7 +268,7 @@
       <ul>
         <li><b>Appears</b> when the server says so: a warning badge shows when a verification date is more than 183 days before today (Monday 13 October 2026, so before 13 Apr 2026); "Due soon" from 153 days. The server computes staleness and the page only shows its flag (L2-043).</li>
         <li><b>Goes</b> when the admin saves a new "Prices last verified" date; nothing else clears it.</li>
-        <li><b>Wrapped</b>: in a 10rem comparison column "Prices may be out of date" is wider than the column, so it must wrap. The mocks do this with an inline <code>white-space: normal</code>; a CSS rule is proposed (see Sources).</li>
+        <li><b>Wrapped</b>: in a 10rem comparison column "Prices may be out of date" is wider than the column, so it must wrap. Inside <code>.compare-table</code> the rule <code>.compare-table .badge { white-space: normal; }</code> does this. The example above sits outside a table, so it sets <code>white-space: normal</code> inline to show the result.</li>
       </ul>
     </section>
 
@@ -382,7 +382,7 @@
       <p>Drift fixed during extraction:</p>
       <ul>
         <li>Spot staleness is worded two ways: "Permit info may be out of date" on spot cards (spots/default, spot-filters) and "Permit rules may be out of date" on the spot page. The system uses "Permit rules may be out of date", matching "Permit rules verified".</li>
-        <li>Three compare mocks wrap the stale badge with an inline <code>style="white-space: normal;"</code>. A rule for badges in comparison cells is proposed for <code>components.css</code>.</li>
+        <li>Three compare mocks wrap the stale badge with an inline <code>style="white-space: normal;"</code>. <code>.compare-table .badge</code> now wraps badges in comparison cells, so the inline style is no longer needed.</li>
       </ul>
     </section>
 

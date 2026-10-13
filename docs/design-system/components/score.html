@@ -342,7 +342,7 @@
       <pre><code>/* Pips follow whatever ink and edge the surface defines */
 .pips &gt; i { box-shadow: inset 0 0 0 var(--border-width-hairline) var(--color-border-strong); }
 .pips &gt; i[data-on] { background: var(--color-fg-default); box-shadow: none; }</code></pre>
-      <p>Forced colours: backgrounds and box shadows are removed in Windows High Contrast, so the pips vanish. The number or word stays, so no meaning is lost. A <code>CanvasText</code> outline for the bars has been proposed (see Sources).</p>
+      <p>Forced colours: backgrounds and box shadows are removed in Windows High Contrast, so <code>components.css</code> opts the pips out (<code>forced-color-adjust: none</code>): each bar gets a 1px <code>CanvasText</code> border and filled bars a <code>CanvasText</code> fill. The number or word stays as well, so no meaning is lost.</p>
     </section>
 
     <section class="ds-section" id="accessibility"><h2><a href="#accessibility">Accessibility</a></h2>
@@ -455,7 +455,7 @@
         <li><a href="../../mocks/pages/studios/default.html">pages/studios/default</a> (card score "3.8" with hidden "out of 5", no pips)</li>
         <li><a href="../../mocks/pages/guide/default.html">pages/guide/default</a> (entry "Overall 3.2")</li>
       </ul>
-      <p>Drift fixed during extraction: none in the markup. Every mock uses <code>.pips</code> with <code>data-on</code> and the hidden "Category: n out of 5" sentence. Three points are noted for follow-up. The comparison table and cards show scores without pips, which this page records as the compact variant. <code>.light-grid__note</code> is styled but no mock uses it, because spots put their notes in a table column. The stylesheet comment "one row of four (or five)" is wrong: the grid is four columns, and the five-row spot case is a table. In forced colours the pips disappear because they are drawn with background and box shadow. A <code>CanvasText</code> outline rule has been proposed for <code>components.css</code>.</p>
+      <p>Drift fixed during extraction: none in the markup. Every mock uses <code>.pips</code> with <code>data-on</code> and the hidden "Category: n out of 5" sentence. Three points were noted for follow-up; two are fixed. The comparison table and cards show scores without pips, which this page records as the compact variant. <code>.light-grid__note</code> is styled but no mock uses it, because spots put their notes in a table column. The stylesheet comment "one row of four (or five)" was wrong (the grid is four columns, and the five-row spot case is a table); it now reads "one row of four". In forced colours the pips disappeared because they are drawn with background and box shadow; a forced-colours rule now draws them in <code>CanvasText</code>.</p>
     </section>
 
     <footer class="ds-footer"><span>ShotThere design system · extracted from <a href="../../mocks/index.html">docs/mocks</a> on 13 October 2026</span><a href="#top">Back to top</a></footer>

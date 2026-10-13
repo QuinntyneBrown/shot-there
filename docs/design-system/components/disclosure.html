@@ -196,16 +196,18 @@
       <h3>In place</h3>
       <div class="ds-example">
         <div class="ds-example__canvas ds-example__canvas--stack">
+          <div class="review-section" style="margin-top: 0;">
           <dl class="regions">
             <div><dt>Who it's for</dt><dd>Portrait and fashion shooters who want big north light and a usable cyc on a mid-range budget.</dd></div>
             <div><dt>Who should skip it</dt><dd>Video crews, because of the streetcar, and anyone hauling heavy cases: the freight elevator is tiny.</dd></div>
           </dl>
-          <div class="disclosure" style="margin-top: var(--space-8);">
+          <div class="disclosure">
             <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h0"/></svg>
             <div><p class="disclosure__title">How this session was paid for</p><p>I paid the full rate for this session. No studio pays for placement or scores. <a href="../../mocks/pages/editorial-policy/default.html">Editorial policy</a></p></div>
           </div>
+          </div>
         </div>
-        <div class="ds-example__caption"><span>The end of The Junction Loft's verdict: <code>--space-8</code> after the verdict text. The mocks set that gap inline; see <a href="#sources">Sources</a>.</span></div>
+        <div class="ds-example__caption"><span>The end of The Junction Loft's verdict: <code>.review-section &gt; .disclosure</code> puts <code>--space-8</code> after the verdict text. The mocks set that gap inline; see <a href="#sources">Sources</a>.</span></div>
       </div>
     </section>
 
@@ -284,7 +286,7 @@
         <div class="ds-pair"><span>Icon</span><span class="ds-pair__ratio" data-contrast="--color-fg-muted|--color-bg-surface-sunken" data-min="3"></span></div>
         <div class="ds-pair"><span>Left rule</span><span class="ds-pair__ratio" data-contrast="--color-border-strong|--color-bg-surface-sunken" data-min="3"></span></div>
       </div>
-      <p>The policy link (<code>--color-fg-link</code>, and <code>--color-fg-link-hover</code> on hover) and the focus ring sit on <code>--color-bg-surface-sunken</code>; those three pairs are not yet in <code>contrast-pairs.json</code> and are listed for adding. The link is also underlined, so it never relies on colour alone (1.4.1).</p>
+      <p>The policy link (<code>--color-fg-link</code>, and <code>--color-fg-link-hover</code> on hover) and the focus ring sit on <code>--color-bg-surface-sunken</code>; those three pairs are checked in <code>contrast-pairs.json</code>. The link is also underlined, so it never relies on colour alone (1.4.1).</p>
       <h3>Motion</h3>
       <p>None.</p>
       <h3>Touch</h3>
@@ -355,6 +357,7 @@
 &lt;/section&gt;</code></pre>
       <div class="ds-table-wrap"><table class="ds-table"><thead><tr><th scope="col">Class / field</th><th scope="col">Effect</th></tr></thead><tbody>
         <tr><td><code>.disclosure</code></td><td>Sunken callout with a left rule; icon and text side by side.</td></tr>
+        <tr><td><code>.review-section &gt; .disclosure</code></td><td><code>--space-8</code> above the callout when it ends a review section.</td></tr>
         <tr><td><code>.disclosure .icon</code></td><td>Muted, fixed size, aligned to the first line.</td></tr>
         <tr><td><code>.disclosure__title</code></td><td>The label line.</td></tr>
         <tr><td><code>.disclosure p</code></td><td>Full width instead of the reading measure.</td></tr>
@@ -369,7 +372,7 @@
         <li>Sentences: <a href="../../mocks/pages/editorial-policy/default.html">pages/editorial-policy/default</a>; values: <a href="../../mocks/pages/studio-editor/default.html">pages/studio-editor/default</a> (Disclosure section)</li>
         <li>Requirements: L1-011, L2-012, L2-020.3, L2-045, L2-046</li>
       </ul>
-      <p>Drift found during extraction: every review mock shows the paid-in-full or regular-visit sentence, so the discounted and comped variants on this page are written from the editorial policy and the catalog (Leslieville Daylight Studio, Liberty Cyc House). All eleven mocks space the callout from the verdict text with an inline <code>margin-top: var(--space-8)</code>; that belongs in <code>components.css</code>. The contrast pairs for the link and focus ring on the sunken well are missing from <code>contrast-pairs.json</code>.</p>
+      <p>Drift found during extraction: every review mock shows the paid-in-full or regular-visit sentence, so the discounted and comped variants on this page are written from the editorial policy and the catalog (Leslieville Daylight Studio, Liberty Cyc House). All eleven mocks space the callout from the verdict text with an inline <code>margin-top: var(--space-8)</code>; <code>.review-section &gt; .disclosure</code> now sets it, so the inline style can go. The contrast pairs for the link and focus ring on the sunken well have been added to <code>contrast-pairs.json</code>.</p>
     </section>
 
     <footer class="ds-footer"><span>ShotThere design system · extracted from <a href="../../mocks/index.html">docs/mocks</a> on 13 October 2026</span><a href="#top">Back to top</a></footer>

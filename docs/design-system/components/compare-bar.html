@@ -311,7 +311,7 @@
       </table></div>
       <div class="ds-example">
         <div class="ds-example__canvas ds-example__canvas--stack">
-          <div class="ds-frame" style="min-height: 17rem;">
+          <div class="ds-frame has-compare-bar" style="min-height: 17rem;">
             <div class="ds-frame__page"><p>Studios · 7 studios, four picked, Compare pressed on Ossington Blackbox</p></div>
             <aside class="compare-bar" aria-label="Studios to compare">
               <div class="compare-bar__inner">
@@ -325,7 +325,7 @@
                 </div>
               </div>
             </aside>
-            <div class="toast-region" role="status" aria-live="polite" style="bottom: calc(var(--space-24) + env(safe-area-inset-bottom));">
+            <div class="toast-region" role="status" aria-live="polite">
               <div class="toast toast--warning">
                 <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3 2 20h20L12 3z"/><path d="M12 10v4M12 17h.01"/></svg>
                 <div class="toast__body">
@@ -338,7 +338,7 @@
             </div>
           </div>
         </div>
-        <div class="ds-example__caption"><span>Over the limit: the bar does not change; the toast sits above it. The toast's offset is inline in the mock and here; the class rule is proposed under <a href="#sources">Sources</a>.</span><span>notifications/public-toast/warning</span></div>
+        <div class="ds-example__caption"><span>Over the limit: the bar does not change; the toast sits above it. <code>.has-compare-bar .toast-region</code> lifts the toast clear of the bar; the mock does it inline (see <a href="#sources">Sources</a>).</span><span>notifications/public-toast/warning</span></div>
       </div>
 
       <h3>Both themes</h3>
@@ -363,7 +363,7 @@
         <li><b>Every width</b>: the bar is fixed to the bottom of the viewport (L2-030.6). Its inner row is capped at the container width and centred, so on a wide screen the count lines up with the page's left edge and Compare with its right edge.</li>
         <li><b>Safe area</b>: the bottom padding is <code>--space-3</code> plus <code>env(safe-area-inset-bottom)</code>, so the buttons clear a phone's home indicator (L2-065.1). Pages need <code>viewport-fit=cover</code> for the inset to be reported.</li>
         <li><b>Phones</b>: the status takes a 12rem basis; when status and actions do not fit on one line the actions wrap below it, still in Clear-then-Compare order. Names never wrap: they cut off with an ellipsis, and the count stays complete.</li>
-        <li><b>End of page</b>: the page adds <code>.has-compare-bar</code> to <code>&lt;body&gt;</code>, which pads its end by <code>--space-24</code> (96px) plus the inset so the footer can scroll clear of the bar. Measured at 360px, the bar is 143px tall with one studio (count, name and hint over wrapped buttons) and 122px with two to four, so today the last 26–47px stay under it; the fix is under <a href="#sources">Sources</a>.</li>
+        <li><b>End of page</b>: the page adds <code>.has-compare-bar</code> to <code>&lt;body&gt;</code>, which pads its end by <code>--space-24</code> (96px) plus the inset so the footer can scroll clear of the bar. Measured at 360px, the bar is 143px tall with one studio (count, name and hint over wrapped buttons) and 122px with two to four, so below 36rem <code>.has-compare-bar</code> pads by <code>--space-32</code> plus <code>--space-8</code> (160px) plus the inset and the footer clears the bar.</li>
         <li><b>Toggle</b>: the card toggle is 36px from 48rem and 44px below it; the review-page toggle is 44px everywhere.</li>
       </ul>
       <div class="ds-iframes">
@@ -400,7 +400,7 @@
       <ul>
         <li>Toggling never moves focus; the count announces the change. Over the limit, focus stays on the pressed button and the toast announces itself.</li>
         <li>Clear removes the bar, so focus would be left on a removed element: move it to <code>&lt;main&gt;</code> (which has <code>tabindex="-1"</code> on every page).</li>
-        <li>Focus not obscured (2.4.11): the fixed bar can cover a focused footer link when tabbing down the page. Pages with the bar need a bottom scroll padding as tall as the bar; proposed under <a href="#sources">Sources</a>.</li>
+        <li>Focus not obscured (2.4.11): the fixed bar can cover a focused footer link when tabbing down the page. <code>html:has(body.has-compare-bar)</code> sets a bottom scroll padding as tall as the bar on its two-row phone layout, so the browser scrolls a focused element clear of it.</li>
         <li>The ring is the shared one: 2px <code>--color-focus-ring</code>, 2px offset, on the toggle and on both bar buttons.</li>
       </ul>
       <h3>Labelling</h3>
@@ -531,13 +531,13 @@
         <li><a href="../../mocks/notifications/public-toast/success.html">notifications/public-toast/success</a> and <a href="../../mocks/notifications/public-toast/danger.html">notifications/public-toast/danger</a> (Copy link on the comparison page, the bar's destination)</li>
         <li><a href="../../mocks/pages/compare/over-limit.html">pages/compare/over-limit</a> (a link with six slugs; the limit as the comparison page states it)</li>
       </ul>
-      <p>Drift found during extraction (the CSS was not changed; each proposal is in the extraction report):</p>
+      <p>Drift found during extraction. The first two need the mocks changed; the CSS ones are fixed in <code>components.css</code>:</p>
       <ul>
         <li><b>pages/studio/in-compare</b>: Compare comes before Clear (every other mock has Clear, then Compare); the bar is labelled "Comparison" instead of "Studios to compare"; and <code>.has-compare-bar</code> sits on <code>&lt;main&gt;</code>, so the footer after it is not padded. Resolution: Clear then Compare, one label, the class on <code>&lt;body&gt;</code>.</li>
         <li><b>pages/studios/selected-one</b>: Compare is a native <code>disabled</code> button with <code>aria-describedby</code>, which a keyboard user can never reach. Resolution: <code>aria-disabled="true"</code> (same look, through <code>.btn[aria-disabled="true"]</code>) and ignore activation.</li>
-        <li><b>End padding too short on phones.</b> At 360px the bar is 143px (one picked) and 122px (two to four) against 96px of padding from <code>.has-compare-bar</code>, so the end of the footer stays under the bar (L2-030.6). Proposed: <code>@media (max-width: 35.99rem) { .has-compare-bar { padding-bottom: calc(var(--space-32) + var(--space-8) + env(safe-area-inset-bottom)); } }</code>.</li>
-        <li><b>Focus hidden behind the bar.</b> Nothing reserves the bar's height when the browser scrolls a focused element into view (WCAG 2.4.11). Proposed: <code>html:has(body.has-compare-bar) { scroll-padding-bottom: calc(var(--space-32) + var(--space-8) + env(safe-area-inset-bottom)); }</code>.</li>
-        <li><b>Toast offset inline.</b> notifications/public-toast/warning lifts the toast region above the bar with <code>style="bottom: calc(var(--space-24) + env(safe-area-inset-bottom));"</code>. Proposed: <code>.has-compare-bar .toast-region { bottom: calc(var(--space-24) + env(safe-area-inset-bottom)); }</code>.</li>
+        <li><b>End padding too short on phones.</b> At 360px the bar is 143px (one picked) and 122px (two to four) against 96px of padding from <code>.has-compare-bar</code>, so the end of the footer stayed under the bar (L2-030.6). Fixed: <code>@media (max-width: 35.99rem) { .has-compare-bar { padding-bottom: calc(var(--space-32) + var(--space-8) + env(safe-area-inset-bottom)); } }</code>.</li>
+        <li><b>Focus hidden behind the bar.</b> Nothing reserved the bar's height when the browser scrolled a focused element into view (WCAG 2.4.11). Fixed: <code>html:has(body.has-compare-bar) { scroll-padding-bottom: calc(var(--space-32) + var(--space-8) + env(safe-area-inset-bottom)); }</code>.</li>
+        <li><b>Toast offset inline.</b> notifications/public-toast/warning lifts the toast region above the bar with <code>style="bottom: calc(var(--space-24) + env(safe-area-inset-bottom));"</code>. Fixed: <code>.has-compare-bar .toast-region { bottom: calc(var(--space-24) + env(safe-area-inset-bottom)); }</code>.</li>
         <li><b>Toggle label changes while <code>aria-pressed</code> also changes</b> (L2-030.1 and every mock). Recorded as an open question; see <a href="#accessibility">Accessibility</a>.</li>
       </ul>
     </section>

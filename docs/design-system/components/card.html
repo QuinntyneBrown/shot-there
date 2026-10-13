@@ -248,7 +248,7 @@
           <tr><th scope="row">Interactive</th>
             <td><article class="card card--interactive"><p class="card__title"><a href="../../mocks/pages/guide/default.html">Best natural light</a></p></article></td>
             <td><article class="card card--interactive" data-state="hover"><p class="card__title"><a href="../../mocks/pages/guide/default.html">Best natural light</a></p></article></td>
-            <td><article class="card card--interactive" style="outline: var(--focus-ring-width) solid var(--color-focus-ring); outline-offset: var(--focus-ring-offset);"><p class="card__title"><a href="../../mocks/pages/guide/default.html">Best natural light</a></p></article></td>
+            <td><article class="card card--interactive" data-state="focus"><p class="card__title"><a href="../../mocks/pages/guide/default.html">Best natural light</a></p></article></td>
             <td>Same as hover; the link fires on release</td>
             <td>n/a: never disabled</td>
             <td>n/a</td></tr>
@@ -258,7 +258,7 @@
             <td><div class="card card--selected"><p class="card__title">Kensington Window Room</p><button class="btn btn--sm compare-toggle" type="button" aria-pressed="true">Remove<span class="visually-hidden"> Kensington Window Room</span></button></div></td></tr>
         </tbody>
       </table></div>
-      <p class="ds-note">The focus cell draws the ring with an inline outline: the stylesheet has <code>:focus-within</code> for real focus but no <code>data-state="focus"</code> hook for cards. Tab to the links above to see the real ring.</p>
+      <p class="ds-note">The focus cell is forced with <code>data-state="focus"</code>, which draws the same ring as <code>:focus-within</code>. Tab to the links above to see the real ring.</p>
       <h3>Both themes</h3>
       <div class="ds-themes">
         <div data-theme="light"><div class="stack"><div class="card"><div class="card__header"><p class="card__title">Distillery District</p><span class="badge badge--warning">Stale</span></div><p class="text-muted">Outdoor spot · Permits verified 20 Mar 2026</p></div><div class="card card--selected"><p class="card__title">The Junction Loft</p></div><div class="well">Rain backup within 6.2 km</div></div></div>
@@ -353,7 +353,7 @@
       <div class="ds-table-wrap"><table class="ds-table"><thead><tr><th scope="col">Class / attribute</th><th scope="col">Effect</th></tr></thead><tbody>
         <tr><td><code>.card</code></td><td>Surface, hairline, <code>--radius-lg</code>, 24px padding.</td></tr>
         <tr><td><code>.card--flush</code></td><td>No padding; clips content to the radius.</td></tr>
-        <tr><td><code>.card--interactive</code></td><td>Stretches the card's link over it; hover lift and shadow; ring on <code>:focus-within</code>.</td></tr>
+        <tr><td><code>.card--interactive</code></td><td>Stretches the card's link over it; hover lift and shadow; ring on <code>:focus-within</code> (forced with <code>data-state="focus"</code>).</td></tr>
         <tr><td><code>.card--selected</code> / <code>data-state="selected"</code></td><td>Accent-red edge mirroring a pressed or checked control inside.</td></tr>
         <tr><td><code>.card__header</code> <code>.card__title</code> <code>.card__footer</code></td><td>Title row with an end slot; <code>--text-h4</code> title; hairline-topped action row.</td></tr>
         <tr><td><code>.well</code></td><td>Sunken, borderless box, <code>--radius-md</code>, 16px padding.</td></tr>

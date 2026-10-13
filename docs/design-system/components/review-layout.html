@@ -490,7 +490,7 @@
         <li>Head reused: <a href="../../mocks/pages/guide/default.html">pages/guide/default</a>, <a href="../../mocks/dialogs/lightbox/default.html">dialogs/lightbox/default</a> (behind the dialog)</li>
         <li>Requirements: L2-003, L2-009.2, L2-013.2, L2-020, L2-030.6, L2-036.2, L2-038.1, L2-086.1</li>
       </ul>
-      <p>Drift fixed during extraction: the review date in studio/default, in-compare, media-failed and playing was plain text; the system uses <code>&lt;time datetime&gt;</code> as studio/stale and studio/minimal already do. Not fixed (needs a CSS change): below LG the summary panel is moved first with <code>order: -1</code> while it stays last in the source, so visual and Tab order differ; the mocks also space the breadcrumb, the disclosure and the score list with inline <code>margin-top</code> styles that belong in the stylesheet.</p>
+      <p>Drift fixed during extraction: the review date in studio/default, in-compare, media-failed and playing was plain text; the system uses <code>&lt;time datetime&gt;</code> as studio/stale and studio/minimal already do. Not fixed (needs the mocks changed): below LG the summary panel is moved first with <code>order: -1</code> while it stays last in the source, so visual and Tab order differ. The mocks also space the breadcrumb, the disclosure and the score list with inline <code>margin-top</code> styles; <code>nav:has(&gt; .breadcrumb)</code> and <code>.review-section &gt; .disclosure</code> now set the first two, and the score list's spacing is still inline.</p>
     </section>
 
     <footer class="ds-footer"><span>ShotThere design system · extracted from <a href="../../mocks/index.html">docs/mocks</a> on 13 October 2026</span><a href="#top">Back to top</a></footer>

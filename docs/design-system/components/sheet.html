@@ -253,7 +253,7 @@
                 </div>
                 <fieldset class="filter-group">
                   <legend class="filter-group__title">All-in cost for 2 hours</legend>
-                  <div class="field-row" style="grid-template-columns: repeat(2, minmax(0, 1fr));">
+                  <div class="field-row field-row--pair">
                     <div class="field"><label class="field__label" for="sv3-min">Minimum</label><span class="input-group"><span class="addon" aria-hidden="true">$</span><input class="input" id="sv3-min" type="number" inputmode="decimal" min="0" step="10" name="costMin" autocomplete="off"></span></div>
                     <div class="field"><label class="field__label" for="sv3-max">Maximum</label><span class="input-group"><span class="addon" aria-hidden="true">$</span><input class="input" id="sv3-max" type="number" inputmode="decimal" min="0" step="10" name="costMax" autocomplete="off"></span></div>
                   </div>
@@ -363,7 +363,7 @@
           <tr><th scope="row">Menu row</th>
             <td><ul class="section-list"><li><a class="section-link" href="../../mocks/pages/guides/default.html"><span class="section-link__body"><span class="section-link__title">Guides</span><span class="section-link__meta">3 published · 1 draft</span></span></a></li></ul></td>
             <td><ul class="section-list"><li><a class="section-link" href="../../mocks/pages/guides/default.html" data-state="hover"><span class="section-link__body"><span class="section-link__title">Guides</span><span class="section-link__meta">3 published · 1 draft</span></span></a></li></ul></td>
-            <td><ul class="section-list"><li><a class="section-link" href="../../mocks/pages/guides/default.html" style="outline: var(--focus-ring-width) solid var(--color-focus-ring); outline-offset: var(--focus-ring-offset);"><span class="section-link__body"><span class="section-link__title">Guides</span><span class="section-link__meta">3 published · 1 draft</span></span></a></li></ul></td>
+            <td><ul class="section-list"><li><a class="section-link" href="../../mocks/pages/guides/default.html" data-state="focus"><span class="section-link__body"><span class="section-link__title">Guides</span><span class="section-link__meta">3 published · 1 draft</span></span></a></li></ul></td>
             <td>Same as hover</td>
             <td>n/a: rows are never disabled</td>
             <td><ul class="section-list"><li><a class="section-link" href="../../mocks/pages/admin-dashboard/default.html" aria-current="page"><span class="section-link__body"><span class="section-link__title">Dashboard</span><span class="section-link__meta">2 items need re-verifying</span></span></a></li></ul></td></tr>
@@ -376,7 +376,7 @@
             <td>Invalid: the field error below, primary disabled</td></tr>
         </tbody>
       </table></div>
-      <p class="ds-note">The menu row's focus cell draws the ring inline (the shared <code>:focus-visible</code> ring; rows have no <code>data-state="focus"</code> hook). The current row has <code>aria-current="page"</code> but no visual mark in the stylesheet yet; see Sources.</p>
+      <p class="ds-note">The menu row's focus cell is forced with <code>data-state="focus"</code>, which draws the shared ring just inside the row. The current row has <code>aria-current="page"</code>, shown by a 2px accent bar on its left edge and an accent title.</p>
 
       <h3>Selected and invalid filters</h3>
       <div class="ds-iframes">
@@ -386,7 +386,7 @@
             <form class="sheet__body" action="#states" method="get">
               <fieldset class="filter-group">
                 <legend class="filter-group__title">All-in cost for 2 hours</legend>
-                <div class="field-row" style="grid-template-columns: repeat(2, minmax(0, 1fr));">
+                <div class="field-row field-row--pair">
                   <div class="field"><label class="field__label" for="ss1-min">Minimum</label><span class="input-group"><span class="addon" aria-hidden="true">$</span><input class="input" id="ss1-min" type="number" inputmode="decimal" min="0" step="10" autocomplete="off"></span></div>
                   <div class="field"><label class="field__label" for="ss1-max">Maximum</label><span class="input-group"><span class="addon" aria-hidden="true">$</span><input class="input" id="ss1-max" type="number" inputmode="decimal" min="0" step="10" autocomplete="off" value="150"></span></div>
                 </div>
@@ -405,7 +405,7 @@
             <form class="sheet__body" action="#states" method="get">
               <fieldset class="filter-group">
                 <legend class="filter-group__title">All-in cost for 2 hours</legend>
-                <div class="field-row" style="grid-template-columns: repeat(2, minmax(0, 1fr));">
+                <div class="field-row field-row--pair">
                   <div class="field"><label class="field__label" for="ss2-min">Minimum</label><span class="input-group"><span class="addon" aria-hidden="true">$</span><input class="input" id="ss2-min" type="number" inputmode="decimal" min="0" step="10" autocomplete="off" value="200"></span></div>
                   <div class="field"><label class="field__label" for="ss2-max">Maximum</label><span class="input-group"><span class="addon" aria-hidden="true">$</span><input class="input" id="ss2-max" type="number" inputmode="decimal" min="0" step="10" autocomplete="off" value="100" aria-invalid="true" aria-describedby="ss2-error"></span>
                     <p class="field__error" id="ss2-error">The minimum must be lower than the maximum</p></div>
@@ -499,8 +499,8 @@
       <div class="ds-dodont">
         <figure class="ds-do"><div class="ds-example__canvas"><div class="sheet__footer" style="padding: 0; border: 0; width: 100%;"><button class="btn" type="button">Clear all</button><button class="btn btn--primary" type="button">Show 5 studios</button></div></div><figcaption>Name the result and its count, so the visitor knows what they will get.</figcaption></figure>
         <figure class="ds-dont"><div class="ds-example__canvas"><div class="sheet__footer" style="padding: 0; border: 0; width: 100%;"><button class="btn" type="button">Cancel</button><button class="btn btn--primary" type="button">Apply</button></div></div><figcaption>Don't use "Apply": it hides that the choices leave 5 of 7 studios, and "Cancel" duplicates Close.</figcaption></figure>
-        <figure class="ds-do"><div class="ds-example__canvas"><ul class="section-list" style="width: 100%;"><li><a class="section-link" href="../../mocks/pages/admin-dashboard/default.html" aria-current="page"><span class="section-link__body"><span class="section-link__title">Dashboard</span><span class="section-link__meta">2 items need re-verifying</span></span></a></li></ul></div><figcaption>Mark the current page with <code>aria-current="page"</code>, as the admin menu does.</figcaption></figure>
-        <figure class="ds-dont"><div class="ds-example__canvas"><ul class="section-list" style="width: 100%;"><li><a class="section-link" href="../../mocks/pages/admin-dashboard/default.html"><span class="section-link__body"><span class="section-link__title">Dashboard (current)</span><span class="section-link__meta">2 items need re-verifying</span></span></a></li></ul></div><figcaption>Don't write "current" into the label. The visible mark belongs in CSS (proposed: accent-red title on <code>[aria-current="page"]</code>).</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas"><ul class="section-list" style="width: 100%;"><li><a class="section-link" href="../../mocks/pages/admin-dashboard/default.html" aria-current="page"><span class="section-link__body"><span class="section-link__title">Dashboard</span><span class="section-link__meta">2 items need re-verifying</span></span></a></li></ul></div><figcaption>Mark the current page with <code>aria-current="page"</code>, as the admin menu does; <code>.section-link[aria-current="page"]</code> adds the accent bar and title.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas"><ul class="section-list" style="width: 100%;"><li><a class="section-link" href="../../mocks/pages/admin-dashboard/default.html"><span class="section-link__body"><span class="section-link__title">Dashboard (current)</span><span class="section-link__meta">2 items need re-verifying</span></span></a></li></ul></div><figcaption>Don't write "current" into the label. The visible mark comes from CSS: <code>.section-link[aria-current="page"]</code> draws an accent bar and an accent title.</figcaption></figure>
       </div>
     </section>
 
@@ -557,7 +557,7 @@
         <li><a href="../../mocks/dialogs/spot-filters/default.html">dialogs/spot-filters/default</a>, <a href="../../mocks/dialogs/spot-filters/selected.html">selected</a> (L2-024, L2-025, L2-067)</li>
         <li><a href="../../mocks/pages/studios/default.html">pages/studios/default</a> (the Filters trigger, <code>.until-lg</code>, and the sidebar it replaces)</li>
       </ul>
-      <p>Drift found during extraction (recorded, mocks unchanged): the admin menu marks Dashboard with <code>aria-current="page"</code> but <code>.section-link</code> has no current-page style, so it looks like every other row. No sheet mock has a <code>.backdrop</code>, so from 48rem the side sheet sits over an undimmed (inert) page, unlike the dialogs. The cost fields force two columns with an inline <code>grid-template-columns</code> on <code>.field-row</code> (which is one column below 36rem). The mocks use <code>&lt;a&gt;</code> for Close, Clear all and the primary so the static set can be clicked through; the product uses buttons and <code>form="…"</code>. <code>.drawer</code> and <code>.drawer--left</code> have CSS but no mock.</p>
+      <p>Drift found during extraction (recorded, mocks unchanged): the admin menu marks Dashboard with <code>aria-current="page"</code>, but <code>.section-link</code> had no current-page style, so it looked like every other row; <code>.section-link[aria-current="page"]</code> now adds an accent bar and title. No sheet mock has a <code>.backdrop</code>, so from 48rem the side sheet sits over an undimmed (inert) page, unlike the dialogs. The cost fields force two columns with an inline <code>grid-template-columns</code> on <code>.field-row</code> (which is one column below 36rem); the examples here use <code>.field-row--pair</code> instead. The mocks use <code>&lt;a&gt;</code> for Close, Clear all and the primary so the static set can be clicked through; the product uses buttons and <code>form="…"</code>. <code>.drawer</code> and <code>.drawer--left</code> have CSS but no mock.</p>
     </section>
 
     <footer class="ds-footer"><span>ShotThere design system · extracted from <a href="../../mocks/index.html">docs/mocks</a> on 13 October 2026</span><a href="#top">Back to top</a></footer>

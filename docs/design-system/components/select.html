@@ -177,7 +177,7 @@
         <div class="ds-example__canvas ds-example__canvas--stack" style="max-width: 40rem;">
           <fieldset>
             <legend>Natural light</legend>
-            <div class="field-row" style="grid-template-columns: repeat(auto-fit, minmax(min(100%, 9rem), 1fr));">
+            <div class="field-row field-row--fit">
               <div class="field"><label class="field__label" for="v-l-morning">Morning</label><select class="select" id="v-l-morning" name="light.morning"><option value="none">None</option><option value="low">Low</option><option value="medium" selected>Medium</option><option value="strong">Strong</option></select></div>
               <div class="field"><label class="field__label" for="v-l-midday">Midday</label><select class="select" id="v-l-midday" name="light.midday"><option value="none">None</option><option value="low">Low</option><option value="medium">Medium</option><option value="strong" selected>Strong</option></select></div>
               <div class="field"><label class="field__label" for="v-l-afternoon">Afternoon</label><select class="select" id="v-l-afternoon" name="light.afternoon"><option value="none">None</option><option value="low">Low</option><option value="medium">Medium</option><option value="strong" selected>Strong</option></select></div>
@@ -376,7 +376,7 @@
         <li><a href="../../mocks/pages/studio-editor/default.html">pages/studio-editor/default</a> and <a href="../../mocks/pages/studio-editor/published.html">published</a> (window direction, natural light, cyc wall, fee type, gear category, load-in, parking)</li>
         <li><a href="../../mocks/pages/spot-editor/default.html">pages/spot-editor/default</a> (type, light by time of day, permits per shoot type, crowds)</li>
       </ul>
-      <p>Drift fixed during extraction: no editor select gives its options a <code>value</code>, so they submit display words, while the disclosure radios send keys (<code>paid_in_full</code>); every option now has a key. Editor selects have no <code>id</code> and are wrapped in <code>label.field</code>; they get an <code>id</code> and a sibling <code>label for</code>. The natural-light and rubric rows set <code>grid-template-columns</code> inline (an auto-fit 9rem and 7rem grid); kept here as documentation layout and flagged to <a href="form-layout.html">form layout</a>. The cyc wall is a No/Yes select beside a 20 A checkbox; the checkbox is documented as the rule for yes-or-no facts. No mock shows an invalid or disabled select.</p>
+      <p>Drift fixed during extraction: no editor select gives its options a <code>value</code>, so they submit display words, while the disclosure radios send keys (<code>paid_in_full</code>); every option now has a key. Editor selects have no <code>id</code> and are wrapped in <code>label.field</code>; they get an <code>id</code> and a sibling <code>label for</code>. The natural-light and rubric rows set <code>grid-template-columns</code> inline (an auto-fit 9rem and 7rem grid); <code>.field-row--fit</code> and <code>.field-row--fit-sm</code> now do this (see <a href="form-layout.html">form layout</a>), and the example here uses <code>.field-row--fit</code>. The cyc wall is a No/Yes select beside a 20 A checkbox; the checkbox is documented as the rule for yes-or-no facts. No mock shows an invalid or disabled select.</p>
     </section>
 
     <footer class="ds-footer"><span>ShotThere design system · extracted from <a href="../../mocks/index.html">docs/mocks</a> on 13 October 2026</span><a href="#top">Back to top</a></footer>

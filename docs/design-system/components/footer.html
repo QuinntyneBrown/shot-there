@@ -143,7 +143,7 @@
                   <label class="field__label" for="ft-anat-email">Email address</label>
                   <input class="input" id="ft-anat-email" name="email" type="email" autocomplete="email" inputmode="email">
                 </div>
-                <button class="btn" type="submit" style="align-self: flex-end;">Subscribe</button>
+                <button class="btn" type="submit">Subscribe</button>
               </div>
             </form>
             <nav class="site-footer__links" aria-label="Footer (anatomy example)">
@@ -188,7 +188,7 @@
                   <label class="field__label" for="ft-v-email">Email address</label>
                   <input class="input" id="ft-v-email" name="email" type="email" autocomplete="email" inputmode="email">
                 </div>
-                <button class="btn" type="submit" style="align-self: flex-end;">Subscribe</button>
+                <button class="btn" type="submit">Subscribe</button>
               </div>
               <div class="signup__trap" aria-hidden="true"><label for="ft-v-website">Leave this field empty</label><input id="ft-v-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
             </form>
@@ -386,7 +386,7 @@
       <p>Drift fixed during extraction:</p>
       <ul>
         <li>Footer <code>aria-current</code>: all six spot list mocks and seven of the eight studio list mocks mark the list link; <a href="../../mocks/pages/studios/default.html">pages/studios/default</a> does not. The system marks it on both lists in every state.</li>
-        <li>All 43 footer Subscribe buttons carry an inline <code>style="align-self: flex-end;"</code> to line up with the labelled field; the examples keep it and a CSS rule is proposed in its place.</li>
+        <li>All 43 footer Subscribe buttons carry an inline <code>style="align-self: flex-end;"</code> to line up with the labelled field; <code>.signup__row .btn</code> now does this from 36rem, so the examples here drop the inline style.</li>
         <li>The footer signup line ("One email when a new studio or spot goes up. Unsubscribe any time.") differs from the home hero's ("One short email per new review. No ads, no sponsors."). Both are kept, one per place; see <a href="signup.html">Email signup</a>.</li>
       </ul>
     </section>

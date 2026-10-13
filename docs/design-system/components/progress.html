@@ -158,7 +158,7 @@
       <h3>Upload bar (determinate)</h3>
       <p>Set <code>--value</code> on <code>.progress__bar</code> and keep <code>aria-valuenow</code> in step. The row's thumbnail drops to 50% opacity while it uploads; the only action is Cancel upload.</p>
       <div class="ds-example">
-        <div class="ds-example__canvas ds-example__canvas--stack" style="flex-wrap: nowrap; max-width: 44rem;">
+        <div class="ds-example__canvas ds-example__canvas--stack" style="max-width: 44rem;">
           <ol class="image-list">
             <li class="image-row" data-state="uploading">
               <div class="image-row__thumb"><img src="../assets/img/gallery-2.svg" alt="" width="800" height="1000"></div>
@@ -204,7 +204,7 @@
       <h3>Toast timer</h3>
       <p>The last child of an auto-dismissing toast: 2px, the toast's text colour at 40% opacity, shrinking over the toast's 8 seconds and pausing on hover and focus. Danger toasts never dismiss on their own, so they have no timer.</p>
       <div class="ds-example">
-        <div class="ds-example__canvas ds-example__canvas--stack" style="flex-wrap: nowrap; max-width: 26rem;">
+        <div class="ds-example__canvas ds-example__canvas--stack" style="max-width: 26rem;">
           <div class="toast-region toast-region--static">
             <div class="toast toast--success">
               <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg>
@@ -227,7 +227,7 @@
       <h3>Indeterminate, success and danger (no screen yet)</h3>
       <p>No mock uses these. Indeterminate fits a wait with no amount that still belongs in the row, such as the server making the 480, 960, 1440 and 2048 px variants after the bytes are in (L2-057.1). Success and danger are end states that last about a second before the row changes.</p>
       <div class="ds-example">
-        <div class="ds-example__canvas ds-example__canvas--stack" style="flex-wrap: nowrap; max-width: 24rem;">
+        <div class="ds-example__canvas ds-example__canvas--stack" style="max-width: 24rem;">
           <div class="stack stack--sm">
             <span class="image-row__meta" id="ind-1">Processing gallery-03.jpg</span>
             <div class="progress progress--indeterminate" role="progressbar" aria-labelledby="ind-1"><div class="progress__bar"></div></div>
@@ -251,7 +251,7 @@
       <h3>Meter (no screen yet)</h3>
       <p><code>.meter</code> stacks a label row over a bar and counts things rather than bytes. No ShotThere screen uses it; if a batch summary is ever needed above the image list, this is its shape.</p>
       <div class="ds-example">
-        <div class="ds-example__canvas ds-example__canvas--stack" style="flex-wrap: nowrap; max-width: 28rem;">
+        <div class="ds-example__canvas ds-example__canvas--stack" style="max-width: 28rem;">
           <div class="meter">
             <div class="meter__label"><span id="m-1">Gallery uploads</span><span>1 of 3 done</span></div>
             <div class="progress" role="progressbar" aria-labelledby="m-1" aria-valuemin="0" aria-valuemax="3" aria-valuenow="1" aria-valuetext="1 of 3 done"><div class="progress__bar" style="--value: 33%;"></div></div>
@@ -305,7 +305,7 @@
       </table></div>
       <h3>Both themes</h3>
       <div class="ds-themes">
-        <div data-theme="light"><div class="ds-example__canvas ds-example__canvas--stack" style="flex-wrap: nowrap; padding: 0;">
+        <div data-theme="light"><div class="ds-example__canvas ds-example__canvas--stack" style="padding: 0;">
           <ol class="image-list">
             <li class="image-row" data-state="uploading">
               <div class="image-row__thumb"><img src="../assets/img/gallery-2.svg" alt="" width="800" height="1000"></div>
@@ -320,7 +320,7 @@
           <div class="progress progress--success" role="progressbar" aria-label="gallery-03.jpg uploaded, light theme" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100"><div class="progress__bar" style="--value: 100%;"></div></div>
           <div class="progress progress--danger" role="progressbar" aria-label="gallery-04.jpg didn't upload, light theme" aria-valuemin="0" aria-valuemax="100" aria-valuenow="30"><div class="progress__bar" style="--value: 30%;"></div></div>
         </div></div>
-        <div data-theme="dark"><div class="ds-example__canvas ds-example__canvas--stack" style="flex-wrap: nowrap; padding: 0;">
+        <div data-theme="dark"><div class="ds-example__canvas ds-example__canvas--stack" style="padding: 0;">
           <ol class="image-list">
             <li class="image-row" data-state="uploading">
               <div class="image-row__thumb"><img src="../assets/img/gallery-2.svg" alt="" width="800" height="1000"></div>
@@ -375,7 +375,7 @@
       <h3>Labelling</h3>
       <p>Every bar is named after its file with <code>aria-label</code> ("Uploading gallery-02.jpg"), so three bars in one list are three different names. The visible "Uploading… 45%" is <code>aria-hidden</code> to avoid hearing the value twice. Do not announce every percentage: the failure is announced by the row's <code>role="alert"</code> error, and the finish by the focus move.</p>
       <h3>Contrast</h3>
-      <div class="ds-example__canvas ds-example__canvas--stack" style="flex-wrap: nowrap; padding: 0; gap: var(--space-2);">
+      <div class="ds-example__canvas ds-example__canvas--stack" style="padding: 0; gap: var(--space-2);">
         <div class="ds-pair"><span>Ink fill on track</span><span class="ds-pair__ratio" data-contrast="--color-action|--color-bg-subtle-hover" data-min="3"></span></div>
         <div class="ds-pair"><span>Success fill on track</span><span class="ds-pair__ratio" data-contrast="--color-success-solid|--color-bg-subtle-hover" data-min="3"></span></div>
         <div class="ds-pair"><span>Danger fill on track</span><span class="ds-pair__ratio" data-contrast="--color-danger-solid|--color-bg-subtle-hover" data-min="3"></span></div>
@@ -400,10 +400,10 @@
 
     <section class="ds-section" id="do-dont"><h2><a href="#do-dont">Do and don't</a></h2>
       <div class="ds-dodont">
-        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--stack" style="flex-wrap: nowrap;"><div class="progress" role="progressbar" aria-label="Uploading gallery-03.jpg" aria-valuemin="0" aria-valuemax="100" aria-valuenow="80"><div class="progress__bar" style="--value: 80%;"></div></div><span class="image-row__meta" aria-hidden="true">Uploading… 80%</span></div><figcaption>Name each bar after its file, so a list of three bars reads as three files.</figcaption></figure>
-        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--stack" style="flex-wrap: nowrap;"><div class="progress" role="progressbar" aria-label="Upload progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="80"><div class="progress__bar" style="--value: 80%;"></div></div></div><figcaption>Don't give every bar the same generic name; a screen reader hears "Upload progress" three times and can't tell which file is slow.</figcaption></figure>
-        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--stack" style="flex-wrap: nowrap;"><p class="field__error">gallery-04.jpg didn't upload. Check your connection.</p><div class="cluster"><button class="btn btn--sm" type="button">Retry<span class="visually-hidden"> gallery-04.jpg</span></button><button class="btn btn--sm btn--ghost" type="button">Remove<span class="visually-hidden"> gallery-04.jpg</span></button></div></div><figcaption>When an upload fails, replace the bar with the reason and a Retry for that file.</figcaption></figure>
-        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--stack" style="flex-wrap: nowrap;"><div class="progress progress--danger" role="progressbar" aria-label="gallery-04.jpg" aria-valuemin="0" aria-valuemax="100" aria-valuenow="30"><div class="progress__bar" style="--value: 30%;"></div></div></div><figcaption>Don't leave a red bar stuck at 30% as the only sign of failure: no words, no way to retry.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--stack"><div class="progress" role="progressbar" aria-label="Uploading gallery-03.jpg" aria-valuemin="0" aria-valuemax="100" aria-valuenow="80"><div class="progress__bar" style="--value: 80%;"></div></div><span class="image-row__meta" aria-hidden="true">Uploading… 80%</span></div><figcaption>Name each bar after its file, so a list of three bars reads as three files.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--stack"><div class="progress" role="progressbar" aria-label="Upload progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="80"><div class="progress__bar" style="--value: 80%;"></div></div></div><figcaption>Don't give every bar the same generic name; a screen reader hears "Upload progress" three times and can't tell which file is slow.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--stack"><p class="field__error">gallery-04.jpg didn't upload. Check your connection.</p><div class="cluster"><button class="btn btn--sm" type="button">Retry<span class="visually-hidden"> gallery-04.jpg</span></button><button class="btn btn--sm btn--ghost" type="button">Remove<span class="visually-hidden"> gallery-04.jpg</span></button></div></div><figcaption>When an upload fails, replace the bar with the reason and a Retry for that file.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--stack"><div class="progress progress--danger" role="progressbar" aria-label="gallery-04.jpg" aria-valuemin="0" aria-valuemax="100" aria-valuenow="30"><div class="progress__bar" style="--value: 30%;"></div></div></div><figcaption>Don't leave a red bar stuck at 30% as the only sign of failure: no words, no way to retry.</figcaption></figure>
       </div>
     </section>
 

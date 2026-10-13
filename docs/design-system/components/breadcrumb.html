@@ -336,7 +336,7 @@
 &lt;li aria-current="page"&gt;&lt;span class="skeleton skeleton--text" aria-hidden="true"&gt;&lt;/span&gt;&lt;span class="visually-hidden"&gt;Loading&lt;/span&gt;&lt;/li&gt;</code></pre>
       <table class="ds-table"><thead><tr><th scope="col">Class / attribute</th><th scope="col">Effect</th></tr></thead><tbody>
         <tr><td><code>nav[aria-label="Breadcrumb"]</code></td><td>The landmark. Required.</td></tr>
-        <tr><td><code>.breadcrumb</code></td><td>On the <code>&lt;ol&gt;</code>: wrapping flex row, muted small type, "/" separators.</td></tr>
+        <tr><td><code>.breadcrumb</code></td><td>On the <code>&lt;ol&gt;</code>: wrapping flex row, muted small type, "/" separators. Its <code>&lt;nav&gt;</code> gets <code>--space-4</code> above it.</td></tr>
         <tr><td><code>.breadcrumb--collapse</code></td><td>Below <code>48rem</code>, shows only the parent crumb, prefixed with "‹".</td></tr>
         <tr><td><code>aria-current="page"</code></td><td>On the last <code>&lt;li&gt;</code>: default colour, medium weight.</td></tr>
         <tr><td><code>data-state="hover|focus"</code></td><td>Documentation only: forces a link state.</td></tr>
@@ -354,7 +354,7 @@
         <li><a href="../../mocks/pages/guide-editor/default.html">pages/guide-editor/default</a>, <a href="../../mocks/pages/guide-editor/loading.html">loading</a>, <a href="../../mocks/pages/guide-editor/error.html">error</a></li>
         <li><a href="../../mocks/notifications/admin-toast/success.html">notifications/admin-toast/success</a> (trail behind the toast)</li>
       </ul>
-      <p>Drift fixed during extraction: the loading crumb was written two ways. <a href="../../mocks/pages/studio-editor/loading.html">studio-editor/loading</a> put the hidden "Loading" before the skeleton and restyled it inline (<code>display: inline-block; width: 10rem; margin: 0</code>); the spot and guide editors put the skeleton first at 8rem. The system uses the second form. Every mock spaces the trail with an inline <code>style="margin-top: var(--space-4)"</code> on the <code>&lt;nav&gt;</code>; that spacing belongs to the page layout, not to <code>.breadcrumb</code>. No mock uses <code>.breadcrumb--collapse</code>, although at 360px the trail on <a href="../../mocks/pages/guide/default.html">guide/default</a> ("Best studios under $120 for 2 hours") wraps to a second line; it is the first candidate for the modifier.</p>
+      <p>Drift fixed during extraction: the loading crumb was written two ways. <a href="../../mocks/pages/studio-editor/loading.html">studio-editor/loading</a> put the hidden "Loading" before the skeleton and restyled it inline (<code>display: inline-block; width: 10rem; margin: 0</code>); the spot and guide editors put the skeleton first at 8rem. The system uses the second form. Every mock spaces the trail with an inline <code>style="margin-top: var(--space-4)"</code> on the <code>&lt;nav&gt;</code>; that spacing belongs to the page layout, not to <code>.breadcrumb</code>, and <code>nav:has(&gt; .breadcrumb)</code> now sets it, so the inline style can go. No mock uses <code>.breadcrumb--collapse</code>, although at 360px the trail on <a href="../../mocks/pages/guide/default.html">guide/default</a> ("Best studios under $120 for 2 hours") wraps to a second line; it is the first candidate for the modifier.</p>
     </section>
 
     <footer class="ds-footer"><span>ShotThere design system · extracted from <a href="../../mocks/index.html">docs/mocks</a> on 13 October 2026</span><a href="#top">Back to top</a></footer>

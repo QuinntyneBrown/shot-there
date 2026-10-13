@@ -140,7 +140,7 @@
         </figure>
         <ol class="ds-anatomy__list">
           <li><div><b>Label</b><small>From the <a href="form-field.html">form field</a>: <code>label.field__label</code> above the box.</small></div></li>
-          <li><div><b>Text area</b><small><code>--text-body</code> (16px) in <code>--field-fg</code>; padding <code>--space-2</code> <code>--space-3</code>; <code>--radius-md</code>; 1px <code>--field-border</code> edge; at least 2.5 × <code>--control-height-md</code> tall (110px).</small></div></li>
+          <li><div><b>Text area</b><small><code>--text-body</code> (16px) in <code>--field-fg</code>; padding <code>--space-2</code> <code>--space-3</code>; <code>--radius-md</code>; 1px <code>--field-border</code> edge; at least <code>--control-height-md</code> tall (44px); <code>rows</code> sets the starting height.</small></div></li>
           <li><div><b>Resize handle</b><small><code>resize: vertical</code>: the owner can make it taller, never wider than the column.</small></div></li>
         </ol>
       </div>
@@ -186,7 +186,7 @@
     </section>
 
     <section class="ds-section" id="sizes"><h2><a href="#sizes">Sizes</a></h2>
-      <p>A textarea has no size modifiers; its height comes from <code>rows</code> and a 110px minimum. Text is always 16px.</p>
+      <p>A textarea has no size modifiers; its height comes from <code>rows</code>, over a 44px minimum. Text is always 16px.</p>
       <div class="ds-table-wrap"><table class="ds-table">
         <thead><tr><th scope="col">Use</th><th scope="col">Rows</th><th scope="col">Limit</th></tr></thead>
         <tbody>
@@ -196,7 +196,7 @@
           <tr><td>Transit, Driving, Walking (spot)</td><td>2</td><td>None</td></tr>
         </tbody>
       </table></div>
-      <p>The 110px minimum (<code>calc(var(--control-height-md) * 2.5)</code>) is taller than 2 or 3 rows, so today every editor textarea opens at the same height and <code>rows</code> only matters from 4. That is reported as a CSS need (see Sources).</p>
+      <p>The minimum is one control height (<code>--control-height-md</code>, 44px), shorter than any row count in use, so <code>rows="2"</code>, <code>"3"</code> and <code>"4"</code> each open at their own height.</p>
     </section>
 
     <section class="ds-section" id="states"><h2><a href="#states">States</a></h2>
@@ -277,7 +277,7 @@
       <h3>Motion</h3>
       <p>Edge colour transitions over <code>--duration-fast</code>; reduced motion zeroes it. Resizing is direct, never animated.</p>
       <h3>Touch</h3>
-      <p>At 110px the box is far above the 44px target, and tapping the label focuses it. The resize handle is a pointer convenience; nothing depends on it.</p>
+      <p>Even at two rows the box is taller than the 44px target, and tapping the label focuses it. The resize handle is a pointer convenience; nothing depends on it.</p>
     </section>
 
     <section class="ds-section" id="content"><h2><a href="#content">Content</a></h2>
@@ -310,7 +310,7 @@
           <tr><td>Invalid edge</td><td><code>--color-danger-solid</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-danger-solid" data-swatch></i><span data-token="--color-danger-solid"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-danger-solid" data-swatch></i><span data-token="--color-danger-solid"></span></span></td></tr>
           <tr><td>Read-only fill</td><td><code>--color-bg-surface-sunken</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-bg-surface-sunken" data-swatch></i><span data-token="--color-bg-surface-sunken"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-bg-surface-sunken" data-swatch></i><span data-token="--color-bg-surface-sunken"></span></span></td></tr>
           <tr><td>Disabled fill</td><td><code>--color-bg-subtle</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-bg-subtle" data-swatch></i><span data-token="--color-bg-subtle"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-bg-subtle" data-swatch></i><span data-token="--color-bg-subtle"></span></span></td></tr>
-          <tr><td>Minimum height base</td><td><code>--control-height-md</code> × 2.5</td><td colspan="2"><span data-token="--control-height-md"></span></td></tr>
+          <tr><td>Minimum height</td><td><code>--control-height-md</code></td><td colspan="2"><span data-token="--control-height-md"></span></td></tr>
           <tr><td>Padding</td><td><code>--space-2</code> <code>--space-3</code></td><td colspan="2"><span data-token="--space-2"></span> <span data-token="--space-3"></span></td></tr>
           <tr><td>Radius</td><td><code>--radius-md</code></td><td colspan="2"><span data-token="--radius-md"></span></td></tr>
           <tr><td>Text</td><td><code>--text-body</code></td><td colspan="2"><span data-token="--text-body"></span></td></tr>
@@ -324,8 +324,8 @@
   &lt;textarea class="textarea" id="transit" name="directions.transit" rows="2"&gt;&lt;/textarea&gt;
 &lt;/div&gt;</code></pre>
       <table class="ds-table"><thead><tr><th scope="col">Class / attribute</th><th scope="col">Effect</th></tr></thead><tbody>
-        <tr><td><code>.textarea</code></td><td>Field look from the text field, 110px minimum, vertical resize.</td></tr>
-        <tr><td><code>rows</code></td><td>Starting height; matters from 4 rows until the minimum changes.</td></tr>
+        <tr><td><code>.textarea</code></td><td>Field look from the text field, 44px minimum, vertical resize.</td></tr>
+        <tr><td><code>rows</code></td><td>Starting height: 2, 3 or 4 rows (see Sizes).</td></tr>
         <tr><td><code>aria-invalid="true"</code></td><td>Danger red double edge.</td></tr>
         <tr><td><code>readonly</code> / <code>disabled</code></td><td>Sunken fill / faded, out of the tab order.</td></tr>
         <tr><td><code>data-state="hover|focus|invalid|disabled"</code></td><td>Documentation and mocks only.</td></tr>
@@ -341,7 +341,7 @@
         <li><a href="../../mocks/pages/studio-editor/submitting.html">pages/studio-editor/submitting</a> (textareas stay editable while saving)</li>
         <li><a href="../../mocks/pages/guide-editor/new.html">pages/guide-editor/new</a> (empty introduction)</li>
       </ul>
-      <p>Drift fixed during extraction: every editor textarea is wrapped in <code>&lt;label class="field"&gt;</code>; the page uses a sibling <code>label for</code> (see <a href="form-field.html#do-dont">form field</a>). The verdict textareas have no <code>id</code>, so an error summary could not link to them; every textarea gets one. No mock shows a textarea in an error, disabled or read-only state; those states follow the text field. CSS need: the 110px <code>min-height</code> overrides <code>rows="2"</code> and <code>rows="3"</code>, so the mocks' row counts have no visible effect.</p>
+      <p>Drift fixed during extraction: every editor textarea is wrapped in <code>&lt;label class="field"&gt;</code>; the page uses a sibling <code>label for</code> (see <a href="form-field.html#do-dont">form field</a>). The verdict textareas have no <code>id</code>, so an error summary could not link to them; every textarea gets one. No mock shows a textarea in an error, disabled or read-only state; those states follow the text field. The 110px <code>min-height</code> overrode <code>rows="2"</code> and <code>rows="3"</code>, so the mocks' row counts had no visible effect; the minimum is now 44px and the rows work.</p>
     </section>
 
     <footer class="ds-footer"><span>ShotThere design system · extracted from <a href="../../mocks/index.html">docs/mocks</a> on 13 October 2026</span><a href="#top">Back to top</a></footer>

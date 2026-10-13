@@ -168,9 +168,9 @@
       <h3>Warning</h3>
       <div class="ds-example">
         <div class="ds-example__canvas ds-example__canvas--stack" style="max-width: 32rem;">
-          <div class="field"><label class="field__label" for="v-confirm">Prices last verified <span class="optional">(required)</span></label><input class="input" id="v-confirm" name="priceVerifiedAt" type="date" max="2026-10-13" required aria-describedby="v-confirm-warning v-confirm-help"><span class="field__warning" id="v-confirm-warning">You changed a price. Confirm the date you verified it.</span><span class="field__help" id="v-confirm-help">Previously 11 Oct 2026. Visitors see a warning after 183 days.</span></div>
+          <div class="field field--warning"><label class="field__label" for="v-confirm">Prices last verified <span class="optional">(required)</span></label><input class="input" id="v-confirm" name="priceVerifiedAt" type="date" max="2026-10-13" required aria-describedby="v-confirm-warning v-confirm-help"><span class="field__warning" id="v-confirm-warning">You changed a price. Confirm the date you verified it.</span><span class="field__help" id="v-confirm-help">Previously 11 Oct 2026. Visitors see a warning after 183 days.</span></div>
         </div>
-        <div class="ds-example__caption"><span>After the hourly rate changes, the verified date is emptied and required (README assumption 14). The control is not invalid yet, so it keeps its normal border.</span></div>
+        <div class="ds-example__caption"><span>After the hourly rate changes, the verified date is emptied and required (README assumption 14). The control is not invalid yet, so it keeps its normal border; <code>.field--warning</code> tints the whole field as the mock does.</span></div>
       </div>
 
       <h3>Error without a field</h3>
@@ -350,6 +350,7 @@
         <tr><td><code>.field__help</code></td><td>Muted help line.</td></tr>
         <tr><td><code>.field__error</code></td><td>Danger line with a "⚠" glyph. Works on a <code>span</code> in a field or a <code>p</code> on its own.</td></tr>
         <tr><td><code>.field__warning</code></td><td>Warning line with a ringed "!" glyph.</td></tr>
+        <tr><td><code>.field--warning</code> on <code>.field</code></td><td>Warning-tinted well round the field that carries the warning.</td></tr>
         <tr><td><code>aria-invalid="true"</code></td><td>On the control: danger border. Pair with <code>.field__error</code>.</td></tr>
         <tr><td><code>.save-status</code></td><td>Neutral status beside the form actions, 44px tall; always <code>role="status"</code>.</td></tr>
         <tr><td><code>.save-status--saved</code> / <code>--error</code></td><td>Success or danger ink for the saved and refused messages.</td></tr>
@@ -370,7 +371,7 @@
       </ul>
       <p>Drift found during extraction:</p>
       <ul>
-        <li>studio-editor/price-changed tints the warning field with an inline <code>style</code> (padding, radius, <code>--color-warning-bg</code>); no class exists and the muted help on that tint has no checked contrast pair. Documented without the tint.</li>
+        <li>studio-editor/price-changed tints the warning field with an inline <code>style</code> (padding, radius, <code>--color-warning-bg</code>). <code>.field--warning</code> now does it, and the muted help and body text on that tint are checked pairs in <code>contrast-pairs.json</code>; the warning example above uses the class.</li>
         <li>No mock uses <code>.save-status--saved</code> or <code>--error</code>: "Saved…" and "Not saved…" render neutral. Documented with the modifiers.</li>
         <li>The refused-save status reads three ways: "Not saved. Fix the 6 things listed above." (studio), "Not saved" (spot), "Not published" (guide); studio-editor/new leaves the status empty where the other editors say "Not saved yet". Documented with the studio wording.</li>
         <li><code>aria-describedby</code> order varies: error first in studio-editor/invalid, help first in spot-editor/invalid (video, permit source). Documented error first.</li>
