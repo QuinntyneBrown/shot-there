@@ -215,6 +215,7 @@ describe('L2-060 publish and unpublish a guide', () => {
     const response = await publish('g1');
 
     expect(response.status).toBe(200);
+    expect(await response.json()).toEqual({ status: 'published', publishedAt: dependencies.clock.now().toISOString() });
     expect(guideRows(dependencies)[0]).toMatchObject({ status: 'published', publishedAt: dependencies.clock.now() });
     expect(await publicGuideStatus('best-light')).toBe(200);
     expect((dependencies.pageRevalidator as RecordingPageRevalidator).routes).toEqual([
@@ -228,7 +229,10 @@ describe('L2-060 publish and unpublish a guide', () => {
       guides: [aGuide({ id: 'g1', slug: 'best-light', entries: [{ kind: 'studio', locationId: 's1', note: '', position: 0 }] })],
     });
 
-    expect((await unpublish('g1')).status).toBe(200);
+    const response = await unpublish('g1');
+
+    expect(response.status).toBe(200);
+    expect(await response.json()).toEqual({ status: 'draft', publishedAt: null });
 
     expect(guideRows(dependencies)[0]).toMatchObject({ status: 'draft', publishedAt: null });
     expect(await publicGuideStatus('best-light')).toBe(404);
