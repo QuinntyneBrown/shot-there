@@ -11,10 +11,12 @@ import { PAGE_TITLES } from '../../../core/routing/page-titles';
 import { NotFoundPageComponent } from '../../errors/not-found-page.component';
 import { StudioBasicsComponent } from '../studio-basics/studio-basics.component';
 import { StudioDisclosureComponent } from '../studio-disclosure/studio-disclosure.component';
+import { StudioGalleryComponent } from '../studio-gallery/studio-gallery.component';
 import { StudioGearComponent } from '../studio-gear/studio-gear.component';
 import { StudioLogisticsComponent } from '../studio-logistics/studio-logistics.component';
 import { StudioPricingComponent } from '../studio-pricing/studio-pricing.component';
 import { StudioSpecificationsComponent } from '../studio-specifications/studio-specifications.component';
+import { StudioTestShotsComponent } from '../studio-test-shots/studio-test-shots.component';
 import { StudioVerdictComponent } from '../studio-verdict/studio-verdict.component';
 import { StudioPageState } from './studio-page-state';
 
@@ -28,7 +30,9 @@ import { StudioPageState } from './studio-page-state';
     StudioGearComponent,
     StudioLogisticsComponent,
     StudioVerdictComponent,
-    StudioDisclosureComponent
+    StudioDisclosureComponent,
+    StudioTestShotsComponent,
+    StudioGalleryComponent
   ],
   templateUrl: './studio-page.component.html',
   styleUrl: './studio-page.component.css'

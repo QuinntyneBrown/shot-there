@@ -40,3 +40,8 @@ export async function givenStudio(page: Page, studio: FakeStudioDetail): Promise
 export async function givenNoStudio(page: Page, slug: string): Promise<void> {
   await page.route((url) => url.pathname === `/api/studios/${slug}`, (route: Route) => route.fulfill({ status: 404, json: { error: 'not_found' } }));
 }
+
+/** Requests for images whose URL contains this text fail with 404. */
+export async function givenImageFails(page: Page, urlPart: string): Promise<void> {
+  await page.route((url) => url.pathname.includes(urlPart), (route: Route) => route.fulfill({ status: 404, body: '' }));
+}

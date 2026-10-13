@@ -41,7 +41,26 @@ export interface FakeStudioDetail {
     overallScore: number;
   };
   disclosure: { kind: 'paidFull' | 'discounted' | 'comped'; provider: string | null };
+  testShots: FakeImage[];
+  gallery: FakeImage[];
 }
+
+interface FakeImage {
+  id: string;
+  alt: string;
+  caption: string | null;
+  variants: { width: number; url: string }[];
+}
+
+const image = (id: string, alt: string, caption: string | null = null): FakeImage => ({
+  id,
+  alt,
+  caption,
+  variants: [
+    { width: 480, url: `/test-images/${id}-480.svg` },
+    { width: 1200, url: `/test-images/${id}-1200.svg` }
+  ]
+});
 
 interface FakeGearItem {
   name: string;
@@ -112,7 +131,22 @@ export const THE_JUNCTION_LOFT: FakeStudioDetail = {
     scores: { value: 4, light: 5, space: 3, gear: 4, logistics: 2, condition: 5 },
     overallScore: 3.8
   },
-  disclosure: { kind: 'paidFull', provider: null }
+  disclosure: { kind: 'paidFull', provider: null },
+  testShots: [
+    image('test-the-junction-loft-1', 'Test shot 1, headshot: even falloff from the octabox, grey seamless, soft shadow under the chin.', 'Headshot'),
+    image('test-the-junction-loft-2', 'Test shot 2, full length on the cyc: the scuffs show as faint marks behind the feet.', 'Full length'),
+    image('test-the-junction-loft-3', 'Test shot 3, product on a table: clean highlight on the bottle, neutral background.', 'Product on table')
+  ],
+  gallery: [
+    image('gallery-1', 'Portrait in window light, subject turned three-quarters toward the north windows.'),
+    image('gallery-2', 'Close portrait against the brick wall with the octabox as fill.'),
+    image('gallery-3', 'Full-length fashion frame on the cyc, warm afternoon light from the left.'),
+    image('gallery-4', 'Low-key portrait with a black seamless and a single strobe.'),
+    image('gallery-5', 'Seated portrait on the studio sofa, window light only.'),
+    image('gallery-6', 'Standing portrait by the freight door, mixed daylight and LED.'),
+    image('gallery-7', 'Headshot on grey seamless with a reflector under the chin.'),
+    image('gallery-8', 'Wide frame of the whole space showing the cyc, the windows and the light stands.')
+  ]
 };
 
 export const OSSINGTON_BLACKBOX: FakeStudioDetail = {
@@ -140,7 +174,9 @@ export const OSSINGTON_BLACKBOX: FakeStudioDetail = {
     scores: { value: 3, light: 2, space: 5, gear: 5, logistics: 4, condition: 4 },
     overallScore: 3.8
   },
-  disclosure: { kind: 'paidFull', provider: null }
+  disclosure: { kind: 'paidFull', provider: null },
+  testShots: THE_JUNCTION_LOFT.testShots,
+  gallery: THE_JUNCTION_LOFT.gallery
 };
 
 /** The "minimal" studio: no cyc wall, no paid extras, no changing area. */
@@ -196,7 +232,16 @@ export const BLOORDALE_SUN_STUDIO: FakeStudioDetail = {
     scores: { value: 3, light: 3, space: 3, gear: 3, logistics: 3, condition: 3 },
     overallScore: 3.0
   },
-  disclosure: { kind: 'comped', provider: 'Bloordale Sun Studio' }
+  disclosure: { kind: 'comped', provider: 'Bloordale Sun Studio' },
+  testShots: [
+    image('test-bloordale-sun-studio-1', 'Test shot 1, headshot: soft south light, white seamless.', 'Headshot'),
+    image('test-bloordale-sun-studio-2', 'Test shot 2, full length on white seamless; no cyc, so the floor line shows.', 'Full length'),
+    image('test-bloordale-sun-studio-3', 'Test shot 3, product on a table by the window.', 'Product on table')
+  ],
+  gallery: [
+    image('bloordale-gallery-1', 'Portrait by the south window at midday.'),
+    image('bloordale-gallery-2', 'Seated portrait against grey seamless.')
+  ]
 };
 
 /** A discounted session, otherwise like The Junction Loft. */

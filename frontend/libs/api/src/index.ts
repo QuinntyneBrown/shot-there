@@ -21,3 +21,5 @@ export * from './lib/studio/disclosure-kind';
 export * from './lib/studio/rubric-scores-dto';
 export * from './lib/studio/studio-disclosure-dto';
 export * from './lib/studio/studio-verdict-dto';
+export * from './lib/studio/image-dto';
+export * from './lib/studio/image-variant-dto';

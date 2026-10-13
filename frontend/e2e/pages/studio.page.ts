@@ -17,6 +17,16 @@ export class StudioPage {
   readonly overallScore: Locator;
   readonly rubricScores: Locator;
   readonly disclosure: Locator;
+  readonly testShots: Locator;
+  readonly testShotImages: Locator;
+  readonly gallery: Locator;
+  readonly thumbnails: Locator;
+  readonly lightbox: Locator;
+  readonly lightboxImage: Locator;
+  readonly lightboxCount: Locator;
+  readonly lightboxNext: Locator;
+  readonly lightboxPrevious: Locator;
+  readonly lightboxClose: Locator;
 
   constructor(private readonly page: Page) {
     this.heading = page.getByRole('heading', { level: 1 });
@@ -35,6 +45,16 @@ export class StudioPage {
     // Each score's text for assistive technology, e.g. "Light: 5 out of 5".
     this.rubricScores = this.verdict.getByRole('list', { name: 'Rubric scores' }).locator('li .st-visually-hidden');
     this.disclosure = this.verdict.getByRole('note', { name: 'How this session was paid for' });
+    this.testShots = page.getByRole('region', { name: 'Standard test shots' });
+    this.testShotImages = this.testShots.getByRole('img');
+    this.gallery = page.getByRole('region', { name: 'From a real shoot' });
+    this.thumbnails = this.gallery.getByRole('listitem');
+    this.lightbox = page.getByRole('dialog', { name: /^Photo viewer/ });
+    this.lightboxImage = this.lightbox.getByRole('img');
+    this.lightboxCount = this.lightbox.getByText(/^Photo \d+ of \d+$/);
+    this.lightboxNext = this.lightbox.getByRole('button', { name: 'Next photo' }).locator('visible=true');
+    this.lightboxPrevious = this.lightbox.getByRole('button', { name: 'Previous photo' }).locator('visible=true');
+    this.lightboxClose = this.lightbox.getByRole('button', { name: 'Close' });
     this.lightRatings = this.specifications.getByRole('list', { name: 'Natural light by time of day' }).getByRole('listitem');
   }
 
@@ -58,6 +78,30 @@ export class StudioPage {
   /** The value beside a label in a section's description list. */
   row(section: Locator, label: string): Locator {
     return section.locator('dt', { hasText: new RegExp(`^${label}$`) }).locator('xpath=following-sibling::dd[1]');
+  }
+
+  thumbnail(position: number): Locator {
+    return this.thumbnails.nth(position - 1).getByRole('button');
+  }
+
+  async pressKey(key: string): Promise<void> {
+    await this.page.keyboard.press(key);
+  }
+
+  /** Whether keyboard focus is inside the open lightbox. */
+  focusIsInLightbox(): Promise<boolean> {
+    return this.lightbox.evaluate((dialog) => dialog.contains(document.activeElement));
+  }
+
+  /** Level-two headings of the review, in page order. */
+  sectionHeadings(): Promise<string[]> {
+    return this.page.getByRole('main').getByRole('heading', { level: 2 }).allInnerTexts();
+  }
+
+  /** How many gallery thumbnails share the first row. */
+  async galleryColumnCount(): Promise<number> {
+    const tops = await this.thumbnails.evaluateAll((items) => items.map((item) => Math.round(item.getBoundingClientRect().top)));
+    return tops.filter((top) => top === tops[0]).length;
   }
 
   /** The verdict's "Who it's for" or "Who should skip it" text. */

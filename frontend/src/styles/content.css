@@ -19,3 +19,7 @@
 .alert .icon { width: var(--icon-size-md); height: var(--icon-size-md); flex: none; color: var(--alert-icon); margin-top: 0.1rem; }
 .alert__body { flex: 1; min-width: 0; overflow-wrap: anywhere; display: flex; flex-direction: column; gap: var(--space-1); }
 .alert__title { font: var(--text-label); font-size: var(--font-size-md); }
+/* Placeholder FallbackImageDirective puts in a failed image's slot. */
+.media-fallback { display: grid; place-items: center; align-content: center; gap: var(--space-2); width: 100%; height: 100%; padding: var(--space-3); background: var(--color-bg-surface-sunken); color: var(--color-fg-muted); font: var(--text-body-sm); text-align: center; overflow-wrap: anywhere; }
+.media-fallback .icon { width: var(--icon-size-md); height: var(--icon-size-md); color: var(--color-fg-subtle); fill: none; stroke: currentColor; stroke-width: var(--icon-stroke); stroke-linecap: round; stroke-linejoin: round; }
+img[hidden] { display: none; }

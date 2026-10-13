@@ -1,3 +1,4 @@
+import { ImageDto } from './image-dto';
 import { StudioBasicsDto } from './studio-basics-dto';
 import { StudioDisclosureDto } from './studio-disclosure-dto';
 import { StudioGearDto } from './studio-gear-dto';
@@ -16,4 +17,6 @@ export interface StudioDetailDto {
   logistics: StudioLogisticsDto;
   verdict: StudioVerdictDto;
   disclosure: StudioDisclosureDto;
+  testShots: ImageDto[];
+  gallery: ImageDto[];
 }
