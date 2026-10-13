@@ -185,9 +185,6 @@
   --color-danger-solid-hover: var(--palette-sorrel-700);
   --color-fg-on-danger: var(--palette-white);
 
-  /* Rating stars: an empty star still reads as a control (3:1). */
-  --color-star: var(--palette-stone-950);
-  --color-star-empty: var(--palette-stone-500);
 
   /* ---------- Semantic: typography roles ------------------------------- */
   --text-display: var(--font-weight-bold) var(--font-size-5xl) / var(--line-height-tight) var(--font-family-sans);
@@ -209,7 +206,7 @@
 
   /* ---------- Semantic: spacing (4px base) ----------------------------- */
   --space-0: 0;
-  --space-0-5: 0.125rem; /* 2px   hairline gaps, star spacing */
+  --space-0-5: 0.125rem; /* 2px   hairline gaps */
   --space-1: 0.25rem;    /* 4px   icon-to-label, label-to-control */
   --space-2: 0.5rem;     /* 8px   inside chips and tags, between inline items */
   --space-3: 0.75rem;    /* 12px  compact padding, between buttons */
@@ -246,7 +243,6 @@
   --layout-sheet-width: 28rem;      /* side sheet from 48rem */
   --layout-topbar-height: 4rem;
   --layout-section-gap: var(--space-16);
-  --photo-card-size: 17.5rem;       /* circle diameter on listing cards (280px) */
 
   /* ---------- Semantic: shape ------------------------------------------ */
   --radius-xs: 0.25rem;   /* 4px   checkbox, message tail, bar tops */
@@ -276,7 +272,6 @@
   --duration-deliberate: 500ms;/* progress fill */
   --duration-loop-fast: 800ms; /* one spinner revolution */
   --duration-loop: 1400ms;     /* skeleton shimmer, indeterminate bar, pulse */
-  --duration-hover-delay: 300ms; /* tooltip show delay (hide is instant); not motion, so reduced motion keeps it */
   --ease-standard: cubic-bezier(0.2, 0, 0, 1);
   --ease-enter: cubic-bezier(0, 0, 0, 1);
   --ease-exit: cubic-bezier(0.3, 0, 1, 1);
@@ -304,10 +299,10 @@
 
   /* ---------- Semantic: iconography ------------------------------------ */
   --icon-size-xs: 0.875rem;  /* 14px  inside tags */
-  --icon-size-sm: 1rem;      /* 16px  inline with small text, stars */
+  --icon-size-sm: 1rem;      /* 16px  inline with small text */
   --icon-size-md: 1.25rem;   /* 20px  default: buttons, nav, alerts */
   --icon-size-lg: 1.5rem;    /* 24px  standalone */
-  --icon-size-xl: 1.75rem;   /* 28px  empty states, star input */
+  --icon-size-xl: 1.75rem;   /* 28px  empty states */
   --icon-size-2xl: 2rem;     /* 32px  photo placeholders */
   --icon-stroke: 2;          /* 24-unit grid, 2px stroke */
 
@@ -401,8 +396,6 @@
   --color-danger-solid: var(--palette-sorrel-600);
   --color-danger-solid-hover: var(--palette-sorrel-700);
   --color-fg-on-danger: var(--palette-white);
-  --color-star: var(--palette-stone-950);
-  --color-star-empty: var(--palette-stone-500);
   --shadow-color: 28 24 20;
   --shadow-1: 0 1px 2px rgb(var(--shadow-color) / 0.06);
   --shadow-2: 0 4px 14px rgb(var(--shadow-color) / 0.08);
@@ -481,8 +474,6 @@
   --color-danger-solid-hover: var(--palette-sorrel-100);
   --color-fg-on-danger: var(--palette-sorrel-950);
 
-  --color-star: var(--palette-stone-100);
-  --color-star-empty: var(--palette-stone-500);
 
   --shadow-color: 0 0 0;
   --shadow-1: 0 1px 2px rgb(var(--shadow-color) / 0.4);
@@ -553,8 +544,6 @@
     --color-danger-solid: var(--palette-sorrel-300);
     --color-danger-solid-hover: var(--palette-sorrel-100);
     --color-fg-on-danger: var(--palette-sorrel-950);
-    --color-star: var(--palette-stone-100);
-    --color-star-empty: var(--palette-stone-500);
     --shadow-color: 0 0 0;
     --shadow-1: 0 1px 2px rgb(var(--shadow-color) / 0.4);
     --shadow-2: 0 4px 14px rgb(var(--shadow-color) / 0.45);

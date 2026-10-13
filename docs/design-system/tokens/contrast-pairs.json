@@ -17,13 +17,13 @@
       "fg": "--color-fg-default",
       "bg": "--color-bg-surface-raised",
       "min": 4.5,
-      "note": "body text in dialogs/menus"
+      "note": "body text in dialogs, sheets and popovers"
     },
     {
       "fg": "--color-fg-default",
       "bg": "--color-bg-surface-sunken",
       "min": 4.5,
-      "note": "body text in wells/table headers"
+      "note": "body text in sunken panels and table headers"
     },
     {
       "fg": "--color-fg-default",
@@ -113,7 +113,7 @@
       "fg": "--color-fg-accent",
       "bg": "--color-bg-surface",
       "min": 4.5,
-      "note": "accent text (selected tab label)"
+      "note": "accent text (selected chip or segment label)"
     },
     {
       "fg": "--color-fg-accent",
@@ -383,7 +383,7 @@
       "fg": "--color-fg-subtle",
       "bg": "--color-bg-surface-sunken",
       "min": 4.5,
-      "note": "labels in enquiry summary and wells"
+      "note": "labels on sunken panels (all-in cost, light grid, fee rows)"
     },
     {
       "fg": "--color-fg-subtle",
@@ -395,7 +395,7 @@
       "fg": "--color-fg-on-scrim",
       "bg": "--color-bg-scrim",
       "min": 4.5,
-      "note": "'+4 photos' and upload progress over a photo (scrim composited on white = worst case)"
+      "note": "text over the lightbox scrim (scrim composited on white = worst case)"
     },
     {
       "fg": "--color-fg-inverse",
@@ -408,24 +408,6 @@
       "bg": "--color-bg-inverse",
       "min": 1,
       "note": "toast divider (decorative)"
-    },
-    {
-      "fg": "--color-star",
-      "bg": "--color-bg-canvas",
-      "min": 3,
-      "note": "filled rating star"
-    },
-    {
-      "fg": "--color-star-empty",
-      "bg": "--color-bg-canvas",
-      "min": 3,
-      "note": "empty rating star (star input is a control)"
-    },
-    {
-      "fg": "--color-star",
-      "bg": "--color-star-empty",
-      "min": 1.2,
-      "note": "filled vs empty star are distinguishable (shape + count text carry the value)"
     },
     {
       "fg": "--color-bg-surface",
@@ -491,7 +473,7 @@
       "fg": "--color-fg-on-action",
       "bg": "--color-action",
       "min": 4.5,
-      "note": "filter count bubble, 'Cover' tag, my message bubble"
+      "note": "filter count bubble and play label on the episode poster"
     },
     {
       "fg": "--color-focus-ring",
@@ -539,67 +521,49 @@
       "fg": "--color-fg-default",
       "bg": "--color-bg-photo",
       "min": 3,
-      "note": "spinner arc in a photo placeholder"
+      "note": "spinner arc in an image placeholder"
     },
     {
       "fg": "--color-fg-accent",
       "bg": "--color-bg-subtle",
       "min": 4.5,
-      "note": "status label on the current inbox row"
+      "note": "status label on a hovered admin row"
     },
     {
       "fg": "--color-success-fg",
       "bg": "--color-bg-subtle",
       "min": 4.5,
-      "note": "status label on the current inbox row"
+      "note": "status label on a hovered admin row"
     },
     {
       "fg": "--color-warning-fg",
       "bg": "--color-bg-subtle",
       "min": 4.5,
-      "note": "status label on the current inbox row"
+      "note": "status label on a hovered admin row"
     },
     {
       "fg": "--color-danger-fg",
       "bg": "--color-bg-subtle",
       "min": 4.5,
-      "note": "status label on the current inbox row"
+      "note": "status label on a hovered admin row"
     },
     {
       "fg": "--color-warning-fg",
       "bg": "--color-bg-surface-sunken",
       "min": 4.5,
-      "note": "status or late wait on a hovered record row"
+      "note": "status text on a sunken row or panel"
     },
     {
       "fg": "--color-success-fg",
       "bg": "--color-bg-surface-sunken",
       "min": 4.5,
-      "note": "status or late wait on a hovered record row"
+      "note": "status text on a sunken row or panel"
     },
     {
       "fg": "--color-danger-fg",
       "bg": "--color-bg-surface-sunken",
       "min": 4.5,
-      "note": "status or late wait on a hovered record row"
-    },
-    {
-      "fg": "--color-star",
-      "bg": "--color-bg-surface-raised",
-      "min": 3,
-      "note": "filled star in the review dialog"
-    },
-    {
-      "fg": "--color-star-empty",
-      "bg": "--color-bg-surface-raised",
-      "min": 3,
-      "note": "empty star in the review dialog"
-    },
-    {
-      "fg": "--color-star-empty",
-      "bg": "--color-bg-subtle",
-      "min": 3,
-      "note": "hovered star label"
+      "note": "status text on a sunken row or panel"
     },
     {
       "fg": "--color-success-solid",
@@ -611,19 +575,19 @@
       "fg": "--color-warning-fg",
       "bg": "--color-bg-surface-raised",
       "min": 4.5,
-      "note": "warning in the enquiry dialog"
+      "note": "warning text in a dialog"
     },
     {
       "fg": "--color-fg-subtle",
       "bg": "--color-bg-photo",
       "min": 4.5,
-      "note": "placeholder label on a photo"
+      "note": "alt-text fallback label on an image slot"
     },
     {
       "fg": "--color-fg-muted",
       "bg": "--color-bg-photo",
       "min": 4.5,
-      "note": "muted label on a photo"
+      "note": "muted label on an image slot"
     },
     {
       "fg": "--color-border-strong",
@@ -659,13 +623,13 @@
       "fg": "--color-fg-subtle",
       "bg": "--color-bg-surface-sunken",
       "min": 4.5,
-      "note": "outside-month date and holiday label"
+      "note": "subtle labels on sunken panels (light-grid time, fee row)"
     },
     {
       "fg": "--color-fg-default",
       "bg": "--color-bg-surface-sunken",
       "min": 4.5,
-      "note": "week event text on tinted fill (approximation)"
+      "note": "body text on sunken panels (disclosure, price block)"
     }
   ]
 }
