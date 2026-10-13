@@ -25,6 +25,11 @@ export class PrismaStudioRepository implements StudioRepository {
     const rows = await this.prisma.studio.findMany({ where: { status: 'published' }, include: studioInclude });
     return rows.map(toStudioRecord);
   }
+
+  async listAll(): Promise<StudioRecord[]> {
+    const rows = await this.prisma.studio.findMany({ include: studioInclude });
+    return rows.map(toStudioRecord);
+  }
 }
 
 export function toImageRecord(row: ImageRow): ImageRecord {

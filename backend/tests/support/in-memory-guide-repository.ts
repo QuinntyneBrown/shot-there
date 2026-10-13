@@ -11,4 +11,8 @@ export class InMemoryGuideRepository implements GuideRepository {
   async listPublished(): Promise<GuideRecord[]> {
     return structuredClone(this.rows.filter((row) => row.status === 'published'));
   }
+
+  async listAll(): Promise<GuideRecord[]> {
+    return structuredClone(this.rows);
+  }
 }

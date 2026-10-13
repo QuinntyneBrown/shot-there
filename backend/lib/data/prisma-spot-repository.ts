@@ -25,6 +25,11 @@ export class PrismaSpotRepository implements SpotRepository {
     const rows = await this.prisma.spot.findMany({ where: { status: 'published' }, include: spotInclude });
     return rows.map(toSpotRecord);
   }
+
+  async listAll(): Promise<SpotRecord[]> {
+    const rows = await this.prisma.spot.findMany({ include: spotInclude });
+    return rows.map(toSpotRecord);
+  }
 }
 
 function toSpotRecord(row: SpotRow): SpotRecord {

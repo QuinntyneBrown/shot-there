@@ -18,6 +18,11 @@ export class PrismaGuideRepository implements GuideRepository {
     const rows = await this.prisma.guide.findMany({ where: { status: 'published' }, include: guideInclude });
     return rows.map(toGuideRecord);
   }
+
+  async listAll(): Promise<GuideRecord[]> {
+    const rows = await this.prisma.guide.findMany({ include: guideInclude });
+    return rows.map(toGuideRecord);
+  }
 }
 
 function toGuideRecord(row: GuideRow): GuideRecord {

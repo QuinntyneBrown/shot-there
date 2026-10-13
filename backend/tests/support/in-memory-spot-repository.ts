@@ -11,4 +11,8 @@ export class InMemorySpotRepository implements SpotRepository {
   async listPublished(): Promise<SpotRecord[]> {
     return structuredClone(this.rows.filter((row) => row.status === 'published'));
   }
+
+  async listAll(): Promise<SpotRecord[]> {
+    return structuredClone(this.rows);
+  }
 }

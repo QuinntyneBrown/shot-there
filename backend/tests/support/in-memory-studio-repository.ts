@@ -11,4 +11,8 @@ export class InMemoryStudioRepository implements StudioRepository {
   async listPublished(): Promise<StudioRecord[]> {
     return structuredClone(this.rows.filter((row) => row.status === 'published'));
   }
+
+  async listAll(): Promise<StudioRecord[]> {
+    return structuredClone(this.rows);
+  }
 }
