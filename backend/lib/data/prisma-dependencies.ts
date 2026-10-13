@@ -8,6 +8,7 @@ import { PrismaSlugRedirectRepository } from '@/lib/data/prisma-slug-redirect-re
 import { PrismaSpotRepository } from '@/lib/data/prisma-spot-repository';
 import { PrismaStudioRepository } from '@/lib/data/prisma-studio-repository';
 import { PrismaSubscriberRepository } from '@/lib/data/prisma-subscriber-repository';
+import { loggingPageRevalidator } from '@/lib/publishing/logging-page-revalidator';
 import { torontoClock } from '@/lib/shared/toronto-clock';
 
 export function createPrismaDependencies(): Dependencies {
@@ -25,5 +26,6 @@ export function createPrismaDependencies(): Dependencies {
     owners: new PrismaOwnerRepository(prisma),
     ownerSessions: new PrismaOwnerSessionRepository(prisma),
     signInAttempts: new PrismaSignInAttemptRepository(prisma),
+    pageRevalidator: loggingPageRevalidator,
   };
 }

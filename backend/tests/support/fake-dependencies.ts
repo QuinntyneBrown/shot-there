@@ -17,6 +17,7 @@ import { InMemorySlugRedirectRepository } from '@/tests/support/in-memory-slug-r
 import { InMemorySpotRepository } from '@/tests/support/in-memory-spot-repository';
 import { InMemoryStudioRepository } from '@/tests/support/in-memory-studio-repository';
 import { InMemorySubscriberRepository } from '@/tests/support/in-memory-subscriber-repository';
+import { RecordingPageRevalidator } from '@/tests/support/recording-page-revalidator';
 
 export interface FakeSeed {
   today?: string;
@@ -44,6 +45,7 @@ export function useFakeDependencies(seed: FakeSeed = {}): Dependencies {
     owners: new InMemoryOwnerRepository(seed.owners ?? []),
     ownerSessions: new InMemoryOwnerSessionRepository(seed.ownerSessions ?? []),
     signInAttempts: new InMemorySignInAttemptRepository(seed.signInAttempts ?? []),
+    pageRevalidator: new RecordingPageRevalidator(),
   };
   setDependencies(dependencies);
   return dependencies;
