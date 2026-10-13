@@ -16,7 +16,7 @@
     "module": "preserve",
     "paths": {
       "@shot-there/api": ["./projects/api/src/public-api.ts"],
-      "@shot-there/components": ["./projects/components/src/public-api.ts"]
+      "@shot-there/components": ["./dist/components"]
     }
   },
   "angularCompilerOptions": {

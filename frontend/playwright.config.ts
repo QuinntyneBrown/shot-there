@@ -14,9 +14,9 @@ export default defineConfig({
   },
   projects: [{ name: 'chromium', use: { ...devices['Desktop Chrome'] } }],
   webServer: {
-    command: `npx ng serve shot-there --configuration e2e --port ${port}`,
+    command: `npx ng build components && npx ng serve shot-there --configuration e2e --port ${port}`,
     url: `http://localhost:${port}`,
     reuseExistingServer: false,
-    timeout: 180_000,
+    timeout: 300_000,
   },
 });
