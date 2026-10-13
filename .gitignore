@@ -6,3 +6,4 @@ docs/design-system/.cache/
 
 # Video tooling scratch (timing, renders)
 .cache/
+__pycache__/
