@@ -1,15 +1,18 @@
 import { getDependencies } from '@/lib/data/dependency-container';
 import { imagesWithRole, toImageDto } from '@/lib/images/to-image-dto';
+import { isStale } from '@/lib/shared/is-stale';
 import type { Season } from '@/lib/spots/season';
+import type { ShootType } from '@/lib/spots/shoot-type';
 import type { SpotDetailDto } from '@/lib/spots/spot-detail-dto';
 import type { TimeOfDay } from '@/lib/spots/time-of-day';
 
 const TIME_ORDER: TimeOfDay[] = ['morning', 'midday', 'afternoon', 'goldenHour', 'blueHour'];
 const SEASON_ORDER: Season[] = ['spring', 'summer', 'autumn', 'winter'];
+const SHOOT_TYPE_ORDER: ShootType[] = ['portrait', 'weddingEngagement', 'commercial', 'video'];
 
 /** The published spot with the slug, or null. Drafts are never returned. */
 export async function getSpot(slug: string): Promise<SpotDetailDto | null> {
-  const { spots } = getDependencies();
+  const { spots, clock } = getDependencies();
   const spot = await spots.findPublishedBySlug(slug);
   if (!spot) return null;
 
@@ -31,5 +34,23 @@ export async function getSpot(slug: string): Promise<SpotDetailDto | null> {
       focalLengthMm: image.focalLengthMm,
       angleNote: image.angleNote,
     })),
+    conditions: {
+      weekdayCrowds: spot.weekdayCrowds,
+      weekendCrowds: spot.weekendCrowds,
+      parking: spot.parking,
+      washrooms: spot.washrooms,
+      changing: spot.changing,
+    },
+    permits: {
+      rows: [...spot.permits].sort(
+        (a, b) => SHOOT_TYPE_ORDER.indexOf(a.shootType) - SHOOT_TYPE_ORDER.indexOf(b.shootType),
+      ),
+      sourceUrl: spot.permitSourceUrl,
+      verifiedOn: spot.permitVerifiedAt,
+      permitStale: isStale(spot.permitVerifiedAt, clock.today()),
+    },
+    bestUses: spot.bestUses,
+    disclosure: { kind: spot.disclosure, provider: spot.disclosureProvider },
+    videoId: spot.videoId,
   };
 }
