@@ -12,3 +12,17 @@ export async function givenSubscribeAnswers(page: Page, status: number): Promise
   );
   return received;
 }
+
+/** The subscribe endpoint holds every request until the returned function is called, then accepts it. */
+export async function givenSubscribeIsPending(page: Page): Promise<() => void> {
+  let release!: () => void;
+  const released = new Promise<void>((resolve) => (release = resolve));
+  await page.route(
+    (url) => url.pathname === '/api/subscribers',
+    async (route: Route) => {
+      await released;
+      await route.fulfill({ status: 200, json: {} });
+    }
+  );
+  return release;
+}

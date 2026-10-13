@@ -6,6 +6,7 @@ export class SignupFormPanel {
   readonly email: Locator;
   readonly subscribeButton: Locator;
   readonly confirmation: Locator;
+  readonly alert: Locator;
 
   constructor(page: Page, where: 'footer' | 'home') {
     const root = where === 'footer' ? page.getByRole('contentinfo') : page.getByRole('main');
@@ -14,6 +15,11 @@ export class SignupFormPanel {
     this.email = this.form.getByRole('textbox', { name: 'Email address' });
     this.subscribeButton = this.form.getByRole('button', { name: 'Subscribe' });
     this.confirmation = root.getByRole('status');
+    this.alert = this.form.getByRole('alert');
+  }
+
+  async submit(): Promise<void> {
+    await this.subscribeButton.click();
   }
 
   async subscribe(email: string): Promise<void> {

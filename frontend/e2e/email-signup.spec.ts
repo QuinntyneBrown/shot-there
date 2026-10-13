@@ -1,4 +1,4 @@
-import { givenSubscribeAnswers } from './fakes/fake-subscribers-api';
+import { givenSubscribeAnswers, givenSubscribeIsPending } from './fakes/fake-subscribers-api';
 import { expect, test } from './fakes/test';
 import { EditorialPolicyPage } from './pages/editorial-policy.page';
 import { SignupFormPanel } from './pages/signup-form.panel';
@@ -48,6 +48,52 @@ test.describe('Email signup', () => {
     // Then it is sent and confirmed
     await expect(signup.confirmation).toContainText("You're subscribed.");
     expect(received).toHaveLength(1);
+  });
+
+  test('shows the button busy and disabled while the request is in progress', async ({ page }) => {
+    // Given the server has not answered yet
+    const release = await givenSubscribeIsPending(page);
+    await new EditorialPolicyPage(page).open();
+    const signup = new SignupFormPanel(page, 'footer');
+    // When the visitor subscribes
+    await signup.subscribe('maya.chen@example.com');
+    // Then the button is disabled and busy
+    await expect(signup.subscribeButton).toBeDisabled();
+    await expect(signup.subscribeButton).toHaveAttribute('aria-busy', 'true');
+    // When the server accepts it
+    release();
+    // Then the confirmation shows
+    await expect(signup.confirmation).toContainText("You're subscribed.");
+  });
+
+  test('keeps the address and offers a retry when the server fails', async ({ page }) => {
+    // Given the server fails with HTTP 500
+    await givenSubscribeAnswers(page, 500);
+    await new EditorialPolicyPage(page).open();
+    const signup = new SignupFormPanel(page, 'footer');
+    // When the visitor subscribes
+    await signup.subscribe('maya.chen@example.com');
+    // Then an error shows, the address stays and the button is enabled
+    await expect(signup.alert).toHaveText("We couldn't subscribe you just now. Your email is still here — try again.");
+    await expect(signup.email).toHaveValue('maya.chen@example.com');
+    await expect(signup.subscribeButton).toBeEnabled();
+    // When the server recovers and the visitor tries again
+    await givenSubscribeAnswers(page, 200);
+    await signup.submit();
+    // Then the confirmation shows
+    await expect(signup.confirmation).toContainText("You're subscribed.");
+  });
+
+  test('asks the visitor to wait a minute when rate-limited', async ({ page }) => {
+    // Given the server answers HTTP 429
+    await givenSubscribeAnswers(page, 429);
+    await new EditorialPolicyPage(page).open();
+    const signup = new SignupFormPanel(page, 'footer');
+    // When the visitor subscribes
+    await signup.subscribe('maya.chen@example.com');
+    // Then the form asks them to wait a minute, and keeps the address
+    await expect(signup.alert).toHaveText('Too many tries. Wait a minute, then try again.');
+    await expect(signup.email).toHaveValue('maya.chen@example.com');
   });
 
   test('stacks the field and button at full width at phone width', async ({ page }) => {

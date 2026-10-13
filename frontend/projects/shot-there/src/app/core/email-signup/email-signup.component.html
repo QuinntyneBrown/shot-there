@@ -20,10 +20,22 @@
         <label class="field__label" [for]="ids().email" i18n>Email address</label>
         <input #emailInput class="input" [id]="ids().email" name="email" type="email" autocomplete="email" inputmode="email" [attr.aria-invalid]="error() ? true : null" [attr.aria-describedby]="error() ? ids().error : null" [value]="email()" (input)="email.set(emailInput.value)" />
       </div>
-      <button class="btn" [class.btn--primary]="variant() === 'hero'" type="submit" i18n>Subscribe</button>
+      <button class="btn" [class.btn--primary]="variant() === 'hero'" type="submit" [disabled]="state() === 'submitting'" [attr.aria-busy]="state() === 'submitting' ? true : null" i18n>Subscribe</button>
     </div>
     @if (error(); as message) {
       <p class="field__error" [id]="ids().error">{{ message }}</p>
+    }
+    @if (state() === 'rate-limited') {
+      <div class="alert alert--warning" role="alert">
+        <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3 2 20h20L12 3z" /><path d="M12 10v4M12 17h.01" /></svg>
+        <div class="alert__body"><p class="alert__title" i18n>Too many tries.</p>&ngsp;<p i18n>Wait a minute, then try again.</p></div>
+      </div>
+    }
+    @if (state() === 'failed') {
+      <div class="alert alert--danger" role="alert">
+        <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" /><path d="M12 7v6M12 16h.01" /></svg>
+        <div class="alert__body"><p class="alert__title" i18n>We couldn't subscribe you just now.</p>&ngsp;<p i18n>Your email is still here — try again.</p></div>
+      </div>
     }
     <div class="signup__trap" aria-hidden="true">
       <label [for]="ids().website" i18n>Leave this field empty</label>

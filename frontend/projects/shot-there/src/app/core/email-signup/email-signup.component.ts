@@ -1,8 +1,9 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, ElementRef, computed, inject, input, signal, viewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { SubscriberService } from '@shot-there/api';
 
-import { validateEmail } from './signup-form';
+import { toSignupState, validateEmail } from './signup-form';
 import { SignupState } from './signup-state';
 
 /** The email signup form (L2-039, L2-041), placed in the site footer and on the home page. */
@@ -39,8 +40,10 @@ export class EmailSignupComponent {
       return;
     }
     const sourcePath = this.router.url.split(/[?#]/)[0];
+    this.state.set('submitting');
     this.subscriberService.subscribe({ email: this.email().trim(), sourcePath, website: this.website() }).subscribe({
-      next: () => this.state.set('success')
+      next: () => this.state.set(toSignupState(200)),
+      error: (response: HttpErrorResponse) => this.state.set(toSignupState(response.status))
     });
   }
 }
