@@ -44,6 +44,34 @@ enum GearCategory {
   other
 }
 
+enum SpotType {
+  park
+  architecture
+  waterfront
+  indoorPublic
+}
+
+enum CrowdLevel {
+  low
+  medium
+  high
+}
+
+enum ShootType {
+  portrait
+  weddingEngagement
+  commercial
+  video
+}
+
+enum BestUse {
+  engagement
+  family
+  portrait
+  brand
+  video
+}
+
 enum ImageRole {
   testShot
   gallery
@@ -141,6 +169,8 @@ model Image {
   id            String         @id @default(uuid())
   studioId      String?
   studio        Studio?        @relation(fields: [studioId], references: [id], onDelete: Cascade)
+  spotId        String?
+  spot          Spot?          @relation(fields: [spotId], references: [id], onDelete: Cascade)
   role          ImageRole
   sortOrder     Int
   altText       String
@@ -164,4 +194,48 @@ model ImageVariant {
   format     ImageFormat
   storageKey String      @unique
   url        String
+}
+
+model Spot {
+  id                 String           @id @default(uuid())
+  slug               String           @unique
+  status             LocationStatus   @default(draft)
+  name               String
+  neighbourhood      String?
+  type               SpotType?
+  latitude           Float?
+  longitude          Float?
+  directions         String?
+  /// SpotLightByTimeRecord[]
+  lightByTime        Json             @default("[]")
+  /// SpotLightBySeasonRecord[]
+  lightBySeason      Json             @default("[]")
+  weekdayCrowds      CrowdLevel?
+  weekendCrowds      CrowdLevel?
+  parking            String?
+  washrooms          String?
+  changing           String?
+  permitSourceUrl    String?
+  permitVerifiedAt   DateTime         @db.Date
+  bestUses           BestUse[]
+  disclosure         Disclosure?
+  disclosureProvider String?
+  videoId            String?
+  publishedAt        DateTime?
+  createdAt          DateTime         @default(now())
+  updatedAt          DateTime         @updatedAt
+  permits            PermitStatus[]
+  images             Image[]
+
+  @@index([name])
+}
+
+model PermitStatus {
+  id        String    @id @default(uuid())
+  spotId    String
+  spot      Spot      @relation(fields: [spotId], references: [id], onDelete: Cascade)
+  shootType ShootType
+  required  Boolean
+
+  @@unique([spotId, shootType])
 }

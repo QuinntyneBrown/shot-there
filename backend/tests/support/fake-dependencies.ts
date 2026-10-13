@@ -1,12 +1,15 @@
 import { setDependencies } from '@/lib/data/dependency-container';
 import type { Dependencies } from '@/lib/data/dependencies';
+import type { SpotRecord } from '@/lib/spots/spot-record';
 import type { StudioRecord } from '@/lib/studios/studio-record';
 import { fixedClock } from '@/tests/support/fixed-clock';
+import { InMemorySpotRepository } from '@/tests/support/in-memory-spot-repository';
 import { InMemoryStudioRepository } from '@/tests/support/in-memory-studio-repository';
 
 export interface FakeSeed {
   today?: string;
   studios?: StudioRecord[];
+  spots?: SpotRecord[];
   probeDatabase?: () => Promise<void>;
 }
 
@@ -16,6 +19,7 @@ export function useFakeDependencies(seed: FakeSeed = {}): Dependencies {
     probeDatabase: seed.probeDatabase ?? (async () => {}),
     clock: fixedClock(seed.today ?? '2026-10-13'),
     studios: new InMemoryStudioRepository(seed.studios ?? []),
+    spots: new InMemorySpotRepository(seed.spots ?? []),
   };
   setDependencies(dependencies);
   return dependencies;

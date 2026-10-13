@@ -1,4 +1,5 @@
 import type { ImageRecord } from '@/lib/images/image-record';
+import type { SpotRecord } from '@/lib/spots/spot-record';
 import type { StudioRecord } from '@/lib/studios/studio-record';
 
 let sequence = 0;
@@ -89,6 +90,56 @@ export function aStudio(overrides: Partial<StudioRecord> = {}): StudioRecord {
     fees: [],
     gear: [],
     images: [anImage({ role: 'testShot' }), anImage({ role: 'gallery' })],
+    ...overrides,
+  };
+}
+
+/** A published outdoor spot with every standard field present. */
+export function aSpot(overrides: Partial<SpotRecord> = {}): SpotRecord {
+  const id = overrides.id ?? nextId();
+  return {
+    id,
+    slug: `spot-${id}`,
+    status: 'published',
+    name: `Spot ${id}`,
+    neighbourhood: 'Riverdale',
+    type: 'park',
+    latitude: 43.6703,
+    longitude: -79.3542,
+    directions: 'Walk east from Broadview station.',
+    lightByTime: [
+      { timeOfDay: 'morning', rating: 'medium', note: null },
+      { timeOfDay: 'midday', rating: 'low', note: null },
+      { timeOfDay: 'afternoon', rating: 'medium', note: null },
+      { timeOfDay: 'goldenHour', rating: 'strong', note: null },
+      { timeOfDay: 'blueHour', rating: 'medium', note: null },
+    ],
+    lightBySeason: [
+      { season: 'spring', note: null },
+      { season: 'summer', note: null },
+      { season: 'autumn', note: null },
+      { season: 'winter', note: null },
+    ],
+    weekdayCrowds: 'low',
+    weekendCrowds: 'medium',
+    parking: 'Street parking on Broadview',
+    washrooms: null,
+    changing: null,
+    permits: [
+      { shootType: 'portrait', required: false },
+      { shootType: 'weddingEngagement', required: false },
+      { shootType: 'commercial', required: true },
+      { shootType: 'video', required: true },
+    ],
+    permitSourceUrl: 'https://www.toronto.ca/permits',
+    permitVerifiedAt: '2026-09-01',
+    bestUses: ['portrait'],
+    disclosure: 'paid_in_full',
+    disclosureProvider: null,
+    videoId: null,
+    publishedAt: new Date('2026-09-02T12:00:00Z'),
+    updatedAt: new Date('2026-09-02T12:00:00Z'),
+    images: [anImage({ role: 'sampleShot', focalLengthMm: 85, angleNote: 'From the lower steps' })],
     ...overrides,
   };
 }
