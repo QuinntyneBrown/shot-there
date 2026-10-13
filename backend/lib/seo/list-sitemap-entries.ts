@@ -9,7 +9,7 @@ interface PublishedItem {
 
 /** One entry per published studio, spot and guide plus the list pages, map and guides index. Never drafts. */
 export async function listSitemapEntries(): Promise<SitemapEntryDto[]> {
-  const { studios, spots, guides } = getDependencies();
+  const { studios, spots, guides, clock } = getDependencies();
   const [publishedStudios, publishedSpots, publishedGuides] = await Promise.all([
     studios.listPublished(),
     spots.listPublished(),
@@ -17,6 +17,8 @@ export async function listSitemapEntries(): Promise<SitemapEntryDto[]> {
   ]);
   const itemEntries = (base: string, items: PublishedItem[]) =>
     items.map((item) => ({ path: `${base}/${item.slug}`, lastModified: lastModifiedOf(item) }));
+  // A list page changes with the newest publish of its items; with none published, it is dated now.
+  const latestOf = (items: PublishedItem[]) => items.map(lastModifiedOf).sort().at(-1) ?? clock.now().toISOString();
   return [
     ...itemEntries('/studios', publishedStudios),
     ...itemEntries('/spots', publishedSpots),
@@ -29,9 +31,5 @@ export async function listSitemapEntries(): Promise<SitemapEntryDto[]> {
 }
 
 function lastModifiedOf(item: PublishedItem): string {
-  return (item.publishedAt ?? item.updatedAt).toISOString().slice(0, 10);
-}
-
-function latestOf(items: PublishedItem[]): string | null {
-  return items.map(lastModifiedOf).sort().at(-1) ?? null;
+  return (item.publishedAt ?? item.updatedAt).toISOString();
 }

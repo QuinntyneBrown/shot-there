@@ -1,11 +1,13 @@
 import { describe, expect, it } from 'vitest';
+import { expectProblem } from '@/tests/support/expect-problem';
 import { GET } from '@/app/api/slug-redirects/[type]/[slug]/route';
 import { useFakeDependencies } from '@/tests/support/fake-dependencies';
 
+const requestRedirect = (type: string, slug: string) =>
+  GET(new Request(`http://localhost/api/slug-redirects/${type}/${slug}`), { params: Promise.resolve({ type, slug }) });
+
 async function findRedirect(type: string, slug: string) {
-  const response = await GET(new Request(`http://localhost/api/slug-redirects/${type}/${slug}`), {
-    params: Promise.resolve({ type, slug }),
-  });
+  const response = await requestRedirect(type, slug);
   return { status: response.status, body: await response.json() };
 }
 
@@ -44,9 +46,10 @@ describe('L2-075 renamed items redirect from old slugs', () => {
   it.each([
     { type: 'venue', slug: 'old-loft' },
     { type: 'studio', slug: 'Old_Loft' },
-  ])('Given an invalid type or slug ($type/$slug), when looked up, then the API responds 404', async ({ type, slug }) => {
+    { type: 'studio', slug: 'a'.repeat(101) },
+  ])('Given a malformed type or slug ($type/$slug), when looked up, then the API responds 400 (ICD E11)', async ({ type, slug }) => {
     useFakeDependencies();
 
-    expect((await findRedirect(type, slug)).status).toBe(404);
+    await expectProblem(await requestRedirect(type, slug), 'validation-failed', 400);
   });
 });

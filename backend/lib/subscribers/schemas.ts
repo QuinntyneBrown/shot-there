@@ -9,6 +9,6 @@ export const subscribeSchema = z
       .max(254, 'Email addresses can be at most 254 characters')
       .pipe(z.email('Enter a valid email address')),
     sourcePath: z.string().startsWith('/', 'Source path must start with /').max(2048),
-    website: z.string().max(2048).optional(),
+    website: z.string().max(200).optional(),
   })
   .strict();

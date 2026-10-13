@@ -95,12 +95,25 @@ describe('L2-039 repeat signups', () => {
     const repeat = await signUp({ email: 'JANE@example.com', sourcePath: '/guides' });
 
     expect(repeat.status).toBe(first.status);
-    expect(await repeat.json()).toEqual(await first.json());
+    expect(await first.text()).toBe('');
+    expect(await repeat.text()).toBe('');
     expect(subscribersOf(dependencies)).toEqual([expect.objectContaining({ email: 'jane@example.com', sourcePath: '/' })]);
   });
 });
 
 describe('L2-078 strict input', () => {
+  it('Given a honeypot value over 200 characters, when submitted, then the response is 400 out_of_range on website', async () => {
+    useFakeDependencies();
+
+    const problem = await expectProblem(
+      await signUp({ email: 'jane@example.com', sourcePath: '/', website: 'x'.repeat(201) }),
+      'validation-failed',
+      400,
+    );
+
+    expect(problem.errors).toContainEqual({ field: 'website', code: 'out_of_range', message: expect.any(String) });
+  });
+
   it('Given an unknown field, when submitted, then the response is 400 naming the field', async () => {
     useFakeDependencies();
 

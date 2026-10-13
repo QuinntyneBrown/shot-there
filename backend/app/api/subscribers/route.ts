@@ -10,5 +10,5 @@ import { subscribe } from '@/lib/subscribers/subscribe';
 export const POST = withRequestLogging(async (request: Request) => {
   if (!checkRateLimit(clientIp(request))) throw rateLimited(SIGNUP_WINDOW_SECONDS);
   await subscribe(parseWithSchema(subscribeSchema, await readJsonBody(request)));
-  return Response.json({ status: 'subscribed' });
+  return new Response(null, { status: 200 });
 });
