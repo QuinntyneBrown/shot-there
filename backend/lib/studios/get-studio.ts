@@ -2,8 +2,10 @@ import { getDependencies } from '@/lib/data/dependency-container';
 import { imagesWithRole, toImageDto } from '@/lib/images/to-image-dto';
 import { isStale } from '@/lib/shared/is-stale';
 import { allInCostOf } from '@/lib/studios/all-in-cost-of';
+import { computeOverallScore } from '@/lib/studios/compute-overall-score';
 import type { GearItemDto } from '@/lib/studios/gear-item-dto';
 import type { GearItemRecord } from '@/lib/studios/gear-item-record';
+import { rubricScoresOf } from '@/lib/studios/rubric-scores-of';
 import type { StudioDetailDto } from '@/lib/studios/studio-detail-dto';
 
 /** The published studio with the slug, or null. Drafts are never returned. */
@@ -60,6 +62,13 @@ export async function getStudio(slug: string): Promise<StudioDetailDto | null> {
     },
     testShots: imagesWithRole(studio.images, 'testShot').map(toImageDto),
     gallery: imagesWithRole(studio.images, 'gallery').map(toImageDto),
+    verdict: {
+      whoItsFor: studio.whoItsFor,
+      whoShouldSkip: studio.whoShouldSkip,
+      scores: rubricScoresOf(studio),
+      overallScore: computeOverallScore(rubricScoresOf(studio)),
+    },
+    disclosure: { kind: studio.disclosure, provider: studio.disclosureProvider },
   };
 }
 
