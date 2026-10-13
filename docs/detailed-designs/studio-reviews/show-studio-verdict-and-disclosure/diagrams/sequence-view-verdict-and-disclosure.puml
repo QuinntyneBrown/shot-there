@@ -1,0 +1,62 @@
+@startuml
+title UML sequence behaviour — View verdict and disclosure
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam roundcorner 12
+skinparam defaultFontName Arial
+skinparam ArrowColor #344054
+skinparam rectangle {
+  BorderColor #344054
+  FontColor #101828
+}
+skinparam package {
+  BorderColor #667085
+  FontColor #101828
+  BackgroundColor #F9FAFB
+}
+actor "Visitor" as visitor
+box "Frontend — ShotThere web (Angular SSR)" #E0F2FE
+  participant "StudioPageComponent" as page
+  participant "StudioVerdictComponent" as verdict
+  participant "StudioDisclosureComponent" as disc
+  participant "HttpStudioService" as svc
+end box
+box "Backend — ShotThere API (Next.js route handlers)" #D1FADF
+  participant "GET /api/studios/[slug]" as route
+end box
+box "Backend — ShotThere application (lib/)" #ECFDF3
+  participant "getStudio" as get
+  participant "computeOverallScore" as score
+end box
+box "Backend — Infrastructure (Prisma / object storage)" #FFF4E5
+  database "ShotThere database" as db
+end box
+visitor -> page : Open the studio page for a slug
+page -> svc : getStudio(slug)
+svc -> route : GET /api/studios/[slug]
+route -> get : getStudio(slug, today)
+get -> db : Find Studio by slug where published (L2-001)
+db --> get : Studio with related rows or none
+alt published studio found
+  get -> score : Mean of six rubric scores, one decimal (L2-011)
+  score --> get : overallScore
+  get --> route : StudioDetailDto
+  route --> svc : 200 JSON
+  svc --> page : StudioDetailDto
+  page -> verdict : verdict
+  verdict --> visitor : Who it's for, who should skip, scores as "Light: 5 out of 5", overall (L2-011)
+  page -> disc : disclosure, directly after verdict (L2-012)
+  alt kind is paidFull
+    disc --> visitor : Reviewer paid the full rate (L2-012)
+  else kind is discounted
+    disc --> visitor : Session discounted, provider named (L2-012)
+  else kind is comped
+    disc --> visitor : Free of charge from provider, scores unaffected (L2-012)
+  end
+else studio missing or draft
+  get --> route : null
+  route --> svc : 404
+  svc --> page : Not found
+  page --> visitor : Show not-found page
+end
+@enduml

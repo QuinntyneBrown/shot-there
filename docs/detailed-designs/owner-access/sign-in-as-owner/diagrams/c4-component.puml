@@ -1,0 +1,28 @@
+@startuml
+!include <C4/C4_Component>
+LAYOUT_WITH_LEGEND()
+title Components — Sign in as the owner
+
+Container_Boundary(web, "ShotThere web") {
+  Component(page, "SignInPageComponent", "Angular standalone component", "Sign-in form and messages")
+  Component(svc, "AuthService / HttpAuthService", "Angular service", "Posts sign-in requests")
+}
+Container_Boundary(api, "ShotThere API") {
+  Component(route, "app/api/auth/sign-in/route.ts", "Next.js route handler", "Parses input, sets st_session cookie")
+  Component(signin, "signInOwner", "lib/auth", "Orchestrates sign-in")
+  Component(limit, "checkSignInRateLimit", "lib/auth", "Counts recent failed attempts")
+  Component(verify, "verifyPassword", "lib/auth", "argon2id verification")
+  Component(session, "createOwnerSession", "lib/auth", "Inserts OwnerSession row")
+}
+ComponentDb(db, "ShotThere database", "PostgreSQL", "Owner, OwnerSession, SignInAttempt")
+
+Rel(page, svc, "signIn()")
+Rel(svc, route, "POST /api/auth/sign-in", "JSON/HTTPS")
+Rel(route, signin, "Calls")
+Rel(signin, limit, "Checks")
+Rel(signin, verify, "Verifies")
+Rel(signin, session, "Creates")
+Rel(limit, db, "Reads SignInAttempt", "Prisma")
+Rel(signin, db, "Reads Owner, writes SignInAttempt", "Prisma")
+Rel(session, db, "Writes OwnerSession", "Prisma")
+@enduml

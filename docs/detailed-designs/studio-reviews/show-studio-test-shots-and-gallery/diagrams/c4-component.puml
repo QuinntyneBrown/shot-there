@@ -1,0 +1,31 @@
+@startuml
+!include <C4/C4_Component>
+LAYOUT_WITH_LEGEND()
+title Components — Show studio test shots and gallery
+
+Person(visitor, "Visitor", "Photographer comparing Toronto rental studios")
+Container_Boundary(web, "ShotThere web") {
+  Component(page, "StudioPageComponent", "Angular standalone component", "Loads the studio and lays out its sections")
+  Component(shots, "StudioTestShotsComponent", "Angular standalone component", "Standard test shots in fixed order")
+  Component(gal, "StudioGalleryComponent", "Angular standalone component", "Thumbnail grid")
+  Component(lb, "GalleryLightboxDialogComponent", "Angular dialog component", "Accessible full-image lightbox")
+  Component(svc, "StudioService", "Abstract class and DI token", "Contract for reading a studio")
+  Component(httpsvc, "HttpStudioService", "Angular service", "Calls GET /api/studios/[slug]")
+}
+Container_Boundary(api, "ShotThere API") {
+  Component(route, "app/api/studios/[slug]/route.ts", "Next.js route handler", "Returns StudioDetailDto or 404")
+  Component(get, "getStudio", "lib/studios/get-studio.ts", "Loads a published studio and maps it to the DTO")
+
+}
+ComponentDb(db, "ShotThere database", "PostgreSQL", "Studio and related models")
+
+Rel(visitor, page, "Opens studio page")
+Rel(page, svc, "getStudio(slug)")
+Rel(httpsvc, svc, "Implements")
+Rel(httpsvc, route, "GET /api/studios/[slug]", "JSON/HTTPS")
+Rel(route, get, "Calls")
+Rel(get, db, "Reads published studio", "Prisma")
+Rel(page, shots, "Passes testShots")
+Rel(page, gal, "Passes gallery")
+Rel(gal, lb, "Opens at index")
+@enduml

@@ -1,0 +1,15 @@
+@startuml
+!include <C4/C4_Container>
+LAYOUT_WITH_LEGEND()
+title Containers — Sign in as the owner
+
+Person(owner, "Owner", "Maintains ShotThere content")
+System_Boundary(shotthere, "ShotThere") {
+  Container(web, "ShotThere web", "Angular SSR", "Serves the sign-in screen")
+  Container(api, "ShotThere API", "Next.js route handlers", "Verifies credentials and creates sessions")
+  ContainerDb(db, "ShotThere database", "PostgreSQL", "Owner, OwnerSession and SignInAttempt")
+}
+Rel(owner, web, "Uses", "HTTPS")
+Rel(web, api, "POST /api/auth/sign-in", "JSON/HTTPS")
+Rel(api, db, "Reads and writes", "Prisma")
+@enduml

@@ -1,0 +1,61 @@
+@startuml
+title UML sequence behaviour — List and search content
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam roundcorner 12
+skinparam defaultFontName Arial
+skinparam ArrowColor #344054
+skinparam rectangle {
+  BorderColor #344054
+  FontColor #101828
+}
+skinparam package {
+  BorderColor #667085
+  FontColor #101828
+  BackgroundColor #F9FAFB
+}
+actor "Owner" as owner
+box "Frontend — ShotThere web (Angular SSR)" #E0F2FE
+  participant "AdminContentListPageComponent" as page
+  participant "admin-content-list-filter.ts" as filter
+  participant "HttpAdminContentService" as svc
+end box
+box "Backend — ShotThere API (Next.js route handlers)" #D1FADF
+  participant "app/api/admin/studios/route.ts" as route
+end box
+box "Backend — ShotThere application (lib/)" #ECFDF3
+  participant "requireOwnerSession" as auth
+  participant "listAdminContent" as list
+end box
+box "Backend — Infrastructure (Prisma / object storage)" #FFF4E5
+  database "ShotThere database" as db
+end box
+owner -> page : Open studio admin list
+page -> svc : list("studios")
+svc -> route : GET /api/admin/studios with st_session cookie
+route -> auth : Validate session
+alt no valid owner session
+  auth --> route : Unauthorized
+  route --> svc : HTTP 401
+  svc --> page : Error
+  page --> owner : Redirect to sign-in (maintain-owner-session)
+else owner session valid
+  auth --> route : Owner
+  route -> list : listAdminContent("studios", today)
+  list -> db : Read all studios, draft and published, ordered by updatedAt descending (L2-063)
+  db --> list : Rows
+  list -> list : Set stale flag from priceVerifiedAt
+  list --> route : AdminContentRow[]
+  route --> svc : HTTP 200 JSON
+  svc --> page : Rows
+  page --> owner : Rows with status badge, last-updated date, stale flag and Edit link (L2-063)
+end
+owner -> page : Type "junction" in search box
+page -> filter : filterRows(rows, "junction")
+filter --> page : Rows whose name or neighbourhood contains the text, any case (L2-063)
+alt matches found
+  page --> owner : Filtered rows
+else no matches
+  page --> owner : No-results message
+end
+@enduml

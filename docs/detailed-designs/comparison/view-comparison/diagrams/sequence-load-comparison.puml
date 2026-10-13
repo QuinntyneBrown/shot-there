@@ -1,0 +1,57 @@
+@startuml
+title UML sequence behaviour — Load a comparison
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam roundcorner 12
+skinparam defaultFontName Arial
+skinparam ArrowColor #344054
+skinparam rectangle {
+  BorderColor #344054
+  FontColor #101828
+}
+skinparam package {
+  BorderColor #667085
+  FontColor #101828
+  BackgroundColor #F9FAFB
+}
+actor "Visitor" as actor
+box "Frontend — ShotThere web (Angular SSR)" #E0F2FE
+  participant "ComparePageComponent" as page
+  participant "HttpCompareService" as svc
+end box
+box "Backend — ShotThere API (Next.js route handlers)" #D1FADF
+  participant "app/api/compare/route.ts" as route
+end box
+box "Backend — ShotThere application (lib/)" #ECFDF3
+  participant "getComparison" as lib
+end box
+box "Backend — Infrastructure (Prisma / object storage)" #FFF4E5
+  database "ShotThere database" as db
+end box
+actor -> page : Open /compare?studios=a,b (server-rendered, L2-033)
+page -> page : parseCompareSlugs(query)
+page -> svc : getComparison([a, b])
+svc -> route : GET /api/compare?studios=a,b
+route -> route : Validate with compareQuerySchema
+alt invalid query
+  route --> svc : 400 problem response
+  svc --> page : error
+  page --> actor : Ask to pick at least 2 studios, link to studio list
+else valid query
+  route -> lib : getComparison(slugs)
+  lib -> db : Find published Studio by slug with fees, gear, test shots
+  db --> lib : Studios
+  lib -> lib : Keep URL order, record notFoundSlugs, take first 4 (L2-032)
+  lib -> lib : Compute allInCost2h, overallScore, priceStale, isLowestAllInCost
+  lib --> route : ComparisonDto
+  route --> svc : 200 JSON
+  svc --> page : ComparisonDto
+  page -> page : toComparisonViewModel: rows, dash for missing (L2-031)
+  alt fewer than 2 valid studios
+    page --> actor : Ask to pick at least 2 studios, link to studio list
+  else 2 to 4 studios
+    page -> page : Set title with studio names (L2-033)
+    page --> actor : HTML with aligned table and notices
+  end
+end
+@enduml

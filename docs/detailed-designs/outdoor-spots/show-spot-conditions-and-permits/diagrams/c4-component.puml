@@ -1,0 +1,28 @@
+@startuml
+!include <C4/C4_Component>
+LAYOUT_WITH_LEGEND()
+title Components — Show spot conditions and permits
+
+Person(visitor, "Visitor", "Plans a photo shoot in Toronto")
+Container_Boundary(web, "ShotThere web") {
+  Component(page, "SpotPageComponent", "Angular standalone component", "features/spots; renders the spot page")
+  Component(cond, "SpotConditionsComponent", "Angular standalone component", "Crowds and facilities")
+  Component(permits, "SpotPermitsComponent", "Angular standalone component", "Permit table and stale warning")
+  Component(svc, "SpotsService / HttpSpotsService", "Angular service, libs/api", "Fetches a spot by slug")
+}
+Container_Boundary(api, "ShotThere API") {
+  Component(route, "app/api/spots/[slug]/route.ts", "Next.js route handler", "GET handler for one published spot")
+  Component(getspot, "getSpot", "lib/spots/get-spot.ts", "Loads a published spot and maps it to SpotDetailDto")
+  Component(stale, "isPermitStale", "lib/spots/is-permit-stale.ts", "More than 183 days since verification")
+}
+ComponentDb(db, "ShotThere database", "PostgreSQL", "Spot and related rows")
+
+Rel(visitor, page, "Views", "HTTPS")
+Rel(page, svc, "getSpot(slug)")
+Rel(svc, route, "GET /api/spots/[slug]", "JSON/HTTPS")
+Rel(route, getspot, "Calls")
+Rel(getspot, db, "Reads published rows", "Prisma")
+Rel(page, cond, "Passes conditions")
+Rel(page, permits, "Passes permits")
+Rel(getspot, stale, "Computes permitStale")
+@enduml

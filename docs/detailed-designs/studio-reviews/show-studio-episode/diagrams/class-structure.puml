@@ -1,0 +1,38 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam roundcorner 8
+skinparam defaultFontName Arial
+skinparam ArrowColor #344054
+skinparam class {
+  BorderColor #344054
+  FontColor #101828
+  BackgroundColor #F9FAFB
+}
+title Class structure — Show studio episode
+
+class Studio <<Prisma model>> {
+  +youtubeVideoId: string?
+  +episodeTitle: string?
+}
+class StudioDetailDto {
+  +episode: StudioEpisodeDto | null
+}
+class StudioEpisodeDto {
+  +videoId: string
+  +title: string
+}
+class StudioPageComponent {
+  +studio: Signal<StudioDetailDto | undefined>
+}
+class StudioEpisodeComponent {
+  +episode: InputSignal<StudioEpisodeDto>
+}
+class EpisodePlayerComponent <<video/play-episode>> {
+  +videoId: InputSignal<string>
+  +title: InputSignal<string>
+}
+StudioDetailDto "1" o-- "0..1" StudioEpisodeDto
+StudioPageComponent "1" *-- "0..1" StudioEpisodeComponent
+StudioEpisodeComponent *-- EpisodePlayerComponent
+@enduml

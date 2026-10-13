@@ -1,0 +1,32 @@
+@startuml
+!include <C4/C4_Component>
+LAYOUT_WITH_LEGEND()
+title Components — Handle errors and report health
+
+Person(visitor, "Visitor", "Reads pages")
+Container_Boundary(web, "ShotThere web") {
+  Component(server, "server.ts", "Angular SSR server", "Returns 500 error page on render failure")
+  Component(sroutes, "serverRoutes", "app.routes.server.ts", "Wildcard route with status 404")
+  Component(notfound, "NotFoundPageComponent", "Angular standalone component", "Branded 404 page")
+  Component(errorpage, "ErrorPageComponent", "Angular standalone component", "Branded 500 page")
+  Component(fallback, "FallbackImageDirective", "Angular directive", "Alt-text placeholder on image error")
+  Component(mapfail, "MapUnavailableComponent", "Angular standalone component", "Coordinates and external map link")
+}
+Container_Boundary(api, "ShotThere API") {
+  Component(health, "app/api/health/route.ts", "Route handler", "GET /api/health")
+  Component(wrap, "withRequestLogging", "lib/logging", "Correlation ID and per-request log line")
+  Component(check, "checkHealth", "lib/health", "Database probe with timeout")
+  Component(logger, "logger and redact", "lib/logging", "JSON lines with masked fields")
+  ComponentDb(db, "ShotThere database", "PostgreSQL", "Probe target")
+}
+Rel(visitor, server, "Requests pages", "HTTPS")
+Rel(server, sroutes, "Resolves status from")
+Rel(sroutes, notfound, "Renders for unknown URLs")
+Rel(server, errorpage, "Renders on failure")
+Rel(health, wrap, "Wrapped by")
+Rel(health, check, "Calls")
+Rel(check, db, "SELECT 1", "Prisma")
+Rel(wrap, logger, "Writes log lines through")
+Rel(server, fallback, "Renders pages whose images use")
+Rel(server, mapfail, "Renders spot pages that fall back to")
+@enduml

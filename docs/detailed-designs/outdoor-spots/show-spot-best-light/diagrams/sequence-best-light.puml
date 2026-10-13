@@ -1,0 +1,53 @@
+@startuml
+title UML sequence behaviour — Show spot best light
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam roundcorner 12
+skinparam defaultFontName Arial
+skinparam ArrowColor #344054
+skinparam rectangle {
+  BorderColor #344054
+  FontColor #101828
+}
+skinparam package {
+  BorderColor #667085
+  FontColor #101828
+  BackgroundColor #F9FAFB
+}
+actor "Visitor" as actor
+box "Frontend — ShotThere web (Angular SSR)" #E0F2FE
+  participant "SpotPageComponent" as page
+  participant "SpotLightComponent" as light
+  participant "SpotsService" as svc
+end box
+box "Backend — ShotThere API (Next.js route handlers)" #D1FADF
+  participant "app/api/spots/[slug]/route.ts" as route
+end box
+box "Backend — ShotThere application (lib/)" #ECFDF3
+  participant "lib/spots/get-spot.ts" as getspot
+end box
+box "Backend — Infrastructure (Prisma / object storage)" #FFF4E5
+  database "ShotThere database" as db
+end box
+actor -> page : Open /spots/[slug]
+page -> svc : getSpot(slug)
+svc -> route : GET /api/spots/[slug]
+route -> getspot : getSpot(slug)
+getspot -> db : Find Spot by slug where published
+alt published spot found
+  db --> getspot : Spot row with light fields
+  getspot -> getspot : Map five time-of-day rows and four season rows (L2-015)
+  getspot --> route : SpotDetailDto
+  route --> svc : 200 SpotDetailDto
+  svc --> page : SpotDetailDto
+  page -> light : Pass lightByTime and lightBySeason
+  light --> page : Cards at XS, tables at MD and above (L2-015)
+  page --> actor : Rating labels and notes (L2-015)
+else no published spot
+  db --> getspot : null
+  getspot --> route : null
+  route --> svc : 404
+  svc --> page : Error result
+  page --> actor : Show not-found state
+end
+@enduml

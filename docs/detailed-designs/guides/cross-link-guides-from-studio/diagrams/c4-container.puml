@@ -1,0 +1,15 @@
+@startuml
+!include <C4/C4_Container>
+LAYOUT_WITH_LEGEND()
+title Containers — Cross-link guides from a studio
+
+Person(visitor, "Visitor", "Plans a photo shoot in Toronto")
+System_Boundary(shotthere, "ShotThere") {
+  Container(web, "ShotThere web", "Angular SSR", "Studio page with Featured in section")
+  Container(api, "ShotThere API", "Next.js route handlers", "GET /api/studios/{slug}")
+  ContainerDb(db, "ShotThere database", "PostgreSQL", "Studios, guides, guide entries")
+}
+Rel(visitor, web, "Opens studio page", "HTTPS")
+Rel(web, api, "Calls", "JSON/HTTPS")
+Rel(api, db, "Reads", "Prisma")
+@enduml

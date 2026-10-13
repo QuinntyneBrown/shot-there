@@ -1,0 +1,12 @@
+@startuml
+!include <C4/C4_Container>
+LAYOUT_WITH_LEGEND()
+title Containers — Select studios to compare
+
+Person(visitor, "Visitor", "Plans a photo shoot in Toronto")
+System_Boundary(shotthere, "ShotThere") {
+  Container(web, "ShotThere web", "Angular SSR", "Compare toggle and compare bar; keeps the selection in browser localStorage")
+  Container(api, "ShotThere API", "Next.js route handlers", "Not called by this slice")
+}
+Rel(visitor, web, "Adds and removes studios", "HTTPS")
+@enduml

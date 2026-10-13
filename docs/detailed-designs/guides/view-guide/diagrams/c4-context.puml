@@ -1,0 +1,12 @@
+@startuml
+!include <C4/C4_Context>
+LAYOUT_WITH_LEGEND()
+title System Context — View a guide
+
+Person(visitor, "Visitor", "Plans a photo shoot in Toronto")
+System(shotthere, "ShotThere", "Review and comparison site for Toronto photo locations")
+System_Ext(cdn, "CDN", "Caches pages and images")
+
+Rel(visitor, cdn, "Requests guide page", "HTTPS")
+Rel(cdn, shotthere, "Forwards uncached requests to")
+@enduml

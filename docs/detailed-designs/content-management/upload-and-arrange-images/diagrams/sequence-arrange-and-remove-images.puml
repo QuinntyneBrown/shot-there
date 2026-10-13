@@ -1,0 +1,74 @@
+@startuml
+title UML sequence behaviour — Arrange and remove images
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam roundcorner 12
+skinparam defaultFontName Arial
+skinparam ArrowColor #344054
+skinparam rectangle {
+  BorderColor #344054
+  FontColor #101828
+}
+skinparam package {
+  BorderColor #667085
+  FontColor #101828
+  BackgroundColor #F9FAFB
+}
+actor "Owner" as actor
+box "Frontend — ShotThere web (Angular SSR)" #E0F2FE
+  participant "StudioEditorPageComponent" as page
+  participant "ImageListComponent" as list
+  participant "RemoveImageDialogComponent" as dialog
+  participant "HttpImageService" as client
+  participant "HttpStudioEditorService" as editsvc
+end box
+box "Backend — ShotThere API (Next.js route handlers)" #D1FADF
+  participant "admin image route" as del
+  participant "admin studio route" as save
+end box
+box "Backend — ShotThere application (lib/)" #ECFDF3
+  participant "removeImage" as rm
+  participant "applyImageOrder" as ord
+end box
+box "Backend — Infrastructure (Prisma / object storage)" #FFF4E5
+  participant "objectStore" as store
+  database "ShotThere database" as db
+end box
+actor -> list : Activate "Move up" (keyboard or pointer)
+list -> list : Swap positions and announce new position via live region (L2-058)
+actor -> list : Activate "Remove"
+list -> dialog : Open confirmation
+alt cancelled
+  dialog --> list : Image kept
+else confirmed
+  dialog --> list : Confirmed
+  list -> client : remove(id)
+  client -> del : DELETE /api/admin/images/{id}
+  del -> rm : removeImage(id)
+  rm -> db : Load image and owning location
+  alt last test shot of a published studio
+    rm --> del : Refused
+    del --> client : 409 at least one required while published (L2-058)
+    client --> list : Show message
+  else allowed
+    rm -> db : Delete Image and ImageVariant rows
+    rm -> store : Delete original and variant objects
+    rm --> del : Removed
+    del --> client : 204
+    client --> list : Drop image from list
+  end
+end
+actor -> page : Activate "Save"
+page -> editsvc : Save studio with images [id, altText, sortOrder]
+editsvc -> save : PUT /api/admin/studios/{id}
+save -> save : Validate alt text present for each image (L2-057)
+alt alt text missing
+  save --> editsvc : 400 field errors
+  editsvc --> page : Show "Describe this image" on the image
+else valid
+  save -> ord : applyImageOrder(tx, items)
+  ord -> db : Update sortOrder and altText (L2-058)
+  save --> editsvc : 200
+  editsvc --> page : Saved
+end
+@enduml

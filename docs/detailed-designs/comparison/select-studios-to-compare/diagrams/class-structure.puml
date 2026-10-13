@@ -1,0 +1,53 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam roundcorner 8
+skinparam defaultFontName Arial
+skinparam ArrowColor #344054
+skinparam class {
+  BorderColor #344054
+  FontColor #101828
+  BackgroundColor #F9FAFB
+}
+title Class structure — Select studios to compare
+
+interface CompareSelectionItem {
+  +slug: string
+  +name: string
+}
+enum CompareAddResult {
+  added
+  already-selected
+  limit-reached
+}
+class CompareSelectionService {
+  +items: Signal<CompareSelectionItem[]>
+  +count: Signal<number>
+  +canCompare: Signal<boolean>
+  +isFull: Signal<boolean>
+  +add(item: CompareSelectionItem): CompareAddResult
+  +remove(slug: string): void
+  +has(slug: string): boolean
+  +clear(): void
+}
+class CompareSelectionStore {
+  +load(): CompareSelectionItem[]
+  +save(items: CompareSelectionItem[]): void
+}
+class CompareToggleComponent {
+  +slug: InputSignal<string>
+  +name: InputSignal<string>
+  +selected: Signal<boolean>
+  +toggle(): void
+}
+class CompareBarComponent {
+  +count: Signal<number>
+  +canCompare: Signal<boolean>
+  +openComparison(): void
+}
+CompareSelectionService "1" o-- "0..4" CompareSelectionItem : holds
+CompareSelectionService ..> CompareAddResult : returns
+CompareSelectionService --> CompareSelectionStore : persists via
+CompareToggleComponent ..> CompareSelectionService : uses
+CompareBarComponent ..> CompareSelectionService : uses
+@enduml

@@ -1,0 +1,99 @@
+@startuml
+' --- shared skin header ---
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam roundcorner 8
+skinparam defaultFontName Arial
+skinparam ArrowColor #344054
+skinparam class {
+  BorderColor #344054
+  FontColor #101828
+  BackgroundColor #F9FAFB
+}
+' --------------------------
+title Class structure — Filter and sort studios
+
+enum StudioSort {
+  cost
+  score
+  recent
+}
+enum Parking {
+  onSite
+  street
+  none
+}
+enum GearCategory {
+  lights
+  modifiers
+  stands
+  backdrops
+}
+class StudioListQuery <<type>> {
+  +costMin?: number
+  +costMax?: number
+  +neighbourhoods: string[]
+  +naturalLight: boolean
+  +cycWall: boolean
+  +minSpaceSqm?: number
+  +gear: GearCategory[]
+  +parking: Parking[]
+  +sort: StudioSort
+}
+class "parseStudioListQuery" as ParseFn <<function>> {
+  +parseStudioListQuery(params: ParamMap): StudioListQuery
+}
+class "toStudioListQueryParams" as ToParamsFn <<function>> {
+  +toStudioListQueryParams(query: StudioListQuery): Params
+}
+class "countActiveFilters" as CountFn <<function>> {
+  +countActiveFilters(query: StudioListQuery): number
+}
+class StudioListPageComponent {
+  +query: Signal<StudioListQuery>
+  +activeFilterCount: Signal<number>
+  +applyQuery(query: StudioListQuery): void
+  +clearFilters(): void
+  +openFiltersDialog(): void
+}
+class StudioFiltersComponent {
+  +query: InputSignal<StudioListQuery>
+  +queryChange: OutputEmitterRef<StudioListQuery>
+}
+class StudioFiltersDialogComponent {
+  +apply(): void
+  +close(): void
+}
+class StudioSortControlComponent {
+  +sort: InputSignal<StudioSort>
+  +sortChange: OutputEmitterRef<StudioSort>
+}
+abstract class StudiosService {
+  +{abstract} listStudios(query: StudioListQuery): Observable<StudioSummary[]>
+}
+class HttpStudiosService {
+  +listStudios(query: StudioListQuery): Observable<StudioSummary[]>
+}
+class "studioListQuerySchema" as Schema <<zod>> {
+  +safeParse(searchParams): StudioListQuery
+}
+class "listStudios" as ListFn <<function>> {
+  +listStudios(query: StudioListQuery): Promise<StudioSummary[]>
+}
+
+StudiosService <|-- HttpStudiosService
+StudioListPageComponent ..> ParseFn : uses
+StudioListPageComponent ..> ToParamsFn : uses
+StudioListPageComponent ..> CountFn : uses
+StudioListPageComponent ..> StudiosService : injects
+StudioListPageComponent ..> StudioFiltersComponent : renders
+StudioListPageComponent ..> StudioFiltersDialogComponent : opens
+StudioListPageComponent ..> StudioSortControlComponent : renders
+StudioFiltersDialogComponent *-- StudioFiltersComponent
+StudioListQuery --> StudioSort
+StudioListQuery --> "*" Parking
+StudioListQuery --> "*" GearCategory
+ParseFn ..> StudioListQuery : returns
+Schema ..> StudioListQuery : produces
+ListFn ..> StudioListQuery : applies
+@enduml

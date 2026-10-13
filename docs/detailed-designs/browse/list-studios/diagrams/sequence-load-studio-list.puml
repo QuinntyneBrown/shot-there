@@ -1,0 +1,51 @@
+@startuml
+title UML sequence behaviour — Load the studio list
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam roundcorner 12
+skinparam defaultFontName Arial
+skinparam ArrowColor #344054
+skinparam rectangle {
+  BorderColor #344054
+  FontColor #101828
+}
+skinparam package {
+  BorderColor #667085
+  FontColor #101828
+  BackgroundColor #F9FAFB
+}
+actor "Visitor" as actor
+box "Frontend — ShotThere web (Angular SSR)" #E0F2FE
+  participant "StudioListPageComponent" as page
+  participant "HttpStudiosService" as client
+end box
+box "Backend — ShotThere API (Next.js route handlers)" #D1FADF
+  participant "app/api/studios/route.ts" as route
+end box
+box "Backend — ShotThere application (lib/)" #ECFDF3
+  participant "listStudios" as list
+end box
+box "Backend — Infrastructure (Prisma / object storage)" #FFF4E5
+  database "ShotThere database" as db
+end box
+actor -> page : Open the studio list
+page -> page : Set state loading and mark region aria-busy (L2-026)
+page -> client : listStudios()
+client -> route : GET /api/studios
+route -> list : listStudios()
+list -> db : Select published Studio with StudioFee and cover Image
+db --> list : Rows
+list -> list : Compute allInCost2h, overallScore, priceStale; order by reviewedAt desc (L2-021)
+list --> route : StudioSummary[]
+alt success
+  route --> client : 200 JSON
+  client --> page : StudioSummary[]
+  page --> actor : Studio cards present in server-rendered HTML (L2-021, L2-026)
+else API error
+  route --> client : 5xx
+  client --> page : Error
+  page --> actor : Error message and "Try again" (L2-026)
+  actor -> page : Activate "Try again"
+  page -> client : listStudios() again
+end
+@enduml

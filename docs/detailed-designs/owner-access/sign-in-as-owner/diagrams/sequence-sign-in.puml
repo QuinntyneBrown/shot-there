@@ -1,0 +1,74 @@
+@startuml
+title UML sequence behaviour — Sign in as the owner
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam roundcorner 12
+skinparam defaultFontName Arial
+skinparam ArrowColor #344054
+skinparam rectangle {
+  BorderColor #344054
+  FontColor #101828
+}
+skinparam package {
+  BorderColor #667085
+  FontColor #101828
+  BackgroundColor #F9FAFB
+}
+actor "Owner" as actor
+box "Frontend — ShotThere web (Angular SSR)" #E0F2FE
+  participant "SignInPageComponent" as page
+  participant "HttpAuthService" as client
+end box
+box "Backend — ShotThere API (Next.js route handlers)" #D1FADF
+  participant "POST /api/auth/sign-in" as route
+end box
+box "Backend — ShotThere application (lib/)" #ECFDF3
+  participant "signInOwner" as signin
+  participant "checkSignInRateLimit" as limit
+  participant "verifyPassword" as verify
+  participant "createOwnerSession" as session
+end box
+box "Backend — Infrastructure (Prisma / object storage)" #FFF4E5
+  database "ShotThere database" as db
+end box
+actor -> page : Enter email and password, submit
+page -> client : signIn(SignInRequest)
+client -> route : POST JSON, credentials included
+route -> route : Parse body with signInSchema
+alt invalid body
+  route --> client : 400
+  client --> page : invalidCredentials
+else valid body
+  route -> signin : signInOwner(input, clientKey)
+  signin -> limit : Check L2-050 limits (5 per client, 10 per account, 15 min)
+  limit -> db : Count SignInAttempt rows
+  db --> limit : Counts
+  limit --> signin : Limited or allowed
+  alt rate limited
+    signin --> route : rateLimited
+    route --> client : 429
+    client --> page : rateLimited
+    page --> actor : Ask the owner to wait before trying again
+  else allowed
+    signin -> db : Find Owner by email
+    db --> signin : Owner or none
+    signin -> verify : argon2id verify, dummy hash when no owner (L2-049)
+    verify --> signin : Match or mismatch
+    alt mismatch
+      signin -> db : Insert SignInAttempt
+      signin --> route : invalidCredentials
+      route --> client : 401
+      client --> page : invalidCredentials
+      page --> actor : Show "Email or password is incorrect" (L2-049)
+    else match
+      signin -> session : createOwnerSession(ownerId)
+      session -> db : Insert OwnerSession with token hash
+      session --> signin : Raw token
+      signin --> route : signedIn(token)
+      route --> client : 204, Set-Cookie st_session HttpOnly Secure SameSite=Lax
+      client --> page : signedIn
+      page --> actor : Navigate to return URL or dashboard
+    end
+  end
+end
+@enduml

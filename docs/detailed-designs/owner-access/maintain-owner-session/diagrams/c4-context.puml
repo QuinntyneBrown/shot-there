@@ -1,0 +1,12 @@
+@startuml
+!include <C4/C4_Context>
+LAYOUT_WITH_LEGEND()
+title System Context — Maintain the owner session
+
+Person(owner, "Owner", "Maintains ShotThere content")
+Person(visitor, "Visitor", "Reads public reviews")
+System(shotthere, "ShotThere", "Review and comparison site for Toronto photo locations")
+
+Rel(owner, shotthere, "Uses administration area, signs out", "HTTPS")
+Rel(visitor, shotthere, "Reads public pages without admin navigation", "HTTPS")
+@enduml

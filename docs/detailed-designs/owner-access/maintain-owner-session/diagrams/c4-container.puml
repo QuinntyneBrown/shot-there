@@ -1,0 +1,15 @@
+@startuml
+!include <C4/C4_Container>
+LAYOUT_WITH_LEGEND()
+title Containers — Maintain the owner session
+
+Person(owner, "Owner", "Maintains ShotThere content")
+System_Boundary(shotthere, "ShotThere") {
+  Container(web, "ShotThere web", "Angular SSR", "Guards /admin screens")
+  Container(api, "ShotThere API", "Next.js route handlers", "Guards /api/admin/*, ends sessions")
+  ContainerDb(db, "ShotThere database", "PostgreSQL", "OwnerSession")
+}
+Rel(owner, web, "Uses", "HTTPS")
+Rel(web, api, "Calls with st_session cookie", "JSON/HTTPS")
+Rel(api, db, "Reads, updates and deletes sessions", "Prisma")
+@enduml

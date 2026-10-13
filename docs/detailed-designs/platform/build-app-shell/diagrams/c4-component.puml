@@ -1,0 +1,26 @@
+@startuml
+!include <C4/C4_Component>
+LAYOUT_WITH_LEGEND()
+title Components — Build the app shell
+
+Person(visitor, "Visitor", "Keyboard, pointer or screen reader user")
+Container_Boundary(web, "ShotThere web") {
+  Component(shell, "ShellComponent", "Angular standalone component", "Root layout with main landmark")
+  Component(skip, "SkipLinkComponent", "Angular standalone component", "Moves focus to main")
+  Component(header, "HeaderComponent", "Angular standalone component", "Brand and menu disclosure")
+  Component(footer, "SiteFooterComponent", "Angular standalone component", "Footer navigation")
+  Component(paths, "APP_PATHS and PAGE_TITLES", "TypeScript constants", "Central paths and titles")
+  Component(title, "ShotThereTitleStrategy", "Angular TitleStrategy", "Sets document titles")
+  Component(announcer, "AnnouncerService", "Angular service", "Polite live-region announcements")
+  Component(page, "Routed page", "FooPageComponent", "Any feature page in the router outlet")
+}
+Rel(visitor, shell, "Uses")
+Rel(shell, skip, "Renders first")
+Rel(shell, header, "Renders")
+Rel(shell, footer, "Renders")
+Rel(shell, page, "Hosts in main landmark")
+Rel(header, paths, "Reads link paths")
+Rel(footer, paths, "Reads link paths")
+Rel(title, paths, "Reads title suffix")
+Rel(page, announcer, "Announces dynamic changes")
+@enduml

@@ -1,0 +1,20 @@
+@startuml
+!include <C4/C4_Container>
+LAYOUT_WITH_LEGEND()
+title Containers — Publish and unpublish a location
+
+Person(owner, "Owner", "Manages content")
+Person(visitor, "Visitor", "Browses published locations")
+System_Ext(cdn, "CDN", "Caches public pages")
+System_Boundary(shotthere, "ShotThere") {
+  Container(web, "ShotThere web", "Angular SSR", "Admin editors and public pages")
+  Container(api, "ShotThere API", "Next.js route handlers", "Publishing rules and public data")
+  ContainerDb(db, "ShotThere database", "PostgreSQL", "Studios, spots and their status")
+}
+Rel(owner, web, "Uses", "HTTPS")
+Rel(visitor, cdn, "Requests pages", "HTTPS")
+Rel(cdn, web, "Fetches uncached pages", "HTTPS")
+Rel(web, api, "Calls admin and public endpoints", "JSON/HTTPS")
+Rel(api, db, "Reads and writes status", "Prisma")
+Rel(api, cdn, "Requests revalidation", "HTTPS")
+@enduml

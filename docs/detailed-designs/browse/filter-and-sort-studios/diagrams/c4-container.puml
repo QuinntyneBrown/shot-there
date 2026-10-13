@@ -1,0 +1,15 @@
+@startuml
+!include <C4/C4_Container>
+LAYOUT_WITH_LEGEND()
+title Containers — Filter and sort studios
+
+Person(visitor, "Visitor", "Filters and sorts studios")
+System_Boundary(shotthere, "ShotThere") {
+  Container(web, "ShotThere web", "Angular SSR", "Holds filter and sort state in the URL")
+  Container(api, "ShotThere API", "Next.js route handlers", "Validates the list query, filters and sorts")
+  ContainerDb(db, "ShotThere database", "PostgreSQL", "Studios, fees and gear")
+}
+Rel(visitor, web, "Opens a studio list URL with query", "HTTPS")
+Rel(web, api, "GET /api/studios?costMin=..&hood=..&sort=..", "JSON/HTTPS")
+Rel(api, db, "Reads published studios", "Prisma")
+@enduml

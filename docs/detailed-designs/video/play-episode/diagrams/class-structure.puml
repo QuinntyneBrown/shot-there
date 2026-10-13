@@ -1,0 +1,35 @@
+@startuml
+' --- shared skin header ---
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam roundcorner 8
+skinparam defaultFontName Arial
+skinparam ArrowColor #344054
+skinparam class {
+  BorderColor #344054
+  FontColor #101828
+  BackgroundColor #F9FAFB
+}
+' --------------------------
+title Class structure — Play an episode
+
+class EpisodePlayerComponent {
+  +videoId: InputSignal<string>
+  +episodeTitle: InputSignal<string>
+  +posterUrl: InputSignal<string>
+  +playing: WritableSignal<boolean>
+  +play(event: Event): void
+}
+
+class "episode-urls.ts" as EpisodeUrls <<module>> {
+  +embedUrl(videoId: string): string
+  +watchUrl(videoId: string): string
+  +iframeTitle(episodeTitle: string): string
+}
+
+class SiteFooterComponent {
+  +channelUrl: string
+}
+
+EpisodePlayerComponent ..> EpisodeUrls : uses
+@enduml

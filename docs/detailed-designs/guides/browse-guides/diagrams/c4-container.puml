@@ -1,0 +1,15 @@
+@startuml
+!include <C4/C4_Container>
+LAYOUT_WITH_LEGEND()
+title Containers — Browse guides
+
+Person(visitor, "Visitor", "Plans a photo shoot in Toronto")
+System_Boundary(shotthere, "ShotThere") {
+  Container(web, "ShotThere web", "Angular SSR", "Main navigation and guides index")
+  Container(api, "ShotThere API", "Next.js route handlers", "GET /api/guides")
+  ContainerDb(db, "ShotThere database", "PostgreSQL", "Guides")
+}
+Rel(visitor, web, "Opens guides index", "HTTPS")
+Rel(web, api, "Calls", "JSON/HTTPS")
+Rel(api, db, "Reads", "Prisma")
+@enduml

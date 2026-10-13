@@ -1,0 +1,17 @@
+@startuml
+!include <C4/C4_Container>
+LAYOUT_WITH_LEGEND()
+title Containers — View locations on a map
+
+Person(visitor, "Visitor", "Explores locations")
+System_Ext(maps, "Map tile provider", "Serves map tiles")
+System_Boundary(shotthere, "ShotThere") {
+  Container(web, "ShotThere web", "Angular SSR", "Map view, legend, popups and list toggle")
+  Container(api, "ShotThere API", "Next.js route handlers", "Returns published map locations")
+  ContainerDb(db, "ShotThere database", "PostgreSQL", "Studios, spots, fees and permit statuses")
+}
+Rel(visitor, web, "Opens the map view", "HTTPS")
+Rel(web, api, "GET /api/map/locations", "JSON/HTTPS")
+Rel(api, db, "Reads published studios and spots", "Prisma")
+Rel(web, maps, "Requests tiles in the browser", "HTTPS")
+@enduml

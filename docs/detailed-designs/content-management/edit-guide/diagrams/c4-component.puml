@@ -1,0 +1,45 @@
+@startuml
+!include <C4/C4_Component>
+LAYOUT_WITH_LEGEND()
+title Components — Create, edit and publish a guide
+
+Container_Boundary(web, "ShotThere web") {
+  Component(page, "GuideEditorPageComponent", "Angular standalone page", "Guide form, entry list, publish actions")
+  Component(form, "guide-form.ts", "Plain TypeScript", "Form model, ordering, duplicate check")
+  Component(picker, "GuideEntryPickerDialogComponent", "Angular dialog", "Keyboard combobox search")
+  Component(svc, "GuideEditorService", "Abstract class / DI token", "Guide editor contract")
+  Component(http, "HttpGuideEditorService", "Angular HttpClient", "Calls the admin guide endpoints")
+}
+Container_Boundary(api, "ShotThere API") {
+  Component(coll, "app/api/admin/guides/route.ts", "Next.js route handler", "POST create")
+  Component(item, "app/api/admin/guides/[id]/route.ts", "Next.js route handler", "GET and PUT")
+  Component(pub, "app/api/admin/guides/[id]/publish/route.ts", "Next.js route handler", "POST publish, DELETE unpublish")
+  Component(cand, "app/api/admin/guide-candidates/route.ts", "Next.js route handler", "GET search")
+  Component(auth, "requireOwnerSession", "lib/auth", "Validates st_session")
+  Component(save, "createGuide / updateGuide", "lib/guides", "Validated ordered save")
+  Component(search, "searchGuideCandidates", "lib/guides/search-guide-candidates.ts", "Name match across studios and spots")
+  Component(publish, "publishGuide / unpublishGuide", "lib/guides/publish-guide.ts", "Entries check and status change")
+}
+ComponentDb(db, "ShotThere database", "PostgreSQL", "Guide, GuideEntry, Studio, Spot")
+
+Rel(page, form, "Builds form with")
+Rel(page, picker, "Opens")
+Rel(page, svc, "Injects")
+Rel(picker, svc, "Searches through")
+Rel(http, svc, "Implements")
+Rel(http, coll, "POST", "JSON/HTTPS")
+Rel(http, item, "GET, PUT", "JSON/HTTPS")
+Rel(http, pub, "POST, DELETE", "JSON/HTTPS")
+Rel(http, cand, "GET ?q=", "JSON/HTTPS")
+Rel(coll, auth, "Checks session with")
+Rel(item, auth, "Checks session with")
+Rel(pub, auth, "Checks session with")
+Rel(cand, auth, "Checks session with")
+Rel(coll, save, "Calls")
+Rel(item, save, "Calls")
+Rel(pub, publish, "Calls")
+Rel(cand, search, "Calls")
+Rel(save, db, "Writes", "Prisma")
+Rel(search, db, "Reads", "Prisma")
+Rel(publish, db, "Reads and writes", "Prisma")
+@enduml

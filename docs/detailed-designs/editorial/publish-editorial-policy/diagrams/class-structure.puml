@@ -1,0 +1,49 @@
+@startuml
+' --- shared skin header ---
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam roundcorner 8
+skinparam defaultFontName Arial
+skinparam ArrowColor #344054
+skinparam class {
+  BorderColor #344054
+  FontColor #101828
+  BackgroundColor #F9FAFB
+}
+' --------------------------
+title Class structure — Publish the editorial policy
+
+class SiteFooterComponent {
+  +editorialPolicyPath: string
+}
+
+class EditorialPolicyPageComponent {
+}
+
+class "features/editorial/routes.ts" as EditorialRoutes <<routes>> {
+  +EDITORIAL_ROUTES: Routes
+}
+
+class "lib/studios/list-studios.ts" as ListStudios <<function>> {
+  +listStudios(query: StudioListQuery): Promise<StudioSummary[]>
+}
+
+class "lib/spots/list-spots.ts" as ListSpots <<function>> {
+  +listSpots(query: SpotListQuery): Promise<SpotSummary[]>
+}
+
+class Studio <<Prisma model>> {
+  +id: string
+  +overallScore: number
+}
+
+class Spot <<Prisma model>> {
+  +id: string
+  +overallScore: number
+}
+
+SiteFooterComponent ..> EditorialRoutes : links to
+EditorialRoutes --> EditorialPolicyPageComponent : loads
+ListStudios ..> Studio : orders by overallScore desc
+ListSpots ..> Spot : orders by overallScore desc
+@enduml

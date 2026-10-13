@@ -1,0 +1,10 @@
+@startuml
+!include <C4/C4_Context>
+LAYOUT_WITH_LEGEND()
+title System Context — View the administration dashboard
+
+Person(owner, "Owner", "Creates and maintains ShotThere content")
+System(shotthere, "ShotThere", "Review and comparison site for Toronto photo locations")
+
+Rel(owner, shotthere, "Reviews counts and re-verification work in", "HTTPS")
+@enduml

@@ -1,0 +1,28 @@
+@startuml
+title UML sequence behaviour — Copy the comparison link
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam roundcorner 12
+skinparam defaultFontName Arial
+skinparam ArrowColor #344054
+skinparam rectangle {
+  BorderColor #344054
+  FontColor #101828
+}
+skinparam package {
+  BorderColor #667085
+  FontColor #101828
+  BackgroundColor #F9FAFB
+}
+actor "Visitor" as actor
+box "Frontend — ShotThere web (Angular SSR)" #E0F2FE
+  participant "ComparePageComponent" as page
+  participant "Clipboard" as clip
+  participant "LiveAnnouncer" as announcer
+end box
+actor -> page : Activate "Copy link"
+page -> clip : copy(current URL) (L2-032)
+clip --> page : copied
+page -> announcer : Announce "Link copied"
+page --> actor : Confirmation shown
+@enduml

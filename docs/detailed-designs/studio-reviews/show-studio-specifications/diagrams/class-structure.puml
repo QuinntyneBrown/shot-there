@@ -1,0 +1,132 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam roundcorner 8
+skinparam defaultFontName Arial
+skinparam ArrowColor #344054
+skinparam class {
+  BorderColor #344054
+  FontColor #101828
+  BackgroundColor #F9FAFB
+}
+title Class structure — Show studio specifications
+
+enum LightRating {
+  none
+  low
+  medium
+  strong
+}
+enum LoadIn {
+  stairs
+  elevator
+  freightElevator
+}
+enum GearCategory {
+  lights
+  modifiers
+  stands
+  other
+}
+class Studio <<Prisma model>> {
+  +usableWidthM: Decimal
+  +usableDepthM: Decimal
+  +ceilingHeightM: Decimal
+  +windowDirection: string
+  +lightMorning: LightRating
+  +lightMidday: LightRating
+  +lightAfternoon: LightRating
+  +lightEvening: LightRating
+  +outletCount: int
+  +outletType: string
+  +has20ACircuits: boolean
+  +hasCycWall: boolean
+  +cycWallCondition: string?
+  +backdrops: string[]
+  +loadIn: LoadIn
+  +loadInNote: string?
+  +parking: string
+  +transit: string
+  +washroom: string
+  +changingArea: string?
+  +clientSeating: string
+  +noise: string
+}
+class GearItem <<Prisma model>> {
+  +name: string
+  +category: GearCategory
+  +quantity: int
+  +included: boolean
+  +extraCost: Decimal?
+}
+class StudioDetailDto {
+  +specifications: StudioSpecificationsDto
+  +gear: StudioGearDto
+  +logistics: StudioLogisticsDto
+}
+class StudioSpecificationsDto {
+  +usableWidthM: number
+  +usableDepthM: number
+  +ceilingHeightM: number
+  +windowDirection: string
+  +naturalLight: NaturalLightDto
+  +outletCount: number
+  +outletType: string
+  +has20ACircuits: boolean
+  +hasCycWall: boolean
+  +cycWallCondition: string | null
+  +backdrops: string[]
+}
+class NaturalLightDto {
+  +morning: LightRating
+  +midday: LightRating
+  +afternoon: LightRating
+  +evening: LightRating
+}
+class StudioGearDto {
+  +included: GearItemDto[]
+  +extras: GearItemDto[]
+}
+class GearItemDto {
+  +name: string
+  +category: GearCategory
+  +quantity: number
+  +extraCost: number | null
+}
+class StudioLogisticsDto {
+  +loadIn: LoadIn
+  +loadInNote: string | null
+  +parking: string
+  +transit: string
+  +washroom: string
+  +changingArea: string | null
+  +clientSeating: string
+  +noise: string
+}
+class StudioPageComponent {
+  +studio: Signal<StudioDetailDto | undefined>
+}
+class StudioSpecificationsComponent {
+  +specifications: InputSignal<StudioSpecificationsDto>
+}
+class StudioGearComponent {
+  +gear: InputSignal<StudioGearDto>
+}
+class StudioLogisticsComponent {
+  +logistics: InputSignal<StudioLogisticsDto>
+}
+class SpecificationsViewModel <<studio-specifications.view-model.ts>> {
+  +formatDimensions(widthM: number, depthM: number): string
+  +cycWallLabel(hasCycWall: boolean, condition: string | null): string
+}
+Studio "1" *-- "*" GearItem
+StudioDetailDto *-- StudioSpecificationsDto
+StudioDetailDto *-- StudioGearDto
+StudioDetailDto *-- StudioLogisticsDto
+StudioSpecificationsDto *-- NaturalLightDto
+StudioGearDto "1" *-- "*" GearItemDto
+StudioPageComponent *-- StudioSpecificationsComponent
+StudioPageComponent *-- StudioGearComponent
+StudioPageComponent *-- StudioLogisticsComponent
+StudioSpecificationsComponent ..> SpecificationsViewModel : uses
+@enduml

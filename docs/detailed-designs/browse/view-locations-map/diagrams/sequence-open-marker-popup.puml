@@ -1,0 +1,42 @@
+@startuml
+title UML sequence behaviour — Open a marker popup
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam roundcorner 12
+skinparam defaultFontName Arial
+skinparam ArrowColor #344054
+skinparam rectangle {
+  BorderColor #344054
+  FontColor #101828
+}
+skinparam package {
+  BorderColor #667085
+  FontColor #101828
+  BackgroundColor #F9FAFB
+}
+actor "Visitor" as actor
+box "Frontend — ShotThere web (Angular SSR)" #E0F2FE
+  participant "LocationsMapComponent" as map
+  participant "MapPopupComponent" as popup
+  participant "Router" as router
+end box
+actor -> map : Tab to a marker (L2-028)
+map --> actor : Marker receives focus
+actor -> map : Press Enter or click marker
+map -> popup : Open with MapLocation
+alt kind is studio
+  popup --> actor : Name, "Studio", all-in cost, page link (L2-028)
+else kind is spot
+  popup --> actor : Name, "Outdoor spot", permit summary, page link (L2-028)
+end
+alt visitor presses Escape
+  actor -> popup : Escape
+  popup -> map : closed
+  map -> map : Return focus to the marker (L2-028)
+  map --> actor : Popup closed
+else visitor activates the link
+  actor -> popup : Activate page link
+  popup -> router : Navigate to the studio or spot page
+  router --> actor : Location page
+end
+@enduml

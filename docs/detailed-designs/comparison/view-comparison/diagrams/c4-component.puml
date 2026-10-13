@@ -1,0 +1,23 @@
+@startuml
+!include <C4/C4_Component>
+LAYOUT_WITH_LEGEND()
+title Components — View a side-by-side comparison
+
+Container_Boundary(web, "ShotThere web") {
+  Component(page, "ComparePageComponent", "Angular page", "Table, notices, Copy link, metadata")
+  Component(vm, "comparison-view-model.ts", "TypeScript", "Rows, dash for missing, Lowest marker")
+  Component(svc, "CompareService / HttpCompareService", "libs/api", "Calls GET /api/compare")
+}
+Container_Boundary(api, "ShotThere API") {
+  Component(route, "app/api/compare/route.ts", "Next.js route handler", "Validates query, returns ComparisonDto")
+  Component(schema, "lib/compare/schemas.ts", "zod", "compareQuerySchema")
+  Component(lib, "lib/compare/get-comparison.ts", "TypeScript", "Order, filter, cap at 4, computed fields")
+  ComponentDb(db, "ShotThere database", "PostgreSQL", "Studio, StudioFee, GearItem, Image, ImageVariant")
+}
+Rel(page, vm, "Builds rows with")
+Rel(page, svc, "getComparison(slugs)")
+Rel(svc, route, "GET /api/compare?studios=", "JSON/HTTPS")
+Rel(route, schema, "Parses query with")
+Rel(route, lib, "Calls")
+Rel(lib, db, "Reads published studios", "Prisma")
+@enduml

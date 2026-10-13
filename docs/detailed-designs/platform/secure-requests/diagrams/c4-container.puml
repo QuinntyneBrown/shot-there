@@ -1,0 +1,17 @@
+@startuml
+!include <C4/C4_Container>
+LAYOUT_WITH_LEGEND()
+title Containers — Secure requests
+
+Person(owner, "Owner", "Edits content")
+Person(visitor, "Visitor", "Reads content")
+System_Boundary(shotthere, "ShotThere") {
+  Container(web, "ShotThere web", "Angular SSR", "Adds security headers, redirects HTTP, echoes CSRF token")
+  Container(api, "ShotThere API", "Next.js route handlers", "Adds security headers, limits size, verifies CSRF, validates input")
+  ContainerDb(db, "ShotThere database", "PostgreSQL", "Owner sessions with CSRF tokens and content")
+}
+Rel(visitor, web, "Uses", "HTTPS")
+Rel(owner, web, "Uses", "HTTPS")
+Rel(web, api, "Calls with X-CSRF-Token on writes", "JSON/HTTPS")
+Rel(api, db, "Reads session, writes validated content", "Prisma")
+@enduml

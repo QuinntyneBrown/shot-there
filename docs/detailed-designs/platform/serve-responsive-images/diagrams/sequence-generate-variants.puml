@@ -1,0 +1,44 @@
+@startuml
+title UML sequence behaviour — Generate variants
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam roundcorner 12
+skinparam defaultFontName Arial
+skinparam ArrowColor #344054
+skinparam rectangle {
+  BorderColor #344054
+  FontColor #101828
+}
+skinparam package {
+  BorderColor #667085
+  FontColor #101828
+  BackgroundColor #F9FAFB
+}
+box "Backend — ShotThere API (Next.js route handlers)" #D1FADF
+  participant "Upload route handler" as route
+end box
+box "Backend — ShotThere application (lib/)" #ECFDF3
+  participant "generateVariants" as gen
+  participant "sharp" as sharp
+end box
+box "Backend — Infrastructure (Prisma / object storage)" #FFF4E5
+  participant "Image store" as store
+  database "ShotThere database" as db
+end box
+route -> gen : generateVariants(imageId, source)
+loop each width in 480, 960, 1440, 2048
+  alt width larger than source
+    gen -> gen : Skip width
+  else width fits
+    loop each format avif, webp, jpeg
+      gen -> sharp : Resize and encode (L2-072)
+      sharp --> gen : Buffer
+      gen -> store : Put hashed key, Cache-Control immutable
+      store --> gen : Stored
+    end
+  end
+end
+gen -> db : Insert ImageVariant rows
+db --> gen : Committed
+gen --> route : Done
+@enduml

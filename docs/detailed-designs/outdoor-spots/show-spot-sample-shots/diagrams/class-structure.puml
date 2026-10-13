@@ -1,0 +1,49 @@
+@startuml
+' --- shared skin header ---
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam roundcorner 8
+skinparam defaultFontName Arial
+skinparam ArrowColor #344054
+skinparam class {
+  BorderColor #344054
+  FontColor #101828
+  BackgroundColor #F9FAFB
+}
+' --------------------------
+title Class structure — Show spot sample shots
+
+abstract class SpotsService {
+  +getSpot(slug: string): Observable<SpotDetailDto>
+}
+class HttpSpotsService {
+  -http: HttpClient
+  +getSpot(slug: string): Observable<SpotDetailDto>
+}
+class SpotPageComponent {
+  -spots: SpotsService
+  +spot: Signal<SpotDetailDto | undefined>
+}
+SpotsService <|-- HttpSpotsService
+SpotPageComponent ..> SpotsService : injects
+class SpotDetailDto {
+  +slug: string
+  +sampleShots: SpotSampleShotDto[]
+}
+class SpotSampleShotDto {
+  +src: string
+  +srcset: string
+  +alt: string
+  +focalLengthMm: number
+  +angleNote: string
+}
+class SpotSampleShotsComponent {
+  +shots: InputSignal<SpotSampleShotDto[]>
+  +open(index: number): void
+}
+class "Gallery lightbox" as Lightbox
+SpotDetailDto "1" *-- "*" SpotSampleShotDto
+SpotPageComponent *-- SpotSampleShotsComponent : hosts
+SpotSampleShotsComponent ..> Lightbox : opens
+SpotSampleShotsComponent ..> SpotSampleShotDto
+@enduml

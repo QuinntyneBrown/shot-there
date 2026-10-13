@@ -1,0 +1,45 @@
+@startuml
+!include <C4/C4_Component>
+LAYOUT_WITH_LEGEND()
+title Components — Create and edit a studio
+
+Container_Boundary(web, "ShotThere web") {
+  Component(page, "StudioEditorPageComponent", "Angular standalone page", "Sectioned studio form")
+  Component(form, "studio-form.ts", "Plain TypeScript", "Form model and input mapping")
+  Component(msgs, "studio-editor-messages.ts", "Plain TypeScript", "i18n validation messages and error mapping")
+  Component(rule, "price-verification-rule.ts", "Plain TypeScript", "Detects price changes needing date confirmation")
+  Component(svc, "StudioEditorService", "Abstract class / DI token", "Studio editor contract")
+  Component(http, "HttpStudioEditorService", "Angular HttpClient", "Calls the admin studio endpoints")
+}
+Container_Boundary(api, "ShotThere API") {
+  Component(coll, "app/api/admin/studios/route.ts", "Next.js route handler", "POST create")
+  Component(item, "app/api/admin/studios/[id]/route.ts", "Next.js route handler", "GET and PUT")
+  Component(auth, "requireOwnerSession", "lib/auth", "Validates st_session")
+  Component(schema, "studioInputSchema", "lib/studios/schemas.ts", "zod field rules")
+  Component(create, "createStudio", "lib/studios/create-studio.ts", "Draft create with default price date")
+  Component(update, "updateStudio", "lib/studios/update-studio.ts", "Update keeping price date unless supplied")
+  Component(get, "getStudioForEdit", "lib/studios/get-studio-for-edit.ts", "Reads any status")
+  Component(slug, "assignUniqueSlug", "lib/slugs/assign-unique-slug.ts", "Numeric suffix on collision")
+}
+ComponentDb(db, "ShotThere database", "PostgreSQL", "Studio, StudioFee, GearItem")
+
+Rel(page, form, "Builds form with")
+Rel(page, msgs, "Shows messages with")
+Rel(page, rule, "Checks price change with")
+Rel(page, svc, "Injects")
+Rel(http, svc, "Implements")
+Rel(http, coll, "POST", "JSON/HTTPS")
+Rel(http, item, "GET, PUT", "JSON/HTTPS")
+Rel(coll, auth, "Checks session with")
+Rel(item, auth, "Checks session with")
+Rel(coll, create, "Calls")
+Rel(item, get, "Calls")
+Rel(item, update, "Calls")
+Rel(create, schema, "Validates with")
+Rel(update, schema, "Validates with")
+Rel(create, slug, "Assigns slug with")
+Rel(create, db, "Writes", "Prisma")
+Rel(update, db, "Writes", "Prisma")
+Rel(get, db, "Reads", "Prisma")
+Rel(slug, db, "Checks existing slugs", "Prisma")
+@enduml

@@ -1,0 +1,39 @@
+@startuml
+!include <C4/C4_Component>
+LAYOUT_WITH_LEGEND()
+title Components — Upload and arrange images
+
+Container_Boundary(web, "ShotThere web") {
+  Component(editor, "StudioEditorPageComponent / SpotEditorPageComponent", "Angular page", "Hosts image lists and Save")
+  Component(list, "ImageListComponent", "Angular component", "Upload, alt text, Move up/down, Remove")
+  Component(queue, "image-upload-queue.ts", "Plain TypeScript", "Per-file state, client checks, retry")
+  Component(remove, "RemoveImageDialogComponent", "Angular dialog", "Confirms removal")
+  Component(svc, "ImageService / HttpImageService", "libs/api", "Uploads with progress and removes images")
+}
+Container_Boundary(api, "ShotThere API") {
+  Component(up, "app/api/admin/images/route.ts", "Route handler", "POST multipart upload")
+  Component(del, "app/api/admin/images/[id]/route.ts", "Route handler", "DELETE removes an image")
+  Component(upload, "lib/images/upload-image.ts", "Application function", "Inspects, generates variants, stores")
+  Component(inspect, "lib/images/inspect-image.ts", "Application function", "Detects real format from content")
+  Component(variants, "lib/images/generate-variants.ts", "sharp", "Widths 480, 960, 1440, 2048")
+  Component(rm, "lib/images/remove-image.ts", "Application function", "Refuses removing last required image")
+  Component(order, "lib/images/apply-image-order.ts", "Application function", "Persists sortOrder and alt text on save")
+  Component(store, "lib/storage/object-store.ts", "S3 client", "putObject, deleteObjects")
+  ComponentDb(db, "ShotThere database", "PostgreSQL", "Image, ImageVariant")
+}
+Rel(editor, list, "Contains")
+Rel(list, queue, "Tracks uploads in")
+Rel(list, remove, "Opens")
+Rel(list, svc, "Calls")
+Rel(svc, up, "POST multipart", "HTTPS")
+Rel(svc, del, "DELETE", "HTTPS")
+Rel(up, upload, "Calls")
+Rel(upload, inspect, "Calls")
+Rel(upload, variants, "Calls")
+Rel(upload, store, "Puts objects")
+Rel(upload, db, "Creates rows", "Prisma")
+Rel(del, rm, "Calls")
+Rel(rm, db, "Deletes rows", "Prisma")
+Rel(rm, store, "Deletes objects")
+Rel(order, db, "Updates sortOrder and altText", "Prisma")
+@enduml

@@ -1,0 +1,68 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam roundcorner 8
+skinparam defaultFontName Arial
+skinparam ArrowColor #344054
+skinparam class {
+  BorderColor #344054
+  FontColor #101828
+  BackgroundColor #F9FAFB
+}
+title Class structure — Delete content
+
+enum ContentKind {
+  studio
+  spot
+  guide
+}
+class DeleteDialogData {
+  +kind: ContentKind
+  +name: string
+}
+class DeleteContentDialogComponent {
+  +data: DeleteDialogData
+  +confirm(): void
+  +cancel(): void
+}
+abstract class ContentDeletionService {
+  +delete(kind: ContentKind, id: string): Observable<void>
+}
+class HttpContentDeletionService {
+  -http: HttpClient
+}
+class "delete-location.ts" as dl {
+  +deleteLocation(kind: ContentKind, id: string): Promise<void>
+}
+class "delete-guide.ts" as dg {
+  +deleteGuide(id: string): Promise<void>
+}
+class "object-store.ts" as os {
+  +deleteObjects(keys: string[]): Promise<void>
+}
+class Studio {
+  +id: string
+  +status: LocationStatus
+}
+class Guide {
+  +id: string
+  +status: LocationStatus
+}
+class GuideEntry {
+  +guideId: string
+  +studioId: string
+  +spotId: string
+}
+class Image {
+  +storageKey: string
+}
+ContentDeletionService <|-- HttpContentDeletionService
+DeleteContentDialogComponent --> DeleteDialogData
+dl ..> Studio : deletes draft
+dl ..> GuideEntry : deletes referencing entries
+dl ..> Image : deletes
+dl ..> os : calls
+dg ..> Guide : deletes draft
+Guide "1" *-- "*" GuideEntry
+Studio "1" *-- "*" Image
+@enduml

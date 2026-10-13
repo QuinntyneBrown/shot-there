@@ -1,0 +1,11 @@
+@startuml
+!include <C4/C4_Context>
+LAYOUT_WITH_LEGEND()
+title System Context — Show spot conditions and permits
+
+Person(visitor, "Visitor", "Plans a photo shoot in Toronto")
+System(shotthere, "ShotThere", "First-hand reviews of Toronto studios and outdoor spots")
+System_Ext(permitsrc, "Official permit source", "City or park authority website")
+Rel(visitor, shotthere, "Reads outdoor spot pages on", "HTTPS")
+Rel(visitor, permitsrc, "Opens permit source in a new tab", "HTTPS")
+@enduml

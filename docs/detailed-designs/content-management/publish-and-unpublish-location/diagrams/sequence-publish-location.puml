@@ -1,0 +1,68 @@
+@startuml
+title UML sequence behaviour — Publish a location
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam roundcorner 12
+skinparam defaultFontName Arial
+skinparam ArrowColor #344054
+skinparam rectangle {
+  BorderColor #344054
+  FontColor #101828
+}
+skinparam package {
+  BorderColor #667085
+  FontColor #101828
+  BackgroundColor #F9FAFB
+}
+actor "Owner" as actor
+box "Frontend — ShotThere web (Angular SSR)" #E0F2FE
+  participant "StudioEditorPageComponent" as page
+  participant "MissingFieldsDialogComponent" as dialog
+  participant "HttpPublishingService" as client
+end box
+box "Backend — ShotThere API (Next.js route handlers)" #D1FADF
+  participant "admin studios publish route" as route
+end box
+box "Backend — ShotThere application (lib/)" #ECFDF3
+  participant "publishLocation" as publish
+  participant "checkStudioPublishable" as check
+  participant "revalidatePublicPages" as reval
+end box
+box "Backend — Infrastructure (Prisma / object storage)" #FFF4E5
+  database "ShotThere database" as db
+end box
+participant "CDN" as cdn
+actor -> page : Activate "Publish"
+page -> client : publish('studio', id)
+client -> route : POST /api/admin/studios/{id}/publish
+route -> route : Require owner session (st_session)
+alt no valid session
+  route --> client : 401
+  client --> page : Unauthorized
+else session valid
+  route -> publish : publishLocation('studio', id)
+  publish -> db : Load studio with fees, images, scores
+  db --> publish : Studio
+  publish -> check : Check standard data set (L2-002, L2-045)
+  check --> publish : PublishabilityCheck
+  alt missing fields
+    publish --> route : MissingFieldsProblem
+    route --> client : 422 with missingFields
+    client --> page : MissingFieldsProblem
+    page -> dialog : Open listing each missing field (L2-056)
+    actor -> dialog : Activate a field link
+    dialog --> page : focusField(name)
+    page --> actor : Focus the named field
+  else complete
+    publish -> db : Set status published and publishedAt
+    db --> publish : Commit
+    publish -> reval : Revalidate page and lists (L2-056)
+    reval -> cdn : Purge studio page, studio list, sitemap
+    cdn --> reval : Accepted
+    publish --> route : PublishResult
+    route --> client : 200 PublishResult
+    client --> page : PublishResult
+    page --> actor : Show status "Published"
+  end
+end
+@enduml

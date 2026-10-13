@@ -1,0 +1,20 @@
+@startuml
+!include <C4/C4_Container>
+LAYOUT_WITH_LEGEND()
+title Containers — Serve responsive images
+
+Person(visitor, "Visitor", "Views galleries")
+System_Ext(cdn, "CDN", "Edge cache for image variants")
+System_Boundary(shotthere, "ShotThere") {
+  Container(web, "ShotThere web", "Angular SSR", "Renders picture markup with srcset, sizes and loading hints")
+  Container(api, "ShotThere API", "Next.js route handlers", "Generates variants and returns image DTOs")
+  ContainerDb(db, "ShotThere database", "PostgreSQL", "Image and ImageVariant rows")
+  ContainerDb(storage, "Image store", "Object storage", "Variant files with immutable cache headers")
+}
+Rel(visitor, web, "Requests pages", "HTTPS")
+Rel(visitor, cdn, "Requests variants", "HTTPS")
+Rel(cdn, storage, "Fetches on cache miss", "HTTPS")
+Rel(web, api, "Reads image DTOs", "JSON/HTTPS")
+Rel(api, db, "Reads and writes", "Prisma")
+Rel(api, storage, "Writes variants", "S3 API")
+@enduml

@@ -1,0 +1,75 @@
+@startuml
+' --- shared skin header ---
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam roundcorner 8
+skinparam defaultFontName Arial
+skinparam ArrowColor #344054
+skinparam class {
+  BorderColor #344054
+  FontColor #101828
+  BackgroundColor #F9FAFB
+}
+' --------------------------
+title Class structure — Show spot conditions and permits
+
+abstract class SpotsService {
+  +getSpot(slug: string): Observable<SpotDetailDto>
+}
+class HttpSpotsService {
+  -http: HttpClient
+  +getSpot(slug: string): Observable<SpotDetailDto>
+}
+class SpotPageComponent {
+  -spots: SpotsService
+  +spot: Signal<SpotDetailDto | undefined>
+}
+SpotsService <|-- HttpSpotsService
+SpotPageComponent ..> SpotsService : injects
+class SpotDetailDto {
+  +slug: string
+  +conditions: SpotConditionsDto
+  +permits: SpotPermitsDto
+}
+class SpotConditionsDto {
+  +weekdayCrowds: CrowdLevel
+  +weekendCrowds: CrowdLevel
+  +parking: string | null
+  +washrooms: string | null
+  +changing: string | null
+}
+class SpotPermitsDto {
+  +rows: SpotPermitRowDto[]
+  +sourceUrl: string
+  +verifiedOn: string
+  +permitStale: boolean
+}
+class SpotPermitRowDto {
+  +shootType: ShootType
+  +required: boolean
+}
+enum CrowdLevel {
+  low
+  medium
+  high
+}
+enum ShootType {
+  portrait
+  weddingEngagement
+  commercial
+  video
+}
+class SpotConditionsComponent {
+  +conditions: InputSignal<SpotConditionsDto>
+}
+class SpotPermitsComponent {
+  +permits: InputSignal<SpotPermitsDto>
+}
+SpotDetailDto *-- SpotConditionsDto
+SpotDetailDto *-- SpotPermitsDto
+SpotPermitsDto "1" *-- "4" SpotPermitRowDto
+SpotPermitRowDto --> ShootType
+SpotConditionsDto --> CrowdLevel
+SpotPageComponent *-- SpotConditionsComponent : hosts
+SpotPageComponent *-- SpotPermitsComponent : hosts
+@enduml

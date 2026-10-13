@@ -1,0 +1,25 @@
+@startuml
+!include <C4/C4_Component>
+LAYOUT_WITH_LEGEND()
+title Components — Show spot location and directions
+
+Person(visitor, "Visitor", "Plans a photo shoot in Toronto")
+Container_Boundary(web, "ShotThere web") {
+  Component(page, "SpotPageComponent", "Angular standalone component", "features/spots; renders the spot page")
+  Component(map, "SpotMapComponent", "Angular standalone component", "Map centred on the spot with one marker")
+  Component(svc, "SpotsService / HttpSpotsService", "Angular service, libs/api", "Fetches a spot by slug")
+}
+Container_Boundary(api, "ShotThere API") {
+  Component(route, "app/api/spots/[slug]/route.ts", "Next.js route handler", "GET handler for one published spot")
+  Component(getspot, "getSpot", "lib/spots/get-spot.ts", "Loads a published spot and maps it to SpotDetailDto")
+}
+ComponentDb(db, "ShotThere database", "PostgreSQL", "Spot and related rows")
+System_Ext(maps, "Map tile provider", "Serves map tiles")
+Rel(visitor, page, "Views", "HTTPS")
+Rel(page, svc, "getSpot(slug)")
+Rel(svc, route, "GET /api/spots/[slug]", "JSON/HTTPS")
+Rel(route, getspot, "Calls")
+Rel(getspot, db, "Reads published rows", "Prisma")
+Rel(page, map, "Passes name and coordinates")
+Rel(map, maps, "Loads tiles", "HTTPS")
+@enduml

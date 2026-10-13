@@ -1,0 +1,10 @@
+@startuml
+!include <C4/C4_Context>
+LAYOUT_WITH_LEGEND()
+title System Context — Select studios to compare
+
+Person(visitor, "Visitor", "Plans a photo shoot in Toronto")
+System(shotthere, "ShotThere", "Review and comparison site for Toronto photo locations")
+
+Rel(visitor, shotthere, "Marks studios for comparison using")
+@enduml

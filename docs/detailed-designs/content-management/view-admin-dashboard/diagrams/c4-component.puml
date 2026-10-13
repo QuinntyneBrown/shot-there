@@ -1,0 +1,28 @@
+@startuml
+!include <C4/C4_Component>
+LAYOUT_WITH_LEGEND()
+title Components — View the administration dashboard
+
+Container_Boundary(web, "ShotThere web") {
+  Component(page, "AdminDashboardPageComponent", "Angular standalone page", "Renders tiles, re-verification list and creation links")
+  Component(vm, "AdminDashboardViewModel", "Plain TypeScript", "Tile labels, groups and edit links")
+  Component(svc, "AdminDashboardService", "Abstract class / DI token", "Dashboard contract")
+  Component(http, "HttpAdminDashboardService", "Angular HttpClient", "Calls the admin dashboard endpoint")
+}
+Container_Boundary(api, "ShotThere API") {
+  Component(route, "app/api/admin/dashboard/route.ts", "Next.js route handler", "GET; requires owner session")
+  Component(auth, "requireOwnerSession", "lib/auth", "Validates st_session")
+  Component(get, "getDashboard", "lib/admin/get-dashboard.ts", "Counts and re-verification entries")
+  Component(age, "verificationAge", "lib/freshness/verification-age.ts", "Stale and due-soon rule")
+}
+ComponentDb(db, "ShotThere database", "PostgreSQL", "Studio, Spot, Guide, PermitStatus")
+
+Rel(page, vm, "Shapes data with")
+Rel(page, svc, "Injects")
+Rel(http, svc, "Implements")
+Rel(http, route, "GET /api/admin/dashboard", "JSON/HTTPS")
+Rel(route, auth, "Checks session with")
+Rel(route, get, "Calls")
+Rel(get, age, "Classifies dates with")
+Rel(get, db, "Reads", "Prisma")
+@enduml

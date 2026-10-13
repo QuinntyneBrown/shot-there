@@ -1,0 +1,47 @@
+@startuml
+title UML sequence behaviour — Browse guides
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam roundcorner 12
+skinparam defaultFontName Arial
+skinparam ArrowColor #344054
+skinparam rectangle {
+  BorderColor #344054
+  FontColor #101828
+}
+skinparam package {
+  BorderColor #667085
+  FontColor #101828
+  BackgroundColor #F9FAFB
+}
+actor "Visitor" as actor
+box "Frontend — ShotThere web (Angular SSR)" #E0F2FE
+  participant "SiteNavComponent" as nav
+  participant "GuidesIndexPageComponent" as page
+  participant "HttpGuideService" as svc
+end box
+box "Backend — ShotThere API (Next.js route handlers)" #D1FADF
+  participant "app/api/guides/route.ts" as route
+end box
+box "Backend — ShotThere application (lib/)" #ECFDF3
+  participant "listGuides" as lib
+end box
+box "Backend — Infrastructure (Prisma / object storage)" #FFF4E5
+  database "ShotThere database" as db
+end box
+actor -> nav : Activate "Guides" (L2-035)
+nav -> page : Navigate to guides path
+page -> svc : listGuides()
+svc -> route : GET /api/guides
+route -> lib : listGuides()
+lib -> db : Find Guide where published (L2-035)
+db --> lib : Published guides
+lib --> route : GuideSummaryDto[]
+route --> svc : 200 JSON
+svc --> page : GuideSummaryDto[]
+page --> actor : Titles and summaries as links
+opt visitor activates a guide
+  actor -> page : Activate guide link
+  page --> actor : Guide page opens
+end
+@enduml

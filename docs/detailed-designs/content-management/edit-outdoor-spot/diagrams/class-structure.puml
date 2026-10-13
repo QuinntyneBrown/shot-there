@@ -1,0 +1,112 @@
+@startuml
+' --- shared skin header ---
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam roundcorner 8
+skinparam defaultFontName Arial
+skinparam ArrowColor #344054
+skinparam class {
+  BorderColor #344054
+  FontColor #101828
+  BackgroundColor #F9FAFB
+}
+' --------------------------
+title Class structure — Create and edit an outdoor spot
+
+enum SpotType {
+  park
+  architecture
+  waterfront
+  indoorPublic
+}
+enum BestUse {
+  engagement
+  family
+  portrait
+  brand
+  video
+}
+enum ShootType {
+  portrait
+  weddingOrEngagement
+  commercial
+  video
+}
+enum LightRating {
+  none
+  low
+  medium
+  strong
+}
+class PermitStatusInput {
+  +shootType: ShootType
+  +requirement: string
+  +sourceUrl: string
+  +verifiedAt: string | null
+}
+class LightByTimeInput {
+  +time: string
+  +rating: LightRating
+  +note: string
+}
+class LightBySeasonInput {
+  +season: string
+  +note: string
+}
+class SpotInput {
+  +name: string
+  +neighbourhood: string
+  +type: SpotType
+  +latitude: number
+  +longitude: number
+  +directions: string
+  +lightByTime: LightByTimeInput[]
+  +lightBySeason: LightBySeasonInput[]
+  +conditions: SpotConditions
+  +permits: PermitStatusInput[]
+  +bestUses: BestUse[]
+  +disclosure: string
+  +videoId: string | null
+}
+class SpotEditorModel {
+  +id: string
+  +slug: string
+  +status: string
+  +updatedAt: string
+  +input: SpotInput
+}
+abstract class SpotEditorService {
+  +{abstract} get(id: string): Observable<SpotEditorModel>
+  +{abstract} create(input: SpotInput): Observable<SpotEditorModel>
+  +{abstract} update(id: string, input: SpotInput): Observable<SpotEditorModel>
+}
+class HttpSpotEditorService
+class SpotEditorPageComponent {
+  +spot: Signal<SpotEditorModel>
+  +coordinates: Signal<LatLng>
+  +fieldErrors: Signal<FieldErrors>
+  +save(): void
+}
+class spotInputSchema <<zod>> {
+  +safeParse(body: unknown): Result
+}
+class createSpot <<function>> {
+  +createSpot(input: SpotInput, today: Date): Promise<SpotEditorModel>
+}
+class updateSpot <<function>> {
+  +updateSpot(id: string, input: SpotInput, today: Date): Promise<SpotEditorModel>
+}
+
+SpotInput --> SpotType
+SpotInput "1" --> "*" BestUse
+SpotInput "1" *-- "4" PermitStatusInput
+SpotInput "1" *-- "5" LightByTimeInput
+SpotInput "1" *-- "4" LightBySeasonInput
+PermitStatusInput --> ShootType
+LightByTimeInput --> LightRating
+SpotEditorModel *-- SpotInput
+SpotEditorService <|-- HttpSpotEditorService
+SpotEditorPageComponent ..> SpotEditorService : injects
+createSpot ..> spotInputSchema : validates
+updateSpot ..> spotInputSchema : validates
+@enduml

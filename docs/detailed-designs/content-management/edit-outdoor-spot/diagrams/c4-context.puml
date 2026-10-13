@@ -1,0 +1,12 @@
+@startuml
+!include <C4/C4_Context>
+LAYOUT_WITH_LEGEND()
+title System Context — Create and edit an outdoor spot
+
+Person(owner, "Owner", "Creates and maintains ShotThere content")
+System(shotthere, "ShotThere", "Review and comparison site for Toronto photo locations")
+System_Ext(maps, "Map tile provider", "Serves map tiles for the preview map")
+
+Rel(owner, shotthere, "Creates and edits spot records in", "HTTPS")
+Rel(shotthere, maps, "Loads preview map tiles from", "HTTPS")
+@enduml

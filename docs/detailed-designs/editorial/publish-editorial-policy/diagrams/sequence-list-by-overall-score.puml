@@ -1,0 +1,42 @@
+@startuml
+title UML sequence behaviour — List by overall score
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam roundcorner 12
+skinparam defaultFontName Arial
+skinparam ArrowColor #344054
+skinparam rectangle {
+  BorderColor #344054
+  FontColor #101828
+}
+skinparam package {
+  BorderColor #667085
+  FontColor #101828
+  BackgroundColor #F9FAFB
+}
+actor "Visitor" as actor
+box "Frontend — ShotThere web (Angular SSR)" #E0F2FE
+  participant "List page" as page
+  participant "HttpStudioService" as client
+end box
+box "Backend — ShotThere API (Next.js route handlers)" #D1FADF
+  participant "GET /api/studios" as route
+end box
+box "Backend — ShotThere application (lib/)" #ECFDF3
+  participant "listStudios" as list
+end box
+box "Backend — Infrastructure (Prisma / object storage)" #FFF4E5
+  database "ShotThere database" as db
+end box
+actor -> page : Choose sort by overall score
+page -> client : List with sort score
+client -> route : GET with sort parameter
+route -> list : listStudios(query)
+list -> db : Read published studios
+db --> list : Rows
+list -> list : Order by overallScore descending only, no placement field (L2-046)
+list --> route : Ordered summaries
+route --> client : 200 JSON
+client --> page : Ordered list
+page --> actor : Render in received order (L2-046)
+@enduml

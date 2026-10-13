@@ -1,0 +1,17 @@
+@startuml
+!include <C4/C4_Component>
+LAYOUT_WITH_LEGEND()
+title Components — Play an episode
+
+System_Ext(youtube, "YouTube", "Embed player, watch pages and channel")
+Container_Boundary(web, "ShotThere web") {
+  Component(review, "Review page", "Angular standalone page", "Places the player when an episode exists")
+  Component(player, "EpisodePlayerComponent", "Angular standalone component", "Poster, iframe and Watch on YouTube link")
+  Component(urls, "episode-urls.ts", "TypeScript functions", "embedUrl, watchUrl and iframeTitle")
+  Component(footer, "SiteFooterComponent", "Angular standalone component", "Channel link in a new tab")
+}
+Rel(review, player, "Passes videoId, episodeTitle, posterUrl")
+Rel(player, urls, "Builds URLs with")
+Rel(player, youtube, "Embeds after activation", "youtube-nocookie.com")
+Rel(footer, youtube, "Links to channel", "HTTPS")
+@enduml

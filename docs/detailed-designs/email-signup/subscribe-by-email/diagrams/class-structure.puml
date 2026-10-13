@@ -1,0 +1,87 @@
+@startuml
+' --- shared skin header ---
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam roundcorner 8
+skinparam defaultFontName Arial
+skinparam ArrowColor #344054
+skinparam class {
+  BorderColor #344054
+  FontColor #101828
+  BackgroundColor #F9FAFB
+}
+' --------------------------
+title Class structure — Subscribe by email
+
+enum SignupState {
+  idle
+  submitting
+  success
+  invalid
+  rate-limited
+  failed
+}
+
+class EmailSignupComponent {
+  +email: Signal<string>
+  +state: Signal<SignupState>
+  +errorKey: Signal<string | null>
+  +submit(): void
+}
+
+class "signup-form.ts" as SignupForm <<module>> {
+  +validateEmail(value: string): string | null
+  +toSignupState(status: number): SignupState
+}
+
+class SubscribeRequest {
+  +email: string
+  +sourcePath: string
+  +website: string
+}
+
+abstract class SubscriberService {
+  +{abstract} subscribe(request: SubscribeRequest): Observable<void>
+}
+
+class HttpSubscriberService {
+  -http: HttpClient
+  +subscribe(request: SubscribeRequest): Observable<void>
+}
+
+class "app/api/subscribers/route.ts" as SubscribersRoute <<route handler>> {
+  +POST(request: Request): Promise<Response>
+}
+
+class subscribeSchema <<zod>> {
+  +email: string, max 254
+  +sourcePath: string
+  +website: string, optional
+}
+
+class "lib/subscribers/subscribe.ts" as Subscribe <<function>> {
+  +subscribe(input: SubscribeInput): Promise<void>
+}
+
+class "lib/subscribers/check-rate-limit.ts" as CheckRateLimit <<function>> {
+  +checkRateLimit(clientKey: string): boolean
+}
+
+class Subscriber <<Prisma model>> {
+  +id: string
+  +email: string, unique
+  +subscribedAt: DateTime
+  +sourcePath: string
+}
+
+EmailSignupComponent --> SignupState : has
+EmailSignupComponent ..> SignupForm : uses
+EmailSignupComponent --> SubscriberService : injects
+SubscriberService <|-- HttpSubscriberService
+SubscriberService ..> SubscribeRequest : sends
+HttpSubscriberService ..> SubscribersRoute : POST /api/subscribers
+SubscribersRoute ..> CheckRateLimit : uses
+SubscribersRoute ..> subscribeSchema : parses with
+SubscribersRoute ..> Subscribe : calls
+Subscribe ..> Subscriber : upserts
+@enduml

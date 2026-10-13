@@ -1,0 +1,33 @@
+@startuml
+title UML sequence behaviour — Open the comparison
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam roundcorner 12
+skinparam defaultFontName Arial
+skinparam ArrowColor #344054
+skinparam rectangle {
+  BorderColor #344054
+  FontColor #101828
+}
+skinparam package {
+  BorderColor #667085
+  FontColor #101828
+  BackgroundColor #F9FAFB
+}
+actor "Visitor" as actor
+box "Frontend — ShotThere web (Angular SSR)" #E0F2FE
+  participant "CompareBarComponent" as bar
+  participant "CompareSelectionService" as svc
+  participant "Router" as router
+end box
+actor -> bar : View compare bar
+bar -> svc : count, canCompare
+svc --> bar : count
+alt fewer than 2 selected (L2-030)
+  bar --> actor : "Compare" disabled with 2-minimum hint
+else 2 or more selected
+  actor -> bar : Activate "Compare"
+  bar -> router : navigate(AppPaths compare, studios=a,b)
+  router --> actor : Comparison page opens with selected studios
+end
+@enduml

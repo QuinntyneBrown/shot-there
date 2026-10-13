@@ -1,0 +1,10 @@
+@startuml
+!include <C4/C4_Context>
+LAYOUT_WITH_LEGEND()
+title System Context — Protect unsaved changes
+
+Person(owner, "Owner", "Edits locations and guides")
+System(shotthere, "ShotThere", "Toronto photo location reviews and comparisons")
+
+Rel(owner, shotthere, "Edits content using", "HTTPS")
+@enduml

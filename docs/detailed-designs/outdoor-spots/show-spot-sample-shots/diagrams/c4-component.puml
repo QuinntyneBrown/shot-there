@@ -1,0 +1,26 @@
+@startuml
+!include <C4/C4_Component>
+LAYOUT_WITH_LEGEND()
+title Components — Show spot sample shots
+
+Person(visitor, "Visitor", "Plans a photo shoot in Toronto")
+Container_Boundary(web, "ShotThere web") {
+  Component(page, "SpotPageComponent", "Angular standalone component", "features/spots; renders the spot page")
+  Component(shots, "SpotSampleShotsComponent", "Angular standalone component", "Thumbnail grid with captions")
+  Component(lightbox, "Gallery lightbox", "Angular standalone component", "Reused from studio gallery")
+  Component(svc, "SpotsService / HttpSpotsService", "Angular service, libs/api", "Fetches a spot by slug")
+}
+Container_Boundary(api, "ShotThere API") {
+  Component(route, "app/api/spots/[slug]/route.ts", "Next.js route handler", "GET handler for one published spot")
+  Component(getspot, "getSpot", "lib/spots/get-spot.ts", "Loads a published spot and maps it to SpotDetailDto")
+}
+ComponentDb(db, "ShotThere database", "PostgreSQL", "Spot and related rows")
+
+Rel(visitor, page, "Views", "HTTPS")
+Rel(page, svc, "getSpot(slug)")
+Rel(svc, route, "GET /api/spots/[slug]", "JSON/HTTPS")
+Rel(route, getspot, "Calls")
+Rel(getspot, db, "Reads published rows", "Prisma")
+Rel(page, shots, "Passes sample shots")
+Rel(shots, lightbox, "Opens at chosen shot")
+@enduml

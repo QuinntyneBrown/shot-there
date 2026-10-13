@@ -1,0 +1,11 @@
+@startuml
+!include <C4/C4_Context>
+LAYOUT_WITH_LEGEND()
+title System Context — Show spot best light
+
+Person(visitor, "Visitor", "Plans a photo shoot in Toronto")
+System(shotthere, "ShotThere", "First-hand reviews of Toronto studios and outdoor spots")
+
+Rel(visitor, shotthere, "Reads outdoor spot pages on", "HTTPS")
+
+@enduml

@@ -1,0 +1,29 @@
+@startuml
+!include <C4/C4_Component>
+LAYOUT_WITH_LEGEND()
+title Components — Show studio episode
+
+Person(visitor, "Visitor", "Photographer comparing Toronto rental studios")
+Container_Boundary(web, "ShotThere web") {
+  Component(page, "StudioPageComponent", "Angular standalone component", "Loads the studio and lays out its sections")
+  Component(ep, "StudioEpisodeComponent", "Angular standalone component", "Watch the episode section")
+  Component(player, "EpisodePlayerComponent", "Angular component from video/play-episode", "Poster, privacy-enhanced iframe, YouTube link")
+  Component(svc, "StudioService", "Abstract class and DI token", "Contract for reading a studio")
+  Component(httpsvc, "HttpStudioService", "Angular service", "Calls GET /api/studios/[slug]")
+}
+Container_Boundary(api, "ShotThere API") {
+  Component(route, "app/api/studios/[slug]/route.ts", "Next.js route handler", "Returns StudioDetailDto or 404")
+  Component(get, "getStudio", "lib/studios/get-studio.ts", "Loads a published studio and maps it to the DTO")
+
+}
+ComponentDb(db, "ShotThere database", "PostgreSQL", "Studio and related models")
+
+Rel(visitor, page, "Opens studio page")
+Rel(page, svc, "getStudio(slug)")
+Rel(httpsvc, svc, "Implements")
+Rel(httpsvc, route, "GET /api/studios/[slug]", "JSON/HTTPS")
+Rel(route, get, "Calls")
+Rel(get, db, "Reads published studio", "Prisma")
+Rel(page, ep, "Passes episode when not null")
+Rel(ep, player, "Hosts with videoId and title")
+@enduml

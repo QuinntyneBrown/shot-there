@@ -1,0 +1,33 @@
+@startuml
+!include <C4/C4_Component>
+LAYOUT_WITH_LEGEND()
+title Components — Publish and unpublish a location
+
+Container_Boundary(web, "ShotThere web") {
+  Component(editor, "StudioEditorPageComponent / SpotEditorPageComponent", "Angular page", "Hosts the Publish and Unpublish actions")
+  Component(missing, "MissingFieldsDialogComponent", "Angular dialog", "Lists missing fields with focus links")
+  Component(confirm, "UnpublishDialogComponent", "Angular dialog", "Confirms unpublishing")
+  Component(svc, "PublishingService / HttpPublishingService", "libs/api", "Calls the publish and unpublish endpoints")
+}
+Container_Boundary(api, "ShotThere API") {
+  Component(route, "app/api/admin/studios|spots/[id]/publish/route.ts", "Route handler", "POST publishes, DELETE unpublishes")
+  Component(publish, "lib/publishing/publish-location.ts", "Application function", "Checks and sets status published")
+  Component(unpublish, "lib/publishing/unpublish-location.ts", "Application function", "Sets status draft")
+  Component(check, "lib/publishing/check-publishable.ts", "Application function", "Returns missing standard fields")
+  Component(reval, "lib/publishing/revalidate-public-pages.ts", "Application function", "Revalidates cached pages")
+  Component(filter, "lib/publishing/published-only.ts", "Prisma where clause", "Restricts public queries to published")
+  ComponentDb(db, "ShotThere database", "PostgreSQL", "Studio and Spot rows")
+}
+Rel(editor, svc, "Calls")
+Rel(editor, missing, "Opens on refusal")
+Rel(editor, confirm, "Opens before unpublish")
+Rel(svc, route, "POST / DELETE", "JSON/HTTPS")
+Rel(route, publish, "Calls")
+Rel(route, unpublish, "Calls")
+Rel(publish, check, "Calls")
+Rel(publish, db, "Updates status", "Prisma")
+Rel(unpublish, db, "Updates status", "Prisma")
+Rel(publish, reval, "Calls after commit")
+Rel(unpublish, reval, "Calls after commit")
+Rel(filter, db, "Constrains public reads")
+@enduml

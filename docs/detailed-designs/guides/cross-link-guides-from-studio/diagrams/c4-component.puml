@@ -1,0 +1,23 @@
+@startuml
+!include <C4/C4_Component>
+LAYOUT_WITH_LEGEND()
+title Components — Cross-link guides from a studio
+
+Container_Boundary(web, "ShotThere web") {
+  Component(page, "StudioPageComponent", "Angular page", "Studio review page")
+  Component(featured, "FeaturedInComponent", "Angular component", "Links to including guides")
+  Component(svc, "StudioService / HttpStudioService", "libs/api", "Calls GET /api/studios/{slug}")
+}
+Container_Boundary(api, "ShotThere API") {
+  Component(route, "app/api/studios/[slug]/route.ts", "Next.js route handler", "Returns StudioDto")
+  Component(get, "lib/studios/get-studio.ts", "TypeScript", "Builds StudioDto")
+  Component(list, "lib/guides/list-guides-for-studio.ts", "TypeScript", "Published guides including the studio")
+  ComponentDb(db, "ShotThere database", "PostgreSQL", "Guide, GuideEntry, Studio")
+}
+Rel(page, svc, "getStudio(slug)")
+Rel(page, featured, "Renders when featuredIn not empty")
+Rel(svc, route, "GET /api/studios/{slug}", "JSON/HTTPS")
+Rel(route, get, "Calls")
+Rel(get, list, "Calls")
+Rel(list, db, "Reads", "Prisma")
+@enduml

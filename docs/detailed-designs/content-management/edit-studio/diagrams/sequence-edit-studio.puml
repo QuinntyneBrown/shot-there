@@ -1,0 +1,81 @@
+@startuml
+title UML sequence behaviour — Edit a studio
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam roundcorner 12
+skinparam defaultFontName Arial
+skinparam ArrowColor #344054
+skinparam rectangle {
+  BorderColor #344054
+  FontColor #101828
+}
+skinparam package {
+  BorderColor #667085
+  FontColor #101828
+  BackgroundColor #F9FAFB
+}
+actor "Owner" as owner
+box "Frontend — ShotThere web (Angular SSR)" #E0F2FE
+  participant "StudioEditorPageComponent" as page
+  participant "price-verification-rule.ts" as rule
+  participant "HttpStudioEditorService" as svc
+end box
+box "Backend — ShotThere API (Next.js route handlers)" #D1FADF
+  participant "app/api/admin/studios/[id]/route.ts" as route
+end box
+box "Backend — ShotThere application (lib/)" #ECFDF3
+  participant "requireOwnerSession" as auth
+  participant "updateStudio" as update
+  participant "studioInputSchema" as schema
+end box
+box "Backend — Infrastructure (Prisma / object storage)" #FFF4E5
+  database "ShotThere database" as db
+end box
+owner -> page : Open studio edit screen
+page -> svc : get(id)
+svc -> route : GET /api/admin/studios/{id}
+route -> auth : Validate session
+auth --> route : Owner
+route --> svc : HTTP 200 StudioEditorModel, or HTTP 404 for an unknown id
+svc --> page : StudioEditorModel
+owner -> page : Change fields and save
+page -> rule : pricingChanged(loaded, current)
+alt hourly rate or a fee changed
+  rule --> page : true
+  page --> owner : Require confirmation of the price last-verified date (L2-042)
+  owner -> page : Confirm or enter the date
+  page -> page : Include priceVerifiedAt in input
+else no pricing change
+  rule --> page : false
+  page -> page : Omit priceVerifiedAt from input
+end
+page -> svc : update(id, input)
+svc -> route : PUT /api/admin/studios/{id} with st_session cookie
+route -> auth : Validate session
+alt no valid owner session
+  auth --> route : Unauthorized
+  route --> svc : HTTP 401
+else owner session valid
+  auth --> route : Owner
+  route -> update : updateStudio(id, input, today)
+  update -> schema : safeParse(input)
+  alt negative amount, rubric outside 1 to 5, non-http booking link, incomplete fee row or future price date
+    schema --> update : Field issues (L2-054, L2-042)
+    update --> route : FieldErrors
+    route --> svc : HTTP 400 FieldErrors
+    svc --> page : FieldErrors
+    page --> owner : Field-level messages, e.g. "Enter an amount of 0 or more"
+  else valid input
+    schema --> update : Parsed input
+    opt studio already published
+      update -> update : checkPublishable (lib/publishing/check-publishable.ts); refuse with FieldErrors when incomplete
+    end
+    update -> db : Update Studio and replace StudioFee and GearItem rows in one transaction; write priceVerifiedAt only when supplied (L2-042)
+    db --> update : Saved rows
+    update --> route : StudioEditorModel
+    route --> svc : HTTP 200 StudioEditorModel
+    svc --> page : StudioEditorModel
+    page --> owner : Success message
+  end
+end
+@enduml

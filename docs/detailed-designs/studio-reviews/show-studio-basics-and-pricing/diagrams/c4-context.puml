@@ -1,0 +1,10 @@
+@startuml
+!include <C4/C4_Context>
+LAYOUT_WITH_LEGEND()
+title System Context — Show studio basics and pricing
+
+Person(visitor, "Visitor", "Photographer comparing Toronto rental studios")
+System(shotthere, "ShotThere", "First-hand studio and outdoor spot reviews")
+
+Rel(visitor, shotthere, "Reads a studio review page on", "HTTPS")
+@enduml

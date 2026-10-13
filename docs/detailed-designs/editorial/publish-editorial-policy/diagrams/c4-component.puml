@@ -1,0 +1,20 @@
+@startuml
+!include <C4/C4_Component>
+LAYOUT_WITH_LEGEND()
+title Components — Publish the editorial policy
+
+Container_Boundary(web, "ShotThere web") {
+  Component(footer, "SiteFooterComponent", "Angular standalone component", "Links to the editorial policy on every page")
+  Component(routes, "features/editorial/routes.ts", "Angular routes", "Registers the policy route from central paths")
+  Component(page, "EditorialPolicyPageComponent", "Angular standalone page", "Renders the five policy statements")
+}
+Container_Boundary(api, "ShotThere API") {
+  Component(studios, "listStudios", "lib/studios/list-studios.ts", "Orders by overallScore descending")
+  Component(spots, "listSpots", "lib/spots/list-spots.ts", "Orders by overallScore descending")
+  ComponentDb(db, "ShotThere database", "PostgreSQL", "Studio and Spot tables")
+}
+Rel(footer, routes, "Links to path from")
+Rel(routes, page, "Loads")
+Rel(studios, db, "Reads", "Prisma")
+Rel(spots, db, "Reads", "Prisma")
+@enduml

@@ -1,0 +1,43 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam roundcorner 8
+skinparam defaultFontName Arial
+skinparam ArrowColor #344054
+skinparam class {
+  BorderColor #344054
+  FontColor #101828
+  BackgroundColor #F9FAFB
+}
+title Class structure — Protect unsaved changes
+
+interface HasUnsavedChanges {
+  +hasUnsavedChanges(): boolean
+}
+class "unsaved-changes.guard.ts" as guard {
+  +unsavedChangesGuard: CanDeactivateFn<HasUnsavedChanges>
+}
+class "warn-on-before-unload.ts" as unload {
+  +warnOnBeforeUnload(hasUnsavedChanges: () => boolean): void
+}
+class DiscardChangesDialogComponent {
+  +stay(): void
+  +discard(): void
+}
+enum DiscardChoice {
+  stay
+  discard
+}
+class StudioEditorPageComponent
+class SpotEditorPageComponent
+class GuideEditorPageComponent
+HasUnsavedChanges <|.. StudioEditorPageComponent
+HasUnsavedChanges <|.. SpotEditorPageComponent
+HasUnsavedChanges <|.. GuideEditorPageComponent
+guard ..> HasUnsavedChanges : reads
+guard ..> DiscardChangesDialogComponent : opens
+DiscardChangesDialogComponent ..> DiscardChoice : returns
+StudioEditorPageComponent ..> unload : calls
+SpotEditorPageComponent ..> unload : calls
+GuideEditorPageComponent ..> unload : calls
+@enduml

@@ -1,0 +1,44 @@
+@startuml
+!include <C4/C4_Component>
+LAYOUT_WITH_LEGEND()
+title Components — Create and edit an outdoor spot
+
+Container_Boundary(web, "ShotThere web") {
+  Component(page, "SpotEditorPageComponent", "Angular standalone page", "Sectioned spot form")
+  Component(form, "spot-form.ts", "Plain TypeScript", "Form model, input mapping, coordinates signal")
+  Component(msgs, "spot-editor-messages.ts", "Plain TypeScript", "i18n validation messages and error mapping")
+  Component(map, "Spot map component", "From show-spot-location-and-directions", "Preview map with one marker")
+  Component(svc, "SpotEditorService", "Abstract class / DI token", "Spot editor contract")
+  Component(http, "HttpSpotEditorService", "Angular HttpClient", "Calls the admin spot endpoints")
+}
+Container_Boundary(api, "ShotThere API") {
+  Component(coll, "app/api/admin/spots/route.ts", "Next.js route handler", "POST create")
+  Component(item, "app/api/admin/spots/[id]/route.ts", "Next.js route handler", "GET and PUT")
+  Component(auth, "requireOwnerSession", "lib/auth", "Validates st_session")
+  Component(schema, "spotInputSchema", "lib/spots/schemas.ts", "zod ranges and fixed sets")
+  Component(create, "createSpot", "lib/spots/create-spot.ts", "Draft create")
+  Component(update, "updateSpot", "lib/spots/update-spot.ts", "Update with permit rows")
+  Component(get, "getSpotForEdit", "lib/spots/get-spot-for-edit.ts", "Reads any status")
+}
+ComponentDb(db, "ShotThere database", "PostgreSQL", "Spot, PermitStatus")
+System_Ext(maps, "Map tile provider", "Serves map tiles")
+
+Rel(page, form, "Builds form with")
+Rel(page, msgs, "Shows messages with")
+Rel(page, map, "Binds coordinates to")
+Rel(map, maps, "Fetches tiles", "HTTPS")
+Rel(page, svc, "Injects")
+Rel(http, svc, "Implements")
+Rel(http, coll, "POST", "JSON/HTTPS")
+Rel(http, item, "GET, PUT", "JSON/HTTPS")
+Rel(coll, auth, "Checks session with")
+Rel(item, auth, "Checks session with")
+Rel(coll, create, "Calls")
+Rel(item, get, "Calls")
+Rel(item, update, "Calls")
+Rel(create, schema, "Validates with")
+Rel(update, schema, "Validates with")
+Rel(create, db, "Writes", "Prisma")
+Rel(update, db, "Writes", "Prisma")
+Rel(get, db, "Reads", "Prisma")
+@enduml

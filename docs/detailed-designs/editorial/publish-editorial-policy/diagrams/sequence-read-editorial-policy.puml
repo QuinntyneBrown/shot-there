@@ -1,0 +1,29 @@
+@startuml
+title UML sequence behaviour — Read the editorial policy
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam roundcorner 12
+skinparam defaultFontName Arial
+skinparam ArrowColor #344054
+skinparam rectangle {
+  BorderColor #344054
+  FontColor #101828
+}
+skinparam package {
+  BorderColor #667085
+  FontColor #101828
+  BackgroundColor #F9FAFB
+}
+actor "Visitor" as actor
+box "Frontend — ShotThere web (Angular SSR)" #E0F2FE
+  participant "SiteFooterComponent" as footer
+  participant "Angular router" as router
+  participant "EditorialPolicyPageComponent" as page
+end box
+actor -> footer : View any page
+footer --> actor : Footer shows editorial policy link (L2-046)
+actor -> footer : Activate link
+footer -> router : Navigate to central editorial policy path
+router -> page : Load page and set central title
+page --> actor : Render five policy statements (L2-046)
+@enduml

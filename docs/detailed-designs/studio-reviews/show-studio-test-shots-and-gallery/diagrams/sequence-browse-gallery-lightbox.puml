@@ -1,0 +1,42 @@
+@startuml
+title UML sequence behaviour — Browse the gallery lightbox
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam roundcorner 12
+skinparam defaultFontName Arial
+skinparam ArrowColor #344054
+skinparam rectangle {
+  BorderColor #344054
+  FontColor #101828
+}
+skinparam package {
+  BorderColor #667085
+  FontColor #101828
+  BackgroundColor #F9FAFB
+}
+actor "Visitor" as visitor
+box "Frontend — ShotThere web (Angular SSR)" #E0F2FE
+  participant "StudioGalleryComponent" as gal
+  participant "GalleryLightboxDialogComponent" as lb
+  participant "gallery-lightbox.view-model" as vm
+end box
+visitor -> gal : Activate thumbnail i
+gal -> lb : Open dialog with gallery and index i
+lb --> visitor : Full image, accessible name, focus moved inside (L2-010)
+opt visitor activates Next
+  lb -> vm : nextIndex(i, count)
+  vm --> lb : (i + 1) mod count, last wraps to first (L2-010)
+  lb --> visitor : Next image
+end
+opt visitor activates Previous
+  lb -> vm : previousIndex(i, count)
+  vm --> lb : Previous index, first wraps to last
+  lb --> visitor : Previous image
+end
+opt visitor presses Tab
+  lb --> visitor : Focus stays within dialog (L2-010)
+end
+visitor -> lb : Escape or Close
+lb --> gal : Closed
+gal --> visitor : Focus returned to thumbnail i (L2-010)
+@enduml

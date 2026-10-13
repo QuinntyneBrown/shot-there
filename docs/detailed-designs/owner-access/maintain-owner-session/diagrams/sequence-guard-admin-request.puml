@@ -1,0 +1,70 @@
+@startuml
+title UML sequence behaviour — Guard an administration request
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam roundcorner 12
+skinparam defaultFontName Arial
+skinparam ArrowColor #344054
+skinparam rectangle {
+  BorderColor #344054
+  FontColor #101828
+}
+skinparam package {
+  BorderColor #667085
+  FontColor #101828
+  BackgroundColor #F9FAFB
+}
+actor "Owner" as actor
+box "Frontend — ShotThere web (Angular SSR)" #E0F2FE
+  participant "ownerSessionGuard" as guard
+  participant "Admin page" as page
+  participant "adminUnauthorizedInterceptor" as interceptor
+end box
+box "Backend — ShotThere API (Next.js route handlers)" #D1FADF
+  participant "middleware.ts" as mw
+  participant "/api/admin/* route handler" as route
+end box
+box "Backend — ShotThere application (lib/)" #ECFDF3
+  participant "requireOwnerSession" as require
+  participant "validateOwnerSession" as validate
+end box
+box "Backend — Infrastructure (Prisma / object storage)" #FFF4E5
+  database "ShotThere database" as db
+end box
+actor -> guard : Open /admin URL
+guard -> guard : AuthService.getSession() (L2-052)
+alt not signed in
+  guard --> actor : Redirect to sign-in with returnUrl (L2-052)
+else signed in
+  guard -> page : Activate route
+  page -> interceptor : Admin API call
+  interceptor -> mw : Request with st_session cookie
+  alt cookie absent
+    mw --> interceptor : 401, empty body (L2-052)
+  else cookie present
+    mw -> route : Forward
+    route -> require : requireOwnerSession(request) before any processing (L2-079)
+    require -> validate : validateOwnerSession(token)
+    validate -> db : Find OwnerSession by token hash
+    db --> validate : Row or none
+    alt none, idle over 12 h or older than 7 d (L2-051)
+      validate --> require : null
+      require --> route : Unauthorized
+      route --> interceptor : 401, empty body, no write (L2-079)
+    else valid
+      validate -> db : Update lastSeenAt
+      validate --> require : ownerId
+      require --> route : ownerId
+      route -> db : Process request
+      db --> route : Result or not found
+      route --> interceptor : 200, or 404 without internal detail (L2-079)
+    end
+  end
+  alt 401
+    interceptor --> actor : Redirect to sign-in with returnUrl and reason=expired (L2-051)
+  else success
+    interceptor --> page : Response
+    page --> actor : Render administration screen
+  end
+end
+@enduml

@@ -1,0 +1,17 @@
+@startuml
+!include <C4/C4_Container>
+LAYOUT_WITH_LEGEND()
+title Containers — Create and edit an outdoor spot
+
+Person(owner, "Owner", "Creates and maintains ShotThere content")
+System_Boundary(shotthere, "ShotThere") {
+  Container(web, "ShotThere web", "Angular SSR", "Spot editor screen with preview map")
+  Container(api, "ShotThere API", "Next.js route handlers", "Owner-only admin API with server-side validation")
+  ContainerDb(db, "ShotThere database", "PostgreSQL", "Spot, PermitStatus")
+}
+System_Ext(maps, "Map tile provider", "Serves map tiles")
+Rel(owner, web, "Fills the spot editor in", "HTTPS")
+Rel(web, api, "POST /api/admin/spots, GET and PUT /api/admin/spots/{id}", "JSON/HTTPS")
+Rel(web, maps, "Fetches preview tiles", "HTTPS")
+Rel(api, db, "Reads and writes in one transaction", "Prisma")
+@enduml

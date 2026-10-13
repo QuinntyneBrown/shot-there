@@ -1,0 +1,59 @@
+@startuml
+title UML sequence behaviour — View test shots and gallery
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam roundcorner 12
+skinparam defaultFontName Arial
+skinparam ArrowColor #344054
+skinparam rectangle {
+  BorderColor #344054
+  FontColor #101828
+}
+skinparam package {
+  BorderColor #667085
+  FontColor #101828
+  BackgroundColor #F9FAFB
+}
+actor "Visitor" as visitor
+box "Frontend — ShotThere web (Angular SSR)" #E0F2FE
+  participant "StudioPageComponent" as page
+  participant "StudioTestShotsComponent" as shots
+  participant "StudioGalleryComponent" as gal
+  participant "HttpStudioService" as svc
+end box
+box "Backend — ShotThere API (Next.js route handlers)" #D1FADF
+  participant "GET /api/studios/[slug]" as route
+end box
+box "Backend — ShotThere application (lib/)" #ECFDF3
+  participant "getStudio" as get
+end box
+box "Backend — Infrastructure (Prisma / object storage)" #FFF4E5
+  database "ShotThere database" as db
+  database "Image store (via CDN)" as store
+end box
+visitor -> page : Open the studio page for a slug
+page -> svc : getStudio(slug)
+svc -> route : GET /api/studios/[slug]
+route -> get : getStudio(slug, today)
+get -> db : Find Studio by slug where published (L2-001)
+db --> get : Studio with related rows or none
+alt published studio found
+  get -> get : Order Image rows by kind and position (L2-009)
+  get --> route : StudioDetailDto with variant URLs
+  route --> svc : 200 JSON
+  svc --> page : StudioDetailDto
+  page -> shots : testShots at fixed section slot (L2-009)
+  shots -> store : Load variants via srcset
+  store --> shots : Image bytes
+  shots --> visitor : Standard test shots with alt text and setup caption (L2-009)
+  page -> gal : gallery
+  gal -> store : Load thumbnail variants
+  store --> gal : Image bytes
+  gal --> visitor : Thumbnail grid of 2, 3 or 4 columns (L2-010)
+else studio missing or draft
+  get --> route : null
+  route --> svc : 404
+  svc --> page : Not found
+  page --> visitor : Show not-found page
+end
+@enduml

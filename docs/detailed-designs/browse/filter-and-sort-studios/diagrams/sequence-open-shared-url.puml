@@ -1,0 +1,54 @@
+@startuml
+title UML sequence behaviour — Open a shared or restored URL
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam roundcorner 12
+skinparam defaultFontName Arial
+skinparam ArrowColor #344054
+skinparam rectangle {
+  BorderColor #344054
+  FontColor #101828
+}
+skinparam package {
+  BorderColor #667085
+  FontColor #101828
+  BackgroundColor #F9FAFB
+}
+actor "Visitor" as actor
+box "Frontend — ShotThere web (Angular SSR)" #E0F2FE
+  participant "StudioListPageComponent" as page
+  participant "parseStudioListQuery" as parse
+  participant "HttpStudiosService" as client
+end box
+box "Backend — ShotThere API (Next.js route handlers)" #D1FADF
+  participant "app/api/studios/route.ts" as route
+end box
+box "Backend — ShotThere application (lib/)" #ECFDF3
+  participant "studioListQuerySchema" as schema
+  participant "listStudios" as list
+end box
+box "Backend — Infrastructure (Prisma / object storage)" #FFF4E5
+  database "ShotThere database" as db
+end box
+actor -> page : Open shared URL, or press browser Back or Forward
+page -> parse : parseStudioListQuery(queryParamMap)
+alt value not in vocabulary
+  parse -> parse : Drop unknown value, keep the rest, raise no error (L2-025)
+end
+alt costMin greater than costMax
+  parse -> parse : Treat range as unset (L2-025)
+end
+parse --> page : StudioListQuery
+page -> client : listStudios(query)
+client -> route : GET /api/studios?...
+route -> schema : safeParse(searchParams)
+schema -> schema : Apply the same lenient rules on the server
+schema --> route : StudioListQuery
+route -> list : listStudios(query)
+list -> db : Select published studios
+db --> list : Rows
+list --> route : Filtered and sorted StudioSummary[]
+route --> client : 200 JSON
+client --> page : StudioSummary[]
+page --> actor : Same view as the source URL; controls reflect the query (L2-025)
+@enduml

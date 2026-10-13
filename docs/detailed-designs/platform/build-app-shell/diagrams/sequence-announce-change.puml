@@ -1,0 +1,28 @@
+@startuml
+title UML sequence behaviour — Announce a dynamic change
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam roundcorner 12
+skinparam defaultFontName Arial
+skinparam ArrowColor #344054
+skinparam rectangle {
+  BorderColor #344054
+  FontColor #101828
+}
+skinparam package {
+  BorderColor #667085
+  FontColor #101828
+  BackgroundColor #F9FAFB
+}
+actor "Visitor" as actor
+box "Frontend — ShotThere web (Angular SSR)" #E0F2FE
+  participant "Routed list page" as page
+  participant "AnnouncerService" as announcer
+  participant "CDK LiveAnnouncer" as live
+end box
+actor -> page : Change a filter
+page -> page : Recompute results signal
+page -> announcer : announcePolite(i18n result count) (L2-069, L2-070)
+announcer -> live : announce(message, "polite")
+live --> actor : Screen reader reads count without moving focus
+@enduml

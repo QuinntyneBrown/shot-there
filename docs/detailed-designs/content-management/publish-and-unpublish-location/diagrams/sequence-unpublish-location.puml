@@ -1,0 +1,62 @@
+@startuml
+title UML sequence behaviour — Unpublish a location
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam roundcorner 12
+skinparam defaultFontName Arial
+skinparam ArrowColor #344054
+skinparam rectangle {
+  BorderColor #344054
+  FontColor #101828
+}
+skinparam package {
+  BorderColor #667085
+  FontColor #101828
+  BackgroundColor #F9FAFB
+}
+actor "Owner" as actor
+actor "Visitor" as visitor
+box "Frontend — ShotThere web (Angular SSR)" #E0F2FE
+  participant "StudioEditorPageComponent" as page
+  participant "UnpublishDialogComponent" as dialog
+  participant "HttpPublishingService" as client
+  participant "StudioPageComponent" as pub
+end box
+box "Backend — ShotThere API (Next.js route handlers)" #D1FADF
+  participant "admin studios publish route" as route
+  participant "public studio route" as pubroute
+end box
+box "Backend — ShotThere application (lib/)" #ECFDF3
+  participant "unpublishLocation" as unpublish
+  participant "revalidatePublicPages" as reval
+end box
+box "Backend — Infrastructure (Prisma / object storage)" #FFF4E5
+  database "ShotThere database" as db
+end box
+actor -> page : Activate "Unpublish"
+page -> dialog : Open confirmation naming the studio
+alt owner cancels or presses Escape
+  dialog --> page : Cancelled
+  page --> actor : Status unchanged
+else owner confirms
+  dialog --> page : Confirmed
+  page -> client : unpublish('studio', id)
+  client -> route : DELETE /api/admin/studios/{id}/publish
+  route -> route : Require owner session (st_session)
+  route -> unpublish : unpublishLocation('studio', id)
+  unpublish -> db : Set status draft (L2-056)
+  db --> unpublish : Commit
+  unpublish -> reval : Revalidate page and lists
+  reval --> unpublish : Done
+  unpublish --> route : PublishResult
+  route --> client : 200 PublishResult
+  client --> page : PublishResult
+  page --> actor : Show status "Draft"
+end
+visitor -> pub : Request /studios/{slug}
+pub -> pubroute : GET /api/studios/{slug}
+pubroute -> db : Find studio with publishedOnly filter (L2-001)
+db --> pubroute : No row
+pubroute --> pub : 404
+pub --> visitor : HTTP 404 and not-found page (L2-001)
+@enduml

@@ -1,0 +1,90 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam roundcorner 8
+skinparam defaultFontName Arial
+skinparam ArrowColor #344054
+skinparam class {
+  BorderColor #344054
+  FontColor #101828
+  BackgroundColor #F9FAFB
+}
+title Class structure — Show studio basics and pricing
+
+class Studio <<Prisma model>> {
+  +id: string
+  +slug: string
+  +name: string
+  +neighbourhood: string
+  +addressOrCrossStreets: string
+  +bookingUrl: string
+  +hourlyRate: Decimal
+  +minBookingHours: int
+  +priceVerifiedAt: Date
+}
+class StudioFee <<Prisma model>> {
+  +name: string
+  +amount: Decimal
+  +mandatory: boolean
+}
+class StudioDetailDto {
+  +slug: string
+  +basics: StudioBasicsDto
+  +pricing: StudioPricingDto
+}
+class StudioBasicsDto {
+  +name: string
+  +neighbourhood: string
+  +addressOrCrossStreets: string
+  +bookingUrl: string
+}
+class StudioPricingDto {
+  +hourlyRate: number
+  +minBookingHours: number
+  +fees: StudioFeeDto[]
+  +allInCost2h: number
+  +priceVerifiedAt: string
+  +priceStale: boolean
+}
+class StudioFeeDto {
+  +name: string
+  +amount: number
+  +mandatory: boolean
+}
+abstract class StudioService {
+  +getStudio(slug: string): Observable<StudioDetailDto>
+}
+class HttpStudioService {
+  +getStudio(slug: string): Observable<StudioDetailDto>
+}
+class StudioPageComponent {
+  +studio: Signal<StudioDetailDto | undefined>
+}
+class StudioBasicsComponent {
+  +basics: InputSignal<StudioBasicsDto>
+}
+class StudioPricingComponent {
+  +pricing: InputSignal<StudioPricingDto>
+}
+class GetStudio <<lib/studios/get-studio.ts>> {
+  +getStudio(slug: string, today: Date): StudioDetailDto | null
+}
+class ComputeAllInCost <<lib/studios/compute-all-in-cost.ts>> {
+  +computeAllInCost2h(hourlyRate, minBookingHours, fees): number
+}
+class IsStale <<lib/shared/is-stale.ts>> {
+  +isStale(verifiedAt: Date, today: Date): boolean
+}
+Studio "1" *-- "*" StudioFee
+StudioDetailDto *-- StudioBasicsDto
+StudioDetailDto *-- StudioPricingDto
+StudioPricingDto "1" *-- "*" StudioFeeDto
+StudioService <|-- HttpStudioService
+StudioPageComponent ..> StudioService : injects
+StudioPageComponent *-- StudioBasicsComponent
+StudioPageComponent *-- StudioPricingComponent
+GetStudio ..> Studio : reads
+GetStudio ..> ComputeAllInCost : calls
+GetStudio ..> IsStale : calls
+GetStudio ..> StudioDetailDto : returns
+@enduml

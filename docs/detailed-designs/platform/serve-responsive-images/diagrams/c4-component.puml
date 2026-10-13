@@ -1,0 +1,25 @@
+@startuml
+!include <C4/C4_Component>
+LAYOUT_WITH_LEGEND()
+title Components — Serve responsive images
+
+ContainerDb(storage, "Image store", "Object storage", "Variant files")
+Container_Boundary(web, "ShotThere web") {
+  Component(page, "Public page component", "Angular standalone component", "Passes ImageDto, sizes and priority")
+  Component(img, "ResponsiveImageComponent", "Angular standalone component", "Renders picture, source and img")
+  Component(srcset, "buildSrcset", "libs/api function", "Builds srcset strings")
+}
+Container_Boundary(api, "ShotThere API") {
+  Component(route, "app/api/studios/[slug]/route.ts", "Route handler", "Returns studio with images")
+  Component(dto, "toImageDto", "lib/images", "Maps Image and variants to ImageDto")
+  Component(gen, "generateVariants", "lib/images", "Encodes widths and formats with sharp")
+  ComponentDb(db, "ShotThere database", "PostgreSQL", "Image, ImageVariant")
+}
+Rel(page, img, "Binds image, sizes, priority")
+Rel(img, srcset, "Calls")
+Rel(page, route, "Reads via page service", "JSON/HTTPS")
+Rel(route, dto, "Calls")
+Rel(dto, db, "Reads", "Prisma")
+Rel(gen, storage, "Writes variant files", "S3 API")
+Rel(gen, db, "Writes ImageVariant rows", "Prisma")
+@enduml

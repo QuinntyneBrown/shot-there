@@ -1,0 +1,68 @@
+@startuml
+title UML sequence behaviour — Publish and unpublish a guide
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam roundcorner 12
+skinparam defaultFontName Arial
+skinparam ArrowColor #344054
+skinparam rectangle {
+  BorderColor #344054
+  FontColor #101828
+}
+skinparam package {
+  BorderColor #667085
+  FontColor #101828
+  BackgroundColor #F9FAFB
+}
+actor "Owner" as owner
+box "Frontend — ShotThere web (Angular SSR)" #E0F2FE
+  participant "GuideEditorPageComponent" as page
+  participant "HttpGuideEditorService" as svc
+end box
+box "Backend — ShotThere API (Next.js route handlers)" #D1FADF
+  participant "app/api/admin/guides/[id]/publish/route.ts" as route
+end box
+box "Backend — ShotThere application (lib/)" #ECFDF3
+  participant "requireOwnerSession" as auth
+  participant "publishGuide" as publish
+end box
+box "Backend — Infrastructure (Prisma / object storage)" #FFF4E5
+  database "ShotThere database" as db
+end box
+alt publish
+  owner -> page : Activate "Publish"
+  page -> svc : publish(id)
+  svc -> route : POST /api/admin/guides/{id}/publish
+  route -> auth : Validate session
+  auth --> route : Owner
+  route -> publish : publishGuide(id)
+  publish -> db : Count GuideEntry rows
+  db --> publish : Count
+  alt no entries
+    publish --> route : FieldErrors naming entries (L2-060)
+    route --> svc : HTTP 400 FieldErrors
+    svc --> page : FieldErrors
+    page --> owner : Refusal naming entries
+  else one or more entries
+    publish -> db : Set Guide.status = published
+    db --> publish : Saved
+    publish --> route : GuideEditorModel
+    route --> svc : HTTP 200
+    svc --> page : GuideEditorModel
+    page --> owner : Status shows published
+  end
+else unpublish
+  owner -> page : Activate "Unpublish"
+  page -> svc : unpublish(id)
+  svc -> route : DELETE /api/admin/guides/{id}/publish
+  route -> auth : Validate session
+  auth --> route : Owner
+  route -> publish : unpublishGuide(id)
+  publish -> db : Set Guide.status = draft (L2-060)
+  db --> publish : Saved
+  publish --> route : GuideEditorModel
+  route --> svc : HTTP 200
+  svc --> page : GuideEditorModel
+  page --> owner : Status shows draft
+end
+@enduml

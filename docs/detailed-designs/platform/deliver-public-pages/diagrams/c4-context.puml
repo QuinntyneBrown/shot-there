@@ -1,0 +1,15 @@
+@startuml
+!include <C4/C4_Context>
+LAYOUT_WITH_LEGEND()
+title System Context — Deliver public pages
+
+Person(visitor, "Visitor", "Reads studio, spot and guide pages")
+Person(owner, "Owner", "Publishes reviews")
+System(shotthere, "ShotThere", "Review and comparison site for Toronto photo locations")
+System_Ext(cdn, "CDN", "Caches and serves public pages and images")
+
+Rel(visitor, cdn, "Requests public pages from", "HTTPS")
+Rel(cdn, shotthere, "Fetches uncached pages from", "HTTPS")
+Rel(owner, shotthere, "Publishes changes in", "HTTPS")
+Rel(shotthere, cdn, "Requests regeneration of affected routes in", "TO SUPPLY")
+@enduml

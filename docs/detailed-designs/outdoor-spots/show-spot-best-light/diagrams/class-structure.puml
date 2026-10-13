@@ -1,0 +1,73 @@
+@startuml
+' --- shared skin header ---
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam roundcorner 8
+skinparam defaultFontName Arial
+skinparam ArrowColor #344054
+skinparam class {
+  BorderColor #344054
+  FontColor #101828
+  BackgroundColor #F9FAFB
+}
+' --------------------------
+title Class structure — Show spot best light
+
+abstract class SpotsService {
+  +getSpot(slug: string): Observable<SpotDetailDto>
+}
+class HttpSpotsService {
+  -http: HttpClient
+  +getSpot(slug: string): Observable<SpotDetailDto>
+}
+class SpotPageComponent {
+  -spots: SpotsService
+  +spot: Signal<SpotDetailDto | undefined>
+}
+SpotsService <|-- HttpSpotsService
+SpotPageComponent ..> SpotsService : injects
+class SpotDetailDto {
+  +slug: string
+  +lightByTime: SpotLightByTimeDto[]
+  +lightBySeason: SpotLightBySeasonDto[]
+}
+class SpotLightByTimeDto {
+  +timeOfDay: TimeOfDay
+  +rating: LightRating
+  +note: string
+}
+class SpotLightBySeasonDto {
+  +season: Season
+  +note: string
+}
+enum LightRating {
+  none
+  low
+  medium
+  strong
+}
+enum TimeOfDay {
+  morning
+  midday
+  afternoon
+  goldenHour
+  blueHour
+}
+enum Season {
+  spring
+  summer
+  autumn
+  winter
+}
+class SpotLightComponent {
+  +byTime: InputSignal<SpotLightByTimeDto[]>
+  +bySeason: InputSignal<SpotLightBySeasonDto[]>
+}
+SpotDetailDto "1" *-- "5" SpotLightByTimeDto
+SpotDetailDto "1" *-- "4" SpotLightBySeasonDto
+SpotLightByTimeDto --> LightRating
+SpotLightByTimeDto --> TimeOfDay
+SpotLightBySeasonDto --> Season
+SpotPageComponent *-- SpotLightComponent : hosts
+SpotLightComponent ..> SpotLightByTimeDto
+@enduml

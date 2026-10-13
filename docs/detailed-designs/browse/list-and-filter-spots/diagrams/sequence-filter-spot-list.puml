@@ -1,0 +1,57 @@
+@startuml
+title UML sequence behaviour — Filter the spot list
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam roundcorner 12
+skinparam defaultFontName Arial
+skinparam ArrowColor #344054
+skinparam rectangle {
+  BorderColor #344054
+  FontColor #101828
+}
+skinparam package {
+  BorderColor #667085
+  FontColor #101828
+  BackgroundColor #F9FAFB
+}
+actor "Visitor" as actor
+box "Frontend — ShotThere web (Angular SSR)" #E0F2FE
+  participant "SpotFiltersComponent" as filters
+  participant "SpotListPageComponent" as page
+  participant "HttpSpotsService" as client
+end box
+box "Backend — ShotThere API (Next.js route handlers)" #D1FADF
+  participant "app/api/spots/route.ts" as route
+end box
+box "Backend — ShotThere application (lib/)" #ECFDF3
+  participant "spotListQuerySchema" as schema
+  participant "listSpots" as list
+end box
+box "Backend — Infrastructure (Prisma / object storage)" #FFF4E5
+  database "ShotThere database" as db
+end box
+actor -> filters : Choose type, use case or permit
+filters -> page : queryChange(SpotListQuery)
+page -> page : Navigate with toSpotListQueryParams(query)
+page -> page : parseSpotListQuery(queryParamMap)
+page -> client : listSpots(query)
+client -> route : GET /api/spots?type=..&use=..&permit=..
+route -> schema : safeParse(searchParams)
+schema --> route : SpotListQuery without unknown values
+route -> list : listSpots(query)
+list -> db : Select published Spot with PermitStatus and cover Image
+db --> list : Rows
+list -> list : Keep spots matching selected types (L2-024)
+list -> list : Keep spots tagged with selected use cases (L2-024)
+opt permit is "no permit needed"
+  list -> list : Keep spots whose PermitStatus for the use case is "Not required" (L2-024)
+end
+list --> route : SpotSummary[]
+route --> client : 200 JSON
+client --> page : SpotSummary[]
+alt no spots match
+  page --> actor : Empty state with "Clear filters" (L2-024)
+else spots match
+  page --> actor : Spot cards in one column at XS, no horizontal scroll (L2-024)
+end
+@enduml

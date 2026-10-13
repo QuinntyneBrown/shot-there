@@ -1,0 +1,30 @@
+@startuml
+!include <C4/C4_Component>
+LAYOUT_WITH_LEGEND()
+title Components — List and filter outdoor spots
+
+Container_Boundary(web, "ShotThere web") {
+  Component(page, "SpotListPageComponent", "Angular standalone component", "Spot list, empty state, URL query")
+  Component(parse, "parseSpotListQuery / toSpotListQueryParams", "Plain TypeScript", "URL state rules beside the page")
+  Component(filters, "SpotFiltersComponent", "Angular standalone component", "Type, use case and permit controls")
+  Component(card, "SpotCardComponent", "Angular standalone component", "One spot card")
+  Component(svc, "SpotsService", "Abstract class / DI token", "listSpots(query)")
+  Component(http, "HttpSpotsService", "Angular service", "Calls GET /api/spots")
+}
+Container_Boundary(api, "ShotThere API") {
+  Component(route, "app/api/spots/route.ts", "Next.js route handler", "Parses searchParams")
+  Component(schema, "spotListQuerySchema", "zod, lib/spots/schemas.ts", "Drops unknown values")
+  Component(list, "listSpots", "lib/spots/list-spots.ts", "Reads and filters published spots")
+  ComponentDb(db, "ShotThere database", "PostgreSQL", "Spot, PermitStatus, Image, ImageVariant")
+}
+
+Rel(page, parse, "Parses and serializes the query")
+Rel(page, filters, "Renders")
+Rel(page, card, "Renders")
+Rel(page, svc, "Calls listSpots(query)")
+Rel(http, svc, "Implements")
+Rel(http, route, "GET /api/spots", "JSON/HTTPS")
+Rel(route, schema, "Validates with")
+Rel(route, list, "Calls")
+Rel(list, db, "Queries published spots", "Prisma")
+@enduml

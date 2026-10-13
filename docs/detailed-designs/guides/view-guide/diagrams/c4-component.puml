@@ -1,0 +1,21 @@
+@startuml
+!include <C4/C4_Component>
+LAYOUT_WITH_LEGEND()
+title Components — View a guide
+
+Container_Boundary(web, "ShotThere web") {
+  Component(page, "GuidePageComponent", "Angular page", "Title, introduction, ordered entries")
+  Component(entry, "GuideEntryComponent", "Angular component", "Card, data points, note, review link")
+  Component(svc, "GuideService / HttpGuideService", "libs/api", "Calls GET /api/guides/{slug}")
+}
+Container_Boundary(api, "ShotThere API") {
+  Component(route, "app/api/guides/[slug]/route.ts", "Next.js route handler", "Returns GuideDto or 404")
+  Component(lib, "lib/guides/get-guide.ts", "TypeScript", "Orders entries, drops drafts, live values")
+  ComponentDb(db, "ShotThere database", "PostgreSQL", "Guide, GuideEntry, Studio, Spot")
+}
+Rel(page, entry, "Renders each entry with")
+Rel(page, svc, "getGuide(slug)")
+Rel(svc, route, "GET /api/guides/{slug}", "JSON/HTTPS")
+Rel(route, lib, "Calls")
+Rel(lib, db, "Reads", "Prisma")
+@enduml

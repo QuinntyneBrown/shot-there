@@ -1,0 +1,48 @@
+@startuml
+' --- shared skin header ---
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam roundcorner 8
+skinparam defaultFontName Arial
+skinparam ArrowColor #344054
+skinparam class {
+  BorderColor #344054
+  FontColor #101828
+  BackgroundColor #F9FAFB
+}
+' --------------------------
+title Class structure — Show rain backup studios
+
+abstract class SpotsService {
+  +getSpot(slug: string): Observable<SpotDetailDto>
+}
+class HttpSpotsService {
+  -http: HttpClient
+  +getSpot(slug: string): Observable<SpotDetailDto>
+}
+class SpotPageComponent {
+  -spots: SpotsService
+  +spot: Signal<SpotDetailDto | undefined>
+}
+SpotsService <|-- HttpSpotsService
+SpotPageComponent ..> SpotsService : injects
+class SpotDetailDto {
+  +slug: string
+  +rainBackup: RainBackupStudioDto[]
+}
+class RainBackupStudioDto {
+  +slug: string
+  +name: string
+  +distanceKm: number
+  +allInCost2h: number
+}
+class findNearestStudios <<function>> {
+  +findNearestStudios(lat: number, lng: number, limit: number): Promise<RainBackupStudioDto[]>
+}
+class RainBackupComponent {
+  +studios: InputSignal<RainBackupStudioDto[]>
+}
+SpotDetailDto "1" *-- "0..3" RainBackupStudioDto
+findNearestStudios ..> RainBackupStudioDto : returns
+SpotPageComponent *-- RainBackupComponent : hosts
+@enduml

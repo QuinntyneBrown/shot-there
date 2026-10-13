@@ -1,0 +1,85 @@
+@startuml
+title UML sequence behaviour — Add entries and save a guide
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam roundcorner 12
+skinparam defaultFontName Arial
+skinparam ArrowColor #344054
+skinparam rectangle {
+  BorderColor #344054
+  FontColor #101828
+}
+skinparam package {
+  BorderColor #667085
+  FontColor #101828
+  BackgroundColor #F9FAFB
+}
+actor "Owner" as owner
+box "Frontend — ShotThere web (Angular SSR)" #E0F2FE
+  participant "GuideEditorPageComponent" as page
+  participant "GuideEntryPickerDialogComponent" as picker
+  participant "guide-form.ts" as form
+  participant "HttpGuideEditorService" as svc
+end box
+box "Backend — ShotThere API (Next.js route handlers)" #D1FADF
+  participant "app/api/admin/guide-candidates/route.ts" as cand
+  participant "app/api/admin/guides/route.ts" as route
+end box
+box "Backend — ShotThere application (lib/)" #ECFDF3
+  participant "requireOwnerSession" as auth
+  participant "searchGuideCandidates" as search
+  participant "createGuide" as create
+end box
+box "Backend — Infrastructure (Prisma / object storage)" #FFF4E5
+  database "ShotThere database" as db
+end box
+owner -> page : Activate "Add entry"
+page -> picker : Open dialog
+owner -> picker : Type part of a name
+picker -> svc : searchCandidates(text) after 150 ms debounce
+svc -> cand : GET /api/admin/guide-candidates?q=text
+cand -> auth : Validate session
+auth --> cand : Owner
+cand -> search : searchGuideCandidates(text)
+search -> db : Case-insensitive name match on Studio and Spot, limit 20
+db --> search : Matches
+search --> cand : GuideCandidate[]
+cand --> svc : HTTP 200
+svc --> picker : Results within 500 ms (L2-060)
+owner -> picker : Arrow keys and Enter to select (L2-060)
+picker --> page : GuideCandidate
+page -> form : addEntry(entries, candidate)
+alt location already in the guide
+  form --> page : Refusal message
+  page --> owner : "This studio is already in the guide" (L2-060)
+else new location
+  form --> page : Entries with the new entry last
+  page --> owner : Entry shown with note field and move actions
+end
+owner -> page : Order entries, write notes, save
+page -> svc : create(input)
+svc -> route : POST /api/admin/guides with st_session cookie
+route -> auth : Validate session
+alt no valid owner session
+  auth --> route : Unauthorized
+  route --> svc : HTTP 401
+  svc --> page : Error
+  page --> owner : Redirect to sign-in (maintain-owner-session)
+else owner session valid
+  auth --> route : Owner
+  route -> create : createGuide(input)
+  alt invalid field, unknown location or repeated location
+    create --> route : FieldErrors
+    route --> svc : HTTP 400 FieldErrors
+    svc --> page : FieldErrors
+    page --> owner : Field-level messages
+  else valid
+    create -> db : Insert Guide (status draft, unique slug) and GuideEntry rows by position in one transaction (L2-060)
+    db --> create : Created rows
+    create --> route : GuideEditorModel
+    route --> svc : HTTP 201
+    svc --> page : GuideEditorModel
+    page --> owner : Navigate to the guide edit screen with a success message
+  end
+end
+@enduml

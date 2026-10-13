@@ -1,0 +1,44 @@
+@startuml
+title UML sequence behaviour — Sign out
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam roundcorner 12
+skinparam defaultFontName Arial
+skinparam ArrowColor #344054
+skinparam rectangle {
+  BorderColor #344054
+  FontColor #101828
+}
+skinparam package {
+  BorderColor #667085
+  FontColor #101828
+  BackgroundColor #F9FAFB
+}
+actor "Owner" as actor
+box "Frontend — ShotThere web (Angular SSR)" #E0F2FE
+  participant "SignOutButtonComponent" as button
+  participant "HttpAuthService" as client
+end box
+box "Backend — ShotThere API (Next.js route handlers)" #D1FADF
+  participant "POST /api/auth/sign-out" as route
+end box
+box "Backend — ShotThere application (lib/)" #ECFDF3
+  participant "signOutOwner" as signout
+end box
+box "Backend — Infrastructure (Prisma / object storage)" #FFF4E5
+  database "ShotThere database" as db
+end box
+actor -> button : Activate "Sign out"
+button -> client : signOut()
+client -> route : POST with st_session cookie
+opt cookie present
+  route -> signout : signOutOwner(token)
+  signout -> db : Delete OwnerSession by token hash (L2-051)
+  db --> signout : Deleted
+  signout --> route : Done
+end
+route --> client : 204, Set-Cookie st_session Max-Age=0 (L2-051)
+client --> button : Complete
+button --> actor : Navigate to sign-in
+note over actor, db : A later request with the old cookie finds no row and receives 401 (L2-051)
+@enduml

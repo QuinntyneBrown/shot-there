@@ -1,0 +1,14 @@
+@startuml
+!include <C4/C4_Context>
+LAYOUT_WITH_LEGEND()
+title System Context — Upload and arrange images
+
+Person(owner, "Owner", "Uploads, orders and removes location images")
+Person(visitor, "Visitor", "Views published galleries")
+System(shotthere, "ShotThere", "Toronto photo location reviews and comparisons")
+System_Ext(cdn, "CDN", "Serves image variants")
+
+Rel(owner, shotthere, "Uploads and arranges images using", "HTTPS")
+Rel(visitor, cdn, "Loads images from", "HTTPS")
+Rel(cdn, shotthere, "Fetches uncached image objects from", "HTTPS")
+@enduml

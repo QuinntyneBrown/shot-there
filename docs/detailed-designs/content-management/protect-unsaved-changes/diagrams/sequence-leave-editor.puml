@@ -1,0 +1,56 @@
+@startuml
+title UML sequence behaviour — Leave an editor with unsaved changes
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam roundcorner 12
+skinparam defaultFontName Arial
+skinparam ArrowColor #344054
+skinparam rectangle {
+  BorderColor #344054
+  FontColor #101828
+}
+skinparam package {
+  BorderColor #667085
+  FontColor #101828
+  BackgroundColor #F9FAFB
+}
+actor "Owner" as actor
+participant "Browser" as browser
+box "Frontend — ShotThere web (Angular SSR)" #E0F2FE
+  participant "Angular Router" as router
+  participant "unsavedChangesGuard" as guard
+  participant "StudioEditorPageComponent" as page
+  participant "DiscardChangesDialogComponent" as dialog
+end box
+== In-app navigation ==
+actor -> router : Activate a navigation link
+router -> guard : canDeactivate(page)
+guard -> page : hasUnsavedChanges()
+alt saved (form pristine)
+  page --> guard : false
+  guard --> router : true
+  router --> actor : Navigate, no dialog (L2-062)
+else unsaved changes
+  page --> guard : true
+  guard -> dialog : Open "Discard changes?"
+  alt Stay or Escape
+    dialog --> guard : stay
+    guard --> router : false
+    router --> actor : Remain on editor with changes (L2-062)
+  else Discard
+    dialog --> guard : discard
+    guard --> router : true
+    router --> actor : Navigate
+  end
+end
+== Tab close or reload ==
+actor -> browser : Close tab
+browser -> page : beforeunload event (listener from warnOnBeforeUnload)
+alt unsaved changes
+  page -> browser : preventDefault()
+  browser --> actor : Browser leave-page prompt (L2-062)
+else saved
+  page --> browser : No action
+  browser --> actor : Tab closes
+end
+@enduml

@@ -1,0 +1,10 @@
+@startuml
+!include <C4/C4_Context>
+LAYOUT_WITH_LEGEND()
+title System Context — Filter and sort studios
+
+Person(visitor, "Visitor", "Narrows and orders the studio list, shares the URL")
+System(shotthere, "ShotThere", "Review and comparison site for Toronto shooting locations")
+
+Rel(visitor, shotthere, "Filters, sorts and shares studio list views using", "HTTPS")
+@enduml

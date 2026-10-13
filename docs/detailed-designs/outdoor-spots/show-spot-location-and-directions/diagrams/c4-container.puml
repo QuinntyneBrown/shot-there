@@ -1,0 +1,17 @@
+@startuml
+!include <C4/C4_Container>
+LAYOUT_WITH_LEGEND()
+title Containers — Show spot location and directions
+
+Person(visitor, "Visitor", "Plans a photo shoot in Toronto")
+System_Boundary(shotthere, "ShotThere") {
+  Container(web, "ShotThere web", "Angular SSR", "Renders the outdoor spot page")
+  Container(api, "ShotThere API", "Next.js route handlers", "Serves published spot data as JSON")
+  ContainerDb(db, "ShotThere database", "PostgreSQL", "Spots, studios and related content")
+}
+System_Ext(maps, "Map tile provider", "Serves map tiles")
+Rel(visitor, web, "Views spot page", "HTTPS")
+Rel(web, api, "GET /api/spots/[slug]", "JSON/HTTPS")
+Rel(api, db, "Reads published spot", "Prisma")
+Rel(web, maps, "Requests tiles in the browser", "HTTPS")
+@enduml

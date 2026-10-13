@@ -1,0 +1,29 @@
+@startuml
+!include <C4/C4_Component>
+LAYOUT_WITH_LEGEND()
+title Components — Secure requests
+
+Container_Boundary(web, "ShotThere web") {
+  Component(server, "server.ts", "Angular SSR server", "Security headers and HTTPS redirect for pages")
+  Component(http, "HttpClient XSRF config", "Angular provider", "Copies st_csrf cookie to X-CSRF-Token")
+}
+Container_Boundary(api, "ShotThere API") {
+  Component(mw, "middleware.ts", "Next.js middleware", "HTTPS redirect, 1 MB limit, security headers")
+  Component(headers, "securityHeaders", "lib/http", "Shared header map including CSP")
+  Component(route, "app/api/admin/studios/route.ts", "Route handler", "Example administration write endpoint")
+  Component(csrf, "verifyCsrf", "lib/http", "Token and Origin check")
+  Component(body, "readJsonBody", "lib/http", "Streamed 1 MB body limit")
+  Component(parse, "parseWithSchema", "lib/http", "Strict zod parse to ValidationProblem")
+  Component(schemas, "studioSaveSchema", "lib/studios/schemas.ts", "Strict zod schema")
+  ComponentDb(db, "ShotThere database", "PostgreSQL", "OwnerSession.csrfToken")
+}
+Rel(http, route, "Sends write with token", "JSON/HTTPS")
+Rel(server, headers, "Applies")
+Rel(mw, headers, "Applies")
+Rel(mw, route, "Passes request to")
+Rel(route, csrf, "Verifies")
+Rel(csrf, db, "Reads OwnerSession", "Prisma")
+Rel(route, body, "Reads body")
+Rel(route, parse, "Validates with")
+Rel(parse, schemas, "Uses")
+@enduml

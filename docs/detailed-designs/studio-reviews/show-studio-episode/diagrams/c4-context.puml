@@ -1,0 +1,12 @@
+@startuml
+!include <C4/C4_Context>
+LAYOUT_WITH_LEGEND()
+title System Context — Show studio episode
+
+Person(visitor, "Visitor", "Photographer comparing Toronto rental studios")
+System(shotthere, "ShotThere", "First-hand studio and outdoor spot reviews")
+System_Ext(youtube, "YouTube", "Hosts the companion episodes")
+
+Rel(visitor, shotthere, "Reads a studio review page on", "HTTPS")
+Rel(visitor, youtube, "Plays the episode from", "HTTPS iframe")
+@enduml

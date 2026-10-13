@@ -1,0 +1,53 @@
+@startuml
+' --- shared skin header ---
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam roundcorner 8
+skinparam defaultFontName Arial
+skinparam ArrowColor #344054
+skinparam class {
+  BorderColor #344054
+  FontColor #101828
+  BackgroundColor #F9FAFB
+}
+' --------------------------
+title Class structure — Show spot best uses, disclosure and episode
+
+abstract class SpotsService {
+  +getSpot(slug: string): Observable<SpotDetailDto>
+}
+class HttpSpotsService {
+  -http: HttpClient
+  +getSpot(slug: string): Observable<SpotDetailDto>
+}
+class SpotPageComponent {
+  -spots: SpotsService
+  +spot: Signal<SpotDetailDto | undefined>
+}
+SpotsService <|-- HttpSpotsService
+SpotPageComponent ..> SpotsService : injects
+class SpotDetailDto {
+  +slug: string
+  +bestUses: BestUse[]
+  +disclosure: string
+  +videoId: string | null
+}
+enum BestUse {
+  engagement
+  family
+  portrait
+  brand
+  video
+}
+class SpotBestUsesComponent {
+  +uses: InputSignal<BestUse[]>
+}
+class SpotDisclosureComponent {
+  +text: InputSignal<string>
+}
+class "Episode embed" as Embed
+SpotDetailDto --> BestUse
+SpotPageComponent *-- SpotBestUsesComponent : hosts
+SpotPageComponent *-- SpotDisclosureComponent : hosts
+SpotPageComponent *-- Embed : hosts when videoId
+@enduml

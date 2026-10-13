@@ -1,0 +1,61 @@
+@startuml
+title UML sequence behaviour — Set the episode video
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam roundcorner 12
+skinparam defaultFontName Arial
+skinparam ArrowColor #344054
+skinparam rectangle {
+  BorderColor #344054
+  FontColor #101828
+}
+skinparam package {
+  BorderColor #667085
+  FontColor #101828
+  BackgroundColor #F9FAFB
+}
+actor "Owner" as actor
+box "Frontend — ShotThere web (Angular SSR)" #E0F2FE
+  participant "StudioEditorPageComponent" as page
+  participant "videoLinkValidator" as rule
+  participant "HttpStudioEditorService" as client
+end box
+box "Backend — ShotThere API (Next.js route handlers)" #D1FADF
+  participant "admin studio route" as route
+end box
+box "Backend — ShotThere application (lib/)" #ECFDF3
+  participant "videoIdField" as schema
+  participant "extractVideoId" as extract
+end box
+box "Backend — Infrastructure (Prisma / object storage)" #FFF4E5
+  database "ShotThere database" as db
+end box
+actor -> page : Paste link or ID and activate "Save"
+page -> rule : Validate field
+alt unrecognised input
+  rule --> page : invalidVideoLink
+  page --> actor : "Enter a YouTube link or video ID" (L2-059)
+else empty or recognised
+  page -> client : save(studio with videoLink)
+  client -> route : PUT /api/admin/studios/{id}
+  route -> route : Require owner session (st_session)
+  route -> schema : Parse videoLink
+  alt empty
+    schema --> route : videoId = null (L2-059)
+  else non-empty
+    schema -> extract : extractVideoId(input)
+    extract --> schema : 11-character ID or null
+    alt null
+      schema --> route : Validation error
+      route --> client : 400 field error on videoLink (L2-059)
+      client --> page : Show "Enter a YouTube link or video ID"
+    else ID
+      schema --> route : videoId
+    end
+  end
+  route -> db : Update studio videoId
+  db --> route : Commit
+  route --> client : 200 with stored videoId
+  client --> page : Saved
+end
+@enduml

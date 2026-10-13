@@ -1,0 +1,77 @@
+@startuml
+' --- shared skin header ---
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam roundcorner 8
+skinparam defaultFontName Arial
+skinparam ArrowColor #344054
+skinparam class {
+  BorderColor #344054
+  FontColor #101828
+  BackgroundColor #F9FAFB
+}
+' --------------------------
+title Class structure — View the administration dashboard
+
+enum VerificationGroup {
+  stale
+  dueSoon
+}
+enum VerificationField {
+  price
+  permit
+}
+class ContentCounts {
+  +published: number
+  +draft: number
+}
+class VerificationItem {
+  +kind: string
+  +id: string
+  +name: string
+  +field: VerificationField
+  +lastVerifiedAt: string
+  +ageDays: number
+  +group: VerificationGroup
+}
+class AdminDashboard {
+  +studios: ContentCounts
+  +spots: ContentCounts
+  +guides: ContentCounts
+  +verification: VerificationItem[]
+}
+abstract class AdminDashboardService {
+  +{abstract} getDashboard(): Observable<AdminDashboard>
+}
+class HttpAdminDashboardService {
+  +getDashboard(): Observable<AdminDashboard>
+}
+class AdminDashboardViewModel {
+  +tileLabels: string[]
+  +stale: VerificationItem[]
+  +dueSoon: VerificationItem[]
+  +allCurrent: boolean
+  +editLink(item: VerificationItem): string
+}
+class AdminDashboardPageComponent {
+  +dashboard: Signal<AdminDashboard>
+  +view: Signal<AdminDashboardViewModel>
+}
+class getDashboard <<function>> {
+  +getDashboard(today: Date): Promise<AdminDashboard>
+}
+class verificationAge <<function>> {
+  +classify(verifiedAt: Date, today: Date): string
+}
+
+AdminDashboard "1" *-- "3" ContentCounts
+AdminDashboard "1" *-- "*" VerificationItem
+VerificationItem --> VerificationGroup
+VerificationItem --> VerificationField
+AdminDashboardService <|-- HttpAdminDashboardService
+AdminDashboardPageComponent ..> AdminDashboardService : injects
+AdminDashboardPageComponent --> AdminDashboardViewModel
+AdminDashboardViewModel ..> AdminDashboard : shapes
+getDashboard ..> verificationAge : uses
+getDashboard ..> AdminDashboard : returns
+@enduml

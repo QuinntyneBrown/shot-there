@@ -1,0 +1,14 @@
+@startuml
+!include <C4/C4_Context>
+LAYOUT_WITH_LEGEND()
+title System Context — Handle errors and report health
+
+Person(visitor, "Visitor", "Reads reviews and spot pages")
+System(shotthere, "ShotThere", "Review and comparison site for Toronto photo locations")
+System_Ext(maps, "Map tile provider", "Serves map tiles that may be unreachable")
+System_Ext(cdn, "CDN", "Serves images and posters that may fail")
+
+Rel(visitor, shotthere, "Sees error pages and media fallbacks", "HTTPS")
+Rel(visitor, maps, "Loads tiles from", "HTTPS")
+Rel(visitor, cdn, "Loads images from", "HTTPS")
+@enduml

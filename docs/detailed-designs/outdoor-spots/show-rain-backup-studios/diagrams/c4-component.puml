@@ -1,0 +1,27 @@
+@startuml
+!include <C4/C4_Component>
+LAYOUT_WITH_LEGEND()
+title Components — Show rain backup studios
+
+Person(visitor, "Visitor", "Plans a photo shoot in Toronto")
+Container_Boundary(web, "ShotThere web") {
+  Component(page, "SpotPageComponent", "Angular standalone component", "features/spots; renders the spot page")
+  Component(rain, "RainBackupComponent", "Angular standalone component", "Nearest studios or empty state")
+  Component(svc, "SpotsService / HttpSpotsService", "Angular service, libs/api", "Fetches a spot by slug")
+}
+Container_Boundary(api, "ShotThere API") {
+  Component(route, "app/api/spots/[slug]/route.ts", "Next.js route handler", "GET handler for one published spot")
+  Component(getspot, "getSpot", "lib/spots/get-spot.ts", "Loads a published spot and maps it to SpotDetailDto")
+  Component(nearest, "findNearestStudios", "lib/spots/find-nearest-studios.ts", "Up to three nearest published studios")
+}
+ComponentDb(db, "ShotThere database", "PostgreSQL", "Spot and related rows")
+
+Rel(visitor, page, "Views", "HTTPS")
+Rel(page, svc, "getSpot(slug)")
+Rel(svc, route, "GET /api/spots/[slug]", "JSON/HTTPS")
+Rel(route, getspot, "Calls")
+Rel(getspot, db, "Reads published rows", "Prisma")
+Rel(page, rain, "Passes rainBackup")
+Rel(getspot, nearest, "Calls with spot coordinates")
+Rel(nearest, db, "Reads published Studio and StudioFee", "Prisma")
+@enduml

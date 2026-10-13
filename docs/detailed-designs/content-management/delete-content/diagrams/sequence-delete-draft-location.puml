@@ -1,0 +1,63 @@
+@startuml
+title UML sequence behaviour — Delete a draft location
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam roundcorner 12
+skinparam defaultFontName Arial
+skinparam ArrowColor #344054
+skinparam rectangle {
+  BorderColor #344054
+  FontColor #101828
+}
+skinparam package {
+  BorderColor #667085
+  FontColor #101828
+  BackgroundColor #F9FAFB
+}
+actor "Owner" as actor
+box "Frontend — ShotThere web (Angular SSR)" #E0F2FE
+  participant "StudioEditorPageComponent" as page
+  participant "DeleteContentDialogComponent" as dialog
+  participant "HttpContentDeletionService" as client
+end box
+box "Backend — ShotThere API (Next.js route handlers)" #D1FADF
+  participant "admin studio route" as route
+end box
+box "Backend — ShotThere application (lib/)" #ECFDF3
+  participant "deleteLocation" as del
+end box
+box "Backend — Infrastructure (Prisma / object storage)" #FFF4E5
+  database "ShotThere database" as db
+  participant "objectStore" as store
+end box
+alt studio is published
+  page --> actor : "Delete" disabled with hint to unpublish first (L2-061)
+else studio is draft
+  actor -> page : Activate "Delete"
+  page -> dialog : Open naming the studio
+  alt Escape or Cancel
+    dialog --> page : Closed, nothing deleted (L2-061)
+  else confirmed
+    dialog --> page : Confirmed
+    page -> client : delete('studio', id)
+    client -> route : DELETE /api/admin/studios/{id}
+    route -> route : Require owner session (st_session)
+    route -> del : deleteLocation('studio', id)
+    del -> db : Load studio status and image keys
+    alt published
+      del --> route : Refused
+      route --> client : 409 unpublish first (L2-061)
+      client --> page : Show message
+    else draft
+      del -> db : Transaction - delete GuideEntry rows referencing the studio, ImageVariant, Image, StudioFee, GearItem, Studio (L2-061)
+      db --> del : Commit
+      del -> store : deleteObjects(image keys)
+      store --> del : Deleted
+      del --> route : Done
+      route --> client : 204
+      client --> page : Deleted
+      page --> actor : Navigate to studio list with confirmation
+    end
+  end
+end
+@enduml

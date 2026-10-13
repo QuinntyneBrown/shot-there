@@ -1,0 +1,20 @@
+@startuml
+!include <C4/C4_Container>
+LAYOUT_WITH_LEGEND()
+title Containers — Emit metadata and sitemap
+
+Person(visitor, "Visitor", "Finds and shares pages")
+System_Ext(cdn, "CDN", "Edge cache")
+System_Boundary(shotthere, "ShotThere") {
+  Container(web, "ShotThere web", "Angular SSR", "Writes head metadata and JSON-LD; serves sitemap.xml and robots.txt")
+  Container(api, "ShotThere API", "Next.js route handlers", "Returns sitemap entries and studio data with ogImageUrl")
+  ContainerDb(db, "ShotThere database", "PostgreSQL", "Published studios, spots and guides")
+  ContainerDb(storage, "Image store", "Object storage", "Open Graph crops")
+}
+Rel(visitor, cdn, "Requests", "HTTPS")
+Rel(cdn, web, "Fetches on cache miss", "HTTPS")
+Rel(cdn, storage, "Fetches Open Graph images", "HTTPS")
+Rel(web, api, "Reads entries and page data", "JSON/HTTPS")
+Rel(api, db, "Reads", "Prisma")
+Rel(api, storage, "Writes Open Graph crops", "S3 API")
+@enduml

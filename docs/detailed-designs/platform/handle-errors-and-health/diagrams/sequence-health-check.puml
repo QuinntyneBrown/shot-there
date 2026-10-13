@@ -1,0 +1,38 @@
+@startuml
+title UML sequence behaviour — Health check
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam roundcorner 12
+skinparam defaultFontName Arial
+skinparam ArrowColor #344054
+skinparam rectangle {
+  BorderColor #344054
+  FontColor #101828
+}
+skinparam package {
+  BorderColor #667085
+  FontColor #101828
+  BackgroundColor #F9FAFB
+}
+actor "Uptime monitor" as actor
+box "Backend — ShotThere API (Next.js route handlers)" #D1FADF
+  participant "app/api/health/route.ts" as route
+end box
+box "Backend — ShotThere application (lib/)" #ECFDF3
+  participant "checkHealth" as check
+end box
+box "Backend — Infrastructure (Prisma / object storage)" #FFF4E5
+  database "ShotThere database" as db
+end box
+actor -> route : GET /api/health without credentials (L2-084)
+route -> check : checkHealth(300 ms)
+check -> db : SELECT 1 raced against timeout
+alt Database answers in time
+  db --> check : 1
+  check --> route : status ok
+  route --> actor : 200 {"status":"ok"} within 500 ms (L2-084)
+else Database unreachable or timeout
+  check --> route : status degraded
+  route --> actor : 503 {"status":"degraded"} with no connection details (L2-084)
+end
+@enduml

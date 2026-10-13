@@ -1,0 +1,10 @@
+@startuml
+!include <C4/C4_Context>
+LAYOUT_WITH_LEGEND()
+title System Context — Sign in as the owner
+
+Person(owner, "Owner", "Maintains ShotThere content")
+System(shotthere, "ShotThere", "Review and comparison site for Toronto photo locations")
+
+Rel(owner, shotthere, "Signs in with email and password", "HTTPS")
+@enduml

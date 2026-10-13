@@ -1,0 +1,34 @@
+@startuml
+!include <C4/C4_Component>
+LAYOUT_WITH_LEGEND()
+title Components — View locations on a map
+
+System_Ext(maps, "Map tile provider", "Serves map tiles")
+Container_Boundary(web, "ShotThere web") {
+  Component(page, "MapPageComponent", "Angular standalone component", "Layout, URL query, toggle")
+  Component(query, "parseMapViewQuery / toMapViewQueryParams / filterMapLocations", "Plain TypeScript", "URL state and type filter beside the page")
+  Component(map, "LocationsMapComponent", "Angular standalone component", "Wraps the map library <TO SUPPLY>")
+  Component(popup, "MapPopupComponent", "Angular standalone component", "Name, kind, key fact, link")
+  Component(legend, "MapLegendComponent", "Angular standalone component", "Explains marker styles")
+  Component(card, "MapLocationCardComponent", "Angular standalone component", "Location card for list view")
+  Component(svc, "MapLocationsService", "Abstract class / DI token", "listMapLocations()")
+  Component(http, "HttpMapLocationsService", "Angular service", "Calls GET /api/map/locations")
+}
+Container_Boundary(api, "ShotThere API") {
+  Component(route, "app/api/map/locations/route.ts", "Next.js route handler", "GET map locations")
+  Component(list, "listMapLocations", "lib/map/list-map-locations.ts", "Maps published studios and spots")
+  ComponentDb(db, "ShotThere database", "PostgreSQL", "Studio, StudioFee, Spot, PermitStatus")
+}
+
+Rel(page, query, "Parses query and filters locations")
+Rel(page, map, "Renders markers")
+Rel(map, popup, "Opens")
+Rel(page, legend, "Renders")
+Rel(page, card, "Renders in list view")
+Rel(page, svc, "Calls listMapLocations()")
+Rel(http, svc, "Implements")
+Rel(http, route, "GET /api/map/locations", "JSON/HTTPS")
+Rel(route, list, "Calls")
+Rel(list, db, "Queries published locations", "Prisma")
+Rel(map, maps, "Loads tiles", "HTTPS")
+@enduml

@@ -1,0 +1,13 @@
+@startuml
+!include <C4/C4_Context>
+LAYOUT_WITH_LEGEND()
+title System Context — Play an episode
+
+Person(visitor, "Visitor", "Reads reviews and watches episodes")
+System(shotthere, "ShotThere", "Review and comparison site for Toronto photo locations")
+System_Ext(youtube, "YouTube", "Hosts episodes and the ShotThere channel")
+
+Rel(visitor, shotthere, "Views reviews in", "HTTPS")
+Rel(shotthere, youtube, "Embeds episodes from", "youtube-nocookie.com")
+Rel(visitor, youtube, "Opens episode and channel links on", "HTTPS")
+@enduml

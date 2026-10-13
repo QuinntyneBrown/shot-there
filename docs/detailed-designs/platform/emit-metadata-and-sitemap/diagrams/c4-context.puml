@@ -1,0 +1,12 @@
+@startuml
+!include <C4/C4_Context>
+LAYOUT_WITH_LEGEND()
+title System Context — Emit metadata and sitemap
+
+Person(visitor, "Visitor", "Finds and shares ShotThere pages")
+System(shotthere, "ShotThere", "Review and comparison site for Toronto photo locations")
+System_Ext(cdn, "CDN", "Caches pages, sitemap and robots file")
+
+Rel(visitor, cdn, "Requests pages and shared previews from", "HTTPS")
+Rel(cdn, shotthere, "Fetches uncached pages, sitemap.xml and robots.txt from", "HTTPS")
+@enduml

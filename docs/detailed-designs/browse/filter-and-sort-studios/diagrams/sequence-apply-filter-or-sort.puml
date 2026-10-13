@@ -1,0 +1,62 @@
+@startuml
+title UML sequence behaviour — Apply a filter or sort
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam roundcorner 12
+skinparam defaultFontName Arial
+skinparam ArrowColor #344054
+skinparam rectangle {
+  BorderColor #344054
+  FontColor #101828
+}
+skinparam package {
+  BorderColor #667085
+  FontColor #101828
+  BackgroundColor #F9FAFB
+}
+actor "Visitor" as actor
+box "Frontend — ShotThere web (Angular SSR)" #E0F2FE
+  participant "StudioFiltersComponent / StudioSortControlComponent" as controls
+  participant "StudioListPageComponent" as page
+  participant "toStudioListQueryParams" as ser
+  participant "Router" as router
+  participant "HttpStudiosService" as client
+end box
+box "Backend — ShotThere API (Next.js route handlers)" #D1FADF
+  participant "app/api/studios/route.ts" as route
+end box
+box "Backend — ShotThere application (lib/)" #ECFDF3
+  participant "studioListQuerySchema" as schema
+  participant "listStudios" as list
+end box
+box "Backend — Infrastructure (Prisma / object storage)" #FFF4E5
+  database "ShotThere database" as db
+end box
+actor -> controls : Change a filter, press "Apply" at XS, or choose a sort
+controls -> page : queryChange(StudioListQuery)
+page -> ser : toStudioListQueryParams(query)
+ser --> page : Params
+page -> router : navigate with query params (L2-025)
+router --> page : queryParamMap emits
+page -> page : Update query and activeFilterCount (L2-022)
+page -> client : listStudios(query)
+client -> route : GET /api/studios?...
+route -> schema : safeParse(searchParams)
+schema --> route : StudioListQuery
+route -> list : listStudios(query)
+list -> db : Select published studios with fees and gear
+db --> list : Rows
+list -> list : Filter with AND across filters and OR within multi-selects (L2-022)
+list -> list : Sort by cost asc, score desc, or recent desc; score ties by review date desc (L2-023)
+list --> route : StudioSummary[]
+route --> client : 200 JSON
+client --> page : StudioSummary[]
+alt no studios match
+  page --> actor : Empty state with "Clear filters" (L2-022)
+else studios match
+  page --> actor : Updated cards
+end
+opt sort changed
+  page --> actor : Sort control shows choice; live region announces it (L2-023)
+end
+@enduml

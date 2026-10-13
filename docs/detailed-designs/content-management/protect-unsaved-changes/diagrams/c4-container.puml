@@ -1,0 +1,11 @@
+@startuml
+!include <C4/C4_Container>
+LAYOUT_WITH_LEGEND()
+title Containers — Protect unsaved changes
+
+Person(owner, "Owner", "Edits content")
+System_Boundary(shotthere, "ShotThere") {
+  Container(web, "ShotThere web", "Angular SSR", "Editors with the unsaved-changes guard")
+}
+Rel(owner, web, "Uses", "HTTPS")
+@enduml

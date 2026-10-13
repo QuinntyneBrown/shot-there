@@ -1,0 +1,32 @@
+@startuml
+!include <C4/C4_Component>
+LAYOUT_WITH_LEGEND()
+title Components — Show studio basics and pricing
+
+Person(visitor, "Visitor", "Photographer comparing Toronto rental studios")
+Container_Boundary(web, "ShotThere web") {
+  Component(page, "StudioPageComponent", "Angular standalone component", "Loads the studio and lays out its sections")
+  Component(basics, "StudioBasicsComponent", "Angular standalone component", "Name, location and booking link")
+  Component(pricing, "StudioPricingComponent", "Angular standalone component", "Rates, fees, all-in cost and verified date")
+  Component(svc, "StudioService", "Abstract class and DI token", "Contract for reading a studio")
+  Component(httpsvc, "HttpStudioService", "Angular service", "Calls GET /api/studios/[slug]")
+}
+Container_Boundary(api, "ShotThere API") {
+  Component(route, "app/api/studios/[slug]/route.ts", "Next.js route handler", "Returns StudioDetailDto or 404")
+  Component(get, "getStudio", "lib/studios/get-studio.ts", "Loads a published studio and maps it to the DTO")
+  Component(cost, "computeAllInCost2h", "lib/studios/compute-all-in-cost.ts", "All-in cost for a 2-hour shoot")
+  Component(stale, "isStale", "lib/shared/is-stale.ts", "More-than-183-days check")
+}
+ComponentDb(db, "ShotThere database", "PostgreSQL", "Studio and related models")
+
+Rel(visitor, page, "Opens studio page")
+Rel(page, svc, "getStudio(slug)")
+Rel(httpsvc, svc, "Implements")
+Rel(httpsvc, route, "GET /api/studios/[slug]", "JSON/HTTPS")
+Rel(route, get, "Calls")
+Rel(get, db, "Reads published studio", "Prisma")
+Rel(page, basics, "Passes basics")
+Rel(page, pricing, "Passes pricing")
+Rel(get, cost, "Computes allInCost2h")
+Rel(get, stale, "Computes priceStale")
+@enduml

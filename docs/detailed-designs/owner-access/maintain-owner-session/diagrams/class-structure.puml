@@ -1,0 +1,73 @@
+@startuml
+' --- shared skin header ---
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam roundcorner 8
+skinparam defaultFontName Arial
+skinparam ArrowColor #344054
+skinparam class {
+  BorderColor #344054
+  FontColor #101828
+  BackgroundColor #F9FAFB
+}
+' --------------------------
+title Class structure — Maintain the owner session
+
+class OwnerSessionGuard <<CanMatchFn>> {
+  +ownerSessionGuard(route: Route, segments: UrlSegment[]): Observable<boolean | UrlTree>
+}
+class AdminUnauthorizedInterceptor <<HttpInterceptorFn>> {
+  +adminUnauthorizedInterceptor(req: HttpRequest, next: HttpHandlerFn): Observable<HttpEvent>
+}
+class SignOutButtonComponent {
+  +signOut(): void
+}
+abstract class AuthService {
+  +getSession(): Observable<OwnerSessionState>
+  +signOut(): Observable<void>
+}
+class HttpAuthService {
+  +getSession(): Observable<OwnerSessionState>
+  +signOut(): Observable<void>
+}
+class OwnerSessionState {
+  +signedIn: boolean
+}
+class AdminMiddleware <<middleware.ts>> {
+  +middleware(request: NextRequest): NextResponse
+  +matcher: "/api/admin/:path*"
+}
+class RequireOwnerSession <<lib/auth>> {
+  +requireOwnerSession(request: Request): string
+}
+class ValidateOwnerSession <<lib/auth>> {
+  +validateOwnerSession(token: string): string | null
+}
+class SignOutOwner <<lib/auth>> {
+  +signOutOwner(token: string): void
+}
+class SessionRoute <<route.ts>> {
+  +GET(request: Request): Response
+}
+class SignOutRoute <<route.ts>> {
+  +POST(request: Request): Response
+}
+class OwnerSession <<Prisma>> {
+  +id: string
+  +ownerId: string
+  +tokenHash: string
+  +createdAt: DateTime
+  +lastSeenAt: DateTime
+}
+
+OwnerSessionGuard ..> AuthService : injects
+SignOutButtonComponent ..> AuthService : injects
+AuthService <|-- HttpAuthService
+AuthService ..> OwnerSessionState
+RequireOwnerSession ..> ValidateOwnerSession
+SessionRoute ..> ValidateOwnerSession
+SessionRoute ..> OwnerSessionState : returns
+SignOutRoute ..> SignOutOwner
+ValidateOwnerSession ..> OwnerSession : reads / touches
+SignOutOwner ..> OwnerSession : deletes
+@enduml

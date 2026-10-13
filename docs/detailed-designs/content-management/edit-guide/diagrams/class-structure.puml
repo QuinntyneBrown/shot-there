@@ -1,0 +1,85 @@
+@startuml
+' --- shared skin header ---
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam roundcorner 8
+skinparam defaultFontName Arial
+skinparam ArrowColor #344054
+skinparam class {
+  BorderColor #344054
+  FontColor #101828
+  BackgroundColor #F9FAFB
+}
+' --------------------------
+title Class structure — Create, edit and publish a guide
+
+enum LocationKind {
+  studio
+  spot
+}
+class GuideEntryInput {
+  +kind: LocationKind
+  +locationId: string
+  +note: string
+  +position: number
+}
+class GuideInput {
+  +title: string
+  +slug: string
+  +introduction: string
+  +entries: GuideEntryInput[]
+}
+class GuideEditorModel {
+  +id: string
+  +status: string
+  +updatedAt: string
+  +input: GuideInput
+}
+class GuideCandidate {
+  +kind: LocationKind
+  +locationId: string
+  +name: string
+  +neighbourhood: string
+}
+abstract class GuideEditorService {
+  +{abstract} get(id: string): Observable<GuideEditorModel>
+  +{abstract} create(input: GuideInput): Observable<GuideEditorModel>
+  +{abstract} update(id: string, input: GuideInput): Observable<GuideEditorModel>
+  +{abstract} searchCandidates(text: string): Observable<GuideCandidate[]>
+  +{abstract} publish(id: string): Observable<GuideEditorModel>
+  +{abstract} unpublish(id: string): Observable<GuideEditorModel>
+}
+class HttpGuideEditorService
+class GuideEditorPageComponent {
+  +guide: Signal<GuideEditorModel>
+  +fieldErrors: Signal<FieldErrors>
+  +openPicker(): void
+  +save(): void
+  +publish(): void
+  +unpublish(): void
+}
+class GuideEntryPickerDialogComponent {
+  +query: WritableSignal<string>
+  +results: Signal<GuideCandidate[]>
+  +select(candidate: GuideCandidate): void
+}
+class guideForm <<function>> {
+  +addEntry(entries: GuideEntryInput[], candidate: GuideCandidate): GuideEntryInput[] | string
+  +moveEntry(entries: GuideEntryInput[], from: number, to: number): GuideEntryInput[]
+}
+class publishGuide <<function>> {
+  +publishGuide(id: string): Promise<GuideEditorModel | FieldErrors>
+  +unpublishGuide(id: string): Promise<GuideEditorModel>
+}
+
+GuideInput "1" *-- "*" GuideEntryInput : ordered
+GuideEntryInput --> LocationKind
+GuideCandidate --> LocationKind
+GuideEditorModel *-- GuideInput
+GuideEditorService <|-- HttpGuideEditorService
+GuideEditorPageComponent ..> GuideEditorService : injects
+GuideEditorPageComponent ..> guideForm : uses
+GuideEditorPageComponent --> GuideEntryPickerDialogComponent : opens
+GuideEntryPickerDialogComponent ..> GuideEditorService : searches
+GuideEntryPickerDialogComponent ..> GuideCandidate : returns
+@enduml

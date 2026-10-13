@@ -1,0 +1,57 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam roundcorner 8
+skinparam defaultFontName Arial
+skinparam ArrowColor #344054
+skinparam class {
+  BorderColor #344054
+  FontColor #101828
+  BackgroundColor #F9FAFB
+}
+title Class structure — View a guide
+
+abstract class GuideService {
+  +{abstract} getGuide(slug: string): Observable<GuideDto>
+}
+class HttpGuideService {
+  -http: HttpClient
+  +getGuide(slug: string): Observable<GuideDto>
+}
+class GuideDto {
+  +slug: string
+  +title: string
+  +introduction: string
+  +entries: GuideEntryDto[]
+}
+class GuideEntryDto {
+  +position: number
+  +kind: string
+  +location: LocationCardDto
+  +dataPoints: GuideDataPointDto[]
+  +editorNote: string
+}
+class GuideDataPointDto {
+  +label: string
+  +value: string
+}
+class LocationCardDto {
+  +slug: string
+  +name: string
+  +image: ImageDto
+}
+class GuidePageComponent {
+  +guide: Signal<GuideDto>
+}
+class GuideEntryComponent {
+  +entry: InputSignal<GuideEntryDto>
+  +reviewLink: Signal<string>
+}
+GuideService <|-- HttpGuideService
+HttpGuideService ..> GuideDto : returns
+GuideDto "1" *-- "*" GuideEntryDto : ordered
+GuideEntryDto "1" *-- "*" GuideDataPointDto
+GuideEntryDto --> LocationCardDto
+GuidePageComponent ..> GuideService : injects
+GuidePageComponent --> GuideEntryComponent : renders
+@enduml

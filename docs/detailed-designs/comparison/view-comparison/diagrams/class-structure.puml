@@ -1,0 +1,72 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam roundcorner 8
+skinparam defaultFontName Arial
+skinparam ArrowColor #344054
+skinparam class {
+  BorderColor #344054
+  FontColor #101828
+  BackgroundColor #F9FAFB
+}
+title Class structure — View a side-by-side comparison
+
+abstract class CompareService {
+  +{abstract} getComparison(slugs: string[]): Observable<ComparisonDto>
+}
+class HttpCompareService {
+  -http: HttpClient
+  +getComparison(slugs: string[]): Observable<ComparisonDto>
+}
+class ComparisonDto {
+  +studios: ComparedStudioDto[]
+  +notFoundSlugs: string[]
+  +truncated: boolean
+}
+class ComparedStudioDto {
+  +slug: string
+  +name: string
+  +allInCost2h: number
+  +hourlyRate: number
+  +minimumBookingHours: number
+  +mandatoryFees: FeeDto[]
+  +usableSpace: number | null
+  +ceilingHeight: number | null
+  +naturalLight: string | null
+  +cycWall: string | null
+  +includedGear: string[]
+  +parking: string | null
+  +loadIn: string | null
+  +rubricScores: RubricScoreDto[]
+  +overallScore: number
+  +priceLastVerified: string
+  +priceStale: boolean
+  +isLowestAllInCost: boolean
+  +testShots: TestShotDto[]
+}
+class ComparePageComponent {
+  +viewModel: Signal<ComparisonViewModel>
+  +copyLink(): void
+}
+class ComparisonViewModel {
+  +columns: string[]
+  +rows: ComparisonRow[]
+  +notices: string[]
+  +canShowTable: boolean
+}
+class ComparisonRow {
+  +label: string
+  +cells: ComparisonCell[]
+}
+class ComparisonCell {
+  +text: string
+  +isLowest: boolean
+}
+CompareService <|-- HttpCompareService
+HttpCompareService ..> ComparisonDto : returns
+ComparisonDto "1" *-- "0..4" ComparedStudioDto
+ComparePageComponent ..> CompareService : injects
+ComparePageComponent --> ComparisonViewModel : shows
+ComparisonViewModel "1" *-- "*" ComparisonRow
+ComparisonRow "1" *-- "1..4" ComparisonCell
+@enduml

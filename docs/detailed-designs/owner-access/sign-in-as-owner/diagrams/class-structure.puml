@@ -1,0 +1,87 @@
+@startuml
+' --- shared skin header ---
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam roundcorner 8
+skinparam defaultFontName Arial
+skinparam ArrowColor #344054
+skinparam class {
+  BorderColor #344054
+  FontColor #101828
+  BackgroundColor #F9FAFB
+}
+' --------------------------
+title Class structure — Sign in as the owner
+
+class SignInPageComponent {
+  +form: FormGroup
+  +message: Signal<string>
+  +submit(): void
+}
+abstract class AuthService {
+  +signIn(request: SignInRequest): Observable<SignInResult>
+}
+class HttpAuthService {
+  +signIn(request: SignInRequest): Observable<SignInResult>
+}
+class SignInRequest {
+  +email: string
+  +password: string
+}
+enum SignInOutcome {
+  signedIn
+  invalidCredentials
+  rateLimited
+}
+class SignInResult {
+  +outcome: SignInOutcome
+}
+class SignInRoute <<route.ts>> {
+  +POST(request: Request): Response
+}
+class SignInOwner <<lib/auth>> {
+  +signInOwner(input: SignInInput, clientKey: string): SignInOwnerResult
+}
+class CheckSignInRateLimit <<lib/auth>> {
+  +checkSignInRateLimit(clientKey: string, email: string): boolean
+}
+class VerifyPassword <<lib/auth>> {
+  +verifyPassword(hash: string, password: string): boolean
+}
+class CreateOwnerSession <<lib/auth>> {
+  +createOwnerSession(ownerId: string): string
+}
+class Owner <<Prisma>> {
+  +id: string
+  +email: string
+  +passwordHash: string
+}
+class OwnerSession <<Prisma>> {
+  +id: string
+  +ownerId: string
+  +tokenHash: string
+  +createdAt: DateTime
+  +lastSeenAt: DateTime
+}
+class SignInAttempt <<Prisma>> {
+  +id: string
+  +clientKey: string
+  +email: string
+  +attemptedAt: DateTime
+}
+
+SignInPageComponent ..> AuthService : injects
+AuthService <|-- HttpAuthService
+AuthService ..> SignInRequest
+AuthService ..> SignInResult
+SignInResult --> SignInOutcome
+SignInRoute ..> SignInOwner : calls
+SignInOwner ..> CheckSignInRateLimit
+SignInOwner ..> VerifyPassword
+SignInOwner ..> CreateOwnerSession
+SignInOwner ..> Owner : reads
+SignInOwner ..> SignInAttempt : writes
+CheckSignInRateLimit ..> SignInAttempt : counts
+CreateOwnerSession ..> OwnerSession : creates
+Owner "1" --> "*" OwnerSession
+@enduml

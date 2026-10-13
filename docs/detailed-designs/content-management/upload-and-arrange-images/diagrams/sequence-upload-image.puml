@@ -1,0 +1,75 @@
+@startuml
+title UML sequence behaviour — Upload an image
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam roundcorner 12
+skinparam defaultFontName Arial
+skinparam ArrowColor #344054
+skinparam rectangle {
+  BorderColor #344054
+  FontColor #101828
+}
+skinparam package {
+  BorderColor #667085
+  FontColor #101828
+  BackgroundColor #F9FAFB
+}
+actor "Owner" as actor
+box "Frontend — ShotThere web (Angular SSR)" #E0F2FE
+  participant "ImageListComponent" as list
+  participant "ImageUploadQueue" as queue
+  participant "HttpImageService" as client
+end box
+box "Backend — ShotThere API (Next.js route handlers)" #D1FADF
+  participant "admin images route" as route
+end box
+box "Backend — ShotThere application (lib/)" #ECFDF3
+  participant "uploadImage" as upload
+  participant "inspectImage" as inspect
+  participant "generateVariants" as gen
+end box
+box "Backend — Infrastructure (Prisma / object storage)" #FFF4E5
+  participant "objectStore" as store
+  database "ShotThere database" as db
+end box
+actor -> list : Select files
+list -> queue : Add files
+queue -> queue : Check size <= 20 MB and type JPEG, PNG, WebP, AVIF (L2-057)
+alt client check fails
+  queue --> list : Message with limit or accepted types
+else accepted
+  queue -> client : upload(ownerRef, role, file)
+  note over list : Progress shown, Save disabled while busy (L2-057)
+  client -> route : POST /api/admin/images (multipart)
+  route -> route : Require owner session (L2-081)
+  alt no session
+    route --> client : 401, nothing stored (L2-081)
+  else body over 20 MB
+    route --> client : 413 (L2-057)
+  else valid request
+    route -> upload : uploadImage(file, role, ownerRef)
+    upload -> inspect : Detect format from content bytes (L2-057)
+    alt unsupported or mismatched type
+      inspect --> upload : Rejected
+      upload --> route : Invalid image
+      route --> client : 400 (L2-057)
+    else JPEG, PNG, WebP or AVIF
+      inspect --> upload : Format and dimensions
+      upload -> gen : Widths 480, 960, 1440, 2048
+      gen --> upload : Variant buffers
+      upload -> store : Put original and variants under random UUID keys (L2-081)
+      store --> upload : Stored
+      upload -> db : Create Image with originalName as metadata, ImageVariant rows
+      db --> upload : Image
+      upload --> route : UploadedImageDto
+      route --> client : 201 UploadedImageDto
+    end
+  end
+  client --> queue : Progress events and result
+  alt failed
+    queue --> list : Show error with Retry for that file (L2-057)
+  else done
+    queue --> list : Add image and focus its alt-text field
+  end
+end
+@enduml

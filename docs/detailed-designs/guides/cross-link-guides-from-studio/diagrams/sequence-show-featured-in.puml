@@ -1,0 +1,50 @@
+@startuml
+title UML sequence behaviour — Show Featured in
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam roundcorner 12
+skinparam defaultFontName Arial
+skinparam ArrowColor #344054
+skinparam rectangle {
+  BorderColor #344054
+  FontColor #101828
+}
+skinparam package {
+  BorderColor #667085
+  FontColor #101828
+  BackgroundColor #F9FAFB
+}
+actor "Visitor" as actor
+box "Frontend — ShotThere web (Angular SSR)" #E0F2FE
+  participant "StudioPageComponent" as page
+  participant "FeaturedInComponent" as featured
+  participant "HttpStudioService" as svc
+end box
+box "Backend — ShotThere API (Next.js route handlers)" #D1FADF
+  participant "app/api/studios/[slug]/route.ts" as route
+end box
+box "Backend — ShotThere application (lib/)" #ECFDF3
+  participant "getStudio" as get
+  participant "listGuidesForStudio" as list
+end box
+box "Backend — Infrastructure (Prisma / object storage)" #FFF4E5
+  database "ShotThere database" as db
+end box
+actor -> page : Open studio page
+page -> svc : getStudio(slug)
+svc -> route : GET /api/studios/{slug}
+route -> get : getStudio(slug)
+get -> list : listGuidesForStudio(studioId)
+list -> db : Find published Guide with GuideEntry for studio (L2-036)
+db --> list : Guides
+list --> get : GuideLinkDto[]
+get --> route : StudioDto with featuredIn
+route --> svc : 200 JSON
+svc --> page : StudioDto
+alt featuredIn not empty
+  page -> featured : guides = featuredIn
+  featured --> actor : "Featured in" with one link per guide
+else no including guide (L2-036)
+  page --> actor : No "Featured in" section
+end
+@enduml

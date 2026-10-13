@@ -1,0 +1,45 @@
+@startuml
+title UML sequence behaviour — CI dependency and secret checks
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam roundcorner 12
+skinparam defaultFontName Arial
+skinparam ArrowColor #344054
+skinparam rectangle {
+  BorderColor #344054
+  FontColor #101828
+}
+skinparam package {
+  BorderColor #667085
+  FontColor #101828
+  BackgroundColor #F9FAFB
+}
+actor "Developer" as actor
+participant "CI workflow ci.yml" as ci
+participant "npm audit" as audit
+participant "Secret scanner" as scan
+participant "Bundle secret check" as bundle
+actor -> ci : Push commit
+ci -> audit : npm audit --audit-level=high in frontend and backend (L2-082)
+alt High or critical vulnerability
+  audit --> ci : Non-zero exit
+  ci --> actor : Build fails
+else None
+  audit --> ci : Pass
+  ci -> scan : Scan repository for credentials (L2-082)
+  alt Credential found
+    scan --> ci : Finding
+    ci --> actor : Build fails
+  else Clean
+    scan --> ci : Pass
+    ci -> bundle : Search compiled client bundle for secret values (L2-080)
+    alt Secret present
+      bundle --> ci : Finding
+      ci --> actor : Build fails
+    else Clean
+      bundle --> ci : Pass
+      ci --> actor : Build passes
+    end
+  end
+end
+@enduml

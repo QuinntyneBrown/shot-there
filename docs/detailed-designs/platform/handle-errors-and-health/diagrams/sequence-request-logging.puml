@@ -1,0 +1,41 @@
+@startuml
+title UML sequence behaviour — Request logging and unhandled error
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam roundcorner 12
+skinparam defaultFontName Arial
+skinparam ArrowColor #344054
+skinparam rectangle {
+  BorderColor #344054
+  FontColor #101828
+}
+skinparam package {
+  BorderColor #667085
+  FontColor #101828
+  BackgroundColor #F9FAFB
+}
+participant "Caller" as actor
+box "Backend — ShotThere API (Next.js route handlers)" #D1FADF
+  participant "withRequestLogging" as wrap
+  participant "Route handler" as route
+end box
+box "Backend — ShotThere application (lib/)" #ECFDF3
+  participant "redact" as redact
+  participant "logger" as logger
+end box
+actor -> wrap : HTTP request
+wrap -> wrap : Read or create correlation ID, start timer
+wrap -> route : Invoke handler
+alt Handler returns
+  route --> wrap : Response
+  wrap -> redact : Remove password and tokens, mask email (L2-085)
+  redact --> wrap : Safe fields
+  wrap -> logger : info method, path, status, durationMs, correlationId (L2-085)
+  wrap --> actor : Response with X-Correlation-Id header
+else Unhandled error
+  route --> wrap : Throws
+  wrap -> logger : error correlationId, errorName, stack (L2-085)
+  wrap --> actor : 500 generic body with X-Correlation-Id header
+end
+logger -> logger : Write one JSON line to stdout
+@enduml

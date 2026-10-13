@@ -1,0 +1,99 @@
+@startuml
+' --- shared skin header ---
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam roundcorner 8
+skinparam defaultFontName Arial
+skinparam ArrowColor #344054
+skinparam class {
+  BorderColor #344054
+  FontColor #101828
+  BackgroundColor #F9FAFB
+}
+' --------------------------
+title Class structure — Create and edit a studio
+
+class StudioFeeInput {
+  +name: string
+  +amount: number
+  +mandatory: boolean
+}
+class GearItemInput {
+  +name: string
+}
+class StudioInput {
+  +name: string
+  +neighbourhood: string
+  +address: string
+  +bookingUrl: string
+  +hourlyRate: number
+  +minimumHours: number
+  +priceVerifiedAt: string | null
+  +specifications: StudioSpecifications
+  +logistics: StudioLogistics
+  +rubric: RubricScores
+  +verdict: string
+  +disclosure: string
+  +videoId: string | null
+  +fees: StudioFeeInput[]
+  +gear: GearItemInput[]
+}
+class RubricScores {
+  +value: number
+  +light: number
+  +space: number
+  +gear: number
+  +logistics: number
+  +condition: number
+}
+class StudioEditorModel {
+  +id: string
+  +slug: string
+  +status: string
+  +updatedAt: string
+  +input: StudioInput
+}
+class FieldErrors {
+  +[fieldPath: string]: string
+}
+abstract class StudioEditorService {
+  +{abstract} get(id: string): Observable<StudioEditorModel>
+  +{abstract} create(input: StudioInput): Observable<StudioEditorModel>
+  +{abstract} update(id: string, input: StudioInput): Observable<StudioEditorModel>
+}
+class HttpStudioEditorService
+class StudioEditorPageComponent {
+  +studio: Signal<StudioEditorModel>
+  +fieldErrors: Signal<FieldErrors>
+  +needsPriceConfirmation: Signal<boolean>
+  +save(): void
+}
+class priceVerificationRule <<function>> {
+  +pricingChanged(loaded: StudioInput, current: StudioInput): boolean
+}
+class studioInputSchema <<zod>> {
+  +safeParse(body: unknown): Result
+}
+class createStudio <<function>> {
+  +createStudio(input: StudioInput, today: Date): Promise<StudioEditorModel>
+}
+class updateStudio <<function>> {
+  +updateStudio(id: string, input: StudioInput, today: Date): Promise<StudioEditorModel>
+}
+class assignUniqueSlug <<function>> {
+  +assignUniqueSlug(name: string): Promise<string>
+}
+
+StudioInput "1" *-- "*" StudioFeeInput
+StudioInput "1" *-- "*" GearItemInput
+StudioInput *-- RubricScores
+StudioEditorModel *-- StudioInput
+StudioEditorService <|-- HttpStudioEditorService
+StudioEditorPageComponent ..> StudioEditorService : injects
+StudioEditorPageComponent ..> priceVerificationRule : uses
+StudioEditorPageComponent --> FieldErrors : shows
+createStudio ..> studioInputSchema : validates
+updateStudio ..> studioInputSchema : validates
+createStudio ..> assignUniqueSlug : uses
+studioInputSchema ..> FieldErrors : refusal maps to
+@enduml

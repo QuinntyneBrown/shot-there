@@ -1,0 +1,23 @@
+@startuml
+!include <C4/C4_Component>
+LAYOUT_WITH_LEGEND()
+title Components — Browse guides
+
+Person(visitor, "Visitor", "Plans a photo shoot in Toronto")
+Container_Boundary(web, "ShotThere web") {
+  Component(nav, "SiteNavComponent", "Angular component", "Studios, Spots, Map, Compare, Guides")
+  Component(page, "GuidesIndexPageComponent", "Angular page", "Lists published guides")
+  Component(svc, "GuideService / HttpGuideService", "libs/api", "Calls GET /api/guides")
+}
+Container_Boundary(api, "ShotThere API") {
+  Component(route, "app/api/guides/route.ts", "Next.js route handler", "Returns GuideSummaryDto[]")
+  Component(lib, "lib/guides/list-guides.ts", "TypeScript", "Reads published guides")
+  ComponentDb(db, "ShotThere database", "PostgreSQL", "Guide")
+}
+Rel(visitor, nav, "Activates Guides")
+Rel(nav, page, "Navigates to")
+Rel(page, svc, "listGuides()")
+Rel(svc, route, "GET /api/guides", "JSON/HTTPS")
+Rel(route, lib, "Calls")
+Rel(lib, db, "Reads", "Prisma")
+@enduml

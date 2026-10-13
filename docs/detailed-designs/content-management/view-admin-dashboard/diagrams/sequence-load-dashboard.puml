@@ -1,0 +1,68 @@
+@startuml
+title UML sequence behaviour — Load the administration dashboard
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam roundcorner 12
+skinparam defaultFontName Arial
+skinparam ArrowColor #344054
+skinparam rectangle {
+  BorderColor #344054
+  FontColor #101828
+}
+skinparam package {
+  BorderColor #667085
+  FontColor #101828
+  BackgroundColor #F9FAFB
+}
+actor "Owner" as owner
+box "Frontend — ShotThere web (Angular SSR)" #E0F2FE
+  participant "AdminDashboardPageComponent" as page
+  participant "AdminDashboardViewModel" as vm
+  participant "HttpAdminDashboardService" as svc
+end box
+box "Backend — ShotThere API (Next.js route handlers)" #D1FADF
+  participant "app/api/admin/dashboard/route.ts" as route
+end box
+box "Backend — ShotThere application (lib/)" #ECFDF3
+  participant "requireOwnerSession" as auth
+  participant "getDashboard" as get
+  participant "verificationAge" as age
+end box
+box "Backend — Infrastructure (Prisma / object storage)" #FFF4E5
+  database "ShotThere database" as db
+end box
+owner -> page : Open administration dashboard
+page -> svc : getDashboard()
+svc -> route : GET /api/admin/dashboard with st_session cookie
+route -> auth : Validate session
+alt no valid owner session
+  auth --> route : Unauthorized
+  route --> svc : HTTP 401
+  svc --> page : Error
+  page --> owner : Redirect to sign-in (maintain-owner-session)
+else owner session valid
+  auth --> route : Owner
+  route -> get : getDashboard(today)
+  get -> db : Count Studio, Spot and Guide rows by status (L2-053)
+  db --> get : Counts
+  get -> db : Read Studio.priceVerifiedAt and PermitStatus.verifiedAt
+  db --> get : Verification dates
+  get -> age : Classify: stale over 183 days, due soon 153 to 183 days (L2-044)
+  age --> get : Groups
+  get -> get : Drop current entries and order oldest first (L2-044)
+  get --> route : AdminDashboard
+  route --> svc : HTTP 200 JSON
+  svc --> page : AdminDashboard
+  page -> vm : Build tile labels, groups and edit links (L2-053)
+  vm --> page : View model
+  alt no stale or due-soon entries
+    page --> owner : Tiles, creation links and "everything is up to date" message
+  else entries present
+    page --> owner : Tiles, creation links, "Needs re-verification" and "Due soon" groups
+  end
+end
+opt owner activates an entry or a creation link
+  owner -> page : Activate link
+  page --> owner : Navigate to the editor screen from the central app paths
+end
+@enduml

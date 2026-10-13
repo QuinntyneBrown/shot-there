@@ -1,0 +1,61 @@
+@startuml
+title UML sequence behaviour — Show rain backup studios
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam roundcorner 12
+skinparam defaultFontName Arial
+skinparam ArrowColor #344054
+skinparam rectangle {
+  BorderColor #344054
+  FontColor #101828
+}
+skinparam package {
+  BorderColor #667085
+  FontColor #101828
+  BackgroundColor #F9FAFB
+}
+actor "Visitor" as actor
+box "Frontend — ShotThere web (Angular SSR)" #E0F2FE
+  participant "SpotPageComponent" as page
+  participant "RainBackupComponent" as rain
+  participant "SpotsService" as svc
+end box
+box "Backend — ShotThere API (Next.js route handlers)" #D1FADF
+  participant "app/api/spots/[slug]/route.ts" as route
+end box
+box "Backend — ShotThere application (lib/)" #ECFDF3
+  participant "lib/spots/get-spot.ts" as getspot
+  participant "lib/spots/find-nearest-studios.ts" as nearest
+end box
+box "Backend — Infrastructure (Prisma / object storage)" #FFF4E5
+  database "ShotThere database" as db
+end box
+actor -> page : Open /spots/[slug]
+page -> svc : getSpot(slug)
+svc -> route : GET /api/spots/[slug]
+route -> getspot : getSpot(slug)
+getspot -> db : Find Spot by slug where published
+alt published spot found
+  db --> getspot : Spot row with coordinates
+  getspot -> nearest : findNearestStudios(lat, lng, 3)
+  nearest -> db : Find Studio where published, with StudioFee
+  db --> nearest : Published studios only (L2-037)
+  nearest -> nearest : Straight-line distance, sort ascending, take 3 (L2-037)
+  nearest --> getspot : RainBackupStudioDto[]
+  getspot --> route : SpotDetailDto with rainBackup
+  route --> svc : 200 SpotDetailDto
+  svc --> page : SpotDetailDto
+  page -> rain : Pass rainBackup
+  alt one or more studios
+    rain --> actor : Name link, "1.4 km", all-in cost (L2-037)
+  else no published studios
+    rain --> actor : "Studio reviews are coming" and studio list link (L2-038)
+  end
+else no published spot
+  db --> getspot : null
+  getspot --> route : null
+  route --> svc : 404
+  svc --> page : Error result
+  page --> actor : Show not-found state
+end
+@enduml

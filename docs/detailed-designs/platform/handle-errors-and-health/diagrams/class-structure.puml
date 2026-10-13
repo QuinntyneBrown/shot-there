@@ -1,0 +1,61 @@
+@startuml
+' --- shared skin header ---
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam roundcorner 8
+skinparam defaultFontName Arial
+skinparam ArrowColor #344054
+skinparam class {
+  BorderColor #344054
+  FontColor #101828
+  BackgroundColor #F9FAFB
+}
+' --------------------------
+title Class structure — Handle errors and report health
+
+package "backend lib" {
+  class HealthStatus {
+    +status: "ok" | "degraded"
+  }
+  class checkHealth <<function>> {
+    +checkHealth(timeoutMs: number): Promise<HealthStatus>
+  }
+  class RequestLogEntry {
+    +method: string
+    +path: string
+    +status: number
+    +durationMs: number
+    +correlationId: string
+  }
+  class logger <<module>> {
+    +info(fields: object): void
+    +warn(fields: object): void
+    +error(fields: object): void
+  }
+  class redact <<module>> {
+    +redact(fields: object): object
+    +maskEmail(email: string): string
+  }
+  class withRequestLogging <<function>> {
+    +withRequestLogging(handler: RouteHandler): RouteHandler
+  }
+}
+package "frontend" {
+  class NotFoundPageComponent
+  class ErrorPageComponent
+  class FallbackImageDirective {
+    +failed: WritableSignal<boolean>
+    +onError(): void
+  }
+  class MapUnavailableComponent {
+    +latitude: InputSignal<number>
+    +longitude: InputSignal<number>
+    +externalMapUrl: Signal<string>
+  }
+}
+
+checkHealth ..> HealthStatus : returns
+withRequestLogging ..> RequestLogEntry : builds
+withRequestLogging ..> logger : writes
+logger ..> redact : applies before output
+@enduml

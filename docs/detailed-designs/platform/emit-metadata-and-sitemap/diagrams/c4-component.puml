@@ -1,0 +1,33 @@
+@startuml
+!include <C4/C4_Component>
+LAYOUT_WITH_LEGEND()
+title Components — Emit metadata and sitemap
+
+ContainerDb(storage, "Image store", "Object storage", "Open Graph crops")
+Container_Boundary(web, "ShotThere web") {
+  Component(studioPage, "StudioPageComponent", "Angular standalone component", "Studio page")
+  Component(spotPage, "SpotPageComponent", "Angular standalone component", "Spot page")
+  Component(adminShell, "Admin shell", "Angular standalone component", "Sets noindex on admin routes")
+  Component(meta, "PageMetadataService", "core/seo service", "Writes title, meta, canonical, og:image, JSON-LD, robots")
+  Component(ld, "buildStudioJsonLd, buildSpotJsonLd", "core/seo functions", "Build Schema.org objects")
+  Component(sitemapRoute, "sitemap.route.ts", "Express route", "Serialises sitemap XML")
+  Component(sitemapSvc, "SitemapService", "Abstract service, HttpSitemapService", "Reads sitemap entries")
+  Component(robots, "robots.txt", "Static file", "Disallow /admin; Sitemap URL")
+}
+Container_Boundary(api, "ShotThere API") {
+  Component(entriesRoute, "app/api/sitemap-entries/route.ts", "Route handler", "GET sitemap entries")
+  Component(list, "listSitemapEntries", "lib/seo", "Reads published items")
+  Component(og, "generateOgImage", "lib/images", "Crops 1200 by 630 JPEG")
+  ComponentDb(db, "ShotThere database", "PostgreSQL", "Studio, Spot, Guide")
+}
+Rel(studioPage, meta, "Calls set and setJsonLd")
+Rel(spotPage, meta, "Calls set and setJsonLd")
+Rel(adminShell, meta, "Calls setNoIndex")
+Rel(studioPage, ld, "Calls buildStudioJsonLd")
+Rel(spotPage, ld, "Calls buildSpotJsonLd")
+Rel(sitemapRoute, sitemapSvc, "Calls list")
+Rel(sitemapSvc, entriesRoute, "GET", "JSON/HTTPS")
+Rel(entriesRoute, list, "Calls")
+Rel(list, db, "Reads", "Prisma")
+Rel(og, storage, "Writes", "S3 API")
+@enduml

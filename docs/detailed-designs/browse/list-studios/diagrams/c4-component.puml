@@ -1,0 +1,24 @@
+@startuml
+!include <C4/C4_Component>
+LAYOUT_WITH_LEGEND()
+title Components — List studios
+
+Container_Boundary(web, "ShotThere web") {
+  Component(page, "StudioListPageComponent", "Angular standalone component", "Loading, loaded and error states")
+  Component(card, "StudioCardComponent", "Angular standalone component", "One studio card")
+  Component(svc, "StudiosService", "Abstract class / DI token", "Studio list contract")
+  Component(http, "HttpStudiosService", "Angular service", "Calls GET /api/studios")
+}
+Container_Boundary(api, "ShotThere API") {
+  Component(route, "app/api/studios/route.ts", "Next.js route handler", "GET studio summaries")
+  Component(list, "listStudios", "lib/studios/list-studios.ts", "Reads published studios and computes fields")
+  ComponentDb(db, "ShotThere database", "PostgreSQL", "Studio, StudioFee, Image, ImageVariant")
+}
+
+Rel(page, card, "Renders")
+Rel(page, svc, "Calls listStudios()")
+Rel(http, svc, "Implements")
+Rel(http, route, "GET /api/studios", "JSON/HTTPS")
+Rel(route, list, "Calls")
+Rel(list, db, "Queries published studios", "Prisma")
+@enduml

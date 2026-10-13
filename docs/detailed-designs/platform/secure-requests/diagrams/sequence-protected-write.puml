@@ -1,0 +1,71 @@
+@startuml
+title UML sequence behaviour — Protected administration write
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam roundcorner 12
+skinparam defaultFontName Arial
+skinparam ArrowColor #344054
+skinparam rectangle {
+  BorderColor #344054
+  FontColor #101828
+}
+skinparam package {
+  BorderColor #667085
+  FontColor #101828
+  BackgroundColor #F9FAFB
+}
+actor "Owner" as actor
+box "Frontend — ShotThere web (Angular SSR)" #E0F2FE
+  participant "Studio edit page" as page
+  participant "HttpClient with XSRF config" as client
+end box
+box "Backend — ShotThere API (Next.js route handlers)" #D1FADF
+  participant "middleware.ts" as mw
+  participant "app/api/admin/studios/route.ts" as route
+end box
+box "Backend — ShotThere application (lib/)" #ECFDF3
+  participant "verifyCsrf" as csrf
+  participant "readJsonBody" as body
+  participant "parseWithSchema" as parse
+end box
+box "Backend — Infrastructure (Prisma / object storage)" #FFF4E5
+  database "ShotThere database" as db
+end box
+actor -> page : Save studio
+page -> client : PUT studio payload
+client -> mw : HTTPS request with st_session cookie and X-CSRF-Token
+alt Plain HTTP in production
+  mw --> client : 301 to HTTPS URL (L2-080)
+else Content-Length above 1 MB
+  mw --> client : 413 with security headers (L2-078)
+else Accepted
+  mw -> route : Forward request
+  route -> db : Load OwnerSession from st_session
+  db --> route : Session with csrfToken
+  route -> csrf : verifyCsrf(request, session) (L2-080)
+  alt Token missing, wrong, or foreign Origin
+    csrf --> route : Forbidden
+    route --> mw : 403
+  else Token valid
+    route -> body : readJsonBody(request, 1 MB)
+    alt Streamed body exceeds 1 MB
+      body --> route : PayloadTooLargeError
+      route --> mw : 413 (L2-078)
+    else Within limit
+      route -> parse : parseWithSchema(studioSaveSchema, json) (L2-078)
+      alt Unknown field, wrong type, or out of range
+        parse --> route : ValidationProblem naming each field
+        route --> mw : 400
+      else Valid
+        parse --> route : Normalised input
+        route -> db : Save studio
+        db --> route : Saved
+        route --> mw : 200
+      end
+    end
+  end
+  mw --> client : Response with CSP, nosniff, Referrer-Policy, HSTS (L2-080)
+end
+client --> page : Result or field errors
+page --> actor : Present outcome with text escaped on output (L2-078)
+@enduml

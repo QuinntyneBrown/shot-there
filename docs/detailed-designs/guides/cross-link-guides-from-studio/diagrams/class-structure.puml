@@ -1,0 +1,41 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam roundcorner 8
+skinparam defaultFontName Arial
+skinparam ArrowColor #344054
+skinparam class {
+  BorderColor #344054
+  FontColor #101828
+  BackgroundColor #F9FAFB
+}
+title Class structure — Cross-link guides from a studio
+
+class StudioDto {
+  +slug: string
+  +name: string
+  +featuredIn: GuideLinkDto[]
+}
+class GuideLinkDto {
+  +slug: string
+  +title: string
+}
+abstract class StudioService {
+  +{abstract} getStudio(slug: string): Observable<StudioDto>
+}
+class HttpStudioService {
+  +getStudio(slug: string): Observable<StudioDto>
+}
+class StudioPageComponent {
+  +studio: Signal<StudioDto>
+}
+class FeaturedInComponent {
+  +guides: InputSignal<GuideLinkDto[]>
+}
+StudioService <|-- HttpStudioService
+HttpStudioService ..> StudioDto : returns
+StudioDto "1" *-- "*" GuideLinkDto : featuredIn
+StudioPageComponent ..> StudioService : injects
+StudioPageComponent --> FeaturedInComponent : renders
+FeaturedInComponent ..> GuideLinkDto : shows
+@enduml

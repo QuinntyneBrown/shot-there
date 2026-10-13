@@ -1,0 +1,67 @@
+@startuml
+' --- shared skin header ---
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam roundcorner 8
+skinparam defaultFontName Arial
+skinparam ArrowColor #344054
+skinparam class {
+  BorderColor #344054
+  FontColor #101828
+  BackgroundColor #F9FAFB
+}
+' --------------------------
+title Class structure — List content in the administration area
+
+enum AdminContentKind {
+  studios
+  spots
+  guides
+}
+enum ContentStatus {
+  draft
+  published
+}
+class AdminContentRow {
+  +id: string
+  +name: string
+  +neighbourhood: string | null
+  +status: ContentStatus
+  +updatedAt: string
+  +stale: boolean
+}
+class AdminContentRowView {
+  +name: string
+  +statusLabel: string
+  +updatedLabel: string
+  +staleLabel: string | null
+  +editLink: string
+}
+abstract class AdminContentService {
+  +{abstract} list(kind: AdminContentKind): Observable<AdminContentRow[]>
+}
+class HttpAdminContentService {
+  +list(kind: AdminContentKind): Observable<AdminContentRow[]>
+}
+class AdminContentListPageComponent {
+  +kind: AdminContentKind
+  +rows: Signal<AdminContentRow[]>
+  +search: WritableSignal<string>
+  +visible: Signal<AdminContentRowView[]>
+}
+class adminContentListFilter <<function>> {
+  +filterRows(rows: AdminContentRow[], text: string): AdminContentRow[]
+}
+class listAdminContent <<function>> {
+  +listAdminContent(kind: AdminContentKind, today: Date): Promise<AdminContentRow[]>
+}
+
+AdminContentRow --> ContentStatus
+AdminContentService <|-- HttpAdminContentService
+AdminContentListPageComponent ..> AdminContentService : injects
+AdminContentListPageComponent ..> adminContentListFilter : uses
+AdminContentListPageComponent "1" --> "*" AdminContentRowView : renders
+AdminContentRowView ..> AdminContentRow : derived from
+listAdminContent ..> AdminContentRow : returns
+listAdminContent ..> AdminContentKind
+@enduml

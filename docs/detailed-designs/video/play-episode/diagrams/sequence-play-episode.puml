@@ -1,0 +1,40 @@
+@startuml
+title UML sequence behaviour — Play an episode
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam roundcorner 12
+skinparam defaultFontName Arial
+skinparam ArrowColor #344054
+skinparam rectangle {
+  BorderColor #344054
+  FontColor #101828
+}
+skinparam package {
+  BorderColor #667085
+  FontColor #101828
+  BackgroundColor #F9FAFB
+}
+actor "Visitor" as actor
+box "Frontend — ShotThere web (Angular SSR)" #E0F2FE
+  participant "Review page" as page
+  participant "EpisodePlayerComponent" as player
+  participant "episode-urls.ts" as urls
+end box
+participant "YouTube" as youtube
+actor -> page : Open review with an episode
+page -> player : Render with videoId, episodeTitle, posterUrl
+player -> urls : watchUrl(videoId)
+urls --> player : Watch URL
+player --> actor : Poster link with Play episode control, no iframe (L2-047)
+player --> actor : Watch on YouTube link (L2-048)
+alt JavaScript enabled
+  actor -> player : Activate poster
+  player -> player : Prevent navigation, set playing true
+  player -> urls : embedUrl(videoId), iframeTitle(episodeTitle)
+  urls --> player : youtube-nocookie.com URL without autoplay, title
+  player -> youtube : Load iframe from youtube-nocookie.com (L2-047)
+  youtube --> actor : Embedded player, paused
+else JavaScript disabled
+  actor -> youtube : Follow poster link to watch page (L2-047)
+end
+@enduml

@@ -1,0 +1,17 @@
+@startuml
+!include <C4/C4_Container>
+LAYOUT_WITH_LEGEND()
+title Containers — Play an episode
+
+Person(visitor, "Visitor", "Watches episodes")
+System_Ext(youtube, "YouTube", "Serves the embed player and watch pages")
+System_Boundary(shotthere, "ShotThere") {
+  Container(web, "ShotThere web", "Angular SSR", "Renders the poster, iframe and footer links")
+  Container(api, "ShotThere API", "Next.js route handlers", "Returns review data with the episode video ID")
+  ContainerDb(db, "ShotThere database", "PostgreSQL", "Stores episode video IDs")
+}
+Rel(visitor, web, "Uses", "HTTPS")
+Rel(web, api, "Reads review data", "JSON/HTTPS")
+Rel(api, db, "Reads", "Prisma")
+Rel(web, youtube, "Loads iframe after poster activation", "youtube-nocookie.com")
+@enduml

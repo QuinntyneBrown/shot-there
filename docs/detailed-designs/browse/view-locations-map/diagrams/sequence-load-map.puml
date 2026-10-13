@@ -1,0 +1,51 @@
+@startuml
+title UML sequence behaviour — Load the map and filter by type
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam roundcorner 12
+skinparam defaultFontName Arial
+skinparam ArrowColor #344054
+skinparam rectangle {
+  BorderColor #344054
+  FontColor #101828
+}
+skinparam package {
+  BorderColor #667085
+  FontColor #101828
+  BackgroundColor #F9FAFB
+}
+actor "Visitor" as actor
+box "Frontend — ShotThere web (Angular SSR)" #E0F2FE
+  participant "MapPageComponent" as page
+  participant "LocationsMapComponent" as map
+  participant "HttpMapLocationsService" as client
+end box
+box "Backend — ShotThere API (Next.js route handlers)" #D1FADF
+  participant "app/api/map/locations/route.ts" as route
+end box
+box "Backend — ShotThere application (lib/)" #ECFDF3
+  participant "listMapLocations" as list
+end box
+box "Backend — Infrastructure (Prisma / object storage)" #FFF4E5
+  database "ShotThere database" as db
+end box
+actor -> page : Open the map view
+page -> page : parseMapViewQuery(queryParamMap)
+page -> client : listMapLocations()
+client -> route : GET /api/map/locations
+route -> list : listMapLocations()
+list -> db : Select published Studio with StudioFee and published Spot with PermitStatus
+db --> list : Rows, drafts excluded (L2-027)
+list -> list : Map to MapLocation with allInCost2h or permitSummary
+list --> route : MapLocation[]
+route --> client : 200 JSON
+client --> page : MapLocation[]
+page -> page : filterMapLocations(locations, type)
+page -> map : Render markers styled by kind, with legend (L2-027)
+map --> actor : Markers for studios and spots
+actor -> page : Set type filter to "Studios"
+page -> page : Navigate with toMapViewQueryParams(query)
+page -> page : filterMapLocations(locations, "studios")
+page -> map : Update markers
+map --> actor : Studio markers only (L2-027)
+@enduml

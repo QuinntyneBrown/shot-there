@@ -1,0 +1,55 @@
+@startuml
+title UML sequence behaviour — Regenerate after publish
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam roundcorner 12
+skinparam defaultFontName Arial
+skinparam ArrowColor #344054
+skinparam rectangle {
+  BorderColor #344054
+  FontColor #101828
+}
+skinparam package {
+  BorderColor #667085
+  FontColor #101828
+  BackgroundColor #F9FAFB
+}
+actor "Owner" as actor
+box "Frontend — ShotThere web (Angular SSR)" #E0F2FE
+  participant "Admin editor page" as page
+end box
+box "Backend — ShotThere API (Next.js route handlers)" #D1FADF
+  participant "Publish route handler" as route
+end box
+box "Backend — ShotThere application (lib/)" #ECFDF3
+  participant "Publish function" as publish
+  participant "recordSlugChange" as record
+  participant "affectedRoutes" as affected
+  participant "triggerRegeneration" as trigger
+end box
+box "Backend — Infrastructure (Prisma / object storage)" #FFF4E5
+  database "ShotThere database" as db
+end box
+participant "Hosting provider (TO SUPPLY)" as host
+actor -> page : Publish
+page -> route : POST publish
+route -> publish : Publish item
+publish -> db : Commit published state
+opt slug changed on a published item
+  publish -> record : recordSlugChange(type, old, new) (L2-075)
+  record -> db : Insert SlugRedirect and repoint older rows
+end
+publish -> affected : affectedRoutes(change)
+affected --> publish : Item page, list, map data, sitemap (L2-087)
+publish -> trigger : triggerRegeneration(routes)
+trigger -> host : Regenerate and purge routes
+alt provider accepts
+  host --> trigger : Accepted
+else provider error
+  host --> trigger : Error
+  trigger -> trigger : Log error; max-age=60 bounds staleness (L2-073)
+end
+publish --> route : Result
+route --> page : 200
+page --> actor : Published
+@enduml

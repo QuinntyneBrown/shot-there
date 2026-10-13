@@ -1,0 +1,73 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam roundcorner 8
+skinparam defaultFontName Arial
+skinparam ArrowColor #344054
+skinparam class {
+  BorderColor #344054
+  FontColor #101828
+  BackgroundColor #F9FAFB
+}
+title Class structure — Show studio test shots and gallery
+
+enum ImageKind {
+  testShot
+  gallery
+}
+class Image <<Prisma model>> {
+  +id: string
+  +studioId: string
+  +kind: ImageKind
+  +position: int
+  +alt: string
+  +caption: string?
+  +storageKey: string
+}
+class ImageVariant <<Prisma model>> {
+  +width: int
+  +url: string
+}
+class StudioDetailDto {
+  +testShots: ImageDto[]
+  +gallery: ImageDto[]
+}
+class ImageDto {
+  +id: string
+  +alt: string
+  +caption: string | null
+  +variants: ImageVariantDto[]
+}
+class ImageVariantDto {
+  +width: number
+  +url: string
+}
+class StudioPageComponent {
+  +studio: Signal<StudioDetailDto | undefined>
+}
+class StudioTestShotsComponent {
+  +testShots: InputSignal<ImageDto[]>
+}
+class StudioGalleryComponent {
+  +gallery: InputSignal<ImageDto[]>
+  +open(index: number): void
+}
+class GalleryLightboxDialogComponent {
+  +index: WritableSignal<number>
+  +next(): void
+  +previous(): void
+  +close(): void
+}
+class GalleryLightboxViewModel <<gallery-lightbox.view-model.ts>> {
+  +nextIndex(current: number, count: number): number
+  +previousIndex(current: number, count: number): number
+}
+Image "1" *-- "4" ImageVariant
+Image --> ImageKind
+StudioDetailDto "1" *-- "*" ImageDto
+ImageDto "1" *-- "*" ImageVariantDto
+StudioPageComponent *-- StudioTestShotsComponent
+StudioPageComponent *-- StudioGalleryComponent
+StudioGalleryComponent ..> GalleryLightboxDialogComponent : opens
+GalleryLightboxDialogComponent ..> GalleryLightboxViewModel : uses
+@enduml

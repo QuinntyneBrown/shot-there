@@ -1,0 +1,73 @@
+@startuml
+' --- shared skin header ---
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam roundcorner 8
+skinparam defaultFontName Arial
+skinparam ArrowColor #344054
+skinparam class {
+  BorderColor #344054
+  FontColor #101828
+  BackgroundColor #F9FAFB
+}
+' --------------------------
+title Class structure — Emit metadata and sitemap
+
+class PageMetadata {
+  +title: string
+  +description: string
+  +path: string
+  +ogImageUrl: string
+}
+
+class PageMetadataService {
+  -siteOrigin: string
+  +set(metadata: PageMetadata): void
+  +setJsonLd(data: object): void
+  +setNoIndex(): void
+}
+
+class SeoBuilders <<core/seo>> {
+  +buildStudioJsonLd(studio: StudioDto): object
+  +buildSpotJsonLd(spot: SpotDto): object
+}
+
+class StudioDto {
+  +name: string
+  +address: string
+  +overallScore: number
+  +ogImageUrl: string
+}
+
+class SpotDto {
+  +name: string
+  +latitude: number
+  +longitude: number
+}
+
+class SitemapEntryDto {
+  +path: string
+  +lastModified: string
+}
+
+abstract class SitemapService {
+  +list(): Promise<SitemapEntryDto[]>
+}
+class HttpSitemapService
+
+class SeoLib <<lib/seo>> {
+  +listSitemapEntries(): Promise<SitemapEntryDto[]>
+}
+
+class OgImageLib <<lib/images>> {
+  +generateOgImage(imageId: string, source: Buffer): Promise<string>
+}
+
+PageMetadataService ..> PageMetadata : writes
+SeoBuilders ..> StudioDto : maps
+SeoBuilders ..> SpotDto : maps
+SitemapService <|-- HttpSitemapService
+HttpSitemapService ..> SitemapEntryDto : returns
+SeoLib ..> SitemapEntryDto : builds
+OgImageLib ..> StudioDto : supplies ogImageUrl
+@enduml

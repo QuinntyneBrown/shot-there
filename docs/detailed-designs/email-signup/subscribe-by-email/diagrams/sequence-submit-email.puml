@@ -1,0 +1,71 @@
+@startuml
+title UML sequence behaviour — Submit an email
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam roundcorner 12
+skinparam defaultFontName Arial
+skinparam ArrowColor #344054
+skinparam rectangle {
+  BorderColor #344054
+  FontColor #101828
+}
+skinparam package {
+  BorderColor #667085
+  FontColor #101828
+  BackgroundColor #F9FAFB
+}
+actor "Visitor" as actor
+box "Frontend — ShotThere web (Angular SSR)" #E0F2FE
+  participant "EmailSignupComponent" as form
+  participant "HttpSubscriberService" as client
+end box
+box "Backend — ShotThere API (Next.js route handlers)" #D1FADF
+  participant "POST /api/subscribers" as route
+end box
+box "Backend — ShotThere application (lib/)" #ECFDF3
+  participant "checkRateLimit" as limit
+  participant "subscribe" as sub
+end box
+box "Backend — Infrastructure (Prisma / object storage)" #FFF4E5
+  database "ShotThere database" as db
+end box
+actor -> form : Enter email and submit
+form -> form : validateEmail (L2-039)
+alt empty or malformed
+  form --> actor : Mark field invalid, message via aria-describedby, no request (L2-039)
+else valid
+  form -> form : State submitting, button disabled and busy (L2-041)
+  form -> client : subscribe(email, sourcePath, website)
+  client -> route : POST JSON
+  route -> limit : Check client key
+  alt seventh request within one minute
+    limit --> route : Refused
+    route --> client : 429 (L2-040)
+    client --> form : Error 429
+    form --> actor : Ask to wait a minute, email kept (L2-041)
+  else within limit
+    limit --> route : Allowed
+    route -> route : subscribeSchema.parse (L2-040)
+    alt over 254 characters or invalid syntax
+      route --> client : 400 with validation message (L2-040)
+      client --> form : Error 400
+      form --> actor : Show error, email kept, button enabled (L2-041)
+    else valid body
+      route -> sub : subscribe(input)
+      opt honeypot website is empty
+        sub -> db : Upsert Subscriber with lowercase email, subscribedAt, sourcePath (L2-040)
+        db --> sub : Row stored or already present
+      end
+      sub --> route : Done
+      route --> client : 200, also for honeypot and repeat address (L2-040)
+      client --> form : Success
+      form --> actor : Replace form with confirmation in live region (L2-039)
+    end
+  end
+  opt server error
+    route --> client : 500
+    client --> form : Error 500
+    form --> actor : Show error, email kept, button enabled for retry (L2-041)
+  end
+end
+@enduml

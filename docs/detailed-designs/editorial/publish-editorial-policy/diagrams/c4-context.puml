@@ -1,0 +1,10 @@
+@startuml
+!include <C4/C4_Context>
+LAYOUT_WITH_LEGEND()
+title System Context — Publish the editorial policy
+
+Person(visitor, "Visitor", "Reads reviews and the editorial policy")
+System(shotthere, "ShotThere", "Review and comparison site for Toronto photo locations")
+
+Rel(visitor, shotthere, "Reads policy and sorted lists in", "HTTPS")
+@enduml

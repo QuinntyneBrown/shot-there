@@ -1,0 +1,64 @@
+@startuml
+title UML sequence behaviour — Request a public page
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam roundcorner 12
+skinparam defaultFontName Arial
+skinparam ArrowColor #344054
+skinparam rectangle {
+  BorderColor #344054
+  FontColor #101828
+}
+skinparam package {
+  BorderColor #667085
+  FontColor #101828
+  BackgroundColor #F9FAFB
+}
+actor "Visitor" as actor
+participant "CDN" as cdn
+box "Frontend — ShotThere web (Angular SSR)" #E0F2FE
+  participant "urlNormalisationMiddleware" as norm
+  participant "slugRedirectMiddleware" as redir
+  participant "HttpSlugRedirectService" as svc
+  participant "publicCacheHeaders" as cache
+  participant "AngularNodeAppEngine" as ssr
+end box
+box "Backend — ShotThere API (Next.js route handlers)" #D1FADF
+  participant "slug-redirects route.ts" as route
+end box
+box "Backend — ShotThere application (lib/)" #ECFDF3
+  participant "findSlugRedirect" as find
+end box
+box "Backend — Infrastructure (Prisma / object storage)" #FFF4E5
+  database "ShotThere database" as db
+end box
+actor -> cdn : GET /studios/{slug}
+alt cached and fresh
+  cdn --> actor : Cached HTML, backend not needed (L2-087)
+else cache miss or stale
+  cdn -> norm : Forward request
+  alt uppercase characters or trailing slash
+    norm --> cdn : 301 to lowercase URL without slash (L2-075)
+  else canonical path
+    norm -> redir : Next
+    opt slug matches no published item
+      redir -> svc : find(type, slug)
+      svc -> route : GET /api/slug-redirects/{type}/{slug}
+      route -> find : findSlugRedirect(type, slug)
+      find -> db : Select SlugRedirect
+      db --> find : Row or none
+      find --> route : Result
+      route --> svc : 200 SlugRedirectDto or 404
+      svc --> redir : Dto or null
+      opt redirect found
+        redir --> cdn : 301 to new URL (L2-075)
+      end
+    end
+    redir -> cache : Next
+    cache -> ssr : Serve prerendered or render HTML (L2-074)
+    ssr --> cache : Full HTML
+    cache --> cdn : HTML with public, max-age=60 (L2-073)
+  end
+  cdn --> actor : Response
+end
+@enduml

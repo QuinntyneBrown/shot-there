@@ -1,0 +1,20 @@
+@startuml
+!include <C4/C4_Container>
+LAYOUT_WITH_LEGEND()
+title Containers — Deliver public pages
+
+Person(visitor, "Visitor", "Reads public pages")
+Person(owner, "Owner", "Publishes reviews")
+System_Ext(cdn, "CDN", "Edge cache for HTML and images")
+System_Boundary(shotthere, "ShotThere") {
+  Container(web, "ShotThere web", "Angular SSR", "Prerenders and server-renders public pages; normalises URLs; sets cache headers")
+  Container(api, "ShotThere API", "Next.js route handlers", "Public routes, slug redirects, regeneration trigger")
+  ContainerDb(db, "ShotThere database", "PostgreSQL", "Published content and SlugRedirect rows")
+}
+Rel(visitor, cdn, "Requests pages", "HTTPS")
+Rel(cdn, web, "Fetches on cache miss", "HTTPS")
+Rel(owner, web, "Publishes through admin screens", "HTTPS")
+Rel(web, api, "Reads public routes and redirects", "JSON/HTTPS")
+Rel(api, db, "Reads and writes", "Prisma")
+Rel(api, cdn, "Requests regeneration of affected routes", "TO SUPPLY")
+@enduml

@@ -1,0 +1,12 @@
+@startuml
+!include <C4/C4_Context>
+LAYOUT_WITH_LEGEND()
+title System Context — Build the app shell
+
+Person(visitor, "Visitor", "Reads reviews and compares places to shoot")
+Person(owner, "Owner", "Manages ShotThere content")
+System(shotthere, "ShotThere", "Review and comparison site for Toronto photo locations")
+
+Rel(visitor, shotthere, "Navigates public screens through the shell", "HTTPS")
+Rel(owner, shotthere, "Navigates administration screens through the shell", "HTTPS")
+@enduml

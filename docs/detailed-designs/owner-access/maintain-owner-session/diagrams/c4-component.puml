@@ -1,0 +1,35 @@
+@startuml
+!include <C4/C4_Component>
+LAYOUT_WITH_LEGEND()
+title Components — Maintain the owner session
+
+Container_Boundary(web, "ShotThere web") {
+  Component(guard, "ownerSessionGuard", "Angular CanMatchFn", "Redirects to sign-in with returnUrl")
+  Component(interceptor, "adminUnauthorizedInterceptor", "Angular HttpInterceptorFn", "Redirects on 401 from admin APIs")
+  Component(signout, "SignOutButtonComponent", "Angular standalone component", "Starts sign-out")
+  Component(svc, "AuthService / HttpAuthService", "Angular service", "getSession(), signOut()")
+}
+Container_Boundary(api, "ShotThere API") {
+  Component(mw, "middleware.ts", "Next.js middleware", "Rejects /api/admin/* without cookie")
+  Component(admin, "app/api/admin/**/route.ts", "Next.js route handlers", "Administration endpoints")
+  Component(require, "requireOwnerSession", "lib/auth", "First call in every admin handler")
+  Component(validate, "validateOwnerSession", "lib/auth", "Idle 12 h and absolute 7 d checks")
+  Component(sessionRoute, "app/api/auth/session/route.ts", "Next.js route handler", "Reports signed-in state")
+  Component(outRoute, "app/api/auth/sign-out/route.ts", "Next.js route handler", "Clears st_session")
+  Component(outFn, "signOutOwner", "lib/auth", "Deletes OwnerSession row")
+}
+ComponentDb(db, "ShotThere database", "PostgreSQL", "OwnerSession")
+
+Rel(guard, svc, "getSession()")
+Rel(signout, svc, "signOut()")
+Rel(svc, sessionRoute, "GET /api/auth/session", "JSON/HTTPS")
+Rel(svc, outRoute, "POST /api/auth/sign-out", "JSON/HTTPS")
+Rel(interceptor, admin, "Observes 401 from", "JSON/HTTPS")
+Rel(mw, admin, "Forwards when cookie present")
+Rel(admin, require, "Calls first")
+Rel(require, validate, "Calls")
+Rel(sessionRoute, validate, "Calls")
+Rel(outRoute, outFn, "Calls")
+Rel(validate, db, "Reads and touches OwnerSession", "Prisma")
+Rel(outFn, db, "Deletes OwnerSession", "Prisma")
+@enduml

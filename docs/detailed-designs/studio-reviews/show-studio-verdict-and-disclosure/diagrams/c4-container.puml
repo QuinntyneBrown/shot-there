@@ -1,0 +1,16 @@
+@startuml
+!include <C4/C4_Container>
+LAYOUT_WITH_LEGEND()
+title Containers — Show studio verdict and disclosure
+
+Person(visitor, "Visitor", "Photographer comparing Toronto rental studios")
+System_Boundary(shotthere, "ShotThere") {
+  Container(web, "ShotThere web", "Angular SSR", "Renders the studio review page")
+  Container(api, "ShotThere API", "Next.js route handlers", "Serves published studio data as JSON")
+  ContainerDb(db, "ShotThere database", "PostgreSQL", "Studios and their review data")
+}
+
+Rel(visitor, web, "Opens a studio page", "HTTPS")
+Rel(web, api, "GET /api/studios/[slug]", "JSON/HTTPS")
+Rel(api, db, "Reads published studio", "Prisma")
+@enduml

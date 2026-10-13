@@ -1,0 +1,57 @@
+@startuml
+' --- shared skin header ---
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam roundcorner 8
+skinparam defaultFontName Arial
+skinparam ArrowColor #344054
+skinparam class {
+  BorderColor #344054
+  FontColor #101828
+  BackgroundColor #F9FAFB
+}
+' --------------------------
+title Class structure — List studios
+
+class StudioListPageComponent {
+  +state: Signal<StudioListState>
+  +retry(): void
+  -load(): void
+}
+class StudioCardComponent {
+  +studio: InputSignal<StudioSummary>
+}
+class StudioListState <<type>> {
+  +status: "loading" | "loaded" | "error"
+  +studios?: StudioSummary[]
+}
+abstract class StudiosService {
+  +{abstract} listStudios(): Observable<StudioSummary[]>
+}
+class HttpStudiosService {
+  -http: HttpClient
+  +listStudios(): Observable<StudioSummary[]>
+}
+class StudioSummary <<DTO>> {
+  +slug: string
+  +name: string
+  +neighbourhood: string
+  +allInCost2h: number
+  +overallScore: number
+  +priceStale: boolean
+  +reviewedAt: string
+  +thumbnail: ImageRef
+}
+class "listStudios" as ListStudiosFn <<function>> {
+  +listStudios(): Promise<StudioSummary[]>
+}
+
+StudiosService <|-- HttpStudiosService
+StudioListPageComponent ..> StudiosService : injects
+StudioListPageComponent --> StudioListState : holds
+StudioListPageComponent ..> StudioCardComponent : renders
+StudioCardComponent --> StudioSummary : displays
+StudioListState o-- "*" StudioSummary
+HttpStudiosService ..> StudioSummary : returns
+ListStudiosFn ..> StudioSummary : builds
+@enduml

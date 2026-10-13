@@ -1,0 +1,15 @@
+@startuml
+!include <C4/C4_Container>
+LAYOUT_WITH_LEGEND()
+title Containers — List content in the administration area
+
+Person(owner, "Owner", "Creates and maintains ShotThere content")
+System_Boundary(shotthere, "ShotThere") {
+  Container(web, "ShotThere web", "Angular SSR", "Public and administration screens")
+  Container(api, "ShotThere API", "Next.js route handlers", "Owner-only admin API")
+  ContainerDb(db, "ShotThere database", "PostgreSQL", "Studios, spots and guides")
+}
+Rel(owner, web, "Opens a list screen in", "HTTPS")
+Rel(web, api, "GET /api/admin/studios, /spots or /guides", "JSON/HTTPS")
+Rel(api, db, "Reads draft and published rows", "Prisma")
+@enduml

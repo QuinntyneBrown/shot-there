@@ -1,0 +1,77 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam roundcorner 8
+skinparam defaultFontName Arial
+skinparam ArrowColor #344054
+skinparam class {
+  BorderColor #344054
+  FontColor #101828
+  BackgroundColor #F9FAFB
+}
+title Class structure — Show studio verdict and disclosure
+
+enum DisclosureKind {
+  paidFull
+  discounted
+  comped
+}
+class Studio <<Prisma model>> {
+  +whoItsFor: string
+  +whoShouldSkip: string
+  +scoreValue: int
+  +scoreLight: int
+  +scoreSpace: int
+  +scoreGear: int
+  +scoreLogistics: int
+  +scoreCondition: int
+  +disclosure: DisclosureKind
+  +disclosureProvider: string?
+}
+class StudioDetailDto {
+  +verdict: StudioVerdictDto
+  +disclosure: StudioDisclosureDto
+}
+class StudioVerdictDto {
+  +whoItsFor: string
+  +whoShouldSkip: string
+  +scores: RubricScoresDto
+  +overallScore: number
+}
+class RubricScoresDto {
+  +value: number
+  +light: number
+  +space: number
+  +gear: number
+  +logistics: number
+  +condition: number
+}
+class StudioDisclosureDto {
+  +kind: DisclosureKind
+  +provider: string | null
+}
+class StudioPageComponent {
+  +studio: Signal<StudioDetailDto | undefined>
+}
+class StudioVerdictComponent {
+  +verdict: InputSignal<StudioVerdictDto>
+}
+class StudioDisclosureComponent {
+  +disclosure: InputSignal<StudioDisclosureDto>
+}
+class DisclosureViewModel <<studio-disclosure.view-model.ts>> {
+  +message(dto: StudioDisclosureDto): string
+}
+class ComputeOverallScore <<lib/studios/compute-overall-score.ts>> {
+  +computeOverallScore(scores: RubricScoresDto): number
+}
+Studio --> DisclosureKind
+StudioDetailDto *-- StudioVerdictDto
+StudioDetailDto *-- StudioDisclosureDto
+StudioVerdictDto *-- RubricScoresDto
+StudioDisclosureDto --> DisclosureKind
+StudioPageComponent *-- StudioVerdictComponent
+StudioPageComponent *-- StudioDisclosureComponent
+StudioDisclosureComponent ..> DisclosureViewModel : uses
+ComputeOverallScore ..> RubricScoresDto : reads
+@enduml

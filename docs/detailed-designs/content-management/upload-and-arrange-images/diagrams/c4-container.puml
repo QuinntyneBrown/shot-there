@@ -1,0 +1,19 @@
+@startuml
+!include <C4/C4_Container>
+LAYOUT_WITH_LEGEND()
+title Containers — Upload and arrange images
+
+Person(owner, "Owner", "Manages images")
+System_Ext(cdn, "CDN", "Serves image variants")
+System_Boundary(shotthere, "ShotThere") {
+  Container(web, "ShotThere web", "Angular SSR", "Editor image lists")
+  Container(api, "ShotThere API", "Next.js route handlers", "Upload inspection, variants and ordering")
+  ContainerDb(db, "ShotThere database", "PostgreSQL", "Image and ImageVariant rows")
+  ContainerDb(storage, "Image store", "Object storage", "Original and variant objects under server keys")
+}
+Rel(owner, web, "Uses", "HTTPS")
+Rel(web, api, "Uploads files and saves order", "multipart and JSON/HTTPS")
+Rel(api, db, "Reads and writes image rows", "Prisma")
+Rel(api, storage, "Puts and deletes objects", "S3 API")
+Rel(cdn, storage, "Fetches objects", "HTTPS")
+@enduml

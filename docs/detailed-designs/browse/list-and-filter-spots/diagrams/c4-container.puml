@@ -1,0 +1,17 @@
+@startuml
+!include <C4/C4_Container>
+LAYOUT_WITH_LEGEND()
+title Containers — List and filter outdoor spots
+
+Person(visitor, "Visitor", "Browses outdoor spots")
+System_Boundary(shotthere, "ShotThere") {
+  Container(web, "ShotThere web", "Angular SSR", "Renders the spot list and filters")
+  Container(api, "ShotThere API", "Next.js route handlers", "Returns filtered published spots")
+  ContainerDb(db, "ShotThere database", "PostgreSQL", "Spots, permit statuses and images")
+  ContainerDb(storage, "Image store", "Object storage", "Thumbnail variants")
+}
+Rel(visitor, web, "Opens the spot list", "HTTPS")
+Rel(web, api, "GET /api/spots?type=..&use=..&permit=..", "JSON/HTTPS")
+Rel(api, db, "Reads published spots", "Prisma")
+Rel(visitor, storage, "Loads thumbnails", "HTTPS via CDN")
+@enduml

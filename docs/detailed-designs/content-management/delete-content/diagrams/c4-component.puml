@@ -1,0 +1,26 @@
+@startuml
+!include <C4/C4_Component>
+LAYOUT_WITH_LEGEND()
+title Components — Delete content
+
+Container_Boundary(web, "ShotThere web") {
+  Component(editor, "Studio / Spot / Guide editor page", "Angular page", "Hosts the Delete action")
+  Component(dialog, "DeleteContentDialogComponent", "Angular dialog", "Names the item and confirms")
+  Component(svc, "ContentDeletionService / HttpContentDeletionService", "libs/api", "Calls the delete endpoints")
+}
+Container_Boundary(api, "ShotThere API") {
+  Component(route, "app/api/admin/studios|spots|guides/[id]/route.ts", "Route handler", "DELETE handler")
+  Component(delLoc, "lib/deletion/delete-location.ts", "Application function", "Deletes a draft studio or spot")
+  Component(delGuide, "lib/deletion/delete-guide.ts", "Application function", "Deletes a draft guide")
+  Component(store, "lib/storage/object-store.ts", "S3 client", "deleteObjects")
+  ComponentDb(db, "ShotThere database", "PostgreSQL", "Studio, Spot, Guide, GuideEntry, Image, ImageVariant")
+}
+Rel(editor, dialog, "Opens")
+Rel(editor, svc, "Calls after confirmation")
+Rel(svc, route, "DELETE", "JSON/HTTPS")
+Rel(route, delLoc, "Calls")
+Rel(route, delGuide, "Calls")
+Rel(delLoc, db, "Deletes in one transaction", "Prisma")
+Rel(delGuide, db, "Deletes in one transaction", "Prisma")
+Rel(delLoc, store, "Deletes image objects after commit")
+@enduml

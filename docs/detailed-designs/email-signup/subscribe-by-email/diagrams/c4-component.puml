@@ -1,0 +1,27 @@
+@startuml
+!include <C4/C4_Component>
+LAYOUT_WITH_LEGEND()
+title Components — Subscribe by email
+
+Container_Boundary(web, "ShotThere web") {
+  Component(form, "EmailSignupComponent", "Angular standalone component", "Footer and home-page signup form")
+  Component(rules, "signup-form.ts", "TypeScript functions", "validateEmail and toSignupState")
+  Component(contract, "SubscriberService", "Abstract class, DI token", "Signup contract")
+  Component(http, "HttpSubscriberService", "Angular HttpClient", "Sends POST /api/subscribers")
+}
+Container_Boundary(api, "ShotThere API") {
+  Component(route, "app/api/subscribers/route.ts", "Next.js route handler", "POST endpoint")
+  Component(limit, "checkRateLimit", "lib/subscribers/check-rate-limit.ts", "Six requests per minute per client")
+  Component(schema, "subscribeSchema", "zod schema", "Server-side validation")
+  Component(sub, "subscribe", "lib/subscribers/subscribe.ts", "Honeypot check, lowercase, upsert")
+  ComponentDb(db, "ShotThere database", "PostgreSQL", "Subscriber table")
+}
+Rel(form, rules, "Validates and maps status with")
+Rel(form, contract, "Calls subscribe()")
+Rel(http, contract, "Implements")
+Rel(http, route, "POST", "JSON/HTTPS")
+Rel(route, limit, "Checks client key")
+Rel(route, schema, "Parses body")
+Rel(route, sub, "Calls")
+Rel(sub, db, "Upserts", "Prisma")
+@enduml

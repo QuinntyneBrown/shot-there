@@ -1,0 +1,17 @@
+@startuml
+!include <C4/C4_Container>
+LAYOUT_WITH_LEGEND()
+title Containers — View a side-by-side comparison
+
+Person(visitor, "Visitor", "Plans a photo shoot in Toronto")
+System_Boundary(shotthere, "ShotThere") {
+  Container(web, "ShotThere web", "Angular SSR", "Renders the comparison page on the server")
+  Container(api, "ShotThere API", "Next.js route handlers", "GET /api/compare")
+  ContainerDb(db, "ShotThere database", "PostgreSQL", "Studios, fees, gear, images")
+  ContainerDb(storage, "Image store", "Object storage", "Test-shot image variants")
+}
+Rel(visitor, web, "Opens /compare?studios=a,b", "HTTPS")
+Rel(web, api, "Calls", "JSON/HTTPS")
+Rel(api, db, "Reads", "Prisma")
+Rel(visitor, storage, "Loads test shots", "HTTPS via CDN")
+@enduml

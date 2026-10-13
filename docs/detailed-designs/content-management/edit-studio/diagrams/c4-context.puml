@@ -1,0 +1,10 @@
+@startuml
+!include <C4/C4_Context>
+LAYOUT_WITH_LEGEND()
+title System Context — Create and edit a studio
+
+Person(owner, "Owner", "Creates and maintains ShotThere content")
+System(shotthere, "ShotThere", "Review and comparison site for Toronto photo locations")
+
+Rel(owner, shotthere, "Creates and edits studio records in", "HTTPS")
+@enduml

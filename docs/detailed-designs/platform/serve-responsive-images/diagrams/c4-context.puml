@@ -1,0 +1,15 @@
+@startuml
+!include <C4/C4_Context>
+LAYOUT_WITH_LEGEND()
+title System Context — Serve responsive images
+
+Person(visitor, "Visitor", "Views galleries on public pages")
+Person(owner, "Owner", "Uploads gallery images")
+System(shotthere, "ShotThere", "Review and comparison site for Toronto photo locations")
+System_Ext(cdn, "CDN", "Caches and serves image variants")
+
+Rel(owner, shotthere, "Uploads originals to", "HTTPS")
+Rel(visitor, shotthere, "Reads pages with picture markup from", "HTTPS")
+Rel(visitor, cdn, "Downloads image variants from", "HTTPS")
+Rel(cdn, shotthere, "Fetches uncached variants from", "HTTPS")
+@enduml

@@ -1,0 +1,82 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam roundcorner 8
+skinparam defaultFontName Arial
+skinparam ArrowColor #344054
+skinparam class {
+  BorderColor #344054
+  FontColor #101828
+  BackgroundColor #F9FAFB
+}
+title Class structure — Publish and unpublish a location
+
+enum LocationStatus {
+  draft
+  published
+}
+enum LocationKind {
+  studio
+  spot
+}
+enum Disclosure {
+  paid_in_full
+  discounted
+  comped
+}
+class PublishResult {
+  +status: LocationStatus
+  +publishedAt: string
+}
+class MissingFieldsProblem {
+  +title: string
+  +missingFields: string[]
+}
+class PublishabilityCheck {
+  +publishable: boolean
+  +missingFields: string[]
+}
+abstract class PublishingService {
+  +publish(kind: LocationKind, id: string): Observable<PublishResult>
+  +unpublish(kind: LocationKind, id: string): Observable<PublishResult>
+}
+class HttpPublishingService {
+  -http: HttpClient
+}
+class MissingFieldsDialogComponent {
+  +missingFields: string[]
+  +focusField: string
+}
+class UnpublishDialogComponent {
+  +locationName: string
+}
+class "check-publishable.ts" as check {
+  +checkStudioPublishable(studio): PublishabilityCheck
+  +checkSpotPublishable(spot): PublishabilityCheck
+}
+class "publish-location.ts" as pub {
+  +publishLocation(kind: LocationKind, id: string): Promise<PublishResult>
+}
+class "unpublish-location.ts" as unpub {
+  +unpublishLocation(kind: LocationKind, id: string): Promise<PublishResult>
+}
+class "revalidate-public-pages.ts" as reval {
+  +revalidatePublicPages(kind: LocationKind, slug: string): Promise<void>
+}
+class "published-only.ts" as po {
+  +publishedOnly: Prisma where clause
+}
+PublishingService <|-- HttpPublishingService
+HttpPublishingService ..> PublishResult : returns
+HttpPublishingService ..> MissingFieldsProblem : maps 422
+pub ..> check : calls
+pub ..> reval : calls
+pub ..> MissingFieldsProblem : returns when incomplete
+unpub ..> reval : calls
+check --> PublishabilityCheck : returns
+check ..> Disclosure : requires
+pub --> LocationStatus : sets published
+unpub --> LocationStatus : sets draft
+po --> LocationStatus : filters published
+MissingFieldsDialogComponent ..> MissingFieldsProblem : displays
+@enduml

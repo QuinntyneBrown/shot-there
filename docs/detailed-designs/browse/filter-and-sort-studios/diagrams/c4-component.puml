@@ -1,0 +1,32 @@
+@startuml
+!include <C4/C4_Component>
+LAYOUT_WITH_LEGEND()
+title Components — Filter and sort studios
+
+Container_Boundary(web, "ShotThere web") {
+  Component(page, "StudioListPageComponent", "Angular standalone component", "Derives the query from the URL")
+  Component(parse, "parseStudioListQuery / toStudioListQueryParams", "Plain TypeScript", "URL state rules beside the page")
+  Component(filters, "StudioFiltersComponent", "Angular standalone component", "Filter controls in the LG sidebar")
+  Component(dialog, "StudioFiltersDialogComponent", "Angular standalone component", "Full-height filter dialog at XS")
+  Component(sort, "StudioSortControlComponent", "Angular standalone component", "Sort control with live announcement")
+  Component(svc, "StudiosService", "Abstract class / DI token", "listStudios(query)")
+  Component(http, "HttpStudiosService", "Angular service", "Calls GET /api/studios")
+}
+Container_Boundary(api, "ShotThere API") {
+  Component(route, "app/api/studios/route.ts", "Next.js route handler", "Parses searchParams")
+  Component(schema, "studioListQuerySchema", "zod, lib/studios/schemas.ts", "Lenient query validation")
+  Component(list, "listStudios", "lib/studios/list-studios.ts", "Applies filters and sort")
+  ComponentDb(db, "ShotThere database", "PostgreSQL", "Studio, StudioFee, GearItem")
+}
+
+Rel(page, parse, "Parses and serializes the query")
+Rel(page, filters, "Renders at LG and above")
+Rel(page, dialog, "Opens at XS")
+Rel(page, sort, "Renders")
+Rel(page, svc, "Calls listStudios(query)")
+Rel(http, svc, "Implements")
+Rel(http, route, "GET /api/studios", "JSON/HTTPS")
+Rel(route, schema, "Validates with")
+Rel(route, list, "Calls")
+Rel(list, db, "Queries published studios", "Prisma")
+@enduml

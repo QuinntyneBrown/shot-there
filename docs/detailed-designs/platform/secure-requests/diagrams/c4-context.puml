@@ -1,0 +1,16 @@
+@startuml
+!include <C4/C4_Context>
+LAYOUT_WITH_LEGEND()
+title System Context — Secure requests
+
+Person(visitor, "Visitor", "Reads published reviews")
+Person(owner, "Owner", "Edits content through administration screens")
+System(shotthere, "ShotThere", "Review and comparison site for Toronto photo locations")
+System_Ext(youtube, "YouTube", "Hosts episodes embedded from youtube-nocookie.com")
+System_Ext(maps, "Map tile provider", "Serves map tiles and frames")
+
+Rel(visitor, shotthere, "Reads pages", "HTTPS only")
+Rel(owner, shotthere, "Sends CSRF-protected writes", "HTTPS only")
+Rel(shotthere, youtube, "Allows frames from via CSP")
+Rel(shotthere, maps, "Allows frames from via CSP")
+@enduml

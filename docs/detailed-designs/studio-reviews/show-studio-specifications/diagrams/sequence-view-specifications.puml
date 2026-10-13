@@ -1,0 +1,61 @@
+@startuml
+title UML sequence behaviour — View specifications, gear and logistics
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam roundcorner 12
+skinparam defaultFontName Arial
+skinparam ArrowColor #344054
+skinparam rectangle {
+  BorderColor #344054
+  FontColor #101828
+}
+skinparam package {
+  BorderColor #667085
+  FontColor #101828
+  BackgroundColor #F9FAFB
+}
+actor "Visitor" as visitor
+box "Frontend — ShotThere web (Angular SSR)" #E0F2FE
+  participant "StudioPageComponent" as page
+  participant "StudioSpecificationsComponent" as specs
+  participant "StudioGearComponent" as gear
+  participant "StudioLogisticsComponent" as logi
+  participant "HttpStudioService" as svc
+end box
+box "Backend — ShotThere API (Next.js route handlers)" #D1FADF
+  participant "GET /api/studios/[slug]" as route
+end box
+box "Backend — ShotThere application (lib/)" #ECFDF3
+  participant "getStudio" as get
+end box
+box "Backend — Infrastructure (Prisma / object storage)" #FFF4E5
+  database "ShotThere database" as db
+end box
+visitor -> page : Open the studio page for a slug
+page -> svc : getStudio(slug)
+svc -> route : GET /api/studios/[slug]
+route -> get : getStudio(slug, today)
+get -> db : Find Studio by slug where published (L2-001)
+db --> get : Studio with related rows or none
+alt published studio found
+  get -> get : Split GearItem rows into included and extras (L2-007)
+  get --> route : StudioDetailDto
+  route --> svc : 200 JSON
+  svc --> page : StudioDetailDto
+  page -> specs : specifications
+  specs --> visitor : m and ft dimensions, four light ratings, power, cyc wall Yes or No (L2-006)
+  page -> gear : gear
+  alt extras list empty
+    gear --> visitor : Included list and nothing-costs-extra statement (L2-007)
+  else extras present
+    gear --> visitor : Included list with quantities, extras with CAD price (L2-007)
+  end
+  page -> logi : logistics
+  logi --> visitor : Load-in with note, changing area or None, other rows (L2-008)
+else studio missing or draft
+  get --> route : null
+  route --> svc : 404
+  svc --> page : Not found
+  page --> visitor : Show not-found page
+end
+@enduml

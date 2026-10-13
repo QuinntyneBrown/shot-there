@@ -1,0 +1,10 @@
+@startuml
+!include <C4/C4_Context>
+LAYOUT_WITH_LEGEND()
+title System Context — Create, edit and publish a guide
+
+Person(owner, "Owner", "Creates and maintains ShotThere content")
+System(shotthere, "ShotThere", "Review and comparison site for Toronto photo locations")
+
+Rel(owner, shotthere, "Composes and publishes guides in", "HTTPS")
+@enduml

@@ -1,0 +1,15 @@
+@startuml
+!include <C4/C4_Container>
+LAYOUT_WITH_LEGEND()
+title Containers — Set the episode video
+
+Person(owner, "Owner", "Manages content")
+System_Boundary(shotthere, "ShotThere") {
+  Container(web, "ShotThere web", "Angular SSR", "Editor video field")
+  Container(api, "ShotThere API", "Next.js route handlers", "Extracts and validates the video ID")
+  ContainerDb(db, "ShotThere database", "PostgreSQL", "Studio and Spot videoId")
+}
+Rel(owner, web, "Uses", "HTTPS")
+Rel(web, api, "Saves location", "JSON/HTTPS")
+Rel(api, db, "Writes videoId", "Prisma")
+@enduml

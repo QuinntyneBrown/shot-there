@@ -1,0 +1,79 @@
+@startuml
+' --- shared skin header ---
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam roundcorner 8
+skinparam defaultFontName Arial
+skinparam ArrowColor #344054
+skinparam class {
+  BorderColor #344054
+  FontColor #101828
+  BackgroundColor #F9FAFB
+}
+' --------------------------
+title Class structure — Deliver public pages
+
+enum ContentType {
+  studio
+  spot
+  guide
+}
+
+class SlugRedirect <<Prisma model>> {
+  +id: string
+  +type: ContentType
+  +fromSlug: string
+  +toSlug: string
+  +createdAt: Date
+}
+
+class SlugRedirectDto {
+  +type: ContentType
+  +fromSlug: string
+  +toSlug: string
+  +location: string
+}
+
+class PublicRoutesDto {
+  +studios: string[]
+  +spots: string[]
+  +guides: string[]
+}
+
+class PublishChange {
+  +type: ContentType
+  +slug: string
+  +previousSlug: string
+}
+
+abstract class SlugRedirectService {
+  +find(type: ContentType, slug: string): Promise<SlugRedirectDto>
+}
+class HttpSlugRedirectService
+
+abstract class PublicRoutesService {
+  +list(): Promise<PublicRoutesDto>
+}
+class HttpPublicRoutesService
+
+class SlugsLib <<lib/slugs>> {
+  +toSlug(name: string): string
+  +findSlugRedirect(type: ContentType, slug: string): Promise<SlugRedirect>
+  +recordSlugChange(type: ContentType, oldSlug: string, newSlug: string): Promise<void>
+}
+
+class PublishingLib <<lib/publishing>> {
+  +listPublicRoutes(): Promise<PublicRoutesDto>
+  +affectedRoutes(change: PublishChange): string[]
+  +triggerRegeneration(routes: string[]): Promise<void>
+}
+
+SlugRedirectService <|-- HttpSlugRedirectService
+PublicRoutesService <|-- HttpPublicRoutesService
+HttpSlugRedirectService ..> SlugRedirectDto : returns
+HttpPublicRoutesService ..> PublicRoutesDto : returns
+SlugRedirect --> ContentType : has
+SlugsLib ..> SlugRedirect : reads / writes
+PublishingLib ..> PublishChange : consumes
+PublishingLib ..> PublicRoutesDto : builds
+@enduml

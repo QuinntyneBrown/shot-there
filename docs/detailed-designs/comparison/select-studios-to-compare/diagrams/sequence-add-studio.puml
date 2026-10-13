@@ -1,0 +1,37 @@
+@startuml
+title UML sequence behaviour — Add a studio to the comparison
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam roundcorner 12
+skinparam defaultFontName Arial
+skinparam ArrowColor #344054
+skinparam rectangle {
+  BorderColor #344054
+  FontColor #101828
+}
+skinparam package {
+  BorderColor #667085
+  FontColor #101828
+  BackgroundColor #F9FAFB
+}
+actor "Visitor" as actor
+box "Frontend — ShotThere web (Angular SSR)" #E0F2FE
+  participant "CompareToggleComponent" as toggle
+  participant "CompareSelectionService" as svc
+  participant "CompareSelectionStore" as store
+  participant "LiveAnnouncer" as announcer
+end box
+actor -> toggle : Activate "Compare"
+toggle -> svc : add(slug, name)
+alt selection already holds 4 studios (L2-030)
+  svc --> toggle : limit-reached
+  toggle -> announcer : Announce "maximum of 4"
+  toggle --> actor : Show limit message
+else room in selection
+  svc -> svc : Append item, update signal
+  svc -> store : save(items) to localStorage (L2-030 reload)
+  store --> svc : saved or storage unavailable
+  svc --> toggle : added
+  toggle --> actor : Control reads "Remove"; bar shows "N selected"
+end
+@enduml

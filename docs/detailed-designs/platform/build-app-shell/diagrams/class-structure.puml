@@ -1,0 +1,60 @@
+@startuml
+' --- shared skin header ---
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam roundcorner 8
+skinparam defaultFontName Arial
+skinparam ArrowColor #344054
+skinparam class {
+  BorderColor #344054
+  FontColor #101828
+  BackgroundColor #F9FAFB
+}
+' --------------------------
+title Class structure — Build the app shell
+
+interface NavLink {
+  +path: string
+  +label: string
+}
+class ShellComponent
+class SkipLinkComponent {
+  +skipToMain(event: Event): void
+}
+class HeaderComponent {
+  +menuOpen: WritableSignal<boolean>
+  +links: NavLink[]
+  +toggleMenu(): void
+  +closeMenu(): void
+}
+class SiteFooterComponent {
+  +links: NavLink[]
+}
+class APP_PATHS <<const>> {
+  +home: string
+  +studios: string
+  +spots: string
+  +guides: string
+}
+class PAGE_TITLES <<const>> {
+  +suffix: string
+}
+abstract class TitleStrategy
+class ShotThereTitleStrategy {
+  +updateTitle(snapshot: RouterStateSnapshot): void
+}
+class AnnouncerService {
+  +announcePolite(message: string): Promise<void>
+}
+class LiveAnnouncer
+
+ShellComponent *-- SkipLinkComponent
+ShellComponent *-- HeaderComponent
+ShellComponent *-- SiteFooterComponent
+HeaderComponent "1" --> "*" NavLink
+SiteFooterComponent "1" --> "*" NavLink
+NavLink ..> APP_PATHS : path from
+TitleStrategy <|-- ShotThereTitleStrategy
+ShotThereTitleStrategy ..> PAGE_TITLES : reads
+AnnouncerService --> LiveAnnouncer : wraps
+@enduml

@@ -1,0 +1,114 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam roundcorner 8
+skinparam defaultFontName Arial
+skinparam ArrowColor #344054
+skinparam class {
+  BorderColor #344054
+  FontColor #101828
+  BackgroundColor #F9FAFB
+}
+title Class structure — Upload and arrange images
+
+enum ImageRole {
+  gallery
+  test_shot
+  sample_shot
+}
+enum UploadState {
+  queued
+  uploading
+  done
+  failed
+}
+class Image {
+  +id: string
+  +role: ImageRole
+  +storageKey: string
+  +contentType: string
+  +originalName: string
+  +altText: string
+  +sortOrder: number
+  +width: number
+  +height: number
+}
+class ImageVariant {
+  +id: string
+  +imageId: string
+  +width: number
+  +storageKey: string
+  +contentType: string
+}
+class UploadedImageDto {
+  +id: string
+  +role: ImageRole
+  +altText: string
+  +sortOrder: number
+  +variants: ImageVariantDto[]
+}
+class ImageOrderItem {
+  +id: string
+  +altText: string
+  +sortOrder: number
+}
+class UploadQueueItem {
+  +file: File
+  +state: UploadState
+  +progress: number
+  +error: string
+}
+class ImageUploadQueue {
+  +items: Signal<UploadQueueItem[]>
+  +busy: Signal<boolean>
+  +validate(file: File): string
+  +retry(item: UploadQueueItem): void
+}
+abstract class ImageService {
+  +upload(ownerRef, role: ImageRole, file: File): Observable<HttpEvent<UploadedImageDto>>
+  +remove(id: string): Observable<void>
+}
+class HttpImageService {
+  -http: HttpClient
+}
+class ImageListComponent {
+  +images: UploadedImageDto[]
+  +moveUp(index: number): void
+  +moveDown(index: number): void
+  +remove(index: number): void
+}
+class "upload-image.ts" as up {
+  +uploadImage(input): Promise<UploadedImageDto>
+}
+class "inspect-image.ts" as ins {
+  +inspectImage(bytes: Buffer): InspectedImage
+}
+class "generate-variants.ts" as gen {
+  +generateVariants(bytes: Buffer): Promise<VariantBuffer[]>
+}
+class "remove-image.ts" as rm {
+  +removeImage(id: string): Promise<void>
+}
+class "apply-image-order.ts" as ord {
+  +applyImageOrder(tx, items: ImageOrderItem[]): Promise<void>
+}
+class "object-store.ts" as os {
+  +putObject(key: string, body: Buffer, contentType: string): Promise<void>
+  +deleteObjects(keys: string[]): Promise<void>
+}
+Image "1" *-- "4" ImageVariant
+Image --> ImageRole
+ImageService <|-- HttpImageService
+ImageListComponent --> ImageUploadQueue
+ImageListComponent ..> ImageService
+ImageUploadQueue "1" *-- "*" UploadQueueItem
+UploadQueueItem --> UploadState
+up ..> ins : calls
+up ..> gen : calls
+up ..> os : calls
+up ..> Image : creates
+rm ..> os : calls
+rm ..> Image : deletes
+ord ..> ImageOrderItem : applies
+HttpImageService ..> UploadedImageDto : returns
+@enduml

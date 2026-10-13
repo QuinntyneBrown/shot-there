@@ -1,0 +1,72 @@
+@startuml
+' --- shared skin header ---
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam roundcorner 8
+skinparam defaultFontName Arial
+skinparam ArrowColor #344054
+skinparam class {
+  BorderColor #344054
+  FontColor #101828
+  BackgroundColor #F9FAFB
+}
+' --------------------------
+title Class structure — Serve responsive images
+
+enum ImageFormat {
+  avif
+  webp
+  jpeg
+}
+
+class Image <<Prisma model>> {
+  +id: string
+  +alt: string
+  +width: number
+  +height: number
+  +contentHash: string
+}
+
+class ImageVariant <<Prisma model>> {
+  +id: string
+  +imageId: string
+  +width: number
+  +format: ImageFormat
+  +url: string
+}
+
+class ImageDto {
+  +alt: string
+  +width: number
+  +height: number
+  +sources: ImageSourceDto[]
+  +fallbackUrl: string
+}
+
+class ImageSourceDto {
+  +format: ImageFormat
+  +srcset: string
+}
+
+class ImagesLib <<lib/images>> {
+  +VARIANT_WIDTHS: number[]
+  +generateVariants(imageId: string, source: Buffer): Promise<void>
+  +toImageDto(image: Image): ImageDto
+}
+
+class ResponsiveImageComponent {
+  +image: InputSignal<ImageDto>
+  +sizes: InputSignal<string>
+  +priority: InputSignal<boolean>
+  +loading: Signal<string>
+  +fetchPriority: Signal<string>
+}
+
+Image "1" *-- "*" ImageVariant : variants
+ImageVariant --> ImageFormat : has
+ImageDto "1" *-- "*" ImageSourceDto : sources
+ImagesLib ..> Image : reads
+ImagesLib ..> ImageVariant : writes
+ImagesLib ..> ImageDto : builds
+ResponsiveImageComponent --> ImageDto : renders
+@enduml

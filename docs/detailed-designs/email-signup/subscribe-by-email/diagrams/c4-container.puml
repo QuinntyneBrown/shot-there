@@ -1,0 +1,15 @@
+@startuml
+!include <C4/C4_Container>
+LAYOUT_WITH_LEGEND()
+title Containers — Subscribe by email
+
+Person(visitor, "Visitor", "Subscribes for updates")
+System_Boundary(shotthere, "ShotThere") {
+  Container(web, "ShotThere web", "Angular SSR", "Renders the signup form and its states")
+  Container(api, "ShotThere API", "Next.js route handlers", "Validates, rate-limits and stores signups")
+  ContainerDb(db, "ShotThere database", "PostgreSQL", "Holds Subscriber rows")
+}
+Rel(visitor, web, "Uses", "HTTPS")
+Rel(web, api, "POST /api/subscribers", "JSON/HTTPS")
+Rel(api, db, "Upserts Subscriber", "Prisma")
+@enduml

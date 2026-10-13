@@ -1,0 +1,96 @@
+@startuml
+' --- shared skin header ---
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam roundcorner 8
+skinparam defaultFontName Arial
+skinparam ArrowColor #344054
+skinparam class {
+  BorderColor #344054
+  FontColor #101828
+  BackgroundColor #F9FAFB
+}
+' --------------------------
+title Class structure — List and filter outdoor spots
+
+enum SpotType {
+  park
+  architecture
+  waterfront
+  indoorPublic
+}
+enum UseCase {
+  engagement
+  family
+  portrait
+  brand
+  video
+}
+enum SpotPermitFilter {
+  noneNeeded
+  any
+}
+class SpotListQuery <<type>> {
+  +types: SpotType[]
+  +useCases: UseCase[]
+  +permit: SpotPermitFilter
+}
+class SpotListState <<type>> {
+  +status: "loading" | "loaded" | "error"
+  +spots?: SpotSummary[]
+}
+class "parseSpotListQuery" as ParseFn <<function>> {
+  +parseSpotListQuery(params: ParamMap): SpotListQuery
+}
+class "toSpotListQueryParams" as ToParamsFn <<function>> {
+  +toSpotListQueryParams(query: SpotListQuery): Params
+}
+class SpotListPageComponent {
+  +query: Signal<SpotListQuery>
+  +state: Signal<SpotListState>
+  +applyQuery(query: SpotListQuery): void
+  +clearFilters(): void
+}
+class SpotFiltersComponent {
+  +query: InputSignal<SpotListQuery>
+  +queryChange: OutputEmitterRef<SpotListQuery>
+}
+class SpotCardComponent {
+  +spot: InputSignal<SpotSummary>
+}
+abstract class SpotsService {
+  +{abstract} listSpots(query: SpotListQuery): Observable<SpotSummary[]>
+}
+class HttpSpotsService {
+  -http: HttpClient
+  +listSpots(query: SpotListQuery): Observable<SpotSummary[]>
+}
+class SpotSummary <<DTO>> {
+  +slug: string
+  +name: string
+  +neighbourhood: string
+  +type: SpotType
+  +bestUses: UseCase[]
+  +permitSummary: string
+  +permitStale: boolean
+  +thumbnail: ImageRef
+}
+class "listSpots" as ListFn <<function>> {
+  +listSpots(query: SpotListQuery): Promise<SpotSummary[]>
+}
+
+SpotsService <|-- HttpSpotsService
+SpotListPageComponent ..> SpotsService : injects
+SpotListPageComponent ..> ParseFn : uses
+SpotListPageComponent ..> ToParamsFn : uses
+SpotListPageComponent --> SpotListState : holds
+SpotListPageComponent ..> SpotFiltersComponent : renders
+SpotListPageComponent ..> SpotCardComponent : renders
+SpotCardComponent --> SpotSummary : displays
+SpotListQuery --> "*" SpotType
+SpotListQuery --> "*" UseCase
+SpotListQuery --> SpotPermitFilter
+SpotSummary --> SpotType
+ListFn ..> SpotListQuery : applies
+ListFn ..> SpotSummary : builds
+@enduml

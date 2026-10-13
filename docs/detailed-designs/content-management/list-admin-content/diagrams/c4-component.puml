@@ -1,0 +1,28 @@
+@startuml
+!include <C4/C4_Component>
+LAYOUT_WITH_LEGEND()
+title Components — List content in the administration area
+
+Container_Boundary(web, "ShotThere web") {
+  Component(page, "AdminContentListPageComponent", "Angular standalone page", "Table or cards, search box, edit links")
+  Component(filter, "admin-content-list-filter.ts", "Plain TypeScript", "Case-insensitive name or neighbourhood match")
+  Component(svc, "AdminContentService", "Abstract class / DI token", "List contract")
+  Component(http, "HttpAdminContentService", "Angular HttpClient", "Calls the admin list endpoints")
+}
+Container_Boundary(api, "ShotThere API") {
+  Component(route, "app/api/admin/{studios|spots|guides}/route.ts", "Next.js route handlers", "GET; requires owner session")
+  Component(auth, "requireOwnerSession", "lib/auth", "Validates st_session")
+  Component(list, "listAdminContent", "lib/admin/list-admin-content.ts", "All rows, newest first, stale flag")
+  Component(age, "verificationAge", "lib/freshness/verification-age.ts", "Stale rule")
+}
+ComponentDb(db, "ShotThere database", "PostgreSQL", "Studio, Spot, PermitStatus, Guide")
+
+Rel(page, filter, "Filters rows with")
+Rel(page, svc, "Injects")
+Rel(http, svc, "Implements")
+Rel(http, route, "GET", "JSON/HTTPS")
+Rel(route, auth, "Checks session with")
+Rel(route, list, "Calls")
+Rel(list, age, "Flags stale rows with")
+Rel(list, db, "Reads", "Prisma")
+@enduml

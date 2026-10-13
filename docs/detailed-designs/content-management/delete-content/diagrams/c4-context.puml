@@ -1,0 +1,10 @@
+@startuml
+!include <C4/C4_Context>
+LAYOUT_WITH_LEGEND()
+title System Context — Delete content
+
+Person(owner, "Owner", "Removes draft locations and guides")
+System(shotthere, "ShotThere", "Toronto photo location reviews and comparisons")
+
+Rel(owner, shotthere, "Deletes draft content using", "HTTPS")
+@enduml

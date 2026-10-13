@@ -1,0 +1,40 @@
+@startuml
+title UML sequence behaviour — Keyboard navigation through the shell
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam roundcorner 12
+skinparam defaultFontName Arial
+skinparam ArrowColor #344054
+skinparam rectangle {
+  BorderColor #344054
+  FontColor #101828
+}
+skinparam package {
+  BorderColor #667085
+  FontColor #101828
+  BackgroundColor #F9FAFB
+}
+actor "Visitor" as actor
+box "Frontend — ShotThere web (Angular SSR)" #E0F2FE
+  participant "SkipLinkComponent" as skip
+  participant "HeaderComponent" as header
+  participant "ShellComponent main" as main
+end box
+actor -> skip : Press Tab from top of page
+skip --> actor : Show "Skip to content" with focus ring (L2-067, L2-068)
+actor -> skip : Press Enter
+skip -> main : Focus main landmark (L2-067)
+main --> actor : Focus inside main content
+opt Viewport at XS or SM (L2-064)
+  actor -> header : Activate "Menu" button
+  header -> header : menuOpen.set(true), aria-expanded true
+  header --> actor : Show links, each at least 44px tall (L2-065)
+  alt Escape pressed
+    actor -> header : Press Escape
+    header -> header : closeMenu() and focus "Menu" button
+  else Link activated
+    actor -> header : Activate navigation link
+    header -> header : closeMenu() and navigate to APP_PATHS entry
+  end
+end
+@enduml

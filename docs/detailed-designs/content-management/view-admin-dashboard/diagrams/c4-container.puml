@@ -1,0 +1,15 @@
+@startuml
+!include <C4/C4_Container>
+LAYOUT_WITH_LEGEND()
+title Containers — View the administration dashboard
+
+Person(owner, "Owner", "Creates and maintains ShotThere content")
+System_Boundary(shotthere, "ShotThere") {
+  Container(web, "ShotThere web", "Angular SSR", "Public and administration screens")
+  Container(api, "ShotThere API", "Next.js route handlers", "Owner-only admin API")
+  ContainerDb(db, "ShotThere database", "PostgreSQL", "Studios, spots, guides and verification dates")
+}
+Rel(owner, web, "Opens the dashboard in", "HTTPS")
+Rel(web, api, "GET /api/admin/dashboard", "JSON/HTTPS")
+Rel(api, db, "Counts content and reads verification dates", "Prisma")
+@enduml

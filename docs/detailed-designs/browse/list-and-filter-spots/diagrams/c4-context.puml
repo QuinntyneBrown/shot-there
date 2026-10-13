@@ -1,0 +1,12 @@
+@startuml
+!include <C4/C4_Context>
+LAYOUT_WITH_LEGEND()
+title System Context — List and filter outdoor spots
+
+Person(visitor, "Visitor", "Looks for an outdoor place to shoot photos in Toronto")
+System(shotthere, "ShotThere", "Review and comparison site for Toronto shooting locations")
+System_Ext(cdn, "CDN", "Fronts the web app and image store")
+
+Rel(visitor, cdn, "Requests the spot list via", "HTTPS")
+Rel(cdn, shotthere, "Forwards uncached requests to", "HTTPS")
+@enduml

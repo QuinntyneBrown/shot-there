@@ -1,0 +1,61 @@
+@startuml
+title UML sequence behaviour — Show spot conditions and permits
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam roundcorner 12
+skinparam defaultFontName Arial
+skinparam ArrowColor #344054
+skinparam rectangle {
+  BorderColor #344054
+  FontColor #101828
+}
+skinparam package {
+  BorderColor #667085
+  FontColor #101828
+  BackgroundColor #F9FAFB
+}
+actor "Visitor" as actor
+box "Frontend — ShotThere web (Angular SSR)" #E0F2FE
+  participant "SpotPageComponent" as page
+  participant "SpotConditionsComponent" as cond
+  participant "SpotPermitsComponent" as permits
+  participant "SpotsService" as svc
+end box
+box "Backend — ShotThere API (Next.js route handlers)" #D1FADF
+  participant "app/api/spots/[slug]/route.ts" as route
+end box
+box "Backend — ShotThere application (lib/)" #ECFDF3
+  participant "lib/spots/get-spot.ts" as getspot
+  participant "lib/spots/is-permit-stale.ts" as stale
+end box
+box "Backend — Infrastructure (Prisma / object storage)" #FFF4E5
+  database "ShotThere database" as db
+end box
+actor -> page : Open /spots/[slug]
+page -> svc : getSpot(slug)
+svc -> route : GET /api/spots/[slug]
+route -> getspot : getSpot(slug)
+getspot -> db : Find Spot by slug where published
+alt published spot found
+  db --> getspot : Spot row and PermitStatus rows
+  getspot -> stale : isPermitStale(verifiedOn, today)
+  stale --> getspot : true when more than 183 days (L2-018)
+  getspot --> route : SpotDetailDto with conditions and permits
+  route --> svc : 200 SpotDetailDto
+  svc --> page : SpotDetailDto
+  page -> cond : Pass conditions
+  cond --> actor : Crowds by day type, parking, washrooms or "None nearby" (L2-017)
+  page -> permits : Pass permits
+  alt permitStale
+    permits --> actor : Permit table, source link and stale warning (L2-018)
+  else fresh
+    permits --> actor : Permit table, source link, "Permit rules verified" and date (L2-018)
+  end
+else no published spot
+  db --> getspot : null
+  getspot --> route : null
+  route --> svc : 404
+  svc --> page : Error result
+  page --> actor : Show not-found state
+end
+@enduml

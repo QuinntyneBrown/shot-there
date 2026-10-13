@@ -1,0 +1,15 @@
+@startuml
+!include <C4/C4_Container>
+LAYOUT_WITH_LEGEND()
+title Containers — Handle errors and report health
+
+Person(visitor, "Visitor", "Reads pages")
+System_Boundary(shotthere, "ShotThere") {
+  Container(web, "ShotThere web", "Angular SSR", "Not-found and error pages, media fallbacks")
+  Container(api, "ShotThere API", "Next.js route handlers", "Health endpoint and structured JSON logs")
+  ContainerDb(db, "ShotThere database", "PostgreSQL", "Probed by the health check")
+}
+Rel(visitor, web, "Uses", "HTTPS")
+Rel(web, api, "Calls", "JSON/HTTPS")
+Rel(api, db, "Probes with SELECT 1", "Prisma")
+@enduml

@@ -1,0 +1,15 @@
+@startuml
+!include <C4/C4_Container>
+LAYOUT_WITH_LEGEND()
+title Containers — Publish the editorial policy
+
+Person(visitor, "Visitor", "Reads the policy and lists")
+System_Boundary(shotthere, "ShotThere") {
+  Container(web, "ShotThere web", "Angular SSR", "Serves the prerendered policy page and footer link")
+  Container(api, "ShotThere API", "Next.js route handlers", "Returns lists in score order")
+  ContainerDb(db, "ShotThere database", "PostgreSQL", "Studios and spots with overall scores")
+}
+Rel(visitor, web, "Uses", "HTTPS")
+Rel(web, api, "Requests score-sorted lists", "JSON/HTTPS")
+Rel(api, db, "Reads", "Prisma")
+@enduml

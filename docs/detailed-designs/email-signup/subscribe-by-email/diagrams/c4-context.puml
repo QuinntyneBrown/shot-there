@@ -1,0 +1,10 @@
+@startuml
+!include <C4/C4_Context>
+LAYOUT_WITH_LEGEND()
+title System Context — Subscribe by email
+
+Person(visitor, "Visitor", "Reads reviews and subscribes for updates")
+System(shotthere, "ShotThere", "Review and comparison site for Toronto photo locations")
+
+Rel(visitor, shotthere, "Submits an email address to", "HTTPS")
+@enduml

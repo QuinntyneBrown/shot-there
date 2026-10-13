@@ -1,0 +1,42 @@
+@startuml
+title UML sequence behaviour — Unknown URL and media fallback
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam roundcorner 12
+skinparam defaultFontName Arial
+skinparam ArrowColor #344054
+skinparam rectangle {
+  BorderColor #344054
+  FontColor #101828
+}
+skinparam package {
+  BorderColor #667085
+  FontColor #101828
+  BackgroundColor #F9FAFB
+}
+actor "Visitor" as actor
+box "Frontend — ShotThere web (Angular SSR)" #E0F2FE
+  participant "server.ts" as server
+  participant "serverRoutes" as sroutes
+  participant "NotFoundPageComponent" as notfound
+  participant "Studio page" as page
+  participant "FallbackImageDirective" as fallback
+end box
+actor -> server : GET unknown URL
+server -> sroutes : Match route
+sroutes --> server : Wildcard with status 404
+server -> notfound : Render
+notfound --> server : Page with home and studio list links
+server --> actor : 404 not-found page (L2-083)
+actor -> server : GET studio page
+alt Render throws
+  server --> actor : 500 error page, no stack trace (L2-083)
+else Render succeeds
+  server -> page : Render
+  page --> actor : Page with gallery images
+  opt Image URL returns 404
+    fallback -> fallback : onError(), failed.set(true)
+    fallback --> actor : Alt-text placeholder in same slot, no layout shift (L2-086)
+  end
+end
+@enduml

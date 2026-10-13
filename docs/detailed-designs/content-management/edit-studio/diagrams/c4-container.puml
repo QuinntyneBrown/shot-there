@@ -1,0 +1,15 @@
+@startuml
+!include <C4/C4_Container>
+LAYOUT_WITH_LEGEND()
+title Containers — Create and edit a studio
+
+Person(owner, "Owner", "Creates and maintains ShotThere content")
+System_Boundary(shotthere, "ShotThere") {
+  Container(web, "ShotThere web", "Angular SSR", "Studio editor screen")
+  Container(api, "ShotThere API", "Next.js route handlers", "Owner-only admin API with server-side validation")
+  ContainerDb(db, "ShotThere database", "PostgreSQL", "Studio, StudioFee, GearItem")
+}
+Rel(owner, web, "Fills the studio editor in", "HTTPS")
+Rel(web, api, "POST /api/admin/studios, GET and PUT /api/admin/studios/{id}", "JSON/HTTPS")
+Rel(api, db, "Reads and writes in one transaction", "Prisma")
+@enduml

@@ -1,0 +1,24 @@
+@startuml
+!include <C4/C4_Component>
+LAYOUT_WITH_LEGEND()
+title Components — Set the episode video
+
+Container_Boundary(web, "ShotThere web") {
+  Component(editor, "StudioEditorPageComponent / SpotEditorPageComponent", "Angular page", "Holds the video field")
+  Component(rule, "video-link.validator.ts", "Plain TypeScript", "Client message for unrecognised input")
+  Component(svc, "StudioEditorService / SpotEditorService", "libs/api", "Saves the location")
+}
+Container_Boundary(api, "ShotThere API") {
+  Component(route, "app/api/admin/studios|spots/[id]/route.ts", "Route handler", "PUT saves the location")
+  Component(schema, "lib/videos/schemas.ts", "zod", "videoIdField transforms input to an ID")
+  Component(extract, "lib/videos/extract-video-id.ts", "Application function", "Returns the 11-character ID or null")
+  ComponentDb(db, "ShotThere database", "PostgreSQL", "videoId column")
+}
+Rel(editor, rule, "Validates with")
+Rel(editor, svc, "Saves via")
+Rel(svc, route, "PUT", "JSON/HTTPS")
+Rel(route, schema, "Parses body with")
+Rel(schema, extract, "Calls")
+Rel(route, db, "Writes videoId", "Prisma")
+Rel(rule, extract, "Mirrors the accepted forms of")
+@enduml

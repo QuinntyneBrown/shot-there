@@ -1,0 +1,41 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam roundcorner 8
+skinparam defaultFontName Arial
+skinparam ArrowColor #344054
+skinparam class {
+  BorderColor #344054
+  FontColor #101828
+  BackgroundColor #F9FAFB
+}
+title Class structure — Set the episode video
+
+class "extract-video-id.ts" as extract {
+  +VIDEO_ID_PATTERN: RegExp
+  +extractVideoId(input: string): string | null
+}
+class "schemas.ts (lib/videos)" as schema {
+  +videoIdField: ZodEffects<string | null>
+}
+class "video-link.validator.ts" as validator {
+  +videoLinkValidator(control: AbstractControl): ValidationErrors | null
+}
+class Studio {
+  +videoId: string | null
+}
+class Spot {
+  +videoId: string | null
+}
+class StudioEditorPageComponent {
+  +videoLink: FormControl<string>
+}
+class SpotEditorPageComponent {
+  +videoLink: FormControl<string>
+}
+schema ..> extract : calls
+schema ..> Studio : produces videoId for
+schema ..> Spot : produces videoId for
+StudioEditorPageComponent ..> validator : uses
+SpotEditorPageComponent ..> validator : uses
+@enduml

@@ -1,0 +1,46 @@
+@startuml
+title UML sequence behaviour — Serve the sitemap
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam roundcorner 12
+skinparam defaultFontName Arial
+skinparam ArrowColor #344054
+skinparam rectangle {
+  BorderColor #344054
+  FontColor #101828
+}
+skinparam package {
+  BorderColor #667085
+  FontColor #101828
+  BackgroundColor #F9FAFB
+}
+actor "Crawler" as actor
+box "Frontend — ShotThere web (Angular SSR)" #E0F2FE
+  participant "sitemap.route.ts" as sitemap
+  participant "HttpSitemapService" as svc
+end box
+box "Backend — ShotThere API (Next.js route handlers)" #D1FADF
+  participant "sitemap-entries route.ts" as route
+end box
+box "Backend — ShotThere application (lib/)" #ECFDF3
+  participant "listSitemapEntries" as list
+end box
+box "Backend — Infrastructure (Prisma / object storage)" #FFF4E5
+  database "ShotThere database" as db
+end box
+actor -> sitemap : GET /sitemap.xml
+sitemap -> svc : list()
+svc -> route : GET /api/sitemap-entries
+route -> list : listSitemapEntries()
+list -> db : Read published Studio, Spot, Guide
+db --> list : Rows with publish times
+list -> list : Add /studios, /spots, /map, /guides with latest lastmod (L2-077)
+list --> route : SitemapEntryDto[]
+route --> svc : 200 entries
+svc --> sitemap : Entries
+alt API reachable
+  sitemap --> actor : application/xml with loc and lastmod per URL (L2-077)
+else API error
+  sitemap --> actor : 503; CDN keeps serving cached sitemap
+end
+@enduml

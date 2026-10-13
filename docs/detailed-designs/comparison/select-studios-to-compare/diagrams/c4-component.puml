@@ -1,0 +1,20 @@
+@startuml
+!include <C4/C4_Component>
+LAYOUT_WITH_LEGEND()
+title Components — Select studios to compare
+
+Person(visitor, "Visitor", "Plans a photo shoot in Toronto")
+Container_Boundary(web, "ShotThere web") {
+  Component(card, "StudioCardComponent / StudioPageComponent", "Angular component", "Hosts the compare toggle")
+  Component(toggle, "CompareToggleComponent", "Angular component", "Compare or Remove for one studio")
+  Component(bar, "CompareBarComponent", "Angular component", "Count, 2-minimum hint, Compare action")
+  Component(svc, "CompareSelectionService", "Angular service (signals)", "Holds the selection, enforces 4 maximum")
+  Component(store, "CompareSelectionStore", "TypeScript helper", "Reads and writes localStorage")
+}
+Rel(visitor, toggle, "Activates")
+Rel(visitor, bar, "Opens comparison from")
+Rel(card, toggle, "Renders")
+Rel(toggle, svc, "add / remove / has")
+Rel(bar, svc, "Reads count and slugs")
+Rel(svc, store, "Loads and saves selection")
+@enduml

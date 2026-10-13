@@ -1,0 +1,61 @@
+@startuml
+' --- shared skin header ---
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam roundcorner 8
+skinparam defaultFontName Arial
+skinparam ArrowColor #344054
+skinparam class {
+  BorderColor #344054
+  FontColor #101828
+  BackgroundColor #F9FAFB
+}
+' --------------------------
+title Class structure — Secure requests
+
+class securityHeaders <<const>> {
+  +Content-Security-Policy: string
+  +X-Content-Type-Options: string
+  +Referrer-Policy: string
+  +Strict-Transport-Security: string
+}
+class middleware <<function>> {
+  +middleware(request: NextRequest): NextResponse
+}
+class readJsonBody <<function>> {
+  +readJsonBody(request: Request, limitBytes: number): Promise<unknown>
+}
+class PayloadTooLargeError {
+  +limitBytes: number
+}
+class parseWithSchema <<function>> {
+  +parseWithSchema<T>(schema: ZodType<T>, input: unknown): T | Response
+}
+class ValidationProblem {
+  +status: 400
+  +errors: FieldError[]
+}
+class FieldError {
+  +field: string
+  +message: string
+}
+class verifyCsrf <<function>> {
+  +verifyCsrf(request: Request, session: OwnerSession): Response | null
+}
+class OwnerSession {
+  +id: string
+  +ownerId: string
+  +csrfToken: string
+  +expiresAt: Date
+}
+class studioSaveSchema <<zod strict>>
+class Error
+
+middleware ..> securityHeaders : applies
+readJsonBody ..> PayloadTooLargeError : throws
+Error <|-- PayloadTooLargeError
+parseWithSchema ..> ValidationProblem : returns on failure
+ValidationProblem "1" *-- "*" FieldError
+parseWithSchema ..> studioSaveSchema : runs
+verifyCsrf ..> OwnerSession : compares csrfToken
+@enduml

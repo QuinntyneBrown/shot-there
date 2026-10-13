@@ -1,0 +1,63 @@
+@startuml
+title UML sequence behaviour — View basics and pricing
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam roundcorner 12
+skinparam defaultFontName Arial
+skinparam ArrowColor #344054
+skinparam rectangle {
+  BorderColor #344054
+  FontColor #101828
+}
+skinparam package {
+  BorderColor #667085
+  FontColor #101828
+  BackgroundColor #F9FAFB
+}
+actor "Visitor" as visitor
+box "Frontend — ShotThere web (Angular SSR)" #E0F2FE
+  participant "StudioPageComponent" as page
+  participant "StudioBasicsComponent" as basics
+  participant "StudioPricingComponent" as pricing
+  participant "HttpStudioService" as svc
+end box
+box "Backend — ShotThere API (Next.js route handlers)" #D1FADF
+  participant "GET /api/studios/[slug]" as route
+end box
+box "Backend — ShotThere application (lib/)" #ECFDF3
+  participant "getStudio" as get
+  participant "computeAllInCost2h" as cost
+  participant "isStale" as stale
+end box
+box "Backend — Infrastructure (Prisma / object storage)" #FFF4E5
+  database "ShotThere database" as db
+end box
+visitor -> page : Open the studio page for a slug
+page -> svc : getStudio(slug)
+svc -> route : GET /api/studios/[slug]
+route -> get : getStudio(slug, today)
+get -> db : Find Studio by slug where published (L2-001)
+db --> get : Studio with related rows or none
+alt published studio found
+  get -> cost : hourlyRate x max(2, minBookingHours) + mandatory fees (L2-004)
+  cost --> get : allInCost2h
+  get -> stale : priceVerifiedAt more than 183 days before today (L2-043)
+  stale --> get : priceStale
+  get --> route : StudioDetailDto
+  route --> svc : 200 JSON
+  svc --> page : StudioDetailDto
+  page -> basics : basics
+  basics --> visitor : h1 name, neighbourhood, address, booking link rel=noopener (L2-003)
+  page -> pricing : pricing
+  pricing --> visitor : CAD amounts, fees marked mandatory or optional, all-in cost (L2-004)
+  pricing --> visitor : Prices verified with long date (L2-005)
+  opt priceStale is true
+    pricing --> visitor : Stale warning in role=status region (L2-005)
+  end
+else studio missing or draft
+  get --> route : null
+  route --> svc : 404
+  svc --> page : Not found
+  page --> visitor : Show not-found page
+end
+@enduml

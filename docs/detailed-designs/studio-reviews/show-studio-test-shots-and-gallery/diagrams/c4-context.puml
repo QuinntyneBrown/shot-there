@@ -1,0 +1,13 @@
+@startuml
+!include <C4/C4_Context>
+LAYOUT_WITH_LEGEND()
+title System Context — Show studio test shots and gallery
+
+Person(visitor, "Visitor", "Photographer comparing Toronto rental studios")
+System(shotthere, "ShotThere", "First-hand studio and outdoor spot reviews")
+System_Ext(cdn, "CDN", "Caches and serves web pages and image variants")
+
+Rel(visitor, shotthere, "Reads a studio review page on", "HTTPS")
+Rel(visitor, cdn, "Loads image variants through", "HTTPS")
+Rel(cdn, shotthere, "Fetches from", "HTTPS")
+@enduml

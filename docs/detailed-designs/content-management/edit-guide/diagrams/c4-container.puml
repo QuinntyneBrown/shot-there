@@ -1,0 +1,15 @@
+@startuml
+!include <C4/C4_Container>
+LAYOUT_WITH_LEGEND()
+title Containers — Create, edit and publish a guide
+
+Person(owner, "Owner", "Creates and maintains ShotThere content")
+System_Boundary(shotthere, "ShotThere") {
+  Container(web, "ShotThere web", "Angular SSR", "Guide editor screen and entry picker")
+  Container(api, "ShotThere API", "Next.js route handlers", "Owner-only admin API")
+  ContainerDb(db, "ShotThere database", "PostgreSQL", "Guide, GuideEntry, Studio, Spot")
+}
+Rel(owner, web, "Edits guides in", "HTTPS")
+Rel(web, api, "Guide CRUD, candidate search, publish", "JSON/HTTPS")
+Rel(api, db, "Reads and writes", "Prisma")
+@enduml

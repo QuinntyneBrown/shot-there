@@ -1,0 +1,19 @@
+@startuml
+!include <C4/C4_Component>
+LAYOUT_WITH_LEGEND()
+title Components — Protect unsaved changes
+
+Container_Boundary(web, "ShotThere web") {
+  Component(router, "Angular Router", "@angular/router", "Runs canDeactivate guards")
+  Component(routes, "features/admin/routes.ts", "Route config", "Attaches the guard to editor routes")
+  Component(guard, "unsavedChangesGuard", "CanDeactivateFn", "Asks before leaving a dirty editor")
+  Component(dialog, "DiscardChangesDialogComponent", "Angular dialog", "Stay or Discard")
+  Component(unload, "warnOnBeforeUnload", "Function", "Registers the window beforeunload listener")
+  Component(editor, "Studio / Spot / Guide editor page", "Angular page", "Implements HasUnsavedChanges")
+}
+Rel(routes, guard, "Registers")
+Rel(router, guard, "Calls on navigation")
+Rel(guard, editor, "Reads hasUnsavedChanges()")
+Rel(guard, dialog, "Opens when dirty")
+Rel(editor, unload, "Calls on construction")
+@enduml

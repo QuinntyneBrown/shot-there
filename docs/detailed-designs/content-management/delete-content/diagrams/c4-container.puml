@@ -1,0 +1,17 @@
+@startuml
+!include <C4/C4_Container>
+LAYOUT_WITH_LEGEND()
+title Containers — Delete content
+
+Person(owner, "Owner", "Manages content")
+System_Boundary(shotthere, "ShotThere") {
+  Container(web, "ShotThere web", "Angular SSR", "Editors and delete dialog")
+  Container(api, "ShotThere API", "Next.js route handlers", "Deletion rules")
+  ContainerDb(db, "ShotThere database", "PostgreSQL", "Locations, guides, guide entries, images")
+  ContainerDb(storage, "Image store", "Object storage", "Image objects")
+}
+Rel(owner, web, "Uses", "HTTPS")
+Rel(web, api, "Sends DELETE", "JSON/HTTPS")
+Rel(api, db, "Deletes rows", "Prisma")
+Rel(api, storage, "Deletes objects", "S3 API")
+@enduml

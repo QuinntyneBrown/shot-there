@@ -1,0 +1,91 @@
+@startuml
+' --- shared skin header ---
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam roundcorner 8
+skinparam defaultFontName Arial
+skinparam ArrowColor #344054
+skinparam class {
+  BorderColor #344054
+  FontColor #101828
+  BackgroundColor #F9FAFB
+}
+' --------------------------
+title Class structure — View locations on a map
+
+enum LocationTypeFilter {
+  studios
+  spots
+  both
+}
+enum MapViewMode {
+  map
+  list
+}
+class MapViewQuery <<type>> {
+  +type: LocationTypeFilter
+  +view: MapViewMode
+}
+class MapLocation <<DTO>> {
+  +kind: "studio" | "spot"
+  +slug: string
+  +name: string
+  +latitude: number
+  +longitude: number
+  +allInCost2h?: number
+  +permitSummary?: string
+}
+class "parseMapViewQuery" as ParseFn <<function>> {
+  +parseMapViewQuery(params: ParamMap): MapViewQuery
+}
+class "toMapViewQueryParams" as ToParamsFn <<function>> {
+  +toMapViewQueryParams(query: MapViewQuery): Params
+}
+class "filterMapLocations" as FilterFn <<function>> {
+  +filterMapLocations(locations: MapLocation[], type: LocationTypeFilter): MapLocation[]
+}
+class MapPageComponent {
+  +query: Signal<MapViewQuery>
+  +locations: Signal<MapLocation[]>
+  +visibleLocations: Signal<MapLocation[]>
+  +setType(type: LocationTypeFilter): void
+  +setView(view: MapViewMode): void
+}
+class LocationsMapComponent {
+  +locations: InputSignal<MapLocation[]>
+  +openPopup(location: MapLocation): void
+  +closePopup(): void
+}
+class MapPopupComponent {
+  +location: InputSignal<MapLocation>
+  +closed: OutputEmitterRef<void>
+}
+class MapLegendComponent
+class MapLocationCardComponent {
+  +location: InputSignal<MapLocation>
+}
+abstract class MapLocationsService {
+  +{abstract} listMapLocations(): Observable<MapLocation[]>
+}
+class HttpMapLocationsService {
+  -http: HttpClient
+  +listMapLocations(): Observable<MapLocation[]>
+}
+class "listMapLocations" as ListFn <<function>> {
+  +listMapLocations(): Promise<MapLocation[]>
+}
+
+MapLocationsService <|-- HttpMapLocationsService
+MapPageComponent ..> MapLocationsService : injects
+MapPageComponent ..> ParseFn : uses
+MapPageComponent ..> ToParamsFn : uses
+MapPageComponent ..> FilterFn : uses
+MapPageComponent ..> LocationsMapComponent : renders
+MapPageComponent ..> MapLegendComponent : renders
+MapPageComponent ..> MapLocationCardComponent : renders
+LocationsMapComponent ..> MapPopupComponent : opens
+MapViewQuery --> LocationTypeFilter
+MapViewQuery --> MapViewMode
+MapPageComponent "1" o-- "*" MapLocation
+ListFn ..> MapLocation : builds
+@enduml

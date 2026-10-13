@@ -1,0 +1,38 @@
+@startuml
+!include <C4/C4_Component>
+LAYOUT_WITH_LEGEND()
+title Components — Deliver public pages
+
+Container_Boundary(web, "ShotThere web") {
+  Component(norm, "urlNormalisationMiddleware", "Express middleware", "301 to lowercase URL without trailing slash")
+  Component(redir, "slugRedirectMiddleware", "Express middleware", "301 from retired slugs")
+  Component(cache, "publicCacheHeaders", "Express middleware", "Sets Cache-Control on HTML")
+  Component(ssr, "AngularNodeAppEngine", "@angular/ssr", "Renders and prerenders routes")
+  Component(serverRoutes, "app.routes.server.ts", "Server route table", "RenderMode.Prerender and getPrerenderParams")
+  Component(slugSvc, "SlugRedirectService", "Abstract service, HttpSlugRedirectService", "Looks up redirects")
+  Component(routesSvc, "PublicRoutesService", "Abstract service, HttpPublicRoutesService", "Lists published slugs")
+}
+Container_Boundary(api, "ShotThere API") {
+  Component(redirRoute, "app/api/slug-redirects/[type]/[slug]/route.ts", "Route handler", "GET redirect")
+  Component(routesRoute, "app/api/public-routes/route.ts", "Route handler", "GET published slugs")
+  Component(findRedir, "findSlugRedirect", "lib/slugs", "Reads SlugRedirect")
+  Component(recordChange, "recordSlugChange", "lib/slugs", "Writes SlugRedirect on rename")
+  Component(listRoutes, "listPublicRoutes", "lib/publishing", "Reads published slugs")
+  Component(affected, "affectedRoutes", "lib/publishing", "Computes routes for a change")
+  Component(trigger, "triggerRegeneration", "lib/publishing", "Calls hosting provider")
+  ComponentDb(db, "ShotThere database", "PostgreSQL", "Studio, Spot, Guide, SlugRedirect")
+}
+Rel(norm, redir, "Passes normalised request")
+Rel(redir, slugSvc, "Looks up unknown slug")
+Rel(redir, cache, "Passes request")
+Rel(cache, ssr, "Delegates rendering")
+Rel(serverRoutes, routesSvc, "Resolves prerender params")
+Rel(slugSvc, redirRoute, "GET", "JSON/HTTPS")
+Rel(routesSvc, routesRoute, "GET", "JSON/HTTPS")
+Rel(redirRoute, findRedir, "Calls")
+Rel(routesRoute, listRoutes, "Calls")
+Rel(findRedir, db, "Reads", "Prisma")
+Rel(listRoutes, db, "Reads", "Prisma")
+Rel(recordChange, db, "Writes", "Prisma")
+Rel(affected, trigger, "Supplies routes to")
+@enduml

@@ -1,0 +1,10 @@
+@startuml
+!include <C4/C4_Context>
+LAYOUT_WITH_LEGEND()
+title System Context — Set the episode video
+
+Person(owner, "Owner", "Links a location to its YouTube episode")
+System(shotthere, "ShotThere", "Toronto photo location reviews and comparisons")
+
+Rel(owner, shotthere, "Pastes a YouTube link or ID using", "HTTPS")
+@enduml

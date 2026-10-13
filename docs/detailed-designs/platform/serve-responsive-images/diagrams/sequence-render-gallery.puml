@@ -1,0 +1,53 @@
+@startuml
+title UML sequence behaviour — Render and load a gallery
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam roundcorner 12
+skinparam defaultFontName Arial
+skinparam ArrowColor #344054
+skinparam rectangle {
+  BorderColor #344054
+  FontColor #101828
+}
+skinparam package {
+  BorderColor #667085
+  FontColor #101828
+  BackgroundColor #F9FAFB
+}
+actor "Visitor" as actor
+box "Frontend — ShotThere web (Angular SSR)" #E0F2FE
+  participant "StudioPageComponent" as page
+  participant "ResponsiveImageComponent" as img
+end box
+box "Backend — ShotThere API (Next.js route handlers)" #D1FADF
+  participant "studios/[slug] route.ts" as route
+end box
+box "Backend — ShotThere application (lib/)" #ECFDF3
+  participant "toImageDto" as dto
+end box
+box "Backend — Infrastructure (Prisma / object storage)" #FFF4E5
+  database "ShotThere database" as db
+end box
+participant "CDN" as cdn
+actor -> page : Open studio page
+page -> route : GET /api/studios/{slug}
+route -> dto : toImageDto(image) per gallery image
+dto -> db : Read Image and ImageVariant
+db --> dto : Rows
+dto --> route : ImageDto[]
+route --> page : Studio with images
+page -> img : First image, priority true
+img --> page : img loading=eager, fetchpriority=high (L2-072)
+page -> img : Other images, priority false
+img --> page : picture with srcset, sizes, width, height, loading=lazy (L2-072)
+page --> actor : HTML with reserved dimensions
+actor -> cdn : GET variant chosen by format support and sizes
+alt browser accepts AVIF or WebP
+  cdn --> actor : AVIF or WebP variant (L2-072)
+else no modern format support
+  cdn --> actor : JPEG variant
+end
+opt XS viewport thumbnail
+  actor -> actor : Selects at most the 960 px variant (L2-072)
+end
+@enduml

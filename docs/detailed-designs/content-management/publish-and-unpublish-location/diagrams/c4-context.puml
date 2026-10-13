@@ -1,0 +1,15 @@
+@startuml
+!include <C4/C4_Context>
+LAYOUT_WITH_LEGEND()
+title System Context — Publish and unpublish a location
+
+Person(owner, "Owner", "Reviews locations and manages content")
+Person(visitor, "Visitor", "Browses published locations")
+System(shotthere, "ShotThere", "Toronto photo location reviews and comparisons")
+System_Ext(cdn, "CDN", "Caches public pages and images")
+
+Rel(owner, shotthere, "Publishes and unpublishes locations using", "HTTPS")
+Rel(visitor, cdn, "Requests public pages from", "HTTPS")
+Rel(cdn, shotthere, "Fetches uncached pages from", "HTTPS")
+Rel(shotthere, cdn, "Requests revalidation of affected pages", "HTTPS")
+@enduml

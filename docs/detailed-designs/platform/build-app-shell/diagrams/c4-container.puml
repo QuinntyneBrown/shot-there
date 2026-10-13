@@ -1,0 +1,15 @@
+@startuml
+!include <C4/C4_Container>
+LAYOUT_WITH_LEGEND()
+title Containers — Build the app shell
+
+Person(visitor, "Visitor", "Reads reviews")
+Person(owner, "Owner", "Manages content")
+System_Boundary(shotthere, "ShotThere") {
+  Container(web, "ShotThere web", "Angular SSR", "Renders every screen inside the app shell")
+  Container(api, "ShotThere API", "Next.js route handlers", "Serves data to pages inside the shell")
+}
+Rel(visitor, web, "Uses", "HTTPS")
+Rel(owner, web, "Uses", "HTTPS")
+Rel(web, api, "Pages call", "JSON/HTTPS")
+@enduml

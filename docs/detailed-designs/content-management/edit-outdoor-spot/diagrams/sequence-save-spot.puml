@@ -1,0 +1,79 @@
+@startuml
+title UML sequence behaviour — Save an outdoor spot
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam roundcorner 12
+skinparam defaultFontName Arial
+skinparam ArrowColor #344054
+skinparam rectangle {
+  BorderColor #344054
+  FontColor #101828
+}
+skinparam package {
+  BorderColor #667085
+  FontColor #101828
+  BackgroundColor #F9FAFB
+}
+actor "Owner" as owner
+box "Frontend — ShotThere web (Angular SSR)" #E0F2FE
+  participant "SpotEditorPageComponent" as page
+  participant "Spot map component" as map
+  participant "HttpSpotEditorService" as svc
+end box
+box "Backend — ShotThere API (Next.js route handlers)" #D1FADF
+  participant "app/api/admin/spots/route.ts" as route
+end box
+box "Backend — ShotThere application (lib/)" #ECFDF3
+  participant "requireOwnerSession" as auth
+  participant "createSpot" as create
+  participant "spotInputSchema" as schema
+end box
+box "Backend — Infrastructure (Prisma / object storage)" #FFF4E5
+  database "ShotThere database" as db
+end box
+owner -> page : Enter latitude and longitude
+page -> page : Update coordinates signal
+opt both coordinates in range
+  page -> map : Centre and move marker to entered position (L2-055)
+  map --> owner : Preview map updates
+end
+owner -> page : Fill remaining sections and save
+page -> svc : create(input)
+svc -> route : POST /api/admin/spots with st_session cookie
+route -> auth : Validate session
+alt no valid owner session
+  auth --> route : Unauthorized
+  route --> svc : HTTP 401
+  svc --> page : Error
+  page --> owner : Redirect to sign-in (maintain-owner-session)
+else owner session valid
+  auth --> route : Owner
+  route -> create : createSpot(input, today)
+  create -> schema : safeParse(input)
+  alt value outside a fixed set, e.g. tampered spot type
+    schema --> create : Enum issue
+    create --> route : Rejected
+    route --> svc : HTTP 400 (L2-055)
+    svc --> page : Error
+    page --> owner : Generic save error
+  else out-of-range or malformed field, e.g. latitude 95
+    schema --> create : Field issues
+    create --> route : FieldErrors
+    route --> svc : HTTP 400 FieldErrors
+    svc --> page : FieldErrors
+    page --> owner : "Enter a latitude from -90 to 90" beside the field (L2-055)
+  else valid input
+    schema --> create : Parsed input
+    create -> db : Insert Spot (status draft, unique slug) and PermitStatus rows with verified dates in one transaction (L2-055)
+    db --> create : Created rows
+    create --> route : SpotEditorModel
+    route --> svc : HTTP 201 SpotEditorModel
+    svc --> page : SpotEditorModel
+    page --> owner : Navigate to the spot edit screen with a success message
+  end
+end
+note over owner, db
+  Publishing with no best uses is refused naming bestUses;
+  that check belongs to publish-and-unpublish-location.
+end note
+@enduml

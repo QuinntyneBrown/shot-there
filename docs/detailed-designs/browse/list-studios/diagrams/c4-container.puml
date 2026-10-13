@@ -1,0 +1,17 @@
+@startuml
+!include <C4/C4_Container>
+LAYOUT_WITH_LEGEND()
+title Containers — List studios
+
+Person(visitor, "Visitor", "Browses studios")
+System_Boundary(shotthere, "ShotThere") {
+  Container(web, "ShotThere web", "Angular SSR", "Renders the studio list page")
+  Container(api, "ShotThere API", "Next.js route handlers", "Returns published studio summaries")
+  ContainerDb(db, "ShotThere database", "PostgreSQL", "Studios, fees and images")
+  ContainerDb(storage, "Image store", "Object storage", "Thumbnail variants")
+}
+Rel(visitor, web, "Opens the studio list", "HTTPS")
+Rel(web, api, "GET /api/studios", "JSON/HTTPS")
+Rel(api, db, "Reads published studios", "Prisma")
+Rel(visitor, storage, "Loads thumbnails", "HTTPS via CDN")
+@enduml
