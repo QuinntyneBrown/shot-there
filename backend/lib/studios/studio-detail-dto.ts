@@ -23,6 +23,8 @@ export interface StudioDetailDto {
   disclosure: DisclosureDto;
   /** Null when no video is stored. */
   episode: EpisodeDto | null;
+  /** The Open Graph image URL, or null when none was made. */
+  ogImageUrl: string | null;
   /** Published guides that include the studio. */
   featuredIn: GuideLinkDto[];
 }

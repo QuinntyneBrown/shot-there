@@ -14,6 +14,7 @@ export async function createStudio(input: StudioInput): Promise<StudioRecord> {
     status: 'draft',
     priceVerifiedAt: priceVerifiedAt ?? clock.today(),
     videoId: videoLink,
+    ogImageUrl: null,
     publishedAt: null,
     updatedAt: clock.now(),
     images: [],

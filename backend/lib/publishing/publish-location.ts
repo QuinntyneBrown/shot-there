@@ -1,4 +1,6 @@
 import { getDependencies } from '@/lib/data/dependency-container';
+import { generateOgImage } from '@/lib/images/generate-og-image';
+import { imagesWithRole } from '@/lib/images/to-image-dto';
 import { checkSpotPublishable, checkStudioPublishable } from '@/lib/publishing/check-publishable';
 import type { LocationKind } from '@/lib/publishing/location-kind';
 import { missingFields } from '@/lib/publishing/missing-fields';
@@ -8,7 +10,7 @@ import type { StudioRecord } from '@/lib/studios/studio-record';
 
 /**
  * Publishes the location when its standard data set is complete, otherwise throws a 422 listing the missing fields.
- * A studio without a review date is reviewed today. Null when no location of the kind has the id.
+ * A studio without a review date is reviewed today, and gets an Open Graph image from its first gallery image. Null when no location of the kind has the id.
  */
 export async function publishLocation(kind: LocationKind, id: string): Promise<StudioRecord | SpotRecord | null> {
   const { studios, spots, clock } = getDependencies();
@@ -23,6 +25,7 @@ export async function publishLocation(kind: LocationKind, id: string): Promise<S
       status: 'published',
       publishedAt: studio.status === 'published' ? studio.publishedAt : clock.now(),
       reviewedAt: studio.reviewedAt ?? clock.today(),
+      ogImageUrl: (await generateOgImage(imagesWithRole(studio.images, 'gallery')[0])) ?? studio.ogImageUrl,
       updatedAt: clock.now(),
     };
     await studios.save(published);

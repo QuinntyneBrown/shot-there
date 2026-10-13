@@ -9,6 +9,12 @@ export class InMemoryObjectStore implements ObjectStore {
     this.objects.set(key, { body, contentType, cacheControl });
   }
 
+  async getObject(key: string): Promise<Buffer> {
+    const object = this.objects.get(key);
+    if (!object) throw new Error(`No object at ${key}`);
+    return object.body;
+  }
+
   async deleteObjects(keys: string[]): Promise<void> {
     for (const key of keys) this.objects.delete(key);
   }

@@ -132,6 +132,7 @@ model Studio {
   disclosureProvider    String?
   videoId               String?
   episodeTitle          String?
+  ogImageUrl            String?
   reviewedAt            DateTime?       @db.Date
   publishedAt           DateTime?
   createdAt             DateTime        @default(now())

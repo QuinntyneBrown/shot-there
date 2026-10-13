@@ -1,4 +1,4 @@
-import { DeleteObjectsCommand, PutObjectCommand, S3Client } from '@aws-sdk/client-s3';
+import { DeleteObjectsCommand, GetObjectCommand, PutObjectCommand, S3Client } from '@aws-sdk/client-s3';
 import type { ObjectStore } from '@/lib/storage/object-store';
 
 /** An S3-compatible bucket configured from the STORAGE_* environment variables. */
@@ -19,6 +19,12 @@ export class S3ObjectStore implements ObjectStore {
     await this.client.send(
       new PutObjectCommand({ Bucket: this.bucket, Key: key, Body: body, ContentType: contentType, CacheControl: cacheControl }),
     );
+  }
+
+  async getObject(key: string): Promise<Buffer> {
+    const { Body } = await this.client.send(new GetObjectCommand({ Bucket: this.bucket, Key: key }));
+    if (!Body) throw new Error(`No object at ${key}`);
+    return Buffer.from(await Body.transformToByteArray());
   }
 
   async deleteObjects(keys: string[]): Promise<void> {
