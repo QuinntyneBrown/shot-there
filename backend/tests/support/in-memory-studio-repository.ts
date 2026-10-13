@@ -7,4 +7,8 @@ export class InMemoryStudioRepository implements StudioRepository {
   async findPublishedBySlug(slug: string): Promise<StudioRecord | null> {
     return structuredClone(this.rows.find((row) => row.slug === slug && row.status === 'published') ?? null);
   }
+
+  async listPublished(): Promise<StudioRecord[]> {
+    return structuredClone(this.rows.filter((row) => row.status === 'published'));
+  }
 }
