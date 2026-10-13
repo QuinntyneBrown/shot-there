@@ -8,6 +8,9 @@ export interface SpotRepository {
   /** One spot of any status. */
   findById(id: string): Promise<SpotRecord | null>;
   isSlugTaken(slug: string): Promise<boolean>;
-  /** Creates or replaces the spot fields and permit rows in one transaction. Images are left as stored. */
+  /**
+   * Creates or replaces the spot fields and permit rows in one transaction, with the order and alt text of its stored
+   * images. Images are never added or removed here.
+   */
   save(spot: SpotRecord): Promise<void>;
 }

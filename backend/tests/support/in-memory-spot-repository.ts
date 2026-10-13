@@ -1,3 +1,4 @@
+import { withOrderAndAltText } from '@/tests/support/with-order-and-alt-text';
 import type { SpotRecord } from '@/lib/spots/spot-record';
 import type { SpotRepository } from '@/lib/spots/spot-repository';
 
@@ -29,7 +30,7 @@ export class InMemorySpotRepository implements SpotRepository {
     if (index === -1) {
       this.rows.push(structuredClone({ ...spot, images: [] }));
     } else {
-      this.rows[index] = structuredClone({ ...spot, images: this.rows[index].images });
+      this.rows[index] = structuredClone({ ...spot, images: withOrderAndAltText(this.rows[index].images, spot.images) });
     }
   }
 }

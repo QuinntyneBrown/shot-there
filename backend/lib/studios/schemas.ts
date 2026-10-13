@@ -14,6 +14,7 @@ import {
   slugField,
 } from '@/lib/http/input-fields';
 import type { StudioListQuery } from '@/lib/studios/studio-list-query';
+import { imageOrderItemSchema } from '@/lib/images/schemas';
 import { videoIdField } from '@/lib/videos/schemas';
 import { requireDisclosureProvider } from '@/lib/publishing/schemas';
 
@@ -137,5 +138,6 @@ export const studioInputSchema = (today: string) =>
     videoLink: videoIdField(),
     fees: z.array(studioFeeInputSchema).max(50).default([]),
     gear: z.array(gearItemInputSchema).max(200).default([]),
+    images: z.array(imageOrderItemSchema).max(200).optional(),
   })
   .superRefine(requireDisclosureProvider);

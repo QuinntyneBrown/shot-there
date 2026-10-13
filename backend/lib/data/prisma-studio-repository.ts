@@ -41,7 +41,7 @@ export class PrismaStudioRepository implements StudioRepository {
   }
 
   async save(studio: StudioRecord): Promise<void> {
-    const { id, fees, gear, images: _images, priceVerifiedAt, reviewedAt, ...fields } = studio;
+    const { id, fees, gear, images, priceVerifiedAt, reviewedAt, ...fields } = studio;
     const data = {
       ...fields,
       priceVerifiedAt: fromIsoDate(priceVerifiedAt),
@@ -53,6 +53,9 @@ export class PrismaStudioRepository implements StudioRepository {
       this.prisma.studioFee.createMany({ data: fees.map((fee, position) => ({ studioId: id, position, ...fee })) }),
       this.prisma.gearItem.deleteMany({ where: { studioId: id } }),
       this.prisma.gearItem.createMany({ data: gear.map((item, position) => ({ studioId: id, position, ...item })) }),
+      ...images.map(({ id: imageId, sortOrder, altText }) =>
+        this.prisma.image.updateMany({ where: { id: imageId, studioId: id }, data: { sortOrder, altText } }),
+      ),
     ]);
   }
 }

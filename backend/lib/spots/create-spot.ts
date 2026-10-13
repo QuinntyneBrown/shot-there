@@ -6,7 +6,7 @@ import type { SpotRecord } from '@/lib/spots/spot-record';
 /** Creates a draft spot with a unique slug from its name; permits are verified today unless the owner says otherwise. */
 export async function createSpot(input: SpotInput): Promise<SpotRecord> {
   const { spots, clock } = getDependencies();
-  const { permitVerifiedAt, slug, videoLink, ...fields } = input;
+  const { permitVerifiedAt, slug, videoLink, images: _images, ...fields } = input;
   const spot: SpotRecord = {
     ...fields,
     id: crypto.randomUUID(),

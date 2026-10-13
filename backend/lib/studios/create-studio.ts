@@ -6,7 +6,7 @@ import type { StudioRecord } from '@/lib/studios/studio-record';
 /** Creates a draft studio with a unique slug from its name; pricing is verified today unless the owner says otherwise. */
 export async function createStudio(input: StudioInput): Promise<StudioRecord> {
   const { studios, clock } = getDependencies();
-  const { priceVerifiedAt, slug, videoLink, ...fields } = input;
+  const { priceVerifiedAt, slug, videoLink, images: _images, ...fields } = input;
   const studio: StudioRecord = {
     ...fields,
     id: crypto.randomUUID(),

@@ -1,12 +1,13 @@
 import { getDependencies } from '@/lib/data/dependency-container';
 import { validationFailed } from '@/lib/http/validation-failed';
+import { applyImageOrder } from '@/lib/images/apply-image-order';
 import { checkSpotPublishable } from '@/lib/publishing/check-publishable';
 import { refuseIncompletePublishedSave } from '@/lib/publishing/refuse-incomplete-published-save';
 import type { SpotInput } from '@/lib/spots/spot-input';
 import type { SpotRecord } from '@/lib/spots/spot-record';
 
 /**
- * Replaces the spot's editable fields and permit rows. The permit verified date and the slug change only when the input
+ * Replaces the spot's editable fields and permit rows, and the order and alt text of the images listed. The permit verified date and the slug change only when the input
  * carries them; a published spot's old slug then redirects to the new one. Null when no spot has the id.
  */
 export async function updateSpot(id: string, input: SpotInput): Promise<SpotRecord | null> {
@@ -14,7 +15,7 @@ export async function updateSpot(id: string, input: SpotInput): Promise<SpotReco
   const stored = await spots.findById(id);
   if (!stored) return null;
 
-  const { permitVerifiedAt, slug = stored.slug, videoLink, ...fields } = input;
+  const { permitVerifiedAt, slug = stored.slug, videoLink, images, ...fields } = input;
   const slugChanged = slug !== stored.slug;
   if (slugChanged && (await spots.isSlugTaken(slug))) {
     throw validationFailed([{ field: 'slug', message: 'This address is already used by another spot' }]);
@@ -25,6 +26,7 @@ export async function updateSpot(id: string, input: SpotInput): Promise<SpotReco
     ...fields,
     slug,
     videoId: videoLink,
+    images: applyImageOrder(stored.images, images),
     permitVerifiedAt: permitVerifiedAt ?? stored.permitVerifiedAt,
     updatedAt: clock.now(),
   };

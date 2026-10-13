@@ -1,3 +1,4 @@
+import { withOrderAndAltText } from '@/tests/support/with-order-and-alt-text';
 import type { StudioRecord } from '@/lib/studios/studio-record';
 import type { StudioRepository } from '@/lib/studios/studio-repository';
 
@@ -29,7 +30,7 @@ export class InMemoryStudioRepository implements StudioRepository {
     if (index === -1) {
       this.rows.push(structuredClone({ ...studio, images: [] }));
     } else {
-      this.rows[index] = structuredClone({ ...studio, images: this.rows[index].images });
+      this.rows[index] = structuredClone({ ...studio, images: withOrderAndAltText(this.rows[index].images, studio.images) });
     }
   }
 }

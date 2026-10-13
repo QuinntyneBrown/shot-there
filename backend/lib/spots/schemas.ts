@@ -12,6 +12,7 @@ import {
 import type { BestUse } from '@/lib/spots/best-use';
 import type { SpotListQuery } from '@/lib/spots/spot-list-query';
 import type { SpotType } from '@/lib/spots/spot-type';
+import { imageOrderItemSchema } from '@/lib/images/schemas';
 import { videoIdField } from '@/lib/videos/schemas';
 import { requireDisclosureProvider } from '@/lib/publishing/schemas';
 
@@ -97,5 +98,6 @@ export const spotInputSchema = (today: string) =>
     disclosure: optionalEnum(['paid_in_full', 'discounted', 'comped']),
     disclosureProvider: optionalText(200),
     videoLink: videoIdField(),
+    images: z.array(imageOrderItemSchema).max(200).optional(),
   })
   .superRefine(requireDisclosureProvider);

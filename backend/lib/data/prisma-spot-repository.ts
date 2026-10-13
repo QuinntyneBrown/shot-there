@@ -41,7 +41,7 @@ export class PrismaSpotRepository implements SpotRepository {
   }
 
   async save(spot: SpotRecord): Promise<void> {
-    const { id, permits, images: _images, lightByTime, lightBySeason, permitVerifiedAt, ...fields } = spot;
+    const { id, permits, images, lightByTime, lightBySeason, permitVerifiedAt, ...fields } = spot;
     const data = {
       ...fields,
       lightByTime: lightByTime as unknown as Prisma.InputJsonValue,
@@ -52,6 +52,9 @@ export class PrismaSpotRepository implements SpotRepository {
       this.prisma.spot.upsert({ where: { id }, create: { id, ...data }, update: data }),
       this.prisma.permitStatus.deleteMany({ where: { spotId: id } }),
       this.prisma.permitStatus.createMany({ data: permits.map((permit) => ({ spotId: id, ...permit })) }),
+      ...images.map(({ id: imageId, sortOrder, altText }) =>
+        this.prisma.image.updateMany({ where: { id: imageId, spotId: id }, data: { sortOrder, altText } }),
+      ),
     ]);
   }
 }
