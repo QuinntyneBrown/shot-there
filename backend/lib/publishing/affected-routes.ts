@@ -13,3 +13,8 @@ export function affectedRoutes(kind: LocationKind, slug: string, guideSlugs: str
     ...guideSlugs.map((guideSlug) => `/guides/${guideSlug}`),
   ];
 }
+
+/** The public routes one guide change touches: its page, the guide index and the sitemap. */
+export function affectedGuideRoutes(slug: string): string[] {
+  return [`/guides/${slug}`, '/guides', '/sitemap.xml'];
+}

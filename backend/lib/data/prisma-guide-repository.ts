@@ -23,6 +23,32 @@ export class PrismaGuideRepository implements GuideRepository {
     const rows = await this.prisma.guide.findMany({ include: guideInclude });
     return rows.map(toGuideRecord);
   }
+
+  async findById(id: string): Promise<GuideRecord | null> {
+    const row = await this.prisma.guide.findUnique({ where: { id }, include: guideInclude });
+    return row ? toGuideRecord(row) : null;
+  }
+
+  async isSlugTaken(slug: string): Promise<boolean> {
+    return (await this.prisma.guide.count({ where: { slug } })) > 0;
+  }
+
+  async save(guide: GuideRecord): Promise<void> {
+    const { id, entries, ...fields } = guide;
+    await this.prisma.$transaction([
+      this.prisma.guide.upsert({ where: { id }, create: { id, ...fields }, update: fields }),
+      this.prisma.guideEntry.deleteMany({ where: { guideId: id } }),
+      this.prisma.guideEntry.createMany({
+        data: entries.map(({ kind, locationId, note, position }) => ({
+          guideId: id,
+          studioId: kind === 'studio' ? locationId : null,
+          spotId: kind === 'spot' ? locationId : null,
+          note,
+          position,
+        })),
+      }),
+    ]);
+  }
 }
 
 function toGuideRecord(row: GuideRow): GuideRecord {

@@ -15,4 +15,18 @@ export class InMemoryGuideRepository implements GuideRepository {
   async listAll(): Promise<GuideRecord[]> {
     return structuredClone(this.rows);
   }
+
+  async findById(id: string): Promise<GuideRecord | null> {
+    return structuredClone(this.rows.find((row) => row.id === id) ?? null);
+  }
+
+  async isSlugTaken(slug: string): Promise<boolean> {
+    return this.rows.some((row) => row.slug === slug);
+  }
+
+  async save(guide: GuideRecord): Promise<void> {
+    const index = this.rows.findIndex((row) => row.id === guide.id);
+    if (index === -1) this.rows.push(structuredClone(guide));
+    else this.rows[index] = structuredClone(guide);
+  }
 }
