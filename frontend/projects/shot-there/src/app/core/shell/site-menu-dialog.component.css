@@ -7,5 +7,8 @@
 .icon-btn:hover { background: var(--color-bg-subtle); }
 .icon { width: var(--icon-size-md); height: var(--icon-size-md); fill: none; stroke: currentColor; stroke-width: var(--icon-stroke); stroke-linecap: round; stroke-linejoin: round; }
 .section-list { list-style: none; padding: 0; margin: 0; border-top: var(--border-width-hairline) solid var(--color-border-default); }
-.section-link { display: flex; align-items: center; min-height: 4.5rem; padding: var(--space-3) var(--space-1); border-bottom: var(--border-width-hairline) solid var(--color-border-default); color: inherit; text-decoration: none; font: var(--text-body-lg); font-weight: var(--font-weight-medium); }
+.section-link { display: flex; align-items: center; gap: var(--space-4); min-height: 4.5rem; padding: var(--space-3) var(--space-1); border-bottom: var(--border-width-hairline) solid var(--color-border-default); color: inherit; text-decoration: none; }
+.section-link__body { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.section-link__title { font: var(--text-body-lg); font-weight: var(--font-weight-medium); }
+.section-link__meta { font: var(--text-body-sm); color: var(--color-fg-muted); }
 .section-link:hover { background: var(--color-bg-surface-sunken); }

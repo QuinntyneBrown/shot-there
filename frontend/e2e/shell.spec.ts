@@ -33,9 +33,14 @@ test.describe('Site header', () => {
     await shell.useDesktopWidth();
     // When the home page loads
     await shell.open();
-    // Then the primary links show inline and there is no Menu button
-    await expect(shell.headerLink('Studios')).toBeVisible();
-    await expect(shell.headerLink('Compare')).toBeVisible();
+    // Then the primary links show inline, in order, and there is no Menu button
+    expect(await shell.headerLinks()).toEqual([
+      { name: 'Studios', href: '/studios' },
+      { name: 'Spots', href: '/spots' },
+      { name: 'Map', href: '/map' },
+      { name: 'Compare', href: '/compare' },
+      { name: 'Guides', href: '/guides' }
+    ]);
     await expect(shell.menuButton).toBeHidden();
   });
 
@@ -50,10 +55,16 @@ test.describe('Site header', () => {
     expect(await shell.menuButtonHeight()).toBeGreaterThanOrEqual(44);
     // When the visitor opens the menu
     await shell.openMenu();
-    // Then the menu lists the site's pages and reports it is open
+    // Then the menu lists the site's pages and the editorial policy, and reports it is open
     await expect(shell.menuDialog).toBeVisible();
-    await expect(shell.menuLink('Studios')).toBeVisible();
-    await expect(shell.menuLink('Compare')).toBeVisible();
+    expect(await shell.menuLinks()).toEqual([
+      { name: 'Studios', href: '/studios' },
+      { name: 'Spots', href: '/spots' },
+      { name: 'Map', href: '/map' },
+      { name: 'Compare', href: '/compare' },
+      { name: 'Guides', href: '/guides' },
+      { name: 'Editorial policy', href: '/editorial-policy' }
+    ]);
     await expect(shell.menuButton).toHaveAttribute('aria-expanded', 'true');
   });
 
@@ -85,7 +96,7 @@ test.describe('Site header', () => {
     await expect(shell.menuButton).toBeFocused();
   });
 
-  for (const width of [320, 1280]) {
+  for (const width of [320, 768, 1280]) {
     test(`lays out without horizontal scrolling or accessibility violations at ${width}px`, async ({ page }) => {
       // Given a window of this width
       const shell = new ShellPage(page);
@@ -120,6 +131,9 @@ test.describe('Site footer', () => {
     // Then the contentinfo landmark holds the promise, the footer links and the policy line
     await expect(shell.footer).toContainText('Nothing is listed unless it has been shot there.');
     await expect(shell.footerLink('Studios')).toHaveAttribute('href', '/studios');
+    await expect(shell.footerLink('Spots')).toHaveAttribute('href', '/spots');
+    await expect(shell.footerLink('Guides')).toHaveAttribute('href', '/guides');
+    await expect(shell.footerLink('Editorial policy')).toHaveAttribute('href', '/editorial-policy');
     await expect(shell.footerLink('YouTube channel (opens in a new tab)')).toHaveAttribute('target', '_blank');
     await expect(shell.footer).toContainText('No paid placement: order comes only from the sort you choose.');
   });

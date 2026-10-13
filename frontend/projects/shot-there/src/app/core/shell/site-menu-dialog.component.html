@@ -9,7 +9,14 @@
     <nav aria-label="Primary" i18n-aria-label>
       <ul class="section-list">
         @for (link of links; track link.path) {
-          <li><a class="section-link" [routerLink]="link.path" (click)="close()">{{ link.label }}</a></li>
+          <li><a class="section-link" [routerLink]="link.path" (click)="close()"><span class="section-link__body"><span class="section-link__title">{{ link.label }}</span><span class="section-link__meta">{{ link.description }}</span></span></a></li>
+        }
+      </ul>
+    </nav>
+    <nav aria-label="About ShotThere" i18n-aria-label>
+      <ul class="section-list">
+        @for (link of aboutLinks; track link.path) {
+          <li><a class="section-link" [routerLink]="link.path" (click)="close()"><span class="section-link__body"><span class="section-link__title">{{ link.label }}</span><span class="section-link__meta">{{ link.description }}</span></span></a></li>
         }
       </ul>
     </nav>

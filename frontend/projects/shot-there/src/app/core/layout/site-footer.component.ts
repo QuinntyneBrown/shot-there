@@ -11,6 +11,9 @@ import { APP_PATHS } from '../routing/app-paths';
 })
 export class SiteFooterComponent {
   protected readonly studiosPath = `/${APP_PATHS.studios}`;
+  protected readonly spotsPath = `/${APP_PATHS.spots}`;
+  protected readonly guidesPath = `/${APP_PATHS.guides}`;
+  protected readonly editorialPolicyPath = `/${APP_PATHS.editorialPolicy}`;
   protected readonly youTubeChannelUrl = 'https://www.youtube.com/@ShotThere';
   protected readonly year = new Date().getFullYear();
 }

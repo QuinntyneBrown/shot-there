@@ -51,12 +51,21 @@ export class ShellPage {
     return this.page.getByRole('banner').getByRole('navigation', { name: 'Primary' }).getByRole('link', { name, exact: true });
   }
 
+  headerLinks(): Promise<{ name: string; href: string | null }[]> {
+    return this.linkList(this.page.getByRole('banner').getByRole('navigation', { name: 'Primary' }).getByRole('link'));
+  }
+
+  menuLinks(): Promise<{ name: string; href: string | null }[]> {
+    return this.menuDialog.getByRole('link').evaluateAll((links) =>
+      links.map((link) => ({ name: link.querySelector('.section-link__title')?.textContent?.trim() ?? '', href: link.getAttribute('href') })));
+  }
+
   footerLink(name: string): Locator {
     return this.footer.getByRole('navigation', { name: 'Footer' }).getByRole('link', { name });
   }
 
-  menuLink(name: string): Locator {
-    return this.menuDialog.getByRole('link', { name, exact: true });
+  private linkList(links: Locator): Promise<{ name: string; href: string | null }[]> {
+    return links.evaluateAll((all) => all.map((link) => ({ name: link.textContent?.trim() ?? '', href: link.getAttribute('href') })));
   }
 
   async openMenu(): Promise<void> {
