@@ -792,6 +792,7 @@ span.chip { cursor: default; }
 html:has(body.has-compare-bar) { scroll-padding-bottom: calc(var(--space-32) + var(--space-8) + env(safe-area-inset-bottom)); }
 /* Toasts rise above the compare bar. */
 .has-compare-bar .toast-region { bottom: calc(var(--space-24) + env(safe-area-inset-bottom)); }
+@media (max-width: 35.99rem) { .has-compare-bar .toast-region { bottom: calc(var(--space-32) + var(--space-4) + env(safe-area-inset-bottom)); } }
 /* Images that fail to load keep their slot and show their alt text (L2-086.1). */
 .media-fallback { display: grid; place-items: center; align-content: center; gap: var(--space-2); width: 100%; height: 100%; padding: var(--space-3); background: var(--color-bg-photo); color: var(--color-fg-muted); font: var(--text-body-sm); text-align: center; overflow-wrap: anywhere; }
 .media-fallback .icon { color: var(--color-fg-subtle); }
@@ -956,6 +957,7 @@ a.tag:hover, a.tag[data-state="hover"] { color: var(--color-fg-default); border-
 .static-map { position: relative; width: 100%; min-height: 15rem; border-radius: var(--radius-lg); overflow: hidden; background: var(--color-bg-surface-sunken); isolation: isolate; }
 /* Empty, error and loading notices float over the map. */
 .static-map__overlay { position: absolute; inset: 0; display: grid; place-items: center; padding: var(--space-4); }
+.static-map > .skeleton { position: absolute; inset: 0; margin: 0; border-radius: 0; }
 .static-map__overlay > .empty { background: var(--color-bg-surface-raised); border-radius: var(--radius-lg); box-shadow: var(--shadow-3); max-width: 24rem; }
 .static-map__tiles { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; }
 .static-map--spot { aspect-ratio: 16 / 9; }

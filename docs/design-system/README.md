@@ -285,6 +285,11 @@ What the mocks do differently from the system, and how the system resolves it. W
 | pages/sign-in/default | 2px seam beside the Show button; the button clips the focused field's ring | Group seam and focus rules added |
 | editors | Textarea rows 2 and 3 render at the same 110px min-height | Textarea min-height lowered so `rows` works |
 | editor submitting vs sign-in/submitting | Editors stay editable while saving; sign-in goes readonly | Both documented |
+| pages/guide-editor/invalid vs dialogs/missing-fields/* | A refused Publish is a form summary on guides but a dialog on studios and spots | Every refused Publish uses the "Can't publish yet" dialog; refused saves use the error summary |
+| pages/admin-dashboard, dialogs/site-menu/admin, admin-studios | Counts read "7 published, 2 draft", "7 published · 2 drafts" and "7 published · 2 draft" | "7 published, 2 draft" |
+| pages/sign-in/*, home/* | Alert titles mix trailing full stops | No full stop on titles |
+| notifications/public-toast/warning at 360px | The toast overlaps the compare bar once the bar wraps to two rows | The toast offset grows on phones |
+| pages/map/loading | The map's loading skeleton is styled inline | `.static-map > .skeleton` |
 
 ## Open questions
 
@@ -299,6 +304,10 @@ Decisions the mocks and requirements leave open. Each is noted on the page it af
 | all compare-toggle mocks | Label changes "Compare" → "Remove" while aria-pressed also changes (L2-030.1 asks for both) | Open question for the spec owner |
 | pages/compare/* | Sizes metric only, without imperial | Content decision: metric with imperial in brackets everywhere |
 | L2-064.2 vs all menu mocks | Spec asks for a disclosure; the mocks use a modal sheet | Open question; the system follows the mocks |
+| pages/spot/* light table | The "Rating" column header can be read as a review score | Unchanged; "Light" suggested |
+| pages/compare/* | "Prices verified" sits in the Cost group, unlike the row order L2-031 lists (mocks README open question 12) | The system follows the mock |
+| pages/spot/* | No mock shows a standing permit disclaimer while the rules are fresh; only the mocks README says permit data is illustrative | Verified date, official source link and "Confirm with … before you shoot" act as the disclaimer |
+| notifications/admin-toast/*, public-toast/danger | Danger toasts are `role="alert"` nested inside the `role="status"` region; a separate assertive container would avoid double announcements | Kept as mocked; test with screen readers before splitting the region |
 
 ## Changelog
 
