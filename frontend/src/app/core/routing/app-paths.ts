@@ -2,5 +2,6 @@
 export const APP_PATHS = {
   home: '',
   studios: 'studios',
+  studio: 'studios/:slug',
   compare: 'compare'
 } as const;

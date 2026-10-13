@@ -1,5 +1,6 @@
 import { Page, Route } from '@playwright/test';
 
+import { FakeStudioDetail } from './studio-details';
 import { FakeStudioSummary } from './studio-summaries';
 
 const isStudioList = (url: URL) => url.pathname === '/api/studios';
@@ -28,4 +29,14 @@ export async function givenStudioListPending(page: Page, studios: FakeStudioSumm
     await route.fulfill({ json: studios });
   });
   return release;
+}
+
+/** The studio detail endpoint answers with this studio. */
+export async function givenStudio(page: Page, studio: FakeStudioDetail): Promise<void> {
+  await page.route((url) => url.pathname === `/api/studios/${studio.slug}`, (route: Route) => route.fulfill({ json: studio }));
+}
+
+/** The studio detail endpoint has no published studio with this slug. */
+export async function givenNoStudio(page: Page, slug: string): Promise<void> {
+  await page.route((url) => url.pathname === `/api/studios/${slug}`, (route: Route) => route.fulfill({ status: 404, json: { error: 'not_found' } }));
 }

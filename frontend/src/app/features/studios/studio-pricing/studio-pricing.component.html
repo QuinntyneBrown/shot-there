@@ -1,0 +1,41 @@
+@let p = pricing();
+@let v = view();
+<section class="review-section" aria-labelledby="pricing">
+  <h2 id="pricing" i18n>Pricing</h2>
+  <div class="price-block">
+    <p class="price-block__allin">
+      <strong>{{ p.allInCost2h | currency: 'CAD' : 'symbol-narrow' : '1.2-2' }}</strong>
+      @if (v.mandatoryFees.length > 0) {
+        <span i18n>All-in for a standard 2-hour shoot: {{ v.billableHours }} hours at {{ p.hourlyRate | currency: 'CAD' : 'symbol-narrow' : '1.2-2' }} plus mandatory fees.</span>
+      } @else {
+        <span i18n>All-in for a standard 2-hour shoot: {{ v.billableHours }} hours at {{ p.hourlyRate | currency: 'CAD' : 'symbol-narrow' : '1.2-2' }}.</span>
+      }
+    </p>
+    <dl class="kv">
+      <dt i18n>Hourly rate</dt>
+      <dd class="num">{{ p.hourlyRate | currency: 'CAD' : 'symbol-narrow' : '1.2-2' }}</dd>
+      <dt i18n>Minimum booking</dt>
+      <dd i18n>{p.minBookingHours, plural, =1 {1 hour} other {{{p.minBookingHours}} hours}}</dd>
+      @for (fee of v.mandatoryFees; track fee.name) {
+        <dt>{{ fee.name }}</dt>
+        <dd><span class="num">{{ fee.amount | currency: 'CAD' : 'symbol-narrow' : '1.2-2' }}</span>&ngsp;<span class="badge" i18n>Mandatory</span></dd>
+      }
+      @for (fee of v.optionalFees; track fee.name) {
+        <dt>{{ fee.name }}</dt>
+        <dd><span class="num">{{ fee.amount | currency: 'CAD' : 'symbol-narrow' : '1.2-2' }}</span>&ngsp;<span class="badge" i18n>Optional, not in all-in</span></dd>
+      }
+    </dl>
+    <p class="price-block__verified" i18n>Prices verified <time [attr.datetime]="p.priceVerifiedAt">{{ p.priceVerifiedAt | date: 'd MMMM y' }}</time></p>
+    <div role="status">
+      @if (p.priceStale) {
+        <div class="alert alert--warning">
+          <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3 2 20h20L12 3z" /><path d="M12 10v4M12 17h0" /></svg>
+          <div class="alert__body">
+            <p class="alert__title" i18n>Prices may be out of date</p>
+            <p i18n>We last checked these prices {{ v.daysSinceVerified }} days ago. Confirm with the studio before you book.</p>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

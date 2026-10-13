@@ -4,7 +4,7 @@ import localeEnCa from '@angular/common/locales/en-CA';
 import { ApplicationConfig, LOCALE_ID, provideBrowserGlobalErrorListeners } from '@angular/core';
 import { TitleStrategy, provideRouter } from '@angular/router';
 import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
-import { HttpStudiosService, StudiosService } from '@shot-there/api';
+import { HttpStudioService, HttpStudiosService, StudioService, StudiosService } from '@shot-there/api';
 
 import { routes } from './app.routes';
 import { ShotThereTitleStrategy } from './core/routing/shot-there-title-strategy';
@@ -19,6 +19,7 @@ export const appConfig: ApplicationConfig = {
     { provide: TitleStrategy, useClass: ShotThereTitleStrategy },
     provideClientHydration(withEventReplay()),
     provideHttpClient(withFetch()),
-    { provide: StudiosService, useClass: HttpStudiosService }
+    { provide: StudiosService, useClass: HttpStudiosService },
+    { provide: StudioService, useClass: HttpStudioService }
   ]
 };

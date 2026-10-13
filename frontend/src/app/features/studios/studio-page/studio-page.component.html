@@ -1,0 +1,11 @@
+@if (state().status === 'not-found') {
+  <st-not-found-page />
+}
+@if (studio(); as s) {
+  <article class="review">
+    <st-studio-basics [basics]="s.basics" />
+    <div class="review-main">
+      <st-studio-pricing [pricing]="s.pricing" />
+    </div>
+  </article>
+}
