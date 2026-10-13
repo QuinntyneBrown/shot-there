@@ -2,7 +2,7 @@ import { expect, test } from '@playwright/test';
 import { ButtonComponent } from '../components/button.component';
 import { HarnessPage, HarnessTheme } from '../pages/harness.page';
 
-test.describe('ButtonComponent: busy and soft-disabled (ICD-002 §9.1, ICD-FORM-8, DS button states)', () => {
+test.describe('ButtonComponent: busy, soft-disabled and pressed (ICD-002 §9.1, ICD-FORM-8, D-9, DS button states)', () => {
   test('a busy submit button keeps its name, width and focus, shows the spinner and hides its label', async ({ page }) => {
     // Given the primary submit button "Save changes" in a form, not busy
     const harness = new HarnessPage(page);
@@ -72,8 +72,41 @@ test.describe('ButtonComponent: busy and soft-disabled (ICD-002 §9.1, ICD-FORM-
     expect(await harness.activations()).toEqual(['click: Move up test shot 2']);
   });
 
+  test('renders aria-pressed only when pressed is set, and the DS selected look while pressed (D-9)', async ({ page }) => {
+    // Given the small compare toggle for Kensington Window Room, not pressed, and a plain button
+    const harness = new HarnessPage(page);
+    await harness.open('button/pressed');
+    const compare = new ButtonComponent(page, 'Compare Kensington Window Room');
+    await expect(compare.root).toHaveAttribute('aria-pressed', 'false');
+    await expect(new ButtonComponent(page, 'Apply filters').root).not.toHaveAttribute('aria-pressed');
+    const idle = await compare.colours();
+    // When the visitor activates it and the application sets pressed and flips the label
+    await compare.click();
+    // Then it is a pressed toggle named "Remove Kensington Window Room"
+    const remove = new ButtonComponent(page, 'Remove Kensington Window Room');
+    await expect(remove.root).toHaveAttribute('aria-pressed', 'true');
+    // And it shows the accent tint, label and edge instead of the secondary look
+    await page.mouse.move(0, 0);
+    const pressed = await remove.colours();
+    expect(pressed.background).not.toBe(idle.background);
+    expect(pressed.text).not.toBe(idle.text);
+    expect(pressed.border).not.toBe(idle.border);
+    expect(harness.errors).toEqual([]);
+  });
+
   for (const theme of ['light', 'dark'] as HarnessTheme[]) {
     for (const width of [320, 1280]) {
+      test(`the pressed toggle has no WCAG A/AA violations at ${width}px in the ${theme} theme`, async ({ page }) => {
+        // Given the compare toggle, pressed, in the ${theme} theme at ${width}px
+        const harness = new HarnessPage(page);
+        await harness.open('button/pressed', { width, theme });
+        await new ButtonComponent(page, 'Compare Kensington Window Room').click();
+        await expect(new ButtonComponent(page, 'Remove Kensington Window Room').root).toHaveAttribute('aria-pressed', 'true');
+        // When axe scans it
+        // Then it finds no violations
+        expect(await harness.accessibilityViolations()).toEqual([]);
+      });
+
       test(`busy and soft-disabled have no WCAG A/AA violations at ${width}px in the ${theme} theme`, async ({ page }) => {
         // Given a busy button and a soft-disabled one in the ${theme} theme at ${width}px
         const harness = new HarnessPage(page);

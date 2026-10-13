@@ -43,6 +43,14 @@ export class ButtonComponent {
     });
   }
 
+  /** Computed fill, text and edge colours. */
+  colours(): Promise<{ background: string; text: string; border: string }> {
+    return this.root.evaluate((el) => {
+      const style = getComputedStyle(el);
+      return { background: style.backgroundColor, text: style.color, border: style.borderTopColor };
+    });
+  }
+
   /** The element's opacity: 0.5 is the DS disabled look. */
   opacity(): Promise<number> {
     return this.root.evaluate((el) => parseFloat(getComputedStyle(el).opacity));

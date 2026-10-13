@@ -21,6 +21,8 @@
 :host(.btn--sm) { min-height: var(--control-height-sm); padding-inline: var(--space-3); font-size: var(--font-size-sm); }
 :host(.btn--lg) { min-height: var(--control-height-lg); padding-inline: var(--space-6); font-size: var(--font-size-lg); }
 :host(.btn--block) { display: flex; width: 100%; }
+/* Pressed toggles take the DS compare-toggle look (D-9). */
+:host([aria-pressed="true"]) { --btn-bg: var(--color-accent-subtle); --btn-fg: var(--color-fg-accent); --btn-border: var(--color-accent); --btn-bg-hover: var(--color-accent-subtle-hover); }
 /* Busy is never dimmed: the spinner keeps the label colour and its 3:1 (button D-5). The label stays, transparent, so the width holds. */
 :host([aria-busy="true"]) { opacity: 1; cursor: progress; color: transparent; pointer-events: none; }
 :host([aria-busy="true"])::after {

@@ -22,6 +22,7 @@ import { ControlSize } from '../types/control-size';
     '[class.btn--block]': 'block()',
     '[attr.aria-busy]': 'busy() || null',
     '[attr.aria-disabled]': 'busy() || softDisabled() || null',
+    '[attr.aria-pressed]': 'pressed() ?? null',
   },
 })
 export class ButtonComponent {
@@ -30,6 +31,8 @@ export class ButtonComponent {
   readonly block = input(false, { transform: booleanAttribute });
   readonly busy = input(false, { transform: booleanAttribute });
   readonly softDisabled = input(false, { transform: booleanAttribute });
+  /** When defined, the button is a toggle; true shows the DS selected look (D-9). */
+  readonly pressed = input<boolean | undefined>(undefined);
 
   constructor() {
     // A capture listener on the host runs before any consumer listener on it, so while busy or

@@ -1,0 +1,6 @@
+<main class="container cluster">
+  <button st-button size="sm" type="button" [pressed]="selected()" (click)="selected.set(!selected())">
+    @if (selected()) { Remove } @else { Compare }<span class="visually-hidden"> Kensington Window Room</span>
+  </button>
+  <button st-button type="button">Apply filters</button>
+</main>

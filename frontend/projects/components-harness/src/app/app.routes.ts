@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { ButtonPressedComponent } from './button/button-pressed.component';
 import { ButtonSoftDisabledComponent } from './button/button-soft-disabled.component';
 import { ButtonBusyComponent } from './button/button-busy.component';
 import { ButtonLinkComponent } from './button/button-link.component';
@@ -22,4 +23,5 @@ export const routes: Routes = [
   { path: 'button/link', component: ButtonLinkComponent },
   { path: 'button/busy', component: ButtonBusyComponent },
   { path: 'button/soft-disabled', component: ButtonSoftDisabledComponent },
+  { path: 'button/pressed', component: ButtonPressedComponent },
 ];
