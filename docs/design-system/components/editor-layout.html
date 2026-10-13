@@ -1,0 +1,632 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Editor layout — ShotThere design system</title>
+<meta name="description" content="ShotThere editor layout: the admin studio, spot and guide editors with a status panel beside a form of collapsible sections, repeating fee rows and a sticky save bar, in every state and both themes.">
+<link rel="stylesheet" href="../tokens/tokens.css">
+<link rel="stylesheet" href="../assets/components.css">
+<link rel="stylesheet" href="../assets/ds.css">
+</head>
+<body id="top">
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="ds-shell">
+  <nav class="ds-nav" aria-label="Design system">
+    <div class="ds-nav__brand"><a href="../index.html">ShotThere DS</a><button class="ds-theme-toggle" type="button" aria-pressed="false">☾ Dark</button></div>
+    <details open><summary>Foundations</summary><ul>
+      <li><a href="../foundations/color.html">Color</a></li>
+      <li><a href="../foundations/typography.html">Typography</a></li>
+      <li><a href="../foundations/spacing.html">Spacing</a></li>
+      <li><a href="../foundations/layout.html">Layout</a></li>
+      <li><a href="../foundations/elevation.html">Elevation</a></li>
+      <li><a href="../foundations/shape.html">Shape</a></li>
+      <li><a href="../foundations/motion.html">Motion</a></li>
+      <li><a href="../foundations/iconography.html">Iconography</a></li>
+      <li><a href="../foundations/theming.html">Theming</a></li>
+      <li><a href="../foundations/responsive.html">Responsive</a></li>
+      <li><a href="../foundations/accessibility.html">Accessibility</a></li>
+      <li><a href="../foundations/content.html">Content</a></li>
+    </ul></details>
+    <details open><summary>Actions</summary><ul>
+      <li><a href="../components/button.html">Button</a></li>
+      <li><a href="../components/icon-button.html">Icon button</a></li>
+      <li><a href="../components/button-group.html">Button group</a></li>
+      <li><a href="../components/link.html">Link</a></li>
+      <li><a href="../components/compare-bar.html">Compare toggle and bar</a></li>
+    </ul></details>
+    <details open><summary>Inputs</summary><ul>
+      <li><a href="../components/form-field.html">Form field</a></li>
+      <li><a href="../components/text-field.html">Text field</a></li>
+      <li><a href="../components/textarea.html">Textarea</a></li>
+      <li><a href="../components/select.html">Select</a></li>
+      <li><a href="../components/combobox.html">Combobox</a></li>
+      <li><a href="../components/checkbox.html">Checkbox</a></li>
+      <li><a href="../components/radio-group.html">Radio group</a></li>
+      <li><a href="../components/file-upload.html">File upload</a></li>
+      <li><a href="../components/form-layout.html">Form layout</a></li>
+      <li><a href="../components/signup.html">Email signup</a></li>
+    </ul></details>
+    <details open><summary>Navigation</summary><ul>
+      <li><a href="../components/skip-link.html">Skip link</a></li>
+      <li><a href="../components/site-header.html">Site header</a></li>
+      <li><a href="../components/footer.html">Footer</a></li>
+      <li><a href="../components/breadcrumb.html">Breadcrumb</a></li>
+      <li><a href="../components/filter.html">Filters</a></li>
+    </ul></details>
+    <details open><summary>Containers and overlays</summary><ul>
+      <li><a href="../components/container.html">Container and grid</a></li>
+      <li><a href="../components/review-layout.html">Review layout</a></li>
+      <li><a href="../components/editor-layout.html">Editor layout</a></li>
+      <li><a href="../components/card.html">Card</a></li>
+      <li><a href="../components/dialog.html">Dialog</a></li>
+      <li><a href="../components/sheet.html">Sheet and drawer</a></li>
+      <li><a href="../components/popover.html">Popover</a></li>
+      <li><a href="../components/lightbox.html">Lightbox</a></li>
+      <li><a href="../components/divider.html">Divider</a></li>
+    </ul></details>
+    <details open><summary>Data display</summary><ul>
+      <li><a href="../components/location-card.html">Location card</a></li>
+      <li><a href="../components/table.html">Table</a></li>
+      <li><a href="../components/compare-table.html">Comparison table</a></li>
+      <li><a href="../components/list.html">List rows</a></li>
+      <li><a href="../components/description-list.html">Description list</a></li>
+      <li><a href="../components/price-block.html">Price block</a></li>
+      <li><a href="../components/score.html">Score and pips</a></li>
+      <li><a href="../components/shot-grid.html">Shot grid</a></li>
+      <li><a href="../components/video-poster.html">Episode poster</a></li>
+      <li><a href="../components/map.html">Map</a></li>
+      <li><a href="../components/guide-entry.html">Guide entry</a></li>
+      <li><a href="../components/stat-tile.html">Stat tile</a></li>
+      <li><a href="../components/image-manager.html">Image manager</a></li>
+      <li><a href="../components/disclosure.html">Disclosure</a></li>
+      <li><a href="../components/badge.html">Badge</a></li>
+      <li><a href="../components/status-label.html">Status label</a></li>
+      <li><a href="../components/chip.html">Chip</a></li>
+      <li><a href="../components/tag.html">Tag</a></li>
+    </ul></details>
+    <details open><summary>Feedback</summary><ul>
+      <li><a href="../components/inline-message.html">Inline message</a></li>
+      <li><a href="../components/alert.html">Alert and banner</a></li>
+      <li><a href="../components/toast.html">Toast</a></li>
+      <li><a href="../components/progress.html">Progress and meter</a></li>
+      <li><a href="../components/spinner.html">Spinner</a></li>
+      <li><a href="../components/skeleton.html">Skeleton</a></li>
+      <li><a href="../components/empty-state.html">Empty state</a></li>
+      <li><a href="../components/error-page.html">Error page</a></li>
+    </ul></details>
+    <details open><summary>Patterns</summary><ul>
+      <li><a href="../patterns/forms.html">Forms</a></li>
+      <li><a href="../patterns/feedback-and-loading.html">Feedback and loading</a></li>
+      <li><a href="../patterns/empty-and-error-states.html">Empty and error states</a></li>
+      <li><a href="../patterns/navigation.html">Navigation and page structure</a></li>
+      <li><a href="../patterns/dialogs-and-overlays.html">Dialogs and overlays</a></li>
+      <li><a href="../patterns/tables-and-lists.html">Data tables and lists</a></li>
+      <li><a href="../patterns/notifications.html">Notifications</a></li>
+      <li><a href="../patterns/content-and-tone.html">Content and tone</a></li>
+    </ul></details>
+  </nav>
+
+  <main id="main" class="ds-main">
+    <header class="ds-header">
+      <p class="ds-kicker">Component · Containers and overlays</p>
+      <h1>Editor layout</h1>
+      <p class="ds-lead">The admin editors for studios, spots and guides share one layout: a status panel with Publish and Delete, beside a form split into collapsible sections, with the save bar pinned to the bottom of the screen. One column on phones; the status panel moves to a sticky right column from LG.</p>
+      <div class="ds-meta"><span class="ds-pill ds-pill--ok">WCAG 2.2 AA</span><span class="ds-pill">Status: stable</span><span class="ds-pill">Native <code>&lt;details&gt;</code> / <code>&lt;summary&gt;</code></span><span class="ds-pill"><code>.editor-layout</code></span><span class="ds-pill"><code>.editor-section</code></span><span class="ds-pill"><code>.fee-row</code></span></div>
+      <ul class="ds-toc"><li><a href="#overview">Overview</a></li><li><a href="#anatomy">Anatomy</a></li><li><a href="#variants">Variants</a></li><li><a href="#sizes">Sizes</a></li><li><a href="#states">States</a></li><li><a href="#responsive">Responsive behaviour</a></li><li><a href="#theming">Theming</a></li><li><a href="#accessibility">Accessibility</a></li><li><a href="#content">Content</a></li><li><a href="#do-dont">Do and don't</a></li><li><a href="#tokens">Tokens</a></li><li><a href="#code">Code</a></li><li><a href="#sources">Sources</a></li></ul>
+    </header>
+
+    <section class="ds-section" id="overview"><h2><a href="#overview">Overview</a></h2>
+      <p>The editor layout is the admin's one long form. Only the owner sees it (<code>/admin/studios/:id</code>, <code>/admin/spots/:id</code>, <code>/admin/guides/:id</code> and their <code>/new</code> screens). It holds everything a review needs, so it is long; sections fold away so the owner can work on one part at a time without losing values (L2-054.6).</p>
+      <ul>
+        <li><b>Status panel</b> (<code>.editor-aside</code>): whether the location is a draft or published, its public address, and the publishing actions: Publish or Unpublish, and Delete.</li>
+        <li><b>Form</b> (<code>.editor-form</code>): a stack of <b>editor sections</b> (<code>.editor-section</code>), each a native <code>&lt;details&gt;</code> whose <code>&lt;summary&gt;</code> holds the section's <code>&lt;h2&gt;</code>.</li>
+        <li><b>Repeating rows</b> (<code>.fee-row</code>): a sunken row for each fee, included gear item or extra, with its own Remove button.</li>
+        <li><b>Save bar</b>: the <a href="form-layout.html">form layout</a>'s <code>.form-actions--sticky</code> with Save changes (or Create studio), Cancel and the live <code>.save-status</code>.</li>
+      </ul>
+      <p>Sections by editor: the <b>studio editor</b> has Basics, Pricing and fees, Measured specifications, Gear, Logistics, Images, Rubric scores, Verdict, Disclosure and Episode video. The <b>spot editor</b> has Basics, Location, How to get there, Best light, Practical conditions, Permits, Best uses, Sample shots, Disclosure and Episode video. The <b>guide editor</b> has Basics and Entries.</p>
+      <p>Use something else for short forms (sign-in uses <a href="form-layout.html">form layout</a> on its own), for a confirmation (a <a href="dialog.html">dialog</a>), and for anything public: visitors read reviews in the review layout, never in an editor. Image lists inside a section are the <a href="image-manager.html">image manager</a>.</p>
+    </section>
+
+    <section class="ds-section" id="anatomy"><h2><a href="#anatomy">Anatomy</a></h2>
+      <div class="ds-anatomy" style="grid-template-columns: minmax(0, 1fr);">
+        <figure class="ds-anatomy__figure" style="display: block; padding: var(--space-8) var(--space-6);">
+          <div class="editor-layout">
+            <aside class="editor-aside" aria-labelledby="an-status" style="position: relative;">
+              <span class="ds-callout" style="left: -0.75rem; top: -0.75rem;" aria-hidden="true">1</span>
+              <h2 id="an-status" style="font: var(--text-h4);">Status</h2>
+              <dl class="editor-aside__meta">
+                <dt style="position: relative;">Visibility<span class="ds-callout" style="right: 0; top: -0.25rem;" aria-hidden="true">2</span></dt><dd><span class="status status--draft">Draft</span> · not on the public site</dd>
+                <dt>Public address once published</dt><dd><code>/studios/corktown-garage-studio</code></dd>
+              </dl>
+              <button class="btn" type="button">Publish<span class="ds-callout" style="right: -0.75rem; top: -0.75rem;" aria-hidden="true">3</span></button>
+              <button class="btn btn--ghost" type="button" style="color: var(--color-danger-fg);">Delete studio</button>
+            </aside>
+            <form class="editor-form" action="#anatomy" method="get" novalidate aria-labelledby="an-form">
+              <h2 class="visually-hidden" id="an-form">Studio details</h2>
+              <details class="editor-section">
+                <summary style="position: relative;"><h2>Basics</h2><span class="ds-callout" style="left: -0.75rem; top: -0.75rem;" aria-hidden="true">4</span></summary>
+                <div class="editor-section__body">
+                  <label class="field"><span class="field__label">Name</span><input class="input" name="name" value="Corktown Garage Studio" autocomplete="off"></label>
+                </div>
+              </details>
+              <details class="editor-section" open>
+                <summary><h2>Pricing and fees</h2></summary>
+                <div class="editor-section__body" style="position: relative;">
+                  <span class="ds-callout" style="left: -0.75rem; top: 0;" aria-hidden="true">5</span>
+                  <label class="field"><span class="field__label">Hourly rate</span><span class="input-group"><span class="addon" aria-hidden="true">$</span><input class="input" name="hourlyRate" type="number" inputmode="decimal" min="0" step="0.5" value="65.00"></span></label>
+                  <fieldset class="stack stack--sm">
+                    <legend>Fees</legend>
+                    <div class="fee-row" style="position: relative;">
+                      <span class="ds-callout" style="right: -0.75rem; top: -0.75rem;" aria-hidden="true">6</span>
+                      <label class="field"><span class="field__label">Fee name</span><input class="input" name="fees[0].name" value="Cleaning"></label>
+                      <label class="field"><span class="field__label">Amount</span><span class="input-group"><span class="addon" aria-hidden="true">$</span><input class="input" name="fees[0].amount" type="number" inputmode="decimal" min="0" value="20.00"></span></label>
+                      <label class="field"><span class="field__label">Type</span><select class="select" name="fees[0].mandatory"><option selected>Mandatory</option><option>Optional</option></select></label>
+                      <button class="btn btn--ghost" type="button">Remove<span class="visually-hidden"> Cleaning fee</span></button>
+                    </div>
+                  </fieldset>
+                </div>
+              </details>
+              <div class="form-actions form-actions--sticky">
+                <span class="ds-callout" style="left: -0.75rem; top: -0.75rem;" aria-hidden="true">7</span>
+                <button class="btn btn--primary" type="button">Save changes</button>
+                <button class="btn btn--ghost" type="button">Cancel</button>
+                <span class="save-status" role="status">Unsaved changes</span>
+              </div>
+            </form>
+          </div>
+        </figure>
+        <ol class="ds-anatomy__list">
+          <li><div><b>Status panel</b><small><code>.editor-aside</code>, an <code>&lt;aside&gt;</code> labelled by its "Status" heading. 1px <code>--color-border-default</code> edge, <code>--radius-lg</code>, <code>--space-5</code> padding, <code>--space-4</code> between parts; its buttons fill the width. Sticky from LG.</small></div></li>
+          <li><div><b>Status details</b><small><code>.editor-aside__meta</code>, a <code>&lt;dl&gt;</code>: muted <code>--text-body-sm</code> terms over default-colour values. Long addresses break anywhere.</small></div></li>
+          <li><div><b>Status actions</b><small>Publish (draft) or Unpublish (published) as a secondary button, then Delete as a ghost button in the danger text colour. No primary here: Save changes is the page's one primary.</small></div></li>
+          <li><div><b>Section heading</b><small><code>&lt;summary&gt;&lt;h2&gt;</code>: 52px (<code>--control-height-lg</code>) tall, the <code>&lt;h2&gt;</code> in <code>--text-h4</code>, a chevron drawn in CSS on the right that turns when open.</small></div></li>
+          <li><div><b>Section body</b><small><code>.editor-section__body</code>: fields stacked <code>--space-5</code> apart, padded <code>--space-5</code> at the sides and <code>--space-6</code> below. Values stay in the DOM when the section closes.</small></div></li>
+          <li><div><b>Repeating row</b><small><code>.fee-row</code>: <code>--color-bg-surface-sunken</code> well with <code>--radius-md</code>; one column below MD, then name, amount, type and Remove on one line.</small></div></li>
+          <li><div><b>Save bar</b><small><code>.form-actions--sticky</code>: pinned to the bottom of the viewport above the safe area, with Save changes, Cancel and the <code>.save-status</code> live region.</small></div></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="ds-section" id="variants"><h2><a href="#variants">Variants</a></h2>
+      <p>The layout does not change between editors; the status panel and the sections do. Pick the status panel by where the location is in its life (new, draft, published) and the section by what it holds.</p>
+
+      <h3>Status panel: new, draft, published</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas" style="align-items: flex-start;">
+          <aside class="editor-aside" aria-labelledby="v-st-new" style="width: min(100%, 18rem);">
+            <h2 id="v-st-new" style="font: var(--text-h4);">Status</h2>
+            <dl class="editor-aside__meta">
+              <dt>Visibility</dt><dd>Not saved yet</dd>
+              <dt>Public address</dt><dd>Made from the name when you create the studio</dd>
+            </dl>
+          </aside>
+          <aside class="editor-aside" aria-labelledby="v-st-draft" style="width: min(100%, 18rem);">
+            <h2 id="v-st-draft" style="font: var(--text-h4);">Status</h2>
+            <dl class="editor-aside__meta">
+              <dt>Visibility</dt><dd><span class="status status--draft">Draft</span> · not on the public site</dd>
+              <dt>Public address once published</dt><dd><code>/studios/corktown-garage-studio</code></dd>
+            </dl>
+            <button class="btn" type="button">Publish</button>
+            <button class="btn btn--ghost" type="button" style="color: var(--color-danger-fg);">Delete studio</button>
+          </aside>
+          <aside class="editor-aside" aria-labelledby="v-st-pub" style="width: min(100%, 18rem);">
+            <h2 id="v-st-pub" style="font: var(--text-h4);">Status</h2>
+            <dl class="editor-aside__meta">
+              <dt>Visibility</dt><dd><span class="status status--published">Published</span> · on the public site</dd>
+              <dt>Public address</dt><dd><a href="../../mocks/pages/studio/default.html"><code>/studios/the-junction-loft</code></a></dd>
+            </dl>
+            <button class="btn" type="button">Unpublish</button>
+            <button class="btn btn--ghost" type="button" disabled aria-describedby="v-delete-hint" style="color: var(--color-danger-fg);">Delete studio</button>
+            <p class="text-caption" id="v-delete-hint">Unpublish before deleting.</p>
+          </aside>
+        </div>
+        <div class="ds-example__caption"><span>From <code>studio-editor/new</code>, <code>default</code> and <code>published</code>. New has no actions: there is nothing to publish or delete until Create studio. Published disables Delete and says why.</span></div>
+        <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;aside class="editor-aside" aria-labelledby="status-title"&gt;
+  &lt;h2 id="status-title"&gt;Status&lt;/h2&gt;
+  &lt;dl class="editor-aside__meta"&gt;
+    &lt;dt&gt;Visibility&lt;/dt&gt;&lt;dd&gt;&lt;span class="status status--published"&gt;Published&lt;/span&gt; · on the public site&lt;/dd&gt;
+    &lt;dt&gt;Public address&lt;/dt&gt;&lt;dd&gt;&lt;a href="/studios/the-junction-loft"&gt;&lt;code&gt;/studios/the-junction-loft&lt;/code&gt;&lt;/a&gt;&lt;/dd&gt;
+  &lt;/dl&gt;
+  &lt;button class="btn" type="button" aria-haspopup="dialog"&gt;Unpublish&lt;/button&gt;
+  &lt;button class="btn btn--ghost" type="button" disabled aria-describedby="delete-hint"&gt;Delete studio&lt;/button&gt;
+  &lt;p class="text-caption" id="delete-hint"&gt;Unpublish before deleting.&lt;/p&gt;
+&lt;/aside&gt;</code></pre></details>
+      </div>
+
+      <h3>Section: closed, open, with errors</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--stack">
+          <div class="editor-form">
+            <details class="editor-section">
+              <summary><h2>Logistics</h2></summary>
+              <div class="editor-section__body">
+                <label class="field"><span class="field__label">Transit</span><input class="input" name="transit" value="504 King streetcar at Sumach, 2-minute walk"></label>
+              </div>
+            </details>
+            <details class="editor-section" open>
+              <summary><h2>Verdict</h2></summary>
+              <div class="editor-section__body">
+                <label class="field"><span class="field__label">Who it's for</span><textarea class="textarea" name="verdictFor" rows="3">Crews who need to drive gear right up to the set.</textarea></label>
+                <label class="field"><span class="field__label">Who should skip it</span><textarea class="textarea" name="verdictSkip" rows="3">Anyone chasing window light: one small south window.</textarea></label>
+              </div>
+            </details>
+            <details class="editor-section" open data-invalid>
+              <summary><h2>Rubric scores</h2></summary>
+              <div class="editor-section__body">
+                <p class="field__help">Whole numbers from 1 to 5. The overall score is calculated by the server.</p>
+                <div class="field"><label class="field__label" for="v-scores-light">Light</label><input class="input" id="v-scores-light" name="scores.light" type="number" inputmode="numeric" min="1" max="5" value="6" aria-invalid="true" aria-describedby="v-scores-light-error"><span class="field__error" id="v-scores-light-error">Enter a whole number from 1 to 5</span></div>
+              </div>
+            </details>
+          </div>
+        </div>
+        <div class="ds-example__caption"><span>Closed sections keep their values. A section holding a refused field opens and gets <code>data-invalid</code> (from <code>studio-editor/invalid</code>).</span></div>
+        <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;details class="editor-section" open data-invalid&gt;
+  &lt;summary&gt;&lt;h2&gt;Rubric scores&lt;/h2&gt;&lt;/summary&gt;
+  &lt;div class="editor-section__body"&gt;
+    &lt;div class="field"&gt;
+      &lt;label class="field__label" for="scores-light"&gt;Light&lt;/label&gt;
+      &lt;input class="input" id="scores-light" name="scores.light" type="number" min="1" max="5" value="6"
+             aria-invalid="true" aria-describedby="scores-light-error"&gt;
+      &lt;span class="field__error" id="scores-light-error"&gt;Enter a whole number from 1 to 5&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/details&gt;</code></pre></details>
+      </div>
+
+      <h3>Repeating rows: fees, included gear, empty</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--stack">
+          <fieldset class="stack stack--sm">
+            <legend>Fees</legend>
+            <div class="fee-row">
+              <label class="field"><span class="field__label">Fee name</span><input class="input" name="v-fees[0].name" value="Cleaning"></label>
+              <label class="field"><span class="field__label">Amount</span><span class="input-group"><span class="addon" aria-hidden="true">$</span><input class="input" name="v-fees[0].amount" type="number" inputmode="decimal" min="0" value="25.00"></span></label>
+              <label class="field"><span class="field__label">Type</span><select class="select" name="v-fees[0].mandatory"><option selected>Mandatory</option><option>Optional</option></select></label>
+              <button class="btn btn--ghost" type="button">Remove<span class="visually-hidden"> Cleaning fee</span></button>
+            </div>
+            <div class="fee-row">
+              <label class="field"><span class="field__label">Fee name</span><input class="input" name="v-fees[1].name" value="After-hours access"></label>
+              <label class="field"><span class="field__label">Amount</span><span class="input-group"><span class="addon" aria-hidden="true">$</span><input class="input" name="v-fees[1].amount" type="number" inputmode="decimal" min="0" value="30.00"></span></label>
+              <label class="field"><span class="field__label">Type</span><select class="select" name="v-fees[1].mandatory"><option>Mandatory</option><option selected>Optional</option></select></label>
+              <button class="btn btn--ghost" type="button">Remove<span class="visually-hidden"> After-hours access fee</span></button>
+            </div>
+            <div><button class="btn btn--sm" type="button"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>Add fee</button></div>
+          </fieldset>
+          <p class="text-muted">All-in for 2 hours: <strong class="num">$145.00</strong>, calculated by the server when you save.</p>
+          <fieldset class="stack stack--sm">
+            <legend>Included in the hourly rate</legend>
+            <div class="fee-row">
+              <label class="field"><span class="field__label">Category</span><select class="select" name="v-included[0].category"><option selected>Lights</option><option>Modifiers</option><option>Stands</option><option>Other</option></select></label>
+              <label class="field"><span class="field__label">Item</span><input class="input" name="v-included[0].name" value="Godox AD600 strobe"></label>
+              <label class="field"><span class="field__label">Quantity</span><input class="input" name="v-included[0].quantity" type="number" inputmode="numeric" min="1" value="2"></label>
+              <button class="btn btn--ghost" type="button">Remove<span class="visually-hidden"> Godox AD600 strobe</span></button>
+            </div>
+            <div><button class="btn btn--sm" type="button"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>Add included item</button></div>
+          </fieldset>
+          <fieldset class="stack stack--sm">
+            <legend>Costs extra</legend>
+            <p class="field__help">Nothing yet. Visitors will see "Nothing costs extra".</p>
+            <div><button class="btn btn--sm" type="button"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>Add extra</button></div>
+          </fieldset>
+        </div>
+        <div class="ds-example__caption"><span>The Junction Loft's fees (<code>studio-editor/published</code>) and gear. The same row holds fees (name, amount, type) and gear (category, item, quantity). An empty list says what visitors will see.</span></div>
+        <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;fieldset class="stack stack--sm"&gt;
+  &lt;legend&gt;Fees&lt;/legend&gt;
+  &lt;div class="fee-row"&gt;
+    &lt;label class="field"&gt;&lt;span class="field__label"&gt;Fee name&lt;/span&gt;&lt;input class="input" name="fees[0].name" value="Cleaning"&gt;&lt;/label&gt;
+    &lt;label class="field"&gt;&lt;span class="field__label"&gt;Amount&lt;/span&gt;…&lt;/label&gt;
+    &lt;label class="field"&gt;&lt;span class="field__label"&gt;Type&lt;/span&gt;&lt;select class="select" name="fees[0].mandatory"&gt;…&lt;/select&gt;&lt;/label&gt;
+    &lt;button class="btn btn--ghost" type="button"&gt;Remove&lt;span class="visually-hidden"&gt; Cleaning fee&lt;/span&gt;&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div&gt;&lt;button class="btn btn--sm" type="button"&gt;…Add fee&lt;/button&gt;&lt;/div&gt;
+&lt;/fieldset&gt;</code></pre></details>
+      </div>
+    </section>
+
+    <section class="ds-section" id="sizes"><h2><a href="#sizes">Sizes</a></h2>
+      <p>One size. The form column takes the remaining width; the status panel is a fixed 18rem column from LG. Nothing scales with the viewport except the column count.</p>
+      <div class="ds-table-wrap"><table class="ds-table">
+        <thead><tr><th scope="col">Part</th><th scope="col">Measure</th><th scope="col">Token or value</th></tr></thead>
+        <tbody>
+          <tr><td>Status panel width (LG+)</td><td>18rem (288px)</td><td>literal in <code>.editor-layout</code>; no token</td></tr>
+          <tr><td>Gap between panel and form</td><td>32px below LG, 48px from LG</td><td><code>--space-8</code> / <code>--space-12</code></td></tr>
+          <tr><td>Status panel padding / inner gap</td><td>20px / 16px</td><td><code>--space-5</code> / <code>--space-4</code></td></tr>
+          <tr><td>Sticky offset (LG+)</td><td>32px from the top</td><td><code>--space-8</code></td></tr>
+          <tr><td>Section heading row</td><td>52px tall, 12 × 20px padding</td><td><code>--control-height-lg</code>, <code>--space-3</code> × <code>--space-5</code></td></tr>
+          <tr><td>Gap between sections</td><td>16px</td><td><code>--space-4</code></td></tr>
+          <tr><td>Section body</td><td>20px between fields; 8 / 20 / 24px padding</td><td><code>--space-5</code>; <code>--space-2</code>, <code>--space-5</code>, <code>--space-6</code></td></tr>
+          <tr><td>Repeating row</td><td>16px padding, 12px between fields</td><td><code>--space-4</code>, <code>--space-3</code></td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section class="ds-section" id="states"><h2><a href="#states">States</a></h2>
+      <p>The section is the only interactive part the layout owns. Its open state is the native <code>open</code> attribute; errors are <code>data-invalid</code>; focus is forced here with <code>data-state="focus"</code> on the summary so it can be reviewed without a keyboard. Fields, buttons and the image manager inside keep their own states.</p>
+      <div class="ds-matrix"><table>
+        <caption class="visually-hidden">Editor section states</caption>
+        <thead><tr><th scope="col">Part</th><th scope="col">Default (closed)</th><th scope="col">Hover</th><th scope="col">Focus</th><th scope="col">Active</th><th scope="col">Disabled</th><th scope="col">Open</th><th scope="col">Invalid</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Section</th>
+            <td style="min-width: 14rem;"><details class="editor-section"><summary><h2>Gear</h2></summary><div class="editor-section__body"><p class="field__help">Included and extra gear.</p></div></details></td>
+            <td style="min-width: 14rem;"><details class="editor-section"><summary data-state="hover"><h2>Gear</h2></summary><div class="editor-section__body"><p class="field__help">Included and extra gear.</p></div></details><small class="text-subtle">No fill change: pointer cursor and chevron.</small></td>
+            <td style="min-width: 14rem;"><details class="editor-section"><summary data-state="focus"><h2>Gear</h2></summary><div class="editor-section__body"><p class="field__help">Included and extra gear.</p></div></details></td>
+            <td style="min-width: 14rem;"><span class="text-subtle">No pressed style; activating toggles <code>open</code>.</span></td>
+            <td style="min-width: 14rem;"><span class="text-subtle">Not used: sections never disable, and fields stay editable while saving.</span></td>
+            <td style="min-width: 16rem;"><details class="editor-section" open><summary><h2>Gear</h2></summary><div class="editor-section__body"><label class="field"><span class="field__label">Item</span><input class="input" name="m-item" value="Profoto D2 strobe"></label></div></details></td>
+            <td style="min-width: 16rem;"><details class="editor-section" open data-invalid><summary><h2>Basics</h2></summary><div class="editor-section__body"><div class="field"><label class="field__label" for="m-booking">Booking link</label><input class="input" id="m-booking" name="m-booking" type="url" value="corktowngarage" aria-invalid="true" aria-describedby="m-booking-error"><span class="field__error" id="m-booking-error">Enter a web address that starts with http:// or https://</span></div></div></details></td>
+          </tr>
+        </tbody>
+      </table></div>
+
+      <h3>Save bar by screen state</h3>
+      <p>The save bar is where the form reports itself. <code>.save-status</code> is a <code>role="status"</code> region, so every change of its text is announced politely.</p>
+      <div class="ds-matrix"><table>
+        <caption class="visually-hidden">Save bar text and primary button by editor state</caption>
+        <thead><tr><th scope="col">State</th><th scope="col">Save bar</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">New</th><td><div class="form-actions form-actions--sticky" style="position: static;"><button class="btn btn--primary" type="button">Create studio</button><button class="btn btn--ghost" type="button">Cancel</button><span class="save-status" role="status"></span></div></td></tr>
+          <tr><th scope="row">Default (unsaved)</th><td><div class="form-actions form-actions--sticky" style="position: static;"><button class="btn btn--primary" type="button">Save changes</button><button class="btn btn--ghost" type="button">Cancel</button><span class="save-status" role="status">Unsaved changes</span></div></td></tr>
+          <tr><th scope="row">Submitting</th><td><div class="form-actions form-actions--sticky" style="position: static;"><button class="btn btn--primary" type="button" aria-busy="true" disabled>Save changes</button><button class="btn btn--ghost" type="button">Cancel</button><span class="save-status" role="status">Saving…</span></div></td></tr>
+          <tr><th scope="row">Success</th><td><div class="form-actions form-actions--sticky" style="position: static;"><button class="btn btn--primary" type="button">Save changes</button><button class="btn btn--ghost" type="button">Cancel</button><span class="save-status" role="status">Saved 13 Oct 2026, 10:02 am</span></div></td></tr>
+          <tr><th scope="row">Invalid</th><td><div class="form-actions form-actions--sticky" style="position: static;"><button class="btn btn--primary" type="button">Save changes</button><button class="btn btn--ghost" type="button">Cancel</button><span class="save-status" role="status">Not saved. Fix the 6 things listed above.</span></div></td></tr>
+          <tr><th scope="row">Uploading</th><td><div class="form-actions form-actions--sticky" style="position: static;"><button class="btn btn--primary" type="button" disabled aria-describedby="m-save-hint">Save changes</button><button class="btn btn--ghost" type="button">Cancel</button><span class="save-status" role="status" id="m-save-hint">Wait for uploads to finish</span></div></td></tr>
+        </tbody>
+      </table></div>
+
+      <h3>Every screen state</h3>
+      <div class="ds-table-wrap"><table class="ds-table">
+        <thead><tr><th scope="col">State</th><th scope="col">What the layout shows</th><th scope="col">Mock</th></tr></thead>
+        <tbody>
+          <tr><td>New</td><td>Heading "New studio" and "New studios are saved as drafts. Nothing appears on the public site until you publish."; status panel "Not saved yet" with no actions; every section open and empty; Name focused; Prices last verified defaults to today; primary is Create studio.</td><td><a href="../../mocks/pages/studio-editor/new.html">studio-editor/new</a></td></tr>
+          <tr><td>Default</td><td>Draft with values; status panel with Publish and Delete studio; long sections (Gear, Logistics, Verdict, Episode video) closed; "Unsaved changes".</td><td><a href="../../mocks/pages/studio-editor/default.html">studio-editor/default</a></td></tr>
+          <tr><td>Invalid</td><td>A <code>.form-summary</code> ("Fix 6 things before saving") above the first section takes focus and links every field; each section holding an error is open and carries <code>data-invalid</code>; fields show <code>.field__error</code>.</td><td><a href="../../mocks/pages/studio-editor/invalid.html">studio-editor/invalid</a></td></tr>
+          <tr><td>Submitting</td><td>Every field stays visible; Save changes is busy and disabled; "Saving…".</td><td><a href="../../mocks/pages/studio-editor/submitting.html">studio-editor/submitting</a></td></tr>
+          <tr><td>Success</td><td>A success <a href="alert.html">alert</a> "Studio created as a draft" with the final address above the layout; "Saved 13 Oct 2026, 10:02 am".</td><td><a href="../../mocks/pages/studio-editor/success.html">studio-editor/success</a></td></tr>
+          <tr><td>Published</td><td>Status panel shows Published with the public link, Unpublish, and Delete disabled with "Unpublish before deleting."; only Basics is open.</td><td><a href="../../mocks/pages/studio-editor/published.html">studio-editor/published</a></td></tr>
+          <tr><td>Price changed</td><td>After the hourly rate changes from $65.00 to $70.00, Prices last verified is emptied, required, highlighted in a warning well and focused: "You changed a price. Confirm the date you verified it." (L2-042.2).</td><td><a href="../../mocks/pages/studio-editor/price-changed.html">studio-editor/price-changed</a></td></tr>
+          <tr><td>Uploading / upload failed</td><td>Inside Images: per-file progress, Retry and refused-file errors (see <a href="image-manager.html">image manager</a>); Save changes waits for uploads.</td><td><a href="../../mocks/pages/studio-editor/uploading.html">studio-editor/uploading</a>, <a href="../../mocks/pages/studio-editor/upload-failed.html">upload-failed</a></td></tr>
+          <tr><td>Loading</td><td>The same grid with <a href="skeleton.html">skeleton</a> bars in the status panel and four closed section rows; the whole layout is <code>aria-hidden</code> and <code>main</code> is <code>aria-busy</code>; "Loading studio…" in a status region.</td><td><a href="../../mocks/pages/studio-editor/loading.html">studio-editor/loading</a></td></tr>
+          <tr><td>Error</td><td>No layout: an <a href="empty-state.html">error empty state</a> "We couldn't open this studio" with Back to studios and Try again. The same screen for an unknown id and a failed load.</td><td><a href="../../mocks/pages/studio-editor/error.html">studio-editor/error</a></td></tr>
+        </tbody>
+      </table></div>
+
+      <h3>Loading and price changed</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--stack">
+          <div class="editor-layout" aria-hidden="true">
+            <div class="editor-aside">
+              <span class="skeleton skeleton--title" style="width: 35%;"></span>
+              <span class="skeleton skeleton--text" style="width: 45%;"></span>
+              <span class="skeleton skeleton--text" style="width: 85%;"></span>
+              <span class="skeleton skeleton--pill" style="height: var(--target-comfortable);"></span>
+            </div>
+            <div class="editor-form">
+              <div class="editor-section" style="display: flex; align-items: center; min-height: var(--control-height-lg); padding: var(--space-3) var(--space-5);"><span class="skeleton skeleton--title" style="width: 18%; margin: 0;"></span></div>
+              <div class="editor-section" style="display: flex; align-items: center; min-height: var(--control-height-lg); padding: var(--space-3) var(--space-5);"><span class="skeleton skeleton--title" style="width: 32%; margin: 0;"></span></div>
+              <div class="editor-section" style="display: flex; align-items: center; min-height: var(--control-height-lg); padding: var(--space-3) var(--space-5);"><span class="skeleton skeleton--title" style="width: 42%; margin: 0;"></span></div>
+            </div>
+          </div>
+          <details class="editor-section" open>
+            <summary><h2>Pricing and fees</h2></summary>
+            <div class="editor-section__body">
+              <label class="field"><span class="field__label">Hourly rate</span><span class="input-group"><span class="addon" aria-hidden="true">$</span><input class="input" name="pc-rate" type="number" inputmode="decimal" min="0" step="0.5" value="70.00"></span></label>
+              <div class="field" style="padding: var(--space-4); border-radius: var(--radius-md); background: var(--color-warning-bg);"><label class="field__label" for="pc-verified">Prices last verified <span class="optional">(required)</span></label><input class="input" id="pc-verified" name="pc-verified" type="date" max="2026-10-13" required aria-describedby="pc-warning pc-help"><span class="field__warning" id="pc-warning">You changed a price. Confirm the date you verified it.</span><span class="field__help" id="pc-help">Previously 11 Oct 2026. Visitors see a warning after 183 days.</span></div>
+            </div>
+          </details>
+        </div>
+        <div class="ds-example__caption"><span>Loading copies <code>studio-editor/loading</code>: skeleton rows stand in for closed sections. Price changed copies <code>studio-editor/price-changed</code>; its warning well is inline style in the mock (see drift).</span></div>
+      </div>
+
+      <h3>Both themes</h3>
+      <div class="ds-themes">
+        <div data-theme="light">
+          <div class="editor-form">
+            <details class="editor-section" open data-invalid><summary><h2>Pricing and fees</h2></summary><div class="editor-section__body">
+              <div class="field"><label class="field__label" for="tl-rate">Hourly rate</label><span class="input-group"><span class="addon" aria-hidden="true">$</span><input class="input" id="tl-rate" name="tl-rate" type="number" inputmode="decimal" value="-5" aria-invalid="true" aria-describedby="tl-rate-error"></span><span class="field__error" id="tl-rate-error">Enter an amount of 0 or more</span></div>
+              <div class="fee-row"><label class="field"><span class="field__label">Fee name</span><input class="input" name="tl-fee" value="Cleaning"></label><button class="btn btn--ghost" type="button">Remove<span class="visually-hidden"> Cleaning fee</span></button></div>
+            </div></details>
+            <details class="editor-section"><summary><h2>Gear</h2></summary><div class="editor-section__body"><p class="field__help">Nothing yet.</p></div></details>
+            <div class="form-actions form-actions--sticky" style="position: static;"><button class="btn btn--primary" type="button">Save changes</button><span class="save-status" role="status">Unsaved changes</span></div>
+          </div>
+        </div>
+        <div data-theme="dark">
+          <div class="editor-form">
+            <details class="editor-section" open data-invalid><summary><h2>Pricing and fees</h2></summary><div class="editor-section__body">
+              <div class="field"><label class="field__label" for="td-rate">Hourly rate</label><span class="input-group"><span class="addon" aria-hidden="true">$</span><input class="input" id="td-rate" name="td-rate" type="number" inputmode="decimal" value="-5" aria-invalid="true" aria-describedby="td-rate-error"></span><span class="field__error" id="td-rate-error">Enter an amount of 0 or more</span></div>
+              <div class="fee-row"><label class="field"><span class="field__label">Fee name</span><input class="input" name="td-fee" value="Cleaning"></label><button class="btn btn--ghost" type="button">Remove<span class="visually-hidden"> Cleaning fee</span></button></div>
+            </div></details>
+            <details class="editor-section"><summary><h2>Gear</h2></summary><div class="editor-section__body"><p class="field__help">Nothing yet.</p></div></details>
+            <div class="form-actions form-actions--sticky" style="position: static;"><button class="btn btn--primary" type="button">Save changes</button><span class="save-status" role="status">Unsaved changes</span></div>
+          </div>
+        </div>
+      </div>
+      <ul>
+        <li><b>Open</b> rotates the chevron from pointing down (45°) to up (225°). Closing a section never clears or validates its fields.</li>
+        <li><b>Invalid</b>: after a refused save the server's errors decide which sections open; each gets <code>data-invalid</code> and a danger-tinted edge. The error summary and the field messages carry the meaning; the edge alone does not (see accessibility).</li>
+        <li><b>Submitting</b> never hides or disables fields; only the primary is busy. <b>Uploading</b> disables Save changes and says why in the save status (L2-057.6).</li>
+        <li>The <code>position: static</code> on the save bars in these tables is documentation only, so they do not stick to the viewport here.</li>
+      </ul>
+    </section>
+
+    <section class="ds-section" id="responsive"><h2><a href="#responsive">Responsive behaviour</a></h2>
+      <ul>
+        <li><b>XS and SM (below 48rem)</b>: one column. The status panel comes first, above the form, then the sections full width (L2-054.6). Repeating rows stack name, amount, type and Remove. Every control is at least 44px tall; the save bar pins to the bottom with <code>env(safe-area-inset-bottom)</code> padding.</li>
+        <li><b>MD (48–62rem)</b>: still one column; repeating rows go onto one line (2fr / 1fr / 1.4fr / auto, aligned to the field bottoms). Two-field rows (<code>.field-row</code>) sit side by side from SM.</li>
+        <li><b>LG and up (62rem+)</b>: two columns, form then an 18rem status panel, 48px apart. The panel moves to the right with <code>order: 2</code> and sticks 32px from the top, so Publish stays in reach while the form scrolls.</li>
+        <li>No horizontal scroll at any width: long addresses and file names break anywhere inside the panel and the image rows.</li>
+        <li><b>Known squeeze</b>: just above 62rem the form column is about 35rem, and the one-line repeating row leaves Amount roughly 5rem wide, so "65.00" barely fits beside the $ addon (the anatomy above shows it at this page's width). A minimum width for that column is proposed in the drift notes.</li>
+      </ul>
+      <div class="ds-iframes">
+        <iframe class="ds-iframe" src="../../mocks/pages/studio-editor/invalid.html?chrome=0" title="Studio editor, invalid state, at phone width" loading="lazy"></iframe>
+        <iframe class="ds-iframe" src="../../mocks/pages/studio-editor/published.html?chrome=0&amp;theme=dark" title="Studio editor, published state, at phone width in the dark theme" loading="lazy"></iframe>
+      </div>
+    </section>
+
+    <section class="ds-section" id="theming"><h2><a href="#theming">Theming</a></h2>
+      <p>The layout has no component tokens. It reads <code>--color-border-default</code> for the panel and section edges, <code>--color-bg-surface</code> for the sections, <code>--color-bg-surface-sunken</code> for repeating rows, <code>--color-danger-border</code> for invalid sections and <code>--color-fg-muted</code> for the status details. A theme changes those semantic tokens; nothing in <code>.editor-*</code> names a colour.</p>
+      <p>In light, sections are white on a white page, so the hairline edge is what groups them, and repeating rows are a step darker (stone-50). In dark, sections are the canvas colour (stone-950) with a stone-750 edge, and repeating rows are a step lighter (stone-900). The invalid edge goes from light red (sorrel-300) to deep red (sorrel-700).</p>
+    </section>
+
+    <section class="ds-section" id="accessibility"><h2><a href="#accessibility">Accessibility</a></h2>
+      <h3>Role and pattern</h3>
+      <p>Each section is a native <code>&lt;details&gt;</code> and <code>&lt;summary&gt;</code>, the browser's built-in <a href="https://www.w3.org/WAI/ARIA/apg/patterns/disclosure/">APG Disclosure</a>: the summary is announced as a button with its expanded state, and no ARIA is added. The <code>&lt;h2&gt;</code> inside the summary keeps the section in the heading outline. Some screen readers announce only the summary's text and not the heading level; the name is the same either way. The status panel is an <code>&lt;aside&gt;</code> landmark named by its heading ("Status"); the form is named by a visually hidden <code>&lt;h2&gt;</code> ("Studio details").</p>
+      <h3>Keyboard</h3>
+      <table class="ds-table ds-keys"><thead><tr><th scope="col">Key</th><th scope="col">Action</th></tr></thead><tbody>
+        <tr><td><kbd>Tab</kbd> / <kbd>Shift</kbd>+<kbd>Tab</kbd></td><td>Moves through the status panel, then each section heading and the fields of open sections, then the save bar. Fields in closed sections are skipped.</td></tr>
+        <tr><td><kbd>Enter</kbd>, <kbd>Space</kbd></td><td>On a section heading, opens or closes the section. Elsewhere, the control's own behaviour.</td></tr>
+        <tr><td><kbd>Enter</kbd> in a text field</td><td>Submits the form (Save changes or Create studio).</td></tr>
+        <tr><td><kbd>Ctrl</kbd>/<kbd>⌘</kbd>+<kbd>F</kbd></td><td>Find in page opens a closed section that holds the match, in browsers that support it.</td></tr>
+      </tbody></table>
+      <h3>Focus</h3>
+      <p>The shared 2px ring appears on the summary (it keeps its <code>--radius-lg</code> corners). New studios focus Name. After a refused save, focus moves to the error summary (<code>role="alert"</code>, <code>tabindex="-1"</code>); each of its links opens the section and focuses the field. After a price change, focus moves to Prices last verified. When an upload finishes, its alt text field takes focus (L2-057.1).</p>
+      <p>The status panel comes before the form in the DOM, so on phones it reads first and from LG it is still first in the tab order although it sits on the right. That order is deliberate: status, then content, then save.</p>
+      <h3>Labelling</h3>
+      <p>Section names are the summary headings. Remove buttons name their row with visually hidden text ("Remove Cleaning fee", "Remove Godox AD600 strobe"). The disabled Delete is described by its hint ("Unpublish before deleting."), and a disabled Save changes by the save status ("Wait for uploads to finish"). Field errors use <code>aria-invalid="true"</code> and <code>aria-describedby</code> (L2-069.2).</p>
+      <p><code>data-invalid</code> is colour only: its edge is below 3:1 and is not announced. A closed section with an error would therefore be invisible to a screen reader and to anyone who cannot see the red, which is why the server's errors always open the section and the error summary links every field.</p>
+      <h3>Contrast</h3>
+      <div class="ds-example__canvas ds-example__canvas--stack" style="padding: 0; gap: var(--space-2);">
+        <div class="ds-pair"><span>Section heading and field labels on section</span><span class="ds-pair__ratio" data-contrast="--color-fg-default|--color-bg-surface" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Status details on page</span><span class="ds-pair__ratio" data-contrast="--color-fg-muted|--color-bg-canvas" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Published status on page</span><span class="ds-pair__ratio" data-contrast="--color-success-fg|--color-bg-canvas" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Delete studio label on page</span><span class="ds-pair__ratio" data-contrast="--color-danger-fg|--color-bg-canvas" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Labels in a repeating row</span><span class="ds-pair__ratio" data-contrast="--color-fg-default|--color-bg-surface-sunken" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Field edge in a repeating row</span><span class="ds-pair__ratio" data-contrast="--color-border-strong|--color-bg-surface-sunken" data-min="3"></span></div>
+        <div class="ds-pair"><span>Field error in a section</span><span class="ds-pair__ratio" data-contrast="--color-danger-fg|--color-bg-surface" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Error summary text</span><span class="ds-pair__ratio" data-contrast="--color-danger-fg|--color-danger-bg" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Price-changed warning text</span><span class="ds-pair__ratio" data-contrast="--color-warning-fg|--color-warning-bg" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Focus ring on a section heading</span><span class="ds-pair__ratio" data-contrast="--color-focus-ring|--color-bg-surface" data-min="3"></span></div>
+      </div>
+      <p>Section and panel edges (<code>--color-border-default</code>) and the invalid edge (<code>--color-danger-border</code>) are decorative: grouping is also carried by the headings, and errors by text.</p>
+      <h3>Motion</h3>
+      <p>Only the chevron moves: it rotates over <code>--duration-fast</code> with <code>--ease-standard</code>, and reduced motion zeroes the duration. Sections open instantly; there is no height animation.</p>
+      <h3>Touch</h3>
+      <p>The whole 52px heading row is the target. Status panel buttons fill the panel width and are 44px tall; Remove buttons are 44px; Add fee and the image row buttons (<code>.btn--sm</code>, 36px) grow to 44px below 48rem (L2-065.3). Nothing depends on hover.</p>
+    </section>
+
+    <section class="ds-section" id="content"><h2><a href="#content">Content</a></h2>
+      <ul>
+        <li>Section headings are short nouns in sentence case and follow the order of the public review: "Basics", "Pricing and fees", "Measured specifications", "Gear", "Logistics", "Images", "Rubric scores", "Verdict", "Disclosure", "Episode video".</li>
+        <li>The panel heading is "Status". Terms are "Visibility" and "Public address" ("Public address once published" on a draft). Values say what visitors see: "Draft · not on the public site", "Published · on the public site", "Not saved yet".</li>
+        <li>Actions name the object: "Publish", "Unpublish", "Delete studio", "Delete spot", "Delete guide", "Create studio", "Save changes". When an action is blocked, say what to do: "Unpublish before deleting."</li>
+        <li>The save status is one short sentence: "Unsaved changes", "Saving…", "Saved 13 Oct 2026, 10:02 am", "Not saved. Fix the 6 things listed above.", "Wait for uploads to finish".</li>
+        <li>The error summary heading counts the problems: "Fix 6 things before saving". Each link is "Field: message", for example "Hourly rate: Enter an amount of 0 or more".</li>
+        <li>Mark optional fields "(optional)" and conditional ones with the condition: "Provided by (needed when discounted or comped)". Empty lists say what visitors will see: "Nothing yet. Visitors will see "Nothing costs extra"."</li>
+        <li>Measurements are metric in the editor ("Usable width (m)"); the public page adds imperial in brackets.</li>
+      </ul>
+    </section>
+
+    <section class="ds-section" id="do-dont"><h2><a href="#do-dont">Do and don't</a></h2>
+      <div class="ds-dodont">
+        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--stack">
+          <details class="editor-section" open data-invalid><summary><h2>Disclosure</h2></summary><div class="editor-section__body"><div class="field"><label class="field__label" for="dd-provider">Provided by</label><input class="input" id="dd-provider" name="dd-provider" aria-invalid="true" aria-describedby="dd-provider-error"><span class="field__error" id="dd-provider-error">Enter who provided the session</span></div></div></details>
+        </div><figcaption>Open every section that holds an error and mark it, so the message is on screen and in the tab order.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--stack">
+          <details class="editor-section" data-invalid><summary><h2>Disclosure</h2></summary><div class="editor-section__body"><p class="field__error">Enter who provided the session</p></div></details>
+        </div><figcaption>Leave it closed: the red edge is the only clue, it is below 3:1 and a screen reader never hears it.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--stack">
+          <details class="editor-section"><summary><h2>Basics</h2></summary><div class="editor-section__body"><p class="read-only-value">Corktown Garage Studio · Corktown</p></div></details>
+        </div><figcaption>Draw a section as <code>&lt;details&gt;&lt;summary&gt;&lt;h2&gt;</code>, even as a stand-in behind a dialog; the CSS already styles the heading.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--stack">
+          <div class="editor-section"><div class="editor-section__body" style="padding-top: var(--space-5);"><h2 style="font: var(--text-h4);">Basics</h2><div class="read-only-value">Corktown Garage Studio · Corktown</div></div></div>
+        </div><figcaption>The dialog mocks fake sections with a body and an inline-styled <code>&lt;h2&gt;</code>: no chevron, no toggle, and 33 copies of a style to keep in step.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--stack">
+          <aside class="editor-aside" aria-labelledby="dd-st1"><h2 id="dd-st1" style="font: var(--text-h4);">Status</h2><button class="btn" type="button">Publish</button></aside>
+          <div class="form-actions" style="padding-top: 0;"><button class="btn btn--primary" type="button">Save changes</button></div>
+        </div><figcaption>Keep Save changes the only primary; Publish is secondary in the status panel.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--stack">
+          <aside class="editor-aside" aria-labelledby="dd-st2"><h2 id="dd-st2" style="font: var(--text-h4);">Status</h2><button class="btn btn--primary" type="button">Publish</button></aside>
+          <div class="form-actions" style="padding-top: 0;"><button class="btn btn--primary" type="button">Save changes</button></div>
+        </div><figcaption>Two primaries compete, and publishing unsaved edits is not what Publish does.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--stack"><div class="fee-row"><label class="field"><span class="field__label">Fee name</span><input class="input" name="dd-fee1" value="Cleaning"></label><button class="btn btn--ghost" type="button">Remove<span class="visually-hidden"> Cleaning fee</span></button></div></div><figcaption>Remove names its row for screen readers ("Remove Cleaning fee").</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--stack"><div class="fee-row"><label class="field"><span class="field__label">Fee name</span><input class="input" name="dd-fee2" value="Cleaning"></label><button class="btn btn--ghost" type="button">Remove</button></div></div><figcaption>Several identical "Remove" buttons in a list are impossible to tell apart out of context.</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="ds-section" id="tokens"><h2><a href="#tokens">Tokens</a></h2>
+      <div class="ds-table-wrap"><table class="ds-table">
+        <thead><tr><th scope="col">Part</th><th scope="col">Token</th><th scope="col">Light</th><th scope="col">Dark</th></tr></thead>
+        <tbody>
+          <tr><td>Panel and section edge</td><td><code>--color-border-default</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-border-default" data-swatch></i><span data-token="--color-border-default"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-border-default" data-swatch></i><span data-token="--color-border-default"></span></span></td></tr>
+          <tr><td>Section background</td><td><code>--color-bg-surface</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-bg-surface" data-swatch></i><span data-token="--color-bg-surface"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-bg-surface" data-swatch></i><span data-token="--color-bg-surface"></span></span></td></tr>
+          <tr><td>Repeating row</td><td><code>--color-bg-surface-sunken</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-bg-surface-sunken" data-swatch></i><span data-token="--color-bg-surface-sunken"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-bg-surface-sunken" data-swatch></i><span data-token="--color-bg-surface-sunken"></span></span></td></tr>
+          <tr><td>Invalid section edge</td><td><code>--color-danger-border</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-danger-border" data-swatch></i><span data-token="--color-danger-border"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-danger-border" data-swatch></i><span data-token="--color-danger-border"></span></span></td></tr>
+          <tr><td>Status details</td><td><code>--color-fg-muted</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-muted" data-swatch></i><span data-token="--color-fg-muted"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-muted" data-swatch></i><span data-token="--color-fg-muted"></span></span></td></tr>
+          <tr><td>Delete label</td><td><code>--color-danger-fg</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-danger-fg" data-swatch></i><span data-token="--color-danger-fg"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-danger-fg" data-swatch></i><span data-token="--color-danger-fg"></span></span></td></tr>
+          <tr><td>Section heading font</td><td><code>--text-h4</code></td><td colspan="2"><span data-token="--text-h4"></span></td></tr>
+          <tr><td>Status details font</td><td><code>--text-body-sm</code></td><td colspan="2"><span data-token="--text-body-sm"></span></td></tr>
+          <tr><td>Heading row height</td><td><code>--control-height-lg</code></td><td colspan="2"><span data-token="--control-height-lg"></span></td></tr>
+          <tr><td>Panel and section radius / row radius</td><td><code>--radius-lg</code> / <code>--radius-md</code></td><td colspan="2"><span data-token="--radius-lg"></span> / <span data-token="--radius-md"></span></td></tr>
+          <tr><td>Column gap below / from LG</td><td><code>--space-8</code> / <code>--space-12</code></td><td colspan="2"><span data-token="--space-8"></span> / <span data-token="--space-12"></span></td></tr>
+          <tr><td>Panel padding, section side padding, field gap</td><td><code>--space-5</code></td><td colspan="2"><span data-token="--space-5"></span></td></tr>
+          <tr><td>Chevron stroke</td><td><code>--border-width-thick</code></td><td colspan="2"><span data-token="--border-width-thick"></span></td></tr>
+          <tr><td>Chevron turn</td><td><code>--duration-fast</code>, <code>--ease-standard</code></td><td colspan="2"><span data-token="--duration-fast"></span> <span data-token="--ease-standard"></span></td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section class="ds-section" id="code"><h2><a href="#code">Code</a></h2>
+      <pre><code>&lt;div class="editor-layout"&gt;
+  &lt;aside class="editor-aside" aria-labelledby="status-title"&gt;
+    &lt;h2 id="status-title"&gt;Status&lt;/h2&gt;
+    &lt;dl class="editor-aside__meta"&gt;…&lt;/dl&gt;
+    &lt;button class="btn" type="button" aria-haspopup="dialog"&gt;Publish&lt;/button&gt;
+    &lt;button class="btn btn--ghost" type="button" aria-haspopup="dialog"&gt;Delete studio&lt;/button&gt;
+  &lt;/aside&gt;
+
+  &lt;form class="editor-form" method="post" novalidate aria-labelledby="form-title"&gt;
+    &lt;h2 class="visually-hidden" id="form-title"&gt;Studio details&lt;/h2&gt;
+    &lt;details class="editor-section" open&gt;
+      &lt;summary&gt;&lt;h2&gt;Basics&lt;/h2&gt;&lt;/summary&gt;
+      &lt;div class="editor-section__body"&gt;…fields…&lt;/div&gt;
+    &lt;/details&gt;
+    …
+    &lt;div class="form-actions form-actions--sticky"&gt;
+      &lt;button class="btn btn--primary" type="submit"&gt;Save changes&lt;/button&gt;
+      &lt;a class="btn btn--ghost" href="/admin/studios"&gt;Cancel&lt;/a&gt;
+      &lt;span class="save-status" role="status"&gt;Unsaved changes&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/form&gt;
+&lt;/div&gt;</code></pre>
+      <table class="ds-table"><thead><tr><th scope="col">Class / attribute</th><th scope="col">Effect</th></tr></thead><tbody>
+        <tr><td><code>.editor-layout</code></td><td>One-column grid; form plus an 18rem column from 62rem.</td></tr>
+        <tr><td><code>.editor-aside</code></td><td>Bordered status panel; buttons fill its width; sticky and on the right from 62rem.</td></tr>
+        <tr><td><code>.editor-aside__meta</code></td><td>Small muted terms over default-colour values.</td></tr>
+        <tr><td><code>.editor-form</code></td><td>Column of sections 16px apart; never wider than its column.</td></tr>
+        <tr><td><code>.editor-section</code> on <code>&lt;details&gt;</code></td><td>Bordered collapsible section; the <code>&lt;summary&gt;</code> becomes a 52px heading row with a chevron, and its <code>&lt;h2&gt;</code> takes <code>--text-h4</code>.</td></tr>
+        <tr><td><code>open</code></td><td>Native: shows the body and turns the chevron.</td></tr>
+        <tr><td><code>data-invalid</code></td><td>Danger-tinted edge on a section that holds a refused field. Always together with <code>open</code>.</td></tr>
+        <tr><td><code>.editor-section__body</code></td><td>Field stack inside a section.</td></tr>
+        <tr><td><code>.fee-row</code></td><td>Sunken repeating row; one line from 48rem.</td></tr>
+        <tr><td><code>data-state="focus"</code> on <code>&lt;summary&gt;</code></td><td>Documentation only: forces the focus ring.</td></tr>
+      </tbody></table>
+      <p>The status heading has no rule of its own yet; the mocks style it with <code>style="font: var(--text-h4)"</code>, and this page does the same until <code>.editor-aside &gt; h2</code> is added (see drift).</p>
+    </section>
+
+    <section class="ds-section" id="sources"><h2><a href="#sources">Sources</a></h2>
+      <p>Extracted from these mocks:</p>
+      <ul>
+        <li>Studio editor, all 11 states: <a href="../../mocks/pages/studio-editor/new.html">new</a>, <a href="../../mocks/pages/studio-editor/default.html">default</a>, <a href="../../mocks/pages/studio-editor/published.html">published</a>, <a href="../../mocks/pages/studio-editor/loading.html">loading</a>, <a href="../../mocks/pages/studio-editor/error.html">error</a>, <a href="../../mocks/pages/studio-editor/invalid.html">invalid</a>, <a href="../../mocks/pages/studio-editor/submitting.html">submitting</a>, <a href="../../mocks/pages/studio-editor/success.html">success</a>, <a href="../../mocks/pages/studio-editor/uploading.html">uploading</a>, <a href="../../mocks/pages/studio-editor/upload-failed.html">upload-failed</a>, <a href="../../mocks/pages/studio-editor/price-changed.html">price-changed</a></li>
+        <li>Spot editor: <a href="../../mocks/pages/spot-editor/new.html">new</a>, <a href="../../mocks/pages/spot-editor/default.html">default</a>, <a href="../../mocks/pages/spot-editor/published.html">published</a>, <a href="../../mocks/pages/spot-editor/invalid.html">invalid</a>, <a href="../../mocks/pages/spot-editor/submitting.html">submitting</a>, <a href="../../mocks/pages/spot-editor/success.html">success</a>, <a href="../../mocks/pages/spot-editor/loading.html">loading</a>, <a href="../../mocks/pages/spot-editor/error.html">error</a></li>
+        <li>Guide editor: <a href="../../mocks/pages/guide-editor/new.html">new</a>, <a href="../../mocks/pages/guide-editor/default.html">default</a>, <a href="../../mocks/pages/guide-editor/published.html">published</a>, <a href="../../mocks/pages/guide-editor/invalid.html">invalid</a>, <a href="../../mocks/pages/guide-editor/submitting.html">submitting</a>, <a href="../../mocks/pages/guide-editor/success.html">success</a>, <a href="../../mocks/pages/guide-editor/loading.html">loading</a>, <a href="../../mocks/pages/guide-editor/error.html">error</a></li>
+        <li>Dialogs over the editor: <a href="../../mocks/dialogs/discard-changes/default.html">dialogs/discard-changes/default</a>, <a href="../../mocks/dialogs/unpublish/default.html">dialogs/unpublish/default</a>, <a href="../../mocks/dialogs/unpublish/busy.html">busy</a>, <a href="../../mocks/dialogs/unpublish/failed.html">failed</a>, <a href="../../mocks/dialogs/missing-fields/default.html">dialogs/missing-fields/default</a>, <a href="../../mocks/dialogs/missing-fields/spot.html">spot</a></li>
+      </ul>
+      <p>Drift found during extraction:</p>
+      <ul>
+        <li><b>75 inline <code>style="font: var(--text-h4)"</code> headings.</b> None is a section summary heading: every <code>&lt;summary&gt;&lt;h2&gt;</code> in the mocks is unstyled inline and takes <code>--text-h4</code> from <code>.editor-section &gt; summary h2</code>. The 75 are (a) 42 "Status" headings in the status panel (21 editor mocks, 5 admin-toast mocks and 16 dialog mocks), where no rule styles <code>.editor-aside</code> headings, so the inline style fills a real gap; and (b) 33 section names in the editor stand-ins behind 16 dialog mocks, drawn as <code>&lt;div class="editor-section"&gt;&lt;div class="editor-section__body" style="padding-top: var(--space-5)"&gt;&lt;h2 style="…"&gt;</code> instead of <code>&lt;details&gt;&lt;summary&gt;&lt;h2&gt;</code>, which is drift. This page uses real sections and proposes <code>.editor-aside &gt; h2 { font: var(--text-h4); }</code>.</li>
+        <li><b>Delete colour is inline.</b> "Delete studio" / "Delete spot" / "Delete guide" use <code>style="color: var(--color-danger-fg)"</code> in 14 editor mocks, but the disabled Delete in <code>spot-editor/published</code> and <code>guide-editor/published</code> drops it. Kept as in the mocks here; a ghost-danger button modifier is proposed.</li>
+        <li><b>Publish and Unpublish are links</b> (<code>&lt;a class="btn" href="…dialogs/…"&gt;</code>) because the mocks navigate between files; in the product they are <code>&lt;button type="button" aria-haspopup="dialog"&gt;</code>. The page shows buttons.</li>
+        <li><b>Invalid sections are colour-only.</b> <code>--color-danger-border</code> is about 2.4:1 on the light section and 1.9:1 in dark, and nothing in the summary says "error". Documented as decorative with errors always open; a text count in the summary is proposed.</li>
+        <li><b>Error summary headings disagree</b>: "Fix 6 things before saving" (studio), "Fix 4 problems before saving" (spot), "This guide can't be published yet" (guide invalid). The page uses "Fix N things before saving".</li>
+        <li><b>Missing-fields dialog</b>: every link points to the editor without a field fragment, although L2-056.3 asks for links that focus the field, and the only button is "OK". The page documents link-to-field; the button should be a verb ("Close").</li>
+        <li><b>Inline layout in states</b>: the loading mocks rebuild the summary row's size inline on <code>div.editor-section</code>, and <code>price-changed</code> draws its warning well inline on <code>.field</code>. Both are copied as-is here and proposed as modifiers.</li>
+        <li><b>Repeating row at LG</b>: with the 18rem status panel beside it, the <code>.fee-row</code> Amount column (1fr) shrinks to about 5rem between 62rem and 75rem. A <code>minmax(7rem, 1fr)</code> amount column is proposed.</li>
+      </ul>
+    </section>
+
+    <footer class="ds-footer"><span>ShotThere design system · extracted from <a href="../../mocks/index.html">docs/mocks</a> on 13 October 2026</span><a href="#top">Back to top</a></footer>
+  </main>
+</div>
+<script src="../assets/ds.js"></script>
+</body>
+</html>
