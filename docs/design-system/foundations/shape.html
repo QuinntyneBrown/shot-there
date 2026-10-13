@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Shape — ShotThere design system</title>
-<meta name="description" content="ShotThere shape: the radius scale, which radius for which element size, the round food photo, pill controls and the two border widths.">
+<meta name="description" content="ShotThere shape: six radii and two border widths, which radius each element takes (location card media, shots, pips, studio and spot map markers, the episode poster), photo crops and aspect ratios, and edges drawn with borders and rings.">
 <link rel="stylesheet" href="../tokens/tokens.css">
 <link rel="stylesheet" href="../assets/components.css">
 <link rel="stylesheet" href="../assets/ds.css">
@@ -33,34 +33,57 @@
       <li><a href="../components/icon-button.html">Icon button</a></li>
       <li><a href="../components/button-group.html">Button group</a></li>
       <li><a href="../components/link.html">Link</a></li>
+      <li><a href="../components/compare-bar.html">Compare toggle and bar</a></li>
     </ul></details>
     <details open><summary>Inputs</summary><ul>
       <li><a href="../components/form-field.html">Form field</a></li>
       <li><a href="../components/text-field.html">Text field</a></li>
       <li><a href="../components/textarea.html">Textarea</a></li>
       <li><a href="../components/select.html">Select</a></li>
+      <li><a href="../components/combobox.html">Combobox</a></li>
       <li><a href="../components/checkbox.html">Checkbox</a></li>
       <li><a href="../components/radio-group.html">Radio group</a></li>
       <li><a href="../components/file-upload.html">File upload</a></li>
       <li><a href="../components/form-layout.html">Form layout</a></li>
+      <li><a href="../components/signup.html">Email signup</a></li>
     </ul></details>
     <details open><summary>Navigation</summary><ul>
       <li><a href="../components/skip-link.html">Skip link</a></li>
       <li><a href="../components/site-header.html">Site header</a></li>
       <li><a href="../components/footer.html">Footer</a></li>
+      <li><a href="../components/breadcrumb.html">Breadcrumb</a></li>
+      <li><a href="../components/filter.html">Filters</a></li>
     </ul></details>
     <details open><summary>Containers and overlays</summary><ul>
       <li><a href="../components/container.html">Container and grid</a></li>
+      <li><a href="../components/review-layout.html">Review layout</a></li>
+      <li><a href="../components/editor-layout.html">Editor layout</a></li>
       <li><a href="../components/card.html">Card</a></li>
       <li><a href="../components/dialog.html">Dialog</a></li>
       <li><a href="../components/sheet.html">Sheet and drawer</a></li>
+      <li><a href="../components/popover.html">Popover</a></li>
+      <li><a href="../components/lightbox.html">Lightbox</a></li>
       <li><a href="../components/divider.html">Divider</a></li>
     </ul></details>
     <details open><summary>Data display</summary><ul>
+      <li><a href="../components/location-card.html">Location card</a></li>
       <li><a href="../components/table.html">Table</a></li>
+      <li><a href="../components/compare-table.html">Comparison table</a></li>
+      <li><a href="../components/list.html">List rows</a></li>
       <li><a href="../components/description-list.html">Description list</a></li>
+      <li><a href="../components/price-block.html">Price block</a></li>
+      <li><a href="../components/score.html">Score and pips</a></li>
+      <li><a href="../components/shot-grid.html">Shot grid</a></li>
+      <li><a href="../components/video-poster.html">Episode poster</a></li>
+      <li><a href="../components/map.html">Map</a></li>
+      <li><a href="../components/guide-entry.html">Guide entry</a></li>
+      <li><a href="../components/stat-tile.html">Stat tile</a></li>
+      <li><a href="../components/image-manager.html">Image manager</a></li>
+      <li><a href="../components/disclosure.html">Disclosure</a></li>
       <li><a href="../components/badge.html">Badge</a></li>
+      <li><a href="../components/status-label.html">Status label</a></li>
       <li><a href="../components/chip.html">Chip</a></li>
+      <li><a href="../components/tag.html">Tag</a></li>
     </ul></details>
     <details open><summary>Feedback</summary><ul>
       <li><a href="../components/inline-message.html">Inline message</a></li>
@@ -88,14 +111,14 @@
     <header class="ds-header">
       <p class="ds-kicker">Foundation</p>
       <h1>Shape</h1>
-      <p class="ds-lead">Round food photos and pill-shaped controls give ShotThere its soft, plated look. Five radii plus full, and two border widths, cover every corner and edge.</p>
-      <div class="ds-meta"><span class="ds-pill ds-pill--ok">WCAG 2.2 AA</span><span class="ds-pill">6 radii</span><span class="ds-pill">2 border widths</span><span class="ds-pill">Round photos</span></div>
-      <ul class="ds-toc"><li><a href="#overview">Overview</a></li><li><a href="#radii">Radius scale</a></li><li><a href="#by-size">Radius by element</a></li><li><a href="#photo">The round photo</a></li><li><a href="#borders">Border widths</a></li><li><a href="#usage">Usage</a></li><li><a href="#accessibility">Accessibility</a></li><li><a href="#tokens">Tokens</a></li></ul>
+      <p class="ds-lead">Rounded rectangles for photos and panels, pills for anything you press, and two marker shapes on the map. Six radii and two border widths cover every corner and edge.</p>
+      <div class="ds-meta"><span class="ds-pill ds-pill--ok">WCAG 2.2 AA</span><span class="ds-pill">6 radii</span><span class="ds-pill">2 border widths</span><span class="ds-pill">Square studio, round spot</span></div>
+      <ul class="ds-toc"><li><a href="#overview">Overview</a></li><li><a href="#radii">Radius scale</a></li><li><a href="#by-size">Radius by element</a></li><li><a href="#photo">Photos and media</a></li><li><a href="#markers">Map markers and pips</a></li><li><a href="#borders">Border widths</a></li><li><a href="#usage">Usage</a></li><li><a href="#accessibility">Accessibility</a></li><li><a href="#tokens">Tokens</a></li></ul>
     </header>
 
-<section class="ds-section" id="overview"><h2><a href="#overview">Overview</a></h2>
-      <p>The reference design is built on circles: every caterer is a round photo, like a plate seen from above. The interface echoes it. Anything you press is a pill (buttons, chips, tags, the search field); containers have generous rounded corners; only tiny marks (a checkbox, a bar in a chart) are nearly square.</p>
-      <p>The rule: <b>the radius grows with the element.</b> A 20px tag is a pill, a 44px input has 12px corners, a 512px dialog has 20px corners and a phone bottom sheet 28px. Small radii on big panels look stiff; big radii on small boxes turn them into blobs.</p>
+    <section class="ds-section" id="overview"><h2><a href="#overview">Overview</a></h2>
+      <p>A ShotThere photo shows a room or a place, and its corners matter: where the windows are, how far the cyc runs. So photos stay rectangles with softened corners, never circles. Controls are pills, panels have generous corners, and shape carries meaning in exactly one place: on the map, a studio is a square and a spot is a circle.</p>
+      <p>The rule: <b>the radius grows with the element.</b> A 24px badge is a pill, a 44px input has 12px corners, a test shot 12px, a location card photo and the summary panel 20px, a dialog rising as a phone sheet 28px. Small radii on big panels look stiff; big radii on small boxes turn them into blobs.</p>
     </section>
 
     <section class="ds-section" id="radii"><h2><a href="#radii">Radius scale</a></h2>
@@ -107,122 +130,163 @@
         <div class="ds-scale__row"><code>--radius-xl</code><span data-token="--radius-xl"></span><span class="ds-scale__box" style="--size: var(--radius-xl);"></span></div>
         <div class="ds-scale__row"><code>--radius-full</code><span data-token="--radius-full"></span><span class="ds-scale__box" style="--size: var(--radius-full);"></span></div>
       </div>
-      <div class="ds-table-wrap"><table class="ds-table"><thead><tr><th scope="col">Token</th><th scope="col">Resolved value</th><th scope="col">Declared as</th><th scope="col">Use</th></tr></thead><tbody><tr><td><code>--radius-xs</code></td><td><span data-token="--radius-xs"></span></td><td><code>0.25rem</code></td><td>4px · checkbox, message tail, bar tops.</td></tr><tr><td><code>--radius-sm</code></td><td><span data-token="--radius-sm"></span></td><td><code>0.375rem</code></td><td>6px · tooltip, inline code, focus ring.</td></tr><tr><td><code>--radius-md</code></td><td><span data-token="--radius-md"></span></td><td><code>0.75rem</code></td><td>12px · inputs, menus, alerts, toasts.</td></tr><tr><td><code>--radius-lg</code></td><td><span data-token="--radius-lg"></span></td><td><code>1.25rem</code></td><td>20px · dialogs, panels, message bubbles.</td></tr><tr><td><code>--radius-xl</code></td><td><span data-token="--radius-xl"></span></td><td><code>1.75rem</code></td><td>28px · phone bottom sheets.</td></tr><tr><td><code>--radius-full</code></td><td><span data-token="--radius-full"></span></td><td><code>9999px</code></td><td>Buttons, chips, tags, photos, avatars.</td></tr></tbody></table></div>
-      <p><b>Where these came from.</b> The six radii are the mocks' draft. The harvest found 35 uses of <code>--radius-full</code>, 20 of md and 14 of lg in <code>ui.css</code>; 13 literal <code>50%</code> values (dots, spinners, avatar fallbacks, which are circles regardless of size and stay literal); and one off-scale <code>2px 2px 0 0</code> on chart bars, which now reads <code>--radius-xs</code> on the top corners.</p>
+      <p>Circles that are circles at any size (status dots, the spinner, skeleton circles) use a literal <code>50%</code>; everything else reads a token.</p>
     </section>
 
     <section class="ds-section" id="by-size"><h2><a href="#by-size">Radius by element</a></h2>
       <div class="ds-table-wrap"><table class="ds-table">
-        <thead><tr><th scope="col">Element</th><th scope="col">Typical size</th><th scope="col">Radius</th></tr></thead>
+        <thead><tr><th scope="col">Radius</th><th scope="col">Elements</th><th scope="col">Typical size</th></tr></thead>
         <tbody>
-          <tr><td>Checkbox, square status mark ("Declined"), chart bar tops, message bubble tail, skeleton text</td><td>8–20px</td><td><code>--radius-xs</code></td></tr>
-          <tr><td>Tooltip, inline code, keyboard key, toast action, focus outline, close buttons</td><td>20–32px</td><td><code>--radius-sm</code></td></tr>
-          <tr><td>Input, select, textarea, menu, popover, alert, toast, well, accordion, nav link</td><td>36–200px tall</td><td><code>--radius-md</code></td></tr>
-          <tr><td>Dialog panel (from 36rem), card, enquiry panel, enquiry summary, filter dropdown, suggestions list, account menu, message bubble, reply box</td><td>Panels</td><td><code>--radius-lg</code></td></tr>
-          <tr><td>Dialog panel on phones (top corners only, as a bottom sheet)</td><td>Full width</td><td><code>--radius-xl</code></td></tr>
-          <tr><td>Buttons, chips, tags, badges, the search field, photos, avatars, dialog icons</td><td>Any</td><td><code>--radius-full</code></td></tr>
+          <tr><td><code>--radius-xs</code></td><td>Checkbox; the studio map marker and its legend key</td><td>16–24px</td></tr>
+          <tr><td><code>--radius-sm</code></td><td>Test-shot thumbnails in the compare table; image-row thumbnails in the editors; skeleton blocks; inline code and keys; the default focus outline</td><td>20–96px</td></tr>
+          <tr><td><code>--radius-md</code></td><td>Test and gallery shots; the lightbox photo; compare-table header photos and map-list thumbnails; light-grid cells; fee rows and image rows; inputs and selects; alerts, toasts, popovers, the map popup and legend; stacked table cards; the upload drop zone</td><td>36–400px</td></tr>
+          <tr><td><code>--radius-lg</code></td><td>Location card media (and its focus outline); the review hero; the static map; the episode poster and video frame; the summary panel and price block; editor sections and the editor aside; stat tiles; cards; combobox suggestions; dialog panels from 36rem</td><td>Panels and large media</td></tr>
+          <tr><td><code>--radius-xl</code></td><td>Top corners of a dialog that rises as a bottom sheet below 36rem</td><td>Full width</td></tr>
+          <tr><td><code>--radius-full</code></td><td>Buttons, the compare toggle, chips, tags and badges; radio buttons; pips; the spot map marker and legend key; the episode play pill; the guide rank circle; the wordmark's "Toronto" tag; progress bars</td><td>Any</td></tr>
+          <tr><td>none</td><td>Anything that touches the screen edge: the compare bar, the map on the map page, side sheets, full-screen dialogs, the lightbox</td><td>Edge to edge</td></tr>
+        </tbody>
+      </table></div>
+      <div class="ds-example">
+        <div class="ds-example__canvas" style="align-items: flex-end;">
+          <label class="choice"><input type="checkbox" name="shape-cyc" checked><span>Cyc wall</span></label>
+          <span class="map-legend__key map-legend__key--studio" aria-hidden="true"></span>
+          <span class="image-row__thumb" style="width: 4rem; display: block;"><img src="../assets/img/test-the-junction-loft-1.svg" alt="" width="800" height="1000"></span>
+          <span class="shot" style="width: 6rem;"><img src="../assets/img/test-the-junction-loft-2.svg" alt="" width="800" height="1000"></span>
+          <span class="location-card__media" style="width: 12rem; display: block; margin: 0;"><img src="../assets/img/studio-the-junction-loft.svg" alt="" width="1200" height="800"></span>
+          <span class="pips" aria-hidden="true"><i data-on></i><i data-on></i><i data-on></i><i></i><i></i></span>
+          <span class="badge">Mandatory</span>
+          <button class="btn compare-toggle" type="button" aria-pressed="false">Add to compare</button>
+        </div>
+        <div class="ds-example__caption"><span>xs checkbox and studio key · sm thumbnail · md shot · lg location photo · full pips, badge and button.</span></div>
+      </div>
+      <h3>Phone sheets</h3>
+      <p>Below 36rem a confirmation dialog rises from the bottom edge with <code>--radius-xl</code> on its top corners and square corners against the screen edge; from 36rem it centres with <code>--radius-lg</code> on all four. Filters and the site menu are full-height sheets with no radius at all.</p>
+      <div class="ds-frame ds-frame--phone ds-frame--short">
+        <div class="ds-frame__page"><p>Corktown Garage Studio</p></div>
+        <div class="backdrop"></div>
+        <div class="dialog" role="dialog" aria-modal="false" aria-labelledby="shape-dlg-title">
+          <div class="dialog__panel" style="border-radius: var(--radius-xl) var(--radius-xl) 0 0;">
+            <div class="dialog__header"><h3 class="dialog__title" id="shape-dlg-title">Discard your changes?</h3></div>
+            <div class="dialog__footer"><button class="btn" type="button">Keep editing</button><button class="btn btn--primary" type="button">Discard changes</button></div>
+          </div>
+        </div>
+      </div>
+      <p class="text-caption">The sheet shape is forced here so it shows at any window width; in the product it comes from the 36rem breakpoint (<a href="../../mocks/dialogs/discard-changes/default.html">dialogs/discard-changes/default</a>).</p>
+    </section>
+
+    <section class="ds-section" id="photo"><h2><a href="#photo">Photos and media</a></h2>
+      <p>Every photo is a rectangle at a fixed aspect ratio, cropped with <code>object-fit: cover</code> inside a box that clips to its radius. The ratio is fixed per slot so a list of seven studios lines up and a slow image never shifts the layout; until it loads the slot shows <code>--color-bg-photo</code>.</p>
+      <div class="ds-table-wrap"><table class="ds-table">
+        <thead><tr><th scope="col">Slot</th><th scope="col">Aspect ratio</th><th scope="col">Radius</th><th scope="col">Mock</th></tr></thead>
+        <tbody>
+          <tr><td>Location card media</td><td>3:2</td><td><code>--radius-lg</code></td><td><a href="../../mocks/pages/studios/default.html">pages/studios/default</a></td></tr>
+          <tr><td>Review hero</td><td>3:2, 16:7 from 48rem</td><td><code>--radius-lg</code></td><td><a href="../../mocks/pages/studio/default.html">pages/studio/default</a></td></tr>
+          <tr><td>Episode poster and video frame</td><td>16:9</td><td><code>--radius-lg</code></td><td><a href="../../mocks/pages/studio/playing.html">pages/studio/playing</a></td></tr>
+          <tr><td>Static map (spot page)</td><td>16:9</td><td><code>--radius-lg</code></td><td><a href="../../mocks/pages/spot/default.html">pages/spot/default</a></td></tr>
+          <tr><td>Test, gallery and sample shots</td><td>4:5</td><td><code>--radius-md</code></td><td><a href="../../mocks/pages/studio/default.html#test-shots">pages/studio/default</a></td></tr>
+          <tr><td>Compare-table header photo</td><td>3:2</td><td><code>--radius-md</code></td><td><a href="../../mocks/pages/compare/default.html">pages/compare/default</a></td></tr>
+          <tr><td>Compare-table test shots, editor thumbnails</td><td>4:5</td><td><code>--radius-sm</code></td><td><a href="../../mocks/pages/studio-editor/default.html">pages/studio-editor/default</a></td></tr>
+          <tr><td>Lightbox photo</td><td>the photo's own</td><td><code>--radius-md</code></td><td><a href="../../mocks/dialogs/lightbox/default.html">dialogs/lightbox/default</a></td></tr>
         </tbody>
       </table></div>
       <div class="ds-example">
         <div class="ds-example__canvas" style="align-items: flex-start;">
-          <label class="choice"><input type="checkbox" checked> Halal</label>
-          <span class="tag">Gluten-free</span>
-          <button class="chip" type="button" aria-pressed="true">Weddings</button>
-          <button class="btn" type="button">Cancel</button>
-          <label class="field" style="width: 12rem;"><span class="field__label">Postal code</span><input class="input" type="text" value="M1B 2K3" autocomplete="postal-code"></label>
-          <div class="card" style="max-width: 16rem;"><p class="card__title">Food handler certificate</p><p class="text-muted">Toronto Public Health · expires 14 Mar 2029</p></div>
+          <div class="location-card__media" style="width: 15rem; margin: 0;"><img src="../assets/img/spot-evergreen-brick-works.svg" alt="Evergreen Brick Works: brick kiln walls and the chimney courtyard in late light." width="1200" height="800"></div>
+          <span class="shot" style="width: 7rem;"><img src="../assets/img/sample-2.svg" alt="Sample shot at 35 mm in the kiln tunnel, backlit from the west door." width="1200" height="800"></span>
+          <span class="image-row__thumb" style="width: 4rem; display: block;"><img src="../assets/img/gallery-3.svg" alt="" width="800" height="1000"></span>
+          <a class="video-poster" href="../../mocks/pages/spot/default.html#episode" style="width: 15rem;"><img src="../assets/img/episode-evergreen-brick-works.svg" alt="" width="1200" height="800"><span class="video-poster__play"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor" stroke="none"/></svg>Play<span class="visually-hidden"> episode 7: Evergreen Brick Works at golden hour</span></span></a>
         </div>
-        <div class="ds-example__caption"><span>xs checkbox · full tag, chip and button · md input · lg card.</span></div>
-      </div>
-      <h3>Phone sheets</h3>
-      <p>Below 36rem a dialog rises from the bottom edge as a sheet with <code>--radius-xl</code> on its top corners and square bottom corners against the screen edge; from 36rem it centres with <code>--radius-lg</code> on all four. The enquiry form (<code>.dialog--full</code>) fills the screen below 48rem with no radius at all.</p>
-      <div class="ds-frame ds-frame--phone ds-frame--short">
-        <div class="ds-frame__page"><p>Pelau House</p></div>
-        <div class="backdrop"></div>
-        <div class="dialog" role="dialog" aria-modal="false" aria-labelledby="shape-dlg-title">
-          <div class="dialog__panel" style="border-radius: var(--radius-xl) var(--radius-xl) 0 0;">
-            <div class="dialog__header"><h3 class="dialog__title" id="shape-dlg-title">Close this enquiry?</h3></div>
-            <div class="dialog__footer"><button class="btn" type="button">Cancel</button><button class="btn btn--primary" type="button">Close enquiry</button></div>
-          </div>
-        </div>
-      </div>
-      <p class="text-caption">The sheet shape is forced here so it shows at any window width; in the product it comes from the 36rem breakpoint.</p>
-    </section>
-
-    <section class="ds-section" id="photo"><h2><a href="#photo">The round photo</a></h2>
-      <p>Every caterer, and every place a person or business is represented, is a round photo: <code>.photo</code> is a 1:1 box with <code>--radius-full</code> and <code>overflow: hidden</code>, and the image inside is cropped with <code>object-fit: cover</code> at a slight 1.03 scale so no edge pixels show. On hover the listing card scales the image to 1.08 inside the circle; the circle itself never moves.</p>
-      <div class="ds-example">
-        <div class="ds-example__canvas" style="align-items: flex-end;">
-          <span class="photo photo--xs"><img src="../assets/img/ti-kay.jpg" alt="Shrimp arranged in a heart on a mound of tomato rice"></span>
-          <span class="photo photo--sm"><img src="../assets/img/demerara-kitchen.jpg" alt="Fried rice with chicken, peas, carrots and egg in a serving dish"></span>
-          <span class="photo photo--md"><img src="../assets/img/black-cake-co.jpg" alt="Dark rum cake dusted with icing sugar and topped with a raspberry"></span>
-          <span class="photo photo--lg"><img src="../assets/img/pelau-house.jpg" alt="Chicken pelau in a steel pot with lime and cucumber chutney"></span>
-          <span class="photo photo--md photo--placeholder"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/></svg><span class="visually-hidden">No photo yet</span></span>
-        </div>
-        <div class="ds-example__caption"><span>xs 40px (inline), sm 56px (dialogs, queue rows), md 96px, lg 160px, and the plate placeholder on <code>--color-bg-photo</code>. Listing cards grow up to <code>--photo-card-size</code> (280px).</span></div>
+        <div class="ds-example__caption"><span>lg location photo · md sample shot · sm editor thumbnail · lg poster with a full play pill.</span></div>
       </div>
       <ul>
-        <li>The photo is the caterer's own crop of their food; never add a frame, border or shadow to the circle.</li>
-        <li>Until the image loads, the circle shows <code>--color-bg-photo</code>; a missing photo shows the plate icon in <code>--color-fg-subtle</code>.</li>
-        <li>Text never sits on a round photo. On the rectangular gallery and in the photo viewer, text sits on <code>--color-bg-scrim</code>.</li>
-        <li>L2-005.5 asks for a 4:3 listing photo; the reference design and the mocks use the 1:1 circle. The conflict is open in the mocks README (question 1).</li>
+        <li><b>Nested corners shrink.</b> A thumbnail inside a table row (md) is sm; a photo inside a 20px panel would be md. The gap between the two curves stays even.</li>
+        <li><b>Hover scales the image, not the frame.</b> Location card and shot images scale to 1.04 inside their clipped box; the box itself never moves.</li>
+        <li><b>The focus outline follows the frame.</b> The location card draws its outline at <code>--radius-lg</code>, 8px outside; shots and the poster keep their own radius on focus.</li>
+        <li><b>Failed images keep their shape.</b> <code>.media-fallback</code> fills the same box with the alt text (L2-086.1).</li>
       </ul>
+    </section>
+
+    <section class="ds-section" id="markers"><h2><a href="#markers">Map markers and pips</a></h2>
+      <p>On the map, shape is the type: a studio marker is a 24px square with <code>--radius-xs</code>, a spot marker a 24px circle with <code>--radius-full</code>. The legend keys repeat the shapes at 16px. Both markers sit in a 44px round hit area (<code>--target-comfortable</code>), which also takes the focus outline.</p>
+      <div class="ds-example">
+        <div class="static-map" style="min-height: 9rem; max-width: 28rem;">
+          <img class="static-map__tiles" src="../assets/img/map-spot.svg" alt="" width="1200" height="675">
+          <a class="map-marker map-marker--studio" style="left: 35%; top: 50%;" href="../../mocks/dialogs/map-popup/default.html" aria-label="Riverside Rooftop Studio, studio" aria-haspopup="dialog" aria-expanded="false"></a>
+          <a class="map-marker map-marker--spot" style="left: 65%; top: 50%;" href="../../mocks/dialogs/map-popup/spot.html" aria-label="Evergreen Brick Works, outdoor spot" aria-haspopup="dialog" aria-expanded="false"></a>
+        </div>
+        <ul class="map-legend" style="margin-top: var(--space-3);"><li><span class="map-legend__key map-legend__key--studio" aria-hidden="true"></span>Studio</li><li><span class="map-legend__key map-legend__key--spot" aria-hidden="true"></span>Outdoor spot</li></ul>
+        <div class="ds-example__caption"><span>Studio square and spot circle with the legend. From <a href="../../mocks/pages/map/default.html">pages/map/default</a>.</span></div>
+      </div>
+      <p>Pips are 20 × 8px pills (16 × 8px for light levels) with <code>--radius-full</code>, 4px apart: a row of them reads as a measured bar, not as a row of icons.</p>
+      <div class="ds-example">
+        <div class="ds-example__canvas">
+          <span class="pips" aria-hidden="true"><i data-on></i><i data-on></i><i data-on></i><i data-on></i><i></i></span><span>Value 4</span>
+          <span class="light-rating"><span class="pips" aria-hidden="true"><i data-on></i><i data-on></i><i data-on></i></span>Strong</span>
+        </div>
+        <div class="ds-example__caption"><span>A rubric score and a light level. The number or word is always beside the pips.</span></div>
+      </div>
     </section>
 
     <section class="ds-section" id="borders"><h2><a href="#borders">Border widths</a></h2>
       <p>Two widths. Most edges are a 1px hairline; 2px is for marks that must read as a line rather than an outline.</p>
       <div class="ds-example">
-        <div class="ds-example__canvas">
-          <div role="tablist" aria-label="Dashboard sections" class="tabs" style="min-width: 16rem;"><button class="tab" type="button" role="tab" aria-selected="true">Enquiries</button><button class="tab" type="button" role="tab" aria-selected="false">Reviews</button></div>
-          <span class="status status--closed">Closed</span>
-          View caterer
-          <input class="input" type="text" aria-label="Guests, invalid example" aria-invalid="true" data-state="invalid" value="0" style="max-width: 8rem;">
+        <div class="ds-example__canvas ds-example__canvas--stack">
+          <div class="disclosure"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h0"/></svg><div><p class="disclosure__title">How this session was paid for</p><p>I paid the full rate for this session. No studio pays for placement or scores.</p></div></div>
+          <div class="cluster">
+            <span class="status status--draft">Draft</span>
+            <span class="status status--published">Published</span>
+            <input class="input" type="number" aria-label="Ceiling height in metres, invalid example" aria-invalid="true" value="0" style="max-width: 8rem;">
+          </div>
+          <div class="upload-drop" style="width: 100%;"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 16V4M7 9l5-5 5 5M4 20h16"/></svg>Drop photos here, or choose files</div>
         </div>
-        <div class="ds-example__caption"><span>Thick: the selected tab bar, the "Closed" ring, a hovered link's underline. The invalid input doubles its hairline with an inset 1px ring.</span></div>
+        <div class="ds-example__caption"><span>Thick: the disclosure stripe, the hollow "Draft" ring, the dashed upload zone. Hairline: the "Published" dot has none; the invalid input doubles its hairline with an inset 1px ring.</span></div>
       </div>
-      <div class="ds-table-wrap"><table class="ds-table"><thead><tr><th scope="col">Token</th><th scope="col">Resolved value</th><th scope="col">Declared as</th><th scope="col">Use</th></tr></thead><tbody><tr><td><code>--border-width-hairline</code></td><td><span data-token="--border-width-hairline"></span></td><td><code>1px</code></td><td></td></tr><tr><td><code>--border-width-thick</code></td><td><span data-token="--border-width-thick"></span></td><td><code>2px</code></td><td></td></tr></tbody></table></div>
       <div class="ds-table-wrap"><table class="ds-table">
         <thead><tr><th scope="col">Width</th><th scope="col">Used for</th></tr></thead>
         <tbody>
-          <tr><td><code>--border-width-hairline</code></td><td>Inputs, secondary buttons, chips, tags, cards, menus, popovers, dividers, table and list rows. Also 1px "rings" drawn with <code>box-shadow</code>: the selected card and choice card (pepper), the open filter trigger (ink) and the invalid field (sorrel), which double the edge without shifting layout.</td></tr>
-          <tr><td><code>--border-width-thick</code></td><td>Selected tab bar, hovered link and toast action underline, ring status marks ("Closed", "Draft", "Removed"), spinner, timeline and review response rules, the selected suggestion's inset bar, the avatar group's separating ring, keyboard key bottom edge, toast progress.</td></tr>
+          <tr><td><code>--border-width-hairline</code></td><td>Inputs, secondary buttons and the compare toggle, badges and tags, cards, the summary panel, editor sections, stat tiles, popovers, dividers, table, fact and admin rows, the compare bar's top edge. Also 1px rings drawn with <code>box-shadow</code>: empty pips, the invalid field, the selected card and the compare table's label-column edge, which add an edge without shifting layout.</td></tr>
+          <tr><td><code>--border-width-thick</code></td><td>The map marker's surface halo and the open marker's accent ring; the spot legend key; the disclosure's left stripe; the "Draft" status ring; the dashed upload drop zone; the editor section chevron; the combobox active-option bar; toast progress; a hovered toast action's underline.</td></tr>
         </tbody>
       </table></div>
+      <p>The spot marker's own ring is 4px and reads <code>--space-1</code>, because no border token is that thick. It is the one border in the system sized from the spacing scale.</p>
       <p>Focus rings are not borders: they are a 2px outline with a 3px offset, owned by the <a href="accessibility.html">Accessibility</a> foundation, and follow the element's radius.</p>
-      <p><b>Where these came from.</b> The base kit had literal 1px, 2px, 3px and 4px borders. 1px and 2px became the two tokens. The 4px sorrel stripe on the left of the error summary was dropped: the summary is now a tinted <code>--radius-md</code> box like an alert, so it needs no stripe. The 3px ring on the large spinner is still a literal in <code>components.css</code> and should move to <code>--border-width-thick</code>.</p>
     </section>
 
     <section class="ds-section" id="usage"><h2><a href="#usage">Usage</a></h2>
       <ul>
-        <li><b>Pick the radius by size</b> from the table above; do not choose by taste per component.</li>
-        <li><b>Pressable means pill.</b> Buttons, chips, tags and the search field are always <code>--radius-full</code>. A rectangular button reads as an input.</li>
-        <li><b>Nested corners shrink.</b> An element inside a rounded container uses a smaller radius than its parent (a md well inside a lg card), so the gap between curves stays even.</li>
-        <li><b>Photos are circles.</b> Always 1:1, always <code>--radius-full</code>. The gallery and photo viewer are the only rectangular food photos.</li>
-        <li><b>Square against an edge.</b> A sheet or banner that touches the screen edge has square corners on that side.</li>
-        <li><b>Hairline by default.</b> Use thick only for marks that carry state (selected tab, ring status) or emphasis on hover.</li>
+        <li><b>Pick the radius by element</b> from the table above; do not choose by taste per component.</li>
+        <li><b>Pressable means pill.</b> Buttons, the compare toggle, chips and tags are always <code>--radius-full</code>. A rectangular button reads as an input.</li>
+        <li><b>Photos are rectangles.</b> Always at their slot's aspect ratio, cropped with <code>object-fit: cover</code>, and clipped to the slot's radius.</li>
+        <li><b>Shape means type only on the map.</b> Square is studio, circle is spot. Do not reuse those two shapes for anything else on the map screens.</li>
+        <li><b>Square against an edge.</b> A sheet, bar or full-bleed map that touches the screen edge has square corners on that side.</li>
+        <li><b>Hairline by default.</b> Use thick only for marks that carry state (the "Draft" ring, the open marker) or that must read as a line (the disclosure stripe).</li>
       </ul>
       <div class="ds-dodont">
-        <figure class="ds-do"><div class="ds-example__canvas"><span class="photo photo--md"><img src="../assets/img/sorrel-and-spice.jpg" alt="Sponge-finger cake crowned with strawberries and berries"></span><p><b>Sorrel &amp; Spice</b><br><span class="text-muted">Grenadian · Downtown Toronto</span></p></div><figcaption>Show a caterer as a round photo, flat on the page.</figcaption></figure>
-        <figure class="ds-dont"><div class="ds-example__canvas"><span class="photo photo--md" style="border-radius: var(--radius-md); border: var(--border-width-thick) solid var(--color-border-strong);"><img src="../assets/img/sorrel-and-spice.jpg" alt="Sponge-finger cake crowned with strawberries and berries"></span><p><b>Sorrel &amp; Spice</b><br><span class="text-muted">Grenadian · Downtown Toronto</span></p></div><figcaption>Square off the photo and frame it; it stops looking like a plate and fights the grid.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas"><div class="location-card__media" style="width: 14rem; margin: 0;"><img src="../assets/img/studio-ossington-blackbox.svg" alt="" width="1200" height="800"></div></div><figcaption>Show a location as a 3:2 rectangle with softened corners, so the whole room is visible.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas"><div class="location-card__media" style="width: 9rem; aspect-ratio: 1; border-radius: var(--radius-full); margin: 0;"><img src="../assets/img/studio-ossington-blackbox.svg" alt="" width="1200" height="800"></div></div><figcaption>Crop it to a circle: the corners, where the cyc meets the floor and the windows sit, are cut away.</figcaption></figure>
+      </div>
+      <div class="ds-dodont">
+        <figure class="ds-do"><div class="ds-example__canvas"><ul class="map-legend"><li><span class="map-legend__key map-legend__key--studio" aria-hidden="true"></span>Studio</li><li><span class="map-legend__key map-legend__key--spot" aria-hidden="true"></span>Outdoor spot</li></ul></div><figcaption>Keep the studio key square and the spot key round, matching the markers.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas"><ul class="map-legend"><li><span class="map-legend__key map-legend__key--studio" style="border-radius: var(--radius-full);" aria-hidden="true"></span>Studio</li><li><span class="map-legend__key map-legend__key--spot" aria-hidden="true"></span>Outdoor spot</li></ul></div><figcaption>Round off the studio marker to match a design trend; studios and spots now differ by fill alone.</figcaption></figure>
       </div>
     </section>
 
     <section class="ds-section" id="accessibility"><h2><a href="#accessibility">Accessibility</a></h2>
       <ul>
-        <li><b>Shape never carries meaning alone.</b> Status labels pair a shape (dot, square, ring) with a word, so they work for people who cannot distinguish the colour or the shape (1.4.1, L2-069.5).</li>
-        <li><b>Edges hold 3:1.</b> A pill control's outline uses <code>--color-border-strong</code> (3:1 on every surface, 1.4.11); radius does not lower that requirement.</li>
-        <li><b>Round targets are measured by their box.</b> A 44px round icon button is a 44 × 44px target; never shrink the hit area to the visible circle.</li>
-        <li><b>Forced colours.</b> Buttons, inputs, cards, chips, badges and tags get a 1px <code>CanvasText</code> border in forced-colours mode, so rounded controls keep a visible edge when backgrounds are removed.</li>
-        <li><b>Photos need alt text</b> written by the caterer ("Chicken pelau in a steel pot with lime and cucumber chutney"); the circle crop must not hide what the alt text describes.</li>
+        <li><b>Shape never carries meaning alone.</b> Every marker has an accessible name that says its type ("The Junction Loft, studio"), and the legend names both shapes in text (L2-027.1). Status labels pair a filled or hollow dot with a word (1.4.1).</li>
+        <li><b>Edges hold 3:1.</b> A pill control's outline and an empty pip's ring use <code>--color-border-strong</code> (3:1 on every surface, 1.4.11, L2-068.1); radius does not lower that requirement.</li>
+        <li><b>Targets are measured by their box.</b> A map marker's 24px mark sits in a 44 × 44px hit area; never shrink the hit area to the visible shape.</li>
+        <li><b>Forced colours.</b> Buttons, inputs, cards, chips, badges and tags get a 1px <code>CanvasText</code> border in forced-colours mode, so rounded controls keep a visible edge when backgrounds are removed; markers keep their shapes.</li>
+        <li><b>Crops must not hide what the alt text describes.</b> The admin writes alt text for the full photo ("two tall north windows over a brick wall, a white cyc in the right corner"); a 3:2 crop must keep those things in frame.</li>
       </ul>
     </section>
 
     <section class="ds-section" id="tokens"><h2><a href="#tokens">Tokens</a></h2>
       <p>Shape does not change between themes or viewports.</p>
-      <div class="ds-table-wrap"><table class="ds-table"><thead><tr><th scope="col">Token</th><th scope="col">Resolved value</th><th scope="col">Declared as</th><th scope="col">Use</th></tr></thead><tbody><tr><td><code>--radius-xs</code></td><td><span data-token="--radius-xs"></span></td><td><code>0.25rem</code></td><td>4px · checkbox, message tail, bar tops.</td></tr><tr><td><code>--radius-sm</code></td><td><span data-token="--radius-sm"></span></td><td><code>0.375rem</code></td><td>6px · tooltip, inline code, focus ring.</td></tr><tr><td><code>--radius-md</code></td><td><span data-token="--radius-md"></span></td><td><code>0.75rem</code></td><td>12px · inputs, menus, alerts, toasts.</td></tr><tr><td><code>--radius-lg</code></td><td><span data-token="--radius-lg"></span></td><td><code>1.25rem</code></td><td>20px · dialogs, panels, message bubbles.</td></tr><tr><td><code>--radius-xl</code></td><td><span data-token="--radius-xl"></span></td><td><code>1.75rem</code></td><td>28px · phone bottom sheets.</td></tr><tr><td><code>--radius-full</code></td><td><span data-token="--radius-full"></span></td><td><code>9999px</code></td><td>Buttons, chips, tags, photos, avatars.</td></tr><tr><td><code>--border-width-hairline</code></td><td><span data-token="--border-width-hairline"></span></td><td><code>1px</code></td><td></td></tr><tr><td><code>--border-width-thick</code></td><td><span data-token="--border-width-thick"></span></td><td><code>2px</code></td><td></td></tr></tbody></table></div>
+      <div class="ds-table-wrap"><table class="ds-table"><thead><tr><th scope="col">Token</th><th scope="col">Resolved value</th><th scope="col">Declared as</th><th scope="col">Use</th></tr></thead><tbody><tr><td><code>--radius-xs</code></td><td><span data-token="--radius-xs"></span></td><td><code>0.25rem</code></td><td>4px · checkbox, studio map marker and legend key.</td></tr><tr><td><code>--radius-sm</code></td><td><span data-token="--radius-sm"></span></td><td><code>0.375rem</code></td><td>6px · test-shot thumbnails in the compare table, image-row thumbnails, skeleton, inline code.</td></tr><tr><td><code>--radius-md</code></td><td><span data-token="--radius-md"></span></td><td><code>0.75rem</code></td><td>12px · test and gallery shots, light-grid cells, inputs, alerts, toasts, popovers, fee rows.</td></tr><tr><td><code>--radius-lg</code></td><td><span data-token="--radius-lg"></span></td><td><code>1.25rem</code></td><td>20px · location card media, review hero, static map, episode poster, summary panel, editor sections, dialogs.</td></tr><tr><td><code>--radius-xl</code></td><td><span data-token="--radius-xl"></span></td><td><code>1.75rem</code></td><td>28px · top corners of a dialog rising as a sheet on phones.</td></tr><tr><td><code>--radius-full</code></td><td><span data-token="--radius-full"></span></td><td><code>9999px</code></td><td>Buttons, chips, tags, badges, pips, spot map marker, play pill, guide rank.</td></tr><tr><td><code>--border-width-hairline</code></td><td><span data-token="--border-width-hairline"></span></td><td><code>1px</code></td><td>Every default edge: cards, inputs, table and kv rows, the compare-bar top edge, empty pips.</td></tr><tr><td><code>--border-width-thick</code></td><td><span data-token="--border-width-thick"></span></td><td><code>2px</code></td><td>Marker ring, legend spot key, disclosure stripe, draft status ring, upload drop zone, editor chevron.</td></tr></tbody></table></div>
     </section>
 
-    <footer class="ds-footer"><span>ShotThere design system · extracted from docs/mocks on 10 October 2026</span><a href="#top">Back to top</a></footer>
+    <footer class="ds-footer"><span>ShotThere design system · extracted from <a href="../../mocks/index.html">docs/mocks</a> on 13 October 2026</span><a href="#top">Back to top</a></footer>
   </main>
 </div>
 <script src="../assets/ds.js"></script>
