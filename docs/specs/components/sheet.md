@@ -33,7 +33,7 @@ Out of scope:
   `.section-link`, [`st-section-links`](list.md)), the filter form, its fields, the live
   count in "Show 7 studios", the range validation and applying the filters to
   the URL: the application (`SiteMenuSheetComponent`,
-  `StudioFiltersSheetComponent`, `SpotFiltersSheetComponent`).
+  `StudioFiltersDialogComponent`, `SpotFiltersDialogComponent`, the names the detailed designs `browse/filter-and-sort-studios` and `list-and-filter-spots` use, whose root is `st-sheet`).
 - When the header shows "Menu" and the list shows "Filters" (below 48rem and
   below 62rem): [`st-site-header`](site-header.md) and the page.
 - Signing out: the application's click handler on the admin menu's "Sign out".
@@ -192,7 +192,7 @@ elements and the inline `display: contents` are not part of it either
 (ICD-DOM-3).
 
 ```html
-<!-- consumer: StudioFiltersSheetComponent template -->
+<!-- consumer: StudioFiltersDialogComponent template -->
 <st-sheet i18n-title title="Filters" [description]="intro()">
   <form class="stack stack--lg" id="studio-filters" [formGroup]="form" (ngSubmit)="apply()" (reset)="clear()">…</form>
   <ng-container slot="footer">
