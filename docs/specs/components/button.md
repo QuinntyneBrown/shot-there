@@ -51,7 +51,7 @@ Every `.btn` in `docs/mocks/` (inventory from `usage_inventory.py docs/mocks btn
 | `pages/spot/default` directions | `a`, primary, external | "Open in Google Maps", `external` icon, hidden suffix | default | canvas |
 | `pages/studio/default`, `in-compare` summary panel | `button`, secondary, md, toggle (`pressed`) | "Add to compare" / "Remove from compare" | pressed false/true, hover, focus | surface |
 | `pages/studios/selected`, `selected-one`; `dialogs/studio-filters/*` behind; `notifications/public-toast/*` | `button`, secondary, sm, toggle, in a card's `actions` slot | "Compare" / "Remove" + hidden " Kensington Window Room" | pressed false/true | surface (card) |
-| `pages/studios/selected-one`, `selected`; `pages/studio/in-compare` compare bar | `button`, primary, md | "Compare" | default; disabled with `aria-describedby` hint "Pick at least 2 studios to compare" | surface (bar) |
+| `pages/studios/selected-one`, `selected`; `pages/studio/in-compare` compare bar | `button`, primary, md | "Compare" | default; soft-disabled (`aria-disabled`) with `aria-describedby` hint "Pick at least 2 studios to compare" | surface (bar) |
 | Compare bar | `button`, ghost, md | "Clear" | default | surface (bar) |
 | `pages/studios/filtered`, `pages/spots/filtered` | `button`, link, sm | "Clear all" | default, hover, focus | canvas |
 | `pages/studios/error`, `no-results`, `pages/spots/*`, `pages/map/*`, `pages/compare/*` empty and error states | `button` secondary "Try again" with leading `refresh` icon; `a` ghost "Go to the home page", `a` secondary "Browse studios", "Clear filters" | text, optional icon | default | canvas |
@@ -369,6 +369,9 @@ focus itself.
   consumer references with `aria-describedby`.
 - The compare toggle changes both its label ("Compare" → "Remove") and
   `aria-pressed`, as L2-030.1 asks (D-5).
+- A button that must explain why it is unavailable uses `softDisabled`, not
+  native `disabled`, so it stays focusable and its description is heard
+  ("Compare" in the bar with one studio, D-8).
 
 ### Announcements
 
@@ -434,7 +437,7 @@ busy spinner keeps turning, because it reports status.
 - **AC-9** Given focus is on "Save changes" when `busy` becomes true and later false, when the request ends, then focus is still on "Save changes". (L2-067)
 - **AC-10** Given the first image row's "Move up: test shot 1" with `softDisabled` true, when a keyboard user tabs through the row and presses Enter on it, then the button receives focus, has `aria-disabled="true"`, and nothing moves. (L2-058)
 - **AC-11** Given the published studio's ghost-danger "Delete studio" with native `disabled` and `aria-describedby="delete-hint"` pointing at "Unpublish before deleting.", when a screen reader reaches the status panel, then the button is skipped by Tab, is exposed as unavailable, and its description is "Unpublish before deleting.". (L2-061)
-- **AC-12** Given the compare bar with one studio selected, when it renders, then the primary "Compare" is natively disabled at 50 % opacity and described by "Pick at least 2 studios to compare". (L2-030)
+- **AC-12** Given the compare bar with one studio selected, when a keyboard user tabs to the primary "Compare", then it receives focus, has `aria-disabled="true"` at 50 % opacity, is described by "Pick at least 2 studios to compare", and pressing Enter does nothing. (L2-030)
 
 ### Keyboard and focus
 
@@ -501,3 +504,4 @@ The design-system rule (no AC; L2 has no motion requirement): under
 - **D-5** *L2-030.1 asks the toggle's label to change to "Remove"; the APG advises a fixed label on a toggle button.* The label changes, because L2 decides what must happen; the application supplies both labels and the component reflects `aria-pressed`. A screen reader hears "Remove The Junction Loft, toggle button, pressed".
 - **D-6** *The mocks write dialog "Cancel", "Close" and "Got it" as `<a href>` to sibling mock files.* In the product they are `<button type="button">`, because they act in place; the mocks link only so the static set can be navigated.
 - **D-7** *Should the component add `target="_blank"` and `rel="noopener"` to external button-links, as `a[st-link][external]` does?* No. ICD-002 gives the button no `external` input; the consumer writes `target`, `rel`, the `external` icon and the hidden "(opens in a new tab)" itself, as the markup above shows.
+- **D-8** *The `pages/studios/selected-one` mock disables the bar's "Compare" natively while pointing `aria-describedby` at its hint.* The bar's "Compare" uses `softDisabled`, as the design system's compare-bar page resolves: a natively disabled button cannot be focused, so its hint is never heard from the keyboard. Native `disabled` stays for buttons whose reason is visible beside them and need not be reached (the published studio's "Delete studio").
