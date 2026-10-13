@@ -320,7 +320,7 @@ are.
 - Save status: `inline-flex`, centred, `gap: --space-2`, `--text-body-sm`,
   min-height `--target-comfortable`, `--color-fg-muted`; `--saved`
   `--color-success-fg`; `--error` `--color-danger-fg`.
-- Field row: `display: grid`, `--space-4` gap; columns as in the utilities table.
+- Field row: `display: grid`, `--space-4` gap; columns as in the utilities table. The modifiers hold at every width; the default row's 36rem two-column rule never overrides them (D-8).
 
 No component tokens are declared.
 
@@ -527,7 +527,8 @@ turning under `prefers-reduced-motion: reduce`
   (`{{ text() }}`), `.css`.
 - `styles/foundations.css` gains `html:has(.form-actions--sticky) { scroll-padding-bottom: … }`
   from `components.css` (D-4). `styles/utilities.css` gains `.field-row--pair`,
-  `.field-row--fit`, `.field-row--fit-sm` beside `.field-row`.
+  `.field-row--fit`, `.field-row--fit-sm` beside `.field-row`, written after
+  the `@media (min-width: 36rem) { .field-row … }` rule so they win (D-8).
 - ICD change (ICD-002 1.1.0, additive): §11.1 Layout utilities gain
   `.field-row--pair`, `.field-row--fit`, `.field-row--fit-sm` (D-5).
 - `.editor-form`, `.auth` and `.auth__head` are ported by the application into
@@ -549,3 +550,4 @@ turning under `prefers-reduced-motion: reduce`
 - **D-5** *The DS adds `.field-row--pair`, `--fit` and `--fit-sm`; ICD §11.1 lists only `.field-row`.* The three modifiers become global utilities (ICD-002 1.1.0, additive). Thirty-two field rows in the mocks need them, and the application may not write inline grid styles for each.
 - **D-6** *Which save state is "All changes saved" (an editor opened with nothing changed) and "Wait for uploads to finish"?* `idle` and `dirty`, both neutral. The DS reserves the success colour for "Saved …" after a save in this session and the danger colour for a refused save; uploading means there are unsaved changes.
 - **D-7** *Does the summary style `h4`?* Yes, the same as `h2` and `h3` (`--text-label` at `--font-size-md`), because `headingLevel` allows 4 and the DS styles only `h2` and `h3`.
+- **D-8** *In `components.css` the default row's `@media (min-width: 36rem) { .field-row { two columns } }` comes after the modifiers with the same specificity, so from 36rem `.field-row--fit` and `--fit-sm` collapse to two columns and the six rubric scores never share a row. Which wins?* The modifier, at every width: the utilities stylesheet orders the modifiers after the media query. The DS describes them as "as many columns as fit", which only holds that way; the DS stylesheet catches up at the next extraction.

@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Description list — Component requirements rendering</title>
+<meta name="description" content="Every variant, size and state of description list, in light and dark, keyed to the acceptance criteria in description-list.md.">
+<meta name="crd:component" content="description-list">
+<!-- The real design-system styles: what renders here is the component, not a picture of it. -->
+<link rel="stylesheet" href="../../design-system/tokens/tokens.css">
+<link rel="stylesheet" href="../../design-system/assets/components.css">
+<link rel="stylesheet" href="../../design-system/assets/ds.css">
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('.crd-frame iframe:not([data-fixed])').forEach(function (f) {
+    function fit() { try { var d = f.contentDocument; if (d && d.documentElement) f.style.height = (d.documentElement.scrollHeight + 4) + 'px'; } catch (e) {} }
+    f.addEventListener('load', function () { fit(); setTimeout(fit, 300); });
+    fit();
+  });
+});
+</script>
+<style>
+/* CRD page chrome only. Never restyle the component here. */
+.crd-shell { max-width: 80rem; margin: 0 auto; padding: var(--space-6) var(--space-4); }
+.crd-bar { display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: center; justify-content: space-between; }
+.crd-ac { font: var(--text-overline); color: var(--color-fg-muted); display: block; margin-top: var(--space-2); }
+.crd-frames { display: flex; flex-wrap: wrap; gap: var(--space-6); align-items: flex-start; }
+.crd-frame { margin: 0; border: var(--border-width-hairline) dashed var(--color-border-default); padding: var(--space-3); max-width: 100%; overflow: auto; }
+.crd-frame iframe { display: block; border: 0; max-width: 100%; }
+.ds-matrix caption { text-align: left; font: var(--text-label); padding-bottom: var(--space-2); }
+.crd-shell p code, .crd-shell li code, .crd-shell td code, .crd-shell figcaption code { overflow-wrap: anywhere; }
+.crd-specimens { display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: center; }
+</style>
+</head>
+<body id="top">
+<a class="skip-link" href="#main">Skip to content</a>
+<main id="main" class="crd-shell">
+  <header class="ds-header">
+    <div class="crd-bar">
+      <p class="ds-kicker">Component requirements · rendering</p>
+      <button class="ds-theme-toggle" type="button" aria-pressed="false">☾ Dark</button>
+    </div>
+    <h1>Description list</h1>
+    <p class="ds-lead">Every variant and state of the key–value description list, in light and dark. Requirements: <a href="description-list.md">description-list.md</a>.</p>
+    <div class="ds-meta"><span class="ds-pill">Selector <code>st-description-list</code></span><span class="ds-pill">Status: planned</span><span class="ds-pill">Traces to L2-004, L2-005, L2-006, L2-007, L2-008, L2-011, L2-017, L2-064, L2-068, L2-069, L2-070, L2-071</span></div>
+    <ul class="ds-toc"><li><a href="#variants">Variants</a></li><li><a href="#states">States</a></li><li><a href="#themes">Both themes</a></li><li><a href="#responsive">Responsive</a></li><li><a href="#contrast">Contrast</a></li><li><a href="#tokens">Tokens</a></li><li><a href="#performance">Performance</a></li></ul>
+  </header>
+
+<section class="ds-section" id="variants"><h2>Variants</h2>
+<div class="ds-example"><div class="ds-example__canvas ds-example__canvas--stack">
+<div style="flex:1 1 100%;min-width:0"><st-description-list style="display:contents"><dl class="kv"><dt>Usable shooting space</dt><dd>6.1 m × 4.3 m (20 ft × 14 ft)</dd><dt>Ceiling height</dt><dd>4.0 m (13 ft)</dd><dt>Window direction</dt><dd>North</dd><dt>Power</dt><dd>8 outlets, standard 15 A · 20 A circuits: Yes (2)</dd><dt>Cyc wall</dt><dd>Yes · scuffed</dd><dt>Backdrops</dt><dd>White, grey and black seamless, 2.7 m</dd></dl></st-description-list></div>
+</div><div class="ds-example__caption"><span>Measured specifications, The Junction Loft. Metric first, imperial in brackets; a yes/no value is a word with its condition after a middle dot. <span class="crd-ac">AC-1, AC-2, AC-17</span></span></div></div>
+<div class="ds-example"><div class="ds-example__canvas ds-example__canvas--stack">
+<div style="flex:1 1 100%;min-width:0"><st-description-list style="display:contents"><dl class="kv"><dt>Hourly rate</dt><dd><span class="num">$60.00</span></dd><dt>Minimum booking</dt><dd>2 hours</dd><dt>Cleaning fee</dt><dd><span class="num">$25.00</span> <st-badge class="badge">Mandatory</st-badge></dd><dt>After-hours access</dt><dd><span class="num">$30.00</span> <st-badge class="badge">Optional, not in all-in</st-badge></dd></dl></st-description-list></div>
+</div><div class="ds-example__caption"><span>Pricing items: <code>numeric</code> values in <code>.num</code> (D-1); qualifiers as neutral badges at the end of the row (D-3). <span class="crd-ac">AC-3, AC-4</span></span></div></div>
+<div class="ds-example"><div class="ds-example__canvas ds-example__canvas--stack">
+<div style="flex:1 1 100%;min-width:0"><h3>Included in the hourly rate</h3><st-description-list style="display:contents"><dl class="kv"><dt>Lights</dt><dd>Godox AD600 strobe × 2 · 60 cm LED panel × 1</dd><dt>Modifiers</dt><dd>120 cm octabox × 1 · 5-in-1 reflector × 2</dd><dt>Stands</dt><dd>C-stand × 4</dd><dt>Other</dt><dd>Garment steamer</dd></dl></st-description-list><h3 style="margin-top:var(--space-6)">Costs extra</h3><st-description-list style="display:contents"><dl class="kv"><dt>Hazer</dt><dd><span class="num">$20.00</span></dd><dt>Extra seamless roll</dt><dd><span class="num">$15.00</span></dd></dl></st-description-list></div>
+</div><div class="ds-example__caption"><span>Gear: quantities after the item with "×"; extras with prices. <span class="crd-ac">AC-6</span></span></div></div>
+<div class="ds-example"><div class="ds-example__canvas ds-example__canvas--stack">
+<div style="flex:1 1 100%;min-width:0"><st-description-list style="display:contents"><dl class="kv"><dt>Load-in</dt><dd>Freight elevator · small, 1.2 m wide</dd><dt>Parking</dt><dd>Street, paid, 2-hour limit on Dundas</dd><dt>Transit</dt><dd>Dundas West station, 8-minute walk · 505 streetcar at the door</dd><dt>Washroom</dt><dd>Private, in the studio</dd><dt>Changing area</dt><dd>Curtained corner with a mirror</dd><dt>Client seating</dt><dd>Sofa for 4</dd><dt>Noise</dt><dd>Streetcar rumble every few minutes; fine for stills, plan around it for video</dd></dl></st-description-list></div>
+</div><div class="ds-example__caption"><span>Logistics. <span class="crd-ac">AC-10</span></span></div></div>
+<div class="ds-example"><div class="ds-example__canvas ds-example__canvas--stack">
+<div style="flex:1 1 100%;min-width:0"><st-description-list style="display:contents"><dl class="kv"><dt>Transit</dt><dd>TTC 28A shuttle from Davisville or Broadview station</dd><dt>Driving</dt><dd>Via Bayview Ave; paid lot on site</dd><dt>Walking</dt><dd>20 minutes down the Beltline from Moore Park</dd></dl></st-description-list><div style="height:var(--space-6)"></div><st-description-list style="display:contents"><dl class="kv"><dt>Crowds</dt><dd>Weekday: Low · Weekend: High</dd><dt>Parking</dt><dd>Paid lot on site</dd><dt>Washrooms</dt><dd>In the main building</dd><dt>Changing</dt><dd>Washrooms only</dd></dl></st-description-list></div>
+</div><div class="ds-example__caption"><span>Spot: How to get there and Practical conditions, Evergreen Brick Works. <span class="crd-ac">AC-11</span></span></div></div>
+<div class="ds-example"><div class="ds-example__canvas ds-example__canvas--stack">
+<div style="flex:1 1 100%;min-width:0"><st-description-list style="display:contents"><dl class="kv"><dt>Light</dt><dd>5<span class="visually-hidden"> out of 5</span></dd></dl></st-description-list></div>
+</div><div class="ds-example__caption"><span>A hidden suffix completes the value for screen readers: "5 out of 5". <span class="crd-ac">AC-5, AC-14</span></span></div></div>
+</section>
+
+<section class="ds-section" id="states"><h2>States</h2>
+<p>The list has no interaction states. Sparse values are words; an empty list is replaced by the application's sentence (D-2); stale does not restyle the list.</p>
+<div class="ds-example"><div class="ds-example__canvas">
+<div style="flex:1 1 16rem;min-width:16rem"><p class="text-caption" style="margin-bottom:var(--space-2)">Default</p><st-description-list style="display:contents"><dl class="kv"><dt>Cyc wall</dt><dd>Yes · scuffed</dd></dl></st-description-list></div><div style="flex:1 1 16rem;min-width:16rem"><p class="text-caption" style="margin-bottom:var(--space-2)">Sparse value: a word, never a blank row</p><st-description-list style="display:contents"><dl class="kv"><dt>Cyc wall</dt><dd>No</dd><dt>Changing area</dt><dd>None</dd></dl></st-description-list><st-description-list style="display:contents"><dl class="kv"><dt>Washrooms</dt><dd>None nearby</dd></dl></st-description-list></div><div style="flex:1 1 16rem;min-width:16rem"><p class="text-caption" style="margin-bottom:var(--space-2)">Empty: the application's sentence replaces the list (D-2)</p><h3>Costs extra</h3><p>Nothing costs extra at this studio.</p></div><div style="flex:1 1 16rem;min-width:16rem"><p class="text-caption" style="margin-bottom:var(--space-2)">Stale: the list is unchanged; the alert follows the verified line</p><div class="price-block"><p class="price-block__allin"><strong>$270.00</strong><span>All-in for a standard 2-hour shoot: 3 hours at $90.00.</span></p><st-description-list style="display:contents"><dl class="kv"><dt>Hourly rate</dt><dd><span class="num">$90.00</span></dd><dt>Minimum booking</dt><dd>3 hours</dd><dt>Extra fees</dt><dd>None</dd></dl></st-description-list><p class="price-block__verified">Prices verified <time datetime="2026-03-02">2 March 2026</time></p><div class="alert alert--warning" role="status"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3 2 21h20L12 3z"/><path d="M12 10v5M12 18h.01"/></svg><div class="alert__body"><p class="alert__title">Prices may be out of date</p><p>We last checked these prices 225 days ago. Confirm with the studio before you book.</p></div></div></div></div>
+</div><div class="ds-example__caption"><span>Hover, focus, active and disabled do not apply: nothing in the list is interactive. <span class="crd-ac">AC-7, AC-8, AC-9, AC-12, AC-13</span></span></div></div>
+</section>
+
+<section class="ds-section" id="themes"><h2>Both themes</h2>
+<div class="ds-themes">
+<div data-theme="light"><div class="crd-specimens">
+<div style="flex:1 1 100%;min-width:0"><st-description-list style="display:contents"><dl class="kv"><dt>Hourly rate</dt><dd><span class="num">$60.00</span></dd><dt>Minimum booking</dt><dd>2 hours</dd><dt>Cleaning fee</dt><dd><span class="num">$25.00</span> <st-badge class="badge">Mandatory</st-badge></dd><dt>After-hours access</dt><dd><span class="num">$30.00</span> <st-badge class="badge">Optional, not in all-in</st-badge></dd></dl></st-description-list></div><div style="flex:1 1 100%;min-width:0"><st-description-list style="display:contents"><dl class="kv"><dt>Usable shooting space</dt><dd>6.1 m × 4.3 m (20 ft × 14 ft)</dd><dt>Ceiling height</dt><dd>4.0 m (13 ft)</dd><dt>Window direction</dt><dd>North</dd><dt>Power</dt><dd>8 outlets, standard 15 A · 20 A circuits: Yes (2)</dd><dt>Cyc wall</dt><dd>Yes · scuffed</dd><dt>Backdrops</dt><dd>White, grey and black seamless, 2.7 m</dd></dl></st-description-list></div>
+</div></div>
+<div data-theme="dark"><div class="crd-specimens">
+<div style="flex:1 1 100%;min-width:0"><st-description-list style="display:contents"><dl class="kv"><dt>Hourly rate</dt><dd><span class="num">$60.00</span></dd><dt>Minimum booking</dt><dd>2 hours</dd><dt>Cleaning fee</dt><dd><span class="num">$25.00</span> <st-badge class="badge">Mandatory</st-badge></dd><dt>After-hours access</dt><dd><span class="num">$30.00</span> <st-badge class="badge">Optional, not in all-in</st-badge></dd></dl></st-description-list></div><div style="flex:1 1 100%;min-width:0"><st-description-list style="display:contents"><dl class="kv"><dt>Usable shooting space</dt><dd>6.1 m × 4.3 m (20 ft × 14 ft)</dd><dt>Ceiling height</dt><dd>4.0 m (13 ft)</dd><dt>Window direction</dt><dd>North</dd><dt>Power</dt><dd>8 outlets, standard 15 A · 20 A circuits: Yes (2)</dd><dt>Cyc wall</dt><dd>Yes · scuffed</dd><dt>Backdrops</dt><dd>White, grey and black seamless, 2.7 m</dd></dl></st-description-list></div>
+</div></div>
+</div>
+<span class="crd-ac">AC-18</span>
+</section>
+
+<section class="ds-section" id="responsive"><h2>Responsive</h2>
+<p>One column below 36rem (label above value, one rule); a 12rem label column from 36rem (both cells ruled). Each frame is a real viewport.</p>
+<div class="crd-frames">
+<figure class="crd-frame"><figcaption class="crd-ac">320 px · light · AC-16</figcaption><iframe title="320 pixel wide frame, light theme" width="320" height="400" srcdoc="&lt;!doctype html&gt;&lt;html lang=&quot;en-CA&quot; data-theme=&quot;light&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, viewport-fit=cover&quot;&gt;&lt;link rel=&quot;stylesheet&quot; href=&quot;../../design-system/tokens/tokens.css&quot;&gt;&lt;link rel=&quot;stylesheet&quot; href=&quot;../../design-system/assets/components.css&quot;&gt;&lt;/head&gt;&lt;body style=&quot;padding:16px&quot;&gt;&lt;st-description-list style=&quot;display:contents&quot;&gt;&lt;dl class=&quot;kv&quot;&gt;&lt;dt&gt;Transit&lt;/dt&gt;&lt;dd&gt;501 Queen streetcar to Strachan Ave or Shaw St; the park is at the stop&lt;/dd&gt;&lt;dt&gt;Parking&lt;/dt&gt;&lt;dd&gt;Street parking on Shaw St and Gore Vale Ave, paid; fills on weekends&lt;/dd&gt;&lt;dt&gt;Washrooms&lt;/dt&gt;&lt;dd&gt;Seasonal, at the community recreation centre&lt;/dd&gt;&lt;/dl&gt;&lt;/st-description-list&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></figure>
+<figure class="crd-frame"><figcaption class="crd-ac">360 px · light · AC-15</figcaption><iframe title="360 pixel wide frame, light theme" width="360" height="400" srcdoc="&lt;!doctype html&gt;&lt;html lang=&quot;en-CA&quot; data-theme=&quot;light&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, viewport-fit=cover&quot;&gt;&lt;link rel=&quot;stylesheet&quot; href=&quot;../../design-system/tokens/tokens.css&quot;&gt;&lt;link rel=&quot;stylesheet&quot; href=&quot;../../design-system/assets/components.css&quot;&gt;&lt;/head&gt;&lt;body style=&quot;padding:16px&quot;&gt;&lt;st-description-list style=&quot;display:contents&quot;&gt;&lt;dl class=&quot;kv&quot;&gt;&lt;dt&gt;Load-in&lt;/dt&gt;&lt;dd&gt;Freight elevator · small, 1.2 m wide&lt;/dd&gt;&lt;dt&gt;Parking&lt;/dt&gt;&lt;dd&gt;Street, paid, 2-hour limit on Dundas&lt;/dd&gt;&lt;dt&gt;Transit&lt;/dt&gt;&lt;dd&gt;Dundas West station, 8-minute walk · 505 streetcar at the door&lt;/dd&gt;&lt;dt&gt;Washroom&lt;/dt&gt;&lt;dd&gt;Private, in the studio&lt;/dd&gt;&lt;dt&gt;Changing area&lt;/dt&gt;&lt;dd&gt;Curtained corner with a mirror&lt;/dd&gt;&lt;dt&gt;Client seating&lt;/dt&gt;&lt;dd&gt;Sofa for 4&lt;/dd&gt;&lt;dt&gt;Noise&lt;/dt&gt;&lt;dd&gt;Streetcar rumble every few minutes; fine for stills, plan around it for video&lt;/dd&gt;&lt;/dl&gt;&lt;/st-description-list&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></figure>
+<figure class="crd-frame"><figcaption class="crd-ac">360 px · dark · AC-18</figcaption><iframe title="360 pixel wide frame, dark theme" width="360" height="400" srcdoc="&lt;!doctype html&gt;&lt;html lang=&quot;en-CA&quot; data-theme=&quot;dark&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, viewport-fit=cover&quot;&gt;&lt;link rel=&quot;stylesheet&quot; href=&quot;../../design-system/tokens/tokens.css&quot;&gt;&lt;link rel=&quot;stylesheet&quot; href=&quot;../../design-system/assets/components.css&quot;&gt;&lt;/head&gt;&lt;body style=&quot;padding:16px&quot;&gt;&lt;st-description-list style=&quot;display:contents&quot;&gt;&lt;dl class=&quot;kv&quot;&gt;&lt;dt&gt;Hourly rate&lt;/dt&gt;&lt;dd&gt;&lt;span class=&quot;num&quot;&gt;$60.00&lt;/span&gt;&lt;/dd&gt;&lt;dt&gt;Minimum booking&lt;/dt&gt;&lt;dd&gt;2 hours&lt;/dd&gt;&lt;dt&gt;Cleaning fee&lt;/dt&gt;&lt;dd&gt;&lt;span class=&quot;num&quot;&gt;$25.00&lt;/span&gt; &lt;st-badge class=&quot;badge&quot;&gt;Mandatory&lt;/st-badge&gt;&lt;/dd&gt;&lt;dt&gt;After-hours access&lt;/dt&gt;&lt;dd&gt;&lt;span class=&quot;num&quot;&gt;$30.00&lt;/span&gt; &lt;st-badge class=&quot;badge&quot;&gt;Optional, not in all-in&lt;/st-badge&gt;&lt;/dd&gt;&lt;/dl&gt;&lt;/st-description-list&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></figure>
+<figure class="crd-frame"><figcaption class="crd-ac">768 px · light · AC-15</figcaption><iframe title="768 pixel wide frame, light theme" width="768" height="400" srcdoc="&lt;!doctype html&gt;&lt;html lang=&quot;en-CA&quot; data-theme=&quot;light&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, viewport-fit=cover&quot;&gt;&lt;link rel=&quot;stylesheet&quot; href=&quot;../../design-system/tokens/tokens.css&quot;&gt;&lt;link rel=&quot;stylesheet&quot; href=&quot;../../design-system/assets/components.css&quot;&gt;&lt;/head&gt;&lt;body style=&quot;padding:16px&quot;&gt;&lt;st-description-list style=&quot;display:contents&quot;&gt;&lt;dl class=&quot;kv&quot;&gt;&lt;dt&gt;Load-in&lt;/dt&gt;&lt;dd&gt;Freight elevator · small, 1.2 m wide&lt;/dd&gt;&lt;dt&gt;Parking&lt;/dt&gt;&lt;dd&gt;Street, paid, 2-hour limit on Dundas&lt;/dd&gt;&lt;dt&gt;Transit&lt;/dt&gt;&lt;dd&gt;Dundas West station, 8-minute walk · 505 streetcar at the door&lt;/dd&gt;&lt;dt&gt;Washroom&lt;/dt&gt;&lt;dd&gt;Private, in the studio&lt;/dd&gt;&lt;dt&gt;Changing area&lt;/dt&gt;&lt;dd&gt;Curtained corner with a mirror&lt;/dd&gt;&lt;dt&gt;Client seating&lt;/dt&gt;&lt;dd&gt;Sofa for 4&lt;/dd&gt;&lt;dt&gt;Noise&lt;/dt&gt;&lt;dd&gt;Streetcar rumble every few minutes; fine for stills, plan around it for video&lt;/dd&gt;&lt;/dl&gt;&lt;/st-description-list&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></figure>
+<figure class="crd-frame"><figcaption class="crd-ac">640 px · light · 1280 px at 200 % zoom</figcaption><iframe title="640 pixel wide frame, light theme" width="640" height="400" srcdoc="&lt;!doctype html&gt;&lt;html lang=&quot;en-CA&quot; data-theme=&quot;light&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, viewport-fit=cover&quot;&gt;&lt;link rel=&quot;stylesheet&quot; href=&quot;../../design-system/tokens/tokens.css&quot;&gt;&lt;link rel=&quot;stylesheet&quot; href=&quot;../../design-system/assets/components.css&quot;&gt;&lt;/head&gt;&lt;body style=&quot;padding:16px&quot;&gt;&lt;st-description-list style=&quot;display:contents&quot;&gt;&lt;dl class=&quot;kv&quot;&gt;&lt;dt&gt;Hourly rate&lt;/dt&gt;&lt;dd&gt;&lt;span class=&quot;num&quot;&gt;$60.00&lt;/span&gt;&lt;/dd&gt;&lt;dt&gt;Minimum booking&lt;/dt&gt;&lt;dd&gt;2 hours&lt;/dd&gt;&lt;dt&gt;Cleaning fee&lt;/dt&gt;&lt;dd&gt;&lt;span class=&quot;num&quot;&gt;$25.00&lt;/span&gt; &lt;st-badge class=&quot;badge&quot;&gt;Mandatory&lt;/st-badge&gt;&lt;/dd&gt;&lt;dt&gt;After-hours access&lt;/dt&gt;&lt;dd&gt;&lt;span class=&quot;num&quot;&gt;$30.00&lt;/span&gt; &lt;st-badge class=&quot;badge&quot;&gt;Optional, not in all-in&lt;/st-badge&gt;&lt;/dd&gt;&lt;/dl&gt;&lt;/st-description-list&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></figure>
+</div>
+</section>
+
+<section class="ds-section" id="contrast"><h2>Contrast</h2>
+<div class="ds-example__canvas ds-example__canvas--stack">
+<div class="ds-pair"><span>Label on the page · --color-fg-subtle on --color-bg-canvas</span><span class="ds-pair__ratio" data-contrast="--color-fg-subtle|--color-bg-canvas" data-min="4.5"></span></div>
+<div class="ds-pair"><span>Value on the page · --color-fg-default on --color-bg-canvas</span><span class="ds-pair__ratio" data-contrast="--color-fg-default|--color-bg-canvas" data-min="4.5"></span></div>
+<div class="ds-pair"><span>Label on a surface · --color-fg-subtle on --color-bg-surface</span><span class="ds-pair__ratio" data-contrast="--color-fg-subtle|--color-bg-surface" data-min="4.5"></span></div>
+<div class="ds-pair"><span>Neutral qualifier badge · --color-fg-muted on --color-bg-subtle</span><span class="ds-pair__ratio" data-contrast="--color-fg-muted|--color-bg-subtle" data-min="4.5"></span></div>
+<div class="ds-pair" data-theme="dark"><span>Dark: Label on the page · --color-fg-subtle on --color-bg-canvas</span><span class="ds-pair__ratio" data-contrast="--color-fg-subtle|--color-bg-canvas" data-min="4.5"></span></div>
+<div class="ds-pair" data-theme="dark"><span>Dark: Value on the page · --color-fg-default on --color-bg-canvas</span><span class="ds-pair__ratio" data-contrast="--color-fg-default|--color-bg-canvas" data-min="4.5"></span></div>
+<div class="ds-pair" data-theme="dark"><span>Dark: Label on a surface · --color-fg-subtle on --color-bg-surface</span><span class="ds-pair__ratio" data-contrast="--color-fg-subtle|--color-bg-surface" data-min="4.5"></span></div>
+<div class="ds-pair" data-theme="dark"><span>Dark: Neutral qualifier badge · --color-fg-muted on --color-bg-subtle</span><span class="ds-pair__ratio" data-contrast="--color-fg-muted|--color-bg-subtle" data-min="4.5"></span></div>
+</div>
+<span class="crd-ac">AC-18</span>
+</section>
+
+<section class="ds-section" id="tokens"><h2>Tokens</h2>
+<div class="ds-table-wrap"><table class="ds-table"><thead><tr><th scope="col">Part</th><th scope="col">Token</th><th scope="col">Light</th><th scope="col">Dark</th></tr></thead><tbody>
+<tr><td>Label</td><td><code>--color-fg-subtle</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-subtle" data-swatch></i><span data-token="--color-fg-subtle"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-subtle" data-swatch></i><span data-token="--color-fg-subtle"></span></span></td></tr>
+<tr><td>Value</td><td><code>--color-fg-default</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-default" data-swatch></i><span data-token="--color-fg-default"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-default" data-swatch></i><span data-token="--color-fg-default"></span></span></td></tr>
+<tr><td>Rule</td><td><code>--color-border-default</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-border-default" data-swatch></i><span data-token="--color-border-default"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-border-default" data-swatch></i><span data-token="--color-border-default"></span></span></td></tr>
+<tr><td>Badge text</td><td><code>--color-fg-muted</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-muted" data-swatch></i><span data-token="--color-fg-muted"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-muted" data-swatch></i><span data-token="--color-fg-muted"></span></span></td></tr>
+<tr><td>Badge fill</td><td><code>--color-bg-subtle</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-bg-subtle" data-swatch></i><span data-token="--color-bg-subtle"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-bg-subtle" data-swatch></i><span data-token="--color-bg-subtle"></span></span></td></tr>
+<tr><td>Label font</td><td><code>--text-label</code></td><td><span data-theme="light"><span data-token="--text-label"></span></span></td><td><span data-theme="dark"><span data-token="--text-label"></span></span></td></tr>
+<tr><td>Value font</td><td><code>--text-body</code></td><td><span data-theme="light"><span data-token="--text-body"></span></span></td><td><span data-theme="dark"><span data-token="--text-body"></span></span></td></tr>
+<tr><td>Rule width</td><td><code>--border-width-hairline</code></td><td><span data-theme="light"><span data-token="--border-width-hairline"></span></span></td><td><span data-theme="dark"><span data-token="--border-width-hairline"></span></span></td></tr>
+<tr><td>Row padding</td><td><code>--space-4</code></td><td><span data-theme="light"><span data-token="--space-4"></span></span></td><td><span data-theme="dark"><span data-token="--space-4"></span></span></td></tr>
+<tr><td>Row padding from 36rem</td><td><code>--space-3</code></td><td><span data-theme="light"><span data-token="--space-3"></span></span></td><td><span data-theme="dark"><span data-token="--space-3"></span></span></td></tr>
+<tr><td>Column gap</td><td><code>--space-6</code></td><td><span data-theme="light"><span data-token="--space-6"></span></span></td><td><span data-theme="dark"><span data-token="--space-6"></span></span></td></tr>
+</tbody></table></div>
+</section>
+
+<section class="ds-section" id="performance"><h2>Performance</h2>
+<div class="ds-example"><div class="ds-example__canvas ds-example__canvas--stack">
+<div style="flex:1 1 100%;min-width:0"><st-description-list style="display:contents"><dl class="kv"><dt>Hourly rate</dt><dd><span class="num">$60.00</span></dd><dt>Minimum booking</dt><dd>2 hours</dd><dt>Cleaning fee</dt><dd><span class="num">$25.00</span> <st-badge class="badge">Mandatory</st-badge></dd><dt>After-hours access</dt><dd><span class="num">$30.00</span> <st-badge class="badge">Optional, not in all-in</st-badge></dd></dl></st-description-list><st-description-list style="display:contents"><dl class="kv"><dt>Usable shooting space</dt><dd>6.1 m × 4.3 m (20 ft × 14 ft)</dd><dt>Ceiling height</dt><dd>4.0 m (13 ft)</dd><dt>Window direction</dt><dd>North</dd><dt>Power</dt><dd>8 outlets, standard 15 A · 20 A circuits: Yes (2)</dd><dt>Cyc wall</dt><dd>Yes · scuffed</dd><dt>Backdrops</dt><dd>White, grey and black seamless, 2.7 m</dd></dl></st-description-list><st-description-list style="display:contents"><dl class="kv"><dt>Lights</dt><dd>Godox AD600 strobe × 2 · 60 cm LED panel × 1</dd><dt>Modifiers</dt><dd>120 cm octabox × 1 · 5-in-1 reflector × 2</dd><dt>Stands</dt><dd>C-stand × 4</dd><dt>Other</dt><dd>Garment steamer</dd></dl></st-description-list><st-description-list style="display:contents"><dl class="kv"><dt>Load-in</dt><dd>Freight elevator · small, 1.2 m wide</dd><dt>Parking</dt><dd>Street, paid, 2-hour limit on Dundas</dd><dt>Transit</dt><dd>Dundas West station, 8-minute walk · 505 streetcar at the door</dd><dt>Washroom</dt><dd>Private, in the studio</dd><dt>Changing area</dt><dd>Curtained corner with a mirror</dd><dt>Client seating</dt><dd>Sofa for 4</dd><dt>Noise</dt><dd>Streetcar rumble every few minutes; fine for stills, plan around it for video</dd></dl></st-description-list></div>
+</div><div class="ds-example__caption"><span>The <code>description-list/performance</code> harness scenario: The Junction Loft's four lists. <span class="crd-ac">AC-19</span></span></div></div>
+</section>
+
+
+  <footer class="ds-footer"><span>ShotThere component requirements · <a href="README.md">index</a></span><a href="#top">Back to top</a></footer>
+</main>
+<script src="../../design-system/assets/ds.js"></script>
+</body>
+</html>
