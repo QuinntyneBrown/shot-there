@@ -6,6 +6,7 @@ import type { StudioLogisticsDto } from '@/lib/studios/studio-logistics-dto';
 import type { StudioPricingDto } from '@/lib/studios/studio-pricing-dto';
 import type { StudioSpecificationsDto } from '@/lib/studios/studio-specifications-dto';
 import type { StudioVerdictDto } from '@/lib/studios/studio-verdict-dto';
+import type { EpisodeDto } from '@/lib/videos/episode-dto';
 
 /** The public studio page contract returned by `GET /api/studios/{slug}`. */
 export interface StudioDetailDto {
@@ -19,4 +20,6 @@ export interface StudioDetailDto {
   gallery: ImageDto[];
   verdict: StudioVerdictDto;
   disclosure: DisclosureDto;
+  /** Null when no video is stored. */
+  episode: EpisodeDto | null;
 }

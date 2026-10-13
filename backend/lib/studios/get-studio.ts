@@ -69,6 +69,7 @@ export async function getStudio(slug: string): Promise<StudioDetailDto | null> {
       overallScore: computeOverallScore(rubricScoresOf(studio)),
     },
     disclosure: { kind: studio.disclosure, provider: studio.disclosureProvider },
+    episode: studio.videoId ? { videoId: studio.videoId, title: studio.episodeTitle } : null,
   };
 }
 
