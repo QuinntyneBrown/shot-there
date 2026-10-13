@@ -17,6 +17,7 @@ export class StudioPage {
   readonly overallScore: Locator;
   readonly rubricScores: Locator;
   readonly disclosure: Locator;
+  readonly disclosureEditorialPolicyLink: Locator;
   readonly testShots: Locator;
   readonly testShotImages: Locator;
   readonly gallery: Locator;
@@ -49,6 +50,7 @@ export class StudioPage {
     // Each score's text for assistive technology, e.g. "Light: 5 out of 5".
     this.rubricScores = this.verdict.getByRole('list', { name: 'Rubric scores' }).locator('li .st-visually-hidden');
     this.disclosure = this.verdict.getByRole('note', { name: 'How this session was paid for' });
+    this.disclosureEditorialPolicyLink = this.disclosure.getByRole('link', { name: 'Editorial policy' });
     this.testShots = page.getByRole('region', { name: 'Standard test shots' });
     this.testShotImages = this.testShots.getByRole('img');
     this.gallery = page.getByRole('region', { name: 'From a real shoot' });

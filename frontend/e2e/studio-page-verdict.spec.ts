@@ -44,6 +44,16 @@ test.describe('Studio page: verdict and disclosure', () => {
     await expect(studio.disclosure).toContainText('I paid the full rate for this session. No studio pays for placement or scores.');
   });
 
+  test('links the disclosure to the editorial policy', async ({ page }) => {
+    // Given any studio
+    await givenStudio(page, THE_JUNCTION_LOFT);
+    const studio = new StudioPage(page);
+    // When the visitor opens its page
+    await studio.open('the-junction-loft');
+    // Then the disclosure links to the editorial policy
+    await expect(studio.disclosureEditorialPolicyLink).toHaveAttribute('href', '/editorial-policy');
+  });
+
   test('discloses a comped session and says it did not affect the scores', async ({ page }) => {
     // Given a session the studio provided free of charge
     await givenStudio(page, BLOORDALE_SUN_STUDIO);
