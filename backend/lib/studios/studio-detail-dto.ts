@@ -1,5 +1,6 @@
 import type { DisclosureDto } from '@/lib/publishing/disclosure-dto';
 import type { GuideLinkDto } from '@/lib/guides/guide-link-dto';
+import type { CaptionedImageDto } from '@/lib/images/captioned-image-dto';
 import type { ImageDto } from '@/lib/images/image-dto';
 import type { StudioBasicsDto } from '@/lib/studios/studio-basics-dto';
 import type { StudioGearDto } from '@/lib/studios/studio-gear-dto';
@@ -17,7 +18,7 @@ export interface StudioDetailDto {
   specifications: StudioSpecificationsDto;
   gear: StudioGearDto;
   logistics: StudioLogisticsDto;
-  testShots: ImageDto[];
+  testShots: CaptionedImageDto[];
   gallery: ImageDto[];
   verdict: StudioVerdictDto;
   disclosure: DisclosureDto;

@@ -1,7 +1,7 @@
 import type { ComparedStudioDto } from '@/lib/compare/compared-studio-dto';
 import type { ComparisonDto } from '@/lib/compare/comparison-dto';
 import { getDependencies } from '@/lib/data/dependency-container';
-import { imagesWithRole, toImageDto } from '@/lib/images/to-image-dto';
+import { imagesWithRole, toCaptionedImageDto } from '@/lib/images/to-image-dto';
 import { isStale } from '@/lib/shared/is-stale';
 import { allInCostOf } from '@/lib/studios/all-in-cost-of';
 import { computeOverallScore } from '@/lib/studios/compute-overall-score';
@@ -50,7 +50,7 @@ export async function getComparison(slugs: string[]): Promise<ComparisonDto> {
         overallScore: computeOverallScore(rubricScoresOf(studio)),
         priceVerifiedAt: studio.priceVerifiedAt,
         priceStale: isStale(studio.priceVerifiedAt, today),
-        testShots: imagesWithRole(studio.images, 'test_shot').map(toImageDto),
+        testShots: imagesWithRole(studio.images, 'test_shot').map(toCaptionedImageDto),
       };
     }),
     notFoundSlugs: slugs.filter((slug) => !bySlug.has(slug)),

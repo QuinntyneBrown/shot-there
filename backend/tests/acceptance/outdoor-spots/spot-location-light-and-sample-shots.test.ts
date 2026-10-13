@@ -110,13 +110,12 @@ describe('L2-016 spot sample shots', () => {
     const { body } = await getSpotPage('s');
 
     expect(body.sampleShots).toHaveLength(2);
-    expect(body.sampleShots[0]).toMatchObject({
-      alt: 'Couple on the steps',
+    expect(body.sampleShots[0]).toEqual({
+      image: expect.objectContaining({ alt: 'Couple on the steps', fallbackUrl: 'https://cdn.example/images/first/960.jpg' }),
       focalLengthMm: 85,
       angleNote: 'shoot north from the lower steps',
-      fallbackUrl: 'https://cdn.example/images/first/960.jpg',
     });
-    expect(body.sampleShots[0].sources[0].format).toBe('avif');
-    expect(body.sampleShots[1].alt).toBe('Second');
+    expect(body.sampleShots[0].image.sources[0].format).toBe('avif');
+    expect(body.sampleShots[1].image.alt).toBe('Second');
   });
 });

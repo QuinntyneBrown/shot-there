@@ -1,3 +1,4 @@
+import type { CaptionedImageDto } from '@/lib/images/captioned-image-dto';
 import type { ImageDto } from '@/lib/images/image-dto';
 import type { ImageFormat } from '@/lib/images/image-format';
 import type { ImageRecord } from '@/lib/images/image-record';
@@ -12,7 +13,6 @@ export function toImageDto(image: ImageRecord): ImageDto {
   const fallback = jpegs.find((variant) => variant.width === FALLBACK_WIDTH) ?? jpegs.at(-1);
   return {
     alt: image.altText,
-    caption: image.caption,
     width: image.width,
     height: image.height,
     sources: FORMAT_ORDER.map((format) => ({
@@ -26,7 +26,14 @@ export function toImageDto(image: ImageRecord): ImageDto {
   };
 }
 
-/** The images with the role, in their configured order. */
+/** The images with the role that may be shown publicly, in their configured order: an image without alt text is left out (ICD S-8). */
 export function imagesWithRole(images: ImageRecord[], role: ImageRole): ImageRecord[] {
-  return images.filter((image) => image.role === role).sort((a, b) => a.sortOrder - b.sortOrder);
+  return images
+    .filter((image) => image.role === role && image.altText.trim() !== '')
+    .sort((a, b) => a.sortOrder - b.sortOrder);
+}
+
+/** A test shot with its standard setup caption. */
+export function toCaptionedImageDto(image: ImageRecord): CaptionedImageDto {
+  return { image: toImageDto(image), caption: image.caption ?? '' };
 }

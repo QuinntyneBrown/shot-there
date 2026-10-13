@@ -5,7 +5,7 @@ import type { SpotConditionsDto } from '@/lib/spots/spot-conditions-dto';
 import type { SpotLightBySeasonRecord } from '@/lib/spots/spot-light-by-season-record';
 import type { SpotLightByTimeRecord } from '@/lib/spots/spot-light-by-time-record';
 import type { SpotPermitsDto } from '@/lib/spots/spot-permits-dto';
-import type { SpotSampleShotDto } from '@/lib/spots/spot-sample-shot-dto';
+import type { SampleShotDto } from '@/lib/spots/sample-shot-dto';
 
 /** The public spot page contract returned by `GET /api/spots/{slug}`. */
 export interface SpotDetailDto {
@@ -17,7 +17,7 @@ export interface SpotDetailDto {
   directions: string | null;
   lightByTime: SpotLightByTimeRecord[];
   lightBySeason: SpotLightBySeasonRecord[];
-  sampleShots: SpotSampleShotDto[];
+  sampleShots: SampleShotDto[];
   conditions: SpotConditionsDto;
   permits: SpotPermitsDto;
   bestUses: BestUse[];

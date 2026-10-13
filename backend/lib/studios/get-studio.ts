@@ -1,6 +1,6 @@
 import { getDependencies } from '@/lib/data/dependency-container';
 import { listGuidesForStudio } from '@/lib/guides/list-guides-for-studio';
-import { imagesWithRole, toImageDto } from '@/lib/images/to-image-dto';
+import { imagesWithRole, toCaptionedImageDto, toImageDto } from '@/lib/images/to-image-dto';
 import { isStale } from '@/lib/shared/is-stale';
 import { allInCostOf } from '@/lib/studios/all-in-cost-of';
 import { computeOverallScore } from '@/lib/studios/compute-overall-score';
@@ -61,7 +61,7 @@ export async function getStudio(slug: string): Promise<StudioDetailDto | null> {
       clientSeating: studio.clientSeating,
       noise: studio.noise,
     },
-    testShots: imagesWithRole(studio.images, 'test_shot').map(toImageDto),
+    testShots: imagesWithRole(studio.images, 'test_shot').map(toCaptionedImageDto),
     gallery: imagesWithRole(studio.images, 'gallery').map(toImageDto),
     verdict: {
       whoItsFor: studio.whoItsFor,

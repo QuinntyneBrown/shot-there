@@ -1,4 +1,4 @@
-import type { ImageDto } from '@/lib/images/image-dto';
+import type { CaptionedImageDto } from '@/lib/images/captioned-image-dto';
 import type { CycWallDto } from '@/lib/studios/cyc-wall-dto';
 import type { GearItemDto } from '@/lib/studios/gear-item-dto';
 import type { LoadIn } from '@/lib/studios/load-in';
@@ -28,5 +28,5 @@ export interface ComparedStudioDto {
   overallScore: number | null;
   priceVerifiedAt: string;
   priceStale: boolean;
-  testShots: ImageDto[];
+  testShots: CaptionedImageDto[];
 }

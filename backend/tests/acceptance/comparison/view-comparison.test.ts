@@ -127,7 +127,7 @@ describe('L2-031 and L2-043 comparison columns', () => {
       priceStale: true,
     });
     expect(body.studios[0].testShots).toHaveLength(1);
-    expect(body.studios[0].testShots[0].alt).toBe('Standard headshot setup');
+    expect(body.studios[0].testShots[0].image.alt).toBe('Standard headshot setup');
   });
 
   it('Given compared studios with different all-in costs, when compared, then only the cheapest is marked lowest', async () => {

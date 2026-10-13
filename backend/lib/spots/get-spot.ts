@@ -30,11 +30,12 @@ export async function getSpot(slug: string): Promise<SpotDetailDto | null> {
     lightBySeason: [...spot.lightBySeason].sort(
       (a, b) => SEASON_ORDER.indexOf(a.season) - SEASON_ORDER.indexOf(b.season),
     ),
-    sampleShots: imagesWithRole(spot.images, 'sample_shot').map((image) => ({
-      ...toImageDto(image),
-      focalLengthMm: image.focalLengthMm,
-      angleNote: image.angleNote,
-    })),
+    // A sample shot is public once saved with its lens and angle note.
+    sampleShots: imagesWithRole(spot.images, 'sample_shot').flatMap((image) =>
+      image.focalLengthMm !== null && image.angleNote !== null
+        ? [{ image: toImageDto(image), focalLengthMm: image.focalLengthMm, angleNote: image.angleNote }]
+        : [],
+    ),
     conditions: {
       weekdayCrowds: spot.weekdayCrowds,
       weekendCrowds: spot.weekendCrowds,
