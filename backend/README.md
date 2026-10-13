@@ -1,7 +1,8 @@
 # ShotThere backend
 
 The Next.js API (route handlers only) behind the ShotThere site, backed by PostgreSQL through Prisma and an
-S3-compatible bucket for images.
+S3-compatible bucket for images. Every endpoint, body, header and error follows the interface control document
+[ICD-001](../docs/icd/README.md); a difference between the two is a defect in the code.
 
 ## Set up
 
