@@ -8,4 +8,16 @@ export class PrismaOwnerSessionRepository implements OwnerSessionRepository {
   async create(session: OwnerSessionRecord): Promise<void> {
     await this.prisma.ownerSession.create({ data: session });
   }
+
+  async findByTokenHash(tokenHash: string): Promise<OwnerSessionRecord | null> {
+    return this.prisma.ownerSession.findUnique({ where: { tokenHash } });
+  }
+
+  async touch(id: string, lastSeenAt: Date): Promise<void> {
+    await this.prisma.ownerSession.update({ where: { id }, data: { lastSeenAt } });
+  }
+
+  async deleteByTokenHash(tokenHash: string): Promise<void> {
+    await this.prisma.ownerSession.deleteMany({ where: { tokenHash } });
+  }
 }

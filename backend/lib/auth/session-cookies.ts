@@ -10,3 +10,8 @@ export function sessionCookie(token: string): string {
 export function csrfCookie(csrfToken: string): string {
   return `${CSRF_COOKIE}=${csrfToken}; Path=/; Secure; SameSite=Lax`;
 }
+
+/** Expires `st_session` in the browser. */
+export function clearedSessionCookie(): string {
+  return `${SESSION_COOKIE}=; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=0`;
+}
