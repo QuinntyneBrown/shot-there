@@ -16,6 +16,44 @@ module.exports = tseslint.config(
     },
   },
   {
+    files: ['projects/shot-there/src/**/*.ts'],
+    rules: {
+      'no-restricted-imports': ['error', { patterns: [{
+        group: ['@shot-there/components/*', '**/projects/components/**', '**/components/src/**', '**/dist/components/**'],
+        message: 'Import the library only from @shot-there/components (ICD-PKG-4).',
+      }] }],
+    },
+  },
+  {
+    files: ['projects/shot-there/src/**/*.ts'],
+    // TODO(re-platform): these still open CDK dialogs directly; move them to DialogService.
+    ignores: [
+      'projects/shot-there/src/app/core/shell/header.component.ts',
+      'projects/shot-there/src/app/features/studios/studio-gallery/studio-gallery.component.ts',
+      'projects/shot-there/src/app/features/studios/studio-list-page/studio-list-page.component.ts',
+    ],
+    rules: {
+      '@typescript-eslint/no-restricted-imports': ['error', { paths: [{
+        name: '@angular/cdk/dialog', importNames: ['Dialog', 'DialogModule'],
+        message: 'Open dialogs, sheets and viewers through DialogService from @shot-there/components (ICD-OVL-2).',
+      }] }],
+    },
+  },
+  {
+    files: ['projects/components/src/**/*.ts'],
+    rules: {
+      'no-restricted-imports': ['error', {
+        paths: [
+          { name: '@shot-there/api', message: 'The library never imports the API library (ICD-DEP-2).' },
+          { name: '@angular/common/http', message: 'The library never makes HTTP calls (ICD-DEP-2).' },
+          { name: '@angular/router', allowImportNames: ['RouterLink', 'RouterLinkActive'],
+            message: 'The library uses only RouterLink and RouterLinkActive from the router (ICD-DEP-1, ICD-API-11).' },
+        ],
+        patterns: [{ group: ['@shot-there/api/*'], message: 'The library never imports the API library (ICD-DEP-2).' }],
+      }],
+    },
+  },
+  {
     files: ['projects/shot-there/src/app/**/*.html', 'projects/api/src/**/*.html', 'projects/components/src/**/*.html'],
     extends: [...angular.configs.templateRecommended, ...angular.configs.templateAccessibility],
     rules: {

@@ -7,7 +7,7 @@
     "build": "npm run build:components && ng build shot-there",
     "build:components": "ng build components",
     "watch": "ng build shot-there --watch --configuration development",
-    "lint": "eslint .",
+    "lint": "eslint . && stylelint \"projects/**/*.css\"",
     "e2e": "playwright test",
     "serve:ssr:shot-there": "node dist/shot-there/server/server.mjs",
     "build:libs": "ng build api && ng build components",
@@ -42,6 +42,7 @@
     "eslint": "^9.39.5",
     "ng-packagr": "^21.2.0",
     "prettier": "^3.8.1",
+    "stylelint": "^17.16.0",
     "typescript": "~5.9.2",
     "typescript-eslint": "^8.71.2"
   }
