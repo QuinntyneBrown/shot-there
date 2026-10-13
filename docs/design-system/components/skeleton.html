@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Skeleton — ShotThere design system</title>
-<meta name="description" content="ShotThere skeletons: text, title, circle and rect shapes composed into caterer card, inbox row, queue and admin row skeletons, with aria-busy and reduced motion.">
+<meta name="description" content="ShotThere skeletons: studio and spot card placeholders, the map list, admin rows and tables, dashboard tiles and the editors while they load, with text, title, rect and pill shapes, busy regions and one status message.">
 <link rel="stylesheet" href="../tokens/tokens.css">
 <link rel="stylesheet" href="../assets/components.css">
 <link rel="stylesheet" href="../assets/ds.css">
@@ -33,34 +33,57 @@
       <li><a href="../components/icon-button.html">Icon button</a></li>
       <li><a href="../components/button-group.html">Button group</a></li>
       <li><a href="../components/link.html">Link</a></li>
+      <li><a href="../components/compare-bar.html">Compare toggle and bar</a></li>
     </ul></details>
     <details open><summary>Inputs</summary><ul>
       <li><a href="../components/form-field.html">Form field</a></li>
       <li><a href="../components/text-field.html">Text field</a></li>
       <li><a href="../components/textarea.html">Textarea</a></li>
       <li><a href="../components/select.html">Select</a></li>
+      <li><a href="../components/combobox.html">Combobox</a></li>
       <li><a href="../components/checkbox.html">Checkbox</a></li>
       <li><a href="../components/radio-group.html">Radio group</a></li>
       <li><a href="../components/file-upload.html">File upload</a></li>
       <li><a href="../components/form-layout.html">Form layout</a></li>
+      <li><a href="../components/signup.html">Email signup</a></li>
     </ul></details>
     <details open><summary>Navigation</summary><ul>
       <li><a href="../components/skip-link.html">Skip link</a></li>
       <li><a href="../components/site-header.html">Site header</a></li>
       <li><a href="../components/footer.html">Footer</a></li>
+      <li><a href="../components/breadcrumb.html">Breadcrumb</a></li>
+      <li><a href="../components/filter.html">Filters</a></li>
     </ul></details>
     <details open><summary>Containers and overlays</summary><ul>
       <li><a href="../components/container.html">Container and grid</a></li>
+      <li><a href="../components/review-layout.html">Review layout</a></li>
+      <li><a href="../components/editor-layout.html">Editor layout</a></li>
       <li><a href="../components/card.html">Card</a></li>
       <li><a href="../components/dialog.html">Dialog</a></li>
       <li><a href="../components/sheet.html">Sheet and drawer</a></li>
+      <li><a href="../components/popover.html">Popover</a></li>
+      <li><a href="../components/lightbox.html">Lightbox</a></li>
       <li><a href="../components/divider.html">Divider</a></li>
     </ul></details>
     <details open><summary>Data display</summary><ul>
+      <li><a href="../components/location-card.html">Location card</a></li>
       <li><a href="../components/table.html">Table</a></li>
+      <li><a href="../components/compare-table.html">Comparison table</a></li>
+      <li><a href="../components/list.html">List rows</a></li>
       <li><a href="../components/description-list.html">Description list</a></li>
+      <li><a href="../components/price-block.html">Price block</a></li>
+      <li><a href="../components/score.html">Score and pips</a></li>
+      <li><a href="../components/shot-grid.html">Shot grid</a></li>
+      <li><a href="../components/video-poster.html">Episode poster</a></li>
+      <li><a href="../components/map.html">Map</a></li>
+      <li><a href="../components/guide-entry.html">Guide entry</a></li>
+      <li><a href="../components/stat-tile.html">Stat tile</a></li>
+      <li><a href="../components/image-manager.html">Image manager</a></li>
+      <li><a href="../components/disclosure.html">Disclosure</a></li>
       <li><a href="../components/badge.html">Badge</a></li>
+      <li><a href="../components/status-label.html">Status label</a></li>
       <li><a href="../components/chip.html">Chip</a></li>
+      <li><a href="../components/tag.html">Tag</a></li>
     </ul></details>
     <details open><summary>Feedback</summary><ul>
       <li><a href="../components/inline-message.html">Inline message</a></li>
@@ -88,219 +111,292 @@
     <header class="ds-header">
       <p class="ds-kicker">Component · Feedback</p>
       <h1>Skeleton</h1>
-      <p class="ds-lead">Skeletons draw the shape of what is coming — round photos, names, rows — in quiet stone, so a page that is loading already looks like itself and nothing jumps when the content arrives.</p>
-      <div class="ds-meta"><span class="ds-pill ds-pill--ok">WCAG 2.2 AA</span><span class="ds-pill">Status: stable</span><span class="ds-pill"><code>.skeleton</code></span><span class="ds-pill"><code>aria-busy</code></span></div>
+      <p class="ds-lead">Skeletons draw the shape of what is coming (3:2 photos, studio names, admin rows, editor sections) in quiet stone, so a loading screen already looks like itself and nothing jumps when the content arrives.</p>
+      <div class="ds-meta"><span class="ds-pill ds-pill--ok">WCAG 2.2 AA</span><span class="ds-pill">Status: stable</span><span class="ds-pill"><code>.skeleton</code></span><span class="ds-pill"><code>.location-card--skeleton</code></span><span class="ds-pill"><code>.admin-row--skeleton</code></span><span class="ds-pill"><code>aria-busy</code></span></div>
       <ul class="ds-toc"><li><a href="#overview">Overview</a></li><li><a href="#anatomy">Anatomy</a></li><li><a href="#variants">Variants</a></li><li><a href="#sizes">Sizes</a></li><li><a href="#states">States</a></li><li><a href="#responsive">Responsive behaviour</a></li><li><a href="#theming">Theming</a></li><li><a href="#accessibility">Accessibility</a></li><li><a href="#content">Content</a></li><li><a href="#do-dont">Do and don't</a></li><li><a href="#tokens">Tokens</a></li><li><a href="#code">Code</a></li><li><a href="#sources">Sources</a></li></ul>
     </header>
 
-<section class="ds-section" id="overview"><h2><a href="#overview">Overview</a></h2>
-      <p>A skeleton is a block of <code>--color-bg-subtle</code> with a slow shimmer, cut to the size of the content it stands in for. ShotThere pages load as skeletons of themselves: the listing shows grey circles in the same grid as the caterer photos, the inbox shows rows with a circle and two lines, the operator queue shows its rows.</p>
-      <p>Rules that make skeletons work here:</p>
+    <section class="ds-section" id="overview"><h2><a href="#overview">Overview</a></h2>
+      <p>A skeleton is a block of <code>--color-bg-subtle</code> with a slow shimmer, sized and placed like the content it stands in for. ShotThere uses skeletons wherever data arrives after the page:</p>
       <ul>
-        <li><b>Same box, same place.</b> The skeleton occupies exactly the space of the final content: a 17.5rem circle where the round caterer photo goes, a 48px circle where the inbox photo goes. When content arrives, nothing moves (WCAG-friendly and no layout shift).</li>
-        <li><b>Only what is unknown.</b> The header, the page title, the filter names and the tabs are known before the data, so they render for real. Only counts, names and photos are skeletons ("filter names are known, counts are not yet").</li>
-        <li><b>Only after 300ms.</b> Fast loads go straight from blank to content; skeletons appear only if the wait passes 300ms.</li>
+        <li><b>Studio and spot lists</b>: six <code>.location-card--skeleton</code> cards hold the grid while a filter or sort change takes longer than 300ms (L2-026.1). The first visit is server-rendered with the list in the HTML, so it never shows skeletons (L2-026.3).</li>
+        <li><b>Map</b>: list rows in the map-list shape and one skeleton covering the map area.</li>
+        <li><b>Admin lists</b>: table rows for studios, spots and guides; <code>.admin-row--skeleton</code> rows in the dashboard's re-verification list; skeleton stat tiles.</li>
+        <li><b>Editors</b>: breadcrumb, title, status panel and section bars while a studio, spot or guide loads.</li>
       </ul>
       <p>Choose something else when:</p>
       <ul>
-        <li>There is no layout to preview (the next photo in the viewer, a postal code lookup): a <a href="spinner.html">spinner</a>.</li>
-        <li>The amount is measurable (an upload): a <a href="progress.html">progress bar</a>.</li>
-        <li>An action is running on existing content (saving, sending): the button's busy state; do not turn content back into skeletons.</li>
-        <li>The load failed or returned nothing: an <a href="empty-state.html">empty state</a>.</li>
+        <li>The wait is on an action, not on content (Delete studio, Sign in): the button's busy state, see <a href="spinner.html">spinner</a>.</li>
+        <li>The amount is measurable (an image upload): a <a href="progress.html">progress bar</a>.</li>
+        <li>The load failed or returned nothing: an <a href="empty-state.html">empty state</a>, never a skeleton that shimmers forever.</li>
       </ul>
     </section>
 
     <section class="ds-section" id="anatomy"><h2><a href="#anatomy">Anatomy</a></h2>
       <div class="ds-anatomy">
         <figure class="ds-anatomy__figure">
-          <ul class="caterer-grid" aria-busy="true" style="width: min(100%, 14rem); grid-template-columns: minmax(0, 1fr);">
-            <li class="caterer-card caterer-card--skeleton" aria-hidden="true"><span class="photo"><span class="skeleton skeleton--circle"></span></span><span class="skeleton skeleton--text"></span><span class="skeleton skeleton--text"></span></li>
+          <ul class="location-grid" aria-hidden="true" style="width: min(100%, 18rem);">
+            <li class="location-card location-card--skeleton">
+              <div class="location-card__media"><span class="skeleton skeleton--rect"></span></div>
+              <span class="skeleton skeleton--title"></span>
+              <span class="skeleton skeleton--text"></span>
+              <span class="skeleton skeleton--text"></span>
+            </li>
           </ul>
-          <span class="ds-callout" style="left: 8%; top: 8%;" aria-hidden="true">1</span>
-          <span class="ds-callout" style="left: 50%; top: 30%;" aria-hidden="true">2</span>
-          <span class="ds-callout" style="left: 74%; top: 78%;" aria-hidden="true">3</span>
-          <span class="ds-callout" style="left: 64%; top: 90%;" aria-hidden="true">4</span>
+          <span class="ds-callout" style="left: 50%; top: 30%;" aria-hidden="true">1</span>
+          <span class="ds-callout" style="left: 74%; top: 70%;" aria-hidden="true">2</span>
+          <span class="ds-callout" style="left: 62%; top: 80%;" aria-hidden="true">3</span>
         </figure>
         <ol class="ds-anatomy__list">
-          <li><div><b>Busy container</b><small>The real list (<code>&lt;ul class="caterer-grid"&gt;</code>) with <code>aria-busy="true"</code>; a nearby <code>role="status"</code> says "Loading caterers".</small></div></li>
-          <li><div><b>Circle</b><small><code>.skeleton--circle</code> filling the real <code>.photo</code> box, so the round photo lands in exactly the same place.</small></div></li>
-          <li><div><b>Name line</b><small><code>.skeleton--text</code>, 0.9em high with 0.3em above and below, so it matches one line of text; 9rem wide on cards.</small></div></li>
-          <li><div><b>Meta line</b><small>A second, shorter <code>.skeleton--text</code> (6rem): the "Jamaican · Pickering" line. Last lines are shorter so the block reads as text.</small></div></li>
+          <li><div><b>Media</b><small><code>.skeleton--rect</code> filling <code>.location-card__media</code>: the same 3:2 box and <code>--radius-lg</code> as the photo, so the grid does not shift.</small></div></li>
+          <li><div><b>Title</b><small><code>.skeleton--title</code>: 1.5em high, 70% wide in a card, where the studio name goes.</small></div></li>
+          <li><div><b>Text lines</b><small><code>.skeleton--text</code>: 0.9em high with 0.3em above and below, 50% wide in a card, for the neighbourhood line and the facts.</small></div></li>
         </ol>
       </div>
     </section>
 
     <section class="ds-section" id="variants"><h2><a href="#variants">Variants</a></h2>
       <h3>Shapes</h3>
-      <p>Four primitives. Width comes from the context (a modifier on the composed row, or the column); height and radius from the shape.</p>
+      <p>Four shape modifiers on <code>.skeleton</code>. Width is set by the composite (card, row, tile) or by an inline width on the placeholder; height comes from the shape or the box it fills.</p>
       <div class="ds-example">
-        <div class="ds-example__canvas ds-example__canvas--stack" aria-hidden="true" style="max-width: 28rem;">
-          <span class="skeleton skeleton--title"></span>
-          <div><span class="skeleton skeleton--text"></span><span class="skeleton skeleton--text"></span><span class="skeleton skeleton--text"></span></div>
-          <div class="cluster"><span class="skeleton skeleton--circle" style="width: 3rem; height: 3rem;"></span><span class="skeleton skeleton--rect" style="width: var(--space-20); height: var(--control-height-sm);"></span><span class="skeleton skeleton--rect" style="flex: 1; height: var(--control-height-lg);"></span></div>
+        <div class="ds-example__canvas ds-example__canvas--stack" style="flex-wrap: nowrap; max-width: 28rem;">
+          <span class="skeleton skeleton--title" aria-hidden="true"></span>
+          <span class="skeleton skeleton--text" aria-hidden="true" style="width: 85%;"></span>
+          <span class="skeleton skeleton--text" aria-hidden="true"></span>
+          <span class="skeleton skeleton--rect" aria-hidden="true" style="height: var(--control-height-md);"></span>
+          <span class="skeleton skeleton--pill" aria-hidden="true" style="width: 8rem; height: var(--control-height-md);"></span>
         </div>
-        <div class="ds-example__caption"><span><code>--title</code> (1.5em, 40%), <code>--text</code> (0.9em; the last in a group is 60%), <code>--circle</code> (photos, avatars), <code>--rect</code> (buttons, inputs, charts; <code>--radius-md</code>).</span></div>
+        <div class="ds-example__caption"><span><code>--title</code> (40% by default), <code>--text</code> (the last line in a group is 60%), <code>--rect</code> for a field or photo box, <code>--pill</code> for a button.</span></div>
         <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;span class="skeleton skeleton--title"&gt;&lt;/span&gt;
 &lt;span class="skeleton skeleton--text"&gt;&lt;/span&gt;
-&lt;span class="skeleton skeleton--circle" style="width: 3rem; height: 3rem;"&gt;&lt;/span&gt;
-&lt;span class="skeleton skeleton--rect" style="height: var(--control-height-lg);"&gt;&lt;/span&gt;</code></pre></details>
+&lt;span class="skeleton skeleton--rect" style="height: var(--control-height-md);"&gt;&lt;/span&gt;
+&lt;span class="skeleton skeleton--pill" style="width: 8rem; height: var(--control-height-md);"&gt;&lt;/span&gt;</code></pre></details>
       </div>
 
-      <h3>Caterer card grid</h3>
-      <p>The listing's first load: the real <code>.caterer-grid</code> with <code>.caterer-card--skeleton</code> items. Circles keep the 17.5rem card size and the grid keeps its 1 / 2 / 3 columns, so nothing shifts when photos arrive.</p>
+      <h3>Studio and spot cards</h3>
+      <p>The results list goes busy, the grid itself is hidden from assistive technology, and the result count turns into the status line "Loading studios…". Filters and sort stay usable.</p>
       <div class="ds-example">
-        <div class="ds-example__canvas ds-example__canvas--stack">
-          <p class="text-muted" role="status"><span class="visually-hidden">Loading caterers</span><span class="skeleton skeleton--text" style="width: var(--space-24);" aria-hidden="true"></span></p>
-          <ul class="caterer-grid" aria-busy="true">
-            <li class="caterer-card caterer-card--skeleton" aria-hidden="true"><span class="photo"><span class="skeleton skeleton--circle"></span></span><span class="skeleton skeleton--text"></span><span class="skeleton skeleton--text"></span></li>
-            <li class="caterer-card caterer-card--skeleton" aria-hidden="true"><span class="photo"><span class="skeleton skeleton--circle"></span></span><span class="skeleton skeleton--text"></span><span class="skeleton skeleton--text"></span></li>
-            <li class="caterer-card caterer-card--skeleton" aria-hidden="true"><span class="photo"><span class="skeleton skeleton--circle"></span></span><span class="skeleton skeleton--text"></span><span class="skeleton skeleton--text"></span></li>
-          </ul>
+        <div class="ds-example__canvas ds-example__canvas--stack" style="flex-wrap: nowrap;">
+          <section class="browse__results" aria-label="Results, loading" aria-busy="true">
+            <p class="result-count" role="status" style="margin-bottom: var(--space-6);">Loading studios…</p>
+            <ul class="location-grid" aria-hidden="true">
+              <li class="location-card location-card--skeleton"><div class="location-card__media"><span class="skeleton skeleton--rect"></span></div><span class="skeleton skeleton--title"></span><span class="skeleton skeleton--text"></span><span class="skeleton skeleton--text"></span></li>
+              <li class="location-card location-card--skeleton"><div class="location-card__media"><span class="skeleton skeleton--rect"></span></div><span class="skeleton skeleton--title"></span><span class="skeleton skeleton--text"></span><span class="skeleton skeleton--text"></span></li>
+              <li class="location-card location-card--skeleton"><div class="location-card__media"><span class="skeleton skeleton--rect"></span></div><span class="skeleton skeleton--title"></span><span class="skeleton skeleton--text"></span><span class="skeleton skeleton--text"></span></li>
+            </ul>
+          </section>
         </div>
-        <div class="ds-example__caption"><span>The result count ("60 caterers") is a skeleton too, inside the live region that later announces it.</span></div>
-        <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;p class="result-count" role="status" aria-live="polite"&gt;
-  &lt;span class="visually-hidden"&gt;Loading caterers&lt;/span&gt;
-  &lt;span class="skeleton skeleton--text" style="width: var(--space-24);" aria-hidden="true"&gt;&lt;/span&gt;
-&lt;/p&gt;
-&lt;ul class="caterer-grid" aria-busy="true"&gt;
-  &lt;li class="caterer-card caterer-card--skeleton" aria-hidden="true"&gt;
-    &lt;span class="photo"&gt;&lt;span class="skeleton skeleton--circle"&gt;&lt;/span&gt;&lt;/span&gt;
-    &lt;span class="skeleton skeleton--text"&gt;&lt;/span&gt;&lt;span class="skeleton skeleton--text"&gt;&lt;/span&gt;
-  &lt;/li&gt;
-  …
-&lt;/ul&gt;</code></pre></details>
+        <div class="ds-example__caption"><span>Three of the six cards from the studio list. The spot list is identical with "Loading spots…".</span></div>
+        <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;section class="browse__results" aria-labelledby="results-title" aria-busy="true"&gt;
+  &lt;p class="result-count" role="status" aria-live="polite"&gt;Loading studios…&lt;/p&gt;
+  &lt;ul class="location-grid" aria-hidden="true"&gt;
+    &lt;li class="location-card location-card--skeleton"&gt;
+      &lt;div class="location-card__media"&gt;&lt;span class="skeleton skeleton--rect"&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;span class="skeleton skeleton--title"&gt;&lt;/span&gt;
+      &lt;span class="skeleton skeleton--text"&gt;&lt;/span&gt;
+      &lt;span class="skeleton skeleton--text"&gt;&lt;/span&gt;
+    &lt;/li&gt;
+    …six in all
+  &lt;/ul&gt;
+&lt;/section&gt;</code></pre></details>
       </div>
 
-      <h3>Inbox rows</h3>
+      <h3>Map list and map area</h3>
       <div class="ds-example">
-        <div class="ds-example__canvas ds-example__canvas--stack">
-          <p class="visually-hidden" role="status">Loading your enquiries</p>
-          <ul class="inbox-list" aria-busy="true">
-            <li class="inbox-skeleton-row" aria-hidden="true"><span class="skeleton skeleton--circle"></span><span class="skeleton skeleton--text" style="width: 50%;"></span><span class="skeleton skeleton--text" style="width: 3rem;"></span><span class="skeleton skeleton--text" style="width: 70%;"></span><span class="skeleton skeleton--text" style="width: 4rem;"></span></li>
-            <li class="inbox-skeleton-row" aria-hidden="true"><span class="skeleton skeleton--circle"></span><span class="skeleton skeleton--text" style="width: 50%;"></span><span class="skeleton skeleton--text" style="width: 3rem;"></span><span class="skeleton skeleton--text" style="width: 70%;"></span><span class="skeleton skeleton--text" style="width: 4rem;"></span></li>
-            <li class="inbox-skeleton-row" aria-hidden="true"><span class="skeleton skeleton--circle"></span><span class="skeleton skeleton--text" style="width: 50%;"></span><span class="skeleton skeleton--text" style="width: 3rem;"></span><span class="skeleton skeleton--text" style="width: 70%;"></span><span class="skeleton skeleton--text" style="width: 4rem;"></span></li>
+        <div class="ds-example__canvas ds-example__canvas--stack" style="flex-wrap: nowrap; max-width: 40rem;">
+          <ul class="location-grid" aria-hidden="true" style="grid-template-columns: minmax(0, 1fr); gap: var(--space-6);">
+            <li class="map-list-item location-card--skeleton"><div class="location-card__media"><span class="skeleton skeleton--rect"></span></div><span class="skeleton skeleton--title"></span><span class="skeleton skeleton--text"></span><span class="skeleton skeleton--text"></span></li>
+            <li class="map-list-item location-card--skeleton"><div class="location-card__media"><span class="skeleton skeleton--rect"></span></div><span class="skeleton skeleton--title"></span><span class="skeleton skeleton--text"></span><span class="skeleton skeleton--text"></span></li>
           </ul>
+          <div class="static-map" aria-hidden="true" style="min-height: 10rem;"><span class="skeleton" style="position: absolute; inset: 0; margin: 0; border-radius: 0;"></span></div>
         </div>
-        <div class="ds-example__caption"><span><code>.inbox-skeleton-row</code> uses the inbox row grid: 48px circle spanning two lines, name and time, meta and status.</span></div>
+        <div class="ds-example__caption"><span>Map rows (a 5.5rem photo beside three lines) and the whole map area as one skeleton. The page status is "Loading locations…".</span></div>
+        <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;li class="map-list-item location-card--skeleton"&gt;
+  &lt;div class="location-card__media"&gt;&lt;span class="skeleton skeleton--rect"&gt;&lt;/span&gt;&lt;/div&gt;
+  &lt;span class="skeleton skeleton--title"&gt;&lt;/span&gt;
+  &lt;span class="skeleton skeleton--text"&gt;&lt;/span&gt;
+  &lt;span class="skeleton skeleton--text"&gt;&lt;/span&gt;
+&lt;/li&gt;
+…
+&lt;div class="map-page__map" aria-busy="true"&gt;
+  &lt;div class="static-map"&gt;&lt;span class="skeleton" style="position: absolute; inset: 0; margin: 0; border-radius: 0;"&gt;&lt;/span&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre></details>
       </div>
 
-      <h3>Operator rows</h3>
+      <h3>Admin rows and table rows</h3>
       <div class="ds-example">
-        <div class="ds-example__canvas ds-example__canvas--stack">
-          <p class="visually-hidden" role="status">Loading cuisines</p>
-          <ul class="admin-list" aria-busy="true">
-            <li class="admin-row admin-row--skeleton" aria-hidden="true"><span class="admin-row__body"><span class="skeleton skeleton--title"></span><span class="skeleton skeleton--text"></span></span><span class="admin-row__actions"><span class="skeleton skeleton--rect" style="width: var(--space-20); height: var(--control-height-sm);"></span></span></li>
-            <li class="admin-row admin-row--skeleton" aria-hidden="true"><span class="admin-row__body"><span class="skeleton skeleton--title"></span><span class="skeleton skeleton--text"></span></span><span class="admin-row__actions"><span class="skeleton skeleton--rect" style="width: var(--space-20); height: var(--control-height-sm);"></span></span></li>
+        <div class="ds-example__canvas ds-example__canvas--stack" style="flex-wrap: nowrap;">
+          <ul class="admin-list" aria-hidden="true">
+            <li class="admin-row admin-row--skeleton"><div class="admin-row__body"><span class="skeleton skeleton--title"></span><span class="skeleton skeleton--text"></span></div><span class="skeleton skeleton--rect"></span></li>
+            <li class="admin-row admin-row--skeleton"><div class="admin-row__body"><span class="skeleton skeleton--title"></span><span class="skeleton skeleton--text"></span></div><span class="skeleton skeleton--rect"></span></li>
           </ul>
-          <p class="visually-hidden" role="status">Loading audit entries</p>
-          <div class="table-wrap" aria-busy="true">
-            <table class="table">
-              <caption class="visually-hidden">Audit entries, loading</caption>
-              <thead><tr><th scope="col">When</th><th scope="col">Operator</th><th scope="col">Action</th><th scope="col">Target</th></tr></thead>
+          <div class="table-wrap" aria-hidden="true">
+            <table class="table table--stack">
+              <thead><tr><th scope="col">Name</th><th scope="col">Status</th><th scope="col">Last updated</th><th scope="col">Flags</th><th scope="col"><span class="visually-hidden">Actions</span></th></tr></thead>
               <tbody>
-                <tr aria-hidden="true"><td><span class="skeleton skeleton--text"></span></td><td><span class="skeleton skeleton--text"></span></td><td><span class="skeleton skeleton--text"></span></td><td><span class="skeleton skeleton--text"></span></td></tr>
-                <tr aria-hidden="true"><td><span class="skeleton skeleton--text"></span></td><td><span class="skeleton skeleton--text"></span></td><td><span class="skeleton skeleton--text"></span></td><td><span class="skeleton skeleton--text"></span></td></tr>
+                <tr><td><span class="skeleton skeleton--text" style="width: 14rem;"></span><span class="skeleton skeleton--text" style="width: 6rem;"></span></td><td><span class="skeleton skeleton--text" style="width: 5rem;"></span></td><td><span class="skeleton skeleton--text" style="width: 6rem;"></span></td><td><span class="skeleton skeleton--pill" style="width: 5rem;"></span></td><td><span class="skeleton skeleton--pill" style="width: 3.5rem; height: var(--control-height-sm);"></span></td></tr>
+                <tr><td><span class="skeleton skeleton--text" style="width: 11rem;"></span><span class="skeleton skeleton--text" style="width: 6rem;"></span></td><td><span class="skeleton skeleton--text" style="width: 5rem;"></span></td><td><span class="skeleton skeleton--text" style="width: 6rem;"></span></td><td><span class="skeleton skeleton--pill" style="width: 5rem;"></span></td><td><span class="skeleton skeleton--pill" style="width: 3.5rem; height: var(--control-height-sm);"></span></td></tr>
               </tbody>
             </table>
           </div>
         </div>
-        <div class="ds-example__caption"><span>Settings rows (<code>.admin-row--skeleton</code>: title 40%, meta 25%, a small rect where the action button goes) and the audit log table (real headers, skeleton cells).</span></div>
+        <div class="ds-example__caption"><span>The dashboard's "Needs re-verification" rows (title, meta line, Edit button), then the admin studio table: name and neighbourhood, status, last updated, a flag pill and the Edit pill.</span></div>
+        <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;li class="admin-row admin-row--skeleton"&gt;
+  &lt;div class="admin-row__body"&gt;&lt;span class="skeleton skeleton--title"&gt;&lt;/span&gt;&lt;span class="skeleton skeleton--text"&gt;&lt;/span&gt;&lt;/div&gt;
+  &lt;span class="skeleton skeleton--rect"&gt;&lt;/span&gt;
+&lt;/li&gt;</code></pre></details>
+      </div>
+
+      <h3>Dashboard tiles</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--stack" style="flex-wrap: nowrap;">
+          <ul class="stat-grid" aria-hidden="true">
+            <li class="stat-tile"><span class="skeleton skeleton--title"></span><span class="skeleton skeleton--text" style="width: 70%;"></span><span class="skeleton skeleton--pill" style="width: 8rem; height: var(--control-height-md);"></span></li>
+            <li class="stat-tile"><span class="skeleton skeleton--title"></span><span class="skeleton skeleton--text" style="width: 70%;"></span><span class="skeleton skeleton--pill" style="width: 8rem; height: var(--control-height-md);"></span></li>
+            <li class="stat-tile"><span class="skeleton skeleton--title"></span><span class="skeleton skeleton--text" style="width: 70%;"></span><span class="skeleton skeleton--pill" style="width: 8rem; height: var(--control-height-md);"></span></li>
+          </ul>
+        </div>
+        <div class="ds-example__caption"><span>Studios, Spots and Guides tiles: title, the "7 published, 2 draft" line and the New studio button.</span></div>
+      </div>
+
+      <h3>Editor</h3>
+      <p>The breadcrumb and heading keep real, visually hidden words ("Loading", "Loading studio") so the page still has a current crumb and an <code>h1</code>; the status panel and section bars are skeletons.</p>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--stack" style="flex-wrap: nowrap;">
+          <div class="editor-layout" aria-hidden="true">
+            <div class="editor-aside">
+              <span class="skeleton skeleton--title" style="width: 35%;"></span>
+              <span class="skeleton skeleton--text" style="width: 45%;"></span>
+              <span class="skeleton skeleton--text" style="width: 85%;"></span>
+              <span class="skeleton skeleton--pill" style="height: var(--target-comfortable);"></span>
+              <span class="skeleton skeleton--pill" style="height: var(--target-comfortable);"></span>
+            </div>
+            <div class="editor-form">
+              <div class="editor-section" style="display: flex; align-items: center; min-height: var(--control-height-lg); padding: var(--space-3) var(--space-5);"><span class="skeleton skeleton--title" style="width: 18%; margin: 0;"></span></div>
+              <div class="editor-section" style="display: flex; align-items: center; min-height: var(--control-height-lg); padding: var(--space-3) var(--space-5);"><span class="skeleton skeleton--title" style="width: 32%; margin: 0;"></span></div>
+              <div class="editor-section" style="display: flex; align-items: center; min-height: var(--control-height-lg); padding: var(--space-3) var(--space-5);"><span class="skeleton skeleton--title" style="width: 42%; margin: 0;"></span></div>
+            </div>
+          </div>
+        </div>
+        <div class="ds-example__caption"><span>The studio editor loading: status panel (status, last saved, Save changes and Publish pills) and the collapsed section bars (Basics, Pricing and fees, Measured specifications).</span></div>
+        <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;main id="main" class="container" tabindex="-1" aria-busy="true"&gt;
+  &lt;h1&gt;&lt;span class="visually-hidden"&gt;Loading studio&lt;/span&gt;&lt;span class="skeleton skeleton--title" aria-hidden="true"&gt;&lt;/span&gt;&lt;/h1&gt;
+  &lt;div class="editor-layout" aria-hidden="true"&gt;
+    &lt;div class="editor-aside"&gt;…skeleton title, two text lines, two pills…&lt;/div&gt;
+    &lt;div class="editor-form"&gt;…one editor-section bar per section…&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;p class="visually-hidden" role="status"&gt;Loading studio…&lt;/p&gt;
+&lt;/main&gt;</code></pre></details>
       </div>
     </section>
 
-    <section class="ds-section" id="sizes" data-na="Skeletons take their size from the content they replace."><h2><a href="#sizes">Sizes</a></h2>
-      <p class="ds-na">Skeletons have no size scale. Each one copies the box of the content it stands in for: <code>--text</code> scales with the surrounding font size (it is in <code>em</code>), circles fill the <code>.photo</code> or avatar box they sit in, and rects take the control height they replace (<code>--control-height-sm/lg</code>).</p>
+    <section class="ds-section" id="sizes"><h2><a href="#sizes">Sizes</a></h2>
+      <p>Skeletons take the size of what they replace. The shapes set only a default height:</p>
+      <div class="ds-table-wrap"><table class="ds-table">
+        <thead><tr><th scope="col">Shape</th><th scope="col">Height</th><th scope="col">Width</th><th scope="col">Stands in for</th></tr></thead>
+        <tbody>
+          <tr><td><code>.skeleton--text</code></td><td>0.9em, 0.3em above and below</td><td>100%; last in a group 60%; 50% in a card; 25% in an admin row</td><td>Neighbourhood line, facts, meta lines, table cells</td></tr>
+          <tr><td><code>.skeleton--title</code></td><td>1.5em</td><td>40%; 70% in a card</td><td>Studio and spot names, tile and section titles, the editor <code>h1</code></td></tr>
+          <tr><td><code>.skeleton--rect</code></td><td>The box it fills, or an explicit height</td><td>The box it fills</td><td>3:2 card photo, map photo, form fields (<code>--control-height-md</code>)</td></tr>
+          <tr><td><code>.skeleton--pill</code></td><td>Explicit: <code>--control-height-sm</code>, <code>--control-height-md</code> or <code>--target-comfortable</code></td><td>Explicit, or full width in the editor panel</td><td>Buttons (Edit, New studio, Save changes) and flag badges</td></tr>
+        </tbody>
+      </table></div>
     </section>
 
     <section class="ds-section" id="states"><h2><a href="#states">States</a></h2>
-      <p>Skeletons are not interactive. Their states are about the loading lifecycle, and the real attribute is <code>aria-busy</code> on the container.</p>
+      <p>A skeleton is never interactive and never focusable, so hover, focus, active and disabled do not apply. Its only states are "loading" (present, region <code>aria-busy="true"</code>) and "loaded" (removed, replaced by content in the same box). The matrix sets each loading shape beside what replaces it.</p>
       <div class="ds-matrix"><table>
-        <caption class="visually-hidden">Skeleton lifecycle by composition</caption>
-        <thead><tr><th scope="col">Composition</th><th scope="col">Loading (<code>aria-busy="true"</code>)</th><th scope="col">Loading, reduced motion</th><th scope="col">Loaded</th></tr></thead>
+        <caption class="visually-hidden">Skeleton composites while loading and once loaded</caption>
+        <thead><tr><th scope="col">Composite</th><th scope="col">Loading (default)</th><th scope="col">Hover, focus, active, disabled</th><th scope="col">Loaded</th></tr></thead>
         <tbody>
-          <tr><th scope="row">Caterer card</th>
-            <td><div class="caterer-card caterer-card--skeleton" aria-hidden="true" style="width: 9rem;"><span class="photo"><span class="skeleton skeleton--circle"></span></span><span class="skeleton skeleton--text" style="width: 7rem;"></span><span class="skeleton skeleton--text" style="width: 5rem;"></span></div></td>
-            <td><div class="caterer-card caterer-card--skeleton" aria-hidden="true" style="width: 9rem;"><span class="photo"><span class="skeleton skeleton--circle" style="animation: none;"></span></span><span class="skeleton skeleton--text" style="width: 7rem; animation: none;"></span><span class="skeleton skeleton--text" style="width: 5rem; animation: none;"></span></div></td>
-            <td><span class="photo"><img src="../assets/img/pelau-house.jpg" alt="Chicken pelau in a steel pot with lime and cucumber chutney" width="144" height="144"></span><span class="caterer-card__name">Pelau House</span><span class="caterer-card__meta">Trinidadian &amp; Tobagonian · Scarborough</span></td>
-          </tr>
-          <tr><th scope="row">Inbox row</th>
-            <td><ul class="inbox-list" style="width: 18rem;"><li class="inbox-skeleton-row" aria-hidden="true"><span class="skeleton skeleton--circle"></span><span class="skeleton skeleton--text" style="width: 50%;"></span><span class="skeleton skeleton--text" style="width: 3rem;"></span><span class="skeleton skeleton--text" style="width: 70%;"></span><span class="skeleton skeleton--text" style="width: 4rem;"></span></li></ul></td>
-            <td><ul class="inbox-list" style="width: 18rem;"><li class="inbox-skeleton-row" aria-hidden="true"><span class="skeleton skeleton--circle" style="animation: none;"></span><span class="skeleton skeleton--text" style="width: 50%; animation: none;"></span><span class="skeleton skeleton--text" style="width: 3rem; animation: none;"></span><span class="skeleton skeleton--text" style="width: 70%; animation: none;"></span><span class="skeleton skeleton--text" style="width: 4rem; animation: none;"></span></li></ul></td>
-            <td><ul class="inbox-list" style="width: 18rem;"><li><span class="photo"><img src="../assets/img/sugar-dumplin.jpg" alt="" width="48" height="48"></span><span class="inbox-row__name">Sugar Dumplin</span><span class="inbox-row__time">Thu</span><span class="inbox-row__meta">Sat 21 Nov · 120 guests</span><span class="inbox-row__status status status--open">Open</span></li></ul></td>
+          <tr><th scope="row">Location card</th>
+            <td><ul class="location-grid" aria-hidden="true" style="width: 14rem;"><li class="location-card location-card--skeleton"><div class="location-card__media"><span class="skeleton skeleton--rect"></span></div><span class="skeleton skeleton--title"></span><span class="skeleton skeleton--text"></span><span class="skeleton skeleton--text"></span></li></ul></td>
+            <td><span class="ds-na">Not interactive</span></td>
+            <td><ul class="location-grid" style="width: 14rem;"><li class="location-card"><div class="location-card__media"><img src="../assets/img/studio-the-junction-loft.svg" alt="" width="1200" height="800"></div><p class="location-card__name"><a href="../../mocks/pages/studio/default.html">The Junction Loft</a></p><p class="location-card__meta">Junction · Reviewed 29 Sep 2026</p><dl class="location-card__facts"><div><dt>All-in 2 h</dt><dd>$145.00</dd></div><div><dt>Score</dt><dd>3.8<span class="visually-hidden"> out of 5</span></dd></div></dl></li></ul></td>
           </tr>
           <tr><th scope="row">Admin row</th>
-            <td><ul class="admin-list" style="width: 18rem;"><li class="admin-row admin-row--skeleton" aria-hidden="true"><span class="admin-row__body"><span class="skeleton skeleton--title"></span><span class="skeleton skeleton--text"></span></span><span class="admin-row__actions"><span class="skeleton skeleton--rect" style="width: var(--space-20); height: var(--control-height-sm);"></span></span></li></ul></td>
-            <td><ul class="admin-list" style="width: 18rem;"><li class="admin-row admin-row--skeleton" aria-hidden="true"><span class="admin-row__body"><span class="skeleton skeleton--title" style="animation: none;"></span><span class="skeleton skeleton--text" style="animation: none;"></span></span><span class="admin-row__actions"><span class="skeleton skeleton--rect" style="width: var(--space-20); height: var(--control-height-sm); animation: none;"></span></span></li></ul></td>
-            <td><ul class="admin-list" style="width: 18rem;"><li class="admin-row"><span class="admin-row__body"><span class="admin-row__title">Haitian</span><span class="admin-row__meta">5 published caterers</span></span><span class="admin-row__actions"><button class="btn btn--sm btn--ghost" type="button" aria-label="Retire Haitian">Retire</button></span></li></ul></td>
+            <td><ul class="admin-list" aria-hidden="true" style="width: 18rem;"><li class="admin-row admin-row--skeleton"><div class="admin-row__body"><span class="skeleton skeleton--title"></span><span class="skeleton skeleton--text"></span></div><span class="skeleton skeleton--rect"></span></li></ul></td>
+            <td><span class="ds-na">Not interactive</span></td>
+            <td><ul class="admin-list" style="width: 18rem;"><li class="admin-row"><div class="admin-row__body"><span class="admin-row__title">Ossington Blackbox <span class="badge badge--warning">Stale</span></span><span class="admin-row__meta">Studio · Prices verified <time datetime="2026-03-02">2 Mar 2026</time> (225 days ago)</span></div><div class="admin-row__actions"><a class="btn btn--sm" href="../../mocks/pages/studio-editor/published.html">Edit<span class="visually-hidden"> Ossington Blackbox prices</span></a></div></li></ul></td>
+          </tr>
+          <tr><th scope="row">Editor section</th>
+            <td><div class="editor-section" aria-hidden="true" style="display: flex; align-items: center; min-height: var(--control-height-lg); padding: var(--space-3) var(--space-5); width: 18rem;"><span class="skeleton skeleton--title" style="width: 32%; margin: 0;"></span></div></td>
+            <td><span class="ds-na">Not interactive</span></td>
+            <td><div class="editor-section" style="display: flex; align-items: center; min-height: var(--control-height-lg); padding: var(--space-3) var(--space-5); width: 18rem;"><span style="font: var(--text-h4);">Pricing and fees</span></div></td>
           </tr>
         </tbody>
       </table></div>
       <h3>Both themes</h3>
       <div class="ds-themes">
-        <div data-theme="light"><ul class="inbox-list" aria-hidden="true"><li class="inbox-skeleton-row"><span class="skeleton skeleton--circle"></span><span class="skeleton skeleton--text" style="width: 50%;"></span><span class="skeleton skeleton--text" style="width: 3rem;"></span><span class="skeleton skeleton--text" style="width: 70%;"></span><span class="skeleton skeleton--text" style="width: 4rem;"></span></li><li class="inbox-skeleton-row"><span class="skeleton skeleton--circle"></span><span class="skeleton skeleton--text" style="width: 50%;"></span><span class="skeleton skeleton--text" style="width: 3rem;"></span><span class="skeleton skeleton--text" style="width: 70%;"></span><span class="skeleton skeleton--text" style="width: 4rem;"></span></li></ul></div>
-        <div data-theme="dark"><ul class="inbox-list" aria-hidden="true"><li class="inbox-skeleton-row"><span class="skeleton skeleton--circle"></span><span class="skeleton skeleton--text" style="width: 50%;"></span><span class="skeleton skeleton--text" style="width: 3rem;"></span><span class="skeleton skeleton--text" style="width: 70%;"></span><span class="skeleton skeleton--text" style="width: 4rem;"></span></li><li class="inbox-skeleton-row"><span class="skeleton skeleton--circle"></span><span class="skeleton skeleton--text" style="width: 50%;"></span><span class="skeleton skeleton--text" style="width: 3rem;"></span><span class="skeleton skeleton--text" style="width: 70%;"></span><span class="skeleton skeleton--text" style="width: 4rem;"></span></li></ul></div>
+        <div data-theme="light"><div class="ds-example__canvas ds-example__canvas--stack" style="flex-wrap: nowrap; padding: 0;">
+          <ul class="location-grid" aria-hidden="true" style="grid-template-columns: minmax(0, 1fr);"><li class="location-card location-card--skeleton"><div class="location-card__media"><span class="skeleton skeleton--rect"></span></div><span class="skeleton skeleton--title"></span><span class="skeleton skeleton--text"></span><span class="skeleton skeleton--text"></span></li></ul>
+          <ul class="admin-list" aria-hidden="true"><li class="admin-row admin-row--skeleton"><div class="admin-row__body"><span class="skeleton skeleton--title"></span><span class="skeleton skeleton--text"></span></div><span class="skeleton skeleton--rect"></span></li></ul>
+        </div></div>
+        <div data-theme="dark"><div class="ds-example__canvas ds-example__canvas--stack" style="flex-wrap: nowrap; padding: 0;">
+          <ul class="location-grid" aria-hidden="true" style="grid-template-columns: minmax(0, 1fr);"><li class="location-card location-card--skeleton"><div class="location-card__media"><span class="skeleton skeleton--rect"></span></div><span class="skeleton skeleton--title"></span><span class="skeleton skeleton--text"></span><span class="skeleton skeleton--text"></span></li></ul>
+          <ul class="admin-list" aria-hidden="true"><li class="admin-row admin-row--skeleton"><div class="admin-row__body"><span class="skeleton skeleton--title"></span><span class="skeleton skeleton--text"></span></div><span class="skeleton skeleton--rect"></span></li></ul>
+        </div></div>
       </div>
       <ul>
-        <li><b>Delayed</b>: nothing (or the known parts only) for the first 300ms; then skeletons.</li>
-        <li><b>Loaded</b>: skeletons are replaced in one swap, <code>aria-busy</code> is removed, and the status text changes to the result ("60 caterers", "4 enquiries · 1 unread"). Photos may keep loading inside their round boxes, showing <code>--color-bg-photo</code> until they arrive.</li>
-        <li><b>Failed</b>: skeletons are replaced by an <a href="empty-state.html">empty state</a> in error tone in the same region; the page header, title and filters stay.</li>
-        <li><b>Paging</b> (Load more, next page): existing rows stay; skeletons are appended below them only, never replacing what is already read.</li>
+        <li><b>Delayed</b>: show skeletons only when a client-side refresh passes 300ms; quicker answers swap content in directly.</li>
+        <li><b>Loaded</b>: replace the whole skeleton region at once, remove <code>aria-busy</code>, and update the status ("7 studios").</li>
+        <li><b>Failed</b>: replace the skeletons with the error <a href="empty-state.html">empty state</a> and Try again (L2-026.2); Try again brings the skeletons back.</li>
       </ul>
     </section>
 
     <section class="ds-section" id="responsive"><h2><a href="#responsive">Responsive behaviour</a></h2>
+      <p>Skeletons sit in the real layout containers, so they reflow exactly as the content will:</p>
       <ul>
-        <li>Skeletons live inside the real layout, so they follow it: the caterer grid is 1 column on xs, 2 from 36rem, 3 from 62rem; render enough skeleton cards to fill the first screen at each (3 on xs, 6 on sm and md, 9 from lg), not a fixed 24.</li>
-        <li>The inbox shows 4 skeleton rows on every size; from 62rem the thread column shows a large circle and one line where "Choose an enquiry to read it here" will be.</li>
-        <li>Operator queue rows use <code>.queue-item--stack</code> below 36rem, and so do their skeletons, so the stacked phone layout is previewed too.</li>
-        <li>Widths are percentages or <code>min(…, 100%)</code>, never fixed widths wider than a 320px screen.</li>
-        <li>A rect standing in for a small button must match the button at each size: below 48rem <code>.btn--sm</code> grows to 44px (L2-065.1), so the action rect in an admin row is <code>--target-comfortable</code> tall on phones and <code>--control-height-sm</code> from 48rem. The mocks set the 36px height inline; the composed skeleton rows should take it from CSS instead.</li>
+        <li><b>Card grid</b> (<code>.location-grid</code>): one column on phones, two from 36rem, three from 62rem (two in the results column beside the filter sidebar, three again from 75rem).</li>
+        <li><b>Map</b>: below 62rem only the list or the map is shown, whichever view is chosen; from 62rem both, each with its own skeleton.</li>
+        <li><b>Admin table</b> (<code>.table--stack</code>): stacks into one card per row on phones; the skeleton cells stack with it.</li>
+        <li><b>Admin row</b>: the Edit placeholder is 44px high on phones (<code>--target-comfortable</code>) and 32px from 48rem (<code>--control-height-sm</code>), matching the real button.</li>
+        <li><b>Editor</b>: the status panel is above the sections on phones and a sticky 18rem right column from 62rem.</li>
+        <li>Fixed rem widths in the table never exceed their cell (<code>max-width: 100%</code>), so nothing scrolls sideways at 360px.</li>
       </ul>
     </section>
 
     <section class="ds-section" id="theming"><h2><a href="#theming">Theming</a></h2>
-      <p>The skeleton reads <code>--color-bg-subtle</code> for its base and <code>--color-bg-subtle-hover</code> for the shimmer highlight, as a 90° gradient moved across a 400% background. In dark both are dark stone steps, one lighter than the other, so the sweep stays subtle. No component tokens; no pepper, no ink. A skeleton should be the quietest thing on the screen.</p>
-      <pre><code>.skeleton { background: linear-gradient(90deg, var(--color-bg-subtle) 25%, var(--color-bg-subtle-hover) 37%, var(--color-bg-subtle) 63%);
-            background-size: 400% 100%; animation: shimmer var(--duration-loop) var(--ease-standard) infinite; }</code></pre>
+      <p>The block is a gradient from <code>--color-bg-subtle</code> through <code>--color-bg-subtle-hover</code> and back, moved across over <code>--duration-loop</code>. Both tokens are redefined for dark, so skeletons are a raised dark stone there with no change to the component. The card media keeps no photo background (<code>background: none</code>) so the rect's own shimmer shows.</p>
     </section>
 
     <section class="ds-section" id="accessibility"><h2><a href="#accessibility">Accessibility</a></h2>
       <h3>Role and pattern</h3>
-      <p>Skeleton items are <code>aria-hidden="true"</code>; they mean nothing to a screen reader. The container being loaded keeps its real element and role (the <code>&lt;ul&gt;</code>, the <code>&lt;table&gt;</code> with its caption and column headers) and carries <code>aria-busy="true"</code>. A <code>role="status"</code> element names what is loading ("Loading caterers", "Loading the review queue") and later announces the result. This follows the <a href="https://www.w3.org/TR/wai-aria-1.2/#aria-busy">aria-busy</a> definition and WCAG 4.1.3; the APG has no skeleton pattern.</p>
+      <p>Skeletons are presentation. The container of placeholders is <code>aria-hidden="true"</code>; the region being loaded has <code>aria-busy="true"</code>; one <code>role="status"</code> message says what is loading ("Loading studios…", "Loading locations…", "Loading the dashboard", "Loading studio…"). This meets L2-026.1 and WCAG 4.1.3. No APG pattern applies.</p>
       <h3>Keyboard</h3>
       <div class="ds-table-wrap"><table class="ds-table ds-keys"><thead><tr><th scope="col">Key</th><th scope="col">Action</th></tr></thead><tbody>
-        <tr><td><kbd>Tab</kbd></td><td>Skips skeletons; nothing in them is focusable. Real controls on the page (filters, tabs, header links) work while the content loads.</td></tr>
+        <tr><td><kbd>Tab</kbd></td><td>Skips skeletons. Real controls around them (filters, Sort by, Filters, the admin search) stay usable while the list loads.</td></tr>
       </tbody></table></div>
       <h3>Focus</h3>
-      <p>Focus is never placed on a skeleton and never moved when content arrives. If focus was on a control that the loaded content replaces (a page link in pagination), it moves to the first result's heading or link.</p>
+      <p>Focus stays where it was, usually on the filter or sort control that started the refresh. When content replaces the skeleton, focus does not jump into it.</p>
       <h3>Labelling</h3>
-      <p>One status message per loading region, specific to it: "Loading your enquiries", "Loading audit entries". Do not label each skeleton item. Tables keep their real column headers and a caption ending in ", loading".</p>
+      <p>One message per region, not one per placeholder. In the editors, the breadcrumb's current item and the <code>h1</code> carry visually hidden words ("Loading", "Loading studio") so headings navigation still works.</p>
       <h3>Contrast</h3>
-      <div class="ds-example__canvas ds-example__canvas--stack" style="padding: 0; gap: var(--space-2);">
-        <div class="ds-pair"><span>Text on the shimmer highlight (if text ever sits on it)</span><span class="ds-pair__ratio" data-contrast="--color-fg-default|--color-bg-subtle-hover" data-min="4.5"></span></div>
-        <div class="ds-pair"><span>Text on the skeleton base</span><span class="ds-pair__ratio" data-contrast="--color-fg-default|--color-bg-subtle" data-min="4.5"></span></div>
+      <div class="ds-example__canvas ds-example__canvas--stack" style="flex-wrap: nowrap; padding: 0; gap: var(--space-2);">
+        <div class="ds-pair"><span>"Loading studios…" status on the page</span><span class="ds-pair__ratio" data-contrast="--color-fg-muted|--color-bg-canvas" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Real text that replaces a skeleton on a hovered row</span><span class="ds-pair__ratio" data-contrast="--color-fg-default|--color-bg-subtle" data-min="4.5"></span></div>
       </div>
-      <p>Skeleton shapes are decorative and exempt from 1.4.11: they carry no information, and the status text says what is happening. They should be visible but faint; the base against the canvas is intentionally low contrast.</p>
+      <p>Skeletons convey no information, so WCAG 1.4.11 does not apply to them; the status text does the telling. Keep them quiet stone, never coloured.</p>
       <h3>Motion</h3>
-      <p>The shimmer is a decorative loop (<code>--duration-loop</code>, 1.4s). Under <code>prefers-reduced-motion</code> it stops and the skeleton is a flat <code>--color-bg-subtle</code> block (the reduced-motion column above). Status still comes through the live region, so nothing is lost. The shimmer never flashes: it is a soft brightness change well under the three-flashes threshold.</p>
+      <p>The shimmer is decorative and stops under <code>prefers-reduced-motion</code>: the blocks stay as flat stone. It is slow (1.4s), low contrast and covers no more than the region loading.</p>
       <h3>Touch</h3>
-      <p>Nothing to touch. Skeleton rows are not links; the rows become tappable only when they are real.</p>
+      <p>Nothing to touch. Skeletons never sit on top of a control and never block the filter or sort controls.</p>
     </section>
 
     <section class="ds-section" id="content"><h2><a href="#content">Content</a></h2>
       <ul>
-        <li>Skeletons carry no words. The status message does: "Loading caterers", "Loading your enquiries", "Loading the review queue", "Verifying your email…".</li>
-        <li>Render real text for everything known in advance: page titles ("Inbox"), filter names (Jamaican, Trinidadian &amp; Tobagonian…), table headers, tab labels. Only counts and records are skeletons.</li>
-        <li>Never put "Loading…" in place of a caterer name or a count; use a text skeleton of the right width.</li>
+        <li>Skeletons have no visible words; never put "Loading" text inside one.</li>
+        <li>The status message is "Loading" plus what is loading: "Loading studios…", "Loading spots…", "Loading locations…", "Loading the dashboard", "Loading studio…". Sentence case, ellipsis character.</li>
+        <li>When the content arrives, the same status element says what came: "7 studios", "5 studios".</li>
       </ul>
     </section>
 
     <section class="ds-section" id="do-dont"><h2><a href="#do-dont">Do and don't</a></h2>
       <div class="ds-dodont">
-        <figure class="ds-do"><div class="ds-example__canvas" style="justify-content: center;"><div class="caterer-card caterer-card--skeleton" aria-hidden="true" style="width: 9rem;"><span class="photo"><span class="skeleton skeleton--circle"></span></span><span class="skeleton skeleton--text" style="width: 7rem;"></span><span class="skeleton skeleton--text" style="width: 5rem;"></span></div></div><figcaption>A circle where the round photo will be, two lines where name and cuisine will be.</figcaption></figure>
-        <figure class="ds-dont"><div class="ds-example__canvas" style="justify-content: center;"><span class="skeleton skeleton--rect" aria-hidden="true" style="width: 9rem; height: 7rem;"></span></div><figcaption>Don't use a generic rectangle for a round photo; the page reshapes when content lands.</figcaption></figure>
-        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--stack"><p class="visually-hidden" role="status">Loading cuisines</p><ul class="admin-list" aria-busy="true"><li class="admin-row admin-row--skeleton" aria-hidden="true"><span class="admin-row__body"><span class="skeleton skeleton--title"></span><span class="skeleton skeleton--text"></span></span></li></ul></div><figcaption>Hide each skeleton row; one status message names the load.</figcaption></figure>
-        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--stack"><ul class="admin-list" aria-busy="true" aria-label="Loading cuisines"><li class="admin-row admin-row--skeleton"><span class="admin-row__body"><span class="skeleton skeleton--title"></span><span class="skeleton skeleton--text"></span></span></li></ul></div><figcaption>Don't leave skeleton rows exposed as empty list items (the cuisines and operators mocks did); screen readers count them as real rows.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--stack" style="flex-wrap: nowrap;"><ul class="location-grid" aria-hidden="true" style="grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-4);"><li class="location-card location-card--skeleton"><div class="location-card__media"><span class="skeleton skeleton--rect"></span></div><span class="skeleton skeleton--title"></span><span class="skeleton skeleton--text"></span></li><li class="location-card location-card--skeleton"><div class="location-card__media"><span class="skeleton skeleton--rect"></span></div><span class="skeleton skeleton--title"></span><span class="skeleton skeleton--text"></span></li></ul></div><figcaption>Fill the card's 3:2 media box with a <code>--rect</code>, so the photo lands in the same place.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas" style="justify-content: center;"><span class="skeleton skeleton--circle" aria-hidden="true" style="width: 6rem; height: 6rem;"></span></div><figcaption>Don't use round placeholders: ShotThere photos are 3:2 and 4:5 rectangles, and <code>--circle</code> has no ShotThere use.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--stack" style="flex-wrap: nowrap;"><p class="result-count" role="status">Loading studios…</p><ul class="admin-list" aria-hidden="true"><li class="admin-row admin-row--skeleton"><div class="admin-row__body"><span class="skeleton skeleton--title"></span><span class="skeleton skeleton--text"></span></div><span class="skeleton skeleton--rect"></span></li></ul></div><figcaption>Hide the placeholders and announce the region once.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--stack" style="flex-wrap: nowrap;"><span class="skeleton skeleton--text" role="img" aria-label="Loading"></span><span class="skeleton skeleton--text" role="img" aria-label="Loading"></span><span class="skeleton skeleton--text" role="img" aria-label="Loading"></span></div><figcaption>Don't label each placeholder "Loading": a screen reader hears it once per line, 18 times for six cards.</figcaption></figure>
       </div>
     </section>
 
@@ -310,49 +406,45 @@
         <tbody>
           <tr><td>Base</td><td><code>--color-bg-subtle</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-bg-subtle" data-swatch></i><span data-token="--color-bg-subtle"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-bg-subtle" data-swatch></i><span data-token="--color-bg-subtle"></span></span></td></tr>
           <tr><td>Shimmer highlight</td><td><code>--color-bg-subtle-hover</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-bg-subtle-hover" data-swatch></i><span data-token="--color-bg-subtle-hover"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-bg-subtle-hover" data-swatch></i><span data-token="--color-bg-subtle-hover"></span></span></td></tr>
-          <tr><td>Radius text / rect / circle</td><td><code>--radius-sm</code> / <code>--radius-md</code> / 50%</td><td colspan="2"><span data-token="--radius-sm"></span> / <span data-token="--radius-md"></span></td></tr>
-          <tr><td>Card circle</td><td><code>--photo-card-size</code></td><td colspan="2"><span data-token="--photo-card-size"></span></td></tr>
-          <tr><td>Rect heights</td><td><code>--control-height-sm</code> / <code>--control-height-lg</code></td><td colspan="2"><span data-token="--control-height-sm"></span> / <span data-token="--control-height-lg"></span></td></tr>
-          <tr><td>Shimmer loop</td><td><code>--duration-loop</code>, <code>--ease-standard</code></td><td colspan="2"><span data-token="--duration-loop"></span></td></tr>
+          <tr><td>Radius: text and title / rect / pill</td><td><code>--radius-sm</code> / <code>--radius-md</code> / <code>--radius-full</code></td><td colspan="2"><span data-token="--radius-sm"></span> / <span data-token="--radius-md"></span> / <span data-token="--radius-full"></span></td></tr>
+          <tr><td>Card media radius</td><td><code>--radius-lg</code> (inherited)</td><td colspan="2"><span data-token="--radius-lg"></span></td></tr>
+          <tr><td>Admin row Edit placeholder</td><td><code>--space-20</code> × <code>--target-comfortable</code> / <code>--control-height-sm</code></td><td colspan="2"><span data-token="--space-20"></span> × <span data-token="--target-comfortable"></span> / <span data-token="--control-height-sm"></span></td></tr>
+          <tr><td>Shimmer loop</td><td><code>--duration-loop</code>, <code>--ease-standard</code></td><td colspan="2"><span data-token="--duration-loop"></span> · <span data-token="--ease-standard"></span></td></tr>
         </tbody>
       </table></div>
     </section>
 
     <section class="ds-section" id="code"><h2><a href="#code">Code</a></h2>
-      <pre><code>&lt;p class="visually-hidden" role="status"&gt;Loading the review queue&lt;/p&gt;
-&lt;ul class="queue" aria-busy="true"&gt;
-  &lt;li class="queue-item queue-item--stack" aria-hidden="true"&gt;
-    &lt;span class="photo"&gt;&lt;span class="skeleton skeleton--circle"&gt;&lt;/span&gt;&lt;/span&gt;
-    &lt;span class="skeleton skeleton--text" style="width: 60%;"&gt;&lt;/span&gt;
-    &lt;span class="skeleton skeleton--text" style="width: 30%;"&gt;&lt;/span&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;</code></pre>
+      <pre><code>&lt;section class="browse__results" aria-labelledby="results-title" aria-busy="true"&gt;
+  &lt;p class="result-count" role="status"&gt;Loading studios…&lt;/p&gt;
+  &lt;ul class="location-grid" aria-hidden="true"&gt;
+    &lt;li class="location-card location-card--skeleton"&gt;…&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/section&gt;</code></pre>
       <div class="ds-table-wrap"><table class="ds-table"><thead><tr><th scope="col">Class / attribute</th><th scope="col">Effect</th></tr></thead><tbody>
-        <tr><td><code>.skeleton</code></td><td>Base block with shimmer; at least 1em high.</td></tr>
-        <tr><td><code>.skeleton--text</code> <code>--title</code> <code>--circle</code> <code>--rect</code></td><td>Shape: one text line, a heading line, a circle, a rounded block.</td></tr>
-        <tr><td><code>.photo &gt; .skeleton</code></td><td>Fills the round photo box exactly.</td></tr>
-        <tr><td><code>.caterer-card--skeleton</code></td><td>Listing card: circle at card size, 9rem and 6rem lines, centred.</td></tr>
-        <tr><td><code>.inbox-skeleton-row</code></td><td>Inbox row grid with a 48px circle.</td></tr>
-        <tr><td><code>.admin-row--skeleton</code> / <code>.edit-row--skeleton</code> / <code>.photo-tile--skeleton</code></td><td>Settings row, menu row and photo tile line widths.</td></tr>
-        <tr><td><code>aria-hidden="true"</code></td><td>Required on every skeleton item or row.</td></tr>
-        <tr><td><code>aria-busy="true"</code> + <code>role="status"</code> text</td><td>Required on the loading container / beside it.</td></tr>
+        <tr><td><code>.skeleton</code></td><td>Block, stone gradient, shimmer, <code>--radius-sm</code>, at least 1em high, never wider than its box.</td></tr>
+        <tr><td><code>.skeleton--text</code> <code>--title</code> <code>--rect</code> <code>--pill</code></td><td>Shapes; see Sizes.</td></tr>
+        <tr><td><code>.location-card--skeleton</code></td><td>On a <code>.location-card</code> or <code>.map-list-item</code>: media rect fills the photo box, title 70%, text 50%.</td></tr>
+        <tr><td><code>.admin-row--skeleton</code></td><td>On an <code>.admin-row</code>: title 40%, text 25%, rect sized like the Edit button.</td></tr>
+        <tr><td><code>aria-hidden="true"</code></td><td>On the list or layout holding the placeholders.</td></tr>
+        <tr><td><code>aria-busy="true"</code></td><td>On the region being loaded; remove when content arrives.</td></tr>
+        <tr><td><code>role="status"</code></td><td>One message per region.</td></tr>
       </tbody></table></div>
     </section>
 
     <section class="ds-section" id="sources"><h2><a href="#sources">Sources</a></h2>
       <p>Extracted from these mocks:</p>
       <ul>
-        <li>pages/caterers/loading (card grid, result count, 300ms rule)</li>
-        <li>pages/inbox/loading (inbox rows, thread placeholder)</li>
-        <li>pages/admin-queue/loading and pages/admin-caterers/loading (queue rows)</li>
-        <li>pages/admin-cuisines/loading and pages/admin-operators/loading (admin rows)</li>
-        <li>pages/admin-audit/loading (table)</li>
-        <li>pages/verify-email/loading and pages/profile-photos/loading</li>
+        <li><a href="../../mocks/pages/studios/loading.html">pages/studios/loading</a> and <a href="../../mocks/pages/spots/loading.html">pages/spots/loading</a>: six <code>.location-card--skeleton</code> cards, busy results, "Loading studios…" / "Loading spots…" (L2-026.1).</li>
+        <li><a href="../../mocks/pages/map/loading.html">pages/map/loading</a>: map list rows and the map area.</li>
+        <li><a href="../../mocks/pages/admin-dashboard/loading.html">pages/admin-dashboard/loading</a>: skeleton stat tiles and <code>.admin-row--skeleton</code> rows.</li>
+        <li><a href="../../mocks/pages/admin-studios/loading.html">pages/admin-studios/loading</a>, <a href="../../mocks/pages/admin-spots/loading.html">pages/admin-spots/loading</a> and <a href="../../mocks/pages/admin-guides/loading.html">pages/admin-guides/loading</a>: skeleton table rows.</li>
+        <li><a href="../../mocks/pages/studio-editor/loading.html">pages/studio-editor/loading</a>, <a href="../../mocks/pages/spot-editor/loading.html">pages/spot-editor/loading</a> and <a href="../../mocks/pages/guide-editor/loading.html">pages/guide-editor/loading</a>: editor skeletons with hidden "Loading" words.</li>
       </ul>
-      <p>Drift fixed during extraction: the cuisines, operators and breach-record loading mocks put <code>aria-label="Loading …"</code> on the busy list and left the skeleton rows exposed; rows are now <code>aria-hidden</code> with one status message. The admin-caterers subtitle skeleton lacked <code>aria-hidden</code>. Several mocks stretched circles with inline <code>width: 100%; height: 100%</code>; <code>.photo &gt; .skeleton</code> now does that. Status messages varied between a visible subtitle, a hidden paragraph and a hidden span inside the subtitle; one hidden <code>role="status"</code> paragraph per region is the pattern (the listing keeps its result-count live region). The kit's shimmer used a literal 1.4s; it reads <code>--duration-loop</code>.</p>
+      <p>Drift found during extraction, documented here and left in the mocks for their owner: the map list rows repeat the card skeleton widths with inline styles; the system adds <code>location-card--skeleton</code> to <code>.map-list-item</code>, which gives the same result with no new CSS. The dashboard's Edit placeholder is <code>--rect</code> (rounded corners) while the real Edit button and every other button placeholder are pills. The studio and spot lists mark the status <code>role="status" aria-live="polite"</code>, the admin lists <code>role="status"</code> alone; both work, <code>role="status"</code> is enough. <code>.skeleton--circle</code> is still in the stylesheet with no ShotThere use.</p>
     </section>
 
-    <footer class="ds-footer"><span>ShotThere design system · extracted from docs/mocks on 10 October 2026</span><a href="#top">Back to top</a></footer>
+    <footer class="ds-footer"><span>ShotThere design system · extracted from <a href="../../mocks/index.html">docs/mocks</a> on 13 October 2026</span><a href="#top">Back to top</a></footer>
   </main>
 </div>
 <script src="../assets/ds.js"></script>

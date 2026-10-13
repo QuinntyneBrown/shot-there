@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Error page — ShotThere design system</title>
-<meta name="description" content="ShotThere system pages: not found, no access, server error with reference, rate limited, offline and maintenance, keeping the site header.">
+<meta name="description" content="ShotThere error pages: the branded 404 for unknown and draft URLs and the 500 with a reference code, each with a way home, under the normal site header, in both themes.">
 <link rel="stylesheet" href="../tokens/tokens.css">
 <link rel="stylesheet" href="../assets/components.css">
 <link rel="stylesheet" href="../assets/ds.css">
@@ -33,34 +33,57 @@
       <li><a href="../components/icon-button.html">Icon button</a></li>
       <li><a href="../components/button-group.html">Button group</a></li>
       <li><a href="../components/link.html">Link</a></li>
+      <li><a href="../components/compare-bar.html">Compare toggle and bar</a></li>
     </ul></details>
     <details open><summary>Inputs</summary><ul>
       <li><a href="../components/form-field.html">Form field</a></li>
       <li><a href="../components/text-field.html">Text field</a></li>
       <li><a href="../components/textarea.html">Textarea</a></li>
       <li><a href="../components/select.html">Select</a></li>
+      <li><a href="../components/combobox.html">Combobox</a></li>
       <li><a href="../components/checkbox.html">Checkbox</a></li>
       <li><a href="../components/radio-group.html">Radio group</a></li>
       <li><a href="../components/file-upload.html">File upload</a></li>
       <li><a href="../components/form-layout.html">Form layout</a></li>
+      <li><a href="../components/signup.html">Email signup</a></li>
     </ul></details>
     <details open><summary>Navigation</summary><ul>
       <li><a href="../components/skip-link.html">Skip link</a></li>
       <li><a href="../components/site-header.html">Site header</a></li>
       <li><a href="../components/footer.html">Footer</a></li>
+      <li><a href="../components/breadcrumb.html">Breadcrumb</a></li>
+      <li><a href="../components/filter.html">Filters</a></li>
     </ul></details>
     <details open><summary>Containers and overlays</summary><ul>
       <li><a href="../components/container.html">Container and grid</a></li>
+      <li><a href="../components/review-layout.html">Review layout</a></li>
+      <li><a href="../components/editor-layout.html">Editor layout</a></li>
       <li><a href="../components/card.html">Card</a></li>
       <li><a href="../components/dialog.html">Dialog</a></li>
       <li><a href="../components/sheet.html">Sheet and drawer</a></li>
+      <li><a href="../components/popover.html">Popover</a></li>
+      <li><a href="../components/lightbox.html">Lightbox</a></li>
       <li><a href="../components/divider.html">Divider</a></li>
     </ul></details>
     <details open><summary>Data display</summary><ul>
+      <li><a href="../components/location-card.html">Location card</a></li>
       <li><a href="../components/table.html">Table</a></li>
+      <li><a href="../components/compare-table.html">Comparison table</a></li>
+      <li><a href="../components/list.html">List rows</a></li>
       <li><a href="../components/description-list.html">Description list</a></li>
+      <li><a href="../components/price-block.html">Price block</a></li>
+      <li><a href="../components/score.html">Score and pips</a></li>
+      <li><a href="../components/shot-grid.html">Shot grid</a></li>
+      <li><a href="../components/video-poster.html">Episode poster</a></li>
+      <li><a href="../components/map.html">Map</a></li>
+      <li><a href="../components/guide-entry.html">Guide entry</a></li>
+      <li><a href="../components/stat-tile.html">Stat tile</a></li>
+      <li><a href="../components/image-manager.html">Image manager</a></li>
+      <li><a href="../components/disclosure.html">Disclosure</a></li>
       <li><a href="../components/badge.html">Badge</a></li>
+      <li><a href="../components/status-label.html">Status label</a></li>
       <li><a href="../components/chip.html">Chip</a></li>
+      <li><a href="../components/tag.html">Tag</a></li>
     </ul></details>
     <details open><summary>Feedback</summary><ul>
       <li><a href="../components/inline-message.html">Inline message</a></li>
@@ -88,228 +111,231 @@
     <header class="ds-header">
       <p class="ds-kicker">Component · Feedback</p>
       <h1>Error page</h1>
-      <p class="ds-lead">When a whole page can’t be shown — it doesn’t exist, it’s closed to this account, the server failed, ShotThere is down for maintenance — the system page says so plainly under the normal header, with three round food photos and one way forward.</p>
-      <div class="ds-meta"><span class="ds-pill ds-pill--ok">WCAG 2.2 AA</span><span class="ds-pill">Status: stable</span><span class="ds-pill"><code>.system-page</code></span></div>
+      <p class="ds-lead">When a whole page can't be shown (the URL matches nothing, the location isn't published, or the server failed) the error page says so plainly under the normal site header and offers a way home (L2-083).</p>
+      <div class="ds-meta"><span class="ds-pill ds-pill--ok">WCAG 2.2 AA</span><span class="ds-pill">Status: stable</span><span class="ds-pill"><code>.system-page</code></span><span class="ds-pill"><code>.system-page__code</code></span><span class="ds-pill"><code>.system-page__actions</code></span></div>
       <ul class="ds-toc"><li><a href="#overview">Overview</a></li><li><a href="#anatomy">Anatomy</a></li><li><a href="#variants">Variants</a></li><li><a href="#sizes">Sizes</a></li><li><a href="#states">States</a></li><li><a href="#responsive">Responsive behaviour</a></li><li><a href="#theming">Theming</a></li><li><a href="#accessibility">Accessibility</a></li><li><a href="#content">Content</a></li><li><a href="#do-dont">Do and don't</a></li><li><a href="#tokens">Tokens</a></li><li><a href="#code">Code</a></li><li><a href="#sources">Sources</a></li></ul>
     </header>
 
-<section class="ds-section" id="overview"><h2><a href="#overview">Overview</a></h2>
-      <p>A system page replaces the whole <code>&lt;main&gt;</code> when the requested page cannot be served. The <a href="site-header.html">site header</a> and <a href="footer.html">footer</a> stay, so people are still clearly on ShotThere and can navigate away. The content is a centred column: a <code>.photo-row</code> of three round food photos (the brand's signature, used here so an error still feels like ShotThere), a display-size heading, one or two sentences, the recovery actions and a small code line.</p>
-      <p>Six pages, each served with the matching HTTP status:</p>
-      <div class="ds-table-wrap"><table class="ds-table">
-        <thead><tr><th scope="col">Page</th><th scope="col">HTTP</th><th scope="col">Heading</th><th scope="col">When</th></tr></thead>
-        <tbody>
-          <tr><td>Not found</td><td>404</td><td>Page not found</td><td>No such page, <b>and</b> a record exists but this visitor may not see it (a draft, a removed caterer, someone else's enquiry). The body is identical either way so nothing leaks (L2-034.1, L2-014.2).</td></tr>
-          <tr><td>No access</td><td>403</td><td>No access</td><td>A customer or caterer session reaches an operator-only area. Logged as a security event (L2-056.3).</td></tr>
-          <tr><td>Server error</td><td>500</td><td>Something went wrong</td><td>Any unhandled failure. Shows the request's correlation ID to quote (L2-089.4); never internal details.</td></tr>
-          <tr><td>Rate limited</td><td>429</td><td>Slow down a little</td><td>Too many requests from one network; sent with <code>Retry-After</code> (L2-082.1).</td></tr>
-          <tr><td>Offline</td><td>(service worker)</td><td>You’re offline</td><td>A page that is not in the cache is opened with no connection.</td></tr>
-          <tr><td>Maintenance</td><td>503</td><td>Back soon</td><td>The planned window (between 1:00 and 5:00 a.m. Toronto time), announced beforehand by the site banner (L2-088).</td></tr>
-        </tbody>
-      </table></div>
-      <p>Choose something else when only part of the page failed. A list that didn’t load is an <a href="empty-state.html">empty state</a> in error tone inside the page; a role-restricted section inside an app area the person can otherwise use (the audit log for a non-Admin operator) is a forbidden empty state, not a 403 page. Ongoing problems that still let people use the site are a <a href="alert.html">banner</a>.</p>
+    <section class="ds-section" id="overview"><h2><a href="#overview">Overview</a></h2>
+      <p>ShotThere has two error pages, both inside the public site header and footer so the visitor can still navigate:</p>
+      <ul>
+        <li><b>Not found</b> (HTTP 404): any URL that matches no route, and any studio, spot or guide that is a draft, so a draft can't be found by guessing its slug (L2-001, L2-083.1). Links to the home page and the studio list.</li>
+        <li><b>Something went wrong</b> (HTTP 500): an unhandled server error while rendering. Shows a reference (the request's correlation ID from the logs) and never a stack trace or internal detail (L2-083.2, L2-085).</li>
+      </ul>
+      <p>Choose something else when:</p>
+      <ul>
+        <li>Part of the page can still be shown: a compare link with one unknown studio keeps the comparison of the other two and says so in an info <a href="alert.html">alert</a> (<a href="../../mocks/pages/compare/unknown-slug.html">compare/unknown-slug</a>).</li>
+        <li>A list or map's data didn't arrive but the page did: the error <a href="empty-state.html">empty state</a> with Try again.</li>
+        <li>An admin record can't be opened: the editor's error empty state ("We couldn't open this studio"), which keeps the admin header.</li>
+        <li>Sign-in is rate-limited (HTTP 429): a warning alert on the sign-in form ("Too many sign-in attempts. Wait 15 minutes, then try again."), not an error page (L2-050).</li>
+      </ul>
     </section>
 
     <section class="ds-section" id="anatomy"><h2><a href="#anatomy">Anatomy</a></h2>
       <div class="ds-anatomy">
-        <figure class="ds-anatomy__figure" style="padding: var(--space-4);">
-          <div class="ds-frame ds-frame--short" style="width: 100%;">
-            <header class="site-header">ShotThere<div class="site-nav">CaterersSign in</div></header>
-            <div class="system-page" style="padding-block: var(--space-8);">
-              <div class="photo-row" aria-hidden="true"><span class="photo"><img src="../assets/img/demerara-kitchen.jpg" alt="" width="72" height="72"></span><span class="photo"><img src="../assets/img/ti-kay.jpg" alt="" width="104" height="104"></span><span class="photo"><img src="../assets/img/sugar-dumplin.jpg" alt="" width="72" height="72"></span></div>
-              <p style="font: var(--text-display);">Page not found</p>
-              <p class="prose">We couldn’t find that page. It may have moved, or the caterer may no longer be listed.</p>
-              <div class="system-page__actions">Browse caterers</div>
-              <p class="system-page__code">Error 404</p>
+        <figure class="ds-anatomy__figure">
+          <div class="system-page" style="padding-block: var(--space-4);">
+            <p class="system-page__code">Error 404</p>
+            <p style="font: var(--text-display);">We couldn't find that page</p>
+            <p>It may have been renamed, or the location isn't published.</p>
+            <div class="system-page__actions">
+              <a class="btn btn--primary" href="../../mocks/pages/home/default.html">Go to the home page</a>
+              <a class="btn" href="../../mocks/pages/studios/default.html">Browse studios</a>
             </div>
           </div>
-          <span class="ds-callout" style="left: 6%; top: 6%;" aria-hidden="true">1</span>
-          <span class="ds-callout" style="left: 34%; top: 22%;" aria-hidden="true">2</span>
-          <span class="ds-callout" style="left: 20%; top: 46%;" aria-hidden="true">3</span>
-          <span class="ds-callout" style="left: 14%; top: 60%;" aria-hidden="true">4</span>
-          <span class="ds-callout" style="left: 30%; top: 76%;" aria-hidden="true">5</span>
-          <span class="ds-callout" style="left: 38%; top: 90%;" aria-hidden="true">6</span>
+          <span class="ds-callout" style="left: 40%; top: 8%;" aria-hidden="true">1</span>
+          <span class="ds-callout" style="left: 6%; top: 30%;" aria-hidden="true">2</span>
+          <span class="ds-callout" style="left: 10%; top: 62%;" aria-hidden="true">3</span>
+          <span class="ds-callout" style="left: 16%; top: 84%;" aria-hidden="true">4</span>
         </figure>
         <ol class="ds-anatomy__list">
-          <li><div><b>Site header</b><small>The normal header for the visitor's role (public, customer, caterer "for caterers", operator "Operator"), so navigation still works.</small></div></li>
-          <li><div><b>Photo row</b><small>Three round food photos, the middle one larger, <code>aria-hidden</code>; <code>--space-6</code> below. Different photos per page.</small></div></li>
-          <li><div><b>Heading</b><small>The page's <code>&lt;h1&gt;</code> at <code>--text-display</code>: two or three plain words.</small></div></li>
-          <li><div><b>Explanation</b><small><code>.prose</code> body-large: what happened, whose fault, what to do.</small></div></li>
-          <li><div><b>Actions</b><small><code>.system-page__actions</code>: one large primary, an optional large secondary, centred and wrapping.</small></div></li>
-          <li><div><b>Code line</b><small><code>.system-page__code</code>: "Error 404", a reference with Copy, or the maintenance window, in <code>--color-fg-subtle</code>.</small></div></li>
+          <li><div><b>Code line</b><small><code>.system-page__code</code>, small, <code>--color-fg-subtle</code>: "Error 404" above the heading, or "Reference 7f3a-91c2" below the text on a 500.</small></div></li>
+          <li><div><b>Heading</b><small>The page's only <code>h1</code>, <code>--text-display</code> (48px on phones, 64px from 62rem). Says what happened. Shown as a paragraph here because this page already has its <code>h1</code>.</small></div></li>
+          <li><div><b>Text</b><small>One paragraph of why and what to do, in body text.</small></div></li>
+          <li><div><b>Actions</b><small><code>.system-page__actions</code>: a primary and a secondary button-link, centred and wrapping.</small></div></li>
         </ol>
       </div>
     </section>
 
     <section class="ds-section" id="variants"><h2><a href="#variants">Variants</a></h2>
-      <p>All six pages, as they render at phone width (live mocks, light and dark alternating).</p>
-      <p class="ds-note">Mock previews are not included in this copy; the ShotThere mocks will replace them.</p>
-
-      <h3>Server error with reference</h3>
-      <p>The 500 page is the only one with two recovery paths and a copyable reference: the correlation ID of the failed request, which support can search for.</p>
+      <h3>Not found (404)</h3>
       <div class="ds-example">
-        <div class="ds-example__canvas" style="justify-content: center;">
-          <div class="system-page" style="padding-block: var(--space-6);">
-            <div class="photo-row" aria-hidden="true"><span class="photo"><img src="../assets/img/sunday-pot.jpg" alt="" width="72" height="72"></span><span class="photo"><img src="../assets/img/pelau-house.jpg" alt="" width="104" height="104"></span><span class="photo"><img src="../assets/img/scotch-bonnet-social.jpg" alt="" width="72" height="72"></span></div>
-            <p style="font: var(--text-display);">Something went wrong</p>
-            <p class="prose">That one’s on us, not you. Try again in a moment. If it keeps happening, email help@sweethand.example and quote the reference below.</p>
-            <div class="system-page__actions"><button class="btn btn--primary btn--lg" type="button"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.3-5.7M20 4v5h-5"/></svg>Try again</button>Browse caterers</div>
-            <p class="system-page__code">Reference <code>4b7e9c21-0d3a-4f6e-9a41-2c5d8e7f1a90</code> <button class="btn btn--link btn--sm" type="button" aria-label="Copy reference">Copy</button></p>
+        <div class="ds-example__canvas ds-example__canvas--canvas" style="justify-content: center;">
+          <div class="system-page">
+            <p class="system-page__code">Error 404</p>
+            <p style="font: var(--text-display);">We couldn't find that page</p>
+            <p>It may have been renamed, or the location isn't published.</p>
+            <div class="system-page__actions">
+              <a class="btn btn--primary" href="../../mocks/pages/home/default.html">Go to the home page</a>
+              <a class="btn" href="../../mocks/pages/studios/default.html">Browse studios</a>
+            </div>
           </div>
         </div>
-        <div class="ds-example__caption"><span>500. The heading is an <code>&lt;h1&gt;</code> in the product; shown as display text here because this page already has its <code>h1</code>.</span></div>
-        <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;main id="main"&gt;
-  &lt;div class="container"&gt;&lt;div class="system-page"&gt;
-    &lt;div class="photo-row" aria-hidden="true"&gt;…three .photo…&lt;/div&gt;
-    &lt;h1&gt;Something went wrong&lt;/h1&gt;
-    &lt;p class="prose"&gt;That one’s on us, not you. Try again in a moment. If it keeps happening, email help@sweethand.example and quote the reference below.&lt;/p&gt;
+        <div class="ds-example__caption"><span>The same page for <code>/studios/parkdale-loft</code> (no such studio) and <code>/studios/corktown-garage-studio</code> (a draft): the copy doesn't say which.</span></div>
+        <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;main id="main" class="container" tabindex="-1"&gt;
+  &lt;div class="system-page"&gt;
+    &lt;p class="system-page__code"&gt;Error 404&lt;/p&gt;
+    &lt;h1&gt;We couldn't find that page&lt;/h1&gt;
+    &lt;p&gt;It may have been renamed, or the location isn't published.&lt;/p&gt;
     &lt;div class="system-page__actions"&gt;
-      &lt;button class="btn btn--primary btn--lg" type="button"&gt;…Try again&lt;/button&gt;
-      &lt;a class="btn btn--lg" href="/caterers"&gt;Browse caterers&lt;/a&gt;
+      &lt;a class="btn btn--primary" href="/"&gt;Go to the home page&lt;/a&gt;
+      &lt;a class="btn" href="/studios"&gt;Browse studios&lt;/a&gt;
     &lt;/div&gt;
-    &lt;p class="system-page__code"&gt;Reference &lt;code&gt;4b7e9c21-0d3a-4f6e-9a41-2c5d8e7f1a90&lt;/code&gt;
-      &lt;button class="btn btn--link btn--sm" type="button" aria-label="Copy reference"&gt;Copy&lt;/button&gt;&lt;/p&gt;
-  &lt;/div&gt;&lt;/div&gt;
+  &lt;/div&gt;
 &lt;/main&gt;</code></pre></details>
       </div>
 
-      <h3>Action per page</h3>
-      <div class="ds-table-wrap"><table class="ds-table">
-        <thead><tr><th scope="col">Page</th><th scope="col">Primary</th><th scope="col">Secondary</th><th scope="col">Code line</th></tr></thead>
-        <tbody>
-          <tr><td>Not found</td><td>Browse caterers (link)</td><td>—</td><td>Error 404</td></tr>
-          <tr><td>No access</td><td>Go to ShotThere (link)</td><td>Sign in with another account</td><td>Error 403</td></tr>
-          <tr><td>Server error</td><td>Try again (reloads)</td><td>Browse caterers</td><td>Reference + Copy</td></tr>
-          <tr><td>Rate limited</td><td>Try again in 1 minute (disabled until <code>Retry-After</code> passes)</td><td>—</td><td>Error 429</td></tr>
-          <tr><td>Offline</td><td>Try again</td><td>A recently opened page from the cache, by name ("Pelau House (saved)")</td><td>—</td></tr>
-          <tr><td>Maintenance</td><td>Check again</td><td>—</td><td>The window: "Sunday 11 October 2026 · 1:00 to 3:00 a.m."</td></tr>
-        </tbody>
-      </table></div>
+      <h3>Something went wrong (500)</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--canvas" style="justify-content: center;">
+          <div class="system-page">
+            <p style="font: var(--text-display);">Something went wrong on our side</p>
+            <p>Try again in a minute. If it keeps happening, tell us at <a href="mailto:hello@shotthere.ca">hello@shotthere.ca</a> and quote this reference.</p>
+            <p class="system-page__code">Reference 7f3a-91c2</p>
+            <div class="system-page__actions">
+              <a class="btn btn--primary" href="../../mocks/pages/server-error/default.html">Try again</a>
+              <a class="btn" href="../../mocks/pages/home/default.html">Go to the home page</a>
+            </div>
+          </div>
+        </div>
+        <div class="ds-example__caption"><span>The reference sits after the sentence that asks for it. Try again reloads the same URL.</span></div>
+        <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;div class="system-page"&gt;
+  &lt;h1&gt;Something went wrong on our side&lt;/h1&gt;
+  &lt;p&gt;Try again in a minute. If it keeps happening, tell us at
+     &lt;a href="mailto:hello@shotthere.ca"&gt;hello@shotthere.ca&lt;/a&gt; and quote this reference.&lt;/p&gt;
+  &lt;p class="system-page__code"&gt;Reference 7f3a-91c2&lt;/p&gt;
+  &lt;div class="system-page__actions"&gt;
+    &lt;a class="btn btn--primary" href=""&gt;Try again&lt;/a&gt;
+    &lt;a class="btn" href="/"&gt;Go to the home page&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre></details>
+      </div>
+
+      <h3>Not an error page</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--stack" style="flex-wrap: nowrap; max-width: 40rem;">
+          <div class="alert alert--info" role="status">
+            <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h0"/></svg>
+            <div class="alert__body"><p>One studio in this link couldn't be found, so we're comparing the other two.</p></div>
+          </div>
+          <div class="alert alert--warning">
+            <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 4 2.5 20h19z"/><path d="M12 10v4M12 17v.5"/></svg>
+            <div class="alert__body"><p class="alert__title">Too many sign-in attempts</p><p>Wait 15 minutes, then try again.</p></div>
+          </div>
+        </div>
+        <div class="ds-example__caption"><span>A compare link with one unknown slug keeps the page and compares The Junction Loft and Leslieville Daylight Studio; a rate-limited sign-in keeps the form, with Sign in disabled until the window ends.</span></div>
+      </div>
     </section>
 
-    <section class="ds-section" id="sizes" data-na="System pages have one size."><h2><a href="#sizes">Sizes</a></h2>
-      <p class="ds-na">System pages have one layout: a 34rem centred column with the display heading and large buttons. It adapts to the viewport (see Responsive) but has no size variants.</p>
+    <section class="ds-section" id="sizes" data-na="One size."><h2><a href="#sizes">Sizes</a></h2>
+      <p class="ds-na">One size: a centred column up to 34rem with 64px above (<code>--space-16</code>) and 32px below (<code>--space-8</code>). Only the heading's type steps up from 62rem, through <code>--font-size-5xl</code>.</p>
     </section>
 
     <section class="ds-section" id="states"><h2><a href="#states">States</a></h2>
-      <p>The page is static; its actions carry the states. The rate-limited and server-error pages have the interesting ones: a disabled-then-enabled retry and a busy retry. Forced with the real attributes where they exist.</p>
+      <p>The page is static; its actions are button-links and carry the interactive states. There is no disabled or busy state: both actions are plain links that load a page.</p>
       <div class="ds-matrix"><table>
-        <caption class="visually-hidden">System page action states</caption>
-        <thead><tr><th scope="col">Page</th><th scope="col">Default</th><th scope="col">Hover</th><th scope="col">Focus</th><th scope="col">Disabled</th><th scope="col">Busy</th></tr></thead>
+        <caption class="visually-hidden">Error page actions in each state</caption>
+        <thead><tr><th scope="col">Page</th><th scope="col">Default</th><th scope="col">Hover</th><th scope="col">Focus</th><th scope="col">Active</th><th scope="col">Disabled</th></tr></thead>
         <tbody>
-          <tr><th scope="row">Server error</th>
-            <td><button class="btn btn--primary btn--lg" type="button">Try again</button></td>
-            <td><button class="btn btn--primary btn--lg" type="button" data-state="hover">Try again</button></td>
-            <td><button class="btn btn--primary btn--lg" type="button" data-state="focus">Try again</button></td>
-            <td><span class="ds-na">Always available</span></td>
-            <td><button class="btn btn--primary btn--lg" type="button" aria-busy="true" aria-disabled="true">Try again</button></td>
+          <tr><th scope="row">404, primary</th>
+            <td><a class="btn btn--primary" href="../../mocks/pages/home/default.html">Go to the home page</a></td>
+            <td><a class="btn btn--primary" href="../../mocks/pages/home/default.html" data-state="hover">Go to the home page</a></td>
+            <td><a class="btn btn--primary" href="../../mocks/pages/home/default.html" data-state="focus">Go to the home page</a></td>
+            <td><a class="btn btn--primary" href="../../mocks/pages/home/default.html" data-state="active">Go to the home page</a></td>
+            <td><span class="ds-na">Never disabled</span></td>
           </tr>
-          <tr><th scope="row">Rate limited</th>
-            <td><button class="btn btn--primary btn--lg" type="button">Try again</button></td>
-            <td><button class="btn btn--primary btn--lg" type="button" data-state="hover">Try again</button></td>
-            <td><button class="btn btn--primary btn--lg" type="button" data-state="focus">Try again</button></td>
-            <td><button class="btn btn--primary btn--lg" type="button" aria-disabled="true" data-state="disabled">Try again in 1 minute</button></td>
-            <td><button class="btn btn--primary btn--lg" type="button" aria-busy="true" aria-disabled="true">Try again</button></td>
+          <tr><th scope="row">404, secondary</th>
+            <td><a class="btn" href="../../mocks/pages/studios/default.html">Browse studios</a></td>
+            <td><a class="btn" href="../../mocks/pages/studios/default.html" data-state="hover">Browse studios</a></td>
+            <td><a class="btn" href="../../mocks/pages/studios/default.html" data-state="focus">Browse studios</a></td>
+            <td><a class="btn" href="../../mocks/pages/studios/default.html" data-state="active">Browse studios</a></td>
+            <td><span class="ds-na">Never disabled</span></td>
           </tr>
-          <tr><th scope="row">Not found</th>
-            <td>Browse caterers</td>
-            <td>Browse caterers</td>
-            <td>Browse caterers</td>
-            <td><span class="ds-na">A link</span></td>
-            <td><span class="ds-na">A link</span></td>
-          </tr>
-          <tr><th scope="row">Reference copy</th>
-            <td><button class="btn btn--link btn--sm" type="button" aria-label="Copy reference">Copy</button></td>
-            <td><button class="btn btn--link btn--sm" type="button" aria-label="Copy reference" data-state="hover">Copy</button></td>
-            <td><button class="btn btn--link btn--sm" type="button" aria-label="Copy reference" data-state="focus">Copy</button></td>
-            <td><span class="ds-na">Always available</span></td>
-            <td><span class="inline-status inline-status--success" role="status">Copied</span></td>
+          <tr><th scope="row">500, primary</th>
+            <td><a class="btn btn--primary" href="../../mocks/pages/server-error/default.html">Try again</a></td>
+            <td><a class="btn btn--primary" href="../../mocks/pages/server-error/default.html" data-state="hover">Try again</a></td>
+            <td><a class="btn btn--primary" href="../../mocks/pages/server-error/default.html" data-state="focus">Try again</a></td>
+            <td><a class="btn btn--primary" href="../../mocks/pages/server-error/default.html" data-state="active">Try again</a></td>
+            <td><span class="ds-na">Never disabled</span></td>
           </tr>
         </tbody>
       </table></div>
       <h3>Both themes</h3>
       <div class="ds-themes">
         <div data-theme="light"><div class="system-page" style="padding-block: var(--space-4);">
-          <div class="photo-row" aria-hidden="true"><span class="photo"><img src="../assets/img/pelau-house.jpg" alt="" width="72" height="72"></span><span class="photo"><img src="../assets/img/black-cake-co.jpg" alt="" width="104" height="104"></span><span class="photo"><img src="../assets/img/ti-kay.jpg" alt="" width="72" height="72"></span></div>
-          <p style="font: var(--text-h1);">Back soon</p>
-          <p class="text-muted">Down for planned maintenance until 3:00 a.m. Toronto time. Your enquiries and messages are safe.</p>
-          <p class="system-page__code">Sunday 11 October 2026 · 1:00 to 3:00 a.m.</p>
+          <p class="system-page__code">Error 404</p>
+          <p style="font: var(--text-h1);">We couldn't find that page</p>
+          <p>It may have been renamed, or the location isn't published.</p>
+          <div class="system-page__actions"><a class="btn btn--primary" href="../../mocks/pages/home/default.html">Go to the home page</a><a class="btn" href="../../mocks/pages/studios/default.html">Browse studios</a></div>
         </div></div>
         <div data-theme="dark"><div class="system-page" style="padding-block: var(--space-4);">
-          <div class="photo-row" aria-hidden="true"><span class="photo"><img src="../assets/img/pelau-house.jpg" alt="" width="72" height="72"></span><span class="photo"><img src="../assets/img/black-cake-co.jpg" alt="" width="104" height="104"></span><span class="photo"><img src="../assets/img/ti-kay.jpg" alt="" width="72" height="72"></span></div>
-          <p style="font: var(--text-h1);">Back soon</p>
-          <p class="text-muted">Down for planned maintenance until 3:00 a.m. Toronto time. Your enquiries and messages are safe.</p>
-          <p class="system-page__code">Sunday 11 October 2026 · 1:00 to 3:00 a.m.</p>
+          <p style="font: var(--text-h1);">Something went wrong on our side</p>
+          <p>Try again in a minute. If it keeps happening, tell us at <a href="mailto:hello@shotthere.ca">hello@shotthere.ca</a> and quote this reference.</p>
+          <p class="system-page__code">Reference 7f3a-91c2</p>
+          <div class="system-page__actions"><a class="btn btn--primary" href="../../mocks/pages/server-error/default.html">Try again</a><a class="btn" href="../../mocks/pages/home/default.html">Go to the home page</a></div>
         </div></div>
       </div>
-      <ul>
-        <li><b>Rate limited</b>: the retry starts disabled (<code>aria-disabled="true"</code>, so it stays focusable and can explain itself) with the wait in its label, "Try again in 1 minute". It does not count down every second. When <code>Retry-After</code> passes, the label becomes "Try again", the button enables and a polite status says "You can try again now".</li>
-        <li><b>Offline</b>: the page retries by itself when the connection returns and reloads the requested URL.</li>
-        <li><b>Maintenance</b>: Check again reloads; when the window ends early the page reloads by itself.</li>
-        <li><b>Copied</b>: Copy becomes a "Copied" status for 2 seconds, announced politely.</li>
-      </ul>
+      <p>The theme previews set the heading at h1 size so both fit side by side; the page itself uses display size.</p>
     </section>
 
     <section class="ds-section" id="responsive"><h2><a href="#responsive">Responsive behaviour</a></h2>
       <ul>
-        <li><b>All sizes:</b> the column is <code>max-width: 34rem</code>, centred, with the container's <code>--layout-margin</code> on each side. Top padding is <code>--space-16</code>, bottom <code>--space-8</code>, so the photos sit well below the header on every device.</li>
-        <li><b>Below 36rem (xs):</b> the display heading is 48px (<code>--font-size-5xl</code> steps up to 64px only from 62rem), the photo row is 272px wide and fits 320px, and two large buttons stack when they cannot share a line; the primary stays first.</li>
-        <li><b>From 48rem (md):</b> the header shows its full navigation again; the system page itself does not change.</li>
-        <li>The 500 reference is a 36-character UUID; it wraps at its hyphens rather than causing sideways scroll at 320px; Copy follows on the next line when it does not fit.</li>
+        <li>The column is centred in <code>.container</code>, so it keeps the page margins (16px on phones) and stops at 34rem on wide screens.</li>
+        <li>The heading is 48px on phones and 64px from 62rem, and wraps; at 360px "We couldn't find that page" is two lines with no horizontal scroll (L2-083.3).</li>
+        <li>The two actions sit side by side when they fit and stack, centred, when they don't.</li>
+        <li>The reference code never wraps mid-code; it is short by design.</li>
       </ul>
     </section>
 
     <section class="ds-section" id="theming"><h2><a href="#theming">Theming</a></h2>
-      <p>System pages read the page tokens: <code>--color-bg-canvas</code>, <code>--color-fg-default</code> for the heading, <code>--color-fg-default</code> at <code>--text-body-lg</code> for the explanation, <code>--color-fg-subtle</code> for the code line and <code>--color-bg-photo</code> behind photos that are still loading. There are no component tokens. Buttons follow the <a href="button.html">button</a> theming: in dark the ink primary becomes light stone.</p>
-      <p>Photos are photographs and never get tinted or filtered by a theme. Choose a different trio per page so each error looks distinct in screenshots and support tickets.</p>
+      <p>The page uses semantic roles only: heading and text in <code>--color-fg-default</code>, the code line in <code>--color-fg-subtle</code>, the mail link in <code>--color-fg-link</code>, and the button tokens. It sits on <code>--color-bg-canvas</code>. No illustration or photo, so nothing has to be redrawn for dark.</p>
     </section>
 
     <section class="ds-section" id="accessibility"><h2><a href="#accessibility">Accessibility</a></h2>
       <h3>Role and pattern</h3>
-      <p>An ordinary document: <code>&lt;header&gt;</code>, <code>&lt;main id="main"&gt;</code> with one <code>&lt;h1&gt;</code>, <code>&lt;footer&gt;</code>, and a skip link. No widget role. The <code>&lt;title&gt;</code> starts with the problem: "Page not found — ShotThere", "Something went wrong — ShotThere" (WCAG 2.4.2). The HTTP status is real, so assistive tech, browsers and search engines all get the same answer.</p>
+      <p>A normal document: the site header's <code>banner</code> and navigation, <code>main</code> holding the <code>h1</code>, and the footer. No live region and no <code>role="alert"</code>: the page loads as a page, and the document title names the error from the central page titles. The HTTP status (404 or 500) is the machine-readable part (L2-083).</p>
       <h3>Keyboard</h3>
       <div class="ds-table-wrap"><table class="ds-table ds-keys"><thead><tr><th scope="col">Key</th><th scope="col">Action</th></tr></thead><tbody>
-        <tr><td><kbd>Tab</kbd></td><td>Skip link, header links, then the primary action, the secondary action, Copy, then the footer.</td></tr>
-        <tr><td><kbd>Enter</kbd> / <kbd>Space</kbd></td><td>Activates the focused action.</td></tr>
+        <tr><td><kbd>Tab</kbd></td><td>Skip link, header navigation, then the mail link (on a 500), the primary action and the secondary action.</td></tr>
+        <tr><td><kbd>Enter</kbd></td><td>Follows the focused link.</td></tr>
       </tbody></table></div>
       <h3>Focus</h3>
-      <p>On a full page load focus starts at the top as usual. When the app shows a system page after a client-side navigation, focus moves to the <code>&lt;h1&gt;</code> (with <code>tabindex="-1"</code>) so screen readers start at the explanation.</p>
+      <p>A full page load starts at the top as usual. When the app routes to the error page on the client, focus moves to <code>main</code> (<code>tabindex="-1"</code>) so the heading is read next.</p>
       <h3>Labelling</h3>
-      <p>The photo row is <code>aria-hidden</code> with <code>alt=""</code> photos: they are decoration here. Copy names what it copies (<code>aria-label="Copy reference"</code>). The reference is in <code>&lt;code&gt;</code>. Buttons with icons keep their text ("Try again").</p>
+      <p>The <code>h1</code> is the message. Action labels say where they go ("Go to the home page", "Browse studios"), and Try again reloads the same URL. The reference code is plain text so it can be selected and copied.</p>
       <h3>Contrast</h3>
-      <div class="ds-example__canvas ds-example__canvas--stack" style="padding: 0; gap: var(--space-2);">
-        <div class="ds-pair"><span>Heading and explanation on page</span><span class="ds-pair__ratio" data-contrast="--color-fg-default|--color-bg-canvas" data-min="4.5"></span></div>
-        <div class="ds-pair"><span>Code line on page</span><span class="ds-pair__ratio" data-contrast="--color-fg-subtle|--color-bg-canvas" data-min="4.5"></span></div>
-        <div class="ds-pair"><span>Primary label</span><span class="ds-pair__ratio" data-contrast="--color-fg-on-action|--color-action" data-min="4.5"></span></div>
-        <div class="ds-pair"><span>Secondary button edge on page</span><span class="ds-pair__ratio" data-contrast="--color-border-strong|--color-bg-canvas" data-min="3"></span></div>
-        <div class="ds-pair"><span>Copy link on page</span><span class="ds-pair__ratio" data-contrast="--color-fg-link|--color-bg-canvas" data-min="4.5"></span></div>
+      <div class="ds-example__canvas ds-example__canvas--stack" style="flex-wrap: nowrap; padding: 0; gap: var(--space-2);">
+        <div class="ds-pair"><span>Heading and text on the page</span><span class="ds-pair__ratio" data-contrast="--color-fg-default|--color-bg-canvas" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Code line on the page</span><span class="ds-pair__ratio" data-contrast="--color-fg-subtle|--color-bg-canvas" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Mail link on the page</span><span class="ds-pair__ratio" data-contrast="--color-fg-link|--color-bg-canvas" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Primary action label</span><span class="ds-pair__ratio" data-contrast="--color-fg-on-action|--color-action" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Primary action edge on the page</span><span class="ds-pair__ratio" data-contrast="--color-action|--color-bg-canvas" data-min="3"></span></div>
+        <div class="ds-pair"><span>Secondary action edge on the page</span><span class="ds-pair__ratio" data-contrast="--color-border-strong|--color-bg-canvas" data-min="3"></span></div>
       </div>
       <h3>Motion</h3>
-      <p>None beyond the buttons' own transitions; photos do not zoom. The busy Try again spinner keeps turning under reduced motion because it is status.</p>
+      <p>None.</p>
       <h3>Touch</h3>
-      <p>Primary and secondary are large (52px). Copy is a small link button: 44px tall below 48rem, 36px from 48rem, set apart from the large buttons by the code line spacing.</p>
+      <p>Both actions are 44px tall with 12px between them; stacked on a phone they are easy to tell apart.</p>
     </section>
 
     <section class="ds-section" id="content"><h2><a href="#content">Content</a></h2>
       <ul>
-        <li><b>Heading: two or three plain words</b> about the situation, not the code: "Page not found", "No access", "Something went wrong", "Slow down a little", "You’re offline", "Back soon".</li>
-        <li><b>Explanation: what happened, whose fault, what to do</b>: "That one’s on us, not you. Try again in a moment." / "Your account can’t open this page. If you think it should, ask a ShotThere admin."</li>
-        <li><b>Reassure about data</b> where people might worry: "Your enquiries and messages are safe."; "enquiries can be sent once you’re back online".</li>
-        <li><b>Never confirm a hidden record exists</b>: the 404 says "the caterer may no longer be listed", which is true of a removed caterer and a page that never existed alike.</li>
-        <li><b>Never show internals</b>: no stack traces, server names or exception text; only the correlation ID.</li>
-        <li><b>Times are Toronto time and say so</b>: "until 3:00 a.m. Toronto time".</li>
-        <li>The code line is secondary: "Error 404", not "404 Not Found" as a heading.</li>
+        <li><b>Heading says what happened</b>, from the visitor's side: "We couldn't find that page", "Something went wrong on our side". The 500 takes the blame.</li>
+        <li><b>The 404 never reveals drafts</b>: "It may have been renamed, or the location isn't published." covers both an unknown slug and a draft.</li>
+        <li><b>The 500 says what to do</b>: try again in a minute, and how to report it, with a reference to quote.</li>
+        <li><b>Code line</b>: "Error 404"; "Reference" plus the correlation ID. No other technical detail.</li>
+        <li>No jokes, no illustrations, no exclamation marks.</li>
       </ul>
     </section>
 
     <section class="ds-section" id="do-dont"><h2><a href="#do-dont">Do and don't</a></h2>
       <div class="ds-dodont">
-        <figure class="ds-do"><div class="ds-example__canvas" style="justify-content: center;"><div class="system-page" style="padding-block: var(--space-2);"><p style="font: var(--text-h2);">Page not found</p><p class="text-muted">It may have moved, or the caterer may no longer be listed.</p><p class="system-page__code">Error 404</p></div></div><figcaption>Plain heading, the code as a quiet footnote, and the same words for a hidden record.</figcaption></figure>
-        <figure class="ds-dont"><div class="ds-example__canvas" style="justify-content: center;"><div class="system-page" style="padding-block: var(--space-2);"><p style="font: var(--text-h2);">404</p><p class="text-muted">This caterer has been removed by an operator.</p></div></div><figcaption>Don't lead with the number, and don't reveal that a hidden record exists.</figcaption></figure>
-        <figure class="ds-do"><div class="ds-example__canvas" style="justify-content: center;"><div class="system-page__actions" style="margin: 0;"><button class="btn btn--primary btn--lg" type="button" aria-disabled="true" data-state="disabled">Try again in 1 minute</button></div></div><figcaption>Rate limited: the retry says how long and enables itself.</figcaption></figure>
-        <figure class="ds-dont"><div class="ds-example__canvas" style="justify-content: center;"><div class="system-page__actions" style="margin: 0;"><button class="btn btn--primary btn--lg" type="button">Try again in 1 minute</button></div></div><figcaption>Don't leave it enabled with a wait in the label (the mock did); pressing it early just hits the limit again.</figcaption></figure>
-        <figure class="ds-do"><div class="ds-example__canvas" style="justify-content: center;"><p class="system-page__code">Reference <code>4b7e9c21-0d3a-4f6e-9a41-2c5d8e7f1a90</code> <button class="btn btn--link btn--sm" type="button" aria-label="Copy reference">Copy</button></p></div><figcaption>Give the correlation ID with a Copy button.</figcaption></figure>
-        <figure class="ds-dont"><div class="ds-example__canvas" style="justify-content: center;"><p class="system-page__code">NullReferenceException at EnquiryController.Send (line 214)</p></div><figcaption>Don't show exception text; it helps attackers, not customers.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas" style="justify-content: center;"><div class="system-page" style="padding-block: 0;"><p class="system-page__code">Error 404</p><p style="font: var(--text-h3);">We couldn't find that page</p><p>It may have been renamed, or the location isn't published.</p></div></div><figcaption>Answer a draft's URL with the same 404 as an unknown one.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas" style="justify-content: center;"><div class="system-page" style="padding-block: 0;"><p style="font: var(--text-h3);">Corktown Garage Studio is a draft</p><p>It will be published soon.</p></div></div><figcaption>Don't confirm that a draft exists; it leaks unpublished work to anyone guessing slugs (L2-001).</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas" style="justify-content: center;"><div class="system-page" style="padding-block: 0;"><p style="font: var(--text-h3);">Something went wrong on our side</p><p class="system-page__code">Reference 7f3a-91c2</p></div></div><figcaption>Give a reference the owner can find in the logs.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas" style="justify-content: center;"><div class="system-page" style="padding-block: 0;"><p style="font: var(--text-h3);">500 Internal Server Error</p><p class="system-page__code">TypeError: Cannot read properties of undefined (reading 'slug') at renderStudio</p></div></div><figcaption>Don't show status jargon or a stack trace (L2-083.2).</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--stack" style="flex-wrap: nowrap;"><div class="alert alert--info"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h0"/></svg><div class="alert__body"><p>One studio in this link couldn't be found, so we're comparing the other two.</p></div></div></div><figcaption>Keep the comparison when one slug is unknown, and say so.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas" style="justify-content: center;"><div class="system-page" style="padding-block: 0;"><p class="system-page__code">Error 404</p><p style="font: var(--text-h3);">We couldn't find that page</p></div></div><figcaption>Don't send a shared compare link to a 404 when two of its studios are still published.</figcaption></figure>
       </div>
     </section>
 
@@ -318,61 +344,51 @@
         <thead><tr><th scope="col">Part</th><th scope="col">Token</th><th scope="col">Light</th><th scope="col">Dark</th></tr></thead>
         <tbody>
           <tr><td>Page</td><td><code>--color-bg-canvas</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-bg-canvas" data-swatch></i><span data-token="--color-bg-canvas"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-bg-canvas" data-swatch></i><span data-token="--color-bg-canvas"></span></span></td></tr>
-          <tr><td>Heading, explanation</td><td><code>--color-fg-default</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-default" data-swatch></i><span data-token="--color-fg-default"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-default" data-swatch></i><span data-token="--color-fg-default"></span></span></td></tr>
-          <tr><td>Code line</td><td><code>--color-fg-subtle</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-subtle" data-swatch></i><span data-token="--color-fg-subtle"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-subtle" data-swatch></i><span data-token="--color-fg-subtle"></span></span></td></tr>
-          <tr><td>Photo placeholder</td><td><code>--color-bg-photo</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-bg-photo" data-swatch></i><span data-token="--color-bg-photo"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-bg-photo" data-swatch></i><span data-token="--color-bg-photo"></span></span></td></tr>
-          <tr><td>Heading font</td><td><code>--text-display</code></td><td colspan="2"><span data-token="--text-display"></span></td></tr>
-          <tr><td>Explanation font</td><td><code>--text-body-lg</code> (<code>.prose</code>)</td><td colspan="2"><span data-token="--text-body-lg"></span></td></tr>
-          <tr><td>Code line font</td><td><code>--text-body-sm</code></td><td colspan="2"><span data-token="--text-body-sm"></span></td></tr>
-          <tr><td>Padding top / bottom</td><td><code>--space-16</code> / <code>--space-8</code></td><td colspan="2"><span data-token="--space-16"></span> / <span data-token="--space-8"></span></td></tr>
-          <tr><td>Gap / photo row margin / actions margin</td><td><code>--space-4</code> / <code>--space-6</code> / <code>--space-4</code></td><td colspan="2"><span data-token="--space-4"></span> / <span data-token="--space-6"></span></td></tr>
-          <tr><td>Column width</td><td>34rem (literal in components.css)</td><td colspan="2">34rem</td></tr>
-          <tr><td>Side margin</td><td><code>--layout-margin</code></td><td colspan="2"><span data-token="--layout-margin"></span></td></tr>
+          <tr><td>Heading, text</td><td><code>--color-fg-default</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-default" data-swatch></i><span data-token="--color-fg-default"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-default" data-swatch></i><span data-token="--color-fg-default"></span></span></td></tr>
+          <tr><td>Code line</td><td><code>--color-fg-subtle</code>, <code>--text-body-sm</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-subtle" data-swatch></i><span data-token="--color-fg-subtle"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-subtle" data-swatch></i><span data-token="--color-fg-subtle"></span></span></td></tr>
+          <tr><td>Mail link</td><td><code>--color-fg-link</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-link" data-swatch></i><span data-token="--color-fg-link"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-link" data-swatch></i><span data-token="--color-fg-link"></span></span></td></tr>
+          <tr><td>Heading type</td><td><code>--text-display</code></td><td colspan="2"><span data-token="--text-display"></span></td></tr>
+          <tr><td>Column width</td><td>34rem (layout constant in <code>.system-page</code>)</td><td colspan="2">34rem</td></tr>
+          <tr><td>Space above / below</td><td><code>--space-16</code> / <code>--space-8</code></td><td colspan="2"><span data-token="--space-16"></span> / <span data-token="--space-8"></span></td></tr>
+          <tr><td>Gap / action gap</td><td><code>--space-4</code> / <code>--space-3</code></td><td colspan="2"><span data-token="--space-4"></span> / <span data-token="--space-3"></span></td></tr>
         </tbody>
       </table></div>
     </section>
 
     <section class="ds-section" id="code"><h2><a href="#code">Code</a></h2>
-      <pre><code>&lt;!-- HTTP/1.1 429 Too Many Requests · Retry-After: 60 --&gt;
-&lt;header class="site-header"&gt;…&lt;/header&gt;
-&lt;main id="main"&gt;
-  &lt;div class="container"&gt;&lt;div class="system-page"&gt;
-    &lt;div class="photo-row" aria-hidden="true"&gt;…&lt;/div&gt;
-    &lt;h1&gt;Slow down a little&lt;/h1&gt;
-    &lt;p class="prose"&gt;We’ve had a lot of requests from your network in the last minute. Wait a moment, then try again.&lt;/p&gt;
+      <pre><code>&lt;main id="main" class="container" tabindex="-1"&gt;
+  &lt;div class="system-page"&gt;
+    &lt;p class="system-page__code"&gt;Error 404&lt;/p&gt;
+    &lt;h1&gt;We couldn't find that page&lt;/h1&gt;
+    &lt;p&gt;It may have been renamed, or the location isn't published.&lt;/p&gt;
     &lt;div class="system-page__actions"&gt;
-      &lt;button class="btn btn--primary btn--lg" type="button" aria-disabled="true"&gt;…Try again in 1 minute&lt;/button&gt;
+      &lt;a class="btn btn--primary" href="/"&gt;Go to the home page&lt;/a&gt;
+      &lt;a class="btn" href="/studios"&gt;Browse studios&lt;/a&gt;
     &lt;/div&gt;
-    &lt;p class="visually-hidden" role="status"&gt;&lt;/p&gt;
-    &lt;p class="system-page__code"&gt;Error 429&lt;/p&gt;
-  &lt;/div&gt;&lt;/div&gt;
-&lt;/main&gt;
-&lt;footer class="site-footer"&gt;…&lt;/footer&gt;</code></pre>
+  &lt;/div&gt;
+&lt;/main&gt;</code></pre>
       <div class="ds-table-wrap"><table class="ds-table"><thead><tr><th scope="col">Class / attribute</th><th scope="col">Effect</th></tr></thead><tbody>
-        <tr><td><code>.system-page</code></td><td>Centred 34rem column, generous top padding; its <code>h1</code> is display size.</td></tr>
-        <tr><td><code>.system-page .photo-row</code></td><td>Three round photos with <code>--space-6</code> below.</td></tr>
-        <tr><td><code>.prose</code></td><td>Body-large explanation.</td></tr>
-        <tr><td><code>.system-page__actions</code></td><td>Centred, wrapping row of large buttons.</td></tr>
-        <tr><td><code>.system-page__code</code></td><td>Small subtle line: error code, reference, or maintenance window.</td></tr>
-        <tr><td><code>aria-disabled="true"</code></td><td>Rate-limited retry until <code>Retry-After</code> passes.</td></tr>
+        <tr><td><code>.system-page</code></td><td>Centred column up to 34rem, 16px gap, 64px above and 32px below.</td></tr>
+        <tr><td><code>.system-page h1</code></td><td>Display type.</td></tr>
+        <tr><td><code>.system-page__code</code></td><td>Small subtle line for "Error 404" or the reference.</td></tr>
+        <tr><td><code>.system-page__actions</code></td><td>Centred, wrapping row of button-links.</td></tr>
+        <tr><td><code>main tabindex="-1"</code></td><td>Lets client-side routing move focus to the content.</td></tr>
       </tbody></table></div>
     </section>
 
     <section class="ds-section" id="sources"><h2><a href="#sources">Sources</a></h2>
       <p>Extracted from these mocks:</p>
       <ul>
-        <li>pages/not-found/default</li>
-        <li>pages/forbidden/default</li>
-        <li>pages/server-error/default</li>
-        <li>pages/rate-limited/default</li>
-        <li>pages/offline/default</li>
-        <li>pages/maintenance/default</li>
-        <li>notifications/site-banner/info (the maintenance announcement)</li>
+        <li><a href="../../mocks/pages/not-found/default.html">pages/not-found/default</a>: 404 for unknown routes and drafts (L2-083.1, L2-001).</li>
+        <li><a href="../../mocks/pages/server-error/default.html">pages/server-error/default</a>: 500 with a reference and no internal detail (L2-083.2, L2-085).</li>
+        <li><a href="../../mocks/pages/compare/unknown-slug.html">pages/compare/unknown-slug</a>: why a partly bad URL is not an error page (L2-032.2).</li>
+        <li><a href="../../mocks/pages/sign-in/rate-limited.html">pages/sign-in/rate-limited</a>: why HTTP 429 on sign-in is an alert, not an error page (L2-050).</li>
+        <li><a href="../../mocks/pages/studio-editor/error.html">pages/studio-editor/error</a>: the admin "couldn't open" state, documented on <a href="empty-state.html">empty state</a>.</li>
       </ul>
-      <p>Drift fixed during extraction: all six mocks gave the three photos <code>width/height="104"</code> while the rendered row is 72 / 104 / 72px (the inbox and listing empty states set 72 / 104 / 72); the attributes now match the render. The rate-limited retry was enabled in the mock although its note says it "enables when the window resets"; it is <code>aria-disabled</code> until then. The 500 page's Copy button had no accessible name beyond "Copy"; it is "Copy reference". The site banner announces maintenance for Sunday 18 October while the maintenance page shows Sunday 11 October 2026; the two mocks describe different windows and both stay, but a real page must take its window from the same source as the banner.</p>
+      <p>Drift fixed during extraction: none. The 404 puts its code line above the heading and the 500 puts its reference below the text; that is deliberate (the code names the error, the reference is quoted after the instruction) and both are documented. There is no admin-only error page; admin failures use the error empty state inside the admin header.</p>
     </section>
 
-    <footer class="ds-footer"><span>ShotThere design system · extracted from docs/mocks on 10 October 2026</span><a href="#top">Back to top</a></footer>
+    <footer class="ds-footer"><span>ShotThere design system · extracted from <a href="../../mocks/index.html">docs/mocks</a> on 13 October 2026</span><a href="#top">Back to top</a></footer>
   </main>
 </div>
 <script src="../assets/ds.js"></script>
