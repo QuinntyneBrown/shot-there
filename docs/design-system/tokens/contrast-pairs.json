@@ -89,7 +89,7 @@
       "fg": "--color-fg-inverse",
       "bg": "--color-bg-inverse",
       "min": 4.5,
-      "note": "tooltip text"
+      "note": "inverse text on a toast"
     },
     {
       "fg": "--color-fg-link",
@@ -131,31 +131,31 @@
       "fg": "--color-fg-on-accent",
       "bg": "--color-accent",
       "min": 4.5,
-      "note": "primary button label"
+      "note": "tick on a checked checkbox or radio (solid accent)"
     },
     {
       "fg": "--color-fg-on-accent",
       "bg": "--color-accent-hover",
       "min": 4.5,
-      "note": "primary button label (hover)"
+      "note": "mark on a solid accent fill (hover)"
     },
     {
       "fg": "--color-fg-on-accent",
       "bg": "--color-accent-active",
       "min": 4.5,
-      "note": "primary button label (active)"
+      "note": "mark on a solid accent fill (pressed)"
     },
     {
       "fg": "--color-accent",
       "bg": "--color-bg-surface",
       "min": 3,
-      "note": "primary button edge vs card"
+      "note": "pressed compare toggle and checked box edge vs card"
     },
     {
       "fg": "--color-accent",
       "bg": "--color-bg-canvas",
       "min": 3,
-      "note": "primary button edge vs page"
+      "note": "pressed compare toggle and checked box edge vs page"
     },
     {
       "fg": "--color-border-strong",
@@ -341,7 +341,7 @@
       "fg": "--color-fg-accent",
       "bg": "--color-bg-canvas",
       "min": 4.5,
-      "note": "selected filter item, open status on page"
+      "note": "selected segment or filter on page"
     },
     {
       "fg": "--color-fg-accent",
@@ -401,7 +401,7 @@
       "fg": "--color-fg-inverse",
       "bg": "--color-bg-inverse",
       "min": 4.5,
-      "note": "toast and tooltip text"
+      "note": "toast text"
     },
     {
       "fg": "--color-border-inverse",
@@ -413,25 +413,25 @@
       "fg": "--color-bg-surface",
       "bg": "--color-success-solid",
       "min": 4.5,
-      "note": "tick inside completed check"
+      "note": "glyph on a solid success mark"
     },
     {
       "fg": "--color-warning-fg",
       "bg": "--color-warning-bg",
       "min": 4.5,
-      "note": "allergen tag text"
+      "note": "warning badge text (\"Prices may be out of date\", \"Stale\")"
     },
     {
       "fg": "--color-warning-border",
       "bg": "--color-bg-canvas",
       "min": 1,
-      "note": "allergen tag edge (decorative; text and icon carry meaning)"
+      "note": "warning edge on the page (decorative; text and icon carry meaning)"
     },
     {
       "fg": "--color-fg-default",
       "bg": "--color-warning-bg",
       "min": 4.5,
-      "note": "diff-new highlighted text"
+      "note": "body text on a warning tint (price-changed field in the studio editor)"
     },
     {
       "fg": "--color-danger-fg",
@@ -449,13 +449,13 @@
       "fg": "--color-warning-fg",
       "bg": "--color-bg-canvas",
       "min": 4.5,
-      "note": "pending / late status text"
+      "note": "stale or due-soon status text on page"
     },
     {
       "fg": "--color-success-fg",
       "bg": "--color-bg-canvas",
       "min": 4.5,
-      "note": "published / replied status, saved indicator"
+      "note": "published status, saved indicator"
     },
     {
       "fg": "--color-fg-on-danger",
@@ -630,6 +630,84 @@
       "bg": "--color-bg-surface-sunken",
       "min": 4.5,
       "note": "body text on sunken panels (disclosure, price block)"
+    },
+    {
+      "fg": "--color-action",
+      "bg": "--color-bg-surface",
+      "min": 3,
+      "note": "studio map marker square inside its surface halo"
+    },
+    {
+      "fg": "--color-fg-link",
+      "bg": "--color-bg-surface-raised",
+      "min": 4.5,
+      "note": "link in a popover or dialog (map popup: View the review)"
+    },
+    {
+      "fg": "--color-fg-link",
+      "bg": "--color-bg-surface-sunken",
+      "min": 4.5,
+      "note": "link on a sunken panel (disclosure policy link, tiles-failed panel)"
+    },
+    {
+      "fg": "--color-fg-link-hover",
+      "bg": "--color-bg-surface-sunken",
+      "min": 4.5,
+      "note": "hovered link on a sunken panel"
+    },
+    {
+      "fg": "--color-focus-ring",
+      "bg": "--color-bg-surface-sunken",
+      "min": 3,
+      "note": "focus ring on a sunken panel"
+    },
+    {
+      "fg": "--color-focus-ring",
+      "bg": "--color-accent-subtle",
+      "min": 3,
+      "note": "focus ring on an active-filter chip's remove button"
+    },
+    {
+      "fg": "--color-fg-muted",
+      "bg": "--color-accent-subtle",
+      "min": 4.5,
+      "note": "meta text on a selected list row"
+    },
+    {
+      "fg": "--color-fg-muted",
+      "bg": "--color-warning-bg",
+      "min": 4.5,
+      "note": "help text in a warning field"
+    },
+    {
+      "fg": "--color-fg-subtle",
+      "bg": "--color-warning-bg",
+      "min": 4.5,
+      "note": "subtle marker in a warning field"
+    },
+    {
+      "fg": "--color-border-strong",
+      "bg": "--color-warning-bg",
+      "min": 3,
+      "note": "input edge in a warning field"
+    },
+    {
+      "fg": "--color-success-icon",
+      "bg": "--color-bg-canvas",
+      "min": 3,
+      "note": "signup success tick"
+    },
+    {
+      "fg": "--color-danger-border",
+      "bg": "--color-bg-surface",
+      "min": 1,
+      "note": "edge of an invalid editor section or failed image row (decorative: the text says what is wrong)"
+    },
+    {
+      "fg": "--color-border-default",
+      "bg": "--color-bg-canvas",
+      "min": 1,
+      "note": "tag resting edge and guide-entry divider (decorative: the text carries the meaning)"
     }
   ]
 }
