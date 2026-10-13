@@ -4,6 +4,7 @@ import { PrismaGuideRepository } from '@/lib/data/prisma-guide-repository';
 import { PrismaSlugRedirectRepository } from '@/lib/data/prisma-slug-redirect-repository';
 import { PrismaSpotRepository } from '@/lib/data/prisma-spot-repository';
 import { PrismaStudioRepository } from '@/lib/data/prisma-studio-repository';
+import { PrismaSubscriberRepository } from '@/lib/data/prisma-subscriber-repository';
 import { torontoClock } from '@/lib/shared/toronto-clock';
 
 export function createPrismaDependencies(): Dependencies {
@@ -17,5 +18,6 @@ export function createPrismaDependencies(): Dependencies {
     spots: new PrismaSpotRepository(prisma),
     guides: new PrismaGuideRepository(prisma),
     slugRedirects: new PrismaSlugRedirectRepository(prisma),
+    subscribers: new PrismaSubscriberRepository(prisma),
   };
 }

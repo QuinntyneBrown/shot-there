@@ -1,3 +1,5 @@
+import { HttpProblem } from '@/lib/http/http-problem';
+import { correlationContext } from '@/lib/logging/correlation-context';
 import { log } from '@/lib/logging/logger';
 
 const CORRELATION_HEADER = 'x-correlation-id';
@@ -5,7 +7,7 @@ const SAFE_CORRELATION_ID = /^[A-Za-z0-9-]{1,64}$/;
 
 type RouteHandler<C> = (request: Request, context: C) => Promise<Response>;
 
-/** Wraps a route handler: correlation ID, one request log line, and a generic 500 for unhandled errors. */
+/** Wraps a route handler: correlation ID, one request log line, `HttpProblem` responses, and a generic 500 for unhandled errors. */
 export function withRequestLogging<C = unknown>(
   handler: RouteHandler<C>,
 ): (request: Request, context?: C) => Promise<Response> {
@@ -16,11 +18,15 @@ export function withRequestLogging<C = unknown>(
 
     let response: Response;
     try {
-      response = await handler(request, context as C);
+      response = await correlationContext.run(correlationId, () => handler(request, context as C));
     } catch (error) {
-      const failure = error instanceof Error ? error : new Error(String(error));
-      log('error', correlationId, { errorName: failure.name, message: failure.message, stack: failure.stack });
-      response = Response.json({ status: 500 }, { status: 500 });
+      if (error instanceof HttpProblem) {
+        response = error.response;
+      } else {
+        const failure = error instanceof Error ? error : new Error(String(error));
+        log('error', correlationId, { errorName: failure.name, message: failure.message, stack: failure.stack });
+        response = Response.json({ status: 500 }, { status: 500 });
+      }
     }
 
     response.headers.set(CORRELATION_HEADER, correlationId);

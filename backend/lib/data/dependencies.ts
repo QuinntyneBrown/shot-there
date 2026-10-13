@@ -3,6 +3,7 @@ import type { GuideRepository } from '@/lib/guides/guide-repository';
 import type { SlugRedirectRepository } from '@/lib/slugs/slug-redirect-repository';
 import type { SpotRepository } from '@/lib/spots/spot-repository';
 import type { StudioRepository } from '@/lib/studios/studio-repository';
+import type { SubscriberRepository } from '@/lib/subscribers/subscriber-repository';
 
 /** Everything outside the process that application functions reach through. Tests replace it with fakes. */
 export interface Dependencies {
@@ -12,4 +13,5 @@ export interface Dependencies {
   spots: SpotRepository;
   guides: GuideRepository;
   slugRedirects: SlugRedirectRepository;
+  subscribers: SubscriberRepository;
 }
