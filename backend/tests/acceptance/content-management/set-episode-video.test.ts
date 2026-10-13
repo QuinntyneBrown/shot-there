@@ -7,7 +7,7 @@ import { adminRequest, idParams, stubSiteOriginPerTest, useSignedInOwner } from 
 import { aSpot, aStudio } from '@/tests/support/builders';
 import type { InMemorySpotRepository } from '@/tests/support/in-memory-spot-repository';
 import type { InMemoryStudioRepository } from '@/tests/support/in-memory-studio-repository';
-import { aSpotInput } from '@/tests/support/spot-input';
+import { spotSaveBody } from '@/tests/support/spot-input';
 import { studioSaveBody } from '@/tests/support/studio-input';
 
 stubSiteOriginPerTest();
@@ -73,7 +73,7 @@ describe('L2-059 video link validation', () => {
     const dependencies = useSignedInOwner({ spots: [aSpot({ id: 'p1' })] });
 
     const response = await updateSpot(
-      adminRequest('/api/admin/spots/p1', { method: 'PUT', body: aSpotInput({ videoLink: 'https://youtu.be/dQw4w9WgXcQ' }) }),
+      adminRequest('/api/admin/spots/p1', { method: 'PUT', body: await spotSaveBody('p1', { videoLink: 'https://youtu.be/dQw4w9WgXcQ' }) }),
       idParams('p1'),
     );
 

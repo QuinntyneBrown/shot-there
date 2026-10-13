@@ -11,7 +11,7 @@ import { getStudioPage } from '@/tests/support/get-studio-page';
 import type { InMemoryObjectStore } from '@/tests/support/in-memory-object-store';
 import type { InMemorySpotRepository } from '@/tests/support/in-memory-spot-repository';
 import type { InMemoryStudioRepository } from '@/tests/support/in-memory-studio-repository';
-import { aSpotInput } from '@/tests/support/spot-input';
+import { spotSaveBody } from '@/tests/support/spot-input';
 import { studioSaveBody } from '@/tests/support/studio-input';
 
 stubSiteOriginPerTest();
@@ -91,10 +91,10 @@ describe('L2-058 image ordering', () => {
     const response = await saveSpot(
       adminRequest('/api/admin/spots/p1', {
         method: 'PUT',
-        body: aSpotInput({
-          images: [
-            { id: 'y', altText: 'Meadow', sortOrder: 0 },
-            { id: 'x', altText: 'Bridge', sortOrder: 1 },
+        body: await spotSaveBody('p1', {
+          sampleShots: [
+            { imageId: 'y', alt: 'Meadow', focalLengthMm: 35, angleNote: 'Low' },
+            { imageId: 'x', alt: 'Bridge', focalLengthMm: 85, angleNote: 'High' },
           ],
         }),
       }),

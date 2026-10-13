@@ -1,10 +1,12 @@
 import { z } from 'zod';
 import {
-  optionalEnum,
-  optionalRange,
-  optionalText,
-  optionalWebAddress,
+  boundedNumber,
+  nullableEnum,
+  nullableNumber,
+  nullableText,
+  nullableUrl,
   pastOrTodayDate,
+  requireBothCoordinates,
   requiredText,
   slugField,
   uniqueBy,
@@ -12,7 +14,6 @@ import {
 import type { BestUse } from '@/lib/spots/best-use';
 import type { SpotListQuery } from '@/lib/spots/spot-list-query';
 import type { SpotType } from '@/lib/spots/spot-type';
-import { imageOrderItemSchema } from '@/lib/images/schemas';
 import { videoIdField } from '@/lib/videos/schemas';
 import { requireDisclosureProvider } from '@/lib/publishing/schemas';
 
@@ -43,62 +44,70 @@ export function parseSpotListQuery(searchParams: URLSearchParams): SpotListQuery
 
 const SPOT_TYPES = ['park', 'architecture', 'waterfront', 'indoor_public'] as const;
 const BEST_USES = ['engagement', 'family', 'portrait', 'brand', 'video'] as const;
-const SHOOT_TYPES = ['portrait', 'weddingEngagement', 'commercial', 'video'] as const;
 const CROWDS = ['low', 'medium', 'high'] as const;
+const PERMIT = ['required', 'not_required'] as const;
 
-const lightByTimeInputSchema = z.strictObject({
-  timeOfDay: z.enum(['morning', 'midday', 'afternoon', 'goldenHour', 'blueHour']),
-  rating: z.enum(['none', 'low', 'medium', 'strong']),
-  note: optionalText(500),
+const lightSlot = z.strictObject({
+  rating: nullableEnum(['none', 'low', 'medium', 'strong']),
+  note: nullableText(200),
 });
 
-const lightBySeasonInputSchema = z.strictObject({
-  season: z.enum(['spring', 'summer', 'autumn', 'winter']),
-  note: optionalText(500),
+const sampleShotOrderItem = z.strictObject({
+  imageId: z.string({ error: 'Choose an image' }).min(1, { error: 'Choose an image' }).max(64),
+  alt: requiredText('Describe this image', 300),
+  focalLengthMm: boundedNumber({ min: 1, max: 2000, integer: true }),
+  angleNote: requiredText('Describe the angle', 200),
 });
 
-const permitInputSchema = z.strictObject({
-  shootType: z.enum(SHOOT_TYPES),
-  required: z.boolean({ error: 'Choose whether a permit is required' }),
-});
-
-/** The owner's spot save body. Strict: unknown fields and values outside the fixed sets are refused. */
+/** The owner's spot save body (ICD §13.11, §15.2). Strict: every property present, unknown ones refused. */
 export const spotInputSchema = (today: string) =>
-  z.strictObject({
-    name: requiredText('Enter a name'),
-    slug: slugField().optional(),
-    neighbourhood: optionalText(200),
-    type: optionalEnum(SPOT_TYPES),
-    latitude: optionalRange(-90, 90, 'Enter a latitude from -90 to 90'),
-    longitude: optionalRange(-180, 180, 'Enter a longitude from -180 to 180'),
-    directions: optionalText(),
-    lightByTime: z
-      .array(lightByTimeInputSchema)
-      .default([])
-      .superRefine(uniqueBy((item) => item.timeOfDay, 'timeOfDay', 'This time of day is already listed')),
-    lightBySeason: z
-      .array(lightBySeasonInputSchema)
-      .default([])
-      .superRefine(uniqueBy((item) => item.season, 'season', 'This season is already listed')),
-    weekdayCrowds: optionalEnum(CROWDS),
-    weekendCrowds: optionalEnum(CROWDS),
-    parking: optionalText(500),
-    washrooms: optionalText(500),
-    changing: optionalText(500),
-    permits: z
-      .array(permitInputSchema)
-      .default([])
-      .superRefine(uniqueBy((item) => item.shootType, 'shootType', 'This shoot type is already listed')),
-    permitSourceUrl: optionalWebAddress(),
-    permitVerifiedAt: pastOrTodayDate(today, 'The permit verified date cannot be in the future').optional(),
-    bestUses: z
-      .array(z.enum(BEST_USES))
-      .default([])
-      .superRefine(uniqueBy((use) => use, null, 'This use is already selected')),
-    disclosure: optionalEnum(['paid_in_full', 'discounted', 'comped']),
-    disclosureProvider: optionalText(200),
-    videoLink: videoIdField(),
-    episodeTitle: optionalText(150),
-    images: z.array(imageOrderItemSchema).max(200).optional(),
-  })
-  .superRefine(requireDisclosureProvider);
+  z
+    .strictObject({
+      name: requiredText('Enter a name', 120),
+      slug: slugField().optional(),
+      neighbourhood: nullableText(80),
+      type: nullableEnum(SPOT_TYPES),
+      latitude: nullableNumber({ min: -90, max: 90 }),
+      longitude: nullableNumber({ min: -180, max: 180 }),
+      directions: nullableText(4000),
+      lightByTime: z.strictObject({
+        morning: lightSlot,
+        midday: lightSlot,
+        afternoon: lightSlot,
+        goldenHour: lightSlot,
+        blueHour: lightSlot,
+      }),
+      lightBySeason: z.strictObject({
+        spring: nullableText(300),
+        summer: nullableText(300),
+        autumn: nullableText(300),
+        winter: nullableText(300),
+      }),
+      weekdayCrowds: nullableEnum(CROWDS),
+      weekendCrowds: nullableEnum(CROWDS),
+      parking: nullableText(200),
+      washrooms: nullableText(200),
+      changing: nullableText(200),
+      permits: z.strictObject({
+        portrait: nullableEnum(PERMIT),
+        weddingEngagement: nullableEnum(PERMIT),
+        commercial: nullableEnum(PERMIT),
+        video: nullableEnum(PERMIT),
+      }),
+      permitSourceUrl: nullableUrl(),
+      permitVerifiedAt: pastOrTodayDate(today, 'The permit verified date cannot be in the future').optional(),
+      bestUses: z
+        .array(z.enum(BEST_USES, { error: 'Choose a listed use' }))
+        .superRefine(uniqueBy((use) => use, null, 'This use is already selected')),
+      disclosure: nullableEnum(['paid_in_full', 'discounted', 'comped']),
+      disclosureProvider: nullableText(120),
+      videoLink: videoIdField(),
+      episodeTitle: nullableText(150),
+      sampleShots: z.array(sampleShotOrderItem).max(30, { error: 'Use 30 sample shots or fewer' }),
+    })
+    .superRefine(requireBothCoordinates)
+    .superRefine(requireDisclosureProvider)
+    .transform((input) => ({
+      ...input,
+      disclosureProvider: input.disclosure === 'paid_in_full' ? null : input.disclosureProvider,
+    }));
