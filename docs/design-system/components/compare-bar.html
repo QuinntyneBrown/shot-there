@@ -1,0 +1,550 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Compare toggle and bar — ShotThere design system</title>
+<meta name="description" content="The ShotThere compare toggle and compare bar: add a studio to a comparison from its card or review page, see the count in a bar fixed to the bottom of the screen, and open the comparison once two to four studios are picked (L2-030).">
+<link rel="stylesheet" href="../tokens/tokens.css">
+<link rel="stylesheet" href="../assets/components.css">
+<link rel="stylesheet" href="../assets/ds.css">
+</head>
+<body id="top">
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="ds-shell">
+  <nav class="ds-nav" aria-label="Design system">
+    <div class="ds-nav__brand"><a href="../index.html">ShotThere DS</a><button class="ds-theme-toggle" type="button" aria-pressed="false">☾ Dark</button></div>
+    <details open><summary>Foundations</summary><ul>
+      <li><a href="../foundations/color.html">Color</a></li>
+      <li><a href="../foundations/typography.html">Typography</a></li>
+      <li><a href="../foundations/spacing.html">Spacing</a></li>
+      <li><a href="../foundations/layout.html">Layout</a></li>
+      <li><a href="../foundations/elevation.html">Elevation</a></li>
+      <li><a href="../foundations/shape.html">Shape</a></li>
+      <li><a href="../foundations/motion.html">Motion</a></li>
+      <li><a href="../foundations/iconography.html">Iconography</a></li>
+      <li><a href="../foundations/theming.html">Theming</a></li>
+      <li><a href="../foundations/responsive.html">Responsive</a></li>
+      <li><a href="../foundations/accessibility.html">Accessibility</a></li>
+      <li><a href="../foundations/content.html">Content</a></li>
+    </ul></details>
+    <details open><summary>Actions</summary><ul>
+      <li><a href="../components/button.html">Button</a></li>
+      <li><a href="../components/icon-button.html">Icon button</a></li>
+      <li><a href="../components/button-group.html">Button group</a></li>
+      <li><a href="../components/link.html">Link</a></li>
+      <li><a href="../components/compare-bar.html">Compare toggle and bar</a></li>
+    </ul></details>
+    <details open><summary>Inputs</summary><ul>
+      <li><a href="../components/form-field.html">Form field</a></li>
+      <li><a href="../components/text-field.html">Text field</a></li>
+      <li><a href="../components/textarea.html">Textarea</a></li>
+      <li><a href="../components/select.html">Select</a></li>
+      <li><a href="../components/combobox.html">Combobox</a></li>
+      <li><a href="../components/checkbox.html">Checkbox</a></li>
+      <li><a href="../components/radio-group.html">Radio group</a></li>
+      <li><a href="../components/file-upload.html">File upload</a></li>
+      <li><a href="../components/form-layout.html">Form layout</a></li>
+      <li><a href="../components/signup.html">Email signup</a></li>
+    </ul></details>
+    <details open><summary>Navigation</summary><ul>
+      <li><a href="../components/skip-link.html">Skip link</a></li>
+      <li><a href="../components/site-header.html">Site header</a></li>
+      <li><a href="../components/footer.html">Footer</a></li>
+      <li><a href="../components/breadcrumb.html">Breadcrumb</a></li>
+      <li><a href="../components/filter.html">Filters</a></li>
+    </ul></details>
+    <details open><summary>Containers and overlays</summary><ul>
+      <li><a href="../components/container.html">Container and grid</a></li>
+      <li><a href="../components/review-layout.html">Review layout</a></li>
+      <li><a href="../components/editor-layout.html">Editor layout</a></li>
+      <li><a href="../components/card.html">Card</a></li>
+      <li><a href="../components/dialog.html">Dialog</a></li>
+      <li><a href="../components/sheet.html">Sheet and drawer</a></li>
+      <li><a href="../components/popover.html">Popover</a></li>
+      <li><a href="../components/lightbox.html">Lightbox</a></li>
+      <li><a href="../components/divider.html">Divider</a></li>
+    </ul></details>
+    <details open><summary>Data display</summary><ul>
+      <li><a href="../components/location-card.html">Location card</a></li>
+      <li><a href="../components/table.html">Table</a></li>
+      <li><a href="../components/compare-table.html">Comparison table</a></li>
+      <li><a href="../components/list.html">List rows</a></li>
+      <li><a href="../components/description-list.html">Description list</a></li>
+      <li><a href="../components/price-block.html">Price block</a></li>
+      <li><a href="../components/score.html">Score and pips</a></li>
+      <li><a href="../components/shot-grid.html">Shot grid</a></li>
+      <li><a href="../components/video-poster.html">Episode poster</a></li>
+      <li><a href="../components/map.html">Map</a></li>
+      <li><a href="../components/guide-entry.html">Guide entry</a></li>
+      <li><a href="../components/stat-tile.html">Stat tile</a></li>
+      <li><a href="../components/image-manager.html">Image manager</a></li>
+      <li><a href="../components/disclosure.html">Disclosure</a></li>
+      <li><a href="../components/badge.html">Badge</a></li>
+      <li><a href="../components/status-label.html">Status label</a></li>
+      <li><a href="../components/chip.html">Chip</a></li>
+      <li><a href="../components/tag.html">Tag</a></li>
+    </ul></details>
+    <details open><summary>Feedback</summary><ul>
+      <li><a href="../components/inline-message.html">Inline message</a></li>
+      <li><a href="../components/alert.html">Alert and banner</a></li>
+      <li><a href="../components/toast.html">Toast</a></li>
+      <li><a href="../components/progress.html">Progress and meter</a></li>
+      <li><a href="../components/spinner.html">Spinner</a></li>
+      <li><a href="../components/skeleton.html">Skeleton</a></li>
+      <li><a href="../components/empty-state.html">Empty state</a></li>
+      <li><a href="../components/error-page.html">Error page</a></li>
+    </ul></details>
+    <details open><summary>Patterns</summary><ul>
+      <li><a href="../patterns/forms.html">Forms</a></li>
+      <li><a href="../patterns/feedback-and-loading.html">Feedback and loading</a></li>
+      <li><a href="../patterns/empty-and-error-states.html">Empty and error states</a></li>
+      <li><a href="../patterns/navigation.html">Navigation and page structure</a></li>
+      <li><a href="../patterns/dialogs-and-overlays.html">Dialogs and overlays</a></li>
+      <li><a href="../patterns/tables-and-lists.html">Data tables and lists</a></li>
+      <li><a href="../patterns/notifications.html">Notifications</a></li>
+      <li><a href="../patterns/content-and-tone.html">Content and tone</a></li>
+    </ul></details>
+  </nav>
+
+  <main id="main" class="ds-main">
+    <header class="ds-header">
+      <p class="ds-kicker">Component · Actions</p>
+      <h1>Compare toggle and bar</h1>
+      <p class="ds-lead">The compare toggle adds a studio to a comparison from its card or its review page. The compare bar, fixed to the bottom of the screen, counts the selection and opens the comparison once two to four studios are picked (L2-030).</p>
+      <div class="ds-meta"><span class="ds-pill ds-pill--ok">WCAG 2.2 AA</span><span class="ds-pill">Status: stable</span><span class="ds-pill"><code>.compare-toggle[aria-pressed]</code></span><span class="ds-pill"><code>.compare-bar</code></span><span class="ds-pill"><code>.has-compare-bar</code></span></div>
+      <ul class="ds-toc">
+        <li><a href="#overview">Overview</a></li><li><a href="#anatomy">Anatomy</a></li><li><a href="#variants">Variants</a></li><li><a href="#sizes">Sizes</a></li><li><a href="#states">States</a></li><li><a href="#responsive">Responsive</a></li><li><a href="#theming">Theming</a></li><li><a href="#accessibility">Accessibility</a></li><li><a href="#content">Content</a></li><li><a href="#do-dont">Do and don't</a></li><li><a href="#tokens">Tokens</a></li><li><a href="#code">Code</a></li><li><a href="#sources">Sources</a></li>
+      </ul>
+    </header>
+
+    <section class="ds-section" id="overview"><h2><a href="#overview">Overview</a></h2>
+      <p>Comparing is how ShotThere pays off its one rule, the same measurements for every studio. The toggle and the bar are the two halves of picking what to compare; the <a href="compare-table.html">comparison table</a> is where it ends.</p>
+      <ul>
+        <li><b>Compare toggle</b>: a <a href="button.html">button</a> with <code>aria-pressed</code>, on every studio card in the studio list ("Compare" / "Remove") and in the summary panel of a studio review ("Add to compare" / "Remove from compare").</li>
+        <li><b>Compare bar</b>: appears as soon as one studio is picked, stays fixed to the bottom of the viewport on every page that has a toggle, and holds the count, the picked names, Clear and Compare.</li>
+        <li>Studios only. Outdoor spots are not compared, so spot cards and spot pages have no toggle.</li>
+        <li>Two to four studios. With one picked, Compare is unavailable and a hint says why (L2-030.2); a fifth is refused with a warning <a href="toast.html">toast</a> (L2-030.3).</li>
+        <li>The selection is kept in the browser, so it survives a reload and a visit to a studio page (L2-030.5). There are no accounts, so it is never sent anywhere until Compare opens <code>/compare?studios=…</code>.</li>
+      </ul>
+    </section>
+
+    <section class="ds-section" id="anatomy"><h2><a href="#anatomy">Anatomy</a></h2>
+      <h3>Toggle</h3>
+      <div class="ds-anatomy">
+        <figure class="ds-anatomy__figure">
+          <div class="cluster">
+            <button class="btn btn--sm compare-toggle" type="button" aria-pressed="false">Compare<span class="visually-hidden"> The Junction Loft</span></button>
+            <button class="btn btn--sm compare-toggle" type="button" aria-pressed="true">Remove<span class="visually-hidden"> The Junction Loft</span></button>
+          </div>
+          <span class="ds-callout" style="left: 36%; top: 26%;" aria-hidden="true">1</span>
+          <span class="ds-callout" style="left: 60%; top: 26%;" aria-hidden="true">2</span>
+          <span class="ds-callout" style="left: 70%; top: 70%;" aria-hidden="true">3</span>
+        </figure>
+        <ol class="ds-anatomy__list">
+          <li><div><b>Visible label</b><small>The action: "Compare" when off, "Remove" when on (L2-030.1). On the review page, "Add to compare" and "Remove from compare".</small></div></li>
+          <li><div><b>Hidden studio name</b><small>A <code>.visually-hidden</code> span after the label in cards, so each toggle has a unique name ("Remove The Junction Loft").</small></div></li>
+          <li><div><b>Container</b><small>A <code>.btn</code> (small in cards). Pressed swaps its component tokens to the accent-subtle fill, accent text and accent edge.</small></div></li>
+        </ol>
+      </div>
+      <h3>Bar</h3>
+      <div class="ds-anatomy" style="grid-template-columns: minmax(0, 1fr);">
+        <figure class="ds-anatomy__figure" style="padding: var(--space-6);">
+          <div class="ds-frame" style="width: 100%; min-height: 9rem;">
+            <aside class="compare-bar" aria-label="Studios to compare">
+              <div class="compare-bar__inner">
+                <div class="compare-bar__status">
+                  <p class="compare-bar__count" role="status" aria-live="polite">1 selected</p>
+                  <p class="compare-bar__names">The Junction Loft</p>
+                  <p class="compare-bar__hint" id="anatomy-hint">Pick at least 2 studios to compare</p>
+                </div>
+                <div class="compare-bar__actions">
+                  <button class="btn btn--ghost" type="button">Clear</button>
+                  <button class="btn btn--primary" type="button" aria-disabled="true" aria-describedby="anatomy-hint">Compare</button>
+                </div>
+              </div>
+            </aside>
+          </div>
+          <span class="ds-callout" style="left: 7.5%; top: 43%;" aria-hidden="true">1</span>
+          <span class="ds-callout" style="left: 7.5%; top: 56%;" aria-hidden="true">2</span>
+          <span class="ds-callout" style="left: 7.5%; top: 69%;" aria-hidden="true">3</span>
+          <span class="ds-callout" style="left: 69.5%; top: 26%;" aria-hidden="true">4</span>
+          <span class="ds-callout" style="left: 80.5%; top: 26%;" aria-hidden="true">5</span>
+          <span class="ds-callout" style="left: 94%; top: 80%;" aria-hidden="true">6</span>
+        </figure>
+        <ol class="ds-anatomy__list">
+          <li><div><b>Count</b><small><code>.compare-bar__count</code>: "1 selected", in a polite live region, so every change is announced.</small></div></li>
+          <li><div><b>Names</b><small><code>.compare-bar__names</code>: the picked studios in the order they were added, on one line with an ellipsis.</small></div></li>
+          <li><div><b>Hint (one studio only)</b><small><code>.compare-bar__hint</code>: "Pick at least 2 studios to compare", referenced by the Compare button.</small></div></li>
+          <li><div><b>Clear</b><small>Ghost button; empties the selection and removes the bar.</small></div></li>
+          <li><div><b>Compare</b><small>Primary, always last. A link to <code>/compare?studios=…</code> from 2 picked; an <code>aria-disabled</code> button at 1.</small></div></li>
+          <li><div><b>Surface</b><small><code>.compare-bar</code>: raised surface, hairline top edge, <code>--shadow-3</code>, fixed to the bottom with the safe-area inset added to its padding.</small></div></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="ds-section" id="variants"><h2><a href="#variants">Variants</a></h2>
+      <h3>Toggle in a studio card and on a review page</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--canvas">
+          <button class="btn btn--sm compare-toggle" type="button" aria-pressed="false">Compare<span class="visually-hidden"> Kensington Window Room</span></button>
+          <button class="btn btn--sm compare-toggle" type="button" aria-pressed="true">Remove<span class="visually-hidden"> The Junction Loft</span></button>
+          <button class="btn compare-toggle" type="button" aria-pressed="false">Add to compare</button>
+          <button class="btn compare-toggle" type="button" aria-pressed="true">Remove from compare</button>
+        </div>
+        <div class="ds-example__caption"><span>Cards use the small button with the studio's name hidden after the label; the review page's summary panel uses the medium button, where the page heading already names the studio.</span><span>pages/studios/selected-one · pages/studio/in-compare</span></div>
+        <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;!-- In a studio card --&gt;
+&lt;div class="location-card__actions"&gt;
+  &lt;button class="btn btn--sm compare-toggle" type="button" aria-pressed="false"&gt;Compare&lt;span class="visually-hidden"&gt; Kensington Window Room&lt;/span&gt;&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;!-- In the review page's summary panel --&gt;
+&lt;button class="btn compare-toggle" type="button" aria-pressed="true"&gt;Remove from compare&lt;/button&gt;</code></pre></details>
+      </div>
+
+      <h3>Bar with one studio, and with two to four</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--stack">
+          <div class="ds-frame" style="min-height: 11rem;">
+            <div class="ds-frame__page"><p>Studios · 7 studios, The Junction Loft picked</p></div>
+            <aside class="compare-bar" aria-label="Studios to compare">
+              <div class="compare-bar__inner">
+                <div class="compare-bar__status">
+                  <p class="compare-bar__count" role="status" aria-live="polite">1 selected</p>
+                  <p class="compare-bar__names">The Junction Loft</p>
+                  <p class="compare-bar__hint" id="variant-hint">Pick at least 2 studios to compare</p>
+                </div>
+                <div class="compare-bar__actions">
+                  <button class="btn btn--ghost" type="button">Clear</button>
+                  <button class="btn btn--primary" type="button" aria-disabled="true" aria-describedby="variant-hint">Compare</button>
+                </div>
+              </div>
+            </aside>
+          </div>
+          <div class="ds-frame" style="min-height: 10rem;">
+            <div class="ds-frame__page"><p>Studios · 7 studios, three picked</p></div>
+            <aside class="compare-bar" aria-label="Studios to compare">
+              <div class="compare-bar__inner">
+                <div class="compare-bar__status">
+                  <p class="compare-bar__count" role="status" aria-live="polite">3 selected</p>
+                  <p class="compare-bar__names">The Junction Loft, Leslieville Daylight Studio, Kensington Window Room</p>
+                </div>
+                <div class="compare-bar__actions">
+                  <button class="btn btn--ghost" type="button">Clear</button>
+                  <a class="btn btn--primary" href="../../mocks/pages/compare/default.html">Compare</a>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </div>
+        <div class="ds-example__caption"><span>One picked: the hint says why Compare is unavailable. Two to four: the hint goes and Compare becomes a link.</span><span>pages/studios/selected-one · pages/studios/selected</span></div>
+        <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;aside class="compare-bar" aria-label="Studios to compare"&gt;
+  &lt;div class="compare-bar__inner"&gt;
+    &lt;div class="compare-bar__status"&gt;
+      &lt;p class="compare-bar__count" role="status" aria-live="polite"&gt;3 selected&lt;/p&gt;
+      &lt;p class="compare-bar__names"&gt;The Junction Loft, Leslieville Daylight Studio, Kensington Window Room&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class="compare-bar__actions"&gt;
+      &lt;button class="btn btn--ghost" type="button"&gt;Clear&lt;/button&gt;
+      &lt;a class="btn btn--primary" href="/compare?studios=the-junction-loft,leslieville-daylight-studio,kensington-window-room"&gt;Compare&lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/aside&gt;</code></pre></details>
+      </div>
+    </section>
+
+    <section class="ds-section" id="sizes"><h2><a href="#sizes">Sizes</a></h2>
+      <p>The toggle takes its size from where it sits: small (<code>.btn--sm</code>, 36px, 44px below 48rem) in a card, medium (44px) in the review page's summary panel beside "Book on the studio's site". The bar has one size: its height is its content (one or two text lines plus 44px buttons) with <code>--space-3</code> padding above and below.</p>
+    </section>
+
+    <section class="ds-section" id="states"><h2><a href="#states">States</a></h2>
+      <h3>Toggle</h3>
+      <p>Pointer and focus states are forced with <code>data-state</code>; real pages get them from <code>:hover</code>, <code>:focus-visible</code> and <code>:active</code>. The selected state is the real <code>aria-pressed="true"</code>.</p>
+      <div class="ds-matrix"><table>
+        <thead><tr><th scope="col">Variant</th><th scope="col">Default</th><th scope="col">Hover</th><th scope="col">Focus</th><th scope="col">Active</th><th scope="col">Disabled</th><th scope="col">At the limit (4 picked)</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Card, off</th>
+            <td><button class="btn btn--sm compare-toggle" type="button" aria-pressed="false">Compare<span class="visually-hidden"> Bloordale Sun Studio</span></button></td>
+            <td><button class="btn btn--sm compare-toggle" type="button" aria-pressed="false" data-state="hover">Compare<span class="visually-hidden"> Bloordale Sun Studio</span></button></td>
+            <td><button class="btn btn--sm compare-toggle" type="button" aria-pressed="false" data-state="focus">Compare<span class="visually-hidden"> Bloordale Sun Studio</span></button></td>
+            <td><button class="btn btn--sm compare-toggle" type="button" aria-pressed="false" data-state="active">Compare<span class="visually-hidden"> Bloordale Sun Studio</span></button></td>
+            <td><button class="btn btn--sm compare-toggle" type="button" aria-pressed="false" disabled>Compare<span class="visually-hidden"> Bloordale Sun Studio</span></button></td>
+            <td><button class="btn btn--sm compare-toggle" type="button" aria-pressed="false">Compare<span class="visually-hidden"> Ossington Blackbox</span></button></td></tr>
+          <tr><th scope="row">Card, on</th>
+            <td><button class="btn btn--sm compare-toggle" type="button" aria-pressed="true">Remove<span class="visually-hidden"> The Junction Loft</span></button></td>
+            <td><button class="btn btn--sm compare-toggle" type="button" aria-pressed="true" data-state="hover">Remove<span class="visually-hidden"> The Junction Loft</span></button></td>
+            <td><button class="btn btn--sm compare-toggle" type="button" aria-pressed="true" data-state="focus">Remove<span class="visually-hidden"> The Junction Loft</span></button></td>
+            <td><button class="btn btn--sm compare-toggle" type="button" aria-pressed="true" data-state="active">Remove<span class="visually-hidden"> The Junction Loft</span></button></td>
+            <td><button class="btn btn--sm compare-toggle" type="button" aria-pressed="true" disabled>Remove<span class="visually-hidden"> The Junction Loft</span></button></td>
+            <td><button class="btn btn--sm compare-toggle" type="button" aria-pressed="true">Remove<span class="visually-hidden"> Liberty Cyc House</span></button></td></tr>
+          <tr><th scope="row">Review page, off</th>
+            <td><button class="btn compare-toggle" type="button" aria-pressed="false">Add to compare</button></td>
+            <td><button class="btn compare-toggle" type="button" aria-pressed="false" data-state="hover">Add to compare</button></td>
+            <td><button class="btn compare-toggle" type="button" aria-pressed="false" data-state="focus">Add to compare</button></td>
+            <td><button class="btn compare-toggle" type="button" aria-pressed="false" data-state="active">Add to compare</button></td>
+            <td><button class="btn compare-toggle" type="button" aria-pressed="false" disabled>Add to compare</button></td>
+            <td><button class="btn compare-toggle" type="button" aria-pressed="false">Add to compare</button></td></tr>
+          <tr><th scope="row">Review page, on</th>
+            <td><button class="btn compare-toggle" type="button" aria-pressed="true">Remove from compare</button></td>
+            <td><button class="btn compare-toggle" type="button" aria-pressed="true" data-state="hover">Remove from compare</button></td>
+            <td><button class="btn compare-toggle" type="button" aria-pressed="true" data-state="focus">Remove from compare</button></td>
+            <td><button class="btn compare-toggle" type="button" aria-pressed="true" data-state="active">Remove from compare</button></td>
+            <td><button class="btn compare-toggle" type="button" aria-pressed="true" disabled>Remove from compare</button></td>
+            <td><button class="btn compare-toggle" type="button" aria-pressed="true">Remove from compare</button></td></tr>
+        </tbody>
+      </table></div>
+      <ul>
+        <li><b>Pressed</b> (<code>aria-pressed="true"</code>) is the selected state: accent-subtle fill, accent label, accent edge, and the label changes from the action to its undo.</li>
+        <li><b>Disabled</b> is shown for completeness only. The product never disables a compare toggle, not even at the limit: a disabled button cannot be focused or explain itself.</li>
+        <li><b>At the limit</b> every toggle stays enabled and looks the same. Pressing an unpressed one leaves the selection unchanged, keeps focus on that button and raises the warning toast "You can compare up to 4 studios · Remove one from the bar to add Ossington Blackbox." Pressed toggles still remove.</li>
+      </ul>
+
+      <h3>Bar</h3>
+      <div class="ds-table-wrap"><table class="ds-table">
+        <thead><tr><th scope="col">Picked</th><th scope="col">Bar</th><th scope="col">Compare action</th><th scope="col">Mock</th></tr></thead>
+        <tbody>
+          <tr><td>0</td><td>Not rendered; the page drops <code>.has-compare-bar</code>.</td><td>None</td><td>pages/studios/default</td></tr>
+          <tr><td>1</td><td>Count, name, hint "Pick at least 2 studios to compare"</td><td><code>&lt;button aria-disabled="true" aria-describedby="…hint"&gt;</code></td><td>pages/studios/selected-one</td></tr>
+          <tr><td>2 to 4</td><td>Count and names</td><td><code>&lt;a class="btn btn--primary" href="/compare?studios=…"&gt;</code></td><td>pages/studio/in-compare, pages/studios/selected</td></tr>
+          <tr><td>A fifth pressed</td><td>Unchanged at "4 selected"; warning toast above the bar</td><td>Still a link to the four</td><td>notifications/public-toast/warning</td></tr>
+        </tbody>
+      </table></div>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--stack">
+          <div class="ds-frame" style="min-height: 17rem;">
+            <div class="ds-frame__page"><p>Studios · 7 studios, four picked, Compare pressed on Ossington Blackbox</p></div>
+            <aside class="compare-bar" aria-label="Studios to compare">
+              <div class="compare-bar__inner">
+                <div class="compare-bar__status">
+                  <p class="compare-bar__count" role="status" aria-live="polite">4 selected</p>
+                  <p class="compare-bar__names">The Junction Loft, Leslieville Daylight Studio, Kensington Window Room, Liberty Cyc House</p>
+                </div>
+                <div class="compare-bar__actions">
+                  <button class="btn btn--ghost" type="button">Clear</button>
+                  <a class="btn btn--primary" href="../../mocks/pages/compare/four.html">Compare</a>
+                </div>
+              </div>
+            </aside>
+            <div class="toast-region" role="status" aria-live="polite" style="bottom: calc(var(--space-24) + env(safe-area-inset-bottom));">
+              <div class="toast toast--warning">
+                <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3 2 20h20L12 3z"/><path d="M12 10v4M12 17h.01"/></svg>
+                <div class="toast__body">
+                  <div class="toast__title">You can compare up to 4 studios</div>
+                  <div class="toast__text">Remove one from the bar to add Ossington Blackbox.</div>
+                </div>
+                <button class="close" type="button" aria-label="Dismiss"><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+                <span class="toast__progress" aria-hidden="true"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ds-example__caption"><span>Over the limit: the bar does not change; the toast sits above it. The toast's offset is inline in the mock and here; the class rule is proposed under <a href="#sources">Sources</a>.</span><span>notifications/public-toast/warning</span></div>
+      </div>
+
+      <h3>Both themes</h3>
+      <div class="ds-themes">
+        <div data-theme="light">
+          <div class="cluster" style="margin-bottom: var(--space-4);"><button class="btn btn--sm compare-toggle" type="button" aria-pressed="false">Compare<span class="visually-hidden"> Riverside Rooftop Studio</span></button><button class="btn btn--sm compare-toggle" type="button" aria-pressed="true">Remove<span class="visually-hidden"> Leslieville Daylight Studio</span></button></div>
+          <div class="ds-frame ds-frame--short" style="min-height: 9rem;">
+            <aside class="compare-bar" aria-label="Studios to compare"><div class="compare-bar__inner"><div class="compare-bar__status"><p class="compare-bar__count" role="status" aria-live="polite">2 selected</p><p class="compare-bar__names">The Junction Loft, Leslieville Daylight Studio</p></div><div class="compare-bar__actions"><button class="btn btn--ghost" type="button">Clear</button><a class="btn btn--primary" href="../../mocks/pages/compare/default.html">Compare</a></div></div></aside>
+          </div>
+        </div>
+        <div data-theme="dark">
+          <div class="cluster" style="margin-bottom: var(--space-4);"><button class="btn btn--sm compare-toggle" type="button" aria-pressed="false">Compare<span class="visually-hidden"> Riverside Rooftop Studio</span></button><button class="btn btn--sm compare-toggle" type="button" aria-pressed="true">Remove<span class="visually-hidden"> Leslieville Daylight Studio</span></button></div>
+          <div class="ds-frame ds-frame--short" style="min-height: 9rem;">
+            <aside class="compare-bar" aria-label="Studios to compare"><div class="compare-bar__inner"><div class="compare-bar__status"><p class="compare-bar__count" role="status" aria-live="polite">2 selected</p><p class="compare-bar__names">The Junction Loft, Leslieville Daylight Studio</p></div><div class="compare-bar__actions"><button class="btn btn--ghost" type="button">Clear</button><a class="btn btn--primary" href="../../mocks/pages/compare/default.html">Compare</a></div></div></aside>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ds-section" id="responsive"><h2><a href="#responsive">Responsive behaviour</a></h2>
+      <ul>
+        <li><b>Every width</b>: the bar is fixed to the bottom of the viewport (L2-030.6). Its inner row is capped at the container width and centred, so on a wide screen the count lines up with the page's left edge and Compare with its right edge.</li>
+        <li><b>Safe area</b>: the bottom padding is <code>--space-3</code> plus <code>env(safe-area-inset-bottom)</code>, so the buttons clear a phone's home indicator (L2-065.1). Pages need <code>viewport-fit=cover</code> for the inset to be reported.</li>
+        <li><b>Phones</b>: the status takes a 12rem basis; when status and actions do not fit on one line the actions wrap below it, still in Clear-then-Compare order. Names never wrap: they cut off with an ellipsis, and the count stays complete.</li>
+        <li><b>End of page</b>: the page adds <code>.has-compare-bar</code> to <code>&lt;body&gt;</code>, which pads its end by <code>--space-24</code> (96px) plus the inset so the footer can scroll clear of the bar. Measured at 360px, the bar is 143px tall with one studio (count, name and hint over wrapped buttons) and 122px with two to four, so today the last 26–47px stay under it; the fix is under <a href="#sources">Sources</a>.</li>
+        <li><b>Toggle</b>: the card toggle is 36px from 48rem and 44px below it; the review-page toggle is 44px everywhere.</li>
+      </ul>
+      <div class="ds-iframes">
+        <iframe class="ds-iframe" src="../../mocks/pages/studios/selected-one.html?chrome=0" title="Studio list mock at phone width with one studio picked and the compare bar at the bottom" loading="lazy"></iframe>
+        <iframe class="ds-iframe" src="../../mocks/notifications/public-toast/warning.html?chrome=0" title="Studio list mock at phone width with four studios picked and the limit warning above the bar" loading="lazy"></iframe>
+      </div>
+    </section>
+
+    <section class="ds-section" id="theming"><h2><a href="#theming">Theming</a></h2>
+      <p>The toggle is a <code>.btn</code>; <code>.compare-toggle[aria-pressed="true"]</code> only re-points the button's four component tokens, so it themes with the button and with nothing else:</p>
+      <pre><code>.compare-toggle[aria-pressed="true"] {
+  --btn-bg: var(--color-accent-subtle);
+  --btn-fg: var(--color-fg-accent);
+  --btn-border: var(--color-accent);
+  --btn-bg-hover: var(--color-accent-subtle-hover);
+}</code></pre>
+      <p>The bar reads <code>--color-bg-surface-raised</code>, <code>--color-border-default</code> and <code>--shadow-3</code>. In the dark theme the raised surface is lighter than the canvas and the shadow is deeper, so the bar still reads as sitting above the page. The accent stays red in both themes; the primary Compare button is the ink action colour, which flips to near-white in dark.</p>
+    </section>
+
+    <section class="ds-section" id="accessibility"><h2><a href="#accessibility">Accessibility</a></h2>
+      <h3>Role and pattern</h3>
+      <ul>
+        <li><b>Toggle</b>: native <code>&lt;button type="button"&gt;</code> with <code>aria-pressed</code>, the WAI-ARIA APG <a href="https://www.w3.org/WAI/ARIA/apg/patterns/button/">Button pattern</a>'s toggle button. L2-030.1 also changes the visible label ("Compare" to "Remove"), so a screen reader hears "Remove The Junction Loft, toggle button, pressed". The APG recommends a label that does not change with the state; the spec's label change is recorded as an open question, and until it is answered both the label and <code>aria-pressed</code> stay, because the pressed styling hangs on the attribute.</li>
+        <li><b>Bar</b>: <code>&lt;aside aria-label="Studios to compare"&gt;</code>, a complementary landmark, so it can be reached from the landmarks list. It sits after <code>&lt;main&gt;</code> and before the footer in the DOM, which is also its tab position.</li>
+        <li><b>Count</b>: <code>role="status" aria-live="polite"</code> announces "2 selected" after each change without moving focus.</li>
+      </ul>
+      <h3>Keyboard</h3>
+      <table class="ds-table ds-keys"><thead><tr><th scope="col">Key</th><th scope="col">Action</th></tr></thead><tbody>
+        <tr><td><kbd>Tab</kbd> / <kbd>Shift</kbd>+<kbd>Tab</kbd></td><td>Cards' name links and toggles in reading order, then the bar's Clear and Compare, then the footer.</td></tr>
+        <tr><td><kbd>Enter</kbd>, <kbd>Space</kbd></td><td>On a toggle: adds or removes the studio; focus stays on the toggle. On Clear: empties the selection. On Compare (a link): <kbd>Enter</kbd> opens the comparison.</td></tr>
+        <tr><td><kbd>Esc</kbd></td><td>No effect on the bar; it is not a dialog. Esc dismisses a limit toast that has focus.</td></tr>
+      </tbody></table>
+      <h3>Focus</h3>
+      <ul>
+        <li>Toggling never moves focus; the count announces the change. Over the limit, focus stays on the pressed button and the toast announces itself.</li>
+        <li>Clear removes the bar, so focus would be left on a removed element: move it to <code>&lt;main&gt;</code> (which has <code>tabindex="-1"</code> on every page).</li>
+        <li>Focus not obscured (2.4.11): the fixed bar can cover a focused footer link when tabbing down the page. Pages with the bar need a bottom scroll padding as tall as the bar; proposed under <a href="#sources">Sources</a>.</li>
+        <li>The ring is the shared one: 2px <code>--color-focus-ring</code>, 2px offset, on the toggle and on both bar buttons.</li>
+      </ul>
+      <h3>Labelling</h3>
+      <ul>
+        <li>Card toggles: visible verb plus visually hidden studio name, so every toggle in a list is distinct.</li>
+        <li>Review-page toggle: the visible label only; the page's h1 is the studio name.</li>
+        <li>Compare with one studio: <code>aria-disabled="true"</code> keeps the button focusable so its <code>aria-describedby</code> hint is read ("Compare, dimmed, Pick at least 2 studios to compare"); activation does nothing.</li>
+      </ul>
+      <h3>Contrast</h3>
+      <div class="ds-themes">
+        <div data-theme="light"><div class="ds-example__canvas ds-example__canvas--stack" style="padding: 0; gap: var(--space-2);">
+          <div class="ds-pair"><span>Pressed label on its fill</span><span class="ds-pair__ratio" data-contrast="--color-fg-accent|--color-accent-subtle" data-min="4.5"></span></div>
+          <div class="ds-pair"><span>Pressed label, hover</span><span class="ds-pair__ratio" data-contrast="--color-fg-accent|--color-accent-subtle-hover" data-min="4.5"></span></div>
+          <div class="ds-pair"><span>Pressed edge on page</span><span class="ds-pair__ratio" data-contrast="--color-accent|--color-bg-canvas" data-min="3"></span></div>
+          <div class="ds-pair"><span>Off toggle edge on page</span><span class="ds-pair__ratio" data-contrast="--color-border-strong|--color-bg-canvas" data-min="3"></span></div>
+          <div class="ds-pair"><span>Count on the bar</span><span class="ds-pair__ratio" data-contrast="--color-fg-default|--color-bg-surface-raised" data-min="4.5"></span></div>
+          <div class="ds-pair"><span>Names and hint on the bar</span><span class="ds-pair__ratio" data-contrast="--color-fg-muted|--color-bg-surface-raised" data-min="4.5"></span></div>
+          <div class="ds-pair"><span>Compare label</span><span class="ds-pair__ratio" data-contrast="--color-fg-on-action|--color-action" data-min="4.5"></span></div>
+          <div class="ds-pair"><span>Compare edge on the bar</span><span class="ds-pair__ratio" data-contrast="--color-action|--color-bg-surface-raised" data-min="3"></span></div>
+          <div class="ds-pair"><span>Focus ring on the bar</span><span class="ds-pair__ratio" data-contrast="--color-focus-ring|--color-bg-surface-raised" data-min="3"></span></div>
+        </div></div>
+        <div data-theme="dark"><div class="ds-example__canvas ds-example__canvas--stack" style="padding: 0; gap: var(--space-2);">
+          <div class="ds-pair"><span>Pressed label on its fill</span><span class="ds-pair__ratio" data-contrast="--color-fg-accent|--color-accent-subtle" data-min="4.5"></span></div>
+          <div class="ds-pair"><span>Pressed label, hover</span><span class="ds-pair__ratio" data-contrast="--color-fg-accent|--color-accent-subtle-hover" data-min="4.5"></span></div>
+          <div class="ds-pair"><span>Pressed edge on page</span><span class="ds-pair__ratio" data-contrast="--color-accent|--color-bg-canvas" data-min="3"></span></div>
+          <div class="ds-pair"><span>Off toggle edge on page</span><span class="ds-pair__ratio" data-contrast="--color-border-strong|--color-bg-canvas" data-min="3"></span></div>
+          <div class="ds-pair"><span>Count on the bar</span><span class="ds-pair__ratio" data-contrast="--color-fg-default|--color-bg-surface-raised" data-min="4.5"></span></div>
+          <div class="ds-pair"><span>Names and hint on the bar</span><span class="ds-pair__ratio" data-contrast="--color-fg-muted|--color-bg-surface-raised" data-min="4.5"></span></div>
+          <div class="ds-pair"><span>Compare label</span><span class="ds-pair__ratio" data-contrast="--color-fg-on-action|--color-action" data-min="4.5"></span></div>
+          <div class="ds-pair"><span>Compare edge on the bar</span><span class="ds-pair__ratio" data-contrast="--color-action|--color-bg-surface-raised" data-min="3"></span></div>
+          <div class="ds-pair"><span>Focus ring on the bar</span><span class="ds-pair__ratio" data-contrast="--color-focus-ring|--color-bg-surface-raised" data-min="3"></span></div>
+        </div></div>
+      </div>
+      <p>The bar's top edge (<code>--color-border-default</code>) is decorative; the shadow and the raised surface separate it from the page.</p>
+      <h3>Motion</h3>
+      <p>The bar appears and disappears without animation. Toggles use the button's <code>--duration-fast</code> colour transition and 1px press, both removed under <code>prefers-reduced-motion</code>. The limit toast slides up over <code>--duration-base</code>, which reduced motion zeroes.</p>
+      <h3>Touch</h3>
+      <p>Card toggles are 44px tall on phones, bar buttons 44px at every width, with 8px between Clear and Compare. The toggle sits above the card's stretched link, so tapping it never opens the review.</p>
+    </section>
+
+    <section class="ds-section" id="content"><h2><a href="#content">Content</a></h2>
+      <ul>
+        <li>Card toggle: "Compare" off, "Remove" on, each followed by the hidden studio name. Review-page toggle: "Add to compare", "Remove from compare".</li>
+        <li>Count: "<i>n</i> selected", a numeral, no "studios" (the bar's label says what is counted).</li>
+        <li>Names: the studios' published names in the order they were picked, comma separated, no "and".</li>
+        <li>Hint at one: "Pick at least 2 studios to compare". Nothing else is added below the count at two to four.</li>
+        <li>Actions: "Clear" and "Compare". Not "Reset", not "Compare now".</li>
+        <li>Limit toast: title "You can compare up to 4 studios", text "Remove one from the bar to add <i>Studio name</i>." It names the studio that was refused.</li>
+      </ul>
+    </section>
+
+    <section class="ds-section" id="do-dont"><h2><a href="#do-dont">Do and don't</a></h2>
+      <div class="ds-dodont">
+        <figure class="ds-do"><div class="ds-example__canvas"><button class="btn btn--sm compare-toggle" type="button" aria-pressed="false">Compare<span class="visually-hidden"> Ossington Blackbox</span></button><span class="text-muted">Enabled at 4 picked; pressing it explains the limit.</span></div><figcaption>Leave the toggles enabled at the limit and answer a fifth press with the warning toast (L2-030.3).</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas"><button class="btn btn--sm compare-toggle" type="button" aria-pressed="false" disabled>Compare<span class="visually-hidden"> Ossington Blackbox</span></button></div><figcaption>Disabling every unpicked toggle at 4: it drops out of the tab order and nobody learns why.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas"><button class="btn btn--ghost" type="button">Clear</button><a class="btn btn--primary" href="../../mocks/pages/compare/default.html">Compare</a></div><figcaption>Clear first, Compare last, as on the studio list.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas"><a class="btn btn--primary" href="../../mocks/pages/compare/default.html">Compare</a><button class="btn btn--ghost" type="button">Clear</button></div><figcaption>Compare first and Clear last, as pages/studio/in-compare has it. The primary action moves between pages and Clear lands under the thumb.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas"><p class="compare-bar__hint" id="dodont-hint">Pick at least 2 studios to compare</p><button class="btn btn--primary" type="button" aria-disabled="true" aria-describedby="dodont-hint">Compare</button></div><figcaption><code>aria-disabled</code> keeps the button in the tab order, so its hint is read when it is reached.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas"><p class="compare-bar__hint" id="dodont-hint-2">Pick at least 2 studios to compare</p><button class="btn btn--primary" type="button" disabled aria-describedby="dodont-hint-2">Compare</button></div><figcaption>Native <code>disabled</code> plus <code>aria-describedby</code>: the button cannot be focused, so the description is never heard from the keyboard.</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="ds-section" id="tokens"><h2><a href="#tokens">Tokens</a></h2>
+      <div class="ds-table-wrap"><table class="ds-table">
+        <thead><tr><th scope="col">Part</th><th scope="col">Token</th><th scope="col">Light</th><th scope="col">Dark</th></tr></thead>
+        <tbody>
+          <tr><td>Pressed fill</td><td><code>--color-accent-subtle</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-accent-subtle" data-swatch></i><span data-token="--color-accent-subtle"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-accent-subtle" data-swatch></i><span data-token="--color-accent-subtle"></span></span></td></tr>
+          <tr><td>Pressed fill, hover</td><td><code>--color-accent-subtle-hover</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-accent-subtle-hover" data-swatch></i><span data-token="--color-accent-subtle-hover"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-accent-subtle-hover" data-swatch></i><span data-token="--color-accent-subtle-hover"></span></span></td></tr>
+          <tr><td>Pressed label</td><td><code>--color-fg-accent</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-accent" data-swatch></i><span data-token="--color-fg-accent"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-accent" data-swatch></i><span data-token="--color-fg-accent"></span></span></td></tr>
+          <tr><td>Pressed edge</td><td><code>--color-accent</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-accent" data-swatch></i><span data-token="--color-accent"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-accent" data-swatch></i><span data-token="--color-accent"></span></span></td></tr>
+          <tr><td>Off toggle edge</td><td><code>--color-border-strong</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-border-strong" data-swatch></i><span data-token="--color-border-strong"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-border-strong" data-swatch></i><span data-token="--color-border-strong"></span></span></td></tr>
+          <tr><td>Bar surface</td><td><code>--color-bg-surface-raised</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-bg-surface-raised" data-swatch></i><span data-token="--color-bg-surface-raised"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-bg-surface-raised" data-swatch></i><span data-token="--color-bg-surface-raised"></span></span></td></tr>
+          <tr><td>Bar top edge</td><td><code>--color-border-default</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-border-default" data-swatch></i><span data-token="--color-border-default"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-border-default" data-swatch></i><span data-token="--color-border-default"></span></span></td></tr>
+          <tr><td>Names and hint</td><td><code>--color-fg-muted</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-muted" data-swatch></i><span data-token="--color-fg-muted"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-muted" data-swatch></i><span data-token="--color-fg-muted"></span></span></td></tr>
+          <tr><td>Compare (primary)</td><td><code>--color-action</code> / <code>--color-fg-on-action</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-action" data-swatch></i><span data-token="--color-action"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-action" data-swatch></i><span data-token="--color-action"></span></span></td></tr>
+          <tr><td>Bar shadow</td><td><code>--shadow-3</code></td><td><span data-token="--shadow-3"></span></td><td><span data-theme="dark" data-token="--shadow-3"></span></td></tr>
+          <tr><td>Bar padding</td><td><code>--space-3</code> block, <code>--layout-margin</code> inline</td><td colspan="2"><span data-token="--space-3"></span> / <span data-token="--layout-margin"></span></td></tr>
+          <tr><td>Gaps (row / column)</td><td><code>--space-2</code> / <code>--space-4</code></td><td colspan="2"><span data-token="--space-2"></span> / <span data-token="--space-4"></span></td></tr>
+          <tr><td>Page end padding</td><td><code>--space-24</code> + <code>env(safe-area-inset-bottom)</code></td><td colspan="2"><span data-token="--space-24"></span></td></tr>
+          <tr><td>Count type</td><td><code>--text-label</code> at <code>--font-size-md</code></td><td colspan="2"><span data-token="--text-label"></span></td></tr>
+          <tr><td>Layer</td><td><code>--z-sticky</code></td><td colspan="2"><span data-token="--z-sticky"></span></td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section class="ds-section" id="code"><h2><a href="#code">Code</a></h2>
+      <pre><code>&lt;body class="has-compare-bar"&gt;
+  …
+  &lt;main id="main" tabindex="-1"&gt;… cards with .compare-toggle …&lt;/main&gt;
+
+  &lt;aside class="compare-bar" aria-label="Studios to compare"&gt;
+    &lt;div class="compare-bar__inner"&gt;
+      &lt;div class="compare-bar__status"&gt;
+        &lt;p class="compare-bar__count" role="status" aria-live="polite"&gt;1 selected&lt;/p&gt;
+        &lt;p class="compare-bar__names"&gt;The Junction Loft&lt;/p&gt;
+        &lt;p class="compare-bar__hint" id="compare-hint"&gt;Pick at least 2 studios to compare&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class="compare-bar__actions"&gt;
+        &lt;button class="btn btn--ghost" type="button"&gt;Clear&lt;/button&gt;
+        &lt;button class="btn btn--primary" type="button" aria-disabled="true" aria-describedby="compare-hint"&gt;Compare&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/aside&gt;
+  &lt;footer class="site-footer"&gt;…&lt;/footer&gt;
+&lt;/body&gt;</code></pre>
+      <table class="ds-table"><thead><tr><th scope="col">Class / attribute</th><th scope="col">Effect</th></tr></thead><tbody>
+        <tr><td><code>.compare-toggle</code> on a <code>.btn</code></td><td>Marks a compare toggle; no look of its own when off.</td></tr>
+        <tr><td><code>aria-pressed="true|false"</code></td><td>Selected state; true swaps the button tokens to the accent-subtle set.</td></tr>
+        <tr><td><code>.compare-bar</code></td><td>Fixed bottom bar: raised surface, top edge, <code>--shadow-3</code>, safe-area padding, <code>--z-sticky</code>.</td></tr>
+        <tr><td><code>.compare-bar__inner</code></td><td>Centred row capped at the container width; wraps.</td></tr>
+        <tr><td><code>.compare-bar__status</code></td><td>Grows (12rem basis) and stacks count, names and hint.</td></tr>
+        <tr><td><code>.compare-bar__count</code></td><td>Label type at 16px; the live region.</td></tr>
+        <tr><td><code>.compare-bar__names</code></td><td>Muted small text, one line, ellipsis.</td></tr>
+        <tr><td><code>.compare-bar__hint</code></td><td>Muted small text; only with one studio picked.</td></tr>
+        <tr><td><code>.compare-bar__actions</code></td><td>Clear and Compare, 8px apart.</td></tr>
+        <tr><td><code>.has-compare-bar</code> on <code>&lt;body&gt;</code></td><td>Pads the end of the page so the footer can scroll clear of the bar.</td></tr>
+        <tr><td><code>data-state="hover|focus|active"</code></td><td>Documentation only, on the toggle.</td></tr>
+      </tbody></table>
+    </section>
+
+    <section class="ds-section" id="sources"><h2><a href="#sources">Sources</a></h2>
+      <p>Extracted from these mocks:</p>
+      <ul>
+        <li><a href="../../mocks/pages/studios/selected-one.html">pages/studios/selected-one</a> (one pressed toggle, bar with hint and unavailable Compare)</li>
+        <li><a href="../../mocks/pages/studios/selected.html">pages/studios/selected</a> (three pressed, bar with Compare link)</li>
+        <li><a href="../../mocks/pages/studio/default.html">pages/studio/default</a> and <a href="../../mocks/pages/studio/in-compare.html">pages/studio/in-compare</a> (review-page toggle, bar with two)</li>
+        <li><a href="../../mocks/notifications/public-toast/warning.html">notifications/public-toast/warning</a> (four picked, limit toast above the bar)</li>
+        <li><a href="../../mocks/notifications/public-toast/success.html">notifications/public-toast/success</a> and <a href="../../mocks/notifications/public-toast/danger.html">notifications/public-toast/danger</a> (Copy link on the comparison page, the bar's destination)</li>
+        <li><a href="../../mocks/pages/compare/over-limit.html">pages/compare/over-limit</a> (a link with six slugs; the limit as the comparison page states it)</li>
+      </ul>
+      <p>Drift found during extraction (the CSS was not changed; each proposal is in the extraction report):</p>
+      <ul>
+        <li><b>pages/studio/in-compare</b>: Compare comes before Clear (every other mock has Clear, then Compare); the bar is labelled "Comparison" instead of "Studios to compare"; and <code>.has-compare-bar</code> sits on <code>&lt;main&gt;</code>, so the footer after it is not padded. Resolution: Clear then Compare, one label, the class on <code>&lt;body&gt;</code>.</li>
+        <li><b>pages/studios/selected-one</b>: Compare is a native <code>disabled</code> button with <code>aria-describedby</code>, which a keyboard user can never reach. Resolution: <code>aria-disabled="true"</code> (same look, through <code>.btn[aria-disabled="true"]</code>) and ignore activation.</li>
+        <li><b>End padding too short on phones.</b> At 360px the bar is 143px (one picked) and 122px (two to four) against 96px of padding from <code>.has-compare-bar</code>, so the end of the footer stays under the bar (L2-030.6). Proposed: <code>@media (max-width: 35.99rem) { .has-compare-bar { padding-bottom: calc(var(--space-32) + var(--space-8) + env(safe-area-inset-bottom)); } }</code>.</li>
+        <li><b>Focus hidden behind the bar.</b> Nothing reserves the bar's height when the browser scrolls a focused element into view (WCAG 2.4.11). Proposed: <code>html:has(body.has-compare-bar) { scroll-padding-bottom: calc(var(--space-32) + var(--space-8) + env(safe-area-inset-bottom)); }</code>.</li>
+        <li><b>Toast offset inline.</b> notifications/public-toast/warning lifts the toast region above the bar with <code>style="bottom: calc(var(--space-24) + env(safe-area-inset-bottom));"</code>. Proposed: <code>.has-compare-bar .toast-region { bottom: calc(var(--space-24) + env(safe-area-inset-bottom)); }</code>.</li>
+        <li><b>Toggle label changes while <code>aria-pressed</code> also changes</b> (L2-030.1 and every mock). Recorded as an open question; see <a href="#accessibility">Accessibility</a>.</li>
+      </ul>
+    </section>
+
+    <footer class="ds-footer"><span>ShotThere design system · extracted from <a href="../../mocks/index.html">docs/mocks</a> on 13 October 2026</span><a href="#top">Back to top</a></footer>
+  </main>
+</div>
+<script src="../assets/ds.js"></script>
+</body>
+</html>
