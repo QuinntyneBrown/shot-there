@@ -1,0 +1,530 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Combobox — ShotThere design system</title>
+<meta name="description" content="The ShotThere combobox: a pill search field with a filtered listbox of published studios and spots, as used by the guide editor's Add an entry picker. Closed, results, active option, no matches, busy and invalid, in both themes.">
+<link rel="stylesheet" href="../tokens/tokens.css">
+<link rel="stylesheet" href="../assets/components.css">
+<link rel="stylesheet" href="../assets/ds.css">
+</head>
+<body id="top">
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="ds-shell">
+  <nav class="ds-nav" aria-label="Design system">
+    <div class="ds-nav__brand"><a href="../index.html">ShotThere DS</a><button class="ds-theme-toggle" type="button" aria-pressed="false">☾ Dark</button></div>
+    <details open><summary>Foundations</summary><ul>
+      <li><a href="../foundations/color.html">Color</a></li>
+      <li><a href="../foundations/typography.html">Typography</a></li>
+      <li><a href="../foundations/spacing.html">Spacing</a></li>
+      <li><a href="../foundations/layout.html">Layout</a></li>
+      <li><a href="../foundations/elevation.html">Elevation</a></li>
+      <li><a href="../foundations/shape.html">Shape</a></li>
+      <li><a href="../foundations/motion.html">Motion</a></li>
+      <li><a href="../foundations/iconography.html">Iconography</a></li>
+      <li><a href="../foundations/theming.html">Theming</a></li>
+      <li><a href="../foundations/responsive.html">Responsive</a></li>
+      <li><a href="../foundations/accessibility.html">Accessibility</a></li>
+      <li><a href="../foundations/content.html">Content</a></li>
+    </ul></details>
+    <details open><summary>Actions</summary><ul>
+      <li><a href="../components/button.html">Button</a></li>
+      <li><a href="../components/icon-button.html">Icon button</a></li>
+      <li><a href="../components/button-group.html">Button group</a></li>
+      <li><a href="../components/link.html">Link</a></li>
+      <li><a href="../components/compare-bar.html">Compare toggle and bar</a></li>
+    </ul></details>
+    <details open><summary>Inputs</summary><ul>
+      <li><a href="../components/form-field.html">Form field</a></li>
+      <li><a href="../components/text-field.html">Text field</a></li>
+      <li><a href="../components/textarea.html">Textarea</a></li>
+      <li><a href="../components/select.html">Select</a></li>
+      <li><a href="../components/combobox.html">Combobox</a></li>
+      <li><a href="../components/checkbox.html">Checkbox</a></li>
+      <li><a href="../components/radio-group.html">Radio group</a></li>
+      <li><a href="../components/file-upload.html">File upload</a></li>
+      <li><a href="../components/form-layout.html">Form layout</a></li>
+      <li><a href="../components/signup.html">Email signup</a></li>
+    </ul></details>
+    <details open><summary>Navigation</summary><ul>
+      <li><a href="../components/skip-link.html">Skip link</a></li>
+      <li><a href="../components/site-header.html">Site header</a></li>
+      <li><a href="../components/footer.html">Footer</a></li>
+      <li><a href="../components/breadcrumb.html">Breadcrumb</a></li>
+      <li><a href="../components/filter.html">Filters</a></li>
+    </ul></details>
+    <details open><summary>Containers and overlays</summary><ul>
+      <li><a href="../components/container.html">Container and grid</a></li>
+      <li><a href="../components/review-layout.html">Review layout</a></li>
+      <li><a href="../components/editor-layout.html">Editor layout</a></li>
+      <li><a href="../components/card.html">Card</a></li>
+      <li><a href="../components/dialog.html">Dialog</a></li>
+      <li><a href="../components/sheet.html">Sheet and drawer</a></li>
+      <li><a href="../components/popover.html">Popover</a></li>
+      <li><a href="../components/lightbox.html">Lightbox</a></li>
+      <li><a href="../components/divider.html">Divider</a></li>
+    </ul></details>
+    <details open><summary>Data display</summary><ul>
+      <li><a href="../components/location-card.html">Location card</a></li>
+      <li><a href="../components/table.html">Table</a></li>
+      <li><a href="../components/compare-table.html">Comparison table</a></li>
+      <li><a href="../components/list.html">List rows</a></li>
+      <li><a href="../components/description-list.html">Description list</a></li>
+      <li><a href="../components/price-block.html">Price block</a></li>
+      <li><a href="../components/score.html">Score and pips</a></li>
+      <li><a href="../components/shot-grid.html">Shot grid</a></li>
+      <li><a href="../components/video-poster.html">Episode poster</a></li>
+      <li><a href="../components/map.html">Map</a></li>
+      <li><a href="../components/guide-entry.html">Guide entry</a></li>
+      <li><a href="../components/stat-tile.html">Stat tile</a></li>
+      <li><a href="../components/image-manager.html">Image manager</a></li>
+      <li><a href="../components/disclosure.html">Disclosure</a></li>
+      <li><a href="../components/badge.html">Badge</a></li>
+      <li><a href="../components/status-label.html">Status label</a></li>
+      <li><a href="../components/chip.html">Chip</a></li>
+      <li><a href="../components/tag.html">Tag</a></li>
+    </ul></details>
+    <details open><summary>Feedback</summary><ul>
+      <li><a href="../components/inline-message.html">Inline message</a></li>
+      <li><a href="../components/alert.html">Alert and banner</a></li>
+      <li><a href="../components/toast.html">Toast</a></li>
+      <li><a href="../components/progress.html">Progress and meter</a></li>
+      <li><a href="../components/spinner.html">Spinner</a></li>
+      <li><a href="../components/skeleton.html">Skeleton</a></li>
+      <li><a href="../components/empty-state.html">Empty state</a></li>
+      <li><a href="../components/error-page.html">Error page</a></li>
+    </ul></details>
+    <details open><summary>Patterns</summary><ul>
+      <li><a href="../patterns/forms.html">Forms</a></li>
+      <li><a href="../patterns/feedback-and-loading.html">Feedback and loading</a></li>
+      <li><a href="../patterns/empty-and-error-states.html">Empty and error states</a></li>
+      <li><a href="../patterns/navigation.html">Navigation and page structure</a></li>
+      <li><a href="../patterns/dialogs-and-overlays.html">Dialogs and overlays</a></li>
+      <li><a href="../patterns/tables-and-lists.html">Data tables and lists</a></li>
+      <li><a href="../patterns/notifications.html">Notifications</a></li>
+      <li><a href="../patterns/content-and-tone.html">Content and tone</a></li>
+    </ul></details>
+  </nav>
+
+  <main id="main" class="ds-main">
+    <header class="ds-header">
+      <p class="ds-kicker">Component · Inputs</p>
+      <h1>Combobox</h1>
+      <p class="ds-lead">A search field that filters a list as you type. The admin uses it to find a published studio or spot by part of its name and add it to a guide.</p>
+      <div class="ds-meta"><span class="ds-pill ds-pill--ok">WCAG 2.2 AA</span><span class="ds-pill">Status: stable</span><span class="ds-pill">APG Combobox, list autocomplete</span><span class="ds-pill"><code>.search-field</code> <code>.suggestions</code> <code>.suggestion</code></span></div>
+      <ul class="ds-toc"><li><a href="#overview">Overview</a></li><li><a href="#anatomy">Anatomy</a></li><li><a href="#variants">Variants</a></li><li><a href="#sizes">Sizes</a></li><li><a href="#states">States</a></li><li><a href="#responsive">Responsive behaviour</a></li><li><a href="#theming">Theming</a></li><li><a href="#accessibility">Accessibility</a></li><li><a href="#content">Content</a></li><li><a href="#do-dont">Do and don't</a></li><li><a href="#tokens">Tokens</a></li><li><a href="#code">Code</a></li><li><a href="#sources">Sources</a></li></ul>
+    </header>
+
+    <section class="ds-section" id="overview"><h2><a href="#overview">Overview</a></h2>
+      <p>Use the combobox when the admin has to pick one record out of many by name: the guide editor's <b>Add an entry</b> dialog lists every published studio and spot, and typing "studio" narrows it to three (L2-060.4: matches within 500 ms, selectable by keyboard). The text box keeps focus the whole time; arrow keys move an active option through the list and Enter picks it.</p>
+      <ul>
+        <li>Use a <a href="select.html">select</a> when the options are few and fixed (a guide's sort, a fee's kind). A combobox earns its place only when the list is too long to scan.</li>
+        <li>Use the plain search input (<code>.search</code>, see <a href="text-field.html">text field</a>) when typing filters a table already on the page, as on the admin guide list. That field has no popup, so it is not a combobox.</li>
+        <li>The list only ever holds <b>published</b> locations. Drafts are not offered: a guide can only point at a place that has been shot there and is live.</li>
+      </ul>
+    </section>
+
+    <section class="ds-section" id="anatomy"><h2><a href="#anatomy">Anatomy</a></h2>
+      <div class="ds-anatomy">
+        <figure class="ds-anatomy__figure">
+          <div style="position: relative; width: 100%; max-width: 26rem;">
+          <div class="field">
+            <label class="field__label" for="an-search">Studio or spot</label>
+            <div class="search-field">
+              <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+              <input class="input" id="an-search" type="text" role="combobox" aria-expanded="true" aria-controls="an-options" aria-autocomplete="list" autocomplete="off" aria-describedby="an-hint" aria-activedescendant="an-opt-1" value="studio">
+            </div>
+            <span class="field__help" id="an-hint">Type part of a name</span>
+            <ul class="suggestions" id="an-options" role="listbox" aria-label="Matching studios and spots">
+              <li class="suggestion" id="an-opt-1" role="option" aria-selected="true"><span>Leslieville Daylight <mark>Studio</mark></span><span class="suggestion__hint">Studio · Leslieville</span></li>
+              <li class="suggestion" id="an-opt-2" role="option" aria-selected="false"><span>Bloordale Sun <mark>Studio</mark></span><span class="suggestion__hint">Studio · Bloordale</span></li>
+            </ul>
+          </div>
+            <span class="ds-callout" style="left: -1.75rem; top: 0;" aria-hidden="true">1</span>
+          <span class="ds-callout" style="left: -1.75rem; top: 2.45rem;" aria-hidden="true">2</span>
+          <span class="ds-callout" style="left: 60%; top: 2.45rem;" aria-hidden="true">3</span>
+          <span class="ds-callout" style="left: -1.75rem; top: 4.8rem;" aria-hidden="true">4</span>
+          <span class="ds-callout" style="right: -1.75rem; top: 7rem;" aria-hidden="true">5</span>
+          <span class="ds-callout" style="left: -1.75rem; top: 8rem;" aria-hidden="true">6</span>
+          <span class="ds-callout" style="right: -1.75rem; top: 9.6rem;" aria-hidden="true">7</span>
+          </div>
+        </figure>
+        <ol class="ds-anatomy__list">
+          <li><div><b>Label</b><small>Visible <code>.field__label</code> tied to the input with <code>for</code>; it names the combobox.</small></div></li>
+          <li><div><b>Search icon</b><small>20px, <code>--color-fg-subtle</code>, <code>aria-hidden</code>, centred on the 52px field.</small></div></li>
+          <li><div><b>Text box</b><small><code>.input</code> with <code>role="combobox"</code> inside <code>.search-field</code>: full pill, <code>--control-height-lg</code>, left padding clears the icon.</small></div></li>
+          <li><div><b>Help</b><small><code>.field__help</code>, "Type part of a name", referenced by <code>aria-describedby</code>.</small></div></li>
+          <li><div><b>Listbox</b><small><code>.suggestions</code>: raised surface, <code>--radius-lg</code>, <code>--shadow-3</code>, scrolls after eight options.</small></div></li>
+          <li><div><b>Option</b><small><code>.suggestion</code>, at least 44px tall. The active one has the subtle fill and a 2px accent bar on its left edge; the matched text is bold through <code>&lt;mark&gt;</code>.</small></div></li>
+          <li><div><b>Hint</b><small><code>.suggestion__hint</code>: kind and neighbourhood in caption type, so two similar names can be told apart.</small></div></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="ds-section" id="variants"><h2><a href="#variants">Variants</a></h2>
+      <p>One field, one popup. What varies is what the popup holds: options with hints, or a single message when nothing matches. A flat listbox (<code>.suggestions--inline</code>) drops the raised surface for a list that sits in the flow of an already raised panel.</p>
+      <h3>Raised listbox (default)</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--stack" style="max-width: 30rem;">
+          <div class="field">
+            <label class="field__label" for="v-search">Studio or spot</label>
+            <div class="search-field">
+              <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+              <input class="input" id="v-search" type="text" role="combobox" aria-expanded="true" aria-controls="v-options" aria-autocomplete="list" autocomplete="off" aria-describedby="v-hint" aria-activedescendant="v-opt-1" value="brick">
+            </div>
+            <span class="field__help" id="v-hint">Type part of a name</span>
+          </div>
+          <ul class="suggestions" id="v-options" role="listbox" aria-label="Matching studios and spots">
+            <li class="suggestion" id="v-opt-1" role="option" aria-selected="true"><span>Evergreen <mark>Brick</mark> Works</span><span class="suggestion__hint">Outdoor spot · Don Valley</span></li>
+          </ul>
+        </div>
+        <div class="ds-example__caption"><span>Studios and spots share one list; the hint says which kind each option is.</span></div>
+        <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;ul class="suggestions" id="entry-options" role="listbox" aria-label="Matching studios and spots"&gt;
+  &lt;li class="suggestion" id="opt-evergreen" role="option" aria-selected="true"&gt;
+    &lt;span&gt;Evergreen &lt;mark&gt;Brick&lt;/mark&gt; Works&lt;/span&gt;
+    &lt;span class="suggestion__hint"&gt;Outdoor spot · Don Valley&lt;/span&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</code></pre></details>
+      </div>
+      <h3>Flat listbox</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--stack" style="max-width: 30rem;">
+          <ul class="suggestions suggestions--inline" id="v2-options" role="listbox" aria-label="Matching studios and spots">
+            <li class="suggestion" id="v2-opt-1" role="option" aria-selected="true"><span>Riverside <mark>Ro</mark>oftop Studio</span><span class="suggestion__hint">Studio · Riverside</span></li>
+            <li class="suggestion" id="v2-opt-2" role="option" aria-selected="false"><span>Kensington Window <mark>Ro</mark>om</span><span class="suggestion__hint">Studio · Kensington Market</span></li>
+          </ul>
+        </div>
+        <div class="ds-example__caption"><span><code>.suggestions--inline</code>: no border, shadow, padding or fill. No mock uses it yet; reach for it only inside a panel that is already raised.</span></div>
+      </div>
+      <h3>Empty message</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--stack" style="max-width: 30rem;">
+          <div class="suggestions" id="v3-empty"><p class="suggestions__empty">No published studios or spots match “parkdale”</p></div>
+        </div>
+        <div class="ds-example__caption"><span><code>.suggestions__empty</code> sits in a <code>.suggestions</code> box in place of the options and is announced through <code>role="status"</code> in the product.</span></div>
+      </div>
+    </section>
+
+    <section class="ds-section" id="sizes" data-na="The combobox has one size."><h2><a href="#sizes">Sizes</a></h2>
+      <p class="ds-na">The combobox has one size: the field is <code>--control-height-lg</code> (52px) and each option is at least <code>--target-comfortable</code> (44px) tall at every breakpoint.</p>
+    </section>
+
+    <section class="ds-section" id="states"><h2><a href="#states">States</a></h2>
+      <p>The field and its options have separate state sets. Hover and focus are forced with <code>data-state</code> so they can be reviewed without a pointer; everything else uses the real attribute: <code>disabled</code>, <code>aria-invalid</code>, <code>aria-expanded</code>, and <code>aria-selected</code> for the active option.</p>
+      <div class="ds-matrix"><table>
+        <thead><tr><th scope="col">Part</th><th scope="col">Default</th><th scope="col">Hover</th><th scope="col">Focus</th><th scope="col">Active</th><th scope="col">Disabled</th><th scope="col">Invalid</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Text box</th>
+            <td><div class="search-field" style="min-width: 13rem;"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input class="input" type="text" role="combobox" aria-expanded="false" aria-autocomplete="list" autocomplete="off" aria-label="Studio or spot, default"></div></td>
+            <td><div class="search-field" style="min-width: 13rem;"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input class="input" type="text" role="combobox" aria-expanded="false" aria-autocomplete="list" autocomplete="off" aria-label="Studio or spot, hover" data-state="hover"></div></td>
+            <td><div class="search-field" style="min-width: 13rem;"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input class="input" type="text" role="combobox" aria-expanded="false" aria-autocomplete="list" autocomplete="off" aria-label="Studio or spot, focus" data-state="focus" value="stu"></div></td>
+            <td><span class="text-subtle" style="display: inline-block; min-width: 9rem;">Not used: the text box has no pressed state</span></td>
+            <td><div class="search-field" style="min-width: 13rem;"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input class="input" type="text" role="combobox" aria-expanded="false" aria-autocomplete="list" autocomplete="off" aria-label="Studio or spot, disabled" disabled></div></td>
+            <td><div class="search-field" style="min-width: 13rem;"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input class="input" type="text" role="combobox" aria-expanded="false" aria-autocomplete="list" autocomplete="off" aria-label="Studio or spot, invalid" aria-invalid="true" value="Leslieville Daylight Studio"></div></td>
+          </tr>
+          <tr><th scope="row">Option</th>
+            <td><ul class="suggestions" style="min-width: 15rem;" role="listbox" aria-label="Option, default"><li class="suggestion" role="option" aria-selected="false"><span>Bloordale Sun <mark>Studio</mark></span><span class="suggestion__hint">Studio · Bloordale</span></li></ul></td>
+            <td><ul class="suggestions" style="min-width: 15rem;" role="listbox" aria-label="Option, hover"><li class="suggestion" role="option" aria-selected="false" data-state="hover"><span>Bloordale Sun <mark>Studio</mark></span><span class="suggestion__hint">Studio · Bloordale</span></li></ul></td>
+            <td><span class="text-subtle" style="display: inline-block; min-width: 9rem;">Not used: DOM focus stays in the text box</span></td>
+            <td><ul class="suggestions" style="min-width: 15rem;" role="listbox" aria-label="Option, active"><li class="suggestion" role="option" aria-selected="true"><span>Bloordale Sun <mark>Studio</mark></span><span class="suggestion__hint">Studio · Bloordale</span></li></ul></td>
+            <td><span class="text-subtle" style="display: inline-block; min-width: 9rem;">Not used: unpublished places are left out, not greyed out</span></td>
+            <td><span class="text-subtle" style="display: inline-block; min-width: 9rem;">Not used: the error belongs to the field</span></td>
+          </tr>
+        </tbody>
+      </table></div>
+
+      <h3>Popup states</h3>
+      <p>The guide editor's picker in each of its states, with the field's real attributes.</p>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--stack" style="max-width: 30rem;">
+          <div class="field">
+            <label class="field__label" for="s1-search">Studio or spot</label>
+            <div class="search-field">
+              <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+              <input class="input" id="s1-search" type="text" role="combobox" aria-expanded="false" aria-controls="s1-options" aria-autocomplete="list" autocomplete="off" aria-describedby="s1-hint">
+            </div>
+            <span class="field__help" id="s1-hint">Type part of a name</span>
+          </div>
+          <ul class="suggestions" id="s1-options" role="listbox" aria-label="Matching studios and spots" hidden></ul>
+        </div>
+        <div class="ds-example__caption"><span><b>Closed</b>: empty field, <code>aria-expanded="false"</code>, the listbox is in the DOM with <code>hidden</code>. Add entry is disabled.</span></div>
+      </div>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--stack" style="max-width: 30rem;">
+          <div class="field">
+            <label class="field__label" for="s2-search">Studio or spot</label>
+            <div class="search-field">
+              <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+              <input class="input" id="s2-search" type="text" role="combobox" aria-expanded="true" aria-controls="s2-options" aria-autocomplete="list" autocomplete="off" aria-describedby="s2-hint" aria-activedescendant="s2-opt-1" value="studio">
+            </div>
+            <span class="field__help" id="s2-hint">Type part of a name</span>
+          </div>
+          <ul class="suggestions" id="s2-options" role="listbox" aria-label="Matching studios and spots">
+            <li class="suggestion" id="s2-opt-1" role="option" aria-selected="true"><span>Leslieville Daylight <mark>Studio</mark></span><span class="suggestion__hint">Studio · Leslieville</span></li>
+            <li class="suggestion" id="s2-opt-2" role="option" aria-selected="false"><span>Bloordale Sun <mark>Studio</mark></span><span class="suggestion__hint">Studio · Bloordale</span></li>
+            <li class="suggestion" id="s2-opt-3" role="option" aria-selected="false"><span>Riverside Rooftop <mark>Studio</mark></span><span class="suggestion__hint">Studio · Riverside</span></li>
+          </ul>
+          <p class="visually-hidden" role="status">3 results</p>
+        </div>
+        <div class="ds-example__caption"><span><b>Results, first option active</b>: <code>aria-expanded="true"</code>, <code>aria-activedescendant</code> points at the option with <code>aria-selected="true"</code>, and "3 results" is announced.</span></div>
+      </div>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--stack" style="max-width: 30rem;">
+          <div class="field">
+            <label class="field__label" for="s3-search">Studio or spot</label>
+            <div class="search-field">
+              <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+              <input class="input" id="s3-search" type="text" role="combobox" aria-expanded="true" aria-controls="s3-options" aria-autocomplete="list" autocomplete="off" aria-describedby="s3-hint" aria-activedescendant="s3-opt-2" value="studio">
+            </div>
+            <span class="field__help" id="s3-hint">Type part of a name</span>
+          </div>
+          <ul class="suggestions" id="s3-options" role="listbox" aria-label="Matching studios and spots">
+            <li class="suggestion" id="s3-opt-1" role="option" aria-selected="false"><span>Leslieville Daylight <mark>Studio</mark></span><span class="suggestion__hint">Studio · Leslieville</span></li>
+            <li class="suggestion" id="s3-opt-2" role="option" aria-selected="true"><span>Bloordale Sun <mark>Studio</mark></span><span class="suggestion__hint">Studio · Bloordale</span></li>
+            <li class="suggestion" id="s3-opt-3" role="option" aria-selected="false"><span>Riverside Rooftop <mark>Studio</mark></span><span class="suggestion__hint">Studio · Riverside</span></li>
+          </ul>
+        </div>
+        <div class="ds-example__caption"><span><b>Active option moved</b>: one <kbd>↓</kbd> later. Only <code>aria-activedescendant</code> and <code>aria-selected</code> change; focus never leaves the text box.</span></div>
+      </div>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--stack" style="max-width: 30rem;">
+          <div class="field">
+            <label class="field__label" for="s4-search">Studio or spot</label>
+            <div class="search-field">
+              <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+              <input class="input" id="s4-search" type="text" role="combobox" aria-expanded="false" aria-controls="s4-options" aria-autocomplete="list" autocomplete="off" aria-describedby="s4-hint" value="parkdale">
+            </div>
+            <span class="field__help" id="s4-hint">Type part of a name</span>
+          </div>
+          <ul class="suggestions" id="s4-options" role="listbox" aria-label="Matching studios and spots" hidden></ul>
+          <div class="suggestions"><p class="suggestions__empty" role="status">No published studios or spots match “parkdale”</p></div>
+        </div>
+        <div class="ds-example__caption"><span><b>No matches</b>: the listbox collapses (<code>aria-expanded="false"</code>, <code>hidden</code>) and a message box takes its place, announced as a status.</span></div>
+      </div>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--stack" style="max-width: 30rem;">
+          <div class="field">
+            <label class="field__label" for="s5-search">Studio or spot</label>
+            <div class="search-field">
+              <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+              <input class="input" id="s5-search" type="text" role="combobox" aria-expanded="false" aria-controls="s5-options" aria-autocomplete="list" autocomplete="off" aria-describedby="s5-hint" value="ju">
+            </div>
+            <span class="field__help" id="s5-hint">Type part of a name</span>
+          </div>
+          <ul class="suggestions" id="s5-options" role="listbox" aria-label="Matching studios and spots" hidden></ul>
+          <div class="cluster" style="gap: var(--space-2);"><span class="spinner spinner--sm" aria-hidden="true"></span><span class="text-caption" aria-hidden="true">Searching</span><span class="visually-hidden" role="status">Searching…</span></div>
+        </div>
+        <div class="ds-example__caption"><span><b>Busy</b>: a small <a href="spinner.html">spinner</a> and "Searching" under the field while results load; the field stays editable.</span></div>
+      </div>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--stack" style="max-width: 30rem;">
+          <div class="field">
+            <label class="field__label" for="s6-search">Studio or spot</label>
+            <div class="search-field">
+              <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+              <input class="input" id="s6-search" type="text" role="combobox" aria-expanded="false" aria-controls="s6-options" aria-autocomplete="list" autocomplete="off" aria-describedby="s6-error s6-hint" aria-invalid="true" value="Leslieville Daylight Studio">
+            </div>
+            <span class="field__error" id="s6-error">This studio is already in the guide</span>
+            <span class="field__help" id="s6-hint">Type part of a name</span>
+          </div>
+          <ul class="suggestions" id="s6-options" role="listbox" aria-label="Matching studios and spots" hidden></ul>
+        </div>
+        <div class="ds-example__caption"><span><b>Invalid</b>: Leslieville Daylight Studio is already entry 1 of "Best for headshots" (L2-060.2). <code>aria-invalid="true"</code>, error first in <code>aria-describedby</code>, Add entry stays disabled.</span></div>
+      </div>
+
+      <h3>Both themes</h3>
+      <div class="ds-themes">
+        <div data-theme="light"><div class="ds-example__canvas ds-example__canvas--stack" style="padding: 0;">
+          <div class="search-field"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input class="input" type="text" role="combobox" aria-expanded="true" aria-controls="th-l-options" aria-autocomplete="list" autocomplete="off" aria-label="Studio or spot, light theme" aria-activedescendant="th-l-opt-1" value="studio"></div>
+          <ul class="suggestions" id="th-l-options" role="listbox" aria-label="Matching studios and spots, light theme">
+            <li class="suggestion" id="th-l-opt-1" role="option" aria-selected="true"><span>Leslieville Daylight <mark>Studio</mark></span><span class="suggestion__hint">Studio · Leslieville</span></li>
+            <li class="suggestion" id="th-l-opt-2" role="option" aria-selected="false"><span>Bloordale Sun <mark>Studio</mark></span><span class="suggestion__hint">Studio · Bloordale</span></li>
+          </ul>
+        </div></div>
+        <div data-theme="dark"><div class="ds-example__canvas ds-example__canvas--stack" style="padding: 0;">
+          <div class="search-field"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input class="input" type="text" role="combobox" aria-expanded="true" aria-controls="th-d-options" aria-autocomplete="list" autocomplete="off" aria-label="Studio or spot, dark theme" aria-activedescendant="th-d-opt-1" value="studio"></div>
+          <ul class="suggestions" id="th-d-options" role="listbox" aria-label="Matching studios and spots, dark theme">
+            <li class="suggestion" id="th-d-opt-1" role="option" aria-selected="true"><span>Leslieville Daylight <mark>Studio</mark></span><span class="suggestion__hint">Studio · Leslieville</span></li>
+            <li class="suggestion" id="th-d-opt-2" role="option" aria-selected="false"><span>Bloordale Sun <mark>Studio</mark></span><span class="suggestion__hint">Studio · Bloordale</span></li>
+          </ul>
+        </div></div>
+      </div>
+    </section>
+
+    <section class="ds-section" id="responsive"><h2><a href="#responsive">Responsive behaviour</a></h2>
+      <ul>
+        <li>The field and listbox are always full width of their container. Inside the picker that is the <a href="dialog.html">dialog</a> body, which is a bottom sheet below <code>36rem</code> and a centred 40rem form panel above it.</li>
+        <li>The listbox sits in the flow under the field, not floating over the dialog, so it can never be clipped by the sheet's edge or the on-screen keyboard. It scrolls on its own after eight options (<code>max-height</code> of 8 × 44px plus padding).</li>
+        <li>Option rows wrap: a long name breaks inside its span (<code>overflow-wrap: anywhere</code>, combobox D-11) and the hint drops below the name instead of squeezing it.</li>
+        <li>The text box uses 16px body type at every width, so iOS does not zoom when it takes focus.</li>
+        <li>Options are 44px tall at every breakpoint (L2-065), so no phone-only override is needed.</li>
+      </ul>
+      <div class="ds-iframes">
+        <iframe class="ds-iframe" src="../../mocks/dialogs/guide-entry-picker/results.html?chrome=0" title="Add an entry picker with three results at phone width" loading="lazy"></iframe>
+      </div>
+    </section>
+
+    <section class="ds-section" id="theming"><h2><a href="#theming">Theming</a></h2>
+      <p>The text box is a <a href="text-field.html">text field</a> and reads the same component tokens (<code>--field-bg</code>, <code>--field-border</code>, <code>--field-fg</code>); <code>.search-field</code> only changes its shape and padding. The listbox reads semantic tokens directly: <code>--color-bg-surface-raised</code>, <code>--color-border-default</code> and <code>--shadow-3</code> for the panel; <code>--color-bg-subtle</code> plus a <code>--color-accent</code> bar for the active option; <code>--color-fg-subtle</code> for hints.</p>
+      <p>In the dark theme the raised surface is a step lighter than the dialog behind it and the shadow deepens, so the list still reads as lifted; the accent bar lightens with the accent ramp and stays above 3:1 on the subtle fill. In forced colours the fill and the bar disappear, so the active option takes <code>Highlight</code> and <code>HighlightText</code> (combobox D-9).</p>
+      <pre><code>@media (forced-colors: active) {
+  .suggestion[aria-selected="true"] { forced-color-adjust: none; background: Highlight; color: HighlightText; }
+}</code></pre>
+    </section>
+
+    <section class="ds-section" id="accessibility"><h2><a href="#accessibility">Accessibility</a></h2>
+      <h3>Role and pattern</h3>
+      <p><a href="https://www.w3.org/WAI/ARIA/apg/patterns/combobox/">WAI-ARIA APG Combobox</a>, <em>list autocomplete with automatic selection</em>: an <code>&lt;input type="text" role="combobox" aria-autocomplete="list"&gt;</code> that controls a <code>&lt;ul role="listbox"&gt;</code> of <code>role="option"</code> items. <code>aria-expanded</code> says whether the list is showing, <code>aria-controls</code> names it (the listbox stays in the DOM, <code>hidden</code>, so the reference always resolves) and <code>aria-activedescendant</code> names the active option. <code>autocomplete="off"</code> keeps the browser's own suggestions out of the way.</p>
+      <h3>Keyboard</h3>
+      <table class="ds-table ds-keys"><thead><tr><th scope="col">Key</th><th scope="col">Action</th></tr></thead><tbody>
+        <tr><td>Typing</td><td>Filters the list within 500 ms (L2-060.4), opens it when there is at least one match and makes the first option active.</td></tr>
+        <tr><td><kbd>↓</kbd></td><td>Opens the list if it is closed and has matches; otherwise moves the active option down, wrapping from the last to the first.</td></tr>
+        <tr><td><kbd>↑</kbd></td><td>Moves the active option up, wrapping from the first to the last.</td></tr>
+        <tr><td><kbd>Enter</kbd></td><td>Picks the active option: its name fills the text box, the list closes and Add entry becomes available. Enter does not submit the dialog while the list is open.</td></tr>
+        <tr><td><kbd>Esc</kbd></td><td>With the list open, closes it and keeps the text. With the list closed, the dialog handles it: it closes and focus returns to the Add entry button in the guide editor.</td></tr>
+        <tr><td><kbd>←</kbd> / <kbd>→</kbd>, <kbd>Home</kbd> / <kbd>End</kbd></td><td>Move the caret in the text box, as in any text field.</td></tr>
+        <tr><td><kbd>Tab</kbd></td><td>Closes the list without picking and moves on to Cancel.</td></tr>
+      </tbody></table>
+      <h3>Focus</h3>
+      <p>The dialog opens with focus in the text box, and DOM focus never leaves it. The shared ring (2px <code>--color-focus-ring</code>) sits on the text box; the active option shows by its fill and 2px accent bar, never by a second ring, and is scrolled into view as it moves. Clicking an option picks it and returns focus to the text box.</p>
+      <h3>Labelling</h3>
+      <p>The visible label "Studio or spot" names the combobox; "Type part of a name" describes it. The listbox has <code>aria-label="Matching studios and spots"</code>. An option's name is its text, so the hint is read with it ("Leslieville Daylight Studio, Studio · Leslieville"). The result count ("3 results"), "Searching…" and the no-match sentence go to a <code>role="status"</code> region so they are announced without moving focus. An error comes first in <code>aria-describedby</code>, as on every other field.</p>
+      <h3>Contrast</h3>
+      <div class="ds-example__canvas ds-example__canvas--stack" style="padding: 0; gap: var(--space-2);">
+        <div class="ds-pair"><span>Option name on the listbox</span><span class="ds-pair__ratio" data-contrast="--color-fg-default|--color-bg-surface-raised" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Option name on the active fill</span><span class="ds-pair__ratio" data-contrast="--color-fg-default|--color-bg-subtle" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Hint on the listbox</span><span class="ds-pair__ratio" data-contrast="--color-fg-subtle|--color-bg-surface-raised" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Hint on the active fill</span><span class="ds-pair__ratio" data-contrast="--color-fg-subtle|--color-bg-subtle" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Active-option bar on its fill</span><span class="ds-pair__ratio" data-contrast="--color-accent|--color-bg-subtle" data-min="3"></span></div>
+        <div class="ds-pair"><span>No-match message</span><span class="ds-pair__ratio" data-contrast="--color-fg-muted|--color-bg-surface-raised" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Search icon in the text box</span><span class="ds-pair__ratio" data-contrast="--color-fg-subtle|--color-bg-surface" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Field edge in a dialog</span><span class="ds-pair__ratio" data-contrast="--color-border-strong|--color-bg-surface-raised" data-min="3"></span></div>
+        <div class="ds-pair"><span>Focus ring in a dialog</span><span class="ds-pair__ratio" data-contrast="--color-focus-ring|--color-bg-surface-raised" data-min="3"></span></div>
+        <div class="ds-pair"><span>Error text in a dialog</span><span class="ds-pair__ratio" data-contrast="--color-danger-fg|--color-bg-surface-raised" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Invalid field edge in a dialog</span><span class="ds-pair__ratio" data-contrast="--color-danger-solid|--color-bg-surface-raised" data-min="3"></span></div>
+      </div>
+      <h3>Motion</h3>
+      <p>The listbox appears and disappears without animation, so results never lag behind typing. Only the field border eases over <code>--duration-fast</code>, which reduced motion zeroes. The busy spinner keeps turning under reduced motion because it reports status.</p>
+      <h3>Touch</h3>
+      <p>The field is 52px tall and every option at least 44px, the whole row being the target. Nothing depends on hover: tapping an option picks it, and the active fill is only a keyboard and pointer cue.</p>
+    </section>
+
+    <section class="ds-section" id="content"><h2><a href="#content">Content</a></h2>
+      <ul>
+        <li><b>Label</b> names what is being picked, in sentence case: "Studio or spot". No placeholder; the help line under the field says "Type part of a name".</li>
+        <li><b>Options</b> are the location's published name, with the typed text in bold through <code>&lt;mark&gt;</code>. Never reword a name to fit.</li>
+        <li><b>Hints</b> are "Kind · Neighbourhood": "Studio · Leslieville", "Outdoor spot · Don Valley". The same words the map popup and the location cards use.</li>
+        <li><b>No match</b> repeats the query in curly quotes and says what was searched: "No published studios or spots match “parkdale”". No apology, no exclamation mark.</li>
+        <li><b>Busy</b> is one word, "Searching"; the status region reads "Searching…".</li>
+        <li><b>Count</b>: "1 result", "3 results".</li>
+        <li><b>Errors</b> say what is wrong with the pick in plain words: "This studio is already in the guide" (L2-060.2), "This spot is already in the guide".</li>
+      </ul>
+    </section>
+
+    <section class="ds-section" id="do-dont"><h2><a href="#do-dont">Do and don't</a></h2>
+      <div class="ds-dodont">
+        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--stack">
+          <ul class="suggestions" role="listbox" aria-label="Example: options with hints"><li class="suggestion" role="option" aria-selected="true"><span>Leslieville Daylight <mark>Studio</mark></span><span class="suggestion__hint">Studio · Leslieville</span></li><li class="suggestion" role="option" aria-selected="false"><span>Riverside Rooftop <mark>Studio</mark></span><span class="suggestion__hint">Studio · Riverside</span></li></ul>
+        </div><figcaption>Give every option its kind and neighbourhood, so "… Studio" names stay distinct.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--stack">
+          <ul class="suggestions" role="listbox" aria-label="Example: options without hints"><li class="suggestion" role="option" aria-selected="true"><span>Leslieville Daylight Studio</span></li><li class="suggestion" role="option" aria-selected="false"><span>Riverside Rooftop Studio</span></li></ul>
+        </div><figcaption>List bare names with no match highlight. The admin cannot tell which part matched or what kind of place it is.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--stack">
+          <ul class="suggestions" role="listbox" aria-label="Example: published only"><li class="suggestion" role="option" aria-selected="true"><span>Bloordale Sun <mark>Studio</mark></span><span class="suggestion__hint">Studio · Bloordale</span></li></ul>
+        </div><figcaption>Offer only published studios and spots. A guide entry has to open a live review.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--stack">
+          <ul class="suggestions" role="listbox" aria-label="Example: draft listed"><li class="suggestion" role="option" aria-selected="true"><span>Corktown Garage <mark>Studio</mark></span><span class="suggestion__hint">Studio · Corktown · Draft</span></li></ul>
+        </div><figcaption>List drafts such as Corktown Garage Studio. It has no public page yet, so the guide would point nowhere.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--stack">
+          <ul class="suggestions" role="listbox" aria-label="Example: collapsed listbox" hidden></ul>
+          <div class="suggestions"><p class="suggestions__empty">No published studios or spots match “parkdale”</p></div>
+        </div><figcaption>When nothing matches, hide the listbox and show the message in a sibling box. <code>aria-controls</code> still points at the listbox.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--stack">
+          <div class="suggestions"><p class="suggestions__empty">No published studios or spots match “parkdale”</p></div>
+        </div><figcaption>Swap the listbox for a <code>&lt;div&gt;</code> with the listbox's id, as the no-matches mock did. <code>aria-controls</code> then names something that is not a listbox.</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="ds-section" id="tokens"><h2><a href="#tokens">Tokens</a></h2>
+      <div class="ds-table-wrap"><table class="ds-table">
+        <thead><tr><th scope="col">Part</th><th scope="col">Token</th><th scope="col">Light</th><th scope="col">Dark</th></tr></thead>
+        <tbody>
+          <tr><td>Listbox surface</td><td><code>--color-bg-surface-raised</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-bg-surface-raised" data-swatch></i><span data-token="--color-bg-surface-raised"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-bg-surface-raised" data-swatch></i><span data-token="--color-bg-surface-raised"></span></span></td></tr>
+          <tr><td>Listbox edge</td><td><code>--color-border-default</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-border-default" data-swatch></i><span data-token="--color-border-default"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-border-default" data-swatch></i><span data-token="--color-border-default"></span></span></td></tr>
+          <tr><td>Option text</td><td><code>--color-fg-default</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-default" data-swatch></i><span data-token="--color-fg-default"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-default" data-swatch></i><span data-token="--color-fg-default"></span></span></td></tr>
+          <tr><td>Active and hovered option fill</td><td><code>--color-bg-subtle</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-bg-subtle" data-swatch></i><span data-token="--color-bg-subtle"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-bg-subtle" data-swatch></i><span data-token="--color-bg-subtle"></span></span></td></tr>
+          <tr><td>Active option bar</td><td><code>--color-accent</code>, <code>--border-width-thick</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-accent" data-swatch></i><span data-token="--color-accent"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-accent" data-swatch></i><span data-token="--color-accent"></span></span></td></tr>
+          <tr><td>Hint and search icon</td><td><code>--color-fg-subtle</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-subtle" data-swatch></i><span data-token="--color-fg-subtle"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-subtle" data-swatch></i><span data-token="--color-fg-subtle"></span></span></td></tr>
+          <tr><td>No-match message</td><td><code>--color-fg-muted</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-muted" data-swatch></i><span data-token="--color-fg-muted"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-muted" data-swatch></i><span data-token="--color-fg-muted"></span></span></td></tr>
+          <tr><td>Field edge (via <code>--field-border</code>)</td><td><code>--color-border-strong</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-border-strong" data-swatch></i><span data-token="--color-border-strong"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-border-strong" data-swatch></i><span data-token="--color-border-strong"></span></span></td></tr>
+          <tr><td>Listbox shadow</td><td><code>--shadow-3</code></td><td><span data-token="--shadow-3"></span></td><td><span data-theme="dark" data-token="--shadow-3"></span></td></tr>
+          <tr><td>Field height</td><td><code>--control-height-lg</code></td><td colspan="2"><span data-token="--control-height-lg"></span></td></tr>
+          <tr><td>Option minimum height</td><td><code>--target-comfortable</code></td><td colspan="2"><span data-token="--target-comfortable"></span></td></tr>
+          <tr><td>Field corners / listbox corners / option corners</td><td><code>--radius-full</code> / <code>--radius-lg</code> / <code>--radius-md</code></td><td colspan="2"><span data-token="--radius-full"></span> / <span data-token="--radius-lg"></span> / <span data-token="--radius-md"></span></td></tr>
+          <tr><td>Option padding / listbox padding</td><td><code>--space-2</code> <code>--space-3</code> / <code>--space-2</code></td><td colspan="2"><span data-token="--space-2"></span> <span data-token="--space-3"></span></td></tr>
+          <tr><td>Icon size</td><td><code>--icon-size-md</code></td><td colspan="2"><span data-token="--icon-size-md"></span></td></tr>
+          <tr><td>Hint type / message type</td><td><code>--text-caption</code> / <code>--text-body-sm</code></td><td colspan="2"><span data-token="--text-caption"></span></td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section class="ds-section" id="code"><h2><a href="#code">Code</a></h2>
+      <pre><code>&lt;div class="field"&gt;
+  &lt;label class="field__label" for="entry-search"&gt;Studio or spot&lt;/label&gt;
+  &lt;div class="search-field"&gt;
+    &lt;svg class="icon" aria-hidden="true" viewBox="0 0 24 24"&gt;…&lt;/svg&gt;
+    &lt;input class="input" id="entry-search" type="text" role="combobox"
+           aria-expanded="true" aria-controls="entry-options" aria-autocomplete="list"
+           aria-activedescendant="opt-leslieville" aria-describedby="entry-hint"
+           autocomplete="off" value="studio"&gt;
+  &lt;/div&gt;
+  &lt;!-- invalid: &lt;span class="field__error" id="entry-error"&gt;…&lt;/span&gt; here, listed first in aria-describedby --&gt;
+  &lt;span class="field__help" id="entry-hint"&gt;Type part of a name&lt;/span&gt;
+&lt;/div&gt;
+&lt;ul class="suggestions" id="entry-options" role="listbox" aria-label="Matching studios and spots"&gt;
+  &lt;li class="suggestion" id="opt-leslieville" role="option" aria-selected="true"&gt;
+    &lt;span&gt;Leslieville Daylight &lt;mark&gt;Studio&lt;/mark&gt;&lt;/span&gt;
+    &lt;span class="suggestion__hint"&gt;Studio · Leslieville&lt;/span&gt;
+  &lt;/li&gt;
+  …
+&lt;/ul&gt;
+&lt;p class="visually-hidden" role="status"&gt;3 results&lt;/p&gt;
+
+&lt;!-- no matches: keep the listbox, hide it, show the message beside it --&gt;
+&lt;ul class="suggestions" id="entry-options" role="listbox" aria-label="Matching studios and spots" hidden&gt;&lt;/ul&gt;
+&lt;div class="suggestions"&gt;&lt;p class="suggestions__empty" role="status"&gt;No published studios or spots match “parkdale”&lt;/p&gt;&lt;/div&gt;</code></pre>
+      <table class="ds-table"><thead><tr><th scope="col">Class / attribute</th><th scope="col">Effect</th></tr></thead><tbody>
+        <tr><td><code>.search-field</code></td><td>Wraps the icon and <code>.input</code>: full pill, 52px tall, left padding that clears the icon.</td></tr>
+        <tr><td><code>.suggestions</code></td><td>The listbox panel: raised surface, border, <code>--radius-lg</code>, <code>--shadow-3</code>, scrolls after eight options.</td></tr>
+        <tr><td><code>.suggestions--inline</code></td><td>Flat list: no surface, border, shadow or padding.</td></tr>
+        <tr><td><code>.suggestion</code></td><td>One option row, at least 44px, name and hint wrapping onto two lines when narrow.</td></tr>
+        <tr><td><code>.suggestion mark</code></td><td>The matched text, bold with no fill.</td></tr>
+        <tr><td><code>.suggestion__hint</code></td><td>Kind and neighbourhood, caption type, subtle colour.</td></tr>
+        <tr><td><code>.suggestions__empty</code></td><td>The no-match sentence, padded like an option.</td></tr>
+        <tr><td><code>role="combobox"</code> <code>aria-expanded</code> <code>aria-controls</code> <code>aria-autocomplete="list"</code></td><td>Required on the text box. <code>aria-expanded</code> is true only while options are showing.</td></tr>
+        <tr><td><code>aria-activedescendant</code> + <code>aria-selected="true"</code></td><td>The active option: subtle fill, 2px accent bar; Highlight in forced colours.</td></tr>
+        <tr><td><code>aria-invalid="true"</code></td><td>Danger edge on the text box (from <a href="text-field.html">text field</a>).</td></tr>
+        <tr><td><code>data-state="hover|focus"</code></td><td>Documentation only: forces hover on an option or hover/focus on the text box.</td></tr>
+      </tbody></table>
+    </section>
+
+    <section class="ds-section" id="sources"><h2><a href="#sources">Sources</a></h2>
+      <p>Extracted from these mocks:</p>
+      <ul>
+        <li><a href="../../mocks/dialogs/guide-entry-picker/default.html">dialogs/guide-entry-picker/default</a> (closed, empty field, Add entry disabled)</li>
+        <li><a href="../../mocks/dialogs/guide-entry-picker/results.html">dialogs/guide-entry-picker/results</a> (three results, first option active, count announced)</li>
+        <li><a href="../../mocks/dialogs/guide-entry-picker/no-matches.html">dialogs/guide-entry-picker/no-matches</a> (empty message)</li>
+        <li><a href="../../mocks/dialogs/guide-entry-picker/busy.html">dialogs/guide-entry-picker/busy</a> (spinner and "Searching")</li>
+        <li><a href="../../mocks/dialogs/guide-entry-picker/invalid.html">dialogs/guide-entry-picker/invalid</a> (already in the guide)</li>
+        <li><a href="../../mocks/pages/guide-editor/default.html">pages/guide-editor/default</a> (the Add entry button that opens the picker)</li>
+      </ul>
+      <p>Drift fixed during extraction: the no-matches mock replaced the listbox with a <code>&lt;div class="suggestions" id="entry-options"&gt;</code>, so <code>aria-controls</code> pointed at a non-listbox; the system keeps the listbox in the DOM, <code>hidden</code>, and shows the message in a sibling box. The invalid mock listed the help before the error in <code>aria-describedby</code> (<code>entry-hint entry-error</code>), unlike every other invalid field; the system puts the error first. The results mock's note has Escape close the whole dialog while the list is open; the system follows APG, where the first Escape closes the list and the second closes the dialog. <code>.suggestions--inline</code> is in the stylesheet but no mock uses it.</p>
+    </section>
+
+    <footer class="ds-footer"><span>ShotThere design system · extracted from <a href="../../mocks/index.html">docs/mocks</a> on 13 October 2026</span><a href="#top">Back to top</a></footer>
+  </main>
+</div>
+<script src="../assets/ds.js"></script>
+</body>
+</html>
