@@ -264,14 +264,11 @@ poster ([video-poster](video-poster.md)).
 | Fallback ground (and the slot's loading ground) | `--color-bg-photo` | `--palette-stone-100` | `--palette-stone-800` |
 | Fallback alt text | `--color-fg-muted` | `--palette-stone-700` | `--palette-stone-350` |
 | Fallback icon | `--color-fg-subtle` | `--palette-stone-600` | `--palette-stone-400` |
-| Failed poster ground (poster context) | `--color-bg-inverse` | `--palette-stone-950` | `--palette-stone-50` |
-| Failed poster text (poster context) | `--color-fg-inverse` | `--palette-white` | `--palette-stone-950` |
 
 | Foreground | Background | Minimum | Use |
 |---|---|---|---|
 | `--color-fg-muted` | `--color-bg-photo` | 4.5:1 | Alt text in the fallback |
 | `--color-fg-subtle` | `--color-bg-photo` | 4.5:1 | The image-failed icon (meets the text minimum, above the 3:1 it needs) |
-| `--color-fg-inverse` | `--color-bg-inverse` | 4.5:1 | Failed poster title |
 
 Photos are content and keep their own colours in both themes; only the empty
 and failed grounds change. Forced colours: the fallback is real text, so it
