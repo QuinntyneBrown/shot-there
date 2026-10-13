@@ -33,7 +33,7 @@ Out of scope:
   under *Content and internationalisation* for the application to follow).
 - The text that explains a disabled or busy button ("Pick at least 2 studios to
   compare", "Saving…"): the application renders it and points `aria-describedby`
-  at it; progress text lives in [`st-save-status`](inline-message.md) or the dialog.
+  at it; progress text lives in [`st-save-status`](form-layout.md) or the dialog.
 - Opening dialogs, submitting forms, compare-selection rules and the four-studio
   limit: application logic.
 - The close button inside `st-dialog`, `st-sheet` and `st-map-popup` and the
@@ -377,7 +377,7 @@ focus itself.
 
 The button has no live region. Pressed and busy changes are conveyed by state
 attributes; progress and results are announced by the consumer's status element
-([`st-save-status`](inline-message.md), the dialog's status, [`st-compare-bar`](compare-bar.md)).
+([`st-save-status`](form-layout.md), the dialog's status, [`st-compare-bar`](compare-bar.md)).
 
 ### Motion
 
