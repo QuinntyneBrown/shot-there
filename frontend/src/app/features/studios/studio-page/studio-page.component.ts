@@ -10,12 +10,22 @@ import { formatPageTitle } from '../../../core/routing/format-page-title';
 import { PAGE_TITLES } from '../../../core/routing/page-titles';
 import { NotFoundPageComponent } from '../../errors/not-found-page.component';
 import { StudioBasicsComponent } from '../studio-basics/studio-basics.component';
+import { StudioGearComponent } from '../studio-gear/studio-gear.component';
+import { StudioLogisticsComponent } from '../studio-logistics/studio-logistics.component';
 import { StudioPricingComponent } from '../studio-pricing/studio-pricing.component';
+import { StudioSpecificationsComponent } from '../studio-specifications/studio-specifications.component';
 import { StudioPageState } from './studio-page-state';
 
 @Component({
   selector: 'st-studio-page',
-  imports: [NotFoundPageComponent, StudioBasicsComponent, StudioPricingComponent],
+  imports: [
+    NotFoundPageComponent,
+    StudioBasicsComponent,
+    StudioPricingComponent,
+    StudioSpecificationsComponent,
+    StudioGearComponent,
+    StudioLogisticsComponent
+  ],
   templateUrl: './studio-page.component.html',
   styleUrl: './studio-page.component.css'
 })

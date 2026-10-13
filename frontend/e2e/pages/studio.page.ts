@@ -9,6 +9,10 @@ export class StudioPage {
   readonly allInCost: Locator;
   readonly staleWarning: Locator;
   readonly notFoundHeading: Locator;
+  readonly specifications: Locator;
+  readonly gear: Locator;
+  readonly logistics: Locator;
+  readonly lightRatings: Locator;
 
   constructor(private readonly page: Page) {
     this.heading = page.getByRole('heading', { level: 1 });
@@ -19,6 +23,10 @@ export class StudioPage {
     this.allInCost = this.pricing.locator('.price-block__allin');
     this.staleWarning = this.pricing.getByRole('status').filter({ hasText: 'Prices may be out of date' });
     this.notFoundHeading = page.getByRole('heading', { name: "We couldn't find that page" });
+    this.specifications = page.getByRole('region', { name: 'Measured specifications' });
+    this.gear = page.getByRole('region', { name: 'Gear' });
+    this.logistics = page.getByRole('region', { name: 'Logistics' });
+    this.lightRatings = this.specifications.getByRole('list', { name: 'Natural light by time of day' }).getByRole('listitem');
   }
 
   /** Pins today's date so "N days ago" copy is stable. */
@@ -35,7 +43,29 @@ export class StudioPage {
   }
 
   priceRow(label: string): Locator {
-    return this.pricing.locator('dt', { hasText: label }).locator('xpath=following-sibling::dd[1]');
+    return this.row(this.pricing, label);
+  }
+
+  /** The value beside a label in a section's description list. */
+  row(section: Locator, label: string): Locator {
+    return section.locator('dt', { hasText: new RegExp(`^${label}$`) }).locator('xpath=following-sibling::dd[1]');
+  }
+
+  /** Whether a row's value sits beside its label or below it. */
+  async rowLayout(section: Locator, label: string): Promise<'side-by-side' | 'stacked'> {
+    const dt = await section.locator('dt', { hasText: new RegExp(`^${label}$`) }).boundingBox();
+    const dd = await this.row(section, label).boundingBox();
+    return dt && dd && dd.y >= dt.y + dt.height - 1 ? 'stacked' : 'side-by-side';
+  }
+
+  /** How many distinct rows the natural-light ratings occupy. */
+  async lightRatingRowCount(): Promise<number> {
+    const tops = await this.lightRatings.evaluateAll((items) => items.map((item) => Math.round(item.getBoundingClientRect().top)));
+    return new Set(tops).size;
+  }
+
+  async useWidth(width: number): Promise<void> {
+    await this.page.setViewportSize({ width, height: 900 });
   }
 
   title(): Promise<string> {
