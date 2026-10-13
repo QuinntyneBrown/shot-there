@@ -45,6 +45,14 @@ Angular frontend.
   template text.
 - Routes live in `features/<area>/routes.ts`. App paths and page titles come
   from one central place; never type a path or title suffix inline.
+- The components library `projects/components` (`@shot-there/components`) is
+  consumed as a built package: `tsconfig` paths point at `dist/components`, so
+  run `npm run build:components` after a library change. Its
+  `styles/shot-there.css` is the only global stylesheet.
+- Library components are built test-first in the `components-harness` app (one
+  route per component state). Playwright has two Chromium projects: `app`
+  (`e2e/`) and `library` (`e2e/library/`); component objects live in
+  `e2e/components/`.
 - Read design tokens by role, never by hex value.
 - Keep component styles encapsulated and global styles limited to shared
   foundations and utilities.
