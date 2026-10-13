@@ -1,5 +1,6 @@
 /* Tokens, foundations and utilities come first from dist/components/styles/shot-there.css
    (angular.json, ICD-PKG-5). */
+@import "./styles/fonts.css";
 @import "@angular/cdk/overlay-prebuilt.css";
 /* TODO(re-platform): transitional. These hand-written DS component blocks (.btn, .field, .choice,
    .kv, .badge, .alert) and the feature class .review-section break ICD-STY-4; they go when the

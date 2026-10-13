@@ -35,6 +35,26 @@ export class ShellPage {
     return this.page.locator('html').getAttribute('lang');
   }
 
+  /** Stores a theme choice the way the site remembers one, before the next page loads. */
+  async rememberTheme(theme: 'light' | 'dark'): Promise<void> {
+    await this.page.addInitScript((choice) => localStorage.setItem('theme', choice), theme);
+  }
+
+  documentTheme(): Promise<string | null> {
+    return this.page.locator('html').getAttribute('data-theme');
+  }
+
+  /** Whether the page's text font, Figtree, was loaded from the site's own /fonts/. */
+  async usesSelfHostedFigtree(): Promise<boolean> {
+    const loaded = await this.page.evaluate(async () => {
+      await document.fonts.ready;
+      return [...document.fonts].some((face) => face.family.replace(/"/g, '') === 'Figtree' && face.status === 'loaded');
+    });
+    const fromOwnHost = await this.page.evaluate(() =>
+      performance.getEntriesByType('resource').some((entry) => new URL(entry.name).origin === location.origin && entry.name.includes('/fonts/figtree-')));
+    return loaded && fromOwnHost;
+  }
+
   async pressTab(): Promise<void> {
     await this.page.keyboard.press('Tab');
   }

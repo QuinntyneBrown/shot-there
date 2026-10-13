@@ -24,6 +24,25 @@ test.describe('App shell', () => {
     // Then focus is on the main landmark
     await expect(shell.main).toBeFocused();
   });
+
+  test('applies the theme a visitor saved before the page paints', async ({ page }) => {
+    // Given a visitor who chose the dark theme
+    const shell = new ShellPage(page);
+    await shell.rememberTheme('dark');
+    // When they open the home page
+    await shell.open();
+    // Then the document is dark
+    expect(await shell.documentTheme()).toBe('dark');
+  });
+
+  test('sets text in Figtree served by the site itself', async ({ page }) => {
+    // Given the home page
+    const shell = new ShellPage(page);
+    // When it loads
+    await shell.open();
+    // Then its text font is the self-hosted Figtree
+    expect(await shell.usesSelfHostedFigtree()).toBe(true);
+  });
 });
 
 test.describe('Site header', () => {
