@@ -1,5 +1,7 @@
 import { getDependencies } from '@/lib/data/dependency-container';
 import { validationFailed } from '@/lib/http/validation-failed';
+import { checkStudioPublishable } from '@/lib/publishing/check-publishable';
+import { refuseIncompletePublishedSave } from '@/lib/publishing/refuse-incomplete-published-save';
 import type { StudioInput } from '@/lib/studios/studio-input';
 import type { StudioRecord } from '@/lib/studios/studio-record';
 
@@ -26,6 +28,7 @@ export async function updateStudio(id: string, input: StudioInput): Promise<Stud
     priceVerifiedAt: priceVerifiedAt ?? stored.priceVerifiedAt,
     updatedAt: clock.now(),
   };
+  refuseIncompletePublishedSave(stored.status === 'published', checkStudioPublishable(studio));
   await studios.save(studio);
   if (slugChanged && stored.status === 'published') await slugRedirects.recordChange('studio', stored.slug, slug);
   return studio;

@@ -1,5 +1,7 @@
 import { getDependencies } from '@/lib/data/dependency-container';
 import { validationFailed } from '@/lib/http/validation-failed';
+import { checkSpotPublishable } from '@/lib/publishing/check-publishable';
+import { refuseIncompletePublishedSave } from '@/lib/publishing/refuse-incomplete-published-save';
 import type { SpotInput } from '@/lib/spots/spot-input';
 import type { SpotRecord } from '@/lib/spots/spot-record';
 
@@ -26,6 +28,7 @@ export async function updateSpot(id: string, input: SpotInput): Promise<SpotReco
     permitVerifiedAt: permitVerifiedAt ?? stored.permitVerifiedAt,
     updatedAt: clock.now(),
   };
+  refuseIncompletePublishedSave(stored.status === 'published', checkSpotPublishable(spot));
   await spots.save(spot);
   if (slugChanged && stored.status === 'published') await slugRedirects.recordChange('spot', stored.slug, slug);
   return spot;

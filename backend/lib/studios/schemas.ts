@@ -15,6 +15,7 @@ import {
 } from '@/lib/http/input-fields';
 import type { StudioListQuery } from '@/lib/studios/studio-list-query';
 import { videoIdField } from '@/lib/videos/schemas';
+import { requireDisclosureProvider } from '@/lib/publishing/schemas';
 
 const PARKING_VALUES = { 'on-site': 'onSite', street: 'street', none: 'none' } as const;
 
@@ -136,4 +137,5 @@ export const studioInputSchema = (today: string) =>
     videoLink: videoIdField(),
     fees: z.array(studioFeeInputSchema).max(50).default([]),
     gear: z.array(gearItemInputSchema).max(200).default([]),
-  });
+  })
+  .superRefine(requireDisclosureProvider);
