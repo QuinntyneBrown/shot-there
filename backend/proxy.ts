@@ -34,18 +34,17 @@ function route(request: NextRequest): NextResponse {
   return NextResponse.next();
 }
 
-/** A response the proxy gives itself, without reaching a handler, carrying a correlation ID (ICD O-1). */
-function answer(request: NextRequest, response: NextResponse): NextResponse {
-  response.headers.set(CORRELATION_HEADER, correlationIdFor(request));
+/** A response the proxy gives itself, without reaching a handler: never stored, with a correlation ID (ICD §10, O-1). */
+function answer(request: NextRequest, response: NextResponse, correlationId = correlationIdFor(request)): NextResponse {
+  response.headers.set(CORRELATION_HEADER, correlationId);
+  response.headers.set('cache-control', 'no-store');
   return response;
 }
 
 function answerProblem(request: NextRequest, problem: HttpProblem): NextResponse {
   const correlationId = correlationIdFor(request);
   const response = problemResponse(problem, correlationId);
-  const answered = new NextResponse(response.body, response);
-  answered.headers.set(CORRELATION_HEADER, correlationId);
-  return answered;
+  return answer(request, new NextResponse(response.body, response), correlationId);
 }
 
 function withSecurityHeaders(response: NextResponse): NextResponse {

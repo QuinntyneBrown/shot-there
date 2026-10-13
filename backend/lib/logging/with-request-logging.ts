@@ -1,3 +1,4 @@
+import { cachePolicy } from '@/lib/http/cache-policy';
 import { HttpProblem } from '@/lib/http/http-problem';
 import { problemResponse } from '@/lib/http/problem-response';
 import { correlationContext } from '@/lib/logging/correlation-context';
@@ -6,7 +7,10 @@ import { log } from '@/lib/logging/logger';
 
 type RouteHandler<C> = (request: Request, context: C) => Promise<Response>;
 
-/** Wraps a route handler: correlation ID, one request log line, `HttpProblem` responses, and a generic 500 for unhandled errors. */
+/**
+ * Wraps a route handler: correlation ID, cache policy, one request log line, `HttpProblem` responses, and a generic 500
+ * for unhandled errors.
+ */
 export function withRequestLogging<C = unknown>(
   handler: RouteHandler<C>,
 ): (request: Request, context?: C) => Promise<Response> {
@@ -27,10 +31,12 @@ export function withRequestLogging<C = unknown>(
       }
     }
 
+    const path = new URL(request.url).pathname;
     response.headers.set(CORRELATION_HEADER, correlationId);
+    response.headers.set('cache-control', cachePolicy(request.method, path, response.status));
     log('info', correlationId, {
       method: request.method,
-      path: new URL(request.url).pathname,
+      path,
       status: response.status,
       durationMs: Math.round(performance.now() - started),
     });
