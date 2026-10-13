@@ -1,0 +1,463 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Score and pips — ShotThere design system</title>
+<meta name="description" content="Rubric scores and natural-light ratings: a number or word plus ink pips, the overall score to one decimal, the six-row score list and the light grid, in both themes.">
+<link rel="stylesheet" href="../tokens/tokens.css">
+<link rel="stylesheet" href="../assets/components.css">
+<link rel="stylesheet" href="../assets/ds.css">
+</head>
+<body id="top">
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="ds-shell">
+  <nav class="ds-nav" aria-label="Design system">
+    <div class="ds-nav__brand"><a href="../index.html">ShotThere DS</a><button class="ds-theme-toggle" type="button" aria-pressed="false">☾ Dark</button></div>
+    <details open><summary>Foundations</summary><ul>
+      <li><a href="../foundations/color.html">Color</a></li>
+      <li><a href="../foundations/typography.html">Typography</a></li>
+      <li><a href="../foundations/spacing.html">Spacing</a></li>
+      <li><a href="../foundations/layout.html">Layout</a></li>
+      <li><a href="../foundations/elevation.html">Elevation</a></li>
+      <li><a href="../foundations/shape.html">Shape</a></li>
+      <li><a href="../foundations/motion.html">Motion</a></li>
+      <li><a href="../foundations/iconography.html">Iconography</a></li>
+      <li><a href="../foundations/theming.html">Theming</a></li>
+      <li><a href="../foundations/responsive.html">Responsive</a></li>
+      <li><a href="../foundations/accessibility.html">Accessibility</a></li>
+      <li><a href="../foundations/content.html">Content</a></li>
+    </ul></details>
+    <details open><summary>Actions</summary><ul>
+      <li><a href="../components/button.html">Button</a></li>
+      <li><a href="../components/icon-button.html">Icon button</a></li>
+      <li><a href="../components/button-group.html">Button group</a></li>
+      <li><a href="../components/link.html">Link</a></li>
+      <li><a href="../components/compare-bar.html">Compare toggle and bar</a></li>
+    </ul></details>
+    <details open><summary>Inputs</summary><ul>
+      <li><a href="../components/form-field.html">Form field</a></li>
+      <li><a href="../components/text-field.html">Text field</a></li>
+      <li><a href="../components/textarea.html">Textarea</a></li>
+      <li><a href="../components/select.html">Select</a></li>
+      <li><a href="../components/combobox.html">Combobox</a></li>
+      <li><a href="../components/checkbox.html">Checkbox</a></li>
+      <li><a href="../components/radio-group.html">Radio group</a></li>
+      <li><a href="../components/file-upload.html">File upload</a></li>
+      <li><a href="../components/form-layout.html">Form layout</a></li>
+      <li><a href="../components/signup.html">Email signup</a></li>
+    </ul></details>
+    <details open><summary>Navigation</summary><ul>
+      <li><a href="../components/skip-link.html">Skip link</a></li>
+      <li><a href="../components/site-header.html">Site header</a></li>
+      <li><a href="../components/footer.html">Footer</a></li>
+      <li><a href="../components/breadcrumb.html">Breadcrumb</a></li>
+      <li><a href="../components/filter.html">Filters</a></li>
+    </ul></details>
+    <details open><summary>Containers and overlays</summary><ul>
+      <li><a href="../components/container.html">Container</a></li>
+      <li><a href="../components/review-layout.html">Review layout</a></li>
+      <li><a href="../components/editor-layout.html">Editor layout</a></li>
+      <li><a href="../components/dialog.html">Dialog</a></li>
+      <li><a href="../components/sheet.html">Sheet</a></li>
+      <li><a href="../components/popover.html">Popover</a></li>
+      <li><a href="../components/lightbox.html">Lightbox</a></li>
+    </ul></details>
+    <details open><summary>Data display</summary><ul>
+      <li><a href="../components/location-card.html">Location card</a></li>
+      <li><a href="../components/table.html">Table</a></li>
+      <li><a href="../components/compare-table.html">Comparison table</a></li>
+      <li><a href="../components/list.html">List rows</a></li>
+      <li><a href="../components/description-list.html">Description list</a></li>
+      <li><a href="../components/price-block.html">Price block</a></li>
+      <li><a href="../components/score.html">Score and pips</a></li>
+      <li><a href="../components/shot-grid.html">Shot grid</a></li>
+      <li><a href="../components/video-poster.html">Episode poster</a></li>
+      <li><a href="../components/map.html">Map</a></li>
+      <li><a href="../components/guide-entry.html">Guide entry</a></li>
+      <li><a href="../components/stat-tile.html">Stat tile</a></li>
+      <li><a href="../components/image-manager.html">Image manager</a></li>
+      <li><a href="../components/disclosure.html">Disclosure</a></li>
+      <li><a href="../components/badge.html">Badge</a></li>
+      <li><a href="../components/status-label.html">Status label</a></li>
+      <li><a href="../components/chip.html">Chip</a></li>
+      <li><a href="../components/tag.html">Tag</a></li>
+    </ul></details>
+    <details open><summary>Feedback</summary><ul>
+      <li><a href="../components/inline-message.html">Inline message</a></li>
+      <li><a href="../components/alert.html">Alert</a></li>
+      <li><a href="../components/toast.html">Toast</a></li>
+      <li><a href="../components/progress.html">Progress</a></li>
+      <li><a href="../components/spinner.html">Spinner</a></li>
+      <li><a href="../components/skeleton.html">Skeleton</a></li>
+      <li><a href="../components/empty-state.html">Empty state</a></li>
+      <li><a href="../components/error-page.html">Error page</a></li>
+    </ul></details>
+    <details open><summary>Patterns</summary><ul>
+      <li><a href="../patterns/forms.html">Forms</a></li>
+      <li><a href="../patterns/feedback-and-loading.html">Feedback and loading</a></li>
+      <li><a href="../patterns/empty-and-error-states.html">Empty and error states</a></li>
+      <li><a href="../patterns/navigation.html">Navigation and page structure</a></li>
+      <li><a href="../patterns/dialogs-and-overlays.html">Dialogs and overlays</a></li>
+      <li><a href="../patterns/tables-and-lists.html">Data tables and lists</a></li>
+      <li><a href="../patterns/notifications.html">Notifications</a></li>
+      <li><a href="../patterns/content-and-tone.html">Content and tone</a></li>
+    </ul></details>
+  </nav>
+
+  <main id="main" class="ds-main">
+    <header class="ds-header">
+      <p class="ds-kicker">Component · Data display</p>
+      <h1>Score and pips</h1>
+      <p class="ds-lead">Every studio is scored on the same six-part rubric and every location's natural light is rated on the same four-step scale. Scores always show a number or a word, with pips beside it as a quick visual read, so locations compare side by side.</p>
+      <div class="ds-meta"><span class="ds-pill ds-pill--ok">WCAG 2.2 AA</span><span class="ds-pill">Status: stable</span><span class="ds-pill"><code>.pips</code></span><span class="ds-pill"><code>.score-overall</code></span><span class="ds-pill"><code>.score-list</code> <code>.score</code></span><span class="ds-pill"><code>.light-rating</code> <code>.light-grid</code></span></div>
+      <ul class="ds-toc"><li><a href="#overview">Overview</a></li><li><a href="#anatomy">Anatomy</a></li><li><a href="#variants">Variants</a></li><li><a href="#sizes">Sizes</a></li><li><a href="#states">States</a></li><li><a href="#responsive">Responsive behaviour</a></li><li><a href="#theming">Theming</a></li><li><a href="#accessibility">Accessibility</a></li><li><a href="#content">Content</a></li><li><a href="#do-dont">Do and don't</a></li><li><a href="#tokens">Tokens</a></li><li><a href="#code">Code</a></li><li><a href="#sources">Sources</a></li></ul>
+    </header>
+
+    <section class="ds-section" id="overview"><h2><a href="#overview">Overview</a></h2>
+      <p>Use these parts wherever a review states a measured judgement:</p>
+      <ul>
+        <li><b>Rubric scores</b> sit in a studio's verdict. There are six categories, each a whole number from 1 to 5: Value, Light, Space, Gear, Logistics and Condition (L2-011). Each row shows the category, five pips and the number.</li>
+        <li><b>Overall score</b> is the mean of the six scores rounded to one decimal place, calculated by the server and never by the page (L2-011.1). The Junction Loft scores 4 5 3 4 2 5, so it shows 3.8.</li>
+        <li><b>Light ratings</b> describe natural light at each time of day on a four-step scale: None, Low, Medium or Strong, drawn as zero to three pips beside the word (L2-006.4). Studios show four times of day in the light grid; spots show five in a stacked table.</li>
+      </ul>
+      <p>A score is always a number (or a word for light) plus pips. Never show it as pips alone or as colour alone (L2-068.1). Where space is tight, such as a <a href="location-card.html">location card</a>, a guide entry or a <a href="compare-table.html">comparison table</a> cell, drop the pips and keep the number with "out of 5" for assistive technology. Pips are a reading aid. They are never a control: the owner enters scores as numbers in the studio editor.</p>
+    </section>
+
+    <section class="ds-section" id="anatomy"><h2><a href="#anatomy">Anatomy</a></h2>
+      <div class="ds-anatomy">
+        <figure class="ds-anatomy__figure">
+          <div style="position: relative; width: min(100%, 22rem);">
+            <p class="score-overall"><span class="score-overall__value">3.8</span><span class="score-overall__max">overall, out of 5</span></p>
+            <ul class="score-list" aria-label="Rubric scores" style="margin-top: var(--space-4); grid-template-columns: minmax(0, 1fr);">
+              <li class="score"><span class="score__label" aria-hidden="true">Light</span><span class="pips" aria-hidden="true"><i data-on></i><i data-on></i><i data-on></i><i data-on></i><i data-on></i></span><span class="score__value" aria-hidden="true">5</span><span class="visually-hidden">Light: 5 out of 5</span></li>
+              <li class="score"><span class="score__label" aria-hidden="true">Logistics</span><span class="pips" aria-hidden="true"><i data-on></i><i data-on></i><i></i><i></i><i></i></span><span class="score__value" aria-hidden="true">2</span><span class="visually-hidden">Logistics: 2 out of 5</span></li>
+            </ul>
+            <span class="ds-callout" style="left: -2rem; top: 1rem;" aria-hidden="true">1</span>
+            <span class="ds-callout" style="left: 14.5rem; top: 1.75rem;" aria-hidden="true">2</span>
+            <span class="ds-callout" style="left: -2rem; top: 5.6rem;" aria-hidden="true">3</span>
+            <span class="ds-callout" style="left: 15rem; top: 10.75rem;" aria-hidden="true">4</span>
+            <span class="ds-callout" style="left: calc(100% + 0.5rem); top: 5.6rem;" aria-hidden="true">5</span>
+            <span class="ds-callout" style="left: calc(100% + 0.5rem); top: 9.4rem;" aria-hidden="true">6</span>
+          </div>
+        </figure>
+        <ol class="ds-anatomy__list">
+          <li><div><b>Overall value</b><small><code>.score-overall__value</code>: display type, tabular figures, always one decimal ("3.8", "4.0").</small></div></li>
+          <li><div><b>Scale</b><small><code>.score-overall__max</code>: "overall, out of 5" in muted text. It belongs to the sentence a screen reader hears.</small></div></li>
+          <li><div><b>Category label</b><small><code>.score__label</code>: Value, Light, Space, Gear, Logistics or Condition. Hidden from assistive technology because the row's hidden sentence repeats it.</small></div></li>
+          <li><div><b>Pips</b><small><code>.pips</code>: five <code>&lt;i&gt;</code> bars, 20 × 8 px, 4 px apart. Filled bars carry <code>data-on</code> and are ink; empty bars are a 1 px edge in <code>--color-border-strong</code>.</small></div></li>
+          <li><div><b>Number</b><small><code>.score__value</code>: right-aligned in a 2ch column so the pips line up down the list.</small></div></li>
+          <li><div><b>Row</b><small><code>.score</code>: a 44 px tall grid row with a hairline divider underneath, plus a visually hidden "Light: 5 out of 5".</small></div></li>
+        </ol>
+      </div>
+      <h3>Light rating</h3>
+      <div class="ds-anatomy">
+        <figure class="ds-anatomy__figure">
+          <div style="position: relative; width: min(100%, 14rem);">
+          <ul class="light-grid" style="grid-template-columns: minmax(0, 1fr);">
+            <li class="light-grid__item"><span class="light-grid__time">Morning</span><span class="light-rating"><span class="pips" aria-hidden="true"><i data-on></i><i data-on></i><i></i></span>Medium</span></li>
+          </ul>
+            <span class="ds-callout" style="left: -2rem; top: 0.75rem;" aria-hidden="true">1</span>
+            <span class="ds-callout" style="left: 1rem; top: calc(100% + 0.25rem);" aria-hidden="true">2</span>
+            <span class="ds-callout" style="left: 4.5rem; top: calc(100% + 0.25rem);" aria-hidden="true">3</span>
+            <span class="ds-callout" style="left: calc(100% + 0.5rem); top: 0.5rem;" aria-hidden="true">4</span>
+          </div>
+        </figure>
+        <ol class="ds-anatomy__list">
+          <li><div><b>Time of day</b><small><code>.light-grid__time</code>: Morning, Midday, Afternoon, Evening (studios); spots add Golden hour and Blue hour.</small></div></li>
+          <li><div><b>Pips</b><small>Three narrower bars (16 × 8 px): None 0, Low 1, Medium 2, Strong 3. Hidden from assistive technology.</small></div></li>
+          <li><div><b>Rating word</b><small>The text of <code>.light-rating</code>: None, Low, Medium or Strong. This is what is read out.</small></div></li>
+          <li><div><b>Tile</b><small><code>.light-grid__item</code>: sunken surface, 16 px padding, 12 px corners.</small></div></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="ds-section" id="variants"><h2><a href="#variants">Variants</a></h2>
+      <h3>Verdict: overall plus six rubric scores</h3>
+      <p>The verdict section of every studio page. The list is one column on phones and two from 768 px, with the categories always in the same order.</p>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--stack ds-example__canvas--canvas">
+          <p class="score-overall"><span class="score-overall__value">3.8</span><span class="score-overall__max">overall, out of 5</span></p>
+          <ul class="score-list" aria-label="Rubric scores">
+            <li class="score"><span class="score__label" aria-hidden="true">Value</span><span class="pips" aria-hidden="true"><i data-on></i><i data-on></i><i data-on></i><i data-on></i><i></i></span><span class="score__value" aria-hidden="true">4</span><span class="visually-hidden">Value: 4 out of 5</span></li>
+            <li class="score"><span class="score__label" aria-hidden="true">Light</span><span class="pips" aria-hidden="true"><i data-on></i><i data-on></i><i data-on></i><i data-on></i><i data-on></i></span><span class="score__value" aria-hidden="true">5</span><span class="visually-hidden">Light: 5 out of 5</span></li>
+            <li class="score"><span class="score__label" aria-hidden="true">Space</span><span class="pips" aria-hidden="true"><i data-on></i><i data-on></i><i data-on></i><i></i><i></i></span><span class="score__value" aria-hidden="true">3</span><span class="visually-hidden">Space: 3 out of 5</span></li>
+            <li class="score"><span class="score__label" aria-hidden="true">Gear</span><span class="pips" aria-hidden="true"><i data-on></i><i data-on></i><i data-on></i><i data-on></i><i></i></span><span class="score__value" aria-hidden="true">4</span><span class="visually-hidden">Gear: 4 out of 5</span></li>
+            <li class="score"><span class="score__label" aria-hidden="true">Logistics</span><span class="pips" aria-hidden="true"><i data-on></i><i data-on></i><i></i><i></i><i></i></span><span class="score__value" aria-hidden="true">2</span><span class="visually-hidden">Logistics: 2 out of 5</span></li>
+            <li class="score"><span class="score__label" aria-hidden="true">Condition</span><span class="pips" aria-hidden="true"><i data-on></i><i data-on></i><i data-on></i><i data-on></i><i data-on></i></span><span class="score__value" aria-hidden="true">5</span><span class="visually-hidden">Condition: 5 out of 5</span></li>
+          </ul>
+        </div>
+        <div class="ds-example__caption"><span>The Junction Loft: 4 5 3 4 2 5, overall 3.8 (pages/studio/default).</span></div>
+        <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;p class="score-overall"&gt;&lt;span class="score-overall__value"&gt;3.8&lt;/span&gt;&lt;span class="score-overall__max"&gt;overall, out of 5&lt;/span&gt;&lt;/p&gt;
+&lt;ul class="score-list" aria-label="Rubric scores"&gt;
+  &lt;li class="score"&gt;
+    &lt;span class="score__label" aria-hidden="true"&gt;Value&lt;/span&gt;
+    &lt;span class="pips" aria-hidden="true"&gt;&lt;i data-on&gt;&lt;/i&gt;&lt;i data-on&gt;&lt;/i&gt;&lt;i data-on&gt;&lt;/i&gt;&lt;i data-on&gt;&lt;/i&gt;&lt;i&gt;&lt;/i&gt;&lt;/span&gt;
+    &lt;span class="score__value" aria-hidden="true"&gt;4&lt;/span&gt;
+    &lt;span class="visually-hidden"&gt;Value: 4 out of 5&lt;/span&gt;
+  &lt;/li&gt;
+  …Light, Space, Gear, Logistics, Condition
+&lt;/ul&gt;</code></pre></details>
+      </div>
+
+      <h3>Natural light grid (studios)</h3>
+      <p>Four tiles, one per time of day, in the measured specifications section. Ossington Blackbox has no windows, so every tile reads None with three empty pips: the edge keeps the slots visible.</p>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--stack ds-example__canvas--canvas">
+          <ul class="light-grid">
+            <li class="light-grid__item"><span class="light-grid__time">Morning</span><span class="light-rating"><span class="pips" aria-hidden="true"><i data-on></i><i data-on></i><i></i></span>Medium</span></li>
+            <li class="light-grid__item"><span class="light-grid__time">Midday</span><span class="light-rating"><span class="pips" aria-hidden="true"><i data-on></i><i data-on></i><i data-on></i></span>Strong</span></li>
+            <li class="light-grid__item"><span class="light-grid__time">Afternoon</span><span class="light-rating"><span class="pips" aria-hidden="true"><i data-on></i><i data-on></i><i data-on></i></span>Strong</span></li>
+            <li class="light-grid__item"><span class="light-grid__time">Evening</span><span class="light-rating"><span class="pips" aria-hidden="true"><i data-on></i><i></i><i></i></span>Low</span></li>
+          </ul>
+          <ul class="light-grid">
+            <li class="light-grid__item"><span class="light-grid__time">Morning</span><span class="light-rating"><span class="pips" aria-hidden="true"><i></i><i></i><i></i></span>None</span></li>
+            <li class="light-grid__item"><span class="light-grid__time">Midday</span><span class="light-rating"><span class="pips" aria-hidden="true"><i></i><i></i><i></i></span>None</span></li>
+            <li class="light-grid__item"><span class="light-grid__time">Afternoon</span><span class="light-rating"><span class="pips" aria-hidden="true"><i></i><i></i><i></i></span>None</span></li>
+            <li class="light-grid__item"><span class="light-grid__time">Evening</span><span class="light-rating"><span class="pips" aria-hidden="true"><i></i><i></i><i></i></span>None</span></li>
+          </ul>
+        </div>
+        <div class="ds-example__caption"><span>The Junction Loft (north windows) above; Ossington Blackbox (no windows) below (pages/studio/default, pages/studio/stale).</span></div>
+        <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;ul class="light-grid"&gt;
+  &lt;li class="light-grid__item"&gt;
+    &lt;span class="light-grid__time"&gt;Morning&lt;/span&gt;
+    &lt;span class="light-rating"&gt;&lt;span class="pips" aria-hidden="true"&gt;&lt;i data-on&gt;&lt;/i&gt;&lt;i data-on&gt;&lt;/i&gt;&lt;i&gt;&lt;/i&gt;&lt;/span&gt;Medium&lt;/span&gt;
+  &lt;/li&gt;
+  …Midday, Afternoon, Evening
+&lt;/ul&gt;</code></pre></details>
+      </div>
+
+      <h3>Light rating in a table (spots)</h3>
+      <p>Spots rate five times of day and give each a note, so the rating sits in a <a href="table.html">table</a> (<code>.table--stack</code>) with a Note column. The <code>.light-rating</code> is the same; only its container changes.</p>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--stack ds-example__canvas--canvas">
+          <div class="table-wrap"><table class="table table--stack">
+            <caption class="visually-hidden">Light at Evergreen Brick Works by time of day</caption>
+            <thead><tr><th scope="col">Time of day</th><th scope="col">Rating</th><th scope="col">Note</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Morning</th><td data-label="Rating"><span class="light-rating"><span class="pips" aria-hidden="true"><i data-on></i><i data-on></i><i></i></span>Medium</span></td><td data-label="Note">East-facing kiln walls catch the first sun.</td></tr>
+              <tr><th scope="row">Midday</th><td data-label="Rating"><span class="light-rating"><span class="pips" aria-hidden="true"><i data-on></i><i></i><i></i></span>Low</span></td><td data-label="Note">Harsh, with little shade in the courtyard.</td></tr>
+              <tr><th scope="row">Golden hour</th><td data-label="Rating"><span class="light-rating"><span class="pips" aria-hidden="true"><i data-on></i><i data-on></i><i data-on></i></span>Strong</span></td><td data-label="Note">West light rakes the brick; the best hour here.</td></tr>
+            </tbody>
+          </table></div>
+        </div>
+        <div class="ds-example__caption"><span>Three of Evergreen Brick Works' five rows (pages/spot/default). Below 768 px each row becomes a label-over-value card.</span></div>
+      </div>
+
+      <h3>Compact score (no pips)</h3>
+      <p>Location cards, guide entries and the comparison table show the number only. The visible "/ 5" or the hidden "out of 5" completes it. The pips stay on the review page, where there is room for them.</p>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--canvas">
+          <dl class="location-card__facts">
+            <div><dt>All-in 2 h</dt><dd>$145.00</dd></div>
+            <div><dt>Score</dt><dd>3.8<span class="visually-hidden"> out of 5</span></dd></div>
+          </dl>
+          <span class="num">4<span aria-hidden="true"> / 5</span><span class="visually-hidden"> out of 5</span></span>
+        </div>
+        <div class="ds-example__caption"><span>Location card facts for The Junction Loft (pages/studios/default) and a comparison cell (pages/compare/default).</span></div>
+      </div>
+    </section>
+
+    <section class="ds-section" id="sizes"><h2><a href="#sizes">Sizes</a></h2>
+      <p>There are two pip sizes. Both are 8 px tall, which is enough to tell filled from empty without competing with the number.</p>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--canvas">
+          <span class="pips" aria-hidden="true"><i data-on></i><i data-on></i><i data-on></i><i></i><i></i></span>
+          <span class="text-caption">Rubric · five pips, 20 × 8 px (<code>--space-5</code> × <code>--space-2</code>)</span>
+          <span class="light-rating"><span class="pips" aria-hidden="true"><i data-on></i><i data-on></i><i></i></span>Medium</span>
+          <span class="text-caption">Light · three pips, 16 × 8 px (<code>--space-4</code> × <code>--space-2</code>)</span>
+        </div>
+        <div class="ds-example__caption"><span>Pips never scale with the viewport. The overall value uses <code>--text-display</code>, the largest type on the verdict.</span></div>
+      </div>
+    </section>
+
+    <section class="ds-section" id="states"><h2><a href="#states">States</a></h2>
+      <p>Pips are static: no pointer, focus, pressed or disabled states. The states are the values. A rubric score is 1 to 5, so a rubric row never has five empty pips. A light rating can be None, which shows three empty pips with the word.</p>
+      <div class="ds-matrix"><table>
+        <thead><tr><th scope="col">Variant</th><th scope="col">Default</th><th scope="col">Hover, focus, active, disabled</th><th scope="col">Lowest</th><th scope="col">Highest</th><th scope="col">On a sunken tile</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Rubric score</th>
+            <td><div style="width: 15rem;"><div class="score"><span class="score__label" aria-hidden="true">Space</span><span class="pips" aria-hidden="true"><i data-on></i><i data-on></i><i data-on></i><i></i><i></i></span><span class="score__value" aria-hidden="true">3</span><span class="visually-hidden">Space: 3 out of 5</span></div></div></td>
+            <td><span class="text-caption">None. Not interactive.</span></td>
+            <td><div style="width: 15rem;"><div class="score"><span class="score__label" aria-hidden="true">Space</span><span class="pips" aria-hidden="true"><i data-on></i><i></i><i></i><i></i><i></i></span><span class="score__value" aria-hidden="true">1</span><span class="visually-hidden">Space: 1 out of 5</span></div></div></td>
+            <td><div style="width: 15rem;"><div class="score"><span class="score__label" aria-hidden="true">Light</span><span class="pips" aria-hidden="true"><i data-on></i><i data-on></i><i data-on></i><i data-on></i><i data-on></i></span><span class="score__value" aria-hidden="true">5</span><span class="visually-hidden">Light: 5 out of 5</span></div></div></td>
+            <td><span class="text-caption">Not used. Rubric rows sit on the page.</span></td>
+          </tr>
+          <tr><th scope="row">Light rating</th>
+            <td><span class="light-rating"><span class="pips" aria-hidden="true"><i data-on></i><i data-on></i><i></i></span>Medium</span></td>
+            <td><span class="text-caption">None. Not interactive.</span></td>
+            <td><span class="light-rating"><span class="pips" aria-hidden="true"><i></i><i></i><i></i></span>None</span></td>
+            <td><span class="light-rating"><span class="pips" aria-hidden="true"><i data-on></i><i data-on></i><i data-on></i></span>Strong</span></td>
+            <td><ul class="light-grid" style="width: 9rem; grid-template-columns: minmax(0, 1fr);"><li class="light-grid__item"><span class="light-grid__time">Evening</span><span class="light-rating"><span class="pips" aria-hidden="true"><i data-on></i><i></i><i></i></span>Low</span></li></ul></td>
+          </tr>
+          <tr><th scope="row">Overall</th>
+            <td><p class="score-overall"><span class="score-overall__value">3.8</span><span class="score-overall__max">overall, out of 5</span></p></td>
+            <td><span class="text-caption">None. Not interactive.</span></td>
+            <td><p class="score-overall"><span class="score-overall__value">3.2</span><span class="score-overall__max">overall, out of 5</span></p></td>
+            <td><p class="score-overall"><span class="score-overall__value">4.2</span><span class="score-overall__max">overall, out of 5</span></p></td>
+            <td><span class="text-caption">Not used.</span></td>
+          </tr>
+        </tbody>
+      </table></div>
+      <p class="text-caption">Lowest and highest overall are the real range of published studios: Kensington Window Room 3.2, Liberty Cyc House 4.2.</p>
+      <h3>Both themes</h3>
+      <div class="ds-themes">
+        <div data-theme="light">
+          <p class="score-overall"><span class="score-overall__value">4.0</span><span class="score-overall__max">overall, out of 5</span></p>
+          <div class="score"><span class="score__label" aria-hidden="true">Value</span><span class="pips" aria-hidden="true"><i data-on></i><i data-on></i><i data-on></i><i data-on></i><i data-on></i></span><span class="score__value" aria-hidden="true">5</span><span class="visually-hidden">Value: 5 out of 5</span></div>
+          <div class="score"><span class="score__label" aria-hidden="true">Gear</span><span class="pips" aria-hidden="true"><i data-on></i><i data-on></i><i data-on></i><i></i><i></i></span><span class="score__value" aria-hidden="true">3</span><span class="visually-hidden">Gear: 3 out of 5</span></div>
+          <ul class="light-grid" style="margin-top: var(--space-4); grid-template-columns: repeat(2, minmax(0, 1fr));">
+            <li class="light-grid__item"><span class="light-grid__time">Morning</span><span class="light-rating"><span class="pips" aria-hidden="true"><i data-on></i><i data-on></i><i data-on></i></span>Strong</span></li>
+            <li class="light-grid__item"><span class="light-grid__time">Evening</span><span class="light-rating"><span class="pips" aria-hidden="true"><i data-on></i><i></i><i></i></span>Low</span></li>
+          </ul>
+        </div>
+        <div data-theme="dark">
+          <p class="score-overall"><span class="score-overall__value">4.0</span><span class="score-overall__max">overall, out of 5</span></p>
+          <div class="score"><span class="score__label" aria-hidden="true">Value</span><span class="pips" aria-hidden="true"><i data-on></i><i data-on></i><i data-on></i><i data-on></i><i data-on></i></span><span class="score__value" aria-hidden="true">5</span><span class="visually-hidden">Value: 5 out of 5</span></div>
+          <div class="score"><span class="score__label" aria-hidden="true">Gear</span><span class="pips" aria-hidden="true"><i data-on></i><i data-on></i><i data-on></i><i></i><i></i></span><span class="score__value" aria-hidden="true">3</span><span class="visually-hidden">Gear: 3 out of 5</span></div>
+          <ul class="light-grid" style="margin-top: var(--space-4); grid-template-columns: repeat(2, minmax(0, 1fr));">
+            <li class="light-grid__item"><span class="light-grid__time">Morning</span><span class="light-rating"><span class="pips" aria-hidden="true"><i data-on></i><i data-on></i><i data-on></i></span>Strong</span></li>
+            <li class="light-grid__item"><span class="light-grid__time">Evening</span><span class="light-rating"><span class="pips" aria-hidden="true"><i data-on></i><i></i><i></i></span>Low</span></li>
+          </ul>
+        </div>
+      </div>
+      <p class="text-caption">Leslieville Daylight Studio: Value 5, Gear 3, overall 4.0; morning Strong, evening Low.</p>
+    </section>
+
+    <section class="ds-section" id="responsive"><h2><a href="#responsive">Responsive behaviour</a></h2>
+      <ul>
+        <li><b>Score list</b>: one column at XS and SM. From 768 px (<code>48rem</code>) it splits into two columns with a 48 px (<code>--space-12</code>) gap. Rows fill across, so Value and Light share the first line.</li>
+        <li><b>Score row</b>: a three-column grid (label, pips, 2ch number). The label takes the leftover width. Pips are <code>flex: none</code> and never shrink. At 320 px "Condition" plus five pips plus the number still fits on one line.</li>
+        <li><b>Light grid</b>: tiles stack at XS and SM and become one row of four from 768 px (L2-006.4).</li>
+        <li><b>Light table (spots)</b>: below 768 px the table becomes one card per time of day, with "Rating" and "Note" labels over the values (<code>.table--stack</code>).</li>
+        <li><b>Overall</b>: the value keeps display size at every width. <code>.score-overall</code> lifts the paragraph measure so value and scale stay on one line.</li>
+        <li>Rows are 44 px tall (<code>--target-comfortable</code>) so the list keeps an even rhythm on phones. That height is for rhythm only: the rows are not targets.</li>
+      </ul>
+    </section>
+
+    <section class="ds-section" id="theming"><h2><a href="#theming">Theming</a></h2>
+      <p>Pips use two roles only: ink (<code>--color-fg-default</code>) for filled bars and the strong border (<code>--color-border-strong</code>) for the empty edge. They pick up the theme with no overrides. In the dark theme filled pips turn near-white and the empty edge stays mid-stone, so filled and empty still read apart on the dark canvas and on sunken tiles. Pips never use accent red or status colours, because a colour scale would turn a score into a judgement colour and fail people who cannot tell the hues apart.</p>
+      <pre><code>/* Pips follow whatever ink and edge the surface defines */
+.pips &gt; i { box-shadow: inset 0 0 0 var(--border-width-hairline) var(--color-border-strong); }
+.pips &gt; i[data-on] { background: var(--color-fg-default); box-shadow: none; }</code></pre>
+      <p>Forced colours: backgrounds and box shadows are removed in Windows High Contrast, so <code>components.css</code> opts the pips out (<code>forced-color-adjust: none</code>): each bar gets a 1px <code>CanvasText</code> border and filled bars a <code>CanvasText</code> fill. The number or word stays as well, so no meaning is lost.</p>
+    </section>
+
+    <section class="ds-section" id="accessibility"><h2><a href="#accessibility">Accessibility</a></h2>
+      <h3>Role and pattern</h3>
+      <p>Plain text in native lists: <code>&lt;ul&gt;</code>/<code>&lt;li&gt;</code> for the score list and light grid, <code>&lt;p&gt;</code> for the overall, <code>&lt;table&gt;</code> for spot light. No ARIA widget role. The pips are presentational (<code>aria-hidden="true"</code>). They are not a <code>meter</code> or <code>img</code>, because the text already carries the value.</p>
+      <h3>Keyboard</h3>
+      <table class="ds-table ds-keys"><thead><tr><th scope="col">Key</th><th scope="col">Action</th></tr></thead><tbody>
+        <tr><td><kbd>Tab</kbd></td><td>Passes over scores: nothing here is focusable.</td></tr>
+        <tr><td>Screen reader arrows</td><td>Read each row as one sentence, "Light: 5 out of 5", then the next row.</td></tr>
+      </tbody></table>
+      <h3>Focus</h3>
+      <p>Nothing takes focus. Do not add <code>tabindex</code> to a score so that it can be "read". Screen readers reach it in browse mode.</p>
+      <h3>Labelling</h3>
+      <p>Each rubric row hides its visible label, pips and number (<code>aria-hidden</code>) and supplies one visually hidden sentence, "Value: 4 out of 5" (L2-011.3). The list is named "Rubric scores". The overall reads as "3.8 overall, out of 5". A light rating reads as its time and word, "Morning Medium". Compact scores add a hidden " out of 5" after the number.</p>
+      <h3>Contrast</h3>
+      <div class="ds-example__canvas ds-example__canvas--stack" style="padding: 0; gap: var(--space-2);">
+        <div class="ds-pair"><span>Filled pip, label and number on the page</span><span class="ds-pair__ratio" data-contrast="--color-fg-default|--color-bg-canvas" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Empty pip edge on the page (1.4.11)</span><span class="ds-pair__ratio" data-contrast="--color-border-strong|--color-bg-canvas" data-min="3"></span></div>
+        <div class="ds-pair"><span>Filled pip and rating word on a light tile</span><span class="ds-pair__ratio" data-contrast="--color-fg-default|--color-bg-surface-sunken" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Empty pip edge on a light tile</span><span class="ds-pair__ratio" data-contrast="--color-border-strong|--color-bg-surface-sunken" data-min="3"></span></div>
+        <div class="ds-pair"><span>Empty pip edge in a stacked table card</span><span class="ds-pair__ratio" data-contrast="--color-border-strong|--color-bg-surface" data-min="3"></span></div>
+        <div class="ds-pair"><span>"overall, out of 5" on the page</span><span class="ds-pair__ratio" data-contrast="--color-fg-muted|--color-bg-canvas" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Time of day on a light tile</span><span class="ds-pair__ratio" data-contrast="--color-fg-subtle|--color-bg-surface-sunken" data-min="4.5"></span></div>
+      </div>
+      <p>Filled and empty pips are told apart by fill, not by hue. The empty edge meets 3:1 against every surface the pips sit on (L2-068.1). Colour is never the only cue (1.4.1): the number or word is always there.</p>
+      <h3>Motion</h3>
+      <p>None. Scores do not animate in or count up.</p>
+      <h3>Touch</h3>
+      <p>Not interactive, so there are no targets. Rows keep a 44 px rhythm and the 8 px pips stay legible at phone width. Pinch zoom is never blocked.</p>
+    </section>
+
+    <section class="ds-section" id="content"><h2><a href="#content">Content</a></h2>
+      <ul>
+        <li>Category names are fixed and in this order: Value, Light, Space, Gear, Logistics, Condition. Never abbreviate them on the page ("V", "Lo").</li>
+        <li>Rubric scores are whole numbers ("4"). The overall always has one decimal, even when it is round: "4.0", not "4".</li>
+        <li>The scale is "out of 5". Write "overall, out of 5" beside the overall and "/ 5" in comparison cells. Never use percentages or another scale.</li>
+        <li>Light words are None, Low, Medium and Strong, capitalised. Spot notes are one short sentence about direction or shade: "West light rakes the brick; the best hour here."</li>
+        <li>The overall comes from the server (<code>overallScore</code>). The page never re-averages, so a rounding difference cannot appear between the list, the comparison and the JSON-LD.</li>
+      </ul>
+    </section>
+
+    <section class="ds-section" id="do-dont"><h2><a href="#do-dont">Do and don't</a></h2>
+      <div class="ds-dodont">
+        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--canvas"><div style="width: 16rem;"><div class="score"><span class="score__label" aria-hidden="true">Logistics</span><span class="pips" aria-hidden="true"><i data-on></i><i data-on></i><i></i><i></i><i></i></span><span class="score__value" aria-hidden="true">2</span><span class="visually-hidden">Logistics: 2 out of 5</span></div></div></div><figcaption>Show the number beside the pips and give screen readers "Logistics: 2 out of 5".</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--canvas"><div style="width: 16rem;"><div class="score" style="grid-template-columns: minmax(0, 1fr) auto;"><span class="score__label">Logistics</span><span class="pips" aria-hidden="true"><i data-on></i><i data-on></i><i></i><i></i><i></i></span></div></div></div><figcaption>Pips alone, with no number and nothing for assistive technology, make a score that cannot be read out or compared (L2-068.1, L2-011.3).</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--canvas"><span class="light-rating"><span class="pips" aria-hidden="true"><i data-on></i><i></i><i></i></span>Low</span><span class="light-rating"><span class="pips" aria-hidden="true"><i data-on></i><i data-on></i><i data-on></i></span>Strong</span></div><figcaption>Ink pips plus the rating word. They read the same in both themes and in greyscale.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--canvas"><span class="pips" aria-hidden="true"><i data-on style="background: var(--color-danger-solid);"></i><i></i><i></i></span><span class="pips" aria-hidden="true"><i data-on style="background: var(--color-success-solid);"></i><i data-on style="background: var(--color-success-solid);"></i><i data-on style="background: var(--color-success-solid);"></i></span></div><figcaption>Red-to-green pips with the word dropped: colour becomes the only cue (1.4.1) and a low light rating looks like an error.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--canvas"><p class="score-overall"><span class="score-overall__value">4.0</span><span class="score-overall__max">overall, out of 5</span></p></div><figcaption>Use the server's overall to one decimal: Leslieville Daylight Studio is "4.0".</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--canvas"><p class="score-overall"><span class="score-overall__value">4</span><span class="score-overall__max">/ 5</span></p></div><figcaption>A rounded or re-averaged "4" disagrees with the comparison table and the list sorting, which use 4.0.</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="ds-section" id="tokens"><h2><a href="#tokens">Tokens</a></h2>
+      <div class="ds-table-wrap"><table class="ds-table">
+        <thead><tr><th scope="col">Part</th><th scope="col">Token</th><th scope="col">Light</th><th scope="col">Dark</th></tr></thead>
+        <tbody>
+          <tr><td>Filled pip, label, number, rating word</td><td><code>--color-fg-default</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-default" data-swatch></i><span data-token="--color-fg-default"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-default" data-swatch></i><span data-token="--color-fg-default"></span></span></td></tr>
+          <tr><td>Empty pip edge</td><td><code>--color-border-strong</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-border-strong" data-swatch></i><span data-token="--color-border-strong"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-border-strong" data-swatch></i><span data-token="--color-border-strong"></span></span></td></tr>
+          <tr><td>Score row divider</td><td><code>--color-border-default</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-border-default" data-swatch></i><span data-token="--color-border-default"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-border-default" data-swatch></i><span data-token="--color-border-default"></span></span></td></tr>
+          <tr><td>Overall scale</td><td><code>--color-fg-muted</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-muted" data-swatch></i><span data-token="--color-fg-muted"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-muted" data-swatch></i><span data-token="--color-fg-muted"></span></span></td></tr>
+          <tr><td>Time of day</td><td><code>--color-fg-subtle</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-subtle" data-swatch></i><span data-token="--color-fg-subtle"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-subtle" data-swatch></i><span data-token="--color-fg-subtle"></span></span></td></tr>
+          <tr><td>Light tile</td><td><code>--color-bg-surface-sunken</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-bg-surface-sunken" data-swatch></i><span data-token="--color-bg-surface-sunken"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-bg-surface-sunken" data-swatch></i><span data-token="--color-bg-surface-sunken"></span></span></td></tr>
+          <tr><td>Rubric pip width × height</td><td><code>--space-5</code> × <code>--space-2</code></td><td colspan="2"><span data-token="--space-5"></span> × <span data-token="--space-2"></span></td></tr>
+          <tr><td>Light pip width</td><td><code>--space-4</code></td><td colspan="2"><span data-token="--space-4"></span></td></tr>
+          <tr><td>Pip gap, corners, edge</td><td><code>--space-1</code>, <code>--radius-full</code>, <code>--border-width-hairline</code></td><td colspan="2"><span data-token="--space-1"></span>, <span data-token="--radius-full"></span>, <span data-token="--border-width-hairline"></span></td></tr>
+          <tr><td>Score row height</td><td><code>--target-comfortable</code></td><td colspan="2"><span data-token="--target-comfortable"></span></td></tr>
+          <tr><td>Score list column gap</td><td><code>--space-12</code></td><td colspan="2"><span data-token="--space-12"></span></td></tr>
+          <tr><td>Light tile padding, corners, gap</td><td><code>--space-4</code>, <code>--radius-md</code>, <code>--space-3</code></td><td colspan="2"><span data-token="--space-4"></span>, <span data-token="--radius-md"></span>, <span data-token="--space-3"></span></td></tr>
+          <tr><td>Overall value type</td><td><code>--text-display</code></td><td colspan="2"><span data-token="--text-display"></span></td></tr>
+          <tr><td>Label and number type</td><td><code>--text-label</code> at <code>--font-size-md</code></td><td colspan="2"><span data-token="--text-label"></span></td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section class="ds-section" id="code"><h2><a href="#code">Code</a></h2>
+      <pre><code>&lt;!-- Rubric row: visible parts hidden, one sentence for assistive technology --&gt;
+&lt;li class="score"&gt;
+  &lt;span class="score__label" aria-hidden="true"&gt;Light&lt;/span&gt;
+  &lt;span class="pips" aria-hidden="true"&gt;&lt;i data-on&gt;&lt;/i&gt;&lt;i data-on&gt;&lt;/i&gt;&lt;i data-on&gt;&lt;/i&gt;&lt;i data-on&gt;&lt;/i&gt;&lt;i data-on&gt;&lt;/i&gt;&lt;/span&gt;
+  &lt;span class="score__value" aria-hidden="true"&gt;5&lt;/span&gt;
+  &lt;span class="visually-hidden"&gt;Light: 5 out of 5&lt;/span&gt;
+&lt;/li&gt;
+
+&lt;!-- Light rating: the word is the value --&gt;
+&lt;span class="light-rating"&gt;&lt;span class="pips" aria-hidden="true"&gt;&lt;i data-on&gt;&lt;/i&gt;&lt;i&gt;&lt;/i&gt;&lt;i&gt;&lt;/i&gt;&lt;/span&gt;Low&lt;/span&gt;</code></pre>
+      <table class="ds-table"><thead><tr><th scope="col">Class / attribute</th><th scope="col">Effect</th></tr></thead><tbody>
+        <tr><td><code>.pips</code></td><td>Inline row of bars, 4 px apart, never shrinks. Always <code>aria-hidden="true"</code>.</td></tr>
+        <tr><td><code>.pips &gt; i</code></td><td>One empty bar: 20 × 8 px with a 1 px strong edge. Five for rubric scores, three for light.</td></tr>
+        <tr><td><code>i[data-on]</code></td><td>Filled bar in ink. Put <code>data-on</code> on the first <var>n</var> bars.</td></tr>
+        <tr><td><code>.score-overall</code>, <code>__value</code>, <code>__max</code></td><td>Overall line: display-size value and muted "overall, out of 5" on one baseline.</td></tr>
+        <tr><td><code>.score-list</code></td><td>Unstyled list of rows: one column, two from 48rem. Name it with <code>aria-label="Rubric scores"</code>.</td></tr>
+        <tr><td><code>.score</code>, <code>__label</code>, <code>__value</code></td><td>One 44 px row: label, pips, right-aligned 2ch number, hairline divider.</td></tr>
+        <tr><td><code>.light-rating</code></td><td>Narrower three-pip bars (16 px) followed by the rating word.</td></tr>
+        <tr><td><code>.light-grid</code>, <code>__item</code>, <code>__time</code></td><td>Natural-light tiles: stacked, then four across from 48rem.</td></tr>
+      </tbody></table>
+      <p>In Angular the pip count comes from a view model beside the page (for example <code>pips(score, max)</code> returning booleans). The template never computes the overall: it prints <code>overallScore</code> from the API, formatted to one decimal.</p>
+    </section>
+
+    <section class="ds-section" id="sources"><h2><a href="#sources">Sources</a></h2>
+      <p>Extracted from these mocks:</p>
+      <ul>
+        <li><a href="../../mocks/pages/studio/default.html">pages/studio/default</a> (verdict: overall 3.8 and six rubric rows; natural light grid)</li>
+        <li><a href="../../mocks/pages/studio/stale.html">pages/studio/stale</a> (Ossington Blackbox: light None at every time of day)</li>
+        <li><a href="../../mocks/pages/studio/minimal.html">pages/studio/minimal</a> (Bloordale Sun Studio: overall 4.0)</li>
+        <li><a href="../../mocks/pages/studio/in-compare.html">pages/studio/in-compare</a>, <a href="../../mocks/pages/studio/playing.html">pages/studio/playing</a>, <a href="../../mocks/pages/studio/media-failed.html">pages/studio/media-failed</a> (same verdict in other page states)</li>
+        <li><a href="../../mocks/pages/spot/default.html">pages/spot/default</a> (light ratings in a stacked table with notes, five times of day)</li>
+        <li><a href="../../mocks/pages/spot/no-video.html">pages/spot/no-video</a> (light None in a spot table)</li>
+        <li><a href="../../mocks/pages/compare/default.html">pages/compare/default</a> (compact "4 / 5" score cells, no pips)</li>
+        <li><a href="../../mocks/pages/studios/default.html">pages/studios/default</a> (card score "3.8" with hidden "out of 5", no pips)</li>
+        <li><a href="../../mocks/pages/guide/default.html">pages/guide/default</a> (entry "Overall 3.2")</li>
+      </ul>
+      <p>Drift fixed during extraction: none in the markup. Every mock uses <code>.pips</code> with <code>data-on</code> and the hidden "Category: n out of 5" sentence. Three points were noted for follow-up; two are fixed. The comparison table and cards show scores without pips, which this page records as the compact variant. The stylesheet comment "one row of four (or five)" was wrong (the grid is four columns, and the five-row spot case is a table); it now reads "one row of four". In forced colours the pips disappeared because they are drawn with background and box shadow; a forced-colours rule now draws them in <code>CanvasText</code>.</p>
+    </section>
+
+    <footer class="ds-footer"><span>ShotThere design system · extracted from <a href="../../mocks/index.html">docs/mocks</a> on 13 October 2026</span><a href="#top">Back to top</a></footer>
+  </main>
+</div>
+<script src="../assets/ds.js"></script>
+</body>
+</html>

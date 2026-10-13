@@ -1,0 +1,467 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>List rows — ShotThere design system</title>
+<meta name="description" content="ShotThere's list rows: rows with a link title (rain backup), admin rows with badges and Edit actions (re-verification), and full-row section links (site menu), in every state and both themes.">
+<link rel="stylesheet" href="../tokens/tokens.css">
+<link rel="stylesheet" href="../assets/components.css">
+<link rel="stylesheet" href="../assets/ds.css">
+</head>
+<body id="top">
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="ds-shell">
+  <nav class="ds-nav" aria-label="Design system">
+    <div class="ds-nav__brand"><a href="../index.html">ShotThere DS</a><button class="ds-theme-toggle" type="button" aria-pressed="false">☾ Dark</button></div>
+    <details open><summary>Foundations</summary><ul>
+      <li><a href="../foundations/color.html">Color</a></li>
+      <li><a href="../foundations/typography.html">Typography</a></li>
+      <li><a href="../foundations/spacing.html">Spacing</a></li>
+      <li><a href="../foundations/layout.html">Layout</a></li>
+      <li><a href="../foundations/elevation.html">Elevation</a></li>
+      <li><a href="../foundations/shape.html">Shape</a></li>
+      <li><a href="../foundations/motion.html">Motion</a></li>
+      <li><a href="../foundations/iconography.html">Iconography</a></li>
+      <li><a href="../foundations/theming.html">Theming</a></li>
+      <li><a href="../foundations/responsive.html">Responsive</a></li>
+      <li><a href="../foundations/accessibility.html">Accessibility</a></li>
+      <li><a href="../foundations/content.html">Content</a></li>
+    </ul></details>
+    <details open><summary>Actions</summary><ul>
+      <li><a href="../components/button.html">Button</a></li>
+      <li><a href="../components/icon-button.html">Icon button</a></li>
+      <li><a href="../components/button-group.html">Button group</a></li>
+      <li><a href="../components/link.html">Link</a></li>
+      <li><a href="../components/compare-bar.html">Compare toggle and bar</a></li>
+    </ul></details>
+    <details open><summary>Inputs</summary><ul>
+      <li><a href="../components/form-field.html">Form field</a></li>
+      <li><a href="../components/text-field.html">Text field</a></li>
+      <li><a href="../components/textarea.html">Textarea</a></li>
+      <li><a href="../components/select.html">Select</a></li>
+      <li><a href="../components/combobox.html">Combobox</a></li>
+      <li><a href="../components/checkbox.html">Checkbox</a></li>
+      <li><a href="../components/radio-group.html">Radio group</a></li>
+      <li><a href="../components/file-upload.html">File upload</a></li>
+      <li><a href="../components/form-layout.html">Form layout</a></li>
+      <li><a href="../components/signup.html">Email signup</a></li>
+    </ul></details>
+    <details open><summary>Navigation</summary><ul>
+      <li><a href="../components/skip-link.html">Skip link</a></li>
+      <li><a href="../components/site-header.html">Site header</a></li>
+      <li><a href="../components/footer.html">Footer</a></li>
+      <li><a href="../components/breadcrumb.html">Breadcrumb</a></li>
+      <li><a href="../components/filter.html">Filters</a></li>
+    </ul></details>
+    <details open><summary>Containers and overlays</summary><ul>
+      <li><a href="../components/container.html">Container</a></li>
+      <li><a href="../components/review-layout.html">Review layout</a></li>
+      <li><a href="../components/editor-layout.html">Editor layout</a></li>
+      <li><a href="../components/dialog.html">Dialog</a></li>
+      <li><a href="../components/sheet.html">Sheet</a></li>
+      <li><a href="../components/popover.html">Popover</a></li>
+      <li><a href="../components/lightbox.html">Lightbox</a></li>
+    </ul></details>
+    <details open><summary>Data display</summary><ul>
+      <li><a href="../components/location-card.html">Location card</a></li>
+      <li><a href="../components/table.html">Table</a></li>
+      <li><a href="../components/compare-table.html">Comparison table</a></li>
+      <li><a href="../components/list.html">List rows</a></li>
+      <li><a href="../components/description-list.html">Description list</a></li>
+      <li><a href="../components/price-block.html">Price block</a></li>
+      <li><a href="../components/score.html">Score and pips</a></li>
+      <li><a href="../components/shot-grid.html">Shot grid</a></li>
+      <li><a href="../components/video-poster.html">Episode poster</a></li>
+      <li><a href="../components/map.html">Map</a></li>
+      <li><a href="../components/guide-entry.html">Guide entry</a></li>
+      <li><a href="../components/stat-tile.html">Stat tile</a></li>
+      <li><a href="../components/image-manager.html">Image manager</a></li>
+      <li><a href="../components/disclosure.html">Disclosure</a></li>
+      <li><a href="../components/badge.html">Badge</a></li>
+      <li><a href="../components/status-label.html">Status label</a></li>
+      <li><a href="../components/chip.html">Chip</a></li>
+      <li><a href="../components/tag.html">Tag</a></li>
+    </ul></details>
+    <details open><summary>Feedback</summary><ul>
+      <li><a href="../components/inline-message.html">Inline message</a></li>
+      <li><a href="../components/alert.html">Alert</a></li>
+      <li><a href="../components/toast.html">Toast</a></li>
+      <li><a href="../components/progress.html">Progress</a></li>
+      <li><a href="../components/spinner.html">Spinner</a></li>
+      <li><a href="../components/skeleton.html">Skeleton</a></li>
+      <li><a href="../components/empty-state.html">Empty state</a></li>
+      <li><a href="../components/error-page.html">Error page</a></li>
+    </ul></details>
+    <details open><summary>Patterns</summary><ul>
+      <li><a href="../patterns/forms.html">Forms</a></li>
+      <li><a href="../patterns/feedback-and-loading.html">Feedback and loading</a></li>
+      <li><a href="../patterns/empty-and-error-states.html">Empty and error states</a></li>
+      <li><a href="../patterns/navigation.html">Navigation and page structure</a></li>
+      <li><a href="../patterns/dialogs-and-overlays.html">Dialogs and overlays</a></li>
+      <li><a href="../patterns/tables-and-lists.html">Data tables and lists</a></li>
+      <li><a href="../patterns/notifications.html">Notifications</a></li>
+      <li><a href="../patterns/content-and-tone.html">Content and tone</a></li>
+    </ul></details>
+  </nav>
+
+  <main id="main" class="ds-main">
+    <header class="ds-header">
+      <p class="ds-kicker">Component · Data display</p>
+      <h1>List rows</h1>
+      <p class="ds-lead">Rows stack short, same-shaped items with a title, one line of detail and at most a trailing value or action: the studios to retreat to when it rains, the prices and permits that need re-verifying, and the sections in the site menu.</p>
+      <div class="ds-meta"><span class="ds-pill ds-pill--ok">WCAG 2.2 AA</span><span class="ds-pill">Status: stable</span><span class="ds-pill">Native <code>&lt;ul&gt;</code> / <code>&lt;li&gt;</code></span><span class="ds-pill"><code>.list</code> <code>.admin-list</code> <code>.section-list</code></span></div>
+      <ul class="ds-toc"><li><a href="#overview">Overview</a></li><li><a href="#anatomy">Anatomy</a></li><li><a href="#variants">Variants</a></li><li><a href="#sizes">Sizes</a></li><li><a href="#states">States</a></li><li><a href="#responsive">Responsive behaviour</a></li><li><a href="#theming">Theming</a></li><li><a href="#accessibility">Accessibility</a></li><li><a href="#content">Content</a></li><li><a href="#do-dont">Do and don't</a></li><li><a href="#tokens">Tokens</a></li><li><a href="#code">Code</a></li><li><a href="#sources">Sources</a></li></ul>
+    </header>
+
+    <section class="ds-section" id="overview"><h2><a href="#overview">Overview</a></h2>
+      <p>Three row families share one shape (body on the left, title over meta, something optional on the right) and differ in what can be pressed.</p>
+      <ul>
+        <li><b>List row</b> (<code>.list</code> / <code>.list__item</code>): a compact read-only row whose title may be a link, with a trailing value. The spot page's rain backup list is the reference: three studios, their neighbourhood and all-in cost, and the distance.</li>
+        <li><b>Admin row</b> (<code>.admin-list</code> / <code>.admin-row</code>): a roomier row with a status badge in the title and its own actions. The dashboard's "Needs re-verification" and "Due soon" groups use it (L2-044).</li>
+        <li><b>Section link</b> (<code>.section-list</code> / <code>.section-link</code>): the whole row is one link, tall enough to hit with a thumb. The site menu sheet uses it for the public sections and for the admin sections (L2-064).</li>
+      </ul>
+      <p>Use a <a href="table.html">table</a> instead when items share three or more comparable columns: the admin studio, spot and guide lists are stacked tables, not rows. Use <a href="location-card.html">location cards</a> when the photo matters, and a <a href="description-list.html">description list</a> for label and value pairs about one thing.</p>
+    </section>
+
+    <section class="ds-section" id="anatomy"><h2><a href="#anatomy">Anatomy</a></h2>
+      <div class="ds-anatomy">
+        <figure class="ds-anatomy__figure">
+          <ul class="admin-list" style="width: min(100%, 30rem);">
+            <li class="admin-row">
+              <div class="admin-row__body">
+                <span class="admin-row__title">Ossington Blackbox <span class="badge badge--warning">Stale</span></span>
+                <span class="admin-row__meta">Studio · Prices verified <time datetime="2026-03-02">2 Mar 2026</time> (225 days ago)</span>
+              </div>
+              <div class="admin-row__actions"><a class="btn btn--sm" href="../../mocks/pages/studio-editor/published.html">Edit<span class="visually-hidden"> Ossington Blackbox prices</span></a></div>
+            </li>
+          </ul>
+          <span class="ds-callout" style="left: 3%; top: 36%;" aria-hidden="true">1</span>
+          <span class="ds-callout" style="left: 52%; top: 26%;" aria-hidden="true">2</span>
+          <span class="ds-callout" style="left: 3%; top: 54%;" aria-hidden="true">3</span>
+          <span class="ds-callout" style="left: 86%; top: 30%;" aria-hidden="true">4</span>
+          <span class="ds-callout" style="left: 70%; top: 68%;" aria-hidden="true">5</span>
+        </figure>
+        <ol class="ds-anatomy__list">
+          <li><div><b>Title</b><small><code>__title</code>: the location or section name. <code>--text-body-lg</code> medium in admin rows and section links; <code>--text-label</code> at <code>--font-size-md</code> in list rows.</small></div></li>
+          <li><div><b>Status (admin rows)</b><small>A <a href="badge.html">badge</a> inside the title: "Stale" (warning) or "Due soon" (info).</small></div></li>
+          <li><div><b>Meta</b><small><code>__meta</code>: one line of detail, <code>--text-body-sm</code> in <code>--color-fg-muted</code>. Dates are <code>&lt;time&gt;</code>.</small></div></li>
+          <li><div><b>Trailing slot</b><small>List rows: a value such as "3.1 km" in <code>.num</code>. Admin rows: <code>__actions</code>, small buttons pushed right. Section links: nothing; the row is the target.</small></div></li>
+          <li><div><b>Hairline</b><small>1px <code>--color-border-default</code> under each row; admin and section lists add one on top of the first row.</small></div></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="ds-section" id="variants"><h2><a href="#variants">Variants</a></h2>
+      <h3>List row with a link title and trailing value</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--stack">
+          <ul class="list">
+            <li class="list__item"><div class="list__body"><a class="list__title" href="../../mocks/pages/studio/default.html">Riverside Rooftop Studio</a><span class="list__meta">Riverside · All-in $100.00 for 2 hours</span></div><span class="num">3.1 km</span></li>
+            <li class="list__item"><div class="list__body"><a class="list__title" href="../../mocks/pages/studio/default.html">Leslieville Daylight Studio</a><span class="list__meta">Leslieville · All-in $91.00 for 2 hours</span></div><span class="num">4.0 km</span></li>
+            <li class="list__item"><div class="list__body"><a class="list__title" href="../../mocks/pages/studio/default.html">Kensington Window Room</a><span class="list__meta">Kensington Market · All-in $80.00 for 2 hours</span></div><span class="num">5.6 km</span></li>
+          </ul>
+        </div>
+        <div class="ds-example__caption"><span>Rain backup on Evergreen Brick Works: nearest reviewed studios by straight-line distance. Only the name is a link; the row is not.</span></div>
+        <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;ul class="list"&gt;
+  &lt;li class="list__item"&gt;
+    &lt;div class="list__body"&gt;
+      &lt;a class="list__title" href="/studios/riverside-rooftop-studio"&gt;Riverside Rooftop Studio&lt;/a&gt;
+      &lt;span class="list__meta"&gt;Riverside · All-in $100.00 for 2 hours&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;span class="num"&gt;3.1 km&lt;/span&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</code></pre></details>
+      </div>
+      <h3>Admin rows: needs re-verification and due soon</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--stack">
+          <ul class="admin-list">
+            <li class="admin-row">
+              <div class="admin-row__body">
+                <span class="admin-row__title">Ossington Blackbox <span class="badge badge--warning">Stale</span></span>
+                <span class="admin-row__meta">Studio · Prices verified <time datetime="2026-03-02">2 Mar 2026</time> (225 days ago)</span>
+              </div>
+              <div class="admin-row__actions"><a class="btn btn--sm" href="../../mocks/pages/studio-editor/published.html">Edit<span class="visually-hidden"> Ossington Blackbox prices</span></a></div>
+            </li>
+            <li class="admin-row">
+              <div class="admin-row__body">
+                <span class="admin-row__title">Distillery District <span class="badge badge--warning">Stale</span></span>
+                <span class="admin-row__meta">Outdoor spot · Permits verified <time datetime="2026-03-20">20 Mar 2026</time> (207 days ago)</span>
+              </div>
+              <div class="admin-row__actions"><a class="btn btn--sm" href="../../mocks/pages/spot-editor/published.html">Edit<span class="visually-hidden"> Distillery District permits</span></a></div>
+            </li>
+          </ul>
+          <ul class="admin-list">
+            <li class="admin-row">
+              <div class="admin-row__body">
+                <span class="admin-row__title">Liberty Cyc House <span class="badge badge--info">Due soon</span></span>
+                <span class="admin-row__meta">Studio · Prices verified <time datetime="2026-04-28">28 Apr 2026</time> (168 days ago)</span>
+              </div>
+              <div class="admin-row__actions"><a class="btn btn--sm" href="../../mocks/pages/studio-editor/published.html">Edit<span class="visually-hidden"> Liberty Cyc House prices</span></a></div>
+            </li>
+          </ul>
+        </div>
+        <div class="ds-example__caption"><span>Oldest first. Stale is more than 183 days, due soon is 153 to 183 days. Edit opens that location's editor (L2-044.4).</span></div>
+        <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;ul class="admin-list"&gt;
+  &lt;li class="admin-row"&gt;
+    &lt;div class="admin-row__body"&gt;
+      &lt;span class="admin-row__title"&gt;Ossington Blackbox &lt;span class="badge badge--warning"&gt;Stale&lt;/span&gt;&lt;/span&gt;
+      &lt;span class="admin-row__meta"&gt;Studio · Prices verified &lt;time datetime="2026-03-02"&gt;2 Mar 2026&lt;/time&gt; (225 days ago)&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="admin-row__actions"&gt;
+      &lt;a class="btn btn--sm" href="/admin/studios/ossington-blackbox"&gt;Edit&lt;span class="visually-hidden"&gt; Ossington Blackbox prices&lt;/span&gt;&lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</code></pre></details>
+      </div>
+      <h3>Section links in the site menu</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--stack" style="background: var(--color-bg-surface-raised);">
+          <nav aria-label="Administration (example)">
+            <ul class="section-list">
+              <li><a class="section-link" href="../../mocks/pages/admin-dashboard/default.html" aria-current="page"><span class="section-link__body"><span class="section-link__title">Dashboard</span><span class="section-link__meta">2 items need re-verifying</span></span></a></li>
+              <li><a class="section-link" href="../../mocks/pages/admin-studios/default.html"><span class="section-link__body"><span class="section-link__title">Studios</span><span class="section-link__meta">7 published · 2 drafts</span></span></a></li>
+              <li><a class="section-link" href="../../mocks/pages/admin-spots/default.html"><span class="section-link__body"><span class="section-link__title">Spots</span><span class="section-link__meta">5 published · 1 draft</span></span></a></li>
+              <li><a class="section-link" href="../../mocks/pages/admin-guides/default.html"><span class="section-link__body"><span class="section-link__title">Guides</span><span class="section-link__meta">3 published · 1 draft</span></span></a></li>
+              <li><a class="section-link" href="../../mocks/pages/home/default.html"><span class="section-link__body"><span class="section-link__title">View site</span><span class="section-link__meta">The public home page</span></span></a></li>
+            </ul>
+          </nav>
+        </div>
+        <div class="ds-example__caption"><span>The admin menu sheet below 48rem (copied from the mock, including its "·" counts; see Sources). Each row is one link with a 72px minimum height; the public menu uses the same rows ("Studios · 7 rental studios, measured the same way").</span></div>
+        <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;nav aria-label="Administration"&gt;
+  &lt;ul class="section-list"&gt;
+    &lt;li&gt;&lt;a class="section-link" href="/admin" aria-current="page"&gt;
+      &lt;span class="section-link__body"&gt;
+        &lt;span class="section-link__title"&gt;Dashboard&lt;/span&gt;
+        &lt;span class="section-link__meta"&gt;2 items need re-verifying&lt;/span&gt;
+      &lt;/span&gt;
+    &lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;</code></pre></details>
+      </div>
+      <h3>Section link with attention meta</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--stack" style="background: var(--color-bg-surface-raised);">
+          <ul class="section-list">
+            <li><a class="section-link" href="../../mocks/pages/admin-dashboard/default.html" data-highlight><span class="section-link__body"><span class="section-link__title">Dashboard</span><span class="section-link__meta">2 items need re-verifying</span></span></a></li>
+            <li><a class="section-link" href="../../mocks/pages/admin-studios/default.html"><span class="section-link__body"><span class="section-link__title">Studios</span><span class="section-link__meta">9 studios · 7 published · 2 draft</span></span></a></li>
+          </ul>
+        </div>
+        <div class="ds-example__caption"><span><code>data-highlight</code> on the link turns its meta danger red. The words carry the meaning; the colour only adds urgency. Defined in the stylesheet; no current mock sets it.</span></div>
+      </div>
+    </section>
+
+    <section class="ds-section" id="sizes"><h2><a href="#sizes">Sizes</a></h2>
+      <p>Density comes with the family, not a size modifier: pick the family, and the size follows.</p>
+      <div class="ds-table-wrap"><table class="ds-table">
+        <thead><tr><th scope="col">Family</th><th scope="col">Padding</th><th scope="col">Title</th><th scope="col">Minimum height</th></tr></thead>
+        <tbody>
+          <tr><td>List row</td><td><code>--space-3</code> × <code>--space-4</code></td><td><code>--text-label</code> at <code>--font-size-md</code></td><td>Content (about 64px with two lines)</td></tr>
+          <tr><td>Admin row</td><td><code>--space-4</code> × <code>--space-2</code></td><td><code>--text-body-lg</code>, medium</td><td>Content; the 36px Edit button (44px on phones) sets the floor</td></tr>
+          <tr><td>Section link</td><td><code>--space-3</code> × <code>--space-1</code></td><td><code>--text-body-lg</code>, medium</td><td>4.5rem (72px)</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section class="ds-section" id="states"><h2><a href="#states">States</a></h2>
+      <p>Rows are not controls; their links and buttons are. Pointer and focus states are forced with <code>data-state</code> here; real pages get them from <code>:hover</code> and <code>:focus-visible</code>. Selection, current page and loading use real attributes.</p>
+      <div class="ds-matrix"><table>
+        <caption class="visually-hidden">List row states by family</caption>
+        <thead><tr><th scope="col">Family</th><th scope="col">Default</th><th scope="col">Hover</th><th scope="col">Focus</th><th scope="col">Active</th><th scope="col">Disabled</th><th scope="col">Selected / current</th><th scope="col">Loading</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">List row</th>
+            <td><ul class="list" style="min-width: 15rem;"><li class="list__item"><div class="list__body"><a class="list__title" href="../../mocks/pages/studio/default.html">Riverside Rooftop Studio</a><span class="list__meta">Riverside · All-in $100.00</span></div><span class="num">3.1 km</span></li></ul></td>
+            <td><ul class="list" style="min-width: 15rem;"><li class="list__item"><div class="list__body"><a class="list__title" href="../../mocks/pages/studio/default.html" data-state="hover">Riverside Rooftop Studio</a><span class="list__meta">Riverside · All-in $100.00</span></div><span class="num">3.1 km</span></li></ul></td>
+            <td><ul class="list" style="min-width: 15rem;"><li class="list__item"><div class="list__body"><a class="list__title" href="../../mocks/pages/studio/default.html" data-state="focus">Riverside Rooftop Studio</a><span class="list__meta">Riverside · All-in $100.00</span></div><span class="num">3.1 km</span></li></ul></td>
+            <td><span class="text-muted">No pressed style; the title link follows on release.</span></td>
+            <td><span class="text-muted">Not used: leave an unavailable item out.</span></td>
+            <td><span class="text-muted">Not selectable.</span></td>
+            <td><span class="text-muted">Loads with the page section.</span></td>
+          </tr>
+          <tr><th scope="row">Admin row</th>
+            <td><ul class="admin-list" style="min-width: 17rem;"><li class="admin-row"><div class="admin-row__body"><span class="admin-row__title">Liberty Cyc House <span class="badge badge--info">Due soon</span></span><span class="admin-row__meta">Studio · 28 Apr 2026</span></div><div class="admin-row__actions"><a class="btn btn--sm" href="../../mocks/pages/studio-editor/published.html">Edit<span class="visually-hidden"> Liberty Cyc House prices</span></a></div></li></ul></td>
+            <td><ul class="admin-list" style="min-width: 17rem;"><li class="admin-row"><div class="admin-row__body"><span class="admin-row__title">Liberty Cyc House <span class="badge badge--info">Due soon</span></span><span class="admin-row__meta">Studio · 28 Apr 2026</span></div><div class="admin-row__actions"><a class="btn btn--sm" href="../../mocks/pages/studio-editor/published.html" data-state="hover">Edit<span class="visually-hidden"> Liberty Cyc House prices</span></a></div></li></ul></td>
+            <td><ul class="admin-list" style="min-width: 17rem;"><li class="admin-row"><div class="admin-row__body"><span class="admin-row__title">Liberty Cyc House <span class="badge badge--info">Due soon</span></span><span class="admin-row__meta">Studio · 28 Apr 2026</span></div><div class="admin-row__actions"><a class="btn btn--sm" href="../../mocks/pages/studio-editor/published.html" data-state="focus">Edit<span class="visually-hidden"> Liberty Cyc House prices</span></a></div></li></ul></td>
+            <td><ul class="admin-list" style="min-width: 17rem;"><li class="admin-row"><div class="admin-row__body"><span class="admin-row__title">Liberty Cyc House <span class="badge badge--info">Due soon</span></span><span class="admin-row__meta">Studio · 28 Apr 2026</span></div><div class="admin-row__actions"><a class="btn btn--sm" href="../../mocks/pages/studio-editor/published.html" data-state="active">Edit<span class="visually-hidden"> Liberty Cyc House prices</span></a></div></li></ul></td>
+            <td><span class="text-muted">Never disabled: every listed location can be edited.</span></td>
+            <td><span class="text-muted">Not selectable.</span></td>
+            <td><ul class="admin-list" style="min-width: 17rem;" aria-hidden="true"><li class="admin-row admin-row--skeleton"><div class="admin-row__body"><span class="skeleton skeleton--title"></span><span class="skeleton skeleton--text"></span></div><span class="skeleton skeleton--rect"></span></li></ul></td>
+          </tr>
+          <tr><th scope="row">Section link</th>
+            <td><ul class="section-list" style="min-width: 15rem;"><li><a class="section-link" href="../../mocks/pages/admin-spots/default.html"><span class="section-link__body"><span class="section-link__title">Spots</span><span class="section-link__meta">5 published · 1 draft</span></span></a></li></ul></td>
+            <td><ul class="section-list" style="min-width: 15rem;"><li><a class="section-link" href="../../mocks/pages/admin-spots/default.html" data-state="hover"><span class="section-link__body"><span class="section-link__title">Spots</span><span class="section-link__meta">5 published · 1 draft</span></span></a></li></ul></td>
+            <td><ul class="section-list" style="min-width: 15rem;"><li><a class="section-link" href="../../mocks/pages/admin-spots/default.html" data-state="focus"><span class="section-link__body"><span class="section-link__title">Spots</span><span class="section-link__meta">5 published · 1 draft</span></span></a></li></ul></td>
+            <td><span class="text-muted">Same as hover.</span></td>
+            <td><span class="text-muted">Not used: a section the admin can't open is not listed.</span></td>
+            <td><ul class="section-list" style="min-width: 15rem;"><li><a class="section-link" href="../../mocks/pages/admin-dashboard/default.html" aria-current="page"><span class="section-link__body"><span class="section-link__title">Dashboard</span><span class="section-link__meta">2 items need re-verifying</span></span></a></li></ul></td>
+            <td><span class="text-muted">Static; drawn with the sheet.</span></td>
+          </tr>
+        </tbody>
+      </table></div>
+      <ul>
+        <li><b>Selected</b> (<code>aria-selected="true"</code> or <code>data-state="selected"</code>) fills the row with <code>--color-accent-subtle</code>. Only use <code>aria-selected</code> on a row with <code>role="option"</code> inside a <code>role="listbox"</code>; a list of links shows "you are here" with <code>aria-current</code> instead.</li>
+        <li><b>Current</b> (<code>aria-current="page"</code>) is announced, and <code>.section-link[aria-current="page"]</code> marks it with a 2px accent bar on the left edge and an accent title, so the menu row for the current screen stands out without relying on colour alone.</li>
+        <li><b>Loading</b> admin rows use <code>.admin-row--skeleton</code>: a title bar at 40%, a meta bar at 25% and a button-sized block (44px tall on phones, 36px from 48rem). The busy region around them carries <code>aria-busy="true"</code> and a hidden status message.</li>
+        <li><b>Empty</b> lists are not drawn. "Everything is up to date" replaces the re-verification list (a compact success <a href="empty-state.html">empty state</a>); a spot with no studio nearby shows a sentence instead of a rain backup list.</li>
+      </ul>
+      <h3>Both themes</h3>
+      <div class="ds-themes">
+        <div data-theme="light">
+          <ul class="admin-list"><li class="admin-row"><div class="admin-row__body"><span class="admin-row__title">Distillery District <span class="badge badge--warning">Stale</span></span><span class="admin-row__meta">Outdoor spot · Permits verified 20 Mar 2026 (207 days ago)</span></div><div class="admin-row__actions"><a class="btn btn--sm" href="../../mocks/pages/spot-editor/published.html">Edit<span class="visually-hidden"> Distillery District permits</span></a></div></li></ul>
+          <ul class="list" style="margin-top: var(--space-4);"><li class="list__item"><div class="list__body"><a class="list__title" href="../../mocks/pages/studio/default.html">Leslieville Daylight Studio</a><span class="list__meta">Leslieville · All-in $91.00 for 2 hours</span></div><span class="num">4.0 km</span></li></ul>
+          <ul class="section-list" style="margin-top: var(--space-4);"><li><a class="section-link" href="../../mocks/pages/map/default.html"><span class="section-link__body"><span class="section-link__title">Map</span><span class="section-link__meta">Every studio and spot on one map</span></span></a></li><li><a class="section-link" href="../../mocks/pages/compare/default.html" data-state="hover"><span class="section-link__body"><span class="section-link__title">Compare</span><span class="section-link__meta">Up to 4 studios side by side</span></span></a></li></ul>
+        </div>
+        <div data-theme="dark">
+          <ul class="admin-list"><li class="admin-row"><div class="admin-row__body"><span class="admin-row__title">Distillery District <span class="badge badge--warning">Stale</span></span><span class="admin-row__meta">Outdoor spot · Permits verified 20 Mar 2026 (207 days ago)</span></div><div class="admin-row__actions"><a class="btn btn--sm" href="../../mocks/pages/spot-editor/published.html">Edit<span class="visually-hidden"> Distillery District permits</span></a></div></li></ul>
+          <ul class="list" style="margin-top: var(--space-4);"><li class="list__item"><div class="list__body"><a class="list__title" href="../../mocks/pages/studio/default.html">Leslieville Daylight Studio</a><span class="list__meta">Leslieville · All-in $91.00 for 2 hours</span></div><span class="num">4.0 km</span></li></ul>
+          <ul class="section-list" style="margin-top: var(--space-4);"><li><a class="section-link" href="../../mocks/pages/map/default.html"><span class="section-link__body"><span class="section-link__title">Map</span><span class="section-link__meta">Every studio and spot on one map</span></span></a></li><li><a class="section-link" href="../../mocks/pages/compare/default.html" data-state="hover"><span class="section-link__body"><span class="section-link__title">Compare</span><span class="section-link__meta">Up to 4 studios side by side</span></span></a></li></ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="ds-section" id="responsive"><h2><a href="#responsive">Responsive behaviour</a></h2>
+      <ul>
+        <li><b>Admin rows wrap.</b> The body has a 128px flex basis (<code>--space-32</code>); when the title, badge and meta need more than what is left beside the actions, the actions drop below and stay right-aligned (<code>margin-left: auto</code>). The re-verification list never scrolls sideways at 320px (L2-053.3).</li>
+        <li><b>Titles wrap</b> (<code>overflow-wrap: anywhere</code> in admin rows); the badge follows the name onto the next line rather than overlapping it. Nothing truncates.</li>
+        <li><b>Phone targets.</b> Below 48rem the small Edit button grows to 44px (L2-065.1).</li>
+        <li><b>Section links</b> only appear in the menu sheet below 48rem, where they replace the inline header links (L2-064.2). From 48rem the <a href="site-header.html">site header</a> shows the same sections inline.</li>
+        <li>The trailing value in a list row (<code>.num</code>) never wraps under the title; the body shrinks (<code>min-width: 0</code>) and the meta wraps instead.</li>
+      </ul>
+    </section>
+
+    <section class="ds-section" id="theming"><h2><a href="#theming">Theming</a></h2>
+      <p>Rows have no fill of their own: they read the surface they sit on (the page canvas on the dashboard and spot page, <code>--color-bg-surface-raised</code> in the menu sheet). Hairlines use <code>--color-border-default</code>, meta uses <code>--color-fg-muted</code>. Hover uses <code>--color-bg-surface-sunken</code> for section links, selected uses <code>--color-accent-subtle</code>, and attention meta uses <code>--color-danger-fg</code>. Every one of these is a role that the dark theme redefines, so rows need no dark-specific CSS.</p>
+      <pre><code>/* Section-link hover reads a role; a sheet with a different surface keeps it. */
+.section-link:hover { background: var(--color-bg-surface-sunken); }</code></pre>
+    </section>
+
+    <section class="ds-section" id="accessibility"><h2><a href="#accessibility">Accessibility</a></h2>
+      <h3>Role and pattern</h3>
+      <p>Native lists: <code>&lt;ul&gt;</code> and <code>&lt;li&gt;</code>, announced as "list, 3 items". Links are <code>&lt;a href&gt;</code> and actions are buttons or button-styled links; no ARIA widget pattern is involved. Section lists sit inside a labelled <code>&lt;nav&gt;</code> ("Primary", "About ShotThere", "Administration"). Use the <a href="https://www.w3.org/WAI/ARIA/apg/patterns/listbox/">APG Listbox</a> pattern only when rows are options to choose from, and only then use <code>aria-selected</code>.</p>
+      <h3>Keyboard</h3>
+      <table class="ds-table ds-keys"><thead><tr><th scope="col">Key</th><th scope="col">Action</th></tr></thead><tbody>
+        <tr><td><kbd>Tab</kbd> / <kbd>Shift</kbd>+<kbd>Tab</kbd></td><td>Moves through the links and buttons in the rows, in reading order: one stop per list row title, per admin row action, per section link.</td></tr>
+        <tr><td><kbd>Enter</kbd></td><td>Follows the focused link or activates the focused button.</td></tr>
+        <tr><td><kbd>Space</kbd></td><td>Activates a <code>&lt;button&gt;</code> in an admin row; on links it scrolls the page, as browsers do.</td></tr>
+      </tbody></table>
+      <h3>Focus</h3>
+      <p>The shared ring (2px <code>--color-focus-ring</code>) draws around whatever is focused: the title link, the Edit button, or the whole section link row. In the menu sheet, focus starts on Close and Tab moves down the section links; Escape closes the sheet and focus returns to Menu.</p>
+      <h3>Labelling</h3>
+      <p>Repeated actions carry their object in visually hidden text: "Edit Ossington Blackbox prices", "Edit Distillery District permits", so a links list does not read "Edit, Edit, Edit". A section link's name is its title and meta together ("Studios 7 published · 2 drafts"); keep the meta short. Badges are text ("Stale", "Due soon"), so status is never colour alone. Dates use <code>&lt;time datetime&gt;</code>.</p>
+      <h3>Contrast</h3>
+      <div class="ds-example__canvas ds-example__canvas--stack" style="padding: 0; gap: var(--space-2);">
+        <div class="ds-pair"><span>Title on page</span><span class="ds-pair__ratio" data-contrast="--color-fg-default|--color-bg-canvas" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Meta on page</span><span class="ds-pair__ratio" data-contrast="--color-fg-muted|--color-bg-canvas" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Title link on page</span><span class="ds-pair__ratio" data-contrast="--color-fg-link|--color-bg-canvas" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Title on selected row</span><span class="ds-pair__ratio" data-contrast="--color-fg-default|--color-accent-subtle" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Warning badge text</span><span class="ds-pair__ratio" data-contrast="--color-warning-fg|--color-warning-bg" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Info badge text</span><span class="ds-pair__ratio" data-contrast="--color-info-fg|--color-info-bg" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Section title in the sheet</span><span class="ds-pair__ratio" data-contrast="--color-fg-default|--color-bg-surface-raised" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Section meta in the sheet</span><span class="ds-pair__ratio" data-contrast="--color-fg-muted|--color-bg-surface-raised" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Hovered section link</span><span class="ds-pair__ratio" data-contrast="--color-fg-default|--color-bg-surface-sunken" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Hovered section meta</span><span class="ds-pair__ratio" data-contrast="--color-fg-muted|--color-bg-surface-sunken" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Attention meta in the sheet</span><span class="ds-pair__ratio" data-contrast="--color-danger-fg|--color-bg-surface-raised" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Attention meta, hovered</span><span class="ds-pair__ratio" data-contrast="--color-danger-fg|--color-bg-surface-sunken" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Focus ring in the sheet</span><span class="ds-pair__ratio" data-contrast="--color-focus-ring|--color-bg-surface-raised" data-min="3"></span></div>
+      </div>
+      <p>Hairlines (<code>--color-border-default</code>) separate rows but mark no control, so they are decorative under 1.4.11. Meta on a selected row (<code>--color-fg-muted</code> on <code>--color-accent-subtle</code>) is a checked pair in <code>contrast-pairs.json</code>.</p>
+      <h3>Motion</h3>
+      <p>The section-link hover fill changes instantly; only the admin row skeleton shimmers, and that stops under <code>prefers-reduced-motion</code>.</p>
+      <h3>Touch</h3>
+      <p>Section links are at least 72px tall across the full sheet width. Admin row actions are 44px below 48rem. List row title links are text-sized, so they sit one per row with the row's padding around them.</p>
+    </section>
+
+    <section class="ds-section" id="content"><h2><a href="#content">Content</a></h2>
+      <ul>
+        <li><b>Title</b>: the location's name as published ("Liberty Cyc House"), or the section name in the menu ("Studios", "Editorial policy"). No articles or verbs.</li>
+        <li><b>Meta</b>: type or neighbourhood first, then the one fact the list is about, joined by " · ": "Studio · Prices verified 2 Mar 2026 (225 days ago)", "Riverside · All-in $100.00 for 2 hours".</li>
+        <li><b>Dates</b> as "2 Mar 2026"; ages as "(225 days ago)", so the admin sees both the date and how stale it is.</li>
+        <li><b>Values</b> metric with one decimal and tabular figures: "3.1 km".</li>
+        <li><b>Menu meta</b> says what is behind the link in under eight words: "Every studio and spot on one map", "How reviews are made, paid for and corrected".</li>
+        <li><b>Actions</b> are one verb with a hidden object: "Edit" + " Ossington Blackbox prices".</li>
+      </ul>
+    </section>
+
+    <section class="ds-section" id="do-dont"><h2><a href="#do-dont">Do and don't</a></h2>
+      <div class="ds-dodont">
+        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--stack"><ul class="admin-list"><li class="admin-row"><div class="admin-row__body"><span class="admin-row__title">Ossington Blackbox <span class="badge badge--warning">Stale</span></span><span class="admin-row__meta">Studio · Prices verified 2 Mar 2026</span></div><div class="admin-row__actions"><a class="btn btn--sm" href="../../mocks/pages/studio-editor/published.html">Edit<span class="visually-hidden"> Ossington Blackbox prices</span></a></div></li></ul></div><figcaption>Every Edit names its row and field for screen readers.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--stack"><ul class="admin-list"><li class="admin-row"><div class="admin-row__body"><span class="admin-row__title">Ossington Blackbox</span><span class="admin-row__meta" style="color: var(--color-danger-fg);">Studio · 2 Mar 2026</span></div><div class="admin-row__actions"><a class="btn btn--sm" href="../../mocks/pages/studio-editor/published.html">Edit</a></div></li></ul></div><figcaption>A bare "Edit" and a red date with no "Stale" badge: the action is ambiguous and the status is colour only.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--stack"><ul class="list"><li class="list__item"><div class="list__body"><a class="list__title" href="../../mocks/pages/studio/default.html">Kensington Window Room</a><span class="list__meta">Kensington Market · All-in $80.00 for 2 hours</span></div><span class="num">5.6 km</span></li></ul></div><figcaption>One link per row: the name. The distance is a plain value.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--stack" style="background: var(--color-bg-surface-raised);"><ul class="section-list"><li><a class="section-link" href="../../mocks/pages/studios/default.html"><span class="section-link__body"><span class="section-link__title">Studios</span><span class="section-link__meta">Every reviewed rental studio</span></span></a></li></ul><p class="text-muted">…with a second "Compare" button inside the same link</p></div><figcaption>Never put a button or a second link inside a section link. Interactive inside interactive breaks keyboard and screen reader use.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--stack" style="background: var(--color-bg-surface-raised);"><ul class="section-list"><li><a class="section-link" href="../../mocks/pages/guides/default.html"><span class="section-link__body"><span class="section-link__title">Guides</span><span class="section-link__meta">Short lists, like the best studios under $120</span></span></a></li></ul></div><figcaption>Section link meta is a short description of the destination.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--stack" style="background: var(--color-bg-surface-raised);"><ul class="section-list"><li><a class="section-link" href="../../mocks/pages/guides/default.html"><span class="section-link__body"><span class="section-link__title">Guides</span><span class="section-link__meta">Best studios under $120 for 2 hours, Best natural light, Best for a large crew</span></span></a></li></ul></div><figcaption>Don't list the contents in the meta: it is read as part of the link name every time.</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="ds-section" id="tokens"><h2><a href="#tokens">Tokens</a></h2>
+      <div class="ds-table-wrap"><table class="ds-table">
+        <thead><tr><th scope="col">Part</th><th scope="col">Token</th><th scope="col">Light</th><th scope="col">Dark</th></tr></thead>
+        <tbody>
+          <tr><td>Hairline</td><td><code>--color-border-default</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-border-default" data-swatch></i><span data-token="--color-border-default"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-border-default" data-swatch></i><span data-token="--color-border-default"></span></span></td></tr>
+          <tr><td>Meta</td><td><code>--color-fg-muted</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-muted" data-swatch></i><span data-token="--color-fg-muted"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-muted" data-swatch></i><span data-token="--color-fg-muted"></span></span></td></tr>
+          <tr><td>Selected row</td><td><code>--color-accent-subtle</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-accent-subtle" data-swatch></i><span data-token="--color-accent-subtle"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-accent-subtle" data-swatch></i><span data-token="--color-accent-subtle"></span></span></td></tr>
+          <tr><td>Section link hover</td><td><code>--color-bg-surface-sunken</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-bg-surface-sunken" data-swatch></i><span data-token="--color-bg-surface-sunken"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-bg-surface-sunken" data-swatch></i><span data-token="--color-bg-surface-sunken"></span></span></td></tr>
+          <tr><td>Attention meta</td><td><code>--color-danger-fg</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-danger-fg" data-swatch></i><span data-token="--color-danger-fg"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-danger-fg" data-swatch></i><span data-token="--color-danger-fg"></span></span></td></tr>
+          <tr><td>Sheet surface</td><td><code>--color-bg-surface-raised</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-bg-surface-raised" data-swatch></i><span data-token="--color-bg-surface-raised"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-bg-surface-raised" data-swatch></i><span data-token="--color-bg-surface-raised"></span></span></td></tr>
+          <tr><td>List row padding</td><td><code>--space-3</code> × <code>--space-4</code></td><td colspan="2"><span data-token="--space-3"></span> × <span data-token="--space-4"></span></td></tr>
+          <tr><td>Admin row padding / gap</td><td><code>--space-4</code> × <code>--space-2</code>; gap <code>--space-3</code> × <code>--space-4</code></td><td colspan="2"><span data-token="--space-4"></span> × <span data-token="--space-2"></span></td></tr>
+          <tr><td>Admin row body basis</td><td><code>--space-32</code></td><td colspan="2"><span data-token="--space-32"></span></td></tr>
+          <tr><td>Title-to-meta gap (admin)</td><td><code>--space-0-5</code></td><td colspan="2"><span data-token="--space-0-5"></span></td></tr>
+          <tr><td>Section link gap</td><td><code>--space-4</code>, minimum height 4.5rem</td><td colspan="2"><span data-token="--space-4"></span></td></tr>
+          <tr><td>Title fonts</td><td><code>--text-label</code> at <code>--font-size-md</code>; <code>--text-body-lg</code> + <code>--font-weight-medium</code></td><td colspan="2"><span data-token="--text-body-lg"></span></td></tr>
+          <tr><td>Meta font</td><td><code>--text-body-sm</code></td><td colspan="2"><span data-token="--text-body-sm"></span></td></tr>
+          <tr><td>Skeleton block (phone / 48rem+)</td><td><code>--space-20</code> wide; <code>--target-comfortable</code> / <code>--control-height-sm</code> tall</td><td colspan="2"><span data-token="--target-comfortable"></span> / <span data-token="--control-height-sm"></span></td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section class="ds-section" id="code"><h2><a href="#code">Code</a></h2>
+      <pre><code>&lt;!-- Loading admin rows --&gt;
+&lt;div aria-busy="true"&gt;
+  &lt;p class="visually-hidden" role="status"&gt;Loading the dashboard&lt;/p&gt;
+  &lt;ul class="admin-list"&gt;
+    &lt;li class="admin-row admin-row--skeleton"&gt;
+      &lt;div class="admin-row__body"&gt;&lt;span class="skeleton skeleton--title"&gt;&lt;/span&gt;&lt;span class="skeleton skeleton--text"&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;span class="skeleton skeleton--rect"&gt;&lt;/span&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;</code></pre>
+      <div class="ds-table-wrap"><table class="ds-table"><thead><tr><th scope="col">Class / attribute</th><th scope="col">Effect</th></tr></thead><tbody>
+        <tr><td><code>.list</code> · <code>.list__item</code></td><td>Unstyled column of compact rows with hairlines; the last row has none.</td></tr>
+        <tr><td><code>.list__body</code> · <code>.list__title</code> · <code>.list__meta</code></td><td>Shrinking body; title and meta stack on two lines.</td></tr>
+        <tr><td><code>aria-selected="true"</code> / <code>data-state="selected"</code></td><td>Accent-subtle fill. <code>aria-selected</code> only on <code>role="option"</code>.</td></tr>
+        <tr><td><code>.admin-list</code> · <code>.admin-row</code></td><td>Top-ruled list of wrapping rows.</td></tr>
+        <tr><td><code>.admin-row__body</code> · <code>__title</code> · <code>__meta</code> · <code>__actions</code></td><td>Body with a 128px basis; title holds the badge; actions pushed right and wrap below.</td></tr>
+        <tr><td><code>.admin-row--skeleton</code></td><td>Loading placeholder sized like a real row.</td></tr>
+        <tr><td><code>.section-list</code> · <code>.section-link</code></td><td>Top-ruled list of 72px full-row links with a sunken hover.</td></tr>
+        <tr><td><code>.section-link__body</code> · <code>__title</code> · <code>__meta</code></td><td>Title over one line of description.</td></tr>
+        <tr><td><code>[data-highlight]</code></td><td>Meta in danger red for a section that needs attention.</td></tr>
+        <tr><td><code>aria-current="page"</code></td><td>Marks the menu row for the current screen: announced, with an accent bar and accent title on <code>.section-link</code>.</td></tr>
+        <tr><td><code>data-state="hover|focus|active"</code></td><td>Documentation and mocks only.</td></tr>
+      </tbody></table></div>
+    </section>
+
+    <section class="ds-section" id="sources"><h2><a href="#sources">Sources</a></h2>
+      <p>Extracted from these mocks:</p>
+      <ul>
+        <li><a href="../../mocks/pages/spot/default.html">pages/spot/default</a>, <a href="../../mocks/pages/spot/stale-permit.html">stale-permit</a>, <a href="../../mocks/pages/spot/no-video.html">no-video</a>, <a href="../../mocks/pages/spot/map-failed.html">map-failed</a> (rain backup list rows)</li>
+        <li><a href="../../mocks/pages/admin-dashboard/default.html">pages/admin-dashboard/default</a> (admin rows: stale and due soon), <a href="../../mocks/pages/admin-dashboard/loading.html">loading</a> (skeleton rows), <a href="../../mocks/pages/admin-dashboard/up-to-date.html">up-to-date</a> (empty list replaced), <a href="../../mocks/pages/admin-dashboard/partial.html">partial</a> (list failed, alert in its place), <a href="../../mocks/pages/admin-dashboard/empty.html">empty</a>, <a href="../../mocks/pages/admin-dashboard/error.html">error</a></li>
+        <li><a href="../../mocks/dialogs/site-menu/default.html">dialogs/site-menu/default</a> (public section links in two labelled navs), <a href="../../mocks/dialogs/site-menu/admin.html">dialogs/site-menu/admin</a> (admin section links, <code>aria-current</code>)</li>
+        <li>Checked and not row-based: <a href="../../mocks/pages/admin-studios/default.html">pages/admin-studios/default</a>, <a href="../../mocks/pages/admin-studios/loading.html">loading</a>, <a href="../../mocks/pages/admin-studios/empty.html">empty</a>, <a href="../../mocks/pages/admin-studios/no-results.html">no-results</a>, <a href="../../mocks/pages/admin-studios/error.html">error</a>; the same five states of <a href="../../mocks/pages/admin-spots/default.html">admin-spots</a> and <a href="../../mocks/pages/admin-guides/default.html">admin-guides</a> are stacked tables (see <a href="table.html">table</a>). <a href="../../mocks/dialogs/missing-fields/default.html">dialogs/missing-fields/default</a> and <a href="../../mocks/dialogs/missing-fields/spot.html">spot</a> list the missing fields as a plain bulleted list of links.</li>
+      </ul>
+      <p>Requirements: L2-044 (re-verification list), L2-053.3 (readable at XS), L2-064.2 (menu at XS and SM), L2-065.1 (phone targets).</p>
+      <p>Drift found during extraction:</p>
+      <ul>
+        <li>The admin menu writes counts as "7 published · 2 drafts" while the dashboard and L2-053.1 say "7 published, 2 draft". The example above copies the mock; the menu should use the dashboard wording.</li>
+        <li><code>aria-current="page"</code> on the menu's Dashboard row had no visual style, so sighted users couldn't see where they were. Fixed: <code>.section-link[aria-current="page"]</code> adds an accent bar and accent title.</li>
+        <li>The missing-fields dialog styles its list inline (<code>padding-left</code>, <code>display: grid</code>); it is prose, not a list component. <code>.dialog__body ul</code> now sets that spacing, so the inline style can go.</li>
+      </ul>
+    </section>
+
+    <footer class="ds-footer"><span>ShotThere design system · extracted from <a href="../../mocks/index.html">docs/mocks</a> on 13 October 2026</span><a href="#top">Back to top</a></footer>
+  </main>
+</div>
+<script src="../assets/ds.js"></script>
+</body>
+</html>

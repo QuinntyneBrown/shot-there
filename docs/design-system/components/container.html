@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Container and grid — ShotThere design system</title>
-<meta name="description" content="ShotThere layout primitives: container, narrow container, stack, cluster, grid, auto grid, page shell, page intro, prose and the browse, caterer, work, inbox and auth layouts at every breakpoint.">
+<title>Container — ShotThere design system</title>
+<meta name="description" content="ShotThere layout primitives (container, narrow container, stack, cluster, grid, prose, section gap) and page layouts: browse, page header, home hero, section head, compare-bar padding, auth, review, editor and map page.">
 <link rel="stylesheet" href="../tokens/tokens.css">
 <link rel="stylesheet" href="../assets/components.css">
 <link rel="stylesheet" href="../assets/ds.css">
@@ -33,40 +33,61 @@
       <li><a href="../components/icon-button.html">Icon button</a></li>
       <li><a href="../components/button-group.html">Button group</a></li>
       <li><a href="../components/link.html">Link</a></li>
+      <li><a href="../components/compare-bar.html">Compare toggle and bar</a></li>
     </ul></details>
     <details open><summary>Inputs</summary><ul>
       <li><a href="../components/form-field.html">Form field</a></li>
       <li><a href="../components/text-field.html">Text field</a></li>
       <li><a href="../components/textarea.html">Textarea</a></li>
       <li><a href="../components/select.html">Select</a></li>
+      <li><a href="../components/combobox.html">Combobox</a></li>
       <li><a href="../components/checkbox.html">Checkbox</a></li>
       <li><a href="../components/radio-group.html">Radio group</a></li>
       <li><a href="../components/file-upload.html">File upload</a></li>
       <li><a href="../components/form-layout.html">Form layout</a></li>
+      <li><a href="../components/signup.html">Email signup</a></li>
     </ul></details>
     <details open><summary>Navigation</summary><ul>
       <li><a href="../components/skip-link.html">Skip link</a></li>
       <li><a href="../components/site-header.html">Site header</a></li>
       <li><a href="../components/footer.html">Footer</a></li>
+      <li><a href="../components/breadcrumb.html">Breadcrumb</a></li>
+      <li><a href="../components/filter.html">Filters</a></li>
     </ul></details>
     <details open><summary>Containers and overlays</summary><ul>
-      <li><a href="../components/container.html">Container and grid</a></li>
-      <li><a href="../components/card.html">Card</a></li>
+      <li><a href="../components/container.html">Container</a></li>
+      <li><a href="../components/review-layout.html">Review layout</a></li>
+      <li><a href="../components/editor-layout.html">Editor layout</a></li>
       <li><a href="../components/dialog.html">Dialog</a></li>
-      <li><a href="../components/sheet.html">Sheet and drawer</a></li>
-      <li><a href="../components/divider.html">Divider</a></li>
+      <li><a href="../components/sheet.html">Sheet</a></li>
+      <li><a href="../components/popover.html">Popover</a></li>
+      <li><a href="../components/lightbox.html">Lightbox</a></li>
     </ul></details>
     <details open><summary>Data display</summary><ul>
+      <li><a href="../components/location-card.html">Location card</a></li>
       <li><a href="../components/table.html">Table</a></li>
+      <li><a href="../components/compare-table.html">Comparison table</a></li>
+      <li><a href="../components/list.html">List rows</a></li>
       <li><a href="../components/description-list.html">Description list</a></li>
+      <li><a href="../components/price-block.html">Price block</a></li>
+      <li><a href="../components/score.html">Score and pips</a></li>
+      <li><a href="../components/shot-grid.html">Shot grid</a></li>
+      <li><a href="../components/video-poster.html">Episode poster</a></li>
+      <li><a href="../components/map.html">Map</a></li>
+      <li><a href="../components/guide-entry.html">Guide entry</a></li>
+      <li><a href="../components/stat-tile.html">Stat tile</a></li>
+      <li><a href="../components/image-manager.html">Image manager</a></li>
+      <li><a href="../components/disclosure.html">Disclosure</a></li>
       <li><a href="../components/badge.html">Badge</a></li>
+      <li><a href="../components/status-label.html">Status label</a></li>
       <li><a href="../components/chip.html">Chip</a></li>
+      <li><a href="../components/tag.html">Tag</a></li>
     </ul></details>
     <details open><summary>Feedback</summary><ul>
       <li><a href="../components/inline-message.html">Inline message</a></li>
-      <li><a href="../components/alert.html">Alert and banner</a></li>
+      <li><a href="../components/alert.html">Alert</a></li>
       <li><a href="../components/toast.html">Toast</a></li>
-      <li><a href="../components/progress.html">Progress and meter</a></li>
+      <li><a href="../components/progress.html">Progress</a></li>
       <li><a href="../components/spinner.html">Spinner</a></li>
       <li><a href="../components/skeleton.html">Skeleton</a></li>
       <li><a href="../components/empty-state.html">Empty state</a></li>
@@ -87,43 +108,41 @@
   <main id="main" class="ds-main">
     <header class="ds-header">
       <p class="ds-kicker">Component · Containers and overlays</p>
-      <h1>Container and grid</h1>
-      <p class="ds-lead">The layout primitives every ShotThere screen is built from: one centred container, a 4, 8 or 12 column grid, stack and cluster for rhythm, and five product layouts for the listing, caterer page, work areas, inbox and sign-in.</p>
-      <div class="ds-meta"><span class="ds-pill ds-pill--ok">WCAG 2.2 AA</span><span class="ds-pill">Status: stable</span><span class="ds-pill"><code>.container</code></span><span class="ds-pill"><code>.grid</code></span><span class="ds-pill"><code>.stack</code> <code>.cluster</code></span><span class="ds-pill">Layout tokens</span></div>
+      <h1>Container</h1>
+      <p class="ds-lead">The layout every ShotThere screen is built from: one centred container, stack and cluster for rhythm, and a small set of page layouts for the studio and spot lists, the home page, sign-in, reviews, editors and the map.</p>
+      <div class="ds-meta"><span class="ds-pill ds-pill--ok">WCAG 2.2 AA</span><span class="ds-pill">Status: stable</span><span class="ds-pill"><code>.container</code></span><span class="ds-pill"><code>.stack</code> <code>.cluster</code></span><span class="ds-pill"><code>.browse</code> <code>.page-header</code> <code>.auth</code></span><span class="ds-pill">Layout tokens</span></div>
       <ul class="ds-toc"><li><a href="#overview">Overview</a></li><li><a href="#anatomy">Anatomy</a></li><li><a href="#variants">Variants</a></li><li><a href="#sizes">Sizes</a></li><li><a href="#states">States</a></li><li><a href="#responsive">Responsive behaviour</a></li><li><a href="#theming">Theming</a></li><li><a href="#accessibility">Accessibility</a></li><li><a href="#content">Content</a></li><li><a href="#do-dont">Do and don't</a></li><li><a href="#tokens">Tokens</a></li><li><a href="#code">Code</a></li><li><a href="#sources">Sources</a></li></ul>
     </header>
 
-<section class="ds-section" id="overview"><h2><a href="#overview">Overview</a></h2>
-      <p>Layout classes carry no colour and no meaning; they only place things. Generous white space is part of the brand, so the gaps are large and come from tokens that grow with the screen. Use these instead of one-off margins: a screen built from them reflows from 320px to 2560px without sideways scrolling (L2-005.6, L2-069.3).</p>
+    <section class="ds-section" id="overview"><h2><a href="#overview">Overview</a></h2>
+      <p>Layout classes carry no colour and no meaning; they only place things. The gaps come from tokens that grow with the screen, so a page built from these classes reflows from 320px to a wide desktop without sideways scrolling (L2-069.3). Reach for them before writing a one-off margin.</p>
       <ul>
-        <li><b>Container</b> (<code>.container</code>): wraps every page's <code>main</code>. Centred, at most 90rem including margins, side margin from <code>--layout-margin</code> (16 → 32 → 48 → 80px). <code>.container--narrow</code> caps it at 42rem for reading pages.</li>
-        <li><b>Stack and cluster</b>: <code>.stack</code> spaces children vertically (<code>--space-4</code>; <code>--sm</code> 8px, <code>--lg</code> 32px); <code>.cluster</code> lays them in a wrapping row (<code>--between</code>, <code>--end</code>).</li>
-        <li><b>Grid</b>: <code>.grid</code> uses the layout columns (4 / 8 / 12) and gutters (24 / 32 / 40px); <code>.grid--auto</code> fits as many 18rem tracks as there is room for.</li>
-        <li><b>Page shell</b>: <code>.page</code> (header, growing main, footer), <code>.page-intro</code> (the <code>h1</code> block), <code>.page-intro__row</code> (title with a primary action), <code>.section-gap</code>, <code>.prose</code>.</li>
-        <li><b>Product layouts</b>: <code>.browse</code> (filter column + results), <code>.caterer-layout</code> (content + enquiry panel), <code>.work-layout</code> (side nav + work + preview), <code>.inbox-layout</code> (list + thread), <code>.auth</code> (one narrow column).</li>
+        <li><b>Primitives</b>: <code>.container</code> wraps every page's <code>main</code>, the site header and the footer; <code>.container--narrow</code> caps reading pages at 42rem. <code>.stack</code> spaces children top to bottom, <code>.cluster</code> lays them in a wrapping row, <code>.prose</code> sets long text and <code>.section-gap</code> separates the big blocks of a page.</li>
+        <li><b>Page layouts</b>: <code>.browse</code> (studio and spot lists, with the filter sidebar from 62rem), <code>.page-header</code> (the <code>h1</code> block of every other page), <code>.home-hero</code>, <code>.section-head</code> (a section title with its "All studios" link), <code>.has-compare-bar</code> (room for the fixed compare bar), and <code>.auth</code> (owner sign-in).</li>
+        <li><b>Layouts with their own page</b>: <a href="review-layout.html">review layout</a> (<code>.review-layout</code>, studio and spot reviews with the summary panel), <a href="editor-layout.html">editor layout</a> (<code>.editor-layout</code>, the admin editors with the status aside) and the <a href="map.html">map page</a> (<code>.map-page</code>, list beside map).</li>
       </ul>
-      <p>For a surface around content, see <a href="card.html">card</a>; for the listing's photo grid, see caterer card. Spacing values themselves are documented in <a href="../foundations/spacing.html">Spacing</a> and <a href="../foundations/layout.html">Layout</a>.</p>
+      <p>For the studio and spot card grid see <a href="location-card.html">location card</a>; for the filter sidebar's content see <a href="filter.html">filters</a>. The spacing values themselves live in <a href="../foundations/spacing.html">Spacing</a> and <a href="../foundations/layout.html">Layout</a>.</p>
     </section>
 
     <section class="ds-section" id="anatomy"><h2><a href="#anatomy">Anatomy</a></h2>
       <div class="ds-anatomy">
         <figure class="ds-anatomy__figure">
           <div class="stack" style="width: 100%;">
-            <div class="page-intro__row">
-              <div><p class="card__title">Cuisines</p><p class="subtitle">19 cuisines · shown in filters and caterer profiles</p></div>
-              <button class="btn btn--primary" type="button"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>Add cuisine</button>
+            <div class="page-header" style="margin-block: 0;">
+              <div><p style="font: var(--text-h2);">Studios</p><p class="subtitle">9 studios · 7 published · 2 draft</p></div>
+              <button class="btn btn--primary" type="button"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>New studio</button>
             </div>
             <div class="ds-grid-demo" aria-hidden="true"><span>1</span><span>2</span><span>3</span><span>4</span></div>
           </div>
-          <span class="ds-callout" style="left: 4%; top: 12%;" aria-hidden="true">1</span>
-          <span class="ds-callout" style="left: 80%; top: 12%;" aria-hidden="true">2</span>
-          <span class="ds-callout" style="left: 7%; top: 70%;" aria-hidden="true">3</span>
-          <span class="ds-callout" style="left: 30%; top: 82%;" aria-hidden="true">4</span>
-          <span class="ds-callout" style="left: 47%; top: 60%;" aria-hidden="true">5</span>
+          <span class="ds-callout" style="left: 4%; top: 10%;" aria-hidden="true">1</span>
+          <span class="ds-callout" style="left: 78%; top: 10%;" aria-hidden="true">2</span>
+          <span class="ds-callout" style="left: 2%; top: 74%;" aria-hidden="true">3</span>
+          <span class="ds-callout" style="left: 30%; top: 84%;" aria-hidden="true">4</span>
+          <span class="ds-callout" style="left: 47%; top: 62%;" aria-hidden="true">5</span>
         </figure>
         <ol class="ds-anatomy__list">
-          <li><div><b>Page intro</b><small><code>.page-intro</code> holds the one <code>h1</code> and a muted subtitle; <code>--space-8</code> above and <code>--space-10</code> below, growing to 64 / 48px from 62rem.</small></div></li>
-          <li><div><b>Primary action</b><small><code>.page-intro__row</code> pushes the screen's one ink button to the end; it wraps under the title on phones.</small></div></li>
+          <li><div><b>Page header</b><small><code>.page-header</code> holds the page's one <code>h1</code> and a muted <code>.subtitle</code> line; <code>--space-6</code> above and below.</small></div></li>
+          <li><div><b>Page action</b><small>The screen's one primary ("New studio") sits at the end of the header row and wraps under the title when there is no room.</small></div></li>
           <li><div><b>Margin</b><small><code>--layout-margin</code> inside <code>.container</code>: 16px, 32px from 48rem, 48px from 62rem, 80px from 75rem.</small></div></li>
           <li><div><b>Column</b><small><code>--layout-columns</code>: 4, then 8 from 48rem, then 12 from 62rem.</small></div></li>
           <li><div><b>Gutter</b><small><code>--layout-gutter</code>: 24px, 32px from 48rem, 40px from 62rem.</small></div></li>
@@ -137,127 +156,147 @@
         <div class="ds-example__canvas ds-example__canvas--stack">
           <div class="ds-grid-demo" aria-hidden="true"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span></div>
         </div>
-        <div class="ds-example__caption"><span>Twelve cells on the real tokens: one row of 12 from 62rem, rows of 8 on tablets, rows of 4 on phones. Resize the window to watch columns, gutters and margins change together.</span></div>
+        <div class="ds-example__caption"><span>Twelve cells on the real tokens: one row of 12 from 62rem, rows of 8 on tablets, rows of 4 on phones. Resize the window to watch columns, gutters and margins change together. The layout grid is a set of tokens, not a class: the card grids (<code>.location-grid</code>, <code>.stat-grid</code>, <code>.guide-index</code>) set their own column counts.</span></div>
       </div>
-      <h3>Grid and auto grid</h3>
-      <div class="ds-example">
-        <div class="ds-example__canvas ds-example__canvas--stack">
-          <div class="grid">
-            <div class="well span-full"><b>.span-full</b> · Pelau House, Trinidadian &amp; Tobagonian</div>
-            <div class="well">Scarborough</div><div class="well">East York</div><div class="well">North York</div><div class="well">Pickering</div>
-          </div>
-          <div class="grid grid--auto">
-            <div class="well stack stack--sm"><b>Weddings</b><span class="text-muted">23 caterers</span></div>
-            <div class="well stack stack--sm"><b>Birthdays</b><span class="text-muted">41 caterers</span></div>
-            <div class="well stack stack--sm"><b>Family gatherings</b><span class="text-muted">47 caterers</span></div>
-          </div>
-        </div>
-        <div class="ds-example__caption"><span><code>.grid</code> puts one child per column (<code>.span-full</code> spans the row); <code>.grid--auto</code> fits 18rem tracks and collapses to one column on phones without a media query.</span></div>
-        <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;div class="grid"&gt;
-  &lt;div class="span-full"&gt;…&lt;/div&gt;
-  &lt;div&gt;Scarborough&lt;/div&gt;&lt;div&gt;East York&lt;/div&gt;…
-&lt;/div&gt;
-&lt;div class="grid grid--auto"&gt;…&lt;/div&gt;</code></pre></details>
-      </div>
+
       <h3>Stack and cluster</h3>
       <div class="ds-example">
         <div class="ds-example__canvas" style="align-items: flex-start; gap: var(--space-10);">
           <div class="stack stack--sm" style="max-width: 16rem;">
-            <span class="overline">stack--sm</span>
-            <b>Kendra Baptiste</b>
-            <span class="text-muted">kendra@pelauhouse.example</span>
-            <span class="text-muted">+1 416 555 0142</span>
+            <span style="font: var(--text-overline); color: var(--color-fg-subtle);">stack--sm</span>
+            <b>Best natural light</b>
+            <span class="text-muted">The three brightest rooms, ranked by light score and window direction.</span>
           </div>
           <div class="stack" style="max-width: 16rem;">
-            <span class="overline">stack</span>
-            <span>Serves 20–300 guests</span>
-            <span>Weddings, Birthdays</span>
+            <span style="font: var(--text-overline); color: var(--color-fg-subtle);">stack</span>
+            <span>Email</span>
+            <span>Password</span>
           </div>
           <div class="stack" style="flex: 1; min-width: min(100%, 16rem);">
-            <span class="overline">cluster--between</span>
-            <div class="cluster cluster--between"><button class="btn btn--link btn--sm" type="button">Clear</button><span class="result-count">60 caterers</span></div>
-            <span class="overline">cluster--end</span>
-            <div class="cluster cluster--end"><button class="btn" type="button">Cancel</button><button class="btn btn--primary" type="button">Save</button></div>
+            <span style="font: var(--text-overline); color: var(--color-fg-subtle);">cluster--between</span>
+            <div class="cluster cluster--between"><span class="result-count">7 studios</span><button class="btn btn--sm" type="button">Filters</button></div>
+            <span style="font: var(--text-overline); color: var(--color-fg-subtle);">cluster--end</span>
+            <div class="cluster cluster--end"><button class="btn btn--sm" type="button">Filters</button></div>
           </div>
         </div>
-        <div class="ds-example__caption"><span>Stack for content that reads top to bottom; cluster for controls that sit side by side and wrap when they run out of room.</span></div>
+        <div class="ds-example__caption"><span>Stack for content that reads top to bottom (the guide list on the home page, the sign-in form); cluster for controls side by side that wrap when they run out of room (the result count beside Filters and Sort; <code>--end</code> when the list failed and there is no count).</span></div>
+        <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;li class="stack stack--sm"&gt;&lt;h3&gt;&lt;a href="/guides/best-natural-light"&gt;Best natural light&lt;/a&gt;&lt;/h3&gt;&lt;p class="subtitle"&gt;…&lt;/p&gt;&lt;/li&gt;
+&lt;div class="cluster cluster--between"&gt;&lt;p class="result-count" role="status" aria-live="polite"&gt;7 studios&lt;/p&gt;&lt;div class="cluster"&gt;…&lt;/div&gt;&lt;/div&gt;</code></pre></details>
       </div>
-      <h3>Page intro with an action</h3>
-      <div class="ds-example">
-        <div class="ds-example__canvas ds-example__canvas--stack">
-          <div class="page-intro" style="margin-block: 0;">
-            <div class="page-intro__row">
-              <div><p class="card__title">Cuisines</p><p class="subtitle">19 cuisines · shown in filters and caterer profiles</p></div>
-              <button class="btn btn--primary" type="button"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>Add cuisine</button>
-            </div>
-          </div>
-        </div>
-        <div class="ds-example__caption"><span>From <code>pages/admin-cuisines</code>. On the real page the title is the <code>h1</code>; here it is shown at a smaller size so the docs page keeps one <code>h1</code>.</span></div>
-        <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;div class="page-intro"&gt;
-  &lt;div class="page-intro__row"&gt;
-    &lt;div&gt;&lt;h1&gt;Cuisines&lt;/h1&gt;&lt;p class="subtitle"&gt;19 cuisines · shown in filters and caterer profiles&lt;/p&gt;&lt;/div&gt;
-    &lt;button class="btn btn--primary" type="button" aria-haspopup="dialog"&gt;…Add cuisine&lt;/button&gt;
-  &lt;/div&gt;
-&lt;/div&gt;</code></pre></details>
-      </div>
+
       <h3>Prose in a narrow container</h3>
       <div class="ds-example">
         <div class="ds-example__canvas ds-example__canvas--stack">
           <div class="container container--narrow" style="padding-inline: 0;">
             <div class="prose">
-              <p>In the Caribbean, when someone's cooking is just that good, people say they have a sweet hand. Toronto and the GTA are full of them: aunties, uncles and small kitchens feeding weddings, christenings, nine-nights and Sunday lunches.</p>
-              <p>ShotThere helps you find them. Browse by island, by area and by occasion, then send an enquiry with your date, guests and what you'd love to eat.</p>
+              <p>ShotThere reviews places to shoot photos in Toronto. These are the rules every review follows.</p>
+              <h2 style="font: var(--text-h3);">We only list places we've shot</h2>
+              <p>Nothing is listed unless I've booked it or visited it and shot there myself. No listings from press releases, owner submissions or photos someone else took.</p>
             </div>
           </div>
         </div>
-        <div class="ds-example__caption"><span><code>.container--narrow</code> (42rem) with <code>.prose</code> (<code>--text-body-lg</code>, <code>--space-4</code> between paragraphs): About, Privacy and Terms.</span></div>
+        <div class="ds-example__caption"><span>From <code>pages/editorial-policy/default</code>: <code>.container--narrow</code> (42rem) with <code>.prose</code> (<code>--text-body-lg</code>, <code>--space-4</code> between paragraphs, <code>--space-10</code> above each heading).</span></div>
       </div>
-      <h3>Product layouts</h3>
-      <p class="ds-note">Mock previews are not included in this copy; the ShotThere mocks will replace them.</p>
-      <p>The phone frames show <code>.browse</code> and <code>.caterer-layout</code> at 360px; the wide frame shows <code>.work-layout--preview</code> at whatever width this page has (side nav from 62rem, preview pane from 75rem).</p>
+
+      <h3>Page header</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--stack">
+          <div class="page-header" style="margin-block: 0;">
+            <div><p style="font: var(--text-h2);">Compare 3 studios</p><p class="subtitle">The Junction Loft, Leslieville Daylight Studio and Ossington Blackbox, side by side. All-in is a 2-hour shoot with every mandatory fee.</p></div>
+          </div>
+          <div class="page-header" style="margin-block: 0;">
+            <div><p style="font: var(--text-h2);">Corktown Garage Studio</p><p class="subtitle"><span class="status status--draft">Draft</span> · Last saved 11 Oct 2026, 4:12 pm</p></div>
+          </div>
+        </div>
+        <div class="ds-example__caption"><span>Used on every page that is not a list, the home page or a review: compare, guides, the editorial policy, the dashboard, the admin lists and the editors. On the real page the title is the <code>h1</code>; here it is a paragraph at <code>--text-h2</code> so this page keeps one <code>h1</code>.</span></div>
+        <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;div class="page-header"&gt;
+  &lt;div&gt;&lt;h1&gt;Studios&lt;/h1&gt;&lt;p class="subtitle"&gt;9 studios · 7 published · 2 draft&lt;/p&gt;&lt;/div&gt;
+  &lt;a class="btn btn--primary" href="/admin/studios/new"&gt;…New studio&lt;/a&gt;
+&lt;/div&gt;</code></pre></details>
+      </div>
+
+      <h3>Section head and section gap</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--stack">
+          <div style="width: 100%;">
+            <div class="section-head"><p style="font: var(--text-h2);">Latest reviews</p><a href="../../mocks/pages/studios/default.html">All studios</a></div>
+            <p class="text-muted">Kensington Window Room · Kensington Market · Reviewed 3 Oct 2026</p>
+          </div>
+        </div>
+        <div class="ds-example__caption"><span><code>.section-head</code> puts a section's <code>h2</code> and its "All …" link on one baseline, wrapping on phones. On the home page each block is a <code>&lt;section class="section-gap"&gt;</code>: <code>--layout-section-gap</code> (64px, 96px from 62rem) above it.</span></div>
+        <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;section class="section-gap" aria-labelledby="latest-title"&gt;
+  &lt;div class="section-head"&gt;&lt;h2 id="latest-title"&gt;Latest reviews&lt;/h2&gt;&lt;a href="/studios"&gt;All studios&lt;/a&gt;&lt;/div&gt;
+  &lt;ul class="location-grid"&gt;…&lt;/ul&gt;
+&lt;/section&gt;</code></pre></details>
+      </div>
+
+      <h3>Home hero</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--stack">
+          <div class="home-hero" style="margin-block: 0;">
+            <p style="font: var(--text-display); letter-spacing: var(--letter-spacing-tight); max-width: 18ch;">Toronto photo studios and outdoor spots, reviewed first-hand</p>
+            <p class="subtitle">Nothing is listed unless it has been shot there. Same measurements, same test setup, side by side.</p>
+          </div>
+        </div>
+        <div class="ds-example__caption"><span><code>.home-hero</code>: the home <code>h1</code> at <code>--text-display</code> (capped at 18 characters a line, stepping down to <code>--text-h1</code> below 36rem), the promise in <code>--text-body-lg</code>, then the <a href="signup.html">email signup</a>.</span></div>
+      </div>
+
+      <h3>Page layouts in the mocks</h3>
+      <p>These windows load the mocks at phone width (resize this page to see more of the wide one). <code>?chrome=0</code> hides the mock bar.</p>
+      <div class="ds-iframes">
+        <iframe class="ds-iframe" src="../../mocks/pages/studios/default.html?chrome=0" title="Studios list mock at phone width: .browse" loading="lazy"></iframe>
+        <iframe class="ds-iframe" src="../../mocks/pages/home/default.html?chrome=0" title="Home mock at phone width: .home-hero, .section-head and .section-gap" loading="lazy"></iframe>
+        <iframe class="ds-iframe" src="../../mocks/pages/sign-in/default.html?chrome=0" title="Owner sign-in mock at phone width: .auth" loading="lazy"></iframe>
+        <iframe class="ds-iframe ds-iframe--wide" src="../../mocks/pages/studios/selected.html?chrome=0" title="Studios list with three studios selected: .browse with the filter sidebar and .has-compare-bar" loading="lazy"></iframe>
+      </div>
+      <ul>
+        <li><b><code>.browse</code></b> (<a href="../../mocks/pages/studios/default.html">studios</a>, <a href="../../mocks/pages/spots/default.html">spots</a>): title, then results. From 62rem a 15rem filter sidebar (<code>.browse__aside</code>, see <a href="filter.html">filters</a>) sits beside the results and the Filters trigger is hidden (<code>.until-lg</code>); below it the sidebar is not displayed and the filters open in a <a href="sheet.html">sheet</a>.</li>
+        <li><b><code>.has-compare-bar</code></b> on <code>body</code> (<a href="../../mocks/pages/studios/selected.html">studios/selected</a>, <a href="../../mocks/pages/studio/in-compare.html">studio/in-compare</a>): bottom padding of <code>--space-24</code> plus the safe-area inset, so the fixed <a href="compare-bar.html">compare bar</a> never covers the last card or the footer.</li>
+        <li><b><code>.auth</code></b> (<a href="../../mocks/pages/sign-in/default.html">sign-in</a>): one 28rem column; <code>.auth__head</code> holds the <code>h1</code> and subtitle, a <code>.stack</code> form follows.</li>
+        <li><b><code>.review-layout</code></b>, <b><code>.editor-layout</code></b>, <b><code>.map-page</code></b>: see <a href="review-layout.html">review layout</a>, <a href="editor-layout.html">editor layout</a> and <a href="map.html">map</a>.</li>
+      </ul>
     </section>
 
     <section class="ds-section" id="sizes"><h2><a href="#sizes">Sizes</a></h2>
       <p>Containers come in fixed maximum widths; everything inside is fluid.</p>
       <div class="ds-table-wrap"><table class="ds-table">
-        <caption class="visually-hidden">Container widths</caption>
-        <thead><tr><th scope="col">Class</th><th scope="col">Max width</th><th scope="col">Used for</th></tr></thead>
+        <caption class="visually-hidden">Container and column widths</caption>
+        <thead><tr><th scope="col">Class or token</th><th scope="col">Max width</th><th scope="col">Used for</th></tr></thead>
         <tbody>
-          <tr><td><code>.container</code></td><td><span data-token="--layout-container-max"></span> (incl. margins)</td><td>Every page's <code>main</code>, the header and the footer</td></tr>
-          <tr><td><code>.container--narrow</code></td><td>42rem</td><td>Reading pages: About, Privacy, Terms</td></tr>
-          <tr><td><code>.auth</code> / <code>.auth--wide</code></td><td>28rem / 34rem</td><td>Sign in, register, reset password / caterer registration</td></tr>
-          <tr><td><code>.measure</code>, <code>p</code></td><td><span data-token="--layout-measure"></span></td><td>Any paragraph; keeps lines readable</td></tr>
-          <tr><td>Side column</td><td><span data-token="--layout-sidebar-width"></span></td><td>Filter column, dashboard and operator side nav</td></tr>
-          <tr><td>Enquiry panel</td><td><span data-token="--layout-panel-width"></span></td><td>Caterer page, 62rem and wider</td></tr>
+          <tr><td><code>.container</code></td><td><span data-token="--layout-container-max"></span> (incl. margins)</td><td>Every page's <code>main</code>, the site header and the footer</td></tr>
+          <tr><td><code>.container--narrow</code></td><td>42rem</td><td>Editorial policy</td></tr>
+          <tr><td><code>.auth</code></td><td>28rem</td><td>Owner sign-in in every state</td></tr>
+          <tr><td><code>p</code></td><td><span data-token="--layout-measure"></span></td><td>Any paragraph; keeps lines readable</td></tr>
+          <tr><td><code>--layout-sidebar-width</code></td><td><span data-token="--layout-sidebar-width"></span></td><td>Filter sidebar in <code>.browse</code>, 62rem and wider</td></tr>
+          <tr><td><code>--layout-panel-width</code></td><td><span data-token="--layout-panel-width"></span></td><td>Summary panel in <code>.review-layout</code>, 62rem and wider</td></tr>
         </tbody>
       </table></div>
-      <p>Stack sizes: <code>.stack--sm</code> <span data-token="--space-2"></span>, <code>.stack</code> <span data-token="--space-4"></span>, <code>.stack--lg</code> <span data-token="--space-8"></span>. Cluster gap: <span data-token="--space-3"></span>. Section gap: <span data-token="--layout-section-gap"></span>.</p>
+      <p>Stack sizes: <code>.stack--sm</code> <span data-token="--space-2"></span>, <code>.stack</code> <span data-token="--space-4"></span>, <code>.stack--lg</code> <span data-token="--space-8"></span> (the filter form). Cluster gap: <span data-token="--space-3"></span>. Section gap: <span data-token="--layout-section-gap"></span> at this width.</p>
     </section>
 
     <section class="ds-section" id="states"><h2><a href="#states">States</a></h2>
-      <p>Layout primitives have no hover, focus, active or disabled states; those belong to the components inside them. What they do have is structural states, set by a modifier class or by content.</p>
+      <p>Layout primitives have no hover, focus, active or disabled states; those belong to the components inside them. What the page layouts do have is structural states, set by content or by a class on <code>body</code>.</p>
       <div class="ds-matrix"><table>
-        <caption class="visually-hidden">Structural states of product layouts</caption>
-        <thead><tr><th scope="col">Layout</th><th scope="col">Default</th><th scope="col">Loading</th><th scope="col">Empty</th><th scope="col">Variant</th></tr></thead>
+        <caption class="visually-hidden">Structural states of the page layouts</caption>
+        <thead><tr><th scope="col">Layout</th><th scope="col">Default</th><th scope="col">Loading</th><th scope="col">Empty / no results</th><th scope="col">Error</th><th scope="col">Extra</th></tr></thead>
         <tbody>
-          <tr><th scope="row"><code>.browse</code></th><td>Title, column, results</td><td>Same grid, skeleton cards</td><td><code>.browse__head:empty</code> collapses</td><td>Head visible at LG only when chips show</td></tr>
-          <tr><th scope="row"><code>.caterer-layout</code></th><td>Content + 22rem panel</td><td>Skeleton photos and title in place</td><td>No reviews: section says so</td><td>Panel hidden below 62rem; sticky bar instead</td></tr>
-          <tr><th scope="row"><code>.work-layout</code></th><td>Side nav + work area</td><td>Skeleton rows in the work area</td><td>Setup checklist</td><td><code>--preview</code>: listing card pane from 75rem</td></tr>
-          <tr><th scope="row"><code>.inbox-layout</code></th><td>List (+ placeholder at LG)</td><td>Skeleton rows</td><td>Empty state in the list</td><td><code>--thread</code>: thread only below 62rem; <code>--solo</code>: one column</td></tr>
-          <tr><th scope="row"><code>.auth</code></th><td>28rem column</td><td>Busy submit button</td><td>n/a</td><td><code>--wide</code>: 34rem</td></tr>
+          <tr><th scope="row"><code>.browse</code></th><td>Title, sidebar (62rem+), count, cards</td><td>Same grid, six skeleton cards (<a href="../../mocks/pages/studios/loading.html">loading</a>)</td><td>Empty state in the results; sidebar stays (<a href="../../mocks/pages/studios/no-results.html">no-results</a>)</td><td>No count; Filters alone on <code>.cluster--end</code> (<a href="../../mocks/pages/studios/error.html">error</a>)</td><td>Selected: <code>body.has-compare-bar</code> (<a href="../../mocks/pages/studios/selected.html">selected</a>)</td></tr>
+          <tr><th scope="row"><code>.page-header</code></th><td>Title and subtitle</td><td>Skeleton subtitle (<a href="../../mocks/pages/admin-studios/loading.html">admin-studios/loading</a>)</td><td>Subtitle says so: "0 studios" (<a href="../../mocks/pages/admin-studios/empty.html">admin-studios/empty</a>)</td><td>Title stays; the alert sits below</td><td>With action: "New studio"</td></tr>
+          <tr><th scope="row"><code>.home-hero</code> + <code>.section-gap</code></th><td>Hero, latest reviews, guides, spots</td><td>n/a (server-rendered)</td><td>One section with "The first studio reviews are coming"; guides and spots are left out (<a href="../../mocks/pages/home/empty.html">home/empty</a>)</td><td>Signup error inside the hero (<a href="../../mocks/pages/home/error.html">home/error</a>)</td><td>—</td></tr>
+          <tr><th scope="row"><code>.auth</code></th><td>28rem column</td><td>Busy Sign in button (<a href="../../mocks/pages/sign-in/submitting.html">submitting</a>)</td><td>n/a</td><td>Alert above the form (<a href="../../mocks/pages/sign-in/incorrect.html">incorrect</a>)</td><td>Session expired, signed out</td></tr>
         </tbody>
       </table></div>
       <h3>Both themes</h3>
       <div class="ds-themes">
-        <div data-theme="light"><div class="stack"><div class="page-intro__row"><div><p class="card__title">Enquiries</p><p class="subtitle">2 unread</p></div><button class="btn btn--primary" type="button">Reply</button></div><div class="ds-grid-demo" aria-hidden="true"><span>1</span><span>2</span><span>3</span><span>4</span></div></div></div>
-        <div data-theme="dark"><div class="stack"><div class="page-intro__row"><div><p class="card__title">Enquiries</p><p class="subtitle">2 unread</p></div><button class="btn btn--primary" type="button">Reply</button></div><div class="ds-grid-demo" aria-hidden="true"><span>1</span><span>2</span><span>3</span><span>4</span></div></div></div>
+        <div data-theme="light"><div class="stack"><div class="page-header" style="margin-block: 0;"><div><p style="font: var(--text-h3);">Guides</p><p class="subtitle">4 guides · 3 published · 1 draft</p></div><button class="btn btn--primary" type="button">New guide</button></div><div class="ds-grid-demo" aria-hidden="true"><span>1</span><span>2</span><span>3</span><span>4</span></div></div></div>
+        <div data-theme="dark"><div class="stack"><div class="page-header" style="margin-block: 0;"><div><p style="font: var(--text-h3);">Guides</p><p class="subtitle">4 guides · 3 published · 1 draft</p></div><button class="btn btn--primary" type="button">New guide</button></div><div class="ds-grid-demo" aria-hidden="true"><span>1</span><span>2</span><span>3</span><span>4</span></div></div></div>
       </div>
     </section>
 
     <section class="ds-section" id="responsive"><h2><a href="#responsive">Responsive behaviour</a></h2>
       <div class="ds-table-wrap"><table class="ds-table">
         <caption class="visually-hidden">Layout tokens by breakpoint</caption>
-        <thead><tr><th scope="col">Token</th><th scope="col">XS (base)</th><th scope="col">MD 48rem</th><th scope="col">LG 62rem</th><th scope="col">XL 75rem</th></tr></thead>
+        <thead><tr><th scope="col">Token</th><th scope="col">XS, SM (base)</th><th scope="col">MD 48rem</th><th scope="col">LG 62rem</th><th scope="col">XL 75rem</th></tr></thead>
         <tbody>
           <tr><td><code>--layout-columns</code></td><td>4</td><td>8</td><td>12</td><td>12</td></tr>
           <tr><td><code>--layout-gutter</code></td><td>24px</td><td>32px</td><td>40px</td><td>40px</td></tr>
@@ -267,66 +306,68 @@
         </tbody>
       </table></div>
       <div class="ds-table-wrap"><table class="ds-table">
-        <caption class="visually-hidden">Product layouts by viewport class</caption>
-        <thead><tr><th scope="col">Layout</th><th scope="col">XS, SM (below 48rem)</th><th scope="col">MD (48–62rem)</th><th scope="col">LG (62–75rem)</th><th scope="col">XL (75rem+)</th></tr></thead>
+        <caption class="visually-hidden">Page layouts by viewport class</caption>
+        <thead><tr><th scope="col">Layout</th><th scope="col">XS (below 36rem)</th><th scope="col">SM, MD (36–62rem)</th><th scope="col">LG, XL (62rem+)</th></tr></thead>
         <tbody>
-          <tr><td><code>.browse</code></td><td>Title, Filters bar, results</td><td>Title, dropdown bar, results</td><td>15rem filter column beside results</td><td>Same</td></tr>
-          <tr><td><code>.caterer-layout</code></td><td>One column, sticky enquiry bar</td><td>One column, sticky enquiry bar</td><td>Content + 22rem sticky panel</td><td>Same</td></tr>
-          <tr><td><code>.work-layout</code></td><td>Stacked; eyebrow back to Overview</td><td>Stacked</td><td>15rem side nav + work</td><td><code>--preview</code> adds a 16rem pane</td></tr>
-          <tr><td><code>.inbox-layout</code></td><td>List, or thread alone</td><td>List, or thread alone</td><td>20–26rem list beside thread</td><td>Same</td></tr>
-          <tr><td><code>.auth</code></td><td>Full width, <code>--space-8</code> from top</td><td><code>--space-16</code> from top</td><td>Same</td><td>Same</td></tr>
+          <tr><td><code>.browse</code></td><td>Title, count with Filters and Sort, one card column; filters in a sheet</td><td>Same, two card columns</td><td>Sidebar beside results, 64px from the header; two cards a row at LG, three at XL</td></tr>
+          <tr><td><code>.page-header</code></td><td>Action wraps under the title</td><td>Action beside the title when it fits</td><td>Same</td></tr>
+          <tr><td><code>.home-hero</code></td><td>Headline at <code>--text-h1</code>; 40px above, 48px below</td><td>Headline at <code>--text-display</code></td><td>64px above and below</td></tr>
+          <tr><td><code>.section-head</code></td><td>Link wraps under the heading when it does not fit</td><td>One row</td><td>One row</td></tr>
+          <tr><td><code>.auth</code></td><td>Full width, 32px from the header</td><td>28rem, 64px from the header from 48rem</td><td>Same</td></tr>
+          <tr><td><code>.has-compare-bar</code></td><td colspan="3">Always 96px plus <code>env(safe-area-inset-bottom)</code>: the bar is fixed at every width (L2-030.6).</td></tr>
         </tbody>
       </table></div>
       <ul>
-        <li>Every column uses <code>minmax(0, 1fr)</code>, so long words (a 90-character caterer name, an email) wrap instead of forcing sideways scroll.</li>
-        <li><code>.page</code> uses <code>100dvh</code>, so the footer sits at the bottom of short pages without jumping when the phone's address bar hides.</li>
-        <li>Sticky children (the enquiry panel at <code>--space-8</code> from the top, the preview pane) never cover focused content; the sticky bottom bar is offset by <code>.has-sticky-cta</code>.</li>
+        <li>Every column uses <code>minmax(0, 1fr)</code> and grid cells wrap long words, so a long studio name or a booking URL wraps instead of forcing sideways scroll.</li>
+        <li>The site header, <code>main</code> and footer all use <code>.container</code>, so their edges line up at every width.</li>
+        <li>Sticky children (the summary panel, the editor aside) sit <code>--space-8</code> from the top and never cover focused content; <code>scroll-padding-top</code> equals the header height.</li>
       </ul>
     </section>
 
     <section class="ds-section" id="theming"><h2><a href="#theming">Theming</a></h2>
-      <p>Layouts read no colour tokens; the page canvas comes from <code>body</code>. They read the layout tokens (<code>--layout-*</code>) and the spacing scale, which are the same in light and dark. To give a product area a different density, override the layout tokens on a wrapper (for example a tighter <code>--layout-gutter</code> for a data-heavy operator page) rather than adding margins to children. Themes never change layout.</p>
+      <p>Layouts read no colour tokens; the page canvas comes from <code>body</code>. They read the layout tokens (<code>--layout-*</code>) and the spacing scale, which are identical in light and dark. Themes never change layout. To make one area denser, override a layout token on a wrapper (a tighter <code>--layout-gutter</code>) rather than adding margins to the children.</p>
     </section>
 
     <section class="ds-section" id="accessibility"><h2><a href="#accessibility">Accessibility</a></h2>
       <h3>Role and pattern</h3>
-      <p>Layouts are built on landmarks: <code>header</code>, <code>main id="main"</code> (the skip link target), <code>aside aria-label="Filters"</code>, <code>nav aria-label="Dashboard"</code>, <code>footer</code> (<a href="https://www.w3.org/WAI/ARIA/apg/practices/landmark-regions/">APG Landmark regions</a>). One <code>h1</code> per page, in <code>.page-intro</code>.</p>
+      <p>Layouts are built on landmarks (<a href="https://www.w3.org/WAI/ARIA/apg/practices/landmark-regions/">APG Landmark regions</a>): <code>header</code>, <code>main id="main" tabindex="-1"</code> (the skip-link target), <code>aside aria-labelledby="filters-title"</code> for the filter sidebar, <code>section aria-labelledby</code> for the results and each home section, the compare bar as <code>aside aria-label="Studios to compare"</code>, and <code>footer</code>. One <code>h1</code> per page, in <code>.page-header</code>, <code>.browse__title</code>, <code>.home-hero</code>, <code>.auth__head</code> or the review head.</p>
       <h3>Keyboard</h3>
       <div class="ds-table-wrap"><table class="ds-table ds-keys"><thead><tr><th scope="col">Key</th><th scope="col">Action</th></tr></thead><tbody>
-        <tr><td><kbd>Tab</kbd> (first press)</td><td>Shows "Skip to main content", which jumps past the header into <code>main</code> (L2-067.3).</td></tr>
-        <tr><td><kbd>Tab</kbd> / <kbd>Shift</kbd>+<kbd>Tab</kbd></td><td>Follows source order, which matches visual order at every breakpoint (L2-067.1). <code>.browse</code> places the filter column with <code>grid-template-areas</code> but keeps it after the title in the source.</td></tr>
+        <tr><td><kbd>Tab</kbd> (first press)</td><td>Shows "Skip to main content", which jumps past the header into <code>main</code> (L2-067).</td></tr>
+        <tr><td><kbd>Tab</kbd> / <kbd>Shift</kbd>+<kbd>Tab</kbd></td><td>Follows source order, which is visual order at every width. <code>.browse</code> places the sidebar with <code>grid-template-areas</code> but keeps it after the title and before the results in the source.</td></tr>
       </tbody></table></div>
       <h3>Focus</h3>
-      <p>Layouts never clip focus rings: containers do not set <code>overflow: hidden</code>, and sticky elements leave room (<code>scroll-padding-top</code> equals the header height).</p>
+      <p>Layouts never clip focus rings: containers do not set <code>overflow: hidden</code>. The fixed compare bar does not cover the focused card because <code>.has-compare-bar</code> reserves its height (WCAG 2.4.11).</p>
       <h3>Labelling</h3>
-      <p>Each repeated landmark has a name: the filter column "Filters", the results section labelled by its (visually hidden) "Results" heading, the preview pane "Your listing card".</p>
+      <p>Repeated landmarks have names: the sidebar is labelled by its "Filter studios" heading, the results by a visually hidden "Results" <code>h2</code>, each home section by its visible heading.</p>
       <h3>Contrast</h3>
       <div class="ds-example__canvas ds-example__canvas--stack" style="padding: 0; gap: var(--space-2);">
         <div class="ds-pair"><span>Page text</span><span class="ds-pair__ratio" data-contrast="--color-fg-default|--color-bg-canvas" data-min="4.5"></span></div>
-        <div class="ds-pair"><span>Subtitle in page intro</span><span class="ds-pair__ratio" data-contrast="--color-fg-muted|--color-bg-canvas" data-min="4.5"></span></div>
-        <div class="ds-pair"><span>Preview pane label</span><span class="ds-pair__ratio" data-contrast="--color-fg-subtle|--color-bg-canvas" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Subtitle and result count</span><span class="ds-pair__ratio" data-contrast="--color-fg-muted|--color-bg-canvas" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Section-head link</span><span class="ds-pair__ratio" data-contrast="--color-fg-link|--color-bg-canvas" data-min="4.5"></span></div>
       </div>
       <h3>Motion</h3>
       <p>Layouts do not animate. Smooth scrolling to anchors is turned off under reduced motion.</p>
       <h3>Touch</h3>
-      <p>At 320px with 16px margins the content box is 288px; every layout fits it without sideways scrolling, and at 200% zoom on a 1280px window the phone layout takes over (WCAG 1.4.10, L2-069.3).</p>
+      <p>At 320px with 16px margins the content box is 288px; every layout fits it without sideways scrolling, and at 400% zoom on a 1280px window the phone layout takes over (WCAG 1.4.10, L2-069.3). Fixed bottom elements add <code>env(safe-area-inset-bottom)</code>.</p>
     </section>
 
     <section class="ds-section" id="content"><h2><a href="#content">Content</a></h2>
       <ul>
-        <li>The page intro's <code>h1</code> is a noun for the place: "Caterers", "Inbox", "Food safety", "Review queue". A caterer or person name is the <code>h1</code> on their page.</li>
-        <li>The subtitle is one muted line of fact: "19 cuisines · shown in filters and caterer profiles", "Your food handler certificate". No welcome messages.</li>
-        <li>Prose stays within <code>--layout-measure</code> (62 characters) and uses Canadian English.</li>
-        <li>Leave space empty. A gap is not a slot for a tip, a banner or a promotion.</li>
+        <li>The <code>h1</code> names the place or the task: "Studios", "Outdoor spots", "Compare 3 studios", "Sign in". A studio, spot or guide name is the <code>h1</code> on its own page and in its editor.</li>
+        <li>The subtitle is one muted line of fact: "9 studios · 7 published · 2 draft", "Signed in as owner@shotthere.ca", "Last updated 1 October 2026". No welcome messages.</li>
+        <li>Section-head links say where they go: "All studios", "All guides", "All spots", never "See more".</li>
+        <li>Prose stays within <code>--layout-measure</code> and uses Canadian English.</li>
+        <li>Leave space empty. A gap is not a slot for a tip, a banner or a promotion; ShotThere has no sponsors.</li>
       </ul>
     </section>
 
     <section class="ds-section" id="do-dont"><h2><a href="#do-dont">Do and don't</a></h2>
       <div class="ds-dodont">
-        <figure class="ds-do"><div class="ds-example__canvas"><div class="container container--narrow" style="padding-inline: 0;"><div class="prose"><p>Listing and enquiring are free. No money moves through ShotThere.</p></div></div></div><figcaption>Reading pages use <code>.container--narrow</code> and <code>.prose</code>.</figcaption></figure>
-        <figure class="ds-dont"><div class="ds-example__canvas"><div class="system-page" style="max-width: var(--layout-measure); text-align: left; align-items: stretch; padding-block: 0;"><p>Listing and enquiring are free.</p></div></div><figcaption>Don't bend <code>.system-page</code> into a reading layout with inline overrides (About did).</figcaption></figure>
-        <figure class="ds-do"><div class="ds-example__canvas"><div class="stack" style="width: 100%;"><span class="well">Email</span><span class="well">Password</span></div></div><figcaption>Use a stack size from the scale.</figcaption></figure>
-        <figure class="ds-dont"><div class="ds-example__canvas"><div class="stack" style="gap: var(--space-5); width: 100%;"><span class="well">Email</span><span class="well">Password</span></div></div><figcaption>Don't override a stack's gap inline (the sign-in form used 20px); pick <code>.stack</code> or <code>.stack--lg</code>.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas"><div class="container container--narrow" style="padding-inline: 0;"><div class="prose"><p>Every price here is the all-in cost of a standard 2-hour shoot.</p></div></div></div><figcaption>Put an intro paragraph in the narrow container, or let the base <code>p</code> measure cap it.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas"><p class="prose" style="max-width: 42rem; margin-block: var(--space-6) var(--space-12);">Every price here is the all-in cost of a standard 2-hour shoot.</p></div><figcaption>Don't put <code>.prose</code> on a single <code>p</code> and fix its width and margins inline (<code>pages/guide/default</code> did).</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas"><div class="stack" style="width: 100%;"><div class="cluster cluster--between"><span class="result-count">7 studios</span><button class="btn btn--sm" type="button">Filters</button></div></div></div><figcaption>Space the results head with the layout: <code>.browse__head</code> exists for exactly this row.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas"><div class="cluster cluster--between" style="margin-bottom: var(--space-8); width: 100%;"><span class="result-count">7 studios</span><button class="btn btn--sm" type="button">Filters</button></div></div><figcaption>Don't add the gap inline on a cluster (12 list mocks set <code>margin-bottom: var(--space-8)</code> by hand).</figcaption></figure>
       </div>
     </section>
 
@@ -335,60 +376,69 @@
         <thead><tr><th scope="col">Part</th><th scope="col">Token</th><th scope="col">Light</th><th scope="col">Dark</th></tr></thead>
         <tbody>
           <tr><td>Page canvas (from body)</td><td><code>--color-bg-canvas</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-bg-canvas" data-swatch></i><span data-token="--color-bg-canvas"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-bg-canvas" data-swatch></i><span data-token="--color-bg-canvas"></span></span></td></tr>
+          <tr><td>Subtitle, result count</td><td><code>--color-fg-muted</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-muted" data-swatch></i><span data-token="--color-fg-muted"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-muted" data-swatch></i><span data-token="--color-fg-muted"></span></span></td></tr>
           <tr><td>Container max width</td><td><code>--layout-container-max</code></td><td colspan="2"><span data-token="--layout-container-max"></span></td></tr>
           <tr><td>Side margin (this viewport)</td><td><code>--layout-margin</code></td><td colspan="2"><span data-token="--layout-margin"></span></td></tr>
           <tr><td>Columns, gutter (this viewport)</td><td><code>--layout-columns</code> <code>--layout-gutter</code></td><td colspan="2"><span data-token="--layout-columns"></span> / <span data-token="--layout-gutter"></span></td></tr>
           <tr><td>Measure</td><td><code>--layout-measure</code></td><td colspan="2"><span data-token="--layout-measure"></span></td></tr>
-          <tr><td>Side column, enquiry panel</td><td><code>--layout-sidebar-width</code> <code>--layout-panel-width</code></td><td colspan="2"><span data-token="--layout-sidebar-width"></span> / <span data-token="--layout-panel-width"></span></td></tr>
+          <tr><td>Filter sidebar, summary panel</td><td><code>--layout-sidebar-width</code> <code>--layout-panel-width</code></td><td colspan="2"><span data-token="--layout-sidebar-width"></span> / <span data-token="--layout-panel-width"></span></td></tr>
           <tr><td>Header height (scroll padding)</td><td><code>--layout-topbar-height</code></td><td colspan="2"><span data-token="--layout-topbar-height"></span></td></tr>
           <tr><td>Section gap</td><td><code>--layout-section-gap</code></td><td colspan="2"><span data-token="--layout-section-gap"></span></td></tr>
           <tr><td>Stack sm / md / lg</td><td><code>--space-2</code> <code>--space-4</code> <code>--space-8</code></td><td colspan="2"><span data-token="--space-2"></span> / <span data-token="--space-4"></span> / <span data-token="--space-8"></span></td></tr>
           <tr><td>Cluster gap</td><td><code>--space-3</code></td><td colspan="2"><span data-token="--space-3"></span></td></tr>
+          <tr><td>Compare-bar room</td><td><code>--space-24</code></td><td colspan="2"><span data-token="--space-24"></span></td></tr>
         </tbody>
       </table></div>
     </section>
 
     <section class="ds-section" id="code"><h2><a href="#code">Code</a></h2>
-      <pre><code>&lt;div class="page"&gt;
-  &lt;a class="skip-link" href="#main"&gt;Skip to main content&lt;/a&gt;
-  &lt;header class="site-header"&gt;…&lt;/header&gt;
-  &lt;main id="main" class="container"&gt;
-    &lt;div class="browse"&gt;
-      &lt;div class="browse__title"&gt;&lt;h1&gt;Caterers&lt;/h1&gt;&lt;p class="result-count" role="status" aria-live="polite"&gt;60 caterers&lt;/p&gt;&lt;/div&gt;
-      &lt;aside class="browse__aside" aria-label="Filters"&gt;…&lt;/aside&gt;
-      &lt;section class="browse__results" aria-labelledby="results-title"&gt;…&lt;/section&gt;
-    &lt;/div&gt;
-  &lt;/main&gt;
-  &lt;footer class="site-footer"&gt;…&lt;/footer&gt;
-&lt;/div&gt;</code></pre>
+      <pre><code>&lt;body class="has-compare-bar"&gt;
+&lt;a class="skip-link" href="#main"&gt;Skip to main content&lt;/a&gt;
+&lt;header class="site-header"&gt;&lt;div class="container"&gt;…&lt;/div&gt;&lt;/header&gt;
+&lt;main id="main" class="container" tabindex="-1"&gt;
+  &lt;div class="browse"&gt;
+    &lt;div class="browse__title"&gt;&lt;h1&gt;Studios&lt;/h1&gt;&lt;p class="subtitle"&gt;Every studio here was shot in with the same test setup…&lt;/p&gt;&lt;/div&gt;
+    &lt;aside class="browse__aside" aria-labelledby="filters-title"&gt;…&lt;/aside&gt;
+    &lt;section class="browse__results" aria-labelledby="results-title"&gt;
+      &lt;h2 class="visually-hidden" id="results-title"&gt;Results&lt;/h2&gt;
+      &lt;div class="browse__head"&gt;&lt;div class="cluster cluster--between"&gt;&lt;p class="result-count" role="status" aria-live="polite"&gt;7 studios&lt;/p&gt;…&lt;/div&gt;&lt;/div&gt;
+      &lt;ul class="location-grid"&gt;…&lt;/ul&gt;
+    &lt;/section&gt;
+  &lt;/div&gt;
+&lt;/main&gt;
+&lt;footer class="site-footer"&gt;…&lt;/footer&gt;
+&lt;aside class="compare-bar" aria-label="Studios to compare"&gt;…&lt;/aside&gt;
+&lt;/body&gt;</code></pre>
       <div class="ds-table-wrap"><table class="ds-table"><thead><tr><th scope="col">Class</th><th scope="col">Effect</th></tr></thead><tbody>
         <tr><td><code>.container</code> / <code>--narrow</code></td><td>Centred, max 90rem / 42rem, side margin from the token.</td></tr>
         <tr><td><code>.stack</code> <code>--sm</code> <code>--lg</code></td><td>Vertical flex with a gap of 16 / 8 / 32px.</td></tr>
-        <tr><td><code>.cluster</code> <code>--between</code> <code>--end</code></td><td>Wrapping row, 12px gap, aligned centre.</td></tr>
-        <tr><td><code>.grid</code> / <code>--auto</code> / <code>.span-full</code></td><td>Layout-column grid / auto-fill 18rem tracks / full-row child.</td></tr>
-        <tr><td><code>.page</code></td><td>Full-height column; <code>main</code> grows.</td></tr>
-        <tr><td><code>.page-intro</code> / <code>__row</code></td><td>Title block / title plus action, wrapping.</td></tr>
+        <tr><td><code>.cluster</code> <code>--between</code> <code>--end</code></td><td>Wrapping row, 12px gap, centred vertically.</td></tr>
+        <tr><td><code>.prose</code></td><td>Large body text with paragraph, list and heading rhythm.</td></tr>
         <tr><td><code>.section-gap</code></td><td>Top margin of <code>--layout-section-gap</code>.</td></tr>
-        <tr><td><code>.prose</code></td><td>Large body text with paragraph and heading rhythm.</td></tr>
-        <tr><td><code>.browse</code>, <code>.caterer-layout</code>, <code>.work-layout</code> (<code>--preview</code>), <code>.inbox-layout</code> (<code>--thread</code>, <code>--solo</code>), <code>.auth</code> (<code>--wide</code>)</td><td>Product layouts; see the responsive table.</td></tr>
+        <tr><td><code>.browse</code> <code>__title</code> <code>__aside</code> <code>__results</code> <code>__head</code>, <code>.result-count</code></td><td>List page: title and results; sidebar from 62rem.</td></tr>
+        <tr><td><code>.page-header</code></td><td>Title block, with an optional action at the end.</td></tr>
+        <tr><td><code>.home-hero</code>, <code>.section-head</code></td><td>Home headline block; section title with its link.</td></tr>
+        <tr><td><code>body.has-compare-bar</code></td><td>Reserves room for the fixed compare bar.</td></tr>
+        <tr><td><code>.auth</code> / <code>__head</code></td><td>One 28rem column for sign-in.</td></tr>
+        <tr><td><code>.review-layout</code>, <code>.editor-layout</code>, <code>.map-page</code></td><td>See <a href="review-layout.html">review layout</a>, <a href="editor-layout.html">editor layout</a>, <a href="map.html">map</a>.</td></tr>
       </tbody></table></div>
     </section>
 
     <section class="ds-section" id="sources"><h2><a href="#sources">Sources</a></h2>
       <p>Extracted from these mocks:</p>
       <ul>
-        <li>pages/caterers/default (<code>.browse</code>)</li>
-        <li>pages/caterer/default (<code>.caterer-layout</code>, <code>.prose</code>)</li>
-        <li>pages/dashboard/default (<code>.work-layout--preview</code>)</li>
-        <li>pages/inbox/default and pages/thread/default (<code>.inbox-layout</code>, <code>--thread</code>)</li>
-        <li>pages/sign-in/default (<code>.auth</code>)</li>
-        <li>pages/admin-cuisines/default (<code>.page-intro__row</code>)</li>
-        <li>pages/about/default (reading page)</li>
+        <li><a href="../../mocks/pages/studios/default.html">pages/studios/default</a>, <a href="../../mocks/pages/spots/default.html">pages/spots/default</a>, <a href="../../mocks/pages/studios/error.html">pages/studios/error</a> (<code>.browse</code>, <code>.result-count</code>, <code>.cluster--between</code>, <code>.cluster--end</code>, <code>.stack--lg</code>)</li>
+        <li><a href="../../mocks/pages/studios/selected.html">pages/studios/selected</a>, <a href="../../mocks/pages/studio/in-compare.html">pages/studio/in-compare</a> (<code>.has-compare-bar</code>)</li>
+        <li><a href="../../mocks/pages/home/default.html">pages/home/default</a> (<code>.home-hero</code>, <code>.section-head</code>, <code>.section-gap</code>, <code>.stack--sm</code>)</li>
+        <li><a href="../../mocks/pages/admin-studios/default.html">pages/admin-studios/default</a>, <a href="../../mocks/pages/compare/default.html">pages/compare/default</a>, <a href="../../mocks/pages/studio-editor/default.html">pages/studio-editor/default</a> (<code>.page-header</code>)</li>
+        <li><a href="../../mocks/pages/editorial-policy/default.html">pages/editorial-policy/default</a> (<code>.container--narrow</code>, <code>.prose</code>), <a href="../../mocks/pages/guide/default.html">pages/guide/default</a> (<code>.prose</code>)</li>
+        <li><a href="../../mocks/pages/sign-in/default.html">pages/sign-in/default</a> (<code>.auth</code>, <code>.auth__head</code>)</li>
+        <li><a href="../../mocks/pages/studio/default.html">pages/studio/default</a>, <a href="../../mocks/pages/studio-editor/default.html">pages/studio-editor/default</a>, <a href="../../mocks/pages/map/default.html">pages/map/default</a> (the layouts documented on their own pages)</li>
       </ul>
-      <p>Drift fixed during extraction: About bent <code>.system-page</code> into a reading layout with an inline <code>max-width</code>, <code>text-align</code> and <code>align-items</code>; the system uses <code>.container--narrow</code> + <code>.prose</code>. The sign-in form overrode <code>.stack</code> with an inline 20px gap; the system uses the default stack. <code>.page-header</code> (admin-profile-review only) duplicates <code>.page-intro__row</code> and is kept for parity. <code>.grid</code>, <code>.grid--auto</code>, <code>.container--narrow</code> and <code>.section-gap</code> are not used by any mock yet; they come from the base kit.</p>
+      <p>Drift found during extraction (recorded, mocks unchanged): the 12 list mocks space the results row with an inline <code>margin-bottom: var(--space-8)</code> on a <code>.cluster</code> instead of <code>.browse__head</code>; the system uses <code>.browse__head</code>. <code>pages/guide/default</code> puts <code>.prose</code> on one paragraph with an inline <code>max-width</code> and margins. The studio sidebar heading sets its <code>font</code> and colour inline.</p>
     </section>
 
-    <footer class="ds-footer"><span>ShotThere design system · extracted from docs/mocks on 10 October 2026</span><a href="#top">Back to top</a></footer>
+    <footer class="ds-footer"><span>ShotThere design system · extracted from <a href="../../mocks/index.html">docs/mocks</a> on 13 October 2026</span><a href="#top">Back to top</a></footer>
   </main>
 </div>
 <script src="../assets/ds.js"></script>

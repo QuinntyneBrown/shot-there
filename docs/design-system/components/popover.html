@@ -1,0 +1,422 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Popover — ShotThere design system</title>
+<meta name="description" content="The ShotThere popover: a small non-modal panel anchored to its trigger, with an optional title and actions. The map marker popup is built on it. Anatomy, states, focus rules and both themes.">
+<link rel="stylesheet" href="../tokens/tokens.css">
+<link rel="stylesheet" href="../assets/components.css">
+<link rel="stylesheet" href="../assets/ds.css">
+</head>
+<body id="top">
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="ds-shell">
+  <nav class="ds-nav" aria-label="Design system">
+    <div class="ds-nav__brand"><a href="../index.html">ShotThere DS</a><button class="ds-theme-toggle" type="button" aria-pressed="false">☾ Dark</button></div>
+    <details open><summary>Foundations</summary><ul>
+      <li><a href="../foundations/color.html">Color</a></li>
+      <li><a href="../foundations/typography.html">Typography</a></li>
+      <li><a href="../foundations/spacing.html">Spacing</a></li>
+      <li><a href="../foundations/layout.html">Layout</a></li>
+      <li><a href="../foundations/elevation.html">Elevation</a></li>
+      <li><a href="../foundations/shape.html">Shape</a></li>
+      <li><a href="../foundations/motion.html">Motion</a></li>
+      <li><a href="../foundations/iconography.html">Iconography</a></li>
+      <li><a href="../foundations/theming.html">Theming</a></li>
+      <li><a href="../foundations/responsive.html">Responsive</a></li>
+      <li><a href="../foundations/accessibility.html">Accessibility</a></li>
+      <li><a href="../foundations/content.html">Content</a></li>
+    </ul></details>
+    <details open><summary>Actions</summary><ul>
+      <li><a href="../components/button.html">Button</a></li>
+      <li><a href="../components/icon-button.html">Icon button</a></li>
+      <li><a href="../components/button-group.html">Button group</a></li>
+      <li><a href="../components/link.html">Link</a></li>
+      <li><a href="../components/compare-bar.html">Compare toggle and bar</a></li>
+    </ul></details>
+    <details open><summary>Inputs</summary><ul>
+      <li><a href="../components/form-field.html">Form field</a></li>
+      <li><a href="../components/text-field.html">Text field</a></li>
+      <li><a href="../components/textarea.html">Textarea</a></li>
+      <li><a href="../components/select.html">Select</a></li>
+      <li><a href="../components/combobox.html">Combobox</a></li>
+      <li><a href="../components/checkbox.html">Checkbox</a></li>
+      <li><a href="../components/radio-group.html">Radio group</a></li>
+      <li><a href="../components/file-upload.html">File upload</a></li>
+      <li><a href="../components/form-layout.html">Form layout</a></li>
+      <li><a href="../components/signup.html">Email signup</a></li>
+    </ul></details>
+    <details open><summary>Navigation</summary><ul>
+      <li><a href="../components/skip-link.html">Skip link</a></li>
+      <li><a href="../components/site-header.html">Site header</a></li>
+      <li><a href="../components/footer.html">Footer</a></li>
+      <li><a href="../components/breadcrumb.html">Breadcrumb</a></li>
+      <li><a href="../components/filter.html">Filters</a></li>
+    </ul></details>
+    <details open><summary>Containers and overlays</summary><ul>
+      <li><a href="../components/container.html">Container</a></li>
+      <li><a href="../components/review-layout.html">Review layout</a></li>
+      <li><a href="../components/editor-layout.html">Editor layout</a></li>
+      <li><a href="../components/dialog.html">Dialog</a></li>
+      <li><a href="../components/sheet.html">Sheet</a></li>
+      <li><a href="../components/popover.html">Popover</a></li>
+      <li><a href="../components/lightbox.html">Lightbox</a></li>
+    </ul></details>
+    <details open><summary>Data display</summary><ul>
+      <li><a href="../components/location-card.html">Location card</a></li>
+      <li><a href="../components/table.html">Table</a></li>
+      <li><a href="../components/compare-table.html">Comparison table</a></li>
+      <li><a href="../components/list.html">List rows</a></li>
+      <li><a href="../components/description-list.html">Description list</a></li>
+      <li><a href="../components/price-block.html">Price block</a></li>
+      <li><a href="../components/score.html">Score and pips</a></li>
+      <li><a href="../components/shot-grid.html">Shot grid</a></li>
+      <li><a href="../components/video-poster.html">Episode poster</a></li>
+      <li><a href="../components/map.html">Map</a></li>
+      <li><a href="../components/guide-entry.html">Guide entry</a></li>
+      <li><a href="../components/stat-tile.html">Stat tile</a></li>
+      <li><a href="../components/image-manager.html">Image manager</a></li>
+      <li><a href="../components/disclosure.html">Disclosure</a></li>
+      <li><a href="../components/badge.html">Badge</a></li>
+      <li><a href="../components/status-label.html">Status label</a></li>
+      <li><a href="../components/chip.html">Chip</a></li>
+      <li><a href="../components/tag.html">Tag</a></li>
+    </ul></details>
+    <details open><summary>Feedback</summary><ul>
+      <li><a href="../components/inline-message.html">Inline message</a></li>
+      <li><a href="../components/alert.html">Alert</a></li>
+      <li><a href="../components/toast.html">Toast</a></li>
+      <li><a href="../components/progress.html">Progress</a></li>
+      <li><a href="../components/spinner.html">Spinner</a></li>
+      <li><a href="../components/skeleton.html">Skeleton</a></li>
+      <li><a href="../components/empty-state.html">Empty state</a></li>
+      <li><a href="../components/error-page.html">Error page</a></li>
+    </ul></details>
+    <details open><summary>Patterns</summary><ul>
+      <li><a href="../patterns/forms.html">Forms</a></li>
+      <li><a href="../patterns/feedback-and-loading.html">Feedback and loading</a></li>
+      <li><a href="../patterns/empty-and-error-states.html">Empty and error states</a></li>
+      <li><a href="../patterns/navigation.html">Navigation and page structure</a></li>
+      <li><a href="../patterns/dialogs-and-overlays.html">Dialogs and overlays</a></li>
+      <li><a href="../patterns/tables-and-lists.html">Data tables and lists</a></li>
+      <li><a href="../patterns/notifications.html">Notifications</a></li>
+      <li><a href="../patterns/content-and-tone.html">Content and tone</a></li>
+    </ul></details>
+  </nav>
+
+  <main id="main" class="ds-main">
+    <header class="ds-header">
+      <p class="ds-kicker">Component · Containers and overlays</p>
+      <h1>Popover</h1>
+      <p class="ds-lead">A small raised panel that opens from a trigger and stays beside it, without blocking the rest of the page. On ShotThere it shows a map marker's name, its key fact and the way to its page.</p>
+      <div class="ds-meta"><span class="ds-pill ds-pill--ok">WCAG 2.2 AA</span><span class="ds-pill">Status: stable</span><span class="ds-pill">Non-modal <code>role="dialog"</code></span><span class="ds-pill"><code>.popover</code> <code>.popover--static</code></span></div>
+      <ul class="ds-toc"><li><a href="#overview">Overview</a></li><li><a href="#anatomy">Anatomy</a></li><li><a href="#variants">Variants</a></li><li><a href="#sizes">Sizes</a></li><li><a href="#states">States</a></li><li><a href="#responsive">Responsive behaviour</a></li><li><a href="#theming">Theming</a></li><li><a href="#accessibility">Accessibility</a></li><li><a href="#content">Content</a></li><li><a href="#do-dont">Do and don't</a></li><li><a href="#tokens">Tokens</a></li><li><a href="#code">Code</a></li><li><a href="#sources">Sources</a></li></ul>
+    </header>
+
+    <section class="ds-section" id="overview"><h2><a href="#overview">Overview</a></h2>
+      <p>Use a popover when a trigger needs to reveal a few lines of detail and, at most, a link or two, while the page behind stays usable. The one place ShotThere does this is the map: activating a marker opens a popup with the location's kind, name and key fact (all-in cost for a studio, the portrait permit for a spot) and a link to its page (L2-028). That popup is <code>.popover.map-popup</code>; the <a href="map.html">Map</a> page documents the marker, the placement over the marker and the phone dock. This page documents the primitive underneath.</p>
+      <ul>
+        <li>Use a <a href="dialog.html">dialog</a> when the task needs the visitor's full attention, a decision or any input. A popover never holds a form.</li>
+        <li>Use a <a href="sheet.html">sheet or drawer</a> for long content on phones, such as the studio filters.</li>
+        <li>There is no tooltip in this system. If a label needs explaining, put the explanation on the page.</li>
+      </ul>
+    </section>
+
+    <section class="ds-section" id="anatomy"><h2><a href="#anatomy">Anatomy</a></h2>
+      <div class="ds-anatomy">
+        <figure class="ds-anatomy__figure">
+          <div style="position: relative;">
+            <div class="popover popover--static map-popup" role="dialog" aria-labelledby="an-title" style="position: relative; translate: none;">
+              <p class="map-popup__kind">Studio</p>
+              <h4 class="map-popup__name" id="an-title">The Junction Loft</h4>
+              <p class="map-popup__fact">All-in for 2 hours: $145.00</p>
+              <a href="../../mocks/pages/studio/default.html">View the review<span class="visually-hidden">: The Junction Loft</span></a>
+              <button class="icon-btn" type="button" aria-label="Close"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+            </div>
+            <span class="ds-callout" style="left: -1.75rem; top: -0.75rem;" aria-hidden="true">1</span>
+            <span class="ds-callout" style="left: -1.75rem; top: 2.2rem;" aria-hidden="true">2</span>
+            <span class="ds-callout" style="left: -1.75rem; top: 4rem;" aria-hidden="true">3</span>
+            <span class="ds-callout" style="left: -1.75rem; top: 5.7rem;" aria-hidden="true">4</span>
+            <span class="ds-callout" style="right: -1.75rem; top: -0.75rem;" aria-hidden="true">5</span>
+          </div>
+        </figure>
+        <ol class="ds-anatomy__list">
+          <li><div><b>Panel</b><small><code>.popover</code>: <code>--color-bg-surface-raised</code>, hairline <code>--color-border-default</code>, <code>--radius-md</code>, <code>--shadow-3</code>, 16px padding, up to 20rem wide. <code>role="dialog"</code>, not modal.</small></div></li>
+          <li><div><b>Kind and name</b><small><code>.map-popup__kind</code> ("Studio", "Outdoor spot") in overline type, then <code>.map-popup__name</code> in <code>--text-h4</code>; the name labels the dialog through <code>aria-labelledby</code>.</small></div></li>
+          <li><div><b>Key fact</b><small><code>.map-popup__fact</code>: one line of muted small body text, the same fact the location card shows.</small></div></li>
+          <li><div><b>Link onward</b><small>A plain link to the location's page, with the name in visually hidden text.</small></div></li>
+          <li><div><b>Close</b><small>A 44px <a href="icon-button.html">icon button</a> pinned to the top-right corner.</small></div></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="ds-section" id="variants"><h2><a href="#variants">Variants</a></h2>
+      <p>The primitive is a panel; the only thing ShotThere puts in it is the map popup, for a studio or an outdoor spot. <code>.popover</code> is absolutely positioned at <code>--z-popover</code> and scales in. The examples outside the map add <code>.popover--static</code>, a documentation-only helper in <code>ds.css</code> that puts the panel in the flow with no animation.</p>
+      <h3>Studio</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--canvas">
+          <div class="popover popover--static map-popup" role="dialog" aria-labelledby="v1-title" style="position: relative; translate: none;">
+            <p class="map-popup__kind">Studio</p>
+            <h4 class="map-popup__name" id="v1-title">Bloordale Sun Studio</h4>
+            <p class="map-popup__fact">All-in for 2 hours: $130.00</p>
+            <a href="../../mocks/pages/studio/minimal.html">View the review<span class="visually-hidden">: Bloordale Sun Studio</span></a>
+            <button class="icon-btn" type="button" aria-label="Close"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+          </div>
+        </div>
+        <div class="ds-example__caption"><span>From <code>dialogs/map-popup/default</code>: the key fact is the all-in cost.</span></div>
+      </div>
+      <h3>Outdoor spot</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--canvas">
+          <div class="popover popover--static map-popup" role="dialog" aria-labelledby="v2-title" style="position: relative; translate: none;">
+            <p class="map-popup__kind">Outdoor spot</p>
+            <h4 class="map-popup__name" id="v2-title">Evergreen Brick Works</h4>
+            <p class="map-popup__fact">Portraits: no permit needed</p>
+            <a href="../../mocks/pages/spot/default.html">View the spot<span class="visually-hidden">: Evergreen Brick Works</span></a>
+            <button class="icon-btn" type="button" aria-label="Close"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+          </div>
+        </div>
+        <div class="ds-example__caption"><span>From <code>dialogs/map-popup/spot</code>: the key fact is the portrait permit.</span></div>
+      </div>
+      <h3>Map marker popup</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas" style="display: block;">
+          <div class="static-map" style="min-height: 24rem;">
+            <img class="static-map__tiles" src="../assets/img/map-toronto.svg" alt="" width="1200" height="800">
+            <button class="map-marker map-marker--studio" type="button" style="left: 34%; top: 55%;" aria-label="The Junction Loft, studio" aria-haspopup="dialog" aria-expanded="true" aria-controls="v3-popup"></button>
+            <div class="popover map-popup map-popup--dock" id="v3-popup" role="dialog" aria-labelledby="v3-title" style="left: 34%; top: 55%;">
+              <p class="map-popup__kind">Studio</p>
+              <h4 class="map-popup__name" id="v3-title">The Junction Loft</h4>
+              <p class="map-popup__fact">All-in for 2 hours: $145.00</p>
+              <a href="../../mocks/pages/studio/default.html">View the review<span class="visually-hidden">: The Junction Loft</span></a>
+              <button class="icon-btn" type="button" aria-label="Close"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+            </div>
+          </div>
+        </div>
+        <div class="ds-example__caption"><span><code>.popover.map-popup</code> over a marker with <code>aria-expanded="true"</code>. Below <code>48rem</code> it docks along the bottom of the map. Markers, placement and the dock: <a href="map.html">Map</a>.</span></div>
+      </div>
+    </section>
+
+    <section class="ds-section" id="sizes" data-na="The popover has one size."><h2><a href="#sizes">Sizes</a></h2>
+      <p class="ds-na">The popover has one size: it fits its content up to <code>min(20rem, 90vw)</code> with <code>--space-4</code> padding. The map popup sets its own width of <code>min(17rem, 100vw − 2 × --layout-margin)</code>.</p>
+    </section>
+
+    <section class="ds-section" id="states"><h2><a href="#states">States</a></h2>
+      <p>The popover is either shown or absent; the states live on its trigger. Hover and focus are forced with <code>data-state</code>; open is the real <code>aria-expanded="true"</code>. These are the map's marker triggers, the only popover triggers in the mocks.</p>
+      <div class="ds-matrix"><table>
+        <thead><tr><th scope="col">Trigger</th><th scope="col">Default</th><th scope="col">Hover</th><th scope="col">Focus</th><th scope="col">Active</th><th scope="col">Disabled</th><th scope="col">Expanded</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Studio marker</th>
+            <td><div class="static-map" style="min-height: 4rem; width: 5rem;"><button class="map-marker map-marker--studio" type="button" style="left: 50%; top: 50%;" aria-label="The Junction Loft, studio" aria-haspopup="dialog" aria-expanded="false"></button></div></td>
+            <td><div class="static-map" style="min-height: 4rem; width: 5rem;"><button class="map-marker map-marker--studio" type="button" style="left: 50%; top: 50%;" aria-label="The Junction Loft, studio, hover" aria-haspopup="dialog" aria-expanded="false" data-state="hover"></button></div></td>
+            <td><div class="static-map" style="min-height: 4rem; width: 5rem;"><button class="map-marker map-marker--studio" type="button" style="left: 50%; top: 50%;" aria-label="The Junction Loft, studio, focus" aria-haspopup="dialog" aria-expanded="false" data-state="focus"></button></div></td>
+            <td><span class="text-muted" style="display: inline-block; min-width: 7rem;">Same as hover</span></td>
+            <td><span class="text-muted" style="display: inline-block; min-width: 8rem;">Not used: every marker opens</span></td>
+            <td><div class="static-map" style="min-height: 4rem; width: 5rem;"><button class="map-marker map-marker--studio" type="button" style="left: 50%; top: 50%;" aria-label="The Junction Loft, studio, open" aria-haspopup="dialog" aria-expanded="true"></button></div></td>
+          </tr>
+          <tr><th scope="row">Spot marker</th>
+            <td><div class="static-map" style="min-height: 4rem; width: 5rem;"><button class="map-marker map-marker--spot" type="button" style="left: 50%; top: 50%;" aria-label="Evergreen Brick Works, outdoor spot" aria-haspopup="dialog" aria-expanded="false"></button></div></td>
+            <td><div class="static-map" style="min-height: 4rem; width: 5rem;"><button class="map-marker map-marker--spot" type="button" style="left: 50%; top: 50%;" aria-label="Evergreen Brick Works, outdoor spot, hover" aria-haspopup="dialog" aria-expanded="false" data-state="hover"></button></div></td>
+            <td><div class="static-map" style="min-height: 4rem; width: 5rem;"><button class="map-marker map-marker--spot" type="button" style="left: 50%; top: 50%;" aria-label="Evergreen Brick Works, outdoor spot, focus" aria-haspopup="dialog" aria-expanded="false" data-state="focus"></button></div></td>
+            <td><span class="text-muted" style="display: inline-block; min-width: 7rem;">Same as hover</span></td>
+            <td><span class="text-muted" style="display: inline-block; min-width: 8rem;">Not used: every marker opens</span></td>
+            <td><div class="static-map" style="min-height: 4rem; width: 5rem;"><button class="map-marker map-marker--spot" type="button" style="left: 50%; top: 50%;" aria-label="Evergreen Brick Works, outdoor spot, open" aria-haspopup="dialog" aria-expanded="true"></button></div></td>
+          </tr>
+        </tbody>
+      </table></div>
+      <ul>
+        <li><b>Opening</b> scales the panel in from 96% over <code>--duration-fast</code>; one popover is open at a time, so opening another marker's popup closes the first and resets its marker to <code>aria-expanded="false"</code>.</li>
+        <li><b>Closed</b> removes the panel (or sets <code>hidden</code>); the trigger keeps <code>aria-haspopup="dialog"</code> and drops <code>aria-controls</code>.</li>
+      </ul>
+      <h3>Both themes</h3>
+      <div class="ds-themes">
+        <div data-theme="light"><div class="ds-example__canvas" style="padding: 0;">
+          <div class="popover popover--static map-popup" role="dialog" aria-labelledby="th-l-title" style="position: relative; translate: none;">
+            <p class="map-popup__kind">Studio</p>
+            <h4 class="map-popup__name" id="th-l-title">Leslieville Daylight Studio</h4>
+            <p class="map-popup__fact">All-in for 2 hours: $91.00</p>
+            <a href="../../mocks/pages/studio/default.html">View the review<span class="visually-hidden">: Leslieville Daylight Studio</span></a>
+            <button class="icon-btn" type="button" aria-label="Close"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+          </div>
+        </div></div>
+        <div data-theme="dark"><div class="ds-example__canvas" style="padding: 0;">
+          <div class="popover popover--static map-popup" role="dialog" aria-labelledby="th-d-title" style="position: relative; translate: none;">
+            <p class="map-popup__kind">Studio</p>
+            <h4 class="map-popup__name" id="th-d-title">Leslieville Daylight Studio</h4>
+            <p class="map-popup__fact">All-in for 2 hours: $91.00</p>
+            <a href="../../mocks/pages/studio/default.html">View the review<span class="visually-hidden">: Leslieville Daylight Studio</span></a>
+            <button class="icon-btn" type="button" aria-label="Close"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+          </div>
+        </div></div>
+      </div>
+    </section>
+
+    <section class="ds-section" id="responsive"><h2><a href="#responsive">Responsive behaviour</a></h2>
+      <ul>
+        <li>The panel never grows past <code>min(20rem, 90vw)</code>, so at 360px it still leaves the page margin visible on both sides and never causes a sideways scroll.</li>
+        <li>The map popup does more: from <code>48rem</code> it floats above its marker; below <code>48rem</code> it docks as a card along the bottom of the map (<code>.map-popup--dock</code>), so it never slides off a narrow screen and the map above it stays in view. See <a href="map.html">Map</a>.</li>
+      </ul>
+      <div class="ds-iframes">
+        <iframe class="ds-iframe" src="../../mocks/dialogs/map-popup/default.html?chrome=0" title="Map marker popup for The Junction Loft at phone width, docked along the bottom of the map" loading="lazy"></iframe>
+      </div>
+    </section>
+
+    <section class="ds-section" id="theming"><h2><a href="#theming">Theming</a></h2>
+      <p>The panel reads <code>--color-bg-surface-raised</code>, <code>--color-border-default</code>, <code>--shadow-3</code> and <code>--radius-md</code>; its text uses the normal foreground roles. In the light theme the raised surface is white like a card, so the shadow and hairline separate it from the page; in the dark theme the raised surface is a step lighter than the canvas and the shadow deepens, so the panel still reads as lifted over the dark map tiles. Composite components (the map popup) add their own type and placement but never their own colours. In forced colours the panel keeps its border, drawn in <code>CanvasText</code> by the system.</p>
+    </section>
+
+    <section class="ds-section" id="accessibility"><h2><a href="#accessibility">Accessibility</a></h2>
+      <h3>Role and pattern</h3>
+      <p>A non-modal dialog: the panel is <code>role="dialog"</code> with <code>aria-labelledby</code> pointing at its title and no <code>aria-modal</code>, because the map and list stay usable behind it. The trigger is a real <code>&lt;button&gt;</code> with <code>aria-haspopup="dialog"</code>, <code>aria-expanded</code> and, while open, <code>aria-controls</code>, following the <a href="https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/">APG Dialog</a> labelling rules and the disclosure-style trigger state. The page is not made <code>inert</code>.</p>
+      <h3>Keyboard</h3>
+      <table class="ds-table ds-keys"><thead><tr><th scope="col">Key</th><th scope="col">Action</th></tr></thead><tbody>
+        <tr><td><kbd>Tab</kbd></td><td>Reaches each trigger (every marker is focusable, L2-028.3). Inside an open popover, moves through its controls and then on to the next trigger.</td></tr>
+        <tr><td><kbd>Enter</kbd>, <kbd>Space</kbd></td><td>On the trigger: opens the popover, or closes it when it is open.</td></tr>
+        <tr><td><kbd>Esc</kbd></td><td>Closes the popover from the trigger or from inside it, and returns focus to the trigger (L2-028.2).</td></tr>
+        <tr><td>Pointer outside</td><td>Closes the popover without moving focus.</td></tr>
+      </tbody></table>
+      <h3>Focus</h3>
+      <p>The map popup holds a link and a Close button, so opening it moves focus to "View the review" (or "View the spot"). Closing with Esc or Close always returns focus to the trigger. The panel follows its trigger in the DOM so that Tab from its last control lands on the next trigger, not at the end of the page. Controls inside show the shared 2px <code>--color-focus-ring</code>.</p>
+      <h3>Labelling</h3>
+      <p>The location name (<code>.map-popup__name</code>) labels the dialog ("The Junction Loft"); its heading level follows the page outline (an <code>&lt;h2&gt;</code> on the Map page, where the popup is a top-level region). The trigger's name says what it is ("The Junction Loft, studio"). An icon-only Close carries <code>aria-label="Close"</code>. A link that repeats across popovers gets the location's name in visually hidden text: "View the review<span class="visually-hidden">: The Junction Loft</span>" reads "View the review: The Junction Loft".</p>
+      <h3>Contrast</h3>
+      <div class="ds-example__canvas ds-example__canvas--stack" style="padding: 0; gap: var(--space-2);">
+        <div class="ds-pair"><span>Name on the panel</span><span class="ds-pair__ratio" data-contrast="--color-fg-default|--color-bg-surface-raised" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Kind and key fact on the panel</span><span class="ds-pair__ratio" data-contrast="--color-fg-muted|--color-bg-surface-raised" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Link on the panel</span><span class="ds-pair__ratio" data-contrast="--color-fg-link|--color-bg-surface-raised" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Focus ring on the panel</span><span class="ds-pair__ratio" data-contrast="--color-focus-ring|--color-bg-surface-raised" data-min="3"></span></div>
+      </div>
+      <p>The panel's hairline border is decorative: the shadow and the surface step carry the edge.</p>
+      <h3>Motion</h3>
+      <p><code>scale-in</code> (96% to 100% with a fade) over <code>--duration-fast</code> and <code>--ease-enter</code>. Reduced motion zeroes the duration, so the panel simply appears. <code>.popover--static</code> never animates.</p>
+      <h3>Touch</h3>
+      <p>Markers are 44px targets whatever the size of the dot. Nothing opens on hover: a tap or click opens the popover, so it works the same with touch, pen and keyboard. The map popup's Close is a 44px <a href="icon-button.html">icon button</a>.</p>
+    </section>
+
+    <section class="ds-section" id="content"><h2><a href="#content">Content</a></h2>
+      <ul>
+        <li><b>Kind</b>: "Studio" or "Outdoor spot", as in the map legend.</li>
+        <li><b>Name</b>: the thing the trigger points at, by its published name: "The Junction Loft", "Evergreen Brick Works".</li>
+        <li><b>Key fact</b>: the one fact that helps decide whether to go further, as on the cards: "All-in for 2 hours: $145.00" for a studio, "Portraits: no permit needed" for a spot.</li>
+        <li><b>Link</b>: a verb phrase naming the destination: "View the review" for a studio, "View the spot" for a spot. One link, plus Close.</li>
+        <li>No paragraphs, lists or images. If it needs more than three short lines, it belongs on the page or in a dialog.</li>
+      </ul>
+    </section>
+
+    <section class="ds-section" id="do-dont"><h2><a href="#do-dont">Do and don't</a></h2>
+      <div class="ds-dodont">
+        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--canvas">
+          <div class="popover popover--static map-popup" role="dialog" aria-labelledby="dd1-title" style="position: relative; translate: none;">
+            <p class="map-popup__kind">Studio</p>
+            <h4 class="map-popup__name" id="dd1-title">Riverside Rooftop Studio</h4>
+            <p class="map-popup__fact">All-in for 2 hours: $100.00</p>
+            <a href="../../mocks/pages/studio/default.html">View the review<span class="visually-hidden">: Riverside Rooftop Studio</span></a>
+            <button class="icon-btn" type="button" aria-label="Close"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+          </div>
+        </div><figcaption>Show the key fact and one way onward; the full review is a click away.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--canvas">
+          <div class="popover popover--static map-popup" role="dialog" aria-labelledby="dd2-title" style="position: relative; translate: none;">
+            <h4 class="map-popup__name" id="dd2-title">Riverside Rooftop Studio</h4>
+            <label class="field"><span class="field__label">Hourly rate</span><input class="input" type="number" value="50.00"></label>
+            <button class="btn btn--sm btn--primary" type="button">Save</button>
+          </div>
+        </div><figcaption>Edit in a popover. Editing opens a dialog or the editor screen, never an inline form.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--canvas">
+          <div class="popover popover--static map-popup" role="dialog" aria-labelledby="dd3-title" style="position: relative; translate: none;">
+            <p class="map-popup__kind">Outdoor spot</p>
+            <h4 class="map-popup__name" id="dd3-title">Trinity Bellwoods Park</h4>
+            <p class="map-popup__fact">Portraits: no permit needed</p>
+            <a href="../../mocks/pages/spot/no-video.html">View the spot<span class="visually-hidden">: Trinity Bellwoods Park</span></a>
+            <button class="icon-btn" type="button" aria-label="Close"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+          </div>
+        </div><figcaption>Name the destination, and add the location in hidden text so each link is unique.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--canvas">
+          <div class="popover popover--static map-popup" role="dialog" aria-labelledby="dd4-title" style="position: relative; translate: none;">
+            <p class="map-popup__kind">Outdoor spot</p>
+            <h4 class="map-popup__name" id="dd4-title">Trinity Bellwoods Park</h4>
+            <p class="map-popup__fact">Portraits: no permit needed</p>
+            <a href="../../mocks/pages/spot/no-video.html">More</a>
+            <button class="icon-btn" type="button" aria-label="Close"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+          </div>
+        </div><figcaption>Use "More" or "Details". Out of context, twelve markers give twelve identical links.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--canvas">
+          <div class="popover popover--static map-popup" role="dialog" aria-labelledby="dd5-title" style="position: relative; translate: none;">
+            <p class="map-popup__kind">Outdoor spot</p>
+            <h4 class="map-popup__name" id="dd5-title">Allan Gardens Conservatory</h4>
+            <p class="map-popup__fact">Portraits: no permit needed</p>
+            <a href="../../mocks/pages/spot/default.html">View the spot<span class="visually-hidden">: Allan Gardens Conservatory</span></a>
+            <button class="icon-btn" type="button" aria-label="Close"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+          </div>
+        </div><figcaption>Keep one popover open at a time; opening the next marker closes this one.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--canvas">
+          <div class="popover popover--static map-popup" role="dialog" aria-labelledby="dd6-title" style="position: relative; translate: none;">
+            <p class="map-popup__kind">Outdoor spot</p>
+            <h4 class="map-popup__name" id="dd6-title">Allan Gardens Conservatory</h4>
+            <p class="map-popup__fact">Portraits: no permit needed</p>
+            <button class="icon-btn" type="button" aria-label="Close"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+          </div>
+          <div class="popover popover--static map-popup" role="dialog" aria-labelledby="dd7-title" style="position: relative; translate: none;">
+            <p class="map-popup__kind">Outdoor spot</p>
+            <h4 class="map-popup__name" id="dd7-title">Distillery District</h4>
+            <p class="map-popup__fact">Portraits: permit required</p>
+            <button class="icon-btn" type="button" aria-label="Close"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+          </div>
+        </div><figcaption>Stack popovers. They cover each other and the markers, and Esc can only close one.</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="ds-section" id="tokens"><h2><a href="#tokens">Tokens</a></h2>
+      <div class="ds-table-wrap"><table class="ds-table">
+        <thead><tr><th scope="col">Part</th><th scope="col">Token</th><th scope="col">Light</th><th scope="col">Dark</th></tr></thead>
+        <tbody>
+          <tr><td>Panel surface</td><td><code>--color-bg-surface-raised</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-bg-surface-raised" data-swatch></i><span data-token="--color-bg-surface-raised"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-bg-surface-raised" data-swatch></i><span data-token="--color-bg-surface-raised"></span></span></td></tr>
+          <tr><td>Panel edge</td><td><code>--color-border-default</code>, <code>--border-width-hairline</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-border-default" data-swatch></i><span data-token="--color-border-default"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-border-default" data-swatch></i><span data-token="--color-border-default"></span></span></td></tr>
+          <tr><td>Title and body</td><td><code>--color-fg-default</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-default" data-swatch></i><span data-token="--color-fg-default"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-default" data-swatch></i><span data-token="--color-fg-default"></span></span></td></tr>
+          <tr><td>Secondary text</td><td><code>--color-fg-muted</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-muted" data-swatch></i><span data-token="--color-fg-muted"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-muted" data-swatch></i><span data-token="--color-fg-muted"></span></span></td></tr>
+          <tr><td>Shadow</td><td><code>--shadow-3</code></td><td><span data-token="--shadow-3"></span></td><td><span data-theme="dark" data-token="--shadow-3"></span></td></tr>
+          <tr><td>Corners</td><td><code>--radius-md</code></td><td colspan="2"><span data-token="--radius-md"></span></td></tr>
+          <tr><td>Padding</td><td><code>--space-4</code></td><td colspan="2"><span data-token="--space-4"></span></td></tr>
+          <tr><td>Line gap (map popup)</td><td><code>--space-1</code></td><td colspan="2"><span data-token="--space-1"></span></td></tr>
+          <tr><td>Kind / name / fact type (map popup)</td><td><code>--text-overline</code> / <code>--text-h4</code> / <code>--text-body-sm</code></td><td colspan="2"><span data-token="--text-h4"></span></td></tr>
+          <tr><td>Layer</td><td><code>--z-popover</code></td><td colspan="2"><span data-token="--z-popover"></span></td></tr>
+          <tr><td>Entrance</td><td><code>--duration-fast</code>, <code>--ease-enter</code></td><td colspan="2"><span data-token="--duration-fast"></span> <span data-token="--ease-enter"></span></td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section class="ds-section" id="code"><h2><a href="#code">Code</a></h2>
+      <pre><code>&lt;button class="map-marker map-marker--studio" type="button" aria-label="The Junction Loft, studio"
+        aria-haspopup="dialog" aria-expanded="true" aria-controls="map-popup"&gt;&lt;/button&gt;
+&lt;div class="popover map-popup map-popup--dock" id="map-popup" role="dialog" aria-labelledby="popup-title"&gt;
+  &lt;p class="map-popup__kind"&gt;Studio&lt;/p&gt;
+  &lt;h2 class="map-popup__name" id="popup-title"&gt;The Junction Loft&lt;/h2&gt;
+  &lt;p class="map-popup__fact"&gt;All-in for 2 hours: $145.00&lt;/p&gt;
+  &lt;a href="/studios/the-junction-loft"&gt;View the review&lt;span class="visually-hidden"&gt;: The Junction Loft&lt;/span&gt;&lt;/a&gt;
+  &lt;button class="icon-btn" type="button" aria-label="Close"&gt;…&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+      <table class="ds-table"><thead><tr><th scope="col">Class / attribute</th><th scope="col">Effect</th></tr></thead><tbody>
+        <tr><td><code>.popover</code></td><td>The panel: raised surface, border, shadow, 16px padding, absolutely positioned at <code>--z-popover</code>, scales in.</td></tr>
+        <tr><td><code>.popover--static</code></td><td>Documentation only (in <code>ds.css</code>, not the product stylesheet): in the flow, no animation.</td></tr>
+        <tr><td><code>role="dialog"</code> <code>aria-labelledby</code></td><td>Required on the panel; never <code>aria-modal</code>.</td></tr>
+        <tr><td><code>aria-haspopup="dialog"</code> <code>aria-expanded</code> <code>aria-controls</code></td><td>On the trigger; <code>aria-controls</code> only while open.</td></tr>
+        <tr><td><code>.map-popup</code> <code>.map-popup--dock</code></td><td>The map's composite: placement over the marker and the phone dock. Documented on <a href="map.html">Map</a>.</td></tr>
+      </tbody></table>
+    </section>
+
+    <section class="ds-section" id="sources"><h2><a href="#sources">Sources</a></h2>
+      <p>Extracted from these mocks:</p>
+      <ul>
+        <li><a href="../../mocks/dialogs/map-popup/default.html">dialogs/map-popup/default</a> (The Junction Loft: Studio, all-in cost, View the review, Close)</li>
+        <li><a href="../../mocks/dialogs/map-popup/spot.html">dialogs/map-popup/spot</a> (Evergreen Brick Works: Outdoor spot, permit summary, View the spot)</li>
+        <li><a href="../../mocks/pages/map/default.html">pages/map/default</a> (the marker triggers with <code>aria-haspopup="dialog"</code>)</li>
+      </ul>
+      <p>Drift fixed during extraction: the map-popup mocks are the only use of <code>.popover</code>. In the mocks the markers and Close are <code>&lt;a&gt;</code> links between mock states; in the product they are <code>&lt;button type="button"&gt;</code>, as shown here. The mock puts the popup after all twelve markers and the legend, so Tab from it would leave the map; the system places the panel right after its trigger.</p>
+    </section>
+
+    <footer class="ds-footer"><span>ShotThere design system · extracted from <a href="../../mocks/index.html">docs/mocks</a> on 13 October 2026</span><a href="#top">Back to top</a></footer>
+  </main>
+</div>
+<script src="../assets/ds.js"></script>
+</body>
+</html>

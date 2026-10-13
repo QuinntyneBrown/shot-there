@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Feedback and loading — ShotThere design system</title>
-<meta name="description" content="ShotThere feedback and loading pattern: which feedback for which action, skeleton vs spinner vs progress, optimistic updates and Undo, and offline behaviour.">
+<meta name="description" content="How ShotThere shows waiting and results: skeletons for lists, the map, editors and the dashboard; busy buttons; per-file upload progress; toasts for compare and admin actions; and which actions are local and instant versus confirmed by the server.">
 <link rel="stylesheet" href="../tokens/tokens.css">
 <link rel="stylesheet" href="../assets/components.css">
 <link rel="stylesheet" href="../assets/ds.css">
@@ -33,40 +33,61 @@
       <li><a href="../components/icon-button.html">Icon button</a></li>
       <li><a href="../components/button-group.html">Button group</a></li>
       <li><a href="../components/link.html">Link</a></li>
+      <li><a href="../components/compare-bar.html">Compare toggle and bar</a></li>
     </ul></details>
     <details open><summary>Inputs</summary><ul>
       <li><a href="../components/form-field.html">Form field</a></li>
       <li><a href="../components/text-field.html">Text field</a></li>
       <li><a href="../components/textarea.html">Textarea</a></li>
       <li><a href="../components/select.html">Select</a></li>
+      <li><a href="../components/combobox.html">Combobox</a></li>
       <li><a href="../components/checkbox.html">Checkbox</a></li>
       <li><a href="../components/radio-group.html">Radio group</a></li>
       <li><a href="../components/file-upload.html">File upload</a></li>
       <li><a href="../components/form-layout.html">Form layout</a></li>
+      <li><a href="../components/signup.html">Email signup</a></li>
     </ul></details>
     <details open><summary>Navigation</summary><ul>
       <li><a href="../components/skip-link.html">Skip link</a></li>
       <li><a href="../components/site-header.html">Site header</a></li>
       <li><a href="../components/footer.html">Footer</a></li>
+      <li><a href="../components/breadcrumb.html">Breadcrumb</a></li>
+      <li><a href="../components/filter.html">Filters</a></li>
     </ul></details>
     <details open><summary>Containers and overlays</summary><ul>
-      <li><a href="../components/container.html">Container and grid</a></li>
-      <li><a href="../components/card.html">Card</a></li>
+      <li><a href="../components/container.html">Container</a></li>
+      <li><a href="../components/review-layout.html">Review layout</a></li>
+      <li><a href="../components/editor-layout.html">Editor layout</a></li>
       <li><a href="../components/dialog.html">Dialog</a></li>
-      <li><a href="../components/sheet.html">Sheet and drawer</a></li>
-      <li><a href="../components/divider.html">Divider</a></li>
+      <li><a href="../components/sheet.html">Sheet</a></li>
+      <li><a href="../components/popover.html">Popover</a></li>
+      <li><a href="../components/lightbox.html">Lightbox</a></li>
     </ul></details>
     <details open><summary>Data display</summary><ul>
+      <li><a href="../components/location-card.html">Location card</a></li>
       <li><a href="../components/table.html">Table</a></li>
+      <li><a href="../components/compare-table.html">Comparison table</a></li>
+      <li><a href="../components/list.html">List rows</a></li>
       <li><a href="../components/description-list.html">Description list</a></li>
+      <li><a href="../components/price-block.html">Price block</a></li>
+      <li><a href="../components/score.html">Score and pips</a></li>
+      <li><a href="../components/shot-grid.html">Shot grid</a></li>
+      <li><a href="../components/video-poster.html">Episode poster</a></li>
+      <li><a href="../components/map.html">Map</a></li>
+      <li><a href="../components/guide-entry.html">Guide entry</a></li>
+      <li><a href="../components/stat-tile.html">Stat tile</a></li>
+      <li><a href="../components/image-manager.html">Image manager</a></li>
+      <li><a href="../components/disclosure.html">Disclosure</a></li>
       <li><a href="../components/badge.html">Badge</a></li>
+      <li><a href="../components/status-label.html">Status label</a></li>
       <li><a href="../components/chip.html">Chip</a></li>
+      <li><a href="../components/tag.html">Tag</a></li>
     </ul></details>
     <details open><summary>Feedback</summary><ul>
       <li><a href="../components/inline-message.html">Inline message</a></li>
-      <li><a href="../components/alert.html">Alert and banner</a></li>
+      <li><a href="../components/alert.html">Alert</a></li>
       <li><a href="../components/toast.html">Toast</a></li>
-      <li><a href="../components/progress.html">Progress and meter</a></li>
+      <li><a href="../components/progress.html">Progress</a></li>
       <li><a href="../components/spinner.html">Spinner</a></li>
       <li><a href="../components/skeleton.html">Skeleton</a></li>
       <li><a href="../components/empty-state.html">Empty state</a></li>
@@ -83,222 +104,283 @@
       <li><a href="../patterns/content-and-tone.html">Content and tone</a></li>
     </ul></details>
   </nav>
-
   <main id="main" class="ds-main">
     <header class="ds-header">
       <p class="ds-kicker">Pattern</p>
       <h1>Feedback and loading</h1>
-      <p class="ds-lead">Every action gets an answer in proportion to it: a quiet line for a saved field, a toast for a sent reply, a confirmation inside the dialog for a sent enquiry. Waiting shows the shape of what is coming, and nothing flashes for waits under 300 ms.</p>
-      <div class="ds-meta"><span class="ds-pill ds-pill--ok">WCAG 2.2 AA</span><span class="ds-pill">Status: stable</span><span class="ds-pill"><code>.save-status</code></span><span class="ds-pill"><code>.toast</code></span><span class="ds-pill"><code>.skeleton</code></span><span class="ds-pill"><code>.progress</code></span></div>
-      <ul class="ds-toc"><li><a href="#overview">Overview</a></li><li><a href="#when">When to use which feedback</a></li><li><a href="#structure">Structure</a></li><li><a href="#states">States</a></li><li><a href="#responsive">Responsive behaviour</a></li><li><a href="#accessibility">Accessibility</a></li><li><a href="#content">Content</a></li><li><a href="#do-dont">Do and don't</a></li><li><a href="#sources">Sources</a></li></ul>
+      <p class="ds-lead">While something loads, ShotThere holds its shape with skeletons; while a request is in flight, the button that sent it is busy; when it lands, the result shows where the eye already is. Local choices like Compare are instant. Anything that changes the public site waits for the server.</p>
+      <div class="ds-meta"><span class="ds-pill ds-pill--ok">WCAG 2.2 AA</span><span class="ds-pill">Status: stable</span><span class="ds-pill"><code>.skeleton</code></span><span class="ds-pill"><code>.btn[aria-busy]</code></span><span class="ds-pill"><code>.progress</code></span><span class="ds-pill"><code>.save-status</code></span><span class="ds-pill"><code>.toast</code></span></div>
+      <ul class="ds-toc"><li><a href="#overview">Overview</a></li><li><a href="#when">When to use which</a></li><li><a href="#structure">Structure</a></li><li><a href="#states">States</a></li><li><a href="#responsive">Responsive behaviour</a></li><li><a href="#accessibility">Accessibility</a></li><li><a href="#content">Content</a></li><li><a href="#do-dont">Do and don't</a></li><li><a href="#sources">Sources</a></li></ul>
     </header>
 
 <section class="ds-section" id="overview"><h2><a href="#overview">Overview</a></h2>
-      <p>ShotThere answers every action, never louder than the action deserves, and close to where the person is looking. The pieces are the <a href="../components/inline-message.html">inline message</a> and <code>.save-status</code> line, the <a href="../components/toast.html">toast</a>, the <a href="../components/alert.html">alert and banner</a>, the success view inside a <a href="../components/dialog.html">dialog</a>, and three ways to show waiting: <a href="../components/skeleton.html">skeleton</a>, <a href="../components/spinner.html">spinner</a> and <a href="../components/progress.html">progress</a>.</p>
+      <p>Feedback answers two questions: <i>is it working?</i> and <i>did it work?</i> ShotThere uses a small set of tools for both, each with one job:</p>
       <ul>
-        <li><b>Feedback lives where the action happened.</b> A field's save shows under the page heading; a sent enquiry is confirmed inside the enquiry dialog; a removed photo is confirmed by a toast with Undo because the tile itself is gone.</li>
-        <li><b>Wait 300 ms before showing any loading UI.</b> Most requests finish sooner (L2-086), and a flash of grey is worse than nothing.</li>
-        <li><b>Keep the layout still.</b> Skeletons and placeholders take the final size, so nothing jumps when data lands.</li>
-        <li><b>Say what is safe.</b> Failures always tell people what was kept: "Your filters are kept", "Your message is still in the box", "Nothing was changed and the caterer wasn’t emailed."</li>
+        <li><a href="../components/skeleton.html">Skeleton</a>: a region is loading. It copies the shape of what will arrive (cards, rows, tiles, editor sections) so nothing jumps when it does.</li>
+        <li>Busy <a href="../components/button.html">button</a> (<code>aria-busy="true"</code> plus <code>disabled</code>): a request this button sent is in flight. The label stays; a spinner replaces it visually.</li>
+        <li><a href="../components/progress.html">Progress bar</a>: a measurable wait, only for image uploads.</li>
+        <li><a href="../components/spinner.html">Spinner</a>: a short, unmeasured wait inside a control, only for the entry picker's search.</li>
+        <li>Save status line (<code>.save-status</code>): the editor's running answer to "is this saved?".</li>
+        <li><a href="../components/toast.html">Toast</a>: the result of an action whose own control can't show it (Copy link, the compare limit, Publish, Unpublish, a failed save). See <a href="notifications.html">Notifications</a> for persistence.</li>
+        <li><a href="../components/alert.html">Alert</a> or a changed view: a result that belongs to the page (Studio created as a draft, You're subscribed).</li>
       </ul>
-      <p>Which message type to use for system news (toast vs banner vs email) is covered in <a href="notifications.html">Notifications</a>; empty and failed screens in <a href="empty-and-error-states.html">Empty and error states</a>.</p>
+      <p>Public pages arrive server-rendered with their content in the HTML, so a first visit never shows a skeleton. Loading states appear only for client-side refreshes that take longer than 300 ms.</p>
     </section>
 
-    <section class="ds-section" id="when"><h2><a href="#when">When to use which feedback</a></h2>
+    <section class="ds-section" id="when"><h2><a href="#when">When to use which</a></h2>
+      <h3>Waiting</h3>
       <div class="ds-table-wrap"><table class="ds-table">
-        <thead><tr><th scope="col">Action</th><th scope="col">Feedback</th><th scope="col">Copy from the mocks</th></tr></thead>
+        <thead><tr><th scope="col">Wait</th><th scope="col">Show</th><th scope="col">Example</th></tr></thead>
         <tbody>
-          <tr><td>Editing a field on an autosaving screen</td><td><code>.save-status</code> under the heading (polite status)</td><td>"Saving…" → "Saved at 10:14 a.m. · live on your page within a minute"</td></tr>
-          <tr><td>Choosing a filter</td><td>Results update in place; the result count is announced politely</td><td>"2 caterers"</td></tr>
-          <tr><td>Submitting a dialog form whose result needs explaining</td><td>Success view replaces the dialog body</td><td>"Enquiry sent to Pelau House. Kendra gets an email now. We’ll email you when she replies…"</td></tr>
-          <tr><td>Submitting a dialog whose result is visible on the page</td><td>Dialog closes, the page updates, a success toast confirms</td><td>"Reply sent · Pelau House will get an email." (account/saved)</td></tr>
-          <tr><td>A reversible change to your own content</td><td>Toast with Undo</td><td>"Photo removed · “Curry chicken with rice and buss up shut” is off your page. · Undo"</td></tr>
-          <tr><td>An operator decision that affects someone else</td><td>Toast with a follow-up link, no Undo (reversed by another decision)</td><td>"Auntie Bev’s Kitchen is published · View page"</td></tr>
-          <tr><td>A field or form problem</td><td>Inline <code>.field__error</code> and the <code>.form-summary</code> (see <a href="forms.html">Forms</a>)</td><td>"Fix 4 things to send your enquiry"</td></tr>
-          <tr><td>A request failed inside a dialog</td><td>Danger alert at the top of the dialog body, values kept, primary becomes "Try again"</td><td>"Your enquiry wasn’t sent… Everything you typed is still here. Reference 7F3K-92QD."</td></tr>
-          <tr><td>A background job failed (upload, send)</td><td>Danger toast with Try again, never auto-dismissed; the item shows its failed state too</td><td>"Upload failed · IMG_2077.heic didn’t upload. Check your connection and try again. · Try again"</td></tr>
-          <tr><td>A page or region could not load</td><td>Error empty state in that region, with Try again and a reference</td><td>"We couldn’t load your enquiries · Your messages are safe."</td></tr>
-          <tr><td>Connection lost</td><td>Warning banner at the top, cached content, network actions disabled with a reason</td><td>"You’re offline · Showing your inbox as of 9:45 a.m. Replies can’t be sent until you reconnect."</td></tr>
+          <tr><td>Under 300 ms</td><td>Nothing; the result replaces the old content</td><td>Most filter and sort changes</td></tr>
+          <tr><td>A list or region refreshing</td><td>Skeletons in the region's own layout, region <code>aria-busy="true"</code>, a hidden "Loading studios…" status; filters and sort stay usable</td><td>Studio list (six skeleton cards), spot list, admin lists, dashboard, map</td></tr>
+          <tr><td>A screen opening its record</td><td>Skeleton title, status panel and section bars</td><td>Studio, spot and guide editors</td></tr>
+          <tr><td>A submit</td><td>Busy primary; fields stay visible (read-only on sign-in); Cancel and Close disabled in a dialog</td><td>Sign in, Subscribe, Save changes, Create guide, Unpublish, Delete studio</td></tr>
+          <tr><td>A file transfer</td><td>Per-file progress bar and percentage; Save changes disabled with "Wait for uploads to finish"</td><td>Gallery and test-shot uploads</td></tr>
+          <tr><td>A search inside a dialog</td><td>Small spinner and "Searching" under the field; Add entry disabled</td><td>Add an entry</td></tr>
         </tbody>
       </table></div>
-      <h3>Skeleton, spinner or progress</h3>
+      <h3>Optimistic versus confirmed</h3>
+      <p>An action is shown as done before the server answers only when nothing public depends on it.</p>
       <div class="ds-table-wrap"><table class="ds-table">
-        <thead><tr><th scope="col">Use</th><th scope="col">When</th><th scope="col">Example</th></tr></thead>
+        <thead><tr><th scope="col">Action</th><th scope="col">Model</th><th scope="col">Feedback</th></tr></thead>
         <tbody>
-          <tr><td><a href="../components/skeleton.html">Skeleton</a></td><td>A page or list whose layout is known, loading for more than 300 ms. Shapes match the final content (circles for photos, two text lines for a card).</td><td>caterers/loading, inbox/loading, dashboard/loading</td></tr>
-          <tr><td><a href="../components/spinner.html">Spinner</a></td><td>A short wait in one spot whose result replaces it: a busy button, a photo in the viewer after 300 ms, a postal code lookup.</td><td>enquiry/busy, photo-viewer/busy, search/busy</td></tr>
-          <tr><td><a href="../components/progress.html">Determinate progress</a></td><td>A measurable job the person started and can cancel: file uploads.</td><td>profile-photos/uploading</td></tr>
-          <tr><td>Status word</td><td>A job that takes longer than a page visit; the item says so itself.</td><td>"Processing" tile, profile-photos/processing</td></tr>
-          <tr><td>Meter (not loading)</td><td>Completion of a task, in ink, never pepper.</td><td>"1 of 10 done", dashboard/empty</td></tr>
+          <tr><td>Compare / Remove on a card or review</td><td><b>Local, instant.</b> The selection lives in this browser; there is no request.</td><td>The toggle flips (<code>aria-pressed</code>), the compare bar count updates and is announced: "1 selected", "3 selected"</td></tr>
+          <tr><td>A fifth Compare</td><td>Local, refused</td><td>Warning toast "You can compare up to 4 studios"; the selection and focus stay put</td></tr>
+          <tr><td>Filter or sort change</td><td>The URL updates at once; the list is fetched</td><td>Skeleton after 300 ms, then the count is announced: "5 studios, sorted by all-in cost"</td></tr>
+          <tr><td>Copy link</td><td>Clipboard, then confirmed</td><td>Success toast "Link copied" only after the copy succeeds; a danger toast if it fails</td></tr>
+          <tr><td>Move up / Move down, Remove image, Remove entry</td><td><b>Staged in the form.</b> Applied on Save changes</td><td>The list reorders at once and the new rank is announced ("Leslieville Daylight Studio, now 2 of 2"); status says "Unsaved changes"</td></tr>
+          <tr><td>Save changes, Create studio</td><td><b>Confirmed.</b> Waits for the server</td><td>Busy button, "Saving…", then "Saved 13 Oct 2026, 10:02 am" or the error summary</td></tr>
+          <tr><td>Publish</td><td><b>Confirmed.</b> Waits for the server's completeness check</td><td>Success toast "Corktown Garage Studio is published" with View public page, or the "Can't publish yet" dialog</td></tr>
+          <tr><td>Unpublish, Delete</td><td><b>Confirmed</b> inside the confirmation dialog</td><td>The dialog's primary is busy and Cancel, Close and Escape wait; then a warning toast or the list with a confirmation</td></tr>
         </tbody>
       </table></div>
     </section>
 
     <section class="ds-section" id="structure"><h2><a href="#structure">Structure</a></h2>
-      <h3>Loading a list: skeleton, then content</h3>
+      <h3>Skeleton list</h3>
+      <p>The studio list during a slow refresh: the count line says "Loading studios…", the grid keeps its columns with skeleton cards (six in production, two rows at LG), and the region is busy. The cards themselves are hidden from assistive technology.</p>
       <div class="ds-example">
-        <div class="ds-example__canvas ds-example__canvas--stack">
-          <p class="result-count"><span class="visually-hidden">Loading caterers</span><span class="skeleton skeleton--text" style="width: var(--space-24);" aria-hidden="true"></span></p>
-          <ul class="caterer-grid" aria-busy="true" aria-label="Caterers, loading">
-            <li class="caterer-card caterer-card--skeleton" aria-hidden="true"><span class="photo"><span class="skeleton skeleton--circle"></span></span><span class="skeleton skeleton--text"></span><span class="skeleton skeleton--text"></span></li>
-            <li class="caterer-card caterer-card--skeleton" aria-hidden="true"><span class="photo"><span class="skeleton skeleton--circle"></span></span><span class="skeleton skeleton--text"></span><span class="skeleton skeleton--text"></span></li>
-            <li><span class="photo"><img src="../assets/img/pelau-house.jpg" alt="Chicken pelau in a steel pot with lime and cucumber chutney" width="280" height="280"></span><span class="caterer-card__name">Pelau House</span><span class="caterer-card__meta">Trinidadian &amp; Tobagonian · Scarborough</span></li>
-          </ul>
+        <div class="ds-example__canvas ds-example__canvas--canvas" style="display: block;">
+          <section class="browse__results" aria-labelledby="fl-results-title" aria-busy="true">
+            <h4 class="visually-hidden" id="fl-results-title">Results</h4>
+            <p class="result-count" role="status" aria-live="polite" style="margin-bottom: var(--space-6);">Loading studios…</p>
+            <ul class="location-grid" aria-hidden="true">
+              <li class="location-card location-card--skeleton"><div class="location-card__media"><span class="skeleton skeleton--rect"></span></div><span class="skeleton skeleton--title"></span><span class="skeleton skeleton--text"></span><span class="skeleton skeleton--text"></span></li>
+              <li class="location-card location-card--skeleton"><div class="location-card__media"><span class="skeleton skeleton--rect"></span></div><span class="skeleton skeleton--title"></span><span class="skeleton skeleton--text"></span><span class="skeleton skeleton--text"></span></li>
+              <li class="location-card location-card--skeleton"><div class="location-card__media"><span class="skeleton skeleton--rect"></span></div><span class="skeleton skeleton--title"></span><span class="skeleton skeleton--text"></span><span class="skeleton skeleton--text"></span></li>
+            </ul>
+          </section>
         </div>
-        <div class="ds-example__caption"><span>Two skeleton cards beside a loaded one: same circle, same two lines, so nothing shifts. The list carries <code>aria-busy="true"</code>; the count says "Loading caterers" to screen readers.</span><span>Source: pages/caterers/loading</span></div>
-        <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;p class="result-count" role="status" aria-live="polite"&gt;&lt;span class="visually-hidden"&gt;Loading caterers&lt;/span&gt;&lt;span class="skeleton skeleton--text" aria-hidden="true"&gt;&lt;/span&gt;&lt;/p&gt;
-&lt;ul class="caterer-grid" aria-busy="true"&gt;
-  &lt;li class="caterer-card caterer-card--skeleton" aria-hidden="true"&gt;
-    &lt;span class="photo"&gt;&lt;span class="skeleton skeleton--circle"&gt;&lt;/span&gt;&lt;/span&gt;
-    &lt;span class="skeleton skeleton--text"&gt;&lt;/span&gt;&lt;span class="skeleton skeleton--text"&gt;&lt;/span&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;</code></pre></details>
+        <div class="ds-example__caption"><span>Three of the six skeleton cards. Filters and sort above the grid stay where they are and keep working.</span><span>Source: pages/studios/loading</span></div>
+        <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;section class="browse__results" aria-labelledby="results-title" aria-busy="true"&gt;
+  &lt;p class="result-count" role="status" aria-live="polite"&gt;Loading studios…&lt;/p&gt;
+  &lt;ul class="location-grid" aria-hidden="true"&gt;
+    &lt;li class="location-card location-card--skeleton"&gt;
+      &lt;div class="location-card__media"&gt;&lt;span class="skeleton skeleton--rect"&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;span class="skeleton skeleton--title"&gt;&lt;/span&gt;
+      &lt;span class="skeleton skeleton--text"&gt;&lt;/span&gt;&lt;span class="skeleton skeleton--text"&gt;&lt;/span&gt;
+    &lt;/li&gt; …
+  &lt;/ul&gt;
+&lt;/section&gt;</code></pre></details>
       </div>
 
-      <h3>Saving, uploading and sending</h3>
+      <h3>Skeleton dashboard and admin list</h3>
       <div class="ds-example">
-        <div class="ds-example__canvas" style="align-items: flex-start; gap: var(--space-10);">
-          <div class="stack stack--sm">
-            <p class="save-status"><span class="dot dot--pulse" aria-hidden="true"></span>Saving…</p>
-            <p class="save-status save-status--saved"><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><path d="m5 12 5 5 9-10"/></svg>Saved at 10:14 a.m.</p>
+        <div class="ds-example__canvas ds-example__canvas--canvas ds-example__canvas--stack">
+          <div aria-busy="true">
+            <p class="visually-hidden" role="status">Loading the dashboard</p>
+            <ul class="stat-grid" aria-hidden="true">
+              <li class="stat-tile"><span class="skeleton skeleton--title"></span><span class="skeleton skeleton--text" style="width: 70%;"></span><span class="skeleton skeleton--pill" style="width: 8rem; height: var(--control-height-md);"></span></li>
+              <li class="stat-tile"><span class="skeleton skeleton--title"></span><span class="skeleton skeleton--text" style="width: 70%;"></span><span class="skeleton skeleton--pill" style="width: 8rem; height: var(--control-height-md);"></span></li>
+              <li class="stat-tile"><span class="skeleton skeleton--title"></span><span class="skeleton skeleton--text" style="width: 70%;"></span><span class="skeleton skeleton--pill" style="width: 8rem; height: var(--control-height-md);"></span></li>
+            </ul>
+            <ul class="admin-list" aria-hidden="true" style="margin-top: var(--space-8);">
+              <li class="admin-row admin-row--skeleton"><div class="admin-row__body"><span class="skeleton skeleton--title"></span><span class="skeleton skeleton--text"></span></div><span class="skeleton skeleton--rect"></span></li>
+              <li class="admin-row admin-row--skeleton"><div class="admin-row__body"><span class="skeleton skeleton--title"></span><span class="skeleton skeleton--text"></span></div><span class="skeleton skeleton--rect"></span></li>
+            </ul>
           </div>
-          <ul class="photo-manager" style="grid-template-columns: repeat(2, minmax(0, 8rem));" aria-label="Uploads">
-            <li class="photo-tile">
-              <span class="photo"><img src="../assets/img/roti-road.jpg" alt="" width="160" height="160"><span class="photo-tile__progress" aria-hidden="true">64%</span></span>
-              <p class="photo-tile__caption">IMG_2076.heic</p>
-              <div class="progress" role="progressbar" aria-label="Uploading IMG_2076.heic" aria-valuenow="64" aria-valuemin="0" aria-valuemax="100" style="--value: 64%;"><div class="progress__bar"></div></div>
-              <button class="btn btn--link btn--sm" type="button">Cancel<span class="visually-hidden"> upload of IMG_2076.heic</span></button>
-            </li>
-            <li class="photo-tile">
-              <span class="photo"><img src="../assets/img/oil-down-kitchen.jpg" alt="" width="160" height="160"><span class="photo-tile__progress" aria-hidden="true">Processing</span></span>
-              <p class="photo-tile__caption">IMG_2077.heic</p>
-            </li>
-          </ul>
-          <ol class="messages" aria-label="Messages" style="flex: 1; min-width: 14rem;">
-            <li class="message message--mine message--pending"><span class="visually-hidden">You:</span><p class="message__bubble">Hi Kendra, yes please hold the date!</p><span class="message__meta">You · Sending…</span></li>
-          </ol>
         </div>
-        <div class="ds-example__caption"><span>Autosave line, an upload with progress and a cancel, a processing tile, and a reply waiting for the server (faded bubble, "Sending…" in the meta).</span><span>Sources: profile-details/saving, profile-photos/uploading, thread/submitting</span></div>
+        <div class="ds-example__caption"><span>Dashboard tiles and the re-verification rows while counts load. Section headings ("Needs re-verification") are real text, not skeletons.</span><span>Sources: pages/admin-dashboard/loading, pages/admin-studios/loading</span></div>
       </div>
 
-      <h3>Undo after a reversible change</h3>
+      <h3>Skeleton editor and map</h3>
       <div class="ds-example">
-        <div class="ds-example__canvas">
-          <div class="toast-region toast-region--static" style="max-width: 24rem; width: 100%;">
+        <div class="ds-example__canvas ds-example__canvas--canvas ds-example__canvas--stack">
+          <div class="editor-layout" aria-hidden="true">
+            <div class="editor-aside">
+              <span class="skeleton skeleton--title" style="width: 35%;"></span>
+              <span class="skeleton skeleton--text" style="width: 45%;"></span>
+              <span class="skeleton skeleton--text" style="width: 85%;"></span>
+              <span class="skeleton skeleton--pill" style="height: var(--target-comfortable);"></span>
+            </div>
+            <div class="editor-form">
+              <div class="editor-section" style="display: flex; align-items: center; min-height: var(--control-height-lg); padding: var(--space-3) var(--space-5);"><span class="skeleton skeleton--title" style="width: 18%; margin: 0;"></span></div>
+              <div class="editor-section" style="display: flex; align-items: center; min-height: var(--control-height-lg); padding: var(--space-3) var(--space-5);"><span class="skeleton skeleton--title" style="width: 32%; margin: 0;"></span></div>
+              <div class="editor-section" style="display: flex; align-items: center; min-height: var(--control-height-lg); padding: var(--space-3) var(--space-5);"><span class="skeleton skeleton--title" style="width: 42%; margin: 0;"></span></div>
+            </div>
+          </div>
+          <div class="static-map" aria-hidden="true" style="min-height: 12rem;"><span class="skeleton" style="position: absolute; inset: 0; margin: 0; border-radius: 0;"></span></div>
+        </div>
+        <div class="ds-example__caption"><span>Editor: status panel and section bars, with "Loading studio…" in a hidden status and the breadcrumb's last crumb as a skeleton. Map: one shimmering area the size of the map, beside skeleton list rows.</span><span>Sources: pages/studio-editor/loading, pages/map/loading</span></div>
+      </div>
+
+      <h3>Busy buttons</h3>
+      <p>The button that sent the request becomes busy and disabled, keeps its label for assistive technology, and a hidden status says what is happening. Fields stay visible so the admin can see what was sent.</p>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--canvas" style="gap: var(--space-6);">
+          <button class="btn btn--primary btn--lg" type="button" aria-busy="true" disabled>Sign in</button>
+          <button class="btn btn--primary" type="button" aria-busy="true" disabled>Subscribe</button>
+          <div class="form-actions" style="padding: 0;"><button class="btn btn--primary" type="button" aria-busy="true" disabled>Save changes</button><a class="btn btn--ghost" href="#structure">Cancel</a><span class="save-status">Saving…</span></div>
+          <div class="cluster"><button class="btn" type="button" disabled>Cancel</button><button class="btn btn--primary" type="button" aria-busy="true" disabled>Unpublish</button></div>
+        </div>
+        <div class="ds-example__caption"><span>Sign in, Subscribe, Save changes with its status line, and the Unpublish dialog footer with Cancel disabled until the server answers.</span><span>Sources: pages/sign-in/submitting, pages/home/submitting, pages/studio-editor/submitting, dialogs/unpublish/busy</span></div>
+      </div>
+
+      <h3>Image upload progress</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--canvas ds-example__canvas--stack">
+          <ol class="image-list">
+            <li class="image-row" data-state="uploading">
+              <div class="image-row__thumb"><img src="../assets/img/gallery-2.svg" alt="" width="800" height="1000"></div>
+              <div class="image-row__body">
+                <span class="image-row__meta">2 of 3 · gallery-02.jpg · 6.4 MB</span>
+                <div class="progress" role="progressbar" aria-label="Uploading gallery-02.jpg" aria-valuemin="0" aria-valuemax="100" aria-valuenow="45"><div class="progress__bar" style="--value: 45%;"></div></div>
+                <span class="image-row__meta" aria-hidden="true">Uploading… 45%</span>
+              </div>
+              <div class="image-row__actions"><button class="btn btn--sm btn--ghost" type="button">Cancel upload<span class="visually-hidden"> gallery-02.jpg</span></button></div>
+            </li>
+            <li class="image-row" data-state="failed">
+              <div class="image-row__thumb"><div class="media-fallback"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 16 5-5 4 4 3-3 6 6"/></svg></div></div>
+              <div class="image-row__body">
+                <span class="image-row__meta">4 of 4 · gallery-04.jpg · 7.1 MB</span>
+                <p class="field__error">gallery-04.jpg didn't upload. Check your connection.</p>
+              </div>
+              <div class="image-row__actions"><button class="btn btn--sm" type="button">Retry<span class="visually-hidden"> gallery-04.jpg</span></button><button class="btn btn--sm btn--ghost" type="button">Remove<span class="visually-hidden"> gallery-04.jpg</span></button></div>
+            </li>
+          </ol>
+          <div class="form-actions" style="padding: 0;"><button class="btn btn--primary" type="button" disabled aria-describedby="fl-save-hint">Save changes</button><span class="save-status" id="fl-save-hint">Wait for uploads to finish</span></div>
+        </div>
+        <div class="ds-example__caption"><span>One file uploading, one failed. Retry re-sends only that file. When an upload finishes, its alt-text field takes focus.</span><span>Sources: pages/studio-editor/uploading, pages/studio-editor/upload-failed</span></div>
+      </div>
+
+      <h3>Toasts for results</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--canvas ds-example__canvas--stack">
+          <div class="toast-region toast-region--static" role="status" aria-live="polite">
             <div class="toast toast--success">
               <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg>
-              <div class="toast__body"><p class="toast__title">Photo removed</p><p class="toast__text">“Curry chicken with rice and buss up shut” is off your page.</p><button class="toast__action" type="button">Undo</button></div>
-              <button class="close" type="button" aria-label="Dismiss"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+              <div class="toast__body"><div class="toast__title">Link copied</div><div class="toast__text">Anyone with the link sees these 3 studios side by side.</div></div>
+              <button class="close" type="button" aria-label="Dismiss"><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+              <span class="toast__progress" aria-hidden="true"></span>
+            </div>
+            <div class="toast toast--warning">
+              <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3 2 20h20L12 3z"/><path d="M12 10v4M12 17h.01"/></svg>
+              <div class="toast__body"><div class="toast__title">You can compare up to 4 studios</div><div class="toast__text">Remove one from the bar to add Ossington Blackbox.</div></div>
+              <button class="close" type="button" aria-label="Dismiss"><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+              <span class="toast__progress" aria-hidden="true"></span>
+            </div>
+            <div class="toast toast--success">
+              <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg>
+              <div class="toast__body"><div class="toast__title">Corktown Garage Studio is published</div><div class="toast__text">It appears in lists, the map and the sitemap within a minute.</div><a class="toast__action" href="../../mocks/pages/studio/default.html">View public page</a></div>
+              <button class="close" type="button" aria-label="Dismiss"><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
               <span class="toast__progress" aria-hidden="true"></span>
             </div>
           </div>
         </div>
-        <div class="ds-example__caption"><span>Undo restores the photo in the same place with its caption, until the toast closes (8 s, paused on hover and focus).</span><span>Source: notifications/dashboard-toast/with-action</span></div>
+        <div class="ds-example__caption"><span>Copy link and the compare limit (public), Publish (admin). Shown static; in the product the region is fixed to the bottom, above the compare bar.</span><span>Sources: notifications/public-toast/success, public-toast/warning, admin-toast/success</span></div>
       </div>
     </section>
 
     <section class="ds-section" id="states"><h2><a href="#states">States</a></h2>
-      <h3>The life of a request</h3>
       <div class="ds-table-wrap"><table class="ds-table">
-        <thead><tr><th scope="col">Phase</th><th scope="col">Page load or region</th><th scope="col">Action the person took</th></tr></thead>
+        <thead><tr><th scope="col">State</th><th scope="col">Visible</th><th scope="col">Announced</th><th scope="col">Markup</th></tr></thead>
         <tbody>
-          <tr><td>0–300 ms</td><td>Nothing changes (server-rendered pages arrive complete)</td><td>Button already busy (<code>aria-busy="true"</code>) so it cannot be pressed twice</td></tr>
-          <tr><td>Over 300 ms</td><td>Skeletons in final sizes; region <code>aria-busy="true"</code></td><td>Busy button keeps its label; fields read-only; Cancel and Close disabled</td></tr>
-          <tr><td>Success</td><td>Content replaces skeletons; count announced</td><td>Save-status, toast or success view (table above)</td></tr>
-          <tr><td>Partial</td><td>The failed part says so in place; the rest works ("This chart didn’t load. The other figures are up to date."); exports that would have gaps are disabled</td><td>—</td></tr>
-          <tr><td>Error</td><td>Error empty state with Try again and a reference</td><td>Danger alert in the dialog or a danger toast with Try again; input kept</td></tr>
-          <tr><td>Offline</td><td>Warning banner, cached content with its time, network actions disabled with a reason</td><td>Blocked before sending, with an explanation (open question 17)</td></tr>
+          <tr><td>Loading</td><td>Skeletons in the final layout</td><td>"Loading studios…", "Loading the dashboard", "Loading studio…"</td><td>Region <code>aria-busy="true"</code>, skeleton <code>aria-hidden="true"</code>, hidden <code>role="status"</code></td></tr>
+          <tr><td>Busy</td><td>Spinner in the button; other dialog buttons disabled</td><td>"Signing in", "Unpublishing The Junction Loft…"</td><td><code>aria-busy="true"</code> + <code>disabled</code>; hidden <code>role="status"</code></td></tr>
+          <tr><td>Progress</td><td>Bar and "Uploading… 45%"</td><td>Progress value on focus; completion moves focus to alt text</td><td><code>role="progressbar"</code> with <code>aria-valuenow</code> and a name</td></tr>
+          <tr><td>Searching</td><td>Small spinner and "Searching"</td><td>"Searching…", then "3 results"</td><td><code>.spinner--sm</code>, hidden <code>role="status"</code></td></tr>
+          <tr><td>Saved</td><td>"Saved 13 Oct 2026, 10:02 am" or "All changes saved"</td><td>The status line</td><td><code>.save-status[role=status]</code></td></tr>
+          <tr><td>Done (public)</td><td>Toast, or the view changes (signup success)</td><td>Toast text; "You're subscribed…"</td><td><code>.toast-region[role=status]</code>, <code>.signup[role=status]</code></td></tr>
+          <tr><td>Failed</td><td>Danger toast or alert where the action was; input kept; Try again</td><td>Immediately</td><td><code>role="alert"</code></td></tr>
         </tbody>
       </table></div>
-      <h3>Optimistic or confirmed</h3>
-      <ul>
-        <li><b>Optimistic</b> (update first, roll back with a danger toast on failure): reordering photos and dishes ("Photo order saved"), pressing a filter, marking a thread read, tapping Show all 18 dishes.</li>
-        <li><b>Confirmed</b> (wait for the server): anything that reaches another person or cannot be taken back: sending an enquiry or a reply, sharing contact details, approving, suspending, removing, moderating. A reply shows as a faded "Sending…" bubble at the end of the thread and the box is read-only until the server answers.</li>
-        <li><b>Undo</b> is offered only for reversible changes a caterer makes to their own page (photo removed, response deleted). Sent messages cannot be unsent, so "Reply sent" has no Undo; an approval is reversed by suspending, so "is published" has none either.</li>
-      </ul>
-      <h3>Both themes</h3>
+      <h3>Skeleton and busy button, both themes</h3>
       <div class="ds-themes">
-        <div data-theme="light"><div class="ds-example__canvas ds-example__canvas--stack" style="padding: 0;"><span class="skeleton skeleton--title"></span><span class="skeleton skeleton--text"></span><div class="progress" role="progressbar" aria-label="Uploading, light example" aria-valuenow="64" aria-valuemin="0" aria-valuemax="100" style="--value: 64%;"><div class="progress__bar"></div></div><p class="save-status save-status--saved"><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><path d="m5 12 5 5 9-10"/></svg>All changes saved</p></div></div>
-        <div data-theme="dark"><div class="ds-example__canvas ds-example__canvas--stack" style="padding: 0;"><span class="skeleton skeleton--title"></span><span class="skeleton skeleton--text"></span><div class="progress" role="progressbar" aria-label="Uploading, dark example" aria-valuenow="64" aria-valuemin="0" aria-valuemax="100" style="--value: 64%;"><div class="progress__bar"></div></div><p class="save-status save-status--saved"><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><path d="m5 12 5 5 9-10"/></svg>All changes saved</p></div></div>
-      </div>
-      <h3>Offline</h3>
-      <div class="ds-example">
-        <div class="ds-example__canvas ds-example__canvas--stack" style="padding: 0;">
-          <div class="alert alert--warning banner" role="status"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M3 3l18 18M8.5 16.5a5 5 0 0 1 7 0M5 13a10 10 0 0 1 5-2.7M2 9.5a15 15 0 0 1 4.5-2.8M22 9.5A15 15 0 0 0 11 5.1"/></svg><div class="alert__body"><span class="alert__title">You’re offline</span><span>Showing caterers from your last visit. Filters work again when you reconnect.</span></div></div>
-          <div style="padding: var(--space-4) var(--space-6);"><p class="result-count">60 caterers · saved Sat 10 Oct, 8:15 a.m.</p></div>
-        </div>
-        <div class="ds-example__caption"><span>The banner names what still works and what waits; the count says when the copy was saved. When the connection returns the banner reads "Back online" for 4 s and buttons re-enable without a reload.</span><span>Sources: pages/caterers/offline, pages/caterer/offline</span></div>
+        <div data-theme="light"><div class="stack"><span class="skeleton skeleton--title"></span><span class="skeleton skeleton--text"></span><div class="cluster"><button class="btn btn--primary" type="button" aria-busy="true" disabled>Save changes</button><span class="spinner spinner--sm" aria-hidden="true"></span><span class="text-caption">Searching</span></div><div class="progress" role="progressbar" aria-label="Uploading gallery-03.jpg" aria-valuemin="0" aria-valuemax="100" aria-valuenow="80"><div class="progress__bar" style="--value: 80%;"></div></div></div></div>
+        <div data-theme="dark"><div class="stack"><span class="skeleton skeleton--title"></span><span class="skeleton skeleton--text"></span><div class="cluster"><button class="btn btn--primary" type="button" aria-busy="true" disabled>Save changes</button><span class="spinner spinner--sm" aria-hidden="true"></span><span class="text-caption">Searching</span></div><div class="progress" role="progressbar" aria-label="Uploading gallery-03.jpg, dark theme" aria-valuemin="0" aria-valuemax="100" aria-valuenow="80"><div class="progress__bar" style="--value: 80%;"></div></div></div></div>
       </div>
     </section>
 
     <section class="ds-section" id="responsive"><h2><a href="#responsive">Responsive behaviour</a></h2>
       <ul>
-        <li>Toasts span the width at the bottom on phones, above the safe area and above the sticky enquiry bar; from 36rem they sit bottom-right at 24rem wide.</li>
-        <li>Skeleton grids use the same column count as the loaded grid at each breakpoint (1 / 2 / 3 columns of caterer cards).</li>
-        <li>The offline banner is full-bleed at every width; its copy is short enough to fit two lines at 320px.</li>
-        <li>The save-status line wraps under the heading on phones rather than truncating.</li>
+        <li><b>Skeleton counts follow the grid:</b> six cards, which is one column at XS, two from SM and two rows of three at LG; admin lists show five skeleton rows that stack as cards below 48rem like the real rows.</li>
+        <li><b>Toasts</b> span the width with a 16px gutter on phones and sit bottom-right (24rem) from 36rem. On pages with the compare bar the region is raised above the bar so it never covers Compare.</li>
+        <li><b>The sticky save bar</b> keeps the status line beside the buttons; on narrow phones it wraps under them.</li>
+        <li><b>Upload rows</b> put the actions under the thumbnail below 48rem and in a column beside it from 48rem; the progress bar always spans the row body.</li>
       </ul>
     </section>
 
     <section class="ds-section" id="accessibility"><h2><a href="#accessibility">Accessibility</a></h2>
       <h3>Role and pattern</h3>
-      <p>Status lines (<code>.save-status</code>, <code>.result-count</code>) are <code>role="status"</code> polite live regions present on load, so changes are announced without moving focus (WCAG 4.1.3). Loading regions carry <code>aria-busy="true"</code> and a visually hidden "Loading your enquiries"; skeleton shapes are <code>aria-hidden="true"</code>. Uploads use <code>role="progressbar"</code> with <code>aria-valuenow</code> and a name per file. Errors that block an action use <code>role="alert"</code>.</p>
+      <p>Loading regions use <code>aria-busy="true"</code> and a separate polite <code>role="status"</code> message; skeleton shapes are <code>aria-hidden</code>. Upload bars are <code>role="progressbar"</code> with a name ("Uploading gallery-02.jpg"). Busy buttons are native buttons with <code>aria-busy</code> and <code>disabled</code>. Results use the live regions described in <a href="notifications.html">Notifications</a>.</p>
       <h3>Keyboard</h3>
       <table class="ds-table ds-keys"><thead><tr><th scope="col">Key</th><th scope="col">Action</th></tr></thead><tbody>
-        <tr><td><kbd>Tab</kbd></td><td>Reaches toast actions (Undo, Try again) in the toast region at the end of the page; focusing a toast pauses its timer.</td></tr>
-        <tr><td><kbd>Enter</kbd> / <kbd>Space</kbd></td><td>Activates Undo, Try again, Cancel upload.</td></tr>
+        <tr><td><kbd>Tab</kbd></td><td>Skips skeletons and disabled busy buttons; filters and sort stay reachable while the list loads.</td></tr>
+        <tr><td><kbd>Esc</kbd></td><td>Ignored by a busy confirmation dialog until the server answers.</td></tr>
+        <tr><td><kbd>Enter</kbd> on Retry or Try again</td><td>Re-sends the same request (same file, same filters).</td></tr>
       </tbody></table>
       <h3>Focus</h3>
-      <p>Feedback never steals focus, with two exceptions that follow the person's own action: a refused submit moves focus to the error summary, and a dialog's success view focuses its first action. After Try again, focus moves to the reloaded region's heading.</p>
+      <p>Loading never moves focus. When a busy dialog finishes, it closes and focus returns to the invoking control (Unpublish), or the next screen opens with focus on its main landmark (after Delete). When an upload finishes, focus moves to that image's alt-text field. A Compare toggle refused at the limit keeps focus.</p>
       <h3>Labelling</h3>
-      <p>Busy buttons keep their accessible name ("Send enquiry"); progress is announced in the live region instead. Cancel buttons name the file ("Cancel upload of IMG_2076.heic").</p>
+      <p>Status messages name the thing: "Loading studios…", "Loading studio…", "Unpublishing The Junction Loft…", "Uploading gallery-02.jpg". A disabled Save changes points at its reason with <code>aria-describedby</code> ("Wait for uploads to finish").</p>
       <h3>Contrast</h3>
       <div class="ds-example__canvas ds-example__canvas--stack" style="padding: 0; gap: var(--space-2);">
-        <div class="ds-pair"><span>Saved text</span><span class="ds-pair__ratio" data-contrast="--color-success-fg|--color-bg-surface" data-min="4.5"></span></div>
-        <div class="ds-pair"><span>Not saved text</span><span class="ds-pair__ratio" data-contrast="--color-danger-fg|--color-bg-canvas" data-min="4.5"></span></div>
-        <div class="ds-pair"><span>Offline banner text</span><span class="ds-pair__ratio" data-contrast="--color-warning-fg|--color-warning-bg" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Busy spinner on the primary</span><span class="ds-pair__ratio" data-contrast="--color-fg-on-action|--color-action" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Save status text</span><span class="ds-pair__ratio" data-contrast="--color-fg-muted|--color-bg-canvas" data-min="4.5"></span></div>
         <div class="ds-pair"><span>Toast text</span><span class="ds-pair__ratio" data-contrast="--color-fg-inverse|--color-bg-inverse" data-min="4.5"></span></div>
-        <div class="ds-pair"><span>Upload progress over the photo</span><span class="ds-pair__ratio" data-contrast="--color-fg-on-scrim|--color-bg-scrim" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Upload error text</span><span class="ds-pair__ratio" data-contrast="--color-danger-fg|--color-bg-surface" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Progress bar fill</span><span class="ds-pair__ratio" data-contrast="--color-action|--color-bg-canvas" data-min="3"></span></div>
       </div>
+      <p>Skeletons are decorative and carry no contrast requirement; the hidden status carries the meaning.</p>
       <h3>Motion</h3>
-      <p>Under reduced motion the skeleton shimmer and the save-status pulse stop and indeterminate progress becomes a static bar; the spinner keeps turning because it reports status. Toasts appear without sliding.</p>
+      <p>Under reduced motion the skeleton shimmer stops; the spinner keeps turning because it reports status. Toasts appear without sliding.</p>
       <h3>Touch</h3>
-      <p>Below 48rem every compact control grows to 44px (L2-065.1): toast actions, dismiss buttons, the small Cancel upload button. Compact sizes apply only from 48rem.</p>
+      <p>Retry, Remove and Cancel upload are 44px tall below 48rem. A toast's dismiss button grows to 44px on phones.</p>
     </section>
 
     <section class="ds-section" id="content"><h2><a href="#content">Content</a></h2>
       <ul>
-        <li><b>Progress</b> is status text, not a button label: "Saving…" in the save-status line, "You · Sending…" in a pending message, a hidden "Loading your enquiries" in a busy region. Never "Please wait". (The <a href="../foundations/content.html#library">microcopy library</a> keeps "Saving… · Saved" as the one label that ends in an ellipsis.)</li>
-        <li><b>Success</b> names the thing and the consequence: "Photo added · “Doubles with tamarind and cucumber chutney” is now on your page." Time-sensitive claims are honest: "live on your page within a minute".</li>
-        <li><b>Failure</b> says what happened, what was kept, and what to do: "Your reply wasn’t sent · Check your connection, then try again. Your message is still in the box."</li>
-        <li><b>Slow</b> work is explained, not hidden: "Still processing · IMG_2077.heic is taking longer than usual. It will appear on your page by itself when it’s ready."</li>
-        <li>Offline copy names what still works: "Caterer pages you opened recently still work; enquiries can be sent once you’re back online."</li>
+        <li><b>Loading:</b> "Loading <i>thing</i>…" with an ellipsis character: "Loading studios…", "Loading locations…", "Loading studio…".</li>
+        <li><b>In progress:</b> present participle, no subject: "Saving…", "Signing in", "Searching…", "Uploading… 45%".</li>
+        <li><b>Done:</b> the fact, with the time when it matters: "Saved 13 Oct 2026, 10:02 am", "All changes saved", "Link copied", "Corktown Garage Studio is published".</li>
+        <li><b>Blocked:</b> say what to wait for: "Wait for uploads to finish".</li>
+        <li><b>Failed:</b> what didn't happen, what was kept, what to do: "gallery-04.jpg didn't upload. Check your connection." "Your changes are still here. Check your connection and try again."</li>
       </ul>
     </section>
 
     <section class="ds-section" id="do-dont"><h2><a href="#do-dont">Do and don't</a></h2>
       <div class="ds-dodont">
-        <figure class="ds-do"><div class="ds-example__canvas"><button class="btn btn--primary" type="button" aria-busy="true">Send enquiry</button></div><figcaption>Keep the button's label and width while busy; announce progress elsewhere.</figcaption></figure>
-        <figure class="ds-dont"><div class="ds-example__canvas"><span class="spinner spinner--lg" aria-hidden="true"></span><span class="text-muted">Loading…</span></div><figcaption>Don't replace a whole known layout with a centred spinner; show skeletons in the final shape.</figcaption></figure>
-        <figure class="ds-do"><div class="ds-example__canvas"><p class="save-status save-status--saved"><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><path d="m5 12 5 5 9-10"/></svg>Saved at 10:14 a.m.</p></div><figcaption>Confirm autosave in the quiet line under the heading.</figcaption></figure>
-        <figure class="ds-dont"><div class="ds-example__canvas"><div class="toast-region toast-region--static" style="width: 100%;"><div class="toast toast--success"><div class="toast__body"><p class="toast__title">Saved</p></div></div></div></div><figcaption>Don't toast every keystroke save; toasts are for things that happened out of view.</figcaption></figure>
-        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--stack"><p class="toast__title">Reply sent</p><p class="text-muted">Pelau House will get an email.</p></div><figcaption>Messages to other people are confirmed after the server accepts them, with no Undo.</figcaption></figure>
-        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--stack"><p class="toast__title">Reply sent</p><button class="btn btn--link" type="button">Undo</button></div><figcaption>Don't offer Undo for something that has already reached Kendra's inbox.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas"><button class="btn btn--primary" type="button" aria-busy="true" disabled>Sign in</button><span class="text-caption">Status: "Signing in"</span></div><figcaption>Keep the button's name and announce the progress separately.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas"><button class="btn btn--primary" type="button" disabled>Signing in…</button></div><figcaption>Don't rename the busy button: the sign-in mock alone changed its label, so the control's name changes under the user.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas"><button class="btn btn--sm compare-toggle" type="button" aria-pressed="true">Remove<span class="visually-hidden"> The Junction Loft</span></button><span class="text-caption">Bar: "2 selected"</span></div><figcaption>Flip local choices at once: Compare needs no server and no spinner.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas"><span class="badge badge--success">Published</span><span class="text-caption">shown before the server answered</span></div><figcaption>Don't show Published optimistically: publishing can be refused for missing fields, and the public site must match what the admin sees.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas" style="display: block;"><ul class="location-grid" aria-hidden="true" style="grid-template-columns: repeat(2, minmax(0, 1fr));"><li class="location-card location-card--skeleton"><div class="location-card__media"><span class="skeleton skeleton--rect"></span></div><span class="skeleton skeleton--title"></span></li><li class="location-card location-card--skeleton"><div class="location-card__media"><span class="skeleton skeleton--rect"></span></div><span class="skeleton skeleton--title"></span></li></ul></div><figcaption>Use skeletons shaped like the content they stand for.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas" style="justify-content: center; min-height: 8rem;"><span class="spinner" aria-hidden="true"></span></div><figcaption>Don't replace a list with a page spinner: the layout jumps when results arrive and the filters look broken.</figcaption></figure>
       </div>
     </section>
 
     <section class="ds-section" id="sources"><h2><a href="#sources">Sources</a></h2>
       <ul>
-        <li>pages/caterers/loading, pages/inbox/loading, pages/dashboard/loading, pages/caterer/loading</li>
-        <li>pages/profile-details/saving, saved, pages/profile-photos/uploading, processing</li>
-        <li>pages/thread/submitting, dialogs/enquiry/busy, dialogs/enquiry/success, dialogs/photo-viewer/busy</li>
-        <li>notifications/dashboard-toast/with-action, notifications/toast/success, notifications/toast/danger</li>
-        <li>pages/caterers/offline, pages/inbox/offline, pages/caterer/offline, pages/offline/default, pages/admin-metrics/partial</li>
+        <li>Skeletons: <a href="../../mocks/pages/studios/loading.html">studios/loading</a>, <a href="../../mocks/pages/spots/loading.html">spots/loading</a>, <a href="../../mocks/pages/map/loading.html">map/loading</a>, <a href="../../mocks/pages/admin-dashboard/loading.html">admin-dashboard/loading</a>, <a href="../../mocks/pages/admin-studios/loading.html">admin-studios/loading</a>, <a href="../../mocks/pages/admin-spots/loading.html">admin-spots/loading</a>, <a href="../../mocks/pages/admin-guides/loading.html">admin-guides/loading</a>, <a href="../../mocks/pages/studio-editor/loading.html">studio-editor/loading</a>, <a href="../../mocks/pages/spot-editor/loading.html">spot-editor/loading</a>, <a href="../../mocks/pages/guide-editor/loading.html">guide-editor/loading</a></li>
+        <li>Busy: <a href="../../mocks/pages/sign-in/submitting.html">sign-in/submitting</a>, <a href="../../mocks/pages/home/submitting.html">home/submitting</a>, <a href="../../mocks/pages/studio-editor/submitting.html">studio-editor/submitting</a>, <a href="../../mocks/pages/guide-editor/submitting.html">guide-editor/submitting</a>, <a href="../../mocks/dialogs/unpublish/busy.html">unpublish/busy</a>, <a href="../../mocks/dialogs/delete-content/busy.html">delete-content/busy</a>, <a href="../../mocks/dialogs/guide-entry-picker/busy.html">guide-entry-picker/busy</a></li>
+        <li>Progress: <a href="../../mocks/pages/studio-editor/uploading.html">studio-editor/uploading</a>, <a href="../../mocks/pages/studio-editor/upload-failed.html">studio-editor/upload-failed</a></li>
+        <li>Results: <a href="../../mocks/notifications/public-toast/success.html">public-toast/success</a>, <a href="../../mocks/notifications/public-toast/warning.html">public-toast/warning</a>, <a href="../../mocks/notifications/admin-toast/success.html">admin-toast/success</a>, <a href="../../mocks/notifications/admin-toast/warning.html">admin-toast/warning</a>, <a href="../../mocks/pages/studios/selected-one.html">studios/selected-one</a>, <a href="../../mocks/pages/studio/in-compare.html">studio/in-compare</a>, <a href="../../mocks/pages/studio-editor/success.html">studio-editor/success</a>, <a href="../../mocks/pages/home/success.html">home/success</a></li>
       </ul>
-      <p>Drift fixed during extraction: busy buttons swapped their label in some mocks ("Sending…", "Saving…", "Removing…") and kept it in others; the system keeps the label and shows "Sending…" in the message meta or live region. Offline banners used <code>&lt;p&gt;</code> in one mock and <code>&lt;span&gt;</code> in others for the title; all use <code>.alert__title</code>.</p>
+      <p>Drift fixed during extraction: the busy Sign in button renames itself "Signing in" while every other busy button keeps its label; the system keeps the label and puts "Signing in" in the status. The map's loading skeleton is an inline-positioned <code>.skeleton</code> rather than a component class; it is documented as is and listed as a CSS need. Skeleton widths in the admin lists and dashboard are set inline per row; they stay as documentation of the mocks.</p>
     </section>
 
-    <footer class="ds-footer"><span>ShotThere design system · extracted from docs/mocks on 10 October 2026</span><a href="#top">Back to top</a></footer>
+    <footer class="ds-footer"><span>ShotThere design system · extracted from <a href="../../mocks/index.html">docs/mocks</a> on 13 October 2026</span><a href="#top">Back to top</a></footer>
   </main>
 </div>
 <script src="../assets/ds.js"></script>

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Navigation and page structure — ShotThere design system</title>
-<meta name="description" content="ShotThere navigation and page structure: site header per role, site menu sheet on phones, side nav vs section list, page intro, eyebrow back link, browse, caterer, inbox and work layouts, back behaviour.">
+<meta name="description" content="How people move through ShotThere: the public and admin site headers, the site menu sheet on phones, the browse to review to compare paths, the admin dashboard sections, breadcrumbs and back links, and the URL state that keeps filters, sort, compared studios and the map view.">
 <link rel="stylesheet" href="../tokens/tokens.css">
 <link rel="stylesheet" href="../assets/components.css">
 <link rel="stylesheet" href="../assets/ds.css">
@@ -33,40 +33,61 @@
       <li><a href="../components/icon-button.html">Icon button</a></li>
       <li><a href="../components/button-group.html">Button group</a></li>
       <li><a href="../components/link.html">Link</a></li>
+      <li><a href="../components/compare-bar.html">Compare toggle and bar</a></li>
     </ul></details>
     <details open><summary>Inputs</summary><ul>
       <li><a href="../components/form-field.html">Form field</a></li>
       <li><a href="../components/text-field.html">Text field</a></li>
       <li><a href="../components/textarea.html">Textarea</a></li>
       <li><a href="../components/select.html">Select</a></li>
+      <li><a href="../components/combobox.html">Combobox</a></li>
       <li><a href="../components/checkbox.html">Checkbox</a></li>
       <li><a href="../components/radio-group.html">Radio group</a></li>
       <li><a href="../components/file-upload.html">File upload</a></li>
       <li><a href="../components/form-layout.html">Form layout</a></li>
+      <li><a href="../components/signup.html">Email signup</a></li>
     </ul></details>
     <details open><summary>Navigation</summary><ul>
       <li><a href="../components/skip-link.html">Skip link</a></li>
       <li><a href="../components/site-header.html">Site header</a></li>
       <li><a href="../components/footer.html">Footer</a></li>
+      <li><a href="../components/breadcrumb.html">Breadcrumb</a></li>
+      <li><a href="../components/filter.html">Filters</a></li>
     </ul></details>
     <details open><summary>Containers and overlays</summary><ul>
-      <li><a href="../components/container.html">Container and grid</a></li>
-      <li><a href="../components/card.html">Card</a></li>
+      <li><a href="../components/container.html">Container</a></li>
+      <li><a href="../components/review-layout.html">Review layout</a></li>
+      <li><a href="../components/editor-layout.html">Editor layout</a></li>
       <li><a href="../components/dialog.html">Dialog</a></li>
-      <li><a href="../components/sheet.html">Sheet and drawer</a></li>
-      <li><a href="../components/divider.html">Divider</a></li>
+      <li><a href="../components/sheet.html">Sheet</a></li>
+      <li><a href="../components/popover.html">Popover</a></li>
+      <li><a href="../components/lightbox.html">Lightbox</a></li>
     </ul></details>
     <details open><summary>Data display</summary><ul>
+      <li><a href="../components/location-card.html">Location card</a></li>
       <li><a href="../components/table.html">Table</a></li>
+      <li><a href="../components/compare-table.html">Comparison table</a></li>
+      <li><a href="../components/list.html">List rows</a></li>
       <li><a href="../components/description-list.html">Description list</a></li>
+      <li><a href="../components/price-block.html">Price block</a></li>
+      <li><a href="../components/score.html">Score and pips</a></li>
+      <li><a href="../components/shot-grid.html">Shot grid</a></li>
+      <li><a href="../components/video-poster.html">Episode poster</a></li>
+      <li><a href="../components/map.html">Map</a></li>
+      <li><a href="../components/guide-entry.html">Guide entry</a></li>
+      <li><a href="../components/stat-tile.html">Stat tile</a></li>
+      <li><a href="../components/image-manager.html">Image manager</a></li>
+      <li><a href="../components/disclosure.html">Disclosure</a></li>
       <li><a href="../components/badge.html">Badge</a></li>
+      <li><a href="../components/status-label.html">Status label</a></li>
       <li><a href="../components/chip.html">Chip</a></li>
+      <li><a href="../components/tag.html">Tag</a></li>
     </ul></details>
     <details open><summary>Feedback</summary><ul>
       <li><a href="../components/inline-message.html">Inline message</a></li>
-      <li><a href="../components/alert.html">Alert and banner</a></li>
+      <li><a href="../components/alert.html">Alert</a></li>
       <li><a href="../components/toast.html">Toast</a></li>
-      <li><a href="../components/progress.html">Progress and meter</a></li>
+      <li><a href="../components/progress.html">Progress</a></li>
       <li><a href="../components/spinner.html">Spinner</a></li>
       <li><a href="../components/skeleton.html">Skeleton</a></li>
       <li><a href="../components/empty-state.html">Empty state</a></li>
@@ -83,288 +104,262 @@
       <li><a href="../patterns/content-and-tone.html">Content and tone</a></li>
     </ul></details>
   </nav>
-
   <main id="main" class="ds-main">
     <header class="ds-header">
       <p class="ds-kicker">Pattern</p>
       <h1>Navigation and page structure</h1>
-      <p class="ds-lead">A bold wordmark, a quiet text nav and one clear heading per page. Each role gets the same header with its own links; work areas add a side list of sections that becomes a stacked list on phones, and every deeper screen has one way back.</p>
-      <div class="ds-meta"><span class="ds-pill ds-pill--ok">WCAG 2.2 AA</span><span class="ds-pill">Status: stable</span><span class="ds-pill"><code>.site-header</code></span><span class="ds-pill"><code>.side-nav</code></span><span class="ds-pill"><code>.section-list</code></span><span class="ds-pill"><code>.eyebrow</code></span></div>
-      <ul class="ds-toc"><li><a href="#overview">Overview</a></li><li><a href="#when">When to use which structure</a></li><li><a href="#structure">Structure</a></li><li><a href="#states">States</a></li><li><a href="#responsive">Responsive behaviour</a></li><li><a href="#accessibility">Accessibility</a></li><li><a href="#content">Content</a></li><li><a href="#do-dont">Do and don't</a></li><li><a href="#sources">Sources</a></li></ul>
+      <p class="ds-lead">ShotThere has two small chromes: the public site, where visitors browse, read a review and compare; and the admin, where the founder keeps studios, spots and guides up to date. Both use the same header, collapse to the same Menu sheet on phones, and keep every view in the URL so it can be shared, reloaded and reached with Back.</p>
+      <div class="ds-meta"><span class="ds-pill ds-pill--ok">WCAG 2.2 AA</span><span class="ds-pill">Status: stable</span><span class="ds-pill"><code>.site-header</code></span><span class="ds-pill"><code>.site-nav</code></span><span class="ds-pill"><code>.section-list</code></span><span class="ds-pill"><code>.breadcrumb</code></span><span class="ds-pill"><code>.site-footer</code></span></div>
+      <ul class="ds-toc"><li><a href="#overview">Overview</a></li><li><a href="#when">When to use which</a></li><li><a href="#structure">Structure</a></li><li><a href="#states">States</a></li><li><a href="#responsive">Responsive behaviour</a></li><li><a href="#accessibility">Accessibility</a></li><li><a href="#content">Content</a></li><li><a href="#do-dont">Do and don't</a></li><li><a href="#sources">Sources</a></li></ul>
     </header>
 
 <section class="ds-section" id="overview"><h2><a href="#overview">Overview</a></h2>
-      <p>ShotThere has three audiences in one product: customers browsing and enquiring, caterers running their profile, and operators reviewing and moderating. They share one <a href="../components/site-header.html">site header</a> and one set of page layouts (<a href="../components/container.html">container and grid</a>), and differ only in their links, the tag beside the wordmark, and whether a work area has a side navigation.</p>
       <ul>
-        <li><b>Header</b>: wordmark left, a few text links right, then icon buttons (search, menu) and the avatar. The current link is semibold ink; nothing in the header is pepper.</li>
-        <li><b>Phones</b>: links that do not fit move into the <a href="../components/sheet.html">site menu sheet</a>; the header keeps the wordmark, search and the menu button (with the unread count on it).</li>
-        <li><b>Work areas</b> (caterer dashboard, operator console): a side list of sections from 62rem; below that, the Overview page lists the sections and each section page has an eyebrow back link to Overview.</li>
-        <li><b>One heading</b> per page in the <code>.page-intro</code>, with an optional status or subtitle line under it. No breadcrumb trails: ShotThere is never more than two levels deep.</li>
+        <li><b>Visitor chrome:</b> <a href="../components/site-header.html">site header</a> with the wordmark and its "Toronto" tag, then Studios, Spots, Map, Compare and Guides in a <code>&lt;nav aria-label="Primary"&gt;</code>; the <a href="../components/footer.html">footer</a> repeats Studios, Spots, Guides, Editorial policy and the YouTube channel beside a secondary email signup.</li>
+        <li><b>Admin chrome:</b> the same header with the "Admin" tag, then Dashboard, Studios, Spots, Guides, View site and Sign out in <code>&lt;nav aria-label="Administration"&gt;</code>. No footer signup.</li>
+        <li><b>Phones (below 48rem):</b> the links collapse into one Menu button that opens the site menu, a full-height <a href="../components/sheet.html">sheet</a> of <code>.section-link</code> rows with a one-line description each.</li>
+        <li><b>Where am I:</b> <code>aria-current="page"</code> on the header link for the section (a studio review marks Studios), a <a href="../components/breadcrumb.html">breadcrumb</a> on every review and editor, and the page <code>&lt;h1&gt;</code>.</li>
+        <li><b>Every view is a URL.</b> Filters, sort, compared studios and the map view live in the query string; paths and page titles come from one central place (<code>APP_PATHS</code>, <code>PAGE_TITLES</code>), never typed inline.</li>
+        <li>Every page starts with the <a href="../components/skip-link.html">skip link</a> ("Skip to content") to <code>main#main</code>.</li>
       </ul>
     </section>
 
-    <section class="ds-section" id="when"><h2><a href="#when">When to use which structure</a></h2>
-      <h3>Header per role</h3>
+    <section class="ds-section" id="when"><h2><a href="#when">When to use which</a></h2>
       <div class="ds-table-wrap"><table class="ds-table">
-        <thead><tr><th scope="col">Role</th><th scope="col">Wordmark tag</th><th scope="col">Links from 48rem</th><th scope="col">Icons</th><th scope="col">Phone menu holds</th></tr></thead>
+        <thead><tr><th scope="col">Need</th><th scope="col">Use</th><th scope="col">Example</th></tr></thead>
         <tbody>
-          <tr><td>Visitor</td><td>—</td><td>Caterers · Occasions · Sign in</td><td>Search · Menu</td><td>Caterers, Occasions, Sign in, Create an account, Cater with ShotThere</td></tr>
-          <tr><td>Customer</td><td>—</td><td>Caterers · Occasions · Inbox <i>(unread count)</i></td><td>Search · Menu · avatar "MT"</td><td>Caterers, Occasions, Inbox, Account, Sign out</td></tr>
-          <tr><td>Caterer</td><td>"for caterers"</td><td>Dashboard · Enquiries <i>(unread)</i> · My page</td><td>Menu · avatar "KB"</td><td>The dashboard sections, My page, Account, Sign out</td></tr>
-          <tr><td>Operator</td><td>"Operator"</td><td>Queue <i>(waiting)</i> · Caterers · Metrics</td><td>Menu · avatar "LM"</td><td>Every console section</td></tr>
-        </tbody>
-      </table></div>
-      <h3>Sections, filters and sub-pages</h3>
-      <div class="ds-table-wrap"><table class="ds-table">
-        <thead><tr><th scope="col">Need</th><th scope="col">Use</th><th scope="col">Not</th></tr></thead>
-        <tbody>
-          <tr><td>Move between the sections of a work area</td><td>Side nav (≥62rem) and <code>.section-list</code> on Overview (&lt;62rem); each section is its own URL</td><td>Tabs: sections have their own save state and deep links</td></tr>
-          <tr><td>Narrow one list by status</td><td><code>.segmented</code> links with counts ("All 4 · Open 1 · Replied 1"); the choice lives in the URL</td><td>Tabs with panels; a segment that jumps to another page</td></tr>
-          <tr><td>Narrow the public listing</td><td>Filter list (≥62rem), filter dropdowns (48–62rem), filter sheet (&lt;48rem)</td><td>A form with a Search button</td></tr>
-          <tr><td>Go up one level</td><td>Eyebrow link above the heading: "Caterers", "Overview", "Back to inbox"</td><td>Breadcrumb trails</td></tr>
-          <tr><td>Switch views of the same data in place</td><td>Tabs, sparingly; no mock needs them yet (metrics changes granularity with a "Show by" select in its toolbar)</td><td>Separate pages for one dataset</td></tr>
+          <tr><td>Move between top-level sections</td><td>Header links (<code>.site-nav__link</code>), or the Menu sheet below 48rem</td><td>Studios, Spots, Map, Compare, Guides</td></tr>
+          <tr><td>Go up one level from a detail screen</td><td>Breadcrumb (<code>.breadcrumb</code>), parent then current</td><td>Studios / The Junction Loft; Studios / Corktown Garage Studio</td></tr>
+          <tr><td>Leave a dead end</td><td>A back action in the empty or error state</td><td>Back to studios, Back to dashboard, Go to the home page</td></tr>
+          <tr><td>Change what a page shows without leaving it</td><td>Query-string state: filters, sort, segmented controls</td><td><code>?costMax=150&amp;sort=cost</code>, <code>?view=list</code></td></tr>
+          <tr><td>Jump to the full list from a preview</td><td><code>.section-head</code> link beside the heading</td><td>Latest reviews · All studios</td></tr>
+          <tr><td>Leave ShotThere</td><td>External link with the icon and "(opens in a new tab)"</td><td>Book on the studio's site, Watch on YouTube, Open in Google Maps</td></tr>
+          <tr><td>Go back after editing the selection</td><td>A standalone link beside the page actions</td><td>Change studios (comparison)</td></tr>
         </tbody>
       </table></div>
     </section>
 
     <section class="ds-section" id="structure"><h2><a href="#structure">Structure</a></h2>
-      <h3>Site header, four roles</h3>
+      <h3>Site header: visitor and admin</h3>
       <div class="ds-example">
-        <div class="ds-example__canvas ds-example__canvas--stack" style="padding: 0; gap: 0;">
+        <div class="ds-example__canvas ds-example__canvas--canvas ds-example__canvas--stack" style="padding: 0;">
           <header class="site-header">
-            ShotThere
-            <nav class="site-nav" aria-label="Primary, visitor example">
-              Caterers
-              Occasions
-              Sign in
-              <button class="icon-btn" type="button" aria-label="Search by area or postal code" aria-haspopup="dialog"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
-              <button class="icon-btn site-nav__menu" type="button" aria-label="Menu" aria-haspopup="dialog"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M4 8h16M4 16h16"/></svg></button>
+            <a class="wordmark" href="../../mocks/pages/home/default.html">ShotThere <span class="wordmark__tag">Toronto</span></a>
+            <nav class="site-nav" aria-label="Primary (example)">
+              <a class="site-nav__link site-nav__extra" href="../../mocks/pages/studios/default.html" aria-current="page">Studios</a>
+              <a class="site-nav__link site-nav__extra" href="../../mocks/pages/spots/default.html">Spots</a>
+              <a class="site-nav__link site-nav__extra" href="../../mocks/pages/map/default.html">Map</a>
+              <a class="site-nav__link site-nav__extra" href="../../mocks/pages/compare/default.html">Compare</a>
+              <a class="site-nav__link site-nav__extra" href="../../mocks/pages/guides/default.html">Guides</a>
+              <a class="btn btn--ghost site-nav__menu" href="#nv-menu-title" aria-haspopup="dialog" aria-expanded="false"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>Menu</a>
             </nav>
           </header>
-          <hr class="divider" style="margin: 0;">
           <header class="site-header">
-            ShotThere
-            <nav class="site-nav" aria-label="Primary, customer example">
-              Caterers
-              Occasions
-              Inbox <span class="badge badge--count" aria-label="1 unread enquiry">1</span>
-              <button class="icon-btn" type="button" aria-label="Search by area or postal code" aria-haspopup="dialog"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
-              <button class="icon-btn site-nav__menu" type="button" aria-label="Menu, 1 unread enquiry" aria-haspopup="dialog"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M4 8h16M4 16h16"/></svg><span class="badge badge--count" aria-hidden="true">1</span></button>
-              <button class="avatar site-nav__extra" type="button" aria-label="Account menu for Marcia Thompson" aria-haspopup="menu">MT</button>
-            </nav>
-          </header>
-          <hr class="divider" style="margin: 0;">
-          <header class="site-header">
-            ShotThere <span class="wordmark__tag">for caterers</span>
-            <nav class="site-nav" aria-label="Primary, caterer example">
-              Dashboard
-              Enquiries <span class="badge badge--count" aria-label="2 unread enquiries">2</span>
-              My page
-              <button class="icon-btn site-nav__menu" type="button" aria-label="Menu, 2 unread enquiries" aria-haspopup="dialog"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M4 8h16M4 16h16"/></svg><span class="badge badge--count" aria-hidden="true">2</span></button>
-              <button class="avatar" type="button" aria-label="Account menu for Kendra Baptiste" aria-haspopup="menu">KB</button>
-            </nav>
-          </header>
-          <hr class="divider" style="margin: 0;">
-          <header class="site-header">
-            ShotThere <span class="wordmark__tag">Operator</span>
-            <nav class="site-nav" aria-label="Primary, operator example">
-              Queue <span class="badge badge--count" aria-label="7 items waiting">7</span>
-              Caterers
-              Metrics
-              <button class="icon-btn site-nav__menu" type="button" aria-label="Menu" aria-haspopup="dialog"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M4 8h16M4 16h16"/></svg></button>
-              <button class="avatar" type="button" aria-label="Account menu for Leah Mohammed" aria-haspopup="menu">LM</button>
+            <a class="wordmark" href="../../mocks/pages/admin-dashboard/default.html">ShotThere <span class="wordmark__tag">Admin</span></a>
+            <nav class="site-nav" aria-label="Administration (example)">
+              <a class="site-nav__link site-nav__extra" href="../../mocks/pages/admin-dashboard/default.html">Dashboard</a>
+              <a class="site-nav__link site-nav__extra" href="../../mocks/pages/admin-studios/default.html" aria-current="page">Studios</a>
+              <a class="site-nav__link site-nav__extra" href="../../mocks/pages/admin-spots/default.html">Spots</a>
+              <a class="site-nav__link site-nav__extra" href="../../mocks/pages/admin-guides/default.html">Guides</a>
+              <a class="site-nav__link site-nav__extra" href="../../mocks/pages/home/default.html">View site</a>
+              <form class="site-nav__extra" action="../../mocks/pages/sign-in/signed-out.html" method="post"><button class="btn btn--ghost" type="submit">Sign out</button></form>
+              <a class="btn btn--ghost site-nav__menu" href="#nv-admin-menu-title" aria-haspopup="dialog" aria-expanded="false"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>Menu</a>
             </nav>
           </header>
         </div>
-        <div class="ds-example__caption"><span>Visitor, customer, caterer, operator. From 48rem the text links show and the menu button hides; below 48rem it is the reverse, so resize the window to see both.</span><span>Sources: caterers/default, caterers/signed-in, dashboard/default, admin-queue/default</span></div>
+        <div class="ds-example__caption"><span>The visitor header on a studio review (Studios is current) and the admin header in the studio editor. Below 48rem only the wordmark and Menu remain.</span><span>Sources: pages/studio/default, pages/studio-editor/default</span></div>
         <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;header class="site-header"&gt;
-  &lt;a class="wordmark" href="/dashboard"&gt;ShotThere &lt;span class="wordmark__tag"&gt;for caterers&lt;/span&gt;&lt;/a&gt;
+  &lt;a class="wordmark" href="/"&gt;ShotThere &lt;span class="wordmark__tag"&gt;Toronto&lt;/span&gt;&lt;/a&gt;
   &lt;nav class="site-nav" aria-label="Primary"&gt;
-    &lt;a class="site-nav__link site-nav__extra" href="/dashboard" aria-current="page"&gt;Dashboard&lt;/a&gt;
-    &lt;a class="site-nav__link site-nav__extra" href="/dashboard/enquiries"&gt;Enquiries &lt;span class="badge badge--count" aria-label="2 unread enquiries"&gt;2&lt;/span&gt;&lt;/a&gt;
-    &lt;button class="icon-btn site-nav__menu" type="button" aria-label="Menu, 2 unread enquiries" aria-haspopup="dialog"&gt;…&lt;/button&gt;
-    &lt;button class="avatar" type="button" aria-label="Account menu for Kendra Baptiste" aria-haspopup="menu"&gt;KB&lt;/button&gt;
+    &lt;a class="site-nav__link site-nav__extra" href="/studios" aria-current="page"&gt;Studios&lt;/a&gt;
+    …
+    &lt;button class="btn btn--ghost site-nav__menu" type="button" aria-haspopup="dialog" aria-expanded="false"&gt;
+      &lt;svg class="icon" aria-hidden="true" …&gt;&lt;/svg&gt;Menu
+    &lt;/button&gt;
   &lt;/nav&gt;
 &lt;/header&gt;</code></pre></details>
       </div>
 
-      <h3>Site menu on phones</h3>
+      <h3>Site menu sheet</h3>
       <div class="ds-example">
-        <div class="ds-example__canvas ds-example__canvas--canvas">
-          <div class="ds-frame ds-frame--phone ds-frame--tall" style="width: 100%;">
-            <div class="ds-frame__page">Caterers listing (inert behind the menu)</div>
-            <div class="sheet" role="dialog" aria-labelledby="nav-menu-title">
+        <div class="ds-example__canvas ds-example__canvas--canvas" style="align-items: flex-start; justify-content: center;">
+          <div class="ds-frame ds-frame--phone ds-frame--tall" style="flex: 1 1 18rem;">
+            <div class="sheet" role="dialog" aria-labelledby="nv-menu-title" style="inset: 0; width: 100%; box-shadow: none;">
               <div class="sheet__header">
-                <h3 class="sheet__title" id="nav-menu-title">Menu</h3>
-                <button class="icon-btn" type="button" aria-label="Close menu"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+                <h4 class="sheet__title" id="nv-menu-title">Menu</h4>
+                <button class="btn btn--ghost btn--icon" type="button" aria-label="Close"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
               </div>
-              <nav class="sheet__body" aria-label="Menu example">
-                <ul class="filter-list">
-                  <li>Caterers</li>
-                  <li>Occasions</li>
-                  <li>Inbox <span class="badge badge--count" aria-label="1 unread enquiry">1</span></li>
-                  <li>Account</li>
-                </ul>
-                <div class="stack stack--sm">
-                  <p class="text-muted">Signed in as Marcia Thompson</p>
-                  <button class="btn" type="button">Sign out</button>
-                </div>
-                <ul class="cluster text-sm" style="list-style: none; padding: 0; margin: 0; gap: 0 var(--space-5);"><li>About</li><li>Privacy</li><li>Terms</li></ul>
-              </nav>
+              <div class="sheet__body">
+                <nav aria-label="Primary (menu example)">
+                  <ul class="section-list">
+                    <li><a class="section-link" href="../../mocks/pages/studios/default.html"><span class="section-link__body"><span class="section-link__title">Studios</span><span class="section-link__meta">7 rental studios, measured the same way</span></span></a></li>
+                    <li><a class="section-link" href="../../mocks/pages/spots/default.html"><span class="section-link__body"><span class="section-link__title">Spots</span><span class="section-link__meta">5 outdoor locations with permit notes</span></span></a></li>
+                    <li><a class="section-link" href="../../mocks/pages/map/default.html"><span class="section-link__body"><span class="section-link__title">Map</span><span class="section-link__meta">Every studio and spot on one map</span></span></a></li>
+                    <li><a class="section-link" href="../../mocks/pages/compare/default.html"><span class="section-link__body"><span class="section-link__title">Compare</span><span class="section-link__meta">Up to 4 studios side by side</span></span></a></li>
+                    <li><a class="section-link" href="../../mocks/pages/guides/default.html"><span class="section-link__body"><span class="section-link__title">Guides</span><span class="section-link__meta">Short lists, like the best studios under $120</span></span></a></li>
+                  </ul>
+                </nav>
+                <nav aria-label="About ShotThere (menu example)">
+                  <ul class="section-list">
+                    <li><a class="section-link" href="../../mocks/pages/editorial-policy/default.html"><span class="section-link__body"><span class="section-link__title">Editorial policy</span><span class="section-link__meta">How reviews are made, paid for and corrected</span></span></a></li>
+                  </ul>
+                </nav>
+              </div>
+            </div>
+          </div>
+          <div class="ds-frame ds-frame--phone ds-frame--tall" style="flex: 1 1 18rem;">
+            <div class="sheet" role="dialog" aria-labelledby="nv-admin-menu-title" style="inset: 0; width: 100%; box-shadow: none;">
+              <div class="sheet__header">
+                <h4 class="sheet__title" id="nv-admin-menu-title">Menu</h4>
+                <button class="btn btn--ghost btn--icon" type="button" aria-label="Close"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+              </div>
+              <div class="sheet__body">
+                <nav aria-label="Administration (menu example)">
+                  <ul class="section-list">
+                    <li><a class="section-link" href="../../mocks/pages/admin-dashboard/default.html" aria-current="page"><span class="section-link__body"><span class="section-link__title">Dashboard</span><span class="section-link__meta">2 items need re-verifying</span></span></a></li>
+                    <li><a class="section-link" href="../../mocks/pages/admin-studios/default.html"><span class="section-link__body"><span class="section-link__title">Studios</span><span class="section-link__meta">7 published, 2 draft</span></span></a></li>
+                    <li><a class="section-link" href="../../mocks/pages/admin-spots/default.html"><span class="section-link__body"><span class="section-link__title">Spots</span><span class="section-link__meta">5 published, 1 draft</span></span></a></li>
+                    <li><a class="section-link" href="../../mocks/pages/admin-guides/default.html"><span class="section-link__body"><span class="section-link__title">Guides</span><span class="section-link__meta">3 published, 1 draft</span></span></a></li>
+                    <li><a class="section-link" href="../../mocks/pages/home/default.html"><span class="section-link__body"><span class="section-link__title">View site</span><span class="section-link__meta">The public home page</span></span></a></li>
+                  </ul>
+                </nav>
+              </div>
+              <form class="sheet__footer" action="../../mocks/pages/sign-in/signed-out.html" method="post"><button class="btn" type="submit">Sign out</button></form>
             </div>
           </div>
         </div>
-        <div class="ds-example__caption"><span>A full-height sheet (below 48rem only), with the same filter-list rows as the side nav: the current page in pepper, counts as badges, then who is signed in, Sign out, and the footer links.</span><span>Source: dialogs/site-menu/signed-in</span></div>
+        <div class="ds-example__caption"><span>Visitor and admin menus at phone width. Focus starts on Close; Escape or Close returns it to Menu. Sign out sits alone in the footer, away from the links.</span><span>Sources: dialogs/site-menu/default, dialogs/site-menu/admin</span></div>
       </div>
 
-      <h3>Work layout: side nav, page intro, preview pane</h3>
-      <div class="ds-example">
-        <div class="ds-example__canvas ds-example__canvas--stack ds-example__canvas--canvas">
-          <div class="work-layout work-layout--preview" style="margin-top: 0;">
-            <nav class="side-nav" aria-label="Dashboard example">
-              <ul class="filter-list">
-                <li>Overview</li>
-                <li>Business details</li>
-                <li>Photos</li>
-                <li>Menu</li>
-              </ul>
-              <ul class="filter-list">
-                <li>Enquiries <span class="filter-list__count">2 unread</span></li>
-                <li>Account</li>
-              </ul>
-            </nav>
-            <div class="work-main">
-              <svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></svg>Overview
-              <div class="page-intro" style="margin-top: 0;">
-                <h3 style="font: var(--text-h1);">Business details</h3>
-                <p class="save-status"><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><path d="m5 12 5 5 9-10"/></svg>All changes saved</p>
-              </div>
-              <div class="field">
-                <label class="field__label" for="nav-name">Business name</label>
-                <input class="input" id="nav-name" type="text" value="Pelau House">
-              </div>
-            </div>
-            <aside class="preview-pane" aria-labelledby="nav-preview-title">
-              <p class="preview-pane__label" id="nav-preview-title">Your listing card</p>
-              <span class="photo"><img src="../assets/img/pelau-house.jpg" alt="Chicken pelau in a steel pot with lime and cucumber chutney" width="200" height="200"></span><span class="caterer-card__name">Pelau House</span><span class="caterer-card__meta">Trinidadian &amp; Tobagonian · Scarborough</span>
-            </aside>
-          </div>
-        </div>
-        <div class="ds-example__caption"><span>Side nav from 62rem (two groups: the profile, then the work), preview pane from 75rem, eyebrow "Overview" only below 62rem.</span><span>Sources: dashboard/default, profile-details/default</span></div>
-      </div>
-
-      <h3>The same screens on a phone</h3>
-      <p class="ds-note">Mock previews are not included in this copy; the ShotThere mocks will replace them.</p>
-      <p>Below 62rem the dashboard Overview ends with a <code>.section-list</code> ("Your profile": each row a tick, a title, a one-line status such as "6 photos", and a chevron), and a thread is a full-width page with "Back to inbox" above the heading.</p>
-
-      <h3>Page layouts</h3>
+      <h3>Browse, review, compare</h3>
+      <p>The visitor's main path, and the links that make each step:</p>
       <div class="ds-table-wrap"><table class="ds-table">
-        <thead><tr><th scope="col">Layout</th><th scope="col">Class</th><th scope="col">Below 62rem</th><th scope="col">From 62rem</th><th scope="col">Mock</th></tr></thead>
+        <thead><tr><th scope="col">Step</th><th scope="col">Screen and URL</th><th scope="col">Moves on with</th></tr></thead>
         <tbody>
-          <tr><td>Browse (listing)</td><td><code>.browse</code></td><td>Title and count, then a filter bar (sheet &lt;48rem, dropdowns 48–62rem), then results</td><td>Filter column left (cuisine list, area search and list), results right</td><td>caterers/default</td></tr>
-          <tr><td>Caterer page</td><td><code>.caterer-layout</code></td><td>One column; sticky enquiry bar at the bottom once the first "Send an enquiry" scrolls away</td><td>Content plus a sticky enquiry panel on the right</td><td>caterer/default</td></tr>
-          <tr><td>Inbox</td><td><code>.inbox-layout</code></td><td>The list, or the thread (<code>--thread</code>) with "Back to inbox"</td><td>List (20–26rem) beside the thread; "Choose an enquiry to read it here." when none is open</td><td>inbox/default, thread/default</td></tr>
-          <tr><td>Work area</td><td><code>.work-layout</code>, <code>--preview</code></td><td>One column; Overview lists sections; section pages have the eyebrow</td><td>Side nav + main; preview pane added from 75rem</td><td>dashboard/default, admin-queue/default</td></tr>
-          <tr><td>Auth and system</td><td><code>.auth</code>, <code>.system-page</code></td><td>Centred, 28rem (34rem for system pages)</td><td>Same, with more top space</td><td>sign-in/default, not-found/default</td></tr>
+          <tr><td>1 · Arrive</td><td>Home <code>/</code></td><td>Latest reviews cards, All studios, the guides, two outdoor spots</td></tr>
+          <tr><td>2 · Narrow</td><td>Studios <code>/studios?costMax=150&amp;light=medium&amp;sort=cost</code></td><td>Filters (sheet below LG, sidebar at LG), Sort by, removable chips; a card's name opens the review</td></tr>
+          <tr><td>3 · Read</td><td>The Junction Loft <code>/studios/the-junction-loft</code></td><td>Breadcrumb Studios; Book on the studio's site (external); Add to compare; Featured in → guide</td></tr>
+          <tr><td>4 · Collect</td><td>Any list or review, with the compare bar fixed to the bottom</td><td>Compare (2 to 4 selected), Clear</td></tr>
+          <tr><td>5 · Compare</td><td><code>/compare?studios=the-junction-loft,leslieville-daylight-studio,ossington-blackbox</code></td><td>Copy link, Change studios, each column's name → its review</td></tr>
         </tbody>
       </table></div>
+      <p>Side paths join the same reviews: Spots <code>/spots</code> → Evergreen Brick Works → Rain backup studios; Map <code>/map</code> → marker popup → View the review; Guides <code>/guides</code> → Best natural light → Read the full review.</p>
+
+      <h3>Admin: dashboard sections and editors</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--canvas ds-example__canvas--stack">
+          <ul class="stat-grid">
+            <li class="stat-tile"><h4 class="stat-tile__title"><a href="../../mocks/pages/admin-studios/default.html">Studios</a></h4><p class="stat-tile__counts">7 published, 2 draft</p><a class="btn btn--primary" href="../../mocks/pages/studio-editor/new.html"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>New studio</a></li>
+            <li class="stat-tile"><h4 class="stat-tile__title"><a href="../../mocks/pages/admin-spots/default.html">Spots</a></h4><p class="stat-tile__counts">5 published, 1 draft</p><a class="btn" href="../../mocks/pages/spot-editor/new.html"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>New spot</a></li>
+            <li class="stat-tile"><h4 class="stat-tile__title"><a href="../../mocks/pages/admin-guides/default.html">Guides</a></h4><p class="stat-tile__counts">3 published, 1 draft</p><a class="btn" href="../../mocks/pages/guide-editor/new.html"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>New guide</a></li>
+          </ul>
+          <ul class="admin-list">
+            <li class="admin-row"><div class="admin-row__body"><span class="admin-row__title">Ossington Blackbox <span class="badge badge--warning">Stale</span></span><span class="admin-row__meta">Studio · Prices verified <time datetime="2026-03-02">2 Mar 2026</time> (225 days ago)</span></div><div class="admin-row__actions"><a class="btn btn--sm" href="../../mocks/pages/studio-editor/published.html">Edit<span class="visually-hidden"> Ossington Blackbox prices</span></a></div></li>
+          </ul>
+          <nav aria-label="Breadcrumb (example)"><ol class="breadcrumb"><li><a href="../../mocks/pages/admin-studios/default.html">Studios</a></li><li aria-current="page">Corktown Garage Studio</li></ol></nav>
+        </div>
+        <div class="ds-example__caption"><span>Dashboard: one tile per content type (the title opens the list, the button opens a new editor), then Needs re-verification and Due soon, whose rows open the editor. In the editor, the breadcrumb leads back to its list.</span><span>Sources: pages/admin-dashboard/default, pages/studio-editor/default</span></div>
+      </div>
+      <p>Admin paths: <code>/admin/sign-in</code> → <code>/admin</code> (Dashboard) → <code>/admin/studios</code> → Edit → <code>/admin/studios/:id</code>, or New studio → <code>/admin/studios/new</code>. After Create studio the editor's own address replaces <code>/new</code>, so Back does not create a second studio. A session that expires mid-edit returns to the same editor after signing in.</p>
+
+      <h3>URL state</h3>
+      <div class="ds-table-wrap"><table class="ds-table">
+        <thead><tr><th scope="col">Screen</th><th scope="col">Parameters</th><th scope="col">Example</th><th scope="col">Rules</th></tr></thead>
+        <tbody>
+          <tr><td>Studios</td><td><code>costMin</code>, <code>costMax</code>, <code>hood</code> (repeated), <code>light</code>, <code>cyc</code>, <code>space</code>, <code>gear</code> (repeated), <code>parking</code>, <code>sort</code> (<code>recent</code>, <code>cost</code>, <code>score</code>)</td><td><code>/studios?costMax=120&amp;cyc=yes&amp;parking=on-site</code></td><td>Unknown values are ignored without an error; a minimum above the maximum is treated as unset; the default sort is left out of the URL</td></tr>
+          <tr><td>Spots</td><td><code>type</code>, <code>use</code>, <code>permit</code></td><td><code>/spots?use=family&amp;permit=none-needed</code></td><td>Same as studios</td></tr>
+          <tr><td>Map</td><td><code>type</code> (<code>studios</code>, <code>spots</code>), <code>view</code> (<code>map</code>, <code>list</code>)</td><td><code>/map?type=studios</code>, <code>/map?view=list</code></td><td><code>view</code> matters only below LG, where map and list take turns</td></tr>
+          <tr><td>Compare</td><td><code>studios</code>: comma-separated slugs, in order</td><td><code>/compare?studios=the-junction-loft,leslieville-daylight-studio</code></td><td>Unknown or draft slugs dropped with a message; more than 4 keep the first 4; fewer than 2 valid show the empty state</td></tr>
+          <tr><td>Admin lists</td><td><code>q</code></td><td><code>/admin/studios?q=junction</code></td><td>Matches name or neighbourhood, ignoring case</td></tr>
+        </tbody>
+      </table></div>
+      <p>Changing a filter, the sort or the map view pushes a history entry, so Back restores the previous view. The compare <i>selection</i> is the exception: it is kept in the browser (it survives a reload and a visit to a review) and becomes a URL only when Compare opens the comparison.</p>
     </section>
 
     <section class="ds-section" id="states"><h2><a href="#states">States</a></h2>
-      <div class="ds-table-wrap"><table class="ds-table">
-        <thead><tr><th scope="col">State</th><th scope="col">Header link</th><th scope="col">Side nav / menu row</th><th scope="col">Segment</th></tr></thead>
+      <div class="ds-matrix"><table>
+        <thead><tr><th scope="col">Element</th><th scope="col">Default</th><th scope="col">Hover</th><th scope="col">Focus</th><th scope="col">Current</th><th scope="col">Expanded</th></tr></thead>
         <tbody>
-          <tr><td>Default</td><td><span class="site-nav__link">Occasions</span></td><td><span class="filter-list__item">Photos</span></td><td><ul class="segmented" style="margin: 0;"><li>Open <span class="filter-list__count">1</span></li></ul></td></tr>
-          <tr><td>Hover</td><td><span class="site-nav__link" data-state="hover">Occasions</span></td><td><span class="filter-list__item" data-state="hover">Photos</span></td><td><ul class="segmented" style="margin: 0;"><li>Open <span class="filter-list__count">1</span></li></ul></td></tr>
-          <tr><td>Current</td><td><span class="site-nav__link" aria-current="page">Caterers</span></td><td><span class="filter-list__item" aria-current="page">Business details</span></td><td><ul class="segmented" style="margin: 0;"><li>All <span class="filter-list__count">4</span></li></ul></td></tr>
-          <tr><td>With count</td><td><span class="site-nav__link">Inbox <span class="badge badge--count">1</span></span></td><td><span class="filter-list__item">Enquiries <span class="filter-list__count">2 unread</span></span></td><td>—</td></tr>
+          <tr><th scope="row">Header link</th><td><a class="site-nav__link" href="#states">Spots</a></td><td><a class="site-nav__link" href="#states" data-state="hover">Spots</a></td><td><a class="site-nav__link" href="#states" data-state="focus" style="outline: var(--focus-ring-width) solid var(--color-focus-ring); outline-offset: var(--focus-ring-offset);">Spots</a></td><td><a class="site-nav__link" href="#states" aria-current="page">Studios</a></td><td>—</td></tr>
+          <tr><th scope="row">Menu button</th><td><button class="btn btn--ghost" type="button" aria-haspopup="dialog" aria-expanded="false">Menu</button></td><td><button class="btn btn--ghost" type="button" data-state="hover">Menu</button></td><td><button class="btn btn--ghost" type="button" data-state="focus" style="outline: var(--focus-ring-width) solid var(--color-focus-ring); outline-offset: var(--focus-ring-offset);">Menu</button></td><td>—</td><td><button class="btn btn--ghost" type="button" aria-haspopup="dialog" aria-expanded="true">Menu</button></td></tr>
+          <tr><th scope="row">Breadcrumb</th><td><ol class="breadcrumb"><li><a href="#states">Studios</a></li></ol></td><td><ol class="breadcrumb"><li><a href="#states" data-state="hover">Studios</a></li></ol></td><td>—</td><td><ol class="breadcrumb"><li aria-current="page">The Junction Loft</li></ol></td><td>—</td></tr>
         </tbody>
       </table></div>
-      <p>The header's current link is semibold ink, because the header is quiet and always present. Side nav, site menu and segments mark the current item in pepper (<code>--color-fg-accent</code>), the "you are here" colour. Unread and waiting counts refresh within 60 seconds without a reload.</p>
       <h3>Both themes</h3>
       <div class="ds-themes">
-        <div data-theme="light"><ul class="filter-list"><li><span class="filter-list__item">Overview</span></li><li><span class="filter-list__item" aria-current="page">Business details</span></li><li><span class="filter-list__item">Enquiries <span class="filter-list__count">2 unread</span></span></li></ul></div>
-        <div data-theme="dark"><ul class="filter-list"><li><span class="filter-list__item">Overview</span></li><li><span class="filter-list__item" aria-current="page">Business details</span></li><li><span class="filter-list__item">Enquiries <span class="filter-list__count">2 unread</span></span></li></ul></div>
+        <div data-theme="light"><nav class="site-nav" aria-label="Light theme example" style="margin: 0; flex-wrap: wrap;"><a class="site-nav__link" href="#states" aria-current="page">Studios</a><a class="site-nav__link" href="#states">Spots</a><a class="site-nav__link" href="#states">Map</a></nav><ol class="breadcrumb" style="margin-top: var(--space-3);"><li><a href="#states">Studios</a></li><li aria-current="page">The Junction Loft</li></ol></div>
+        <div data-theme="dark"><nav class="site-nav" aria-label="Dark theme example" style="margin: 0; flex-wrap: wrap;"><a class="site-nav__link" href="#states" aria-current="page">Studios</a><a class="site-nav__link" href="#states">Spots</a><a class="site-nav__link" href="#states">Map</a></nav><ol class="breadcrumb" style="margin-top: var(--space-3);"><li><a href="#states">Studios</a></li><li aria-current="page">The Junction Loft</li></ol></div>
       </div>
     </section>
 
     <section class="ds-section" id="responsive"><h2><a href="#responsive">Responsive behaviour</a></h2>
-      <div class="ds-table-wrap"><table class="ds-table">
-        <thead><tr><th scope="col">Width</th><th scope="col">Header</th><th scope="col">Work areas and inbox</th><th scope="col">Listing</th></tr></thead>
-        <tbody>
-          <tr><td>&lt; 22.5rem</td><td>The "for caterers" / "Operator" tag hides so the header fits 320px</td><td rowspan="2">One column; Overview lists sections; eyebrow back links; inbox shows list or thread</td><td rowspan="2">"Filters" trigger opens a full-height sheet; "Area or postal code" opens a bottom sheet</td></tr>
-          <tr><td>&lt; 48rem</td><td>Wordmark, search, menu button (with count), avatar only where it fits</td></tr>
-          <tr><td>48–62rem</td><td>Text links show, menu button hides</td><td>Still one column</td><td>Cuisine and Area dropdowns under the title</td></tr>
-          <tr><td>62–75rem</td><td>Full header</td><td>Side nav; inbox list beside thread</td><td>Filter column</td></tr>
-          <tr><td>≥ 75rem</td><td>Full header, container max width</td><td>Preview pane added to the caterer editor</td><td>Three columns of caterers</td></tr>
-        </tbody>
-      </table></div>
-      <p>The header respects the top safe area (<code>env(safe-area-inset-top)</code>); the sticky enquiry bar, reply box and sheet footers respect the bottom one.</p>
+      <ul>
+        <li><b>Below 48rem:</b> header links (<code>.site-nav__extra</code>) hide and Menu (<code>.site-nav__menu</code>) shows; the menu is a full-height sheet that respects the top and bottom safe areas. Below 24rem the wordmark's tag hides so the header never scrolls sideways.</li>
+        <li><b>From 48rem:</b> all links sit in the header; the sheet is not used.</li>
+        <li><b>Breadcrumbs</b> wrap; the current crumb keeps its full name.</li>
+        <li><b>The compare bar</b> is fixed to the bottom at every width, clears the home indicator, and the page pads its end so the last card and the footer stay visible.</li>
+        <li><b>The map page</b> drops the footer and fills the viewport under the header; below LG the Map / List toggle switches views.</li>
+      </ul>
     </section>
 
     <section class="ds-section" id="accessibility"><h2><a href="#accessibility">Accessibility</a></h2>
       <h3>Role and pattern</h3>
-      <p>Every page has a skip link to <code>#main</code>, a <code>&lt;header&gt;</code>, a <code>&lt;nav aria-label="Primary"&gt;</code>, one <code>&lt;main&gt;</code> and one <code>&lt;h1&gt;</code>. Work areas add <code>&lt;nav aria-label="Dashboard"&gt;</code>; the preview pane is an <code>&lt;aside&gt;</code> labelled by its heading. The current page uses <code>aria-current="page"</code>; status segments are links (with <code>aria-current</code>) because each is a URL. The avatar is a menu button (<a href="https://www.w3.org/WAI/ARIA/apg/patterns/menu-button/">APG Menu Button</a>); the menu icon opens a modal sheet (<a href="https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/">APG Dialog</a>).</p>
+      <p>Landmarks on every page: <code>header</code>, <code>nav</code> with distinct names ("Primary", "Administration", "Breadcrumb", "Footer", "About ShotThere"), one <code>main</code>, <code>footer</code>. The menu is a modal dialog (<a href="https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/">APG Dialog (Modal)</a>) holding navigation lists; the breadcrumb follows the <a href="https://www.w3.org/WAI/ARIA/apg/patterns/breadcrumb/">APG Breadcrumb</a> pattern.</p>
       <h3>Keyboard</h3>
       <table class="ds-table ds-keys"><thead><tr><th scope="col">Key</th><th scope="col">Action</th></tr></thead><tbody>
-        <tr><td><kbd>Tab</kbd> (first)</td><td>Shows the skip link; <kbd>Enter</kbd> jumps to the main content.</td></tr>
-        <tr><td><kbd>Tab</kbd></td><td>Wordmark, header links, search, menu, avatar, then the side nav, then main.</td></tr>
-        <tr><td><kbd>Enter</kbd> on the avatar</td><td>Opens the account menu; <kbd>↑</kbd> <kbd>↓</kbd> move, <kbd>Esc</kbd> closes and returns focus to the avatar.</td></tr>
-        <tr><td><kbd>Esc</kbd> in the site menu</td><td>Closes it and returns focus to the menu button.</td></tr>
+        <tr><td><kbd>Tab</kbd> from the top</td><td>"Skip to content" first, then the wordmark, then the header links or Menu.</td></tr>
+        <tr><td><kbd>Enter</kbd> on Menu</td><td>Opens the sheet; focus moves to Close.</td></tr>
+        <tr><td><kbd>Esc</kbd></td><td>Closes the menu and returns focus to Menu.</td></tr>
+        <tr><td>Browser <kbd>Back</kbd></td><td>Restores the previous filters, sort or map view.</td></tr>
       </tbody></table>
       <h3>Focus</h3>
-      <p>After a client-side navigation focus moves to the new page's <code>&lt;h1&gt;</code>. The sticky header and bottom bars never cover the focused element (<code>scroll-padding-top</code> is the header height; WCAG 2.4.11).</p>
+      <p>On a route change focus moves to <code>main</code> (which has <code>tabindex="-1"</code> and shows no ring). Opening the menu traps focus inside it; the page behind is <code>inert</code>.</p>
       <h3>Labelling</h3>
-      <p>Counts are part of the name: "Inbox, 1 unread enquiry" via <code>aria-label</code> on the badge, "Menu, 1 unread enquiry" on the menu button. The avatar says whose account it is: "Account menu for Marcia Thompson". Two navs on a page have different labels.</p>
+      <p>The current page is marked with <code>aria-current="page"</code> in the header, the menu and the breadcrumb, never by colour alone (it is also semibold). Menu says "Menu" in text beside its icon.</p>
       <h3>Contrast</h3>
       <div class="ds-example__canvas ds-example__canvas--stack" style="padding: 0; gap: var(--space-2);">
         <div class="ds-pair"><span>Header link</span><span class="ds-pair__ratio" data-contrast="--color-fg-muted|--color-bg-canvas" data-min="4.5"></span></div>
-        <div class="ds-pair"><span>Current section in pepper</span><span class="ds-pair__ratio" data-contrast="--color-fg-accent|--color-bg-canvas" data-min="4.5"></span></div>
-        <div class="ds-pair"><span>Count beside a section</span><span class="ds-pair__ratio" data-contrast="--color-fg-subtle|--color-bg-canvas" data-min="4.5"></span></div>
-        <div class="ds-pair"><span>Unread badge</span><span class="ds-pair__ratio" data-contrast="--color-fg-on-danger|--color-danger-solid" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Current link</span><span class="ds-pair__ratio" data-contrast="--color-fg-default|--color-bg-canvas" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Menu row description</span><span class="ds-pair__ratio" data-contrast="--color-fg-muted|--color-bg-surface-raised" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Breadcrumb separator</span><span class="ds-pair__ratio" data-contrast="--color-fg-subtle|--color-bg-canvas" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Focus ring on the page</span><span class="ds-pair__ratio" data-contrast="--color-focus-ring|--color-bg-canvas" data-min="3"></span></div>
       </div>
       <h3>Motion</h3>
-      <p>The site menu slides up on phones and in from the right on wider screens; reduced motion removes the slide. Page changes have no transition.</p>
+      <p>The sheet slides up on phones; reduced motion removes the slide.</p>
       <h3>Touch</h3>
-      <p>Header links, icon buttons, the avatar and filter-list rows are all 44px tall; section-list rows are 72px.</p>
+      <p>Header links and Menu are 44px tall and 8px apart on phones; menu rows are 72px tall.</p>
     </section>
 
     <section class="ds-section" id="content"><h2><a href="#content">Content</a></h2>
       <ul>
-        <li>Nav labels are one or two plain nouns: "Caterers", "Occasions", "Inbox", "Dashboard", "My page", "Review queue", "Breach register".</li>
-        <li>Eyebrow links name the place they go: "Caterers", "Overview", "Back to inbox". Use "Back to …" only when the parent's name alone would be unclear.</li>
-        <li>The page heading is the thing itself: "Pelau House", "Business details", "Inbox". Subtitles are one short line: "Your conversations with caterers", "Append-only · newest first · kept for 7 years".</li>
-        <li>Section-list meta says the state in a few words: "6 photos", "23 reviews · 1 without a response", "Replace photos 2 and 5".</li>
-      </ul>
-      <h3>Back behaviour</h3>
-      <ul>
-        <li>Filters, status segments, sort and page number live in the URL (<code>/caterers?cuisine=jamaican&amp;area=scarborough</code>, <code>?status=open</code>), so the browser's Back restores the previous view and its scroll position.</li>
-        <li>The eyebrow link always goes to the parent, not "history back", so it works from a shared link.</li>
-        <li>Closing a dialog or sheet returns focus to the control that opened it. Whether the phone back gesture should close full-screen overlays (enquiry, filters, site menu) is not shown in the mocks; record it as an open question before implementation.</li>
-        <li>After sign-in, people return to where they were, with an unfinished enquiry restored.</li>
+        <li>Navigation labels are the plural nouns of the catalogue: Studios, Spots, Guides; plus Map, Compare, Dashboard, View site, Sign out. Use "Spots" in navigation and "outdoor spots" in sentences ("Browse outdoor spots").</li>
+        <li>Menu descriptions give a fact, not a slogan: "7 rental studios, measured the same way", "Up to 4 studios side by side", "2 items need re-verifying".</li>
+        <li>Breadcrumbs use the list name and the item's own name, never "Home" or "Edit".</li>
+        <li>Back actions name the destination: "Back to studios", "Back to dashboard", "Go to the home page".</li>
       </ul>
     </section>
 
     <section class="ds-section" id="do-dont"><h2><a href="#do-dont">Do and don't</a></h2>
       <div class="ds-dodont">
-        <figure class="ds-do"><div class="ds-example__canvas"><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></svg>Overview</div><figcaption>One eyebrow link up one level.</figcaption></figure>
-        <figure class="ds-dont"><div class="ds-example__canvas"><ol class="breadcrumb"><li>Dashboard</li><li>Profile</li><li><span aria-current="page">Business details</span></li></ol></div><figcaption>No breadcrumb trails; the product is two levels deep.</figcaption></figure>
-        <figure class="ds-do"><div class="ds-example__canvas"><ul class="segmented" style="margin: 0;" aria-label="Filter by kind, example"><li>All <span class="filter-list__count">7</span></li><li>Reports <span class="filter-list__count">2</span></li></ul></div><figcaption>Segments filter the list they sit above, with counts in <code>.filter-list__count</code>.</figcaption></figure>
-        <figure class="ds-dont"><div class="ds-example__canvas"><ul class="segmented" style="margin: 0;" aria-label="Mixed segments, example"><li>All 7</li><li>Held reviews 1</li></ul></div><figcaption>Don't put a link to another page among the segments (the queue's "Held reviews 1" did), or type counts into the label.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas"><code>/studios?costMax=150&amp;light=medium&amp;sort=cost</code></div><figcaption>Keep filters and sort in the URL so a shared link shows the same five studios.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas"><code>/studios</code><span class="text-caption">filters held in memory</span></div><figcaption>Don't keep list state only in memory: reload and Back would lose it.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas"><span class="section-link__meta">Studios · 7 published, 2 draft</span></div><figcaption>Write counts the same way everywhere: "7 published, 2 draft", as the dashboard tiles do.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas"><span class="section-link__meta">Studios · 7 published · 2 drafts</span></div><figcaption>Don't let the admin menu and list headers invent their own separators and plurals.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--stack"><div class="compare-bar__actions"><button class="btn btn--ghost" type="button">Clear</button><a class="btn btn--primary" href="../../mocks/pages/compare/default.html">Compare</a></div></div><figcaption>Put Compare, the way forward, last in the bar on every page.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--stack"><div class="compare-bar__actions"><a class="btn btn--primary" href="../../mocks/pages/compare/default.html">Compare</a><button class="btn btn--ghost" type="button">Clear</button></div></div><figcaption>Don't swap the order on the review page: the bar must read the same wherever it appears.</figcaption></figure>
       </div>
     </section>
 
     <section class="ds-section" id="sources"><h2><a href="#sources">Sources</a></h2>
       <ul>
-        <li>pages/caterers/default, signed-in, pages/caterer/default</li>
-        <li>pages/dashboard/default, pages/profile-details/default, pages/admin-queue/default</li>
-        <li>pages/inbox/default, pages/thread/default</li>
-        <li>dialogs/site-menu/default, signed-in, caterer, operator, dialogs/account-menu/default</li>
+        <li>Chrome: <a href="../../mocks/pages/home/default.html">home/default</a>, <a href="../../mocks/pages/studio/default.html">studio/default</a>, <a href="../../mocks/pages/admin-dashboard/default.html">admin-dashboard/default</a>, <a href="../../mocks/pages/studio-editor/default.html">studio-editor/default</a>, <a href="../../mocks/dialogs/site-menu/default.html">site-menu/default</a>, <a href="../../mocks/dialogs/site-menu/admin.html">site-menu/admin</a></li>
+        <li>Paths: <a href="../../mocks/pages/studios/filtered.html">studios/filtered</a>, <a href="../../mocks/pages/studios/selected.html">studios/selected</a>, <a href="../../mocks/pages/studio/in-compare.html">studio/in-compare</a>, <a href="../../mocks/pages/compare/default.html">compare/default</a>, <a href="../../mocks/pages/spot/default.html">spot/default</a>, <a href="../../mocks/pages/map/default.html">map/default</a>, <a href="../../mocks/pages/map/list.html">map/list</a>, <a href="../../mocks/pages/map/studios-only.html">map/studios-only</a>, <a href="../../mocks/pages/guide/default.html">guide/default</a></li>
+        <li>Admin: <a href="../../mocks/pages/admin-studios/default.html">admin-studios/default</a>, <a href="../../mocks/pages/studio-editor/error.html">studio-editor/error</a>, <a href="../../mocks/pages/sign-in/session-expired.html">sign-in/session-expired</a>, <a href="../../mocks/pages/sign-in/signed-out.html">sign-in/signed-out</a></li>
       </ul>
-      <p>Drift fixed during extraction: the caterer header's phone slot was a link to Enquiries styled as the menu button, and nothing opened dialogs/site-menu/caterer; the system uses a menu button ("Menu, 2 unread enquiries") that opens that sheet. The queue's segments typed counts into the label ("All 7") where the inbox used <code>.filter-list__count</code>, and mixed in a link to another page ("Held reviews 1"); segments use the count span and only filter. Open question 21 (Admin-only items shown to non-Admins) is unchanged.</p>
+      <p>Drift fixed during extraction: the compare bar's actions are Clear then Compare on the lists but Compare then Clear on the review page, and its landmark is "Studios to compare" in one and "Comparison" in the other; the system uses Clear, Compare and "Studios to compare". Counts read "7 published, 2 draft" (dashboard), "7 published · 2 drafts" (admin menu) and "7 published · 2 draft" (admin list header); the system uses the dashboard's form. The admin menu in the mock omits the header's View site link from its inert copy of the header; harmless, but the real header always has it. Menu is drawn as a link to the dialog mock; in the product it is a <code>&lt;button&gt;</code> with <code>aria-expanded</code>.</p>
     </section>
 
-    <footer class="ds-footer"><span>ShotThere design system · extracted from docs/mocks on 10 October 2026</span><a href="#top">Back to top</a></footer>
+    <footer class="ds-footer"><span>ShotThere design system · extracted from <a href="../../mocks/index.html">docs/mocks</a> on 13 October 2026</span><a href="#top">Back to top</a></footer>
   </main>
 </div>
 <script src="../assets/ds.js"></script>

@@ -1,0 +1,477 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Price block — ShotThere design system</title>
+<meta name="description" content="The ShotThere price block: the server-computed all-in cost of a standard 2-hour shoot with its working, the hourly rate, minimum and fees marked mandatory or optional, the verified date and the stale warning, in every state.">
+<link rel="stylesheet" href="../tokens/tokens.css">
+<link rel="stylesheet" href="../assets/components.css">
+<link rel="stylesheet" href="../assets/ds.css">
+</head>
+<body id="top">
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="ds-shell">
+  <nav class="ds-nav" aria-label="Design system">
+    <div class="ds-nav__brand"><a href="../index.html">ShotThere DS</a><button class="ds-theme-toggle" type="button" aria-pressed="false">☾ Dark</button></div>
+    <details open><summary>Foundations</summary><ul>
+      <li><a href="../foundations/color.html">Color</a></li>
+      <li><a href="../foundations/typography.html">Typography</a></li>
+      <li><a href="../foundations/spacing.html">Spacing</a></li>
+      <li><a href="../foundations/layout.html">Layout</a></li>
+      <li><a href="../foundations/elevation.html">Elevation</a></li>
+      <li><a href="../foundations/shape.html">Shape</a></li>
+      <li><a href="../foundations/motion.html">Motion</a></li>
+      <li><a href="../foundations/iconography.html">Iconography</a></li>
+      <li><a href="../foundations/theming.html">Theming</a></li>
+      <li><a href="../foundations/responsive.html">Responsive</a></li>
+      <li><a href="../foundations/accessibility.html">Accessibility</a></li>
+      <li><a href="../foundations/content.html">Content</a></li>
+    </ul></details>
+    <details open><summary>Actions</summary><ul>
+      <li><a href="../components/button.html">Button</a></li>
+      <li><a href="../components/icon-button.html">Icon button</a></li>
+      <li><a href="../components/button-group.html">Button group</a></li>
+      <li><a href="../components/link.html">Link</a></li>
+      <li><a href="../components/compare-bar.html">Compare toggle and bar</a></li>
+    </ul></details>
+    <details open><summary>Inputs</summary><ul>
+      <li><a href="../components/form-field.html">Form field</a></li>
+      <li><a href="../components/text-field.html">Text field</a></li>
+      <li><a href="../components/textarea.html">Textarea</a></li>
+      <li><a href="../components/select.html">Select</a></li>
+      <li><a href="../components/combobox.html">Combobox</a></li>
+      <li><a href="../components/checkbox.html">Checkbox</a></li>
+      <li><a href="../components/radio-group.html">Radio group</a></li>
+      <li><a href="../components/file-upload.html">File upload</a></li>
+      <li><a href="../components/form-layout.html">Form layout</a></li>
+      <li><a href="../components/signup.html">Email signup</a></li>
+    </ul></details>
+    <details open><summary>Navigation</summary><ul>
+      <li><a href="../components/skip-link.html">Skip link</a></li>
+      <li><a href="../components/site-header.html">Site header</a></li>
+      <li><a href="../components/footer.html">Footer</a></li>
+      <li><a href="../components/breadcrumb.html">Breadcrumb</a></li>
+      <li><a href="../components/filter.html">Filters</a></li>
+    </ul></details>
+    <details open><summary>Containers and overlays</summary><ul>
+      <li><a href="../components/container.html">Container</a></li>
+      <li><a href="../components/review-layout.html">Review layout</a></li>
+      <li><a href="../components/editor-layout.html">Editor layout</a></li>
+      <li><a href="../components/dialog.html">Dialog</a></li>
+      <li><a href="../components/sheet.html">Sheet</a></li>
+      <li><a href="../components/popover.html">Popover</a></li>
+      <li><a href="../components/lightbox.html">Lightbox</a></li>
+    </ul></details>
+    <details open><summary>Data display</summary><ul>
+      <li><a href="../components/location-card.html">Location card</a></li>
+      <li><a href="../components/table.html">Table</a></li>
+      <li><a href="../components/compare-table.html">Comparison table</a></li>
+      <li><a href="../components/list.html">List rows</a></li>
+      <li><a href="../components/description-list.html">Description list</a></li>
+      <li><a href="../components/price-block.html">Price block</a></li>
+      <li><a href="../components/score.html">Score and pips</a></li>
+      <li><a href="../components/shot-grid.html">Shot grid</a></li>
+      <li><a href="../components/video-poster.html">Episode poster</a></li>
+      <li><a href="../components/map.html">Map</a></li>
+      <li><a href="../components/guide-entry.html">Guide entry</a></li>
+      <li><a href="../components/stat-tile.html">Stat tile</a></li>
+      <li><a href="../components/image-manager.html">Image manager</a></li>
+      <li><a href="../components/disclosure.html">Disclosure</a></li>
+      <li><a href="../components/badge.html">Badge</a></li>
+      <li><a href="../components/status-label.html">Status label</a></li>
+      <li><a href="../components/chip.html">Chip</a></li>
+      <li><a href="../components/tag.html">Tag</a></li>
+    </ul></details>
+    <details open><summary>Feedback</summary><ul>
+      <li><a href="../components/inline-message.html">Inline message</a></li>
+      <li><a href="../components/alert.html">Alert</a></li>
+      <li><a href="../components/toast.html">Toast</a></li>
+      <li><a href="../components/progress.html">Progress</a></li>
+      <li><a href="../components/spinner.html">Spinner</a></li>
+      <li><a href="../components/skeleton.html">Skeleton</a></li>
+      <li><a href="../components/empty-state.html">Empty state</a></li>
+      <li><a href="../components/error-page.html">Error page</a></li>
+    </ul></details>
+    <details open><summary>Patterns</summary><ul>
+      <li><a href="../patterns/forms.html">Forms</a></li>
+      <li><a href="../patterns/feedback-and-loading.html">Feedback and loading</a></li>
+      <li><a href="../patterns/empty-and-error-states.html">Empty and error states</a></li>
+      <li><a href="../patterns/navigation.html">Navigation and page structure</a></li>
+      <li><a href="../patterns/dialogs-and-overlays.html">Dialogs and overlays</a></li>
+      <li><a href="../patterns/tables-and-lists.html">Data tables and lists</a></li>
+      <li><a href="../patterns/notifications.html">Notifications</a></li>
+      <li><a href="../patterns/content-and-tone.html">Content and tone</a></li>
+    </ul></details>
+  </nav>
+
+  <main id="main" class="ds-main">
+    <header class="ds-header">
+      <p class="ds-kicker">Component · Data display</p>
+      <h1>Price block</h1>
+      <p class="ds-lead">The price block opens every studio review: the all-in cost of a standard 2-hour shoot, a sentence saying how it was worked out, the hourly rate, the minimum booking and every fee marked mandatory or optional, and the date the prices were last checked, with a warning when that date is more than 183 days old.</p>
+      <div class="ds-meta"><span class="ds-pill ds-pill--ok">WCAG 2.2 AA</span><span class="ds-pill">Status: stable</span><span class="ds-pill"><code>.price-block</code></span><span class="ds-pill"><code>.price-block__allin</code></span><span class="ds-pill"><code>.price-block__verified</code></span></div>
+      <ul class="ds-toc"><li><a href="#overview">Overview</a></li><li><a href="#anatomy">Anatomy</a></li><li><a href="#variants">Variants</a></li><li><a href="#sizes">Sizes</a></li><li><a href="#states">States</a></li><li><a href="#responsive">Responsive behaviour</a></li><li><a href="#theming">Theming</a></li><li><a href="#accessibility">Accessibility</a></li><li><a href="#content">Content</a></li><li><a href="#do-dont">Do and don't</a></li><li><a href="#tokens">Tokens</a></li><li><a href="#code">Code</a></li><li><a href="#sources">Sources</a></li></ul>
+    </header>
+
+    <section class="ds-section" id="overview"><h2><a href="#overview">Overview</a></h2>
+      <p>Hourly rates don't compare: a $40.00 room with a 1-hour minimum and a $90.00 room with a 3-hour minimum cost very different amounts for the same shoot. So every studio gets one number, the <b>all-in cost of a standard 2-hour shoot</b>, computed by the server from the stored values (L2-004) and shown the same way everywhere:</p>
+      <p style="font: var(--text-h4);">All-in = hourly rate × the larger of 2 hours or the minimum booking + every mandatory fee</p>
+      <p>Optional fees are listed but never added. The price block is where the number is explained; the <a href="review-layout.html">summary panel</a>, the <a href="location-card.html">location card</a>, the <a href="compare-table.html">comparison</a>, the rain backup list and the guides repeat the figure without the working.</p>
+      <p>Use it once per studio review, as the first section, "Pricing". Spots have no price; their permit section reuses only the verified line (<code>.price-block__verified</code>) under a stacking <a href="table.html">table</a>.</p>
+    </section>
+
+    <section class="ds-section" id="anatomy"><h2><a href="#anatomy">Anatomy</a></h2>
+      <div class="ds-anatomy">
+        <figure class="ds-anatomy__figure" style="padding: var(--space-6); place-items: stretch;">
+          <div class="price-block">
+            <p class="price-block__allin" style="position: relative;"><strong>$145.00</strong><span>All-in for a standard 2-hour shoot: 2 hours at $60.00 plus the mandatory cleaning fee.</span>
+              <span class="ds-callout" style="left: -0.75rem; top: -0.75rem;" aria-hidden="true">1</span>
+              <span class="ds-callout" style="right: var(--space-2); top: var(--space-2);" aria-hidden="true">2</span>
+              <span class="ds-callout" style="right: var(--space-2); bottom: var(--space-2);" aria-hidden="true">3</span></p>
+            <dl class="kv" style="position: relative;">
+              <dt>Hourly rate</dt><dd class="num">$60.00</dd>
+              <dt>Minimum booking</dt><dd>2 hours</dd>
+              <dt>Cleaning fee</dt><dd><span class="num">$25.00</span> <span class="badge" style="position: relative;">Mandatory<span class="ds-callout" style="right: -1rem; top: -0.75rem;" aria-hidden="true">5</span></span></dd>
+              <dt>After-hours access</dt><dd><span class="num">$30.00</span> <span class="badge">Optional, not in all-in</span></dd>
+              <span class="ds-callout" style="left: -0.75rem; top: 0;" aria-hidden="true">4</span>
+            </dl>
+            <p class="price-block__verified" style="position: relative;">Prices verified <time datetime="2026-09-22">22 September 2026</time><span class="ds-callout" style="left: -1.75rem; top: 0;" aria-hidden="true">6</span></p>
+            <div class="alert alert--warning" style="position: relative;">
+              <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3 2 20h20L12 3z"/><path d="M12 10v4M12 17h0"/></svg>
+              <div class="alert__body"><p class="alert__title">Prices may be out of date</p><p>Shown only when the prices were verified more than 183 days ago.</p></div>
+              <span class="ds-callout" style="right: -0.75rem; top: -0.75rem;" aria-hidden="true">7</span>
+            </div>
+          </div>
+        </figure>
+        <ol class="ds-anatomy__list">
+          <li><div><b>All-in figure</b><small><code>&lt;strong&gt;</code> in <code>--text-h1</code> with tabular figures, CAD with two decimals: "$145.00", never "$145".</small></div></li>
+          <li><div><b>Working</b><small>One sentence in <code>--text-body-sm</code>, <code>--color-fg-muted</code>: the hours, the rate and which fees were added.</small></div></li>
+          <li><div><b>All-in panel</b> <code>.price-block__allin</code><small>A <code>&lt;p&gt;</code> on <code>--color-bg-surface-sunken</code>, <code>--radius-lg</code>, <code>--space-5</code> × <code>--space-6</code> padding, <code>--space-1</code> between figure and working.</small></div></li>
+          <li><div><b>Rate and fees</b> <code>.kv</code><small>A <a href="description-list.html">description list</a>: hourly rate, minimum booking, then one row per fee in the order the studio lists them. "Extra fees: None" when there are none.</small></div></li>
+          <li><div><b>Fee kind</b> <code>.badge</code><small>Neutral badge after the amount: "Mandatory" or "Optional, not in all-in".</small></div></li>
+          <li><div><b>Verified line</b> <code>.price-block__verified</code><small>"Prices verified" and a long date in <code>&lt;time datetime&gt;</code>, <code>--text-body-sm</code>, <code>--color-fg-muted</code>.</small></div></li>
+          <li><div><b>Stale warning</b> <code>.alert--warning</code><small>Only when stale. A warning <a href="alert.html">alert</a> with <code>role="status"</code> after the verified line (L2-005.2).</small></div></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="ds-section" id="variants"><h2><a href="#variants">Variants</a></h2>
+      <p>One component; the variants are the shapes the data takes. The working sentence changes with them, the layout never does.</p>
+      <h3>No fees</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--stack">
+          <div class="price-block">
+            <p class="price-block__allin"><strong>$80.00</strong><span>All-in for a standard 2-hour shoot: 2 hours at $40.00. No mandatory fees.</span></p>
+            <dl class="kv">
+              <dt>Hourly rate</dt><dd class="num">$40.00</dd>
+              <dt>Minimum booking</dt><dd>1 hour</dd>
+              <dt>Extra fees</dt><dd>None</dd>
+            </dl>
+            <p class="price-block__verified">Prices verified <time datetime="2026-09-30">30 September 2026</time></p>
+          </div>
+        </div>
+        <div class="ds-example__caption"><span>Kensington Window Room: the 1-hour minimum is below the standard 2 hours, so 2 hours are charged. The fees row still renders, as "None".</span></div>
+      </div>
+      <h3>Mandatory fee</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--stack">
+          <div class="price-block">
+            <p class="price-block__allin"><strong>$130.00</strong><span>All-in for a standard 2-hour shoot: 2 hours at $55.00 plus the mandatory cleaning fee.</span></p>
+            <dl class="kv">
+              <dt>Hourly rate</dt><dd class="num">$55.00</dd>
+              <dt>Minimum booking</dt><dd>2 hours</dd>
+              <dt>Cleaning fee</dt><dd><span class="num">$20.00</span> <span class="badge">Mandatory</span></dd>
+            </dl>
+            <p class="price-block__verified">Prices verified <time datetime="2026-07-15">15 July 2026</time></p>
+          </div>
+        </div>
+        <div class="ds-example__caption"><span>Bloordale Sun Studio (<code>pages/studio/minimal</code>): $55.00 × 2 + $20.00.</span></div>
+      </div>
+      <h3>Mandatory and optional fees</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--stack">
+          <div class="price-block">
+            <p class="price-block__allin"><strong>$145.00</strong><span>All-in for a standard 2-hour shoot: 2 hours at $60.00 plus the mandatory cleaning fee.</span></p>
+            <dl class="kv">
+              <dt>Hourly rate</dt><dd class="num">$60.00</dd>
+              <dt>Minimum booking</dt><dd>2 hours</dd>
+              <dt>Cleaning fee</dt><dd><span class="num">$25.00</span> <span class="badge">Mandatory</span></dd>
+              <dt>After-hours access</dt><dd><span class="num">$30.00</span> <span class="badge">Optional, not in all-in</span></dd>
+            </dl>
+            <p class="price-block__verified">Prices verified <time datetime="2026-09-22">22 September 2026</time></p>
+          </div>
+        </div>
+        <div class="ds-example__caption"><span>The Junction Loft (<code>pages/studio/default</code>): $60.00 × 2 + $25.00 = $145.00. The $30.00 after-hours fee is listed and excluded (L2-004.3).</span></div>
+        <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;div class="price-block"&gt;
+  &lt;p class="price-block__allin"&gt;&lt;strong&gt;$145.00&lt;/strong&gt;&lt;span&gt;All-in for a standard 2-hour shoot: 2 hours at $60.00 plus the mandatory cleaning fee.&lt;/span&gt;&lt;/p&gt;
+  &lt;dl class="kv"&gt;
+    &lt;dt&gt;Hourly rate&lt;/dt&gt;&lt;dd class="num"&gt;$60.00&lt;/dd&gt;
+    &lt;dt&gt;Minimum booking&lt;/dt&gt;&lt;dd&gt;2 hours&lt;/dd&gt;
+    &lt;dt&gt;Cleaning fee&lt;/dt&gt;&lt;dd&gt;&lt;span class="num"&gt;$25.00&lt;/span&gt; &lt;span class="badge"&gt;Mandatory&lt;/span&gt;&lt;/dd&gt;
+    &lt;dt&gt;After-hours access&lt;/dt&gt;&lt;dd&gt;&lt;span class="num"&gt;$30.00&lt;/span&gt; &lt;span class="badge"&gt;Optional, not in all-in&lt;/span&gt;&lt;/dd&gt;
+  &lt;/dl&gt;
+  &lt;p class="price-block__verified"&gt;Prices verified &lt;time datetime="2026-09-22"&gt;22 September 2026&lt;/time&gt;&lt;/p&gt;
+&lt;/div&gt;</code></pre></details>
+      </div>
+      <h3>Minimum above 2 hours</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--stack">
+          <div class="price-block">
+            <p class="price-block__allin"><strong>$270.00</strong><span>All-in for a standard 2-hour shoot: the 3-hour minimum applies, so 3 hours at $90.00. No mandatory fees.</span></p>
+            <dl class="kv">
+              <dt>Hourly rate</dt><dd class="num">$90.00</dd>
+              <dt>Minimum booking</dt><dd>3 hours</dd>
+              <dt>Extra fees</dt><dd>None</dd>
+            </dl>
+            <p class="price-block__verified">Prices verified <time datetime="2026-03-02">2 March 2026</time></p>
+          </div>
+        </div>
+        <div class="ds-example__caption"><span>Ossington Blackbox: a 2-hour shoot still pays for 3. The stale warning this studio also carries is shown under <a href="#states">States</a>.</span></div>
+      </div>
+      <h3>Verified line under a stacking table (spot permits)</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--stack">
+          <div class="table-wrap">
+            <table class="table table--stack">
+              <caption class="visually-hidden">Permit needed at Evergreen Brick Works by shoot type</caption>
+              <thead><tr><th scope="col">Shoot type</th><th scope="col">Permit</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">Portrait</th><td data-label="Permit"><span class="badge badge--success">Not required</span></td></tr>
+                <tr><th scope="row">Wedding or engagement</th><td data-label="Permit"><span class="badge">Required</span></td></tr>
+                <tr><th scope="row">Commercial</th><td data-label="Permit"><span class="badge">Required</span></td></tr>
+                <tr><th scope="row">Video</th><td data-label="Permit"><span class="badge">Required</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="price-block__verified">Permit rules verified <time datetime="2026-09-01">1 September 2026</time> · Source: <a class="link--external" href="https://www.evergreen.ca/" target="_blank" rel="noopener">Evergreen: photography and filming<svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v6H4V6h6"/></svg><span class="visually-hidden"> (opens in a new tab)</span></a></p>
+        </div>
+        <div class="ds-example__caption"><span><code>pages/spot/default</code>: permit dates follow the same freshness rule as prices (L1-010, L2-043), so they use the same verified line, with the source the rules came from. Below MD the table stacks into one card per shoot type.</span></div>
+      </div>
+      <h3>Where the all-in figure is repeated</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas" style="align-items: flex-start; gap: var(--space-8);">
+          <div><p class="text-caption">Location card</p><dl class="location-card__facts"><div><dt>All-in 2 h</dt><dd>$145.00</dd></div><div><dt>Score</dt><dd>3.8<span class="visually-hidden"> out of 5</span></dd></div></dl></div>
+          <div><p class="text-caption">Summary panel</p><dl class="summary-panel__row"><div><dt>All-in, 2 hours</dt><dd>$145.00</dd></div></dl></div>
+          <div><p class="text-caption">Comparison cell, stale</p><div class="compare-table__value"><strong>$270.00</strong><span class="badge badge--warning">Prices may be out of date</span></div></div>
+          <div><p class="text-caption">Rain backup</p><p class="list__meta">Riverside · All-in $100.00 for 2 hours</p></div>
+        </div>
+        <div class="ds-example__caption"><span>The same server-computed figure (<code>allInCost2h</code>) everywhere, never recalculated in the page. Wherever it appears, a stale price carries the warning badge too (L2-043.3).</span></div>
+      </div>
+    </section>
+
+    <section class="ds-section" id="sizes" data-na="The price block has one size and fills its column."><h2><a href="#sizes">Sizes</a></h2>
+      <p class="ds-na">One size. The block fills the main column of the <a href="review-layout.html">review layout</a>; the all-in panel spans it, and the fee list switches from stacked to two columns at SM.</p>
+    </section>
+
+    <section class="ds-section" id="states"><h2><a href="#states">States</a></h2>
+      <p>The price block holds no controls, so it has no hover, focus, active or disabled state; the spot verified line has one link, the source, which does. Its real states are about freshness, computed by the server from the verified date (L2-043): fresh up to 152 days, due soon from 153 to 183 days, stale from 184 days.</p>
+      <div class="ds-matrix"><table>
+        <caption class="visually-hidden">Price block and verified line states</caption>
+        <thead><tr><th scope="col">State</th><th scope="col">Price block</th><th scope="col">Verified line with source (spots)</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Default (fresh)</th>
+            <td><div class="price-block" style="width: 20rem;"><p class="price-block__allin"><strong>$145.00</strong><span>All-in for a standard 2-hour shoot: 2 hours at $60.00 plus the mandatory cleaning fee.</span></p><p class="price-block__verified">Prices verified <time datetime="2026-09-22">22 September 2026</time></p></div></td>
+            <td><p class="price-block__verified" style="width: 18rem;">Permit rules verified <time datetime="2026-09-01">1 September 2026</time> · Source: <a class="link--external" href="https://www.evergreen.ca/" target="_blank" rel="noopener">Evergreen: photography and filming<span class="visually-hidden"> (opens in a new tab)</span></a></p></td></tr>
+          <tr><th scope="row">Hover</th>
+            <td><p class="ds-na">Not interactive.</p></td>
+            <td><p class="price-block__verified" style="width: 18rem;">Permit rules verified <time datetime="2026-09-01">1 September 2026</time> · Source: <a class="link--external" data-state="hover" href="https://www.evergreen.ca/" target="_blank" rel="noopener">Evergreen: photography and filming<span class="visually-hidden"> (opens in a new tab)</span></a></p></td></tr>
+          <tr><th scope="row">Focus</th>
+            <td><p class="ds-na">Not focusable; <kbd>Tab</kbd> passes over it.</p></td>
+            <td><p class="price-block__verified" style="width: 18rem;">Permit rules verified <time datetime="2026-09-01">1 September 2026</time> · Source: <a class="link--external" data-state="focus" href="https://www.evergreen.ca/" target="_blank" rel="noopener">Evergreen: photography and filming<span class="visually-hidden"> (opens in a new tab)</span></a></p></td></tr>
+          <tr><th scope="row">Active</th>
+            <td><p class="ds-na">Not interactive.</p></td>
+            <td><p class="ds-na">Links have no pressed style; they look as on hover.</p></td></tr>
+          <tr><th scope="row">Disabled</th>
+            <td><p class="ds-na">Never. A studio can't be published without a rate, a minimum and a verified date (L2-002).</p></td>
+            <td><p class="ds-na">Never. A spot can't be published without its permit source link (L2-002).</p></td></tr>
+          <tr><th scope="row">Due soon (153 to 183 days)</th>
+            <td><div class="price-block" style="width: 20rem;"><p class="price-block__allin"><strong>$185.00</strong><span>All-in for a standard 2-hour shoot: 2 hours at $75.00 plus the mandatory cyc touch-up fee.</span></p><p class="price-block__verified">Prices verified <time datetime="2026-04-28">28 April 2026</time></p></div></td>
+            <td><p class="ds-na">No spot is due soon today.</p></td></tr>
+          <tr><th scope="row">Stale (over 183 days)</th>
+            <td><div class="price-block" style="width: 20rem;"><p class="price-block__allin"><strong>$270.00</strong><span>All-in for a standard 2-hour shoot: the 3-hour minimum applies, so 3 hours at $90.00. No mandatory fees.</span></p><p class="price-block__verified">Prices verified <time datetime="2026-03-02">2 March 2026</time></p><div class="alert alert--warning" role="status"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3 2 20h20L12 3z"/><path d="M12 10v4M12 17h0"/></svg><div class="alert__body"><p class="alert__title">Prices may be out of date</p><p>We last checked these prices 225 days ago. Confirm with the studio before you book.</p></div></div></div></td>
+            <td><div style="width: 18rem;"><p class="price-block__verified">Permit rules verified <time datetime="2026-03-20">20 March 2026</time> · Source: <a class="link--external" href="https://www.thedistillerydistrict.com/" target="_blank" rel="noopener">Distillery District: filming and photography<span class="visually-hidden"> (opens in a new tab)</span></a></p><div class="alert alert--warning" role="status" style="margin-top: var(--space-4);"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3 2 20h20L12 3z"/><path d="M12 10v4M12 17h0"/></svg><div class="alert__body"><p class="alert__title">Permit rules may be out of date</p><p>We last checked these rules 207 days ago. Confirm with the Distillery District before you shoot.</p></div></div></div></td></tr>
+          <tr><th scope="row">Price changed (editor)</th>
+            <td><div class="field field--warning" style="width: 20rem;"><label class="field__label" for="pb-verified">Prices last verified <span class="optional">(required)</span></label><input class="input" id="pb-verified" name="priceVerifiedAt" type="date" max="2026-10-13" required aria-describedby="pb-verified-warning pb-verified-help"><span class="field__warning" id="pb-verified-warning">You changed a price. Confirm the date you verified it.</span><span class="field__help" id="pb-verified-help">Previously 11 Oct 2026. Visitors see a warning after 183 days.</span></div></td>
+            <td><p class="ds-na">The permit date is also set explicitly by the owner (L2-042); no permit-changed mock exists yet.</p></td></tr>
+        </tbody>
+      </table></div>
+      <ul>
+        <li><b>Due soon</b> looks exactly like fresh on public pages: Liberty Cyc House (28 Apr 2026, 168 days) shows no warning. Only the admin dashboard lists it, under "Due soon" with an info badge (L2-044.3).</li>
+        <li><b>Stale</b> keeps every price visible and adds the warning: the alert in the price block, and the warning badge "Prices may be out of date" in the summary panel, on the list card and in the comparison cell. 183 days exactly is not stale (L2-005.3).</li>
+        <li><b>Price changed</b> happens in the studio editor (<code>pages/studio-editor/price-changed</code>): editing the rate, the minimum or a fee empties "Prices last verified" and makes it required, with the previous date as help (L2-042.2). The public block changes only after saving, with the new all-in from the server and the newly confirmed date, which also clears any stale warning.</li>
+      </ul>
+      <h3>Both themes</h3>
+      <div class="ds-themes">
+        <div data-theme="light"><div class="price-block"><p class="price-block__allin"><strong>$270.00</strong><span>All-in for a standard 2-hour shoot: the 3-hour minimum applies, so 3 hours at $90.00. No mandatory fees.</span></p><dl class="kv"><dt>Hourly rate</dt><dd class="num">$90.00</dd><dt>Extra fees</dt><dd>None</dd></dl><p class="price-block__verified">Prices verified <time datetime="2026-03-02">2 March 2026</time></p><div class="alert alert--warning"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3 2 20h20L12 3z"/><path d="M12 10v4M12 17h0"/></svg><div class="alert__body"><p class="alert__title">Prices may be out of date</p><p>We last checked these prices 225 days ago. Confirm with the studio before you book.</p></div></div></div></div>
+        <div data-theme="dark"><div class="price-block"><p class="price-block__allin"><strong>$270.00</strong><span>All-in for a standard 2-hour shoot: the 3-hour minimum applies, so 3 hours at $90.00. No mandatory fees.</span></p><dl class="kv"><dt>Hourly rate</dt><dd class="num">$90.00</dd><dt>Extra fees</dt><dd>None</dd></dl><p class="price-block__verified">Prices verified <time datetime="2026-03-02">2 March 2026</time></p><div class="alert alert--warning"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3 2 20h20L12 3z"/><path d="M12 10v4M12 17h0"/></svg><div class="alert__body"><p class="alert__title">Prices may be out of date</p><p>We last checked these prices 225 days ago. Confirm with the studio before you book.</p></div></div></div></div>
+      </div>
+    </section>
+
+    <section class="ds-section" id="responsive"><h2><a href="#responsive">Responsive behaviour</a></h2>
+      <ul>
+        <li><b>XS (below 36rem):</b> the fee list stacks, each label above its value; the badge wraps under the amount if the row is too narrow. The all-in panel keeps its padding and the working sentence wraps.</li>
+        <li><b>SM and up (36rem):</b> the fee list becomes a 12rem label column and a value column, with hairline rules under each row.</li>
+        <li><b>LG and up:</b> unchanged; the block sits in the main column beside the sticky summary panel, which repeats only the all-in figure.</li>
+        <li>The spot permit table beside the verified line stacks into one card per shoot type below MD (<code>.table--stack</code>, L2-015.3) and is a normal table from MD.</li>
+        <li>Amounts never break: "$1,250.00" stays on one line, and the working sentence breaks between words.</li>
+      </ul>
+      <div class="ds-iframes">
+        <iframe class="ds-iframe" src="../../mocks/pages/studio/default.html?chrome=0" title="Studio review mock at phone width with the price block: The Junction Loft" loading="lazy"></iframe>
+        <iframe class="ds-iframe" src="../../mocks/pages/studio/stale.html?chrome=0&amp;theme=dark" title="Stale studio review mock at phone width in the dark theme: Ossington Blackbox" loading="lazy"></iframe>
+      </div>
+    </section>
+
+    <section class="ds-section" id="theming"><h2><a href="#theming">Theming</a></h2>
+      <p>No component tokens. The all-in panel reads <code>--color-bg-surface-sunken</code> with <code>--color-fg-default</code> for the figure and <code>--color-fg-muted</code> for the working; the fee list reads the description-list tokens; the fee-kind badge reads <code>--color-bg-subtle</code> and <code>--color-fg-muted</code>; the stale alert reads the warning family (<code>--color-warning-bg</code>, <code>-fg</code>, <code>-icon</code>, <code>-border</code>).</p>
+      <p>In dark the sunken panel becomes a step lighter than the canvas (stone-900 on stone-950), so the figure still sits in a well, and the warning alert flips to a deep amber background with a light amber label. The figure is never coloured: price is a fact, not a status.</p>
+    </section>
+
+    <section class="ds-section" id="accessibility"><h2><a href="#accessibility">Accessibility</a></h2>
+      <h3>Role and pattern</h3>
+      <p>Static content: a <code>&lt;p&gt;</code> for the all-in figure and its working, a <code>&lt;dl&gt;</code> for rate and fees (<a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-dl-element">HTML description list</a>), a <code>&lt;p&gt;</code> with <code>&lt;time datetime&gt;</code> for the verified date, and for stale prices a warning alert with <code>role="status"</code> (L2-005.2). It sits inside the "Pricing" <code>&lt;section aria-labelledby&gt;</code>, so it is reachable from the headings and regions lists.</p>
+      <h3>Keyboard</h3>
+      <div class="ds-table-wrap"><table class="ds-table ds-keys"><thead><tr><th scope="col">Key</th><th scope="col">Action</th></tr></thead><tbody>
+        <tr><td><kbd>Tab</kbd></td><td>Passes over the price block: nothing in it is focusable. On spots it stops on the permit source link.</td></tr>
+        <tr><td><kbd>Enter</kbd></td><td>On the source link: opens the source in a new tab.</td></tr>
+      </tbody></table></div>
+      <h3>Focus</h3>
+      <p>Never moves. The source link takes the shared focus ring.</p>
+      <h3>Labelling</h3>
+      <ul>
+        <li>Read in order: "$145.00, All-in for a standard 2-hour shoot: 2 hours at $60.00 plus the mandatory cleaning fee." The working sentence names the figure, so no extra label is needed.</li>
+        <li>Each fee is a term and value: "Cleaning fee, $25.00 Mandatory". The badge is text, so the fee kind is not carried by colour or shape (1.4.1).</li>
+        <li>The stale alert's title says what is wrong and its text says how old and what to do; the warning icon is <code>aria-hidden</code>.</li>
+        <li>The source link adds "(opens in a new tab)" in visually hidden text.</li>
+      </ul>
+      <h3>Contrast</h3>
+      <div class="ds-example__canvas ds-example__canvas--stack" style="padding: 0; gap: var(--space-2);">
+        <div class="ds-pair"><span>All-in figure</span><span class="ds-pair__ratio" data-contrast="--color-fg-default|--color-bg-surface-sunken" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Working sentence</span><span class="ds-pair__ratio" data-contrast="--color-fg-muted|--color-bg-surface-sunken" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Fee labels</span><span class="ds-pair__ratio" data-contrast="--color-fg-subtle|--color-bg-canvas" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Fee amounts</span><span class="ds-pair__ratio" data-contrast="--color-fg-default|--color-bg-canvas" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Fee-kind badge</span><span class="ds-pair__ratio" data-contrast="--color-fg-muted|--color-bg-subtle" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Verified line</span><span class="ds-pair__ratio" data-contrast="--color-fg-muted|--color-bg-canvas" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Stale warning text</span><span class="ds-pair__ratio" data-contrast="--color-warning-fg|--color-warning-bg" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Stale warning icon</span><span class="ds-pair__ratio" data-contrast="--color-warning-icon|--color-warning-bg" data-min="3"></span></div>
+        <div class="ds-pair"><span>Source link</span><span class="ds-pair__ratio" data-contrast="--color-fg-link|--color-bg-canvas" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Source link, hover</span><span class="ds-pair__ratio" data-contrast="--color-fg-link-hover|--color-bg-canvas" data-min="4.5"></span></div>
+      </div>
+      <h3>Motion</h3>
+      <p>None.</p>
+      <h3>Touch</h3>
+      <p>No targets in the price block. The source link is inline text in a sentence, which WCAG 2.5.8 exempts from the 24px minimum; it has the full line height to tap.</p>
+    </section>
+
+    <section class="ds-section" id="content"><h2><a href="#content">Content</a></h2>
+      <h3>The working sentence</h3>
+      <div class="ds-table-wrap"><table class="ds-table">
+        <caption class="visually-hidden">Working sentence formulas</caption>
+        <thead><tr><th scope="col">Case</th><th scope="col">Sentence</th></tr></thead>
+        <tbody>
+          <tr><td>Minimum 2 hours or less, no fees</td><td>All-in for a standard 2-hour shoot: 2 hours at $45.50. No mandatory fees.</td></tr>
+          <tr><td>Minimum 2 hours or less, one mandatory fee</td><td>All-in for a standard 2-hour shoot: 2 hours at $60.00 plus the mandatory cleaning fee.</td></tr>
+          <tr><td>Minimum above 2 hours</td><td>All-in for a standard 2-hour shoot: the 3-hour minimum applies, so 3 hours at $90.00. No mandatory fees.</td></tr>
+        </tbody>
+      </table></div>
+      <h3>Every studio, worked</h3>
+      <div class="ds-table-wrap"><table class="ds-table">
+        <caption class="visually-hidden">All-in cost for each published studio</caption>
+        <thead><tr><th scope="col">Studio</th><th scope="col">Rate × hours</th><th scope="col">Mandatory fees</th><th scope="col">All-in</th></tr></thead>
+        <tbody>
+          <tr><td>Kensington Window Room</td><td>$40.00 × 2 (minimum 1 h)</td><td>None</td><td class="num">$80.00</td></tr>
+          <tr><td>Leslieville Daylight Studio</td><td>$45.50 × 2</td><td>None</td><td class="num">$91.00</td></tr>
+          <tr><td>Riverside Rooftop Studio</td><td>$50.00 × 2</td><td>None</td><td class="num">$100.00</td></tr>
+          <tr><td>Bloordale Sun Studio</td><td>$55.00 × 2</td><td>Cleaning $20.00</td><td class="num">$130.00</td></tr>
+          <tr><td>The Junction Loft</td><td>$60.00 × 2</td><td>Cleaning $25.00 (after-hours $30.00 optional, excluded)</td><td class="num">$145.00</td></tr>
+          <tr><td>Liberty Cyc House</td><td>$75.00 × 2</td><td>Cyc touch-up $35.00</td><td class="num">$185.00</td></tr>
+          <tr><td>Ossington Blackbox</td><td>$90.00 × 3 (minimum 3 h)</td><td>None</td><td class="num">$270.00</td></tr>
+        </tbody>
+      </table></div>
+      <ul>
+        <li>CAD with a dollar sign and two decimals: "$45.50", "$91.00". No "CAD", no "/h" inside the all-in panel.</li>
+        <li>Fee names as the studio uses them, sentence case, followed by "fee" where it reads naturally: "Cleaning fee", "Cyc touch-up fee", "After-hours access".</li>
+        <li>Fee kinds are exactly "Mandatory" and "Optional, not in all-in".</li>
+        <li>Long date in the block ("Prices verified 22 September 2026"), short date in the summary caption ("Prices verified 22 Sep 2026").</li>
+        <li>Stale: "Prices may be out of date" / "We last checked these prices 225 days ago. Confirm with the studio before you book." Spots: "Permit rules may be out of date" / "We last checked these rules 207 days ago. Confirm with the Distillery District before you shoot."</li>
+      </ul>
+    </section>
+
+    <section class="ds-section" id="do-dont"><h2><a href="#do-dont">Do and don't</a></h2>
+      <div class="ds-dodont">
+        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--stack"><p class="price-block__allin"><strong>$270.00</strong><span>All-in for a standard 2-hour shoot: the 3-hour minimum applies, so 3 hours at $90.00. No mandatory fees.</span></p></div><figcaption>Say how the figure was reached, especially when the minimum is above 2 hours.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--stack"><p class="price-block__allin"><strong>$90.00/h</strong><span>From</span></p></div><figcaption>Don't lead with the hourly rate. "$90.00/h" hides that a 2-hour shoot costs $270.00 here.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--stack"><dl class="kv"><dt>After-hours access</dt><dd><span class="num">$30.00</span> <span class="badge">Optional, not in all-in</span></dd></dl></div><figcaption>List optional fees and say they are excluded.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--stack"><p class="price-block__allin"><strong>$175.00</strong><span>All-in for a standard 2-hour shoot, including after-hours access.</span></p></div><figcaption>Don't add optional fees to the all-in: The Junction Loft is $145.00 (L2-004.3).</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--stack"><p class="price-block__verified">Prices verified <time datetime="2026-03-02">2 March 2026</time></p><div class="alert alert--warning"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3 2 20h20L12 3z"/><path d="M12 10v4M12 17h0"/></svg><div class="alert__body"><p class="alert__title">Prices may be out of date</p></div></div></div><figcaption>Keep a stale price visible, with the date and the warning.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--stack"><p class="price-block__allin"><strong><s>$270.00</s></strong><span>Price unavailable</span></p></div><figcaption>Don't strike out or hide a stale price; it is old, not wrong, and the reader needs it to decide.</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="ds-section" id="tokens"><h2><a href="#tokens">Tokens</a></h2>
+      <div class="ds-table-wrap"><table class="ds-table">
+        <thead><tr><th scope="col">Part</th><th scope="col">Token</th><th scope="col">Light</th><th scope="col">Dark</th></tr></thead>
+        <tbody>
+          <tr><td>All-in panel background</td><td><code>--color-bg-surface-sunken</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-bg-surface-sunken" data-swatch></i><span data-token="--color-bg-surface-sunken"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-bg-surface-sunken" data-swatch></i><span data-token="--color-bg-surface-sunken"></span></span></td></tr>
+          <tr><td>All-in figure, fee amounts</td><td><code>--color-fg-default</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-default" data-swatch></i><span data-token="--color-fg-default"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-default" data-swatch></i><span data-token="--color-fg-default"></span></span></td></tr>
+          <tr><td>Working, verified line</td><td><code>--color-fg-muted</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-muted" data-swatch></i><span data-token="--color-fg-muted"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-muted" data-swatch></i><span data-token="--color-fg-muted"></span></span></td></tr>
+          <tr><td>Fee labels</td><td><code>--color-fg-subtle</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-subtle" data-swatch></i><span data-token="--color-fg-subtle"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-subtle" data-swatch></i><span data-token="--color-fg-subtle"></span></span></td></tr>
+          <tr><td>Fee-kind badge</td><td><code>--color-bg-subtle</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-bg-subtle" data-swatch></i><span data-token="--color-bg-subtle"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-bg-subtle" data-swatch></i><span data-token="--color-bg-subtle"></span></span></td></tr>
+          <tr><td>Stale alert background</td><td><code>--color-warning-bg</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-warning-bg" data-swatch></i><span data-token="--color-warning-bg"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-warning-bg" data-swatch></i><span data-token="--color-warning-bg"></span></span></td></tr>
+          <tr><td>Stale alert text</td><td><code>--color-warning-fg</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-warning-fg" data-swatch></i><span data-token="--color-warning-fg"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-warning-fg" data-swatch></i><span data-token="--color-warning-fg"></span></span></td></tr>
+          <tr><td>Stale alert icon</td><td><code>--color-warning-icon</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-warning-icon" data-swatch></i><span data-token="--color-warning-icon"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-warning-icon" data-swatch></i><span data-token="--color-warning-icon"></span></span></td></tr>
+          <tr><td>All-in figure</td><td><code>--text-h1</code></td><td colspan="2"><span data-token="--text-h1"></span></td></tr>
+          <tr><td>Working, verified line</td><td><code>--text-body-sm</code></td><td colspan="2"><span data-token="--text-body-sm"></span></td></tr>
+          <tr><td>Block gap · panel padding (block)</td><td><code>--space-5</code></td><td colspan="2"><span data-token="--space-5"></span></td></tr>
+          <tr><td>Panel padding (inline)</td><td><code>--space-6</code></td><td colspan="2"><span data-token="--space-6"></span></td></tr>
+          <tr><td>Figure to working</td><td><code>--space-1</code></td><td colspan="2"><span data-token="--space-1"></span></td></tr>
+          <tr><td>Panel corners</td><td><code>--radius-lg</code></td><td colspan="2"><span data-token="--radius-lg"></span></td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section class="ds-section" id="code"><h2><a href="#code">Code</a></h2>
+      <pre><code>&lt;section class="review-section" aria-labelledby="pricing"&gt;
+  &lt;h2 id="pricing"&gt;Pricing&lt;/h2&gt;
+  &lt;div class="price-block"&gt;
+    &lt;p class="price-block__allin"&gt;&lt;strong&gt;$270.00&lt;/strong&gt;&lt;span&gt;All-in for a standard 2-hour shoot: the 3-hour minimum applies, so 3 hours at $90.00. No mandatory fees.&lt;/span&gt;&lt;/p&gt;
+    &lt;dl class="kv"&gt;
+      &lt;dt&gt;Hourly rate&lt;/dt&gt;&lt;dd class="num"&gt;$90.00&lt;/dd&gt;
+      &lt;dt&gt;Minimum booking&lt;/dt&gt;&lt;dd&gt;3 hours&lt;/dd&gt;
+      &lt;dt&gt;Extra fees&lt;/dt&gt;&lt;dd&gt;None&lt;/dd&gt;
+    &lt;/dl&gt;
+    &lt;p class="price-block__verified"&gt;Prices verified &lt;time datetime="2026-03-02"&gt;2 March 2026&lt;/time&gt;&lt;/p&gt;
+    &lt;!-- only when the server says priceStale --&gt;
+    &lt;div class="alert alert--warning" role="status"&gt;
+      &lt;svg class="icon" aria-hidden="true" viewBox="0 0 24 24"&gt;…&lt;/svg&gt;
+      &lt;div class="alert__body"&gt;&lt;p class="alert__title"&gt;Prices may be out of date&lt;/p&gt;&lt;p&gt;We last checked these prices 225 days ago. Confirm with the studio before you book.&lt;/p&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;</code></pre>
+      <div class="ds-table-wrap"><table class="ds-table"><thead><tr><th scope="col">Class / attribute / field</th><th scope="col">Effect</th></tr></thead><tbody>
+        <tr><td><code>.price-block</code></td><td>Column of parts, <code>--space-5</code> apart.</td></tr>
+        <tr><td><code>.price-block__allin</code></td><td>Sunken panel; <code>strong</code> is the figure, <code>span</code> the working.</td></tr>
+        <tr><td><code>.price-block__verified</code></td><td>Small muted verified line; also used for permit dates on spots.</td></tr>
+        <tr><td><code>.kv</code> + <code>.badge</code></td><td>Rate and fee rows; neutral badge for the fee kind.</td></tr>
+        <tr><td><code>.num</code></td><td>Tabular figures: on the <code>&lt;dd&gt;</code> when it holds only an amount, on a <code>&lt;span&gt;</code> when a badge follows.</td></tr>
+        <tr><td><code>allInCost2h</code>, <code>priceStale</code></td><td>API fields the block renders as given (L2-004.5, L2-043); the page computes neither.</td></tr>
+      </tbody></table></div>
+    </section>
+
+    <section class="ds-section" id="sources"><h2><a href="#sources">Sources</a></h2>
+      <ul>
+        <li>Price block: <a href="../../mocks/pages/studio/default.html">pages/studio/default</a> (mandatory and optional fees), <a href="../../mocks/pages/studio/minimal.html">pages/studio/minimal</a> (one mandatory fee), <a href="../../mocks/pages/studio/stale.html">pages/studio/stale</a> (3-hour minimum, stale warning)</li>
+        <li>Verified line on permits: <a href="../../mocks/pages/spot/default.html">pages/spot/default</a>, <a href="../../mocks/pages/spot/stale-permit.html">pages/spot/stale-permit</a></li>
+        <li>All-in elsewhere: <a href="../../mocks/pages/studios/default.html">pages/studios/default</a> (card facts and stale badge), <a href="../../mocks/pages/compare/default.html">pages/compare/default</a>, <a href="../../mocks/pages/guide/default.html">pages/guide/default</a></li>
+        <li>Price changed and due soon: <a href="../../mocks/pages/studio-editor/price-changed.html">pages/studio-editor/price-changed</a>, <a href="../../mocks/pages/admin-dashboard/default.html">pages/admin-dashboard/default</a></li>
+        <li>Requirements: L2-004, L2-005, L2-042.2, L2-043, L2-044, L1-010</li>
+      </ul>
+      <p>Drift fixed during extraction: tabular figures were applied two ways (<code>&lt;dd class="num"&gt;</code> in studio/default, <code>&lt;dd&gt;&lt;span class="num"&gt;</code> in studio/stale and studio/minimal for amount-only rows); the system uses the class on the <code>&lt;dd&gt;</code> unless a badge follows. Outside this component: the editor's "Price changed" field is highlighted with an inline style (padding, radius and <code>--color-warning-bg</code>) in the mock; <code>.field--warning</code> now does this, and the example above uses it. Not fixed (outside this component): the price-changed editor still shows the saved all-in ($150.00) after the rate was changed to $70.00, which is correct only because the line says the server recalculates on save; the verified line is named <code>price-block__verified</code> but is also used for permit dates.</p>
+    </section>
+
+    <footer class="ds-footer"><span>ShotThere design system · extracted from <a href="../../mocks/index.html">docs/mocks</a> on 13 October 2026</span><a href="#top">Back to top</a></footer>
+  </main>
+</div>
+<script src="../assets/ds.js"></script>
+</body>
+</html>

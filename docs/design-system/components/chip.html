@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Chip — ShotThere design system</title>
-<meta name="description" content="ShotThere chips: toggle chips with aria-pressed, removable active-filter chips with a labelled remove button, and static or link chips, with every state in both themes.">
+<meta name="description" content="ShotThere chips: the active-filter chips above studio and spot results, each with a remove button, plus the toggle and static chip the CSS still supports; every state, both themes.">
 <link rel="stylesheet" href="../tokens/tokens.css">
 <link rel="stylesheet" href="../assets/components.css">
 <link rel="stylesheet" href="../assets/ds.css">
@@ -33,40 +33,61 @@
       <li><a href="../components/icon-button.html">Icon button</a></li>
       <li><a href="../components/button-group.html">Button group</a></li>
       <li><a href="../components/link.html">Link</a></li>
+      <li><a href="../components/compare-bar.html">Compare toggle and bar</a></li>
     </ul></details>
     <details open><summary>Inputs</summary><ul>
       <li><a href="../components/form-field.html">Form field</a></li>
       <li><a href="../components/text-field.html">Text field</a></li>
       <li><a href="../components/textarea.html">Textarea</a></li>
       <li><a href="../components/select.html">Select</a></li>
+      <li><a href="../components/combobox.html">Combobox</a></li>
       <li><a href="../components/checkbox.html">Checkbox</a></li>
       <li><a href="../components/radio-group.html">Radio group</a></li>
       <li><a href="../components/file-upload.html">File upload</a></li>
       <li><a href="../components/form-layout.html">Form layout</a></li>
+      <li><a href="../components/signup.html">Email signup</a></li>
     </ul></details>
     <details open><summary>Navigation</summary><ul>
       <li><a href="../components/skip-link.html">Skip link</a></li>
       <li><a href="../components/site-header.html">Site header</a></li>
       <li><a href="../components/footer.html">Footer</a></li>
+      <li><a href="../components/breadcrumb.html">Breadcrumb</a></li>
+      <li><a href="../components/filter.html">Filters</a></li>
     </ul></details>
     <details open><summary>Containers and overlays</summary><ul>
-      <li><a href="../components/container.html">Container and grid</a></li>
-      <li><a href="../components/card.html">Card</a></li>
+      <li><a href="../components/container.html">Container</a></li>
+      <li><a href="../components/review-layout.html">Review layout</a></li>
+      <li><a href="../components/editor-layout.html">Editor layout</a></li>
       <li><a href="../components/dialog.html">Dialog</a></li>
-      <li><a href="../components/sheet.html">Sheet and drawer</a></li>
-      <li><a href="../components/divider.html">Divider</a></li>
+      <li><a href="../components/sheet.html">Sheet</a></li>
+      <li><a href="../components/popover.html">Popover</a></li>
+      <li><a href="../components/lightbox.html">Lightbox</a></li>
     </ul></details>
     <details open><summary>Data display</summary><ul>
+      <li><a href="../components/location-card.html">Location card</a></li>
       <li><a href="../components/table.html">Table</a></li>
+      <li><a href="../components/compare-table.html">Comparison table</a></li>
+      <li><a href="../components/list.html">List rows</a></li>
       <li><a href="../components/description-list.html">Description list</a></li>
+      <li><a href="../components/price-block.html">Price block</a></li>
+      <li><a href="../components/score.html">Score and pips</a></li>
+      <li><a href="../components/shot-grid.html">Shot grid</a></li>
+      <li><a href="../components/video-poster.html">Episode poster</a></li>
+      <li><a href="../components/map.html">Map</a></li>
+      <li><a href="../components/guide-entry.html">Guide entry</a></li>
+      <li><a href="../components/stat-tile.html">Stat tile</a></li>
+      <li><a href="../components/image-manager.html">Image manager</a></li>
+      <li><a href="../components/disclosure.html">Disclosure</a></li>
       <li><a href="../components/badge.html">Badge</a></li>
+      <li><a href="../components/status-label.html">Status label</a></li>
       <li><a href="../components/chip.html">Chip</a></li>
+      <li><a href="../components/tag.html">Tag</a></li>
     </ul></details>
     <details open><summary>Feedback</summary><ul>
       <li><a href="../components/inline-message.html">Inline message</a></li>
-      <li><a href="../components/alert.html">Alert and banner</a></li>
+      <li><a href="../components/alert.html">Alert</a></li>
       <li><a href="../components/toast.html">Toast</a></li>
-      <li><a href="../components/progress.html">Progress and meter</a></li>
+      <li><a href="../components/progress.html">Progress</a></li>
       <li><a href="../components/spinner.html">Spinner</a></li>
       <li><a href="../components/skeleton.html">Skeleton</a></li>
       <li><a href="../components/empty-state.html">Empty state</a></li>
@@ -83,195 +104,192 @@
       <li><a href="../patterns/content-and-tone.html">Content and tone</a></li>
     </ul></details>
   </nav>
-
   <main id="main" class="ds-main">
     <header class="ds-header">
       <p class="ds-kicker">Component · Data display</p>
       <h1>Chip</h1>
-      <p class="ds-lead">Chips are small pills you can act on: toggle a quick filter, or remove a filter that is already on. A selected chip is pepper red, because pepper means "selected" on ShotThere.</p>
-      <div class="ds-meta"><span class="ds-pill ds-pill--ok">WCAG 2.2 AA</span><span class="ds-pill">Status: stable</span><span class="ds-pill"><code>.chip</code></span><span class="ds-pill"><code>.chip--filter</code></span></div>
+      <p class="ds-lead">Chips are small pills you can act on. On ShotThere they list the filters that are on above the studio and spot results, "Up to $150.00" and "Natural light", each with its own remove button.</p>
+      <div class="ds-meta"><span class="ds-pill ds-pill--ok">WCAG 2.2 AA</span><span class="ds-pill">Status: stable</span><span class="ds-pill"><code>.chip</code></span><span class="ds-pill"><code>.chip--filter</code></span><span class="ds-pill"><code>.active-filters</code></span></div>
       <ul class="ds-toc"><li><a href="#overview">Overview</a></li><li><a href="#anatomy">Anatomy</a></li><li><a href="#variants">Variants</a></li><li><a href="#sizes">Sizes</a></li><li><a href="#states">States</a></li><li><a href="#responsive">Responsive behaviour</a></li><li><a href="#theming">Theming</a></li><li><a href="#accessibility">Accessibility</a></li><li><a href="#content">Content</a></li><li><a href="#do-dont">Do and don't</a></li><li><a href="#tokens">Tokens</a></li><li><a href="#code">Code</a></li><li><a href="#sources">Sources</a></li></ul>
     </header>
 
-<section class="ds-section" id="overview"><h2><a href="#overview">Overview</a></h2>
-      <p>Chips show choices compactly, in a row that wraps. They are always about filtering or choosing, never about describing a dish.</p>
+    <section class="ds-section" id="overview"><h2><a href="#overview">Overview</a></h2>
+      <p>A chip is a control, not a fact. On ShotThere it has one job: showing which filters are on and letting the visitor drop one without reopening the filter panel.</p>
       <ul>
-        <li><b>Active filter</b> (<code>.chip--filter</code>): above the caterer results, one chip per filter that is on — "Jamaican", "Scarborough", "Weddings" — each with a remove button, followed by "Clear filters". Operators get the same row on the caterer records list ("“Pelau”", "Suspended").</li>
-        <li><b>Toggle</b> (<code>button.chip[aria-pressed]</code>): a quick on/off filter where a short row of options beats a list, such as review ratings or "Has photos". Pressed is pepper.</li>
-        <li><b>Static or link</b> (<code>span.chip</code>, <code>a.chip</code>): a pill that shows a choice already made or goes somewhere. Rare; most read-only pills should be tags.</li>
+        <li><b>Active filter</b> (<code>.chip--filter</code>): one chip per filter that is on, in the order of the filter panel, inside <code>.active-filters</code> above the results. Each has a remove button; "Clear all" ends the row. Always accent-tinted, because each one is a choice that is on.</li>
+        <li><b>Toggle</b> (<code>button.chip[aria-pressed]</code>) and <b>static</b> (<code>span.chip</code>) still have CSS but no ShotThere mock uses them yet. They are shown below with filter copy so the states are on record.</li>
       </ul>
-      <p>Not a chip: dietary and allergen labels on dishes are tags (information, not controls). The cuisine and area lists are the filter list and <a href="checkbox.html">checkboxes</a> in the filters sheet. A choice between views is a <a href="button-group.html">segmented control</a>. A record's state is a status label.</p>
+      <p>Not a chip: the "Best uses" on a spot card (Engagement, Family, Portrait, Brand) and the "Featured in" guide names on a review are <a href="tag.html">tags</a>; "Prices may be out of date" is a <a href="badge.html">badge</a>; a draft or published record is a <a href="status-label.html">status label</a>; the filters themselves are checkboxes, radios and number fields in the <a href="filter.html">filter panel</a>; "Both / Studios / Spots" on the map is a <a href="button-group.html">segmented control</a>.</p>
     </section>
 
     <section class="ds-section" id="anatomy"><h2><a href="#anatomy">Anatomy</a></h2>
       <div class="ds-anatomy">
         <figure class="ds-anatomy__figure">
-          <span class="chip chip--filter">Scarborough<button class="remove" type="button" aria-label="Remove Scarborough filter"><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></span>
-          <span class="ds-callout" style="left: 40%; top: 22%;" aria-hidden="true">1</span>
-          <span class="ds-callout" style="left: 64%; top: 22%;" aria-hidden="true">2</span>
-          <span class="ds-callout" style="left: 30%; top: 74%;" aria-hidden="true">3</span>
+          <span class="chip chip--filter">Natural light<button class="remove" type="button" aria-label="Remove filter: Natural light"><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></span>
+          <span class="ds-callout" style="left: 34%; top: 18%;" aria-hidden="true">1</span>
+          <span class="ds-callout" style="left: 70%; top: 18%;" aria-hidden="true">2</span>
+          <span class="ds-callout" style="left: 22%; top: 76%;" aria-hidden="true">3</span>
         </figure>
         <ol class="ds-anatomy__list">
-          <li><div><b>Label</b><small>The filter value exactly as in the filter list: "Scarborough", "Trinidadian &amp; Tobagonian". <code>--text-label</code>.</small></div></li>
-          <li><div><b>Remove button (filter chips)</b><small><code>.remove</code>: a circular button with a 16px close icon, named "Remove Scarborough filter". 44px below 48rem, 24px from 48rem.</small></div></li>
-          <li><div><b>Container</b><small>Pill, 44px tall on phones and tablets below 48rem, 36px (<code>--control-height-sm</code>) from 48rem; 1px border: <code>--color-border-strong</code> at rest, <code>--color-accent</code> when selected.</small></div></li>
+          <li><div><b>Label</b><small>The filter as a short phrase: "Natural light", "Up to $150.00", "Parking: on-site". <code>--text-label</code> in <code>--color-fg-accent</code>.</small></div></li>
+          <li><div><b>Remove button</b><small><code>.remove</code>: a round <code>&lt;button&gt;</code> with a 16px × icon, named "Remove filter: Natural light". 24 × 24px (<code>--target-min</code>) from 48rem, 44 × 44px below.</small></div></li>
+          <li><div><b>Container</b><small>A <code>&lt;span&gt;</code> pill, 36px tall (<code>--control-height-sm</code>) from 48rem and 44px below; <code>--color-accent-subtle</code> fill, 1px <code>--color-accent</code> border, <code>--space-3</code> left padding and <code>--space-1</code> right padding so the remove button sits close to the edge.</small></div></li>
         </ol>
       </div>
     </section>
 
     <section class="ds-section" id="variants"><h2><a href="#variants">Variants</a></h2>
       <h3>Active filters</h3>
-      <p>The row is a labelled group so its purpose is announced once. Chips are always selected-looking (pepper tint), because each one is a filter that is on. "Clear filters" ends the row as a link-style button.</p>
       <div class="ds-example">
-        <div class="ds-example__canvas">
-          <div class="active-filters" role="group" aria-label="Active filters"><span class="chip chip--filter">Jamaican<button class="remove" type="button" aria-label="Remove Jamaican filter"><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></span><span class="chip chip--filter">Scarborough<button class="remove" type="button" aria-label="Remove Scarborough filter"><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></span>Clear filters</div>
-        </div>
-        <div class="ds-example__caption"><span><code>pages/caterers/filtered</code>: Jamaican + Scarborough, 2 caterers (Island Pot and Auntie Merle’s Table).</span></div>
-        <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;div class="active-filters" role="group" aria-label="Active filters"&gt;
-  &lt;span class="chip chip--filter"&gt;Jamaican&lt;button class="remove" type="button" aria-label="Remove Jamaican filter"&gt;
-    &lt;svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"&gt;&lt;path d="M6 6l12 12M18 6 6 18"/&gt;&lt;/svg&gt;&lt;/button&gt;&lt;/span&gt;
-  &lt;span class="chip chip--filter"&gt;Scarborough&lt;button class="remove" type="button" aria-label="Remove Scarborough filter"&gt;…&lt;/button&gt;&lt;/span&gt;
-  &lt;a class="btn btn--link btn--sm" href="/caterers"&gt;Clear filters&lt;/a&gt;
-&lt;/div&gt;</code></pre></details>
-      </div>
-      <h3>Toggle</h3>
-      <div class="ds-example">
-        <div class="ds-example__canvas">
-          <div class="active-filters" role="group" aria-label="Show reviews">
-            <button class="chip" type="button" aria-pressed="true">All 23</button>
-            <button class="chip" type="button" aria-pressed="false">5 stars 17</button>
-            <button class="chip" type="button" aria-pressed="false">4 stars 5</button>
-            <button class="chip" type="button" aria-pressed="false">With a response 6</button>
+        <div class="ds-example__canvas ds-example__canvas--stack">
+          <p class="result-count">5 studios<span class="visually-hidden">, sorted by all-in cost</span></p>
+          <div class="active-filters">
+            <span class="visually-hidden">Active filters:</span>
+            <span class="chip chip--filter">Up to $150.00<button class="remove" type="button" aria-label="Remove filter: Up to $150.00"><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></span>
+            <span class="chip chip--filter">Natural light<button class="remove" type="button" aria-label="Remove filter: Natural light"><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></span>
+            <a class="btn btn--link btn--sm" href="#variants">Clear all</a>
           </div>
         </div>
-        <div class="ds-example__caption"><span>A pressed chip uses <code>--color-accent-subtle</code>, a pepper border and pepper text. One or several can be pressed; say which in the group label.</span></div>
-        <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;div class="active-filters" role="group" aria-label="Show reviews"&gt;
-  &lt;button class="chip" type="button" aria-pressed="true"&gt;All 23&lt;/button&gt;
-  &lt;button class="chip" type="button" aria-pressed="false"&gt;5 stars 17&lt;/button&gt;
+        <div class="ds-example__caption"><span>From <code>pages/studios/filtered</code> (<code>?costMax=150&amp;light=medium&amp;sort=cost</code>): Kensington Window Room, Leslieville Daylight Studio, Riverside Rooftop Studio, Bloordale Sun Studio and The Junction Loft remain.</span></div>
+        <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;div class="active-filters"&gt;
+  &lt;span class="visually-hidden"&gt;Active filters:&lt;/span&gt;
+  &lt;span class="chip chip--filter"&gt;Up to $150.00&lt;button class="remove" type="button" aria-label="Remove filter: Up to $150.00"&gt;
+    &lt;svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"&gt;&lt;path d="M6 6l12 12M18 6 6 18"/&gt;&lt;/svg&gt;&lt;/button&gt;&lt;/span&gt;
+  &lt;span class="chip chip--filter"&gt;Natural light&lt;button class="remove" type="button" aria-label="Remove filter: Natural light"&gt;…&lt;/button&gt;&lt;/span&gt;
+  &lt;a class="btn btn--link btn--sm" href="/studios?sort=cost"&gt;Clear all&lt;/a&gt;
 &lt;/div&gt;</code></pre></details>
       </div>
-      <h3>Static and link</h3>
+
+      <h3>Active filters with no results</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--stack">
+          <div class="active-filters">
+            <span class="visually-hidden">Active filters:</span>
+            <span class="chip chip--filter">Waterfront<button class="remove" type="button" aria-label="Remove filter: Waterfront"><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></span>
+            <span class="chip chip--filter">Family<button class="remove" type="button" aria-label="Remove filter: Family"><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></span>
+          </div>
+        </div>
+        <div class="ds-example__caption"><span>From <code>pages/spots/no-results</code>: "0 spots". The row drops "Clear all" because the <a href="empty-state.html">empty state</a> below offers "Clear filters" (L2-022.4) and explains "The only waterfront spot isn't rated for family shoots."</span></div>
+      </div>
+
+      <h3>Toggle and static (no mock uses them yet)</h3>
       <div class="ds-example">
         <div class="ds-example__canvas">
-          Weddings
-          Funerals and repasts
-          <span class="chip">Within 3 business days</span>
+          <div class="active-filters" role="group" aria-label="Best for">
+            <button class="chip" type="button" aria-pressed="true">Engagement</button>
+            <button class="chip" type="button" aria-pressed="false">Family</button>
+            <button class="chip" type="button" aria-pressed="false">Portrait</button>
+            <button class="chip" type="button" aria-pressed="false">Brand</button>
+          </div>
+          <span class="chip">Up to $120.00</span>
         </div>
-        <div class="ds-example__caption"><span>Link chips go to a filtered listing; a static <code>span.chip</code> only shows a choice. Prefer a tag for read-only facts.</span></div>
+        <div class="ds-example__caption"><span>A toggle chip is a <code>&lt;button aria-pressed&gt;</code>; pressed takes the same accent tint as an active filter. A static <code>span.chip</code> only shows a choice; prefer a <a href="tag.html">tag</a> for read-only facts.</span></div>
       </div>
     </section>
 
     <section class="ds-section" id="sizes"><h2><a href="#sizes">Sizes</a></h2>
-      <p>Chips have one design size whose height depends on the viewport (L2-065.1): below 48rem every chip is at least 44px tall (<code>--target-comfortable</code>) and the remove button is 44 × 44px; from 48rem chips are compact, 36px (<code>--control-height-sm</code>), with a 24px remove button (<code>--target-min</code>). Side padding is <code>--space-3</code> at every width, and rows keep <code>--space-2</code> gaps.</p>
+      <p>One design size whose height follows the viewport: below 48rem every chip is at least 44px tall and the remove button is 44 × 44px (L2-065.3); from 48rem chips are 36px (<code>--control-height-sm</code>) with a 24px remove button (<code>--target-min</code>), the WCAG 2.5.8 minimum, spaced 8px apart.</p>
       <div class="ds-example">
         <div class="ds-example__canvas">
-          <span class="chip chip--filter">Scarborough<button class="remove" type="button" aria-label="Remove Scarborough filter"><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></span>
-          <button class="chip" type="button" aria-pressed="false">Halal</button>
+          <span class="chip chip--filter">Cyc wall<button class="remove" type="button" aria-label="Remove filter: Cyc wall"><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></span>
+          <span class="chip chip--filter">Parking: on-site<button class="remove" type="button" aria-label="Remove filter: Parking: on-site"><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></span>
         </div>
-        <div class="ds-example__caption"><span>Resize the window across 48rem: below it the chip and its remove button grow to 44px; above it they return to 36px and 24px.</span></div>
+        <div class="ds-example__caption"><span>Resize across 48rem: below it the chip and its remove button grow to 44px.</span></div>
       </div>
     </section>
 
     <section class="ds-section" id="states"><h2><a href="#states">States</a></h2>
-      <p>Forced here with <code>data-state</code> where there is no attribute; selected uses the real <code>aria-pressed</code>, disabled the real <code>disabled</code>.</p>
-      <div class="ds-matrix" style="position: relative;"><table>
+      <p>Hover, focus and active are forced with <code>data-state</code>; pressed uses <code>aria-pressed</code>, disabled the native <code>disabled</code>.</p>
+      <div class="ds-matrix"><table>
         <caption class="visually-hidden">Chip states by variant</caption>
-        <thead><tr><th scope="col">Variant</th><th scope="col">Default</th><th scope="col">Hover</th><th scope="col">Focus</th><th scope="col">Active</th><th scope="col">Selected</th><th scope="col">Selected hover</th><th scope="col">Disabled</th></tr></thead>
+        <thead><tr><th scope="col">Variant</th><th scope="col">Default</th><th scope="col">Hover</th><th scope="col">Focus</th><th scope="col">Active</th><th scope="col">Pressed</th><th scope="col">Disabled</th></tr></thead>
         <tbody>
-          <tr><th scope="row">Toggle</th>
-            <td><button class="chip" type="button" aria-pressed="false">Halal</button></td>
-            <td><button class="chip" type="button" aria-pressed="false" data-state="hover">Halal</button></td>
-            <td><button class="chip" type="button" aria-pressed="false" data-state="focus">Halal</button></td>
-            <td><button class="chip" type="button" aria-pressed="false" data-state="active">Halal</button></td>
-            <td><button class="chip" type="button" aria-pressed="true">Halal</button></td>
-            <td><button class="chip" type="button" aria-pressed="true" style="background: var(--color-accent-subtle-hover);">Halal</button></td>
-            <td><button class="chip" type="button" aria-pressed="false" disabled>Halal</button></td></tr>
-          <tr><th scope="row">Active filter</th>
-            <td colspan="4"><span class="ds-na">Always selected</span></td>
-            <td><span class="chip chip--filter">Haitian<button class="remove" type="button" aria-label="Remove Haitian filter"><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></span></td>
-            <td><span class="chip chip--filter">Durham<button class="remove" type="button" aria-label="Remove Durham filter" data-state="hover"><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></span><br><span class="chip chip--filter" style="margin-top: var(--space-2);">Weddings<button class="remove" type="button" aria-label="Remove Weddings filter" data-state="focus"><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></span></td>
+          <tr><th scope="row">Active filter (remove button)</th>
+            <td><span class="chip chip--filter">Family<button class="remove" type="button" aria-label="Remove filter: Family"><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></span></td>
+            <td><span class="chip chip--filter">Family<button class="remove" type="button" aria-label="Remove filter: Family" data-state="hover"><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></span></td>
+            <td><span class="chip chip--filter">Family<button class="remove" type="button" aria-label="Remove filter: Family" data-state="focus"><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></span></td>
+            <td><span class="ds-na">Removed on release</span></td>
+            <td><span class="ds-na">Always on</span></td>
             <td><span class="ds-na">Remove it instead</span></td></tr>
-          <tr><th scope="row">Link</th>
-            <td>Weddings</td>
-            <td>Weddings</td>
-            <td>Weddings</td>
-            <td>Weddings</td>
-            <td>Weddings</td>
-            <td><span class="ds-na">As selected</span></td>
-            <td><span class="chip" aria-disabled="true">Private dinners 0</span></td></tr>
+          <tr><th scope="row">Toggle (no mock yet)</th>
+            <td><button class="chip" type="button" aria-pressed="false">Portrait</button></td>
+            <td><button class="chip" type="button" aria-pressed="false" data-state="hover">Portrait</button></td>
+            <td><button class="chip" type="button" aria-pressed="false" data-state="focus">Portrait</button></td>
+            <td><button class="chip" type="button" aria-pressed="false" data-state="active">Portrait</button></td>
+            <td><button class="chip" type="button" aria-pressed="true">Portrait</button></td>
+            <td><button class="chip" type="button" aria-pressed="false" disabled>Portrait</button></td></tr>
         </tbody>
       </table></div>
       <h3>Both themes</h3>
       <div class="ds-themes">
-        <div data-theme="light"><div class="active-filters"><button class="chip" type="button" aria-pressed="false">Vegan</button><button class="chip" type="button" aria-pressed="true">Halal</button><span class="chip chip--filter">Jamaican<button class="remove" type="button" aria-label="Remove Jamaican filter"><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></span></div></div>
-        <div data-theme="dark"><div class="active-filters"><button class="chip" type="button" aria-pressed="false">Vegan</button><button class="chip" type="button" aria-pressed="true">Halal</button><span class="chip chip--filter">Jamaican<button class="remove" type="button" aria-label="Remove Jamaican filter"><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></span></div></div>
+        <div data-theme="light"><div class="active-filters"><span class="chip chip--filter">Up to $150.00<button class="remove" type="button" aria-label="Remove filter: Up to $150.00"><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></span><span class="chip chip--filter">Natural light<button class="remove" type="button" aria-label="Remove filter: Natural light"><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></span><button class="chip" type="button" aria-pressed="false">Portrait</button></div></div>
+        <div data-theme="dark"><div class="active-filters"><span class="chip chip--filter">Up to $150.00<button class="remove" type="button" aria-label="Remove filter: Up to $150.00"><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></span><span class="chip chip--filter">Natural light<button class="remove" type="button" aria-label="Remove filter: Natural light"><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></span><button class="chip" type="button" aria-pressed="false">Portrait</button></div></div>
       </div>
       <ul>
-        <li><b>Selected</b> is the only pepper on the results area, matching the selected item in the filter list beside it.</li>
-        <li><b>Disabled</b> (50% opacity) is for an option with no results, like the zero-count cuisines in the filter list ("Cuban 0"). Prefer leaving such chips out.</li>
-        <li><b>Busy</b>: while results reload after a change, the chips stay put and the result count (a polite live region) changes; chips never show spinners.</li>
+        <li><b>Selected</b> is the only state an active-filter chip has: it is on until removed. The accent tint matches the checked boxes in the filter panel beside it.</li>
+        <li><b>Updating</b>: removing a chip updates the URL (L2-025), the list and the polite result count ("5 studios, sorted by all-in cost"). Chips never show spinners; while the list reloads it is marked <code>aria-busy</code>.</li>
+        <li><b>Disabled</b> exists only for the toggle chip and no mock uses it. An option that would match nothing stays enabled and leads to the empty state.</li>
       </ul>
     </section>
 
     <section class="ds-section" id="responsive"><h2><a href="#responsive">Responsive behaviour</a></h2>
       <ul>
-        <li>Rows wrap (<code>.active-filters</code> is a wrapping flex row with <code>--space-2</code> gaps); they never scroll sideways.</li>
-        <li><b>Below md (48rem)</b> the active-filter row sits under the results heading and above the phone "Filters" trigger's results. The same chips also appear inside the filters sheet's Area group (<code>dialogs/filters/selected</code>).</li>
-        <li><b>lg (62rem) and up</b> the filter list is beside the results; the chip row stays above the results so the current filters read next to the count.</li>
-        <li><b>Target size:</b> below 48rem chips grow to 44px tall and remove buttons to 44 × 44px (L2-065.1); from 48rem they are 36px and 24px, for pointer use on wider screens.</li>
-        <li>A very long label ("Religious and cultural celebrations") may make a chip wider than half the phone; it stays on one line and the row wraps around it.</li>
+        <li>The row wraps (<code>.active-filters</code> is a flex row with <code>--space-2</code> gaps) and never scrolls sideways. "Clear all" wraps with the chips.</li>
+        <li>The row sits at the top of the results column at every width: under the result count and sort, above the cards. Below 62rem the filter panel is a dialog behind the "Filters" trigger, whose count ("Filters 2") matches the number of chips (L2-022.6).</li>
+        <li>Below 48rem chips and remove buttons grow to 44px (L2-065.3); from 48rem they are 36px and 24px.</li>
+        <li>A long label ("Parking: on-site") stays on one line; the row wraps around it.</li>
       </ul>
     </section>
 
     <section class="ds-section" id="theming"><h2><a href="#theming">Theming</a></h2>
-      <p>Chips read <code>--color-bg-surface</code>, <code>--color-border-strong</code> and <code>--color-fg-default</code> at rest; <code>--color-bg-subtle</code> / <code>--color-bg-subtle-hover</code> for hover and active; <code>--color-accent-subtle</code>, <code>--color-accent</code> and <code>--color-fg-accent</code> when selected; <code>--color-accent-subtle-hover</code> for the remove button's hover. In dark the selected tint becomes deep pepper (pepper-950) with pepper-300 text and border. No component tokens; a re-skin changes the accent tokens and every "selected" mark moves together.</p>
+      <p>An active-filter chip reads <code>--color-accent-subtle</code>, <code>--color-accent</code> and <code>--color-fg-accent</code>, and <code>--color-accent-subtle-hover</code> under a hovered remove button. A toggle chip reads <code>--color-bg-surface</code>, <code>--color-border-strong</code> and <code>--color-fg-default</code> at rest and the accent set when pressed. No component tokens: a re-skin changes the accent tokens and every "selected" mark moves together. In dark the tint becomes a deep accent with light accent text and border; in forced colours the chip's border takes <code>Highlight</code> so "on" survives.</p>
     </section>
 
     <section class="ds-section" id="accessibility"><h2><a href="#accessibility">Accessibility</a></h2>
       <h3>Role and pattern</h3>
-      <p>A toggle chip is a <code>&lt;button aria-pressed&gt;</code> (<a href="https://www.w3.org/WAI/ARIA/apg/patterns/button/">APG Button, toggle</a>). An active-filter chip is a plain <code>&lt;span&gt;</code> holding a real remove <code>&lt;button&gt;</code>; the chip itself is not focusable. A link chip is an <code>&lt;a&gt;</code>. Rows of chips sit in <code>role="group"</code> with an <code>aria-label</code>.</p>
+      <p>An active-filter chip is a plain <code>&lt;span&gt;</code> holding a native remove <code>&lt;button&gt;</code> (<a href="https://www.w3.org/WAI/ARIA/apg/patterns/button/">APG Button</a>); the chip itself is not focusable. The row starts with visually hidden "Active filters:" so it is introduced once. A toggle chip is a <code>&lt;button aria-pressed&gt;</code> inside a labelled <code>role="group"</code>.</p>
       <h3>Keyboard</h3>
       <div class="ds-table-wrap"><table class="ds-table ds-keys"><thead><tr><th scope="col">Key</th><th scope="col">Action</th></tr></thead><tbody>
-        <tr><td><kbd>Tab</kbd></td><td>Toggle chips and remove buttons are each one tab stop, in reading order.</td></tr>
-        <tr><td><kbd>Space</kbd>, <kbd>Enter</kbd></td><td>Toggle a chip, or remove a filter.</td></tr>
-        <tr><td>After removing</td><td>Focus moves to the next chip's remove button; after the last one, to "Clear filters", or to the results heading when no filters are left.</td></tr>
+        <tr><td><kbd>Tab</kbd></td><td>Each remove button is one tab stop, then "Clear all".</td></tr>
+        <tr><td><kbd>Enter</kbd>, <kbd>Space</kbd></td><td>Removes that filter.</td></tr>
+        <tr><td>After removing</td><td>Focus moves to the next chip's remove button; after the last one, to "Clear all"; when none are left, to the results heading.</td></tr>
       </tbody></table></div>
       <h3>Focus</h3>
-      <p>The shared ring goes round the whole toggle chip, or round the small remove button on a filter chip. On the pepper tint the ring keeps 3:1 thanks to its offset onto the page.</p>
+      <p>The shared ring draws round the small remove button, offset onto the tint. On a toggle chip it goes round the whole pill.</p>
       <h3>Labelling</h3>
-      <p>Toggle chips are named by their label and announce "pressed" / "not pressed". Remove buttons name the filter: "Remove Jamaican filter". A count inside a label ("5 stars 17") should also be in the group's description if it is not obvious.</p>
+      <p>Remove buttons name the filter in full: "Remove filter: Up to $150.00". The × is <code>aria-hidden</code>. The change is announced by the result count, a polite live region (L2-069.3), not by the chip.</p>
       <h3>Contrast</h3>
       <div class="ds-example__canvas ds-example__canvas--stack" style="padding: 0; gap: var(--space-2);">
-        <div class="ds-pair"><span>Label at rest</span><span class="ds-pair__ratio" data-contrast="--color-fg-default|--color-bg-surface" data-min="4.5"></span></div>
-        <div class="ds-pair"><span>Chip edge at rest</span><span class="ds-pair__ratio" data-contrast="--color-border-strong|--color-bg-surface" data-min="3"></span></div>
-        <div class="ds-pair"><span>Label on hover</span><span class="ds-pair__ratio" data-contrast="--color-fg-default|--color-bg-subtle" data-min="4.5"></span></div>
-        <div class="ds-pair"><span>Selected label</span><span class="ds-pair__ratio" data-contrast="--color-fg-accent|--color-accent-subtle" data-min="4.5"></span></div>
-        <div class="ds-pair"><span>Selected label on hover, remove hover</span><span class="ds-pair__ratio" data-contrast="--color-fg-accent|--color-accent-subtle-hover" data-min="4.5"></span></div>
-        <div class="ds-pair"><span>Selected edge</span><span class="ds-pair__ratio" data-contrast="--color-accent|--color-bg-surface" data-min="3"></span></div>
-        <div class="ds-pair"><span>Focus ring</span><span class="ds-pair__ratio" data-contrast="--color-focus-ring|--color-bg-surface" data-min="3"></span></div>
+        <div class="ds-pair"><span>Label and × on the tint</span><span class="ds-pair__ratio" data-contrast="--color-fg-accent|--color-accent-subtle" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>× on a hovered remove button</span><span class="ds-pair__ratio" data-contrast="--color-fg-accent|--color-accent-subtle-hover" data-min="3"></span></div>
+        <div class="ds-pair"><span>Chip edge on page</span><span class="ds-pair__ratio" data-contrast="--color-accent|--color-bg-canvas" data-min="3"></span></div>
+        <div class="ds-pair"><span>Toggle label at rest</span><span class="ds-pair__ratio" data-contrast="--color-fg-default|--color-bg-surface" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Toggle edge at rest</span><span class="ds-pair__ratio" data-contrast="--color-border-strong|--color-bg-surface" data-min="3"></span></div>
+        <div class="ds-pair"><span>Toggle label on hover</span><span class="ds-pair__ratio" data-contrast="--color-fg-default|--color-bg-subtle" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Focus ring on page</span><span class="ds-pair__ratio" data-contrast="--color-focus-ring|--color-bg-canvas" data-min="3"></span></div>
       </div>
-      <p>Selected is not colour alone: <code>aria-pressed</code> is announced, and on screen the filter chip also gains a remove button.</p>
       <h3>Motion</h3>
-      <p>Background fades over <code>--duration-fast</code>; reduced motion removes it. A removed chip disappears without an exit animation, so focus never lands on something leaving.</p>
+      <p>Only the fill transitions, over <code>--duration-fast</code>; reduced motion zeroes it. A removed chip disappears at once; the row reflows without animation.</p>
       <h3>Touch</h3>
-      <p>Below 48rem toggle chips are at least 44px tall and remove buttons 44 × 44px, meeting the ShotThere phone target (L2-065.1). From 48rem chips are 36px and remove buttons 24px, with 8px gaps, which still clears the WCAG 2.5.8 minimum for pointer users.</p>
+      <p>Remove buttons are 44 × 44px below 48rem and 24 × 24px from 48rem, with chips 8px apart (L2-065.2, L2-065.3).</p>
     </section>
 
     <section class="ds-section" id="content"><h2><a href="#content">Content</a></h2>
       <ul>
-        <li>Use the filter value exactly as the filter list writes it: "Trinidadian &amp; Tobagonian", "Barbadian (Bajan)", "Scarborough", "Weddings". Don't shorten to "Trini" or "Bajan".</li>
-        <li>Searches appear in curly quotes: "“Pelau”". Statuses as written in the segmented control: "Suspended".</li>
-        <li>Remove buttons: "Remove &lt;value&gt; filter"; for a search, "Remove search “Pelau”".</li>
-        <li>The row always ends with "Clear filters" when one or more chips are on.</li>
+        <li>Write the filter as the visitor set it, in sentence case: "Natural light", "Cyc wall", "Family", "No permit needed".</li>
+        <li>A range names its bound with the full price: "Up to $150.00"; with both bounds, "$90.00 to $150.00".</li>
+        <li>A choice from a named group keeps the group: "Parking: on-site". A neighbourhood is just its name: "Leslieville".</li>
+        <li>The remove button is always "Remove filter: " plus the chip's label.</li>
+        <li>"Clear all" ends the chip row and the filters dialog; the empty state says "Clear filters" (L2-022.4).</li>
       </ul>
     </section>
 
     <section class="ds-section" id="do-dont"><h2><a href="#do-dont">Do and don't</a></h2>
       <div class="ds-dodont">
-        <figure class="ds-do"><div class="ds-example__canvas"><span class="chip chip--filter">Durham<button class="remove" type="button" aria-label="Remove Durham filter"><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></span></div><figcaption>Name the remove button with the value and the word "filter".</figcaption></figure>
-        <figure class="ds-dont"><div class="ds-example__canvas"><span class="chip chip--filter">Durham<button class="remove" type="button" aria-label="Remove"><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></span></div><figcaption>"Remove" alone is ambiguous in a row of three. The mocks also mixed "Remove Scarborough", "Remove filter Suspended" and "Remove Jamaican filter"; use one pattern.</figcaption></figure>
-        <figure class="ds-do"><div class="ds-example__canvas"><ul class="tags"><li class="tag">Halal</li><li class="tag tag--allergen">Contains nuts</li></ul></div><figcaption>Dish facts are tags: information, not controls.</figcaption></figure>
-        <figure class="ds-dont"><div class="ds-example__canvas"><span class="chip" aria-disabled="true">Halal</span><span class="chip chip--filter">Contains nuts</span></div><figcaption>Don't use chips on a dish. They look pressable, and pepper would say "selected".</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas"><span class="chip chip--filter">Up to $150.00<button class="remove" type="button" aria-label="Remove filter: Up to $150.00"><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></span></div><figcaption>The remove button names the filter it removes.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas"><span class="chip chip--filter">Up to $150.00<button class="remove" type="button" aria-label="Remove"><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></span></div><figcaption>Don't name every × "Remove": a screen-reader user tabbing the row hears the same word three times.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas"><ul class="tags" aria-label="Best uses"><li class="tag">Engagement</li><li class="tag">Family</li><li class="tag">Portrait</li><li class="tag">Brand</li></ul></div><figcaption>Evergreen Brick Works' best uses on its card are tags: quiet facts, not controls.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas"><span class="chip">Engagement</span><span class="chip">Family</span><span class="chip">Portrait</span><span class="chip">Brand</span></div><figcaption>Don't show facts as chips: a 36px outlined pill looks clickable and reads like a filter you could switch on.</figcaption></figure>
       </div>
     </section>
 
@@ -279,50 +297,51 @@
       <div class="ds-table-wrap"><table class="ds-table">
         <thead><tr><th scope="col">Part</th><th scope="col">Token</th><th scope="col">Light</th><th scope="col">Dark</th></tr></thead>
         <tbody>
-          <tr><td>Background at rest</td><td><code>--color-bg-surface</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-bg-surface" data-swatch></i><span data-token="--color-bg-surface"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-bg-surface" data-swatch></i><span data-token="--color-bg-surface"></span></span></td></tr>
-          <tr><td>Border at rest</td><td><code>--color-border-strong</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-border-strong" data-swatch></i><span data-token="--color-border-strong"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-border-strong" data-swatch></i><span data-token="--color-border-strong"></span></span></td></tr>
-          <tr><td>Label at rest</td><td><code>--color-fg-default</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-default" data-swatch></i><span data-token="--color-fg-default"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-default" data-swatch></i><span data-token="--color-fg-default"></span></span></td></tr>
-          <tr><td>Hover</td><td><code>--color-bg-subtle</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-bg-subtle" data-swatch></i><span data-token="--color-bg-subtle"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-bg-subtle" data-swatch></i><span data-token="--color-bg-subtle"></span></span></td></tr>
-          <tr><td>Active</td><td><code>--color-bg-subtle-hover</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-bg-subtle-hover" data-swatch></i><span data-token="--color-bg-subtle-hover"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-bg-subtle-hover" data-swatch></i><span data-token="--color-bg-subtle-hover"></span></span></td></tr>
-          <tr><td>Selected background</td><td><code>--color-accent-subtle</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-accent-subtle" data-swatch></i><span data-token="--color-accent-subtle"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-accent-subtle" data-swatch></i><span data-token="--color-accent-subtle"></span></span></td></tr>
-          <tr><td>Selected border</td><td><code>--color-accent</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-accent" data-swatch></i><span data-token="--color-accent"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-accent" data-swatch></i><span data-token="--color-accent"></span></span></td></tr>
-          <tr><td>Selected label</td><td><code>--color-fg-accent</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-accent" data-swatch></i><span data-token="--color-fg-accent"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-accent" data-swatch></i><span data-token="--color-fg-accent"></span></span></td></tr>
-          <tr><td>Selected hover, remove hover</td><td><code>--color-accent-subtle-hover</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-accent-subtle-hover" data-swatch></i><span data-token="--color-accent-subtle-hover"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-accent-subtle-hover" data-swatch></i><span data-token="--color-accent-subtle-hover"></span></span></td></tr>
-          <tr><td>Height / remove size, below 48rem</td><td><code>--target-comfortable</code></td><td colspan="2"><span data-token="--target-comfortable"></span></td></tr>
-          <tr><td>Height / remove size, from 48rem</td><td><code>--control-height-sm</code>, <code>--target-min</code></td><td colspan="2"><span data-token="--control-height-sm"></span> · <span data-token="--target-min"></span></td></tr>
-          <tr><td>Padding / gap</td><td><code>--space-3</code>, <code>--space-1</code>; row gap <code>--space-2</code></td><td colspan="2"><span data-token="--space-3"></span> · <span data-token="--space-1"></span> · <span data-token="--space-2"></span></td></tr>
-          <tr><td>Label / radius</td><td><code>--text-label</code>, <code>--radius-full</code></td><td colspan="2"><span data-token="--font-size-sm"></span> · <span data-token="--radius-full"></span></td></tr>
-          <tr><td>Transition</td><td><code>--duration-fast</code></td><td colspan="2"><span data-token="--duration-fast"></span></td></tr>
+          <tr><td>Filter chip fill</td><td><code>--color-accent-subtle</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-accent-subtle" data-swatch></i><span data-token="--color-accent-subtle"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-accent-subtle" data-swatch></i><span data-token="--color-accent-subtle"></span></span></td></tr>
+          <tr><td>Remove button hover</td><td><code>--color-accent-subtle-hover</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-accent-subtle-hover" data-swatch></i><span data-token="--color-accent-subtle-hover"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-accent-subtle-hover" data-swatch></i><span data-token="--color-accent-subtle-hover"></span></span></td></tr>
+          <tr><td>Filter chip edge</td><td><code>--color-accent</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-accent" data-swatch></i><span data-token="--color-accent"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-accent" data-swatch></i><span data-token="--color-accent"></span></span></td></tr>
+          <tr><td>Filter chip label</td><td><code>--color-fg-accent</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-accent" data-swatch></i><span data-token="--color-fg-accent"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-accent" data-swatch></i><span data-token="--color-fg-accent"></span></span></td></tr>
+          <tr><td>Toggle fill / edge</td><td><code>--color-bg-surface</code>, <code>--color-border-strong</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-border-strong" data-swatch></i><span data-token="--color-border-strong"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-border-strong" data-swatch></i><span data-token="--color-border-strong"></span></span></td></tr>
+          <tr><td>Toggle hover / active</td><td><code>--color-bg-subtle</code> / <code>--color-bg-subtle-hover</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-bg-subtle" data-swatch></i><span data-token="--color-bg-subtle"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-bg-subtle" data-swatch></i><span data-token="--color-bg-subtle"></span></span></td></tr>
+          <tr><td>Height from 48rem / below</td><td><code>--control-height-sm</code> / <code>--target-comfortable</code></td><td colspan="2"><span data-token="--control-height-sm"></span> / <span data-token="--target-comfortable"></span></td></tr>
+          <tr><td>Remove button from 48rem</td><td><code>--target-min</code></td><td colspan="2"><span data-token="--target-min"></span></td></tr>
+          <tr><td>Padding / row gap</td><td><code>--space-3</code>, <code>--space-1</code> / <code>--space-2</code></td><td colspan="2"><span data-token="--space-3"></span>, <span data-token="--space-1"></span> / <span data-token="--space-2"></span></td></tr>
+          <tr><td>Radius</td><td><code>--radius-full</code></td><td colspan="2"><span data-token="--radius-full"></span></td></tr>
         </tbody>
       </table></div>
     </section>
 
     <section class="ds-section" id="code"><h2><a href="#code">Code</a></h2>
-      <pre><code>&lt;button class="chip" type="button" aria-pressed="false"&gt;Halal&lt;/button&gt;
-&lt;span class="chip chip--filter"&gt;“Pelau”&lt;button class="remove" type="button" aria-label="Remove search “Pelau”"&gt;…&lt;/button&gt;&lt;/span&gt;</code></pre>
+      <pre><code>&lt;div class="active-filters"&gt;
+  &lt;span class="visually-hidden"&gt;Active filters:&lt;/span&gt;
+  &lt;span class="chip chip--filter"&gt;Family&lt;button class="remove" type="button" aria-label="Remove filter: Family"&gt;
+    &lt;svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"&gt;&lt;path d="M6 6l12 12M18 6 6 18"/&gt;&lt;/svg&gt;&lt;/button&gt;&lt;/span&gt;
+  &lt;span class="chip chip--filter"&gt;No permit needed&lt;button class="remove" type="button" aria-label="Remove filter: No permit needed"&gt;…&lt;/button&gt;&lt;/span&gt;
+  &lt;a class="btn btn--link btn--sm" href="/spots"&gt;Clear all&lt;/a&gt;
+&lt;/div&gt;</code></pre>
       <div class="ds-table-wrap"><table class="ds-table"><thead><tr><th scope="col">Class / attribute</th><th scope="col">Effect</th></tr></thead><tbody>
-        <tr><td><code>.chip</code></td><td>Outlined pill: 44px below 48rem, 36px from 48rem.</td></tr>
-        <tr><td><code>aria-pressed="true"</code> / <code>aria-selected="true"</code></td><td>Selected: pepper tint, border and text.</td></tr>
-        <tr><td><code>.chip--filter</code></td><td>Active filter: always selected-looking, tighter right padding, default cursor.</td></tr>
-        <tr><td><code>.remove</code></td><td>Circular remove button inside a chip; requires <code>aria-label</code>.</td></tr>
-        <tr><td><code>.active-filters</code></td><td>Wrapping row; give it <code>role="group"</code> and <code>aria-label</code>.</td></tr>
-        <tr><td><code>disabled</code> / <code>aria-disabled="true"</code></td><td>50% opacity, not-allowed cursor.</td></tr>
-        <tr><td><code>data-state="hover|focus|active|selected|disabled"</code></td><td>Documentation only.</td></tr>
+        <tr><td><code>.active-filters</code></td><td>Wrapping row, <code>--space-2</code> gaps, items centred.</td></tr>
+        <tr><td><code>.chip.chip--filter</code></td><td>Active filter: accent tint, edge and label; not clickable itself.</td></tr>
+        <tr><td><code>.chip .remove</code></td><td>Round remove button; 24px from 48rem, 44px below. Needs <code>aria-label</code>.</td></tr>
+        <tr><td><code>button.chip[aria-pressed]</code></td><td>Toggle chip; pressed takes the accent tint. No mock uses it yet.</td></tr>
+        <tr><td><code>span.chip</code> / <code>a.chip</code></td><td>Static or link chip. No mock uses them yet.</td></tr>
+        <tr><td><code>data-state="hover|focus|active|selected|disabled"</code></td><td>Documentation and mocks only.</td></tr>
       </tbody></table></div>
     </section>
 
     <section class="ds-section" id="sources"><h2><a href="#sources">Sources</a></h2>
+      <p>Extracted from these mocks:</p>
       <ul>
-        <li>pages/caterers/filtered (Jamaican + Scarborough)</li>
-        <li>pages/caterers/occasion (Weddings)</li>
-        <li>pages/caterers/no-results (Haitian + Durham)</li>
-        <li>dialogs/filters/selected (chip inside the filters sheet)</li>
-        <li>pages/admin-caterers/no-results (search and status chips)</li>
+        <li><a href="../../mocks/pages/studios/filtered.html">pages/studios/filtered</a> ("Up to $150.00", "Natural light", "Clear all"; "5 studios, sorted by all-in cost")</li>
+        <li><a href="../../mocks/pages/studios/no-results.html">pages/studios/no-results</a> ("Up to $120.00", "Cyc wall", "Parking: on-site"; "No studios match these filters")</li>
+        <li><a href="../../mocks/pages/spots/filtered.html">pages/spots/filtered</a> ("Family", "No permit needed"; "2 spots")</li>
+        <li><a href="../../mocks/pages/spots/no-results.html">pages/spots/no-results</a> ("Waterfront", "Family"; "0 spots")</li>
+        <li><a href="../../mocks/pages/spots/default.html">pages/spots/default</a> (best uses as tags, for contrast)</li>
       </ul>
-      <p>Drift fixed during extraction: remove buttons were named four ways ("Remove Jamaican filter", "Remove Scarborough", "Remove search Pelau", "Remove filter Suspended"); the system uses "Remove &lt;value&gt; filter" and "Remove search “…”". The operator chip row in <code>pages/admin-caterers/no-results</code> lacked <code>role="group"</code> and <code>aria-label</code>, and spaced itself with an inline style. Toggle chips are in the kit but no mock uses them yet. Chips and remove buttons were 36px and 24px at every width; they now grow to 44px below 48rem (L2-065.1). A static <code>span.chip</code> still shows a pointer cursor; a fix is proposed.</p>
+      <p>Drift fixed during extraction: none in the chips themselves; all four mocks use the same markup and "Remove filter: …" names. No mock uses the toggle, static or link chip.</p>
     </section>
 
-    <footer class="ds-footer"><span>ShotThere design system · extracted from docs/mocks on 10 October 2026</span><a href="#top">Back to top</a></footer>
+    <footer class="ds-footer"><span>ShotThere design system · extracted from <a href="../../mocks/index.html">docs/mocks</a> on 13 October 2026</span><a href="#top">Back to top</a></footer>
   </main>
 </div>
 <script src="../assets/ds.js"></script>

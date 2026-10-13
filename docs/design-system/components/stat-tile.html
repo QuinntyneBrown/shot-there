@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Stat tile — ShotThere design system</title>
+<meta name="description" content="The admin dashboard's stat tiles: one per content type with published and draft counts, a link to the list and a New action, in every state and both themes.">
+<link rel="stylesheet" href="../tokens/tokens.css">
+<link rel="stylesheet" href="../assets/components.css">
+<link rel="stylesheet" href="../assets/ds.css">
+</head>
+<body id="top">
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="ds-shell">
+  <nav class="ds-nav" aria-label="Design system">
+    <div class="ds-nav__brand"><a href="../index.html">ShotThere DS</a><button class="ds-theme-toggle" type="button" aria-pressed="false">☾ Dark</button></div>
+    <details open><summary>Foundations</summary><ul>
+      <li><a href="../foundations/color.html">Color</a></li>
+      <li><a href="../foundations/typography.html">Typography</a></li>
+      <li><a href="../foundations/spacing.html">Spacing</a></li>
+      <li><a href="../foundations/layout.html">Layout</a></li>
+      <li><a href="../foundations/elevation.html">Elevation</a></li>
+      <li><a href="../foundations/shape.html">Shape</a></li>
+      <li><a href="../foundations/motion.html">Motion</a></li>
+      <li><a href="../foundations/iconography.html">Iconography</a></li>
+      <li><a href="../foundations/theming.html">Theming</a></li>
+      <li><a href="../foundations/responsive.html">Responsive</a></li>
+      <li><a href="../foundations/accessibility.html">Accessibility</a></li>
+      <li><a href="../foundations/content.html">Content</a></li>
+    </ul></details>
+    <details open><summary>Actions</summary><ul>
+      <li><a href="../components/button.html">Button</a></li>
+      <li><a href="../components/icon-button.html">Icon button</a></li>
+      <li><a href="../components/button-group.html">Button group</a></li>
+      <li><a href="../components/link.html">Link</a></li>
+      <li><a href="../components/compare-bar.html">Compare toggle and bar</a></li>
+    </ul></details>
+    <details open><summary>Inputs</summary><ul>
+      <li><a href="../components/form-field.html">Form field</a></li>
+      <li><a href="../components/text-field.html">Text field</a></li>
+      <li><a href="../components/textarea.html">Textarea</a></li>
+      <li><a href="../components/select.html">Select</a></li>
+      <li><a href="../components/combobox.html">Combobox</a></li>
+      <li><a href="../components/checkbox.html">Checkbox</a></li>
+      <li><a href="../components/radio-group.html">Radio group</a></li>
+      <li><a href="../components/file-upload.html">File upload</a></li>
+      <li><a href="../components/form-layout.html">Form layout</a></li>
+      <li><a href="../components/signup.html">Email signup</a></li>
+    </ul></details>
+    <details open><summary>Navigation</summary><ul>
+      <li><a href="../components/skip-link.html">Skip link</a></li>
+      <li><a href="../components/site-header.html">Site header</a></li>
+      <li><a href="../components/footer.html">Footer</a></li>
+      <li><a href="../components/breadcrumb.html">Breadcrumb</a></li>
+      <li><a href="../components/filter.html">Filters</a></li>
+    </ul></details>
+    <details open><summary>Containers and overlays</summary><ul>
+      <li><a href="../components/container.html">Container</a></li>
+      <li><a href="../components/review-layout.html">Review layout</a></li>
+      <li><a href="../components/editor-layout.html">Editor layout</a></li>
+      <li><a href="../components/dialog.html">Dialog</a></li>
+      <li><a href="../components/sheet.html">Sheet</a></li>
+      <li><a href="../components/popover.html">Popover</a></li>
+      <li><a href="../components/lightbox.html">Lightbox</a></li>
+    </ul></details>
+    <details open><summary>Data display</summary><ul>
+      <li><a href="../components/location-card.html">Location card</a></li>
+      <li><a href="../components/table.html">Table</a></li>
+      <li><a href="../components/compare-table.html">Comparison table</a></li>
+      <li><a href="../components/list.html">List rows</a></li>
+      <li><a href="../components/description-list.html">Description list</a></li>
+      <li><a href="../components/price-block.html">Price block</a></li>
+      <li><a href="../components/score.html">Score and pips</a></li>
+      <li><a href="../components/shot-grid.html">Shot grid</a></li>
+      <li><a href="../components/video-poster.html">Episode poster</a></li>
+      <li><a href="../components/map.html">Map</a></li>
+      <li><a href="../components/guide-entry.html">Guide entry</a></li>
+      <li><a href="../components/stat-tile.html">Stat tile</a></li>
+      <li><a href="../components/image-manager.html">Image manager</a></li>
+      <li><a href="../components/disclosure.html">Disclosure</a></li>
+      <li><a href="../components/badge.html">Badge</a></li>
+      <li><a href="../components/status-label.html">Status label</a></li>
+      <li><a href="../components/chip.html">Chip</a></li>
+      <li><a href="../components/tag.html">Tag</a></li>
+    </ul></details>
+    <details open><summary>Feedback</summary><ul>
+      <li><a href="../components/inline-message.html">Inline message</a></li>
+      <li><a href="../components/alert.html">Alert</a></li>
+      <li><a href="../components/toast.html">Toast</a></li>
+      <li><a href="../components/progress.html">Progress</a></li>
+      <li><a href="../components/spinner.html">Spinner</a></li>
+      <li><a href="../components/skeleton.html">Skeleton</a></li>
+      <li><a href="../components/empty-state.html">Empty state</a></li>
+      <li><a href="../components/error-page.html">Error page</a></li>
+    </ul></details>
+    <details open><summary>Patterns</summary><ul>
+      <li><a href="../patterns/forms.html">Forms</a></li>
+      <li><a href="../patterns/feedback-and-loading.html">Feedback and loading</a></li>
+      <li><a href="../patterns/empty-and-error-states.html">Empty and error states</a></li>
+      <li><a href="../patterns/navigation.html">Navigation and page structure</a></li>
+      <li><a href="../patterns/dialogs-and-overlays.html">Dialogs and overlays</a></li>
+      <li><a href="../patterns/tables-and-lists.html">Data tables and lists</a></li>
+      <li><a href="../patterns/notifications.html">Notifications</a></li>
+      <li><a href="../patterns/content-and-tone.html">Content and tone</a></li>
+    </ul></details>
+  </nav>
+
+  <main id="main" class="ds-main">
+    <header class="ds-header">
+      <p class="ds-kicker">Component · Data display</p>
+      <h1>Stat tile</h1>
+      <p class="ds-lead">Stat tiles open the admin dashboard: one tile each for studios, spots and guides, with how many are published and how many are drafts, a link to the list and a button to start a new one.</p>
+      <div class="ds-meta"><span class="ds-pill ds-pill--ok">WCAG 2.2 AA</span><span class="ds-pill">Status: stable</span><span class="ds-pill">Native <code>&lt;ul&gt;</code> + <code>&lt;h3&gt;</code></span><span class="ds-pill"><code>.stat-grid</code> <code>.stat-tile</code></span></div>
+      <ul class="ds-toc"><li><a href="#overview">Overview</a></li><li><a href="#anatomy">Anatomy</a></li><li><a href="#variants">Variants</a></li><li><a href="#sizes">Sizes</a></li><li><a href="#states">States</a></li><li><a href="#responsive">Responsive behaviour</a></li><li><a href="#theming">Theming</a></li><li><a href="#accessibility">Accessibility</a></li><li><a href="#content">Content</a></li><li><a href="#do-dont">Do and don't</a></li><li><a href="#tokens">Tokens</a></li><li><a href="#code">Code</a></li><li><a href="#sources">Sources</a></li></ul>
+    </header>
+
+    <section class="ds-section" id="overview"><h2><a href="#overview">Overview</a></h2>
+      <p>The dashboard is the first screen the admin sees after signing in. It answers two questions: how much is live, and what can I add next (L2-053). The three tiles sit in a <code>.stat-grid</code> above the re-verification list, which uses <a href="list.html">admin rows</a>.</p>
+      <ul>
+        <li><b>Use a stat tile</b> for the count of one content type on the admin dashboard, with a way into its list and a way to create one.</li>
+        <li><b>Don't use it</b> on public pages. Visitors compare locations with <a href="location-card.html">location cards</a>, <a href="score.html">scores</a> and the <a href="compare-table.html">comparison table</a>, not with counts.</li>
+        <li><b>Don't turn it into a KPI card.</b> There are no trends, deltas, sparklines or percentages: the admin publishes a handful of locations, and the numbers are exact counts.</li>
+        <li>Lists of individual studios, spots or guides belong on the admin list screens, which use the stacked <a href="table.html">table</a>.</li>
+      </ul>
+    </section>
+
+    <section class="ds-section" id="anatomy"><h2><a href="#anatomy">Anatomy</a></h2>
+      <div class="ds-anatomy">
+        <figure class="ds-anatomy__figure">
+          <ul class="stat-grid" style="width: min(100%, 20rem); grid-template-columns: minmax(0, 1fr);">
+            <li class="stat-tile">
+              <h3 class="stat-tile__title"><a href="../../mocks/pages/admin-studios/default.html">Studios</a></h3>
+              <p class="stat-tile__counts">7 published, 2 draft</p>
+              <a class="btn btn--primary" href="../../mocks/pages/studio-editor/new.html"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>New studio</a>
+            </li>
+          </ul>
+          <span class="ds-callout" style="left: 41%; top: 22%;" aria-hidden="true">1</span>
+          <span class="ds-callout" style="left: 58%; top: 40%;" aria-hidden="true">2</span>
+          <span class="ds-callout" style="left: 55%; top: 57%;" aria-hidden="true">3</span>
+          <span class="ds-callout" style="left: 76%; top: 12%;" aria-hidden="true">4</span>
+        </figure>
+        <ol class="ds-anatomy__list">
+          <li><div><b>Title link</b><small><code>&lt;h3 class="stat-tile__title"&gt;</code> wrapping a link to the admin list ("Studios"). <code>--text-h4</code> in <code>--color-fg-default</code>, underlined.</small></div></li>
+          <li><div><b>Counts</b><small><code>.stat-tile__counts</code>: "7 published, 2 draft", <code>--text-body-lg</code>, <code>--color-fg-muted</code>, tabular figures.</small></div></li>
+          <li><div><b>Action</b><small>A <a href="button.html">button</a>-styled link to the editor ("New studio") with a leading plus icon. Pinned to the bottom with <code>margin-top: auto</code>, so actions line up across a row.</small></div></li>
+          <li><div><b>Container</b><small>The <code>&lt;li&gt;</code> itself: 1px <code>--color-border-default</code>, <code>--radius-lg</code>, padding <code>--space-5</code> × <code>--space-6</code>, <code>--space-3</code> between parts, no fill.</small></div></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="ds-section" id="variants"><h2><a href="#variants">Variants</a></h2>
+      <p>There is one tile. What varies is the emphasis of its action, and that is decided by the dashboard, not by the tile: the screen has one primary action.</p>
+      <h3>Populated dashboard: studios lead</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--stack">
+          <ul class="stat-grid">
+            <li class="stat-tile">
+              <h3 class="stat-tile__title"><a href="../../mocks/pages/admin-studios/default.html">Studios</a></h3>
+              <p class="stat-tile__counts">7 published, 2 draft</p>
+              <a class="btn btn--primary" href="../../mocks/pages/studio-editor/new.html"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>New studio</a>
+            </li>
+            <li class="stat-tile">
+              <h3 class="stat-tile__title"><a href="../../mocks/pages/admin-spots/default.html">Spots</a></h3>
+              <p class="stat-tile__counts">5 published, 1 draft</p>
+              <a class="btn" href="../../mocks/pages/spot-editor/new.html"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>New spot</a>
+            </li>
+            <li class="stat-tile">
+              <h3 class="stat-tile__title"><a href="../../mocks/pages/admin-guides/default.html">Guides</a></h3>
+              <p class="stat-tile__counts">3 published, 1 draft</p>
+              <a class="btn" href="../../mocks/pages/guide-editor/new.html"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>New guide</a>
+            </li>
+          </ul>
+        </div>
+        <div class="ds-example__caption"><span>Studios come first on ShotThere, so "New studio" is the dashboard's one primary action; spots and guides get secondary buttons.</span></div>
+        <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;ul class="stat-grid"&gt;
+  &lt;li class="stat-tile"&gt;
+    &lt;h3 class="stat-tile__title"&gt;&lt;a href="/admin/studios"&gt;Studios&lt;/a&gt;&lt;/h3&gt;
+    &lt;p class="stat-tile__counts"&gt;7 published, 2 draft&lt;/p&gt;
+    &lt;a class="btn btn--primary" href="/admin/studios/new"&gt;&lt;svg class="icon" aria-hidden="true" viewBox="0 0 24 24"&gt;…&lt;/svg&gt;New studio&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li class="stat-tile"&gt;… &lt;a class="btn" href="/admin/spots/new"&gt;…New spot&lt;/a&gt;&lt;/li&gt;
+  &lt;li class="stat-tile"&gt;… &lt;a class="btn" href="/admin/guides/new"&gt;…New guide&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</code></pre></details>
+      </div>
+      <h3>Empty dashboard: every tile secondary</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--stack">
+          <ul class="stat-grid">
+            <li class="stat-tile">
+              <h3 class="stat-tile__title"><a href="../../mocks/pages/admin-studios/default.html">Studios</a></h3>
+              <p class="stat-tile__counts">0 published, 0 draft</p>
+              <a class="btn" href="../../mocks/pages/studio-editor/new.html"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>New studio</a>
+            </li>
+            <li class="stat-tile">
+              <h3 class="stat-tile__title"><a href="../../mocks/pages/admin-spots/default.html">Spots</a></h3>
+              <p class="stat-tile__counts">0 published, 0 draft</p>
+              <a class="btn" href="../../mocks/pages/spot-editor/new.html"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>New spot</a>
+            </li>
+            <li class="stat-tile">
+              <h3 class="stat-tile__title"><a href="../../mocks/pages/admin-guides/default.html">Guides</a></h3>
+              <p class="stat-tile__counts">0 published, 0 draft</p>
+              <a class="btn" href="../../mocks/pages/guide-editor/new.html"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>New guide</a>
+            </li>
+          </ul>
+          <div class="empty">
+            <div class="empty__icon" aria-hidden="true"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg></div>
+            <h4 class="empty__title">Nothing published yet</h4>
+            <p class="empty__text">Start with the studio you shot most recently.</p>
+            <div class="empty__actions"><a class="btn btn--primary" href="../../mocks/pages/studio-editor/new.html"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>New studio</a></div>
+          </div>
+        </div>
+        <div class="ds-example__caption"><span>With nothing published, the tiles still show (zero is a real count) but the <a href="empty-state.html">empty state</a> below holds the primary "New studio", so all three tile buttons drop to secondary.</span></div>
+      </div>
+    </section>
+
+    <section class="ds-section" id="sizes" data-na="One size: the tile fills its grid cell and stretches to the tallest tile in the row."><h2><a href="#sizes">Sizes</a></h2>
+      <p class="ds-na">One size. The tile fills its grid cell (<code>height: 100%</code>) so tiles in a row match the tallest one; the grid decides the width (see Responsive behaviour).</p>
+    </section>
+
+    <section class="ds-section" id="states"><h2><a href="#states">States</a></h2>
+      <p>The tile itself is not interactive; its title link and its action are. Pointer and focus states are forced with <code>data-state</code> here; real pages get them from <code>:hover</code>, <code>:focus-visible</code> and <code>:active</code>. Loading uses <code>aria-busy="true"</code> on the dashboard wrapper.</p>
+      <div class="ds-matrix"><table>
+        <caption class="visually-hidden">Stat tile states</caption>
+        <thead><tr><th scope="col">Part</th><th scope="col">Default</th><th scope="col">Hover</th><th scope="col">Focus</th><th scope="col">Active</th><th scope="col">Disabled</th><th scope="col">Loading</th><th scope="col">Zero counts</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Primary action</th>
+            <td><div class="stat-tile" style="min-width: 15rem;"><h3 class="stat-tile__title"><a href="../../mocks/pages/admin-studios/default.html">Studios</a></h3><p class="stat-tile__counts">7 published, 2 draft</p><a class="btn btn--primary" href="../../mocks/pages/studio-editor/new.html">New studio</a></div></td>
+            <td><div class="stat-tile" style="min-width: 15rem;"><h3 class="stat-tile__title"><a href="../../mocks/pages/admin-studios/default.html">Studios</a></h3><p class="stat-tile__counts">7 published, 2 draft</p><a class="btn btn--primary" href="../../mocks/pages/studio-editor/new.html" data-state="hover">New studio</a></div></td>
+            <td><div class="stat-tile" style="min-width: 15rem;"><h3 class="stat-tile__title"><a href="../../mocks/pages/admin-studios/default.html">Studios</a></h3><p class="stat-tile__counts">7 published, 2 draft</p><a class="btn btn--primary" href="../../mocks/pages/studio-editor/new.html" data-state="focus">New studio</a></div></td>
+            <td><div class="stat-tile" style="min-width: 15rem;"><h3 class="stat-tile__title"><a href="../../mocks/pages/admin-studios/default.html">Studios</a></h3><p class="stat-tile__counts">7 published, 2 draft</p><a class="btn btn--primary" href="../../mocks/pages/studio-editor/new.html" data-state="active">New studio</a></div></td>
+            <td><span class="text-muted">Never disabled: creating a studio is always allowed.</span></td>
+            <td><div class="stat-tile stat-tile--skeleton" style="min-width: 15rem;" aria-busy="true"><span class="skeleton skeleton--title"></span><span class="skeleton skeleton--text"></span><span class="skeleton skeleton--pill"></span></div></td>
+            <td><div class="stat-tile" style="min-width: 15rem;"><h3 class="stat-tile__title"><a href="../../mocks/pages/admin-studios/default.html">Studios</a></h3><p class="stat-tile__counts">0 published, 0 draft</p><a class="btn" href="../../mocks/pages/studio-editor/new.html">New studio</a></div></td>
+          </tr>
+          <tr><th scope="row">Title link</th>
+            <td><div class="stat-tile" style="min-width: 15rem;"><h3 class="stat-tile__title"><a href="../../mocks/pages/admin-spots/default.html">Spots</a></h3><p class="stat-tile__counts">5 published, 1 draft</p><a class="btn" href="../../mocks/pages/spot-editor/new.html">New spot</a></div></td>
+            <td><div class="stat-tile" style="min-width: 15rem;"><h3 class="stat-tile__title"><a href="../../mocks/pages/admin-spots/default.html" data-state="hover">Spots</a></h3><p class="stat-tile__counts">5 published, 1 draft</p><a class="btn" href="../../mocks/pages/spot-editor/new.html">New spot</a></div></td>
+            <td><div class="stat-tile" style="min-width: 15rem;"><h3 class="stat-tile__title"><a href="../../mocks/pages/admin-spots/default.html" data-state="focus">Spots</a></h3><p class="stat-tile__counts">5 published, 1 draft</p><a class="btn" href="../../mocks/pages/spot-editor/new.html">New spot</a></div></td>
+            <td><span class="text-muted">No pressed style; the link navigates on release.</span></td>
+            <td><span class="text-muted">Never disabled: an empty list still opens.</span></td>
+            <td><span class="text-muted">See the row above; the whole tile is a skeleton.</span></td>
+            <td><div class="stat-tile" style="min-width: 15rem;"><h3 class="stat-tile__title"><a href="../../mocks/pages/admin-spots/default.html">Spots</a></h3><p class="stat-tile__counts">0 published, 0 draft</p><a class="btn" href="../../mocks/pages/spot-editor/new.html">New spot</a></div></td>
+          </tr>
+        </tbody>
+      </table></div>
+      <h3>Both themes</h3>
+      <div class="ds-themes">
+        <div data-theme="light"><ul class="stat-grid" style="grid-template-columns: minmax(0, 1fr);"><li class="stat-tile"><h3 class="stat-tile__title"><a href="../../mocks/pages/admin-guides/default.html">Guides</a></h3><p class="stat-tile__counts">3 published, 1 draft</p><a class="btn btn--primary" href="../../mocks/pages/guide-editor/new.html"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>New guide</a></li></ul></div>
+        <div data-theme="dark"><ul class="stat-grid" style="grid-template-columns: minmax(0, 1fr);"><li class="stat-tile"><h3 class="stat-tile__title"><a href="../../mocks/pages/admin-guides/default.html">Guides</a></h3><p class="stat-tile__counts">3 published, 1 draft</p><a class="btn btn--primary" href="../../mocks/pages/guide-editor/new.html"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>New guide</a></li></ul></div>
+      </div>
+      <h3>Dashboard states around the tiles</h3>
+      <ul>
+        <li><b>Loading</b> (<a href="../../mocks/pages/admin-dashboard/loading.html">loading</a>): each tile keeps its border and shows a title bar, a counts line and a pill where the button goes. The wrapper carries <code>aria-busy="true"</code> and a visually hidden <code>role="status"</code> "Loading the dashboard".</li>
+        <li><b>Zero counts</b> (<a href="../../mocks/pages/admin-dashboard/empty.html">empty</a>): tiles stay and say "0 published, 0 draft"; the empty state below carries the primary action.</li>
+        <li><b>Error</b> (<a href="../../mocks/pages/admin-dashboard/error.html">error</a>): if the counts cannot load, the tiles are not drawn at all. An error empty state ("We couldn't load the dashboard", "Try again") replaces them; a tile never shows a guessed or zero count.</li>
+        <li><b>Partial</b> (<a href="../../mocks/pages/admin-dashboard/partial.html">partial</a>): the counts loaded but the re-verification list did not. Tiles render normally; the danger alert sits in the list's place and says "The counts above are current".</li>
+        <li><b>Up to date</b> (<a href="../../mocks/pages/admin-dashboard/up-to-date.html">up-to-date</a>): tiles render normally; the list is replaced by a compact success empty state.</li>
+      </ul>
+    </section>
+
+    <section class="ds-section" id="responsive"><h2><a href="#responsive">Responsive behaviour</a></h2>
+      <ul>
+        <li>Below 48rem the grid is one column and the tiles stack Studios, Spots, Guides (L2-053.3). From 48rem it is three equal columns.</li>
+        <li>The gap is <code>--layout-gutter</code>, so it widens with the page: 24px on phones, 32px from 48rem, 40px from 62rem.</li>
+        <li>The action keeps its natural width at every size (<code>align-self: flex-start</code>); it does not become full width on phones, because the tile is already a full-width target region and the button is 44px tall.</li>
+        <li>Counts wrap rather than truncate; "0 published, 0 draft" fits a 288px-wide tile with room to spare.</li>
+        <li>Respect device safe areas through the page container; the tile adds no fixed positioning of its own.</li>
+      </ul>
+    </section>
+
+    <section class="ds-section" id="theming"><h2><a href="#theming">Theming</a></h2>
+      <p>The tile has no fill: it reads <code>--color-bg-canvas</code> through the page, draws its edge in <code>--color-border-default</code> and its counts in <code>--color-fg-muted</code>. The title link is held at <code>--color-fg-default</code> rather than the link colour so the three tiles read as headings first. In dark, the canvas, border and text roles swap together, and the primary button flips to light stone with dark text, so the one primary still stands out.</p>
+      <pre><code>/* The tile reads roles only; re-theme by overriding the roles in scope. */
+.stat-tile { border-color: var(--color-border-default); }
+.stat-tile__counts { color: var(--color-fg-muted); }</code></pre>
+    </section>
+
+    <section class="ds-section" id="accessibility"><h2><a href="#accessibility">Accessibility</a></h2>
+      <h3>Role and pattern</h3>
+      <p>Native structure, no ARIA widget: a <code>&lt;ul class="stat-grid"&gt;</code> of <code>&lt;li class="stat-tile"&gt;</code>, so screen readers announce "list, 3 items". The section has a visually hidden <code>&lt;h2&gt;Content&lt;/h2&gt;</code>, and each tile title is an <code>&lt;h3&gt;</code> wrapping a link, so heading navigation lands on Studios, Spots and Guides. The action is an <code>&lt;a&gt;</code> styled as a button because it navigates to the editor.</p>
+      <h3>Keyboard</h3>
+      <table class="ds-table ds-keys"><thead><tr><th scope="col">Key</th><th scope="col">Action</th></tr></thead><tbody>
+        <tr><td><kbd>Tab</kbd> / <kbd>Shift</kbd>+<kbd>Tab</kbd></td><td>Moves through each tile's title link, then its action: Studios, New studio, Spots, New spot, Guides, New guide.</td></tr>
+        <tr><td><kbd>Enter</kbd></td><td>Follows the focused link: the title opens the admin list, the action opens a new editor.</td></tr>
+      </tbody></table>
+      <h3>Focus</h3>
+      <p>Both links show the shared ring (2px <code>--color-focus-ring</code>, offset) on <code>:focus-visible</code>. The tile has no focus of its own; it is never a single click target, so it never wraps its links in a bigger link.</p>
+      <h3>Labelling</h3>
+      <p>The heading text is the link name ("Studios"). The action names its object ("New studio"), so it makes sense out of context in a links list. Counts are plain text read after the heading; no <code>aria-label</code> rewrites them. While loading, skeleton spans are empty and the status message carries the meaning.</p>
+      <h3>Contrast</h3>
+      <div class="ds-example__canvas ds-example__canvas--stack" style="padding: 0; gap: var(--space-2);">
+        <div class="ds-pair"><span>Title link on page</span><span class="ds-pair__ratio" data-contrast="--color-fg-default|--color-bg-canvas" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Counts on page</span><span class="ds-pair__ratio" data-contrast="--color-fg-muted|--color-bg-canvas" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Primary action label</span><span class="ds-pair__ratio" data-contrast="--color-fg-on-action|--color-action" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Secondary action edge on page</span><span class="ds-pair__ratio" data-contrast="--color-border-strong|--color-bg-canvas" data-min="3"></span></div>
+        <div class="ds-pair"><span>Focus ring on page</span><span class="ds-pair__ratio" data-contrast="--color-focus-ring|--color-bg-canvas" data-min="3"></span></div>
+      </div>
+      <p>The tile border (<code>--color-border-default</code>) is decorative: it groups content but marks no control, so it is exempt from 1.4.11.</p>
+      <h3>Motion</h3>
+      <p>Only the skeleton shimmer moves, and it stops under <code>prefers-reduced-motion</code>. The button's hover transition reads <code>--duration-fast</code>, which reduced motion zeroes.</p>
+      <h3>Touch</h3>
+      <p>The action is a 44px button and the title link is <code>--text-h4</code> type with the tile's padding around it. Title and action are at least <code>--space-3</code> apart in every state, so a thumb never hits both.</p>
+    </section>
+
+    <section class="ds-section" id="content"><h2><a href="#content">Content</a></h2>
+      <ul>
+        <li>Title: the plural content type, as the admin navigation names it: "Studios", "Spots", "Guides".</li>
+        <li>Counts: exactly "{n} published, {m} draft" (L2-053.1): published first, a comma, and "draft" unchanged at any count. Zero is written as "0", never hidden or spelled out.</li>
+        <li>Action: "New" plus the singular type: "New studio", "New spot", "New guide", with the plus icon before it.</li>
+        <li>No other copy in the tile: no help text, no dates, no "last updated". What needs attention goes in the re-verification list below.</li>
+      </ul>
+    </section>
+
+    <section class="ds-section" id="do-dont"><h2><a href="#do-dont">Do and don't</a></h2>
+      <div class="ds-dodont">
+        <figure class="ds-do"><div class="ds-example__canvas"><div class="stat-tile" style="min-width: 14rem;"><h3 class="stat-tile__title"><a href="../../mocks/pages/admin-studios/default.html">Studios</a></h3><p class="stat-tile__counts">7 published, 2 draft</p></div></div><figcaption>Use the L2-053 wording, with the title linking to the list.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas"><div class="stat-tile" style="min-width: 14rem;"><p class="stat-tile__title">Studios</p><p class="stat-tile__counts">7 published · 2 drafts</p></div></div><figcaption>The dashboard behind the admin menu used a dot and "drafts", with a title that went nowhere. Keep one wording, and link the title.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas"><a class="btn btn--primary" href="../../mocks/pages/studio-editor/new.html">New studio</a><a class="btn" href="../../mocks/pages/spot-editor/new.html">New spot</a><a class="btn" href="../../mocks/pages/guide-editor/new.html">New guide</a></div><figcaption>One primary across the grid. On an empty dashboard the empty state takes it and all three are secondary.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas"><a class="btn btn--primary" href="../../mocks/pages/studio-editor/new.html">New studio</a><a class="btn btn--primary" href="../../mocks/pages/spot-editor/new.html">New spot</a><a class="btn btn--primary" href="../../mocks/pages/guide-editor/new.html">New guide</a></div><figcaption>Three primaries is the same as none. Don't promote every tile's action.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas"><div class="stat-tile" style="min-width: 14rem;"><h3 class="stat-tile__title"><a href="../../mocks/pages/admin-guides/default.html">Guides</a></h3><p class="stat-tile__counts">0 published, 0 draft</p></div></div><figcaption>Show zero as zero when the counts loaded.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas"><div class="stat-tile" style="min-width: 14rem;"><h3 class="stat-tile__title"><a href="../../mocks/pages/admin-guides/default.html">Guides</a></h3><p class="stat-tile__counts">3 published, 1 draft</p><p class="text-muted">Up 2 this month</p></div></div><figcaption>Don't add trends or deltas. There is no history behind them, and on error the tiles are replaced, never filled with zeros.</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="ds-section" id="tokens"><h2><a href="#tokens">Tokens</a></h2>
+      <div class="ds-table-wrap"><table class="ds-table">
+        <thead><tr><th scope="col">Part</th><th scope="col">Token</th><th scope="col">Light</th><th scope="col">Dark</th></tr></thead>
+        <tbody>
+          <tr><td>Tile edge</td><td><code>--color-border-default</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-border-default" data-swatch></i><span data-token="--color-border-default"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-border-default" data-swatch></i><span data-token="--color-border-default"></span></span></td></tr>
+          <tr><td>Title</td><td><code>--color-fg-default</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-default" data-swatch></i><span data-token="--color-fg-default"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-default" data-swatch></i><span data-token="--color-fg-default"></span></span></td></tr>
+          <tr><td>Counts</td><td><code>--color-fg-muted</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-muted" data-swatch></i><span data-token="--color-fg-muted"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-muted" data-swatch></i><span data-token="--color-fg-muted"></span></span></td></tr>
+          <tr><td>Page behind</td><td><code>--color-bg-canvas</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-bg-canvas" data-swatch></i><span data-token="--color-bg-canvas"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-bg-canvas" data-swatch></i><span data-token="--color-bg-canvas"></span></span></td></tr>
+          <tr><td>Primary action</td><td><code>--color-action</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-action" data-swatch></i><span data-token="--color-action"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-action" data-swatch></i><span data-token="--color-action"></span></span></td></tr>
+          <tr><td>Title font</td><td><code>--text-h4</code></td><td colspan="2"><span data-token="--text-h4"></span></td></tr>
+          <tr><td>Counts font</td><td><code>--text-body-lg</code>, tabular figures</td><td colspan="2"><span data-token="--text-body-lg"></span></td></tr>
+          <tr><td>Padding block / inline</td><td><code>--space-5</code> / <code>--space-6</code></td><td colspan="2"><span data-token="--space-5"></span> / <span data-token="--space-6"></span></td></tr>
+          <tr><td>Gap between parts</td><td><code>--space-3</code></td><td colspan="2"><span data-token="--space-3"></span></td></tr>
+          <tr><td>Radius</td><td><code>--radius-lg</code></td><td colspan="2"><span data-token="--radius-lg"></span></td></tr>
+          <tr><td>Edge width</td><td><code>--border-width-hairline</code></td><td colspan="2"><span data-token="--border-width-hairline"></span></td></tr>
+          <tr><td>Grid gap</td><td><code>--layout-gutter</code></td><td colspan="2"><span data-token="--layout-gutter"></span></td></tr>
+          <tr><td>Skeleton button height</td><td><code>--control-height-md</code></td><td colspan="2"><span data-token="--control-height-md"></span></td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section class="ds-section" id="code"><h2><a href="#code">Code</a></h2>
+      <pre><code>&lt;section aria-labelledby="content-title"&gt;
+  &lt;h2 class="visually-hidden" id="content-title"&gt;Content&lt;/h2&gt;
+  &lt;ul class="stat-grid"&gt;
+    &lt;li class="stat-tile"&gt;
+      &lt;h3 class="stat-tile__title"&gt;&lt;a href="/admin/studios"&gt;Studios&lt;/a&gt;&lt;/h3&gt;
+      &lt;p class="stat-tile__counts"&gt;7 published, 2 draft&lt;/p&gt;
+      &lt;a class="btn btn--primary" href="/admin/studios/new"&gt;&lt;svg class="icon" aria-hidden="true" viewBox="0 0 24 24"&gt;&lt;path d="M12 5v14M5 12h14"/&gt;&lt;/svg&gt;New studio&lt;/a&gt;
+    &lt;/li&gt;
+    …
+  &lt;/ul&gt;
+&lt;/section&gt;
+
+&lt;!-- Loading: wrapper is busy, tiles are skeletons --&gt;
+&lt;div aria-busy="true"&gt;
+  &lt;p class="visually-hidden" role="status"&gt;Loading the dashboard&lt;/p&gt;
+  &lt;ul class="stat-grid"&gt;
+    &lt;li class="stat-tile stat-tile--skeleton"&gt;
+      &lt;span class="skeleton skeleton--title"&gt;&lt;/span&gt;
+      &lt;span class="skeleton skeleton--text"&gt;&lt;/span&gt;
+      &lt;span class="skeleton skeleton--pill"&gt;&lt;/span&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;</code></pre>
+      <div class="ds-table-wrap"><table class="ds-table"><thead><tr><th scope="col">Class / attribute</th><th scope="col">Effect</th></tr></thead><tbody>
+        <tr><td><code>.stat-grid</code></td><td>Unstyled list; one column, three from 48rem, <code>--layout-gutter</code> gap.</td></tr>
+        <tr><td><code>.stat-tile</code></td><td>Bordered column with 12px between parts; fills the cell height.</td></tr>
+        <tr><td><code>.stat-tile__title</code></td><td><code>--text-h4</code>; its link stays <code>--color-fg-default</code>.</td></tr>
+        <tr><td><code>.stat-tile__counts</code></td><td>Muted large body text with tabular figures.</td></tr>
+        <tr><td><code>.stat-tile .btn</code></td><td>Natural width, pinned to the bottom of the tile.</td></tr>
+        <tr><td><code>aria-busy="true"</code> (wrapper)</td><td>Loading: tiles hold skeletons; pair it with a <code>role="status"</code> message.</td></tr>
+        <tr><td><code>.stat-tile--skeleton</code></td><td>Loading tile: sizes the text placeholder to 70% and the button placeholder to an 8rem pill.</td></tr>
+        <tr><td><code>data-state="hover|focus|active"</code></td><td>Documentation and mocks only: forces a state on the title link or action.</td></tr>
+      </tbody></table></div>
+    </section>
+
+    <section class="ds-section" id="sources"><h2><a href="#sources">Sources</a></h2>
+      <p>Extracted from these mocks:</p>
+      <ul>
+        <li><a href="../../mocks/pages/admin-dashboard/default.html">pages/admin-dashboard/default</a> (three tiles, studios primary)</li>
+        <li><a href="../../mocks/pages/admin-dashboard/empty.html">pages/admin-dashboard/empty</a> (zero counts, all secondary, empty state below)</li>
+        <li><a href="../../mocks/pages/admin-dashboard/loading.html">pages/admin-dashboard/loading</a> (skeleton tiles, busy wrapper, status message)</li>
+        <li><a href="../../mocks/pages/admin-dashboard/error.html">pages/admin-dashboard/error</a> (tiles replaced by the error state)</li>
+        <li><a href="../../mocks/pages/admin-dashboard/partial.html">pages/admin-dashboard/partial</a> (tiles shown, list failed)</li>
+        <li><a href="../../mocks/pages/admin-dashboard/up-to-date.html">pages/admin-dashboard/up-to-date</a> (tiles shown, nothing to re-verify)</li>
+        <li><a href="../../mocks/dialogs/site-menu/admin.html">dialogs/site-menu/admin</a> (the inert dashboard behind the admin menu)</li>
+      </ul>
+      <p>Requirements: L2-053 (counts, New actions, one column at XS), L2-044 (the list beside the tiles).</p>
+      <p>Drift found during extraction: the dashboard drawn behind <a href="../../mocks/dialogs/site-menu/admin.html">dialogs/site-menu/admin</a> uses <code>&lt;h2&gt;</code> titles with no link and no action, and writes "7 published · 2 drafts"; the system follows the dashboard mocks and L2-053.1 ("7 published, 2 draft", <code>&lt;h3&gt;</code> link, New action). The loading skeleton sizes its counts line and button pill with inline styles; <code>.stat-tile--skeleton</code>, like <code>.admin-row--skeleton</code>, now sizes them, so the examples here drop the inline styles.</p>
+    </section>
+
+    <footer class="ds-footer"><span>ShotThere design system · extracted from <a href="../../mocks/index.html">docs/mocks</a> on 13 October 2026</span><a href="#top">Back to top</a></footer>
+  </main>
+</div>
+<script src="../assets/ds.js"></script>
+</body>
+</html>

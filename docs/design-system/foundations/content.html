@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Content — ShotThere design system</title>
-<meta name="description" content="ShotThere content rules: Canadian English, voice and tone, sentence case, button verbs, numbers, dates, times, CAD and postal codes, naming Caribbean traditions, privacy and allergen copy, error and empty-state formulas and a microcopy library.">
+<meta name="description" content="How ShotThere writes: a first-hand, measured, plain voice that is honest about trade-offs; Canadian English and sentence case; verbs; numbers, CAD and the all-in cost; dates and the stale rule; metric first; scores; places; disclosure, permit and episode wording; error and empty-state formulas; and the microcopy library from the mocks.">
 <link rel="stylesheet" href="../tokens/tokens.css">
 <link rel="stylesheet" href="../assets/components.css">
 <link rel="stylesheet" href="../assets/ds.css">
@@ -33,40 +33,61 @@
       <li><a href="../components/icon-button.html">Icon button</a></li>
       <li><a href="../components/button-group.html">Button group</a></li>
       <li><a href="../components/link.html">Link</a></li>
+      <li><a href="../components/compare-bar.html">Compare toggle and bar</a></li>
     </ul></details>
     <details open><summary>Inputs</summary><ul>
       <li><a href="../components/form-field.html">Form field</a></li>
       <li><a href="../components/text-field.html">Text field</a></li>
       <li><a href="../components/textarea.html">Textarea</a></li>
       <li><a href="../components/select.html">Select</a></li>
+      <li><a href="../components/combobox.html">Combobox</a></li>
       <li><a href="../components/checkbox.html">Checkbox</a></li>
       <li><a href="../components/radio-group.html">Radio group</a></li>
       <li><a href="../components/file-upload.html">File upload</a></li>
       <li><a href="../components/form-layout.html">Form layout</a></li>
+      <li><a href="../components/signup.html">Email signup</a></li>
     </ul></details>
     <details open><summary>Navigation</summary><ul>
       <li><a href="../components/skip-link.html">Skip link</a></li>
       <li><a href="../components/site-header.html">Site header</a></li>
       <li><a href="../components/footer.html">Footer</a></li>
+      <li><a href="../components/breadcrumb.html">Breadcrumb</a></li>
+      <li><a href="../components/filter.html">Filters</a></li>
     </ul></details>
     <details open><summary>Containers and overlays</summary><ul>
-      <li><a href="../components/container.html">Container and grid</a></li>
-      <li><a href="../components/card.html">Card</a></li>
+      <li><a href="../components/container.html">Container</a></li>
+      <li><a href="../components/review-layout.html">Review layout</a></li>
+      <li><a href="../components/editor-layout.html">Editor layout</a></li>
       <li><a href="../components/dialog.html">Dialog</a></li>
-      <li><a href="../components/sheet.html">Sheet and drawer</a></li>
-      <li><a href="../components/divider.html">Divider</a></li>
+      <li><a href="../components/sheet.html">Sheet</a></li>
+      <li><a href="../components/popover.html">Popover</a></li>
+      <li><a href="../components/lightbox.html">Lightbox</a></li>
     </ul></details>
     <details open><summary>Data display</summary><ul>
+      <li><a href="../components/location-card.html">Location card</a></li>
       <li><a href="../components/table.html">Table</a></li>
+      <li><a href="../components/compare-table.html">Comparison table</a></li>
+      <li><a href="../components/list.html">List rows</a></li>
       <li><a href="../components/description-list.html">Description list</a></li>
+      <li><a href="../components/price-block.html">Price block</a></li>
+      <li><a href="../components/score.html">Score and pips</a></li>
+      <li><a href="../components/shot-grid.html">Shot grid</a></li>
+      <li><a href="../components/video-poster.html">Episode poster</a></li>
+      <li><a href="../components/map.html">Map</a></li>
+      <li><a href="../components/guide-entry.html">Guide entry</a></li>
+      <li><a href="../components/stat-tile.html">Stat tile</a></li>
+      <li><a href="../components/image-manager.html">Image manager</a></li>
+      <li><a href="../components/disclosure.html">Disclosure</a></li>
       <li><a href="../components/badge.html">Badge</a></li>
+      <li><a href="../components/status-label.html">Status label</a></li>
       <li><a href="../components/chip.html">Chip</a></li>
+      <li><a href="../components/tag.html">Tag</a></li>
     </ul></details>
     <details open><summary>Feedback</summary><ul>
       <li><a href="../components/inline-message.html">Inline message</a></li>
-      <li><a href="../components/alert.html">Alert and banner</a></li>
+      <li><a href="../components/alert.html">Alert</a></li>
       <li><a href="../components/toast.html">Toast</a></li>
-      <li><a href="../components/progress.html">Progress and meter</a></li>
+      <li><a href="../components/progress.html">Progress</a></li>
       <li><a href="../components/spinner.html">Spinner</a></li>
       <li><a href="../components/skeleton.html">Skeleton</a></li>
       <li><a href="../components/empty-state.html">Empty state</a></li>
@@ -83,306 +104,425 @@
       <li><a href="../patterns/content-and-tone.html">Content and tone</a></li>
     </ul></details>
   </nav>
-
   <main id="main" class="ds-main">
     <header class="ds-header">
       <p class="ds-kicker">Foundation</p>
       <h1>Content</h1>
-      <p class="ds-lead">Words in ShotThere are few, warm and exact. The food does the talking; the copy tells people where they are, what happens next and what is private.</p>
-      <div class="ds-meta"><span class="ds-pill ds-pill--ok">WCAG 2.2 AA</span><span class="ds-pill">en-CA</span><span class="ds-pill">CAD</span><span class="ds-pill">America/Toronto</span></div>
-      <ul class="ds-toc"><li><a href="#overview">Overview</a></li><li><a href="#language">Canadian English</a></li><li><a href="#voice">Voice and tone</a></li><li><a href="#case">Sentence case</a></li><li><a href="#actions">Buttons and links</a></li><li><a href="#formats">Numbers, dates, times and money</a></li><li><a href="#traditions">Respecting the traditions</a></li><li><a href="#privacy">Privacy copy</a></li><li><a href="#food-safety">Allergens, diets and food safety</a></li><li><a href="#errors">Error messages</a></li><li><a href="#empty">Empty states</a></li><li><a href="#library">Microcopy library</a></li><li><a href="#usage">Usage</a></li><li><a href="#accessibility">Accessibility</a></li><li><a href="#tokens">Tokens</a></li></ul>
+      <p class="ds-lead">ShotThere writes like a photographer who has shot in the room: first-hand, measured, plain and honest about what doesn't work. Every claim is something we saw, measured or paid for; every number has a unit and a date.</p>
+      <div class="ds-meta"><span class="ds-pill ds-pill--ok">WCAG 2.2 AA</span><span class="ds-pill">en-CA</span><span class="ds-pill">CAD</span><span class="ds-pill">Metric first</span><span class="ds-pill">America/Toronto</span></div>
+      <ul class="ds-toc"><li><a href="#overview">Overview</a></li><li><a href="#voice">Voice and tone</a></li><li><a href="#language">Canadian English</a></li><li><a href="#case">Sentence case</a></li><li><a href="#actions">Buttons and links</a></li><li><a href="#formats">Numbers, dates and times</a></li><li><a href="#money">Money and the all-in cost</a></li><li><a href="#freshness">Verified dates and stale data</a></li><li><a href="#measurements">Measurements</a></li><li><a href="#scores">Scores and light</a></li><li><a href="#places">Places</a></li><li><a href="#disclosure">Disclosure</a></li><li><a href="#permits">Permits</a></li><li><a href="#episodes">Episodes</a></li><li><a href="#errors">Errors</a></li><li><a href="#empty">Empty states</a></li><li><a href="#library">Microcopy library</a></li><li><a href="#usage">Usage</a></li><li><a href="#accessibility">Accessibility</a></li><li><a href="#tokens">Tokens</a></li></ul>
     </header>
 
-<section class="ds-section" id="overview"><h2><a href="#overview">Overview</a></h2>
-      <p>The design is minimal text, lots of photos and generous white space, and the copy follows it. A caterer card is a name and one quiet line ("Trinidadian &amp; Tobagonian · Scarborough"); a button is a verb; an error says what to do. Every string in the product lives in resource files (L2-064.4), so these rules apply to the files, not just the screens.</p>
+    <section class="ds-section" id="overview"><h2><a href="#overview">Overview</a></h2>
+      <p>The promise is on the home page: "Toronto photo studios and outdoor spots, reviewed first-hand. Nothing is listed unless it has been shot there. Same measurements, same test setup, side by side." The copy keeps that promise. A studio card is a name, a neighbourhood, a review date, an all-in cost and a score; a button is a verb; an error says what is safe and what to do. Every string lives in resource files and is marked for translation (L2-070.2), so these rules apply to the files, not just the screens.</p>
       <ul>
-        <li><b>Short.</b> Cut every word that does not help someone choose a caterer, send an enquiry or run their business.</li>
-        <li><b>Warm, not cute.</b> Speak like a good host: friendly and direct. No exclamation marks in the interface, no puns about spice, no "Oops!".</li>
-        <li><b>Specific.</b> Name the caterer, the dish, the date and the number: "Enquiry sent to Pelau House", not "Success".</li>
-        <li><b>Respectful.</b> Name each island tradition as the caterer does, spell dishes as their communities do, and never expose more about a person than they chose to share.</li>
+        <li><b>First-hand.</b> Say what happened in the room: "Streetcar rumble every few minutes; fine for stills, plan around it for video."</li>
+        <li><b>Measured.</b> Numbers with units, prices with dates, scores out of 5. "6.1 m × 4.3 m (20 ft × 14 ft)", not "spacious".</li>
+        <li><b>Plain.</b> Short sentences, common words, no marketing. No exclamation marks, no "Oops", no "stunning".</li>
+        <li><b>Honest about trade-offs.</b> Every review has both "Who it's for" and "Who should skip it" (L2-011.3), and the bad stays in: "Scuffed cycs, tiny elevators, streetcar rumble and stale prices go in the review."</li>
+      </ul>
+    </section>
+
+    <section class="ds-section" id="voice"><h2><a href="#voice">Voice and tone</a></h2>
+      <p>The voice stays the same everywhere. The tone shifts with the moment.</p>
+      <div class="ds-table-wrap"><table class="ds-table">
+        <thead><tr><th scope="col">Moment</th><th scope="col">Tone</th><th scope="col">From the mocks</th></tr></thead>
+        <tbody>
+          <tr><td>Browsing a list</td><td>Out of the way. Names, places, costs and scores; one line of context.</td><td>"Every studio here was shot in with the same test setup. All-in is the cost of a 2-hour shoot with mandatory fees." · "7 studios"</td></tr>
+          <tr><td>Reading a review</td><td>First-hand and specific. The good and the bad in the same flat voice.</td><td>"Who it's for: Portrait and fashion shooters who want big north light and a usable cyc on a mid-range budget." · "Who should skip it: Video crews, because of the streetcar, and anyone hauling heavy cases: the freight elevator is tiny."</td></tr>
+          <tr><td>Guides</td><td>An editor's note: the reason to book and the catch, in two sentences.</td><td>"The cheapest room we've shot in, and the light is the reason to book it: big east-facing windows over Augusta Ave. Book a morning; by mid-afternoon the room goes flat."</td></tr>
+          <tr><td>Something is out of date</td><td>Factual. Say how old, say what to do.</td><td>"We last checked these prices 225 days ago. Confirm with the studio before you book."</td></tr>
+          <tr><td>Something went wrong</td><td>Calm. Say what is safe, then what to do.</td><td>"The studio list didn't arrive. Check your connection and try again; your filters are kept."</td></tr>
+          <tr><td>Admin editing</td><td>Practical and exact about consequences.</td><td>"It goes back to draft. Its page, its map marker and its place in lists, comparisons and guides disappear within a minute. You can publish it again any time."</td></tr>
+          <tr><td>Done</td><td>Quietly confirmed. A name and what happens next, no exclamation marks.</td><td>"Corktown Garage Studio is published. It appears in lists, the map and the sitemap within a minute." · "Link copied"</td></tr>
+        </tbody>
+      </table></div>
+      <ul>
+        <li><b>"I" is the reviewer</b>, in first-hand statements: the disclosure ("I paid the full rate for this session.") and the editorial policy ("Nothing is listed unless I've booked it or visited it and shot there myself.").</li>
+        <li><b>"We" is ShotThere</b>, in system copy and editors' notes: "We couldn't load the studios", "the nearest studios we've reviewed".</li>
+        <li><b>"You" is the reader</b>: "Confirm with the studio before you book."</li>
+        <li>Use contractions: "can't", "we've", "it's", "didn't". They read as speech. Apostrophes are the plain <code>'</code> throughout, as in every mock; quoted search terms use curly quotes: No studios match “parkdale”.</li>
+        <li>Use the en dash for ranges (153–183 days), the em dash with spaces in episode titles, the middle dot (·) between facts, and the ellipsis character (…) only for something in progress ("Saving…", "Loading studios…").</li>
+        <li>One idea per sentence. Most sentences in the product are under 20 words.</li>
       </ul>
     </section>
 
     <section class="ds-section" id="language"><h2><a href="#language">Canadian English</a></h2>
-      <p>Pages are <code>lang="en-CA"</code>. Use Canadian spelling and conventions throughout.</p>
+      <p>Pages are <code>lang="en-CA"</code> (L2-070.1). Use Canadian spelling and conventions throughout.</p>
       <div class="ds-table-wrap"><table class="ds-table">
         <thead><tr><th scope="col">Rule</th><th scope="col">Write</th><th scope="col">Not</th></tr></thead>
         <tbody>
-          <tr><td>-our endings</td><td>colour, honour, favourite, neighbour</td><td>color, honor, favorite</td></tr>
-          <tr><td>-re endings</td><td>centre, centred</td><td>center</td></tr>
-          <tr><td>-ize, as in Canadian dictionaries</td><td>organization, recognize</td><td>organisation</td></tr>
+          <tr><td>-our endings</td><td>colour, neighbourhood, favourite</td><td>color, neighborhood</td></tr>
+          <tr><td>-re endings</td><td>centre, metre, litre</td><td>center, meter (the unit)</td></tr>
+          <tr><td>-ize, as in Canadian dictionaries</td><td>organize, recognize</td><td>organise</td></tr>
           <tr><td>Doubled l</td><td>cancelled, travelled, labelled</td><td>canceled</td></tr>
-          <tr><td>Nouns</td><td>licence (noun), cheque, postal code</td><td>license (noun), check, ZIP code</td></tr>
-          <tr><td>Places</td><td>Toronto, the GTA, Peel, York Region, Durham, Halton; areas as listed in L2-010 (Scarborough, North York, Etobicoke, Mississauga, Brampton…)</td><td>Neighbourhood nicknames the area list doesn't contain</td></tr>
-          <tr><td>Email</td><td>email, one word, no hyphen</td><td>e-mail, E-mail</td></tr>
+          <tr><td>Places and transit</td><td>Toronto; TTC; Dundas West station; the 505 streetcar; Queen St E at Carlaw Ave</td><td>"downtown core", "the subway stop near Dundas"</td></tr>
+          <tr><td>Email</td><td>email, one word, no hyphen</td><td>e-mail</td></tr>
         </tbody>
       </table></div>
-      <p>Code identifiers, CSS class names and API fields stay in US spelling where a platform requires it (<code>color-scheme</code>, <code>--color-*</code>); only words people read are Canadian.</p>
-    </section>
-
-    <section class="ds-section" id="voice"><h2><a href="#voice">Voice and tone</a></h2>
-      <p>The voice stays the same everywhere: warm, plain, brief. The tone shifts with the moment.</p>
-      <div class="ds-table-wrap"><table class="ds-table">
-        <thead><tr><th scope="col">Moment</th><th scope="col">Tone</th><th scope="col">From the mocks</th></tr></thead>
-        <tbody>
-          <tr><td>Browsing</td><td>Out of the way. Names, places and photos; almost no prose.</td><td>"60 caterers" · "Jamaican · Pickering" · "Serves 20–300 guests"</td></tr>
-          <tr><td>Enquiring</td><td>Reassuring and concrete about what happens next.</td><td>"Kendra gets an email now. We'll email you when she replies, and the conversation lives in your inbox."</td></tr>
-          <tr><td>Something went wrong</td><td>Calm. Say what is safe, then what to do.</td><td>"Nothing you wrote is lost. Check your connection and try again."</td></tr>
-          <tr><td>Caterer setup</td><td>Encouraging, practical, one step at a time.</td><td>"What do you cook best?" · "Add at least 3 dishes. A name is enough; descriptions, dietary tags and prices help people choose."</td></tr>
-          <tr><td>Operators</td><td>Neutral and precise; consequences stated up front.</td><td>"This access is written to the audit log with your name, the time and your reason."</td></tr>
-          <tr><td>Celebrating</td><td>Quietly pleased. A name and a fact, no exclamation marks.</td><td>"Thanks, Jean-Robert. Your review is live." · "Customers can find you now."</td></tr>
-        </tbody>
-      </table></div>
-      <ul>
-        <li>Address people as "you". ShotThere is "we" ("We'll email you when it's live").</li>
-        <li>Use contractions: "can't", "we'll", "it's", "didn't". They read as speech.</li>
-        <li>Use typographic apostrophes and quotes (’ “ ”), en dashes for ranges (20–300) and the ellipsis character (…).</li>
-        <li>One idea per sentence. Most sentences in the product are under 15 words.</li>
-      </ul>
+      <p>Code identifiers, CSS class names and API fields stay in US spelling where a platform requires it (<code>color-scheme</code>, <code>--color-*</code>, <code>allInCost2h</code>); only words people read are Canadian.</p>
     </section>
 
     <section class="ds-section" id="case"><h2><a href="#case">Sentence case</a></h2>
-      <p>Everything is in sentence case: page titles, headings, buttons, labels, menu items, tabs, table headers, toasts. Capitalize only the first word and proper nouns.</p>
+      <p>Everything is in sentence case: page titles, headings, buttons, labels, table headers, toasts, badges. Capitalize only the first word and proper nouns.</p>
       <div class="ds-table-wrap"><table class="ds-table">
         <thead><tr><th scope="col">Write</th><th scope="col">Not</th></tr></thead>
         <tbody>
-          <tr><td>Send an enquiry</td><td>Send An Enquiry</td></tr>
-          <tr><td>Guests and occasions</td><td>Guests &amp; Occasions</td></tr>
-          <tr><td>Food handler certificate</td><td>Food Handler Certificate</td></tr>
-          <tr><td>Approve and publish</td><td>APPROVE AND PUBLISH</td></tr>
+          <tr><td>Book on the studio's site</td><td>Book On The Studio's Site</td></tr>
+          <tr><td>Measured specifications</td><td>Measured Specifications</td></tr>
+          <tr><td>Who should skip it</td><td>WHO SHOULD SKIP IT</td></tr>
+          <tr><td>Prices may be out of date</td><td>Prices May Be Out Of Date</td></tr>
+          <tr><td>Best studios under $120 for 2 hours</td><td>Best Studios Under $120 For 2 Hours</td></tr>
         </tbody>
       </table></div>
-      <p>Proper nouns keep their capitals: ShotThere, Pelau House, Toronto Public Health, Scarborough, Jamaican, Haitian, Trinidadian &amp; Tobagonian. Dish names are common nouns in running text and on menus ("Curry goat", "Macaroni pie"), capitalized only at the start of a menu line. Uppercase appears only through the <code>.overline</code> and <code>.kind</code> styles, never typed in caps.</p>
+      <p>Proper nouns keep their capitals, exactly as the business writes them: ShotThere, The Junction Loft (the "The" is part of the name), Leslieville Daylight Studio, Evergreen Brick Works, Godox AD600, TTC, YouTube. Uppercase appears only through the <code>--text-overline</code> role on <code>.map-popup__kind</code> ("Studio", "Outdoor spot"), never typed in caps.</p>
     </section>
 
     <section class="ds-section" id="actions"><h2><a href="#actions">Buttons and links</a></h2>
-      <p>A button label is a verb, or a verb and its object, that says exactly what happens. A link label names where it goes.</p>
+      <p>A button label is a verb, or a verb and its object, that says exactly what happens. A link names where it goes.</p>
       <div class="ds-table-wrap"><table class="ds-table">
         <thead><tr><th scope="col">Write</th><th scope="col">Not</th><th scope="col">Why</th></tr></thead>
         <tbody>
-          <tr><td>Send an enquiry</td><td>Contact, Submit</td><td>Says what happens and who it goes to</td></tr>
-          <tr><td>Show 2 caterers</td><td>Apply, OK</td><td>On the phone Filters sheet, the button previews the result</td></tr>
-          <tr><td>Remove dish</td><td>Yes, Confirm</td><td>A confirmation button repeats the action from the question</td></tr>
-          <tr><td>Keep it open</td><td>No, Cancel</td><td>The safe choice says what stays the same</td></tr>
-          <tr><td>Try again</td><td>Retry, Reload</td><td>Plain words</td></tr>
-          <tr><td>Add your first dish</td><td>Get started</td><td>Names the first concrete step</td></tr>
-          <tr><td>Browse caterers</td><td>Go home</td><td>Names the destination by what's there</td></tr>
+          <tr><td>Book on the studio's site</td><td>Book now</td><td>Bookings happen on the studio's site, not on ShotThere; the label says so</td></tr>
+          <tr><td>Show 7 studios</td><td>Apply, Done</td><td>The filters sheet's button previews the result</td></tr>
+          <tr><td>Add to compare · Compare · Remove</td><td>Select, Toggle</td><td>The compare toggle says what it will do next</td></tr>
+          <tr><td>Unpublish · Delete studio · Discard</td><td>Yes, Confirm</td><td>A confirmation button repeats the action from the question ("Unpublish The Junction Loft?")</td></tr>
+          <tr><td>Cancel · Stay</td><td>No</td><td>The safe choice says what stays the same; "Stay" when leaving would lose edits</td></tr>
+          <tr><td>Try again</td><td>Retry, Reload</td><td>Plain words (the per-file "Retry gallery-04.jpg" is the one short form, where space is tight)</td></tr>
+          <tr><td>Read the full review of Kensington Window Room</td><td>Read more</td><td>The link makes sense alone</td></tr>
+          <tr><td>Watch on YouTube · Open in Google Maps</td><td>Click here</td><td>Names the destination; a hidden "(opens in a new tab)" follows</td></tr>
+          <tr><td>Clear filters · Clear all · Clear search</td><td>Reset</td><td>Says what is cleared</td></tr>
         </tbody>
       </table></div>
       <ul>
         <li>Use "Cancel" only to abandon an unsaved task in a dialog; it never deletes anything.</li>
-        <li>Destructive buttons name the action and its object: "Delete my account", "Suspend caterer", "Remove permanently".</li>
-        <li>Busy buttons keep their label and show a spinner (<code>aria-busy="true"</code>); the label never changes to "Saving…".</li>
-        <li>In repeated rows, add the object for screen readers: "Edit<span class="visually-hidden"> Curry goat</span>", written as <code>Edit&lt;span class="visually-hidden"&gt; Curry goat&lt;/span&gt;</code> or an <code>aria-label</code>.</li>
+        <li>Destructive buttons name the action and, when it's not obvious, its object: "Delete studio", "Discard", "Remove test shot".</li>
+        <li>Busy buttons keep their label and show a spinner (<code>aria-busy="true"</code>): "Save changes", not "Saving…". The status line next to it says "Saving…".</li>
+        <li>In repeated rows, add the object for screen readers: "Edit<span class="visually-hidden"> Ossington Blackbox prices</span>", written as <code>Edit&lt;span class="visually-hidden"&gt; Ossington Blackbox prices&lt;/span&gt;</code>.</li>
+        <li>A dialog that only informs closes with "Got it", never "OK".</li>
         <li>Never "Click here", "Learn more" alone, or "Submit".</li>
       </ul>
     </section>
 
-    <section class="ds-section" id="formats"><h2><a href="#formats">Numbers, dates, times and money</a></h2>
-      <p>Everything is shown in <code>America/Toronto</code> time and Canadian dollars. Today in the mocks is Saturday 10 October 2026.</p>
+    <section class="ds-section" id="formats"><h2><a href="#formats">Numbers, dates and times</a></h2>
+      <p>Everything is shown in <code>America/Toronto</code> time with <code>en-CA</code> formatting (L2-070.3). "Today" in the mocks is Monday 13 October 2026.</p>
       <div class="ds-table-wrap"><table class="ds-table">
         <thead><tr><th scope="col">What</th><th scope="col">Format</th><th scope="col">Examples</th></tr></thead>
         <tbody>
-          <tr><td>Date in lists, chips and summaries</td><td>Short weekday, day, short month; add the year when it isn't this year</td><td>Sat 21 Nov · Sat 12 Jun 2027 · expires 14 Mar 2029</td></tr>
-          <tr><td>Date on detail screens</td><td>Full weekday, day, month, year</td><td>Saturday 21 November 2026</td></tr>
-          <tr><td>Time</td><td>12-hour, lowercase a.m./p.m. with periods, no leading zero, colon always</td><td>9:42 a.m. · 4:15 p.m. · 6 p.m. in prose</td></tr>
-          <tr><td>Relative time</td><td>Today and yesterday, then weekday within a week, then date</td><td>9:42 a.m. · yesterday at 4:15 p.m. · Thu · 5 Sep</td></tr>
-          <tr><td>Date with time</td><td>Date, then "at", then time</td><td>Sent Thu 8 Oct at 8:03 p.m. · Suspended since Sat 10 Oct, 10:31 a.m.</td></tr>
-          <tr><td>Money</td><td>Dollar sign, no "CAD" unless comparing currencies, no cents for whole dollars, unit in words</td><td>From $18 per person · $3 each, 40 minimum · $14 per litre · about $2,600 before tax</td></tr>
-          <tr><td>Numbers</td><td>Numerals; comma for thousands from 1,000</td><td>120 guests · 1,284 entries · 5,000</td></tr>
-          <tr><td>Ranges</td><td>En dash, no spaces; repeat the unit once</td><td>Serves 20–300 guests · 2–80 characters</td></tr>
-          <tr><td>Counts</td><td>Number and noun, singular or plural correctly</td><td>2 caterers · 1 unread enquiry · 18 dishes · 4.7 · 23 reviews</td></tr>
-          <tr><td>Postal code</td><td>Uppercase, one space</td><td>M1B 2K3 (accept "m1b2k3" in input and format it)</td></tr>
-          <tr><td>Phone</td><td>International format with spaces</td><td>+1 416 555 0142</td></tr>
-          <tr><td>File</td><td>Name, then type and size</td><td>food-handler-certificate.pdf · PDF · 1.2 MB</td></tr>
-          <tr><td>Character limits</td><td>Say the limit and the current count when over</td><td>Keep your reply under 2,000 characters. It's 2,143 now.</td></tr>
+          <tr><td>Date in cards, captions, admin rows</td><td>Day, short month, year</td><td>Reviewed 3 Oct 2026 · Prices verified 22 Sep 2026 · Last saved 11 Oct 2026</td></tr>
+          <tr><td>Date on a review page and in the verified line</td><td>Day, full month, year (L2-005.1)</td><td>Reviewed 29 September 2026 · Prices verified 22 September 2026 · Permit rules verified 1 September 2026</td></tr>
+          <tr><td>Date with weekday</td><td>Full weekday, day, month, year</td><td>Monday 13 October 2026</td></tr>
+          <tr><td>Time</td><td>12-hour, lowercase am or pm with a space, no leading zero</td><td>10:02 am · 4:12 pm</td></tr>
+          <tr><td>Date with time</td><td>Date, comma, time</td><td>Last saved 13 Oct 2026, 10:02 am</td></tr>
+          <tr><td>Age</td><td>Whole days</td><td>225 days ago · (168 days ago)</td></tr>
+          <tr><td>Durations</td><td>Numerals with the unit; hyphenate before a noun; "h" only in tight card labels</td><td>2 hours · 2-hour shoot · 8-minute walk · All-in 2 h</td></tr>
+          <tr><td>Video length</td><td>Minutes and seconds</td><td>14:32 · 12:48</td></tr>
+          <tr><td>Numbers and counts</td><td>Numerals; correct singular or plural; comma from 1,000</td><td>7 studios · 1 selected · 8 photos · 1 draft · 2 drafts</td></tr>
+          <tr><td>Ranges</td><td>En dash, no spaces</td><td>153–183 days</td></tr>
+          <tr><td>Coordinates</td><td>Four decimals, true minus sign</td><td>43.6846, −79.3653</td></tr>
+          <tr><td>File</td><td>Name, then size</td><td>full-length.jpg · 4.1 MB</td></tr>
         </tbody>
       </table></div>
-      <p>Prices are the caterer's own guidance, not quotes: "From $18 per person" or "$65 per cake". ShotThere never totals a price or adds tax; the caterer does that in the thread.</p>
     </section>
 
-    <section class="ds-section" id="traditions"><h2><a href="#traditions">Respecting the traditions</a></h2>
-      <p>The Caribbean is many islands and many kitchens. Use the specific tradition every time the caterer gives one.</p>
-      <ul>
-        <li><b>Use the cuisine names from the list (L2-007):</b> Jamaican, Trinidadian &amp; Tobagonian, Guyanese, Barbadian (Bajan), Haitian, Grenadian, St. Lucian, Antiguan &amp; Barbudan, Vincentian, Belizean, Surinamese, Kittitian &amp; Nevisian, and so on. "Pan-Caribbean" only when the caterer chooses it.</li>
-        <li><b>Never write "Caribbean food" for a single caterer</b> whose tradition is known. "Caribbean" is for ShotThere as a whole: "Caribbean caterers in Toronto and the GTA".</li>
-        <li><b>Spell dishes as the caterer and their community do</b>, without italics, quotes or glossing: doubles, buss up shut, pholourie, aloo pie, pelau, callaloo, cou-cou, conkie, oil down, souse, griot and pikliz, cook-up rice, pepperpot, black cake, sorrel, mauby, saltfish buljol, paw paw chow.</li>
-        <li><b>Don't "correct" a caterer's spelling</b> to a more familiar one, and don't translate dish names. Descriptions may explain ("Bara and curry channa with tamarind and cucumber chutney").</li>
-        <li>Mark phrases in another language with <code>lang</code> (Haitian Creole <code>ht</code>, Spanish <code>es</code>) so screen readers pronounce them properly.</li>
-      </ul>
-      <div class="ds-example">
-        <div class="ds-example__canvas">
-          <span class="photo"><img src="../assets/img/demerara-kitchen.jpg" alt="Fried rice with chicken, peas, carrots and egg in a serving dish" width="160" height="160"></span><span class="caterer-card__name">Demerara Kitchen</span><span class="caterer-card__meta">Guyanese · Brampton</span>
-          <span class="photo"><img src="../assets/img/cou-cou.jpg" alt="Sesame chicken with sweet peppers and broccoli over brown rice" width="160" height="160"></span><span class="caterer-card__name">Cou-Cou</span><span class="caterer-card__meta">Barbadian (Bajan) · North York</span>
-        </div>
-        <div class="ds-example__caption"><span>The card line is always the caterer's primary cuisine and primary area, never a generic "Caribbean".</span></div>
-      </div>
-    </section>
-
-    <section class="ds-section" id="privacy"><h2><a href="#privacy">Privacy copy</a></h2>
-      <p>Caterers cook from home and customers share personal plans. Copy makes the boundaries visible at the moment they matter.</p>
-      <ul>
-        <li><b>Areas, never addresses.</b> A caterer is shown by the areas they serve ("Scarborough, East York, North York, Pickering, Ajax"), never a street, building or home address. Pickup and delivery details are arranged in the private thread.</li>
-        <li><b>Say who sees what, next to the field.</b> A <code>.private-note</code> with the lock icon sits beside any private information:</li>
-      </ul>
+    <section class="ds-section" id="money"><h2><a href="#money">Money and the all-in cost</a></h2>
+      <p>Prices are Canadian dollars with a dollar sign and two decimals, always: $60.00, $45.50, $145.00 (L2-004.4). No "CAD" label and no cents dropped from stored values. Round thresholds in titles and filters may drop the cents: "Best studios under $120 for 2 hours".</p>
+      <p><b>The all-in cost is the number visitors compare.</b> It is the cost of a standard 2-hour shoot: the hourly rate times the larger of 2 hours or the minimum booking, plus every mandatory fee. Optional fees are listed and excluded. The server calculates it (L2-004.5); copy never recalculates it.</p>
+      <pre><code>all-in = rate × max(2, minimum hours) + mandatory fees
+The Junction Loft: $60.00 × 2 + $25.00 cleaning = $145.00
+Ossington Blackbox: $90.00 × 3 = $270.00</code></pre>
       <div class="ds-example">
         <div class="ds-example__canvas ds-example__canvas--stack">
-          <p class="private-note"><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Pelau House sees your name, not your email or phone.</p>
-          <p class="private-note"><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Private until you share it in a thread</p>
-          <p class="private-note"><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Only you and the ShotThere team see this. It never appears on your page.</p>
-          <p class="private-note"><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/></svg>Devon W. and Maracas Bay never see who reported this.</p>
+          <div class="price-block" style="width: 100%;">
+            <p class="price-block__allin"><strong>$145.00</strong><span>All-in for a standard 2-hour shoot: 2 hours at $60.00 plus the mandatory cleaning fee.</span></p>
+            <dl class="kv">
+              <dt>Hourly rate</dt><dd class="num">$60.00</dd>
+              <dt>Minimum booking</dt><dd>2 hours</dd>
+              <dt>Cleaning fee</dt><dd><span class="num">$25.00</span> <span class="badge">Mandatory</span></dd>
+              <dt>After-hours access</dt><dd><span class="num">$30.00</span> <span class="badge">Optional, not in all-in</span></dd>
+            </dl>
+            <p class="price-block__verified">Prices verified <time datetime="2026-09-22">22 September 2026</time></p>
+          </div>
         </div>
-        <div class="ds-example__caption"><span>Real private notes from the enquiry, account, certificate and report screens.</span></div>
+        <div class="ds-example__caption"><span>The pricing block from <a href="../../mocks/pages/studio/default.html">pages/studio/default</a>: the sentence under the total explains it in words.</span></div>
       </div>
       <ul>
-        <li>Sharing contact details is always the person's explicit action ("Share my contact details"), and the result is stated: "Pelau House can now see your email and phone in this enquiry."</li>
-        <li>Reviews show first name and last initial ("Marcia T."). A deleted account shows "Former ShotThere user".</li>
-        <li>Seed and example content is fictional: <code>.example</code> email domains, 555 phone numbers, invented businesses.</li>
+        <li>Label it the same way everywhere: "All-in 2 h" on cards, "All-in, 2 hours" in the summary and comparison, "All-in for 2 hours: $145.00" in the map popup.</li>
+        <li>Every fee says whether it counts: "Mandatory" or "Optional, not in all-in". No fees at all reads "Nothing costs extra".</li>
+        <li>A missing value in the comparison is "—", never empty or "N/A" (L2-031.3). The cheapest all-in gets the word "Lowest" (L2-031.2).</li>
+        <li>ShotThere never takes money: "ShotThere doesn't take bookings or payments."</li>
       </ul>
     </section>
 
-    <section class="ds-section" id="food-safety"><h2><a href="#food-safety">Allergens, diets and food safety</a></h2>
-      <p>Dietary and allergen information is structured data shown as tags, never buried in a description. Tags are words, so they read without colour or icons.</p>
+    <section class="ds-section" id="freshness"><h2><a href="#freshness">Verified dates and stale data</a></h2>
+      <p>Prices and permit rules change, so each carries the date the owner last checked it. The server decides what is stale (L2-043); copy reports it.</p>
+      <div class="ds-table-wrap"><table class="ds-table">
+        <thead><tr><th scope="col">Age of the verified date</th><th scope="col">State</th><th scope="col">Visitors see</th><th scope="col">The owner sees</th></tr></thead>
+        <tbody>
+          <tr><td>0–152 days</td><td>Current</td><td>"Prices verified 22 September 2026" · "Permit rules verified 1 September 2026"</td><td>Nothing extra</td></tr>
+          <tr><td>153–183 days</td><td>Due soon</td><td>Nothing extra; exactly 183 days is still current (L2-005.3)</td><td>"Due soon" group on the dashboard: "Liberty Cyc House · Studio · Prices verified 28 Apr 2026 (168 days ago)"</td></tr>
+          <tr><td>More than 183 days</td><td>Stale</td><td>"Prices may be out of date" or "Permit rules may be out of date" on the card, in the comparison and as a status on the page: "We last checked these prices 225 days ago. Confirm with the studio before you book."</td><td>"Needs re-verification": "Ossington Blackbox · Stale · Prices verified 2 Mar 2026 (225 days ago)"</td></tr>
+        </tbody>
+      </table></div>
       <div class="ds-example">
         <div class="ds-example__canvas ds-example__canvas--stack">
-          <div class="dish"><div class="dish__top"><h3 class="dish__name">Sweet bread</h3></div><ul class="tags"><li class="tag tag--allergen">Contains nuts</li></ul></div>
-          <div class="dish"><div class="dish__top"><h3 class="dish__name">Paw paw chow</h3></div><ul class="tags"><li class="tag">Vegan</li><li class="tag">Gluten-free</li><li class="tag">Spicy</li></ul></div>
+          <div class="alert alert--warning" role="status"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3 2 20h20L12 3z"/><path d="M12 10v4M12 17h.01"/></svg><div class="alert__body"><p class="alert__title">Permit rules may be out of date</p><p>We last checked these rules 207 days ago. Confirm with the Distillery District before you shoot.</p></div></div>
         </div>
-        <div class="ds-example__caption"><span>Allergen tags (<code>.tag--allergen</code>) read "Contains …"; dietary tags name the diet.</span></div>
+        <div class="ds-example__caption"><span>From <a href="../../mocks/pages/spot/stale-permit.html">pages/spot/stale-permit</a>: the age in days and who to confirm with.</span></div>
+      </div>
+      <p>Never hide or soften a stale flag, and never write "may have changed slightly". Help text in the editor states the rule: "Change this only when you have checked the prices again. Visitors see a warning after 183 days."</p>
+    </section>
+
+    <section class="ds-section" id="measurements"><h2><a href="#measurements">Measurements</a></h2>
+      <p>Metric first, imperial in brackets, with a space before the unit and a true multiplication sign (×) between dimensions. Metres to one decimal, feet rounded to whole feet.</p>
+      <div class="ds-table-wrap"><table class="ds-table">
+        <thead><tr><th scope="col">What</th><th scope="col">Write</th><th scope="col">Not</th></tr></thead>
+        <tbody>
+          <tr><td>Usable space</td><td>6.1 m × 4.3 m (20 ft × 14 ft)</td><td>20x14 ft · 6.1m x 4.3m</td></tr>
+          <tr><td>Ceiling height</td><td>4.0 m (13 ft)</td><td>13'</td></tr>
+          <tr><td>Widths and lengths</td><td>small, 1.2 m wide · white, grey and black seamless, 2.7 m</td><td>4 feet wide</td></tr>
+          <tr><td>Area in filters</td><td>20 m² or more</td><td>20 sq m</td></tr>
+          <tr><td>Distance (rain backup)</td><td>3.1 km, straight-line</td><td>3 km away · 2 miles</td></tr>
+          <tr><td>Gear and lenses</td><td>120 cm octabox · 85 mm · f/8 · 1/160 s · ISO 100 · 20 A circuits</td><td>120cm · 85mm</td></tr>
+          <tr><td>Quantities of gear</td><td>Godox AD600 strobe × 2 · C-stand × 4</td><td>2x strobes</td></tr>
+        </tbody>
+      </table></div>
+      <p>The standard test setup is written the same way on every studio page: "One Godox AD600 in a 120 cm octabox at 45°, 1.5 m from the subject · f/8 · 1/160 s · ISO 100 · 85 mm."</p>
+    </section>
+
+    <section class="ds-section" id="scores"><h2><a href="#scores">Scores and light</a></h2>
+      <p>Six rubric scores, each a whole number from 1 to 5: Value, Light, Space, Gear, Logistics, Condition, always in that order. The overall is their mean to one decimal, calculated by the server: 4, 5, 3, 4, 2, 5 gives 3.8.</p>
+      <div class="ds-table-wrap"><table class="ds-table">
+        <thead><tr><th scope="col">Where</th><th scope="col">Shown</th><th scope="col">Read by a screen reader</th></tr></thead>
+        <tbody>
+          <tr><td>Category in the verdict</td><td>Light · pips · 5</td><td>Light: 5 out of 5</td></tr>
+          <tr><td>Overall in the verdict</td><td>3.8 overall, out of 5</td><td>3.8 overall, out of 5</td></tr>
+          <tr><td>Card and summary panel</td><td>Score 3.8 · Overall 3.8</td><td>3.8 out of 5</td></tr>
+          <tr><td>Comparison table, where the scale isn't stated nearby</td><td>3.8 / 5</td><td>3.8 out of 5 (the " / 5" is hidden and replaced)</td></tr>
+        </tbody>
+      </table></div>
+      <p>Always one decimal for the overall, even when it is whole: 4.0, 3.0. Never percentages and never an icon scale in place of the number. Natural light uses words, not scores: None, Low, Medium or Strong, each beside three pips, for morning, midday, afternoon and evening (spots add golden hour and blue hour).</p>
+    </section>
+
+    <section class="ds-section" id="places"><h2><a href="#places">Places</a></h2>
+      <p>A location is its neighbourhood, then its cross streets, joined by a middle dot. Streets use the short forms Toronto signs use: St, Ave, W, E.</p>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--stack">
+          <ul class="review-head__meta"><li>Junction</li><li>Dundas St W at Pacific Ave, 2nd floor</li><li>Reviewed 29 September 2026</li></ul>
+          <p class="location-card__meta">Kensington Market · Reviewed 3 Oct 2026</p>
+          <p class="location-card__meta">Outdoor spot · Don Valley</p>
+        </div>
+        <div class="ds-example__caption"><span>The review head, a card line and a map list line. Neighbourhood first, always.</span></div>
+      </div>
+      <ul>
+        <li>Neighbourhoods are the names Torontonians use: Junction, Leslieville, Ossington, Liberty Village, Kensington Market, Bloordale, Riverside, Don Valley, Garden District.</li>
+        <li>Cross streets: "Queen St E at Carlaw Ave", "Augusta Ave at Baldwin St". Add the floor or entrance only when it helps someone find the door: "2nd floor", "rear lane".</li>
+        <li>Spots add their type after the neighbourhood: "Don Valley · Park", "Humber Bay · Waterfront".</li>
+        <li>Transit is specific: "Dundas West station, 8-minute walk · 505 streetcar at the door", "TTC 28A shuttle from Davisville or Broadview station".</li>
+      </ul>
+    </section>
+
+    <section class="ds-section" id="disclosure"><h2><a href="#disclosure">Disclosure</a></h2>
+      <p>Every review says how it was paid for, in a fixed callout next to the verdict (L2-012, L2-045). The wording is fixed; only the provider's name changes.</p>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--stack">
+          <div class="disclosure"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><div><p class="disclosure__title">How this session was paid for</p><p>I paid the full rate for this session. No studio pays for placement or scores. <a href="../../mocks/pages/editorial-policy/default.html">Editorial policy</a></p></div></div>
+          <div class="disclosure"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><div><p class="disclosure__title">How this visit was paid for</p><p>Shot on a regular visit; no one paid for or arranged this review. <a href="../../mocks/pages/editorial-policy/default.html">Editorial policy</a></p></div></div>
+        </div>
+        <div class="ds-example__caption"><span>A studio paid in full (<a href="../../mocks/pages/studio/default.html">pages/studio/default</a>) and an outdoor spot (<a href="../../mocks/pages/spot/default.html">pages/spot/default</a>).</span></div>
       </div>
       <div class="ds-table-wrap"><table class="ds-table">
-        <thead><tr><th scope="col">Kind</th><th scope="col">Labels</th><th scope="col">Rule</th></tr></thead>
+        <thead><tr><th scope="col">Value</th><th scope="col">Statement</th><th scope="col">Example</th></tr></thead>
         <tbody>
-          <tr><td>Dietary</td><td>Vegan, Vegetarian, Gluten-free, Dairy-free, Halal, Spicy</td><td>Adjective, sentence case, hyphenated compounds</td></tr>
-          <tr><td>Allergen</td><td>Contains nuts, Contains shellfish</td><td>Always "Contains …"; never "Nut-free" unless the caterer states it as a dietary tag</td></tr>
+          <tr><td>Paid in full</td><td>I paid the full rate for this session.</td><td>The Junction Loft, Ossington Blackbox, Kensington Window Room</td></tr>
+          <tr><td>Discounted</td><td>This session was discounted by &lt;provider&gt;. That did not affect the scores.</td><td>This session was discounted by Leslieville Daylight Studio. That did not affect the scores.</td></tr>
+          <tr><td>Comped</td><td>This session was provided free of charge by &lt;provider&gt;. That did not affect the scores.</td><td>This session was provided free of charge by Liberty Cyc House. That did not affect the scores.</td></tr>
+          <tr><td>Outdoor spot</td><td>Shot on a regular visit; no one paid for or arranged this review.</td><td>Evergreen Brick Works</td></tr>
         </tbody>
       </table></div>
-      <p><b>The certificate is the caterer's statement, not ours.</b> ShotThere records the food handler certificate a caterer provides (holder, issuer, number, expiry) and checks that it is present and in date; it does not inspect or certify kitchens. Never write "certified", "inspected", "approved kitchen" or "safe" about a caterer. Write "Food handler certificate valid until 14 Mar 2029" in the caterer's own dashboard, and attribute anything shown publicly to the caterer.</p>
+      <p>Never "sponsored", "partner", "featured" or "promoted": there is no paid placement anywhere (L2-046). The footer says it once: "No paid placement: order comes only from the sort you choose."</p>
     </section>
 
-    <section class="ds-section" id="errors"><h2><a href="#errors">Error messages</a></h2>
-      <p><b>Formula: what happened + what is safe + what to do.</b> Lead with the outcome in the person's terms, reassure them about their work, then give one action. Never blame, never show codes alone, never "Oops".</p>
+    <section class="ds-section" id="permits"><h2><a href="#permits">Permits</a></h2>
+      <p>Spot pages report what the official source said on the date the owner checked it, for four shoot types (L2-018). Permit copy informs; it is not legal advice, and it never sounds like it. The permit data in the mocks and on these pages is illustrative.</p>
+      <div class="ds-table-wrap"><table class="ds-table">
+        <thead><tr><th scope="col">Where</th><th scope="col">Write</th></tr></thead>
+        <tbody>
+          <tr><td>Permit table</td><td>Shoot type: Portrait · Wedding or engagement · Commercial · Video. Permit: "Required" or "Not required"</td></tr>
+          <tr><td>Verified line</td><td>Permit rules verified 1 September 2026 · Source: Evergreen: photography and filming</td></tr>
+          <tr><td>Summary panel</td><td>Permit rules verified 1 Sep 2026. Check the source before a paid shoot.</td></tr>
+          <tr><td>Cards and map popup</td><td>Portraits: no permit needed · Commercial: permit required</td></tr>
+          <tr><td>Spot filter</td><td>No permit needed</td></tr>
+          <tr><td>Stale</td><td>Permit rules may be out of date. We last checked these rules 207 days ago. Confirm with the Distillery District before you shoot.</td></tr>
+        </tbody>
+      </table></div>
+      <ul>
+        <li>Name the source as its owner titles it, and link it: "City of Toronto: filming and photography in parks".</li>
+        <li>Never write "legal", "allowed", "free to shoot", "no permission needed" or "guaranteed". "Not required" means the source said no permit is required for that shoot type on that date.</li>
+        <li>Always pair a permit status with its source and verified date.</li>
+      </ul>
+    </section>
+
+    <section class="ds-section" id="episodes"><h2><a href="#episodes">Episodes</a></h2>
+      <p>Each review can have a companion episode on the ShotThere YouTube channel. Episode titles follow one pattern: the number, the location, and the finding in a few plain words.</p>
+      <div class="ds-table-wrap"><table class="ds-table">
+        <thead><tr><th scope="col">Where</th><th scope="col">Write</th></tr></thead>
+        <tbody>
+          <tr><td>Episode title (and the iframe <code>title</code>)</td><td>Episode 4: The Junction Loft — big north light, tiny elevator · Episode 7: Evergreen Brick Works at golden hour</td></tr>
+          <tr><td>Section heading</td><td>Watch the episode</td></tr>
+          <tr><td>Poster button</td><td>Play episode, with ": Episode 4, The Junction Loft" hidden for screen readers</td></tr>
+          <tr><td>Line under the poster</td><td>Episode 4: The Junction Loft — big north light, tiny elevator · 14:32</td></tr>
+          <tr><td>Link out</td><td>Watch on YouTube (opens in a new tab)</td></tr>
+          <tr><td>Footer</td><td>YouTube channel</td></tr>
+        </tbody>
+      </table></div>
+      <p>The finding is the review's headline trade-off, not a teaser: "big north light, tiny elevator", never "you won't believe this loft".</p>
+    </section>
+
+    <section class="ds-section" id="errors"><h2><a href="#errors">Errors</a></h2>
+      <p><b>Formula: what happened + what is safe + what to do.</b> Lead with the outcome in plain words, reassure about what was typed or saved, then give one action. Never blame, never show a code alone, never "Oops". Page and alert titles start "We couldn't…"; toast titles drop the "We": "Couldn't save Corktown Garage Studio".</p>
       <div class="ds-example">
         <div class="ds-example__canvas ds-example__canvas--stack">
-          <div class="alert alert--danger" role="alert"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16.5v.5"/></svg><div class="alert__body"><p class="alert__title">Your enquiry wasn’t sent</p><p>Something went wrong on our side. Everything you typed is still here. Reference 7F3K-92QD.</p></div></div>
+          <div class="empty empty--compact empty--error">
+            <div class="empty__icon"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16h.01"/></svg></div>
+            <h3 class="empty__title">We couldn't load the studios</h3>
+            <p class="empty__text">The studio list didn't arrive. Check your connection and try again; your filters are kept.</p>
+            <div class="empty__actions"><button class="btn" type="button"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.3-5.7M20 4v5h-5"/></svg>Try again</button></div>
+          </div>
         </div>
-        <div class="ds-example__caption"><span>What happened (title) · whose fault and what's safe · a reference for support. From <code>dialogs/enquiry/failed</code>.</span></div>
+        <div class="ds-example__caption"><span>What happened (title) · what's safe and what to do · one action. From <a href="../../mocks/pages/studios/error.html">pages/studios/error</a>.</span></div>
       </div>
       <h3>Field errors</h3>
-      <p><b>Formula: an instruction that fixes it.</b> Start with a verb, include the rule, give an example when the format is unusual. Don't restate the label ("Guests is invalid").</p>
+      <p><b>Formula: an instruction that fixes it.</b> Start with a verb, include the rule, give an example when the format is unusual. Don't restate the label ("Hourly rate is invalid"). The summary at the top counts the fixes and names the goal; each link repeats the field name.</p>
       <div class="ds-example">
         <div class="ds-example__canvas ds-example__canvas--stack">
-          <div class="form-summary" role="alert" aria-labelledby="content-summary-title"><h3 id="content-summary-title">Fix 2 things to send your enquiry</h3><ul><li><a href="#content-guests">Enter a whole number of guests from 1 to 5,000</a></li><li><a href="#content-postal">Enter a valid postal code, like M1B 2K3</a></li></ul></div>
-          <label class="field" for="content-guests"><span class="field__label">Guests</span><input class="input" id="content-guests" type="text" inputmode="numeric" value="fifty" aria-invalid="true" aria-describedby="content-guests-error content-guests-help"><span class="field__help" id="content-guests-help">Pelau House serves 20–300</span><span class="field__error" id="content-guests-error">Enter a whole number of guests from 1 to 5,000</span></label>
-          <label class="field" for="content-postal"><span class="field__label">Postal code</span><input class="input" id="content-postal" type="text" value="M1B 2K" autocomplete="postal-code" autocapitalize="characters" aria-invalid="true" aria-describedby="content-postal-error"><span class="field__error" id="content-postal-error">Enter a valid postal code, like M1B 2K3</span></label>
+          <div class="form-summary" role="alert" aria-labelledby="content-summary-title" style="width: 100%;"><h3 id="content-summary-title">Fix 2 things before saving</h3><ul><li><a href="#content-rate">Hourly rate: Enter an amount of 0 or more</a></li><li><a href="#content-verified">Prices last verified: The date can't be in the future</a></li></ul></div>
+          <div class="field"><label class="field__label" for="content-rate">Hourly rate</label><input class="input" id="content-rate" type="text" inputmode="decimal" value="-60" aria-invalid="true" aria-describedby="content-rate-error"><span class="field__error" id="content-rate-error">Enter an amount of 0 or more</span></div>
+          <div class="field"><label class="field__label" for="content-verified">Prices last verified</label><input class="input" id="content-verified" type="date" value="2026-10-20" aria-invalid="true" aria-describedby="content-verified-help content-verified-error"><span class="field__help" id="content-verified-help">Change this only when you have checked the prices again. Visitors see a warning after 183 days.</span><span class="field__error" id="content-verified-error">The date can't be in the future</span></div>
         </div>
-        <div class="ds-example__caption"><span>The summary title counts the fixes and names the goal; each link moves to its field.</span></div>
+        <div class="ds-example__caption"><span>From <a href="../../mocks/pages/studio-editor/invalid.html">pages/studio-editor/invalid</a>.</span></div>
       </div>
       <div class="ds-table-wrap"><table class="ds-table">
         <thead><tr><th scope="col">Situation</th><th scope="col">Write</th><th scope="col">Not</th></tr></thead>
         <tbody>
-          <tr><td>Required choice</td><td>Choose an occasion</td><td>Occasion is required</td></tr>
-          <tr><td>Range</td><td>Choose a date at least 2 days from today</td><td>Invalid date</td></tr>
-          <tr><td>Length</td><td>Write at least 50 characters (35 so far)</td><td>Too short</td></tr>
-          <tr><td>Format</td><td>Enter an email address like name@example.com</td><td>Email invalid</td></tr>
-          <tr><td>Duplicate</td><td>Jamaican is already on the list</td><td>Duplicate entry</td></tr>
-          <tr><td>Security</td><td>This password appears in lists of breached passwords. Choose a different one.</td><td>Weak password</td></tr>
-          <tr><td>Load failed</td><td>We couldn’t load your menu. Nothing you saved is lost. Try again, or go back to your overview.</td><td>Error 500</td></tr>
-          <tr><td>Offline</td><td>You’re offline. Check your connection, then try again. Your message is still in the box.</td><td>Network error</td></tr>
-          <tr><td>Action failed (toast)</td><td>Couldn’t suspend Flying Fish Kitchen. The server didn’t respond. Nothing was changed and the caterer wasn’t emailed.</td><td>Request failed</td></tr>
+          <tr><td>Required</td><td>Enter your email address · Enter a title · Describe this image</td><td>Email is required</td></tr>
+          <tr><td>Format</td><td>Enter a valid email address, like name@example.com · Enter a web address that starts with http:// or https:// · Enter a YouTube link or video ID</td><td>Invalid input</td></tr>
+          <tr><td>Range</td><td>Enter a whole number from 1 to 5 · Enter a latitude from -90 to 90 · The minimum must be lower than the maximum</td><td>Out of range</td></tr>
+          <tr><td>Rule</td><td>The date can't be in the future · Add at least one entry before publishing · This studio is already in the guide</td><td>Validation failed</td></tr>
+          <tr><td>Upload</td><td>raw-export.tif is 25 MB. The limit is 20 MB. · studio-floorplan.svg isn't a supported image. Use JPEG, PNG, WebP or AVIF. · gallery-04.jpg didn't upload. Check your connection.</td><td>Upload error</td></tr>
+          <tr><td>Load failed</td><td>We couldn't load your studios. Nothing has changed. Check your connection, then try again.</td><td>Error 500</td></tr>
+          <tr><td>Action failed (toast)</td><td>Couldn't save Corktown Garage Studio. Your changes are still here. Check your connection and try again.</td><td>Request failed</td></tr>
+          <tr><td>Too many tries</td><td>Too many sign-in attempts. Wait 15 minutes, then try again.</td><td>429</td></tr>
+          <tr><td>Wrong credentials</td><td>Email or password is incorrect. Check both and try again. Passwords are case-sensitive.</td><td>Invalid email</td></tr>
+          <tr><td>Our fault</td><td>Something went wrong on our side. Try again in a minute. If it keeps happening, tell us at hello@shotthere.ca and quote this reference. Reference 7f3a-91c2</td><td>Internal server error</td></tr>
+          <tr><td>Not found</td><td>We couldn't find that page. It may have been renamed, or the location isn't published.</td><td>404 Not Found</td></tr>
         </tbody>
       </table></div>
     </section>
 
     <section class="ds-section" id="empty"><h2><a href="#empty">Empty states</a></h2>
-      <p><b>Formula: a human title + one sentence on what will appear here or why it's empty + at most one action.</b> First-run empties invite; no-result empties help widen the search; nothing-to-do empties reassure.</p>
+      <p><b>Formula: a plain title + one sentence on what will appear here or why it's empty + at most one action.</b> First-run empties on the public site explain that reviews come only after a shoot; no-result empties help widen the search; nothing-to-do empties reassure.</p>
       <div class="ds-example">
         <div class="ds-example__canvas ds-example__canvas--stack">
           <div class="empty empty--compact">
-            <div class="empty__icon"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/></svg></div>
-            <h3 class="empty__title">What do you cook best?</h3>
-            <p class="empty__text">Add at least 3 dishes. A name is enough; descriptions, dietary tags and prices help people choose.</p>
-            <div class="empty__actions"><button class="btn btn--primary" type="button"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>Add your first dish</button></div>
+            <div class="empty__icon"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></div>
+            <h3 class="empty__title">No studios match these filters</h3>
+            <p class="empty__text">Try removing a filter, or clear them all to see all 7 studios.</p>
+            <div class="empty__actions"><button class="btn" type="button">Clear filters</button></div>
           </div>
         </div>
-        <div class="ds-example__caption"><span>First run, from <code>pages/profile-menu/empty</code>.</span></div>
+        <div class="ds-example__caption"><span>No results, from <a href="../../mocks/pages/studios/no-results.html">pages/studios/no-results</a>.</span></div>
       </div>
       <div class="ds-table-wrap"><table class="ds-table">
         <thead><tr><th scope="col">Kind</th><th scope="col">Title</th><th scope="col">Text</th><th scope="col">Action</th></tr></thead>
         <tbody>
-          <tr><td>First run (caterer)</td><td>No enquiries yet</td><td>When a customer asks about an event, it lands here and we email kendra@pelauhouse.example.</td><td>None, or "View my page"</td></tr>
-          <tr><td>First run (reviews)</td><td>Your first review is on its way</td><td>Customers can review you once you’ve replied to their enquiry and their event has passed.</td><td>None</td></tr>
-          <tr><td>No results</td><td>No held reviews for Lambie Lane</td><td>Try the reviewer’s name, or look under Hidden.</td><td>Clear filters</td></tr>
-          <tr><td>Nothing to do</td><td>All caught up</td><td>New profiles, name changes, expired certificates, reports and held reviews appear here, oldest first.</td><td>None</td></tr>
-          <tr><td>Failed load</td><td>We couldn’t load this enquiry</td><td>Nothing you wrote is lost. Check your connection and try again.</td><td>Try again</td></tr>
-          <tr><td>Not allowed</td><td>Only Admins can see the audit log</td><td>You’re signed in as Tomas Reyes, an operator. Ask Leah Mohammed, an Admin, if you need an entry checked.</td><td>Back to the queue</td></tr>
+          <tr><td>First run (public)</td><td>No studio reviews yet</td><td>The first reviews are being shot now. Each one goes up only after a full test shoot.</td><td>Browse outdoor spots</td></tr>
+          <tr><td>First run (home)</td><td>The first studio reviews are coming</td><td>Each studio is reviewed only after a full test shoot. Leave your email and we'll tell you when the first one is up.</td><td>The signup form</td></tr>
+          <tr><td>First run (admin)</td><td>No studios yet</td><td>Add the first studio you've shot in. It stays a draft until you publish it.</td><td>New studio</td></tr>
+          <tr><td>No results</td><td>No spots match these filters</td><td>The only waterfront spot isn't rated for family shoots. Remove a filter, or clear them all to see all 5 spots.</td><td>Clear filters</td></tr>
+          <tr><td>No search match</td><td>No studios match “parkdale”</td><td>Check the spelling, or clear the search to see all 9 studios.</td><td>Clear search</td></tr>
+          <tr><td>Not enough to show</td><td>Pick at least two studios to compare</td><td>Use Compare on any studio card, then open the comparison from the bar.</td><td>Browse studios</td></tr>
+          <tr><td>Nothing nearby yet</td><td>Studio reviews are coming</td><td>When we've shot in studios nearby, the closest three will show here.</td><td>Browse studios</td></tr>
+          <tr><td>Nothing to do</td><td>Everything is up to date</td><td>No prices or permits are older than 153 days.</td><td>None</td></tr>
+          <tr><td>Failed load</td><td>We couldn't load the dashboard</td><td>Your content is safe. Check your connection, then try again.</td><td>Try again</td></tr>
         </tbody>
       </table></div>
     </section>
 
     <section class="ds-section" id="library"><h2><a href="#library">Microcopy library</a></h2>
-      <p>Reuse these exact strings. If you need a new one, add it here first.</p>
+      <p>Reuse these exact strings; they come from the mocks. If you need a new one, add it here first.</p>
       <div class="ds-table-wrap"><table class="ds-table">
         <thead><tr><th scope="col">String</th><th scope="col">Where</th><th scope="col">Notes</th></tr></thead>
         <tbody>
-          <tr><td>Skip to main content</td><td>First focusable element on every page</td><td>L2-067.3</td></tr>
-          <tr><td>Caterers · Occasions · Inbox · Sign in</td><td>Public header</td><td>"Sign in" only for visitors; signed-in customers see the avatar</td></tr>
-          <tr><td>Cater with ShotThere</td><td>Caterer registration link and page</td><td>Never "Become a vendor"</td></tr>
-          <tr><td>Filters · Area or postal code</td><td>Phone browse bar</td><td>"Filters" gains a count badge read as "2 active"</td></tr>
-          <tr><td>All</td><td>First item in the cuisine filter list</td><td>Selected by default</td></tr>
-          <tr><td>60 caterers · Showing 1–24 of 60</td><td>Result count, pagination</td><td>Count is a polite live region</td></tr>
-          <tr><td>Clear · Show 60 caterers</td><td>Filters sheet footer</td><td>The primary button previews the count</td></tr>
-          <tr><td>Clear filters</td><td>No results, active filter chips</td><td>Link-style button</td></tr>
-          <tr><td>Send an enquiry</td><td>Caterer page, sticky bar, side panel</td><td>The one primary button on the caterer page</td></tr>
-          <tr><td>Send enquiry</td><td>Enquiry dialog submit</td><td>Shorter inside the form that is already an enquiry</td></tr>
-          <tr><td>Serves 20–300 guests</td><td>Caterer facts, sticky bar</td><td>En dash, "guests"</td></tr>
-          <tr><td>Show all 18 dishes · Show more reviews</td><td>Caterer page sections</td><td>Count when known</td></tr>
-          <tr><td>Back to inbox</td><td>Thread on phones and tablets</td><td>L2-036.2</td></tr>
-          <tr><td>Share my contact details</td><td>Thread</td><td>Always the person's own action; the toast confirms "Contact details shared"</td></tr>
-          <tr><td>Open · Replied · Declined · Closed</td><td>Enquiry status labels</td><td>Words always visible with the status dot</td></tr>
-          <tr><td>Draft · Pending review · Changes requested · Published · Suspended · Removed</td><td>Caterer profile status</td><td>Sentence case; the dashboard banner says "Your profile is waiting for review"</td></tr>
-          <tr><td>Saving… · Saved</td><td>Autosave indicator</td><td>Polite live region; this is the one place a label ends in an ellipsis</td></tr>
-          <tr><td>Try again</td><td>Every failed load or action</td><td>Never "Retry"</td></tr>
+          <tr><td>Skip to content</td><td>First focusable element on every page</td><td>L2-067.1</td></tr>
+          <tr><td>Studios · Spots · Map · Compare · Guides · Menu</td><td>Site header</td><td>Menu only below 48rem; the sheet's title is "Menu"</td></tr>
+          <tr><td>Filters · Filter studios · Apply filters · Clear all · Show 7 studios</td><td>Studio and spot filters</td><td>"Show 7 studios" counts the result; "Apply filters" is the sidebar's no-JavaScript submit</td></tr>
+          <tr><td>Sort by: Most recent review · All-in cost, low to high · Overall score, high to low</td><td>Studio list</td><td>The count announces the sort: "5 studios, sorted by all-in cost"</td></tr>
+          <tr><td>7 studios · 5 spots · Loading studios…</td><td>Result count</td><td>Polite live region</td></tr>
+          <tr><td>Compare · Remove · Add to compare · Remove from compare</td><td>Compare toggle on cards and the summary panel</td><td>The card adds the studio in a hidden span</td></tr>
+          <tr><td>1 selected · Pick at least 2 studios to compare · Clear · Compare</td><td>Compare bar</td><td>Count is a polite live region</td></tr>
+          <tr><td>You can compare up to 4 studios</td><td>Warning toast</td><td>"Remove one from the bar to add Ossington Blackbox."</td></tr>
+          <tr><td>Copy link · Change studios · Link copied · Lowest · —</td><td>Comparison</td><td>"—" for a missing value</td></tr>
+          <tr><td>Book on the studio's site</td><td>Summary panel</td><td>The one primary button on a review; opens in a new tab</td></tr>
+          <tr><td>ShotThere doesn't take bookings or payments.</td><td>Under the booking button</td><td>Followed by the verified date</td></tr>
+          <tr><td>Pricing · Measured specifications · Gear · Logistics · Standard test shots · From a real shoot · Verdict · Watch the episode · Featured in</td><td>Studio review sections</td><td>Same order on every studio (L2-009.2)</td></tr>
+          <tr><td>Included in the hourly rate · Costs extra · Mandatory · Optional, not in all-in · Nothing costs extra</td><td>Pricing and gear</td><td></td></tr>
+          <tr><td>Who it's for · Who should skip it</td><td>Verdict</td><td>Both always filled (L2-011.3)</td></tr>
+          <tr><td>Location and map · How to get there · Best light · Sample shots · Practical conditions · Permits · Best uses · Rain backup</td><td>Spot sections</td><td>"Rain backup: If the weather turns, the nearest studios we've reviewed, by straight-line distance."</td></tr>
+          <tr><td>Photo 3 of 8 · Previous photo · Next photo · Close</td><td>Lightbox</td><td>Count is a polite live region</td></tr>
+          <tr><td>Both · Studios · Spots · Map · List · Studio · Outdoor spot · View the review · View the spot</td><td>Map, legend and popup</td><td>"The map didn't load" · "Show the list"</td></tr>
+          <tr><td>New reviews by email · Email address · Subscribe</td><td>Signup</td><td>"One email when a new studio or spot goes up. Unsubscribe any time."</td></tr>
+          <tr><td>No paid placement: order comes only from the sort you choose.</td><td>Footer</td><td>With "Editorial policy" and "YouTube channel"</td></tr>
+          <tr><td>Sign in · Show password · Sign out · Signed in as owner@shotthere.ca</td><td>Owner sign-in and dashboard</td><td>"Sign out", never "Log out"</td></tr>
+          <tr><td>New studio · Create studio · Save changes · Publish · Unpublish · Delete studio</td><td>Admin lists and editors</td><td>"Unpublish before deleting." under Delete on a published studio</td></tr>
+          <tr><td>Draft · not on the public site · Published · Not saved yet · Unsaved changes · Saving… · All changes saved</td><td>Editor status</td><td>Polite live region; "Saving…" is the one status that ends in an ellipsis</td></tr>
+          <tr><td>Move up · Move down · Remove · Retry · Cancel upload · Wait for uploads to finish</td><td>Image manager</td><td>Objects in hidden spans: "Move up: test shot 1"</td></tr>
+          <tr><td>Alt text · Describe what the photo shows for someone who can't see it.</td><td>Image manager field and help</td><td>Error: "Describe this image"</td></tr>
+          <tr><td>Can't publish yet · Add these and publish again: · Got it</td><td>Missing-fields dialog</td><td>Lists each missing field by its label</td></tr>
+          <tr><td>Discard changes? · Stay · Discard</td><td>Leaving with unsaved edits</td><td>"You changed 3 fields in Corktown Garage Studio since the last save."</td></tr>
+          <tr><td>Try again</td><td>Every failed load or action</td><td>Never "Retry" outside a file row</td></tr>
           <tr><td>Cancel</td><td>Dialog secondary action</td><td>Abandons, never deletes</td></tr>
-          <tr><td>Report this listing</td><td>Caterer page</td><td>Opens the report dialog</td></tr>
-          <tr><td>Download my data · Delete my account</td><td>Account</td><td>First person for the person's own data</td></tr>
-          <tr><td>Sign out</td><td>Account menu</td><td>Two words, not "Log out"</td></tr>
-          <tr><td>(optional)</td><td>After an optional field's label</td><td>Required is the default and is not marked with an asterisk</td></tr>
         </tbody>
       </table></div>
     </section>
 
     <section class="ds-section" id="usage"><h2><a href="#usage">Usage</a></h2>
       <div class="ds-dodont">
-        <figure class="ds-do"><div class="ds-example__canvas"><div class="toast-region toast-region--static"><div class="toast toast--success"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg><div class="toast__body"><p class="toast__title">Enquiry sent to Pelau House</p><p class="toast__text">We’ll email you when Kendra replies.</p></div></div></div></div><figcaption>Name who and what, then what happens next.</figcaption></figure>
-        <figure class="ds-dont"><div class="ds-example__canvas"><div class="toast-region toast-region--static"><div class="toast toast--success"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg><div class="toast__body"><p class="toast__title">Success!</p><p class="toast__text">Your request has been submitted.</p></div></div></div></div><figcaption>Generic success with an exclamation mark. It says nothing a person can act on.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas"><dl class="regions" style="width: 100%;"><div><dt>Who it's for</dt><dd>Portrait and fashion shooters who want big north light and a usable cyc on a mid-range budget.</dd></div><div><dt>Who should skip it</dt><dd>Video crews, because of the streetcar, and anyone hauling heavy cases: the freight elevator is tiny.</dd></div></dl></div><figcaption>Name who should book and who shouldn't, with the reason from the shoot.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas"><dl class="regions" style="width: 100%;"><div><dt>Who it's for</dt><dd>Everyone! A stunning, versatile space for any creative.</dd></div><div><dt>Who should skip it</dt><dd>No one.</dd></div></dl></div><figcaption>Write marketing copy or leave out the downside. A review that suits everyone helps no one choose.</figcaption></figure>
       </div>
       <div class="ds-dodont">
-        <figure class="ds-do"><div class="ds-example__canvas"><span class="caterer-card__meta">Trinidadian &amp; Tobagonian · Scarborough</span></div><figcaption>Name the tradition and the area the caterer chose.</figcaption></figure>
-        <figure class="ds-dont"><div class="ds-example__canvas"><span class="caterer-card__meta">Caribbean · 1234 Example Street</span></div><figcaption>Flatten the cuisine to "Caribbean" or show anything like a home address.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas"><dl class="kv"><dt>Usable shooting space</dt><dd>6.1 m × 4.3 m (20 ft × 14 ft)</dd><dt>Ceiling height</dt><dd>4.0 m (13 ft)</dd></dl></div><figcaption>Give the measurement, metric first, imperial in brackets.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas"><dl class="kv"><dt>Usable shooting space</dt><dd>Spacious, about 20x14</dd><dt>Ceiling height</dt><dd>High ceilings</dd></dl></div><figcaption>Describe size with adjectives or bare numbers. Visitors can't compare "spacious" side by side.</figcaption></figure>
       </div>
       <div class="ds-dodont">
-        <figure class="ds-do"><div class="ds-example__canvas"><span>Food handler certificate valid until 14 Mar 2029</span></div><figcaption>State what the caterer provided and when it expires.</figcaption></figure>
-        <figure class="ds-dont"><div class="ds-example__canvas"><span>ShotThere certified kitchen</span></div><figcaption>Imply that ShotThere inspects or certifies kitchens. It doesn't.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas"><div class="toast-region toast-region--static"><div class="toast toast--success"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg><div class="toast__body"><p class="toast__title">Corktown Garage Studio is published</p><p class="toast__text">It appears in lists, the map and the sitemap within a minute.</p></div></div></div></div><figcaption>Name what changed, then what happens next.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas"><div class="toast-region toast-region--static"><div class="toast toast--success"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg><div class="toast__body"><p class="toast__title">Success!</p><p class="toast__text">Your request has been submitted.</p></div></div></div></div><figcaption>Generic success with an exclamation mark. It says nothing anyone can act on.</figcaption></figure>
+      </div>
+      <div class="ds-dodont">
+        <figure class="ds-do"><div class="ds-example__canvas"><p class="text-caption">Permit rules verified 1 Sep 2026. Check the source before a paid shoot.</p></div><figcaption>Report the permit rule with its date and send people to the source.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas"><p class="text-caption">Totally legal to shoot here, no permit needed!</p></div><figcaption>Sound like legal advice or a guarantee. ShotThere reports what a source said on a date.</figcaption></figure>
       </div>
     </section>
 
     <section class="ds-section" id="accessibility"><h2><a href="#accessibility">Accessibility</a></h2>
       <ul>
-        <li><b>Plain language.</b> Short sentences and common words help everyone, including people reading in a second language and people with cognitive disabilities.</li>
-        <li><b>Alt text is the caterer's caption</b> (L2-068.1): "Curry chicken scattered with shado beni over white rice". Captions are 5–125 characters and describe the food, not "photo of".</li>
-        <li><b>Link and button text stands alone</b> (2.4.4): "View Pelau House", "Edit Curry goat". Avoid "click", "tap" and "see"; say "choose", "select" or "open" if a verb is needed at all.</li>
-        <li><b>Don't rely on shape, place or colour</b> in instructions: not "the red button" or "on the right".</li>
-        <li><b>Error text is programmatically tied to its field</b> with <code>aria-describedby</code> and announced on submit.</li>
-        <li><b>Abbreviations:</b> spell out on first use where people might not know them (GTA is fine; "FH number" is not: write "Certificate number").</li>
+        <li><b>Plain language.</b> Short sentences and common words help everyone, including people reading in a second language and people with cognitive disabilities. Explain jargon once where a visitor might not know it: "cyc wall" is fine for photographers; "20 A circuits" sits under Power.</li>
+        <li><b>Alt text describes what a photographer would look for</b>: the light, the surface, the space. "Test shot 3, product on a table: clean highlight on the bottle, neutral background." Never "photo of", never the file name, never empty on an informative image (L2-057.4, L2-068.2).</li>
+        <li><b>Numbers read well aloud.</b> Scores have their scale ("out of 5"); the " / 5" and "×" forms are for the eye, and the hidden text says it in words where needed.</li>
+        <li><b>Link and button text stands alone</b> (2.4.4): "Read the full review of Kensington Window Room". Avoid "click", "tap" and "see"; say "open" or "choose" if a verb is needed at all.</li>
+        <li><b>Don't rely on shape, place or colour</b> in instructions: not "the red badge" or "the square markers on the right". Say "studios" and "spots".</li>
+        <li><b>New tabs are announced</b> with a hidden "(opens in a new tab)" after the link text.</li>
       </ul>
     </section>
 
     <section class="ds-section" id="tokens"><h2><a href="#tokens">Tokens</a></h2>
       <p>Content has no tokens of its own. The type roles that carry it (<code>--text-body</code>, <code>--text-label</code>, <code>--text-caption</code>, <code>--text-overline</code>, <code>--text-prose</code>) and the reading measure (<code>--layout-measure</code>, 62 characters) are documented on <a href="typography.html">Typography</a> and <a href="layout.html">Layout</a>.</p>
+      <p>Sources: <a href="../../mocks/README.md">docs/mocks/README.md</a> (the cast, catalog and dates), <a href="../../mocks/pages/studio/default.html">pages/studio/default</a>, <a href="../../mocks/pages/spot/default.html">pages/spot/default</a>, <a href="../../mocks/pages/guide/default.html">pages/guide/default</a>, <a href="../../mocks/pages/compare/default.html">pages/compare/default</a>, <a href="../../mocks/pages/editorial-policy/default.html">pages/editorial-policy/default</a>, <a href="../../mocks/pages/admin-dashboard/default.html">pages/admin-dashboard/default</a>, <a href="../../mocks/pages/studio-editor/invalid.html">pages/studio-editor/invalid</a>, <a href="../../mocks/pages/studio-editor/upload-failed.html">pages/studio-editor/upload-failed</a>.</p>
+      <p>Drift found during extraction: busy buttons read "Saving…" in the spot and guide editors and "Signing in" on sign-in, but keep "Save changes" in the studio editor; the system keeps the label. Error summaries say "Fix 6 things before saving" in one editor and "Fix 4 problems before saving" in another; the system uses "things". Informational dialogs close with "OK" in two mocks and "Got it" in one; the system uses "Got it", because a dialog button names what it does and "OK" is banned on confirmations. No mock shows the discounted or comped disclosure on a public page; their wording comes from the editorial policy.</p>
     </section>
 
-    <footer class="ds-footer"><span>ShotThere design system · extracted from docs/mocks on 10 October 2026</span><a href="#top">Back to top</a></footer>
+    <footer class="ds-footer"><span>ShotThere design system · extracted from <a href="../../mocks/index.html">docs/mocks</a> on 13 October 2026</span><a href="#top">Back to top</a></footer>
   </main>
 </div>
 <script src="../assets/ds.js"></script>

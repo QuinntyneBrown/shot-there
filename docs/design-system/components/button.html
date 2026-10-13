@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Button — ShotThere design system</title>
-<meta name="description" content="ShotThere buttons: primary (ink), secondary, ghost, link and danger in three sizes, every state, both themes.">
+<meta name="description" content="ShotThere buttons: ink primary, secondary, ghost, link and danger, the pressed compare toggle, three sizes, every state, both themes.">
 <link rel="stylesheet" href="../tokens/tokens.css">
 <link rel="stylesheet" href="../assets/components.css">
 <link rel="stylesheet" href="../assets/ds.css">
@@ -33,40 +33,61 @@
       <li><a href="../components/icon-button.html">Icon button</a></li>
       <li><a href="../components/button-group.html">Button group</a></li>
       <li><a href="../components/link.html">Link</a></li>
+      <li><a href="../components/compare-bar.html">Compare toggle and bar</a></li>
     </ul></details>
     <details open><summary>Inputs</summary><ul>
       <li><a href="../components/form-field.html">Form field</a></li>
       <li><a href="../components/text-field.html">Text field</a></li>
       <li><a href="../components/textarea.html">Textarea</a></li>
       <li><a href="../components/select.html">Select</a></li>
+      <li><a href="../components/combobox.html">Combobox</a></li>
       <li><a href="../components/checkbox.html">Checkbox</a></li>
       <li><a href="../components/radio-group.html">Radio group</a></li>
       <li><a href="../components/file-upload.html">File upload</a></li>
       <li><a href="../components/form-layout.html">Form layout</a></li>
+      <li><a href="../components/signup.html">Email signup</a></li>
     </ul></details>
     <details open><summary>Navigation</summary><ul>
       <li><a href="../components/skip-link.html">Skip link</a></li>
       <li><a href="../components/site-header.html">Site header</a></li>
       <li><a href="../components/footer.html">Footer</a></li>
+      <li><a href="../components/breadcrumb.html">Breadcrumb</a></li>
+      <li><a href="../components/filter.html">Filters</a></li>
     </ul></details>
     <details open><summary>Containers and overlays</summary><ul>
-      <li><a href="../components/container.html">Container and grid</a></li>
-      <li><a href="../components/card.html">Card</a></li>
+      <li><a href="../components/container.html">Container</a></li>
+      <li><a href="../components/review-layout.html">Review layout</a></li>
+      <li><a href="../components/editor-layout.html">Editor layout</a></li>
       <li><a href="../components/dialog.html">Dialog</a></li>
-      <li><a href="../components/sheet.html">Sheet and drawer</a></li>
-      <li><a href="../components/divider.html">Divider</a></li>
+      <li><a href="../components/sheet.html">Sheet</a></li>
+      <li><a href="../components/popover.html">Popover</a></li>
+      <li><a href="../components/lightbox.html">Lightbox</a></li>
     </ul></details>
     <details open><summary>Data display</summary><ul>
+      <li><a href="../components/location-card.html">Location card</a></li>
       <li><a href="../components/table.html">Table</a></li>
+      <li><a href="../components/compare-table.html">Comparison table</a></li>
+      <li><a href="../components/list.html">List rows</a></li>
       <li><a href="../components/description-list.html">Description list</a></li>
+      <li><a href="../components/price-block.html">Price block</a></li>
+      <li><a href="../components/score.html">Score and pips</a></li>
+      <li><a href="../components/shot-grid.html">Shot grid</a></li>
+      <li><a href="../components/video-poster.html">Episode poster</a></li>
+      <li><a href="../components/map.html">Map</a></li>
+      <li><a href="../components/guide-entry.html">Guide entry</a></li>
+      <li><a href="../components/stat-tile.html">Stat tile</a></li>
+      <li><a href="../components/image-manager.html">Image manager</a></li>
+      <li><a href="../components/disclosure.html">Disclosure</a></li>
       <li><a href="../components/badge.html">Badge</a></li>
+      <li><a href="../components/status-label.html">Status label</a></li>
       <li><a href="../components/chip.html">Chip</a></li>
+      <li><a href="../components/tag.html">Tag</a></li>
     </ul></details>
     <details open><summary>Feedback</summary><ul>
       <li><a href="../components/inline-message.html">Inline message</a></li>
-      <li><a href="../components/alert.html">Alert and banner</a></li>
+      <li><a href="../components/alert.html">Alert</a></li>
       <li><a href="../components/toast.html">Toast</a></li>
-      <li><a href="../components/progress.html">Progress and meter</a></li>
+      <li><a href="../components/progress.html">Progress</a></li>
       <li><a href="../components/spinner.html">Spinner</a></li>
       <li><a href="../components/skeleton.html">Skeleton</a></li>
       <li><a href="../components/empty-state.html">Empty state</a></li>
@@ -83,40 +104,40 @@
       <li><a href="../patterns/content-and-tone.html">Content and tone</a></li>
     </ul></details>
   </nav>
-
   <main id="main" class="ds-main">
     <header class="ds-header">
       <p class="ds-kicker">Component · Actions</p>
       <h1>Button</h1>
-      <p class="ds-lead">Buttons let people do something: send an enquiry, save a dish, approve a profile. One solid ink button per screen tells them what matters most.</p>
-      <div class="ds-meta"><span class="ds-pill ds-pill--ok">WCAG 2.2 AA</span><span class="ds-pill">Status: stable</span><span class="ds-pill">Native <code>&lt;button&gt;</code></span><span class="ds-pill"><code>.btn</code></span></div>
+      <p class="ds-lead">Buttons do something: apply filters, add a studio to the comparison, save a studio, unpublish a guide. One solid ink button per screen marks the action that screen exists for.</p>
+      <div class="ds-meta"><span class="ds-pill ds-pill--ok">WCAG 2.2 AA</span><span class="ds-pill">Status: stable</span><span class="ds-pill">Native <code>&lt;button&gt;</code></span><span class="ds-pill"><code>.btn</code></span><span class="ds-pill"><code>.compare-toggle</code></span></div>
       <ul class="ds-toc"><li><a href="#overview">Overview</a></li><li><a href="#anatomy">Anatomy</a></li><li><a href="#variants">Variants</a></li><li><a href="#sizes">Sizes</a></li><li><a href="#states">States</a></li><li><a href="#responsive">Responsive behaviour</a></li><li><a href="#theming">Theming</a></li><li><a href="#accessibility">Accessibility</a></li><li><a href="#content">Content</a></li><li><a href="#do-dont">Do and don't</a></li><li><a href="#tokens">Tokens</a></li><li><a href="#code">Code</a></li><li><a href="#sources">Sources</a></li></ul>
     </header>
 
-<section class="ds-section" id="overview"><h2><a href="#overview">Overview</a></h2>
-      <p>Use a button when activating it changes something: it submits, saves, removes, opens a dialog or starts a process. Use a <a href="link.html">link</a> when it only goes somewhere, an <a href="icon-button.html">icon button</a> for a single-glyph action in a header or row, and a menu when one trigger offers several actions.</p>
+    <section class="ds-section" id="overview"><h2><a href="#overview">Overview</a></h2>
+      <p>Use a button when activating it changes something, opens a dialog or starts a request. Use a <a href="link.html">link</a> when it only goes somewhere, an <a href="icon-button.html">icon button</a> for a lone glyph over a photo or map, and a <a href="button-group.html">segmented control</a> to pick one view from a short row. A page's main call to action may be a link drawn as a button ("Book on the studio's site", "Browse studios", "New studio"); it keeps <code>&lt;a href&gt;</code> semantics.</p>
       <ul>
-        <li><b>Primary</b> is solid ink (<code>--color-action</code>), like the wordmark. It is the one action the screen exists for: "Send an enquiry", "Approve and publish", "Sign in". Never two per screen.</li>
-        <li><b>Secondary</b> (the default look) is an outlined pill for everything else that is still an action: "Cancel", "Edit", "Load more".</li>
-        <li><b>Ghost</b> has no border; it sits in dense places such as row actions, photo-tile moves and the phone browse bar.</li>
-        <li><b>Link</b> looks like a link but is a button; use it for low-emphasis actions inside text and empty states ("Clear filters").</li>
-        <li><b>Danger</b> is for destructive or punitive actions and only appears inside a confirmation dialog: "Delete my account", "Suspend caterer", "Remove permanently".</li>
+        <li><b>Primary</b> is solid ink (<code>--color-action</code>). It is the one action the screen exists for: "Book on the studio's site" on a review, "Show 7 studios" in the filters dialog, "Save changes" in an editor, "Sign in". When the compare bar appears, its "Compare" takes the primary and "Book on the studio's site" steps down to secondary (<a href="../../mocks/pages/studio/in-compare.html">pages/studio/in-compare</a>).</li>
+        <li><b>Secondary</b> (the default look) is an outlined pill for every other action: "Apply filters", "Add to compare", "Publish" in the editor's status panel, "Cancel", "Try again", "Edit" and "Move up" in rows.</li>
+        <li><b>Ghost</b> has no border. It sits where several actions repeat or must stay quiet: "Remove" on each image row, "Clear" in the compare bar, "Sign out", the site header's "Menu", the second action of an error state ("Go to the home page").</li>
+        <li><b>Link</b> looks like a link but acts in place: "Clear all" at the end of the active-filter chips.</li>
+        <li><b>Danger</b> is for loss and appears only inside a confirmation dialog: "Delete studio", "Remove test shot", "Discard".</li>
+        <li><b>Compare toggle</b> (<code>.compare-toggle</code>) is a secondary button with <code>aria-pressed</code>: "Compare" on each studio card and "Add to compare" on a studio page. Pressed, it takes the accent tint. The bar it feeds is documented on <a href="compare-bar.html">Compare toggle and bar</a>.</li>
       </ul>
-      <p>Pepper red is never a button colour. It means "selected / you are here"; an action in pepper would read as a current filter.</p>
+      <p>Accent red is never a button fill. On ShotThere it means "selected": a pressed compare toggle, an active filter chip, the current segment. An action painted red would read as a choice already made.</p>
     </section>
 
     <section class="ds-section" id="anatomy"><h2><a href="#anatomy">Anatomy</a></h2>
       <div class="ds-anatomy">
         <figure class="ds-anatomy__figure">
-          <button class="btn btn--primary btn--lg" type="button"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M4 6h16v12H4z"/><path d="m4 7 8 6 8-6"/></svg>Send an enquiry</button>
-          <span class="ds-callout" style="left: 30%; top: 18%;" aria-hidden="true">1</span>
-          <span class="ds-callout" style="left: 55%; top: 18%;" aria-hidden="true">2</span>
-          <span class="ds-callout" style="left: 74%; top: 74%;" aria-hidden="true">3</span>
+          <a class="btn btn--primary btn--lg" href="https://thejunctionloft.example/book" target="_blank" rel="noopener">Book on the studio's site<svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v6H4V6h6"/></svg><span class="visually-hidden"> (opens in a new tab)</span></a>
+          <span class="ds-callout" style="left: 40%; top: 16%;" aria-hidden="true">1</span>
+          <span class="ds-callout" style="left: 78%; top: 16%;" aria-hidden="true">2</span>
+          <span class="ds-callout" style="left: 18%; top: 76%;" aria-hidden="true">3</span>
         </figure>
         <ol class="ds-anatomy__list">
-          <li><div><b>Leading icon (optional)</b><small>1.25em square outline icon, inherits the label colour, <code>aria-hidden="true"</code>.</small></div></li>
-          <li><div><b>Label</b><small>A verb phrase in sentence case; it is the accessible name.</small></div></li>
-          <li><div><b>Container</b><small>Pill (<code>--radius-full</code>), 1px border, height from <code>--control-height-*</code> (44px by default), padding <code>--space-3/4/6</code>.</small></div></li>
+          <li><div><b>Label</b><small>A verb phrase in sentence case; it is the accessible name, plus any visually hidden suffix such as " (opens in a new tab)" or " The Junction Loft".</small></div></li>
+          <li><div><b>Icon (optional)</b><small>1.25em outline icon in the label colour, <code>aria-hidden="true"</code>. Leading for "New studio" (plus) and "Try again" (retry); trailing for links that leave ShotThere (the external arrow).</small></div></li>
+          <li><div><b>Container</b><small>Pill (<code>--radius-full</code>) with a 1px border; height from <code>--control-height-sm/md/lg</code> (44px by default); side padding <code>--space-3/4/6</code>.</small></div></li>
         </ol>
       </div>
     </section>
@@ -125,128 +146,165 @@
       <p>Variants change emphasis, not meaning. Pick by how much attention the action deserves on this screen.</p>
       <div class="ds-example">
         <div class="ds-example__canvas">
-          <button class="btn btn--primary" type="button">Send an enquiry</button>
-          <button class="btn" type="button">Cancel</button>
-          <button class="btn btn--ghost" type="button">Edit</button>
-          <button class="btn btn--link" type="button">Clear filters</button>
-          <button class="btn btn--danger" type="button">Suspend caterer</button>
+          <button class="btn btn--primary" type="button">Save changes</button>
+          <button class="btn" type="button">Apply filters</button>
+          <button class="btn btn--ghost" type="button">Remove<span class="visually-hidden">: test shot 3</span></button>
+          <button class="btn btn--link btn--sm" type="button">Clear all</button>
+          <button class="btn btn--danger" type="button">Delete studio</button>
         </div>
-        <div class="ds-example__caption"><span>Primary, secondary, ghost, link, danger: highest to lowest emphasis; danger only inside a confirmation.</span></div>
-        <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;button class="btn btn--primary" type="button"&gt;Send an enquiry&lt;/button&gt;
-&lt;button class="btn" type="button"&gt;Cancel&lt;/button&gt;
-&lt;button class="btn btn--ghost" type="button"&gt;Edit&lt;/button&gt;
-&lt;button class="btn btn--link" type="button"&gt;Clear filters&lt;/button&gt;
-&lt;button class="btn btn--danger" type="button"&gt;Suspend caterer&lt;/button&gt;</code></pre></details>
+        <div class="ds-example__caption"><span>Primary, secondary, ghost, link, danger: highest to lowest emphasis, with danger only inside a confirmation.</span></div>
+        <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;button class="btn btn--primary" type="submit"&gt;Save changes&lt;/button&gt;
+&lt;button class="btn" type="submit"&gt;Apply filters&lt;/button&gt;
+&lt;button class="btn btn--ghost" type="button"&gt;Remove&lt;span class="visually-hidden"&gt;: test shot 3&lt;/span&gt;&lt;/button&gt;
+&lt;a class="btn btn--link btn--sm" href="/studios"&gt;Clear all&lt;/a&gt;
+&lt;button class="btn btn--danger" type="button"&gt;Delete studio&lt;/button&gt;</code></pre></details>
       </div>
-      <h3>With icons, icon-only, block and wrapping</h3>
+
+      <h3>Compare toggle</h3>
+      <p>A pressed-state button that adds a studio to the comparison (L2-030). On a card it is small and names the studio in hidden text; on the studio page it is medium and full width in the summary panel. Pressed (<code>aria-pressed="true"</code>) it shows the accent tint, border and label, and its label changes to "Remove" as L2-030.1 asks.</p>
       <div class="ds-example">
         <div class="ds-example__canvas">
-          <button class="btn btn--ghost" type="button"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-11.5a7 7 0 0 0-14 0C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Scarborough</button>
-          <button class="btn" type="button"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>Add a dish</button>
-          <button class="btn btn--icon" type="button" aria-label="Edit Jerk chicken"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M4 20h4l10-10-4-4L4 16v4zM13 7l4 4"/></svg></button>
-          <button class="btn btn--primary btn--block" type="button" style="max-width: 18rem;">Send an enquiry</button>
-          <button class="btn btn--wrap" type="button" style="max-width: 14rem;">Upload a current food handler certificate</button>
+          <button class="btn btn--sm compare-toggle" type="button" aria-pressed="false">Compare<span class="visually-hidden"> Kensington Window Room</span></button>
+          <button class="btn btn--sm compare-toggle" type="button" aria-pressed="true">Remove<span class="visually-hidden"> The Junction Loft</span></button>
+          <button class="btn compare-toggle" type="button" aria-pressed="false">Add to compare</button>
+          <button class="btn compare-toggle" type="button" aria-pressed="true">Remove from compare</button>
         </div>
-        <div class="ds-example__caption"><span>Icon-only buttons carry <code>aria-label</code> naming the object; <code>.btn--block</code> fills its container (phone CTAs); <code>.btn--wrap</code> lets a long label wrap left-aligned.</span></div>
+        <div class="ds-example__caption"><span>Card toggles from <code>pages/studios/selected</code>; page toggles from <code>pages/studio/default</code> and <code>pages/studio/in-compare</code>. The bar, its count and the four-studio limit are on <a href="compare-bar.html">Compare toggle and bar</a>.</span></div>
+        <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;button class="btn btn--sm compare-toggle" type="button" aria-pressed="false"&gt;Compare&lt;span class="visually-hidden"&gt; Kensington Window Room&lt;/span&gt;&lt;/button&gt;
+&lt;button class="btn compare-toggle" type="button" aria-pressed="true"&gt;Remove from compare&lt;/button&gt;</code></pre></details>
+      </div>
+
+      <h3>With icons, icon-only and block</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas">
+          <a class="btn btn--primary" href="#variants"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>New studio</a>
+          <button class="btn" type="button"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.3-5.7M20 4v5h-5"/></svg>Try again</button>
+          <button class="btn btn--sm" type="button"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>Add fee</button>
+          <button class="btn btn--ghost btn--icon" type="button" aria-label="Close"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+          <button class="btn btn--primary btn--lg btn--block" type="button" style="max-width: 20rem;">Sign in</button>
+        </div>
+        <div class="ds-example__caption"><span><code>.btn--icon</code> is the dialog and sheet Close and needs <code>aria-label</code>; <code>.btn--block</code> fills its container (sign-in, summary panel, editor status panel). Every current label fits at 320px.</span></div>
+      </div>
+
+      <h3>Links drawn as buttons</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas">
+          <a class="btn btn--primary" href="https://thejunctionloft.example/book" target="_blank" rel="noopener">Book on the studio's site<svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v6H4V6h6"/></svg><span class="visually-hidden"> (opens in a new tab)</span></a>
+          <a class="btn btn--primary" href="https://www.google.com/maps/search/?api=1&amp;query=43.6846,-79.3653" target="_blank" rel="noopener">Open in Google Maps<svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v6H4V6h6"/></svg><span class="visually-hidden"> (opens in a new tab)</span></a>
+          <a class="btn" href="#variants">Browse outdoor spots</a>
+        </div>
+        <div class="ds-example__caption"><span>Booking happens on the studio's own site: ShotThere doesn't take bookings or payments. External button-links carry the arrow and the hidden "(opens in a new tab)".</span></div>
       </div>
     </section>
 
     <section class="ds-section" id="sizes"><h2><a href="#sizes">Sizes</a></h2>
-      <p>Medium (44px) is the default, so every button already meets the phone target (L2-065). Small (36px, from 48rem) lives in rows (edit, remove, move) with at least 8px to the next target, and grows to 44px on phones (L2-065.1); large (52px) is for the enquiry call to action, auth screens and system pages.</p>
+      <p>Medium (44px) is the default, so most buttons already meet the 44px phone target for submit buttons (L2-065.3). Small (36px) is for row and card actions ("Compare", "Edit", "Move up", "Add fee") from 48rem, with 8px to the next target; below 48rem it grows to 44px. Large (52px) is used only on owner sign-in, for "Sign in" and the "Show" password toggle beside the large input.</p>
       <div class="ds-example">
         <div class="ds-example__canvas">
-          <button class="btn btn--sm" type="button">Small · 36px</button>
-          <button class="btn btn--primary" type="button">Medium · 44px</button>
-          <button class="btn btn--primary btn--lg" type="button">Large · 52px</button>
+          <button class="btn btn--sm" type="button">Edit · 36px</button>
+          <button class="btn btn--primary" type="button">Save changes · 44px</button>
+          <button class="btn btn--primary btn--lg" type="button">Sign in · 52px</button>
         </div>
-        <div class="ds-example__caption"><span>Heights <code>--control-height-sm/md/lg</code>; padding <code>--space-3/4/6</code>; label <code>--font-size-sm/md/lg</code>.</span></div>
+        <div class="ds-example__caption"><span>Heights <code>--control-height-sm/md/lg</code>; padding <code>--space-3/4/6</code>; label <code>--font-size-sm/md/lg</code>. Small reads 44px on a phone.</span></div>
       </div>
     </section>
 
     <section class="ds-section" id="states"><h2><a href="#states">States</a></h2>
-      <p>Every variant has the same six states. Pointer and focus states are forced here with <code>data-state</code>; real pages get them from <code>:hover</code>, <code>:focus-visible</code>, <code>:active</code>, <code>disabled</code> and <code>aria-busy</code>.</p>
+      <p>Pointer and focus states are forced here with <code>data-state</code>; real pages get them from <code>:hover</code>, <code>:focus-visible</code> and <code>:active</code>. Disabled, busy and pressed use the real attributes.</p>
       <div class="ds-matrix"><table>
         <caption class="visually-hidden">Button states by variant</caption>
-        <thead><tr><th scope="col">Variant</th><th scope="col">Default</th><th scope="col">Hover</th><th scope="col">Focus</th><th scope="col">Active</th><th scope="col">Disabled</th><th scope="col">Loading</th></tr></thead>
+        <thead><tr><th scope="col">Variant</th><th scope="col">Default</th><th scope="col">Hover</th><th scope="col">Focus</th><th scope="col">Active</th><th scope="col">Disabled</th><th scope="col">Busy</th><th scope="col">Pressed</th></tr></thead>
         <tbody>
-          <tr><th scope="row">Primary</th><td><button class="btn btn--primary" type="button">Save</button></td><td><button class="btn btn--primary" type="button" data-state="hover">Save</button></td><td><button class="btn btn--primary" type="button" data-state="focus">Save</button></td><td><button class="btn btn--primary" type="button" data-state="active">Save</button></td><td><button class="btn btn--primary" type="button" disabled>Save</button></td><td><button class="btn btn--primary" type="button" aria-busy="true">Save</button></td></tr>
-          <tr><th scope="row">Secondary</th><td><button class="btn" type="button">Cancel</button></td><td><button class="btn" type="button" data-state="hover">Cancel</button></td><td><button class="btn" type="button" data-state="focus">Cancel</button></td><td><button class="btn" type="button" data-state="active">Cancel</button></td><td><button class="btn" type="button" disabled>Cancel</button></td><td><button class="btn" type="button" aria-busy="true">Cancel</button></td></tr>
-          <tr><th scope="row">Ghost</th><td><button class="btn btn--ghost" type="button">Edit</button></td><td><button class="btn btn--ghost" type="button" data-state="hover">Edit</button></td><td><button class="btn btn--ghost" type="button" data-state="focus">Edit</button></td><td><button class="btn btn--ghost" type="button" data-state="active">Edit</button></td><td><button class="btn btn--ghost" type="button" disabled>Edit</button></td><td><button class="btn btn--ghost" type="button" aria-busy="true">Edit</button></td></tr>
-          <tr><th scope="row">Link</th><td><button class="btn btn--link" type="button">Clear filters</button></td><td><button class="btn btn--link" type="button" data-state="hover">Clear filters</button></td><td><button class="btn btn--link" type="button" data-state="focus">Clear filters</button></td><td><button class="btn btn--link" type="button" data-state="active">Clear filters</button></td><td><button class="btn btn--link" type="button" disabled>Clear filters</button></td><td><button class="btn btn--link" type="button" aria-busy="true">Clear filters</button></td></tr>
-          <tr><th scope="row">Danger</th><td><button class="btn btn--danger" type="button">Remove</button></td><td><button class="btn btn--danger" type="button" data-state="hover">Remove</button></td><td><button class="btn btn--danger" type="button" data-state="focus">Remove</button></td><td><button class="btn btn--danger" type="button" data-state="active">Remove</button></td><td><button class="btn btn--danger" type="button" disabled>Remove</button></td><td><button class="btn btn--danger" type="button" aria-busy="true">Remove</button></td></tr>
+          <tr><th scope="row">Primary</th><td><button class="btn btn--primary" type="button">Save changes</button></td><td><button class="btn btn--primary" type="button" data-state="hover">Save changes</button></td><td><button class="btn btn--primary" type="button" data-state="focus">Save changes</button></td><td><button class="btn btn--primary" type="button" data-state="active">Save changes</button></td><td><button class="btn btn--primary" type="button" disabled>Save changes</button></td><td><button class="btn btn--primary" type="button" aria-busy="true" disabled>Save changes</button></td><td><span class="ds-na">Not a toggle</span></td></tr>
+          <tr><th scope="row">Secondary</th><td><button class="btn" type="button">Publish</button></td><td><button class="btn" type="button" data-state="hover">Publish</button></td><td><button class="btn" type="button" data-state="focus">Publish</button></td><td><button class="btn" type="button" data-state="active">Publish</button></td><td><button class="btn" type="button" disabled>Cancel</button></td><td><button class="btn" type="button" aria-busy="true" disabled>Publish</button></td><td><span class="ds-na">Not a toggle</span></td></tr>
+          <tr><th scope="row">Ghost</th><td><button class="btn btn--ghost" type="button">Remove</button></td><td><button class="btn btn--ghost" type="button" data-state="hover">Remove</button></td><td><button class="btn btn--ghost" type="button" data-state="focus">Remove</button></td><td><button class="btn btn--ghost" type="button" data-state="active">Remove</button></td><td><button class="btn btn--ghost" type="button" disabled>Delete studio</button></td><td><span class="ds-na">Not used</span></td><td><span class="ds-na">Not a toggle</span></td></tr>
+          <tr><th scope="row">Link</th><td><button class="btn btn--link btn--sm" type="button">Clear all</button></td><td><button class="btn btn--link btn--sm" type="button" data-state="hover">Clear all</button></td><td><button class="btn btn--link btn--sm" type="button" data-state="focus">Clear all</button></td><td><button class="btn btn--link btn--sm" type="button" data-state="active">Clear all</button></td><td><span class="ds-na">Hide it instead</span></td><td><span class="ds-na">Not used</span></td><td><span class="ds-na">Not a toggle</span></td></tr>
+          <tr><th scope="row">Danger</th><td><button class="btn btn--danger" type="button">Delete studio</button></td><td><button class="btn btn--danger" type="button" data-state="hover">Delete studio</button></td><td><button class="btn btn--danger" type="button" data-state="focus">Delete studio</button></td><td><button class="btn btn--danger" type="button" data-state="active">Delete studio</button></td><td><span class="ds-na">Not used</span></td><td><button class="btn btn--danger" type="button" aria-busy="true" disabled>Delete studio</button></td><td><span class="ds-na">Not a toggle</span></td></tr>
+          <tr><th scope="row">Compare toggle</th><td><button class="btn btn--sm compare-toggle" type="button" aria-pressed="false">Compare</button></td><td><button class="btn btn--sm compare-toggle" type="button" aria-pressed="false" data-state="hover">Compare</button></td><td><button class="btn btn--sm compare-toggle" type="button" aria-pressed="false" data-state="focus">Compare</button></td><td><button class="btn btn--sm compare-toggle" type="button" aria-pressed="false" data-state="active">Compare</button></td><td><span class="ds-na">Never disabled</span></td><td><span class="ds-na">Instant</span></td><td><button class="btn btn--sm compare-toggle" type="button" aria-pressed="true">Remove</button><br><button class="btn btn--sm compare-toggle" type="button" aria-pressed="true" data-state="hover" style="margin-top: var(--space-2);">Remove</button></td></tr>
         </tbody>
       </table></div>
       <h3>Both themes</h3>
       <div class="ds-themes">
-        <div data-theme="light"><div class="ds-example__canvas" style="padding: 0;"><button class="btn btn--primary" type="button">Primary</button><button class="btn" type="button">Secondary</button><button class="btn btn--ghost" type="button">Ghost</button><button class="btn btn--danger" type="button">Danger</button></div></div>
-        <div data-theme="dark"><div class="ds-example__canvas" style="padding: 0;"><button class="btn btn--primary" type="button">Primary</button><button class="btn" type="button">Secondary</button><button class="btn btn--ghost" type="button">Ghost</button><button class="btn btn--danger" type="button">Danger</button></div></div>
+        <div data-theme="light"><div class="ds-example__canvas" style="padding: 0;"><button class="btn btn--primary" type="button">Save changes</button><button class="btn" type="button">Publish</button><button class="btn btn--ghost" type="button">Remove</button><button class="btn btn--danger" type="button">Delete studio</button><button class="btn compare-toggle" type="button" aria-pressed="true">Remove from compare</button></div></div>
+        <div data-theme="dark"><div class="ds-example__canvas" style="padding: 0;"><button class="btn btn--primary" type="button">Save changes</button><button class="btn" type="button">Publish</button><button class="btn btn--ghost" type="button">Remove</button><button class="btn btn--danger" type="button">Delete studio</button><button class="btn compare-toggle" type="button" aria-pressed="true">Remove from compare</button></div></div>
       </div>
       <ul>
-        <li><b>Loading</b> keeps the button's width and label (the label is hidden visually, not changed), shows a spinner in the label colour, sets <code>aria-busy="true"</code> and <code>aria-disabled="true"</code>, and ignores clicks. Progress text ("Sending your enquiry…") goes in the dialog's live region.</li>
-        <li><b>Disabled</b> uses the native attribute at 50% opacity. Prefer an enabled button that explains the problem on activation (the form summary does this); disable only when the reason is visible, such as "Upload photo" at 30 of 30 photos.</li>
-        <li><b>Pressed</b> (toggle buttons) uses <code>aria-pressed</code>; see <a href="button-group.html">button group</a>. <b>Expanded</b> (a trigger for a dropdown) uses <code>aria-expanded</code>; see filter trigger.</li>
+        <li><b>Busy</b> keeps the button's width and label (hidden visually, not changed), shows a spinner in the label colour, and sets <code>aria-busy="true"</code> with <code>disabled</code>, as every ShotThere mock does. Progress text goes in the form's or dialog's status line: "Saving…" beside "Save changes", "Deleting Corktown Garage Studio…" in the delete dialog. While a dialog is busy its Cancel and Close are disabled too (<a href="../../mocks/dialogs/delete-content/busy.html">dialogs/delete-content/busy</a>).</li>
+        <li><b>Disabled</b> uses the native attribute at 50% opacity and always comes with a visible reason tied by <code>aria-describedby</code>: "Compare" in the bar with "Pick at least 2 studios to compare", "Save changes" with "Wait for uploads to finish", a published studio's "Delete studio" with "Unpublish before deleting.", "Add entry" until a location is picked.</li>
+        <li><b>Unavailable but focusable</b>: the first row's "Move up" and the last row's "Move down" use <code>aria-disabled="true"</code> so focus does not jump while reordering.</li>
+        <li><b>Pressed</b> is for the compare toggle (and the sign-in "Show" password toggle, which keeps the secondary look). <b>Expanded</b> is the site header's "Menu" (<code>aria-expanded</code>, <code>aria-haspopup="dialog"</code>).</li>
       </ul>
     </section>
 
     <section class="ds-section" id="responsive"><h2><a href="#responsive">Responsive behaviour</a></h2>
       <ul>
-        <li>Below 48rem the primary call to action on a page becomes full width (<code>.btn--block</code>) in the sticky bar or form; secondary actions stack beneath it.</li>
-        <li>Dialog footers keep buttons on one row and wrap when they do not fit; the primary stays last (rightmost, or bottom when wrapped). The phone filter sheet stretches both buttons (<code>.sheet__footer .btn</code>).</li>
-        <li><code>.btn</code> never exceeds its container (<code>max-width: 100%</code>). A label that would overflow at 320px gets <code>.btn--wrap</code> or a shorter verb phrase; it never truncates.</li>
-        <li>Sizes do not change by breakpoint: a 44px button is comfortable on every device.</li>
+        <li>Below 48rem every small button grows to 44px (L2-065.3), so card "Compare" toggles and row "Edit", "Move up", "Remove" are comfortable on a phone.</li>
+        <li>The studio page's summary panel and the editor's status panel stretch their buttons to full width at every size (<code>.summary-panel .btn</code>, <code>.editor-aside .btn</code>). Below 62rem the summary panel moves above the review, so "Book on the studio's site" is the first action on a phone.</li>
+        <li>Dialog footers keep buttons on one row and wrap when they don't fit; the confirming action stays last. The phone filters sheet stretches both buttons ("Clear all", "Show 7 studios") with <code>.sheet__footer .btn</code>.</li>
+        <li><code>.btn</code> never exceeds its container (<code>max-width: 100%</code>). A label that would overflow at 320px gets a shorter verb phrase; it never truncates.</li>
       </ul>
     </section>
 
     <section class="ds-section" id="theming"><h2><a href="#theming">Theming</a></h2>
-      <p>The button reads semantic tokens through five component tokens (<code>--btn-bg</code>, <code>--btn-fg</code>, <code>--btn-border</code>, <code>--btn-bg-hover</code>, <code>--btn-bg-active</code>) that each variant overrides. A theme changes the semantic tokens; a re-skin overrides the component tokens; neither edits <code>.btn</code>.</p>
-      <pre><code>/* An occasion campaign could re-skin the primary without touching .btn */
-[data-theme="carnival"] .btn--primary { --btn-bg: var(--color-action); --btn-fg: var(--color-fg-on-action); }</code></pre>
-      <p>In dark the ink flips: primary becomes light stone (<code>--palette-stone-100</code>) with near-black text, so it still reads as "the" button; danger uses <code>--palette-sorrel-300</code> with dark text. Both stay above 7:1.</p>
+      <p>The button reads semantic tokens through five component tokens (<code>--btn-bg</code>, <code>--btn-fg</code>, <code>--btn-border</code>, <code>--btn-bg-hover</code>, <code>--btn-bg-active</code>) that each variant overrides. The compare toggle is built the same way: pressed, it points them at <code>--color-accent-subtle</code>, <code>--color-fg-accent</code>, <code>--color-accent</code> and <code>--color-accent-subtle-hover</code>. A theme changes the semantic tokens; a re-skin overrides the component tokens; neither edits <code>.btn</code>.</p>
+      <pre><code>/* How .compare-toggle reuses .btn: only the component tokens change */
+.compare-toggle[aria-pressed="true"] {
+  --btn-bg: var(--color-accent-subtle); --btn-fg: var(--color-fg-accent);
+  --btn-border: var(--color-accent); --btn-bg-hover: var(--color-accent-subtle-hover);
+}</code></pre>
+      <p>In dark the ink flips: primary becomes light neutral stone (<code>--palette-stone-100</code>) with near-black text, so it still reads as the one main action; danger becomes a light danger red (<code>--palette-sorrel-300</code>) with dark text; the pressed toggle becomes a deep accent tint with light accent text.</p>
     </section>
 
     <section class="ds-section" id="accessibility"><h2><a href="#accessibility">Accessibility</a></h2>
       <h3>Role and pattern</h3>
-      <p>Native <code>&lt;button type="button"&gt;</code>, or <code>type="submit"</code> inside a form (<a href="https://www.w3.org/WAI/ARIA/apg/patterns/button/">APG Button</a>). A link styled as a button stays an <code>&lt;a href&gt;</code> ("Browse caterers" on the 404 page). Buttons that open a dialog add <code>aria-haspopup="dialog"</code>.</p>
+      <p>Native <code>&lt;button type="button"&gt;</code>, or <code>type="submit"</code> inside a form (<a href="https://www.w3.org/WAI/ARIA/apg/patterns/button/">APG Button</a>). The compare toggle is the APG toggle-button variant (<code>aria-pressed</code>). A link drawn as a button stays an <code>&lt;a href&gt;</code>: "Book on the studio's site", "Show 7 studios", "Browse studios". A button that opens a dialog adds <code>aria-haspopup="dialog"</code> ("Add entry").</p>
       <h3>Keyboard</h3>
       <table class="ds-table ds-keys"><thead><tr><th scope="col">Key</th><th scope="col">Action</th></tr></thead><tbody>
-        <tr><td><kbd>Tab</kbd> / <kbd>Shift</kbd>+<kbd>Tab</kbd></td><td>Moves focus to and from the button in DOM order.</td></tr>
-        <tr><td><kbd>Enter</kbd>, <kbd>Space</kbd></td><td>Activates. Space fires on key up, so a mis-press can be cancelled by moving away.</td></tr>
-        <tr><td><kbd>Esc</kbd></td><td>No effect on the button; in a dialog it closes the dialog, which is the same as Cancel.</td></tr>
+        <tr><td><kbd>Tab</kbd> / <kbd>Shift</kbd>+<kbd>Tab</kbd></td><td>Moves focus to and from the button in DOM order. Disabled buttons are skipped; <code>aria-disabled</code> ones are not.</td></tr>
+        <tr><td><kbd>Enter</kbd>, <kbd>Space</kbd></td><td>Activates; on the compare toggle, flips pressed. A link drawn as a button answers <kbd>Enter</kbd> only, like every link.</td></tr>
+        <tr><td><kbd>Esc</kbd></td><td>No effect on the button; in a dialog it closes the dialog, the same as Cancel, and focus returns to the button that opened it (L2-067.3).</td></tr>
       </tbody></table>
       <h3>Focus</h3>
-      <p>The shared ring (2px <code>--color-focus-ring</code>, 3px offset) shows on <code>:focus-visible</code> only. The offset gap shows the surface behind, so the pepper ring stays at least 3:1 against both the ink button and the page.</p>
+      <p>The shared ring (2px <code>--color-focus-ring</code>, 3px offset) shows on <code>:focus-visible</code> only (L2-067.2). The offset gap shows the surface behind, so the ring keeps 3:1 against both the ink button and the page.</p>
       <h3>Labelling</h3>
-      <p>The visible label is the accessible name. Icon-only buttons name the action and object: <code>aria-label="Remove Doubles"</code>, not "Remove". A busy button keeps its name; it does not swap to "Saving…".</p>
+      <p>The visible label is the accessible name. Repeated buttons add the object in hidden text: "Compare Kensington Window Room", "Remove: test shot 3", "Edit Distillery District permits". Icon-only Close carries <code>aria-label="Close"</code>. A busy button keeps its name; the status line says what is happening.</p>
+      <p>The compare toggle flips both its label ("Compare" → "Remove") and <code>aria-pressed</code>, so a screen reader hears "Remove The Junction Loft, toggle button, pressed". L2-030.1 asks for the label change; the APG advises a fixed label on a pressed button. This is flagged for review on <a href="compare-bar.html">Compare toggle and bar</a>.</p>
       <h3>Contrast</h3>
       <div class="ds-example__canvas ds-example__canvas--stack" style="padding: 0; gap: var(--space-2);">
         <div class="ds-pair"><span>Label on primary</span><span class="ds-pair__ratio" data-contrast="--color-fg-on-action|--color-action" data-min="4.5"></span></div>
         <div class="ds-pair"><span>Label on primary (hover)</span><span class="ds-pair__ratio" data-contrast="--color-fg-on-action|--color-action-hover" data-min="4.5"></span></div>
         <div class="ds-pair"><span>Label on danger</span><span class="ds-pair__ratio" data-contrast="--color-fg-on-danger|--color-danger-solid" data-min="4.5"></span></div>
-        <div class="ds-pair"><span>Secondary border on canvas</span><span class="ds-pair__ratio" data-contrast="--color-border-strong|--color-bg-canvas" data-min="3"></span></div>
-        <div class="ds-pair"><span>Focus ring on canvas</span><span class="ds-pair__ratio" data-contrast="--color-focus-ring|--color-bg-canvas" data-min="3"></span></div>
+        <div class="ds-pair"><span>Pressed compare toggle label</span><span class="ds-pair__ratio" data-contrast="--color-fg-accent|--color-accent-subtle" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Pressed compare toggle edge on a card</span><span class="ds-pair__ratio" data-contrast="--color-accent|--color-bg-surface" data-min="3"></span></div>
+        <div class="ds-pair"><span>Link button label on page</span><span class="ds-pair__ratio" data-contrast="--color-fg-link|--color-bg-canvas" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Secondary border on page</span><span class="ds-pair__ratio" data-contrast="--color-border-strong|--color-bg-canvas" data-min="3"></span></div>
+        <div class="ds-pair"><span>Secondary border in a dialog</span><span class="ds-pair__ratio" data-contrast="--color-border-strong|--color-bg-surface-raised" data-min="3"></span></div>
+        <div class="ds-pair"><span>Focus ring on page</span><span class="ds-pair__ratio" data-contrast="--color-focus-ring|--color-bg-canvas" data-min="3"></span></div>
       </div>
       <h3>Motion</h3>
       <p>Background, border and shadow transition over <code>--duration-fast</code> (120ms); the active state nudges 1px down. Reduced motion zeroes the duration and removes the nudge. The busy spinner keeps turning because it reports status.</p>
       <h3>Touch</h3>
-      <p>Medium (44px) and large (52px) meet the 44px comfortable target. Small is 36px only from 48rem, inside rows with 8px between buttons; below 48rem it grows to 44px like every other target (L2-065.1).</p>
+      <p>Medium (44px) and large (52px) meet the 44px target. Small is 36px only from 48rem, with 8px between buttons in a row; below 48rem it grows to 44px like every other target (L2-065.2, L2-065.3).</p>
     </section>
 
     <section class="ds-section" id="content"><h2><a href="#content">Content</a></h2>
       <ul>
-        <li>Verb phrases in sentence case, Canadian English: "Send an enquiry", "Approve and publish", "Add a dish", "Try again". Never "OK", "Submit", "Yes" or "Click here".</li>
-        <li>Name the object when context does not: "Remove photo" in a row, "Remove permanently" in the confirmation.</li>
-        <li>Destructive labels say what is lost: "Delete my account", "Decline enquiry", not "Confirm".</li>
-        <li>Three words where possible; a label that wraps at 360px is too long.</li>
-        <li>Cancel is always "Cancel"; the dismiss of a successful dialog is "Done".</li>
+        <li>Verb phrases in sentence case, Canadian English: "Apply filters", "Save changes", "Add to compare", "Create studio", "Try again". Never "Submit", "Yes" or "Click here".</li>
+        <li>Say what happens next when it helps: "Show 7 studios" updates with the live count; "Book on the studio's site" says where booking happens.</li>
+        <li>Destructive labels name what is lost: "Delete studio", "Remove test shot", "Discard". The safe action beside them is "Cancel", or "Stay" when leaving is the risk.</li>
+        <li>Three or four words where possible; a label that wraps at 360px is too long.</li>
+        <li>Acknowledge-only dialogs close with "Got it", not "OK".</li>
       </ul>
     </section>
 
     <section class="ds-section" id="do-dont"><h2><a href="#do-dont">Do and don't</a></h2>
       <div class="ds-dodont">
-        <figure class="ds-do"><div class="ds-example__canvas"><button class="btn" type="button">Cancel</button><button class="btn btn--primary" type="button">Send enquiry</button></div><figcaption>One ink primary, placed last, with the safe action beside it.</figcaption></figure>
-        <figure class="ds-dont"><div class="ds-example__canvas"><button class="btn btn--primary" type="button">Save</button><button class="btn btn--primary" type="button">Save and submit</button></div><figcaption>Two primaries compete. Make the second secondary, or split the steps.</figcaption></figure>
-        <figure class="ds-do"><div class="ds-example__canvas"><button class="btn btn--danger" type="button">Delete my account</button></div><figcaption>Danger lives in the confirmation dialog and names the loss.</figcaption></figure>
-        <figure class="ds-dont"><div class="ds-example__canvas"><button class="btn btn--danger" type="button" aria-busy="true">Removing…</button></div><figcaption>Don't swap the label while busy (some mocks did). Keep "Remove permanently" and announce progress in the live region.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas"><button class="btn btn--ghost" type="button">Clear</button><a class="btn btn--primary" href="#do-dont">Compare</a></div><figcaption>One ink primary per screen, placed last. When the compare bar shows "Compare", the page's "Book on the studio's site" drops to secondary.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas"><a class="btn btn--primary" href="#do-dont">Book on the studio's site</a><a class="btn btn--primary" href="#do-dont">Compare</a></div><figcaption>Two primaries compete for the same glance. Make one secondary.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas"><button class="btn btn--primary" type="button" aria-busy="true" disabled>Save changes</button><span class="save-status" role="status">Saving…</span></div><figcaption>Keep the label while busy and put "Saving…" in the status line beside it.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas"><button class="btn btn--primary" type="button" aria-busy="true" disabled>Saving…</button></div><figcaption>Don't swap the label to "Saving…" or "Signing in" (two mocks did). The button changes width and its name changes under the user.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas"><button class="btn btn--danger" type="button">Delete studio</button></div><figcaption>Danger lives in the confirmation dialog and names the loss.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas"><button class="btn btn--sm compare-toggle" type="button" aria-pressed="true">Compare</button><button class="btn btn--sm btn--danger" type="button">Remove</button></div><figcaption>Don't paint a reversible choice red. Taking a studio out of the comparison is the pressed toggle again, not a danger button.</figcaption></figure>
       </div>
     </section>
 
@@ -258,9 +316,11 @@
           <tr><td>Primary background, hover</td><td><code>--color-action-hover</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-action-hover" data-swatch></i><span data-token="--color-action-hover"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-action-hover" data-swatch></i><span data-token="--color-action-hover"></span></span></td></tr>
           <tr><td>Primary label</td><td><code>--color-fg-on-action</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-on-action" data-swatch></i><span data-token="--color-fg-on-action"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-on-action" data-swatch></i><span data-token="--color-fg-on-action"></span></span></td></tr>
           <tr><td>Secondary border</td><td><code>--color-border-strong</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-border-strong" data-swatch></i><span data-token="--color-border-strong"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-border-strong" data-swatch></i><span data-token="--color-border-strong"></span></span></td></tr>
-          <tr><td>Secondary hover / active</td><td><code>--color-bg-subtle</code> / <code>--color-bg-subtle-hover</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-bg-subtle" data-swatch></i><span data-token="--color-bg-subtle"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-bg-subtle" data-swatch></i><span data-token="--color-bg-subtle"></span></span></td></tr>
+          <tr><td>Secondary and ghost hover</td><td><code>--color-bg-subtle</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-bg-subtle" data-swatch></i><span data-token="--color-bg-subtle"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-bg-subtle" data-swatch></i><span data-token="--color-bg-subtle"></span></span></td></tr>
           <tr><td>Danger background</td><td><code>--color-danger-solid</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-danger-solid" data-swatch></i><span data-token="--color-danger-solid"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-danger-solid" data-swatch></i><span data-token="--color-danger-solid"></span></span></td></tr>
-          <tr><td>Focus ring</td><td><code>--color-focus-ring</code>, <code>--focus-ring-width</code>, <code>--focus-ring-offset</code></td><td><span data-token="--color-focus-ring"></span></td><td><span data-theme="dark" data-token="--color-focus-ring"></span></td></tr>
+          <tr><td>Pressed toggle fill</td><td><code>--color-accent-subtle</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-accent-subtle" data-swatch></i><span data-token="--color-accent-subtle"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-accent-subtle" data-swatch></i><span data-token="--color-accent-subtle"></span></span></td></tr>
+          <tr><td>Pressed toggle label and edge</td><td><code>--color-fg-accent</code>, <code>--color-accent</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-accent" data-swatch></i><span data-token="--color-accent"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-accent" data-swatch></i><span data-token="--color-accent"></span></span></td></tr>
+          <tr><td>Focus ring</td><td><code>--color-focus-ring</code>, <code>--focus-ring-width</code>, <code>--focus-ring-offset</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-focus-ring" data-swatch></i><span data-token="--color-focus-ring"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-focus-ring" data-swatch></i><span data-token="--color-focus-ring"></span></span></td></tr>
           <tr><td>Height sm / md / lg</td><td><code>--control-height-sm/md/lg</code></td><td colspan="2"><span data-token="--control-height-sm"></span> / <span data-token="--control-height-md"></span> / <span data-token="--control-height-lg"></span></td></tr>
           <tr><td>Padding sm / md / lg</td><td><code>--space-3/4/6</code></td><td colspan="2"><span data-token="--space-3"></span> / <span data-token="--space-4"></span> / <span data-token="--space-6"></span></td></tr>
           <tr><td>Radius</td><td><code>--radius-full</code></td><td colspan="2"><span data-token="--radius-full"></span></td></tr>
@@ -271,19 +331,24 @@
     </section>
 
     <section class="ds-section" id="code"><h2><a href="#code">Code</a></h2>
-      <pre><code>&lt;button class="btn btn--primary btn--lg" type="button" aria-haspopup="dialog"&gt;Send an enquiry&lt;/button&gt;
+      <pre><code>&lt;a class="btn btn--primary" href="https://thejunctionloft.example/book" target="_blank" rel="noopener"&gt;Book on the studio's site
+  &lt;svg class="icon" aria-hidden="true" viewBox="0 0 24 24"&gt;&lt;path d="M14 4h6v6M20 4l-9 9M18 14v6H4V6h6"/&gt;&lt;/svg&gt;
+  &lt;span class="visually-hidden"&gt; (opens in a new tab)&lt;/span&gt;&lt;/a&gt;
+&lt;button class="btn compare-toggle" type="button" aria-pressed="false"&gt;Add to compare&lt;/button&gt;
 
-&lt;button class="btn btn--primary" type="submit" aria-busy="true" aria-disabled="true"&gt;Send enquiry&lt;/button&gt;
-&lt;button class="btn btn--ghost btn--sm btn--icon" type="button" aria-label="Move Doubles up"&gt;…&lt;/button&gt;</code></pre>
+&lt;button class="btn btn--primary" type="submit" aria-busy="true" disabled&gt;Save changes&lt;/button&gt;
+&lt;span class="save-status" role="status"&gt;Saving…&lt;/span&gt;
+
+&lt;button class="btn btn--sm" type="button" aria-disabled="true"&gt;Move up&lt;span class="visually-hidden"&gt;: test shot 1&lt;/span&gt;&lt;/button&gt;</code></pre>
       <div class="ds-table-wrap"><table class="ds-table"><thead><tr><th scope="col">Class / attribute</th><th scope="col">Effect</th></tr></thead><tbody>
         <tr><td><code>.btn</code></td><td>Base: secondary look, medium size, pill.</td></tr>
-        <tr><td><code>.btn--primary</code> <code>.btn--ghost</code> <code>.btn--link</code> <code>.btn--danger</code></td><td>Variant.</td></tr>
-        <tr><td><code>.btn--sm</code> <code>.btn--lg</code></td><td>Size; omit for medium.</td></tr>
-        <tr><td><code>.btn--icon</code></td><td>Square icon-only button; requires <code>aria-label</code>.</td></tr>
+        <tr><td><code>.btn--primary</code> <code>.btn--ghost</code> <code>.btn--link</code> <code>.btn--danger</code> <code>.btn--ghost-danger</code></td><td>Variant. Ghost danger is the quiet "Delete studio" in the editor's status panel; it opens the confirmation, whose button is <code>.btn--danger</code>.</td></tr>
+        <tr><td><code>.compare-toggle</code> + <code>aria-pressed</code></td><td>Compare toggle: accent tint, edge and label while pressed. Pair with <code>.btn</code> (and <code>.btn--sm</code> on cards).</td></tr>
+        <tr><td><code>.btn--sm</code> <code>.btn--lg</code></td><td>Size; omit for medium. Small grows to 44px below 48rem.</td></tr>
+        <tr><td><code>.btn--icon</code></td><td>Square icon-only button (dialog and sheet Close); requires <code>aria-label</code>.</td></tr>
         <tr><td><code>.btn--block</code></td><td>Full width.</td></tr>
-        <tr><td><code>.btn--wrap</code> / <code>data-wrap</code></td><td>Lets a long label wrap, left-aligned.</td></tr>
-        <tr><td><code>disabled</code> / <code>aria-disabled="true"</code></td><td>Disabled look; native attribute removes it from the tab order.</td></tr>
-        <tr><td><code>aria-busy="true"</code></td><td>Loading: spinner, label hidden, clicks ignored, width kept.</td></tr>
+        <tr><td><code>disabled</code> / <code>aria-disabled="true"</code></td><td>Disabled look; the native attribute also removes it from the tab order.</td></tr>
+        <tr><td><code>aria-busy="true"</code></td><td>Busy: spinner, label hidden, clicks ignored, width kept. Pair with <code>disabled</code>.</td></tr>
         <tr><td><code>data-state="hover|focus|active|loading|disabled"</code></td><td>Documentation and mocks only: forces a state statically.</td></tr>
       </tbody></table></div>
     </section>
@@ -291,16 +356,26 @@
     <section class="ds-section" id="sources"><h2><a href="#sources">Sources</a></h2>
       <p>Extracted from these mocks:</p>
       <ul>
-        <li>pages/caterer/default (large primary "Send an enquiry", ghost actions)</li>
-        <li>dialogs/enquiry/busy (footer buttons, loading)</li>
-        <li>dialogs/suspend-caterer/default (danger confirmation)</li>
-        <li>pages/profile-menu/default (small ghost row actions)</li>
-        <li>pages/not-found/default (link styled as button)</li>
+        <li><a href="../../mocks/pages/studio/default.html">pages/studio/default</a> ("Book on the studio's site" with the external arrow, "Add to compare")</li>
+        <li><a href="../../mocks/pages/studio/in-compare.html">pages/studio/in-compare</a> (pressed "Remove from compare"; Book drops to secondary under the compare bar)</li>
+        <li><a href="../../mocks/pages/studios/selected.html">pages/studios/selected</a> and <a href="../../mocks/pages/studios/selected-one.html">pages/studios/selected-one</a> (card toggles, disabled "Compare" with its hint)</li>
+        <li><a href="../../mocks/pages/studios/filtered.html">pages/studios/filtered</a> (link button "Clear all")</li>
+        <li><a href="../../mocks/dialogs/studio-filters/default.html">dialogs/studio-filters/default</a> and <a href="../../mocks/dialogs/studio-filters/invalid.html">dialogs/studio-filters/invalid</a> (sheet footer, "Show 7 studios", disabled "Show studios", ghost icon Close)</li>
+        <li><a href="../../mocks/pages/studio-editor/default.html">pages/studio-editor/default</a>, <a href="../../mocks/pages/studio-editor/submitting.html">pages/studio-editor/submitting</a> and <a href="../../mocks/pages/studio-editor/uploading.html">pages/studio-editor/uploading</a> (small row actions, <code>aria-disabled</code> "Move up", busy and disabled "Save changes")</li>
+        <li><a href="../../mocks/dialogs/delete-content/default.html">dialogs/delete-content/default</a>, <a href="../../mocks/dialogs/delete-content/busy.html">dialogs/delete-content/busy</a>, <a href="../../mocks/dialogs/discard-changes/default.html">dialogs/discard-changes/default</a> and <a href="../../mocks/dialogs/remove-image/default.html">dialogs/remove-image/default</a> (danger confirmations, busy footer)</li>
+        <li><a href="../../mocks/pages/sign-in/default.html">pages/sign-in/default</a> (large block "Sign in", pressed "Show")</li>
+        <li><a href="../../mocks/pages/admin-dashboard/default.html">pages/admin-dashboard/default</a> ("New studio" with a leading icon) and <a href="../../mocks/pages/studios/error.html">pages/studios/error</a> ("Try again" with a ghost second action)</li>
       </ul>
-      <p>Drift fixed during extraction: busy buttons swapped their label in 6 mocks ("Saving…", "Removing…", "Suspending…") but kept it in others; the system keeps the label. <code>.btn--link</code> had no hover state; it now underlines thicker in <code>--color-fg-link-hover</code>.</p>
+      <p>Drift fixed during extraction:</p>
+      <ul>
+        <li>Busy buttons swap their label in <a href="../../mocks/pages/spot-editor/submitting.html">pages/spot-editor/submitting</a> ("Saving…") and <a href="../../mocks/pages/sign-in/submitting.html">pages/sign-in/submitting</a> ("Signing in") but keep it in studio-editor/submitting, unpublish/busy, delete-content/busy and home/submitting. The system keeps the label.</li>
+        <li>The editors' ghost "Delete studio / spot / guide" is coloured with an inline <code>style="color: var(--color-danger-fg)"</code> in 14 mocks, and not at all in spot-editor/published and guide-editor/published. <code>.btn--ghost-danger</code> now gives it the danger colour on a ghost button, so the inline style goes and every editor's Delete looks the same.</li>
+        <li>The compare bar puts "Clear" before "Compare" in studios/selected but after it in studio/in-compare. The confirming action goes last.</li>
+        <li><a href="../../mocks/dialogs/missing-fields/default.html">dialogs/missing-fields/default</a> closes with "OK" while <a href="../../mocks/dialogs/remove-image/refused.html">dialogs/remove-image/refused</a> uses "Got it". The system uses "Got it".</li>
+      </ul>
     </section>
 
-    <footer class="ds-footer"><span>ShotThere design system · extracted from docs/mocks on 10 October 2026</span><a href="#top">Back to top</a></footer>
+    <footer class="ds-footer"><span>ShotThere design system · extracted from <a href="../../mocks/index.html">docs/mocks</a> on 13 October 2026</span><a href="#top">Back to top</a></footer>
   </main>
 </div>
 <script src="../assets/ds.js"></script>

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Spinner — ShotThere design system</title>
-<meta name="description" content="ShotThere spinner: three sizes, inline with text, on every surface, role=status with visually hidden text, keeps turning under reduced motion.">
+<meta name="description" content="ShotThere spinners: the busy ring drawn by buttons in confirm dialogs, sign-in, signup and the editors, and the small spinner beside Searching in the guide entry picker, with the status text that goes with each.">
 <link rel="stylesheet" href="../tokens/tokens.css">
 <link rel="stylesheet" href="../assets/components.css">
 <link rel="stylesheet" href="../assets/ds.css">
@@ -33,40 +33,61 @@
       <li><a href="../components/icon-button.html">Icon button</a></li>
       <li><a href="../components/button-group.html">Button group</a></li>
       <li><a href="../components/link.html">Link</a></li>
+      <li><a href="../components/compare-bar.html">Compare toggle and bar</a></li>
     </ul></details>
     <details open><summary>Inputs</summary><ul>
       <li><a href="../components/form-field.html">Form field</a></li>
       <li><a href="../components/text-field.html">Text field</a></li>
       <li><a href="../components/textarea.html">Textarea</a></li>
       <li><a href="../components/select.html">Select</a></li>
+      <li><a href="../components/combobox.html">Combobox</a></li>
       <li><a href="../components/checkbox.html">Checkbox</a></li>
       <li><a href="../components/radio-group.html">Radio group</a></li>
       <li><a href="../components/file-upload.html">File upload</a></li>
       <li><a href="../components/form-layout.html">Form layout</a></li>
+      <li><a href="../components/signup.html">Email signup</a></li>
     </ul></details>
     <details open><summary>Navigation</summary><ul>
       <li><a href="../components/skip-link.html">Skip link</a></li>
       <li><a href="../components/site-header.html">Site header</a></li>
       <li><a href="../components/footer.html">Footer</a></li>
+      <li><a href="../components/breadcrumb.html">Breadcrumb</a></li>
+      <li><a href="../components/filter.html">Filters</a></li>
     </ul></details>
     <details open><summary>Containers and overlays</summary><ul>
-      <li><a href="../components/container.html">Container and grid</a></li>
-      <li><a href="../components/card.html">Card</a></li>
+      <li><a href="../components/container.html">Container</a></li>
+      <li><a href="../components/review-layout.html">Review layout</a></li>
+      <li><a href="../components/editor-layout.html">Editor layout</a></li>
       <li><a href="../components/dialog.html">Dialog</a></li>
-      <li><a href="../components/sheet.html">Sheet and drawer</a></li>
-      <li><a href="../components/divider.html">Divider</a></li>
+      <li><a href="../components/sheet.html">Sheet</a></li>
+      <li><a href="../components/popover.html">Popover</a></li>
+      <li><a href="../components/lightbox.html">Lightbox</a></li>
     </ul></details>
     <details open><summary>Data display</summary><ul>
+      <li><a href="../components/location-card.html">Location card</a></li>
       <li><a href="../components/table.html">Table</a></li>
+      <li><a href="../components/compare-table.html">Comparison table</a></li>
+      <li><a href="../components/list.html">List rows</a></li>
       <li><a href="../components/description-list.html">Description list</a></li>
+      <li><a href="../components/price-block.html">Price block</a></li>
+      <li><a href="../components/score.html">Score and pips</a></li>
+      <li><a href="../components/shot-grid.html">Shot grid</a></li>
+      <li><a href="../components/video-poster.html">Episode poster</a></li>
+      <li><a href="../components/map.html">Map</a></li>
+      <li><a href="../components/guide-entry.html">Guide entry</a></li>
+      <li><a href="../components/stat-tile.html">Stat tile</a></li>
+      <li><a href="../components/image-manager.html">Image manager</a></li>
+      <li><a href="../components/disclosure.html">Disclosure</a></li>
       <li><a href="../components/badge.html">Badge</a></li>
+      <li><a href="../components/status-label.html">Status label</a></li>
       <li><a href="../components/chip.html">Chip</a></li>
+      <li><a href="../components/tag.html">Tag</a></li>
     </ul></details>
     <details open><summary>Feedback</summary><ul>
       <li><a href="../components/inline-message.html">Inline message</a></li>
-      <li><a href="../components/alert.html">Alert and banner</a></li>
+      <li><a href="../components/alert.html">Alert</a></li>
       <li><a href="../components/toast.html">Toast</a></li>
-      <li><a href="../components/progress.html">Progress and meter</a></li>
+      <li><a href="../components/progress.html">Progress</a></li>
       <li><a href="../components/spinner.html">Spinner</a></li>
       <li><a href="../components/skeleton.html">Skeleton</a></li>
       <li><a href="../components/empty-state.html">Empty state</a></li>
@@ -88,183 +109,252 @@
     <header class="ds-header">
       <p class="ds-kicker">Component · Feedback</p>
       <h1>Spinner</h1>
-      <p class="ds-lead">A spinner says "working on it" when the wait is short and has no shape to preview: the next photo in the viewer, a postal code lookup. It always comes with words for screen readers.</p>
-      <div class="ds-meta"><span class="ds-pill ds-pill--ok">WCAG 2.2 AA</span><span class="ds-pill">Status: stable</span><span class="ds-pill"><code>.spinner</code></span><span class="ds-pill"><code>role="status"</code></span></div>
+      <p class="ds-lead">A spinner says "working on it" when a wait is short and has no amount: deleting a draft, signing in, searching for a guide entry. It never stands alone; a status message says what is happening.</p>
+      <div class="ds-meta"><span class="ds-pill ds-pill--ok">WCAG 2.2 AA</span><span class="ds-pill">Status: stable</span><span class="ds-pill"><code>.spinner</code></span><span class="ds-pill"><code>.btn[aria-busy="true"]</code></span><span class="ds-pill"><code>role="status"</code></span></div>
       <ul class="ds-toc"><li><a href="#overview">Overview</a></li><li><a href="#anatomy">Anatomy</a></li><li><a href="#variants">Variants</a></li><li><a href="#sizes">Sizes</a></li><li><a href="#states">States</a></li><li><a href="#responsive">Responsive behaviour</a></li><li><a href="#theming">Theming</a></li><li><a href="#accessibility">Accessibility</a></li><li><a href="#content">Content</a></li><li><a href="#do-dont">Do and don't</a></li><li><a href="#tokens">Tokens</a></li><li><a href="#code">Code</a></li><li><a href="#sources">Sources</a></li></ul>
     </header>
 
-<section class="ds-section" id="overview"><h2><a href="#overview">Overview</a></h2>
-      <p>A spinner is a 2px ring with an ink arc that turns once every 800ms. It is the least informative loading indicator, so ShotThere uses it sparingly:</p>
+    <section class="ds-section" id="overview"><h2><a href="#overview">Overview</a></h2>
+      <p>A spinner is a 2px ring with an ink arc that turns once every 800ms. ShotThere uses it in two forms:</p>
       <ul>
-        <li>Inside the round photo placeholder when the photo viewer moves to a photo that has not loaded yet ("Loading photo 3 of 6").</li>
-        <li>Inline with a short status line while something small is checked: "Looking up M1B 2K3…" under the area search.</li>
-        <li>Inside a busy <a href="button.html">button</a>, where it is drawn by the button itself (<code>aria-busy="true"</code>), not by a <code>.spinner</code> element.</li>
+        <li><b>Busy button</b>: the button that started the request draws its own ring (<code>aria-busy="true"</code>) in its label colour. Used by Delete studio and Unpublish in the confirm dialogs, Sign in, Subscribe in the email signup, and Save changes in the studio, spot and guide editors.</li>
+        <li><b>Inline spinner</b> (<code>.spinner--sm</code>): beside a short caption while something small is fetched. The guide entry picker shows it with "Searching" while results for "ju" load (L2-060.4).</li>
       </ul>
-      <p>Show it only after 300ms; most waits end sooner and a spinner that flashes is worse than none. Choose something else when:</p>
+      <p>Choose something else when:</p>
       <ul>
-        <li>Content is loading into a known layout (listing, inbox, queue, dashboard): a <a href="skeleton.html">skeleton</a> in the same shape, so nothing jumps.</li>
-        <li>The amount is measurable (an upload): a <a href="progress.html">progress bar</a>.</li>
-        <li>An action is in flight on a button: the button's own busy state.</li>
-        <li>Autosave is in flight: the save status line "Saving…" with its pulsing dot (see <a href="inline-message.html">inline message</a>).</li>
+        <li>A list, map or editor is loading into a known layout (studio cards, admin rows, editor sections): a <a href="skeleton.html">skeleton</a> in the same shape, so nothing jumps.</li>
+        <li>The amount is measurable (an image upload): a <a href="progress.html">progress bar</a>.</li>
+        <li>The wait already has a visible status line (the editors' "Saving…" beside Save changes): keep the button's ring and that line; do not add a second spinner.</li>
       </ul>
     </section>
 
     <section class="ds-section" id="anatomy"><h2><a href="#anatomy">Anatomy</a></h2>
       <div class="ds-anatomy">
         <figure class="ds-anatomy__figure">
-          <p class="inline-status" role="status"><span class="spinner spinner--lg" aria-hidden="true"></span><span class="visually-hidden">Loading photo 3 of 6</span></p>
-          <span class="ds-callout" style="left: 40%; top: 22%;" aria-hidden="true">1</span>
-          <span class="ds-callout" style="left: 62%; top: 22%;" aria-hidden="true">2</span>
-          <span class="ds-callout" style="left: 62%; top: 70%;" aria-hidden="true">3</span>
+          <div class="cluster" style="gap: var(--space-2);"><span class="spinner" aria-hidden="true"></span><span class="text-caption" aria-hidden="true">Searching</span><span class="visually-hidden" role="status">Searching…</span></div>
+          <span class="ds-callout" style="left: 30%; top: 18%;" aria-hidden="true">1</span>
+          <span class="ds-callout" style="left: 46%; top: 18%;" aria-hidden="true">2</span>
+          <span class="ds-callout" style="left: 66%; top: 68%;" aria-hidden="true">3</span>
         </figure>
         <ol class="ds-anatomy__list">
           <li><div><b>Track</b><small>Full circle, <code>--border-width-thick</code> (2px) in <code>--color-border-default</code>. Decorative.</small></div></li>
-          <li><div><b>Arc</b><small>The top quarter in <code>--color-fg-default</code> (ink), turning linearly every <code>--duration-loop-fast</code>.</small></div></li>
-          <li><div><b>Status text</b><small>A <code>role="status"</code> wrapper with visible or visually hidden words ("Loading photo 3 of 6"). The ring itself is <code>aria-hidden</code>.</small></div></li>
+          <li><div><b>Arc</b><small>The top quarter in <code>--color-fg-default</code> (ink), turning linearly every <code>--duration-loop-fast</code>. In a busy button the arc is the button's <code>--btn-fg</code> with one transparent quarter.</small></div></li>
+          <li><div><b>Status text</b><small>A visible caption ("Searching", <code>aria-hidden</code>) plus a visually hidden <code>role="status"</code> with the full words ("Searching…"). The ring itself is always <code>aria-hidden</code>. Shown at the base 20px here; the picker uses <code>.spinner--sm</code>.</small></div></li>
         </ol>
       </div>
     </section>
 
     <section class="ds-section" id="variants"><h2><a href="#variants">Variants</a></h2>
-      <h3>Standalone</h3>
-      <p>Centred in the space the content will fill, with hidden text. In the viewer it sits inside a round placeholder exactly the size of the coming photo.</p>
+      <h3>Busy button in a confirm dialog</h3>
+      <p>The confirming button gets <code>aria-busy="true"</code> and the ring; every other control in the dialog (Cancel, Close) is disabled, and Escape waits for the answer. The label stays the same; a hidden status line says what is happening.</p>
       <div class="ds-example">
-        <div class="ds-example__canvas" style="justify-content: center;">
-          <span class="photo photo--placeholder photo--lg" role="status"><span class="spinner spinner--lg" aria-hidden="true"></span><span class="visually-hidden">Loading photo 3 of 6</span></span>
+        <div class="ds-example__canvas ds-example__canvas--stack" style="max-width: 26rem; background: var(--color-bg-canvas);">
+          <div class="dialog__panel dialog__panel--sm" style="animation: none;">
+            <div class="dialog__header">
+              <div class="dialog__heading">
+                <h4 class="dialog__title">Delete Corktown Garage Studio?</h4>
+                <p class="dialog__desc">This deletes the draft and its 2 images. It can't be undone.</p>
+              </div>
+              <button class="btn btn--ghost btn--icon" type="button" aria-label="Close" disabled><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+            </div>
+            <div class="dialog__body"><p class="visually-hidden" role="status">Deleting Corktown Garage Studio…</p></div>
+            <div class="dialog__footer">
+              <button class="btn" type="button" disabled>Cancel</button>
+              <button class="btn btn--danger" type="button" aria-busy="true" disabled>Delete studio</button>
+            </div>
+          </div>
         </div>
-        <div class="ds-example__caption"><span>Photo viewer moving to photo 3 of 6 (caption already shown beneath).</span></div>
-        <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;span class="photo photo--placeholder" role="status"&gt;
-  &lt;span class="spinner spinner--lg" aria-hidden="true"&gt;&lt;/span&gt;
-  &lt;span class="visually-hidden"&gt;Loading photo 3 of 6&lt;/span&gt;
-&lt;/span&gt;</code></pre></details>
+        <div class="ds-example__caption"><span>Delete, busy: the danger button's ring takes the on-danger label colour; Cancel and Close are disabled until the server answers.</span></div>
+        <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;div class="dialog__body"&gt;
+  &lt;p class="visually-hidden" role="status"&gt;Deleting Corktown Garage Studio…&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="dialog__footer"&gt;
+  &lt;button class="btn" type="button" disabled&gt;Cancel&lt;/button&gt;
+  &lt;button class="btn btn--danger" type="button" aria-busy="true" disabled&gt;Delete studio&lt;/button&gt;
+&lt;/div&gt;</code></pre></details>
       </div>
-
-      <h3>Inline with text</h3>
-      <p>Small or medium spinner before a short status line. The words are visible, so nothing is hidden.</p>
-      <div class="ds-example">
-        <div class="ds-example__canvas ds-example__canvas--stack">
-          <p class="inline-status" role="status"><span class="spinner spinner--sm" aria-hidden="true"></span>Looking up M1B 2K3…</p>
-          <p class="inline-status" role="status"><span class="spinner" aria-hidden="true"></span>Verifying your email…</p>
-        </div>
-        <div class="ds-example__caption"><span><code>.inline-status</code> with <code>.spinner--sm</code> (16px) beside small text, default (20px) beside body text.</span></div>
-        <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;p class="inline-status" role="status"&gt;&lt;span class="spinner spinner--sm" aria-hidden="true"&gt;&lt;/span&gt;Looking up M1B 2K3…&lt;/p&gt;</code></pre></details>
-      </div>
-
-      <h3>In a button (not a <code>.spinner</code>)</h3>
       <div class="ds-example">
         <div class="ds-example__canvas">
-          <button class="btn btn--primary" type="button" aria-busy="true" aria-disabled="true">Send enquiry</button>
-          <button class="btn" type="button" aria-busy="true" aria-disabled="true">Resend verification email</button>
+          <button class="btn" type="button" disabled>Cancel</button>
+          <button class="btn btn--primary" type="button" aria-busy="true" disabled>Unpublish</button>
+          <span class="visually-hidden" role="status">Unpublishing The Junction Loft…</span>
         </div>
-        <div class="ds-example__caption"><span>The button draws its own spinner in the label colour and keeps its label for screen readers. Never put a <code>.spinner</code> element inside a button.</span></div>
+        <div class="ds-example__caption"><span>Unpublish The Junction Loft, busy: the same pattern on the ink primary button.</span></div>
       </div>
+
+      <h3>Busy submit button in a form</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--stack" style="max-width: 28rem;">
+          <button class="btn btn--primary btn--lg btn--block" type="button" aria-busy="true" disabled>Signing in</button>
+          <p class="visually-hidden" role="status">Signing in</p>
+          <div class="form-actions" style="padding-top: 0;">
+            <button class="btn btn--primary" type="button" aria-busy="true" disabled>Save changes</button>
+            <a class="btn btn--ghost" href="../../mocks/dialogs/discard-changes/default.html">Cancel</a>
+            <span class="save-status" role="status">Saving…</span>
+          </div>
+        </div>
+        <div class="ds-example__caption"><span>Owner sign-in while the server checks the password (large, full width); the studio editor's Save changes with its visible "Saving…" status line.</span></div>
+        <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;div class="form-actions form-actions--sticky"&gt;
+  &lt;button class="btn btn--primary" type="submit" aria-busy="true" disabled&gt;Save changes&lt;/button&gt;
+  &lt;a class="btn btn--ghost" href="…"&gt;Cancel&lt;/a&gt;
+  &lt;span class="save-status" role="status"&gt;Saving…&lt;/span&gt;
+&lt;/div&gt;</code></pre></details>
+      </div>
+
+      <h3>Inline spinner with a caption</h3>
+      <p>Small spinner, visible caption hidden from assistive technology, and a hidden status with the full words, so the caption is short on screen and the announcement is complete.</p>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--stack" style="max-width: 32rem; background: var(--color-bg-surface-raised);">
+          <div class="field">
+            <label class="field__label" for="sp-entry-search">Studio or spot</label>
+            <div class="search-field">
+              <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+              <input class="input" id="sp-entry-search" type="text" role="combobox" aria-expanded="false" aria-controls="sp-entry-options" aria-autocomplete="list" autocomplete="off" aria-describedby="sp-entry-hint" value="ju">
+            </div>
+            <span class="field__help" id="sp-entry-hint">Type part of a name</span>
+          </div>
+          <ul class="suggestions" id="sp-entry-options" role="listbox" aria-label="Matching studios and spots" hidden></ul>
+          <div class="cluster" style="gap: var(--space-2);"><span class="spinner spinner--sm" aria-hidden="true"></span><span class="text-caption" aria-hidden="true">Searching</span><span class="visually-hidden" role="status">Searching…</span></div>
+        </div>
+        <div class="ds-example__caption"><span>Add an entry, busy: searching published studios and spots for "ju" (The Junction Loft).</span></div>
+        <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;div class="cluster" style="gap: var(--space-2);"&gt;
+  &lt;span class="spinner spinner--sm" aria-hidden="true"&gt;&lt;/span&gt;
+  &lt;span class="text-caption" aria-hidden="true"&gt;Searching&lt;/span&gt;
+  &lt;span class="visually-hidden" role="status"&gt;Searching…&lt;/span&gt;
+&lt;/div&gt;</code></pre></details>
+      </div>
+      <p>Never put a <code>.spinner</code> element inside a button: the button draws its own ring, and two rings would overlap.</p>
     </section>
 
     <section class="ds-section" id="sizes"><h2><a href="#sizes">Sizes</a></h2>
-      <p>Match the spinner to the text or space beside it.</p>
+      <p>Match the spinner to the text beside it. Only the small size is on a ShotThere screen today; the busy-button ring is always 1.1em of the button's font size, so it scales with <code>.btn--sm</code> and <code>.btn--lg</code>.</p>
       <div class="ds-example">
         <div class="ds-example__canvas">
-          <span class="inline-status" role="status"><span class="spinner spinner--sm" aria-hidden="true"></span>Small · 16px</span>
-          <span class="inline-status" role="status"><span class="spinner" aria-hidden="true"></span>Medium · 20px</span>
-          <span class="inline-status" role="status"><span class="spinner spinner--lg" aria-hidden="true"></span>Large · 40px</span>
+          <span class="cluster" style="gap: var(--space-2);"><span class="spinner spinner--sm" aria-hidden="true"></span>Small · 16px</span>
+          <span class="cluster" style="gap: var(--space-2);"><span class="spinner" aria-hidden="true"></span>Medium · 20px</span>
         </div>
-        <div class="ds-example__caption"><span>Small (<code>--icon-size-sm</code>) beside <code>--text-body-sm</code>; medium (<code>--icon-size-md</code>) beside body text; large (<code>--space-10</code>, 2px ring) inside photo placeholders and empty regions.</span></div>
+        <div class="ds-example__caption"><span>Small (<code>--icon-size-sm</code>) beside captions, as in the entry picker; medium (<code>--icon-size-md</code>, the base <code>.spinner</code>) beside body text, in the stylesheet with no screen yet.</span></div>
+      </div>
+      <div class="ds-example">
+        <div class="ds-example__canvas">
+          <button class="btn btn--sm" type="button" aria-busy="true" disabled>Retry<span class="visually-hidden"> gallery-04.jpg</span></button>
+          <button class="btn" type="button" aria-busy="true" disabled>Subscribe</button>
+          <button class="btn btn--primary btn--lg" type="button" aria-busy="true" disabled>Sign in</button>
+        </div>
+        <div class="ds-example__caption"><span>The button ring at small, medium and large button sizes.</span></div>
       </div>
     </section>
 
     <section class="ds-section" id="states"><h2><a href="#states">States</a></h2>
-      <p>A spinner has no interactive states: it is either present (working) or removed (done). The matrix shows each size on each surface it appears on; with no real attribute to set, the "state" is the context.</p>
+      <p>The standalone spinner has no interactive states: it is present while working and removed when done. The busy button is a state of the button, and the matrix shows how it differs from disabled: busy is never dimmed, so the ring keeps its contrast.</p>
       <div class="ds-matrix"><table>
-        <caption class="visually-hidden">Spinner sizes by surface</caption>
-        <thead><tr><th scope="col">Size</th><th scope="col">Canvas</th><th scope="col">Surface</th><th scope="col">Sunken well</th><th scope="col">Subtle (hover row)</th><th scope="col">Photo placeholder</th></tr></thead>
+        <caption class="visually-hidden">Busy state compared with the other button states, and the inline spinner</caption>
+        <thead><tr><th scope="col">Variant</th><th scope="col">Default</th><th scope="col">Hover</th><th scope="col">Focus</th><th scope="col">Active</th><th scope="col">Disabled</th><th scope="col">Busy</th></tr></thead>
         <tbody>
-          <tr><th scope="row">Small</th>
-            <td><div class="ds-example__canvas ds-example__canvas--canvas" style="padding: var(--space-3);"><span class="spinner spinner--sm" aria-hidden="true"></span></div></td>
-            <td><div class="ds-example__canvas" style="padding: var(--space-3); background: var(--color-bg-surface);"><span class="spinner spinner--sm" aria-hidden="true"></span></div></td>
-            <td><div class="ds-example__canvas" style="padding: var(--space-3); background: var(--color-bg-surface-sunken);"><span class="spinner spinner--sm" aria-hidden="true"></span></div></td>
-            <td><div class="ds-example__canvas" style="padding: var(--space-3); background: var(--color-bg-subtle);"><span class="spinner spinner--sm" aria-hidden="true"></span></div></td>
-            <td><span class="ds-na">Too small for a photo</span></td>
+          <tr><th scope="row">Default</th>
+            <td><button class="btn" type="button">Subscribe</button></td>
+            <td><button class="btn" type="button" data-state="hover">Subscribe</button></td>
+            <td><button class="btn" type="button" data-state="focus">Subscribe</button></td>
+            <td><button class="btn" type="button" data-state="active">Subscribe</button></td>
+            <td><button class="btn" type="button" disabled>Subscribe</button></td>
+            <td><button class="btn" type="button" aria-busy="true" disabled>Subscribe</button></td>
           </tr>
-          <tr><th scope="row">Medium</th>
-            <td><div class="ds-example__canvas ds-example__canvas--canvas" style="padding: var(--space-3);"><span class="spinner" aria-hidden="true"></span></div></td>
-            <td><div class="ds-example__canvas" style="padding: var(--space-3); background: var(--color-bg-surface);"><span class="spinner" aria-hidden="true"></span></div></td>
-            <td><div class="ds-example__canvas" style="padding: var(--space-3); background: var(--color-bg-surface-sunken);"><span class="spinner" aria-hidden="true"></span></div></td>
-            <td><div class="ds-example__canvas" style="padding: var(--space-3); background: var(--color-bg-subtle);"><span class="spinner" aria-hidden="true"></span></div></td>
-            <td><span class="photo photo--placeholder photo--sm"><span class="spinner" aria-hidden="true"></span></span></td>
+          <tr><th scope="row">Primary</th>
+            <td><button class="btn btn--primary" type="button">Unpublish</button></td>
+            <td><button class="btn btn--primary" type="button" data-state="hover">Unpublish</button></td>
+            <td><button class="btn btn--primary" type="button" data-state="focus">Unpublish</button></td>
+            <td><button class="btn btn--primary" type="button" data-state="active">Unpublish</button></td>
+            <td><button class="btn btn--primary" type="button" disabled>Unpublish</button></td>
+            <td><button class="btn btn--primary" type="button" aria-busy="true" disabled>Unpublish</button></td>
           </tr>
-          <tr><th scope="row">Large</th>
-            <td><div class="ds-example__canvas ds-example__canvas--canvas" style="padding: var(--space-3);"><span class="spinner spinner--lg" aria-hidden="true"></span></div></td>
-            <td><div class="ds-example__canvas" style="padding: var(--space-3); background: var(--color-bg-surface);"><span class="spinner spinner--lg" aria-hidden="true"></span></div></td>
-            <td><div class="ds-example__canvas" style="padding: var(--space-3); background: var(--color-bg-surface-sunken);"><span class="spinner spinner--lg" aria-hidden="true"></span></div></td>
-            <td><div class="ds-example__canvas" style="padding: var(--space-3); background: var(--color-bg-subtle);"><span class="spinner spinner--lg" aria-hidden="true"></span></div></td>
-            <td><span class="photo photo--placeholder photo--md"><span class="spinner spinner--lg" aria-hidden="true"></span></span></td>
+          <tr><th scope="row">Danger</th>
+            <td><button class="btn btn--danger" type="button">Delete studio</button></td>
+            <td><button class="btn btn--danger" type="button" data-state="hover">Delete studio</button></td>
+            <td><button class="btn btn--danger" type="button" data-state="focus">Delete studio</button></td>
+            <td><button class="btn btn--danger" type="button" data-state="active">Delete studio</button></td>
+            <td><button class="btn btn--danger" type="button" disabled>Delete studio</button></td>
+            <td><button class="btn btn--danger" type="button" aria-busy="true" disabled>Delete studio</button></td>
+          </tr>
+          <tr><th scope="row">Inline spinner</th>
+            <td><span class="cluster" style="gap: var(--space-2);"><span class="spinner spinner--sm" aria-hidden="true"></span>Searching</span></td>
+            <td colspan="4"><span class="ds-na">Not interactive: no hover, focus, active or disabled</span></td>
+            <td><span class="ds-na">It is the busy state</span></td>
           </tr>
         </tbody>
       </table></div>
       <h3>Both themes</h3>
       <div class="ds-themes">
-        <div data-theme="light"><div class="ds-example__canvas" style="padding: 0;"><span class="spinner spinner--sm" aria-hidden="true"></span><span class="spinner" aria-hidden="true"></span><span class="spinner spinner--lg" aria-hidden="true"></span><span class="photo photo--placeholder photo--md"><span class="spinner spinner--lg" aria-hidden="true"></span></span></div></div>
-        <div data-theme="dark"><div class="ds-example__canvas" style="padding: 0;"><span class="spinner spinner--sm" aria-hidden="true"></span><span class="spinner" aria-hidden="true"></span><span class="spinner spinner--lg" aria-hidden="true"></span><span class="photo photo--placeholder photo--md"><span class="spinner spinner--lg" aria-hidden="true"></span></span></div></div>
+        <div data-theme="light"><div class="ds-example__canvas" style="padding: 0;"><span class="spinner spinner--sm" aria-hidden="true"></span><span class="spinner" aria-hidden="true"></span><button class="btn" type="button" aria-busy="true" disabled>Subscribe</button><button class="btn btn--primary" type="button" aria-busy="true" disabled>Unpublish</button><button class="btn btn--danger" type="button" aria-busy="true" disabled>Delete studio</button></div></div>
+        <div data-theme="dark"><div class="ds-example__canvas" style="padding: 0;"><span class="spinner spinner--sm" aria-hidden="true"></span><span class="spinner" aria-hidden="true"></span><button class="btn" type="button" aria-busy="true" disabled>Subscribe</button><button class="btn btn--primary" type="button" aria-busy="true" disabled>Unpublish</button><button class="btn btn--danger" type="button" aria-busy="true" disabled>Delete studio</button></div></div>
       </div>
       <ul>
-        <li><b>Delayed</b>: render nothing for the first 300ms, then the spinner. If the wait ends between 300ms and 600ms, keep it for the remainder of 600ms so it never flickers.</li>
-        <li><b>Done</b>: remove the spinner and its status text together; the arriving content announces itself (the photo's caption, the area name).</li>
-        <li><b>Taking long</b>: after 10 seconds, replace the spinner with words and a way out ("Still loading. Try again"), using an <a href="empty-state.html">empty state</a> in error tone if it fails.</li>
+        <li><b>Delayed</b>: show the spinner only if the wait passes 300ms, as the list loading states do; most searches and saves end sooner.</li>
+        <li><b>Done</b>: remove the ring and the status text together. A dialog closes and the next screen confirms (the studio list without Corktown Garage Studio; a warning toast after Unpublish).</li>
+        <li><b>Failed</b>: the button returns to its default state and the error appears where the work was, such as "We couldn't delete it. Try again." in the delete dialog or "We couldn't sign you in just now" on sign-in.</li>
       </ul>
     </section>
 
     <section class="ds-section" id="responsive"><h2><a href="#responsive">Responsive behaviour</a></h2>
       <ul>
-        <li>Size never changes by breakpoint; a 20px ring reads the same on a phone and a 1440px screen.</li>
-        <li>Standalone spinners centre in the box the content will occupy (the round viewer photo is full width on xs, the lead photo size from 48rem), so the layout does not move when the content arrives.</li>
-        <li>Inline spinners stay on the first line of their text and do not wrap away from it (<code>flex: none</code>).</li>
+        <li>Spinner sizes never change by breakpoint.</li>
+        <li>A busy button keeps its exact width because the label stays in place (transparent), so the dialog footer or form row does not reflow when the ring appears.</li>
+        <li>On phones the sign-in button is full width (<code>.btn--block</code>) and the signup button is full width below 36rem; the ring stays centred in either.</li>
+        <li>The editors' sticky action bar keeps Save changes, Cancel and "Saving…" on one wrapping row, clear of the home indicator (<code>env(safe-area-inset-bottom)</code>).</li>
       </ul>
     </section>
 
     <section class="ds-section" id="theming"><h2><a href="#theming">Theming</a></h2>
-      <p>The ring reads <code>--color-border-default</code>; the arc reads <code>--color-fg-default</code>. In dark both flip with the theme: a pale arc on a dark-stone track. There are no component tokens. On the inverse surface (inside a toast, should one ever need it) give the parent <code>color</code> and override the arc with <code>border-top-color: currentColor</code>; the button already does this for its busy state.</p>
-      <p>The mock kit drew the arc in pepper red; it is ink now, because a red arc read as an error or a selected item on screens where pepper already marks the current filter.</p>
+      <p>The standalone ring reads <code>--color-border-default</code> and its arc <code>--color-fg-default</code>; both flip with the theme, giving a pale arc on a dark-stone track in dark. The busy-button ring reads the button's <code>--btn-fg</code>, so it is ink on the default button, the on-action colour on primary and the on-danger colour on danger in both themes. There are no spinner tokens.</p>
+      <pre><code>.btn[aria-busy="true"]         { color: transparent; pointer-events: none; opacity: 1; }
+.btn[aria-busy="true"]::after  { border: var(--border-width-thick) solid var(--btn-fg); border-right-color: transparent; }</code></pre>
     </section>
 
     <section class="ds-section" id="accessibility"><h2><a href="#accessibility">Accessibility</a></h2>
       <h3>Role and pattern</h3>
-      <p>The ring is <code>aria-hidden="true"</code>. The words live in a <code>role="status"</code> element (polite live region, WCAG 4.1.3) that exists before the text is inserted. The region being loaded gets <code>aria-busy="true"</code> until it is ready. There is no APG pattern for spinners; this follows the <a href="https://www.w3.org/WAI/ARIA/apg/patterns/alert/">live region guidance of the APG</a> and <a href="https://www.w3.org/WAI/WCAG22/Understanding/status-messages.html">Understanding 4.1.3 Status Messages</a>.</p>
+      <p>The ring is decoration: <code>aria-hidden="true"</code> on <code>.spinner</code>, and a CSS pseudo-element on the button. The words live in a <code>role="status"</code> region (polite live region, WCAG 4.1.3) that is in the DOM before the text changes. A busy button keeps its native <code>button</code> role and label, with <code>aria-busy="true"</code>. There is no APG spinner pattern; this follows <a href="https://www.w3.org/WAI/WCAG22/Understanding/status-messages.html">Understanding 4.1.3 Status Messages</a>.</p>
       <h3>Keyboard</h3>
       <div class="ds-table-wrap"><table class="ds-table ds-keys"><thead><tr><th scope="col">Key</th><th scope="col">Action</th></tr></thead><tbody>
-        <tr><td><kbd>Tab</kbd></td><td>Skips the spinner; it is never focusable. Controls around it (Previous photo, Close photo viewer) stay operable while it turns.</td></tr>
+        <tr><td><kbd>Tab</kbd></td><td>Skips the spinner. In a busy dialog every control is disabled, so focus stays in the dialog until it answers.</td></tr>
+        <tr><td><kbd>Escape</kbd></td><td>Does nothing while a confirm dialog is busy. After a failure ("We couldn't delete it. Try again.") it closes the dialog again.</td></tr>
+        <tr><td><kbd>Enter</kbd> / <kbd>Space</kbd></td><td>Ignored on a busy button, so a second press can't send the request twice.</td></tr>
+        <tr><td>Typing in the entry picker</td><td>Keeps working while "Searching" shows; each keystroke restarts the search.</td></tr>
       </tbody></table></div>
       <h3>Focus</h3>
-      <p>A spinner never takes or moves focus. When the content arrives, focus stays where the person left it (on Next photo, for example).</p>
+      <p>A spinner never takes focus. A native <code>disabled</code> attribute drops focus from the button that was just pressed, so the dialog or form must keep focus inside: either give the busy button <code>aria-disabled="true"</code> instead of <code>disabled</code> (the CSS styles both) or move focus to the dialog panel. When the work ends, focus goes where the next screen says: the next page's main heading, or back to the button on failure.</p>
       <h3>Labelling</h3>
-      <p>Say what is loading, not that something is: "Loading photo 3 of 6", "Looking up M1B 2K3…". The words are visually hidden for a standalone spinner and visible for an inline one; never both.</p>
+      <p>Say what is happening, with the item's name: "Deleting Corktown Garage Studio…", "Unpublishing The Junction Loft…", "Searching…". Keep the button's own label as it was ("Delete studio", "Save changes"): it is invisible while busy, and changing it to "Saving…" makes screen readers hear the same word twice.</p>
       <h3>Contrast</h3>
       <div class="ds-example__canvas ds-example__canvas--stack" style="padding: 0; gap: var(--space-2);">
-        <div class="ds-pair"><span>Arc on canvas</span><span class="ds-pair__ratio" data-contrast="--color-fg-default|--color-bg-canvas" data-min="3"></span></div>
-        <div class="ds-pair"><span>Arc on surface</span><span class="ds-pair__ratio" data-contrast="--color-fg-default|--color-bg-surface" data-min="3"></span></div>
-        <div class="ds-pair"><span>Arc on sunken well</span><span class="ds-pair__ratio" data-contrast="--color-fg-default|--color-bg-surface-sunken" data-min="3"></span></div>
-        <div class="ds-pair"><span>Inline status text on page</span><span class="ds-pair__ratio" data-contrast="--color-fg-muted|--color-bg-canvas" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Ring in a default button</span><span class="ds-pair__ratio" data-contrast="--color-fg-default|--color-bg-surface" data-min="3"></span></div>
+        <div class="ds-pair"><span>Ring in a primary button</span><span class="ds-pair__ratio" data-contrast="--color-fg-on-action|--color-action" data-min="3"></span></div>
+        <div class="ds-pair"><span>Ring in a danger button</span><span class="ds-pair__ratio" data-contrast="--color-fg-on-danger|--color-danger-solid" data-min="3"></span></div>
+        <div class="ds-pair"><span>Inline arc in a dialog</span><span class="ds-pair__ratio" data-contrast="--color-fg-default|--color-bg-surface-raised" data-min="3"></span></div>
+        <div class="ds-pair"><span>"Searching" caption in a dialog</span><span class="ds-pair__ratio" data-contrast="--color-fg-muted|--color-bg-surface-raised" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>"Saving…" status on the page</span><span class="ds-pair__ratio" data-contrast="--color-fg-muted|--color-bg-canvas" data-min="4.5"></span></div>
       </div>
-      <p>The arc is a graphical object that conveys "working", so it needs 3:1 against the surface (WCAG 1.4.11); the track is decorative. The arc on the photo placeholder background (<code>--color-bg-photo</code>) is a checked pair too.</p>
+      <p>The arc tells the user something is working, so it needs 3:1 against what is behind it (WCAG 1.4.11). The track is decorative. A busy button is never dimmed to 50% for the same reason.</p>
       <h3>Motion</h3>
-      <p>The spinner keeps turning under <code>prefers-reduced-motion</code>. It is not decoration: a still ring would read as frozen, and the turn is slow, linear, small and stops as soon as the content arrives (WCAG 2.3.3 covers motion triggered by interaction; this is a status indicator). Loop durations are deliberately not zeroed in <code>tokens.css</code>. Skeleton shimmer and the indeterminate progress sweep, which are decorative, do stop.</p>
+      <p>The spinner and the busy-button ring keep turning under <code>prefers-reduced-motion</code>: a still ring reads as frozen, the turn is small, slow and linear, and it ends as soon as the work does. Skeleton shimmer, which is decorative, does stop.</p>
       <h3>Touch</h3>
-      <p>Nothing to touch, and nothing under the spinner is blocked: it never sits on top of a control.</p>
+      <p>A busy button ignores taps (<code>pointer-events: none</code>), so a double tap on a phone can't delete twice. The ring never covers another control.</p>
     </section>
 
     <section class="ds-section" id="content"><h2><a href="#content">Content</a></h2>
       <ul>
-        <li>Name the thing: "Loading photo 3 of 6", "Looking up M1B 2K3…", "Verifying your email…". Not "Loading…" or "Please wait".</li>
-        <li>Present participle plus an ellipsis character (…) for visible text; no exclamation marks.</li>
-        <li>No time estimates unless they are real; if a wait passes 10 seconds, say so and offer a way out.</li>
+        <li>Name the thing: "Deleting Corktown Garage Studio…", "Unpublishing The Junction Loft…". Not "Loading…" or "Please wait".</li>
+        <li>Present participle plus the ellipsis character (…). Short captions on screen ("Searching") can drop it; the status text keeps it.</li>
+        <li>No time estimates. If the answer is slow, the request fails into the screen's error state with Try again.</li>
       </ul>
     </section>
 
     <section class="ds-section" id="do-dont"><h2><a href="#do-dont">Do and don't</a></h2>
       <div class="ds-dodont">
-        <figure class="ds-do"><div class="ds-example__canvas"><p class="inline-status" role="status"><span class="spinner spinner--sm" aria-hidden="true"></span>Looking up M1B 2K3…</p></div><figcaption>Hide the ring; say what is happening in a status region.</figcaption></figure>
-        <figure class="ds-dont"><div class="ds-example__canvas"><span class="spinner" role="img" aria-label="Loading"></span></div><figcaption>Don't label the ring itself as an image (the viewer mock did); "Loading" in an <code>img</code> role is not announced as status.</figcaption></figure>
-        <figure class="ds-do"><div class="ds-example__canvas" style="flex-direction: column; align-items: center;"><span class="skeleton skeleton--circle" style="width: 6rem; height: 6rem;"></span><span class="skeleton skeleton--text" style="width: 8rem;"></span></div><figcaption>A list of caterers loads as skeleton circles in the final grid.</figcaption></figure>
-        <figure class="ds-dont"><div class="ds-example__canvas" style="justify-content: center;"><span class="spinner spinner--lg" aria-hidden="true"></span></div><figcaption>Don't put one big spinner where a page of cards will appear; everything jumps when it ends.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas"><button class="btn btn--primary" type="button" aria-busy="true" disabled>Save changes</button><span class="save-status" role="status">Saving…</span></div><figcaption>Keep the button's label and say "Saving…" once, in the status line (studio editor, submitting).</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas"><button class="btn btn--primary" type="button" aria-busy="true" disabled>Saving…</button><span class="save-status">Saving…</span></div><figcaption>Don't rename the busy button to "Saving…" next to a "Saving…" status (spot and guide editor mocks): the word is announced twice and the button loses its name.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--stack"><ul class="location-grid" aria-hidden="true" style="grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-4);"><li class="location-card location-card--skeleton"><div class="location-card__media"><span class="skeleton skeleton--rect"></span></div><span class="skeleton skeleton--title"></span><span class="skeleton skeleton--text"></span></li><li class="location-card location-card--skeleton"><div class="location-card__media"><span class="skeleton skeleton--rect"></span></div><span class="skeleton skeleton--title"></span><span class="skeleton skeleton--text"></span></li></ul></div><figcaption>Load a list of studios as skeleton cards in the final grid.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas" style="justify-content: center;"><span class="spinner" aria-hidden="true"></span></div><figcaption>Don't put a spinner where the studio cards will appear; everything jumps when it ends.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas"><button class="btn btn--danger" type="button" aria-busy="true" disabled>Delete studio</button></div><figcaption>Busy keeps full opacity so the ring reaches 3:1.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas"><button class="btn btn--danger" type="button" disabled>Delete studio <span class="spinner spinner--sm" aria-hidden="true"></span></button></div><figcaption>Don't drop a <code>.spinner</code> into a dimmed, disabled button: the ring falls below 3:1 and the button no longer reports that it is busy.</figcaption></figure>
       </div>
     </section>
 
@@ -274,42 +364,51 @@
         <tbody>
           <tr><td>Arc</td><td><code>--color-fg-default</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-default" data-swatch></i><span data-token="--color-fg-default"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-default" data-swatch></i><span data-token="--color-fg-default"></span></span></td></tr>
           <tr><td>Track</td><td><code>--color-border-default</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-border-default" data-swatch></i><span data-token="--color-border-default"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-border-default" data-swatch></i><span data-token="--color-border-default"></span></span></td></tr>
-          <tr><td>Placeholder behind (viewer)</td><td><code>--color-bg-photo</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-bg-photo" data-swatch></i><span data-token="--color-bg-photo"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-bg-photo" data-swatch></i><span data-token="--color-bg-photo"></span></span></td></tr>
-          <tr><td>Size sm / md / lg</td><td><code>--icon-size-sm</code> / <code>--icon-size-md</code> / <code>--space-10</code></td><td colspan="2"><span data-token="--icon-size-sm"></span> / <span data-token="--icon-size-md"></span> / <span data-token="--space-10"></span></td></tr>
-          <tr><td>Ring width</td><td><code>--border-width-thick</code> (2px)</td><td colspan="2"><span data-token="--border-width-thick"></span></td></tr>
+          <tr><td>Busy ring, primary</td><td><code>--color-fg-on-action</code> via <code>--btn-fg</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-on-action" data-swatch></i><span data-token="--color-fg-on-action"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-on-action" data-swatch></i><span data-token="--color-fg-on-action"></span></span></td></tr>
+          <tr><td>Busy ring, danger</td><td><code>--color-fg-on-danger</code> via <code>--btn-fg</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-on-danger" data-swatch></i><span data-token="--color-fg-on-danger"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-on-danger" data-swatch></i><span data-token="--color-fg-on-danger"></span></span></td></tr>
+          <tr><td>Caption</td><td><code>--color-fg-muted</code>, <code>--text-caption</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-muted" data-swatch></i><span data-token="--color-fg-muted"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-muted" data-swatch></i><span data-token="--color-fg-muted"></span></span></td></tr>
+          <tr><td>Size sm / md</td><td><code>--icon-size-sm</code> / <code>--icon-size-md</code></td><td colspan="2"><span data-token="--icon-size-sm"></span> / <span data-token="--icon-size-md"></span></td></tr>
+          <tr><td>Ring width</td><td><code>--border-width-thick</code></td><td colspan="2"><span data-token="--border-width-thick"></span></td></tr>
           <tr><td>One revolution</td><td><code>--duration-loop-fast</code>, linear</td><td colspan="2"><span data-token="--duration-loop-fast"></span></td></tr>
         </tbody>
       </table></div>
     </section>
 
     <section class="ds-section" id="code"><h2><a href="#code">Code</a></h2>
-      <pre><code>&lt;div class="viewer__stage" aria-busy="true"&gt;
-  &lt;span class="photo photo--placeholder" role="status"&gt;
-    &lt;span class="spinner spinner--lg" aria-hidden="true"&gt;&lt;/span&gt;
-    &lt;span class="visually-hidden"&gt;Loading photo 3 of 6&lt;/span&gt;
-  &lt;/span&gt;
+      <pre><code>&lt;!-- Busy button: the button draws the ring --&gt;
+&lt;button class="btn btn--primary" type="button" aria-busy="true" disabled&gt;Unpublish&lt;/button&gt;
+&lt;p class="visually-hidden" role="status"&gt;Unpublishing The Junction Loft…&lt;/p&gt;
+
+&lt;!-- Inline spinner --&gt;
+&lt;div class="cluster" style="gap: var(--space-2);"&gt;
+  &lt;span class="spinner spinner--sm" aria-hidden="true"&gt;&lt;/span&gt;
+  &lt;span class="text-caption" aria-hidden="true"&gt;Searching&lt;/span&gt;
+  &lt;span class="visually-hidden" role="status"&gt;Searching…&lt;/span&gt;
 &lt;/div&gt;</code></pre>
       <div class="ds-table-wrap"><table class="ds-table"><thead><tr><th scope="col">Class / attribute</th><th scope="col">Effect</th></tr></thead><tbody>
+        <tr><td><code>.btn[aria-busy="true"]</code></td><td>Hides the label (transparent, still read), draws the ring in <code>--btn-fg</code>, ignores pointer input, keeps full opacity.</td></tr>
         <tr><td><code>.spinner</code></td><td>20px ring, ink arc, 800ms linear turn.</td></tr>
-        <tr><td><code>.spinner--sm</code> <code>.spinner--lg</code></td><td>16px / 40px with a 2px ring.</td></tr>
-        <tr><td><code>aria-hidden="true"</code></td><td>Required on the ring.</td></tr>
-        <tr><td><code>role="status"</code> + text (or <code>.visually-hidden</code> text)</td><td>Required wrapper; announces what is loading.</td></tr>
-        <tr><td><code>aria-busy="true"</code></td><td>On the region being loaded; remove when done.</td></tr>
-        <tr><td><code>.inline-status</code></td><td>Row of spinner plus small muted text.</td></tr>
+        <tr><td><code>.spinner--sm</code></td><td>16px, same 2px ring.</td></tr>
+        <tr><td><code>aria-hidden="true"</code></td><td>Required on <code>.spinner</code>.</td></tr>
+        <tr><td><code>role="status"</code> + text</td><td>Required; says what is happening. Visually hidden in dialogs and sign-in, visible as <code>.save-status</code> in the editors.</td></tr>
+        <tr><td><code>disabled</code> / <code>aria-disabled="true"</code></td><td>On the other controls of a busy dialog; see Focus for the busy button itself.</td></tr>
       </tbody></table></div>
     </section>
 
     <section class="ds-section" id="sources"><h2><a href="#sources">Sources</a></h2>
       <p>Extracted from these mocks:</p>
       <ul>
-        <li>dialogs/photo-viewer/busy (large spinner in the round placeholder, 300ms delay)</li>
-        <li>dialogs/enquiry/busy and pages/profile-certificate/saving (button busy spinner)</li>
-        <li>pages/verify-email/loading ("Verifying your email…" status text)</li>
+        <li><a href="../../mocks/dialogs/delete-content/busy.html">dialogs/delete-content/busy</a>: Delete studio busy, Cancel and Close disabled, "Deleting Corktown Garage Studio…" (L2-061).</li>
+        <li><a href="../../mocks/dialogs/unpublish/busy.html">dialogs/unpublish/busy</a>: Unpublish busy, "Unpublishing The Junction Loft…" (L2-056).</li>
+        <li><a href="../../mocks/pages/sign-in/submitting.html">pages/sign-in/submitting</a>: Signing in, large full-width (L2-049).</li>
+        <li><a href="../../mocks/pages/home/submitting.html">pages/home/submitting</a>: Subscribe busy in the email signup (L2-041.3).</li>
+        <li><a href="../../mocks/pages/studio-editor/submitting.html">pages/studio-editor/submitting</a>, <a href="../../mocks/pages/spot-editor/submitting.html">pages/spot-editor/submitting</a> and <a href="../../mocks/pages/guide-editor/submitting.html">pages/guide-editor/submitting</a>: Save changes busy with "Saving…".</li>
+        <li><a href="../../mocks/dialogs/guide-entry-picker/busy.html">dialogs/guide-entry-picker/busy</a>: small spinner beside "Searching" (L2-060.4).</li>
       </ul>
-      <p>Drift fixed during extraction: the mock kit drew the arc in pepper red (<code>--color-accent</code>); it is ink (<code>--color-fg-default</code>). The viewer mock labelled the placeholder <code>role="img" aria-label="Loading photo 3 of 6"</code>; the system uses <code>role="status"</code> with visually hidden text. The kit had no small size and used literal durations (0.8s); <code>.spinner--sm</code> and <code>--duration-loop-fast</code> replace them. No mock shows an inline spinner with text; the inline variant is documented from the kit's <code>.inline-status</code>.</p>
+      <p>Drift found during extraction, documented here and left in the mocks for their owner: the spot and guide editors rename the busy button to "Saving…" while the studio editor keeps "Save changes"; the system keeps the label. Sign-in renames its button to "Signing in" and repeats it in a hidden status; same rule. The home signup's busy state has no status message; the system adds a visually hidden "Subscribing…". Every busy mock uses native <code>disabled</code> on the pressed button, which drops focus; the system keeps focus inside (see Focus).</p>
     </section>
 
-    <footer class="ds-footer"><span>ShotThere design system · extracted from docs/mocks on 10 October 2026</span><a href="#top">Back to top</a></footer>
+    <footer class="ds-footer"><span>ShotThere design system · extracted from <a href="../../mocks/index.html">docs/mocks</a> on 13 October 2026</span><a href="#top">Back to top</a></footer>
   </main>
 </div>
 <script src="../assets/ds.js"></script>

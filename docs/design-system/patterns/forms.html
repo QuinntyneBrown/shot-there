@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Forms — ShotThere design system</title>
-<meta name="description" content="ShotThere form pattern: one-column layout, label placement, required and optional fields, validation timing, the error summary, submit busy states, autosave and destructive confirmations.">
+<meta name="description" content="ShotThere form pattern: the email signup, owner sign-in in all eight states, the studio, spot and guide editors with sections, error summary, sticky actions and Publish versus Save, and the filters dialog with its price-range check.">
 <link rel="stylesheet" href="../tokens/tokens.css">
 <link rel="stylesheet" href="../assets/components.css">
 <link rel="stylesheet" href="../assets/ds.css">
@@ -33,40 +33,61 @@
       <li><a href="../components/icon-button.html">Icon button</a></li>
       <li><a href="../components/button-group.html">Button group</a></li>
       <li><a href="../components/link.html">Link</a></li>
+      <li><a href="../components/compare-bar.html">Compare toggle and bar</a></li>
     </ul></details>
     <details open><summary>Inputs</summary><ul>
       <li><a href="../components/form-field.html">Form field</a></li>
       <li><a href="../components/text-field.html">Text field</a></li>
       <li><a href="../components/textarea.html">Textarea</a></li>
       <li><a href="../components/select.html">Select</a></li>
+      <li><a href="../components/combobox.html">Combobox</a></li>
       <li><a href="../components/checkbox.html">Checkbox</a></li>
       <li><a href="../components/radio-group.html">Radio group</a></li>
       <li><a href="../components/file-upload.html">File upload</a></li>
       <li><a href="../components/form-layout.html">Form layout</a></li>
+      <li><a href="../components/signup.html">Email signup</a></li>
     </ul></details>
     <details open><summary>Navigation</summary><ul>
       <li><a href="../components/skip-link.html">Skip link</a></li>
       <li><a href="../components/site-header.html">Site header</a></li>
       <li><a href="../components/footer.html">Footer</a></li>
+      <li><a href="../components/breadcrumb.html">Breadcrumb</a></li>
+      <li><a href="../components/filter.html">Filters</a></li>
     </ul></details>
     <details open><summary>Containers and overlays</summary><ul>
-      <li><a href="../components/container.html">Container and grid</a></li>
-      <li><a href="../components/card.html">Card</a></li>
+      <li><a href="../components/container.html">Container</a></li>
+      <li><a href="../components/review-layout.html">Review layout</a></li>
+      <li><a href="../components/editor-layout.html">Editor layout</a></li>
       <li><a href="../components/dialog.html">Dialog</a></li>
-      <li><a href="../components/sheet.html">Sheet and drawer</a></li>
-      <li><a href="../components/divider.html">Divider</a></li>
+      <li><a href="../components/sheet.html">Sheet</a></li>
+      <li><a href="../components/popover.html">Popover</a></li>
+      <li><a href="../components/lightbox.html">Lightbox</a></li>
     </ul></details>
     <details open><summary>Data display</summary><ul>
+      <li><a href="../components/location-card.html">Location card</a></li>
       <li><a href="../components/table.html">Table</a></li>
+      <li><a href="../components/compare-table.html">Comparison table</a></li>
+      <li><a href="../components/list.html">List rows</a></li>
       <li><a href="../components/description-list.html">Description list</a></li>
+      <li><a href="../components/price-block.html">Price block</a></li>
+      <li><a href="../components/score.html">Score and pips</a></li>
+      <li><a href="../components/shot-grid.html">Shot grid</a></li>
+      <li><a href="../components/video-poster.html">Episode poster</a></li>
+      <li><a href="../components/map.html">Map</a></li>
+      <li><a href="../components/guide-entry.html">Guide entry</a></li>
+      <li><a href="../components/stat-tile.html">Stat tile</a></li>
+      <li><a href="../components/image-manager.html">Image manager</a></li>
+      <li><a href="../components/disclosure.html">Disclosure</a></li>
       <li><a href="../components/badge.html">Badge</a></li>
+      <li><a href="../components/status-label.html">Status label</a></li>
       <li><a href="../components/chip.html">Chip</a></li>
+      <li><a href="../components/tag.html">Tag</a></li>
     </ul></details>
     <details open><summary>Feedback</summary><ul>
       <li><a href="../components/inline-message.html">Inline message</a></li>
-      <li><a href="../components/alert.html">Alert and banner</a></li>
+      <li><a href="../components/alert.html">Alert</a></li>
       <li><a href="../components/toast.html">Toast</a></li>
-      <li><a href="../components/progress.html">Progress and meter</a></li>
+      <li><a href="../components/progress.html">Progress</a></li>
       <li><a href="../components/spinner.html">Spinner</a></li>
       <li><a href="../components/skeleton.html">Skeleton</a></li>
       <li><a href="../components/empty-state.html">Empty state</a></li>
@@ -83,284 +104,441 @@
       <li><a href="../patterns/content-and-tone.html">Content and tone</a></li>
     </ul></details>
   </nav>
-
   <main id="main" class="ds-main">
     <header class="ds-header">
       <p class="ds-kicker">Pattern</p>
       <h1>Forms</h1>
-      <p class="ds-lead">ShotThere forms ask for as little as possible, say what each field is for, check on submit, keep everything people typed, and tell them exactly what to fix. Short tasks open in a dialog; long editing lives on its own screen and saves as you go.</p>
-      <div class="ds-meta"><span class="ds-pill ds-pill--ok">WCAG 2.2 AA</span><span class="ds-pill">Status: stable</span><span class="ds-pill"><code>.form</code></span><span class="ds-pill"><code>.field</code></span><span class="ds-pill"><code>.form-summary</code></span></div>
-      <ul class="ds-toc"><li><a href="#overview">Overview</a></li><li><a href="#when">When to use which composition</a></li><li><a href="#structure">Structure</a></li><li><a href="#states">States</a></li><li><a href="#responsive">Responsive behaviour</a></li><li><a href="#accessibility">Accessibility</a></li><li><a href="#content">Content</a></li><li><a href="#do-dont">Do and don't</a></li><li><a href="#sources">Sources</a></li></ul>
+      <p class="ds-lead">ShotThere asks for very little: an email address from visitors, and from the admin a sign-in and long, sectioned editors for studios, spots and guides. Every form checks on submit, keeps everything typed, names exactly what to fix, and leaves the final word to the server.</p>
+      <div class="ds-meta"><span class="ds-pill ds-pill--ok">WCAG 2.2 AA</span><span class="ds-pill">Status: stable</span><span class="ds-pill"><code>.field</code></span><span class="ds-pill"><code>.form-summary</code></span><span class="ds-pill"><code>.editor-form</code></span><span class="ds-pill"><code>.signup</code></span></div>
+      <ul class="ds-toc"><li><a href="#overview">Overview</a></li><li><a href="#when">When to use which</a></li><li><a href="#structure">Structure</a></li><li><a href="#states">States</a></li><li><a href="#responsive">Responsive behaviour</a></li><li><a href="#accessibility">Accessibility</a></li><li><a href="#content">Content</a></li><li><a href="#do-dont">Do and don't</a></li><li><a href="#sources">Sources</a></li></ul>
     </header>
 
 <section class="ds-section" id="overview"><h2><a href="#overview">Overview</a></h2>
-      <p>Forms are where ShotThere asks people for something: an enquiry to a caterer, a review, a report, a sign-in, a caterer's business details, an operator's reason for suspending a profile. They are built from the <a href="../components/form-field.html">form field</a> (label, control, help, error), the controls (<a href="../components/text-field.html">text field</a>, <a href="../components/textarea.html">textarea</a>, <a href="../components/select.html">select</a>, <a href="../components/checkbox.html">checkbox</a>, <a href="../components/radio-group.html">radio group</a>, <a href="../components/file-upload.html">file upload</a>), the <a href="../components/form-layout.html">form layout</a> (<code>.form</code>, <code>.field-row</code>, <code>.form-actions</code>, <code>.form-summary</code>), <a href="../components/inline-message.html">inline messages</a> and one ink <a href="../components/button.html">button</a>.</p>
+      <p>Visitors meet two forms: the <a href="../components/signup.html">email signup</a> (home hero and footer) and the studio and spot <a href="../components/filter.html">filters</a>. The admin, the only account, meets the rest: sign-in at <code>/admin/sign-in</code>, the studio, spot and guide editors, and the entry picker that adds a studio or spot to a guide. They are built from the <a href="../components/form-field.html">form field</a> (label, control, message, help), the controls (<a href="../components/text-field.html">text field</a>, <a href="../components/textarea.html">textarea</a>, <a href="../components/select.html">select</a>, <a href="../components/checkbox.html">checkbox</a>, <a href="../components/radio-group.html">radio group</a>, <a href="../components/combobox.html">combobox</a>, <a href="../components/file-upload.html">file upload</a>), the <a href="../components/form-layout.html">form layout</a> (<code>.field-row</code>, <code>.form-summary</code>, <code>.form-actions--sticky</code>) and the <a href="../components/editor-layout.html">editor layout</a>.</p>
       <ul>
-        <li><b>No inline forms on pages.</b> A button that starts editing opens a <a href="../components/dialog.html">dialog</a> ("Edit details", "Add a dish", "Write a review") or goes to a screen. The exceptions are screens whose whole job is the form: the profile editor sections, sign-in and registration, and the reply box under a thread.</li>
-        <li><b>One column, few fields.</b> The enquiry form has six fields, and the postal code is optional. Ask only for what the caterer or the platform needs.</li>
-        <li><b>Check on submit, then help while fixing.</b> Nothing turns red while someone is still typing their first answer.</li>
-        <li><b>Never lose input.</b> Errors, failures, sign-in detours and timeouts keep every value (drafts last 24 hours).</li>
+        <li><b>The server is the authority.</b> The browser only helps: it can catch an empty email before sending, but every rule (a rate of 0 or more, a score from 1 to 5, a booking link that starts with <code>http</code>) is checked again on the server, and server errors render exactly like browser ones.</li>
+        <li><b>No inline forms on reading pages.</b> A review page never grows a form. Button-triggered editing opens a dialog (Add an entry, Filters) or goes to a screen (Edit, New studio). The screens whose whole job is the form are sign-in, the three editors and the signup block.</li>
+        <li><b>Never lose input.</b> Refused saves, failed requests, rate limits and the discard check all keep every value. Only an incorrect sign-in clears the password.</li>
+        <li><b>One primary per form.</b> Subscribe, Sign in, Save changes or Create studio, Show 5 studios, Add entry. Publish and Unpublish live in the status panel as secondary buttons, apart from the save.</li>
       </ul>
     </section>
 
     <section class="ds-section" id="when"><h2><a href="#when">When to use which composition</a></h2>
       <div class="ds-table-wrap"><table class="ds-table">
-        <thead><tr><th scope="col">Situation</th><th scope="col">Composition</th><th scope="col">Submit model</th><th scope="col">Example</th></tr></thead>
+        <thead><tr><th scope="col">Situation</th><th scope="col">Composition</th><th scope="col">Submit model</th><th scope="col">Mock</th></tr></thead>
         <tbody>
-          <tr><td>A short task started from a button (2–7 fields)</td><td>Form in a <a href="../components/dialog.html">dialog</a> (<code>.dialog__panel--form</code>); full screen below 48rem</td><td>Primary button in the footer, error summary on submit</td><td>Send an enquiry, Write a review, Edit your details</td></tr>
-          <tr><td>Long, sectioned editing that people return to</td><td>Form is the page (<code>.form</code> in <code>.work-main</code>) with a <code>.save-status</code> line under the heading</td><td>Autosave 2 s after typing stops or on blur</td><td>Business details, Guests and occasions</td></tr>
-          <tr><td>One field that sends a message</td><td>Reply box (<code>.reply-box</code>) pinned under the thread</td><td>Icon Send button; error sits under the field</td><td>Enquiry thread, caterer reply</td></tr>
-          <tr><td>Account entry and recovery</td><td>Auth layout (<code>.auth</code>), large primary button</td><td>Submit, summary, busy</td><td>Sign in, Create an account</td></tr>
-          <tr><td>Destructive or punitive action</td><td>Small confirmation dialog with consequences, then a reason field, a tick or a typed name</td><td>Danger button, never the default focus</td><td>Suspend caterer, Remove caterer, Delete account</td></tr>
-          <tr><td>Narrowing a list</td><td>Not a form submit: filter list buttons update results in place; the phone <a href="../components/sheet.html">filter sheet</a> has Apply; operator lists use <code>.toolbar</code> with Apply</td><td>Instant, or Apply</td><td>Caterers filtered, Audit log</td></tr>
+          <tr><td>One field that a visitor sends once</td><td><code>.signup</code> inline in the page: label, field and Subscribe on one row from 36rem</td><td>Subscribe; the error sits under the row; success replaces the form</td><td>pages/home/*</td></tr>
+          <tr><td>Owner entry</td><td>Auth layout (<code>.auth</code>): large fields, full-width Sign in, alerts above the form</td><td>Submit, summary on empty fields, one alert for every server answer</td><td>pages/sign-in/*</td></tr>
+          <tr><td>Long, sectioned content the admin returns to</td><td><code>.editor-layout</code>: <code>.editor-form</code> of collapsible <code>.editor-section</code>s, a status panel, and <code>.form-actions--sticky</code></td><td>Save changes (or Create studio) at the bottom; Publish in the status panel</td><td>pages/studio-editor/*, spot-editor/*, guide-editor/*</td></tr>
+          <tr><td>Narrowing a list</td><td>Below LG a full-height <a href="../components/sheet.html">sheet</a> with a live count on its primary; at LG a sidebar form with Apply filters</td><td>Show <i>N</i> studios (sheet) or instant with JavaScript; GET without it</td><td>dialogs/studio-filters/*, dialogs/spot-filters/*</td></tr>
+          <tr><td>Picking one item into the form behind</td><td>Form <a href="../components/dialog.html">dialog</a> (<code>.dialog__panel--form</code>) with a combobox</td><td>Add entry, disabled until a valid choice</td><td>dialogs/guide-entry-picker/*</td></tr>
+          <tr><td>Confirming a consequence</td><td>Small dialog, no fields; see <a href="dialogs-and-overlays.html">Dialogs and overlays</a></td><td>Safe action focused, consequence action last</td><td>dialogs/unpublish/*, delete-content/*, discard-changes/*</td></tr>
         </tbody>
       </table></div>
     </section>
 
     <section class="ds-section" id="structure"><h2><a href="#structure">Structure</a></h2>
-      <p>The enquiry form is the reference composition. Below it is in its <b>invalid</b> state, as dialogs/enquiry/invalid shows it after Send was pressed: the summary leads, each wrong field is marked, every value is kept, and the privacy note stays at the end.</p>
+      <h3>Sign-in: the reference for a short form</h3>
+      <p>Sign-in submitted with both fields empty. The summary comes first and takes focus, each field carries its own message, and nothing has been sent.</p>
       <div class="ds-example">
         <div class="ds-example__canvas ds-example__canvas--canvas" style="justify-content: center;">
-          <form class="dialog__panel dialog__panel--form" aria-labelledby="fx-title" novalidate>
-            <div class="dialog__header">
-              <div class="dialog__caterer" style="flex: 1;">
-                <span class="photo"><img src="../assets/img/pelau-house.jpg" alt="" width="56" height="56"></span>
-                <div>
-                  <h3 class="dialog__title" id="fx-title">Send an enquiry</h3>
-                  <p class="dialog__caterer-name">to Pelau House</p>
-                </div>
-              </div>
-              <button class="icon-btn" type="button" aria-label="Close"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+          <div class="auth" style="margin: 0;">
+            <div class="auth__head">
+              <h3 style="font: var(--text-h1);">Sign in</h3>
+              <p class="subtitle">Owner access to the ShotThere administration area.</p>
             </div>
-            <div class="dialog__body stack" style="gap: var(--space-5);">
-              <div class="form-summary" tabindex="-1" id="fx-summary" aria-labelledby="fx-summary-title">
-                <h4 id="fx-summary-title">Fix 4 things to send your enquiry</h4>
-                <ul>
-                  <li><a href="#fx-date">Choose a date at least 2 days from today</a></li>
-                  <li><a href="#fx-guests">Enter a whole number of guests from 1 to 5,000</a></li>
-                  <li><a href="#fx-occasion">Choose an occasion</a></li>
-                  <li><a href="#fx-message">Tell the caterer a little more (at least 20 characters)</a></li>
-                </ul>
-              </div>
-              <div class="field-row">
-                <div class="field">
-                  <label class="field__label" for="fx-date">Event date</label>
-                  <input class="input" id="fx-date" type="date" min="2026-10-12" value="2026-10-11" aria-invalid="true" aria-describedby="fx-date-error fx-date-help">
-                  <span class="field__help" id="fx-date-help">At least 2 days from today</span>
-                  <span class="field__error" id="fx-date-error">Choose a date at least 2 days from today</span>
-                </div>
-                <div class="field">
-                  <label class="field__label" for="fx-guests">Guests</label>
-                  <input class="input" id="fx-guests" type="text" inputmode="numeric" value="fifty" aria-invalid="true" aria-describedby="fx-guests-error fx-guests-help">
-                  <span class="field__help" id="fx-guests-help">Pelau House serves 20–300</span>
-                  <span class="field__error" id="fx-guests-error">Enter a whole number of guests from 1 to 5,000</span>
-                </div>
-              </div>
-              <div class="field-row">
-                <div class="field">
-                  <label class="field__label" for="fx-area">Event area</label>
-                  <select class="select" id="fx-area">
-                    <option value="">Choose an area</option>
-                    <optgroup label="City of Toronto"><option>East York</option><option>North York</option><option selected>Scarborough</option></optgroup>
-                    <optgroup label="Durham"><option>Ajax</option><option>Pickering</option></optgroup>
-                  </select>
-                </div>
-                <div class="field">
-                  <label class="field__label" for="fx-postal">Postal code <span class="optional">(optional)</span></label>
-                  <input class="input" id="fx-postal" type="text" autocomplete="postal-code" autocapitalize="characters" maxlength="7" aria-describedby="fx-postal-help">
-                  <span class="field__help" id="fx-postal-help">We keep only the first 3 characters</span>
-                </div>
+            <div class="form-summary" role="alert" tabindex="-1">
+              <h4>Fix 2 things to sign in</h4>
+              <ul>
+                <li><a href="#fx-email">Enter your email address</a></li>
+                <li><a href="#fx-password">Enter your password</a></li>
+              </ul>
+            </div>
+            <form class="stack" action="#structure" method="post" novalidate>
+              <div class="field">
+                <label class="field__label" for="fx-email">Email</label>
+                <input class="input input--lg" id="fx-email" name="email" type="email" autocomplete="username" spellcheck="false" aria-invalid="true" aria-describedby="fx-email-error">
+                <span class="field__error" id="fx-email-error">Enter your email address</span>
               </div>
               <div class="field">
-                <label class="field__label" for="fx-occasion">Occasion</label>
-                <select class="select" id="fx-occasion" aria-invalid="true" aria-describedby="fx-occasion-error">
-                  <option value="">Choose an occasion</option>
-                  <option>Weddings</option><option>Birthdays</option><option>Family gatherings</option><option>Corporate events</option>
-                </select>
-                <span class="field__error" id="fx-occasion-error">Choose an occasion</span>
+                <label class="field__label" for="fx-password">Password</label>
+                <span class="input-group">
+                  <input class="input input--lg" id="fx-password" name="password" type="password" autocomplete="current-password" style="flex: 1; min-width: 0;" aria-invalid="true" aria-describedby="fx-password-error">
+                  <button class="btn btn--lg" type="button" aria-pressed="false" aria-controls="fx-password">Show<span class="visually-hidden"> password</span></button>
+                </span>
+                <span class="field__error" id="fx-password-error">Enter your password</span>
               </div>
+              <div style="margin-top: var(--space-2);">
+                <button class="btn btn--primary btn--lg btn--block" type="button">Sign in</button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="ds-example__caption"><span>Owner sign-in, invalid. Show toggles the password with <code>aria-pressed</code>; paste and password managers work (WCAG 3.3.8).</span><span>Source: pages/sign-in/invalid</span></div>
+        <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;main id="main" class="auth" tabindex="-1"&gt;
+  &lt;div class="auth__head"&gt;&lt;h1&gt;Sign in&lt;/h1&gt;&lt;p class="subtitle"&gt;Owner access to the ShotThere administration area.&lt;/p&gt;&lt;/div&gt;
+  &lt;div class="form-summary" role="alert" tabindex="-1"&gt;
+    &lt;h2&gt;Fix 2 things to sign in&lt;/h2&gt;
+    &lt;ul&gt;&lt;li&gt;&lt;a href="#email"&gt;Enter your email address&lt;/a&gt;&lt;/li&gt; …&lt;/ul&gt;
+  &lt;/div&gt;
+  &lt;form class="stack" method="post" novalidate&gt;
+    &lt;div class="field"&gt;
+      &lt;label class="field__label" for="email"&gt;Email&lt;/label&gt;
+      &lt;input class="input input--lg" id="email" type="email" autocomplete="username" aria-invalid="true" aria-describedby="email-error"&gt;
+      &lt;span class="field__error" id="email-error"&gt;Enter your email address&lt;/span&gt;
+    &lt;/div&gt;
+    …
+    &lt;button class="btn btn--primary btn--lg btn--block" type="submit"&gt;Sign in&lt;/button&gt;
+  &lt;/form&gt;
+&lt;/main&gt;</code></pre></details>
+      </div>
+
+      <h3>Email signup</h3>
+      <p>One field and one button. The label stays visible; the honeypot field is off-screen, out of the tab order and hidden from assistive technology. The hero Subscribe is the page's primary; the footer copy of the form uses a secondary button.</p>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--canvas ds-example__canvas--stack">
+          <form class="signup" action="#structure" method="post" novalidate aria-labelledby="fx-signup-title">
+            <h4 class="signup__title" id="fx-signup-title">Get new reviews by email</h4>
+            <p>One short email per new review. No ads, no sponsors.</p>
+            <div class="signup__row">
               <div class="field">
-                <label class="field__label" for="fx-message">Message</label>
-                <textarea class="textarea" id="fx-message" rows="4" maxlength="2000" aria-invalid="true" aria-describedby="fx-message-error fx-message-help fx-message-count">Food for 120 please</textarea>
-                <span class="cluster cluster--between"><span class="field__help" id="fx-message-help">What you’d like to eat, serving style, timing</span><span class="field__counter" id="fx-message-count">19 / 2,000</span></span>
-                <span class="field__error" id="fx-message-error">Tell the caterer a little more (at least 20 characters)</span>
+                <label class="field__label" for="fx-signup-email">Email address</label>
+                <input class="input" id="fx-signup-email" name="email" type="email" autocomplete="email" inputmode="email" aria-invalid="true" aria-describedby="fx-signup-error">
               </div>
-              <p class="private-note"><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Pelau House sees your name, not your email or phone.</p>
+              <button class="btn btn--primary" type="button" style="align-self: flex-end;">Subscribe</button>
             </div>
-            <div class="dialog__footer">
-              <button class="btn" type="button">Cancel</button>
-              <button class="btn btn--primary" type="button">Send enquiry</button>
-            </div>
+            <p class="field__error" id="fx-signup-error">Enter your email address</p>
+            <div class="signup__trap" aria-hidden="true"><label for="fx-signup-website">Leave this field empty</label><input id="fx-signup-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
           </form>
         </div>
-        <div class="ds-example__caption"><span>The enquiry form's panel, invalid. In the product it sits in <code>.dialog.dialog--full</code> over an inert page; here it is shown flat so the whole form is visible.</span><span>Source: dialogs/enquiry/invalid</span></div>
-        <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;form class="dialog__panel dialog__panel--form" novalidate&gt;
-  &lt;div class="dialog__body stack"&gt;
-    &lt;div class="form-summary" role="alert" tabindex="-1" id="error-summary" aria-labelledby="error-summary-title"&gt;
-      &lt;h3 id="error-summary-title"&gt;Fix 4 things to send your enquiry&lt;/h3&gt;
-      &lt;ul&gt;&lt;li&gt;&lt;a href="#date"&gt;Choose a date at least 2 days from today&lt;/a&gt;&lt;/li&gt; …&lt;/ul&gt;
-    &lt;/div&gt;
-    &lt;div class="field-row"&gt;
-      &lt;div class="field"&gt;
-        &lt;label class="field__label" for="date"&gt;Event date&lt;/label&gt;
-        &lt;input class="input" id="date" type="date" required aria-invalid="true" aria-describedby="date-error date-help"&gt;
-        &lt;span class="field__help" id="date-help"&gt;At least 2 days from today&lt;/span&gt;
-        &lt;span class="field__error" id="date-error"&gt;Choose a date at least 2 days from today&lt;/span&gt;
-      &lt;/div&gt;
-      …
-    &lt;/div&gt;
-    &lt;label class="field__label" for="postal"&gt;Postal code &lt;span class="optional"&gt;(optional)&lt;/span&gt;&lt;/label&gt;
+        <div class="ds-example__caption"><span>Submitted empty: no request is sent and focus returns to the field. "not-an-email" gets "Enter a valid email address, like name@example.com".</span><span>Source: pages/home/invalid</span></div>
+      </div>
+
+      <h3>Editors: sections, summary, sticky actions</h3>
+      <p>The studio editor is the reference for long forms. Corktown Garage Studio after the server refused a save: the summary heads the form and takes focus, every section with an error is open and outlined in danger, valid sections keep whatever open state the admin left them in, and the action bar stays pinned to the bottom of the viewport.</p>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--canvas ds-example__canvas--stack">
+          <div class="page-header" style="margin: 0;">
+            <div>
+              <h4 style="font: var(--text-h1);">Corktown Garage Studio</h4>
+              <p class="subtitle"><span class="status status--draft">Draft</span> · Last saved 11 Oct 2026, 4:12 pm</p>
+            </div>
+          </div>
+          <div class="editor-layout">
+            <aside class="editor-aside" aria-labelledby="fx-status-title">
+              <h4 id="fx-status-title" style="font: var(--text-h4);">Status</h4>
+              <dl class="editor-aside__meta">
+                <dt>Visibility</dt><dd><span class="status status--draft">Draft</span> · not on the public site</dd>
+                <dt>Public address once published</dt><dd><code>/studios/corktown-garage-studio</code></dd>
+              </dl>
+              <a class="btn" href="#fx-missing-title">Publish</a>
+              <a class="btn btn--ghost" href="dialogs-and-overlays.html#structure" style="color: var(--color-danger-fg);">Delete studio</a>
+            </aside>
+            <form class="editor-form" action="#structure" method="post" novalidate aria-labelledby="fx-form-title">
+              <h4 class="visually-hidden" id="fx-form-title">Studio details</h4>
+              <div class="form-summary" role="alert" tabindex="-1" aria-labelledby="fx-summary-title" style="margin-bottom: 0;">
+                <h4 id="fx-summary-title">Fix 3 things before saving</h4>
+                <ul>
+                  <li><a href="#fx-bookingUrl">Booking link: Enter a web address that starts with http:// or https://</a></li>
+                  <li><a href="#fx-hourlyRate">Hourly rate: Enter an amount of 0 or more</a></li>
+                  <li><a href="#fx-priceVerifiedAt">Prices last verified: The date can't be in the future</a></li>
+                </ul>
+              </div>
+              <details class="editor-section" open data-invalid>
+                <summary><h5 style="font: var(--text-h4); margin: 0;">Basics</h5></summary>
+                <div class="editor-section__body">
+                  <div class="field"><label class="field__label" for="fx-name">Name</label><input class="input" id="fx-name" name="name" value="Corktown Garage Studio" autocomplete="off"></div>
+                  <div class="field"><label class="field__label" for="fx-bookingUrl">Booking link</label><input class="input" id="fx-bookingUrl" name="bookingUrl" type="url" value="corktowngarage" aria-invalid="true" aria-describedby="fx-bookingUrl-error fx-booking-help"><span class="field__error" id="fx-bookingUrl-error">Enter a web address that starts with http:// or https://</span><span class="field__help" id="fx-booking-help">The studio's own booking page. Opens in a new tab for visitors.</span></div>
+                </div>
+              </details>
+              <details class="editor-section" open data-invalid>
+                <summary><h5 style="font: var(--text-h4); margin: 0;">Pricing and fees</h5></summary>
+                <div class="editor-section__body">
+                  <div class="field-row">
+                    <div class="field"><label class="field__label" for="fx-hourlyRate">Hourly rate</label><span class="input-group"><span class="addon" aria-hidden="true">$</span><input class="input" id="fx-hourlyRate" name="hourlyRate" type="number" inputmode="decimal" min="0" step="0.5" value="-5" aria-invalid="true" aria-describedby="fx-hourlyRate-error"></span><span class="field__error" id="fx-hourlyRate-error">Enter an amount of 0 or more</span></div>
+                    <div class="field"><label class="field__label" for="fx-minimumHours">Minimum booking (hours)</label><input class="input" id="fx-minimumHours" name="minimumHours" type="number" inputmode="numeric" min="1" step="1" value="2"></div>
+                  </div>
+                  <div class="field"><label class="field__label" for="fx-priceVerifiedAt">Prices last verified</label><input class="input" id="fx-priceVerifiedAt" name="priceVerifiedAt" type="date" value="2026-11-02" max="2026-10-13" aria-invalid="true" aria-describedby="fx-priceVerifiedAt-error fx-verified-help"><span class="field__error" id="fx-priceVerifiedAt-error">The date can't be in the future</span><span class="field__help" id="fx-verified-help">Change this only when you have checked the prices again. Visitors see a warning after 183 days.</span></div>
+                  <p class="text-muted">All-in for 2 hours: <strong class="num">$150.00</strong>, calculated by the server when you save.</p>
+                </div>
+              </details>
+              <details class="editor-section">
+                <summary><h5 style="font: var(--text-h4); margin: 0;">Measured specifications</h5></summary>
+                <div class="editor-section__body">
+                  <div class="field"><label class="field__label" for="fx-ceiling">Ceiling height (m)</label><input class="input" id="fx-ceiling" name="ceilingHeight" type="number" inputmode="decimal" step="0.1"></div>
+                </div>
+              </details>
+              <div class="form-actions form-actions--sticky">
+                <button class="btn btn--primary" type="button">Save changes</button>
+                <a class="btn btn--ghost" href="#fx-discard-title">Cancel</a>
+                <span class="save-status" role="status">Not saved. Fix the 3 things listed above.</span>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="ds-example__caption"><span>Studio editor, invalid (three of the six errors shown). The status panel sits beside the form from LG and above it below LG.</span><span>Source: pages/studio-editor/invalid</span></div>
+        <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;form class="editor-form" method="post" novalidate aria-labelledby="form-title"&gt;
+  &lt;div class="form-summary" role="alert" tabindex="-1" aria-labelledby="summary-title"&gt;
+    &lt;h2 id="summary-title"&gt;Fix 6 things before saving&lt;/h2&gt;
+    &lt;ul&gt;&lt;li&gt;&lt;a href="#bookingUrl"&gt;Booking link: Enter a web address that starts with http:// or https://&lt;/a&gt;&lt;/li&gt; …&lt;/ul&gt;
   &lt;/div&gt;
-  &lt;div class="dialog__footer"&gt;
-    &lt;button class="btn" type="button"&gt;Cancel&lt;/button&gt;
-    &lt;button class="btn btn--primary" type="submit"&gt;Send enquiry&lt;/button&gt;
+  &lt;details class="editor-section" open data-invalid&gt;
+    &lt;summary&gt;&lt;h2&gt;Basics&lt;/h2&gt;&lt;/summary&gt;
+    &lt;div class="editor-section__body"&gt; … fields … &lt;/div&gt;
+  &lt;/details&gt;
+  …
+  &lt;div class="form-actions form-actions--sticky"&gt;
+    &lt;button class="btn btn--primary" type="submit"&gt;Save changes&lt;/button&gt;
+    &lt;a class="btn btn--ghost" href="…"&gt;Cancel&lt;/a&gt;
+    &lt;span class="save-status" role="status"&gt;Not saved. Fix the 6 things listed above.&lt;/span&gt;
   &lt;/div&gt;
 &lt;/form&gt;</code></pre></details>
       </div>
+      <ul>
+        <li><b>Sections</b> follow the review page's order: Basics, Pricing and fees, Measured specifications, Gear, Logistics, Images, Rubric scores, Verdict, Disclosure, Episode video (studio); Basics, Location, Light, Conditions, Permits, Sample shots, Best uses, Disclosure, Episode video (spot); Basics, Entries (guide). Each is a <code>&lt;details class="editor-section"&gt;</code> whose <code>&lt;summary&gt;</code> holds the section heading. Collapsed sections keep their values.</li>
+        <li><b>Invalid sections open.</b> On a refused save every section holding an error opens and gets <code>data-invalid</code> (danger border); each summary link opens its section and focuses the field.</li>
+        <li><b>Pairs only for short, related fields</b> with <code>.field-row</code>: Hourly rate + Minimum booking, Usable width + Usable depth, Latitude + Longitude. Repeating rows (fees, included gear) use <code>.fee-row</code>.</li>
+        <li><b>Server-derived values are shown, not typed.</b> "All-in for 2 hours: $150.00, calculated by the server when you save." "The overall score is calculated by the server."</li>
+        <li><b>Sticky actions</b>: <code>.form-actions--sticky</code> holds the primary (Save changes, or Create studio / spot / guide on a new item), Cancel as a ghost button, and the polite <code>.save-status</code>: "Unsaved changes", "Saving…", "Saved 13 Oct 2026, 10:02 am", "All changes saved", "Not saved. Fix the 6 things listed above.", "Wait for uploads to finish". It clears the bottom safe-area inset.</li>
+      </ul>
 
-      <h3>Layout</h3>
-      <ul>
-        <li><b>One column</b>, at most 40rem wide (<code>.form</code>, <code>.dialog__panel--form</code>), fields stacked with <code>--space-5</code> to <code>--space-6</code> between them.</li>
-        <li><b>Pairs only for short, related fields</b>, with <code>.field-row</code>: Event date + Guests, Event area + Postal code, Smallest + Largest guests. The pair becomes two columns from 36rem and stacks below it. Never pair unrelated fields to save height.</li>
-        <li><b>Order follows the conversation</b>: when, how many, where, why, then the free-text message. The privacy note sits at the end, next to Send.</li>
-        <li><b>Actions</b> close the form: Cancel then the one primary, right-aligned (<code>.dialog__footer</code>, <code>.form-actions</code>). Autosaving pages have no Save button.</li>
-      </ul>
-      <h3>Labels, help and required fields</h3>
-      <ul>
-        <li>The label sits <b>above</b> the control in <code>--text-label</code>; the error or warning sits directly under the control, before the help; help is <code>--text-body-sm</code> muted. Placeholders are examples only ("Name or ID"), never the label.</li>
-        <li><b>Required is the default and is not marked.</b> Optional fields add <code>&lt;span class="optional"&gt;(optional)&lt;/span&gt;</code> to the label. No asterisks.</li>
-        <li>Help states the rule before anyone breaks it: "At least 2 days from today", "Pelau House serves 20–300", "20 to 2,000 characters. Shown as Jean-Robert P., event in September 2026."</li>
-        <li>Groups of choices use <code>&lt;fieldset&gt;</code> and <code>&lt;legend&gt;</code> (the rating stars, cuisines, occasions).</li>
-      </ul>
-      <h3>Autosave on screens</h3>
-      <p>Profile editor screens save each field 2 s after typing stops or when it loses focus, and report it in a <code>.save-status</code> line under the page heading (a polite <code>role="status"</code>):</p>
-      <div class="ds-example">
-        <div class="ds-example__canvas ds-example__canvas--stack">
-          <p class="save-status"><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><path d="m5 12 5 5 9-10"/></svg>All changes saved</p>
-          <p class="save-status"><span class="dot dot--pulse" aria-hidden="true"></span>Saving…</p>
-          <p class="save-status save-status--saved"><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><path d="m5 12 5 5 9-10"/></svg>Saved at 10:14 a.m. · live on your page within a minute</p>
-          <p class="save-status save-status--error"><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16.5v.5"/></svg>Not saved: fix 2 things below</p>
-        </div>
-        <div class="ds-example__caption"><span>Idle, saving, saved, refused. A refused save also shows the error summary and keeps the public page on the last saved values.</span><span>Source: pages/profile-details/*</span></div>
-      </div>
-      <p><b>Open question 16</b> (docs/mocks README): L2-038 autosaves during setup, but L2-044 says published edits apply "when they save". The mocks autosave everywhere. Until it is decided, keep autosave and the save-status line on every editor screen, and do not add a Save button beside it; if the decision goes to Save for published profiles, the screen gets <code>.form-actions--sticky</code> with "Save changes" and the status line reports "Unsaved changes".</p>
-      <h3>Destructive confirmations</h3>
-      <p>Destructive and punitive actions are a short form in a small dialog: a question title, the consequences as a list, then one friction step matched to the stakes.</p>
+      <h3>Publish versus Save</h3>
       <div class="ds-table-wrap"><table class="ds-table">
-        <thead><tr><th scope="col">Stakes</th><th scope="col">Friction</th><th scope="col">Example</th></tr></thead>
+        <thead><tr><th scope="col">Action</th><th scope="col">Where</th><th scope="col">What the server checks</th><th scope="col">When it refuses</th></tr></thead>
         <tbody>
-          <tr><td>Reversible or own content</td><td>Question and danger button; focus on the safe button</td><td>"Delete your review?" · Keep review / Delete review</td></tr>
-          <tr><td>Affects someone else</td><td>A required reason that is emailed to them</td><td>"Suspend Pelau House?" · Reason (sent to Kendra)</td></tr>
-          <tr><td>Permanent, affects someone else</td><td>Reason, plus typing the name or ticking "I understand this review can’t be restored"</td><td>"Remove Pelau House permanently?" · Type Pelau House to confirm</td></tr>
-          <tr><td>Your own account</td><td>Your password</td><td>"Delete your account?" · Enter your password for marcia.t@example.com</td></tr>
+          <tr><td><b>Create studio</b> / Create spot / Create guide</td><td>Sticky bar on <code>/admin/studios/new</code></td><td>The few fields needed to exist (a spot needs name, neighbourhood, type and coordinates)</td><td>Summary and field errors; on success the edit screen opens with "Studio created as a draft" and the final address</td></tr>
+          <tr><td><b>Save changes</b></td><td>Sticky bar</td><td>Every value that is filled in is well formed: amounts, scores, links, dates, alt text</td><td>Summary "Fix <i>N</i> things before saving", invalid sections open, status "Not saved"</td></tr>
+          <tr><td><b>Publish</b></td><td>Status panel, secondary button</td><td>The standard data set is complete: ceiling height, at least one gallery image and one standard test shot, permit source link, at least one best use, at least one guide entry</td><td>The "Can't publish yet" dialog lists each missing field as a link; nothing is published</td></tr>
+          <tr><td><b>Unpublish</b></td><td>Status panel on a published item</td><td>—</td><td>Asks first; a failure says "Nothing changed"</td></tr>
         </tbody>
       </table></div>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--canvas">
+          <div class="ds-frame ds-frame--short" style="width: 100%; min-height: 20rem;">
+            <div class="ds-frame__page">Corktown Garage Studio editor (inert)</div>
+            <div class="backdrop"></div>
+            <div class="dialog" role="dialog" aria-labelledby="fx-missing-title" aria-describedby="fx-missing-desc">
+              <div class="dialog__panel dialog__panel--sm">
+                <div class="dialog__header">
+                  <div class="dialog__heading">
+                    <h4 class="dialog__title" id="fx-missing-title">Can't publish yet</h4>
+                    <p class="dialog__desc" id="fx-missing-desc">Add these and publish again:</p>
+                  </div>
+                  <button class="btn btn--ghost btn--icon" type="button" aria-label="Close"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+                </div>
+                <div class="dialog__body">
+                  <ul style="padding-left: var(--space-5); display: grid; gap: var(--space-2);">
+                    <li><a href="#fx-ceiling">Ceiling height</a></li>
+                    <li><a href="#fx-form-title">At least one gallery image</a></li>
+                  </ul>
+                </div>
+                <div class="dialog__footer"><button class="btn btn--primary" type="button">OK</button></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ds-example__caption"><span>Publish refused: the server named <code>ceilingHeight</code> and <code>galleryImages</code>. Each link closes the dialog, opens its section and focuses the field. Focus starts on OK.</span><span>Sources: dialogs/missing-fields/default, dialogs/missing-fields/spot</span></div>
+      </div>
+
+      <h3>Discard changes</h3>
+      <p>Any in-app link or Cancel while there are unsaved changes opens "Discard changes?" ("You changed 3 fields in Corktown Garage Studio since the last save."), with Stay focused and Discard last. Closing the tab triggers the browser's own leave-page prompt instead. A saved form leaves without asking.</p>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--canvas">
+          <div class="ds-frame ds-frame--short" style="width: 100%; min-height: 16rem;">
+            <div class="ds-frame__page">Corktown Garage Studio editor (inert)</div>
+            <div class="backdrop"></div>
+            <div class="dialog" role="dialog" aria-labelledby="fx-discard-title" aria-describedby="fx-discard-desc">
+              <div class="dialog__panel dialog__panel--sm">
+                <div class="dialog__header">
+                  <div class="dialog__heading">
+                    <h4 class="dialog__title" id="fx-discard-title">Discard changes?</h4>
+                    <p class="dialog__desc" id="fx-discard-desc">You changed 3 fields in Corktown Garage Studio since the last save.</p>
+                  </div>
+                  <button class="btn btn--ghost btn--icon" type="button" aria-label="Close"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+                </div>
+                <div class="dialog__footer">
+                  <button class="btn" type="button">Stay</button>
+                  <button class="btn btn--danger" type="button">Discard</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ds-example__caption"><span>Stay, Close and Escape keep the edits; Discard continues to where the admin was going.</span><span>Source: dialogs/discard-changes/default</span></div>
+      </div>
+
+      <h3>Filters: the invalid price range</h3>
+      <p>Filters are a form whose submit is "Show <i>N</i> studios". The only rule a visitor can break is a minimum above the maximum: the maximum explains it before anything is applied and Show is disabled. (A URL that arrives with min above max is not an error: the range is treated as unset.)</p>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--canvas" style="justify-content: center;">
+          <div class="ds-frame ds-frame--phone ds-frame--short" style="width: 100%; min-height: 24rem;">
+            <div class="sheet" role="dialog" aria-labelledby="fx-filters-title" style="inset: 0; width: 100%; box-shadow: none;">
+              <div class="sheet__header">
+                <h4 class="sheet__title" id="fx-filters-title">Filters</h4>
+                <button class="btn btn--ghost btn--icon" type="button" aria-label="Close"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+              </div>
+              <form class="sheet__body" id="fx-filters" action="#structure" method="get">
+                <fieldset class="filter-group">
+                  <legend class="filter-group__title">All-in cost for 2 hours</legend>
+                  <div class="field-row" style="grid-template-columns: repeat(2, minmax(0, 1fr));">
+                    <div class="field"><label class="field__label" for="fx-cost-min">Minimum</label><span class="input-group"><span class="addon" aria-hidden="true">$</span><input class="input" id="fx-cost-min" type="number" inputmode="decimal" min="0" step="10" name="costMin" autocomplete="off" value="200"></span></div>
+                    <div class="field"><label class="field__label" for="fx-cost-max">Maximum</label><span class="input-group"><span class="addon" aria-hidden="true">$</span><input class="input" id="fx-cost-max" type="number" inputmode="decimal" min="0" step="10" name="costMax" autocomplete="off" value="100" aria-invalid="true" aria-describedby="fx-cost-max-error"></span>
+                      <p class="field__error" id="fx-cost-max-error">The minimum must be lower than the maximum</p></div>
+                  </div>
+                </fieldset>
+              </form>
+              <div class="sheet__footer">
+                <button class="btn" type="button">Clear all</button>
+                <button class="btn btn--primary" type="submit" form="fx-filters" disabled aria-describedby="fx-cost-max-error">Show studios</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ds-example__caption"><span>Studio filters at phone width, invalid. The disabled primary points at the message with <code>aria-describedby</code>.</span><span>Source: dialogs/studio-filters/invalid</span></div>
+      </div>
+
+      <h3>Labels, help and required fields</h3>
+      <ul>
+        <li>The label sits above the control; the error sits directly under the control, then the help. Placeholders are never the label.</li>
+        <li><b>Required is the default and is not marked.</b> Optional fields add <code>&lt;span class="optional"&gt;(optional)&lt;/span&gt;</code>: "Backdrops (optional)", "Load-in note (optional)", "YouTube link or video ID (optional)". A conditional field says when it is needed: "Provided by (needed when discounted or comped)". No asterisks.</li>
+        <li>Help states the rule before anyone breaks it: "Whole numbers from 1 to 5. The overall score is calculated by the server." "Write "None" rather than leaving it empty." "JPEG, PNG, WebP or AVIF, up to 20 MB each."</li>
+        <li>Groups of choices use <code>&lt;fieldset&gt;</code> and <code>&lt;legend&gt;</code>: Fees, Natural light, "How was this session paid for?", each filter group.</li>
+        <li>Units live in the label or an addon, never only in help: "Usable width (m)", "Minimum booking (hours)", the <code>$</code> addon on amounts.</li>
+      </ul>
     </section>
 
     <section class="ds-section" id="states"><h2><a href="#states">States</a></h2>
+      <h3>Owner sign-in, all eight states</h3>
       <div class="ds-table-wrap"><table class="ds-table">
-        <thead><tr><th scope="col">State</th><th scope="col">What people see</th><th scope="col">Markup</th><th scope="col">Mock</th></tr></thead>
+        <thead><tr><th scope="col">State</th><th scope="col">What the admin sees</th><th scope="col">Markup</th><th scope="col">Mock</th></tr></thead>
         <tbody>
-          <tr><td>Default</td><td>Empty or prefilled fields, help visible, primary enabled</td><td>—</td><td>enquiry/default</td></tr>
-          <tr><td>Restored</td><td>Values typed before sign-in are back</td><td>Draft kept 24 h</td><td>enquiry/restored</td></tr>
-          <tr><td>Invalid (after submit)</td><td>Summary at the top with links; each field marked; focus on the summary</td><td><code>.form-summary[tabindex="-1"]</code>, <code>aria-invalid="true"</code>, <code>.field__error</code></td><td>enquiry/invalid</td></tr>
-          <tr><td>Fixing</td><td>A touched field re-checks on input and blur; its error clears the moment it is valid; the summary updates on the next submit</td><td>Remove <code>aria-invalid</code> and the error id from <code>aria-describedby</code></td><td>dish/invalid</td></tr>
-          <tr><td>Warning</td><td>Amber hint under the field, no summary, Send stays enabled</td><td><code>.field__warning</code></td><td>enquiry/warning</td></tr>
-          <tr><td>Busy</td><td>Fields read-only, Cancel and Close disabled, Escape ignored, primary shows a spinner; no second submit</td><td><code>aria-busy="true"</code> on the primary, <code>readonly</code> on fields</td><td>enquiry/busy</td></tr>
-          <tr><td>Failed</td><td>A danger alert at the top of the body with a reference; everything typed is still there; primary becomes "Try again"</td><td><code>.alert.alert--danger[role="alert"]</code></td><td>enquiry/failed</td></tr>
-          <tr><td>Conflict</td><td>Explains what changed elsewhere and offers the action that still works</td><td>Alert + alternative primary</td><td>decline-enquiry/conflict</td></tr>
-          <tr><td>Success</td><td>The dialog's content becomes the confirmation; focus on its first action</td><td><code>role="status"</code></td><td>enquiry/success</td></tr>
-          <tr><td>Read-only</td><td>Values shown, editing explained by a banner ("Your profile is waiting for review")</td><td><code>readonly</code>, <code>.read-only-value</code></td><td>profile-details/read-only</td></tr>
+          <tr><td>Default</td><td>Email and Password, Show toggle, full-width Sign in; focus on Email</td><td><code>autofocus</code> on Email</td><td><a href="../../mocks/pages/sign-in/default.html">default</a></td></tr>
+          <tr><td>Invalid</td><td>"Fix 2 things to sign in" with links, a message under each empty field; nothing sent</td><td><code>.form-summary[role=alert][tabindex=-1]</code>, <code>aria-invalid</code></td><td><a href="../../mocks/pages/sign-in/invalid.html">invalid</a></td></tr>
+          <tr><td>Incorrect</td><td>One danger alert, "Email or password is incorrect", never naming the field; email kept, password cleared and focused</td><td><code>.alert--danger[role=alert]</code></td><td><a href="../../mocks/pages/sign-in/incorrect.html">incorrect</a></td></tr>
+          <tr><td>Submitting</td><td>Both fields read-only, Show disabled, Sign in busy; "Signing in" announced</td><td><code>readonly</code>, <code>aria-busy="true"</code> + <code>disabled</code>, hidden <code>role="status"</code></td><td><a href="../../mocks/pages/sign-in/submitting.html">submitting</a></td></tr>
+          <tr><td>Rate limited</td><td>Warning "Too many sign-in attempts. Wait 15 minutes, then try again."; Sign in disabled until the window ends</td><td><code>.alert--warning[role=alert]</code>, <code>disabled</code></td><td><a href="../../mocks/pages/sign-in/rate-limited.html">rate-limited</a></td></tr>
+          <tr><td>Error</td><td>"We couldn't sign you in just now. Try again in a minute. What you typed is still here."</td><td><code>.alert--danger[role=alert]</code></td><td><a href="../../mocks/pages/sign-in/error.html">error</a></td></tr>
+          <tr><td>Session expired</td><td>Info "Your session expired. Sign in again to carry on where you were."; signing in returns to the page the admin was on</td><td><code>.alert--info[role=status]</code></td><td><a href="../../mocks/pages/sign-in/session-expired.html">session-expired</a></td></tr>
+          <tr><td>Signed out</td><td>Success "You've signed out" with Go to the public site</td><td><code>.alert--success[role=status]</code></td><td><a href="../../mocks/pages/sign-in/signed-out.html">signed-out</a></td></tr>
+        </tbody>
+      </table></div>
+      <h3>Email signup</h3>
+      <div class="ds-table-wrap"><table class="ds-table">
+        <thead><tr><th scope="col">State</th><th scope="col">What the visitor sees</th><th scope="col">Mock</th></tr></thead>
+        <tbody>
+          <tr><td>Default</td><td>Label, field, Subscribe</td><td><a href="../../mocks/pages/home/default.html">home/default</a></td></tr>
+          <tr><td>Invalid</td><td>"Enter your email address" under the row; checked in the browser, nothing sent</td><td><a href="../../mocks/pages/home/invalid.html">home/invalid</a></td></tr>
+          <tr><td>Submitting</td><td>Email stays visible; Subscribe busy and disabled</td><td><a href="../../mocks/pages/home/submitting.html">home/submitting</a></td></tr>
+          <tr><td>Error</td><td>"We couldn't subscribe you just now. Your email is still here — try again."</td><td><a href="../../mocks/pages/home/error.html">home/error</a></td></tr>
+          <tr><td>Rate limited</td><td>"Too many tries. Wait a minute, then try again."</td><td><a href="../../mocks/pages/home/rate-limited.html">home/rate-limited</a></td></tr>
+          <tr><td>Success</td><td>The form is replaced by "You're subscribed. We'll email maya.chen@example.com when a new review goes up." Already-subscribed addresses get the same message.</td><td><a href="../../mocks/pages/home/success.html">home/success</a></td></tr>
+        </tbody>
+      </table></div>
+      <h3>Editors</h3>
+      <div class="ds-table-wrap"><table class="ds-table">
+        <thead><tr><th scope="col">State</th><th scope="col">What the admin sees</th><th scope="col">Mock</th></tr></thead>
+        <tbody>
+          <tr><td>New</td><td>Every section open and empty; status panel "Not saved yet"; primary is Create studio; Prices last verified defaults to today</td><td><a href="../../mocks/pages/studio-editor/new.html">studio-editor/new</a></td></tr>
+          <tr><td>Unsaved changes</td><td>Status line "Unsaved changes"; leaving asks first</td><td><a href="../../mocks/pages/studio-editor/default.html">studio-editor/default</a></td></tr>
+          <tr><td>Submitting</td><td>Save changes busy and disabled, status "Saving…", every field still visible</td><td><a href="../../mocks/pages/studio-editor/submitting.html">studio-editor/submitting</a></td></tr>
+          <tr><td>Success</td><td>Created: dismissible success alert with the final address; saved: "Saved 13 Oct 2026, 10:02 am"</td><td><a href="../../mocks/pages/studio-editor/success.html">studio-editor/success</a></td></tr>
+          <tr><td>Invalid</td><td>Summary, invalid sections open, field messages, "Not saved"</td><td><a href="../../mocks/pages/studio-editor/invalid.html">studio-editor/invalid</a>, <a href="../../mocks/pages/spot-editor/invalid.html">spot-editor/invalid</a>, <a href="../../mocks/pages/guide-editor/invalid.html">guide-editor/invalid</a></td></tr>
+          <tr><td>Price changed</td><td>Prices last verified emptied, required, focused, on a warning tint: "You changed a price. Confirm the date you verified it." Help keeps the previous date</td><td><a href="../../mocks/pages/studio-editor/price-changed.html">studio-editor/price-changed</a></td></tr>
+          <tr><td>Uploading</td><td>Per-file progress; Save changes disabled with "Wait for uploads to finish"</td><td><a href="../../mocks/pages/studio-editor/uploading.html">studio-editor/uploading</a></td></tr>
+          <tr><td>Upload failed</td><td>The failed row offers Retry and Remove; refused files are listed under the drop area</td><td><a href="../../mocks/pages/studio-editor/upload-failed.html">studio-editor/upload-failed</a></td></tr>
+          <tr><td>Published</td><td>Only Basics open; status panel has the public link, Unpublish, and Delete disabled with "Unpublish before deleting."</td><td><a href="../../mocks/pages/studio-editor/published.html">studio-editor/published</a></td></tr>
+          <tr><td>Loading, error</td><td>Skeletons in the editor's shape; "We couldn't open this studio" with Back to studios and Try again</td><td><a href="../../mocks/pages/studio-editor/loading.html">loading</a>, <a href="../../mocks/pages/studio-editor/error.html">error</a></td></tr>
         </tbody>
       </table></div>
       <h3>Validation timing</h3>
       <ol>
-        <li><b>While typing the first time:</b> nothing. Counters and format hints ("19 / 2,000") update; errors do not appear.</li>
-        <li><b>On submit:</b> the client checks every field, renders the summary and the field errors together, and moves focus to the summary. The same rules run on the server; server errors render the same way.</li>
-        <li><b>After a field has been touched or submitted:</b> it re-validates on input and on blur, so the error disappears as soon as the value is right and reappears only if it becomes wrong again.</li>
-        <li><b>Single-field forms</b> (reply box, decline note) skip the summary: the error sits under the field and focus moves to the field.</li>
-        <li><b>Warnings</b> ("This caterer usually serves 20–300 guests") are advisory: they show after blur, never block, and the caterer sees the same warning on the enquiry.</li>
+        <li><b>While typing the first time:</b> nothing turns red. The slug fills from the title until it is edited by hand; the preview map follows the coordinates.</li>
+        <li><b>On submit:</b> the browser catches only what it can know (an empty required field, an email without an @) and renders it exactly as the server would. Everything else goes to the server, whose errors fill the summary and the fields together, and focus moves to the summary.</li>
+        <li><b>After a refused submit:</b> a field re-validates on input and blur, so its error clears as soon as it is right. The summary updates on the next submit.</li>
+        <li><b>Live checks inside dialogs</b> (the price range, a duplicate guide entry) show under the field at once and disable the primary rather than waiting for a submit.</li>
       </ol>
-      <h3>Busy footer, both themes</h3>
+      <h3>Busy actions, both themes</h3>
       <div class="ds-themes">
-        <div data-theme="light"><div class="ds-example__canvas" style="padding: 0; justify-content: flex-end;"><button class="btn" type="button" disabled>Cancel</button><button class="btn btn--primary" type="button" aria-busy="true">Send enquiry</button></div></div>
-        <div data-theme="dark"><div class="ds-example__canvas" style="padding: 0; justify-content: flex-end;"><button class="btn" type="button" disabled>Cancel</button><button class="btn btn--primary" type="button" aria-busy="true">Send enquiry</button></div></div>
+        <div data-theme="light"><div class="form-actions" style="padding: 0;"><button class="btn btn--primary" type="button" aria-busy="true" disabled>Save changes</button><a class="btn btn--ghost" href="#states">Cancel</a><span class="save-status">Saving…</span></div></div>
+        <div data-theme="dark"><div class="form-actions" style="padding: 0;"><button class="btn btn--primary" type="button" aria-busy="true" disabled>Save changes</button><a class="btn btn--ghost" href="#states">Cancel</a><span class="save-status">Saving…</span></div></div>
       </div>
     </section>
 
     <section class="ds-section" id="responsive"><h2><a href="#responsive">Responsive behaviour</a></h2>
       <ul>
-        <li><b>Below 36rem:</b> <code>.field-row</code> stacks; small dialogs become bottom sheets; footer buttons wrap with the primary last.</li>
-        <li><b>Below 48rem:</b> the enquiry form fills the screen (<code>.dialog--full</code>) and its footer stays pinned above the keyboard, so Send is always reachable. Long operator forms (Record a breach) become full-height sheets with the title and footer in view.</li>
-        <li><b>Editor screens</b> keep the save-status line under the heading at every width; on phones the eyebrow "Overview" back link sits above it.</li>
-        <li>Numeric fields use <code>inputmode="numeric"</code> (guests, guest range); postal codes use <code>autocomplete="postal-code"</code> and <code>autocapitalize="characters"</code>; dates use the native picker.</li>
-        <li>Controls are 44px tall at every width and text is at least 16px, so phones do not zoom into a field.</li>
+        <li><b>XS (below 36rem):</b> <code>.field-row</code> stacks; the signup button goes full width under the field; fee rows stack label over field.</li>
+        <li><b>Below LG (62rem):</b> the editor status panel sits above the form; the sticky bar spans the width and clears the bottom safe-area inset; filters open as a full-height sheet with Clear all and Show <i>N</i> studios sharing the footer.</li>
+        <li><b>LG and up:</b> the status panel is sticky beside the form (18rem); filters are a sidebar form with Apply filters.</li>
+        <li>Numeric fields use <code>inputmode="decimal"</code> (rates, sizes, coordinates) or <code>numeric</code> (scores, outlets, hours); email uses <code>type="email"</code> and <code>autocomplete="email"</code> or <code>username</code>; dates use the native picker with <code>max</code> set to today.</li>
+        <li>Controls are 44px tall below 48rem and text is at least 16px, so phones never zoom into a field.</li>
       </ul>
     </section>
 
     <section class="ds-section" id="accessibility"><h2><a href="#accessibility">Accessibility</a></h2>
       <h3>Role and pattern</h3>
-      <p>Native <code>&lt;form&gt;</code> with <code>novalidate</code> (the product's own messages replace browser bubbles), native inputs, <code>&lt;fieldset&gt;</code>/<code>&lt;legend&gt;</code> for groups, and the star rating as a radio group (<a href="https://www.w3.org/WAI/ARIA/apg/patterns/radio/">APG Radio Group</a>). Errors meet WCAG 3.3.1 (identified in text), 3.3.3 (say how to fix), 3.3.7 (no re-entry: values and drafts are kept) and 3.3.8 (password fields allow paste and password managers).</p>
+      <p>Native <code>&lt;form novalidate&gt;</code> (the product's messages replace browser bubbles), native inputs, <code>&lt;fieldset&gt;</code>/<code>&lt;legend&gt;</code> for groups, <code>&lt;details&gt;</code>/<code>&lt;summary&gt;</code> for editor sections (<a href="https://www.w3.org/WAI/ARIA/apg/patterns/disclosure/">APG Disclosure</a>), and the entry picker as an <a href="https://www.w3.org/WAI/ARIA/apg/patterns/combobox/">APG Combobox</a>. Errors meet WCAG 3.3.1, 3.3.3 (say how to fix), 3.3.7 (no re-entry) and 3.3.8 (paste and password managers allowed).</p>
       <h3>Keyboard</h3>
       <table class="ds-table ds-keys"><thead><tr><th scope="col">Key</th><th scope="col">Action</th></tr></thead><tbody>
-        <tr><td><kbd>Tab</kbd> / <kbd>Shift</kbd>+<kbd>Tab</kbd></td><td>Moves through fields in visual order, then Cancel, then the primary.</td></tr>
-        <tr><td><kbd>Enter</kbd> in a text field</td><td>Submits the form, except in a textarea and in a confirmation's reason field, where it never submits a destructive action.</td></tr>
-        <tr><td><kbd>Enter</kbd> on a summary link</td><td>Moves focus into the field it names.</td></tr>
-        <tr><td><kbd>Esc</kbd></td><td>Closes a form dialog (same as Cancel) unless it is busy.</td></tr>
+        <tr><td><kbd>Tab</kbd> / <kbd>Shift</kbd>+<kbd>Tab</kbd></td><td>Moves through fields in visual order; collapsed sections contribute only their summary.</td></tr>
+        <tr><td><kbd>Enter</kbd> / <kbd>Space</kbd> on a section summary</td><td>Opens or closes the section.</td></tr>
+        <tr><td><kbd>Enter</kbd> in a text field</td><td>Submits the form (Sign in, Subscribe, Save changes); never in a textarea.</td></tr>
+        <tr><td><kbd>Enter</kbd> on a summary link</td><td>Opens the field's section and moves focus into the field.</td></tr>
+        <tr><td><kbd>Esc</kbd></td><td>Closes the filters sheet or entry picker without applying anything.</td></tr>
       </tbody></table>
       <h3>Focus</h3>
-      <p>On a refused submit focus moves to the summary (<code>tabindex="-1"</code>), which is announced with its heading and list. Each link targets the control's id. Focus never moves on blur validation. After success in a dialog, focus goes to the first action of the success view; after a page save, focus stays where it was.</p>
+      <p>A refused submit moves focus to the summary (<code>tabindex="-1"</code>, <code>role="alert"</code>); a single-field form (signup) moves focus to the field. An incorrect sign-in focuses Password. After Create studio, the edit screen opens with the success alert; after a save, focus stays where it was. When an upload finishes, its alt-text field takes focus. Price changed focuses Prices last verified.</p>
       <h3>Labelling</h3>
-      <p>Every control has a <code>&lt;label for&gt;</code>. Help and error are connected with <code>aria-describedby</code>, error id first. Keep help and error <b>outside</b> the <code>&lt;label&gt;</code> element (use <code>div.field</code> with <code>label.field__label</code>); a label that wraps them makes the help and error part of the field's name.</p>
+      <p>Every control has a <code>&lt;label for&gt;</code>. Error and help join the control with <code>aria-describedby</code>, error first. Repeated controls carry the item in a visually hidden suffix, so "Remove" is announced as "Remove Cleaning fee", "Move up" as "Move up: test shot 1" and "Editor's note" as "Editor's note for Leslieville Daylight Studio". Keep help and error outside the <code>&lt;label&gt;</code> element (<code>div.field</code> + <code>label.field__label</code>), or they become part of the field's name.</p>
       <h3>Contrast</h3>
       <div class="ds-example__canvas ds-example__canvas--stack" style="padding: 0; gap: var(--space-2);">
-        <div class="ds-pair"><span>Error text on the page</span><span class="ds-pair__ratio" data-contrast="--color-danger-fg|--color-bg-surface" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Error text under a field</span><span class="ds-pair__ratio" data-contrast="--color-danger-fg|--color-bg-surface" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Error text on the page</span><span class="ds-pair__ratio" data-contrast="--color-danger-fg|--color-bg-canvas" data-min="4.5"></span></div>
         <div class="ds-pair"><span>Summary text on its tint</span><span class="ds-pair__ratio" data-contrast="--color-danger-fg|--color-danger-bg" data-min="4.5"></span></div>
         <div class="ds-pair"><span>Invalid field border</span><span class="ds-pair__ratio" data-contrast="--color-danger-solid|--color-bg-surface" data-min="3"></span></div>
         <div class="ds-pair"><span>Field border</span><span class="ds-pair__ratio" data-contrast="--color-border-strong|--color-bg-surface" data-min="3"></span></div>
-        <div class="ds-pair"><span>"(optional)" and counter text</span><span class="ds-pair__ratio" data-contrast="--color-fg-subtle|--color-bg-surface" data-min="4.5"></span></div>
-        <div class="ds-pair"><span>Warning text</span><span class="ds-pair__ratio" data-contrast="--color-warning-fg|--color-bg-surface" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Price-changed warning on its tint</span><span class="ds-pair__ratio" data-contrast="--color-warning-fg|--color-warning-bg" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>"(optional)" in an editor section</span><span class="ds-pair__ratio" data-contrast="--color-fg-subtle|--color-bg-surface" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Error text in the filters sheet</span><span class="ds-pair__ratio" data-contrast="--color-danger-fg|--color-bg-surface-raised" data-min="4.5"></span></div>
       </div>
-      <p>Errors never rely on colour: each has the ⚠ glyph, text, and a thicker border.</p>
+      <p>Errors never rely on colour: each has the ⚠ glyph, text and a thicker border; invalid sections add a border and are open.</p>
       <h3>Motion</h3>
-      <p>Errors appear without animation. The busy spinner keeps turning under reduced motion; the save-status pulse stops.</p>
+      <p>Errors and sections appear without animation beyond the chevron turn, which reduced motion zeroes. The busy spinner keeps turning because it reports status.</p>
       <h3>Touch</h3>
-      <p>Controls are 44px. Below 48rem every compact control (small inputs, small buttons, choice rows) also grows to 44px (L2-065.1); compact sizes apply only from 48rem. The label is part of each choice target; summary links sit in a list with space between them.</p>
+      <p>Controls and section summaries are at least 44px tall below 48rem; the sticky bar's buttons sit 12px apart; the Show toggle on Password is a full-height button, not an icon.</p>
     </section>
 
     <section class="ds-section" id="content"><h2><a href="#content">Content</a></h2>
       <ul>
-        <li><b>Labels</b> are short nouns in sentence case: "Event date", "Guests", "Event area", "Your review", "Reason (sent to Kendra)".</li>
-        <li><b>Field errors</b> say what to do and the rule, in one sentence without "please" or "invalid": "Choose a date at least 2 days from today", "Enter a whole number of guests from 1 to 5,000", "Write at least 50 characters (35 so far)".</li>
-        <li><b>Summary heading</b>: "Fix <i>N</i> thing(s) to <i>goal</i>": "Fix 4 things to send your enquiry", "Fix 2 things to post your review", "Fix 1 thing to save". The links repeat the field errors word for word.</li>
-        <li><b>Submit buttons</b> name the outcome: "Send enquiry", "Post review", "Save certificate", "Approve and publish". Cancel is always "Cancel".</li>
-        <li><b>Privacy notes</b> sit where the data is asked for: "We keep only the first 3 characters", "Pelau House sees your name, not your email or phone."</li>
-        <li><b>Failure</b> owns the problem and reassures: "Your enquiry wasn’t sent. Something went wrong on our side. Everything you typed is still here. Reference 7F3K-92QD."</li>
+        <li><b>Labels</b> are short nouns in sentence case with units: "Hourly rate", "Minimum booking (hours)", "Prices last verified", "Usable width (m)", "Who it's for", "Who should skip it".</li>
+        <li><b>Field errors</b> say what to enter, in one sentence, with no "please" or "invalid": "Enter an amount of 0 or more", "Enter a whole number from 1 to 5", "Enter a web address that starts with http:// or https://", "The date can't be in the future", "Describe this image", "Enter a latitude from -90 to 90", "Enter a YouTube link or video ID".</li>
+        <li><b>Summary heading:</b> "Fix <i>N</i> thing(s)" plus what it unblocks: "Fix 2 things to sign in", "Fix 6 things before saving". Each link is "<i>Field label</i>: <i>the field's own message</i>".</li>
+        <li><b>Primary buttons</b> name the outcome: "Sign in", "Subscribe", "Create studio", "Save changes", "Show 5 studios", "Add entry". Cancel is always "Cancel".</li>
+        <li><b>Server failures</b> own the problem and reassure: "We couldn't sign you in just now. Try again in a minute. What you typed is still here."</li>
       </ul>
     </section>
 
     <section class="ds-section" id="do-dont"><h2><a href="#do-dont">Do and don't</a></h2>
       <div class="ds-dodont">
-        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--stack"><div class="form-summary"><p class="alert__title">Fix 2 things to post your review</p><ul><li><a href="#fx-date">Choose a rating from 1 to 5 stars</a></li><li><a href="#fx-message">Write at least 20 characters</a></li></ul></div></div><figcaption>Name the count and the goal, and link each error to its field.</figcaption></figure>
-        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--stack"><div class="form-summary"><p class="alert__title">There is a problem</p></div></div><figcaption>Generic headings ("There is a problem", "There are 3 problems") appeared in 9 mocks. They say nothing about what to do.</figcaption></figure>
-        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--stack"><div class="field"><label class="field__label" for="dd-postal">Postal code <span class="optional">(optional)</span></label><input class="input" id="dd-postal" type="text" autocomplete="postal-code"></div></div><figcaption>Mark the exception: optional fields say so; required ones are plain.</figcaption></figure>
-        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--stack"><div class="field"><label class="field__label" for="dd-guests">Guests *</label><input class="input" id="dd-guests" type="text" aria-invalid="true" aria-describedby="dd-guests-error"><span class="field__error" id="dd-guests-error">Invalid input</span></div></div><figcaption>No asterisks, no "Invalid input". Say what to enter.</figcaption></figure>
-        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--stack"><div class="field-row"><div class="field"><label class="field__label" for="dd-min">Smallest event</label><input class="input" id="dd-min" type="text" inputmode="numeric" value="20"></div><div class="field"><label class="field__label" for="dd-max">Largest event</label><input class="input" id="dd-max" type="text" inputmode="numeric" value="300"></div></div></div><figcaption>Pair two short fields that are read together.</figcaption></figure>
-        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--stack"><div class="field-row"><div class="field"><label class="field__label" for="dd-name">Business name</label><input class="input" id="dd-name" type="text" value="Pelau House"></div><div class="field"><label class="field__label" for="dd-desc">Description</label><input class="input" id="dd-desc" type="text"></div></div></div><figcaption>Don't put unrelated or long fields side by side to save height.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--stack"><div class="form-summary" style="margin: 0;"><p class="alert__title">Fix 4 things before saving</p><ul><li><a href="#fx-hourlyRate">Latitude: Enter a latitude from -90 to 90</a></li><li><a href="#fx-bookingUrl">Permit source link: Enter a web address that starts with http:// or https://</a></li></ul></div></div><figcaption>Count the fixes, name the action, and repeat each field's own message after its label.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--stack"><div class="form-summary" style="margin: 0;"><p class="alert__title">Fix 4 problems before saving</p><ul><li><a href="#fx-hourlyRate">Latitude: enter a latitude from -90 to 90</a></li></ul></div></div><figcaption>Don't switch to "problems" or lower-case the message: the spot editor drifted from the studio editor's wording.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--stack"><div class="field"><label class="field__label" for="dd-video">YouTube link or video ID <span class="optional">(optional)</span></label><input class="input" id="dd-video" name="video" aria-describedby="dd-video-help"><span class="field__help" id="dd-video-help">Paste a youtube.com or youtu.be link, or the 11-character ID. Leave empty for no video section.</span></div></div><figcaption>Mark the exception, explain the format, and say what leaving it empty does.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--stack"><div class="field"><label class="field__label" for="dd-rate">Hourly rate *</label><input class="input" id="dd-rate" type="text" value="-5" aria-invalid="true" aria-describedby="dd-rate-error"><span class="field__error" id="dd-rate-error">Invalid value</span></div></div><figcaption>No asterisks and no "Invalid value": say what to enter ("Enter an amount of 0 or more").</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--stack"><div class="cluster"><button class="btn" type="button">Publish</button><span class="text-caption">in the status panel</span></div><div class="cluster"><button class="btn btn--primary" type="button">Save changes</button><span class="text-caption">in the sticky bar</span></div></div><figcaption>Keep Publish apart from the save: the save keeps a draft safe; Publish is a separate decision with its own check.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--stack"><div class="cluster"><button class="btn btn--primary" type="button">Save and publish</button><button class="btn btn--primary" type="button">Save changes</button></div></div><figcaption>Don't put two primaries in the bar or fold publishing into saving.</figcaption></figure>
       </div>
     </section>
 
     <section class="ds-section" id="sources"><h2><a href="#sources">Sources</a></h2>
       <ul>
-        <li>dialogs/enquiry/default, invalid, warning, busy, failed, restored, success</li>
-        <li>pages/profile-details/default, saving, saved, invalid</li>
-        <li>dialogs/dish/invalid, dialogs/review/invalid, pages/sign-in/invalid, pages/thread/invalid, pages/dashboard-enquiry/invalid</li>
-        <li>dialogs/suspend-caterer/default, dialogs/remove-caterer/confirm, dialogs/delete-account/default, dialogs/moderate-review/remove</li>
+        <li>Sign-in: <a href="../../mocks/pages/sign-in/default.html">default</a>, <a href="../../mocks/pages/sign-in/invalid.html">invalid</a>, <a href="../../mocks/pages/sign-in/incorrect.html">incorrect</a>, <a href="../../mocks/pages/sign-in/submitting.html">submitting</a>, <a href="../../mocks/pages/sign-in/rate-limited.html">rate-limited</a>, <a href="../../mocks/pages/sign-in/error.html">error</a>, <a href="../../mocks/pages/sign-in/session-expired.html">session-expired</a>, <a href="../../mocks/pages/sign-in/signed-out.html">signed-out</a></li>
+        <li>Signup: <a href="../../mocks/pages/home/default.html">home/default</a>, <a href="../../mocks/pages/home/invalid.html">invalid</a>, <a href="../../mocks/pages/home/submitting.html">submitting</a>, <a href="../../mocks/pages/home/error.html">error</a>, <a href="../../mocks/pages/home/rate-limited.html">rate-limited</a>, <a href="../../mocks/pages/home/success.html">success</a></li>
+        <li>Editors: <a href="../../mocks/pages/studio-editor/default.html">studio-editor/default</a>, <a href="../../mocks/pages/studio-editor/new.html">new</a>, <a href="../../mocks/pages/studio-editor/invalid.html">invalid</a>, <a href="../../mocks/pages/studio-editor/submitting.html">submitting</a>, <a href="../../mocks/pages/studio-editor/success.html">success</a>, <a href="../../mocks/pages/studio-editor/price-changed.html">price-changed</a>, <a href="../../mocks/pages/studio-editor/uploading.html">uploading</a>, <a href="../../mocks/pages/studio-editor/upload-failed.html">upload-failed</a>, <a href="../../mocks/pages/studio-editor/published.html">published</a>; <a href="../../mocks/pages/spot-editor/invalid.html">spot-editor/invalid</a>, <a href="../../mocks/pages/spot-editor/new.html">spot-editor/new</a>; <a href="../../mocks/pages/guide-editor/default.html">guide-editor/default</a>, <a href="../../mocks/pages/guide-editor/invalid.html">guide-editor/invalid</a></li>
+        <li>Dialogs: <a href="../../mocks/dialogs/missing-fields/default.html">missing-fields/default</a>, <a href="../../mocks/dialogs/missing-fields/spot.html">missing-fields/spot</a>, <a href="../../mocks/dialogs/discard-changes/default.html">discard-changes/default</a>, <a href="../../mocks/dialogs/studio-filters/invalid.html">studio-filters/invalid</a>, <a href="../../mocks/dialogs/guide-entry-picker/invalid.html">guide-entry-picker/invalid</a></li>
       </ul>
-      <p>Drift fixed during extraction: error-summary headings used eight different formulas ("There is a problem", "There are 3 problems", "Fix 1 problem", "Fix 2 things to continue"…); the system uses "Fix <i>N</i> thing(s) to <i>goal</i>". 124 mocks wrap help and error text inside <code>&lt;label class="field"&gt;</code>, which folds them into the field's accessible name; the system uses <code>div.field</code> with <code>label.field__label</code>. Single-field forms disagreed (thread/invalid uses a summary and "Write a message before sending"; dashboard-enquiry/invalid puts the error under the field with "Write a reply before sending"); the system follows the second. Busy primaries swapped their label ("Sending…", "Suspending…"); the label is kept and progress is announced instead.</p>
+      <p>Drift fixed during extraction: summary headings used three formulas ("Fix 6 things before saving", "Fix 4 problems before saving", "This guide can't be published yet"); the system uses "Fix <i>N</i> thing(s)" plus the action, and summary links keep the field message's capital ("Latitude: Enter…"). The guide editor reports a refused publish as a form summary while studios and spots use the "Can't publish yet" dialog; the system uses the dialog for every refused Publish and the summary for refused saves. The editors wrap valid fields in <code>&lt;label class="field"&gt;</code> with their help inside, which folds the help into the field's name; the system uses <code>div.field</code> with <code>label.field__label</code> everywhere, as the invalid fields already do. The "Can't publish yet" links point at the editor page rather than the field id; they must target the field. The price-changed mock marks a required field "(required)"; the system marks only optional fields and says why in a warning.</p>
     </section>
 
-    <footer class="ds-footer"><span>ShotThere design system · extracted from docs/mocks on 10 October 2026</span><a href="#top">Back to top</a></footer>
+    <footer class="ds-footer"><span>ShotThere design system · extracted from <a href="../../mocks/index.html">docs/mocks</a> on 13 October 2026</span><a href="#top">Back to top</a></footer>
   </main>
 </div>
 <script src="../assets/ds.js"></script>

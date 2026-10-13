@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Data tables and lists — ShotThere design system</title>
-<meta name="description" content="ShotThere data tables and lists: row types over tables, when a real table is right, density, filtering with segmented links and the toolbar, sorting, pagination vs show more, loading, empty and error rows, responsive strategy.">
+<meta name="description" content="ShotThere lists and tables: the location card grid, the comparison table, measured-spec and permit tables that stack below 48rem, the admin lists and re-verification rows, guide lists, and the fixed sort orders every list must show.">
 <link rel="stylesheet" href="../tokens/tokens.css">
 <link rel="stylesheet" href="../assets/components.css">
 <link rel="stylesheet" href="../assets/ds.css">
@@ -33,40 +33,61 @@
       <li><a href="../components/icon-button.html">Icon button</a></li>
       <li><a href="../components/button-group.html">Button group</a></li>
       <li><a href="../components/link.html">Link</a></li>
+      <li><a href="../components/compare-bar.html">Compare toggle and bar</a></li>
     </ul></details>
     <details open><summary>Inputs</summary><ul>
       <li><a href="../components/form-field.html">Form field</a></li>
       <li><a href="../components/text-field.html">Text field</a></li>
       <li><a href="../components/textarea.html">Textarea</a></li>
       <li><a href="../components/select.html">Select</a></li>
+      <li><a href="../components/combobox.html">Combobox</a></li>
       <li><a href="../components/checkbox.html">Checkbox</a></li>
       <li><a href="../components/radio-group.html">Radio group</a></li>
       <li><a href="../components/file-upload.html">File upload</a></li>
       <li><a href="../components/form-layout.html">Form layout</a></li>
+      <li><a href="../components/signup.html">Email signup</a></li>
     </ul></details>
     <details open><summary>Navigation</summary><ul>
       <li><a href="../components/skip-link.html">Skip link</a></li>
       <li><a href="../components/site-header.html">Site header</a></li>
       <li><a href="../components/footer.html">Footer</a></li>
+      <li><a href="../components/breadcrumb.html">Breadcrumb</a></li>
+      <li><a href="../components/filter.html">Filters</a></li>
     </ul></details>
     <details open><summary>Containers and overlays</summary><ul>
-      <li><a href="../components/container.html">Container and grid</a></li>
-      <li><a href="../components/card.html">Card</a></li>
+      <li><a href="../components/container.html">Container</a></li>
+      <li><a href="../components/review-layout.html">Review layout</a></li>
+      <li><a href="../components/editor-layout.html">Editor layout</a></li>
       <li><a href="../components/dialog.html">Dialog</a></li>
-      <li><a href="../components/sheet.html">Sheet and drawer</a></li>
-      <li><a href="../components/divider.html">Divider</a></li>
+      <li><a href="../components/sheet.html">Sheet</a></li>
+      <li><a href="../components/popover.html">Popover</a></li>
+      <li><a href="../components/lightbox.html">Lightbox</a></li>
     </ul></details>
     <details open><summary>Data display</summary><ul>
+      <li><a href="../components/location-card.html">Location card</a></li>
       <li><a href="../components/table.html">Table</a></li>
+      <li><a href="../components/compare-table.html">Comparison table</a></li>
+      <li><a href="../components/list.html">List rows</a></li>
       <li><a href="../components/description-list.html">Description list</a></li>
+      <li><a href="../components/price-block.html">Price block</a></li>
+      <li><a href="../components/score.html">Score and pips</a></li>
+      <li><a href="../components/shot-grid.html">Shot grid</a></li>
+      <li><a href="../components/video-poster.html">Episode poster</a></li>
+      <li><a href="../components/map.html">Map</a></li>
+      <li><a href="../components/guide-entry.html">Guide entry</a></li>
+      <li><a href="../components/stat-tile.html">Stat tile</a></li>
+      <li><a href="../components/image-manager.html">Image manager</a></li>
+      <li><a href="../components/disclosure.html">Disclosure</a></li>
       <li><a href="../components/badge.html">Badge</a></li>
+      <li><a href="../components/status-label.html">Status label</a></li>
       <li><a href="../components/chip.html">Chip</a></li>
+      <li><a href="../components/tag.html">Tag</a></li>
     </ul></details>
     <details open><summary>Feedback</summary><ul>
       <li><a href="../components/inline-message.html">Inline message</a></li>
-      <li><a href="../components/alert.html">Alert and banner</a></li>
+      <li><a href="../components/alert.html">Alert</a></li>
       <li><a href="../components/toast.html">Toast</a></li>
-      <li><a href="../components/progress.html">Progress and meter</a></li>
+      <li><a href="../components/progress.html">Progress</a></li>
       <li><a href="../components/spinner.html">Spinner</a></li>
       <li><a href="../components/skeleton.html">Skeleton</a></li>
       <li><a href="../components/empty-state.html">Empty state</a></li>
@@ -83,229 +104,312 @@
       <li><a href="../patterns/content-and-tone.html">Content and tone</a></li>
     </ul></details>
   </nav>
-
   <main id="main" class="ds-main">
     <header class="ds-header">
       <p class="ds-kicker">Pattern</p>
       <h1>Data tables and lists</h1>
-      <p class="ds-lead">ShotThere shows collections as rows, not grids of cells: a photo or initials, a name, one quiet line, a status word. Real tables are kept for records people compare across columns, like the audit log and metrics.</p>
-      <div class="ds-meta"><span class="ds-pill ds-pill--ok">WCAG 2.2 AA</span><span class="ds-pill">Status: stable</span><span class="ds-pill"><code>.inbox-row</code></span><span class="ds-pill"><code>.queue-item</code></span><span class="ds-pill"><code>.admin-row</code></span><span class="ds-pill"><code>.edit-row</code></span><span class="ds-pill"><code>.table</code></span></div>
+      <p class="ds-lead">ShotThere is a comparison site, so its lists and tables carry the same facts in the same order everywhere: all-in cost, score, review or verification date. Every order is one the visitor or the admin chose, never a paid one, and every list stays readable at 320px.</p>
+      <div class="ds-meta"><span class="ds-pill ds-pill--ok">WCAG 2.2 AA</span><span class="ds-pill">Status: stable</span><span class="ds-pill"><code>.location-grid</code></span><span class="ds-pill"><code>.compare-table</code></span><span class="ds-pill"><code>.table--stack</code></span><span class="ds-pill"><code>.admin-list</code></span><span class="ds-pill"><code>.guide-list</code></span></div>
       <ul class="ds-toc"><li><a href="#overview">Overview</a></li><li><a href="#when">When to use which</a></li><li><a href="#structure">Structure</a></li><li><a href="#states">States</a></li><li><a href="#responsive">Responsive behaviour</a></li><li><a href="#accessibility">Accessibility</a></li><li><a href="#content">Content</a></li><li><a href="#do-dont">Do and don't</a></li><li><a href="#sources">Sources</a></li></ul>
     </header>
 
 <section class="ds-section" id="overview"><h2><a href="#overview">Overview</a></h2>
-      <p>The brand is minimal text and round photos, so collections are lists of rows separated by hairlines, with no card borders, no zebra stripes and no column headers unless the data truly needs them. Each row type is a component: inbox row, queue item, list rows (<code>.list__item</code>, <code>.admin-row</code>, <code>.edit-row</code>), review, dish and the <a href="../components/description-list.html">description list</a>. The <a href="../components/table.html">table</a> exists for the two places where people scan down a column and compare: the audit log and the metrics figures.</p>
       <ul>
-        <li><b>A row is one thing</b>: one enquiry, one caterer waiting for review, one cuisine. Its name comes first and is the link.</li>
-        <li><b>Rows read on a phone without change.</b> A table needs sideways scrolling at 360px; a row does not.</li>
-        <li><b>Status is a word plus a shape</b> (status label), never colour alone.</li>
-        <li><b>Order is stated, not chosen.</b> Lists have one sensible order and say so: "newest first", "oldest first", "A to Z".</li>
+        <li><b><a href="../components/location-card.html">Location card</a> grid</b> (<code>.location-grid</code>): studio and spot lists, home's Latest reviews, guides index. Name, neighbourhood and date, then the two facts that compare: all-in for 2 hours and score (studios) or best uses and permit summary (spots).</li>
+        <li><b><a href="../components/compare-table.html">Comparison table</a></b> (<code>.compare-table</code>): 2 to 4 studios as columns, grouped rows, a fixed row-label column.</li>
+        <li><b>Measured-spec tables</b>: <a href="../components/description-list.html">description lists</a> (<code>.kv</code>) for one-value facts (Usable shooting space, Ceiling height), and <a href="../components/table.html">tables</a> with <code>.table--stack</code> for facts by row (light by time of day and season, permits by shoot type) that become label-over-value cards below 48rem.</li>
+        <li><b>Admin lists</b>: <code>.table.table--stack</code> for the studio, spot and guide lists (name, status, last updated, flags, Edit), and <code>.admin-list</code> rows for the dashboard's re-verification list.</li>
+        <li><b>Guide lists</b>: <code>.guide-index</code> of guides, the ranked <code>.guide-list</code> of entries, and <code>.image-row--entry</code> rows in the guide editor.</li>
+        <li><b><a href="../components/list.html">List rows</a></b> (<code>.list</code>): short related lists such as Rain backup.</li>
       </ul>
     </section>
 
     <section class="ds-section" id="when"><h2><a href="#when">When to use which</a></h2>
       <div class="ds-table-wrap"><table class="ds-table">
-        <thead><tr><th scope="col">Pattern</th><th scope="col">Use for</th><th scope="col">Row shows</th><th scope="col">Mock</th></tr></thead>
+        <thead><tr><th scope="col">Content</th><th scope="col">Composition</th><th scope="col">Why</th></tr></thead>
         <tbody>
-          <tr><td><code>.inbox-row</code> in <code>.inbox-list</code></td><td>Conversations: customer inbox, caterer enquiries</td><td>Photo or initials, name (bold when unread), time, "Sat 21 Nov · 120 guests", status</td><td>inbox/default, dashboard-enquiries/default</td></tr>
-          <tr><td><code>.queue-item</code> in <code>.queue</code></td><td>Work waiting for an operator, and the operator caterer list</td><td>Photo or icon, title, kind · details, wait time ("Waiting 3 days", bold amber when late)</td><td>admin-queue/default, admin-caterers/default</td></tr>
-          <tr><td><code>.admin-row</code> in <code>.admin-list</code></td><td>Settings records with row actions: cuisines, operators</td><td>Title, meta, actions on the right ("Retire", "Deactivate")</td><td>admin-cuisines/default, admin-operators/default</td></tr>
-          <tr><td><code>.edit-row</code> in <code>.edit-list</code></td><td>Items a caterer orders and edits: dishes</td><td>Dish name, price, description, tags; Move up, Move down, Edit, Remove</td><td>profile-menu/default</td></tr>
-          <tr><td><code>.list</code> / <code>.device-list</code></td><td>Short, simple lists: signed-in devices</td><td>Title, meta, one action or status</td><td>account/default</td></tr>
-          <tr><td><code>.kv</code>, <code>.facts</code>, <code>.enquiry-summary</code></td><td>One record's fields</td><td>Label above or beside value</td><td>admin-caterer/default, thread/default</td></tr>
-          <tr><td><code>.table</code> in <code>.table-wrap</code></td><td>Records compared across several attributes: who did what, when, why, before → after; figures by week</td><td>Header row, one record per row</td><td>admin-audit/default, admin-metrics/default</td></tr>
+          <tr><td>Places to choose between, with a photo</td><td>Location card grid</td><td>The photo sells the space; two facts let people scan</td></tr>
+          <tr><td>The same facts for several studios</td><td>Comparison table</td><td>Values must line up row by row, test shot by test shot</td></tr>
+          <tr><td>One studio's facts, one value each</td><td><code>.kv</code> description list</td><td>Label and value pairs, no columns to scan</td></tr>
+          <tr><td>One place's facts across a dimension (time, season, shoot type)</td><td><code>.table.table--stack</code></td><td>Columns at MD and up, cards on phones</td></tr>
+          <tr><td>Records the admin manages</td><td><code>.table.table--stack</code> with an Edit action</td><td>Sortable by date, scannable, a card per record on phones</td></tr>
+          <tr><td>A to-do list on the dashboard</td><td><code>.admin-list</code> rows</td><td>A sentence of meta and one action per item</td></tr>
+          <tr><td>A ranked selection</td><td><code>.guide-list</code></td><td>Rank, card, live data point, editor's note</td></tr>
+          <tr><td>Three nearby alternatives</td><td><code>.list</code></td><td>Name, one fact, distance; no photo needed</td></tr>
         </tbody>
       </table></div>
-      <p>Choose a table only when the person will read down a column (dates, actors, numbers) or compare two columns. If each record has one name and one line of detail, it is a row.</p>
     </section>
 
     <section class="ds-section" id="structure"><h2><a href="#structure">Structure</a></h2>
-      <h3>A filtered row list</h3>
+      <h3>Location grid</h3>
       <div class="ds-example">
-        <div class="ds-example__canvas ds-example__canvas--stack">
-          <ul class="segmented" aria-label="Filter by kind, example">
-            <li>All <span class="filter-list__count">7</span></li>
-            <li>Profiles <span class="filter-list__count">2</span></li>
-            <li>Name changes <span class="filter-list__count">1</span></li>
-            <li>Reports <span class="filter-list__count">2</span></li>
-          </ul>
-          <ul class="queue" aria-label="Waiting for review, oldest first">
-            <li><span class="photo"><img src="../assets/img/green-fig-catering.jpg" alt="" width="56" height="56"></span><span class="queue-item__title">Auntie Bev’s Kitchen</span><span class="queue-item__wait queue-item__wait--late">Waiting 3 days</span><span class="queue-item__meta"><span class="kind">New profile</span> · Jamaican · Oshawa</span></li>
-            <li><span class="photo"><img src="../assets/img/auntie-merles-table.jpg" alt="" width="56" height="56"></span><span class="queue-item__title">Breadfruit &amp; Butter</span><span class="queue-item__wait">Waiting 2 days</span><span class="queue-item__meta"><span class="kind">Resubmitted</span> · Vincentian · Brampton</span></li>
-            <li><span class="avatar" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24"><path d="M5 21V4m0 0h11l-2 4 2 4H5"/></svg></span><span class="queue-item__title">Review of Maracas Bay by Devon W.</span><span class="queue-item__wait">Waiting 2 days</span><span class="queue-item__meta"><span class="kind">2 reports</span> · Fake or spam · Inappropriate content</span></li>
+        <div class="ds-example__canvas ds-example__canvas--canvas" style="display: block;">
+          <ul class="location-grid">
+            <li class="location-card">
+              <div class="location-card__media"><img src="../assets/img/studio-kensington-window-room.svg" alt="" width="1200" height="800" loading="lazy"></div>
+              <h4 class="location-card__name"><a href="../../mocks/pages/studio/default.html">Kensington Window Room</a></h4>
+              <p class="location-card__meta">Kensington Market · Reviewed 3 Oct 2026</p>
+              <dl class="location-card__facts"><div><dt>All-in 2 h</dt><dd>$80.00</dd></div><div><dt>Score</dt><dd>3.2<span class="visually-hidden"> out of 5</span></dd></div></dl>
+              <div class="location-card__actions"><button class="btn btn--sm compare-toggle" type="button" aria-pressed="false">Compare<span class="visually-hidden"> Kensington Window Room</span></button></div>
+            </li>
+            <li class="location-card">
+              <div class="location-card__media"><img src="../assets/img/studio-the-junction-loft.svg" alt="" width="1200" height="800" loading="lazy"></div>
+              <h4 class="location-card__name"><a href="../../mocks/pages/studio/default.html">The Junction Loft</a></h4>
+              <p class="location-card__meta">Junction · Reviewed 29 Sep 2026</p>
+              <dl class="location-card__facts"><div><dt>All-in 2 h</dt><dd>$145.00</dd></div><div><dt>Score</dt><dd>3.8<span class="visually-hidden"> out of 5</span></dd></div></dl>
+              <div class="location-card__actions"><button class="btn btn--sm compare-toggle" type="button" aria-pressed="true">Remove<span class="visually-hidden"> The Junction Loft</span></button></div>
+            </li>
+            <li class="location-card">
+              <div class="location-card__media"><img src="../assets/img/studio-ossington-blackbox.svg" alt="" width="1200" height="800" loading="lazy"></div>
+              <h4 class="location-card__name"><a href="../../mocks/pages/studio/stale.html">Ossington Blackbox</a></h4>
+              <p class="location-card__meta">Ossington · Reviewed 6 Mar 2026</p>
+              <dl class="location-card__facts"><div><dt>All-in 2 h</dt><dd>$270.00</dd></div><div><dt>Score</dt><dd>3.8<span class="visually-hidden"> out of 5</span></dd></div></dl>
+              <p><span class="badge badge--warning">Prices may be out of date</span></p>
+              <div class="location-card__actions"><button class="btn btn--sm compare-toggle" type="button" aria-pressed="false">Compare<span class="visually-hidden"> Ossington Blackbox</span></button></div>
+            </li>
           </ul>
         </div>
-        <div class="ds-example__caption"><span>Segmented status links with counts above a queue; each whole row is one link; the late wait is bold amber, not just amber.</span><span>Source: pages/admin-queue/default</span></div>
-        <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;ul class="segmented" aria-label="Filter by kind"&gt;
-  &lt;li&gt;&lt;a href="?kind=all" aria-current="page"&gt;All &lt;span class="filter-list__count"&gt;7&lt;/span&gt;&lt;/a&gt;&lt;/li&gt; …
-&lt;/ul&gt;
-&lt;ul class="queue" aria-label="Waiting for review, oldest first"&gt;
-  &lt;li&gt;&lt;a class="queue-item" href="/admin/profiles/auntie-bevs-kitchen"&gt;
-    &lt;span class="photo"&gt;&lt;img src="…" alt=""&gt;&lt;/span&gt;
-    &lt;span class="queue-item__title"&gt;Auntie Bev’s Kitchen&lt;/span&gt;
-    &lt;span class="queue-item__wait queue-item__wait--late"&gt;Waiting 3 days&lt;/span&gt;
-    &lt;span class="queue-item__meta"&gt;&lt;span class="kind"&gt;New profile&lt;/span&gt; · Jamaican · Oshawa&lt;/span&gt;
-  &lt;/a&gt;&lt;/li&gt;
+        <div class="ds-example__caption"><span>Three studio cards: default, in the comparison (Remove), and with stale prices. The name link stretches over the card; Compare sits above it.</span><span>Sources: pages/studios/default, pages/studios/selected</span></div>
+        <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;ul class="location-grid"&gt;
+  &lt;li class="location-card"&gt;
+    &lt;div class="location-card__media"&gt;&lt;img src="…" alt="" width="1200" height="800" loading="lazy"&gt;&lt;/div&gt;
+    &lt;h3 class="location-card__name"&gt;&lt;a href="/studios/kensington-window-room"&gt;Kensington Window Room&lt;/a&gt;&lt;/h3&gt;
+    &lt;p class="location-card__meta"&gt;Kensington Market · Reviewed 3 Oct 2026&lt;/p&gt;
+    &lt;dl class="location-card__facts"&gt;
+      &lt;div&gt;&lt;dt&gt;All-in 2 h&lt;/dt&gt;&lt;dd&gt;$80.00&lt;/dd&gt;&lt;/div&gt;
+      &lt;div&gt;&lt;dt&gt;Score&lt;/dt&gt;&lt;dd&gt;3.2&lt;span class="visually-hidden"&gt; out of 5&lt;/span&gt;&lt;/dd&gt;&lt;/div&gt;
+    &lt;/dl&gt;
+    &lt;div class="location-card__actions"&gt;&lt;button class="btn btn--sm compare-toggle" type="button" aria-pressed="false"&gt;Compare&lt;span class="visually-hidden"&gt; Kensington Window Room&lt;/span&gt;&lt;/button&gt;&lt;/div&gt;
+  &lt;/li&gt;
 &lt;/ul&gt;</code></pre></details>
       </div>
 
-      <h3>Rows with actions</h3>
+      <h3>Comparison table</h3>
       <div class="ds-example">
-        <div class="ds-example__canvas ds-example__canvas--stack">
-          <ul class="edit-list" aria-label="Dishes, in the order they appear on your page">
-            <li class="edit-row"><div class="edit-row__body"><div class="dish__top"><span class="dish__name">Chicken pelau</span><span class="dish__price">From $16 per person</span></div><p class="dish__desc">Browned in burnt sugar, cooked down with pigeon peas, rice and coconut milk.</p><ul class="tags"><li class="tag">Gluten-free</li><li class="tag">Dairy-free</li></ul></div><div class="edit-row__actions"><button class="icon-btn" type="button" aria-label="Move Chicken pelau up" disabled><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 19V5m-6 6 6-6 6 6"/></svg></button><button class="icon-btn" type="button" aria-label="Move Chicken pelau down"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 5v14m-6-6 6 6 6-6"/></svg></button><button class="icon-btn" type="button" aria-label="Edit Chicken pelau" aria-haspopup="dialog"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16z"/></svg></button><button class="icon-btn" type="button" aria-label="Remove Chicken pelau" aria-haspopup="dialog"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/></svg></button></div></li>
-            <li class="edit-row"><div class="edit-row__body"><div class="dish__top"><span class="dish__name">Black cake</span><span class="dish__price">$65 per cake</span></div><p class="dish__desc">Fruit soaked since last Christmas.</p><ul class="tags"><li class="tag tag--allergen">Contains nuts</li></ul></div><div class="edit-row__actions"><button class="icon-btn" type="button" aria-label="Move Black cake up"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 19V5m-6 6 6-6 6 6"/></svg></button><button class="icon-btn" type="button" aria-label="Move Black cake down" disabled><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 5v14m-6-6 6 6 6-6"/></svg></button><button class="icon-btn" type="button" aria-label="Edit Black cake" aria-haspopup="dialog"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16z"/></svg></button><button class="icon-btn" type="button" aria-label="Remove Black cake" aria-haspopup="dialog"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/></svg></button></div></li>
-          </ul>
-          <ul class="admin-list" aria-label="Cuisines, A to Z">
-            <li class="admin-row"><span class="admin-row__body"><span class="admin-row__title">Antiguan &amp; Barbudan</span><span class="admin-row__meta">2 published caterers</span></span><span class="admin-row__actions"><button class="btn btn--sm btn--ghost" type="button" aria-haspopup="dialog" aria-label="Retire Antiguan &amp; Barbudan">Retire</button></span></li>
-            <li class="admin-row"><span class="admin-row__body"><span class="admin-row__title">Bahamian</span><span class="admin-row__meta">No published caterers</span></span><span class="admin-row__actions"><button class="btn btn--sm btn--ghost" type="button" aria-haspopup="dialog" aria-label="Retire Bahamian">Retire</button></span></li>
-          </ul>
-        </div>
-        <div class="ds-example__caption"><span>Edit rows: ordering by Move up / Move down (drag is an extra for mice), each action named with the dish. Admin rows: one ghost action, named with the record.</span><span>Sources: pages/profile-menu/default, pages/admin-cuisines/default</span></div>
-      </div>
-
-      <h3>A real table: the audit log</h3>
-      <div class="ds-example">
-        <div class="ds-example__canvas ds-example__canvas--stack">
-          <form class="toolbar" aria-label="Filter the audit log, example">
-            <div class="field"><label class="field__label" for="tl-op">Operator</label><select class="select" id="tl-op"><option selected>All operators</option><option>Leah Mohammed</option><option>Tomas Reyes</option></select></div>
-            <div class="field"><label class="field__label" for="tl-act">Action</label><select class="select" id="tl-act"><option selected>All actions</option><option>Approve</option><option>Suspend</option><option>Hide review</option></select></div>
-            <div class="field"><label class="field__label" for="tl-from">From</label><input class="input" id="tl-from" type="date" value="2026-10-03"></div>
-            <button class="btn btn--primary" type="button">Apply</button>
-          </form>
-          <div class="table-wrap" tabindex="0" role="region" aria-labelledby="tl-cap">
-            <table class="table">
-              <caption class="visually-hidden" id="tl-cap">Audit entries, newest first</caption>
-              <thead><tr><th scope="col">When</th><th scope="col">Operator</th><th scope="col">Action</th><th scope="col">Target</th><th scope="col">Before → after</th></tr></thead>
+        <div class="ds-example__canvas ds-example__canvas--canvas" style="display: block;">
+          <div class="table-wrap">
+            <table class="table compare-table" style="--compare-cols: 3;">
+              <caption class="visually-hidden">Comparison of The Junction Loft, Leslieville Daylight Studio and Ossington Blackbox</caption>
+              <colgroup><col class="compare-table__labels"><col><col><col></colgroup>
+              <thead>
+                <tr>
+                  <td class="compare-table__label"></td>
+                  <th scope="col"><img src="../assets/img/studio-the-junction-loft.svg" alt="" width="1200" height="800"><a href="../../mocks/pages/studio/default.html">The Junction Loft</a><span class="text-caption" style="display: block;">Junction</span></th>
+                  <th scope="col"><img src="../assets/img/studio-leslieville-daylight-studio.svg" alt="" width="1200" height="800"><a href="../../mocks/pages/studio/default.html">Leslieville Daylight Studio</a><span class="text-caption" style="display: block;">Leslieville</span></th>
+                  <th scope="col"><img src="../assets/img/studio-ossington-blackbox.svg" alt="" width="1200" height="800"><a href="../../mocks/pages/studio/stale.html">Ossington Blackbox</a><span class="text-caption" style="display: block;">Ossington</span></th>
+                </tr>
+              </thead>
               <tbody>
-                <tr><td><time datetime="2026-10-10T13:12:00Z">Today, 9:12 a.m.</time></td><td>Tomas Reyes</td><td><strong>Hide review</strong></td><td>Review of Maracas Bay by Devon W.<div class="list__meta">rev_7f3c9a</div></td><td>Published → Hidden</td></tr>
-                <tr><td><time datetime="2026-10-09T20:30:00Z">Fri 9 Oct, 4:30 p.m.</time></td><td>Leah Mohammed</td><td><strong>Suspend</strong></td><td>Flying Fish Kitchen<div class="list__meta">cat_0e6d21</div></td><td>Published → Suspended</td></tr>
-                <tr><td><time datetime="2026-10-09T15:05:00Z">Fri 9 Oct, 11:05 a.m.</time></td><td>Tomas Reyes</td><td><strong>Approve</strong></td><td>Coconut Drops Bakery<div class="list__meta">cat_a4c719</div></td><td>Pending review → Published</td></tr>
+                <tr class="compare-table__group"><th scope="rowgroup" colspan="4">Cost</th></tr>
+                <tr><th scope="row" class="compare-table__label">All-in, 2 hours</th><td><div class="compare-table__value"><strong>$145.00</strong></div></td><td><div class="compare-table__value"><strong>$91.00</strong><span class="badge badge--success">Lowest</span></div></td><td><div class="compare-table__value"><strong>$270.00</strong><span class="badge badge--warning" style="white-space: normal;">Prices may be out of date</span></div></td></tr>
+                <tr><th scope="row" class="compare-table__label">Mandatory fees</th><td><div class="compare-table__value">Cleaning $25.00</div></td><td><div class="compare-table__value">—</div></td><td><div class="compare-table__value">—</div></td></tr>
+                <tr><th scope="row" class="compare-table__label">Prices verified</th><td><div class="compare-table__value">22 Sep 2026</div></td><td><div class="compare-table__value">10 Aug 2026</div></td><td><div class="compare-table__value">2 Mar 2026</div></td></tr>
+              </tbody>
+              <tbody>
+                <tr class="compare-table__group"><th scope="rowgroup" colspan="4">Scores</th></tr>
+                <tr><th scope="row" class="compare-table__label">Light</th><td><div class="compare-table__value"><span>5<span aria-hidden="true"> / 5</span><span class="visually-hidden"> out of 5</span></span></div></td><td><div class="compare-table__value"><span>5<span aria-hidden="true"> / 5</span><span class="visually-hidden"> out of 5</span></span></div></td><td><div class="compare-table__value"><span>2<span aria-hidden="true"> / 5</span><span class="visually-hidden"> out of 5</span></span></div></td></tr>
+                <tr><th scope="row" class="compare-table__label">Overall</th><td><div class="compare-table__value"><strong>3.8<span aria-hidden="true"> / 5</span><span class="visually-hidden"> out of 5</span></strong></div></td><td><div class="compare-table__value"><strong>4.0<span aria-hidden="true"> / 5</span><span class="visually-hidden"> out of 5</span></strong></div></td><td><div class="compare-table__value"><strong>3.8<span aria-hidden="true"> / 5</span><span class="visually-hidden"> out of 5</span></strong></div></td></tr>
+              </tbody>
+              <tbody>
+                <tr class="compare-table__group"><th scope="rowgroup" colspan="4">Test shots</th></tr>
+                <tr><th scope="row" class="compare-table__label">Shot 1 · Headshot</th><td><div class="compare-table__value"><img src="../assets/img/test-the-junction-loft-1.svg" alt="The Junction Loft, test shot 1, headshot: even falloff on grey seamless." width="800" height="1000" loading="lazy"></div></td><td><div class="compare-table__value"><img src="../assets/img/test-leslieville-daylight-studio-1.svg" alt="Leslieville Daylight Studio, test shot 1, headshot: soft light, slightly warm from the windows." width="800" height="1000" loading="lazy"></div></td><td><div class="compare-table__value"><img src="../assets/img/test-ossington-blackbox-1.svg" alt="Ossington Blackbox, test shot 1, headshot: fast falloff into black." width="800" height="1000" loading="lazy"></div></td></tr>
               </tbody>
             </table>
           </div>
-          <nav class="load-more" aria-label="Pagination, example" style="margin-top: var(--space-6);">
-            <p class="result-count">Showing 1–20 of 68</p>
-            <ul class="pagination">
-              <li>1</li>
-              <li>2</li>
-              <li>3</li>
-              <li><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg></li>
-            </ul>
-          </nav>
         </div>
-        <div class="ds-example__caption"><span>Toolbar filters with Apply, a focusable scrolling region labelled by the caption, Toronto times with the UTC value in <code>datetime</code>, numbered pages under a count.</span><span>Source: pages/admin-audit/default</span></div>
+        <div class="ds-example__caption"><span>Groups in the mock's order: Cost (with Prices verified), Space and light, Gear and logistics, Scores, Test shots. "Lowest" marks the cheapest all-in in text; a missing fee shows "—", never an empty cell.</span><span>Source: pages/compare/default</span></div>
       </div>
+
+      <h3>Measured specs and permits</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--canvas ds-example__canvas--stack">
+          <dl class="kv">
+            <dt>Usable shooting space</dt><dd>6.1 m × 4.3 m (20 ft × 14 ft)</dd>
+            <dt>Ceiling height</dt><dd>4.0 m (13 ft)</dd>
+            <dt>Window direction</dt><dd>North</dd>
+            <dt>Cyc wall</dt><dd>Yes · scuffed</dd>
+          </dl>
+          <div class="table-wrap">
+            <table class="table table--stack">
+              <caption class="visually-hidden">Permit needed at Evergreen Brick Works by shoot type</caption>
+              <thead><tr><th scope="col">Shoot type</th><th scope="col">Permit</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">Portrait</th><td data-label="Permit"><span class="badge badge--success">Not required</span></td></tr>
+                <tr><th scope="row">Wedding or engagement</th><td data-label="Permit"><span class="badge">Required</span></td></tr>
+                <tr><th scope="row">Commercial</th><td data-label="Permit"><span class="badge">Required</span></td></tr>
+                <tr><th scope="row">Video</th><td data-label="Permit"><span class="badge">Required</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="table-wrap">
+            <table class="table table--stack">
+              <caption class="visually-hidden">Light at Evergreen Brick Works by time of day</caption>
+              <thead><tr><th scope="col">Time</th><th scope="col">Rating</th><th scope="col">Note</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">Morning</th><td data-label="Rating"><span class="light-rating"><span class="pips" aria-hidden="true"><i data-on></i><i data-on></i><i></i></span>Medium</span></td><td data-label="Note">East-facing kiln walls catch the first sun.</td></tr>
+                <tr><th scope="row">Golden hour</th><td data-label="Rating"><span class="light-rating"><span class="pips" aria-hidden="true"><i data-on></i><i data-on></i><i data-on></i></span>Strong</span></td><td data-label="Note">West light rakes the brick; the best hour here.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="ds-example__caption"><span>The Junction Loft's specs as a description list; Evergreen Brick Works' permits and light as tables. Below 48rem each row becomes a card, its <code>data-label</code> shown above each value.</span><span>Sources: pages/studio/default, pages/spot/default</span></div>
+      </div>
+
+      <h3>Admin list and re-verification rows</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--canvas ds-example__canvas--stack">
+          <div class="table-wrap">
+            <table class="table table--stack">
+              <caption class="visually-hidden">Studios, most recently updated first</caption>
+              <thead><tr><th scope="col">Name</th><th scope="col">Status</th><th scope="col" aria-sort="descending">Last updated</th><th scope="col">Flags</th><th scope="col"><span class="visually-hidden">Actions</span></th></tr></thead>
+              <tbody>
+                <tr><th scope="row"><a href="../../mocks/pages/studio-editor/default.html">Corktown Garage Studio</a><br><span class="text-muted" style="font-weight: var(--font-weight-regular);">Corktown</span></th><td data-label="Status"><span class="status status--draft">Draft</span></td><td data-label="Last updated"><time datetime="2026-10-11">11 Oct 2026</time></td><td data-label="Flags"><span class="text-muted">None</span></td><td><a class="btn btn--sm" href="../../mocks/pages/studio-editor/default.html">Edit<span class="visually-hidden"> Corktown Garage Studio</span></a></td></tr>
+                <tr><th scope="row"><a href="../../mocks/pages/studio-editor/published.html">Liberty Cyc House</a><br><span class="text-muted" style="font-weight: var(--font-weight-regular);">Liberty Village</span></th><td data-label="Status"><span class="status status--published">Published</span></td><td data-label="Last updated"><time datetime="2026-05-02">2 May 2026</time></td><td data-label="Flags"><span class="badge badge--info">Due soon</span></td><td><a class="btn btn--sm" href="../../mocks/pages/studio-editor/published.html">Edit<span class="visually-hidden"> Liberty Cyc House</span></a></td></tr>
+                <tr><th scope="row"><a href="../../mocks/pages/studio-editor/published.html">Ossington Blackbox</a><br><span class="text-muted" style="font-weight: var(--font-weight-regular);">Ossington</span></th><td data-label="Status"><span class="status status--published">Published</span></td><td data-label="Last updated"><time datetime="2026-03-06">6 Mar 2026</time></td><td data-label="Flags"><span class="badge badge--warning">Prices stale</span></td><td><a class="btn btn--sm" href="../../mocks/pages/studio-editor/published.html">Edit<span class="visually-hidden"> Ossington Blackbox</span></a></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <ul class="admin-list">
+            <li class="admin-row"><div class="admin-row__body"><span class="admin-row__title">Ossington Blackbox <span class="badge badge--warning">Stale</span></span><span class="admin-row__meta">Studio · Prices verified <time datetime="2026-03-02">2 Mar 2026</time> (225 days ago)</span></div><div class="admin-row__actions"><a class="btn btn--sm" href="../../mocks/pages/studio-editor/published.html">Edit<span class="visually-hidden"> Ossington Blackbox prices</span></a></div></li>
+            <li class="admin-row"><div class="admin-row__body"><span class="admin-row__title">Distillery District <span class="badge badge--warning">Stale</span></span><span class="admin-row__meta">Outdoor spot · Permits verified <time datetime="2026-03-20">20 Mar 2026</time> (207 days ago)</span></div><div class="admin-row__actions"><a class="btn btn--sm" href="../../mocks/pages/spot-editor/published.html">Edit<span class="visually-hidden"> Distillery District permits</span></a></div></li>
+          </ul>
+        </div>
+        <div class="ds-example__caption"><span>Three of the nine studios (the list's first, eighth and ninth rows), and the dashboard's two stale items. Status is a word plus a shape: a filled dot for Published, a ring for Draft.</span><span>Sources: pages/admin-studios/default, pages/admin-dashboard/default</span></div>
+      </div>
+
+      <h3>Guide lists and Rain backup</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--canvas" style="display: block;">
+          <ol class="guide-list">
+            <li class="guide-entry">
+              <div class="location-card">
+                <div class="location-card__media"><img src="../assets/img/studio-kensington-window-room.svg" alt="" width="1200" height="800" loading="lazy"></div>
+                <div class="cluster" style="gap: var(--space-3); flex-wrap: nowrap;"><span class="guide-entry__rank" aria-hidden="true">1</span><h4 class="location-card__name"><a href="../../mocks/pages/studio/default.html">Kensington Window Room</a></h4></div>
+                <p class="location-card__meta">Kensington Market · Reviewed 3 Oct 2026</p>
+              </div>
+              <div class="guide-entry__body">
+                <dl class="guide-entry__data"><div><dt>All-in for 2 hours</dt><dd>$80.00</dd></div><div><dt>Overall</dt><dd>3.2<span class="visually-hidden"> out of 5</span></dd></div></dl>
+                <p class="guide-entry__note">The cheapest room we've shot in, and the light is the reason to book it: big east-facing windows over Augusta Ave. Book a morning; by mid-afternoon the room goes flat.</p>
+                <a class="link--standalone" href="../../mocks/pages/studio/default.html">Read the full review<span class="visually-hidden"> of Kensington Window Room</span></a>
+              </div>
+            </li>
+          </ol>
+          <ul class="list" style="margin-top: var(--space-10);">
+            <li class="list__item"><div class="list__body"><a class="list__title" href="../../mocks/pages/studio/default.html">Riverside Rooftop Studio</a><span class="list__meta">Riverside · All-in $100.00 for 2 hours</span></div><span class="num">3.1 km</span></li>
+            <li class="list__item"><div class="list__body"><a class="list__title" href="../../mocks/pages/studio/default.html">Leslieville Daylight Studio</a><span class="list__meta">Leslieville · All-in $91.00 for 2 hours</span></div><span class="num">4.0 km</span></li>
+            <li class="list__item"><div class="list__body"><a class="list__title" href="../../mocks/pages/studio/default.html">Kensington Window Room</a><span class="list__meta">Kensington Market · All-in $80.00 for 2 hours</span></div><span class="num">5.6 km</span></li>
+          </ul>
+        </div>
+        <div class="ds-example__caption"><span>Entry 1 of Best studios under $120 for 2 hours, whose cost and score come live from the review; Evergreen Brick Works' Rain backup, nearest first.</span><span>Sources: pages/guide/default, pages/spot/default</span></div>
+      </div>
+
+      <h3>Orders the lists must show</h3>
+      <div class="ds-table-wrap"><table class="ds-table">
+        <thead><tr><th scope="col">List</th><th scope="col">Order</th><th scope="col">With today's catalogue</th></tr></thead>
+        <tbody>
+          <tr><td>Studios, Most recent review (default)</td><td>Review date, newest first</td><td>Kensington, Junction, Leslieville, Bloordale, Riverside, Liberty, Ossington</td></tr>
+          <tr><td>Studios, All-in cost</td><td>All-in for 2 hours, lowest first</td><td>Kensington $80, Leslieville $91, Riverside $100, Bloordale $130, Junction $145, Liberty $185, Ossington $270</td></tr>
+          <tr><td>Studios, Overall score</td><td>Overall, highest first; ties by review date, newest first</td><td>Liberty 4.2, Leslieville 4.0, Bloordale 4.0, Junction 3.8, Ossington 3.8, Riverside 3.5, Kensington 3.2</td></tr>
+          <tr><td>Spots (default)</td><td>Verification date, newest first</td><td>Allan Gardens, Trinity Bellwoods, Evergreen Brick Works, Humber Bay Arch Bridge, Distillery District</td></tr>
+          <tr><td>Map list</td><td>Name, A to Z, studios and spots together</td><td>Allan Gardens Conservatory, Bloordale Sun Studio, …</td></tr>
+          <tr><td>Comparison columns</td><td>The order of the slugs in the URL</td><td>The Junction Loft, Leslieville Daylight Studio, Ossington Blackbox</td></tr>
+          <tr><td>Guide entries</td><td>The admin's rank</td><td>Kensington, Leslieville, Riverside (Best studios under $120)</td></tr>
+          <tr><td>Rain backup</td><td>Straight-line distance, nearest first; three studios</td><td>Riverside Rooftop 3.1 km, Leslieville Daylight 4.0 km, Kensington Window Room 5.6 km</td></tr>
+          <tr><td>Admin studios, spots, guides</td><td>Last updated, newest first</td><td>Corktown, Annex Attic, Kensington, Junction, Leslieville, Bloordale, Riverside, Liberty, Ossington</td></tr>
+          <tr><td>Needs re-verification</td><td>Verification date, oldest first; Due soon listed separately</td><td>Ossington Blackbox (2 Mar), Distillery District (20 Mar); due soon Liberty Cyc House (28 Apr)</td></tr>
+        </tbody>
+      </table></div>
+      <p>No list has a featured, sponsored or promoted position, and drafts never appear in a public list.</p>
     </section>
 
     <section class="ds-section" id="states"><h2><a href="#states">States</a></h2>
-      <div class="ds-table-wrap"><table class="ds-table">
-        <thead><tr><th scope="col">State</th><th scope="col">Rows</th><th scope="col">Table</th><th scope="col">Mock</th></tr></thead>
+      <div class="ds-matrix"><table>
+        <thead><tr><th scope="col">Element</th><th scope="col">Default</th><th scope="col">Hover</th><th scope="col">Selected</th><th scope="col">Flagged</th></tr></thead>
         <tbody>
-          <tr><td>Loading</td><td>Skeleton rows with the same parts (<code>.inbox-skeleton-row</code>, <code>.admin-row--skeleton</code>, <code>.edit-row--skeleton</code>); list <code>aria-busy="true"</code>; filters stay usable</td><td>Header row, then skeleton cells; region <code>aria-busy="true"</code> and "Loading audit entries"</td><td>inbox/loading, admin-audit/loading</td></tr>
-          <tr><td>Empty</td><td>First-run empty state in place of the list</td><td>Table hidden; empty state</td><td>admin-audit/empty</td></tr>
-          <tr><td>No results</td><td>"No entries match these filters" + Clear filters; filters stay set</td><td>Same</td><td>admin-audit/no-results</td></tr>
-          <tr><td>Error</td><td>Error empty state with Try again; "Your filters are kept"</td><td>Same; a chart that fails shows its own alert and offers its data as a table when it loads</td><td>admin-audit/error, admin-metrics/partial</td></tr>
-          <tr><td>Long</td><td>Names truncate with an ellipsis in rows (full name stays in the link text); meta truncates; pages continue</td><td>Cells wrap; the table scrolls sideways inside its region</td><td>dashboard-enquiries/long, admin-audit/long</td></tr>
-          <tr><td>Unread</td><td>Bold name, ink meta, pepper dot, hidden "Unread." prefix</td><td>—</td><td>dashboard-enquiries/default</td></tr>
-          <tr><td>Current</td><td>The open thread's row has <code>aria-current="page"</code> and a stone background</td><td>—</td><td>thread/default</td></tr>
-          <tr><td>Late</td><td>"Waiting 3 days" bold amber</td><td>—</td><td>admin-queue/long</td></tr>
+          <tr><th scope="row">Compare toggle</th><td><button class="btn btn--sm compare-toggle" type="button" aria-pressed="false">Compare</button></td><td><button class="btn btn--sm compare-toggle" type="button" aria-pressed="false" data-state="hover">Compare</button></td><td><button class="btn btn--sm compare-toggle" type="button" aria-pressed="true">Remove</button></td><td>—</td></tr>
+          <tr><th scope="row">Admin row</th><td><span class="status status--draft">Draft</span></td><td>Row tint (<code>data-state="hover"</code>)</td><td>—</td><td><span class="badge badge--warning">Prices stale</span> <span class="badge badge--info">Due soon</span></td></tr>
+          <tr><th scope="row">Comparison cell</th><td>$145.00</td><td>Row tint</td><td>—</td><td><span class="badge badge--success">Lowest</span> <span class="badge badge--warning">Prices may be out of date</span></td></tr>
         </tbody>
       </table></div>
-      <h3>Loading and unread, both themes</h3>
+      <p>Region states (loading skeletons, no results, errors) are on <a href="feedback-and-loading.html">Feedback and loading</a> and <a href="empty-and-error-states.html">Empty and error states</a>.</p>
+      <h3>Both themes</h3>
       <div class="ds-themes">
-        <div data-theme="light"><ul class="inbox-list" aria-label="Inbox, light example"><li class="inbox-skeleton-row" aria-hidden="true"><span class="skeleton skeleton--circle"></span><span class="skeleton skeleton--text" style="width: 50%;"></span><span class="skeleton skeleton--text" style="width: 3rem;"></span><span class="skeleton skeleton--text" style="width: 70%;"></span><span class="skeleton skeleton--text" style="width: 4rem;"></span></li><li><span class="avatar" aria-hidden="true">PR</span><span class="inbox-row__name"><span class="unread-dot" aria-hidden="true"></span><span class="visually-hidden">Unread. </span>Priya Ramdial</span><span class="inbox-row__time">Yesterday</span><span class="inbox-row__meta">Thu 5 Nov · 60 guests</span><span class="inbox-row__status status status--open">Open</span></li></ul></div>
-        <div data-theme="dark"><ul class="inbox-list" aria-label="Inbox, dark example"><li class="inbox-skeleton-row" aria-hidden="true"><span class="skeleton skeleton--circle"></span><span class="skeleton skeleton--text" style="width: 50%;"></span><span class="skeleton skeleton--text" style="width: 3rem;"></span><span class="skeleton skeleton--text" style="width: 70%;"></span><span class="skeleton skeleton--text" style="width: 4rem;"></span></li><li><span class="avatar" aria-hidden="true">PR</span><span class="inbox-row__name"><span class="unread-dot" aria-hidden="true"></span><span class="visually-hidden">Unread. </span>Priya Ramdial</span><span class="inbox-row__time">Yesterday</span><span class="inbox-row__meta">Thu 5 Nov · 60 guests</span><span class="inbox-row__status status status--open">Open</span></li></ul></div>
+        <div data-theme="light"><dl class="location-card__facts"><div><dt>All-in 2 h</dt><dd>$270.00</dd></div><div><dt>Score</dt><dd>3.8</dd></div></dl><p style="margin-top: var(--space-2);"><span class="badge badge--warning">Prices may be out of date</span> <span class="badge badge--success">Lowest</span> <span class="status status--published">Published</span></p></div>
+        <div data-theme="dark"><dl class="location-card__facts"><div><dt>All-in 2 h</dt><dd>$270.00</dd></div><div><dt>Score</dt><dd>3.8</dd></div></dl><p style="margin-top: var(--space-2);"><span class="badge badge--warning">Prices may be out of date</span> <span class="badge badge--success">Lowest</span> <span class="status status--published">Published</span></p></div>
       </div>
-      <h3>Density</h3>
-      <ul>
-        <li>One density for rows: 16px vertical padding (20px for queue items, 24px for reviews) and at least a 44px target, because most people use a phone.</li>
-        <li>Tables have default (16px cells) and <code>.table--dense</code> (8px) for operator figures on large screens; dense tables keep 44px tall controls inside.</li>
-      </ul>
-      <h3>Filtering</h3>
-      <ul>
-        <li><b>Status segments</b> (<code>.segmented</code>) filter one list by a single attribute; each is a link with a count, the current one in pepper; the choice lives in the URL so Back restores it.</li>
-        <li><b>Toolbar</b> (<code>.toolbar</code>) holds several operator filters (operator, action, target, dates) applied together with Apply. Changing a field does nothing until Apply, so a half-set range never loads.</li>
-        <li><b>Search field</b> narrows by name ("Business or owner name"); combined with a segment, the empty state names both: "No suspended caterers match “Pelau”".</li>
-        <li>The public listing uses the filter list with instant results instead (see <a href="navigation.html">Navigation</a>).</li>
-      </ul>
-      <h3>Sorting</h3>
-      <p>No mock lets people re-sort. Every list has one fixed order, stated in its accessible name or subtitle: inbox and enquiries by latest activity, newest first; the queue oldest first; cuisines A to Z; the audit log newest first. If a table ever needs sorting, the header cell gets <code>aria-sort</code> and a button (<code>.table th[aria-sort] button</code>), and only one column sorts at a time.</p>
-      <h3>Pagination or show more</h3>
-      <ul>
-        <li><b>Numbered pages</b> for long, open-ended lists (24 caterers or 20 enquiries per page): "Showing 1–24 of 60" above the page links; the page number is in the URL; an impossible page number shows page 1.</li>
-        <li><b>Show all</b> in place for short, bounded lists on one record: "Show all 18 dishes" expands without a reload, keeps focus on the toggle and announces "18 dishes shown".</li>
-        <li><b>No infinite scroll</b>: the footer must stay reachable, Back must return to the same place, and screen-reader users need a count.</li>
-      </ul>
     </section>
 
     <section class="ds-section" id="responsive"><h2><a href="#responsive">Responsive behaviour</a></h2>
       <ul>
-        <li><b>Rows</b> keep their layout at every width: long names truncate, meta wraps. <code>.queue-item--stack</code> moves the wait time under the title below 36rem; <code>.edit-row</code> moves its actions under the dish below 36rem; <code>.admin-row</code> wraps its actions to a new line.</li>
-        <li><b>Inbox</b>: below 62rem only the list shows and a row opens the thread full width; from 62rem the list sits beside the thread.</li>
-        <li><b>Tables</b> scroll sideways inside <code>.table-wrap</code> (a focusable region), never the page; the first column carries the most important value (When). Metrics show charts and offer "Show as a table" per chart.</li>
-        <li><b>Toolbars</b> wrap; each field keeps a 10rem minimum; Apply stays last.</li>
-        <li><b>Pagination</b> keeps Previous, the current page, neighbours and Next at 320px.</li>
+        <li><b>Location grid:</b> one column at XS, two from SM, three from LG; beside the filter sidebar two at LG and three at XL.</li>
+        <li><b>Comparison:</b> below LG the studio columns scroll inside <code>.table-wrap</code> while the row-label column stays fixed; each studio column is at least 160px and the page itself never scrolls sideways. From LG up to four studios fit with no scroll.</li>
+        <li><b><code>.table--stack</code></b> below 48rem: the header row is hidden visually, each row becomes a bordered card with its row header as the title and each cell's <code>data-label</code> above its value; Edit shows without hover.</li>
+        <li><b>Guide entries</b> put the card beside the body from 48rem and stack it above below.</li>
+        <li><b>Admin rows</b> wrap their action under the text on narrow phones.</li>
       </ul>
     </section>
 
     <section class="ds-section" id="accessibility"><h2><a href="#accessibility">Accessibility</a></h2>
       <h3>Role and pattern</h3>
-      <p>Row lists are <code>&lt;ul&gt;</code> with an <code>aria-label</code> that includes the order ("Dishes, in the order they appear on your page"). A whole-row link puts the name first so the link's name starts with it; decorative photos have <code>alt=""</code>. Tables use <code>&lt;caption&gt;</code>, <code>&lt;th scope="col"&gt;</code>, and sit in <code>role="region" tabindex="0"</code> labelled by the caption so keyboard users can scroll them (<a href="https://www.w3.org/WAI/ARIA/apg/patterns/table/">APG Table</a>). Pagination is a <code>&lt;nav aria-label="Pagination"&gt;</code> with <code>aria-current="page"</code>.</p>
+      <p>Native tables with a <code>&lt;caption&gt;</code> (visually hidden when the heading already says it), <code>scope="col"</code>, <code>scope="row"</code> and <code>scope="rowgroup"</code>; the admin list's sorted column carries <code>aria-sort="descending"</code>. Lists are <code>&lt;ul&gt;</code>, or <code>&lt;ol&gt;</code> where order is meaning (guide entries, entry rows). Card facts are <code>&lt;dl&gt;</code>.</p>
       <h3>Keyboard</h3>
       <table class="ds-table ds-keys"><thead><tr><th scope="col">Key</th><th scope="col">Action</th></tr></thead><tbody>
-        <tr><td><kbd>Tab</kbd></td><td>One stop per row link; then each row action in order (Move up, Move down, Edit, Remove).</td></tr>
-        <tr><td><kbd>←</kbd> <kbd>→</kbd> in a focused table region</td><td>Scrolls the table sideways.</td></tr>
-        <tr><td><kbd>Enter</kbd> on Move up / Move down</td><td>Moves the row; focus stays on the same button of the moved row and the new position is announced.</td></tr>
+        <tr><td><kbd>Tab</kbd></td><td>One stop per card (the name), then its Compare toggle; one Edit per admin row.</td></tr>
+        <tr><td><kbd>Shift</kbd>+scroll or <kbd>←</kbd> <kbd>→</kbd> in the table</td><td>Scrolls the comparison's studio columns below LG; the scroll area is focusable.</td></tr>
+        <tr><td><kbd>Space</kbd> / <kbd>Enter</kbd> on Compare</td><td>Toggles the studio in the comparison.</td></tr>
       </tbody></table>
       <h3>Focus</h3>
-      <p>Row links draw the focus ring around the whole row. After Remove is confirmed, focus moves to the next row (or the previous one at the end). After Apply, focus moves to the result count.</p>
+      <p>The whole card shows the focus ring when its name link has focus. Sorting or filtering never moves focus; the new count is announced instead.</p>
       <h3>Labelling</h3>
-      <p>Row actions name their object ("Remove Chicken pelau", "Retire Bahamian"). Unread rows start with a visually hidden "Unread.". Counts in segments are read as part of the link ("Open 1").</p>
+      <p>Repeated actions carry the item in hidden text ("Compare Kensington Window Room", "Edit Ossington Blackbox"). Scores read "3.2 out of 5"; "/ 5" is hidden from assistive technology. Lowest, stale and due-soon flags are words, never colour alone. List result counts are polite live regions: "7 studios", "5 studios, sorted by all-in cost".</p>
       <h3>Contrast</h3>
       <div class="ds-example__canvas ds-example__canvas--stack" style="padding: 0; gap: var(--space-2);">
-        <div class="ds-pair"><span>Row meta</span><span class="ds-pair__ratio" data-contrast="--color-fg-muted|--color-bg-canvas" data-min="4.5"></span></div>
-        <div class="ds-pair"><span>Row time and table header</span><span class="ds-pair__ratio" data-contrast="--color-fg-subtle|--color-bg-surface" data-min="4.5"></span></div>
-        <div class="ds-pair"><span>Late wait</span><span class="ds-pair__ratio" data-contrast="--color-warning-fg|--color-bg-canvas" data-min="4.5"></span></div>
-        <div class="ds-pair"><span>Current segment</span><span class="ds-pair__ratio" data-contrast="--color-fg-accent|--color-bg-canvas" data-min="4.5"></span></div>
-        <div class="ds-pair"><span>Hover row text</span><span class="ds-pair__ratio" data-contrast="--color-fg-default|--color-bg-surface-sunken" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Card meta</span><span class="ds-pair__ratio" data-contrast="--color-fg-muted|--color-bg-canvas" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Comparison label column</span><span class="ds-pair__ratio" data-contrast="--color-fg-muted|--color-bg-surface" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Group row on its tint</span><span class="ds-pair__ratio" data-contrast="--color-fg-default|--color-bg-surface-sunken" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Stale badge</span><span class="ds-pair__ratio" data-contrast="--color-warning-fg|--color-warning-bg" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Lowest badge</span><span class="ds-pair__ratio" data-contrast="--color-success-fg|--color-success-bg" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Published status</span><span class="ds-pair__ratio" data-contrast="--color-success-fg|--color-bg-surface" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Stacked card label</span><span class="ds-pair__ratio" data-contrast="--color-fg-subtle|--color-bg-surface" data-min="4.5"></span></div>
       </div>
       <h3>Motion</h3>
-      <p>Only background colour changes on hover (120 ms). Reordered rows move without animation under reduced motion.</p>
+      <p>Card photos zoom slightly on hover; reduced motion leaves them still.</p>
       <h3>Touch</h3>
-      <p>Rows are at least 72px tall on phones; icon actions are 44px and never closer than 8px; row actions are always visible on touch screens (<code>@media (hover: none)</code>).</p>
+      <p>The whole card is the target for its review; Compare and Edit are 44px on phones; stacked rows sit 12px apart.</p>
     </section>
 
     <section class="ds-section" id="content"><h2><a href="#content">Content</a></h2>
       <ul>
-        <li>Row meta joins facts with a middle dot: "Sat 21 Nov · 120 guests", "Jamaican · Oshawa", "Admin · Authenticator app · Active now".</li>
-        <li>Row times are relative and short: "9:42 a.m." today, "Yesterday", "Thu" this week, "5 Sep" earlier, "Sat 12 Jun 2027" in another year. Tables write the full Toronto time: "Fri 9 Oct, 4:30 p.m.".</li>
-        <li>Waits count days: "Waiting 2 days". Counts read as phrases: "2 published caterers", "No published caterers", "23 reviews · 1 without a response".</li>
-        <li>Column headers are one or two words in sentence case: "When", "Operator", "Before → after".</li>
-        <li>Missing values in tables show an em dash (—), with <code>.na</code> styling, never "N/A" or blank.</li>
+        <li><b>Money</b> in CAD with cents: "$80.00", "$145.00". All-in is always "for 2 hours" (or "All-in 2 h" in a tight card).</li>
+        <li><b>Measurements</b> metric first, imperial in brackets: "6.1 m × 4.3 m (20 ft × 14 ft)"; in the comparison, metric only to keep columns narrow.</li>
+        <li><b>Dates</b> "3 Oct 2026" in lists and tables; "Reviewed 3 Oct 2026"; age in brackets where it is the point: "(225 days ago)".</li>
+        <li><b>Missing values</b> are "—" in tables, and words where the review states them: "No", "None", "Nothing costs extra".</li>
+        <li><b>Flags</b>: "Prices may be out of date", "Permit rules may be out of date" (public), "Prices stale", "Permits stale", "Due soon", "Stale" (admin); "Lowest" in the comparison.</li>
       </ul>
     </section>
 
     <section class="ds-section" id="do-dont"><h2><a href="#do-dont">Do and don't</a></h2>
       <div class="ds-dodont">
-        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--stack"><ul class="inbox-list" aria-label="Do example"><li><span class="photo"><img src="../assets/img/pelau-house.jpg" alt="" width="48" height="48"></span><span class="inbox-row__name">Pelau House</span><span class="inbox-row__time">9:42 a.m.</span><span class="inbox-row__meta">Sat 21 Nov · 120 guests</span><span class="inbox-row__status status status--replied">Replied</span></li></ul></div><figcaption>A conversation is a row: photo, name, one line, status.</figcaption></figure>
-        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--stack"><div class="table-wrap" tabindex="0" role="region" aria-label="Don't example"><table class="table"><thead><tr><th scope="col">Caterer</th><th scope="col">Event</th><th scope="col">Guests</th><th scope="col">Status</th></tr></thead><tbody><tr><td>Pelau House</td><td>Sat 21 Nov</td><td>120</td><td>Replied</td></tr></tbody></table></div></div><figcaption>Don't put an inbox in a table; it scrolls sideways on a phone and loses the photo.</figcaption></figure>
-        <figure class="ds-do"><div class="ds-example__canvas"><button class="icon-btn" type="button" aria-label="Remove Black cake"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/></svg></button><span class="text-muted">aria-label="Remove Black cake"</span></div><figcaption>Name the object in every row action.</figcaption></figure>
-        <figure class="ds-dont"><div class="ds-example__canvas"><button class="icon-btn" type="button" aria-label="Remove"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/></svg></button><span class="text-muted">aria-label="Remove"</span></div><figcaption>Fifty "Remove" buttons are indistinguishable in a screen reader's list.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas"><span class="compare-table__value"><strong>$91.00</strong><span class="badge badge--success">Lowest</span></span></div><figcaption>Mark the cheapest all-in with the word "Lowest".</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas"><strong style="color: var(--color-success-fg);">$91.00</strong></div><figcaption>Don't mark it with colour alone.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas"><span class="compare-table__value">—</span><span class="text-caption">Mandatory fees: none</span></div><figcaption>Fill every comparison cell; "—" means nothing applies.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas"><span class="text-caption">(empty cell)</span></div><figcaption>Don't leave a cell blank: it reads as missing data.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--stack"><span class="result-count">7 studios · Sort by: Most recent review</span></div><figcaption>Offer only the three sorts, and say which is applied.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--stack"><span class="badge badge--info">Featured</span><span class="text-caption">pinned above the sort</span></div><figcaption>Never pin, feature or promote a studio: order comes only from the sort the visitor chose.</figcaption></figure>
       </div>
     </section>
 
     <section class="ds-section" id="sources"><h2><a href="#sources">Sources</a></h2>
       <ul>
-        <li>pages/inbox/default, loading, pages/dashboard-enquiries/default, long</li>
-        <li>pages/admin-queue/default, long, pages/admin-caterers/default, no-results</li>
-        <li>pages/admin-cuisines/default, pages/admin-operators/default, pages/profile-menu/default, pages/account/default</li>
-        <li>pages/admin-audit/default, loading, no-results, pages/admin-metrics/default</li>
+        <li>Grids: <a href="../../mocks/pages/studios/default.html">studios/default</a>, <a href="../../mocks/pages/studios/filtered.html">studios/filtered</a>, <a href="../../mocks/pages/studios/selected.html">studios/selected</a>, <a href="../../mocks/pages/spots/default.html">spots/default</a>, <a href="../../mocks/pages/home/default.html">home/default</a>, <a href="../../mocks/pages/map/default.html">map/default</a>, <a href="../../mocks/pages/guides/default.html">guides/default</a></li>
+        <li>Tables: <a href="../../mocks/pages/compare/default.html">compare/default</a>, <a href="../../mocks/pages/compare/four.html">compare/four</a>, <a href="../../mocks/pages/studio/default.html">studio/default</a>, <a href="../../mocks/pages/studio/minimal.html">studio/minimal</a>, <a href="../../mocks/pages/spot/default.html">spot/default</a>, <a href="../../mocks/pages/spot/stale-permit.html">spot/stale-permit</a></li>
+        <li>Admin: <a href="../../mocks/pages/admin-studios/default.html">admin-studios/default</a>, <a href="../../mocks/pages/admin-spots/default.html">admin-spots/default</a>, <a href="../../mocks/pages/admin-guides/default.html">admin-guides/default</a>, <a href="../../mocks/pages/admin-dashboard/default.html">admin-dashboard/default</a>, <a href="../../mocks/pages/guide-editor/default.html">guide-editor/default</a></li>
+        <li>Guides: <a href="../../mocks/pages/guide/default.html">guide/default</a>; orders from the "Orders the list must show" list in <code>docs/mocks/README.md</code></li>
       </ul>
-      <p>Drift fixed during extraction: the queue's and operator caterer list's segments typed counts into the label ("All 7", "All 68") where the inbox used <code>.filter-list__count</code>; all use the count span. The operator caterer list reuses <code>.queue-item--stack</code> rows and puts a status label in the <code>.queue-item__wait</code> slot; that is accepted (same anatomy) rather than adding a new row type. No mock defines user sorting; the fixed orders above are the rule until one does.</p>
+      <p>Drift fixed during extraction: the comparison puts "Prices verified" in the Cost group rather than after the overall score as L2-031 lists it (README open question 12); the system follows the mock and flags it. Admin list names carry their neighbourhood after a <code>&lt;br&gt;</code> with an inline weight; listed as a CSS need for a row subtitle. The overall score in the comparison wraps an extra <code>span</code> inside <code>strong</code>; harmless, simplified here. The spot card flags "Permit info may be out of date" while the spot page says "Permit rules may be out of date"; the system uses "Permit rules may be out of date" on both, matching "Permit rules verified". The admin keeps its shorter "Permits stale" on purpose.</p>
     </section>
 
-    <footer class="ds-footer"><span>ShotThere design system · extracted from docs/mocks on 10 October 2026</span><a href="#top">Back to top</a></footer>
+    <footer class="ds-footer"><span>ShotThere design system · extracted from <a href="../../mocks/index.html">docs/mocks</a> on 13 October 2026</span><a href="#top">Back to top</a></footer>
   </main>
 </div>
 <script src="../assets/ds.js"></script>

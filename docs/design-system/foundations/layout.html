@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Layout — ShotThere design system</title>
-<meta name="description" content="ShotThere layout: L2 viewport classes XS to XL plus 2XL, columns, gutters and margins per breakpoint, container, measure, fixed panel widths and the six page templates.">
+<meta name="description" content="ShotThere layout: the five L2 viewport classes, 4, 8 and 12 columns with gutters and margins, the container and measure, fixed-width regions, and the nine page templates (home, browse, review, compare, map, admin list, editor, sign-in, system page) with links to their mocks.">
 <link rel="stylesheet" href="../tokens/tokens.css">
 <link rel="stylesheet" href="../assets/components.css">
 <link rel="stylesheet" href="../assets/ds.css">
@@ -33,40 +33,61 @@
       <li><a href="../components/icon-button.html">Icon button</a></li>
       <li><a href="../components/button-group.html">Button group</a></li>
       <li><a href="../components/link.html">Link</a></li>
+      <li><a href="../components/compare-bar.html">Compare toggle and bar</a></li>
     </ul></details>
     <details open><summary>Inputs</summary><ul>
       <li><a href="../components/form-field.html">Form field</a></li>
       <li><a href="../components/text-field.html">Text field</a></li>
       <li><a href="../components/textarea.html">Textarea</a></li>
       <li><a href="../components/select.html">Select</a></li>
+      <li><a href="../components/combobox.html">Combobox</a></li>
       <li><a href="../components/checkbox.html">Checkbox</a></li>
       <li><a href="../components/radio-group.html">Radio group</a></li>
       <li><a href="../components/file-upload.html">File upload</a></li>
       <li><a href="../components/form-layout.html">Form layout</a></li>
+      <li><a href="../components/signup.html">Email signup</a></li>
     </ul></details>
     <details open><summary>Navigation</summary><ul>
       <li><a href="../components/skip-link.html">Skip link</a></li>
       <li><a href="../components/site-header.html">Site header</a></li>
       <li><a href="../components/footer.html">Footer</a></li>
+      <li><a href="../components/breadcrumb.html">Breadcrumb</a></li>
+      <li><a href="../components/filter.html">Filters</a></li>
     </ul></details>
     <details open><summary>Containers and overlays</summary><ul>
-      <li><a href="../components/container.html">Container and grid</a></li>
-      <li><a href="../components/card.html">Card</a></li>
+      <li><a href="../components/container.html">Container</a></li>
+      <li><a href="../components/review-layout.html">Review layout</a></li>
+      <li><a href="../components/editor-layout.html">Editor layout</a></li>
       <li><a href="../components/dialog.html">Dialog</a></li>
-      <li><a href="../components/sheet.html">Sheet and drawer</a></li>
-      <li><a href="../components/divider.html">Divider</a></li>
+      <li><a href="../components/sheet.html">Sheet</a></li>
+      <li><a href="../components/popover.html">Popover</a></li>
+      <li><a href="../components/lightbox.html">Lightbox</a></li>
     </ul></details>
     <details open><summary>Data display</summary><ul>
+      <li><a href="../components/location-card.html">Location card</a></li>
       <li><a href="../components/table.html">Table</a></li>
+      <li><a href="../components/compare-table.html">Comparison table</a></li>
+      <li><a href="../components/list.html">List rows</a></li>
       <li><a href="../components/description-list.html">Description list</a></li>
+      <li><a href="../components/price-block.html">Price block</a></li>
+      <li><a href="../components/score.html">Score and pips</a></li>
+      <li><a href="../components/shot-grid.html">Shot grid</a></li>
+      <li><a href="../components/video-poster.html">Episode poster</a></li>
+      <li><a href="../components/map.html">Map</a></li>
+      <li><a href="../components/guide-entry.html">Guide entry</a></li>
+      <li><a href="../components/stat-tile.html">Stat tile</a></li>
+      <li><a href="../components/image-manager.html">Image manager</a></li>
+      <li><a href="../components/disclosure.html">Disclosure</a></li>
       <li><a href="../components/badge.html">Badge</a></li>
+      <li><a href="../components/status-label.html">Status label</a></li>
       <li><a href="../components/chip.html">Chip</a></li>
+      <li><a href="../components/tag.html">Tag</a></li>
     </ul></details>
     <details open><summary>Feedback</summary><ul>
       <li><a href="../components/inline-message.html">Inline message</a></li>
-      <li><a href="../components/alert.html">Alert and banner</a></li>
+      <li><a href="../components/alert.html">Alert</a></li>
       <li><a href="../components/toast.html">Toast</a></li>
-      <li><a href="../components/progress.html">Progress and meter</a></li>
+      <li><a href="../components/progress.html">Progress</a></li>
       <li><a href="../components/spinner.html">Spinner</a></li>
       <li><a href="../components/skeleton.html">Skeleton</a></li>
       <li><a href="../components/empty-state.html">Empty state</a></li>
@@ -88,41 +109,40 @@
     <header class="ds-header">
       <p class="ds-kicker">Foundation</p>
       <h1>Layout</h1>
-      <p class="ds-lead">Mobile first, from 320px to 2560px. Five viewport classes from the L2 requirements, a 4, 8 and 12 column grid, and six page templates that every screen in the mocks is built from.</p>
-      <div class="ds-meta"><span class="ds-pill ds-pill--ok">WCAG 2.2 AA</span><span class="ds-pill">XS–XL + 2XL</span><span class="ds-pill">4 / 8 / 12 columns</span><span class="ds-pill">6 templates</span></div>
+      <p class="ds-lead">Mobile first, from 320px to 2560px. Five viewport classes from the L2 requirements, a 4, 8 and 12 column grid, and nine page templates that every ShotThere screen is built from.</p>
+      <div class="ds-meta"><span class="ds-pill ds-pill--ok">WCAG 2.2 AA</span><span class="ds-pill">XS–XL + 2XL</span><span class="ds-pill">4 / 8 / 12 columns</span><span class="ds-pill">9 templates</span></div>
       <ul class="ds-toc"><li><a href="#overview">Overview</a></li><li><a href="#breakpoints">Viewport classes and breakpoints</a></li><li><a href="#grid">Columns, gutters and margins</a></li><li><a href="#container">Container and measure</a></li><li><a href="#regions">Panels, bars and fixed widths</a></li><li><a href="#templates">Page templates</a></li><li><a href="#usage">Usage</a></li><li><a href="#accessibility">Accessibility</a></li><li><a href="#tokens">Tokens</a></li></ul>
     </header>
 
-<section class="ds-section" id="overview"><h2><a href="#overview">Overview</a></h2>
-      <p>Most people will find a caterer on a phone, so every layout starts as a single column at 320px and adds columns, side panels and wider margins as space allows. The viewport classes come straight from the L2 requirements (XS, SM, MD, LG, XL), so a requirement such as "Given viewport LG, the listing shows 3 columns" maps to exactly one breakpoint in the CSS.</p>
-      <p>The layout tier (<code>--layout-*</code>) sits on top of the <a href="spacing.html">spacing scale</a>. Columns, gutter, margin, top-bar height and section gap are redefined at each breakpoint in <code>tokens.css</code>; components read the tokens and never need their own media query for these values.</p>
+    <section class="ds-section" id="overview"><h2><a href="#overview">Overview</a></h2>
+      <p>Photographers scout on their phones, often on location, so every layout starts as a single column at 320px and adds columns, side regions and wider margins as space allows. The viewport classes come straight from the L2 requirements (XS, SM, MD, LG, XL), so a criterion such as "at LG and above the filters are shown in a sidebar" (L2-022.5) maps to exactly one breakpoint in the CSS.</p>
+      <p>The layout tier (<code>--layout-*</code>) sits on top of the <a href="spacing.html">spacing scale</a>. Columns, gutter, margin, header height and section gap are redefined at each breakpoint in <code>tokens.css</code>; components read the tokens and never need their own media query for these values.</p>
       <ul>
-        <li><b>Phone (XS):</b> one column, 16px margins, filters behind a button, sticky enquiry bar, dialogs as bottom sheets.</li>
-        <li><b>Tablet (SM–MD):</b> two-up grids, 32px margins from MD, filters still behind a button, side sheets from MD.</li>
-        <li><b>Desktop (LG–XL):</b> the filter column and side navigation appear, the caterer page gains its sticky enquiry panel, the inbox shows list and thread side by side, and the dashboard gains a preview pane at XL.</li>
+        <li><b>Phone (XS):</b> one column, 16px margins, links behind "Menu", filters behind "Filters", the summary panel straight after the photo, tables as stacked cards, the map with a Map / List toggle, the compare bar fixed to the bottom.</li>
+        <li><b>Tablet (SM–MD):</b> two-up location grids, dialogs centred, 32px margins and the inline site nav from MD, side sheets for filters and the menu.</li>
+        <li><b>Desktop (LG–XL):</b> the filter column appears beside the list, the summary panel sticks beside a review, the map list sits beside the map, and the editors gain a sticky status aside.</li>
       </ul>
     </section>
 
     <section class="ds-section" id="breakpoints"><h2><a href="#breakpoints">Viewport classes and breakpoints</a></h2>
-      <p>L2 defines the classes by CSS pixel width: XS &lt; 576px, SM ≥ 576px, MD ≥ 768px, LG ≥ 992px, XL ≥ 1200px. The system adds 2XL at 1440px, the point where the container stops growing. All queries are <code>min-width</code> (mobile first). Media queries cannot read custom properties, so components write these values literally, and only these values; "hide below" utilities use the breakpoint minus 0.01rem (for example <code>max-width: 61.99rem</code>).</p>
+      <p>L2 defines the classes by CSS pixel width: XS &lt; 576px, SM ≥ 576px, MD ≥ 768px, LG ≥ 992px, XL ≥ 1200px. The system adds 2XL at 1440px, where the container stops growing. All queries are <code>min-width</code> (mobile first). Media queries cannot read custom properties, so components write these values literally, and only these values; "below" rules use the breakpoint minus 0.01rem (for example <code>max-width: 61.99rem</code>).</p>
       <div class="ds-table-wrap"><table class="ds-table">
         <thead><tr><th scope="col">Class</th><th scope="col">Token</th><th scope="col">Min width</th><th scope="col">Devices</th><th scope="col">What changes</th></tr></thead>
         <tbody>
-          <tr><td>XS</td><td>none (base styles)</td><td>0 (tested from 320px)</td><td>Phones in portrait</td><td>One column, sticky enquiry bar, bottom-sheet dialogs, filters behind a "Filters" button</td></tr>
-          <tr><td>SM</td><td><code>--layout-breakpoint-sm</code></td><td><span data-token="--layout-breakpoint-sm"></span> · 576px</td><td>Large phones, landscape</td><td>Listing goes 2-up, dialogs centre, toasts move to the corner, form rows pair up</td></tr>
-          <tr><td>MD</td><td><code>--layout-breakpoint-md</code></td><td><span data-token="--layout-breakpoint-md"></span> · 768px</td><td>Tablets</td><td>8 columns, 32px margins, full header nav, side sheets, dishes 2-up, enquiry form becomes a dialog</td></tr>
-          <tr><td>LG</td><td><code>--layout-breakpoint-lg</code></td><td><span data-token="--layout-breakpoint-lg"></span> · 992px</td><td>Laptops</td><td>12 columns, filter column and side nav appear, enquiry panel, inbox split view, display type grows</td></tr>
-          <tr><td>XL</td><td><code>--layout-breakpoint-xl</code></td><td><span data-token="--layout-breakpoint-xl"></span> · 1200px</td><td>Desktops</td><td>80px margins, dashboard preview pane, photo manager 4-up</td></tr>
+          <tr><td>XS</td><td>none (base styles)</td><td>0 (tested from 320px)</td><td>Phones in portrait</td><td>One column; "Menu" sheet; filters dialog; summary panel above the review sections; stacked tables; Map / List toggle; map popup docked to the bottom; dialogs rise as bottom sheets</td></tr>
+          <tr><td>SM</td><td><code>--layout-breakpoint-sm</code></td><td><span data-token="--layout-breakpoint-sm"></span> · 576px</td><td>Large phones, landscape</td><td>Location grid 2-up (L2-021.4); dialogs centre; toasts move to the corner; field rows and the signup row pair up</td></tr>
+          <tr><td>MD</td><td><code>--layout-breakpoint-md</code></td><td><span data-token="--layout-breakpoint-md"></span> · 768px</td><td>Tablets</td><td>8 columns, 32px margins; inline site nav (L2-064.2); tables stop stacking; score list 2 columns; light grid 4 across; shot grid 3-up; sheets dock right at 28rem; map popup floats over its marker</td></tr>
+          <tr><td>LG</td><td><code>--layout-breakpoint-lg</code></td><td><span data-token="--layout-breakpoint-lg"></span> · 992px</td><td>Laptops</td><td>12 columns; filter column; sticky summary panel; map list beside the map, no toggle (L2-029.3); editor aside; shot grid 4-up; compare table fits 4 studios (L2-031.5); display type grows</td></tr>
+          <tr><td>XL</td><td><code>--layout-breakpoint-xl</code></td><td><span data-token="--layout-breakpoint-xl"></span> · 1200px</td><td>Desktops</td><td>80px margins; the location grid beside the filter column goes 3-up; content capped at 1280px (L2-064.3)</td></tr>
           <tr><td>2XL</td><td><code>--layout-breakpoint-2xl</code></td><td><span data-token="--layout-breakpoint-2xl"></span> · 1440px</td><td>Wide screens</td><td>Content stops at the container max; extra width becomes margin (tested to 2560px)</td></tr>
         </tbody>
       </table></div>
-      <p><b>Where these came from.</b> The mocks' base kit mixed two breakpoint sets: the L2 set in the ShotThere components and a generic 40rem / 64rem pair in the inherited kit (dialog centring, toast position, sidebar layout, top-bar menu). Extraction normalised 40rem to 36rem (SM) and 64rem to 62rem (LG), so there are now exactly five breakpoints. 2XL (90rem) was added to name the container maximum the mocks already used.</p>
     </section>
 
     <section class="ds-section" id="grid"><h2><a href="#grid">Columns, gutters and margins</a></h2>
       <p>The grid is <code>repeat(var(--layout-columns), minmax(0, 1fr))</code> with <code>gap: var(--layout-gutter)</code>, inside a container padded by <code>--layout-margin</code>. Margin is the distance from the screen edge to content; gutter is the space between columns.</p>
       <div class="ds-table-wrap"><table class="ds-table">
-        <thead><tr><th scope="col">Class</th><th scope="col">Columns</th><th scope="col">Gutter</th><th scope="col">Margin</th><th scope="col">Top bar</th><th scope="col">Section gap</th></tr></thead>
+        <thead><tr><th scope="col">Class</th><th scope="col">Columns</th><th scope="col">Gutter</th><th scope="col">Margin</th><th scope="col">Header</th><th scope="col">Section gap</th></tr></thead>
         <tbody>
           <tr><td>XS (&lt; 576px)</td><td>4</td><td>24px · <code>--space-6</code></td><td>16px · <code>--space-4</code></td><td>64px</td><td>64px · <code>--space-16</code></td></tr>
           <tr><td>SM (≥ 576px)</td><td>4</td><td>24px · <code>--space-6</code></td><td>16px · <code>--space-4</code></td><td>64px</td><td>64px</td></tr>
@@ -134,23 +154,31 @@
       </table></div>
       <p>The demo below is live: resize the window and it switches between 4, 8 and 12 columns. Right now: <span data-token="--layout-columns"></span> columns, <span data-token="--layout-gutter"></span> gutter, <span data-token="--layout-margin"></span> margin.</p>
       <div class="ds-grid-demo" aria-hidden="true"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span></div>
-      <p>The column grid is a guide, not a cage. Most ShotThere screens are built from purpose-made layouts (the listing grid, the caterer layout, the work layout) whose tracks line up with the grid at each class; use <code>.grid</code> with <code>.span-full</code> for anything new, and <code>.grid--auto</code> (cards at least 18rem wide) for card collections.</p>
-      <h3>Listing grid</h3>
-      <p>Caterer cards go 1 / 2 / 2 / 3 / 3 across XS / SM / MD / LG / XL, with gaps growing from 24 × 48px to 40 × 64px. L2-005.4 asks for 4 columns at XL; the reference design shows 3 beside the filter column, so the mocks keep 3 and the conflict is open (mocks README, question 2).</p>
+      <p>The column grid is a guide, not a cage. Most ShotThere screens use purpose-made layouts (the location grid, the review layout, the map page, the editor layout) whose tracks line up with the grid at each class.</p>
+      <h3>Location grid</h3>
+      <p>Studio and spot cards go 1 / 2 / 2 / 3 / 3 across XS / SM / MD / LG / XL on the home page and in the guides, with gaps growing from 40 × 24px to 48 × 32px. Beside the filter column on the studio and spot lists the grid is 1 / 2 / 2 / 2 / 3, because a 15rem column plus three cards would make each photo too small at 992px. L2-021.4 asks for three columns "at LG and above"; the lists meet it from XL only, an open question for the requirements.</p>
+      <div class="ds-example">
+        <ul class="location-grid">
+          <li class="location-card"><div class="location-card__media"><img src="../assets/img/studio-the-junction-loft.svg" alt="" width="1200" height="800"></div><h3 class="location-card__name"><a href="../../mocks/pages/studio/default.html">The Junction Loft</a></h3><p class="location-card__meta">Junction · Reviewed 29 Sep 2026</p></li>
+          <li class="location-card"><div class="location-card__media"><img src="../assets/img/spot-evergreen-brick-works.svg" alt="" width="1200" height="800"></div><h3 class="location-card__name"><a href="../../mocks/pages/spot/default.html">Evergreen Brick Works</a></h3><p class="location-card__meta">Don Valley · Park</p></li>
+          <li class="location-card"><div class="location-card__media"><img src="../assets/img/studio-liberty-cyc-house.svg" alt="" width="1200" height="800"></div><h3 class="location-card__name"><a href="../../mocks/pages/studio/default.html">Liberty Cyc House</a></h3><p class="location-card__meta">Liberty Village · Reviewed 2 May 2026</p></li>
+        </ul>
+        <div class="ds-example__caption"><span><code>.location-grid</code> at the width of this column. From <a href="../../mocks/pages/home/default.html">pages/home/default</a>.</span></div>
+      </div>
     </section>
 
     <section class="ds-section" id="container"><h2><a href="#container">Container and measure</a></h2>
-      <p><code>.container</code> centres content, caps it at <code>--layout-container-max</code> (1440px including margins, so 1280px of content at XL margins) and pads it with <code>--layout-margin</code>. Beyond 1440px the page simply gets wider margins: nothing stretches across a 2560px monitor.</p>
-      <p><code>--layout-measure</code> (62ch) caps every paragraph, so text never runs wider than about 12 words even inside a wide container. Narrower containers exist for focused tasks:</p>
+      <p><code>.container</code> centres content, caps it at <code>--layout-container-max</code> (1440px including margins, so 1280px of content at XL margins, as L2-064.3 requires) and pads it with <code>--layout-margin</code>. Beyond 1440px the page simply gets wider margins: nothing stretches across a 2560px monitor.</p>
+      <p><code>--layout-measure</code> (62ch) caps every paragraph, so a verdict or guide note never runs wider than about 12 words even inside a wide container. Narrower containers exist for focused tasks:</p>
       <div class="ds-table-wrap"><table class="ds-table">
         <thead><tr><th scope="col">Width</th><th scope="col">Where</th></tr></thead>
         <tbody>
-          <tr><td><code>--layout-container-max</code> · <span data-token="--layout-container-max"></span></td><td>Every page container (<code>.container</code>, <code>.site-header</code>)</td></tr>
-          <tr><td>42rem · <code>.container--narrow</code></td><td>Kept from the base kit for single-column reading pages; no mock uses it yet</td></tr>
-          <tr><td>40rem · <code>.form</code></td><td>Maximum width of a form, even on a wide screen</td></tr>
-          <tr><td>34rem · <code>.system-page</code>, <code>.auth--wide</code></td><td>Error and system pages, registration</td></tr>
-          <tr><td>28rem · <code>.auth</code></td><td>Sign in, registration, forgot and reset password, two-step verification, verify email, privacy update</td></tr>
-          <tr><td><code>--layout-measure</code> · <span data-token="--layout-measure"></span></td><td>Every <code>&lt;p&gt;</code>, reviews, enquiry messages, prose</td></tr>
+          <tr><td><code>--layout-container-max</code> · <span data-token="--layout-container-max"></span></td><td>Every page container (<code>.container</code>, <code>.site-header</code>, the compare bar's inner row)</td></tr>
+          <tr><td>42rem · <code>.container--narrow</code></td><td>The editorial policy</td></tr>
+          <tr><td>34rem · <code>.system-page</code></td><td>Page not found, something went wrong</td></tr>
+          <tr><td>32rem · <code>.signup</code></td><td>The "New reviews by email" form on the home page and in the footer</td></tr>
+          <tr><td>28rem · <code>.auth</code></td><td>Owner sign-in in every state</td></tr>
+          <tr><td><code>--layout-measure</code> · <span data-token="--layout-measure"></span></td><td>Every <code>&lt;p&gt;</code>: verdicts, notes, guide entries, prose</td></tr>
         </tbody>
       </table></div>
     </section>
@@ -158,72 +186,86 @@
     <section class="ds-section" id="regions"><h2><a href="#regions">Panels, bars and fixed widths</a></h2>
       <p>A few regions have a fixed width so they feel the same on every screen that has them.</p>
       <div class="ds-table-wrap"><table class="ds-table">
-        <thead><tr><th scope="col">Token</th><th scope="col">Value</th><th scope="col">Region</th><th scope="col">Appears</th></tr></thead>
+        <thead><tr><th scope="col">Token or value</th><th scope="col">Value</th><th scope="col">Region</th><th scope="col">Appears</th></tr></thead>
         <tbody>
-          <tr><td><code>--layout-sidebar-width</code></td><td><span data-token="--layout-sidebar-width"></span> · 240px</td><td>Filter column on the listing; side nav in the caterer dashboard and operator console</td><td>LG and up</td></tr>
-          <tr><td><code>--layout-panel-width</code></td><td><span data-token="--layout-panel-width"></span> · 352px</td><td>Sticky enquiry panel on the caterer page (event sizes, occasions, "Send an enquiry")</td><td>LG and up; a sticky bottom bar below</td></tr>
-          <tr><td><code>--layout-dialog-width</code></td><td><span data-token="--layout-dialog-width"></span> · 512px</td><td>Default dialog panel (24rem small, 40rem form, 48rem large variants)</td><td>SM and up; a bottom sheet on XS</td></tr>
-          <tr><td><code>--layout-sheet-width</code></td><td><span data-token="--layout-sheet-width"></span> · 448px</td><td>Side sheet (phone filters on tablets, site menu) and drawer</td><td>MD and up; full screen below</td></tr>
-          <tr><td><code>--layout-topbar-height</code></td><td><span data-token="--layout-topbar-height"></span> now</td><td>Site header minimum height; also the scroll padding so anchors land below it</td><td>64px XS–SM, 80px MD, 96px LG and up</td></tr>
+          <tr><td><code>--layout-sidebar-width</code></td><td><span data-token="--layout-sidebar-width"></span> · 240px</td><td>Filter column on the studio and spot lists</td><td>LG and up; a "Filters" dialog below (L2-022.5)</td></tr>
+          <tr><td><code>--layout-panel-width</code></td><td><span data-token="--layout-panel-width"></span> · 352px</td><td>Sticky summary panel beside a review (all-in, overall, "Book on the studio's site", compare toggle)</td><td>LG and up; straight after the photo below</td></tr>
+          <tr><td><code>--layout-dialog-width</code></td><td><span data-token="--layout-dialog-width"></span> · 512px</td><td>Default dialog panel (24rem small for confirmations such as "Unpublish The Junction Loft?", 40rem form, 48rem large)</td><td>SM and up; a bottom sheet on XS</td></tr>
+          <tr><td><code>--layout-sheet-width</code></td><td><span data-token="--layout-sheet-width"></span> · 448px</td><td>Side sheet: studio and spot filters below LG, the site menu</td><td>MD and up; full screen below</td></tr>
+          <tr><td><code>--layout-topbar-height</code></td><td><span data-token="--layout-topbar-height"></span> now</td><td>Site header height; the scroll padding so anchors land below it; subtracted from the map's height</td><td>64px XS–SM, 80px MD, 96px LG and up</td></tr>
           <tr><td><code>--layout-section-gap</code></td><td><span data-token="--layout-section-gap"></span> now</td><td>Space between major page sections (<code>.section-gap</code>)</td><td>64px, 96px from LG</td></tr>
-          <tr><td><code>--photo-card-size</code></td><td><span data-token="--photo-card-size"></span> · 280px</td><td>Largest diameter of a round photo on a listing card; smaller when the column is narrower</td><td>All classes</td></tr>
+          <tr><td>Compare bar</td><td>full width, content-height</td><td>Fixed to the bottom with safe-area padding; pages reserve <code>--space-24</code> under their content</td><td>Every class (L2-030.6)</td></tr>
+          <tr><td>24rem (literal)</td><td>384px</td><td>Map page list column</td><td>LG and up</td></tr>
+          <tr><td>18rem (literal)</td><td>288px</td><td>Editor status aside</td><td>LG and up; above the form below</td></tr>
+          <tr><td>9rem + 10rem per studio (literal)</td><td>144px + 160px</td><td>Compare table: sticky label column and minimum studio column (L2-031.4)</td><td>Scrolls inside its region below LG</td></tr>
+          <tr><td>17rem (literal)</td><td>272px</td><td>Map marker popup</td><td>MD and up; docked full width below</td></tr>
         </tbody>
       </table></div>
-      <p>The inbox list is a flexible 20–26rem track beside the thread at LG; the dashboard preview pane is 16rem at XL. Neither is reused elsewhere, so they stay literal in the component CSS rather than becoming tokens.</p>
-      <p><b>Where these came from.</b> Sidebar, panel, top bar, section gap and photo size are from the mocks' draft. <code>--layout-dialog-width</code> and <code>--layout-sheet-width</code> are new: the base kit wrote 32rem and 28rem literally in <code>ui.css</code>.</p>
+      <p>The literal widths are each used by one component, so they stay in <code>components.css</code> rather than becoming tokens.</p>
     </section>
 
     <section class="ds-section" id="templates"><h2><a href="#templates">Page templates</a></h2>
-      <p>Every one of the 45 pages in the mocks uses one of six templates. Each lives inside the site header and footer, starts as one column, and gains its second (and third) region at the class shown.</p>
+      <p>Every one of the 20 page screens in the mocks uses one of nine templates. Public screens sit inside the site header and footer; admin screens use the same header (the wordmark tagged "Admin", the owner's links) and no footer. Each template starts as one column and gains its second region at the class shown.</p>
       <div class="ds-table-wrap"><table class="ds-table">
-        <thead><tr><th scope="col">Template</th><th scope="col">Layout class</th><th scope="col">XS–MD</th><th scope="col">LG</th><th scope="col">XL and up</th><th scope="col">Mocks</th></tr></thead>
+        <thead><tr><th scope="col">Template</th><th scope="col">Layout class</th><th scope="col">XS–MD</th><th scope="col">LG and up</th><th scope="col">Mocks</th></tr></thead>
         <tbody>
-          <tr><td>Listing (browse)</td><td><code>.browse</code></td><td>Title, then results; filters behind a "Filters" button and sheet</td><td>15rem filter column beside results, 48px apart</td><td>Same, wider margins</td><td>caterers, occasions</td></tr>
-          <tr><td>Caterer page</td><td><code>.caterer-layout</code></td><td>One column: gallery carousel (XS) or lead photo and strip (SM–MD), sections stacked, sticky enquiry bar</td><td>Content beside a 22rem sticky enquiry panel, 64px apart; lead photo plus up to 4 thumbnails</td><td>Same</td><td>caterer</td></tr>
-          <tr><td>Work area</td><td><code>.work-layout</code></td><td>Sections as a stacked list that opens one at a time</td><td>15rem side nav beside the work, 48px apart</td><td><code>--preview</code> adds a 16rem preview pane</td><td>dashboard, profile-details, admin-queue</td></tr>
-          <tr><td>Inbox</td><td><code>.inbox-layout</code></td><td>List only; opening an enquiry shows the thread full width with "Back to inbox"; the reply box sticks to the bottom</td><td>List (20–26rem) beside the thread</td><td>Same</td><td>inbox, thread, dashboard-enquiries</td></tr>
-          <tr><td>Auth</td><td><code>.auth</code></td><td>One centred 28rem column (34rem with <code>--wide</code>), 32px from the header</td><td>Same, 64px from the header (from MD)</td><td>Same</td><td>sign-in, register, reset-password</td></tr>
-          <tr><td>System page</td><td><code>.system-page</code></td><td>Centred 34rem column: round photos, display heading, one line, actions</td><td>Same</td><td>Same</td><td>not-found, server-error, maintenance, about</td></tr>
+          <tr><td>Home</td><td><code>.home-hero</code>, <code>.section-gap</code></td><td>Promise headline (h1 size below 36rem), then latest studios, latest spots and guides as stacked sections, then the signup form</td><td>Display headline; each section a 3-up location grid or 2-up guide index</td><td><a href="../../mocks/pages/home/default.html">home</a></td></tr>
+          <tr><td>Browse (studios, spots, guides)</td><td><code>.browse</code>; <code>.page-header</code> + <code>.guide-index</code> for guides</td><td>Title, result count with "Filters" and "Sort by", then the location grid; filters in a sheet. The guide index has no filters: header, then guide cards</td><td>15rem filter column beside results, 48px apart; grid 2-up, 3-up from XL. Guide index 2-up from MD</td><td><a href="../../mocks/pages/studios/default.html">studios</a>, <a href="../../mocks/pages/spots/default.html">spots</a>, <a href="../../mocks/pages/guides/default.html">guides</a></td></tr>
+          <tr><td>Review (studio, spot)</td><td><code>.review-head</code>, <code>.review-hero</code>, <code>.review-layout</code></td><td>Breadcrumb, display name, meta line, 3:2 hero (16:7 from MD), summary panel, then sections 64px apart</td><td>Sections beside a 22rem sticky summary panel, 64px apart</td><td><a href="../../mocks/pages/studio/default.html">studio</a>, <a href="../../mocks/pages/spot/default.html">spot</a>, <a href="../../mocks/pages/guide/default.html">guide</a></td></tr>
+          <tr><td>Compare</td><td><code>.page-header</code>, <code>.table-wrap</code> + <code>.compare-table</code></td><td>Header, then the table scrolling inside its region with the label column fixed</td><td>Up to four studio columns fit without scrolling</td><td><a href="../../mocks/pages/compare/default.html">compare</a></td></tr>
+          <tr><td>Map</td><td><code>.map-page</code></td><td>Bar with type filter and Map / List toggle; the map fills the viewport below the header, or the list replaces it</td><td>24rem list beside the map, both full height; no toggle</td><td><a href="../../mocks/pages/map/default.html">map</a>, <a href="../../mocks/pages/map/list.html">map/list</a></td></tr>
+          <tr><td>Admin list</td><td><code>.page-header</code>, <code>.stat-grid</code>, <code>.admin-list</code>, <code>.table--stack</code></td><td>Header with the primary "New" action, search, then rows or a table that stacks into cards below MD</td><td>Stat tiles 3-up; full table</td><td><a href="../../mocks/pages/admin-dashboard/default.html">admin-dashboard</a>, <a href="../../mocks/pages/admin-studios/default.html">admin-studios</a>, <a href="../../mocks/pages/admin-spots/default.html">admin-spots</a>, <a href="../../mocks/pages/admin-guides/default.html">admin-guides</a></td></tr>
+          <tr><td>Editor</td><td><code>.editor-layout</code></td><td>Breadcrumb and header, the status aside, then collapsible editor sections</td><td>Form beside an 18rem sticky status aside, 48px apart</td><td><a href="../../mocks/pages/studio-editor/default.html">studio-editor</a>, <a href="../../mocks/pages/spot-editor/default.html">spot-editor</a>, <a href="../../mocks/pages/guide-editor/default.html">guide-editor</a></td></tr>
+          <tr><td>Sign-in</td><td><code>.auth</code></td><td>One centred 28rem column, 32px below the header</td><td>Same, 64px below the header (from MD)</td><td><a href="../../mocks/pages/sign-in/default.html">sign-in</a></td></tr>
+          <tr><td>System page</td><td><code>.system-page</code>, <code>.container--narrow</code></td><td>Centred 34rem column: display heading, one line, actions; long-form pages in a 42rem column</td><td>Same</td><td><a href="../../mocks/pages/not-found/default.html">not-found</a>, <a href="../../mocks/pages/server-error/default.html">server-error</a>, <a href="../../mocks/pages/editorial-policy/default.html">editorial-policy</a></td></tr>
         </tbody>
       </table></div>
       <h3>At phone width</h3>
-      <p>The listing, caterer page and thread as they render at XS (live mocks with the mock bar hidden):</p>
-      <p class="ds-note">Mock previews are not included in this copy; the ShotThere mocks will replace them.</p>
+      <p>The studio list, a studio review and the map as they render at XS (live mocks with the mock bar hidden):</p>
+      <div class="ds-iframes">
+        <iframe class="ds-iframe" src="../../mocks/pages/studios/default.html?chrome=0" title="Studio list mock at phone width" loading="lazy"></iframe>
+        <iframe class="ds-iframe" src="../../mocks/pages/studio/default.html?chrome=0" title="Studio review mock for The Junction Loft at phone width" loading="lazy"></iframe>
+        <iframe class="ds-iframe" src="../../mocks/pages/map/default.html?chrome=0" title="Map mock at phone width" loading="lazy"></iframe>
+      </div>
       <h3>Wider</h3>
-      <p>The work area at the width of this column (MD or LG depending on your window):</p>
-      <p class="ds-note">Mock previews are not included in this copy; the ShotThere mocks will replace them.</p>
+      <p>The compare page and the studio editor at the width of this column (MD or LG depending on your window):</p>
+      <div class="ds-iframes">
+        <iframe class="ds-iframe ds-iframe--wide" src="../../mocks/pages/compare/default.html?chrome=0" title="Compare studios mock" loading="lazy"></iframe>
+        <iframe class="ds-iframe ds-iframe--wide" src="../../mocks/pages/studio-editor/default.html?chrome=0" title="Studio editor mock for Corktown Garage Studio" loading="lazy"></iframe>
+      </div>
     </section>
 
     <section class="ds-section" id="usage"><h2><a href="#usage">Usage</a></h2>
       <ul>
-        <li><b>Start from a template.</b> A new screen is one of the six templates; if it is not, the structure belongs on the <a href="../patterns/navigation.html">navigation and page structure</a> pattern first.</li>
+        <li><b>Start from a template.</b> A new screen is one of the nine templates; if it is not, the structure belongs on the <a href="../patterns/navigation.html">navigation and page structure</a> pattern first.</li>
         <li><b>Write mobile first.</b> Base styles are XS; add <code>@media (min-width: 36rem | 48rem | 62rem | 75rem)</code> only. No other breakpoint values.</li>
         <li><b>Read layout tokens, not numbers.</b> Pad with <code>--layout-margin</code>, gap with <code>--layout-gutter</code>; they already change per class.</li>
-        <li><b>Let regions appear, not shrink.</b> A sidebar or panel is either present at its full width (LG and up) or replaced by a button, sheet or sticky bar. Never squeeze a 15rem column into a phone.</li>
-        <li><b>Keep content in the container.</b> Only banners, the site header background and full-bleed photo viewers run edge to edge.</li>
-        <li><b>Use <code>min-width: 0</code> on grid children</b> that hold long names or tables (<code>.browse__results</code>, <code>.work-main</code> already do) so they cannot force the page wider.</li>
-        <li><b>Use <code>100dvh</code></b> for full-height layouts, sheets and the full-screen enquiry form so phone browser bars do not clip them.</li>
+        <li><b>Let regions appear, not shrink.</b> The filter column, summary panel, map list and editor aside are either present at full width (LG and up) or moved: into a dialog, above the content, or behind a toggle. Never squeeze a 15rem column onto a phone.</li>
+        <li><b>Keep content in the container.</b> Only the map page, the lightbox and the compare bar's background run edge to edge.</li>
+        <li><b>Use <code>min-width: 0</code> on grid children</b> that hold long names or tables (<code>.browse__results</code>, <code>.review-main</code>, <code>.editor-form</code> already do) so they cannot force the page wider; wide tables scroll inside <code>.table-wrap</code>.</li>
+        <li><b>Use <code>100dvh</code></b> for the map, sheets and the lightbox so phone browser bars do not clip them.</li>
+        <li><b>Reserve room for fixed bars.</b> A page that can show the compare bar adds <code>.has-compare-bar</code>.</li>
       </ul>
     </section>
 
     <section class="ds-section" id="accessibility"><h2><a href="#accessibility">Accessibility</a></h2>
       <ul>
-        <li><b>Reflow (1.4.10, L2-064.2).</b> No horizontal scrolling and nothing clipped at 320, 575, 576, 767, 768, 991, 992, 1199, 1200 and 2560px; wide tables scroll inside their own region.</li>
-        <li><b>Zoom (L2-069.3).</b> At 200% in a 1280px window the page is 640 CSS px wide and gets the SM layout, with every function available.</li>
-        <li><b>Orientation (1.3.4).</b> Layouts work in portrait and landscape; rotating keeps form input and scroll position (L2-064.3).</li>
-        <li><b>Focus not obscured (2.4.11).</b> Sticky headers, the sticky enquiry bar and the reply box never cover the focused element: <code>scroll-padding-top</code> uses <code>--layout-topbar-height</code>, and pages with a sticky bar reserve bottom padding (<code>.has-sticky-cta</code>).</li>
-        <li><b>Safe areas.</b> The header adds <code>env(safe-area-inset-top)</code>; bottom bars add <code>env(safe-area-inset-bottom)</code>; pages set <code>viewport-fit=cover</code>.</li>
-        <li><b>Source order matches visual order.</b> Grid areas move the filter column beside the results at LG, but the DOM order (title, filters, results) is the same at every class, so keyboard and screen reader order never jump.</li>
-        <li><b>Landmarks.</b> Every template has one <code>&lt;header&gt;</code>, one <code>&lt;main id="main"&gt;</code> reached by the skip link, side nav in <code>&lt;nav&gt;</code> with a label, and a <code>&lt;footer&gt;</code>.</li>
+        <li><b>Reflow (1.4.10, L2-064.1).</b> At 320px <code>document.documentElement.scrollWidth</code> equals the viewport width on every screen; the compare table and admin tables scroll inside their own region.</li>
+        <li><b>Zoom (L2-066.1).</b> At 200% in a 1280px window the page is 640 CSS px wide and gets the SM layout, with every function available.</li>
+        <li><b>Orientation (1.3.4, L2-066.2).</b> Layouts work in portrait and landscape; the map in landscape at SM keeps its toggle usable and the header under 25% of the height.</li>
+        <li><b>Focus not obscured (2.4.11).</b> The fixed compare bar never covers the focused element: pages reserve bottom padding, and <code>scroll-padding-top</code> uses <code>--layout-topbar-height</code> so anchors land below the header.</li>
+        <li><b>Safe areas (L2-065.1).</b> The header adds <code>env(safe-area-inset-top)</code>; the compare bar, sheets and the lightbox caption add <code>env(safe-area-inset-bottom)</code>; pages set <code>viewport-fit=cover</code>.</li>
+        <li><b>Source order matches visual order.</b> On phones the summary panel is moved above the review sections with <code>order: -1</code>; in the DOM it follows them, so screen-reader users meet the sections first while sighted phone users see the price first. This is the one deliberate exception, and both orders keep the heading outline intact.</li>
+        <li><b>Landmarks (L2-069.1).</b> Every template has one <code>&lt;header&gt;</code>, one <code>&lt;main id="main"&gt;</code> reached by the skip link, the filter column and summary panel as labelled <code>&lt;aside&gt;</code>s, the compare bar as a labelled <code>&lt;aside&gt;</code>, and on public screens a <code>&lt;footer&gt;</code>.</li>
       </ul>
     </section>
 
     <section class="ds-section" id="tokens"><h2><a href="#tokens">Tokens</a></h2>
       <p>Values are live for your current window width; the responsive values per class are in the <a href="#grid">grid table</a>. Layout does not change between themes.</p>
-      <div class="ds-table-wrap"><table class="ds-table"><thead><tr><th scope="col">Token</th><th scope="col">Resolved value</th><th scope="col">Declared as</th><th scope="col">Use</th></tr></thead><tbody><tr><td><code>--layout-breakpoint-sm</code></td><td><span data-token="--layout-breakpoint-sm"></span></td><td><code>36rem</code></td><td>576px · large phones, landscape.</td></tr><tr><td><code>--layout-breakpoint-md</code></td><td><span data-token="--layout-breakpoint-md"></span></td><td><code>48rem</code></td><td>768px · tablets.</td></tr><tr><td><code>--layout-breakpoint-lg</code></td><td><span data-token="--layout-breakpoint-lg"></span></td><td><code>62rem</code></td><td>992px · laptops: sidebars appear.</td></tr><tr><td><code>--layout-breakpoint-xl</code></td><td><span data-token="--layout-breakpoint-xl"></span></td><td><code>75rem</code></td><td>1200px desktops: preview pane, wide margin.</td></tr><tr><td><code>--layout-breakpoint-2xl</code></td><td><span data-token="--layout-breakpoint-2xl"></span></td><td><code>90rem</code></td><td>1440px container max; margins grow beyond.</td></tr><tr><td><code>--layout-columns</code></td><td><span data-token="--layout-columns"></span></td><td><code>4</code></td><td></td></tr><tr><td><code>--layout-gutter</code></td><td><span data-token="--layout-gutter"></span></td><td><code>var(--space-6)</code></td><td></td></tr><tr><td><code>--layout-margin</code></td><td><span data-token="--layout-margin"></span></td><td><code>var(--space-4)</code></td><td></td></tr><tr><td><code>--layout-container-max</code></td><td><span data-token="--layout-container-max"></span></td><td><code>90rem</code></td><td>1440px incl. margins, like the reference.</td></tr><tr><td><code>--layout-measure</code></td><td><span data-token="--layout-measure"></span></td><td><code>62ch</code></td><td></td></tr><tr><td><code>--layout-sidebar-width</code></td><td><span data-token="--layout-sidebar-width"></span></td><td><code>15rem</code></td><td>Filter column, dashboard side nav.</td></tr><tr><td><code>--layout-panel-width</code></td><td><span data-token="--layout-panel-width"></span></td><td><code>22rem</code></td><td>Sticky enquiry panel on the caterer page.</td></tr><tr><td><code>--layout-dialog-width</code></td><td><span data-token="--layout-dialog-width"></span></td><td><code>32rem</code></td><td>Default dialog panel.</td></tr><tr><td><code>--layout-sheet-width</code></td><td><span data-token="--layout-sheet-width"></span></td><td><code>28rem</code></td><td>Side sheet from 48rem.</td></tr><tr><td><code>--layout-topbar-height</code></td><td><span data-token="--layout-topbar-height"></span></td><td><code>4rem</code></td><td></td></tr><tr><td><code>--layout-section-gap</code></td><td><span data-token="--layout-section-gap"></span></td><td><code>var(--space-16)</code></td><td></td></tr><tr><td><code>--photo-card-size</code></td><td><span data-token="--photo-card-size"></span></td><td><code>17.5rem</code></td><td>Circle diameter on listing cards (280px).</td></tr></tbody></table></div>
+      <div class="ds-table-wrap"><table class="ds-table"><thead><tr><th scope="col">Token</th><th scope="col">Resolved value</th><th scope="col">Declared as</th><th scope="col">Use</th></tr></thead><tbody><tr><td><code>--layout-breakpoint-sm</code></td><td><span data-token="--layout-breakpoint-sm"></span></td><td><code>36rem</code></td><td>576px · location grid goes 2-up, dialogs centre, signup row joins up.</td></tr><tr><td><code>--layout-breakpoint-md</code></td><td><span data-token="--layout-breakpoint-md"></span></td><td><code>48rem</code></td><td>768px · 8 columns, inline site nav, tables stop stacking, side sheets.</td></tr><tr><td><code>--layout-breakpoint-lg</code></td><td><span data-token="--layout-breakpoint-lg"></span></td><td><code>62rem</code></td><td>992px · 12 columns, filter column, summary panel, map beside list.</td></tr><tr><td><code>--layout-breakpoint-xl</code></td><td><span data-token="--layout-breakpoint-xl"></span></td><td><code>75rem</code></td><td>1200px · 80px margins, browse grid goes 3-up beside the filters.</td></tr><tr><td><code>--layout-breakpoint-2xl</code></td><td><span data-token="--layout-breakpoint-2xl"></span></td><td><code>90rem</code></td><td>1440px · container max; margins grow beyond.</td></tr><tr><td><code>--layout-columns</code></td><td><span data-token="--layout-columns"></span></td><td><code>4</code></td><td>4 at XS–SM, 8 from 48rem, 12 from 62rem.</td></tr><tr><td><code>--layout-gutter</code></td><td><span data-token="--layout-gutter"></span></td><td><code>var(--space-6)</code></td><td>24px, 32px from 48rem, 40px from 62rem; also the stat-grid gap.</td></tr><tr><td><code>--layout-margin</code></td><td><span data-token="--layout-margin"></span></td><td><code>var(--space-4)</code></td><td>16px, 32px from 48rem, 48px from 62rem, 80px from 75rem; compare-bar and map-page padding.</td></tr><tr><td><code>--layout-container-max</code></td><td><span data-token="--layout-container-max"></span></td><td><code>90rem</code></td><td>1440px including margins: 1280px of content at XL (L2-064.3).</td></tr><tr><td><code>--layout-measure</code></td><td><span data-token="--layout-measure"></span></td><td><code>62ch</code></td><td>62ch cap on every paragraph.</td></tr><tr><td><code>--layout-sidebar-width</code></td><td><span data-token="--layout-sidebar-width"></span></td><td><code>15rem</code></td><td>Filter column on the studio and spot lists (LG and up).</td></tr><tr><td><code>--layout-panel-width</code></td><td><span data-token="--layout-panel-width"></span></td><td><code>22rem</code></td><td>Sticky summary panel beside a studio or spot review (LG and up).</td></tr><tr><td><code>--layout-dialog-width</code></td><td><span data-token="--layout-dialog-width"></span></td><td><code>32rem</code></td><td>Default dialog panel (confirmations, the guide entry picker).</td></tr><tr><td><code>--layout-sheet-width</code></td><td><span data-token="--layout-sheet-width"></span></td><td><code>28rem</code></td><td>Side sheet from 48rem: filters and the site menu.</td></tr><tr><td><code>--layout-topbar-height</code></td><td><span data-token="--layout-topbar-height"></span></td><td><code>4rem</code></td><td>Site header height: 64px, 80px from 48rem, 96px from 62rem; the map page subtracts it.</td></tr><tr><td><code>--layout-section-gap</code></td><td><span data-token="--layout-section-gap"></span></td><td><code>var(--space-16)</code></td><td>Space between major page sections (<code>.section-gap</code>): 64px, 96px from 62rem.</td></tr></tbody></table></div>
     </section>
 
-    <footer class="ds-footer"><span>ShotThere design system · extracted from docs/mocks on 10 October 2026</span><a href="#top">Back to top</a></footer>
+    <footer class="ds-footer"><span>ShotThere design system · extracted from <a href="../../mocks/index.html">docs/mocks</a> on 13 October 2026</span><a href="#top">Back to top</a></footer>
   </main>
 </div>
 <script src="../assets/ds.js"></script>

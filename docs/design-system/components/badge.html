@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Badge — ShotThere design system</title>
-<meta name="description" content="ShotThere badges: neutral, info, success, warning, danger, solid and count (in the header and on icon buttons), with states, accessibility and when to use a status label instead.">
+<meta name="description" content="ShotThere badges: Mandatory and Required (neutral), Not required and Lowest (success), Prices may be out of date and Prices stale (warning), Due soon (info), with every state and both themes.">
 <link rel="stylesheet" href="../tokens/tokens.css">
 <link rel="stylesheet" href="../assets/components.css">
 <link rel="stylesheet" href="../assets/ds.css">
@@ -33,40 +33,61 @@
       <li><a href="../components/icon-button.html">Icon button</a></li>
       <li><a href="../components/button-group.html">Button group</a></li>
       <li><a href="../components/link.html">Link</a></li>
+      <li><a href="../components/compare-bar.html">Compare toggle and bar</a></li>
     </ul></details>
     <details open><summary>Inputs</summary><ul>
       <li><a href="../components/form-field.html">Form field</a></li>
       <li><a href="../components/text-field.html">Text field</a></li>
       <li><a href="../components/textarea.html">Textarea</a></li>
       <li><a href="../components/select.html">Select</a></li>
+      <li><a href="../components/combobox.html">Combobox</a></li>
       <li><a href="../components/checkbox.html">Checkbox</a></li>
       <li><a href="../components/radio-group.html">Radio group</a></li>
       <li><a href="../components/file-upload.html">File upload</a></li>
       <li><a href="../components/form-layout.html">Form layout</a></li>
+      <li><a href="../components/signup.html">Email signup</a></li>
     </ul></details>
     <details open><summary>Navigation</summary><ul>
       <li><a href="../components/skip-link.html">Skip link</a></li>
       <li><a href="../components/site-header.html">Site header</a></li>
       <li><a href="../components/footer.html">Footer</a></li>
+      <li><a href="../components/breadcrumb.html">Breadcrumb</a></li>
+      <li><a href="../components/filter.html">Filters</a></li>
     </ul></details>
     <details open><summary>Containers and overlays</summary><ul>
-      <li><a href="../components/container.html">Container and grid</a></li>
-      <li><a href="../components/card.html">Card</a></li>
+      <li><a href="../components/container.html">Container</a></li>
+      <li><a href="../components/review-layout.html">Review layout</a></li>
+      <li><a href="../components/editor-layout.html">Editor layout</a></li>
       <li><a href="../components/dialog.html">Dialog</a></li>
-      <li><a href="../components/sheet.html">Sheet and drawer</a></li>
-      <li><a href="../components/divider.html">Divider</a></li>
+      <li><a href="../components/sheet.html">Sheet</a></li>
+      <li><a href="../components/popover.html">Popover</a></li>
+      <li><a href="../components/lightbox.html">Lightbox</a></li>
     </ul></details>
     <details open><summary>Data display</summary><ul>
+      <li><a href="../components/location-card.html">Location card</a></li>
       <li><a href="../components/table.html">Table</a></li>
+      <li><a href="../components/compare-table.html">Comparison table</a></li>
+      <li><a href="../components/list.html">List rows</a></li>
       <li><a href="../components/description-list.html">Description list</a></li>
+      <li><a href="../components/price-block.html">Price block</a></li>
+      <li><a href="../components/score.html">Score and pips</a></li>
+      <li><a href="../components/shot-grid.html">Shot grid</a></li>
+      <li><a href="../components/video-poster.html">Episode poster</a></li>
+      <li><a href="../components/map.html">Map</a></li>
+      <li><a href="../components/guide-entry.html">Guide entry</a></li>
+      <li><a href="../components/stat-tile.html">Stat tile</a></li>
+      <li><a href="../components/image-manager.html">Image manager</a></li>
+      <li><a href="../components/disclosure.html">Disclosure</a></li>
       <li><a href="../components/badge.html">Badge</a></li>
+      <li><a href="../components/status-label.html">Status label</a></li>
       <li><a href="../components/chip.html">Chip</a></li>
+      <li><a href="../components/tag.html">Tag</a></li>
     </ul></details>
     <details open><summary>Feedback</summary><ul>
       <li><a href="../components/inline-message.html">Inline message</a></li>
-      <li><a href="../components/alert.html">Alert and banner</a></li>
+      <li><a href="../components/alert.html">Alert</a></li>
       <li><a href="../components/toast.html">Toast</a></li>
-      <li><a href="../components/progress.html">Progress and meter</a></li>
+      <li><a href="../components/progress.html">Progress</a></li>
       <li><a href="../components/spinner.html">Spinner</a></li>
       <li><a href="../components/skeleton.html">Skeleton</a></li>
       <li><a href="../components/empty-state.html">Empty state</a></li>
@@ -83,179 +104,217 @@
       <li><a href="../patterns/content-and-tone.html">Content and tone</a></li>
     </ul></details>
   </nav>
-
   <main id="main" class="ds-main">
     <header class="ds-header">
       <p class="ds-kicker">Component · Data display</p>
       <h1>Badge</h1>
-      <p class="ds-lead">Badges are small pills that add one short fact to something else: how many enquiries are unread, which row is you, which cuisine was just added. They are rare on ShotThere; a record's state is a status label, not a badge.</p>
-      <div class="ds-meta"><span class="ds-pill ds-pill--ok">WCAG 2.2 AA</span><span class="ds-pill">Status: stable</span><span class="ds-pill"><code>.badge</code></span><span class="ds-pill"><code>.badge--count</code></span></div>
+      <p class="ds-lead">Badges are small pills that add one short fact to a value or a name: a fee is mandatory, a permit is not required, a studio is the lowest all-in, its prices may be out of date.</p>
+      <div class="ds-meta"><span class="ds-pill ds-pill--ok">WCAG 2.2 AA</span><span class="ds-pill">Status: stable</span><span class="ds-pill"><code>.badge</code></span><span class="ds-pill"><code>.badge--warning</code></span><span class="ds-pill"><code>.badge--success</code></span><span class="ds-pill"><code>.badge--info</code></span></div>
       <ul class="ds-toc"><li><a href="#overview">Overview</a></li><li><a href="#anatomy">Anatomy</a></li><li><a href="#variants">Variants</a></li><li><a href="#sizes">Sizes</a></li><li><a href="#states">States</a></li><li><a href="#responsive">Responsive behaviour</a></li><li><a href="#theming">Theming</a></li><li><a href="#accessibility">Accessibility</a></li><li><a href="#content">Content</a></li><li><a href="#do-dont">Do and don't</a></li><li><a href="#tokens">Tokens</a></li><li><a href="#code">Code</a></li><li><a href="#sources">Sources</a></li></ul>
     </header>
 
-<section class="ds-section" id="overview"><h2><a href="#overview">Overview</a></h2>
-      <p>ShotThere uses badges in exactly three ways, and you should need a good reason to add a fourth:</p>
+    <section class="ds-section" id="overview"><h2><a href="#overview">Overview</a></h2>
+      <p>A badge qualifies the thing it sits next to. It is never interactive and always a word, never a colour alone.</p>
       <ul>
-        <li><b>Count</b> (<code>.badge--count</code>): unread or waiting items on a navigation link — "Inbox 1" for Marcia, "Enquiries 2" for Kendra, "Queue 7" for operators — and on the phone header's inbox icon.</li>
-        <li><b>Neutral</b> (<code>.badge</code>): a marker beside a name: "You" in the operator list, "Your review" on the caterer page.</li>
-        <li><b>Info</b> (<code>.badge--info</code>): "New" beside a cuisine an operator added today.</li>
+        <li><b>Neutral</b> (<code>.badge</code>): a plain qualifier. "Mandatory" and "Optional, not in all-in" beside each fee in a studio's pricing; "Required" in a spot's permit table.</li>
+        <li><b>Success</b> (<code>.badge--success</code>): good news about a value. "Not required" for a permit; "Lowest" beside the cheapest all-in in the comparison.</li>
+        <li><b>Warning</b> (<code>.badge--warning</code>): data may be stale. Visitors see "Prices may be out of date" on a studio card, summary panel and comparison column, and "Permit rules may be out of date" on a spot; the admin sees "Prices stale", "Permits stale" and "Stale". Stale means verified more than 183 days ago.</li>
+        <li><b>Info</b> (<code>.badge--info</code>): a neutral heads-up for the admin. "Due soon" when a verification is 153 to 183 days old.</li>
       </ul>
-      <p><b>Prefer a status label</b> for the state of a record (Open, Replied, Published, Suspended…): it is a word plus a shape with no fill, which keeps busy lists calm. Use a tag for dietary and allergen facts about a dish, and a <a href="chip.html">chip</a> for anything you can press or remove. Success, warning, danger and solid badges exist in the kit but no screen uses them today.</p>
+      <p>Not a badge: whether a studio or guide is draft or published is a <a href="status-label.html">status label</a>; the best uses on a spot card are <a href="tag.html">tags</a>; an active filter is a <a href="chip.html">chip</a>; a long stale-price explanation in the pricing section is a warning <a href="alert.html">alert</a>; who paid for a shoot is the <a href="disclosure.html">disclosure</a>.</p>
     </section>
 
     <section class="ds-section" id="anatomy"><h2><a href="#anatomy">Anatomy</a></h2>
       <div class="ds-anatomy">
         <figure class="ds-anatomy__figure">
-          <div class="ds-example__canvas" style="padding: 0;"><span class="badge badge--info">New</span><span class="site-nav__link">Enquiries <span class="badge badge--count" aria-hidden="true">2</span></span></div>
-          <span class="ds-callout" style="left: 20%; top: 30%;" aria-hidden="true">1</span>
-          <span class="ds-callout" style="left: 33%; top: 70%;" aria-hidden="true">2</span>
-          <span class="ds-callout" style="left: 76%; top: 30%;" aria-hidden="true">3</span>
+          <span class="badge badge--warning" style="font-size: var(--font-size-md);">Prices may be out of date</span>
+          <span class="ds-callout" style="left: 8%; top: 20%;" aria-hidden="true">1</span>
+          <span class="ds-callout" style="left: 50%; top: 20%;" aria-hidden="true">2</span>
+          <span class="ds-callout" style="left: 84%; top: 74%;" aria-hidden="true">3</span>
         </figure>
         <ol class="ds-anatomy__list">
-          <li><div><b>Dot</b><small>6px circle in the text colour (<code>::before</code>); hidden on count and solid badges.</small></div></li>
-          <li><div><b>Label</b><small>One or two words, <code>--text-label</code> at <code>--font-size-xs</code>, never wraps.</small></div></li>
-          <li><div><b>Count</b><small>Tabular numerals centred in a pill at least 1.375rem wide on <code>--color-danger-solid</code>.</small></div></li>
+          <li><div><b>Dot</b><small>6px circle in the text colour (<code>::before</code>), so the badge reads as a marker even in greyscale.</small></div></li>
+          <li><div><b>Label</b><small>One short phrase, <code>--text-label</code> at <code>--font-size-xs</code>, in the tone's <code>-fg</code> colour. It does not wrap by default.</small></div></li>
+          <li><div><b>Container</b><small>Pill (<code>--radius-full</code>) at least 24px tall (<code>--target-min</code>), <code>--space-2</code> side padding, tone <code>-bg</code> fill, no border.</small></div></li>
         </ol>
       </div>
     </section>
 
     <section class="ds-section" id="variants"><h2><a href="#variants">Variants</a></h2>
-      <div class="ds-example">
-        <div class="ds-example__canvas">
-          <span class="badge">You</span>
-          <span class="badge badge--info">New</span>
-          <span class="badge badge--success">Success</span>
-          <span class="badge badge--warning">Warning</span>
-          <span class="badge badge--danger">Danger</span>
-          <span class="badge badge--solid">Cover</span>
-          <span class="badge badge--count" aria-hidden="true">2</span>
-        </div>
-        <div class="ds-example__caption"><span>Neutral, info, success, warning, danger, solid, count. The info tone is stone, close to neutral, on purpose: ShotThere has no blue.</span></div>
-        <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;span class="badge"&gt;You&lt;/span&gt;
-&lt;span class="badge badge--info"&gt;New&lt;/span&gt;
-&lt;span class="badge badge--success"&gt;…&lt;/span&gt; &lt;span class="badge badge--warning"&gt;…&lt;/span&gt; &lt;span class="badge badge--danger"&gt;…&lt;/span&gt;
-&lt;span class="badge badge--solid"&gt;Cover&lt;/span&gt;
-&lt;span class="badge badge--count" aria-hidden="true"&gt;2&lt;/span&gt;&lt;span class="visually-hidden"&gt;, 2 unread enquiries&lt;/span&gt;</code></pre></details>
-      </div>
-      <h3>Count on a link and on an icon button</h3>
-      <p>On a text link the badge follows the label. On the phone header the inbox is an <a href="icon-button.html">icon button</a> and the badge sits on its top-right corner (<code>.icon-btn .badge--count</code>). Both hide the number from assistive technology and say the full meaning once.</p>
-      <div class="ds-example">
-        <div class="ds-example__canvas">
-          <nav class="site-nav" aria-label="Example caterer header" style="margin: 0;">
-            Enquiries <span class="badge badge--count" aria-hidden="true">2</span><span class="visually-hidden">, 2 unread</span>
-            <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><span class="badge badge--count" aria-hidden="true">2</span>
-          </nav>
-        </div>
-        <div class="ds-example__caption"><span>Kendra's header: the text link from 48rem, the icon button below it.</span></div>
-        <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;a class="site-nav__link" href="/dashboard/enquiries"&gt;Enquiries
-  &lt;span class="badge badge--count" aria-hidden="true"&gt;2&lt;/span&gt;&lt;span class="visually-hidden"&gt;, 2 unread&lt;/span&gt;&lt;/a&gt;
-&lt;a class="icon-btn" href="/dashboard/enquiries" aria-label="Enquiries, 2 unread"&gt;
-  &lt;svg class="icon" aria-hidden="true" viewBox="0 0 24 24"&gt;…&lt;/svg&gt;
-  &lt;span class="badge badge--count" aria-hidden="true"&gt;2&lt;/span&gt;&lt;/a&gt;</code></pre></details>
-      </div>
-      <h3>Marker beside a name</h3>
+      <h3>Neutral, in a fee list</h3>
       <div class="ds-example">
         <div class="ds-example__canvas ds-example__canvas--stack">
-          <ul class="admin-list"><li class="admin-row"><span class="avatar" aria-hidden="true">LM</span><span class="admin-row__body"><span class="admin-row__title">Leah Mohammed <span class="badge">You</span></span><span class="admin-row__meta">Admin · Authenticator app</span></span></li><li class="admin-row"><span class="admin-row__body"><span class="admin-row__title">Caymanian <span class="badge badge--info">New</span></span><span class="admin-row__meta">Added today by Leah Mohammed · no caterers yet</span></span></li></ul>
+          <dl class="kv" style="width: 100%;">
+            <dt>Hourly rate</dt><dd><span class="num">$60.00</span></dd>
+            <dt>Cleaning fee</dt><dd><span class="num">$25.00</span> <span class="badge">Mandatory</span></dd>
+            <dt>After-hours access</dt><dd><span class="num">$30.00</span> <span class="badge">Optional, not in all-in</span></dd>
+          </dl>
         </div>
-        <div class="ds-example__caption"><span><code>pages/admin-operators</code> and <code>dialogs/add-cuisine</code>: the badge sits inside the title, after the name.</span></div>
+        <div class="ds-example__caption"><span>The Junction Loft's pricing (<code>pages/studio/default</code>): the $25.00 mandatory cleaning fee is in the $145.00 all-in; the optional after-hours fee is not.</span></div>
       </div>
+
+      <h3>Neutral and success, in a permit table</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--stack">
+          <div class="table-wrap" style="width: 100%;">
+            <table class="table table--stack">
+              <caption class="visually-hidden">Permit needed at Evergreen Brick Works by shoot type</caption>
+              <thead><tr><th scope="col">Shoot type</th><th scope="col">Permit</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">Portrait</th><td data-label="Permit"><span class="badge badge--success">Not required</span></td></tr>
+                <tr><th scope="row">Wedding or engagement</th><td data-label="Permit"><span class="badge">Required</span></td></tr>
+                <tr><th scope="row">Commercial</th><td data-label="Permit"><span class="badge">Required</span></td></tr>
+                <tr><th scope="row">Video</th><td data-label="Permit"><span class="badge">Required</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="ds-example__caption"><span>Evergreen Brick Works (<code>pages/spot/default</code>), permit rules verified 1 September 2026. Permit data is illustrative, not advice.</span></div>
+      </div>
+
+      <h3>Success, in the comparison</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas">
+          <div class="compare-table__value"><strong>$91.00</strong><span class="badge badge--success">Lowest</span></div>
+        </div>
+        <div class="ds-example__caption"><span>Leslieville Daylight Studio's all-in beside The Junction Loft ($145.00) and Ossington Blackbox ($270.00) on <code>pages/compare/default</code>.</span></div>
+      </div>
+
+      <h3>Warning, for visitors</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas">
+          <div class="location-card" style="width: min(18rem, 100%);">
+            <div class="location-card__media"><img src="../assets/img/studio-ossington-blackbox.svg" alt="" width="1200" height="800" loading="lazy"></div>
+            <h4 class="location-card__name"><a href="#variants">Ossington Blackbox</a></h4>
+            <p class="location-card__meta">Ossington · Reviewed 6 Mar 2026</p>
+            <dl class="location-card__facts">
+              <div><dt>All-in 2 h</dt><dd>$270.00</dd></div>
+              <div><dt>Score</dt><dd>3.8<span class="visually-hidden"> out of 5</span></dd></div>
+            </dl>
+            <p><span class="badge badge--warning">Prices may be out of date</span></p>
+            <div class="location-card__actions"><button class="btn btn--sm compare-toggle" type="button" aria-pressed="false">Compare<span class="visually-hidden"> Ossington Blackbox</span></button></div>
+          </div>
+          <p><span class="badge badge--warning">Permit rules may be out of date</span></p>
+        </div>
+        <div class="ds-example__caption"><span>Ossington Blackbox's prices were verified 2 Mar 2026, 225 days ago (<code>pages/studios/default</code>); Distillery District's permits on 20 Mar 2026 (<code>pages/spot/stale-permit</code>).</span></div>
+      </div>
+
+      <h3>Warning and info, for the admin</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--stack">
+          <ul class="admin-list" style="width: 100%;">
+            <li class="admin-row">
+              <div class="admin-row__body">
+                <span class="admin-row__title">Ossington Blackbox <span class="badge badge--warning">Stale</span></span>
+                <span class="admin-row__meta">Studio · Prices verified <time datetime="2026-03-02">2 Mar 2026</time> (225 days ago)</span>
+              </div>
+              <div class="admin-row__actions"><a class="btn btn--sm" href="#variants">Edit<span class="visually-hidden"> Ossington Blackbox prices</span></a></div>
+            </li>
+            <li class="admin-row">
+              <div class="admin-row__body">
+                <span class="admin-row__title">Liberty Cyc House <span class="badge badge--info">Due soon</span></span>
+                <span class="admin-row__meta">Studio · Prices verified <time datetime="2026-04-28">28 Apr 2026</time> (168 days ago)</span>
+              </div>
+              <div class="admin-row__actions"><a class="btn btn--sm" href="#variants">Edit<span class="visually-hidden"> Liberty Cyc House prices</span></a></div>
+            </li>
+          </ul>
+          <p><span class="badge badge--warning">Prices stale</span> <span class="badge badge--warning">Permits stale</span></p>
+        </div>
+        <div class="ds-example__caption"><span>The dashboard's "Needs re-verification" and "Due soon" lists (<code>pages/admin-dashboard/default</code>) and the Flags column of the admin lists (<code>pages/admin-studios/default</code>, <code>pages/admin-spots/default</code>).</span></div>
+      </div>
+
     </section>
 
-    <section class="ds-section" id="sizes" data-na="Badges have one size."><h2><a href="#sizes">Sizes</a></h2>
-      <p class="ds-na">Badges have one size: 12px label in a pill at least 24px tall (<code>--target-min</code>). Inside an icon button the count shrinks its minimum to 20px (<code>--icon-size-md</code>) so it fits on the corner.</p>
+    <section class="ds-section" id="sizes"><h2><a href="#sizes">Sizes</a></h2>
+      <p>One size: <code>--font-size-xs</code> label, at least 24px tall (<code>--target-min</code>), <code>--space-2</code> side padding. It sits on the text baseline beside a value or name and never grows with its container.</p>
+      <div class="ds-example">
+        <div class="ds-example__canvas">
+          <span class="badge">Mandatory</span>
+          <span class="badge badge--success">Not required</span>
+          <span class="badge badge--info">Due soon</span>
+        </div>
+      </div>
     </section>
 
     <section class="ds-section" id="states"><h2><a href="#states">States</a></h2>
-      <p>Badges are not interactive, so they have no hover, focus or disabled state; the link or row they belong to does. What changes is the value.</p>
-      <div class="ds-matrix" style="position: relative;"><table>
-        <caption class="visually-hidden">Badge value states</caption>
-        <thead><tr><th scope="col">Variant</th><th scope="col">Default</th><th scope="col">Large number</th><th scope="col">Zero</th><th scope="col">In a hovered or current link</th></tr></thead>
+      <p>Badges are not interactive, so they have no hover, focus, active or disabled state. Their states are the tone itself and when it appears or goes.</p>
+      <div class="ds-matrix"><table>
+        <caption class="visually-hidden">Badge tones and their states</caption>
+        <thead><tr><th scope="col">Tone</th><th scope="col">Default</th><th scope="col">Hover</th><th scope="col">Focus</th><th scope="col">Active</th><th scope="col">Disabled</th><th scope="col">Wrapped (narrow column)</th></tr></thead>
         <tbody>
-          <tr><th scope="row">Count</th>
-            <td><span class="badge badge--count" aria-hidden="true">7</span></td>
-            <td><span class="badge badge--count" aria-hidden="true">34</span> <span class="badge badge--count" aria-hidden="true">99+</span></td>
-            <td><span class="ds-na">Badge removed</span></td>
-            <td><span class="site-nav__link" aria-current="page">Queue <span class="badge badge--count" aria-hidden="true">7</span></span></td></tr>
-          <tr><th scope="row">Neutral</th>
-            <td><span class="badge">You</span></td>
-            <td><span class="ds-na">Text only</span></td>
-            <td><span class="ds-na">Not shown</span></td>
-            <td><span class="list__item list__item--interactive" data-state="hover"><span class="badge">Your review</span></span></td></tr>
-          <tr><th scope="row">Info</th>
-            <td><span class="badge badge--info">New</span></td>
-            <td><span class="ds-na">Text only</span></td>
-            <td><span class="ds-na">Not shown</span></td>
-            <td><span class="list__item list__item--interactive" data-state="hover"><span class="badge badge--info">New</span></span></td></tr>
+          <tr><th scope="row">Neutral</th><td><span class="badge">Required</span></td><td><span class="ds-na">Not interactive</span></td><td><span class="ds-na">Not focusable</span></td><td><span class="ds-na">Not interactive</span></td><td><span class="ds-na">Remove it instead</span></td><td><span class="ds-na">Short enough</span></td></tr>
+          <tr><th scope="row">Success</th><td><span class="badge badge--success">Lowest</span></td><td><span class="ds-na">Not interactive</span></td><td><span class="ds-na">Not focusable</span></td><td><span class="ds-na">Not interactive</span></td><td><span class="ds-na">Remove it instead</span></td><td><span class="ds-na">Short enough</span></td></tr>
+          <tr><th scope="row">Warning</th><td><span class="badge badge--warning">Prices stale</span></td><td><span class="ds-na">Not interactive</span></td><td><span class="ds-na">Not focusable</span></td><td><span class="ds-na">Not interactive</span></td><td><span class="ds-na">Remove it instead</span></td><td><div style="width: 8rem;"><span class="badge badge--warning" style="white-space: normal;">Prices may be out of date</span></div></td></tr>
+          <tr><th scope="row">Info</th><td><span class="badge badge--info">Due soon</span></td><td><span class="ds-na">Not interactive</span></td><td><span class="ds-na">Not focusable</span></td><td><span class="ds-na">Not interactive</span></td><td><span class="ds-na">Remove it instead</span></td><td><span class="ds-na">Short enough</span></td></tr>
         </tbody>
       </table></div>
       <h3>Both themes</h3>
       <div class="ds-themes">
-        <div data-theme="light"><div class="ds-example__canvas" style="padding: 0;"><span class="badge">You</span><span class="badge badge--info">New</span><span class="badge badge--success">Success</span><span class="badge badge--warning">Warning</span><span class="badge badge--danger">Danger</span><span class="badge badge--solid">Cover</span><span class="badge badge--count" aria-hidden="true">2</span></div></div>
-        <div data-theme="dark"><div class="ds-example__canvas" style="padding: 0;"><span class="badge">You</span><span class="badge badge--info">New</span><span class="badge badge--success">Success</span><span class="badge badge--warning">Warning</span><span class="badge badge--danger">Danger</span><span class="badge badge--solid">Cover</span><span class="badge badge--count" aria-hidden="true">2</span></div></div>
+        <div data-theme="light"><div class="ds-example__canvas" style="padding: 0;"><span class="badge">Mandatory</span><span class="badge badge--success">Not required</span><span class="badge badge--warning">Prices may be out of date</span><span class="badge badge--info">Due soon</span></div></div>
+        <div data-theme="dark"><div class="ds-example__canvas" style="padding: 0;"><span class="badge">Mandatory</span><span class="badge badge--success">Not required</span><span class="badge badge--warning">Prices may be out of date</span><span class="badge badge--info">Due soon</span></div></div>
       </div>
       <ul>
-        <li><b>Zero</b>: remove the count badge; never show "0". The link still says "Inbox".</li>
-        <li><b>Large</b>: show the number up to 99, then "99+"; the hidden text keeps the exact count ("134 items waiting").</li>
-        <li><b>Updating</b>: when the count changes while the page is open, the badge just changes. Don't announce it; the inbox or queue page has its own live region.</li>
-        <li><b>"New"</b> lasts for the day the item was added, then disappears.</li>
+        <li><b>Appears</b> when the server says so: a warning badge shows when a verification date is more than 183 days before today (Monday 13 October 2026, so before 13 Apr 2026); "Due soon" from 153 days. The server computes staleness and the page only shows its flag (L2-043).</li>
+        <li><b>Goes</b> when the admin saves a new "Prices last verified" date; nothing else clears it.</li>
+        <li><b>Wrapped</b>: in a 10rem comparison column "Prices may be out of date" is wider than the column, so it must wrap. Inside <code>.compare-table</code> the rule <code>.compare-table .badge { white-space: normal; }</code> does this. The example above sits outside a table, so it sets <code>white-space: normal</code> inline to show the result.</li>
       </ul>
     </section>
 
     <section class="ds-section" id="responsive"><h2><a href="#responsive">Responsive behaviour</a></h2>
       <ul>
-        <li>Badges never wrap (<code>white-space: nowrap</code>) and never change size.</li>
-        <li><b>Below md (48rem)</b> header links with counts move into the site menu or become icon buttons; the count moves with them onto the icon's corner, so it is visible at every width.</li>
-        <li>In wrapping titles (<code>.admin-row__title</code> is a flex row that wraps) the badge drops to the next line as a unit rather than splitting from its pill.</li>
+        <li>Badges keep their size at every width. In wrapping rows (<code>.admin-row__title</code>, <code>.kv dd</code>) the badge drops to the next line as a whole beside its value.</li>
+        <li>Below 48rem the permit table stacks (<code>.table--stack</code>): each row becomes "Portrait" over a "Permit" label and its badge.</li>
+        <li>In the comparison the columns scroll sideways under a sticky row label, each about 10rem wide; badges there are allowed to wrap.</li>
+        <li>Below 62rem the studio summary panel moves above the review, so the stale badge is near the top on a phone.</li>
       </ul>
     </section>
 
     <section class="ds-section" id="theming"><h2><a href="#theming">Theming</a></h2>
-      <p>Tones map to status token families: neutral reads <code>--color-bg-subtle</code> / <code>--color-fg-muted</code>; info, success, warning and danger read their <code>-bg</code> and <code>-fg</code> pairs; solid reads <code>--color-info-solid</code> with <code>--color-bg-surface</code> text; count reads <code>--color-danger-solid</code> with <code>--color-fg-on-danger</code>. No component tokens.</p>
-      <p>The count is sorrel red, not pepper. Pepper means "selected / you are here"; an unread count is something different, and in dark the two must stay apart (sorrel-600 against pepper-300). In dark every tinted badge flips to a deep background with a light label from the same family.</p>
+      <p>Each tone reads a feedback pair: <code>--color-success-bg</code> / <code>--color-success-fg</code>, <code>--color-warning-bg</code> / <code>--color-warning-fg</code> and <code>--color-info-bg</code> / <code>--color-info-fg</code>. Neutral reads <code>--color-bg-subtle</code> / <code>--color-fg-muted</code>. Info is a neutral stone, not blue. In dark every tint becomes a deep tone with a light label at the same contrast. No component tokens; re-tone the semantic pair.</p>
     </section>
 
     <section class="ds-section" id="accessibility"><h2><a href="#accessibility">Accessibility</a></h2>
       <h3>Role and pattern</h3>
-      <p>A badge is text in a <code>&lt;span&gt;</code>; it has no role. A count whose number alone would be meaningless ("7") is <code>aria-hidden="true"</code>, and the meaning is given once: visually hidden text inside the link (", 7 items waiting") or the icon button's <code>aria-label</code> ("Enquiries, 2 unread"). Don't put <code>aria-label</code> on the badge <code>&lt;span&gt;</code>: a generic element can't be named, and support is patchy. See <a href="https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships.html">WCAG 1.3.1</a>.</p>
+      <p>Plain inline text in a <code>&lt;span&gt;</code>; no ARIA role. It is read in place with the value it qualifies: "$25.00 Mandatory", "Portrait, Not required".</p>
       <h3>Keyboard</h3>
       <div class="ds-table-wrap"><table class="ds-table ds-keys"><thead><tr><th scope="col">Key</th><th scope="col">Action</th></tr></thead><tbody>
-        <tr><td><kbd>Tab</kbd></td><td>Never stops on a badge; it stops on the link or button that contains it.</td></tr>
+        <tr><td>None</td><td>Badges are not focusable. A related action ("Edit" on a stale row) is its own button or link.</td></tr>
       </tbody></table></div>
       <h3>Focus</h3>
-      <p>No focus of its own. On an icon button the badge sits inside the button's bounds, so the button's focus ring encloses it.</p>
+      <p>Not applicable: a badge never takes focus.</p>
       <h3>Labelling</h3>
-      <p>Spoken meaning: "Inbox, 1 unread enquiry", "Queue, 7 items waiting", "Enquiries, 2 unread". Neutral and info badges are read as part of the name they follow ("Leah Mohammed You"); keep them to one word so that still makes sense.</p>
+      <p>The words carry the meaning, the colour only supports them (WCAG 1.4.1). The label must make sense next to its neighbour, so in the comparison "Lowest" sits in the all-in row, whose header is "All-in, 2 hours".</p>
       <h3>Contrast</h3>
       <div class="ds-example__canvas ds-example__canvas--stack" style="padding: 0; gap: var(--space-2);">
-        <div class="ds-pair"><span>Count</span><span class="ds-pair__ratio" data-contrast="--color-fg-on-danger|--color-danger-solid" data-min="4.5"></span></div>
         <div class="ds-pair"><span>Neutral</span><span class="ds-pair__ratio" data-contrast="--color-fg-muted|--color-bg-subtle" data-min="4.5"></span></div>
-        <div class="ds-pair"><span>Info</span><span class="ds-pair__ratio" data-contrast="--color-info-fg|--color-info-bg" data-min="4.5"></span></div>
         <div class="ds-pair"><span>Success</span><span class="ds-pair__ratio" data-contrast="--color-success-fg|--color-success-bg" data-min="4.5"></span></div>
         <div class="ds-pair"><span>Warning</span><span class="ds-pair__ratio" data-contrast="--color-warning-fg|--color-warning-bg" data-min="4.5"></span></div>
-        <div class="ds-pair"><span>Danger</span><span class="ds-pair__ratio" data-contrast="--color-danger-fg|--color-danger-bg" data-min="4.5"></span></div>
-        <div class="ds-pair"><span>Solid</span><span class="ds-pair__ratio" data-contrast="--color-bg-surface|--color-info-solid" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Info</span><span class="ds-pair__ratio" data-contrast="--color-info-fg|--color-info-bg" data-min="4.5"></span></div>
       </div>
+      <p>The tinted fills are not a boundary and need no 3:1 against the page; the label carries the contrast.</p>
       <h3>Motion</h3>
-      <p>None. Counts change without animation; nothing pulses or bounces for attention.</p>
+      <p>None. Badges appear and disappear with the page.</p>
       <h3>Touch</h3>
-      <p>Not a target. The count overlaps the corner of a 44px icon button but stays inside it, so it never enlarges or shifts the target.</p>
+      <p>Not a target.</p>
     </section>
 
     <section class="ds-section" id="content"><h2><a href="#content">Content</a></h2>
       <ul>
-        <li>Counts are numerals: "2", "34", "99+". The hidden text uses the noun the page uses: "unread enquiry / enquiries", "item / items waiting".</li>
-        <li>Markers are one word, sentence case: "You", "New". "Your review" is the longest label in use.</li>
-        <li>Never use a badge for a record state ("Published", "Suspended"): that is a status label. Never use one for "Halal" or "Contains nuts": that is a tag.</li>
+        <li>Sentence case, two to five words, no full stop: "Mandatory", "Not required", "Lowest", "Due soon".</li>
+        <li>Visitor-facing warnings say what may be wrong, not a system word: "Prices may be out of date", "Permit rules may be out of date". The admin gets terse flags that name the data: "Prices stale", "Permits stale".</li>
+        <li>Pair a warning badge with the verified date nearby ("Prices verified 2 Mar 2026"), so the visitor can judge it.</li>
+        <li>Never use a badge for a record's state ("Draft", "Published") or a fact about the place ("Cyc wall").</li>
       </ul>
     </section>
 
     <section class="ds-section" id="do-dont"><h2><a href="#do-dont">Do and don't</a></h2>
       <div class="ds-dodont">
-        <figure class="ds-do"><div class="ds-example__canvas"><span class="site-nav__link">Queue <span class="badge badge--count" aria-hidden="true">7</span><span class="visually-hidden">, 7 items waiting</span></span></div><figcaption>Hide the number and say what it counts in hidden text.</figcaption></figure>
-        <figure class="ds-dont"><div class="ds-example__canvas"><span class="site-nav__link">Queue <span class="badge badge--count">7</span></span></div><figcaption>Don't rely on <code>aria-label</code> on the badge span (the mocks did); the link may be read as "Queue 7".</figcaption></figure>
-        <figure class="ds-do"><div class="ds-example__canvas"><span class="status status--published">Published</span><span class="status status--suspended">Suspended</span></div><figcaption>Record states are status labels: word plus shape.</figcaption></figure>
-        <figure class="ds-dont"><div class="ds-example__canvas"><span class="badge badge--success">Published</span><span class="badge badge--danger">Suspended</span></div><figcaption>Filled badges in every row of a list are loud and repeat what a status label says.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas"><span class="badge badge--warning">Permit rules may be out of date</span></div><figcaption>One visitor wording per kind of data, matching the "Permit rules verified" line.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas"><span class="badge badge--warning">Permit info may be out of date</span></div><figcaption>Don't vary it: spot cards said "Permit info" while the spot page said "Permit rules".</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas"><span><span class="num">$25.00</span> <span class="badge">Mandatory</span></span></div><figcaption>A neutral badge qualifies the fee next to it.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas"><span><span class="num">$25.00</span> <span class="badge badge--warning">Mandatory</span></span></div><figcaption>Don't use warning for a normal cost: a mandatory fee is information, not a caution. Warning means the data may be stale.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas"><span class="status status--draft">Draft</span></div><figcaption>A record's state is a status label: a word and a shape.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas"><span class="badge badge--info">Draft</span></div><figcaption>Don't show draft or published as a badge; it would read like "Due soon".</figcaption></figure>
       </div>
     </section>
 
@@ -263,49 +322,50 @@
       <div class="ds-table-wrap"><table class="ds-table">
         <thead><tr><th scope="col">Part</th><th scope="col">Token</th><th scope="col">Light</th><th scope="col">Dark</th></tr></thead>
         <tbody>
-          <tr><td>Count background</td><td><code>--color-danger-solid</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-danger-solid" data-swatch></i><span data-token="--color-danger-solid"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-danger-solid" data-swatch></i><span data-token="--color-danger-solid"></span></span></td></tr>
-          <tr><td>Count label</td><td><code>--color-fg-on-danger</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-on-danger" data-swatch></i><span data-token="--color-fg-on-danger"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-on-danger" data-swatch></i><span data-token="--color-fg-on-danger"></span></span></td></tr>
-          <tr><td>Neutral background</td><td><code>--color-bg-subtle</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-bg-subtle" data-swatch></i><span data-token="--color-bg-subtle"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-bg-subtle" data-swatch></i><span data-token="--color-bg-subtle"></span></span></td></tr>
-          <tr><td>Neutral label</td><td><code>--color-fg-muted</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-muted" data-swatch></i><span data-token="--color-fg-muted"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-muted" data-swatch></i><span data-token="--color-fg-muted"></span></span></td></tr>
-          <tr><td>Info background</td><td><code>--color-info-bg</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-info-bg" data-swatch></i><span data-token="--color-info-bg"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-info-bg" data-swatch></i><span data-token="--color-info-bg"></span></span></td></tr>
+          <tr><td>Neutral fill / label</td><td><code>--color-bg-subtle</code> / <code>--color-fg-muted</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-bg-subtle" data-swatch></i><span data-token="--color-bg-subtle"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-bg-subtle" data-swatch></i><span data-token="--color-bg-subtle"></span></span></td></tr>
+          <tr><td>Success fill</td><td><code>--color-success-bg</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-success-bg" data-swatch></i><span data-token="--color-success-bg"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-success-bg" data-swatch></i><span data-token="--color-success-bg"></span></span></td></tr>
+          <tr><td>Success label</td><td><code>--color-success-fg</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-success-fg" data-swatch></i><span data-token="--color-success-fg"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-success-fg" data-swatch></i><span data-token="--color-success-fg"></span></span></td></tr>
+          <tr><td>Warning fill</td><td><code>--color-warning-bg</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-warning-bg" data-swatch></i><span data-token="--color-warning-bg"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-warning-bg" data-swatch></i><span data-token="--color-warning-bg"></span></span></td></tr>
+          <tr><td>Warning label</td><td><code>--color-warning-fg</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-warning-fg" data-swatch></i><span data-token="--color-warning-fg"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-warning-fg" data-swatch></i><span data-token="--color-warning-fg"></span></span></td></tr>
+          <tr><td>Info fill</td><td><code>--color-info-bg</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-info-bg" data-swatch></i><span data-token="--color-info-bg"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-info-bg" data-swatch></i><span data-token="--color-info-bg"></span></span></td></tr>
           <tr><td>Info label</td><td><code>--color-info-fg</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-info-fg" data-swatch></i><span data-token="--color-info-fg"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-info-fg" data-swatch></i><span data-token="--color-info-fg"></span></span></td></tr>
-          <tr><td>Solid background</td><td><code>--color-info-solid</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-info-solid" data-swatch></i><span data-token="--color-info-solid"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-info-solid" data-swatch></i><span data-token="--color-info-solid"></span></span></td></tr>
-          <tr><td>Success background</td><td><code>--color-success-bg</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-success-bg" data-swatch></i><span data-token="--color-success-bg"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-success-bg" data-swatch></i><span data-token="--color-success-bg"></span></span></td></tr>
-          <tr><td>Warning background</td><td><code>--color-warning-bg</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-warning-bg" data-swatch></i><span data-token="--color-warning-bg"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-warning-bg" data-swatch></i><span data-token="--color-warning-bg"></span></span></td></tr>
-          <tr><td>Danger background</td><td><code>--color-danger-bg</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-danger-bg" data-swatch></i><span data-token="--color-danger-bg"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-danger-bg" data-swatch></i><span data-token="--color-danger-bg"></span></span></td></tr>
-          <tr><td>Label</td><td><code>--text-label</code> at <code>--font-size-xs</code></td><td colspan="2"><span data-token="--font-size-xs"></span></td></tr>
-          <tr><td>Height / padding / gap</td><td><code>--target-min</code>, <code>--space-2</code>, <code>--space-1</code></td><td colspan="2"><span data-token="--target-min"></span> · <span data-token="--space-2"></span> · <span data-token="--space-1"></span></td></tr>
+          <tr><td>Label size</td><td><code>--text-label</code> at <code>--font-size-xs</code></td><td colspan="2"><span data-token="--font-size-xs"></span></td></tr>
+          <tr><td>Height / padding</td><td><code>--target-min</code> / <code>--space-2</code></td><td colspan="2"><span data-token="--target-min"></span> / <span data-token="--space-2"></span></td></tr>
           <tr><td>Radius</td><td><code>--radius-full</code></td><td colspan="2"><span data-token="--radius-full"></span></td></tr>
         </tbody>
       </table></div>
     </section>
 
     <section class="ds-section" id="code"><h2><a href="#code">Code</a></h2>
-      <pre><code>&lt;a class="site-nav__link" href="/inbox" aria-current="page"&gt;Inbox
-  &lt;span class="badge badge--count" aria-hidden="true"&gt;1&lt;/span&gt;&lt;span class="visually-hidden"&gt;, 1 unread enquiry&lt;/span&gt;&lt;/a&gt;</code></pre>
-      <div class="ds-table-wrap"><table class="ds-table"><thead><tr><th scope="col">Class / attribute</th><th scope="col">Effect</th></tr></thead><tbody>
+      <pre><code>&lt;dt&gt;Cleaning fee&lt;/dt&gt;&lt;dd&gt;&lt;span class="num"&gt;$25.00&lt;/span&gt; &lt;span class="badge"&gt;Mandatory&lt;/span&gt;&lt;/dd&gt;
+&lt;td data-label="Permit"&gt;&lt;span class="badge badge--success"&gt;Not required&lt;/span&gt;&lt;/td&gt;
+&lt;p&gt;&lt;span class="badge badge--warning"&gt;Prices may be out of date&lt;/span&gt;&lt;/p&gt;
+&lt;td data-label="Flags"&gt;&lt;span class="badge badge--info"&gt;Due soon&lt;/span&gt;&lt;/td&gt;</code></pre>
+      <div class="ds-table-wrap"><table class="ds-table"><thead><tr><th scope="col">Class</th><th scope="col">Effect</th></tr></thead><tbody>
         <tr><td><code>.badge</code></td><td>Neutral pill with a dot.</td></tr>
-        <tr><td><code>.badge--info</code> <code>--success</code> <code>--warning</code> <code>--danger</code></td><td>Tone.</td></tr>
-        <tr><td><code>.badge--solid</code></td><td>Dark filled pill, no dot.</td></tr>
-        <tr><td><code>.badge--count</code></td><td>Sorrel count pill, tabular numerals, no dot.</td></tr>
-        <tr><td><code>.icon-btn .badge--count</code></td><td>Pinned to the icon button's top-right corner.</td></tr>
-        <tr><td><code>aria-hidden="true"</code> + <code>.visually-hidden</code> text</td><td>Required on counts.</td></tr>
+        <tr><td><code>.badge--success</code> <code>.badge--warning</code> <code>.badge--info</code></td><td>Tone. Used by the mocks.</td></tr>
       </tbody></table></div>
     </section>
 
     <section class="ds-section" id="sources"><h2><a href="#sources">Sources</a></h2>
+      <p>Extracted from these mocks:</p>
       <ul>
-        <li>pages/admin-queue/default (operator header "Queue 7")</li>
-        <li>pages/dashboard/default (caterer header, "Enquiries 2", inbox icon button)</li>
-        <li>pages/inbox/default (customer header "Inbox 1")</li>
-        <li>pages/admin-operators/default ("You")</li>
-        <li>dialogs/add-cuisine/busy and dialogs/retire-cuisine/busy ("New")</li>
-        <li>pages/caterer/own-review ("Your review")</li>
+        <li><a href="../../mocks/pages/studio/default.html">pages/studio/default</a> and <a href="../../mocks/pages/studio/minimal.html">pages/studio/minimal</a> ("Mandatory", "Optional, not in all-in")</li>
+        <li><a href="../../mocks/pages/studio/stale.html">pages/studio/stale</a> and <a href="../../mocks/pages/studios/default.html">pages/studios/default</a> ("Prices may be out of date" on the summary panel and the card)</li>
+        <li><a href="../../mocks/pages/spot/default.html">pages/spot/default</a> ("Not required", "Required") and <a href="../../mocks/pages/spot/stale-permit.html">pages/spot/stale-permit</a> ("Permit rules may be out of date")</li>
+        <li><a href="../../mocks/pages/spots/default.html">pages/spots/default</a> and <a href="../../mocks/dialogs/spot-filters/default.html">dialogs/spot-filters/default</a> ("Permit info may be out of date")</li>
+        <li><a href="../../mocks/pages/compare/default.html">pages/compare/default</a>, <a href="../../mocks/pages/compare/four.html">pages/compare/four</a> and <a href="../../mocks/pages/compare/over-limit.html">pages/compare/over-limit</a> ("Lowest", wrapped stale badge)</li>
+        <li><a href="../../mocks/pages/admin-dashboard/default.html">pages/admin-dashboard/default</a> ("Stale", "Due soon")</li>
+        <li><a href="../../mocks/pages/admin-studios/default.html">pages/admin-studios/default</a> and <a href="../../mocks/pages/admin-spots/default.html">pages/admin-spots/default</a> ("Prices stale", "Permits stale", "Due soon" in the Flags column)</li>
       </ul>
-      <p>Drift fixed during extraction: header counts put <code>aria-label</code> on the badge <code>&lt;span&gt;</code> in 236 mocks ("7 items waiting"), which a generic element cannot carry reliably; the system hides the number and adds visually hidden text, as the phone icon buttons already did. Success, warning, danger and solid badges are unused; status labels cover those meanings.</p>
+      <p>Drift fixed during extraction:</p>
+      <ul>
+        <li>Spot staleness is worded two ways: "Permit info may be out of date" on spot cards (spots/default, spot-filters) and "Permit rules may be out of date" on the spot page. The system uses "Permit rules may be out of date", matching "Permit rules verified".</li>
+        <li>Three compare mocks wrap the stale badge with an inline <code>style="white-space: normal;"</code>. <code>.compare-table .badge</code> now wraps badges in comparison cells, so the inline style is no longer needed.</li>
+      </ul>
     </section>
 
-    <footer class="ds-footer"><span>ShotThere design system · extracted from docs/mocks on 10 October 2026</span><a href="#top">Back to top</a></footer>
+    <footer class="ds-footer"><span>ShotThere design system · extracted from <a href="../../mocks/index.html">docs/mocks</a> on 13 October 2026</span><a href="#top">Back to top</a></footer>
   </main>
 </div>
 <script src="../assets/ds.js"></script>

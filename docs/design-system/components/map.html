@@ -1,0 +1,723 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Map — ShotThere design system</title>
+<meta name="description" content="ShotThere maps: the static map frame, studio and spot markers told apart by shape, legend, marker popup, tiles-failed message, the map page with its Map/List toggle, and the spot-editor preview.">
+<link rel="stylesheet" href="../tokens/tokens.css">
+<link rel="stylesheet" href="../assets/components.css">
+<link rel="stylesheet" href="../assets/ds.css">
+</head>
+<body id="top">
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="ds-shell">
+  <nav class="ds-nav" aria-label="Design system">
+    <div class="ds-nav__brand"><a href="../index.html">ShotThere DS</a><button class="ds-theme-toggle" type="button" aria-pressed="false">☾ Dark</button></div>
+    <details open><summary>Foundations</summary><ul>
+      <li><a href="../foundations/color.html">Color</a></li>
+      <li><a href="../foundations/typography.html">Typography</a></li>
+      <li><a href="../foundations/spacing.html">Spacing</a></li>
+      <li><a href="../foundations/layout.html">Layout</a></li>
+      <li><a href="../foundations/elevation.html">Elevation</a></li>
+      <li><a href="../foundations/shape.html">Shape</a></li>
+      <li><a href="../foundations/motion.html">Motion</a></li>
+      <li><a href="../foundations/iconography.html">Iconography</a></li>
+      <li><a href="../foundations/theming.html">Theming</a></li>
+      <li><a href="../foundations/responsive.html">Responsive</a></li>
+      <li><a href="../foundations/accessibility.html">Accessibility</a></li>
+      <li><a href="../foundations/content.html">Content</a></li>
+    </ul></details>
+    <details open><summary>Actions</summary><ul>
+      <li><a href="../components/button.html">Button</a></li>
+      <li><a href="../components/icon-button.html">Icon button</a></li>
+      <li><a href="../components/button-group.html">Button group</a></li>
+      <li><a href="../components/link.html">Link</a></li>
+      <li><a href="../components/compare-bar.html">Compare toggle and bar</a></li>
+    </ul></details>
+    <details open><summary>Inputs</summary><ul>
+      <li><a href="../components/form-field.html">Form field</a></li>
+      <li><a href="../components/text-field.html">Text field</a></li>
+      <li><a href="../components/textarea.html">Textarea</a></li>
+      <li><a href="../components/select.html">Select</a></li>
+      <li><a href="../components/combobox.html">Combobox</a></li>
+      <li><a href="../components/checkbox.html">Checkbox</a></li>
+      <li><a href="../components/radio-group.html">Radio group</a></li>
+      <li><a href="../components/file-upload.html">File upload</a></li>
+      <li><a href="../components/form-layout.html">Form layout</a></li>
+      <li><a href="../components/signup.html">Email signup</a></li>
+    </ul></details>
+    <details open><summary>Navigation</summary><ul>
+      <li><a href="../components/skip-link.html">Skip link</a></li>
+      <li><a href="../components/site-header.html">Site header</a></li>
+      <li><a href="../components/footer.html">Footer</a></li>
+      <li><a href="../components/breadcrumb.html">Breadcrumb</a></li>
+      <li><a href="../components/filter.html">Filters</a></li>
+    </ul></details>
+    <details open><summary>Containers and overlays</summary><ul>
+      <li><a href="../components/container.html">Container</a></li>
+      <li><a href="../components/review-layout.html">Review layout</a></li>
+      <li><a href="../components/editor-layout.html">Editor layout</a></li>
+      <li><a href="../components/dialog.html">Dialog</a></li>
+      <li><a href="../components/sheet.html">Sheet</a></li>
+      <li><a href="../components/popover.html">Popover</a></li>
+      <li><a href="../components/lightbox.html">Lightbox</a></li>
+    </ul></details>
+    <details open><summary>Data display</summary><ul>
+      <li><a href="../components/location-card.html">Location card</a></li>
+      <li><a href="../components/table.html">Table</a></li>
+      <li><a href="../components/compare-table.html">Comparison table</a></li>
+      <li><a href="../components/list.html">List rows</a></li>
+      <li><a href="../components/description-list.html">Description list</a></li>
+      <li><a href="../components/price-block.html">Price block</a></li>
+      <li><a href="../components/score.html">Score and pips</a></li>
+      <li><a href="../components/shot-grid.html">Shot grid</a></li>
+      <li><a href="../components/video-poster.html">Episode poster</a></li>
+      <li><a href="../components/map.html">Map</a></li>
+      <li><a href="../components/guide-entry.html">Guide entry</a></li>
+      <li><a href="../components/stat-tile.html">Stat tile</a></li>
+      <li><a href="../components/image-manager.html">Image manager</a></li>
+      <li><a href="../components/disclosure.html">Disclosure</a></li>
+      <li><a href="../components/badge.html">Badge</a></li>
+      <li><a href="../components/status-label.html">Status label</a></li>
+      <li><a href="../components/chip.html">Chip</a></li>
+      <li><a href="../components/tag.html">Tag</a></li>
+    </ul></details>
+    <details open><summary>Feedback</summary><ul>
+      <li><a href="../components/inline-message.html">Inline message</a></li>
+      <li><a href="../components/alert.html">Alert</a></li>
+      <li><a href="../components/toast.html">Toast</a></li>
+      <li><a href="../components/progress.html">Progress</a></li>
+      <li><a href="../components/spinner.html">Spinner</a></li>
+      <li><a href="../components/skeleton.html">Skeleton</a></li>
+      <li><a href="../components/empty-state.html">Empty state</a></li>
+      <li><a href="../components/error-page.html">Error page</a></li>
+    </ul></details>
+    <details open><summary>Patterns</summary><ul>
+      <li><a href="../patterns/forms.html">Forms</a></li>
+      <li><a href="../patterns/feedback-and-loading.html">Feedback and loading</a></li>
+      <li><a href="../patterns/empty-and-error-states.html">Empty and error states</a></li>
+      <li><a href="../patterns/navigation.html">Navigation and page structure</a></li>
+      <li><a href="../patterns/dialogs-and-overlays.html">Dialogs and overlays</a></li>
+      <li><a href="../patterns/tables-and-lists.html">Data tables and lists</a></li>
+      <li><a href="../patterns/notifications.html">Notifications</a></li>
+      <li><a href="../patterns/content-and-tone.html">Content and tone</a></li>
+    </ul></details>
+  </nav>
+
+  <main id="main" class="ds-main">
+    <header class="ds-header">
+      <p class="ds-kicker">Component · Data display</p>
+      <h1>Map</h1>
+      <p class="ds-lead">Where a location is matters as much as what it costs. The map shows every reviewed studio and outdoor spot in Toronto, tells the two apart by shape, and opens a short popup that leads to the review.</p>
+      <div class="ds-meta"><span class="ds-pill ds-pill--ok">WCAG 2.2 AA</span><span class="ds-pill">Status: stable</span><span class="ds-pill">Markers: native <code>&lt;button&gt;</code></span><span class="ds-pill"><code>.static-map</code></span><span class="ds-pill"><code>.map-marker</code></span><span class="ds-pill"><code>.map-legend</code></span><span class="ds-pill"><code>.map-popup</code></span><span class="ds-pill"><code>.map-unavailable</code></span><span class="ds-pill"><code>.map-page</code></span><span class="ds-pill"><code>.map-list-item</code></span><span class="ds-pill"><code>.preview-map</code></span></div>
+      <ul class="ds-toc"><li><a href="#overview">Overview</a></li><li><a href="#anatomy">Anatomy</a></li><li><a href="#variants">Variants</a></li><li><a href="#sizes">Sizes</a></li><li><a href="#states">States</a></li><li><a href="#responsive">Responsive behaviour</a></li><li><a href="#theming">Theming</a></li><li><a href="#accessibility">Accessibility</a></li><li><a href="#content">Content</a></li><li><a href="#do-dont">Do and don't</a></li><li><a href="#tokens">Tokens</a></li><li><a href="#code">Code</a></li><li><a href="#sources">Sources</a></li></ul>
+    </header>
+
+    <section class="ds-section" id="overview"><h2><a href="#overview">Overview</a></h2>
+      <p>One map frame, <code>.static-map</code>, appears in three places:</p>
+      <ul>
+        <li><b>Locations map</b> on the map page (L2-027–029): every published studio and spot as a focusable marker, a legend, a type filter (Both / Studios / Spots) and, below LG, a Map / List toggle. Activating a marker opens <code>.map-popup</code> with the kind, name, key fact and a link to the review (L2-028).</li>
+        <li><b>Spot map</b> on an outdoor spot review (L2-014): <code>.static-map--spot</code>, 16:9, centred on the spot with a single marker that is a picture, not a control.</li>
+        <li><b>Preview map</b> in the spot editor: <code>.preview-map</code>, the spot map bound to the latitude and longitude fields so the admin sees where the pin will land.</li>
+      </ul>
+      <p>When the tile service is unreachable, <code>.map-unavailable</code> takes the frame's place at the same size and the rest of the page carries on (L2-086.2). Use the map for location only. A list of locations to choose from is a <a href="location-card.html">location card</a> grid; distances to rain-backup studios are a <a href="list.html">list</a>.</p>
+      <p>Studios are <b>ink squares</b>; spots are <b>ringed circles</b>. Shape carries the type, so the map reads the same in both themes, in forced colours and for anyone who cannot tell colours apart (1.4.1). Accent red is used only for the selected marker's ring.</p>
+    </section>
+
+    <section class="ds-section" id="anatomy"><h2><a href="#anatomy">Anatomy</a></h2>
+      <div class="ds-anatomy">
+        <figure class="ds-anatomy__figure" style="display: block; max-width: 32rem;">
+          <div class="static-map" style="height: 22rem;">
+            <img class="static-map__tiles" src="../assets/img/map-toronto.svg" alt="" width="1600" height="1000">
+            <button class="map-marker map-marker--spot" type="button" style="left: 90%; top: 18%;" aria-label="Evergreen Brick Works, outdoor spot" aria-haspopup="dialog" aria-expanded="false"></button>
+            <button class="map-marker map-marker--studio" type="button" style="left: 80%; top: 62%;" aria-label="Ossington Blackbox, studio" aria-haspopup="dialog" aria-expanded="false"></button>
+            <button class="map-marker map-marker--studio" type="button" style="left: 46%; top: 72%;" aria-label="The Junction Loft, studio" aria-haspopup="dialog" aria-expanded="true" aria-controls="anatomy-popup"></button>
+            <ul class="map-legend map-legend--overlay" aria-label="Legend">
+              <li><span class="map-legend__key map-legend__key--studio" aria-hidden="true"></span>Studio</li>
+              <li><span class="map-legend__key map-legend__key--spot" aria-hidden="true"></span>Outdoor spot</li>
+            </ul>
+            <div class="popover map-popup" id="anatomy-popup" role="dialog" aria-labelledby="anatomy-popup-title" style="left: 46%; top: 72%;">
+              <p class="map-popup__kind">Studio</p>
+              <h3 class="map-popup__name" id="anatomy-popup-title">The Junction Loft</h3>
+              <p class="map-popup__fact">All-in for 2 hours: $145.00</p>
+              <a href="../../mocks/pages/studio/default.html">View the review<span class="visually-hidden">: The Junction Loft</span></a>
+              <button class="icon-btn" type="button" aria-label="Close"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+            </div>
+          </div>
+          <span class="ds-callout" style="left: 4%; top: 4%;" aria-hidden="true">1</span>
+          <span class="ds-callout" style="left: 84%; top: 52%;" aria-hidden="true">2</span>
+          <span class="ds-callout" style="left: 80%; top: 12%;" aria-hidden="true">3</span>
+          <span class="ds-callout" style="left: 52%; top: 76%;" aria-hidden="true">4</span>
+          <span class="ds-callout" style="left: 20%; top: 30%;" aria-hidden="true">5</span>
+          <span class="ds-callout" style="left: 4%; top: 80%;" aria-hidden="true">6</span>
+        </figure>
+        <ol class="ds-anatomy__list">
+          <li><div><b>Frame and tiles</b><small><code>.static-map</code>: <code>--radius-lg</code>, sunken ground, at least 15rem (240px, L2-014.4). <code>.static-map__tiles</code> covers it behind everything (<code>z-index: -1</code> inside an isolated frame).</small></div></li>
+          <li><div><b>Studio marker</b><small><code>.map-marker--studio</code>: a 24px ink square (<code>--color-action</code>, <code>--radius-xs</code>) in a 44px transparent target, with a 2px surface halo and <code>--shadow-2</code>.</small></div></li>
+          <li><div><b>Spot marker</b><small><code>.map-marker--spot</code>: a 24px surface circle with a 4px <code>--color-fg-default</code> ring, same target, halo and shadow.</small></div></li>
+          <li><div><b>Selected marker</b><small><code>aria-expanded="true"</code>: the mark grows to 1.2× and gains a second, accent ring outside the halo.</small></div></li>
+          <li><div><b>Popup</b><small><code>.popover.map-popup</code>: kind overline, name (<code>--text-h4</code>), key fact, page link and a Close icon button, floated 32px above its marker; docked along the bottom on phones.</small></div></li>
+          <li><div><b>Legend</b><small><code>.map-legend--overlay</code>: the two keys with their words on a raised surface in the bottom-left corner.</small></div></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="ds-section" id="variants"><h2><a href="#variants">Variants</a></h2>
+      <h3>Locations map (map page)</h3>
+      <p>All published locations, interactive markers in reading order, legend overlay. Drafts never get a marker (L2-027.3).</p>
+      <div class="ds-example">
+        <div class="ds-example__canvas" style="display: block;">
+          <div class="static-map" style="height: 20rem;">
+            <img class="static-map__tiles" src="../assets/img/map-toronto.svg" alt="" width="1600" height="1000">
+            <button class="map-marker map-marker--spot" type="button" style="left: 61%; top: 31%;" aria-label="Evergreen Brick Works, outdoor spot" aria-haspopup="dialog" aria-expanded="false"></button>
+            <button class="map-marker map-marker--studio" type="button" style="left: 30%; top: 33%;" aria-label="Bloordale Sun Studio, studio" aria-haspopup="dialog" aria-expanded="false"></button>
+            <button class="map-marker map-marker--studio" type="button" style="left: 20%; top: 40%;" aria-label="The Junction Loft, studio" aria-haspopup="dialog" aria-expanded="false"></button>
+            <button class="map-marker map-marker--spot" type="button" style="left: 53%; top: 41%;" aria-label="Allan Gardens Conservatory, outdoor spot" aria-haspopup="dialog" aria-expanded="false"></button>
+            <button class="map-marker map-marker--studio" type="button" style="left: 36%; top: 49%;" aria-label="Ossington Blackbox, studio" aria-haspopup="dialog" aria-expanded="false"></button>
+            <button class="map-marker map-marker--studio" type="button" style="left: 46%; top: 50%;" aria-label="Kensington Window Room, studio" aria-haspopup="dialog" aria-expanded="false"></button>
+            <button class="map-marker map-marker--studio" type="button" style="left: 65%; top: 56%;" aria-label="Riverside Rooftop Studio, studio" aria-haspopup="dialog" aria-expanded="false"></button>
+            <button class="map-marker map-marker--spot" type="button" style="left: 40%; top: 61%;" aria-label="Trinity Bellwoods Park, outdoor spot" aria-haspopup="dialog" aria-expanded="false"></button>
+            <button class="map-marker map-marker--studio" type="button" style="left: 77%; top: 61%;" aria-label="Leslieville Daylight Studio, studio" aria-haspopup="dialog" aria-expanded="false"></button>
+            <button class="map-marker map-marker--studio" type="button" style="left: 30%; top: 66%;" aria-label="Liberty Cyc House, studio" aria-haspopup="dialog" aria-expanded="false"></button>
+            <button class="map-marker map-marker--spot" type="button" style="left: 57%; top: 68%;" aria-label="Distillery District, outdoor spot" aria-haspopup="dialog" aria-expanded="false"></button>
+            <button class="map-marker map-marker--spot" type="button" style="left: 9%; top: 72%;" aria-label="Humber Bay Arch Bridge, outdoor spot" aria-haspopup="dialog" aria-expanded="false"></button>
+            <ul class="map-legend map-legend--overlay" aria-label="Legend">
+              <li><span class="map-legend__key map-legend__key--studio" aria-hidden="true"></span>Studio</li>
+              <li><span class="map-legend__key map-legend__key--spot" aria-hidden="true"></span>Outdoor spot</li>
+            </ul>
+          </div>
+        </div>
+        <div class="ds-example__caption"><span>Seven studios and five spots. Markers are positioned by the map library; the DOM order is reading order (top to bottom), which is the Tab order.</span></div>
+        <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;div class="static-map"&gt;
+  &lt;img class="static-map__tiles" src="…" alt=""&gt;
+  &lt;button class="map-marker map-marker--spot" type="button" style="left: 61%; top: 31%;"
+          aria-label="Evergreen Brick Works, outdoor spot" aria-haspopup="dialog" aria-expanded="false"&gt;&lt;/button&gt;
+  &lt;button class="map-marker map-marker--studio" type="button" style="left: 20%; top: 40%;"
+          aria-label="The Junction Loft, studio" aria-haspopup="dialog" aria-expanded="false"&gt;&lt;/button&gt;
+  …
+  &lt;ul class="map-legend map-legend--overlay" aria-label="Legend"&gt;
+    &lt;li&gt;&lt;span class="map-legend__key map-legend__key--studio" aria-hidden="true"&gt;&lt;/span&gt;Studio&lt;/li&gt;
+    &lt;li&gt;&lt;span class="map-legend__key map-legend__key--spot" aria-hidden="true"&gt;&lt;/span&gt;Outdoor spot&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;</code></pre></details>
+      </div>
+
+      <h3>Spot map (spot review)</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--stack">
+          <div class="static-map static-map--spot" role="region" aria-label="Map centred on Evergreen Brick Works">
+            <img class="static-map__tiles" src="../assets/img/map-spot.svg" alt="" width="1200" height="675">
+            <span class="map-marker map-marker--spot" role="img" aria-label="Evergreen Brick Works" style="left: 50%; top: 50%;"></span>
+          </div>
+          <p class="text-muted">43.6846, −79.3653 · in the Don Valley below Bayview Ave</p>
+        </div>
+        <div class="ds-example__caption"><span><code>.static-map--spot</code> (16:9, never under 240px) centred on the spot. The single marker is a <code>role="img"</code> named after the spot (L2-014.1); nothing inside is focusable, so one Tab passes the map (L2-014.3). No legend: there is only one kind.</span></div>
+      </div>
+
+      <h3>Preview map (spot editor)</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas" style="display: block;">
+          <div class="field-row">
+            <label class="field"><span class="field__label">Latitude</span><input class="input" id="preview-latitude" name="latitude" type="number" value="43.7056" inputmode="decimal" step="0.0001" min="-90" max="90"></label>
+            <label class="field"><span class="field__label">Longitude</span><input class="input" id="preview-longitude" name="longitude" type="number" value="-79.2310" inputmode="decimal" step="0.0001" min="-180" max="180"></label>
+          </div>
+          <div class="stack stack--sm" style="margin-top: var(--space-4);">
+            <div class="static-map preview-map" role="group" aria-label="Map preview" aria-describedby="preview-help">
+              <img class="static-map__tiles" src="../assets/img/map-spot.svg" alt="" width="1200" height="675">
+              <span class="map-marker map-marker--spot" role="img" aria-label="Preview position" style="top: 50%; left: 50%;"></span>
+            </div>
+            <p class="field__help" id="preview-help">The preview moves as you type.</p>
+          </div>
+        </div>
+        <div class="ds-example__caption"><span>Scarborough Bluffs (draft) at 43.7056, −79.2310. <code>.preview-map</code> is 16:9 with a 12rem floor. With no coordinates or an out-of-range value the marker is removed and the help text says why (see <a href="#states">States</a>).</span></div>
+      </div>
+
+      <h3>Marker popup: studio and spot</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas" style="align-items: flex-start;">
+          <div class="popover popover--static map-popup" role="dialog" aria-labelledby="variant-popup-studio" style="position: relative; translate: none;">
+            <p class="map-popup__kind">Studio</p>
+            <h3 class="map-popup__name" id="variant-popup-studio">The Junction Loft</h3>
+            <p class="map-popup__fact">All-in for 2 hours: $145.00</p>
+            <a href="../../mocks/pages/studio/default.html">View the review<span class="visually-hidden">: The Junction Loft</span></a>
+            <button class="icon-btn" type="button" aria-label="Close"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+          </div>
+          <div class="popover popover--static map-popup" role="dialog" aria-labelledby="variant-popup-spot" style="position: relative; translate: none;">
+            <p class="map-popup__kind">Outdoor spot</p>
+            <h3 class="map-popup__name" id="variant-popup-spot">Evergreen Brick Works</h3>
+            <p class="map-popup__fact">Portraits: no permit needed</p>
+            <a href="../../mocks/pages/spot/default.html">View the spot<span class="visually-hidden">: Evergreen Brick Works</span></a>
+            <button class="icon-btn" type="button" aria-label="Close"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+          </div>
+        </div>
+        <div class="ds-example__caption"><span>The key fact is the all-in cost for a studio and the portrait permit summary for a spot (L2-028.1). Shown unanchored here; on the map each floats above its marker.</span></div>
+      </div>
+
+      <h3>Legend: inline and overlay</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--stack">
+          <ul class="map-legend" aria-label="Legend">
+            <li><span class="map-legend__key map-legend__key--studio" aria-hidden="true"></span>Studio</li>
+            <li><span class="map-legend__key map-legend__key--spot" aria-hidden="true"></span>Outdoor spot</li>
+          </ul>
+          <div class="static-map" style="min-height: 0; height: 6rem;">
+            <img class="static-map__tiles" src="../assets/img/map-toronto.svg" alt="" width="1600" height="1000">
+            <ul class="map-legend map-legend--overlay" aria-label="Legend">
+              <li><span class="map-legend__key map-legend__key--studio" aria-hidden="true"></span>Studio</li>
+              <li><span class="map-legend__key map-legend__key--spot" aria-hidden="true"></span>Outdoor spot</li>
+            </ul>
+          </div>
+        </div>
+        <div class="ds-example__caption"><span><code>.map-legend</code> is muted text for use beside a map; <code>--overlay</code> pins it to the bottom-left corner on a raised surface, which is how the map page uses it.</span></div>
+      </div>
+
+      <h3>Map list item (map page, list column)</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas" style="display: block;">
+          <ul class="location-grid" style="grid-template-columns: minmax(0, 1fr); gap: var(--space-6); max-width: 24rem;">
+            <li class="map-list-item">
+              <div class="location-card__media"><img src="../assets/img/studio-the-junction-loft.svg" alt="" width="1200" height="800" loading="lazy"></div>
+              <h3 class="location-card__name"><a href="../../mocks/pages/studio/default.html">The Junction Loft</a></h3>
+              <p class="location-card__meta">Studio · Junction</p>
+              <p class="location-card__meta">All-in for 2 hours: $145.00</p>
+            </li>
+            <li class="map-list-item">
+              <div class="location-card__media"><img src="../assets/img/spot-evergreen-brick-works.svg" alt="" width="1200" height="800" loading="lazy"></div>
+              <h3 class="location-card__name"><a href="../../mocks/pages/spot/default.html">Evergreen Brick Works</a></h3>
+              <p class="location-card__meta">Outdoor spot · Don Valley</p>
+              <p class="location-card__meta">Portraits: no permit needed</p>
+            </li>
+          </ul>
+        </div>
+        <div class="ds-example__caption"><span><code>.map-list-item</code>: 88px thumbnail, name, kind and neighbourhood, key fact. The name's link stretches over the whole row. Alphabetical, the same locations as the markers.</span></div>
+      </div>
+    </section>
+
+    <section class="ds-section" id="sizes"><h2><a href="#sizes">Sizes</a></h2>
+      <div class="ds-table-wrap"><table class="ds-table">
+        <thead><tr><th scope="col">Part</th><th scope="col">Size</th><th scope="col">Why</th></tr></thead>
+        <tbody>
+          <tr><td>Marker target</td><td>44 × 44 (<code>--target-comfortable</code>)</td><td>Every phone target (L2-065); the visible mark is smaller.</td></tr>
+          <tr><td>Marker mark</td><td>24px (<code>--space-6</code>); hover 1.15×, selected 1.2×</td><td>Small enough to keep nearby locations apart at city zoom.</td></tr>
+          <tr><td><code>.static-map</code></td><td>min-height 15rem (240px), full width</td><td>L2-014.4 at XS.</td></tr>
+          <tr><td><code>.static-map--spot</code></td><td>16:9, never below 240px</td><td>On a 320px phone the floor wins and the map is taller than 16:9.</td></tr>
+          <tr><td><code>.preview-map</code></td><td>16:9, min-height 12rem</td><td>Fits beside the coordinate fields in an editor section.</td></tr>
+          <tr><td>Map page map, XS–MD</td><td><code>100dvh − header − 7rem</code>, min 18rem</td><td>Fills the viewport below the header and bar (L2-029.1).</td></tr>
+          <tr><td>Map page, LG+</td><td>Full viewport below the header; list column 24rem</td><td>List and map side by side (L2-029.3).</td></tr>
+          <tr><td>Popup</td><td><code>min(17rem, 100vw − 2 × margin)</code></td><td>Never wider than a phone; docks full width on phones.</td></tr>
+          <tr><td>Legend key</td><td>16px (<code>--space-4</code>)</td><td>Reads as the same shape as the marker at a glance.</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section class="ds-section" id="states"><h2><a href="#states">States</a></h2>
+      <h3>Markers</h3>
+      <p>Hover and focus are forced with <code>data-state</code>; selected is the real <code>aria-expanded="true"</code> the marker carries while its popup is open.</p>
+      <div class="ds-matrix"><table>
+        <caption class="visually-hidden">Map marker states by type</caption>
+        <thead><tr><th scope="col">Marker</th><th scope="col">Default</th><th scope="col">Hover</th><th scope="col">Focus</th><th scope="col">Active</th><th scope="col">Disabled</th><th scope="col">Selected</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Studio</th>
+            <td><div class="static-map" style="min-height: 0; width: 5.5rem; height: 5.5rem;"><img class="static-map__tiles" src="../assets/img/map-spot.svg" alt="" width="1200" height="675"><button class="map-marker map-marker--studio" type="button" style="left: 50%; top: 50%;" aria-label="The Junction Loft, studio (default)" aria-haspopup="dialog" aria-expanded="false"></button></div></td>
+            <td><div class="static-map" style="min-height: 0; width: 5.5rem; height: 5.5rem;"><img class="static-map__tiles" src="../assets/img/map-spot.svg" alt="" width="1200" height="675"><button class="map-marker map-marker--studio" type="button" data-state="hover" style="left: 50%; top: 50%;" aria-label="The Junction Loft, studio (hover)" aria-haspopup="dialog" aria-expanded="false"></button></div></td>
+            <td><div class="static-map" style="min-height: 0; width: 5.5rem; height: 5.5rem;"><img class="static-map__tiles" src="../assets/img/map-spot.svg" alt="" width="1200" height="675"><button class="map-marker map-marker--studio" type="button" data-state="focus" style="left: 50%; top: 50%;" aria-label="The Junction Loft, studio (focus)" aria-haspopup="dialog" aria-expanded="false"></button></div></td>
+            <td><div class="static-map" style="min-height: 0; width: 5.5rem; height: 5.5rem;"><img class="static-map__tiles" src="../assets/img/map-spot.svg" alt="" width="1200" height="675"><button class="map-marker map-marker--studio" type="button" data-state="hover" style="left: 50%; top: 50%;" aria-label="The Junction Loft, studio (active)" aria-haspopup="dialog" aria-expanded="false"></button></div></td>
+            <td><span class="text-muted" style="font: var(--text-body-sm); display: block; width: 9rem;">Never disabled; unpublished locations get no marker.</span></td>
+            <td><div class="static-map" style="min-height: 0; width: 5.5rem; height: 5.5rem;"><img class="static-map__tiles" src="../assets/img/map-spot.svg" alt="" width="1200" height="675"><button class="map-marker map-marker--studio" type="button" style="left: 50%; top: 50%;" aria-label="The Junction Loft, studio (selected)" aria-haspopup="dialog" aria-expanded="true"></button></div></td>
+          </tr>
+          <tr><th scope="row">Spot</th>
+            <td><div class="static-map" style="min-height: 0; width: 5.5rem; height: 5.5rem;"><img class="static-map__tiles" src="../assets/img/map-spot.svg" alt="" width="1200" height="675"><button class="map-marker map-marker--spot" type="button" style="left: 50%; top: 50%;" aria-label="Evergreen Brick Works, outdoor spot (default)" aria-haspopup="dialog" aria-expanded="false"></button></div></td>
+            <td><div class="static-map" style="min-height: 0; width: 5.5rem; height: 5.5rem;"><img class="static-map__tiles" src="../assets/img/map-spot.svg" alt="" width="1200" height="675"><button class="map-marker map-marker--spot" type="button" data-state="hover" style="left: 50%; top: 50%;" aria-label="Evergreen Brick Works, outdoor spot (hover)" aria-haspopup="dialog" aria-expanded="false"></button></div></td>
+            <td><div class="static-map" style="min-height: 0; width: 5.5rem; height: 5.5rem;"><img class="static-map__tiles" src="../assets/img/map-spot.svg" alt="" width="1200" height="675"><button class="map-marker map-marker--spot" type="button" data-state="focus" style="left: 50%; top: 50%;" aria-label="Evergreen Brick Works, outdoor spot (focus)" aria-haspopup="dialog" aria-expanded="false"></button></div></td>
+            <td><div class="static-map" style="min-height: 0; width: 5.5rem; height: 5.5rem;"><img class="static-map__tiles" src="../assets/img/map-spot.svg" alt="" width="1200" height="675"><button class="map-marker map-marker--spot" type="button" data-state="hover" style="left: 50%; top: 50%;" aria-label="Evergreen Brick Works, outdoor spot (active)" aria-haspopup="dialog" aria-expanded="false"></button></div></td>
+            <td><span class="text-muted" style="font: var(--text-body-sm); display: block; width: 9rem;">Never disabled.</span></td>
+            <td><div class="static-map" style="min-height: 0; width: 5.5rem; height: 5.5rem;"><img class="static-map__tiles" src="../assets/img/map-spot.svg" alt="" width="1200" height="675"><button class="map-marker map-marker--spot" type="button" style="left: 50%; top: 50%;" aria-label="Evergreen Brick Works, outdoor spot (selected)" aria-haspopup="dialog" aria-expanded="true"></button></div></td>
+          </tr>
+        </tbody>
+      </table></div>
+      <p class="text-muted" style="font: var(--text-body-sm);">Active has no style of its own: the pointer is over the marker, so it shows the hover scale until the popup opens and the marker becomes selected.</p>
+
+      <h3>Popup open: studio and spot</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas" style="align-items: flex-start;">
+          <div class="static-map" style="flex: 1 1 18rem; height: 20rem;">
+            <img class="static-map__tiles" src="../assets/img/map-toronto.svg" alt="" width="1600" height="1000">
+            <button class="map-marker map-marker--spot" type="button" style="left: 80%; top: 28%;" aria-label="Allan Gardens Conservatory, outdoor spot" aria-haspopup="dialog" aria-expanded="false"></button>
+            <button class="map-marker map-marker--studio" type="button" style="left: 50%; top: 72%;" aria-label="The Junction Loft, studio" aria-haspopup="dialog" aria-expanded="true" aria-controls="state-popup-studio"></button>
+            <div class="popover map-popup map-popup--dock" id="state-popup-studio" role="dialog" aria-labelledby="state-popup-studio-title" style="left: 50%; top: 72%;">
+              <p class="map-popup__kind">Studio</p>
+              <h3 class="map-popup__name" id="state-popup-studio-title">The Junction Loft</h3>
+              <p class="map-popup__fact">All-in for 2 hours: $145.00</p>
+              <a href="../../mocks/pages/studio/default.html">View the review<span class="visually-hidden">: The Junction Loft</span></a>
+              <button class="icon-btn" type="button" aria-label="Close"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+            </div>
+          </div>
+          <div class="static-map" style="flex: 1 1 18rem; height: 20rem;">
+            <img class="static-map__tiles" src="../assets/img/map-toronto.svg" alt="" width="1600" height="1000">
+            <button class="map-marker map-marker--studio" type="button" style="left: 20%; top: 30%;" aria-label="Bloordale Sun Studio, studio" aria-haspopup="dialog" aria-expanded="false"></button>
+            <button class="map-marker map-marker--spot" type="button" style="left: 50%; top: 72%;" aria-label="Evergreen Brick Works, outdoor spot" aria-haspopup="dialog" aria-expanded="true" aria-controls="state-popup-spot"></button>
+            <div class="popover map-popup map-popup--dock" id="state-popup-spot" role="dialog" aria-labelledby="state-popup-spot-title" style="left: 50%; top: 72%;">
+              <p class="map-popup__kind">Outdoor spot</p>
+              <h3 class="map-popup__name" id="state-popup-spot-title">Evergreen Brick Works</h3>
+              <p class="map-popup__fact">Portraits: no permit needed</p>
+              <a href="../../mocks/pages/spot/default.html">View the spot<span class="visually-hidden">: Evergreen Brick Works</span></a>
+              <button class="icon-btn" type="button" aria-label="Close"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+            </div>
+          </div>
+        </div>
+        <div class="ds-example__caption"><span>The marker is selected while its popup is open. One popup at a time: opening another closes this one. Below 48rem the same markup docks along the bottom of the map (<code>.map-popup--dock</code>); narrow this window to see it.</span></div>
+      </div>
+
+      <h3>Type filter: studios only</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--stack">
+          <div class="segmented" role="group" aria-label="Show" style="margin: 0;"><button type="button" aria-pressed="false">Both</button><button type="button" aria-pressed="true">Studios</button><button type="button" aria-pressed="false">Spots</button></div>
+          <div class="static-map" style="height: 16rem;">
+            <img class="static-map__tiles" src="../assets/img/map-toronto.svg" alt="" width="1600" height="1000">
+            <button class="map-marker map-marker--studio" type="button" style="left: 30%; top: 33%;" aria-label="Bloordale Sun Studio, studio" aria-haspopup="dialog" aria-expanded="false"></button>
+            <button class="map-marker map-marker--studio" type="button" style="left: 20%; top: 40%;" aria-label="The Junction Loft, studio" aria-haspopup="dialog" aria-expanded="false"></button>
+            <button class="map-marker map-marker--studio" type="button" style="left: 36%; top: 49%;" aria-label="Ossington Blackbox, studio" aria-haspopup="dialog" aria-expanded="false"></button>
+            <button class="map-marker map-marker--studio" type="button" style="left: 46%; top: 50%;" aria-label="Kensington Window Room, studio" aria-haspopup="dialog" aria-expanded="false"></button>
+            <button class="map-marker map-marker--studio" type="button" style="left: 65%; top: 56%;" aria-label="Riverside Rooftop Studio, studio" aria-haspopup="dialog" aria-expanded="false"></button>
+            <button class="map-marker map-marker--studio" type="button" style="left: 77%; top: 61%;" aria-label="Leslieville Daylight Studio, studio" aria-haspopup="dialog" aria-expanded="false"></button>
+            <button class="map-marker map-marker--studio" type="button" style="left: 30%; top: 66%;" aria-label="Liberty Cyc House, studio" aria-haspopup="dialog" aria-expanded="false"></button>
+            <ul class="map-legend map-legend--overlay" aria-label="Legend">
+              <li><span class="map-legend__key map-legend__key--studio" aria-hidden="true"></span>Studio</li>
+              <li><span class="map-legend__key map-legend__key--spot" aria-hidden="true"></span>Outdoor spot</li>
+            </ul>
+          </div>
+          <p class="text-muted" style="font: var(--text-body-sm);">Status read out: "7 locations".</p>
+        </div>
+        <div class="ds-example__caption"><span>"Studios" pressed in the <a href="button-group.html">segmented control</a>: seven ink squares, and the list beside or behind the map shows the same seven (L2-027.2). The filter is kept in the URL (<code>?type=studios</code>) and does not refetch.</span></div>
+      </div>
+
+      <h3>Loading, empty and error</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas" style="align-items: flex-start;">
+          <div class="static-map" aria-busy="true" style="flex: 1 1 18rem; height: 30rem;">
+            <span class="skeleton" style="position: absolute; inset: 0; margin: 0; border-radius: 0;"></span>
+          </div>
+          <div class="static-map" style="flex: 1 1 18rem; height: 30rem;">
+            <img class="static-map__tiles" src="../assets/img/map-toronto.svg" alt="" width="1600" height="1000">
+            <div class="static-map__overlay">
+              <div class="empty empty--compact">
+                <div class="empty__icon"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 21s-7-6.5-7-12a7 7 0 0 1 14 0c0 5.5-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg></div>
+                <h3 class="empty__title">No locations on the map yet</h3>
+                <p class="empty__text">The first studio and spot reviews are being shot now. Each appears here once it is published.</p>
+                <div class="empty__actions"><a class="btn" href="../../mocks/pages/home/default.html">Get new reviews by email</a></div>
+              </div>
+            </div>
+          </div>
+          <div class="static-map" style="flex: 1 1 18rem; height: 30rem;">
+            <img class="static-map__tiles" src="../assets/img/map-toronto.svg" alt="" width="1600" height="1000">
+            <div class="static-map__overlay">
+              <div class="empty empty--compact empty--error">
+                <div class="empty__icon"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16h.01"/></svg></div>
+                <h3 class="empty__title">We couldn't load the locations</h3>
+                <p class="empty__text">The map is here, but the studio and spot data didn't arrive. Try again in a moment.</p>
+                <div class="empty__actions"><button class="btn" type="button"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.3-5.6"/><path d="M20 4v5h-5"/></svg>Try again</button><a class="btn btn--ghost" href="../../mocks/pages/studios/default.html">Browse studios</a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ds-example__caption"><span><b>Loading</b>: a full-bleed <a href="skeleton.html">skeleton</a> in the frame, <code>aria-busy="true"</code>, status "Loading locations…", skeleton rows in the list. <b>Empty</b>: tiles stay, an <a href="empty-state.html">empty state</a> on a raised panel; status "0 locations". <b>Error</b>: the same panel in its error tone with <code>role="alert"</code>, Try again and Browse studios; the list says "Locations didn't load."</span></div>
+      </div>
+
+      <h3>Tiles failed</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas" style="align-items: flex-start;">
+          <div style="flex: 1 1 18rem; min-width: 0;">
+            <div class="static-map static-map--spot">
+              <div class="map-unavailable" role="status">
+                <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-12a7 7 0 0 1 14 0c0 5.8-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>
+                <strong>The map didn't load</strong>
+                <p class="num">43.6846, −79.3653</p>
+                <a class="link--external" href="https://www.google.com/maps/search/?api=1&amp;query=43.6846,-79.3653" target="_blank" rel="noopener">Open in Google Maps<svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v6H4V6h6"/></svg><span class="visually-hidden"> (opens in a new tab)</span></a>
+              </div>
+            </div>
+          </div>
+          <div class="static-map" style="flex: 1 1 18rem; height: 15rem;">
+            <div class="map-unavailable" role="status">
+              <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 21s-7-6.5-7-12a7 7 0 0 1 14 0c0 5.5-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>
+              <strong>The map didn't load</strong>
+              <p>The list of locations still works.</p>
+              <a class="btn until-lg" href="../../mocks/pages/map/list.html">Show the list</a>
+            </div>
+          </div>
+        </div>
+        <div class="ds-example__caption"><span>Spot review (left, L2-086.2): coordinates and an external map link in the same 16:9 slot. Map page (right): the list still works; below LG, "Show the list" switches the view (hidden from LG, where the list is already beside it).</span></div>
+      </div>
+
+      <h3>Preview map: no marker yet, out of range</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas" style="align-items: flex-start;">
+          <div class="stack stack--sm" style="flex: 1 1 16rem; min-width: 0;">
+            <div class="static-map preview-map" role="group" aria-label="Map preview, new spot" aria-describedby="preview-help-new">
+              <img class="static-map__tiles" src="../assets/img/map-spot.svg" alt="" width="1200" height="675">
+            </div>
+            <p class="field__help" id="preview-help-new">Enter both coordinates to place the marker. The preview moves as you type.</p>
+          </div>
+          <div class="stack stack--sm" style="flex: 1 1 16rem; min-width: 0;">
+            <div class="static-map preview-map" role="group" aria-label="Map preview, latitude out of range" aria-describedby="preview-help-invalid">
+              <img class="static-map__tiles" src="../assets/img/map-spot.svg" alt="" width="1200" height="675">
+            </div>
+            <p class="field__help" id="preview-help-invalid">The marker returns when the coordinates are in range.</p>
+          </div>
+        </div>
+        <div class="ds-example__caption"><span>A new spot has no coordinates; a latitude of 95 is out of range ("Enter a latitude from -90 to 90" shows under the field). The preview never guesses a position.</span></div>
+      </div>
+
+      <h3>Both themes</h3>
+      <div class="ds-themes">
+        <div data-theme="light">
+          <div class="static-map" style="height: 16rem;">
+            <img class="static-map__tiles" src="../assets/img/map-toronto.svg" alt="" width="1600" height="1000">
+            <button class="map-marker map-marker--spot" type="button" style="left: 25%; top: 25%;" aria-label="Evergreen Brick Works, outdoor spot (light theme)" aria-haspopup="dialog" aria-expanded="false"></button>
+            <button class="map-marker map-marker--studio" type="button" style="left: 80%; top: 30%;" aria-label="Ossington Blackbox, studio (light theme)" aria-haspopup="dialog" aria-expanded="false"></button>
+            <button class="map-marker map-marker--studio" type="button" style="left: 50%; top: 75%;" aria-label="The Junction Loft, studio (light theme)" aria-haspopup="dialog" aria-expanded="true" aria-controls="light-popup"></button>
+            <div class="popover map-popup" id="light-popup" role="dialog" aria-labelledby="light-popup-title" style="left: 50%; top: 75%;">
+              <p class="map-popup__kind">Studio</p>
+              <h3 class="map-popup__name" id="light-popup-title">The Junction Loft</h3>
+              <p class="map-popup__fact">All-in for 2 hours: $145.00</p>
+              <a href="../../mocks/pages/studio/default.html">View the review<span class="visually-hidden">: The Junction Loft (light theme)</span></a>
+              <button class="icon-btn" type="button" aria-label="Close"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+            </div>
+          </div>
+          <ul class="map-legend" aria-label="Legend" style="margin-top: var(--space-3);">
+            <li><span class="map-legend__key map-legend__key--studio" aria-hidden="true"></span>Studio</li>
+            <li><span class="map-legend__key map-legend__key--spot" aria-hidden="true"></span>Outdoor spot</li>
+          </ul>
+        </div>
+        <div data-theme="dark">
+          <div class="static-map" style="height: 16rem;">
+            <img class="static-map__tiles" src="../assets/img/map-toronto.svg" alt="" width="1600" height="1000">
+            <button class="map-marker map-marker--spot" type="button" style="left: 25%; top: 25%;" aria-label="Evergreen Brick Works, outdoor spot (dark theme)" aria-haspopup="dialog" aria-expanded="false"></button>
+            <button class="map-marker map-marker--studio" type="button" style="left: 80%; top: 30%;" aria-label="Ossington Blackbox, studio (dark theme)" aria-haspopup="dialog" aria-expanded="false"></button>
+            <button class="map-marker map-marker--studio" type="button" style="left: 50%; top: 75%;" aria-label="The Junction Loft, studio (dark theme)" aria-haspopup="dialog" aria-expanded="true" aria-controls="dark-popup"></button>
+            <div class="popover map-popup" id="dark-popup" role="dialog" aria-labelledby="dark-popup-title" style="left: 50%; top: 75%;">
+              <p class="map-popup__kind">Studio</p>
+              <h3 class="map-popup__name" id="dark-popup-title">The Junction Loft</h3>
+              <p class="map-popup__fact">All-in for 2 hours: $145.00</p>
+              <a href="../../mocks/pages/studio/default.html">View the review<span class="visually-hidden">: The Junction Loft (dark theme)</span></a>
+              <button class="icon-btn" type="button" aria-label="Close"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+            </div>
+          </div>
+          <ul class="map-legend" aria-label="Legend" style="margin-top: var(--space-3);">
+            <li><span class="map-legend__key map-legend__key--studio" aria-hidden="true"></span>Studio</li>
+            <li><span class="map-legend__key map-legend__key--spot" aria-hidden="true"></span>Outdoor spot</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="ds-section" id="responsive"><h2><a href="#responsive">Responsive behaviour</a></h2>
+      <ul>
+        <li><b>XS–MD (below 62rem)</b>: the map page shows one view at a time. The bar holds the "Map" heading, the type filter and the Map / List toggle (<code>.map-page__toggle</code>); <code>data-view="map|list"</code> on <code>.map-page</code> hides the other view, and the choice is kept in the URL (<code>?view=list</code>, L2-029.2). The map fills the viewport below the header and bar (L2-029.1).</li>
+        <li><b>List view</b>: one column of <code>.map-list-item</code> rows at XS, two columns from SM to MD.</li>
+        <li><b>LG and up</b>: a 24rem scrolling list column beside the map, both filling the viewport below the header; the toggle is hidden (L2-029.3).</li>
+        <li><b>Popup</b>: floats 32px above its marker from 48rem; below 48rem <code>.map-popup--dock</code> pins it across the bottom of the map, 12px from the edges, so it is never clipped by the frame or covered by a thumb.</li>
+        <li><b>Spot and preview maps</b> are full content width at every breakpoint; the spot map never drops under 240px (L2-014.4).</li>
+        <li>Nothing scrolls sideways: the frame clips its tiles and markers, and the page bar wraps.</li>
+      </ul>
+      <div class="ds-iframes">
+        <iframe class="ds-iframe" src="../../mocks/pages/map/default.html?chrome=0" title="Map page at phone width, map view" loading="lazy"></iframe>
+        <iframe class="ds-iframe" src="../../mocks/pages/map/list.html?chrome=0" title="Map page at phone width, list view" loading="lazy"></iframe>
+        <iframe class="ds-iframe" src="../../mocks/dialogs/map-popup/default.html?chrome=0" title="Map page at phone width with the studio popup docked" loading="lazy"></iframe>
+      </div>
+      <iframe class="ds-iframe ds-iframe--wide" src="../../mocks/pages/map/default.html?chrome=0" title="Map page at desktop width, list beside map" loading="lazy" style="margin-top: var(--space-6);"></iframe>
+    </section>
+
+    <section class="ds-section" id="theming"><h2><a href="#theming">Theming</a></h2>
+      <p>Tiles are content, like photos: they keep their own colours in both themes. Everything drawn on top reads semantic tokens, so it holds its contrast against the tiles through its own halo and surfaces:</p>
+      <ul>
+        <li>Studio mark <code>--color-action</code>; spot mark <code>--color-bg-surface</code> fill with a <code>--color-fg-default</code> ring; both inside a 2px <code>--color-bg-surface</code> halo and <code>--shadow-2</code>. In dark the studio square becomes light stone inside a near-black halo and the spot becomes a dark circle with a light ring: still a square and a circle.</li>
+        <li>Selected ring <code>--color-accent</code>, outside the halo.</li>
+        <li>Legend overlay and popup: <code>--color-bg-surface-raised</code> with <code>--shadow-2</code> / <code>--shadow-3</code>; in dark the raised surface is a lighter stone than the page, so both still read as lifted.</li>
+        <li>Frame ground and tiles-failed panel: <code>--color-bg-surface-sunken</code>, <code>--color-fg-muted</code>, <code>--color-fg-default</code>.</li>
+      </ul>
+      <p>The marker has no component tokens; a re-skin overrides the semantic ones on the frame, for example <code>.static-map { --color-action: …; }</code> for a different studio fill.</p>
+    </section>
+
+    <section class="ds-section" id="accessibility"><h2><a href="#accessibility">Accessibility</a></h2>
+      <h3>Role and pattern</h3>
+      <ul>
+        <li><b>Markers</b> on the locations map are native <code>&lt;button type="button"&gt;</code> elements with <code>aria-haspopup="dialog"</code>, <code>aria-expanded</code> and, while open, <code>aria-controls</code> (<a href="https://www.w3.org/WAI/ARIA/apg/patterns/button/">APG Button</a>).</li>
+        <li><b>Popup</b>: a non-modal <code>role="dialog"</code> labelled by the location name (<a href="https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/">APG Dialog</a>, without the focus trap: the rest of the map stays usable).</li>
+        <li><b>Spot map</b>: <code>role="region"</code> named "Map centred on Evergreen Brick Works", holding a <code>role="img"</code> marker named after the spot (L2-014.1). It has no focusable content and never traps focus (L2-014.3).</li>
+        <li><b>Preview map</b>: <code>role="group"</code> named "Map preview" and described by the help text under it.</li>
+        <li><b>Type filter and view toggle</b>: <a href="button-group.html">segmented controls</a> — <code>role="group"</code> ("Show", "View as") of <code>aria-pressed</code> buttons. A polite live region reports the count: "12 locations", "7 locations", "Loading locations…".</li>
+        <li><b>Legend</b>: a <code>&lt;ul aria-label="Legend"&gt;</code>; the keys are <code>aria-hidden</code> and the words carry the meaning.</li>
+      </ul>
+      <h3>Keyboard</h3>
+      <table class="ds-table ds-keys"><thead><tr><th scope="col">Key</th><th scope="col">Action</th></tr></thead><tbody>
+        <tr><td><kbd>Tab</kbd> / <kbd>Shift</kbd>+<kbd>Tab</kbd></td><td>Type filter, view toggle, list rows (from LG), then each marker in reading order (L2-028.3). On a spot review one Tab passes the whole map.</td></tr>
+        <tr><td><kbd>Enter</kbd>, <kbd>Space</kbd></td><td>On a marker: opens its popup, marks it selected and moves focus into the popup. On a filter or toggle button: presses it.</td></tr>
+        <tr><td><kbd>Tab</kbd> in the popup</td><td>"View the review" (or "View the spot"), then Close, then on to the next marker.</td></tr>
+        <tr><td><kbd>Esc</kbd></td><td>Closes the popup and returns focus to its marker (L2-028.2). Close does the same.</td></tr>
+      </tbody></table>
+      <h3>Focus</h3>
+      <p>The shared ring draws round the marker's 44px target (<code>border-radius: full</code>), outside the halo, so it is visible on any tile. Popup controls use the ring on the raised surface. Focus never lands on the tiles. In the list view <code>.map-list-item</code> removes its link's outline (inherited from the location card) and draws the ring round the whole row instead (<code>.map-list-item:has(.location-card__name a:focus-visible)</code>, 8px offset, <code>--radius-md</code>).</p>
+      <h3>Labelling</h3>
+      <p>Each marker's name is the location and its kind, "The Junction Loft, studio" or "Evergreen Brick Works, outdoor spot", because the shape that tells them apart is visual. The popup is named by its heading; its link reads "View the review: The Junction Loft"; the icon button is "Close". The spot marker's name is just the spot name; the region adds "Map centred on". The tiles image is decorative (<code>alt=""</code>).</p>
+      <h3>Contrast</h3>
+      <div class="ds-example__canvas ds-example__canvas--stack" style="padding: 0; gap: var(--space-2);">
+        <div class="ds-pair"><span>Studio mark inside its halo (halo = surface = canvas)</span><span class="ds-pair__ratio" data-contrast="--color-action|--color-bg-canvas" data-min="3"></span></div>
+        <div class="ds-pair"><span>Spot ring on its fill and halo</span><span class="ds-pair__ratio" data-contrast="--color-fg-default|--color-bg-surface" data-min="3"></span></div>
+        <div class="ds-pair"><span>Selected ring against the halo</span><span class="ds-pair__ratio" data-contrast="--color-accent|--color-bg-surface" data-min="3"></span></div>
+        <div class="ds-pair"><span>Legend studio key on the overlay</span><span class="ds-pair__ratio" data-contrast="--color-action|--color-bg-surface-raised" data-min="3"></span></div>
+        <div class="ds-pair"><span>Legend text, spot key and popup name on raised surface</span><span class="ds-pair__ratio" data-contrast="--color-fg-default|--color-bg-surface-raised" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Popup kind and fact</span><span class="ds-pair__ratio" data-contrast="--color-fg-muted|--color-bg-surface-raised" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Focus ring in the popup</span><span class="ds-pair__ratio" data-contrast="--color-focus-ring|--color-bg-surface-raised" data-min="3"></span></div>
+        <div class="ds-pair"><span>"The map didn't load" on sunken panel</span><span class="ds-pair__ratio" data-contrast="--color-fg-default|--color-bg-surface-sunken" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Tiles-failed message text</span><span class="ds-pair__ratio" data-contrast="--color-fg-muted|--color-bg-surface-sunken" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Pressed filter segment on page</span><span class="ds-pair__ratio" data-contrast="--color-fg-accent|--color-bg-canvas" data-min="4.5"></span></div>
+      </div>
+      <p class="text-muted" style="font: var(--text-body-sm);">Marks sit on tiles, which no token controls; the surface halo and shadow separate them from any tile colour. The popup link and the "Open in Google Maps" link on the sunken panel use <code>--color-fg-link</code>, checked at 4.5:1 on both surfaces in <code>contrast-pairs.json</code>.</p>
+      <h3>Motion</h3>
+      <p>Marks scale on hover and selection over <code>--duration-fast</code>; the popup enters with the popover's <code>scale-in</code>. Reduced motion zeroes both durations, so the change still happens, instantly. The loading skeleton's shimmer stops under reduced motion.</p>
+      <h3>Touch</h3>
+      <p>Every marker target is 44 × 44 although the mark is 24px. Hover only enlarges the mark; nothing is revealed on hover alone, so touch loses nothing. The docked popup on phones keeps the link and the 44px Close within thumb reach.</p>
+    </section>
+
+    <section class="ds-section" id="content"><h2><a href="#content">Content</a></h2>
+      <ul>
+        <li>Kinds: "Studio" and "Outdoor spot", in the popup overline, the legend and the list meta ("Studio · Junction", "Outdoor spot · Don Valley").</li>
+        <li>Key fact: "All-in for 2 hours: $145.00" for a studio; the portrait permit summary for a spot, "Portraits: no permit needed" or "Portraits: permit required".</li>
+        <li>Popup link: "View the review" for a studio, "View the spot" for a spot, with the name as a hidden suffix.</li>
+        <li>Filter: "Both", "Studios", "Spots"; toggle: "Map", "List". Count: "12 locations".</li>
+        <li>Tiles failed: "The map didn't load", then what still works — "The list of locations still works." on the map page, the coordinates "43.6846, −79.3653" and "Open in Google Maps" on a spot review.</li>
+        <li>Empty: "No locations on the map yet" / "The first studio and spot reviews are being shot now. Each appears here once it is published." Error: "We couldn't load the locations" / "Try again".</li>
+        <li>Coordinates to four decimals with a true minus sign (−79.3653), followed by a plain-words locator: "in the Don Valley below Bayview Ave".</li>
+      </ul>
+    </section>
+
+    <section class="ds-section" id="do-dont"><h2><a href="#do-dont">Do and don't</a></h2>
+      <div class="ds-dodont">
+        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--stack"><div class="static-map" style="min-height: 0; height: 6rem;"><img class="static-map__tiles" src="../assets/img/map-spot.svg" alt="" width="1200" height="675"><button class="map-marker map-marker--studio" type="button" style="left: 35%; top: 50%;" aria-label="The Junction Loft, studio (do example)" aria-haspopup="dialog" aria-expanded="false"></button><button class="map-marker map-marker--spot" type="button" style="left: 65%; top: 50%;" aria-label="Evergreen Brick Works, outdoor spot (do example)" aria-haspopup="dialog" aria-expanded="false"></button></div></div><figcaption>Tell studios and spots apart by shape — square and ringed circle — and say the kind in the marker's name and in the legend.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--stack"><div class="static-map" style="min-height: 0; height: 6rem;"><img class="static-map__tiles" src="../assets/img/map-spot.svg" alt="" width="1200" height="675"><span style="position: absolute; left: 35%; top: 50%; translate: -50% -50%; width: var(--space-6); height: var(--space-6); border-radius: var(--radius-full); background: var(--color-action); box-shadow: 0 0 0 var(--border-width-thick) var(--color-bg-surface);"></span><span style="position: absolute; left: 65%; top: 50%; translate: -50% -50%; width: var(--space-6); height: var(--space-6); border-radius: var(--radius-full); background: var(--color-accent); box-shadow: 0 0 0 var(--border-width-thick) var(--color-bg-surface);"></span></div></div><figcaption>Don't use two colours of the same dot. Colour alone fails 1.4.1, and accent red already means "selected".</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--stack"><div class="static-map" style="min-height: 0; height: 9rem;"><div class="map-unavailable"><strong>The map didn't load</strong><p class="num">43.6846, −79.3653</p></div></div></div><figcaption>When tiles fail, keep the slot at its size and give what the map would have: the coordinates and a way to open them elsewhere.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--stack"><div class="static-map" style="min-height: 0; height: 9rem;"></div></div><figcaption>Don't leave an empty grey frame or collapse it: the visitor cannot tell a slow map from a broken one, and the page jumps.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--stack"><pre><code>&lt;span class="map-marker map-marker--spot" role="img"
+      aria-label="Evergreen Brick Works"&gt;&lt;/span&gt;</code></pre></div><figcaption>On a spot review the single marker is a picture. One Tab passes the map.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--stack"><pre><code>&lt;a class="map-marker map-marker--spot" href="#"
+   aria-label="Marker"&gt;&lt;/a&gt;</code></pre></div><figcaption>Don't make a marker focusable when it opens nothing, and never name it "Marker": a screen reader hears a link to nowhere.</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="ds-section" id="tokens"><h2><a href="#tokens">Tokens</a></h2>
+      <div class="ds-table-wrap"><table class="ds-table">
+        <thead><tr><th scope="col">Part</th><th scope="col">Token</th><th scope="col">Light</th><th scope="col">Dark</th></tr></thead>
+        <tbody>
+          <tr><td>Studio mark, legend studio key</td><td><code>--color-action</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-action" data-swatch></i><span data-token="--color-action"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-action" data-swatch></i><span data-token="--color-action"></span></span></td></tr>
+          <tr><td>Marker halo, spot fill</td><td><code>--color-bg-surface</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-bg-surface" data-swatch></i><span data-token="--color-bg-surface"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-bg-surface" data-swatch></i><span data-token="--color-bg-surface"></span></span></td></tr>
+          <tr><td>Spot ring, legend spot key</td><td><code>--color-fg-default</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-default" data-swatch></i><span data-token="--color-fg-default"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-default" data-swatch></i><span data-token="--color-fg-default"></span></span></td></tr>
+          <tr><td>Selected ring</td><td><code>--color-accent</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-accent" data-swatch></i><span data-token="--color-accent"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-accent" data-swatch></i><span data-token="--color-accent"></span></span></td></tr>
+          <tr><td>Legend overlay, popup</td><td><code>--color-bg-surface-raised</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-bg-surface-raised" data-swatch></i><span data-token="--color-bg-surface-raised"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-bg-surface-raised" data-swatch></i><span data-token="--color-bg-surface-raised"></span></span></td></tr>
+          <tr><td>Frame ground, tiles-failed panel</td><td><code>--color-bg-surface-sunken</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-bg-surface-sunken" data-swatch></i><span data-token="--color-bg-surface-sunken"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-bg-surface-sunken" data-swatch></i><span data-token="--color-bg-surface-sunken"></span></span></td></tr>
+          <tr><td>Legend text, popup kind and fact, failed text</td><td><code>--color-fg-muted</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-muted" data-swatch></i><span data-token="--color-fg-muted"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-muted" data-swatch></i><span data-token="--color-fg-muted"></span></span></td></tr>
+          <tr><td>List column divider (LG)</td><td><code>--color-border-default</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-border-default" data-swatch></i><span data-token="--color-border-default"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-border-default" data-swatch></i><span data-token="--color-border-default"></span></span></td></tr>
+          <tr><td>Marker target / mark / legend key</td><td><code>--target-comfortable</code>, <code>--space-6</code>, <code>--space-4</code></td><td colspan="2"><span data-token="--target-comfortable"></span> / <span data-token="--space-6"></span> / <span data-token="--space-4"></span></td></tr>
+          <tr><td>Halo and spot ring</td><td><code>--border-width-thick</code>, <code>--space-1</code></td><td colspan="2"><span data-token="--border-width-thick"></span> / <span data-token="--space-1"></span></td></tr>
+          <tr><td>Marker and legend shadow / popup shadow</td><td><code>--shadow-2</code> / <code>--shadow-3</code></td><td colspan="2"><span data-token="--shadow-2"></span></td></tr>
+          <tr><td>Radii</td><td><code>--radius-lg</code> frame, <code>--radius-md</code> overlay and popup, <code>--radius-xs</code> studio mark, <code>--radius-full</code> spot mark</td><td colspan="2"><span data-token="--radius-lg"></span> · <span data-token="--radius-md"></span> · <span data-token="--radius-xs"></span></td></tr>
+          <tr><td>Popup layer</td><td><code>--z-popover</code></td><td colspan="2"><span data-token="--z-popover"></span></td></tr>
+          <tr><td>Map page height</td><td><code>--layout-topbar-height</code></td><td colspan="2"><span data-token="--layout-topbar-height"></span></td></tr>
+          <tr><td>Marker scale</td><td><code>--duration-fast</code>, <code>--ease-standard</code></td><td colspan="2"><span data-token="--duration-fast"></span></td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section class="ds-section" id="code"><h2><a href="#code">Code</a></h2>
+      <pre><code>&lt;!-- Map page --&gt;
+&lt;main id="main" class="map-page" data-view="map" tabindex="-1"&gt;
+  &lt;div class="map-page__bar"&gt;
+    &lt;h1&gt;Map&lt;/h1&gt;
+    &lt;div class="segmented" role="group" aria-label="Show"&gt;&lt;button type="button" aria-pressed="true"&gt;Both&lt;/button&gt;&lt;button type="button" aria-pressed="false"&gt;Studios&lt;/button&gt;&lt;button type="button" aria-pressed="false"&gt;Spots&lt;/button&gt;&lt;/div&gt;
+    &lt;div class="segmented map-page__toggle" role="group" aria-label="View as"&gt;&lt;button type="button" aria-pressed="true"&gt;Map&lt;/button&gt;&lt;button type="button" aria-pressed="false"&gt;List&lt;/button&gt;&lt;/div&gt;
+    &lt;p class="visually-hidden" role="status" aria-live="polite"&gt;12 locations&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;section class="map-page__list" aria-labelledby="list-title"&gt;
+    &lt;h2 class="visually-hidden" id="list-title"&gt;Locations&lt;/h2&gt;
+    &lt;ul class="location-grid"&gt;&lt;li class="map-list-item"&gt;…&lt;/li&gt;&lt;/ul&gt;
+  &lt;/section&gt;
+  &lt;div class="map-page__map"&gt;
+    &lt;div class="static-map"&gt;
+      &lt;img class="static-map__tiles" src="…" alt=""&gt;
+      &lt;button class="map-marker map-marker--studio" type="button" style="left: 20%; top: 40%;"
+              aria-label="The Junction Loft, studio" aria-haspopup="dialog" aria-expanded="true" aria-controls="map-popup"&gt;&lt;/button&gt;
+      …
+      &lt;ul class="map-legend map-legend--overlay" aria-label="Legend"&gt;…&lt;/ul&gt;
+      &lt;div class="popover map-popup map-popup--dock" id="map-popup" role="dialog" aria-labelledby="popup-title" style="left: 20%; top: 40%;"&gt;
+        &lt;p class="map-popup__kind"&gt;Studio&lt;/p&gt;
+        &lt;h2 class="map-popup__name" id="popup-title"&gt;The Junction Loft&lt;/h2&gt;
+        &lt;p class="map-popup__fact"&gt;All-in for 2 hours: $145.00&lt;/p&gt;
+        &lt;a href="/studios/the-junction-loft"&gt;View the review&lt;span class="visually-hidden"&gt;: The Junction Loft&lt;/span&gt;&lt;/a&gt;
+        &lt;button class="icon-btn" type="button" aria-label="Close"&gt;&lt;svg class="icon" aria-hidden="true" …&gt;…&lt;/svg&gt;&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/main&gt;
+
+&lt;!-- Spot review --&gt;
+&lt;div class="static-map static-map--spot" role="region" aria-label="Map centred on Evergreen Brick Works"&gt;
+  &lt;img class="static-map__tiles" src="…" alt="" width="1200" height="675"&gt;
+  &lt;span class="map-marker map-marker--spot" role="img" aria-label="Evergreen Brick Works" style="left: 50%; top: 50%;"&gt;&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;!-- Tiles failed on a spot review (L2-086.2) --&gt;
+&lt;div class="static-map static-map--spot"&gt;
+  &lt;div class="map-unavailable" role="status"&gt;
+    &lt;svg class="icon" aria-hidden="true" …&gt;…&lt;/svg&gt;
+    &lt;strong&gt;The map didn't load&lt;/strong&gt;
+    &lt;p class="num"&gt;43.6846, −79.3653&lt;/p&gt;
+    &lt;a class="link--external" href="https://www.google.com/maps/search/?api=1&amp;amp;query=43.6846,-79.3653" target="_blank" rel="noopener"&gt;Open in Google Maps…&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+      <p>The popup heading level follows the page (<code>h2</code> on the map page, under its <code>h1</code>); the examples on this page use <code>h3</code> to fit the documentation outline.</p>
+      <div class="ds-table-wrap"><table class="ds-table"><thead><tr><th scope="col">Class / attribute</th><th scope="col">Effect</th></tr></thead><tbody>
+        <tr><td><code>.static-map</code></td><td>Rounded, isolated frame on the sunken ground; min-height 15rem.</td></tr>
+        <tr><td><code>.static-map__tiles</code></td><td>Tiles image covering the frame, behind markers.</td></tr>
+        <tr><td><code>.static-map--spot</code></td><td>16:9 frame for a spot review.</td></tr>
+        <tr><td><code>.preview-map</code></td><td>16:9 frame with a 12rem floor for the spot editor.</td></tr>
+        <tr><td><code>.map-marker</code> + <code>--studio</code> / <code>--spot</code></td><td>44px target centred on <code>left</code>/<code>top</code>; ink square or ringed circle.</td></tr>
+        <tr><td><code>aria-expanded="true"</code> on a marker</td><td>Selected: larger mark, accent outer ring.</td></tr>
+        <tr><td><code>.map-legend</code>, <code>--overlay</code>, <code>__key--studio</code> / <code>__key--spot</code></td><td>Legend row; overlay pins it bottom-left on a raised surface.</td></tr>
+        <tr><td><code>.popover.map-popup</code>, <code>__kind</code>, <code>__name</code>, <code>__fact</code></td><td>Popup floated 32px above the point given by its <code>left</code>/<code>top</code>.</td></tr>
+        <tr><td><code>.map-popup--dock</code></td><td>Below 48rem: docked along the bottom of the frame.</td></tr>
+        <tr><td><code>.map-unavailable</code></td><td>Fills the frame with the tiles-failed message.</td></tr>
+        <tr><td><code>.map-page</code>, <code>__bar</code>, <code>__toggle</code>, <code>__list</code>, <code>__map</code></td><td>Map page layout: one view at a time below LG, side by side from LG.</td></tr>
+        <tr><td><code>data-view="map|list"</code> on <code>.map-page</code></td><td>Which view shows below LG.</td></tr>
+        <tr><td><code>.map-list-item</code></td><td>Thumbnail row in the list column; reuses <code>.location-card__media</code>, <code>__name</code> (label type at 16px), <code>__meta</code>. The focus ring goes round the row.</td></tr>
+        <tr><td><code>.static-map__overlay</code></td><td>Centres an empty, error or loading notice over the map; a <code>.empty</code> inside it becomes a raised panel up to 24rem wide.</td></tr>
+        <tr><td><code>data-state="hover|focus"</code></td><td>Documentation and mocks only: forces a marker state statically.</td></tr>
+      </tbody></table></div>
+    </section>
+
+    <section class="ds-section" id="sources"><h2><a href="#sources">Sources</a></h2>
+      <p>Extracted from these mocks:</p>
+      <ul>
+        <li><a href="../../mocks/pages/map/default.html">pages/map/default</a>, <a href="../../mocks/pages/map/list.html">list</a>, <a href="../../mocks/pages/map/loading.html">loading</a>, <a href="../../mocks/pages/map/empty.html">empty</a>, <a href="../../mocks/pages/map/error.html">error</a>, <a href="../../mocks/pages/map/studios-only.html">studios-only</a>, <a href="../../mocks/pages/map/tiles-failed.html">tiles-failed</a> (map page, markers, legend, filter, toggle, list rows)</li>
+        <li><a href="../../mocks/dialogs/map-popup/default.html">dialogs/map-popup/default</a> and <a href="../../mocks/dialogs/map-popup/spot.html">spot</a> (studio and spot popup, selected marker, dock)</li>
+        <li><a href="../../mocks/pages/spot/default.html">pages/spot/default</a> and <a href="../../mocks/pages/spot/map-failed.html">map-failed</a> (spot map, tiles failed with coordinates)</li>
+        <li><a href="../../mocks/pages/spot-editor/default.html">pages/spot-editor/default</a> (preview map), with its new and invalid states</li>
+      </ul>
+      <p>Drift fixed during extraction:</p>
+      <ul>
+        <li>Markers are <code>&lt;a href&gt;</code> elements pointing at the popup mock so the set can be clicked through, yet they carry <code>aria-expanded</code> and <code>aria-haspopup</code>. A marker opens a popup in place, so the system makes it a <code>&lt;button type="button"&gt;</code> (the CSS already resets button chrome). The popup's Close is likewise a <code>&lt;button&gt;</code>, not a link back to the map.</li>
+        <li>The key fact is worded "All-in for 2 hours: $145.00" in the popup but "All-in 2 h: $145.00" in the map list rows. The system uses the popup's wording in both.</li>
+        <li>Every <code>.map-list-item</code> heading carries the same inline <code>style="font: var(--text-label); font-size: var(--font-size-md)"</code>; <code>.map-list-item .location-card__name</code> now sets that font, so the examples here drop it.</li>
+        <li><code>.map-list-item</code> had no visible focus: <code>.location-card__name a:focus-visible</code> removes the link outline and the replacement ring was only defined for <code>.location-card</code>. <code>.map-list-item:has(.location-card__name a:focus-visible)</code> now rings the row.</li>
+        <li>The empty, error and loading overlays are positioned with inline styles in the mocks; <code>.static-map__overlay</code> now centres the notice over the map and <code>.static-map__overlay &gt; .empty</code> gives it its raised panel, so the examples here use the class.</li>
+        <li>The map-page tiles image has no <code>width</code>/<code>height</code>; the system gives it 1600 × 1000.</li>
+        <li>The spot editor puts <code>aria-describedby</code> on a plain <code>&lt;div&gt;</code>, where it is ignored. The system gives the preview <code>role="group"</code> and <code>aria-label="Map preview"</code> so the help text is announced.</li>
+        <li><code>.map-unavailable</code> has <code>role="status"</code> on the spot review but no role on the map page. Tiles fail after the page loads, so the system announces it politely on both.</li>
+      </ul>
+    </section>
+
+    <footer class="ds-footer"><span>ShotThere design system · extracted from <a href="../../mocks/index.html">docs/mocks</a> on 13 October 2026</span><a href="#top">Back to top</a></footer>
+  </main>
+</div>
+<script src="../assets/ds.js"></script>
+</body>
+</html>

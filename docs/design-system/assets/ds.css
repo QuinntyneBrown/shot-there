@@ -53,7 +53,7 @@ pre code { background: none; padding: 0; }
 .ds-section > h2 a:hover::after { content: " #"; color: var(--color-fg-subtle); }
 .ds-section > p, .ds-section > ul, .ds-section > ol { max-width: var(--layout-measure); margin-bottom: var(--space-4); }
 .ds-section > ul, .ds-section > ol { padding-left: var(--space-6); }
-.ds-section li + li { margin-top: var(--space-1); }
+.ds-section > ul > li + li, .ds-section > ol > li + li, .ds-anatomy__list > li + li { margin-top: var(--space-1); }
 .ds-section > h3 { font: var(--text-h4); margin: var(--space-6) 0 var(--space-3); }
 .ds-section[data-na] > *:not(h2):not(.ds-na) { display: none; }
 .ds-na { padding: var(--space-3) var(--space-4); background: var(--color-bg-subtle); border-radius: var(--radius-md); color: var(--color-fg-muted); font: var(--text-body-sm); }
@@ -62,7 +62,7 @@ pre code { background: none; padding: 0; }
 /* Example frames: a checker-free canvas that shows a component as it ships */
 .ds-example { background: var(--color-bg-surface); border: 1px solid var(--color-border-default); border-radius: var(--radius-lg); overflow: hidden; margin-block: var(--space-4); }
 .ds-example__canvas { padding: var(--space-6); display: flex; flex-wrap: wrap; gap: var(--space-4); align-items: center; }
-.ds-example__canvas--stack { flex-direction: column; align-items: stretch; }
+.ds-example__canvas--stack { flex-direction: column; flex-wrap: nowrap; align-items: stretch; }
 .ds-example__canvas--canvas { background: var(--color-bg-canvas); }
 .ds-example__canvas--inverse { background: var(--color-bg-inverse); color: var(--color-fg-inverse); }
 .ds-example__caption { padding: var(--space-2) var(--space-4); border-top: 1px solid var(--color-border-default); font: var(--text-caption); color: var(--color-fg-muted); display: flex; justify-content: space-between; gap: var(--space-3); flex-wrap: wrap; }
@@ -189,3 +189,7 @@ pre code { background: none; padding: 0; }
 
 /* ShotThere: placeholder where a Sweet Hand mock preview used to be embedded */
 .ds-note { padding: var(--space-3) var(--space-4); background: var(--color-bg-subtle); border-radius: var(--radius-md); color: var(--color-fg-muted); font: var(--text-body-sm); }
+
+/* Documentation only: show toasts and popovers in the page flow instead of fixed or anchored. */
+.toast-region--static { position: static; width: auto; pointer-events: auto; }
+.popover--static { position: static; animation: none; }

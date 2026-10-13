@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Dialogs and overlays — ShotThere design system</title>
-<meta name="description" content="ShotThere dialogs and overlays: dialog vs sheet vs popover and dropdown vs page, phone bottom sheets, the full-screen enquiry, no stacking, focus management, inert page, success in a dialog vs a toast.">
+<meta name="description" content="ShotThere overlays: confirmation dialogs for Delete, Unpublish, Discard changes and Remove image (including the refusal), Can't publish yet, the filters sheet, the photo lightbox, the map marker popup docked on phones and the guide-entry picker; one at a time, with fixed focus start and return.">
 <link rel="stylesheet" href="../tokens/tokens.css">
 <link rel="stylesheet" href="../assets/components.css">
 <link rel="stylesheet" href="../assets/ds.css">
@@ -33,40 +33,61 @@
       <li><a href="../components/icon-button.html">Icon button</a></li>
       <li><a href="../components/button-group.html">Button group</a></li>
       <li><a href="../components/link.html">Link</a></li>
+      <li><a href="../components/compare-bar.html">Compare toggle and bar</a></li>
     </ul></details>
     <details open><summary>Inputs</summary><ul>
       <li><a href="../components/form-field.html">Form field</a></li>
       <li><a href="../components/text-field.html">Text field</a></li>
       <li><a href="../components/textarea.html">Textarea</a></li>
       <li><a href="../components/select.html">Select</a></li>
+      <li><a href="../components/combobox.html">Combobox</a></li>
       <li><a href="../components/checkbox.html">Checkbox</a></li>
       <li><a href="../components/radio-group.html">Radio group</a></li>
       <li><a href="../components/file-upload.html">File upload</a></li>
       <li><a href="../components/form-layout.html">Form layout</a></li>
+      <li><a href="../components/signup.html">Email signup</a></li>
     </ul></details>
     <details open><summary>Navigation</summary><ul>
       <li><a href="../components/skip-link.html">Skip link</a></li>
       <li><a href="../components/site-header.html">Site header</a></li>
       <li><a href="../components/footer.html">Footer</a></li>
+      <li><a href="../components/breadcrumb.html">Breadcrumb</a></li>
+      <li><a href="../components/filter.html">Filters</a></li>
     </ul></details>
     <details open><summary>Containers and overlays</summary><ul>
-      <li><a href="../components/container.html">Container and grid</a></li>
-      <li><a href="../components/card.html">Card</a></li>
+      <li><a href="../components/container.html">Container</a></li>
+      <li><a href="../components/review-layout.html">Review layout</a></li>
+      <li><a href="../components/editor-layout.html">Editor layout</a></li>
       <li><a href="../components/dialog.html">Dialog</a></li>
-      <li><a href="../components/sheet.html">Sheet and drawer</a></li>
-      <li><a href="../components/divider.html">Divider</a></li>
+      <li><a href="../components/sheet.html">Sheet</a></li>
+      <li><a href="../components/popover.html">Popover</a></li>
+      <li><a href="../components/lightbox.html">Lightbox</a></li>
     </ul></details>
     <details open><summary>Data display</summary><ul>
+      <li><a href="../components/location-card.html">Location card</a></li>
       <li><a href="../components/table.html">Table</a></li>
+      <li><a href="../components/compare-table.html">Comparison table</a></li>
+      <li><a href="../components/list.html">List rows</a></li>
       <li><a href="../components/description-list.html">Description list</a></li>
+      <li><a href="../components/price-block.html">Price block</a></li>
+      <li><a href="../components/score.html">Score and pips</a></li>
+      <li><a href="../components/shot-grid.html">Shot grid</a></li>
+      <li><a href="../components/video-poster.html">Episode poster</a></li>
+      <li><a href="../components/map.html">Map</a></li>
+      <li><a href="../components/guide-entry.html">Guide entry</a></li>
+      <li><a href="../components/stat-tile.html">Stat tile</a></li>
+      <li><a href="../components/image-manager.html">Image manager</a></li>
+      <li><a href="../components/disclosure.html">Disclosure</a></li>
       <li><a href="../components/badge.html">Badge</a></li>
+      <li><a href="../components/status-label.html">Status label</a></li>
       <li><a href="../components/chip.html">Chip</a></li>
+      <li><a href="../components/tag.html">Tag</a></li>
     </ul></details>
     <details open><summary>Feedback</summary><ul>
       <li><a href="../components/inline-message.html">Inline message</a></li>
-      <li><a href="../components/alert.html">Alert and banner</a></li>
+      <li><a href="../components/alert.html">Alert</a></li>
       <li><a href="../components/toast.html">Toast</a></li>
-      <li><a href="../components/progress.html">Progress and meter</a></li>
+      <li><a href="../components/progress.html">Progress</a></li>
       <li><a href="../components/spinner.html">Spinner</a></li>
       <li><a href="../components/skeleton.html">Skeleton</a></li>
       <li><a href="../components/empty-state.html">Empty state</a></li>
@@ -83,262 +104,362 @@
       <li><a href="../patterns/content-and-tone.html">Content and tone</a></li>
     </ul></details>
   </nav>
-
   <main id="main" class="ds-main">
     <header class="ds-header">
       <p class="ds-kicker">Pattern</p>
       <h1>Dialogs and overlays</h1>
-      <p class="ds-lead">Overlays are for short, focused moments: send an enquiry, confirm a suspension, pick filters on a phone. One at a time, over an inert page, closing back to exactly where people were. Anything long or linkable is a page.</p>
-      <div class="ds-meta"><span class="ds-pill ds-pill--ok">WCAG 2.2 AA</span><span class="ds-pill">Status: stable</span><span class="ds-pill"><code>.dialog</code></span><span class="ds-pill"><code>.sheet</code></span><span class="ds-pill"><code>.popover</code></span><span class="ds-pill"><code>.menu</code></span></div>
-      <ul class="ds-toc"><li><a href="#overview">Overview</a></li><li><a href="#when">When to use which overlay</a></li><li><a href="#structure">Structure</a></li><li><a href="#states">States</a></li><li><a href="#responsive">Responsive behaviour</a></li><li><a href="#accessibility">Accessibility</a></li><li><a href="#content">Content</a></li><li><a href="#do-dont">Do and don't</a></li><li><a href="#sources">Sources</a></li></ul>
+      <p class="ds-lead">An overlay on ShotThere interrupts for one decision or one close look: confirm a consequence, narrow a list, view a photo, peek at a marker, pick a guide entry. Only one is ever open, focus starts on the safe choice and goes back to the control that opened it.</p>
+      <div class="ds-meta"><span class="ds-pill ds-pill--ok">WCAG 2.2 AA</span><span class="ds-pill">Status: stable</span><span class="ds-pill"><code>.dialog</code></span><span class="ds-pill"><code>.sheet</code></span><span class="ds-pill"><code>.lightbox</code></span><span class="ds-pill"><code>.map-popup</code></span><span class="ds-pill"><code>.backdrop</code></span></div>
+      <ul class="ds-toc"><li><a href="#overview">Overview</a></li><li><a href="#when">When to use which</a></li><li><a href="#structure">Structure</a></li><li><a href="#states">States</a></li><li><a href="#responsive">Responsive behaviour</a></li><li><a href="#accessibility">Accessibility</a></li><li><a href="#content">Content</a></li><li><a href="#do-dont">Do and don't</a></li><li><a href="#sources">Sources</a></li></ul>
     </header>
 
 <section class="ds-section" id="overview"><h2><a href="#overview">Overview</a></h2>
-      <p>ShotThere has five kinds of overlay, each with its own component: the modal <a href="../components/dialog.html">dialog</a> (<code>.dialog</code> + <code>.backdrop</code>), the full-height <a href="../components/sheet.html">sheet and drawer</a> (<code>.sheet</code>), the non-modal dropdown and menu (<code>.filter-dropdown</code>, <code>.menu</code>), the popover and tooltip, and the photo viewer. They are the only surfaces that lift off the flat page, so they are the only ones with a shadow.</p>
       <ul>
-        <li><b>Use an overlay to keep context.</b> The enquiry form opens over the caterer page because the person is still deciding about Pelau House.</li>
-        <li><b>Use a page when the work is long, has its own URL, or is worth sharing.</b> A profile review, an enquiry thread and the account settings are pages; their edits open dialogs.</li>
-        <li><b>One overlay at a time.</b> A dialog never opens another dialog. Toasts may appear above a dialog; nothing else does.</li>
-        <li><b>Phones change the shape, not the content.</b> Small dialogs become bottom sheets below 36rem; the enquiry form fills the screen below 48rem.</li>
+        <li><b>Confirmation <a href="../components/dialog.html">dialog</a></b> (<code>.dialog__panel--sm</code>): Delete Corktown Garage Studio?, Unpublish The Junction Loft?, Discard changes?, Remove test shot 2?, and the two refusals: Can't publish yet, Can't remove this test shot.</li>
+        <li><b>Form dialog</b> (<code>.dialog__panel--form</code>): Add an entry, the guide-entry picker.</li>
+        <li><b><a href="../components/sheet.html">Sheet</a></b>: Filters and Menu below 48rem; full height, with the title and footer always in view.</li>
+        <li><b><a href="../components/lightbox.html">Lightbox</a></b> (<code>.viewer.lightbox</code>): gallery photos, standard test shots and spot sample shots, full screen.</li>
+        <li><b>Map popup</b> (<code>.popover.map-popup</code>): a non-modal card for one marker, docked along the bottom of the map on phones.</li>
       </ul>
+      <p>Rules for all of them: the page behind is <code>inert</code> (except behind the map popup, which is non-modal); Escape and Close dismiss without side effects; <b>no stacking</b>, so an overlay never opens another overlay on top of itself; and focus returns to the invoking control.</p>
     </section>
 
-    <section class="ds-section" id="when"><h2><a href="#when">When to use which overlay</a></h2>
+    <section class="ds-section" id="when"><h2><a href="#when">When to use which</a></h2>
       <div class="ds-table-wrap"><table class="ds-table">
-        <thead><tr><th scope="col">Use</th><th scope="col">For</th><th scope="col">Modal?</th><th scope="col">Examples</th></tr></thead>
+        <thead><tr><th scope="col">Need</th><th scope="col">Overlay</th><th scope="col">Focus starts on</th><th scope="col">Focus returns to</th></tr></thead>
         <tbody>
-          <tr><td><b>Dialog</b> <code>.dialog__panel</code> (32rem), <code>--sm</code> (24rem), <code>--form</code> (40rem), <code>--lg</code> (48rem)</td><td>A short task or a decision: a form of up to about seven fields, a confirmation, a success summary</td><td>Yes: page inert, focus trapped</td><td>Write a review, Suspend caterer, Delete review</td></tr>
-          <tr><td><b>Full-screen dialog</b> <code>.dialog--full</code></td><td>The enquiry form below 48rem, where a centred panel would be cramped and the keyboard covers half the screen</td><td>Yes</td><td>Send an enquiry</td></tr>
-          <tr><td><b>Bottom sheet</b> (any <code>.dialog</code> below 36rem)</td><td>Phone version of every dialog: anchored to the bottom, rounded top corners, thumb-reachable buttons</td><td>Yes</td><td>Area or postal code, Close enquiry</td></tr>
-          <tr><td><b>Sheet</b> <code>.sheet</code></td><td>Navigation or a long list of choices on phones: full height below 48rem, a 28rem side sheet above</td><td>Yes</td><td>Filters, Menu</td></tr>
-          <tr><td><b>Dropdown</b> <code>.filter-dropdown</code></td><td>A few choices that update results behind it as they are ticked (tablet listing)</td><td>No: Escape or a click outside closes</td><td>Cuisine filter</td></tr>
-          <tr><td><b>Menu</b> <code>.menu</code>, <code>.account-menu</code></td><td>A list of actions or destinations from one trigger</td><td>No</td><td>Account menu</td></tr>
-          <tr><td><b>Popover / tooltip</b></td><td>A short explanation next to its trigger; tooltips only name icon buttons</td><td>No</td><td>—</td></tr>
-          <tr><td><b>Viewer</b> <code>.viewer</code></td><td>Photos at full size, one at a time</td><td>Yes</td><td>Photo viewer</td></tr>
-          <tr><td><b>Page</b></td><td>Long or multi-section work, anything with its own URL, read-only records</td><td>—</td><td>Profile review, Enquiry thread</td></tr>
+          <tr><td>Irreversible loss (delete a draft, discard edits, remove an image)</td><td>Confirmation dialog, consequence action <code>.btn--danger</code></td><td>Cancel, or Stay</td><td>Delete studio / Cancel link / Remove; after Delete the studio list</td></tr>
+          <tr><td>Reversible but public (take a page off the site)</td><td>Confirmation dialog, consequence action <code>.btn--primary</code></td><td>Cancel</td><td>Unpublish (now Publish)</td></tr>
+          <tr><td>The server refused, nothing to decide</td><td>Small dialog with one button</td><td>OK, or Got it</td><td>Publish / Remove; a link in Can't publish yet moves focus to its field instead</td></tr>
+          <tr><td>Pick something into the form behind</td><td>Form dialog with a combobox</td><td>The search field</td><td>Add entry, or the new entry's row</td></tr>
+          <tr><td>Narrow a list on a phone</td><td>Filters sheet (sidebar at LG, no overlay)</td><td>Close</td><td>Filters</td></tr>
+          <tr><td>Move around the site on a phone</td><td>Menu sheet</td><td>Close</td><td>Menu</td></tr>
+          <tr><td>Look closely at a photo</td><td>Lightbox</td><td>Close</td><td>The thumbnail that opened it</td></tr>
+          <tr><td>Identify a marker</td><td>Map popup (non-modal)</td><td>Its heading's link, View the review</td><td>The marker</td></tr>
         </tbody>
       </table></div>
-      <h3>Success in the dialog or a toast?</h3>
-      <ul>
-        <li><b>In the dialog</b> when the result needs explaining or offers a next step: "Enquiry sent to Pelau House" with what happens next and "Go to your inbox"; "Thanks — we’ll review your profile within 3 business days"; "Your review will appear after a quick check".</li>
-        <li><b>A toast</b> when the dialog closes onto a page that already shows the result: "Edit details" closes and the account page updates with a "Saved" toast; a signed-out device disappears from the list and a toast confirms.</li>
-      </ul>
+      <p>Not an overlay: inline editing on a reading page (never), success messages (toasts or the page itself), and guide entry removal (staged until Save changes, no confirmation).</p>
     </section>
 
     <section class="ds-section" id="structure"><h2><a href="#structure">Structure</a></h2>
       <h3>Confirmation dialog over an inert page</h3>
       <div class="ds-example">
-        <div class="ds-example__canvas ds-example__canvas--canvas">
-          <div class="ds-frame" style="width: 100%;">
-            <div class="ds-frame__page">Pelau House page (inert, hidden from assistive technology)</div>
+        <div class="ds-example__canvas ds-example__canvas--canvas" style="align-items: stretch;">
+          <div class="ds-frame ds-frame--short" style="flex: 1 1 20rem; min-height: 23rem;">
+            <div class="ds-frame__page">The Junction Loft editor (inert)</div>
             <div class="backdrop"></div>
-            <div class="dialog" role="dialog" aria-labelledby="dlg-x-title" aria-describedby="dlg-x-desc">
+            <div class="dialog" role="dialog" aria-labelledby="do-unpub-title" aria-describedby="do-unpub-desc">
               <div class="dialog__panel dialog__panel--sm">
                 <div class="dialog__header">
-                  <span class="dialog__icon dialog__icon--danger"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/></svg></span>
-                  <h3 class="dialog__title" id="dlg-x-title">Delete your review?</h3>
+                  <div class="dialog__heading">
+                    <h4 class="dialog__title" id="do-unpub-title">Unpublish The Junction Loft?</h4>
+                    <p class="dialog__desc" id="do-unpub-desc">It goes back to draft. Its page, its map marker and its place in lists, comparisons and guides disappear within a minute. You can publish it again any time.</p>
+                  </div>
+                  <button class="btn btn--ghost btn--icon" type="button" aria-label="Close"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
                 </div>
-                <div class="dialog__body"><p id="dlg-x-desc">Your review of Pelau House and Pelau House’s response will be removed. This can’t be undone.</p></div>
                 <div class="dialog__footer">
-                  <button class="btn" type="button">Keep review</button>
-                  <button class="btn btn--danger" type="button">Delete review</button>
+                  <button class="btn" type="button">Cancel</button>
+                  <button class="btn btn--primary" type="button">Unpublish</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="ds-frame ds-frame--short" style="flex: 1 1 20rem; min-height: 23rem;">
+            <div class="ds-frame__page">Corktown Garage Studio editor (inert)</div>
+            <div class="backdrop"></div>
+            <div class="dialog" role="dialog" aria-labelledby="do-del-title" aria-describedby="do-del-desc">
+              <div class="dialog__panel dialog__panel--sm">
+                <div class="dialog__header">
+                  <div class="dialog__heading">
+                    <h4 class="dialog__title" id="do-del-title">Delete Corktown Garage Studio?</h4>
+                    <p class="dialog__desc" id="do-del-desc">This deletes the draft and its 2 images. It can't be undone.</p>
+                  </div>
+                  <button class="btn btn--ghost btn--icon" type="button" aria-label="Close"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+                </div>
+                <div class="dialog__body">
+                  <div class="alert alert--danger" role="alert">
+                    <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16h.01"/></svg>
+                    <div class="alert__body">We couldn't delete it. Try again.</div>
+                  </div>
+                </div>
+                <div class="dialog__footer">
+                  <button class="btn" type="button">Cancel</button>
+                  <button class="btn btn--danger" type="button">Delete studio</button>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="ds-example__caption"><span>Question title, one consequence sentence, safe action first and focused, danger action last. Below 36rem the same panel docks to the bottom.</span><span>Source: dialogs/delete-review/default</span></div>
-        <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;div class="page" inert aria-hidden="true"&gt;…&lt;/div&gt;
+        <div class="ds-example__caption"><span>Left: Unpublish, reversible, so its action is the ink primary. Right: Delete after a failure; the draft is untouched and Delete studio retries. Both name the item in the title; Cancel comes first and has focus.</span><span>Sources: dialogs/unpublish/default, dialogs/delete-content/failed</span></div>
+        <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;div inert aria-hidden="true"&gt;…&lt;/div&gt;
 &lt;div class="backdrop"&gt;&lt;/div&gt;
 &lt;div class="dialog" role="dialog" aria-modal="true" aria-labelledby="dlg-title" aria-describedby="dlg-desc"&gt;
   &lt;div class="dialog__panel dialog__panel--sm"&gt;
-    &lt;div class="dialog__header"&gt;&lt;h2 class="dialog__title" id="dlg-title"&gt;Delete your review?&lt;/h2&gt;&lt;/div&gt;
-    &lt;div class="dialog__body"&gt;&lt;p id="dlg-desc"&gt;… This can’t be undone.&lt;/p&gt;&lt;/div&gt;
+    &lt;div class="dialog__header"&gt;
+      &lt;div class="dialog__heading"&gt;
+        &lt;h2 class="dialog__title" id="dlg-title"&gt;Delete Corktown Garage Studio?&lt;/h2&gt;
+        &lt;p class="dialog__desc" id="dlg-desc"&gt;This deletes the draft and its 2 images. It can't be undone.&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;button class="btn btn--ghost btn--icon" type="button" aria-label="Close"&gt;…&lt;/button&gt;
+    &lt;/div&gt;
     &lt;div class="dialog__footer"&gt;
-      &lt;button class="btn" type="button" autofocus&gt;Keep review&lt;/button&gt;
-      &lt;button class="btn btn--danger" type="button"&gt;Delete review&lt;/button&gt;
+      &lt;button class="btn" type="button" autofocus&gt;Cancel&lt;/button&gt;
+      &lt;button class="btn btn--danger" type="button"&gt;Delete studio&lt;/button&gt;
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre></details>
       </div>
 
-      <h3>Phone sheet and bottom sheet</h3>
+      <h3>Remove image, and when it is refused</h3>
       <div class="ds-example">
-        <div class="ds-example__canvas ds-example__canvas--canvas" style="align-items: flex-start;">
-          <div class="ds-frame ds-frame--phone ds-frame--tall" style="flex: 1 1 18rem;">
-            <div class="ds-frame__page">Caterers listing</div>
-            <div class="sheet" role="dialog" aria-labelledby="dlg-f-title">
-              <div class="sheet__header">
-                <h3 class="sheet__title" id="dlg-f-title">Filters</h3>
-                <button class="icon-btn" type="button" aria-label="Close filters"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+        <div class="ds-example__canvas ds-example__canvas--canvas" style="align-items: stretch;">
+          <div class="ds-frame" style="flex: 1 1 20rem;">
+            <div class="ds-frame__page">Corktown Garage Studio editor (inert)</div>
+            <div class="backdrop"></div>
+            <div class="dialog" role="dialog" aria-labelledby="do-rm-title" aria-describedby="do-rm-desc">
+              <div class="dialog__panel dialog__panel--sm">
+                <div class="dialog__header">
+                  <div class="dialog__heading">
+                    <h4 class="dialog__title" id="do-rm-title">Remove test shot 2?</h4>
+                    <p class="dialog__desc" id="do-rm-desc">It's removed when you save the studio. Test shot 1 stays.</p>
+                  </div>
+                  <button class="btn btn--ghost btn--icon" type="button" aria-label="Close"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+                </div>
+                <div class="dialog__body">
+                  <div class="image-row">
+                    <div class="image-row__thumb"><img src="../assets/img/test-liberty-cyc-house-2.svg" alt="" width="800" height="1000"></div>
+                    <div class="image-row__body"><span class="image-row__meta">full-length.jpg · alt text</span><p>Test shot 2, full length on the cyc with an even floor sweep.</p></div>
+                  </div>
+                </div>
+                <div class="dialog__footer">
+                  <button class="btn" type="button">Cancel</button>
+                  <button class="btn btn--danger" type="button">Remove test shot</button>
+                </div>
               </div>
-              <div class="sheet__body">
-                <fieldset class="filter-group"><legend class="filter-group__title">Cuisine</legend>
-                  <ul class="filter-list">
-                    <li><button class="filter-list__item" type="button" aria-pressed="true">Jamaican <span class="filter-list__count">14</span></button></li>
-                    <li><button class="filter-list__item" type="button" aria-pressed="false">Trinidadian &amp; Tobagonian <span class="filter-list__count">11</span></button></li>
-                    <li><button class="filter-list__item" type="button" aria-pressed="false">Guyanese <span class="filter-list__count">9</span></button></li>
-                  </ul>
-                </fieldset>
-              </div>
-              <div class="sheet__footer"><button class="btn" type="button">Clear</button><button class="btn btn--primary" type="button">Show 14 caterers</button></div>
             </div>
           </div>
-          <div class="ds-frame ds-frame--phone ds-frame--tall" style="flex: 1 1 18rem;">
-            <div class="ds-frame__page">Caterers listing</div>
+          <div class="ds-frame" style="flex: 1 1 20rem;">
+            <div class="ds-frame__page">The Junction Loft editor (inert)</div>
             <div class="backdrop"></div>
-            <div class="dialog" role="dialog" aria-labelledby="dlg-s-title" style="place-items: end center; padding: 0;">
-              <div class="dialog__panel" style="border-radius: var(--radius-xl) var(--radius-xl) 0 0;">
-                <div class="dialog__header"><h3 class="dialog__title" id="dlg-s-title">Area or postal code</h3><button class="icon-btn" type="button" aria-label="Close"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+            <div class="dialog" role="dialog" aria-labelledby="do-rf-title" aria-describedby="do-rf-desc">
+              <div class="dialog__panel dialog__panel--sm">
+                <div class="dialog__header">
+                  <div class="dialog__heading"><h4 class="dialog__title" id="do-rf-title">Can't remove this test shot</h4></div>
+                  <button class="btn btn--ghost btn--icon" type="button" aria-label="Close"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+                </div>
                 <div class="dialog__body">
-                  <div class="search-field">
-                    <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-11.5a7 7 0 0 0-14 0C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
-                    <label class="visually-hidden" for="dlg-s-q">Area or postal code</label>
-                    <input class="input" id="dlg-s-q" type="search" placeholder="Scarborough or M1B 2K3" autocomplete="postal-code">
+                  <div class="alert alert--warning">
+                    <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 4 2.5 20h19L12 4z"/><path d="M12 10v4M12 17h.01"/></svg>
+                    <div class="alert__body" id="do-rf-desc">A published studio needs at least one standard test shot. Add another before removing this one.</div>
                   </div>
+                </div>
+                <div class="dialog__footer"><button class="btn btn--primary" type="button">Got it</button></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ds-example__caption"><span>The removal is staged: Save changes makes it permanent. The refusal counts removals already staged in this edit, and the server refuses it too.</span><span>Sources: dialogs/remove-image/default, dialogs/remove-image/refused</span></div>
+      </div>
+
+      <h3>Lightbox</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--canvas">
+          <div class="ds-frame ds-frame--tall" style="width: 100%;">
+            <div class="viewer lightbox" role="dialog" aria-labelledby="do-lb-title" aria-describedby="do-lb-caption">
+              <h4 class="visually-hidden" id="do-lb-title">Photo viewer: The Junction Loft</h4>
+              <div class="viewer__bar">
+                <p class="viewer__count" aria-live="polite">Photo 3 of 8</p>
+                <button class="icon-btn" type="button" aria-label="Close"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+              </div>
+              <div class="viewer__stage">
+                <button class="icon-btn" type="button" aria-label="Previous photo"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m15 6-6 6 6 6"/></svg></button>
+                <div class="lightbox__frame"><img src="../assets/img/gallery-3.svg" alt="Full-length fashion frame on the cyc, warm afternoon light from the left." width="800" height="1000" style="max-height: 22rem;"></div>
+                <button class="icon-btn" type="button" aria-label="Next photo"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></button>
+              </div>
+              <div class="viewer__caption" id="do-lb-caption"><p>Full-length fashion frame on the cyc, warm afternoon light from the left.</p></div>
+              <div class="lightbox__pager">
+                <button class="btn" type="button"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m15 6-6 6 6 6"/></svg>Previous<span class="visually-hidden"> photo</span></button>
+                <button class="btn" type="button">Next<span class="visually-hidden"> photo</span><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ds-example__caption"><span>Gallery photo 3 of 8. The count is a polite live region; Next on photo 8 wraps to photo 1. Sample shots use the same viewer, captioned with focal length and position ("85 mm · shoot north from the lower steps").</span><span>Sources: dialogs/lightbox/default, last, sample-shot</span></div>
+      </div>
+
+      <h3>Map popup, docked on phones</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--canvas" style="align-items: flex-start;">
+          <div class="static-map" style="flex: 1 1 22rem; min-height: 20rem;">
+            <img class="static-map__tiles" src="../assets/img/map-toronto.svg" alt="">
+            <a class="map-marker map-marker--studio" style="left: 20%; top: 70%;" href="#do-popup-title" aria-label="The Junction Loft, studio" aria-haspopup="dialog" aria-expanded="true"></a>
+            <a class="map-marker map-marker--spot" style="left: 61%; top: 31%;" href="../../mocks/dialogs/map-popup/spot.html" aria-label="Evergreen Brick Works, outdoor spot" aria-haspopup="dialog" aria-expanded="false"></a>
+            <div class="popover map-popup" role="dialog" aria-labelledby="do-popup-title" style="left: 34%; top: 66%;">
+              <p class="map-popup__kind">Studio</p>
+              <h4 class="map-popup__name" id="do-popup-title">The Junction Loft</h4>
+              <p class="map-popup__fact">All-in for 2 hours: $145.00</p>
+              <a href="../../mocks/pages/studio/default.html">View the review<span class="visually-hidden">: The Junction Loft</span></a>
+              <button class="icon-btn" type="button" aria-label="Close"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+            </div>
+          </div>
+          <div class="ds-frame ds-frame--phone" style="flex: 1 1 18rem; min-height: 20rem;">
+            <div class="static-map" style="position: absolute; inset: 0; border-radius: 0;">
+              <img class="static-map__tiles" src="../assets/img/map-toronto.svg" alt="">
+              <a class="map-marker map-marker--spot" style="left: 61%; top: 31%;" href="#do-popup2-title" aria-label="Evergreen Brick Works, outdoor spot" aria-haspopup="dialog" aria-expanded="true"></a>
+              <div class="popover map-popup" role="dialog" aria-labelledby="do-popup2-title" style="left: var(--space-3); right: var(--space-3); top: auto; bottom: var(--space-3); translate: none; width: auto;">
+                <p class="map-popup__kind">Outdoor spot</p>
+                <h4 class="map-popup__name" id="do-popup2-title">Evergreen Brick Works</h4>
+                <p class="map-popup__fact">Portraits: no permit needed</p>
+                <a href="../../mocks/pages/spot/default.html">View the spot<span class="visually-hidden">: Evergreen Brick Works</span></a>
+                <button class="icon-btn" type="button" aria-label="Close"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ds-example__caption"><span>Left: from 48rem the popup floats above its marker, which shows <code>aria-expanded="true"</code>. Right: below 48rem <code>.map-popup--dock</code> docks it along the bottom of the map (forced here for the wide screen).</span><span>Sources: dialogs/map-popup/default, dialogs/map-popup/spot</span></div>
+      </div>
+
+      <h3>Guide-entry picker</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--canvas">
+          <div class="ds-frame ds-frame--tall" style="width: 100%; min-height: 30rem;">
+            <div class="ds-frame__page">Best for headshots editor (inert)</div>
+            <div class="backdrop"></div>
+            <div class="dialog" role="dialog" aria-labelledby="do-pick-title" aria-describedby="do-pick-desc">
+              <div class="dialog__panel dialog__panel--form">
+                <div class="dialog__header">
+                  <div class="dialog__heading">
+                    <h4 class="dialog__title" id="do-pick-title">Add an entry</h4>
+                    <p class="dialog__desc" id="do-pick-desc">Search published studios and spots. The entry goes to the end of the list; move it after adding.</p>
+                  </div>
+                  <button class="btn btn--ghost btn--icon" type="button" aria-label="Close"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+                </div>
+                <div class="dialog__body">
+                  <div class="field">
+                    <label class="field__label" for="do-entry-search">Studio or spot</label>
+                    <div class="search-field">
+                      <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+                      <input class="input" id="do-entry-search" type="text" role="combobox" aria-expanded="true" aria-controls="do-entry-options" aria-autocomplete="list" autocomplete="off" aria-describedby="do-entry-hint" aria-activedescendant="do-opt-leslieville" value="studio">
+                    </div>
+                    <span class="field__help" id="do-entry-hint">Type part of a name</span>
+                  </div>
+                  <ul class="suggestions" id="do-entry-options" role="listbox" aria-label="Matching studios and spots">
+                    <li class="suggestion" id="do-opt-leslieville" role="option" aria-selected="true"><span>Leslieville Daylight <mark>Studio</mark></span><span class="suggestion__hint">Studio · Leslieville</span></li>
+                    <li class="suggestion" id="do-opt-bloordale" role="option" aria-selected="false"><span>Bloordale Sun <mark>Studio</mark></span><span class="suggestion__hint">Studio · Bloordale</span></li>
+                    <li class="suggestion" id="do-opt-riverside" role="option" aria-selected="false"><span>Riverside Rooftop <mark>Studio</mark></span><span class="suggestion__hint">Studio · Riverside</span></li>
+                  </ul>
+                </div>
+                <div class="dialog__footer">
+                  <button class="btn" type="button">Cancel</button>
+                  <button class="btn btn--primary" type="button">Add entry</button>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="ds-example__caption"><span>Left: the phone filter sheet, full height, Close first, Apply showing the live count. Right: a dialog below 36rem docks to the bottom as a sheet (forced here for the wide screen).</span><span>Sources: dialogs/filters/selected, dialogs/search/default</span></div>
+        <div class="ds-example__caption"><span>Three published studios match "studio"; the first is active. Results arrive within 500 ms; "3 results" is announced. Picking a studio already in the guide shows "This studio is already in the guide" and keeps Add entry disabled.</span><span>Sources: dialogs/guide-entry-picker/results, invalid</span></div>
       </div>
 
-      <h3>Non-modal: menu, dropdown, popover</h3>
-      <div class="ds-example">
-        <div class="ds-example__canvas" style="align-items: flex-start; gap: var(--space-8);">
-          <ul class="menu menu--static account-menu__list" role="menu" aria-label="Account menu example" style="padding: var(--space-2);">
-            <li role="none">Inbox</li>
-            <li role="none">Account</li>
-            <li role="none" class="menu__divider"></li>
-            <li role="none"><button class="menu__item" role="menuitem" type="button"><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><path d="M15 4h4v16h-4M10 8l-4 4 4 4M6 12h11"/></svg>Sign out</button></li>
-          </ul>
-          <div class="menu-anchor" style="min-height: 14rem; min-width: 18rem;">
-            <button class="filter-trigger" type="button" aria-expanded="true" aria-controls="dlg-dd">Cuisine <span class="filter-trigger__count">1</span><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></button>
-            <div class="filter-dropdown" id="dlg-dd">
-              <ul class="filter-list">
-                <li><button class="filter-list__item" type="button" aria-pressed="true">Jamaican <span class="filter-list__count">14</span></button></li>
-                <li><button class="filter-list__item" type="button" aria-pressed="false">Haitian <span class="filter-list__count">5</span></button></li>
-              </ul>
-            </div>
-          </div>
-          <div class="popover popover--static" role="dialog" aria-labelledby="dlg-p-title">
-            <p class="popover__title" id="dlg-p-title">Why only 3 characters?</p>
-            <p class="text-sm">We use the first part of a postal code to find nearby caterers and never store the rest.</p>
-          </div>
-        </div>
-        <div class="ds-example__caption"><span>Account menu (menu button pattern), the tablet cuisine dropdown (disclosure; results update behind it), and a popover.</span><span>Sources: dialogs/account-menu/default, dialogs/filter-menu/default</span></div>
-      </div>
+      <h3>No stacking</h3>
+      <ul>
+        <li>A link inside an overlay that leads elsewhere closes the overlay first: each "Can't publish yet" link closes the dialog, opens the field's section and focuses the field.</li>
+        <li>The filters sheet applies or discards before anything else can open; there is no confirmation over it.</li>
+        <li>The map popup closes when another marker opens or the list view is chosen; only one popup exists.</li>
+        <li>Toasts are not overlays: they sit in their own region and never take focus, so a toast can appear while a dialog is open (Unpublish's warning toast arrives as the dialog closes).</li>
+      </ul>
     </section>
 
     <section class="ds-section" id="states"><h2><a href="#states">States</a></h2>
       <div class="ds-table-wrap"><table class="ds-table">
         <thead><tr><th scope="col">State</th><th scope="col">Behaviour</th><th scope="col">Mock</th></tr></thead>
         <tbody>
-          <tr><td>Open</td><td>Backdrop fades in (200 ms), panel scales in from 96% (or slides up as a sheet), page behind is <code>inert</code></td><td>enquiry/default</td></tr>
-          <tr><td>Invalid</td><td>Error summary at the top of the body; focus moves to it</td><td>review/invalid</td></tr>
-          <tr><td>Busy</td><td>Primary spinner; Close, Cancel and Escape disabled; fields read-only; no second submit</td><td>add-cuisine/busy</td></tr>
-          <tr><td>Failed</td><td>Danger alert at the top of the body; values kept; primary becomes "Try again"</td><td>revert-change/failed</td></tr>
-          <tr><td>Conflict</td><td>Explains what changed elsewhere and offers the action that still works ("Close enquiry instead")</td><td>decline-enquiry/conflict</td></tr>
-          <tr><td>Blocked</td><td>Explains the rule; one action that resolves it</td><td>remove-photo/blocked</td></tr>
-          <tr><td>Next step</td><td>The same dialog advances (Remove caterer → type the name to confirm); it does not open a second one</td><td>remove-caterer/confirm</td></tr>
-          <tr><td>Success</td><td>Body becomes the confirmation (<code>role="status"</code>), footer offers the next step</td><td>enquiry/success</td></tr>
+          <tr><td>Default</td><td>Safe action focused; Escape, Close and Cancel dismiss with no change</td><td><a href="../../mocks/dialogs/unpublish/default.html">unpublish/default</a>, <a href="../../mocks/dialogs/delete-content/default.html">delete-content/default</a>, <a href="../../mocks/dialogs/discard-changes/default.html">discard-changes/default</a></td></tr>
+          <tr><td>Busy</td><td>Consequence action <code>aria-busy</code>; Cancel and Close disabled; Escape waits; hidden status "Unpublishing The Junction Loft…"</td><td><a href="../../mocks/dialogs/unpublish/busy.html">unpublish/busy</a>, <a href="../../mocks/dialogs/delete-content/busy.html">delete-content/busy</a></td></tr>
+          <tr><td>Failed</td><td>Danger alert at the top of the body says nothing changed; both buttons back; the action retries</td><td><a href="../../mocks/dialogs/unpublish/failed.html">unpublish/failed</a>, <a href="../../mocks/dialogs/delete-content/failed.html">delete-content/failed</a></td></tr>
+          <tr><td>Refused</td><td>One button (OK, Got it); a warning explains the rule</td><td><a href="../../mocks/dialogs/remove-image/refused.html">remove-image/refused</a>, <a href="../../mocks/dialogs/missing-fields/default.html">missing-fields/default</a></td></tr>
+          <tr><td>Searching, results, no matches, invalid</td><td>Spinner and "Searching"; listbox; "No published studios or spots match “parkdale”"; field error with Add entry disabled</td><td><a href="../../mocks/dialogs/guide-entry-picker/busy.html">busy</a>, <a href="../../mocks/dialogs/guide-entry-picker/results.html">results</a>, <a href="../../mocks/dialogs/guide-entry-picker/no-matches.html">no-matches</a>, <a href="../../mocks/dialogs/guide-entry-picker/invalid.html">invalid</a></td></tr>
+          <tr><td>Selected (filters)</td><td>Footer previews the count: "Show 5 studios"; invalid range disables it</td><td><a href="../../mocks/dialogs/studio-filters/selected.html">studio-filters/selected</a>, <a href="../../mocks/dialogs/studio-filters/invalid.html">invalid</a></td></tr>
+          <tr><td>Image failed (lightbox)</td><td>The frame keeps a 4:5 slot with the alt text; Previous, Next and Close still work</td><td><a href="../../mocks/dialogs/lightbox/image-failed.html">lightbox/image-failed</a></td></tr>
         </tbody>
       </table></div>
-      <h3>No stacking</h3>
-      <ul>
-        <li>A follow-up decision replaces the current dialog's content or becomes its next step. Opening a second modal on top is not allowed.</li>
-        <li>A small confirmation inside a dialog happens in place: "Delete response" turns into "Delete for good?" and the deletion offers Undo in a toast.</li>
-        <li>Toasts sit above every overlay (<code>--z-toast</code>) and never take focus. Tooltips may appear inside a dialog.</li>
-        <li>Opening a dialog closes any open menu, dropdown or popover first.</li>
-      </ul>
       <h3>Both themes</h3>
       <div class="ds-themes">
-        <div data-theme="light"><div class="dialog__panel dialog__panel--sm" style="animation: none;"><div class="dialog__header"><p class="dialog__title">Suspend Pelau House?</p></div><div class="dialog__body"><p>Kendra gets an email with your reason.</p></div><div class="dialog__footer"><button class="btn" type="button">Cancel</button><button class="btn btn--danger" type="button">Suspend caterer</button></div></div></div>
-        <div data-theme="dark"><div class="dialog__panel dialog__panel--sm" style="animation: none;"><div class="dialog__header"><p class="dialog__title">Suspend Pelau House?</p></div><div class="dialog__body"><p>Kendra gets an email with your reason.</p></div><div class="dialog__footer"><button class="btn" type="button">Cancel</button><button class="btn btn--danger" type="button">Suspend caterer</button></div></div></div>
+        <div data-theme="light"><div class="dialog__panel dialog__panel--sm" style="animation: none;"><div class="dialog__header"><div class="dialog__heading"><p class="dialog__title">Discard changes?</p><p class="dialog__desc">You changed 3 fields in Corktown Garage Studio since the last save.</p></div></div><div class="dialog__footer"><button class="btn" type="button">Stay</button><button class="btn btn--danger" type="button">Discard</button></div></div></div>
+        <div data-theme="dark"><div class="dialog__panel dialog__panel--sm" style="animation: none;"><div class="dialog__header"><div class="dialog__heading"><p class="dialog__title">Discard changes?</p><p class="dialog__desc">You changed 3 fields in Corktown Garage Studio since the last save.</p></div></div><div class="dialog__footer"><button class="btn" type="button">Stay</button><button class="btn btn--danger" type="button">Discard</button></div></div></div>
       </div>
     </section>
 
     <section class="ds-section" id="responsive"><h2><a href="#responsive">Responsive behaviour</a></h2>
-      <div class="ds-table-wrap"><table class="ds-table">
-        <thead><tr><th scope="col">Width</th><th scope="col">Dialog</th><th scope="col">Enquiry form</th><th scope="col">Sheet</th><th scope="col">Filters</th></tr></thead>
-        <tbody>
-          <tr><td>&lt; 36rem</td><td>Bottom sheet, full width, top corners rounded, slides up</td><td rowspan="2">Fills the screen; header and footer stay in view; Send pinned above the keyboard</td><td rowspan="2">Full height</td><td rowspan="2">Full-height sheet with Clear and "Show 14 caterers"</td></tr>
-          <tr><td>36–48rem</td><td>Centred panel, scales in</td></tr>
-          <tr><td>48–62rem</td><td>Centred panel</td><td>40rem dialog</td><td>28rem side sheet from the right</td><td>Non-modal dropdowns under the triggers</td></tr>
-          <tr><td>≥ 62rem</td><td>Centred panel</td><td>40rem dialog</td><td>Side sheet</td><td>Filter column, no overlay</td></tr>
-        </tbody>
-      </table></div>
-      <p>Panels never exceed the viewport (<code>max-height: calc(100dvh - 3rem)</code>); the body scrolls while the header and footer stay put. Sheets and phone dialogs pad the bottom by <code>env(safe-area-inset-bottom)</code>.</p>
+      <ul>
+        <li><b>Below 36rem</b> a confirmation or form dialog docks to the bottom as a sheet with rounded top corners and clears the bottom safe area; from 36rem it centres.</li>
+        <li><b>Below 48rem</b> the filters and menu sheets fill the screen. From 48rem sheets slide in from the right at the sheet width.</li>
+        <li><b>The lightbox</b> moves Previous and Next under the photo below 48rem (<code>.lightbox__pager</code>) so the photo gets the full width; from 48rem the arrows sit beside it.</li>
+        <li><b>The map popup</b> docks along the bottom of the map below 48rem (<code>.map-popup--dock</code>) and floats above its marker from 48rem.</li>
+        <li>Footers wrap with the consequence action last; long titles wrap and never truncate.</li>
+      </ul>
     </section>
 
     <section class="ds-section" id="accessibility"><h2><a href="#accessibility">Accessibility</a></h2>
       <h3>Role and pattern</h3>
-      <p>Modal dialogs, sheets and the viewer follow the <a href="https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/">APG Dialog (Modal)</a> pattern: <code>role="dialog"</code>, <code>aria-modal="true"</code>, <code>aria-labelledby</code> the title and <code>aria-describedby</code> the main sentence; the page behind gets <code>inert</code>. The account menu follows <a href="https://www.w3.org/WAI/ARIA/apg/patterns/menu-button/">Menu Button</a>; filter dropdowns follow <a href="https://www.w3.org/WAI/ARIA/apg/patterns/disclosure/">Disclosure</a> (<code>aria-expanded</code> on the trigger).</p>
+      <p>Dialogs, sheets and the lightbox are modal dialogs (<a href="https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/">APG Dialog (Modal)</a>) with <code>aria-modal="true"</code>, a title in <code>aria-labelledby</code> and the consequence or rule in <code>aria-describedby</code>. The map popup is a non-modal <code>role="dialog"</code> tied to a marker with <code>aria-haspopup="dialog"</code> and <code>aria-expanded</code>. The picker is an <a href="https://www.w3.org/WAI/ARIA/apg/patterns/combobox/">APG Combobox</a> with a listbox.</p>
       <h3>Keyboard</h3>
       <table class="ds-table ds-keys"><thead><tr><th scope="col">Key</th><th scope="col">Action</th></tr></thead><tbody>
-        <tr><td><kbd>Tab</kbd> / <kbd>Shift</kbd>+<kbd>Tab</kbd></td><td>Cycles inside a modal; never reaches the page behind.</td></tr>
-        <tr><td><kbd>Esc</kbd></td><td>Closes the overlay (same as Cancel or Close) unless it is busy; non-modal dropdowns and menus close too.</td></tr>
-        <tr><td><kbd>Enter</kbd></td><td>Submits a form dialog; never submits a destructive action from a reason field.</td></tr>
-        <tr><td><kbd>←</kbd> <kbd>→</kbd></td><td>Previous and next photo in the viewer (no wrap-around).</td></tr>
+        <tr><td><kbd>Tab</kbd> / <kbd>Shift</kbd>+<kbd>Tab</kbd></td><td>Cycles inside the open modal overlay only.</td></tr>
+        <tr><td><kbd>Esc</kbd></td><td>Closes the overlay with no change (ignored while busy); in the picker it first closes the listbox.</td></tr>
+        <tr><td><kbd>←</kbd> / <kbd>→</kbd></td><td>Previous and next photo in the lightbox.</td></tr>
+        <tr><td><kbd>↓</kbd> / <kbd>↑</kbd>, <kbd>Enter</kbd></td><td>Move through picker results and choose one.</td></tr>
+        <tr><td><kbd>Enter</kbd> on a marker</td><td>Opens its popup.</td></tr>
       </tbody></table>
       <h3>Focus</h3>
-      <div class="ds-table-wrap"><table class="ds-table">
-        <thead><tr><th scope="col">Overlay</th><th scope="col">Focus starts on</th><th scope="col">On close, focus returns to</th></tr></thead>
-        <tbody>
-          <tr><td>Form dialog</td><td>The first field (Display name, the decline note, the reason)</td><td rowspan="5">The control that opened it (Send an enquiry, Edit details, the search icon, the menu button, the photo)</td></tr>
-          <tr><td>Destructive, no input</td><td>The safe button (Keep review, Cancel)</td></tr>
-          <tr><td>Destructive with a reason or password</td><td>The reason or password field; never the danger button</td></tr>
-          <tr><td>Expected, reversible decision</td><td>The primary (Approve and publish)</td></tr>
-          <tr><td>Sheet, viewer</td><td>Close</td></tr>
-          <tr><td>Success view</td><td>Its first action</td><td>The opener, or the next page if the action navigates</td></tr>
-        </tbody>
-      </table></div>
+      <p>Focus starts on the safe choice (Cancel, Stay, OK, Got it), on Close in sheets and the lightbox, and in the search field in the picker. It never starts on Delete studio, Discard or Remove test shot. On close it returns to the invoking control; if that control is gone (after Delete) it goes to the new page's main landmark.</p>
       <h3>Labelling</h3>
-      <p>Every overlay has a visible title. Close buttons are named ("Close", "Close menu", "Close filters"). Openers carry <code>aria-haspopup="dialog"</code> or <code>"menu"</code>.</p>
+      <p>Titles name the item ("Unpublish The Junction Loft?"); Close buttons are icon buttons named "Close"; lightbox arrows are "Previous photo" and "Next photo"; "View the review" carries the studio name in hidden text.</p>
       <h3>Contrast</h3>
       <div class="ds-example__canvas ds-example__canvas--stack" style="padding: 0; gap: var(--space-2);">
         <div class="ds-pair"><span>Dialog text on its raised surface</span><span class="ds-pair__ratio" data-contrast="--color-fg-default|--color-bg-surface-raised" data-min="4.5"></span></div>
-        <div class="ds-pair"><span>Secondary text in a dialog</span><span class="ds-pair__ratio" data-contrast="--color-fg-muted|--color-bg-surface-raised" data-min="4.5"></span></div>
-        <div class="ds-pair"><span>Danger icon on its tint</span><span class="ds-pair__ratio" data-contrast="--color-danger-icon|--color-danger-bg" data-min="3"></span></div>
-        <div class="ds-pair"><span>Focus ring on a dialog</span><span class="ds-pair__ratio" data-contrast="--color-focus-ring|--color-bg-surface-raised" data-min="3"></span></div>
+        <div class="ds-pair"><span>Dialog description</span><span class="ds-pair__ratio" data-contrast="--color-fg-muted|--color-bg-surface-raised" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Danger button label</span><span class="ds-pair__ratio" data-contrast="--color-fg-on-danger|--color-danger-solid" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Primary edge in a dialog</span><span class="ds-pair__ratio" data-contrast="--color-action|--color-bg-surface-raised" data-min="3"></span></div>
+        <div class="ds-pair"><span>Focus ring in a dialog</span><span class="ds-pair__ratio" data-contrast="--color-focus-ring|--color-bg-surface-raised" data-min="3"></span></div>
+        <div class="ds-pair"><span>Lightbox caption on the page</span><span class="ds-pair__ratio" data-contrast="--color-fg-default|--color-bg-canvas" data-min="4.5"></span></div>
       </div>
       <h3>Motion</h3>
-      <p>Dialogs scale in and sheets slide over <code>--duration-slow</code> (320 ms), the backdrop fades over <code>--duration-base</code> (200 ms), menus and dropdowns scale in over <code>--duration-fast</code> (120 ms). Reduced motion zeroes these durations, so overlays simply appear; the viewer's swipe bounce is removed.</p>
+      <p>Dialogs scale in, sheets slide; reduced motion removes both. The lightbox fades in only.</p>
       <h3>Touch</h3>
-      <p>Close buttons and footer buttons are 44px; bottom sheets put the actions in thumb reach; a swipe in the viewer moves between photos.</p>
+      <p>Close and the lightbox arrows are 44px targets; footer buttons are 44px tall and 12px apart; the docked popup keeps its Close clear of the map edge.</p>
     </section>
 
     <section class="ds-section" id="content"><h2><a href="#content">Content</a></h2>
       <ul>
-        <li><b>Task dialogs</b> are titled with the task, in the same words as the button that opened them: "Send an enquiry", "Write a review", "Report this listing". A subtitle names the object: "to Pelau House".</li>
-        <li><b>Confirmations</b> are titled as a question with the object: "Suspend Pelau House?", "Remove Devon W.’s review permanently?", "Decline Priya’s enquiry?".</li>
-        <li><b>Consequences</b> come as short sentences or a list, in the order they happen: leaves the listing, email sent, enquiries closed, can it be undone.</li>
-        <li><b>Buttons</b>: Cancel and a verb that repeats the title's action ("Suspend caterer", "Remove permanently"); success views end with "Done" or the next destination ("Go to your inbox").</li>
+        <li><b>Titles</b> are a question naming the item: "Delete Corktown Garage Studio?", "Unpublish The Junction Loft?", "Remove test shot 2?", "Discard changes?". Refusals state the fact: "Can't publish yet", "Can't remove this test shot".</li>
+        <li><b>Descriptions</b> give the consequence and the way back: "It goes back to draft… You can publish it again any time." "It can't be undone." "It's removed when you save the studio."</li>
+        <li><b>Consequence buttons</b> repeat the verb and the thing: "Delete studio", "Remove test shot", "Unpublish", "Discard". The safe button is "Cancel", or "Stay" when leaving is the risk.</li>
+        <li><b>Failures inside a dialog</b> say nothing changed: "We couldn't unpublish it. Nothing changed. Try again."</li>
       </ul>
     </section>
 
     <section class="ds-section" id="do-dont"><h2><a href="#do-dont">Do and don't</a></h2>
       <div class="ds-dodont">
-        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--stack"><p class="dialog__title">Remove Pelau House permanently?</p><div class="field"><label class="field__label" for="dd-confirm">Type Pelau House to confirm</label><input class="input" id="dd-confirm" type="text"></div></div><figcaption>Advance the same dialog to the stronger confirmation.</figcaption></figure>
-        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--stack"><p class="dialog__title">Remove Pelau House?</p><p class="text-muted">…opens a second "Are you sure?" dialog on top</p></div><figcaption>Never stack a dialog on a dialog.</figcaption></figure>
-        <figure class="ds-do"><div class="ds-example__canvas"><button class="btn" type="button" data-state="focus">Cancel</button><button class="btn btn--danger" type="button">Retire cuisine</button></div><figcaption>Start focus on the safe action.</figcaption></figure>
-        <figure class="ds-dont"><div class="ds-example__canvas"><button class="btn" type="button">Cancel</button><button class="btn btn--danger" type="button" data-state="focus">Retire cuisine</button></div><figcaption>Don't focus the danger button; Enter would destroy something.</figcaption></figure>
-        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--stack"><p class="dialog__title">Enquiry sent to Pelau House</p><button class="btn btn--primary" type="button">Go to your inbox</button></div><figcaption>Confirm inside the dialog when the result needs explaining.</figcaption></figure>
-        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--stack"><p class="dialog__title">Edit your details</p><p class="text-muted">…closes, then a second dialog says "Saved"</p></div><figcaption>A change visible on the page gets a toast, not another dialog.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas"><button class="btn" type="button">Cancel</button><button class="btn btn--primary" type="button">Unpublish</button></div><figcaption>Use the ink primary for a reversible action: Unpublish can be undone with Publish.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas"><button class="btn" type="button">Cancel</button><button class="btn btn--danger" type="button">Unpublish</button></div><figcaption>Keep danger red for real loss (Delete studio, Discard, Remove test shot) so it keeps its meaning.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--stack"><p class="dialog__title">Delete Corktown Garage Studio?</p><p class="dialog__desc">This deletes the draft and its 2 images. It can't be undone.</p></div><figcaption>Name the item and count what goes with it.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--stack"><p class="dialog__title">Are you sure?</p><p class="dialog__desc">This action cannot be undone.</p></div><figcaption>Don't ask a generic question the admin has to decode.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--stack"><p class="text-muted">Can't publish yet → Ceiling height (closes the dialog, focuses the field)</p></div><figcaption>Close the overlay before taking the admin somewhere else.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--stack"><p class="text-muted">Filters sheet → "Discard your filter changes?" dialog on top</p></div><figcaption>Don't stack a second overlay: closing the filters sheet simply discards unapplied choices.</figcaption></figure>
       </div>
     </section>
 
     <section class="ds-section" id="sources"><h2><a href="#sources">Sources</a></h2>
       <ul>
-        <li>dialogs/enquiry/default, success, dialogs/search/default, dialogs/filters/default, selected, dialogs/filter-menu/default</li>
-        <li>dialogs/delete-review/default, dialogs/suspend-caterer/default, dialogs/remove-caterer/confirm, dialogs/approve-profile/default, dialogs/retire-cuisine/default</li>
-        <li>dialogs/site-menu/default, dialogs/account-menu/default, dialogs/photo-viewer/default, dialogs/review-response/edit, dialogs/record-breach/default</li>
+        <li>Confirmations: <a href="../../mocks/dialogs/delete-content/default.html">delete-content/default</a>, <a href="../../mocks/dialogs/delete-content/busy.html">busy</a>, <a href="../../mocks/dialogs/delete-content/failed.html">failed</a>; <a href="../../mocks/dialogs/unpublish/default.html">unpublish/default</a>, <a href="../../mocks/dialogs/unpublish/busy.html">busy</a>, <a href="../../mocks/dialogs/unpublish/failed.html">failed</a>; <a href="../../mocks/dialogs/discard-changes/default.html">discard-changes/default</a>; <a href="../../mocks/dialogs/remove-image/default.html">remove-image/default</a>, <a href="../../mocks/dialogs/remove-image/refused.html">refused</a>; <a href="../../mocks/dialogs/missing-fields/default.html">missing-fields/default</a>, <a href="../../mocks/dialogs/missing-fields/spot.html">spot</a></li>
+        <li>Sheets: <a href="../../mocks/dialogs/studio-filters/default.html">studio-filters/default</a>, <a href="../../mocks/dialogs/spot-filters/default.html">spot-filters/default</a>, <a href="../../mocks/dialogs/site-menu/default.html">site-menu/default</a>, <a href="../../mocks/dialogs/site-menu/admin.html">site-menu/admin</a></li>
+        <li>Viewers: <a href="../../mocks/dialogs/lightbox/default.html">lightbox/default</a>, <a href="../../mocks/dialogs/lightbox/last.html">last</a>, <a href="../../mocks/dialogs/lightbox/sample-shot.html">sample-shot</a>, <a href="../../mocks/dialogs/lightbox/image-failed.html">image-failed</a>; <a href="../../mocks/dialogs/map-popup/default.html">map-popup/default</a>, <a href="../../mocks/dialogs/map-popup/spot.html">spot</a></li>
+        <li>Picker: <a href="../../mocks/dialogs/guide-entry-picker/default.html">default</a>, <a href="../../mocks/dialogs/guide-entry-picker/busy.html">busy</a>, <a href="../../mocks/dialogs/guide-entry-picker/results.html">results</a>, <a href="../../mocks/dialogs/guide-entry-picker/no-matches.html">no-matches</a>, <a href="../../mocks/dialogs/guide-entry-picker/invalid.html">invalid</a></li>
       </ul>
-      <p>Drift fixed during extraction: the search dialog's note says it is centred "from 640px" (40rem) while the CSS centres dialogs from 36rem; the system uses 36rem. remove-photo/blocked ends with "Got it"; blocked dialogs offer the action that resolves the rule ("Add a photo") beside Cancel. Mock pages mark the page behind with both <code>inert</code> and <code>aria-hidden="true"</code>; <code>inert</code> alone is enough and is what the system requires.</p>
+      <p>Drift fixed during extraction: the mocks draw Close, Cancel and the consequence actions as links back to other mocks; in the product they are <code>&lt;button&gt;</code>s (Close an icon button named "Close"). The unpublish and delete busy states swap Close from a link to a disabled button; the system always uses a button so it can be disabled. Toasts after Unpublish nest a <code>role="alert"</code> inside a <code>role="status"</code> region; see Notifications. The map popup is written with inline <code>left</code>/<code>top</code> for its marker; that is positioning data, not styling. Dialog headings are <code>h2</code> in the mocks, which is right for a dialog; inside this documentation they are shown one level down.</p>
     </section>
 
-    <footer class="ds-footer"><span>ShotThere design system · extracted from docs/mocks on 10 October 2026</span><a href="#top">Back to top</a></footer>
+    <footer class="ds-footer"><span>ShotThere design system · extracted from <a href="../../mocks/index.html">docs/mocks</a> on 13 October 2026</span><a href="#top">Back to top</a></footer>
   </main>
 </div>
 <script src="../assets/ds.js"></script>

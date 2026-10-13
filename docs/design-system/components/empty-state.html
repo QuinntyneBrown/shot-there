@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Empty state — ShotThere design system</title>
-<meta name="description" content="ShotThere empty states: first run, no results, error, offline and forbidden, compact and full, with round food photos or an icon, and a copy formula.">
+<meta name="description" content="ShotThere empty states: no reviews yet, no studios match these filters, the list didn't load, nothing to re-verify. Icon, title, one line of why and one way forward, in neutral, error and success tones, default and compact.">
 <link rel="stylesheet" href="../tokens/tokens.css">
 <link rel="stylesheet" href="../assets/components.css">
 <link rel="stylesheet" href="../assets/ds.css">
@@ -33,40 +33,61 @@
       <li><a href="../components/icon-button.html">Icon button</a></li>
       <li><a href="../components/button-group.html">Button group</a></li>
       <li><a href="../components/link.html">Link</a></li>
+      <li><a href="../components/compare-bar.html">Compare toggle and bar</a></li>
     </ul></details>
     <details open><summary>Inputs</summary><ul>
       <li><a href="../components/form-field.html">Form field</a></li>
       <li><a href="../components/text-field.html">Text field</a></li>
       <li><a href="../components/textarea.html">Textarea</a></li>
       <li><a href="../components/select.html">Select</a></li>
+      <li><a href="../components/combobox.html">Combobox</a></li>
       <li><a href="../components/checkbox.html">Checkbox</a></li>
       <li><a href="../components/radio-group.html">Radio group</a></li>
       <li><a href="../components/file-upload.html">File upload</a></li>
       <li><a href="../components/form-layout.html">Form layout</a></li>
+      <li><a href="../components/signup.html">Email signup</a></li>
     </ul></details>
     <details open><summary>Navigation</summary><ul>
       <li><a href="../components/skip-link.html">Skip link</a></li>
       <li><a href="../components/site-header.html">Site header</a></li>
       <li><a href="../components/footer.html">Footer</a></li>
+      <li><a href="../components/breadcrumb.html">Breadcrumb</a></li>
+      <li><a href="../components/filter.html">Filters</a></li>
     </ul></details>
     <details open><summary>Containers and overlays</summary><ul>
-      <li><a href="../components/container.html">Container and grid</a></li>
-      <li><a href="../components/card.html">Card</a></li>
+      <li><a href="../components/container.html">Container</a></li>
+      <li><a href="../components/review-layout.html">Review layout</a></li>
+      <li><a href="../components/editor-layout.html">Editor layout</a></li>
       <li><a href="../components/dialog.html">Dialog</a></li>
-      <li><a href="../components/sheet.html">Sheet and drawer</a></li>
-      <li><a href="../components/divider.html">Divider</a></li>
+      <li><a href="../components/sheet.html">Sheet</a></li>
+      <li><a href="../components/popover.html">Popover</a></li>
+      <li><a href="../components/lightbox.html">Lightbox</a></li>
     </ul></details>
     <details open><summary>Data display</summary><ul>
+      <li><a href="../components/location-card.html">Location card</a></li>
       <li><a href="../components/table.html">Table</a></li>
+      <li><a href="../components/compare-table.html">Comparison table</a></li>
+      <li><a href="../components/list.html">List rows</a></li>
       <li><a href="../components/description-list.html">Description list</a></li>
+      <li><a href="../components/price-block.html">Price block</a></li>
+      <li><a href="../components/score.html">Score and pips</a></li>
+      <li><a href="../components/shot-grid.html">Shot grid</a></li>
+      <li><a href="../components/video-poster.html">Episode poster</a></li>
+      <li><a href="../components/map.html">Map</a></li>
+      <li><a href="../components/guide-entry.html">Guide entry</a></li>
+      <li><a href="../components/stat-tile.html">Stat tile</a></li>
+      <li><a href="../components/image-manager.html">Image manager</a></li>
+      <li><a href="../components/disclosure.html">Disclosure</a></li>
       <li><a href="../components/badge.html">Badge</a></li>
+      <li><a href="../components/status-label.html">Status label</a></li>
       <li><a href="../components/chip.html">Chip</a></li>
+      <li><a href="../components/tag.html">Tag</a></li>
     </ul></details>
     <details open><summary>Feedback</summary><ul>
       <li><a href="../components/inline-message.html">Inline message</a></li>
-      <li><a href="../components/alert.html">Alert and banner</a></li>
+      <li><a href="../components/alert.html">Alert</a></li>
       <li><a href="../components/toast.html">Toast</a></li>
-      <li><a href="../components/progress.html">Progress and meter</a></li>
+      <li><a href="../components/progress.html">Progress</a></li>
       <li><a href="../components/spinner.html">Spinner</a></li>
       <li><a href="../components/skeleton.html">Skeleton</a></li>
       <li><a href="../components/empty-state.html">Empty state</a></li>
@@ -88,296 +109,288 @@
     <header class="ds-header">
       <p class="ds-kicker">Component · Feedback</p>
       <h1>Empty state</h1>
-      <p class="ds-lead">An empty state fills the space where content would be — no dishes yet, no caterers match, the list didn’t load — with one line of why and one way forward.</p>
-      <div class="ds-meta"><span class="ds-pill ds-pill--ok">WCAG 2.2 AA</span><span class="ds-pill">Status: stable</span><span class="ds-pill"><code>.empty</code></span></div>
+      <p class="ds-lead">An empty state fills the space where content would be (no studio reviews yet, no spots match these filters, the list didn't load) with a title, one line of why and one way forward.</p>
+      <div class="ds-meta"><span class="ds-pill ds-pill--ok">WCAG 2.2 AA</span><span class="ds-pill">Status: stable</span><span class="ds-pill"><code>.empty</code></span><span class="ds-pill"><code>.empty--compact</code></span><span class="ds-pill"><code>.empty--error</code></span><span class="ds-pill"><code>.empty--success</code></span></div>
       <ul class="ds-toc"><li><a href="#overview">Overview</a></li><li><a href="#anatomy">Anatomy</a></li><li><a href="#variants">Variants</a></li><li><a href="#sizes">Sizes</a></li><li><a href="#states">States</a></li><li><a href="#responsive">Responsive behaviour</a></li><li><a href="#theming">Theming</a></li><li><a href="#accessibility">Accessibility</a></li><li><a href="#content">Content</a></li><li><a href="#do-dont">Do and don't</a></li><li><a href="#tokens">Tokens</a></li><li><a href="#code">Code</a></li><li><a href="#sources">Sources</a></li></ul>
     </header>
 
-<section class="ds-section" id="overview"><h2><a href="#overview">Overview</a></h2>
-      <p>An empty state replaces a list, grid or panel that has nothing to show. It keeps the page around it (header, title, filters, side navigation) and centres four parts in the content area: a round image, a title, one sentence and usually one action. It covers five situations:</p>
+    <section class="ds-section" id="overview"><h2><a href="#overview">Overview</a></h2>
+      <p>Use an empty state in place of a list, map, table or editor that has nothing to show. ShotThere has four reasons for one:</p>
       <ul>
-        <li><b>First run</b>: nothing has been created yet. "What do you cook best?" on an empty menu, "Show people your food" on an empty photo manager, "No enquiries yet" in a new customer's inbox.</li>
-        <li><b>No results</b>: filters or a search exclude everything. "No caterers match these filters", "No closed enquiries".</li>
-        <li><b>Error</b>: the content failed to load. "We couldn’t load caterers", with Try again and a reference.</li>
-        <li><b>Offline</b>: the content needs a connection and nothing is cached.</li>
-        <li><b>Forbidden</b>: the person is signed in but their role cannot see this section. "Only Admins can see the audit log".</li>
+        <li><b>Nothing published yet</b>: before the first reviews go up ("No studio reviews yet", "No outdoor spots yet", "No guides yet", "No locations on the map yet"), and in the admin before the first draft ("No studios yet", "Nothing published yet"). Because nothing is listed until it has been shot there, the public copy says the reviews are being shot.</li>
+        <li><b>No results</b>: filters or a search leave nothing ("No studios match these filters", "No studios match “parkdale”"), or the page needs a choice first ("Pick at least two studios to compare").</li>
+        <li><b>Didn't load</b> (<code>.empty--error</code>): the list, map data, dashboard or a record failed to arrive, with Try again (L2-026.2).</li>
+        <li><b>All done</b> (<code>.empty--success</code>): the dashboard's re-verification list has nothing in it ("Everything is up to date").</li>
       </ul>
       <p>Choose something else when:</p>
       <ul>
-        <li>The whole page cannot be served (404, 500, maintenance): an <a href="error-page.html">error page</a>.</li>
-        <li>Content is still loading: a <a href="skeleton.html">skeleton</a>. Never show "No caterers" while the request is in flight.</li>
-        <li>Part of a page failed while the rest is fine (one chart on the metrics page): an inline <a href="alert.html">alert</a> in that part.</li>
-        <li>The empty thing is a whole setup flow (a caterer's first dashboard): the welcome text, <a href="progress.html">setup meter</a> and checklist do the job; the empty state appears inside each section (menu, photos) instead.</li>
+        <li>The whole page can't be shown (unknown URL, server failure): the <a href="error-page.html">error page</a>.</li>
+        <li>The page still has content and only part of it is missing or dropped (one unknown studio in a compare link, a map without tiles): an <a href="alert.html">alert</a> above what remains.</li>
+        <li>An action failed inside a dialog or form ("We couldn't delete it. Try again."): an alert or <a href="inline-message.html">inline message</a> where the action was.</li>
+        <li>Data is still on its way: a <a href="skeleton.html">skeleton</a>.</li>
       </ul>
     </section>
 
     <section class="ds-section" id="anatomy"><h2><a href="#anatomy">Anatomy</a></h2>
       <div class="ds-anatomy">
         <figure class="ds-anatomy__figure">
-          <div class="empty" style="padding: var(--space-6) var(--space-4);">
-            <div class="empty__icon" aria-hidden="true"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></div>
-            <h3 class="empty__title">No caterers match these filters</h3>
-            <p class="empty__text">No Haitian caterers list Durham yet. Try a nearby area, or clear the filters.</p>
-            <div class="empty__actions">Clear filters</div>
+          <div class="empty">
+            <div class="empty__icon"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="m20 20-4.5-4.5"/></svg></div>
+            <h3 class="empty__title">No studios match these filters</h3>
+            <p class="empty__text">Try removing a filter, or clear them all to see all 7 studios.</p>
+            <div class="empty__actions"><a class="btn" href="../../mocks/pages/studios/default.html">Clear filters</a></div>
           </div>
-          <span class="ds-callout" style="left: 36%; top: 10%;" aria-hidden="true">1</span>
-          <span class="ds-callout" style="left: 8%; top: 42%;" aria-hidden="true">2</span>
-          <span class="ds-callout" style="left: 8%; top: 62%;" aria-hidden="true">3</span>
-          <span class="ds-callout" style="left: 30%; top: 84%;" aria-hidden="true">4</span>
+          <span class="ds-callout" style="left: 42%; top: 14%;" aria-hidden="true">1</span>
+          <span class="ds-callout" style="left: 14%; top: 44%;" aria-hidden="true">2</span>
+          <span class="ds-callout" style="left: 14%; top: 60%;" aria-hidden="true">3</span>
+          <span class="ds-callout" style="left: 34%; top: 82%;" aria-hidden="true">4</span>
         </figure>
         <ol class="ds-anatomy__list">
-          <li><div><b>Image</b><small><code>.empty__icon</code>: a 72px stone circle with a 28px outline icon, or a <code>.photo-row</code> of three round food photos. Always <code>aria-hidden</code>.</small></div></li>
-          <li><div><b>Title</b><small><code>.empty__title</code>: a real heading at the level that fits the page outline (<code>--text-h3</code> look whatever the level).</small></div></li>
-          <li><div><b>Text</b><small><code>.empty__text</code>: one or two sentences, muted, at most 36 characters per line so it stays a tidy block.</small></div></li>
-          <li><div><b>Actions</b><small><code>.empty__actions</code>: one primary (only if the screen has no other) and optionally one secondary, centred and wrapping.</small></div></li>
+          <li><div><b>Icon</b><small><code>.empty__icon</code>: a 72px circle in <code>--color-bg-subtle</code> holding a 28px line icon. The svg is <code>aria-hidden</code>. Optional in a compact state inside a section.</small></div></li>
+          <li><div><b>Title</b><small><code>.empty__title</code>, <code>--text-h3</code>, a heading at the level the page outline needs (<code>h1</code> to <code>h3</code>), or a <code>p</code> when it sits under a section heading.</small></div></li>
+          <li><div><b>Text</b><small><code>.empty__text</code>, <code>--color-fg-muted</code>, at most 36 characters wide: why it is empty and what to do.</small></div></li>
+          <li><div><b>Actions</b><small><code>.empty__actions</code>: one button or link, two at most (Try again plus a way out). Centred and wrapping.</small></div></li>
         </ol>
       </div>
     </section>
 
     <section class="ds-section" id="variants"><h2><a href="#variants">Variants</a></h2>
-      <h3>First run</h3>
-      <p>Welcoming, not apologetic: say what will be here and give the one action that starts it. On public and customer screens the image is a row of food photos; in caterer and operator tools it is an icon.</p>
+      <h3>Nothing published yet</h3>
       <div class="ds-example">
-        <div class="ds-example__canvas" style="justify-content: center;">
+        <div class="ds-example__canvas ds-example__canvas--canvas" style="justify-content: center;">
           <div class="empty">
-            <div class="empty__icon" aria-hidden="true"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/></svg></div>
-            <h3 class="empty__title">What do you cook best?</h3>
-            <p class="empty__text">Add at least 3 dishes. A name is enough; descriptions, dietary tags and prices help people choose.</p>
-            <div class="empty__actions"><button class="btn btn--primary btn--lg" type="button" aria-haspopup="dialog"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>Add your first dish</button></div>
+            <div class="empty__icon"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg></div>
+            <h4 class="empty__title">No studio reviews yet</h4>
+            <p class="empty__text">The first reviews are being shot now. Each one goes up only after a full test shoot.</p>
+            <div class="empty__actions"><a class="btn" href="../../mocks/pages/spots/default.html">Browse outdoor spots</a></div>
           </div>
           <div class="empty">
-            <div class="photo-row" aria-hidden="true"><span class="photo"><img src="../assets/img/cou-cou.jpg" alt="" width="72" height="72"></span><span class="photo"><img src="../assets/img/pelau-house.jpg" alt="" width="104" height="104"></span><span class="photo"><img src="../assets/img/black-cake-co.jpg" alt="" width="72" height="72"></span></div>
-            <h3 class="empty__title">No enquiries yet</h3>
-            <p class="empty__text">When you send an enquiry to a caterer, the conversation lives here.</p>
-            <div class="empty__actions">Browse caterers</div>
+            <div class="empty__icon"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M9 6h11M9 12h11M9 18h11M4 6h.5M4 12h.5M4 18h.5"/></svg></div>
+            <h4 class="empty__title">No studios yet</h4>
+            <p class="empty__text">Add the first studio you've shot in. It stays a draft until you publish it.</p>
+            <div class="empty__actions"><a class="btn btn--primary" href="../../mocks/pages/studio-editor/new.html"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>New studio</a></div>
           </div>
         </div>
-        <div class="ds-example__caption"><span>Auntie Bev’s Kitchen's empty menu (icon, dashboard) and Marcia's empty inbox (food photos, customer).</span></div>
+        <div class="ds-example__caption"><span>The public studio list before the first review (pointing to spots, which may be up first), and the admin studio list before the first draft (primary New studio).</span></div>
         <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;div class="empty"&gt;
-  &lt;div class="photo-row" aria-hidden="true"&gt;
-    &lt;span class="photo"&gt;&lt;img src="cou-cou.jpg" alt="" width="72" height="72"&gt;&lt;/span&gt;
-    &lt;span class="photo"&gt;&lt;img src="pelau-house.jpg" alt="" width="104" height="104"&gt;&lt;/span&gt;
-    &lt;span class="photo"&gt;&lt;img src="black-cake-co.jpg" alt="" width="72" height="72"&gt;&lt;/span&gt;
-  &lt;/div&gt;
-  &lt;h2 class="empty__title"&gt;No enquiries yet&lt;/h2&gt;
-  &lt;p class="empty__text"&gt;When you send an enquiry to a caterer, the conversation lives here.&lt;/p&gt;
-  &lt;div class="empty__actions"&gt;&lt;a class="btn btn--primary" href="/caterers"&gt;Browse caterers&lt;/a&gt;&lt;/div&gt;
+  &lt;div class="empty__icon"&gt;&lt;svg class="icon" aria-hidden="true" viewBox="0 0 24 24"&gt;…&lt;/svg&gt;&lt;/div&gt;
+  &lt;h3 class="empty__title"&gt;No studio reviews yet&lt;/h3&gt;
+  &lt;p class="empty__text"&gt;The first reviews are being shot now. Each one goes up only after a full test shoot.&lt;/p&gt;
+  &lt;div class="empty__actions"&gt;&lt;a class="btn" href="/spots"&gt;Browse outdoor spots&lt;/a&gt;&lt;/div&gt;
 &lt;/div&gt;</code></pre></details>
       </div>
 
       <h3>No results</h3>
-      <p>Name the filters that excluded everything and offer the way out. The filters stay visible and editable beside the empty state; zero-count options are already disabled.</p>
       <div class="ds-example">
-        <div class="ds-example__canvas" style="justify-content: center;">
+        <div class="ds-example__canvas ds-example__canvas--canvas" style="justify-content: center;">
           <div class="empty">
-            <div class="empty__icon" aria-hidden="true"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></div>
-            <h3 class="empty__title">No caterers match these filters</h3>
-            <p class="empty__text">No Haitian caterers list Durham yet. Try a nearby area, or clear the filters.</p>
-            <div class="empty__actions">Clear filters</div>
+            <div class="empty__icon"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="m20 20-4.5-4.5"/></svg></div>
+            <h4 class="empty__title">No spots match these filters</h4>
+            <p class="empty__text">The only waterfront spot isn't rated for family shoots. Remove a filter, or clear them all to see all 5 spots.</p>
+            <div class="empty__actions"><a class="btn" href="../../mocks/pages/spots/default.html">Clear filters</a></div>
           </div>
-          <div class="empty empty--compact">
-            <div class="empty__icon" aria-hidden="true"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></div>
-            <h3 class="empty__title">No closed enquiries</h3>
-            <p class="empty__text">Enquiries close when you or the customer close them, or 30 days after the event.</p>
-            <div class="empty__actions">Show all enquiries</div>
+          <div class="empty">
+            <div class="empty__icon"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="4" width="7" height="16" rx="1.5"/><rect x="14" y="4" width="7" height="16" rx="1.5"/></svg></div>
+            <h4 class="empty__title">Pick at least two studios to compare</h4>
+            <p class="empty__text">Use Compare on any studio card, then open the comparison from the bar.</p>
+            <div class="empty__actions"><a class="btn btn--primary" href="../../mocks/pages/studios/default.html">Browse studios</a></div>
           </div>
         </div>
-        <div class="ds-example__caption"><span>Listing with Haitian + Durham (primary "Clear filters": the listing has no other primary while empty) and Kendra's Closed filter (compact, secondary).</span></div>
+        <div class="ds-example__caption"><span>Spot filters that leave nothing, explaining which filters clash; the compare page opened with fewer than two studios.</span></div>
       </div>
 
-      <h3>Error, offline and forbidden</h3>
+      <h3>Didn't load (<code>.empty--error</code>)</h3>
       <div class="ds-example">
-        <div class="ds-example__canvas" style="justify-content: center;">
+        <div class="ds-example__canvas ds-example__canvas--canvas" style="justify-content: center;">
           <div class="empty empty--error" role="alert">
-            <div class="empty__icon" aria-hidden="true"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16.5v.5"/></svg></div>
-            <h3 class="empty__title">We couldn’t load caterers</h3>
-            <p class="empty__text">Something went wrong on our side. Your filters are kept.</p>
-            <div class="empty__actions"><button class="btn btn--primary" type="button"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.3-5.7M20 4v5h-5"/></svg>Try again</button>Browse occasions</div>
-            <p class="text-caption">Reference <code>7f3k-92qd</code></p>
-          </div>
-          <div class="empty empty--compact">
-            <div class="empty__icon" aria-hidden="true"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M3 3l18 18M8.5 16.5a5 5 0 0 1 7 0M5 13a10 10 0 0 1 5-2.7M2 9.5a15 15 0 0 1 4.5-2.8M22 9.5A15 15 0 0 0 11 5.1"/></svg></div>
-            <h3 class="empty__title">You’re offline</h3>
-            <p class="empty__text">Your enquiries will show here once you’re back online. Nothing is lost.</p>
-            <div class="empty__actions"><button class="btn" type="button"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.3-5.7M20 4v5h-5"/></svg>Try again</button></div>
-          </div>
-          <div class="empty">
-            <div class="empty__icon" aria-hidden="true"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div>
-            <h3 class="empty__title">Only Admins can see the audit log</h3>
-            <p class="empty__text">You’re signed in as Tomas Reyes, an operator. Ask Leah Mohammed, an Admin, if you need an entry checked.</p>
-            <div class="empty__actions">Back to the queue</div>
+            <div class="empty__icon"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16h.01"/></svg></div>
+            <h4 class="empty__title">We couldn't load the studios</h4>
+            <p class="empty__text">The studio list didn't arrive. Check your connection and try again; your filters are kept.</p>
+            <div class="empty__actions"><button class="btn" type="button"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.3-5.6"/><path d="M20 4v5h-5"/></svg>Try again</button><a class="btn btn--ghost" href="../../mocks/pages/home/default.html">Go to the home page</a></div>
           </div>
         </div>
-        <div class="ds-example__caption"><span><code>.empty--error</code> tints the icon circle with danger and the region is <code>role="alert"</code>; offline and forbidden stay neutral (nothing is broken).</span></div>
+        <div class="ds-example__caption"><span>The studio list's fetch failed: danger-tinted icon circle, Try again and a way out. The admin lists use "We couldn't load your studios" with "Nothing has changed." and Back to dashboard.</span></div>
         <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;div class="empty empty--error" role="alert"&gt;
-  &lt;div class="empty__icon" aria-hidden="true"&gt;&lt;svg class="icon" …&gt;…&lt;/svg&gt;&lt;/div&gt;
-  &lt;h2 class="empty__title"&gt;We couldn’t load caterers&lt;/h2&gt;
-  &lt;p class="empty__text"&gt;Something went wrong on our side. Your filters are kept.&lt;/p&gt;
+  &lt;div class="empty__icon"&gt;&lt;svg class="icon" aria-hidden="true" viewBox="0 0 24 24"&gt;…&lt;/svg&gt;&lt;/div&gt;
+  &lt;h3 class="empty__title"&gt;We couldn't load the studios&lt;/h3&gt;
+  &lt;p class="empty__text"&gt;The studio list didn't arrive. Check your connection and try again; your filters are kept.&lt;/p&gt;
   &lt;div class="empty__actions"&gt;
-    &lt;button class="btn btn--primary" type="button"&gt;…Try again&lt;/button&gt;
-    &lt;a class="btn" href="/occasions"&gt;Browse occasions&lt;/a&gt;
+    &lt;button class="btn" type="button"&gt;&lt;svg class="icon" aria-hidden="true" …&gt;&lt;/svg&gt;Try again&lt;/button&gt;
+    &lt;a class="btn btn--ghost" href="/"&gt;Go to the home page&lt;/a&gt;
   &lt;/div&gt;
-  &lt;p class="text-caption"&gt;Reference &lt;code&gt;7f3k-92qd&lt;/code&gt;&lt;/p&gt;
 &lt;/div&gt;</code></pre></details>
       </div>
 
-      <h3>Inside a dialog (info)</h3>
-      <p>A dialog that cannot do its job (reporting Pelau House again while the first report is open) shows a compact empty state as its body, with "Done" in the footer. The info tint on the icon circle is planned as <code>.empty--info</code>; until it ships, the neutral icon circle is used.</p>
+      <h3>All done (<code>.empty--success</code>)</h3>
       <div class="ds-example">
-        <div class="ds-example__canvas" style="justify-content: center;">
-          <div class="empty empty--compact" role="status">
-            <div class="empty__icon" aria-hidden="true"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/></svg></div>
-            <p class="empty__title">You’ve already reported this</p>
-            <p class="empty__text">Your report from Thu 8 Oct is still with our team. We’ll email you when it’s been reviewed.</p>
+        <div class="ds-example__canvas ds-example__canvas--canvas" style="justify-content: center;">
+          <div class="empty empty--compact empty--success">
+            <div class="empty__icon" aria-hidden="true"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg></div>
+            <h4 class="empty__title">Everything is up to date</h4>
+            <p class="empty__text">No prices or permits are older than 153 days.</p>
           </div>
         </div>
-        <div class="ds-example__caption"><span>Report dialog, duplicate state. The dialog's own heading is the title for assistive tech, so the empty title can be a <code>&lt;p&gt;</code> here.</span></div>
+        <div class="ds-example__caption"><span>The dashboard's "Needs re-verification" section with nothing stale or due soon. A success state needs no action.</span></div>
+      </div>
+
+      <h3>Compact</h3>
+      <p><code>.empty--compact</code> halves the padding for a state inside a section, a panel or over the map. Under a section heading it can drop the icon and use a <code>p</code> title.</p>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--canvas" style="justify-content: center;">
+          <div class="empty empty--compact">
+            <p class="empty__title">Studio reviews are coming</p>
+            <p class="empty__text">When we've shot in studios nearby, the closest three will show here.</p>
+            <div class="empty__actions"><a class="btn" href="../../mocks/pages/studios/empty.html">Browse studios</a></div>
+          </div>
+          <div class="static-map" style="flex: 1 1 18rem; height: 30rem;">
+            <img class="static-map__tiles" src="../assets/img/map-toronto.svg" alt="" width="1600" height="1000">
+            <div class="static-map__overlay">
+              <div class="empty empty--compact empty--error">
+                <div class="empty__icon"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16h.01"/></svg></div>
+                <h4 class="empty__title">We couldn't load the locations</h4>
+                <p class="empty__text">The map is here, but the studio and spot data didn't arrive. Try again in a moment.</p>
+                <div class="empty__actions"><button class="btn" type="button"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.3-5.6"/><path d="M20 4v5h-5"/></svg>Try again</button><a class="btn btn--ghost" href="../../mocks/pages/studios/default.html">Browse studios</a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ds-example__caption"><span>A spot page's Rain backup section before any studio is published (L2-038), and the map's error card floating over the map tiles (<code>.static-map__overlay</code> centres it and gives it its raised card).</span></div>
       </div>
     </section>
 
     <section class="ds-section" id="sizes"><h2><a href="#sizes">Sizes</a></h2>
-      <p>Two sizes. Full (default) fills a page's content area; compact sits inside a tab panel, a filtered list, a card or a dialog.</p>
       <div class="ds-example">
-        <div class="ds-example__canvas" style="justify-content: center; align-items: flex-start;">
-          <div class="empty" style="outline: 1px dashed var(--color-border-default);">
-            <div class="empty__icon" aria-hidden="true"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m5 12 5 5 9-10"/></svg></div>
-            <h3 class="empty__title">All caught up</h3>
-            <p class="empty__text">New profiles, name changes, expired certificates, reports and held reviews appear here, oldest first.</p>
-            <div class="empty__actions">See recent changes</div>
+        <div class="ds-example__canvas ds-example__canvas--canvas" style="justify-content: center; align-items: flex-start;">
+          <div class="empty" style="outline: 1px dashed var(--color-border-strong);">
+            <div class="empty__icon" aria-hidden="true"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M9 6h11M9 12h11M9 18h11M4 6h.5M4 12h.5M4 18h.5"/></svg></div>
+            <h3 class="empty__title">No guides yet</h3>
+            <p class="empty__text">Group published studios or spots into a ranked list, such as the best studios under $120.</p>
           </div>
-          <div class="empty empty--compact" style="outline: 1px dashed var(--color-border-default);">
-            <div class="empty__icon" aria-hidden="true"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m5 12 5 5 9-10"/></svg></div>
-            <h3 class="empty__title">All caught up</h3>
-            <p class="empty__text">Nothing is waiting in the queue.</p>
+          <div class="empty empty--compact" style="outline: 1px dashed var(--color-border-strong);">
+            <div class="empty__icon" aria-hidden="true"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></div>
+            <h3 class="empty__title">No guides match “parkdale”</h3>
+            <p class="empty__text">Check the spelling, or clear the search to see all 4 guides.</p>
           </div>
         </div>
-        <div class="ds-example__caption"><span>Full: padding <code>--space-12</code> / <code>--space-6</code>. Compact (<code>.empty--compact</code>): <code>--space-8</code> / <code>--space-4</code>. Dashed outlines show the padding box only.</span></div>
+        <div class="ds-example__caption"><span>Default: 48px above and below, 24px each side (<code>--space-12</code> / <code>--space-6</code>), for a whole list or page area. Compact: 32px / 16px (<code>--space-8</code> / <code>--space-4</code>), for a search with no hits, a section or an overlay. The dashed outline is documentation only.</span></div>
       </div>
     </section>
 
     <section class="ds-section" id="states"><h2><a href="#states">States</a></h2>
-      <p>The empty state is not interactive; its actions are, and they use the <a href="button.html">button</a> states. Forced with <code>data-state</code> and <code>aria-busy</code> (Try again while the retry is in flight).</p>
+      <p>The empty state itself is static. Its action is a <a href="button.html">button</a> or link and carries the interactive states; Try again also has a busy state while it re-requests. An empty state never shows a disabled action: if nothing can be done, it has no action.</p>
       <div class="ds-matrix"><table>
-        <caption class="visually-hidden">Empty state action states by variant</caption>
-        <thead><tr><th scope="col">Variant</th><th scope="col">Default</th><th scope="col">Action hover</th><th scope="col">Action focus</th><th scope="col">Action busy</th></tr></thead>
+        <caption class="visually-hidden">Empty state tones with their action in each state</caption>
+        <thead><tr><th scope="col">Tone</th><th scope="col">Default</th><th scope="col">Hover</th><th scope="col">Focus</th><th scope="col">Active</th><th scope="col">Disabled</th><th scope="col">Busy</th></tr></thead>
         <tbody>
-          <tr><th scope="row">First run</th>
-            <td><div class="empty empty--compact"><div class="empty__icon" aria-hidden="true"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg></div><p class="empty__title">Show people your food</p><div class="empty__actions"><button class="btn btn--primary" type="button">Add photos</button></div></div></td>
-            <td><div class="empty empty--compact"><div class="empty__icon" aria-hidden="true"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg></div><p class="empty__title">Show people your food</p><div class="empty__actions"><button class="btn btn--primary" type="button" data-state="hover">Add photos</button></div></div></td>
-            <td><div class="empty empty--compact"><div class="empty__icon" aria-hidden="true"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg></div><p class="empty__title">Show people your food</p><div class="empty__actions"><button class="btn btn--primary" type="button" data-state="focus">Add photos</button></div></div></td>
-            <td><span class="ds-na">Opens the file picker; no busy state</span></td>
-          </tr>
-          <tr><th scope="row">No results</th>
-            <td><div class="empty empty--compact"><div class="empty__icon" aria-hidden="true"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></div><p class="empty__title">No caterers match</p><div class="empty__actions">Clear filters</div></div></td>
-            <td><div class="empty empty--compact"><div class="empty__icon" aria-hidden="true"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></div><p class="empty__title">No caterers match</p><div class="empty__actions">Clear filters</div></div></td>
-            <td><div class="empty empty--compact"><div class="empty__icon" aria-hidden="true"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></div><p class="empty__title">No caterers match</p><div class="empty__actions">Clear filters</div></div></td>
-            <td><span class="ds-na">Clearing reloads into skeletons</span></td>
+          <tr><th scope="row">Neutral</th>
+            <td><div class="empty empty--compact" style="width: 14rem; padding: var(--space-4);"><div class="empty__icon"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="m20 20-4.5-4.5"/></svg></div><p class="empty__title">No studios match these filters</p><div class="empty__actions"><a class="btn" href="../../mocks/pages/studios/default.html">Clear filters</a></div></div></td>
+            <td><a class="btn" href="../../mocks/pages/studios/default.html" data-state="hover">Clear filters</a></td>
+            <td><a class="btn" href="../../mocks/pages/studios/default.html" data-state="focus">Clear filters</a></td>
+            <td><a class="btn" href="../../mocks/pages/studios/default.html" data-state="active">Clear filters</a></td>
+            <td><span class="ds-na">Never disabled</span></td>
+            <td><span class="ds-na">A link navigates</span></td>
           </tr>
           <tr><th scope="row">Error</th>
-            <td><div class="empty empty--compact empty--error"><div class="empty__icon" aria-hidden="true"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16.5v.5"/></svg></div><p class="empty__title">We couldn’t load caterers</p><div class="empty__actions"><button class="btn btn--primary" type="button">Try again</button></div></div></td>
-            <td><div class="empty empty--compact empty--error"><div class="empty__icon" aria-hidden="true"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16.5v.5"/></svg></div><p class="empty__title">We couldn’t load caterers</p><div class="empty__actions"><button class="btn btn--primary" type="button" data-state="hover">Try again</button></div></div></td>
-            <td><div class="empty empty--compact empty--error"><div class="empty__icon" aria-hidden="true"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16.5v.5"/></svg></div><p class="empty__title">We couldn’t load caterers</p><div class="empty__actions"><button class="btn btn--primary" type="button" data-state="focus">Try again</button></div></div></td>
-            <td><div class="empty empty--compact empty--error"><div class="empty__icon" aria-hidden="true"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16.5v.5"/></svg></div><p class="empty__title">We couldn’t load caterers</p><div class="empty__actions"><button class="btn btn--primary" type="button" aria-busy="true" aria-disabled="true">Try again</button></div></div></td>
+            <td><div class="empty empty--compact empty--error" style="width: 14rem; padding: var(--space-4);"><div class="empty__icon"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16h.01"/></svg></div><p class="empty__title">We couldn't load the spots</p><div class="empty__actions"><button class="btn" type="button">Try again</button></div></div></td>
+            <td><button class="btn" type="button" data-state="hover">Try again</button></td>
+            <td><button class="btn" type="button" data-state="focus">Try again</button></td>
+            <td><button class="btn" type="button" data-state="active">Try again</button></td>
+            <td><span class="ds-na">Never disabled</span></td>
+            <td><button class="btn" type="button" aria-busy="true" aria-disabled="true">Try again</button></td>
           </tr>
-          <tr><th scope="row">Forbidden</th>
-            <td><div class="empty empty--compact"><div class="empty__icon" aria-hidden="true"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div><p class="empty__title">Only Admins can see this</p><div class="empty__actions">Back to the queue</div></div></td>
-            <td><div class="empty empty--compact"><div class="empty__icon" aria-hidden="true"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div><p class="empty__title">Only Admins can see this</p><div class="empty__actions">Back to the queue</div></div></td>
-            <td><div class="empty empty--compact"><div class="empty__icon" aria-hidden="true"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div><p class="empty__title">Only Admins can see this</p><div class="empty__actions">Back to the queue</div></div></td>
-            <td><span class="ds-na">A link; no busy state</span></td>
+          <tr><th scope="row">Success</th>
+            <td><div class="empty empty--compact empty--success" style="width: 14rem; padding: var(--space-4);"><div class="empty__icon"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg></div><p class="empty__title">Everything is up to date</p></div></td>
+            <td colspan="5"><span class="ds-na">No action, so no interactive states</span></td>
           </tr>
         </tbody>
       </table></div>
       <h3>Both themes</h3>
       <div class="ds-themes">
-        <div data-theme="light"><div class="ds-example__canvas" style="padding: 0; justify-content: center;">
-          <div class="empty empty--compact"><div class="empty__icon" aria-hidden="true"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/></svg></div><p class="empty__title">What do you cook best?</p><p class="empty__text">Add at least 3 dishes.</p></div>
-          <div class="empty empty--compact empty--error"><div class="empty__icon" aria-hidden="true"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16.5v.5"/></svg></div><p class="empty__title">We couldn’t load your enquiries</p><p class="empty__text">Your messages are safe.</p></div>
+        <div data-theme="light"><div class="ds-example__canvas ds-example__canvas--stack" style="padding: 0;">
+          <div class="empty empty--compact"><div class="empty__icon"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3 6 12h4l-4 6h12l-4-6h4z"/><path d="M12 18v3"/></svg></div><p class="empty__title">No outdoor spots yet</p><p class="empty__text">The first spots are being scouted and shot now. Studio reviews are already up.</p></div>
+          <div class="empty empty--compact empty--error"><div class="empty__icon"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16h.01"/></svg></div><p class="empty__title">We couldn't load the dashboard</p><p class="empty__text">Your content is safe. Check your connection, then try again.</p></div>
+          <div class="empty empty--compact empty--success"><div class="empty__icon"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg></div><p class="empty__title">Everything is up to date</p></div>
         </div></div>
-        <div data-theme="dark"><div class="ds-example__canvas" style="padding: 0; justify-content: center;">
-          <div class="empty empty--compact"><div class="empty__icon" aria-hidden="true"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/></svg></div><p class="empty__title">What do you cook best?</p><p class="empty__text">Add at least 3 dishes.</p></div>
-          <div class="empty empty--compact empty--error"><div class="empty__icon" aria-hidden="true"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16.5v.5"/></svg></div><p class="empty__title">We couldn’t load your enquiries</p><p class="empty__text">Your messages are safe.</p></div>
+        <div data-theme="dark"><div class="ds-example__canvas ds-example__canvas--stack" style="padding: 0;">
+          <div class="empty empty--compact"><div class="empty__icon"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3 6 12h4l-4 6h12l-4-6h4z"/><path d="M12 18v3"/></svg></div><p class="empty__title">No outdoor spots yet</p><p class="empty__text">The first spots are being scouted and shot now. Studio reviews are already up.</p></div>
+          <div class="empty empty--compact empty--error"><div class="empty__icon"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16h.01"/></svg></div><p class="empty__title">We couldn't load the dashboard</p><p class="empty__text">Your content is safe. Check your connection, then try again.</p></div>
+          <div class="empty empty--compact empty--success"><div class="empty__icon"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg></div><p class="empty__title">Everything is up to date</p></div>
         </div></div>
       </div>
       <ul>
-        <li><b>Retrying</b>: Try again goes busy; when the request succeeds the empty state is replaced by skeletons and then content; when it fails again, the same error returns with a new reference.</li>
-        <li><b>Recovering from offline</b>: when the connection returns, the region reloads by itself; the person does not have to press Try again.</li>
-        <li><b>First run ends</b> the moment the first item exists: after "Add your first dish" saves, the menu list replaces the empty state and focus moves to the new dish's row.</li>
+        <li><b>Retrying</b>: Try again turns busy for a moment, then the region shows its skeleton (<a href="../../mocks/pages/studios/loading.html">studios/loading</a>) and either the content or the same error comes back.</li>
+        <li><b>Clearing filters</b>: Clear filters is a link to the unfiltered URL (filters live in the URL, L2-025), so Back returns to the empty result.</li>
       </ul>
     </section>
 
     <section class="ds-section" id="responsive"><h2><a href="#responsive">Responsive behaviour</a></h2>
       <ul>
-        <li><b>All sizes:</b> centred column; text block capped at 36ch; actions wrap and stay centred. The icon circle stays 72px.</li>
-        <li><b>Below 36rem (xs):</b> the photo row (72 / 104 / 72px with 12px gaps, 272px in all) still fits a 320px screen with the 16px margins. When two actions do not fit side by side they stack, primary first.</li>
-        <li><b>From 48rem:</b> on the listing, the empty state sits in the results column beside the filter list; the filters stay usable. On the dashboard it sits in <code>.work-main</code> beside the preview pane.</li>
-        <li><b>From 62rem:</b> the inbox empty state occupies the list column; the thread column stays empty rather than repeating the message.</li>
-        <li>Full-size padding (<code>--space-12</code> top and bottom) is the same everywhere; use compact on phones only where the empty state sits inside a smaller container, not to save space on a whole page.</li>
+        <li>The block is centred in its container at every width; the text column stops at 36 characters, so lines stay short on a 1440px screen too.</li>
+        <li>Actions wrap onto their own centred lines when two buttons can't share one, as Try again and Go to the home page do at 360px.</li>
+        <li>In the studio and spot lists the state takes the place of the card grid, beside the filter sidebar from 62rem and under the Filters button below it.</li>
+        <li>Over the map, the compact card is centred with a 16px inset and at most 24rem wide, so the map edges still show on a phone.</li>
+        <li>Long search terms in a title ("No studios match “parkdale”") wrap; the title never truncates.</li>
       </ul>
     </section>
 
     <section class="ds-section" id="theming"><h2><a href="#theming">Theming</a></h2>
-      <p>The empty state reads <code>--color-bg-subtle</code> and <code>--color-fg-default</code> for the icon circle, <code>--color-fg-default</code> for the title and <code>--color-fg-muted</code> for the text. <code>.empty--error</code> swaps the circle to <code>--color-danger-bg</code> with a <code>--color-danger-icon</code> glyph. In dark the circle becomes a dark-stone disc and the photos keep their colours (they are photographs; never filter them).</p>
-      <pre><code>/* Planned: info tone for dialogs that can't proceed */
-.empty--info .empty__icon { background: var(--color-info-bg); color: var(--color-info-icon); }</code></pre>
+      <p>The icon circle reads <code>--color-bg-subtle</code> with an ink glyph; <code>--error</code> swaps to <code>--color-danger-bg</code> and <code>--color-danger-icon</code>, <code>--success</code> to <code>--color-success-bg</code> and <code>--color-success-icon</code>. Title reads <code>--color-fg-default</code>, text <code>--color-fg-muted</code>. All are semantic roles, redefined for dark; the component has no tokens of its own. The block has no background, so it sits on whatever surface holds it: the page, an editor panel or the raised map card.</p>
     </section>
 
     <section class="ds-section" id="accessibility"><h2><a href="#accessibility">Accessibility</a></h2>
       <h3>Role and pattern</h3>
-      <p>Plain content: a heading, a paragraph and links or buttons. No widget role. Error empty states that replace content after a failed request are <code>role="alert"</code> so the failure is announced; a no-results state that appears after the filters change is announced through the result count's polite live region ("0 caterers"), not by making the empty state itself live. See the <a href="https://www.w3.org/WAI/ARIA/apg/patterns/alert/">APG Alert pattern</a> for the error case.</p>
+      <p>No widget role: a heading (or paragraph) for the title, a paragraph and native links or buttons. When an error replaces content after a client-side request, the block gets <code>role="alert"</code> so the failure is announced (WCAG 4.1.3); a no-results state is announced by the result count's <code>role="status"</code> ("0 studios", "0 spots") rather than by the block. Follows the APG <a href="https://www.w3.org/WAI/ARIA/apg/patterns/alert/">alert pattern</a> for the error tone.</p>
       <h3>Keyboard</h3>
       <div class="ds-table-wrap"><table class="ds-table ds-keys"><thead><tr><th scope="col">Key</th><th scope="col">Action</th></tr></thead><tbody>
-        <tr><td><kbd>Tab</kbd> / <kbd>Shift</kbd>+<kbd>Tab</kbd></td><td>Reaches the actions in order: primary, then secondary.</td></tr>
-        <tr><td><kbd>Enter</kbd> (links), <kbd>Enter</kbd> / <kbd>Space</kbd> (buttons)</td><td>Activates.</td></tr>
+        <tr><td><kbd>Tab</kbd></td><td>Moves to the action (Clear filters, Try again, New studio), then the secondary link.</td></tr>
+        <tr><td><kbd>Enter</kbd></td><td>Follows a link or presses a button.</td></tr>
+        <tr><td><kbd>Space</kbd></td><td>Presses Try again.</td></tr>
       </tbody></table></div>
       <h3>Focus</h3>
-      <p>Focus is not moved to an empty state that appears on page load. After the person removes the last item (the last dish), focus moves to the empty state's primary action so they are not left on a deleted row. After a filter change empties the list, focus stays on the filter they used.</p>
+      <p>Focus is not moved into an empty state that appears after a filter change; it stays on the filter. Try again re-requests the same filters and sort (L2-026.2); focus stays on the button while it is busy. In an editor that couldn't open its record, the error title is the page's <code>h1</code> and focus lands on <code>main</code>.</p>
       <h3>Labelling</h3>
-      <p>The title is a real heading (<code>h2</code> in a page section, <code>h1</code> when the empty state is the whole page, a <code>&lt;p&gt;</code> inside a dialog whose own title already names it). The icon circle and photo row are <code>aria-hidden</code>; their photos have <code>alt=""</code>. A reference number is in <code>&lt;code&gt;</code> so it is read character by character with most screen readers' settings.</p>
+      <p>The title is a real heading at the right level: <code>h3</code> under the visually hidden "Results" <code>h2</code> in the lists, <code>h2</code> on admin pages, compare, guides and the map, <code>h1</code> when the editor has nothing else to show. Icons are decorative. Try again names what it retries through the title above it; it needs no hidden text.</p>
       <h3>Contrast</h3>
       <div class="ds-example__canvas ds-example__canvas--stack" style="padding: 0; gap: var(--space-2);">
-        <div class="ds-pair"><span>Icon on the stone circle</span><span class="ds-pair__ratio" data-contrast="--color-fg-default|--color-bg-subtle" data-min="3"></span></div>
-        <div class="ds-pair"><span>Error icon on the danger circle</span><span class="ds-pair__ratio" data-contrast="--color-danger-icon|--color-danger-bg" data-min="3"></span></div>
-        <div class="ds-pair"><span>Title on page</span><span class="ds-pair__ratio" data-contrast="--color-fg-default|--color-bg-canvas" data-min="4.5"></span></div>
-        <div class="ds-pair"><span>Text on page</span><span class="ds-pair__ratio" data-contrast="--color-fg-muted|--color-bg-canvas" data-min="4.5"></span></div>
-        <div class="ds-pair"><span>Text on card</span><span class="ds-pair__ratio" data-contrast="--color-fg-muted|--color-bg-surface" data-min="4.5"></span></div>
-        <div class="ds-pair"><span>Info icon on info circle (planned <code>.empty--info</code>)</span><span class="ds-pair__ratio" data-contrast="--color-info-icon|--color-info-bg" data-min="3"></span></div>
-        <div class="ds-pair"><span>Success icon on success circle (<code>.empty--success</code>)</span><span class="ds-pair__ratio" data-contrast="--color-success-icon|--color-success-bg" data-min="3"></span></div>
+        <div class="ds-pair"><span>Neutral icon on its circle</span><span class="ds-pair__ratio" data-contrast="--color-fg-default|--color-bg-subtle" data-min="3"></span></div>
+        <div class="ds-pair"><span>Error icon on its circle</span><span class="ds-pair__ratio" data-contrast="--color-danger-icon|--color-danger-bg" data-min="3"></span></div>
+        <div class="ds-pair"><span>Success icon on its circle</span><span class="ds-pair__ratio" data-contrast="--color-success-icon|--color-success-bg" data-min="3"></span></div>
+        <div class="ds-pair"><span>Title on the page</span><span class="ds-pair__ratio" data-contrast="--color-fg-default|--color-bg-canvas" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Text on the page</span><span class="ds-pair__ratio" data-contrast="--color-fg-muted|--color-bg-canvas" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Text in an editor panel</span><span class="ds-pair__ratio" data-contrast="--color-fg-muted|--color-bg-surface" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Text on the map card</span><span class="ds-pair__ratio" data-contrast="--color-fg-muted|--color-bg-surface-raised" data-min="4.5"></span></div>
       </div>
+      <p>The tone is never the only signal: the error title says "We couldn't…" and the success title says "Everything is up to date".</p>
       <h3>Motion</h3>
-      <p>None. Empty states appear without animation; photos do not zoom (the caterer-card hover zoom does not apply to the decorative photo row).</p>
+      <p>None. The state appears in place of the skeleton without animation.</p>
       <h3>Touch</h3>
-      <p>Actions are 44px (medium) or 52px (large first-run buttons) and wrap with 12px between them.</p>
+      <p>Actions are full-size buttons (44px tall on phones) with 12px between them, and wrap rather than shrink.</p>
     </section>
 
     <section class="ds-section" id="content"><h2><a href="#content">Content</a></h2>
       <h3>The formula</h3>
-      <div class="ds-table-wrap"><table class="ds-table">
-        <thead><tr><th scope="col">Kind</th><th scope="col">Title says</th><th scope="col">Text says</th><th scope="col">Action</th></tr></thead>
-        <tbody>
-          <tr><td>First run</td><td>What will be here, as an invitation: "What do you cook best?", "Show people your food", "No enquiries yet"</td><td>What to add and the minimum: "Add at least 3 dishes. A name is enough…"</td><td>Create the first one: "Add your first dish", "Add photos", "Browse caterers"</td></tr>
-          <tr><td>No results</td><td>"No [things] match [these filters]"</td><td>Name the combination and suggest a change: "No Haitian caterers list Durham yet. Try a nearby area, or clear the filters."</td><td>"Clear filters" or "Show all enquiries"</td></tr>
-          <tr><td>Error</td><td>"We couldn’t load [things]"</td><td>Whose fault, what is safe: "Something went wrong on our side. Your filters are kept." Then the reference.</td><td>"Try again" plus a way to keep going ("Browse occasions")</td></tr>
-          <tr><td>Offline</td><td>"You’re offline"</td><td>What still works and that nothing is lost.</td><td>"Try again" (secondary; it also retries by itself)</td></tr>
-          <tr><td>Forbidden</td><td>"Only [role] can see [thing]"</td><td>Who they are signed in as and who to ask, by name.</td><td>Back to where they can work: "Back to the queue"</td></tr>
-          <tr><td>Nothing to do</td><td>"All caught up"</td><td>What would appear here and in what order.</td><td>Optional secondary: "See recent changes"</td></tr>
-        </tbody>
-      </table></div>
+      <ol>
+        <li><b>Title: what is (not) here</b>, in plain words. "No studio reviews yet", "No studios match these filters", "We couldn't load the studios". Errors start "We couldn't…", owning the failure.</li>
+        <li><b>Text: why, and what next</b>, one or two sentences. Reassure when something failed ("Nothing has changed.", "Your content is safe.", "your filters are kept").</li>
+        <li><b>Action: one way forward</b>, named for what it does: Clear filters, Clear search, Try again, New studio, Browse studios. A second action only to leave (Go to the home page, Back to dashboard).</li>
+      </ol>
       <ul>
-        <li>Never "No data", "Nothing here" or "0 results". Say which things.</li>
-        <li>Name the caterer's or customer's world, not the database: "enquiries", "dishes", "caterers".</li>
-        <li>References are lower-case, hyphenated and in <code>&lt;code&gt;</code>: "Reference <code>7f3c-91ad</code>".</li>
-        <li>Keep the warmth of a first run and the calm of an error; no exclamation marks, no jokes about failure.</li>
+        <li>Give the count that clearing would restore: "clear them all to see all 7 studios".</li>
+        <li>When filters clash, say which: "The only waterfront spot isn't rated for family shoots."</li>
+        <li>Public first-run copy keeps the promise honest: reviews are "being shot now" and go up "only after a full test shoot". Never "coming soon" with a date.</li>
+        <li>Quote the search term with curly quotes: No studios match “parkdale”.</li>
+        <li>No exclamation marks, no "Oops", no illustrations.</li>
       </ul>
     </section>
 
     <section class="ds-section" id="do-dont"><h2><a href="#do-dont">Do and don't</a></h2>
       <div class="ds-dodont">
-        <figure class="ds-do"><div class="ds-example__canvas" style="justify-content: center;"><div class="empty empty--compact"><div class="empty__icon" aria-hidden="true"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></div><p class="empty__title">No caterers match these filters</p><p class="empty__text">No Haitian caterers list Durham yet.</p><div class="empty__actions">Clear filters</div></div></div><figcaption>Name the filters and give the way out.</figcaption></figure>
-        <figure class="ds-dont"><div class="ds-example__canvas" style="justify-content: center;"><div class="empty empty--compact"><div class="empty__icon" aria-hidden="true"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></div><p class="empty__title">No results</p></div></div><figcaption>Don't leave people at a dead end with a generic line and no action.</figcaption></figure>
-        <figure class="ds-do"><div class="ds-example__canvas" style="justify-content: center;"><div class="empty empty--compact empty--error"><div class="empty__icon" aria-hidden="true"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16.5v.5"/></svg></div><p class="empty__title">We couldn’t load your enquiries</p><p class="empty__text">Your messages are safe.</p><p class="text-caption">Reference <code>7f3c-91ad</code></p></div></div><figcaption>One reference format: lower-case, hyphenated, in <code>&lt;code&gt;</code>.</figcaption></figure>
-        <figure class="ds-dont"><div class="ds-example__canvas" style="justify-content: center;"><div class="empty empty--compact empty--error"><div class="empty__icon" aria-hidden="true"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16.5v.5"/></svg></div><p class="empty__title">We couldn’t load caterers</p><p class="empty__text">Something went wrong on our side. Reference 7F3K-92QD.</p></div></div><figcaption>Don't vary the reference format or bury it in the sentence (the mocks used three formats).</figcaption></figure>
-        <figure class="ds-do"><div class="ds-example__canvas" style="justify-content: center;"><div class="empty empty--compact"><div class="empty__icon" aria-hidden="true"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/></svg></div><p class="empty__title">What do you cook best?</p><div class="empty__actions"><button class="btn btn--primary" type="button">Add your first dish</button></div></div></div><figcaption>One primary when nothing else on the screen is primary.</figcaption></figure>
-        <figure class="ds-dont"><div class="ds-example__canvas" style="justify-content: center;"><div class="empty empty--compact"><div class="empty__icon" aria-hidden="true"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/></svg></div><p class="empty__title">What do you cook best?</p><div class="empty__actions"><button class="btn btn--primary" type="button">Add a dish</button><button class="btn btn--primary" type="button">Import a menu</button></div></div></div><figcaption>Don't offer two primaries; make the second secondary or drop it.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas" style="justify-content: center;"><div class="empty empty--compact"><p class="empty__title">No studios match these filters</p><p class="empty__text">Try removing a filter, or clear them all to see all 7 studios.</p><div class="empty__actions"><a class="btn" href="../../mocks/pages/studios/default.html">Clear filters</a></div></div></div><figcaption>Say what happened and give the way back, with the count it restores.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas" style="justify-content: center;"><div class="empty empty--compact"><p class="empty__title">No results found</p></div></div><figcaption>Don't leave a bare "No results found": it doesn't say why or how to get the studios back.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas" style="justify-content: center;"><div class="empty empty--compact empty--error"><p class="empty__title">We couldn't load the spots</p><p class="empty__text">The spot list didn't arrive. Check your connection and try again; your filters are kept.</p><div class="empty__actions"><button class="btn" type="button">Try again</button></div></div></div><figcaption>When the fetch fails, say so and offer Try again.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas" style="justify-content: center;"><div class="empty empty--compact"><p class="empty__title">No outdoor spots yet</p><p class="empty__text">The first spots are being scouted and shot now.</p></div></div><figcaption>Don't show first-run copy when the request failed: it tells visitors there are no spots when there are five.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas" style="justify-content: center;"><div class="empty empty--compact"><p class="empty__title">No guides match “parkdale”</p><div class="empty__actions"><a class="btn" href="../../mocks/pages/admin-guides/default.html">Clear search</a></div></div></div><figcaption>A search with no hits is neutral stone.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas" style="justify-content: center;"><div class="empty empty--compact empty--error"><p class="empty__title">No guides match “parkdale”</p><div class="empty__actions"><a class="btn" href="../../mocks/pages/admin-guides/default.html">Clear search</a></div></div></div><figcaption>Don't use the error tone for an empty result; nothing went wrong.</figcaption></figure>
       </div>
     </section>
 
@@ -388,52 +401,48 @@
           <tr><td>Icon circle</td><td><code>--color-bg-subtle</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-bg-subtle" data-swatch></i><span data-token="--color-bg-subtle"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-bg-subtle" data-swatch></i><span data-token="--color-bg-subtle"></span></span></td></tr>
           <tr><td>Icon, title</td><td><code>--color-fg-default</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-default" data-swatch></i><span data-token="--color-fg-default"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-default" data-swatch></i><span data-token="--color-fg-default"></span></span></td></tr>
           <tr><td>Text</td><td><code>--color-fg-muted</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-muted" data-swatch></i><span data-token="--color-fg-muted"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-muted" data-swatch></i><span data-token="--color-fg-muted"></span></span></td></tr>
-          <tr><td>Error circle</td><td><code>--color-danger-bg</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-danger-bg" data-swatch></i><span data-token="--color-danger-bg"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-danger-bg" data-swatch></i><span data-token="--color-danger-bg"></span></span></td></tr>
-          <tr><td>Error icon</td><td><code>--color-danger-icon</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-danger-icon" data-swatch></i><span data-token="--color-danger-icon"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-danger-icon" data-swatch></i><span data-token="--color-danger-icon"></span></span></td></tr>
-          <tr><td>Title font</td><td><code>--text-h3</code></td><td colspan="2"><span data-token="--text-h3"></span></td></tr>
-          <tr><td>Icon size</td><td><code>--icon-size-xl</code> in a 4.5rem circle</td><td colspan="2"><span data-token="--icon-size-xl"></span></td></tr>
-          <tr><td>Padding full / compact</td><td><code>--space-12</code> <code>--space-6</code> / <code>--space-8</code> <code>--space-4</code></td><td colspan="2"><span data-token="--space-12"></span> <span data-token="--space-6"></span> / <span data-token="--space-8"></span> <span data-token="--space-4"></span></td></tr>
-          <tr><td>Gap / actions gap</td><td><code>--space-3</code></td><td colspan="2"><span data-token="--space-3"></span></td></tr>
-          <tr><td>Circle radius</td><td><code>--radius-full</code></td><td colspan="2"><span data-token="--radius-full"></span></td></tr>
+          <tr><td>Error circle / icon</td><td><code>--color-danger-bg</code> / <code>--color-danger-icon</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-danger-bg" data-swatch></i><i data-token="--color-danger-icon" data-swatch></i><span data-token="--color-danger-icon"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-danger-bg" data-swatch></i><i data-token="--color-danger-icon" data-swatch></i><span data-token="--color-danger-icon"></span></span></td></tr>
+          <tr><td>Success circle / icon</td><td><code>--color-success-bg</code> / <code>--color-success-icon</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-success-bg" data-swatch></i><i data-token="--color-success-icon" data-swatch></i><span data-token="--color-success-icon"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-success-bg" data-swatch></i><i data-token="--color-success-icon" data-swatch></i><span data-token="--color-success-icon"></span></span></td></tr>
+          <tr><td>Title type</td><td><code>--text-h3</code></td><td colspan="2"><span data-token="--text-h3"></span></td></tr>
+          <tr><td>Icon size</td><td><code>--icon-size-xl</code></td><td colspan="2"><span data-token="--icon-size-xl"></span></td></tr>
+          <tr><td>Padding, default</td><td><code>--space-12</code> / <code>--space-6</code></td><td colspan="2"><span data-token="--space-12"></span> / <span data-token="--space-6"></span></td></tr>
+          <tr><td>Padding, compact</td><td><code>--space-8</code> / <code>--space-4</code></td><td colspan="2"><span data-token="--space-8"></span> / <span data-token="--space-4"></span></td></tr>
+          <tr><td>Gap / action gap</td><td><code>--space-3</code></td><td colspan="2"><span data-token="--space-3"></span></td></tr>
         </tbody>
       </table></div>
     </section>
 
     <section class="ds-section" id="code"><h2><a href="#code">Code</a></h2>
-      <pre><code>&lt;div class="empty"&gt;
-  &lt;div class="empty__icon" aria-hidden="true"&gt;&lt;svg class="icon" aria-hidden="true" viewBox="0 0 24 24"&gt;&lt;circle cx="12" cy="12" r="8"/&gt;&lt;circle cx="12" cy="12" r="4"/&gt;&lt;/svg&gt;&lt;/div&gt;
-  &lt;h2 class="empty__title"&gt;What do you cook best?&lt;/h2&gt;
-  &lt;p class="empty__text"&gt;Add at least 3 dishes. A name is enough; descriptions, dietary tags and prices help people choose.&lt;/p&gt;
-  &lt;div class="empty__actions"&gt;
-    &lt;button class="btn btn--primary btn--lg" type="button" aria-haspopup="dialog"&gt;…Add your first dish&lt;/button&gt;
-  &lt;/div&gt;
+      <pre><code>&lt;div class="empty empty--compact"&gt;
+  &lt;div class="empty__icon" aria-hidden="true"&gt;&lt;svg class="icon" aria-hidden="true" viewBox="0 0 24 24"&gt;…&lt;/svg&gt;&lt;/div&gt;
+  &lt;h2 class="empty__title"&gt;No studios match “parkdale”&lt;/h2&gt;
+  &lt;p class="empty__text"&gt;Check the spelling, or clear the search to see all 9 studios.&lt;/p&gt;
+  &lt;div class="empty__actions"&gt;&lt;a class="btn" href="/admin/studios"&gt;Clear search&lt;/a&gt;&lt;/div&gt;
 &lt;/div&gt;</code></pre>
       <div class="ds-table-wrap"><table class="ds-table"><thead><tr><th scope="col">Class / attribute</th><th scope="col">Effect</th></tr></thead><tbody>
-        <tr><td><code>.empty</code></td><td>Centred column, full padding.</td></tr>
-        <tr><td><code>.empty--compact</code></td><td>Smaller padding for panels, tabs and dialogs.</td></tr>
-        <tr><td><code>.empty--error</code></td><td>Danger-tinted icon circle; pair with <code>role="alert"</code>.</td></tr>
-        <tr><td><code>.empty__icon</code></td><td>72px stone circle with a 28px icon; <code>aria-hidden="true"</code>.</td></tr>
-        <tr><td><code>.photo-row</code></td><td>Alternative image: three round food photos (middle larger); <code>aria-hidden="true"</code>.</td></tr>
-        <tr><td><code>.empty__title</code> <code>.empty__text</code></td><td>Heading look (any level) and muted 36ch text.</td></tr>
-        <tr><td><code>.empty__actions</code></td><td>Centred, wrapping row of one primary and one secondary.</td></tr>
-        <tr><td><code>.text-caption</code> + <code>&lt;code&gt;</code></td><td>Reference line under an error.</td></tr>
+        <tr><td><code>.empty</code></td><td>Centred column, 12px gap, default padding.</td></tr>
+        <tr><td><code>.empty__icon</code></td><td>72px stone circle with a 28px icon.</td></tr>
+        <tr><td><code>.empty__title</code> / <code>.empty__text</code></td><td>h3 type / muted text, 36ch wide.</td></tr>
+        <tr><td><code>.empty__actions</code></td><td>Centred, wrapping action row.</td></tr>
+        <tr><td><code>.empty--compact</code></td><td>Smaller padding for sections, searches and overlays.</td></tr>
+        <tr><td><code>.empty--error</code> / <code>.empty--success</code></td><td>Tint the icon circle danger or success.</td></tr>
+        <tr><td><code>role="alert"</code></td><td>On an error that replaces content after a client-side request.</td></tr>
       </tbody></table></div>
     </section>
 
     <section class="ds-section" id="sources"><h2><a href="#sources">Sources</a></h2>
       <p>Extracted from these mocks:</p>
       <ul>
-        <li>pages/profile-menu/empty, pages/profile-photos/empty, pages/dashboard/empty (first run)</li>
-        <li>pages/inbox/empty, pages/caterers/empty, pages/dashboard-reviews/empty (photo row)</li>
-        <li>pages/caterers/no-results, pages/dashboard-enquiries/no-results</li>
-        <li>pages/caterers/error, pages/inbox/error</li>
-        <li>pages/admin-audit/forbidden, pages/admin-queue/empty, pages/admin-metrics/empty</li>
-        <li>dialogs/report/duplicate (inside a dialog)</li>
+        <li>Nothing published yet: <a href="../../mocks/pages/studios/empty.html">pages/studios/empty</a>, <a href="../../mocks/pages/spots/empty.html">pages/spots/empty</a>, <a href="../../mocks/pages/guides/empty.html">pages/guides/empty</a>, <a href="../../mocks/pages/home/empty.html">pages/home/empty</a>, <a href="../../mocks/pages/map/empty.html">pages/map/empty</a>, <a href="../../mocks/pages/admin-studios/empty.html">pages/admin-studios/empty</a>, <a href="../../mocks/pages/admin-spots/empty.html">pages/admin-spots/empty</a>, <a href="../../mocks/pages/admin-guides/empty.html">pages/admin-guides/empty</a>, <a href="../../mocks/pages/admin-dashboard/empty.html">pages/admin-dashboard/empty</a>.</li>
+        <li>No results: <a href="../../mocks/pages/studios/no-results.html">pages/studios/no-results</a>, <a href="../../mocks/pages/spots/no-results.html">pages/spots/no-results</a>, <a href="../../mocks/pages/admin-studios/no-results.html">pages/admin-studios/no-results</a>, <a href="../../mocks/pages/admin-spots/no-results.html">pages/admin-spots/no-results</a>, <a href="../../mocks/pages/admin-guides/no-results.html">pages/admin-guides/no-results</a>, <a href="../../mocks/pages/compare/empty.html">pages/compare/empty</a>.</li>
+        <li>Didn't load: <a href="../../mocks/pages/studios/error.html">pages/studios/error</a>, <a href="../../mocks/pages/spots/error.html">pages/spots/error</a>, <a href="../../mocks/pages/map/error.html">pages/map/error</a>, <a href="../../mocks/pages/admin-studios/error.html">pages/admin-studios/error</a>, <a href="../../mocks/pages/admin-spots/error.html">pages/admin-spots/error</a>, <a href="../../mocks/pages/admin-guides/error.html">pages/admin-guides/error</a>, <a href="../../mocks/pages/admin-dashboard/error.html">pages/admin-dashboard/error</a>, <a href="../../mocks/pages/studio-editor/error.html">pages/studio-editor/error</a>, <a href="../../mocks/pages/spot-editor/error.html">pages/spot-editor/error</a>, <a href="../../mocks/pages/guide-editor/error.html">pages/guide-editor/error</a>.</li>
+        <li>All done: <a href="../../mocks/pages/admin-dashboard/up-to-date.html">pages/admin-dashboard/up-to-date</a>.</li>
+        <li>Compact in a section: <a href="../../mocks/pages/spot/no-rain-backup.html">pages/spot/no-rain-backup</a> (L2-038), <a href="../../mocks/pages/guide-editor/new.html">pages/guide-editor/new</a>.</li>
       </ul>
-      <p>Drift fixed during extraction: titles used <code>h1</code>, <code>h2</code>, <code>h3</code> and <code>p</code> without a rule; the level now follows the page outline. Some <code>.empty__icon</code> wrappers lacked <code>aria-hidden</code>. References came in three formats ("7F3K-92QD" in the sentence, "7f3c-91ad" in a caption, "7f3c2a91" in an alert); the system uses a lower-case, hyphenated <code>&lt;code&gt;</code> in a caption. The report dialog's duplicate state tinted the icon circle with an inline style; a <code>.empty--info</code> modifier is requested instead. The thread <code>not-found</code> mock borrowed <code>.empty__title</code> with <code>.system-page__actions</code>; an in-app not-found uses a full empty state.</p>
+      <p>Drift found during extraction, documented here and left in the mocks for their owner: the admin list, dashboard and studio editor errors have no <code>role="alert"</code> while the public lists, map and spot and guide editors do; the system requires it on every error that replaces content after a request. The guide editor's "No entries yet" overrides the title to <code>--text-h4</code> inline while the spot page's "Studio reviews are coming" keeps h3 size; the system keeps h3. The map's floating card sets its surface, radius and shadow inline. The error icon's dot is drawn two ways (<code>M12 16h.01</code> and <code>M12 16.5v.5</code>); either renders the same.</p>
     </section>
 
-    <footer class="ds-footer"><span>ShotThere design system · extracted from docs/mocks on 10 October 2026</span><a href="#top">Back to top</a></footer>
+    <footer class="ds-footer"><span>ShotThere design system · extracted from <a href="../../mocks/index.html">docs/mocks</a> on 13 October 2026</span><a href="#top">Back to top</a></footer>
   </main>
 </div>
 <script src="../assets/ds.js"></script>

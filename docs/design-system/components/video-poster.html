@@ -1,0 +1,417 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Episode poster — ShotThere design system</title>
+<meta name="description" content="ShotThere episode poster: a 16:9 poster with a Play episode control that swaps in a privacy-enhanced YouTube player only after activation, with its failed-poster and no-video rules.">
+<link rel="stylesheet" href="../tokens/tokens.css">
+<link rel="stylesheet" href="../assets/components.css">
+<link rel="stylesheet" href="../assets/ds.css">
+</head>
+<body id="top">
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="ds-shell">
+  <nav class="ds-nav" aria-label="Design system">
+    <div class="ds-nav__brand"><a href="../index.html">ShotThere DS</a><button class="ds-theme-toggle" type="button" aria-pressed="false">☾ Dark</button></div>
+    <details open><summary>Foundations</summary><ul>
+      <li><a href="../foundations/color.html">Color</a></li>
+      <li><a href="../foundations/typography.html">Typography</a></li>
+      <li><a href="../foundations/spacing.html">Spacing</a></li>
+      <li><a href="../foundations/layout.html">Layout</a></li>
+      <li><a href="../foundations/elevation.html">Elevation</a></li>
+      <li><a href="../foundations/shape.html">Shape</a></li>
+      <li><a href="../foundations/motion.html">Motion</a></li>
+      <li><a href="../foundations/iconography.html">Iconography</a></li>
+      <li><a href="../foundations/theming.html">Theming</a></li>
+      <li><a href="../foundations/responsive.html">Responsive</a></li>
+      <li><a href="../foundations/accessibility.html">Accessibility</a></li>
+      <li><a href="../foundations/content.html">Content</a></li>
+    </ul></details>
+    <details open><summary>Actions</summary><ul>
+      <li><a href="../components/button.html">Button</a></li>
+      <li><a href="../components/icon-button.html">Icon button</a></li>
+      <li><a href="../components/button-group.html">Button group</a></li>
+      <li><a href="../components/link.html">Link</a></li>
+      <li><a href="../components/compare-bar.html">Compare toggle and bar</a></li>
+    </ul></details>
+    <details open><summary>Inputs</summary><ul>
+      <li><a href="../components/form-field.html">Form field</a></li>
+      <li><a href="../components/text-field.html">Text field</a></li>
+      <li><a href="../components/textarea.html">Textarea</a></li>
+      <li><a href="../components/select.html">Select</a></li>
+      <li><a href="../components/combobox.html">Combobox</a></li>
+      <li><a href="../components/checkbox.html">Checkbox</a></li>
+      <li><a href="../components/radio-group.html">Radio group</a></li>
+      <li><a href="../components/file-upload.html">File upload</a></li>
+      <li><a href="../components/form-layout.html">Form layout</a></li>
+      <li><a href="../components/signup.html">Email signup</a></li>
+    </ul></details>
+    <details open><summary>Navigation</summary><ul>
+      <li><a href="../components/skip-link.html">Skip link</a></li>
+      <li><a href="../components/site-header.html">Site header</a></li>
+      <li><a href="../components/footer.html">Footer</a></li>
+      <li><a href="../components/breadcrumb.html">Breadcrumb</a></li>
+      <li><a href="../components/filter.html">Filters</a></li>
+    </ul></details>
+    <details open><summary>Containers and overlays</summary><ul>
+      <li><a href="../components/container.html">Container</a></li>
+      <li><a href="../components/review-layout.html">Review layout</a></li>
+      <li><a href="../components/editor-layout.html">Editor layout</a></li>
+      <li><a href="../components/dialog.html">Dialog</a></li>
+      <li><a href="../components/sheet.html">Sheet</a></li>
+      <li><a href="../components/popover.html">Popover</a></li>
+      <li><a href="../components/lightbox.html">Lightbox</a></li>
+    </ul></details>
+    <details open><summary>Data display</summary><ul>
+      <li><a href="../components/location-card.html">Location card</a></li>
+      <li><a href="../components/table.html">Table</a></li>
+      <li><a href="../components/compare-table.html">Comparison table</a></li>
+      <li><a href="../components/list.html">List rows</a></li>
+      <li><a href="../components/description-list.html">Description list</a></li>
+      <li><a href="../components/price-block.html">Price block</a></li>
+      <li><a href="../components/score.html">Score and pips</a></li>
+      <li><a href="../components/shot-grid.html">Shot grid</a></li>
+      <li><a href="../components/video-poster.html">Episode poster</a></li>
+      <li><a href="../components/map.html">Map</a></li>
+      <li><a href="../components/guide-entry.html">Guide entry</a></li>
+      <li><a href="../components/stat-tile.html">Stat tile</a></li>
+      <li><a href="../components/image-manager.html">Image manager</a></li>
+      <li><a href="../components/disclosure.html">Disclosure</a></li>
+      <li><a href="../components/badge.html">Badge</a></li>
+      <li><a href="../components/status-label.html">Status label</a></li>
+      <li><a href="../components/chip.html">Chip</a></li>
+      <li><a href="../components/tag.html">Tag</a></li>
+    </ul></details>
+    <details open><summary>Feedback</summary><ul>
+      <li><a href="../components/inline-message.html">Inline message</a></li>
+      <li><a href="../components/alert.html">Alert</a></li>
+      <li><a href="../components/toast.html">Toast</a></li>
+      <li><a href="../components/progress.html">Progress</a></li>
+      <li><a href="../components/spinner.html">Spinner</a></li>
+      <li><a href="../components/skeleton.html">Skeleton</a></li>
+      <li><a href="../components/empty-state.html">Empty state</a></li>
+      <li><a href="../components/error-page.html">Error page</a></li>
+    </ul></details>
+    <details open><summary>Patterns</summary><ul>
+      <li><a href="../patterns/forms.html">Forms</a></li>
+      <li><a href="../patterns/feedback-and-loading.html">Feedback and loading</a></li>
+      <li><a href="../patterns/empty-and-error-states.html">Empty and error states</a></li>
+      <li><a href="../patterns/navigation.html">Navigation and page structure</a></li>
+      <li><a href="../patterns/dialogs-and-overlays.html">Dialogs and overlays</a></li>
+      <li><a href="../patterns/tables-and-lists.html">Data tables and lists</a></li>
+      <li><a href="../patterns/notifications.html">Notifications</a></li>
+      <li><a href="../patterns/content-and-tone.html">Content and tone</a></li>
+    </ul></details>
+  </nav>
+
+  <main id="main" class="ds-main">
+    <header class="ds-header">
+      <p class="ds-kicker">Component · Data display</p>
+      <h1>Episode poster</h1>
+      <p class="ds-lead">Every review with a companion episode ends its long sections with "Watch the episode": a still from the shoot with a Play episode control. Nothing from YouTube loads until the visitor asks for it.</p>
+      <div class="ds-meta"><span class="ds-pill ds-pill--ok">WCAG 2.2 AA</span><span class="ds-pill">Status: stable</span><span class="ds-pill">Native <code>&lt;a&gt;</code> + <code>&lt;iframe&gt;</code></span><span class="ds-pill"><code>.video-poster</code></span><span class="ds-pill"><code>.video-frame</code></span><span class="ds-pill"><code>.episode__links</code></span></div>
+      <ul class="ds-toc"><li><a href="#overview">Overview</a></li><li><a href="#anatomy">Anatomy</a></li><li><a href="#variants">Variants</a></li><li><a href="#sizes">Sizes</a></li><li><a href="#states">States</a></li><li><a href="#responsive">Responsive behaviour</a></li><li><a href="#theming">Theming</a></li><li><a href="#accessibility">Accessibility</a></li><li><a href="#content">Content</a></li><li><a href="#do-dont">Do and don't</a></li><li><a href="#tokens">Tokens</a></li><li><a href="#code">Code</a></li><li><a href="#sources">Sources</a></li></ul>
+    </header>
+
+    <section class="ds-section" id="overview"><h2><a href="#overview">Overview</a></h2>
+      <p>The episode poster is the video section of a studio or outdoor spot review (L2-047, L2-020). It has two lives:</p>
+      <ul>
+        <li><b>Poster</b> (on load): a link to the episode on YouTube, filled with a 16:9 still and a solid ink "Play episode" pill. No YouTube iframe, script or cookie is on the page (L2-047.1). Without JavaScript the link simply opens the video on YouTube (L2-047.3).</li>
+        <li><b>Player</b> (after activation): the poster is replaced in the same 16:9 slot by a <code>.video-frame</code> iframe from <code>youtube-nocookie.com</code>, titled with the episode name and with no autoplay parameter (L2-047.2). Focus moves to the player.</li>
+      </ul>
+      <p>Under either, <code>.episode__links</code> gives the episode title with its running time and a "Watch on YouTube" link (L2-048.2).</p>
+      <p>Use it only for a ShotThere episode about the location on the page. When a review has no video ID, render no section at all: no heading, no empty poster, no "coming soon" (L2-020.1, see <a href="../../mocks/pages/spot/no-video.html">pages/spot/no-video</a> and <a href="../../mocks/pages/studio/minimal.html">pages/studio/minimal</a>). Photos of the location belong in the <a href="shot-grid.html">shot grid</a>, not here.</p>
+    </section>
+
+    <section class="ds-section" id="anatomy"><h2><a href="#anatomy">Anatomy</a></h2>
+      <div class="ds-anatomy">
+        <figure class="ds-anatomy__figure" style="display: block; max-width: 30rem;">
+          <a class="video-poster" href="https://www.youtube.com/watch?v=Jx7Lq2pT9aE">
+            <img src="../assets/img/episode-the-junction-loft.svg" alt="" width="1200" height="800" loading="lazy">
+            <span class="video-poster__play"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor" stroke="none"/></svg>Play episode<span class="visually-hidden">: Episode 4, The Junction Loft</span></span>
+          </a>
+          <div class="episode__links">
+            <p class="text-muted">Episode 4: The Junction Loft — big north light, tiny elevator · 14:32</p>
+            <a class="link--external" href="https://www.youtube.com/watch?v=Jx7Lq2pT9aE" target="_blank" rel="noopener">Watch on YouTube<span class="visually-hidden"> (opens in a new tab)</span></a>
+          </div>
+          <span class="ds-callout" style="left: 4%; top: 6%;" aria-hidden="true">1</span>
+          <span class="ds-callout" style="left: 18%; top: 8%;" aria-hidden="true">2</span>
+          <span class="ds-callout" style="left: 40%; top: 30%;" aria-hidden="true">3</span>
+          <span class="ds-callout" style="left: 92%; top: 72%;" aria-hidden="true">4</span>
+          <span class="ds-callout" style="left: 4%; top: 86%;" aria-hidden="true">5</span>
+        </figure>
+        <ol class="ds-anatomy__list">
+          <li><div><b>Container</b><small>The <code>&lt;a&gt;</code> itself: full width, <code>aspect-ratio: 16 / 9</code>, <code>--radius-lg</code>, <code>overflow: hidden</code>, ground <code>--color-bg-inverse</code> so the slot never flashes white while the still loads.</small></div></li>
+          <li><div><b>Poster still</b><small>A frame from the episode, <code>object-fit: cover</code>, <code>alt=""</code> because the play label names the link. Lazy-loaded; it sits below the fold on every review.</small></div></li>
+          <li><div><b>Play pill</b><small><code>.video-poster__play</code>: centred, 52px tall (<code>--control-height-lg</code>), ink fill <code>--color-action</code>, <code>--shadow-3</code> so it reads on any still.</small></div></li>
+          <li><div><b>Play glyph and label</b><small>Filled triangle (<code>aria-hidden</code>) and "Play episode", plus a visually hidden ": Episode 4, The Junction Loft" so the link's name is unique on the page.</small></div></li>
+          <li><div><b>Episode links</b><small><code>.episode__links</code>: the full episode title and running time in <code>.text-muted</code>, then the external "Watch on YouTube" link. Wraps onto two lines on phones.</small></div></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="ds-section" id="variants"><h2><a href="#variants">Variants</a></h2>
+      <p>One component, one look. The variants are the two kinds of review that carry it and the two phases of the slot.</p>
+      <h3>Studio and outdoor spot</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas" style="align-items: flex-start;">
+          <div style="flex: 1 1 16rem; min-width: 0;">
+            <a class="video-poster" href="https://www.youtube.com/watch?v=Jx7Lq2pT9aE">
+              <img src="../assets/img/episode-the-junction-loft.svg" alt="" width="1200" height="800" loading="lazy">
+              <span class="video-poster__play"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor" stroke="none"/></svg>Play episode<span class="visually-hidden">: Episode 4, The Junction Loft</span></span>
+            </a>
+            <div class="episode__links">
+              <p class="text-muted">Episode 4: The Junction Loft — big north light, tiny elevator · 14:32</p>
+              <a class="link--external" href="https://www.youtube.com/watch?v=Jx7Lq2pT9aE" target="_blank" rel="noopener">Watch on YouTube<span class="visually-hidden"> (opens in a new tab)</span></a>
+            </div>
+          </div>
+          <div style="flex: 1 1 16rem; min-width: 0;">
+            <a class="video-poster" href="https://www.youtube.com/watch?v=Ev7Bw3kGh2Q">
+              <img src="../assets/img/episode-evergreen-brick-works.svg" alt="" width="1200" height="800" loading="lazy">
+              <span class="video-poster__play"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor" stroke="none"/></svg>Play episode<span class="visually-hidden">: Episode 7, Evergreen Brick Works</span></span>
+            </a>
+            <div class="episode__links">
+              <p class="text-muted">Episode 7: Evergreen Brick Works at golden hour · 12:48</p>
+              <a class="link--external" href="https://www.youtube.com/watch?v=Ev7Bw3kGh2Q" target="_blank" rel="noopener">Watch on YouTube<span class="visually-hidden"> (opens in a new tab)</span></a>
+            </div>
+          </div>
+        </div>
+        <div class="ds-example__caption"><span>The Junction Loft (studio, Episode 4) and Evergreen Brick Works (outdoor spot, Episode 7). Same markup; only the video ID, still and title change.</span></div>
+        <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;section class="review-section" aria-labelledby="episode"&gt;
+  &lt;h2 id="episode"&gt;Watch the episode&lt;/h2&gt;
+  &lt;a class="video-poster" href="https://www.youtube.com/watch?v=Ev7Bw3kGh2Q"&gt;
+    &lt;img src="…" alt="" width="1280" height="720" loading="lazy"&gt;
+    &lt;span class="video-poster__play"&gt;&lt;svg class="icon" aria-hidden="true" viewBox="0 0 24 24"&gt;…&lt;/svg&gt;Play episode&lt;span class="visually-hidden"&gt;: Episode 7, Evergreen Brick Works&lt;/span&gt;&lt;/span&gt;
+  &lt;/a&gt;
+  &lt;div class="episode__links"&gt;
+    &lt;p class="text-muted"&gt;Episode 7: Evergreen Brick Works at golden hour · 12:48&lt;/p&gt;
+    &lt;a class="link--external" href="https://www.youtube.com/watch?v=Ev7Bw3kGh2Q" target="_blank" rel="noopener"&gt;Watch on YouTube&lt;span class="visually-hidden"&gt; (opens in a new tab)&lt;/span&gt;&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/section&gt;</code></pre></details>
+      </div>
+      <h3>Poster and player</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas" style="align-items: flex-start;">
+          <div style="flex: 1 1 16rem; min-width: 0;">
+            <a class="video-poster" href="https://www.youtube.com/watch?v=Jx7Lq2pT9aE">
+              <img src="../assets/img/episode-the-junction-loft.svg" alt="" width="1200" height="800" loading="lazy">
+              <span class="video-poster__play"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor" stroke="none"/></svg>Play episode<span class="visually-hidden">: Episode 4, The Junction Loft (poster example)</span></span>
+            </a>
+          </div>
+          <div style="flex: 1 1 16rem; min-width: 0;">
+            <iframe class="video-frame" title="Episode 4: The Junction Loft — big north light, tiny elevator" allow="accelerated-sensor; encrypted-media; picture-in-picture" allowfullscreen srcdoc="<link rel='stylesheet' href='../tokens/tokens.css'><body style='margin: 0; height: 100vh; display: grid; place-items: center; text-align: center; padding: var(--space-6); box-sizing: border-box; background: var(--color-bg-inverse); color: var(--color-fg-inverse); font: var(--text-body);'><p>The YouTube player loads here from youtube-nocookie.com. It waits for you to press play.</p></body>"></iframe>
+          </div>
+        </div>
+        <div class="ds-example__caption"><span>Before and after activation. The iframe takes the poster's exact slot (16:9, <code>--radius-lg</code>, inverse ground), so the page does not move. The player shown is a stand-in; production loads <code>https://www.youtube-nocookie.com/embed/Jx7Lq2pT9aE</code>.</span></div>
+      </div>
+    </section>
+
+    <section class="ds-section" id="sizes"><h2><a href="#sizes">Sizes</a></h2>
+      <p>One size: fluid. The poster and the player fill the review's main column at <code>aspect-ratio: 16 / 9</code> (L2-020.2) at every width, so the slot height is known before the still or the player arrives and nothing shifts. The play pill is fixed at 52px tall (<code>--control-height-lg</code>) with <code>--space-6</code> side padding, <code>--font-size-md</code> label and a 24px glyph, and does not scale with the poster.</p>
+      <div class="ds-example">
+        <div class="ds-example__canvas" style="align-items: flex-start;">
+          <div style="width: 18rem; max-width: 100%;">
+            <a class="video-poster" href="https://www.youtube.com/watch?v=Ev7Bw3kGh2Q">
+              <img src="../assets/img/episode-evergreen-brick-works.svg" alt="" width="1200" height="800" loading="lazy">
+              <span class="video-poster__play"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor" stroke="none"/></svg>Play episode<span class="visually-hidden">: Episode 7, Evergreen Brick Works (288px example)</span></span>
+            </a>
+          </div>
+          <div style="flex: 1 1 22rem; min-width: 0;">
+            <a class="video-poster" href="https://www.youtube.com/watch?v=Ev7Bw3kGh2Q">
+              <img src="../assets/img/episode-evergreen-brick-works.svg" alt="" width="1200" height="800" loading="lazy">
+              <span class="video-poster__play"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor" stroke="none"/></svg>Play episode<span class="visually-hidden">: Episode 7, Evergreen Brick Works (wide example)</span></span>
+            </a>
+          </div>
+        </div>
+        <div class="ds-example__caption"><span>288px (a 320px phone minus margins) and a desktop column. The pill keeps its size; the poster scales around it.</span></div>
+      </div>
+    </section>
+
+    <section class="ds-section" id="states"><h2><a href="#states">States</a></h2>
+      <p>Pointer and focus states are forced here with <code>data-state</code> (the poster is a link, so no ARIA attribute carries them); real pages get them from <code>:hover</code> and <code>:focus-visible</code>.</p>
+      <div class="ds-matrix"><table>
+        <caption class="visually-hidden">Episode poster interaction states</caption>
+        <thead><tr><th scope="col">State</th><th scope="col">Default</th><th scope="col">Hover</th><th scope="col">Focus</th><th scope="col">Active</th><th scope="col">Disabled</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Poster</th>
+            <td><div style="width: 14rem;"><a class="video-poster" href="https://www.youtube.com/watch?v=Jx7Lq2pT9aE"><img src="../assets/img/episode-the-junction-loft.svg" alt="" width="1200" height="800" loading="lazy"><span class="video-poster__play"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor" stroke="none"/></svg>Play episode<span class="visually-hidden">: Episode 4 (default)</span></span></a></div></td>
+            <td><div style="width: 14rem;"><a class="video-poster" href="https://www.youtube.com/watch?v=Jx7Lq2pT9aE" data-state="hover"><img src="../assets/img/episode-the-junction-loft.svg" alt="" width="1200" height="800" loading="lazy"><span class="video-poster__play"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor" stroke="none"/></svg>Play episode<span class="visually-hidden">: Episode 4 (hover)</span></span></a></div></td>
+            <td><div style="width: 14rem;"><a class="video-poster" href="https://www.youtube.com/watch?v=Jx7Lq2pT9aE" data-state="focus"><img src="../assets/img/episode-the-junction-loft.svg" alt="" width="1200" height="800" loading="lazy"><span class="video-poster__play"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor" stroke="none"/></svg>Play episode<span class="visually-hidden">: Episode 4 (focus)</span></span></a></div></td>
+            <td><div style="width: 14rem;"><a class="video-poster" href="https://www.youtube.com/watch?v=Jx7Lq2pT9aE" data-state="active"><img src="../assets/img/episode-the-junction-loft.svg" alt="" width="1200" height="800" loading="lazy"><span class="video-poster__play"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor" stroke="none"/></svg>Play episode<span class="visually-hidden">: Episode 4 (active)</span></span></a></div></td>
+            <td><span class="text-muted" style="font: var(--text-body-sm); display: block; width: 12rem;">Never disabled. With no video ID there is no section (L2-020.1).</span></td>
+          </tr>
+        </tbody>
+      </table></div>
+      <p class="text-muted" style="font: var(--text-body-sm);">Active: while the pointer is down the pill takes the pressed fill, <code>--color-action-active</code> (<code>.video-poster:active</code>, forced here with <code>data-state="active"</code>).</p>
+      <h3>Content and loading states</h3>
+      <div class="ds-matrix"><table>
+        <caption class="visually-hidden">Episode poster content states</caption>
+        <thead><tr><th scope="col">State</th><th scope="col">Playing</th><th scope="col">Poster failed</th><th scope="col">No video</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Slot</th>
+            <td><div style="width: 16rem;"><iframe class="video-frame" title="Episode 4: The Junction Loft — big north light, tiny elevator (playing state)" allow="accelerated-sensor; encrypted-media; picture-in-picture" allowfullscreen srcdoc="<link rel='stylesheet' href='../tokens/tokens.css'><body style='margin: 0; height: 100vh; display: grid; place-items: center; text-align: center; padding: var(--space-3); box-sizing: border-box; background: var(--color-bg-inverse); color: var(--color-fg-inverse); font: var(--text-body-sm);'><p>YouTube player from youtube-nocookie.com, no autoplay.</p></body>"></iframe></div></td>
+            <td><div style="width: 24rem;"><a class="video-poster" href="https://www.youtube.com/watch?v=Jx7Lq2pT9aE"><span class="media-fallback" aria-hidden="true"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 16 5-5 4 4 2-2 7 7"/><path d="M3 3l18 18"/></svg><span>Episode 4: The Junction Loft</span></span><span class="video-poster__play"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor" stroke="none"/></svg>Play episode<span class="visually-hidden">: Episode 4, The Junction Loft (poster failed)</span></span></a></div></td>
+            <td><span class="text-muted" style="font: var(--text-body-sm); display: block; width: 14rem;">Nothing is rendered: no "Watch the episode" heading, no poster, no placeholder. The next section follows directly.</span></td>
+          </tr>
+        </tbody>
+      </table></div>
+      <ul>
+        <li><b>Playing</b>: the <code>&lt;a&gt;</code> is replaced by <code>&lt;iframe class="video-frame"&gt;</code>; the video waits for the visitor to press play inside YouTube's player. <code>.episode__links</code> stays. There is no way back to the poster, and none is needed.</li>
+        <li><b>Poster failed</b> (L2-086.3): the still is replaced by <code>.media-fallback</code> on the inverse ground with a broken-image glyph and the short episode title at the top, and the play pill moves from the centre to the bottom of the poster (<code>.video-poster:has(&gt; .media-fallback)</code>), so the title stays readable at every width, phones included. The link and "Play episode" still work.</li>
+        <li><b>No video</b>: see <a href="../../mocks/pages/spot/no-video.html">pages/spot/no-video</a> (Trinity Bellwoods Park) and <a href="../../mocks/pages/studio/minimal.html">pages/studio/minimal</a> (Bloordale Sun Studio).</li>
+        <li><b>Loading</b>: the slot is already sized and filled with the inverse ground, so a still that is slow to arrive needs no skeleton. The player has no loading state of ours; YouTube draws its own.</li>
+      </ul>
+      <h3>Both themes</h3>
+      <div class="ds-themes">
+        <div data-theme="light">
+          <a class="video-poster" href="https://www.youtube.com/watch?v=Ev7Bw3kGh2Q"><img src="../assets/img/episode-evergreen-brick-works.svg" alt="" width="1200" height="800" loading="lazy"><span class="video-poster__play"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor" stroke="none"/></svg>Play episode<span class="visually-hidden">: Episode 7, Evergreen Brick Works (light theme)</span></span></a>
+          <div class="episode__links"><p class="text-muted">Episode 7: Evergreen Brick Works at golden hour · 12:48</p><a class="link--external" href="https://www.youtube.com/watch?v=Ev7Bw3kGh2Q" target="_blank" rel="noopener">Watch on YouTube<span class="visually-hidden"> (opens in a new tab, light theme)</span></a></div>
+          <div style="margin-top: var(--space-4);"><a class="video-poster" href="https://www.youtube.com/watch?v=Ev7Bw3kGh2Q"><span class="media-fallback" aria-hidden="true"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 16 5-5 4 4 2-2 7 7"/><path d="M3 3l18 18"/></svg><span>Episode 7: Evergreen Brick Works</span></span><span class="video-poster__play"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor" stroke="none"/></svg>Play episode<span class="visually-hidden">: Episode 7, Evergreen Brick Works (light theme, poster failed)</span></span></a></div>
+        </div>
+        <div data-theme="dark">
+          <a class="video-poster" href="https://www.youtube.com/watch?v=Ev7Bw3kGh2Q"><img src="../assets/img/episode-evergreen-brick-works.svg" alt="" width="1200" height="800" loading="lazy"><span class="video-poster__play"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor" stroke="none"/></svg>Play episode<span class="visually-hidden">: Episode 7, Evergreen Brick Works (dark theme)</span></span></a>
+          <div class="episode__links"><p class="text-muted">Episode 7: Evergreen Brick Works at golden hour · 12:48</p><a class="link--external" href="https://www.youtube.com/watch?v=Ev7Bw3kGh2Q" target="_blank" rel="noopener">Watch on YouTube<span class="visually-hidden"> (opens in a new tab, dark theme)</span></a></div>
+          <div style="margin-top: var(--space-4);"><a class="video-poster" href="https://www.youtube.com/watch?v=Ev7Bw3kGh2Q"><span class="media-fallback" aria-hidden="true"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 16 5-5 4 4 2-2 7 7"/><path d="M3 3l18 18"/></svg><span>Episode 7: Evergreen Brick Works</span></span><span class="video-poster__play"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor" stroke="none"/></svg>Play episode<span class="visually-hidden">: Episode 7, Evergreen Brick Works (dark theme, poster failed)</span></span></a></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ds-section" id="responsive"><h2><a href="#responsive">Responsive behaviour</a></h2>
+      <ul>
+        <li>The poster and player are always the full width of the review's main column (<code>.review-main</code>) and always 16:9. From LG the column sits beside the summary panel; below LG it is the page width minus the layout margin.</li>
+        <li>The play pill never wraps (<code>white-space: nowrap</code>); "Play episode" with its glyph is about 170px wide, which fits the 288px poster on a 320px phone.</li>
+        <li><code>.episode__links</code> is a wrapping row: when the column is narrow the long episode title takes its own line and "Watch on YouTube" drops beneath it, 4px apart; when both fit they share a line, 24px apart.</li>
+        <li>The player keeps the page's horizontal rhythm: no full-bleed video on phones, so the review never scrolls sideways.</li>
+      </ul>
+    </section>
+
+    <section class="ds-section" id="theming"><h2><a href="#theming">Theming</a></h2>
+      <p>The poster reads semantic tokens directly: <code>--color-bg-inverse</code> for the slot ground, <code>--color-action</code> / <code>--color-action-hover</code> / <code>--color-action-active</code> / <code>--color-fg-on-action</code> for the pill (it is the same ink as a primary <a href="button.html">button</a>), <code>--color-fg-inverse</code> for the failed-poster text and <code>--shadow-3</code> for the pill's lift.</p>
+      <p>In dark the inverse ground turns light stone (<code>--palette-stone-50</code>) and the pill flips to light stone with near-black text, so the failed poster becomes a pale slot with dark text and the pill still stands out from it by its shadow and fill. The still itself is content and keeps its own colours in both themes. YouTube's player is outside our theming; the inverse ground only shows while it loads.</p>
+      <p>To re-skin the pill without touching <code>.video-poster__play</code>, override the action tokens on a wrapper: <code>.review-section { --color-action: …; --color-fg-on-action: …; }</code>.</p>
+    </section>
+
+    <section class="ds-section" id="accessibility"><h2><a href="#accessibility">Accessibility</a></h2>
+      <h3>Role and pattern</h3>
+      <p>The poster is a native link (<code>&lt;a href="https://www.youtube.com/watch?v=…"&gt;</code>, <a href="https://www.w3.org/WAI/ARIA/apg/patterns/link/">APG Link</a>), which is what makes it work without JavaScript (L2-047.3). With JavaScript the click is intercepted: navigation is prevented and the iframe is inserted. The player is a native <code>&lt;iframe&gt;</code> whose <code>title</code> names the episode (L2-047.2). The section is a <code>&lt;section aria-labelledby&gt;</code> under the heading "Watch the episode".</p>
+      <h3>Keyboard</h3>
+      <table class="ds-table ds-keys"><thead><tr><th scope="col">Key</th><th scope="col">Action</th></tr></thead><tbody>
+        <tr><td><kbd>Tab</kbd> / <kbd>Shift</kbd>+<kbd>Tab</kbd></td><td>Moves to the poster, then to "Watch on YouTube".</td></tr>
+        <tr><td><kbd>Enter</kbd></td><td>On the poster: swaps in the player and moves focus to it. Without JavaScript: opens the episode on YouTube.</td></tr>
+        <tr><td>Inside the player</td><td>YouTube's own keys (<kbd>Space</kbd> or <kbd>K</kbd> to play, arrows to seek). <kbd>Tab</kbd> leaves the iframe to "Watch on YouTube"; there is no trap.</td></tr>
+      </tbody></table>
+      <h3>Focus</h3>
+      <p>The shared ring (2px <code>--color-focus-ring</code> at <code>--focus-ring-offset</code>) draws around the whole poster, following its <code>--radius-lg</code> corners. After activation focus moves to the iframe so a keyboard or screen-reader user lands in the player, not on <code>&lt;body&gt;</code> where the poster used to be.</p>
+      <h3>Labelling</h3>
+      <p>The link's name is "Play episode: Episode 4, The Junction Loft": the visible label plus a visually hidden episode name, so it is unique and starts with the visible words (2.5.3 label in name). The still has <code>alt=""</code>; the failed-poster fallback is <code>aria-hidden="true"</code> because it repeats the name. The iframe <code>title</code> is the full episode title. "Watch on YouTube" carries a hidden "(opens in a new tab)".</p>
+      <h3>Contrast</h3>
+      <div class="ds-example__canvas ds-example__canvas--stack" style="padding: 0; gap: var(--space-2);">
+        <div class="ds-pair"><span>Play label on the pill</span><span class="ds-pair__ratio" data-contrast="--color-fg-on-action|--color-action" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Play label on the pill (hover)</span><span class="ds-pair__ratio" data-contrast="--color-fg-on-action|--color-action-hover" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Play label on the pill (pressed)</span><span class="ds-pair__ratio" data-contrast="--color-fg-on-action|--color-action-active" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Failed-poster text on the inverse ground</span><span class="ds-pair__ratio" data-contrast="--color-fg-inverse|--color-bg-inverse" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Episode title on page</span><span class="ds-pair__ratio" data-contrast="--color-fg-muted|--color-bg-canvas" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>"Watch on YouTube" on page</span><span class="ds-pair__ratio" data-contrast="--color-fg-link|--color-bg-canvas" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Focus ring on page</span><span class="ds-pair__ratio" data-contrast="--color-focus-ring|--color-bg-canvas" data-min="3"></span></div>
+      </div>
+      <p class="text-muted" style="font: var(--text-body-sm);">The pill sits on a photo, which no token can guarantee; its solid fill carries the label's contrast and <code>--shadow-3</code> separates it from light and dark stills alike. On a failed poster the pill and the ground are the same ink, so only the label and the shadow show; the label keeps its 4.5:1 and the whole poster is the target, so nothing depends on seeing the pill's edge.</p>
+      <h3>Motion</h3>
+      <p>Nothing moves: the hover fill changes without a transition, and the player never autoplays (L2-047.2). Reduced motion needs no extra rule.</p>
+      <h3>Touch</h3>
+      <p>The whole 16:9 poster is the target, far above 44 × 44 even on a 320px phone; the 52px pill marks where to tap. Hover only darkens the pill, so touch loses nothing.</p>
+    </section>
+
+    <section class="ds-section" id="content"><h2><a href="#content">Content</a></h2>
+      <ul>
+        <li>Section heading: "Watch the episode". Control: "Play episode", exactly (L2-047.1). Never "Watch now", "Click to play" or a bare "Play".</li>
+        <li>Hidden suffix: ": Episode 4, The Junction Loft" — episode number and location only.</li>
+        <li>Episode line: the YouTube title as published, then a middle dot and the running time: "Episode 7: Evergreen Brick Works at golden hour · 12:48".</li>
+        <li>External link: "Watch on YouTube" plus hidden "(opens in a new tab)" (L2-048.2).</li>
+        <li>iframe <code>title</code>: the full episode title, "Episode 4: The Junction Loft — big north light, tiny elevator".</li>
+        <li>Failed poster: the short title only, "Episode 4: The Junction Loft"; no error wording, because nothing is broken for the visitor.</li>
+      </ul>
+    </section>
+
+    <section class="ds-section" id="do-dont"><h2><a href="#do-dont">Do and don't</a></h2>
+      <div class="ds-dodont">
+        <figure class="ds-do"><div class="ds-example__canvas" style="display: block;"><a class="video-poster" href="https://www.youtube.com/watch?v=Jx7Lq2pT9aE"><img src="../assets/img/episode-the-junction-loft.svg" alt="" width="1200" height="800" loading="lazy"><span class="video-poster__play"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor" stroke="none"/></svg>Play episode<span class="visually-hidden">: Episode 4, The Junction Loft (do example)</span></span></a></div><figcaption>Load the poster link first; insert the <code>youtube-nocookie.com</code> iframe only when the visitor presses Play episode.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas" style="display: block;"><iframe class="video-frame" title="Episode 4 embedded on page load (don't example)" srcdoc="<link rel='stylesheet' href='../tokens/tokens.css'><body style='margin: 0; height: 100vh; display: grid; place-items: center; text-align: center; padding: var(--space-3); box-sizing: border-box; background: var(--color-bg-inverse); color: var(--color-fg-inverse); font: var(--text-body-sm);'><p>youtube.com/embed/Jx7Lq2pT9aE?autoplay=1, loaded with the page</p></body>"></iframe></div><figcaption>Don't embed the player on load, use <code>youtube.com</code>, or add <code>autoplay</code>: every visit would hit YouTube before anyone chose to watch.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas" style="display: block;"><a class="video-poster" href="https://www.youtube.com/watch?v=Jx7Lq2pT9aE"><span class="media-fallback" aria-hidden="true"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 16 5-5 4 4 2-2 7 7"/><path d="M3 3l18 18"/></svg><span>Episode 4: The Junction Loft</span></span><span class="video-poster__play"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor" stroke="none"/></svg>Play episode<span class="visually-hidden">: Episode 4, The Junction Loft (failed poster do example)</span></span></a></div><figcaption>When the still fails, keep the slot, the title and a working Play episode (L2-086.3).</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas" style="display: block;"><div class="video-frame" style="display: grid; place-items: center; color: var(--color-fg-inverse);"><span style="font: var(--text-body-sm);">Video coming soon</span></div></div><figcaption>Don't show a placeholder for a review with no video. The section is omitted entirely, as on Trinity Bellwoods Park (L2-020.1).</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="ds-section" id="tokens"><h2><a href="#tokens">Tokens</a></h2>
+      <div class="ds-table-wrap"><table class="ds-table">
+        <thead><tr><th scope="col">Part</th><th scope="col">Token</th><th scope="col">Light</th><th scope="col">Dark</th></tr></thead>
+        <tbody>
+          <tr><td>Slot ground (poster, player, failed)</td><td><code>--color-bg-inverse</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-bg-inverse" data-swatch></i><span data-token="--color-bg-inverse"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-bg-inverse" data-swatch></i><span data-token="--color-bg-inverse"></span></span></td></tr>
+          <tr><td>Failed-poster text</td><td><code>--color-fg-inverse</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-inverse" data-swatch></i><span data-token="--color-fg-inverse"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-inverse" data-swatch></i><span data-token="--color-fg-inverse"></span></span></td></tr>
+          <tr><td>Pill fill</td><td><code>--color-action</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-action" data-swatch></i><span data-token="--color-action"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-action" data-swatch></i><span data-token="--color-action"></span></span></td></tr>
+          <tr><td>Pill fill, hover</td><td><code>--color-action-hover</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-action-hover" data-swatch></i><span data-token="--color-action-hover"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-action-hover" data-swatch></i><span data-token="--color-action-hover"></span></span></td></tr>
+          <tr><td>Pill fill, pressed</td><td><code>--color-action-active</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-action-active" data-swatch></i><span data-token="--color-action-active"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-action-active" data-swatch></i><span data-token="--color-action-active"></span></span></td></tr>
+          <tr><td>Pill label and glyph</td><td><code>--color-fg-on-action</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-on-action" data-swatch></i><span data-token="--color-fg-on-action"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-on-action" data-swatch></i><span data-token="--color-fg-on-action"></span></span></td></tr>
+          <tr><td>Focus ring</td><td><code>--color-focus-ring</code>, <code>--focus-ring-width</code>, <code>--focus-ring-offset</code></td><td><span data-token="--color-focus-ring"></span></td><td><span data-theme="dark" data-token="--color-focus-ring"></span></td></tr>
+          <tr><td>Pill height / padding</td><td><code>--control-height-lg</code>, <code>--space-6</code></td><td colspan="2"><span data-token="--control-height-lg"></span> / <span data-token="--space-6"></span></td></tr>
+          <tr><td>Pill label</td><td><code>--text-label</code> at <code>--font-size-md</code></td><td colspan="2"><span data-token="--font-size-md"></span></td></tr>
+          <tr><td>Pill shadow</td><td><code>--shadow-3</code></td><td colspan="2"><span data-token="--shadow-3"></span></td></tr>
+          <tr><td>Slot and pill radius</td><td><code>--radius-lg</code>, <code>--radius-full</code></td><td colspan="2"><span data-token="--radius-lg"></span> / <span data-token="--radius-full"></span></td></tr>
+          <tr><td>Episode links gap</td><td><code>--space-1</code> × <code>--space-6</code>, top <code>--space-3</code></td><td colspan="2"><span data-token="--space-1"></span> × <span data-token="--space-6"></span> · <span data-token="--space-3"></span></td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section class="ds-section" id="code"><h2><a href="#code">Code</a></h2>
+      <pre><code>&lt;!-- On load: a link, no iframe --&gt;
+&lt;a class="video-poster" href="https://www.youtube.com/watch?v=Jx7Lq2pT9aE"&gt;
+  &lt;img src="…" alt="" width="1280" height="720" loading="lazy"&gt;
+  &lt;span class="video-poster__play"&gt;&lt;svg class="icon" aria-hidden="true" viewBox="0 0 24 24"&gt;&lt;path d="M8 5v14l11-7z" fill="currentColor" stroke="none"/&gt;&lt;/svg&gt;Play episode&lt;span class="visually-hidden"&gt;: Episode 4, The Junction Loft&lt;/span&gt;&lt;/span&gt;
+&lt;/a&gt;
+
+&lt;!-- After activation: same slot, focus moves here --&gt;
+&lt;iframe class="video-frame" src="https://www.youtube-nocookie.com/embed/Jx7Lq2pT9aE"
+        title="Episode 4: The Junction Loft — big north light, tiny elevator"
+        allow="accelerated-sensor; encrypted-media; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;
+
+&lt;!-- Poster image failed (L2-086.3) --&gt;
+&lt;a class="video-poster" href="…"&gt;
+  &lt;span class="media-fallback" aria-hidden="true"&gt;&lt;svg class="icon" …&gt;…&lt;/svg&gt;&lt;span&gt;Episode 4: The Junction Loft&lt;/span&gt;&lt;/span&gt;
+  &lt;span class="video-poster__play"&gt;…Play episode…&lt;/span&gt;
+&lt;/a&gt;</code></pre>
+      <div class="ds-table-wrap"><table class="ds-table"><thead><tr><th scope="col">Class / attribute</th><th scope="col">Effect</th></tr></thead><tbody>
+        <tr><td><code>.video-poster</code></td><td>16:9 link (or button) slot on the inverse ground; its <code>img</code> covers it.</td></tr>
+        <tr><td><code>.video-poster__play</code></td><td>Centred 52px ink pill with glyph and label; hover fill from <code>:hover</code> or <code>data-state="hover"</code>, pressed fill from <code>:active</code> or <code>data-state="active"</code>.</td></tr>
+        <tr><td><code>.video-poster .media-fallback</code></td><td>Failed still: inverse ground, text at the top; the pill moves to the bottom so it never covers the text.</td></tr>
+        <tr><td><code>.video-frame</code></td><td>The player iframe in the same 16:9, rounded, inverse slot.</td></tr>
+        <tr><td><code>.episode__links</code></td><td>Wrapping row under the slot: episode title and "Watch on YouTube".</td></tr>
+        <tr><td><code>data-state="hover|focus|active"</code></td><td>Documentation and mocks only: forces the state statically.</td></tr>
+      </tbody></table></div>
+      <p>Implementation: <code>EpisodePlayerComponent</code> (<code>features/video/</code>) takes <code>videoId</code>, <code>episodeTitle</code> and <code>posterUrl</code>; a <code>playing</code> signal switches poster for iframe; <code>embedUrl()</code> and <code>watchUrl()</code> in <code>episode-urls.ts</code> build the two URLs. Review pages place it only when an episode exists.</p>
+    </section>
+
+    <section class="ds-section" id="sources"><h2><a href="#sources">Sources</a></h2>
+      <p>Extracted from these mocks:</p>
+      <ul>
+        <li><a href="../../mocks/pages/studio/default.html">pages/studio/default</a> (poster, episode line, Watch on YouTube)</li>
+        <li><a href="../../mocks/pages/studio/playing.html">pages/studio/playing</a> (player in the slot, no autoplay, focus to player)</li>
+        <li><a href="../../mocks/pages/studio/media-failed.html">pages/studio/media-failed</a> (failed poster keeps Play episode)</li>
+        <li><a href="../../mocks/pages/studio/minimal.html">pages/studio/minimal</a> (studio with no episode: section omitted)</li>
+        <li><a href="../../mocks/pages/spot/default.html">pages/spot/default</a> (spot episode)</li>
+        <li><a href="../../mocks/pages/spot/no-video.html">pages/spot/no-video</a> (spot with no video ID: section omitted)</li>
+      </ul>
+      <p>Drift fixed during extraction:</p>
+      <ul>
+        <li>The studio mocks point the poster at <code>playing.html</code> so the mock set can be clicked through, while the spot mock points at the YouTube watch URL. The system's poster <code>href</code> is always the watch URL (L2-047.3).</li>
+        <li>Poster stills are 1200 × 800 (3:2) in the mocks and get cropped into the 16:9 slot. Supply stills at 16:9 (for example 1280 × 720) so nothing important is cut.</li>
+        <li>On <a href="../../mocks/pages/studio/media-failed.html">pages/studio/media-failed</a> at 320px and 360px the centred pill sat on top of the fallback title (title 7072–7093px, pill 7086–7138px at 360px). Fixed: <code>.video-poster:has(&gt; .media-fallback) .video-poster__play</code> moves the pill to the bottom of a failed poster. The title was always in the link's hidden name, so nothing was lost for assistive technology.</li>
+        <li><code>.video-poster</code> had no pressed style; the pages show active as the hover fill. Fixed: <code>.video-poster:active</code> and <code>[data-state="active"]</code> give the pill <code>--color-action-active</code>.</li>
+      </ul>
+    </section>
+
+    <footer class="ds-footer"><span>ShotThere design system · extracted from <a href="../../mocks/index.html">docs/mocks</a> on 13 October 2026</span><a href="#top">Back to top</a></footer>
+  </main>
+</div>
+<script src="../assets/ds.js"></script>
+</body>
+</html>

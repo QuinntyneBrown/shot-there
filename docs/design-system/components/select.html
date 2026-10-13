@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Select — ShotThere design system</title>
-<meta name="description" content="ShotThere select: the native .select with a placeholder option and optgroups, filter selects with an All option, invalid, disabled and busy states in both themes.">
+<meta name="description" content="The ShotThere select: a native dropdown for sort order, window direction, natural light by time of day, fee type, permits and the usable-space filter; every state in both themes.">
 <link rel="stylesheet" href="../tokens/tokens.css">
 <link rel="stylesheet" href="../assets/components.css">
 <link rel="stylesheet" href="../assets/ds.css">
@@ -33,40 +33,61 @@
       <li><a href="../components/icon-button.html">Icon button</a></li>
       <li><a href="../components/button-group.html">Button group</a></li>
       <li><a href="../components/link.html">Link</a></li>
+      <li><a href="../components/compare-bar.html">Compare toggle and bar</a></li>
     </ul></details>
     <details open><summary>Inputs</summary><ul>
       <li><a href="../components/form-field.html">Form field</a></li>
       <li><a href="../components/text-field.html">Text field</a></li>
       <li><a href="../components/textarea.html">Textarea</a></li>
       <li><a href="../components/select.html">Select</a></li>
+      <li><a href="../components/combobox.html">Combobox</a></li>
       <li><a href="../components/checkbox.html">Checkbox</a></li>
       <li><a href="../components/radio-group.html">Radio group</a></li>
       <li><a href="../components/file-upload.html">File upload</a></li>
       <li><a href="../components/form-layout.html">Form layout</a></li>
+      <li><a href="../components/signup.html">Email signup</a></li>
     </ul></details>
     <details open><summary>Navigation</summary><ul>
       <li><a href="../components/skip-link.html">Skip link</a></li>
       <li><a href="../components/site-header.html">Site header</a></li>
       <li><a href="../components/footer.html">Footer</a></li>
+      <li><a href="../components/breadcrumb.html">Breadcrumb</a></li>
+      <li><a href="../components/filter.html">Filters</a></li>
     </ul></details>
     <details open><summary>Containers and overlays</summary><ul>
-      <li><a href="../components/container.html">Container and grid</a></li>
-      <li><a href="../components/card.html">Card</a></li>
+      <li><a href="../components/container.html">Container</a></li>
+      <li><a href="../components/review-layout.html">Review layout</a></li>
+      <li><a href="../components/editor-layout.html">Editor layout</a></li>
       <li><a href="../components/dialog.html">Dialog</a></li>
-      <li><a href="../components/sheet.html">Sheet and drawer</a></li>
-      <li><a href="../components/divider.html">Divider</a></li>
+      <li><a href="../components/sheet.html">Sheet</a></li>
+      <li><a href="../components/popover.html">Popover</a></li>
+      <li><a href="../components/lightbox.html">Lightbox</a></li>
     </ul></details>
     <details open><summary>Data display</summary><ul>
+      <li><a href="../components/location-card.html">Location card</a></li>
       <li><a href="../components/table.html">Table</a></li>
+      <li><a href="../components/compare-table.html">Comparison table</a></li>
+      <li><a href="../components/list.html">List rows</a></li>
       <li><a href="../components/description-list.html">Description list</a></li>
+      <li><a href="../components/price-block.html">Price block</a></li>
+      <li><a href="../components/score.html">Score and pips</a></li>
+      <li><a href="../components/shot-grid.html">Shot grid</a></li>
+      <li><a href="../components/video-poster.html">Episode poster</a></li>
+      <li><a href="../components/map.html">Map</a></li>
+      <li><a href="../components/guide-entry.html">Guide entry</a></li>
+      <li><a href="../components/stat-tile.html">Stat tile</a></li>
+      <li><a href="../components/image-manager.html">Image manager</a></li>
+      <li><a href="../components/disclosure.html">Disclosure</a></li>
       <li><a href="../components/badge.html">Badge</a></li>
+      <li><a href="../components/status-label.html">Status label</a></li>
       <li><a href="../components/chip.html">Chip</a></li>
+      <li><a href="../components/tag.html">Tag</a></li>
     </ul></details>
     <details open><summary>Feedback</summary><ul>
       <li><a href="../components/inline-message.html">Inline message</a></li>
-      <li><a href="../components/alert.html">Alert and banner</a></li>
+      <li><a href="../components/alert.html">Alert</a></li>
       <li><a href="../components/toast.html">Toast</a></li>
-      <li><a href="../components/progress.html">Progress and meter</a></li>
+      <li><a href="../components/progress.html">Progress</a></li>
       <li><a href="../components/spinner.html">Spinner</a></li>
       <li><a href="../components/skeleton.html">Skeleton</a></li>
       <li><a href="../components/empty-state.html">Empty state</a></li>
@@ -88,178 +109,225 @@
     <header class="ds-header">
       <p class="ds-kicker">Component · Inputs</p>
       <h1>Select</h1>
-      <p class="ds-lead">A native dropdown for one answer from a known list: the event area grouped by region, the occasion, an operator filter. The phone's own picker does the hard work.</p>
+      <p class="ds-lead">A native dropdown for one answer from a short, fixed list: how to sort the studios, which way the windows face, how strong the morning light is, whether a fee is mandatory. The phone's own picker does the hard work.</p>
       <div class="ds-meta"><span class="ds-pill ds-pill--ok">WCAG 2.2 AA</span><span class="ds-pill">Status: stable</span><span class="ds-pill">Native <code>&lt;select&gt;</code></span><span class="ds-pill"><code>.select</code></span></div>
       <ul class="ds-toc"><li><a href="#overview">Overview</a></li><li><a href="#anatomy">Anatomy</a></li><li><a href="#variants">Variants</a></li><li><a href="#sizes">Sizes</a></li><li><a href="#states">States</a></li><li><a href="#responsive">Responsive behaviour</a></li><li><a href="#theming">Theming</a></li><li><a href="#accessibility">Accessibility</a></li><li><a href="#content">Content</a></li><li><a href="#do-dont">Do and don't</a></li><li><a href="#tokens">Tokens</a></li><li><a href="#code">Code</a></li><li><a href="#sources">Sources</a></li></ul>
     </header>
 
-<section class="ds-section" id="overview"><h2><a href="#overview">Overview</a></h2>
-      <p>Use a select when there is exactly one answer from a list of about 5 to 50 known values, and seeing them all at once doesn't help. ShotThere always uses the native <code>&lt;select&gt;</code>: phones show their own wheel or sheet, screen readers know it, and it never needs a custom listbox.</p>
+    <section class="ds-section" id="overview"><h2><a href="#overview">Overview</a></h2>
+      <p>Use a select when there is exactly one answer, the options are known and fixed, and showing them all at once would crowd the form. ShotThere uses it for:</p>
       <ul>
-        <li><b>Form select with a placeholder option</b>: "Event area" in the enquiry (<code>&lt;option value=""&gt;Choose an area&lt;/option&gt;</code>, then the 30 areas in five <code>&lt;optgroup&gt;</code>s: City of Toronto, Peel, York Region, Durham, Halton), "Occasion" (8 occasions), "Primary area" in a caterer's settings.</li>
-        <li><b>Filter select</b>: a real first option meaning "everything" instead of a placeholder: "All operators", "All actions" in the audit log; "Show by: Week" on metrics.</li>
+        <li><b>Sort order</b> on the studio list: Most recent review, All-in cost, low to high, Overall score, high to low (L2-023). It sits inline above the results and at the top of the filters dialog.</li>
+        <li><b>Filters</b>: Minimum usable space (Any size, 20 m² or more, 30 m² or more, 50 m² or more).</li>
+        <li><b>Editor facts</b> from a fixed set: window direction, natural light for each time of day (None, Low, Medium, Strong), cyc wall, load-in, parking, fee type (Mandatory, Optional), gear category, spot type, permit status per shoot type, weekday and weekend crowds.</li>
       </ul>
-      <p>When not to use it: with 2 to 4 options, show them as a <a href="radio-group.html">radio group</a> or <a href="button-group.html">button group</a>. When several can apply (occasions a caterer serves, dietary tags), use <a href="checkbox.html">checkboxes</a>. When the list is long and people know what they want to type (an area or a postal code), use the combobox. A select never navigates or submits on change.</p>
+      <p>When the options must be compared before choosing, or there are only two or three, use a <a href="radio-group.html">radio group</a> (parking in the filters, the disclosure answer). When people type to find one of many, use a <a href="combobox.html">combobox</a> (the guide entry picker). A select always sits in a <a href="form-field.html">form field</a>.</p>
     </section>
 
     <section class="ds-section" id="anatomy"><h2><a href="#anatomy">Anatomy</a></h2>
       <div class="ds-anatomy">
         <figure class="ds-anatomy__figure">
-          <div class="field" style="width: min(100%, 20rem);">
-            <label class="field__label" for="an-area">Event area</label>
-            <select class="select" id="an-area"><option value="">Choose an area</option><optgroup label="City of Toronto"><option>Scarborough</option></optgroup></select>
+          <div class="field" style="width: min(100%, 18rem);">
+            <label class="field__label" for="an-window">Window direction</label>
+            <select class="select" id="an-window" name="windowDirection"><option value="">No windows</option><option value="north">North</option><option value="east">East</option><option value="south" selected>South</option><option value="west">West</option></select>
           </div>
-          <span class="ds-callout" style="left: 14%; top: 62%;" aria-hidden="true">1</span>
-          <span class="ds-callout" style="left: 36%; top: 26%;" aria-hidden="true">2</span>
-          <span class="ds-callout" style="left: 78%; top: 46%;" aria-hidden="true">3</span>
+          <span class="ds-callout" style="left: 4%; top: 18%;" aria-hidden="true">1</span>
+          <span class="ds-callout" style="left: 4%; top: 62%;" aria-hidden="true">2</span>
+          <span class="ds-callout" style="left: 88%; top: 62%;" aria-hidden="true">3</span>
         </figure>
         <ol class="ds-anatomy__list">
-          <li><div><b>Box</b><small>The text field's container: <code>--field-*</code> tokens, 44px, <code>--radius-md</code>, native appearance removed (<code>appearance: none</code>).</small></div></li>
-          <li><div><b>Selected value or placeholder option</b><small><code>--text-body</code>. The placeholder option ("Choose an area") has <code>value=""</code>, so <code>required</code> catches it.</small></div></li>
-          <li><div><b>Chevron</b><small>Two gradient triangles in <code>currentColor</code>, 5px, 12–18px from the end; <code>--space-10</code> end padding keeps text clear of it.</small></div></li>
+          <li><div><b>Label</b><small>From the <a href="form-field.html">form field</a>.</small></div></li>
+          <li><div><b>Container and value</b><small>Same as the text field: 44px, <code>--radius-md</code>, 1px <code>--field-border</code>, <code>--text-body</code>; <code>appearance: none</code> with <code>--space-10</code> end padding for the chevron.</small></div></li>
+          <li><div><b>Chevron</b><small>Two CSS gradients in <code>currentColor</code>, 5px, centred <code>--space-3</code> from the end. Decorative; the native role says it opens.</small></div></li>
         </ol>
       </div>
+      <p>Corktown Garage Studio's south window (<code>pages/studio-editor/default</code>).</p>
     </section>
 
     <section class="ds-section" id="variants"><h2><a href="#variants">Variants</a></h2>
-      <h3>Form select with placeholder and groups</h3>
+      <h3>Form select</h3>
       <div class="ds-example">
-        <div class="ds-example__canvas ds-example__canvas--stack" style="max-width: 36rem;">
+        <div class="ds-example__canvas ds-example__canvas--stack" style="max-width: 32rem;">
           <div class="field-row">
-            <div class="field"><label class="field__label" for="v-area">Event area</label><select class="select" id="v-area" name="area" required><option value="">Choose an area</option><optgroup label="City of Toronto"><option>Downtown Toronto</option><option>East York</option><option>Etobicoke</option><option>North York</option><option selected>Scarborough</option><option>York</option></optgroup><optgroup label="Peel"><option>Brampton</option><option>Caledon</option><option>Mississauga</option></optgroup><optgroup label="York Region"><option>Aurora</option><option>East Gwillimbury</option><option>Georgina</option><option>King</option><option>Markham</option><option>Newmarket</option><option>Richmond Hill</option><option>Vaughan</option><option>Whitchurch-Stouffville</option></optgroup><optgroup label="Durham"><option>Ajax</option><option>Brock</option><option>Clarington</option><option>Oshawa</option><option>Pickering</option><option>Scugog</option><option>Uxbridge</option><option>Whitby</option></optgroup><optgroup label="Halton"><option>Burlington</option><option>Halton Hills</option><option>Milton</option><option>Oakville</option></optgroup></select></div>
-            <div class="field"><label class="field__label" for="v-occ">Occasion</label><select class="select" id="v-occ" name="occasion" required><option value="">Choose an occasion</option><option>Weddings</option><option>Birthdays</option><option>Corporate events</option><option>Funerals and repasts</option><option>Religious and cultural celebrations</option><option>Family gatherings</option><option>Private dinners</option><option>Community events</option></select></div>
+            <div class="field"><label class="field__label" for="v-window">Window direction</label><select class="select" id="v-window" name="windowDirection"><option value="">No windows</option><option value="north" selected>North</option><option value="east">East</option><option value="south">South</option><option value="west">West</option></select></div>
+            <div class="field"><label class="field__label" for="v-loadin">Load-in</label><select class="select" id="v-loadin" name="loadIn"><option value="stairs">Stairs</option><option value="elevator">Elevator</option><option value="freight-elevator" selected>Freight elevator</option><option value="ground-level">Ground level</option></select></div>
+          </div>
+          <div class="field-row">
+            <div class="field"><label class="field__label" for="v-type">Type</label><select class="select" id="v-type" name="type"><option value="park" selected>Park</option><option value="architecture">Architecture</option><option value="waterfront">Waterfront</option><option value="indoor-public">Indoor public</option></select></div>
+            <div class="field"><label class="field__label" for="v-weekend">Weekend crowds</label><select class="select" id="v-weekend" name="crowds.weekend"><option value="low">Low</option><option value="medium">Medium</option><option value="high" selected>High</option></select></div>
           </div>
         </div>
-        <div class="ds-example__caption"><span>Areas grouped by region in the same order as the filter list; occasions in the order the mocks use.</span></div>
+        <div class="ds-example__caption"><span>The Junction Loft (north windows, freight elevator) and Evergreen Brick Works (park, weekend crowds High). "No windows" is a real answer with an empty value, so a studio without windows needs no extra checkbox.</span></div>
         <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;div class="field"&gt;
-  &lt;label class="field__label" for="area"&gt;Event area&lt;/label&gt;
-  &lt;select class="select" id="area" name="area" required&gt;
-    &lt;option value=""&gt;Choose an area&lt;/option&gt;
-    &lt;optgroup label="City of Toronto"&gt;&lt;option&gt;Downtown Toronto&lt;/option&gt;…&lt;/optgroup&gt;
-    &lt;optgroup label="Peel"&gt;…&lt;/optgroup&gt;
+  &lt;label class="field__label" for="windowDirection"&gt;Window direction&lt;/label&gt;
+  &lt;select class="select" id="windowDirection" name="windowDirection"&gt;
+    &lt;option value=""&gt;No windows&lt;/option&gt;
+    &lt;option value="north" selected&gt;North&lt;/option&gt;
+    &lt;option value="east"&gt;East&lt;/option&gt;
+    &lt;option value="south"&gt;South&lt;/option&gt;
+    &lt;option value="west"&gt;West&lt;/option&gt;
   &lt;/select&gt;
 &lt;/div&gt;</code></pre></details>
       </div>
+
+      <h3>A set of selects in a fieldset</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--stack" style="max-width: 40rem;">
+          <fieldset>
+            <legend>Natural light</legend>
+            <div class="field-row field-row--fit">
+              <div class="field"><label class="field__label" for="v-l-morning">Morning</label><select class="select" id="v-l-morning" name="light.morning"><option value="none">None</option><option value="low">Low</option><option value="medium" selected>Medium</option><option value="strong">Strong</option></select></div>
+              <div class="field"><label class="field__label" for="v-l-midday">Midday</label><select class="select" id="v-l-midday" name="light.midday"><option value="none">None</option><option value="low">Low</option><option value="medium">Medium</option><option value="strong" selected>Strong</option></select></div>
+              <div class="field"><label class="field__label" for="v-l-afternoon">Afternoon</label><select class="select" id="v-l-afternoon" name="light.afternoon"><option value="none">None</option><option value="low">Low</option><option value="medium">Medium</option><option value="strong" selected>Strong</option></select></div>
+              <div class="field"><label class="field__label" for="v-l-evening">Evening</label><select class="select" id="v-l-evening" name="light.evening"><option value="none">None</option><option value="low" selected>Low</option><option value="medium">Medium</option><option value="strong">Strong</option></select></div>
+            </div>
+          </fieldset>
+        </div>
+        <div class="ds-example__caption"><span>The Junction Loft's light: morning Medium, midday Strong, afternoon Strong, evening Low. The legend groups the four; each select keeps its own short label. The spot editor does the same for its permits ("Permit needed for": Portrait, Wedding or engagement, Commercial, Video).</span></div>
+      </div>
+
       <h3>Filter select</h3>
       <div class="ds-example">
-        <div class="ds-example__canvas">
-          <form class="toolbar" action="#" aria-label="Filter the audit log (example)" style="margin-bottom: 0;">
-            <div class="field"><label class="field__label" for="v-op">Operator</label><select class="select" id="v-op" name="operator"><option selected>All operators</option><option>Leah Mohammed</option><option>Tomas Reyes</option></select></div>
-            <div class="field"><label class="field__label" for="v-by">Show by</label><select class="select" id="v-by" name="by"><option>Day</option><option selected>Week</option><option>Month</option></select></div>
-            <button class="btn btn--primary" type="submit">Apply</button>
-          </form>
+        <div class="ds-example__canvas ds-example__canvas--stack" style="max-width: 24rem;">
+          <div class="field"><label class="field__label" for="v-space">Minimum usable space</label><select class="select" id="v-space" name="space"><option value="">Any size</option><option value="20">20 m² or more</option><option value="30">30 m² or more</option><option value="50">50 m² or more</option></select></div>
         </div>
-        <div class="ds-example__caption"><span>The first option is a real value ("All operators"); changes apply when Apply is pressed, never on change.</span></div>
+        <div class="ds-example__caption"><span>In "Space and light" in the studio filters (L2-022). The first option, "Any size" with an empty value, means no filter, so the URL leaves it out (L2-025).</span></div>
+      </div>
+
+      <h3>Sort (inline)</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas">
+          <div class="cluster cluster--between" style="width: 100%;">
+            <p class="result-count" role="status">5 studios<span class="visually-hidden">, sorted by all-in cost</span></p>
+            <div class="field field--inline"><label class="field__label" for="v-sort">Sort by</label><select class="select" id="v-sort" name="sort"><option value="recent">Most recent review</option><option value="cost" selected>All-in cost, low to high</option><option value="score">Overall score, high to low</option></select></div>
+          </div>
+        </div>
+        <div class="ds-example__caption"><span><code>pages/studios/filtered</code>: changing the sort reloads the list and the result count announces "5 studios, sorted by all-in cost" (L2-023.3). In the filters dialog the same select is a full-width field at the top.</span></div>
+        <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;div class="field field--inline"&gt;
+  &lt;label class="field__label" for="sort"&gt;Sort by&lt;/label&gt;
+  &lt;select class="select" id="sort" name="sort"&gt;
+    &lt;option value="recent"&gt;Most recent review&lt;/option&gt;
+    &lt;option value="cost" selected&gt;All-in cost, low to high&lt;/option&gt;
+    &lt;option value="score"&gt;Overall score, high to low&lt;/option&gt;
+  &lt;/select&gt;
+&lt;/div&gt;</code></pre></details>
+      </div>
+
+      <h3>In a fee row</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--stack" style="max-width: 40rem;">
+          <div class="fee-row">
+            <div class="field"><label class="field__label" for="v-fee-name">Fee name</label><input class="input" id="v-fee-name" name="fees[0].name" value="Cleaning"></div>
+            <div class="field"><label class="field__label" for="v-fee-amount">Amount</label><span class="input-group"><span class="addon" aria-hidden="true">$</span><input class="input" id="v-fee-amount" name="fees[0].amount" type="number" inputmode="decimal" min="0" step="0.01" value="25.00"></span></div>
+            <div class="field"><label class="field__label" for="v-fee-type">Type</label><select class="select" id="v-fee-type" name="fees[0].mandatory"><option value="true" selected>Mandatory</option><option value="false">Optional</option></select></div>
+            <button class="btn btn--ghost" type="button">Remove<span class="visually-hidden"> Cleaning fee</span></button>
+          </div>
+        </div>
+        <div class="ds-example__caption"><span>The Junction Loft's $25.00 cleaning fee. Mandatory fees count toward the all-in cost; optional ones don't (L2-054.5).</span></div>
       </div>
     </section>
 
-    <section class="ds-section" id="sizes"><h2><a href="#sizes">Sizes</a></h2>
-      <p>One size: 44px (<code>--control-height-md</code>) with 16px text, in forms and toolbars alike. A select never sits on the large auth screens, and it has no small size: a compact select would shrink the native picker's trigger below the phone target. Width follows the field (full width in forms, at least 10rem in a toolbar).</p>
-      <div class="ds-example">
-        <div class="ds-example__canvas ds-example__canvas--stack" style="max-width: 20rem;">
-          <div class="field"><label class="field__label" for="z-act">Action</label><select class="select" id="z-act"><option selected>All actions</option><option>Approve</option><option>Request changes</option><option>Edit</option><option>Revert</option><option>Suspend</option><option>Reinstate</option><option>Remove</option></select></div>
-        </div>
-        <div class="ds-example__caption"><span>Medium · 44px; end padding <code>--space-10</code> for the chevron.</span></div>
-      </div>
+    <section class="ds-section" id="sizes" data-na="One size: the select has no size modifiers."><h2><a href="#sizes">Sizes</a></h2>
+      <p class="ds-na">The select has one size, 44px (<code>--control-height-md</code>), with 16px text. <code>.input--lg</code> applies only to <code>.input</code>; sign-in has no select, so no large select is needed.</p>
     </section>
 
     <section class="ds-section" id="states"><h2><a href="#states">States</a></h2>
-      <p>Hover and focus are forced with <code>data-state</code>; invalid and disabled use <code>aria-invalid</code> and <code>disabled</code>. A select has no read-only state in HTML: show a <a href="form-field.html">read-only value</a> instead.</p>
+      <p>Hover and focus are forced with <code>data-state</code>; invalid and disabled use <code>aria-invalid</code> and <code>disabled</code>. Open is the platform's own list and can't be drawn. No mock shows an invalid or disabled select; those cells are ready for the server's rejection of a tampered value (L2-055.3) and for a select that doesn't apply yet.</p>
       <div class="ds-matrix"><table>
         <caption class="visually-hidden">Select states</caption>
         <thead><tr><th scope="col">Variant</th><th scope="col">Default</th><th scope="col">Hover</th><th scope="col">Focus</th><th scope="col">Invalid</th><th scope="col">Disabled</th></tr></thead>
         <tbody>
-          <tr><th scope="row">Placeholder</th>
-            <td><select class="select" aria-label="Occasion, default" style="min-width: 12rem;"><option value="">Choose an occasion</option><option>Weddings</option></select></td>
-            <td><select class="select" aria-label="Occasion, hover" data-state="hover" style="min-width: 12rem;"><option value="">Choose an occasion</option><option>Weddings</option></select></td>
-            <td><select class="select" aria-label="Occasion, focus" data-state="focus" style="min-width: 12rem;"><option value="">Choose an occasion</option><option>Weddings</option></select></td>
-            <td><select class="select" aria-label="Occasion, invalid" aria-invalid="true" style="min-width: 12rem;"><option value="">Choose an occasion</option><option>Weddings</option></select></td>
-            <td><select class="select" aria-label="Occasion, disabled" disabled style="min-width: 12rem;"><option value="">Choose an occasion</option><option>Weddings</option></select></td></tr>
-          <tr><th scope="row">Chosen</th>
-            <td><select class="select" aria-label="Event area, default" style="min-width: 12rem;"><option>Scarborough</option></select></td>
-            <td><select class="select" aria-label="Event area, hover" data-state="hover" style="min-width: 12rem;"><option>Scarborough</option></select></td>
-            <td><select class="select" aria-label="Event area, focus" data-state="focus" style="min-width: 12rem;"><option>Scarborough</option></select></td>
-            <td><select class="select" aria-label="Primary area, invalid" aria-invalid="true" style="min-width: 12rem;"><option>Downtown Toronto</option></select></td>
-            <td><select class="select" aria-label="Event area, disabled" disabled style="min-width: 12rem;"><option>Scarborough</option></select></td></tr>
+          <tr><th scope="row">Form</th>
+            <td><select class="select" aria-label="Window direction, default" style="min-width: 10rem;"><option>South</option></select></td>
+            <td><select class="select" aria-label="Window direction, hover" data-state="hover" style="min-width: 10rem;"><option>South</option></select></td>
+            <td><select class="select" aria-label="Window direction, focus" data-state="focus" style="min-width: 10rem;"><option>South</option></select></td>
+            <td><select class="select" aria-label="Type, invalid" aria-invalid="true" style="min-width: 10rem;"><option>Choose a type</option></select></td>
+            <td><select class="select" aria-label="Window direction, disabled" disabled style="min-width: 10rem;"><option>South</option></select></td></tr>
           <tr><th scope="row">Filter</th>
-            <td><select class="select" aria-label="Operator, default" style="min-width: 12rem;"><option>All operators</option></select></td>
-            <td><select class="select" aria-label="Operator, hover" data-state="hover" style="min-width: 12rem;"><option>All operators</option></select></td>
-            <td><select class="select" aria-label="Operator, focus" data-state="focus" style="min-width: 12rem;"><option>All operators</option></select></td>
-            <td><span class="ds-na">An "All" filter is always valid</span></td>
-            <td><select class="select" aria-label="Operator, disabled" disabled style="min-width: 12rem;"><option>All operators</option></select></td></tr>
+            <td><select class="select" aria-label="Minimum usable space, default" style="min-width: 10rem;"><option>Any size</option></select></td>
+            <td><select class="select" aria-label="Minimum usable space, hover" data-state="hover" style="min-width: 10rem;"><option>Any size</option></select></td>
+            <td><select class="select" aria-label="Minimum usable space, focus" data-state="focus" style="min-width: 10rem;"><option>30 m² or more</option></select></td>
+            <td><small class="text-muted">A filter can't be wrong</small></td>
+            <td><small class="text-muted">Never disabled</small></td></tr>
+          <tr><th scope="row">Inline sort</th>
+            <td><div class="field field--inline"><label class="field__label" for="m-s1">Sort by</label><select class="select" id="m-s1"><option>Most recent review</option></select></div></td>
+            <td><div class="field field--inline"><label class="field__label" for="m-s2">Sort by</label><select class="select" id="m-s2" data-state="hover"><option>Most recent review</option></select></div></td>
+            <td><div class="field field--inline"><label class="field__label" for="m-s3">Sort by</label><select class="select" id="m-s3" data-state="focus"><option>Most recent review</option></select></div></td>
+            <td><small class="text-muted">A sort can't be wrong</small></td>
+            <td><small class="text-muted">Never disabled</small></td></tr>
         </tbody>
       </table></div>
       <h3>Both themes</h3>
       <div class="ds-themes">
-        <div data-theme="light"><div class="ds-example__canvas ds-example__canvas--stack" style="padding: 0;"><div class="field"><label class="field__label" for="tl-1">Event area</label><select class="select" id="tl-1"><option>Scarborough</option></select></div><div class="field"><label class="field__label" for="tl-2">Primary area</label><select class="select" id="tl-2" aria-invalid="true" aria-describedby="tl-2-e"><option value="">Choose your primary area</option></select><span class="field__error" id="tl-2-e">Choose your primary area</span></div></div></div>
-        <div data-theme="dark"><div class="ds-example__canvas ds-example__canvas--stack" style="padding: 0;"><div class="field"><label class="field__label" for="td-1">Event area</label><select class="select" id="td-1"><option>Scarborough</option></select></div><div class="field"><label class="field__label" for="td-2">Primary area</label><select class="select" id="td-2" aria-invalid="true" aria-describedby="td-2-e"><option value="">Choose your primary area</option></select><span class="field__error" id="td-2-e">Choose your primary area</span></div></div></div>
+        <div data-theme="light"><div class="ds-example__canvas ds-example__canvas--stack" style="padding: 0;"><select class="select" aria-label="Light, default"><option>Freight elevator</option></select><select class="select" aria-label="Light, focus" data-state="focus"><option>Not required</option></select><select class="select" aria-label="Light, invalid" aria-invalid="true"><option>Choose a type</option></select><select class="select" aria-label="Light, disabled" disabled><option>Mandatory</option></select></div></div>
+        <div data-theme="dark"><div class="ds-example__canvas ds-example__canvas--stack" style="padding: 0;"><select class="select" aria-label="Dark, default"><option>Freight elevator</option></select><select class="select" aria-label="Dark, focus" data-state="focus"><option>Not required</option></select><select class="select" aria-label="Dark, invalid" aria-invalid="true"><option>Choose a type</option></select><select class="select" aria-label="Dark, disabled" disabled><option>Mandatory</option></select></div></div>
       </div>
       <ul>
-        <li><b>Open</b> is drawn by the operating system (a wheel on iOS, a sheet on Android, a list on desktop). ShotThere doesn't style it, and the <code>color-scheme</code> token makes it follow light or dark.</li>
-        <li><b>Invalid</b>: the placeholder is still selected on submit, or the value no longer applies. The message says what to choose.</li>
-        <li><b>Busy</b>: while a form submits, a select is <code>disabled</code>, because it can't be read-only. Text fields in the same form go read-only. Restore it if sending fails.</li>
-        <li><b>Warning</b>: a valid choice the caterer doesn't usually cover ("This caterer doesn’t list Oshawa as an area they serve") keeps the default edge and adds a <code>.field__warning</code>.</li>
+        <li><b>Hover</b> darkens the edge; <b>focus</b> draws the flush 2px accent ring, exactly like the text field.</li>
+        <li>The chevron follows the text colour, so it fades with the text when disabled and stays 3:1 or more otherwise.</li>
+        <li>A sort change takes effect at once on the studio list; in the filters dialog it waits for "Show 7 studios".</li>
       </ul>
     </section>
 
     <section class="ds-section" id="responsive"><h2><a href="#responsive">Responsive behaviour</a></h2>
       <ul>
-        <li>Full width in forms; two selects share a <code>.field-row</code> from 36rem (Event area beside Postal code).</li>
-        <li>On phones the native picker opens over the keyboard area, with optgroup labels as section headers. This is the main reason ShotThere never replaces <code>&lt;select&gt;</code> with a custom dropdown.</li>
-        <li>The closed box shows the chosen option on one line; a long option ("Religious and cultural celebrations") is clipped by the browser at 320px, never wrapped. Keep options short and front-load the meaning.</li>
-        <li>In the operator toolbar each select is at least 10rem and wraps to a new line with the other filters.</li>
+        <li>Full width of its field; pairs share a <code>.field-row</code> from 36rem. The natural-light and permit sets fit as many 9rem columns as the row allows: one per row on a phone, four across from about 40rem.</li>
+        <li>The inline sort keeps its natural width and wraps under "Sort by" on the narrowest phones. Option text ("Overall score, high to low") sets that width; keep options short.</li>
+        <li>Phones open their native picker (a wheel on iOS, a sheet on Android); nothing about the list is styled.</li>
+        <li>In a fee row the fields stack on phones and sit in one row on wider screens.</li>
       </ul>
     </section>
 
     <section class="ds-section" id="theming"><h2><a href="#theming">Theming</a></h2>
-      <p>The select shares the text field's component tokens (<code>--field-bg</code>, <code>--field-border</code>, <code>--field-fg</code>) and state overrides. The chevron is drawn in <code>currentColor</code>, so it follows <code>--field-fg</code>: ink in light, stone-100 in dark, faded when disabled. Native option lists follow <code>color-scheme</code> (set by the theme). Re-skin with the field tokens, never by replacing the chevron with an image.</p>
+      <p>The select shares <code>--field-bg</code>, <code>--field-border</code> and <code>--field-fg</code> with the <a href="text-field.html#theming">text field</a>. The chevron is drawn in <code>currentColor</code>, so it themes with the value. The open list is drawn by the platform and follows the page's <code>color-scheme</code> in dark.</p>
     </section>
 
     <section class="ds-section" id="accessibility"><h2><a href="#accessibility">Accessibility</a></h2>
       <h3>Role and pattern</h3>
-      <p>Native <code>&lt;select&gt;</code> (combobox role with a listbox popup, handled by the browser) with a <code>&lt;label for&gt;</code>. Groups use <code>&lt;optgroup label&gt;</code>, which screen readers announce. A custom listbox would need the full <a href="https://www.w3.org/WAI/ARIA/apg/patterns/listbox/">APG Listbox</a> pattern; ShotThere doesn't build one.</p>
+      <p>Native <code>&lt;select&gt;</code> (a combobox with a listbox popup in the accessibility tree) with a <code>&lt;label for&gt;</code>. Not a custom ARIA listbox: the native control gives the phone picker, type-ahead and screen reader support for free.</p>
       <h3>Keyboard</h3>
       <table class="ds-table ds-keys"><thead><tr><th scope="col">Key</th><th scope="col">Action</th></tr></thead><tbody>
         <tr><td><kbd>Tab</kbd> / <kbd>Shift</kbd>+<kbd>Tab</kbd></td><td>Moves into and out of the select.</td></tr>
-        <tr><td><kbd>Space</kbd>, <kbd>Enter</kbd>, <kbd>Alt</kbd>+<kbd>↓</kbd></td><td>Opens the list (platform-dependent).</td></tr>
-        <tr><td><kbd>↑</kbd> / <kbd>↓</kbd></td><td>Changes the option; on some platforms this changes the value without opening, which is why nothing may happen on change.</td></tr>
-        <tr><td>Letters</td><td>Type-ahead: "S" jumps to Scarborough, "Sc" stays there, "Sp" doesn't exist so it stays.</td></tr>
-        <tr><td><kbd>Esc</kbd></td><td>Closes the list without changing the value.</td></tr>
+        <tr><td><kbd>Space</kbd> / <kbd>Alt</kbd>+<kbd>Down</kbd></td><td>Opens the list.</td></tr>
+        <tr><td><kbd>Up</kbd> / <kbd>Down</kbd></td><td>Moves through the options (on Windows, also changes the value while closed).</td></tr>
+        <tr><td>Typing a letter</td><td>Jumps to the first option starting with it: "S" for South, Stairs or Strong.</td></tr>
+        <tr><td><kbd>Enter</kbd> / <kbd>Esc</kbd></td><td>Chooses the highlighted option / closes without changing.</td></tr>
       </tbody></table>
       <h3>Focus</h3>
-      <p>The flush pepper ring and pepper edge, like the text field. Choosing an option keeps focus on the select, and nothing else moves (WCAG 3.2.2).</p>
+      <p>The ring sits flush on the edge (offset 0), 2px at 3:1 or more (L2-067.2). Changing the sort never moves focus; the list updates below and the count is announced.</p>
       <h3>Labelling</h3>
-      <p>A visible label names the question ("Event area"); the placeholder option is an instruction ("Choose an area"), not a label. Errors and warnings are referenced from <code>aria-describedby</code>. In the busy state, don't remove the label or the value.</p>
+      <p>A visible label always, including the inline "Sort by". Options are complete phrases that make sense on their own ("All-in cost, low to high", "20 m² or more"), because screen readers read the chosen option with the label. An empty first option says what it means ("No windows", "Any size"), never "Select…".</p>
       <h3>Contrast</h3>
       <div class="ds-example__canvas ds-example__canvas--stack" style="padding: 0; gap: var(--space-2);">
         <div class="ds-pair"><span>Value and chevron on field</span><span class="ds-pair__ratio" data-contrast="--color-fg-default|--color-bg-surface" data-min="4.5"></span></div>
         <div class="ds-pair"><span>Edge on page</span><span class="ds-pair__ratio" data-contrast="--color-border-strong|--color-bg-canvas" data-min="3"></span></div>
-        <div class="ds-pair"><span>Edge in a dialog</span><span class="ds-pair__ratio" data-contrast="--color-border-strong|--color-bg-surface" data-min="3"></span></div>
+        <div class="ds-pair"><span>Edge in the filters sheet</span><span class="ds-pair__ratio" data-contrast="--color-border-strong|--color-bg-surface-raised" data-min="3"></span></div>
+        <div class="ds-pair"><span>Field labels on a fee row</span><span class="ds-pair__ratio" data-contrast="--color-fg-default|--color-bg-surface-sunken" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Edge in a fee row</span><span class="ds-pair__ratio" data-contrast="--color-border-strong|--color-bg-surface-sunken" data-min="3"></span></div>
         <div class="ds-pair"><span>Focus ring on field</span><span class="ds-pair__ratio" data-contrast="--color-focus-ring|--color-bg-surface" data-min="3"></span></div>
         <div class="ds-pair"><span>Invalid edge on field</span><span class="ds-pair__ratio" data-contrast="--color-danger-solid|--color-bg-surface" data-min="3"></span></div>
       </div>
       <h3>Motion</h3>
-      <p>Edge colour transitions over <code>--duration-fast</code>; the native list opens with the platform's own motion, which honours the OS reduced-motion setting.</p>
+      <p>Edge colour transitions over <code>--duration-fast</code>; reduced motion zeroes it. The open list's animation belongs to the platform.</p>
       <h3>Touch</h3>
-      <p>44px tall at every width, plus the label as an extra target. The native picker gives full-size touch rows on phones.</p>
+      <p>44px tall at every width (L2-065.3); the whole control opens the picker, not just the chevron.</p>
     </section>
 
     <section class="ds-section" id="content"><h2><a href="#content">Content</a></h2>
       <ul>
-        <li>Placeholder options start with "Choose": "Choose an area", "Choose an occasion", "Choose your primary area".</li>
-        <li>Filter selects start with a real "All …" option: "All operators", "All actions".</li>
-        <li>Option names match the rest of the product exactly: GTA municipalities as in L2-010 ("Whitchurch-Stouffville"), occasions as on caterer pages ("Funerals and repasts").</li>
-        <li>Order by meaning, not alphabet, when there is one (Day, Week, Month); otherwise alphabetical within each group.</li>
-        <li>The error repeats the instruction: "Choose your primary area", not a different idea.</li>
+        <li>Options in sentence case, in a meaningful order: by strength (None, Low, Medium, Strong), by compass (North, East, South, West), by size (20, 30, 50 m²), never alphabetical for its own sake.</li>
+        <li>Sort options name the field and the direction: "All-in cost, low to high", "Overall score, high to low".</li>
+        <li>Use the same words the public page shows: the select's "Freight elevator" is what visitors read under Load-in.</li>
+        <li>Every option has a stable <code>value</code> key (<code>freight-elevator</code>), so the words can change without breaking saved studios or shared URLs.</li>
       </ul>
     </section>
 
     <section class="ds-section" id="do-dont"><h2><a href="#do-dont">Do and don't</a></h2>
       <div class="ds-dodont">
-        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--stack"><div class="field"><label class="field__label" for="dd-1">Primary area</label><select class="select" id="dd-1" aria-invalid="true" aria-describedby="dd-1-e"><option value="">Choose your primary area</option></select><span class="field__error" id="dd-1-e">Choose your primary area</span></div></div><figcaption>The error repeats the instruction the select already gives.</figcaption></figure>
-        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--stack"><div class="field"><label class="field__label" for="dd-2">Primary area</label><select class="select" id="dd-2" aria-invalid="true" aria-describedby="dd-2-e"><option value="">Choose your primary area</option></select><span class="field__error" id="dd-2-e">Mark one area as primary</span></div></div><figcaption>"Mark one area as primary" (the cuisines mock) describes a different control.</figcaption></figure>
-        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--stack"><div class="field"><label class="field__label" for="dd-3">Show by</label><select class="select" id="dd-3"><option>Day</option><option selected>Week</option><option>Month</option></select></div><button class="btn btn--primary" type="button">Apply</button></div><figcaption>Changes apply when people press Apply.</figcaption></figure>
-        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--stack"><div class="field"><label class="field__label" for="dd-4">Go to</label><select class="select" id="dd-4"><option>Dashboard</option><option>Enquiries</option><option>Reviews</option></select></div></div><figcaption>A select that navigates on change moves people before they finish choosing with the arrow keys.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--stack"><div class="field"><label class="field__label" for="dd-a">Load-in</label><select class="select" id="dd-a" name="loadIn"><option value="stairs">Stairs</option><option value="freight-elevator" selected>Freight elevator</option></select></div></div><figcaption>Each option sends a key, like the disclosure radios' <code>paid_in_full</code>.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--stack"><div class="field"><label class="field__label" for="dd-b">Load-in</label><select class="select" id="dd-b" name="loadIn"><option>Stairs</option><option selected>Freight elevator</option></select></div></div><figcaption>Options without <code>value</code> (every editor select) send the display words, so rewording an option changes the data.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--stack"><label class="choice"><input type="checkbox" name="power.has20A" checked><span>20 A circuits available</span></label></div><figcaption>A yes-or-no fact is a checkbox, as for 20 A circuits.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--stack"><div class="field"><label class="field__label" for="dd-d">Cyc wall</label><select class="select" id="dd-d" name="cyc"><option>No</option><option selected>Yes</option></select></div></div><figcaption>A No/Yes select (the studio editor's cyc wall) takes two taps to answer what a checkbox does in one.</figcaption></figure>
       </div>
     </section>
 
@@ -267,15 +335,15 @@
       <div class="ds-table-wrap"><table class="ds-table">
         <thead><tr><th scope="col">Part</th><th scope="col">Token</th><th scope="col">Light</th><th scope="col">Dark</th></tr></thead>
         <tbody>
-          <tr><td>Fill</td><td><code>--field-bg</code> → <code>--color-bg-surface</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-bg-surface" data-swatch></i><span data-token="--color-bg-surface"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-bg-surface" data-swatch></i><span data-token="--color-bg-surface"></span></span></td></tr>
-          <tr><td>Edge</td><td><code>--field-border</code> → <code>--color-border-strong</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-border-strong" data-swatch></i><span data-token="--color-border-strong"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-border-strong" data-swatch></i><span data-token="--color-border-strong"></span></span></td></tr>
-          <tr><td>Value and chevron</td><td><code>--field-fg</code> → <code>--color-fg-default</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-default" data-swatch></i><span data-token="--color-fg-default"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-default" data-swatch></i><span data-token="--color-fg-default"></span></span></td></tr>
+          <tr><td>Fill (<code>--field-bg</code>)</td><td><code>--color-bg-surface</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-bg-surface" data-swatch></i><span data-token="--color-bg-surface"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-bg-surface" data-swatch></i><span data-token="--color-bg-surface"></span></span></td></tr>
+          <tr><td>Edge (<code>--field-border</code>)</td><td><code>--color-border-strong</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-border-strong" data-swatch></i><span data-token="--color-border-strong"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-border-strong" data-swatch></i><span data-token="--color-border-strong"></span></span></td></tr>
+          <tr><td>Value and chevron (<code>--field-fg</code>)</td><td><code>--color-fg-default</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-default" data-swatch></i><span data-token="--color-fg-default"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-default" data-swatch></i><span data-token="--color-fg-default"></span></span></td></tr>
           <tr><td>Hover edge</td><td><code>--color-fg-muted</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-muted" data-swatch></i><span data-token="--color-fg-muted"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-muted" data-swatch></i><span data-token="--color-fg-muted"></span></span></td></tr>
           <tr><td>Focus edge and ring</td><td><code>--color-focus-ring</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-focus-ring" data-swatch></i><span data-token="--color-focus-ring"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-focus-ring" data-swatch></i><span data-token="--color-focus-ring"></span></span></td></tr>
           <tr><td>Invalid edge</td><td><code>--color-danger-solid</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-danger-solid" data-swatch></i><span data-token="--color-danger-solid"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-danger-solid" data-swatch></i><span data-token="--color-danger-solid"></span></span></td></tr>
           <tr><td>Disabled fill / text</td><td><code>--color-bg-subtle</code> / <code>--color-fg-disabled</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-disabled" data-swatch></i><span data-token="--color-fg-disabled"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-disabled" data-swatch></i><span data-token="--color-fg-disabled"></span></span></td></tr>
           <tr><td>Height</td><td><code>--control-height-md</code></td><td colspan="2"><span data-token="--control-height-md"></span></td></tr>
-          <tr><td>Chevron clearance / offset</td><td><code>--space-10</code> / <code>--space-3</code>, <code>--space-4</code> + <code>--space-0-5</code></td><td colspan="2"><span data-token="--space-10"></span> / <span data-token="--space-3"></span></td></tr>
+          <tr><td>End padding (chevron room)</td><td><code>--space-10</code></td><td colspan="2"><span data-token="--space-10"></span></td></tr>
           <tr><td>Radius</td><td><code>--radius-md</code></td><td colspan="2"><span data-token="--radius-md"></span></td></tr>
         </tbody>
       </table></div>
@@ -283,20 +351,17 @@
 
     <section class="ds-section" id="code"><h2><a href="#code">Code</a></h2>
       <pre><code>&lt;div class="field"&gt;
-  &lt;label class="field__label" for="primary-area"&gt;Primary area&lt;/label&gt;
-  &lt;select class="select" id="primary-area" name="primary_area" required
-          aria-invalid="true" aria-describedby="primary-area-error primary-area-help"&gt;
-    &lt;option value=""&gt;Choose your primary area&lt;/option&gt;
-    &lt;option&gt;East York&lt;/option&gt;&lt;option&gt;North York&lt;/option&gt;&lt;option&gt;Scarborough&lt;/option&gt;…
+  &lt;label class="field__label" for="permit-portrait"&gt;Portrait&lt;/label&gt;
+  &lt;select class="select" id="permit-portrait" name="permits.portrait"&gt;
+    &lt;option value="not-required" selected&gt;Not required&lt;/option&gt;
+    &lt;option value="required"&gt;Required&lt;/option&gt;
   &lt;/select&gt;
-  &lt;span class="field__error" id="primary-area-error"&gt;Choose your primary area&lt;/span&gt;
-  &lt;span class="field__help" id="primary-area-help"&gt;Shown on your listing card. Pick the area closest to your kitchen; we never show your address.&lt;/span&gt;
 &lt;/div&gt;</code></pre>
       <table class="ds-table"><thead><tr><th scope="col">Class / attribute</th><th scope="col">Effect</th></tr></thead><tbody>
-        <tr><td><code>.select</code></td><td>Field look with a drawn chevron; native appearance removed.</td></tr>
-        <tr><td><code>&lt;option value=""&gt;</code> first</td><td>Placeholder option; fails <code>required</code>.</td></tr>
-        <tr><td><code>&lt;optgroup label&gt;</code></td><td>Region groups for areas.</td></tr>
-        <tr><td><code>aria-invalid="true"</code> / <code>disabled</code></td><td>Sorrel double edge / faded, out of tab order.</td></tr>
+        <tr><td><code>.select</code></td><td>Field look, no native arrow, CSS chevron.</td></tr>
+        <tr><td><code>.field--inline</code> (on the field)</td><td>Label beside the select; the select keeps its natural width.</td></tr>
+        <tr><td><code>option value=""</code></td><td>"No windows" or "Any size": a real answer meaning none or no filter.</td></tr>
+        <tr><td><code>aria-invalid="true"</code> / <code>disabled</code></td><td>Danger red double edge / faded, out of the tab order.</td></tr>
         <tr><td><code>data-state="hover|focus|invalid|disabled"</code></td><td>Documentation and mocks only.</td></tr>
       </tbody></table>
     </section>
@@ -304,17 +369,15 @@
     <section class="ds-section" id="sources"><h2><a href="#sources">Sources</a></h2>
       <p>Extracted from these mocks:</p>
       <ul>
-        <li>dialogs/enquiry/default (Event area with optgroups, Occasion)</li>
-        <li>dialogs/enquiry/busy (selects disabled while sending)</li>
-        <li>dialogs/enquiry/warning (area warning)</li>
-        <li>pages/profile-cuisines/invalid (primary area, invalid)</li>
-        <li>pages/admin-audit/default (filter selects with "All")</li>
-        <li>pages/admin-metrics/default ("Show by")</li>
+        <li><a href="../../mocks/pages/studios/default.html">pages/studios/default</a> and <a href="../../mocks/pages/studios/filtered.html">filtered</a> (inline sort, usable-space filter, announced sort)</li>
+        <li><a href="../../mocks/dialogs/studio-filters/default.html">dialogs/studio-filters/default</a> and <a href="../../mocks/dialogs/studio-filters/selected.html">selected</a> (sort and usable space in the sheet)</li>
+        <li><a href="../../mocks/pages/studio-editor/default.html">pages/studio-editor/default</a> and <a href="../../mocks/pages/studio-editor/published.html">published</a> (window direction, natural light, cyc wall, fee type, gear category, load-in, parking)</li>
+        <li><a href="../../mocks/pages/spot-editor/default.html">pages/spot-editor/default</a> (type, light by time of day, permits per shoot type, crowds)</li>
       </ul>
-      <p>Drift fixed during extraction: the primary-area error says "Mark one area as primary" under a select whose instruction is "Choose your primary area"; the error now repeats the instruction. Busy forms mixed read-only text fields with disabled selects without saying why; the reason (a select can't be read-only) is now the documented rule.</p>
+      <p>Drift fixed during extraction: no editor select gives its options a <code>value</code>, so they submit display words, while the disclosure radios send keys (<code>paid_in_full</code>); every option now has a key. Editor selects have no <code>id</code> and are wrapped in <code>label.field</code>; they get an <code>id</code> and a sibling <code>label for</code>. The natural-light and rubric rows set <code>grid-template-columns</code> inline (an auto-fit 9rem and 7rem grid); <code>.field-row--fit</code> and <code>.field-row--fit-sm</code> now do this (see <a href="form-layout.html">form layout</a>), and the example here uses <code>.field-row--fit</code>. The cyc wall is a No/Yes select beside a 20 A checkbox; the checkbox is documented as the rule for yes-or-no facts. No mock shows an invalid or disabled select.</p>
     </section>
 
-    <footer class="ds-footer"><span>ShotThere design system · extracted from docs/mocks on 10 October 2026</span><a href="#top">Back to top</a></footer>
+    <footer class="ds-footer"><span>ShotThere design system · extracted from <a href="../../mocks/index.html">docs/mocks</a> on 13 October 2026</span><a href="#top">Back to top</a></footer>
   </main>
 </div>
 <script src="../assets/ds.js"></script>

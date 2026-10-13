@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Inline message — ShotThere design system</title>
-<meta name="description" content="ShotThere inline messages: field help, error and warning, inline status and autosave status with the pulsing dot; order, aria-describedby wiring and live regions, both themes.">
+<meta name="description" content="ShotThere inline messages: field help, field errors, the price-changed field warning, upload errors and the editor save status, with states, live-region rules and both themes.">
 <link rel="stylesheet" href="../tokens/tokens.css">
 <link rel="stylesheet" href="../assets/components.css">
 <link rel="stylesheet" href="../assets/ds.css">
@@ -33,40 +33,61 @@
       <li><a href="../components/icon-button.html">Icon button</a></li>
       <li><a href="../components/button-group.html">Button group</a></li>
       <li><a href="../components/link.html">Link</a></li>
+      <li><a href="../components/compare-bar.html">Compare toggle and bar</a></li>
     </ul></details>
     <details open><summary>Inputs</summary><ul>
       <li><a href="../components/form-field.html">Form field</a></li>
       <li><a href="../components/text-field.html">Text field</a></li>
       <li><a href="../components/textarea.html">Textarea</a></li>
       <li><a href="../components/select.html">Select</a></li>
+      <li><a href="../components/combobox.html">Combobox</a></li>
       <li><a href="../components/checkbox.html">Checkbox</a></li>
       <li><a href="../components/radio-group.html">Radio group</a></li>
       <li><a href="../components/file-upload.html">File upload</a></li>
       <li><a href="../components/form-layout.html">Form layout</a></li>
+      <li><a href="../components/signup.html">Email signup</a></li>
     </ul></details>
     <details open><summary>Navigation</summary><ul>
       <li><a href="../components/skip-link.html">Skip link</a></li>
       <li><a href="../components/site-header.html">Site header</a></li>
       <li><a href="../components/footer.html">Footer</a></li>
+      <li><a href="../components/breadcrumb.html">Breadcrumb</a></li>
+      <li><a href="../components/filter.html">Filters</a></li>
     </ul></details>
     <details open><summary>Containers and overlays</summary><ul>
-      <li><a href="../components/container.html">Container and grid</a></li>
-      <li><a href="../components/card.html">Card</a></li>
+      <li><a href="../components/container.html">Container</a></li>
+      <li><a href="../components/review-layout.html">Review layout</a></li>
+      <li><a href="../components/editor-layout.html">Editor layout</a></li>
       <li><a href="../components/dialog.html">Dialog</a></li>
-      <li><a href="../components/sheet.html">Sheet and drawer</a></li>
-      <li><a href="../components/divider.html">Divider</a></li>
+      <li><a href="../components/sheet.html">Sheet</a></li>
+      <li><a href="../components/popover.html">Popover</a></li>
+      <li><a href="../components/lightbox.html">Lightbox</a></li>
     </ul></details>
     <details open><summary>Data display</summary><ul>
+      <li><a href="../components/location-card.html">Location card</a></li>
       <li><a href="../components/table.html">Table</a></li>
+      <li><a href="../components/compare-table.html">Comparison table</a></li>
+      <li><a href="../components/list.html">List rows</a></li>
       <li><a href="../components/description-list.html">Description list</a></li>
+      <li><a href="../components/price-block.html">Price block</a></li>
+      <li><a href="../components/score.html">Score and pips</a></li>
+      <li><a href="../components/shot-grid.html">Shot grid</a></li>
+      <li><a href="../components/video-poster.html">Episode poster</a></li>
+      <li><a href="../components/map.html">Map</a></li>
+      <li><a href="../components/guide-entry.html">Guide entry</a></li>
+      <li><a href="../components/stat-tile.html">Stat tile</a></li>
+      <li><a href="../components/image-manager.html">Image manager</a></li>
+      <li><a href="../components/disclosure.html">Disclosure</a></li>
       <li><a href="../components/badge.html">Badge</a></li>
+      <li><a href="../components/status-label.html">Status label</a></li>
       <li><a href="../components/chip.html">Chip</a></li>
+      <li><a href="../components/tag.html">Tag</a></li>
     </ul></details>
     <details open><summary>Feedback</summary><ul>
       <li><a href="../components/inline-message.html">Inline message</a></li>
-      <li><a href="../components/alert.html">Alert and banner</a></li>
+      <li><a href="../components/alert.html">Alert</a></li>
       <li><a href="../components/toast.html">Toast</a></li>
-      <li><a href="../components/progress.html">Progress and meter</a></li>
+      <li><a href="../components/progress.html">Progress</a></li>
       <li><a href="../components/spinner.html">Spinner</a></li>
       <li><a href="../components/skeleton.html">Skeleton</a></li>
       <li><a href="../components/empty-state.html">Empty state</a></li>
@@ -88,215 +109,207 @@
     <header class="ds-header">
       <p class="ds-kicker">Component · Feedback</p>
       <h1>Inline message</h1>
-      <p class="ds-lead">The small lines of text that sit right next to what they are about: help under a field, an error that says how to fix it, a warning that does not block, and the quiet "Saving…" / "Saved" beside a caterer's profile. Each is tied to its control with aria-describedby or announced through a live region.</p>
-      <div class="ds-meta"><span class="ds-pill ds-pill--ok">WCAG 2.2 AA</span><span class="ds-pill">Status: stable</span><span class="ds-pill"><code>.field__error</code></span><span class="ds-pill"><code>.field__warning</code></span><span class="ds-pill"><code>.save-status</code></span></div>
-      <ul class="ds-toc"><li><a href="#overview">Overview</a></li><li><a href="#anatomy">Anatomy</a></li><li><a href="#variants">Variants</a></li><li><a href="#sizes">Sizes</a></li><li><a href="#states">States</a></li><li><a href="#responsive">Responsive behaviour</a></li><li><a href="#theming">Theming</a></li><li><a href="#accessibility">Accessibility</a></li><li><a href="#content">Content</a></li><li><a href="#do-dont">Do and don't</a></li><li><a href="#tokens">Tokens</a></li><li><a href="#code">Code</a></li><li><a href="#sources">Sources</a></li></ul>
+      <p class="ds-lead">Inline messages are the one-line notes that sit right where the problem is: help under a field, the error once the server refuses a value, the warning after a price edit, an upload that failed, and the save status beside Save changes in the editors.</p>
+      <div class="ds-meta"><span class="ds-pill ds-pill--ok">WCAG 2.2 AA</span><span class="ds-pill">Status: stable</span><span class="ds-pill"><code>.field__help</code></span><span class="ds-pill"><code>.field__error</code></span><span class="ds-pill"><code>.field__warning</code></span><span class="ds-pill"><code>.save-status</code></span></div>
+      <ul class="ds-toc"><li><a href="#overview">Overview</a></li><li><a href="#anatomy">Anatomy</a></li><li><a href="#variants">Variants</a></li><li><a href="#sizes">Sizes</a></li><li><a href="#states">States</a></li><li><a href="#responsive">Responsive</a></li><li><a href="#theming">Theming</a></li><li><a href="#accessibility">Accessibility</a></li><li><a href="#content">Content</a></li><li><a href="#do-dont">Do and don't</a></li><li><a href="#tokens">Tokens</a></li><li><a href="#code">Code</a></li><li><a href="#sources">Sources</a></li></ul>
     </header>
 
-<section class="ds-section" id="overview"><h2><a href="#overview">Overview</a></h2>
-      <p>Inline messages are the lowest-level feedback on ShotThere: one line of small text, a glyph or dot, and a colour that is never the only signal. They live inside the layout, never over it.</p>
+    <section class="ds-section" id="overview"><h2><a href="#overview">Overview</a></h2>
+      <p>Use an inline message when the note belongs to one field, one image or one form's save button. When it is about a whole page or section, use an <a href="alert.html">alert</a>; when it confirms an action that just finished, use a <a href="toast.html">toast</a>.</p>
       <ul>
-        <li><b>Help</b> (<code>.field__help</code>): what the field needs before anyone types. "2–80 characters. A new name goes live after our team checks it."</li>
-        <li><b>Error</b> (<code>.field__error</code>): what is wrong and how to fix it, after a submit. "Enter a business name of 2 to 80 characters". Blocks the save.</li>
-        <li><b>Warning</b> (<code>.field__warning</code>): something worth knowing that does not block. "ShotThere currently serves Toronto and the GTA", "This caterer usually serves 20–300 guests".</li>
-        <li><b>Inline status</b> (<code>.inline-status</code>, <code>--success</code>, <code>--danger</code>): the result of an action, beside the action. "Contact details shared".</li>
-        <li><b>Save status</b> (<code>.save-status</code>, <code>--saved</code>, <code>--error</code>): the autosave indicator in a dashboard page intro: "Saving…" with a pulsing <code>.dot</code>, "Saved", "Not saved: fix 2 things below".</li>
+        <li><b>Help</b> (<code>.field__help</code>): always visible, says what to enter or what happens: "Visitors see a warning after 183 days."</li>
+        <li><b>Error</b> (<code>.field__error</code>): appears after a refused submit, says how to fix it, and pairs with <code>aria-invalid="true"</code> on the control. Also used without a field for an upload that failed or a list that needs an entry.</li>
+        <li><b>Warning</b> (<code>.field__warning</code>): the value is allowed but needs a second look. Only one in ShotThere: after a price edit, "You changed a price. Confirm the date you verified it." (L2-042.2).</li>
+        <li><b>Save status</b> (<code>.save-status</code>): the editor's state beside Save changes in the sticky form actions: "Unsaved changes", "Saving…", "Saved 13 Oct 2026, 10:05 am".</li>
       </ul>
-      <p>When the message is about the whole page or needs an action, use an <a href="alert.html">alert or banner</a>. When it confirms something that happened elsewhere or will disappear, use a <a href="toast.html">toast</a>. A list of every error on submit is the error summary (<code>.form-summary</code>, see <a href="form-layout.html">Form layout</a>); inline errors repeat each item next to its field. The character counter (<code>.field__counter</code>) belongs to the <a href="form-field.html">form field</a> but follows the same rules.</p>
+      <p>The server stays the authority: the browser may show these messages early, but every rule is checked again on save.</p>
     </section>
 
     <section class="ds-section" id="anatomy"><h2><a href="#anatomy">Anatomy</a></h2>
       <div class="ds-anatomy">
-        <figure class="ds-anatomy__figure">
-          <div class="stack" style="width: 100%; max-width: 26rem;">
-            <p class="save-status save-status--error" role="status"><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16.5v.5"/></svg>Not saved: fix 2 things below</p>
-            <label class="field" for="anat-name"><span class="field__label">Business name</span>
-              <input class="input" id="anat-name" type="text" value="" aria-invalid="true" aria-describedby="anat-name-error anat-name-help">
-              <span class="field__error" id="anat-name-error">Enter a business name of 2 to 80 characters</span>
-              <span class="field__help" id="anat-name-help">2–80 characters. A new name goes live after our team checks it.</span>
-            </label>
-          </div>
-          <span class="ds-callout" style="left: 4%; top: 18%;" aria-hidden="true">1</span>
-          <span class="ds-callout" style="left: 90%; top: 50%;" aria-hidden="true">2</span>
-          <span class="ds-callout" style="left: 4%; top: 66%;" aria-hidden="true">3</span>
-          <span class="ds-callout" style="left: 4%; top: 84%;" aria-hidden="true">4</span>
+        <figure class="ds-anatomy__figure" style="place-items: stretch; padding: var(--space-8) var(--space-6) var(--space-8) var(--space-10);">
+          <div class="field"><label class="field__label" for="anat-booking">Booking link</label><input class="input" id="anat-booking" name="bookingUrl" type="url" value="corktowngarage" aria-invalid="true" aria-describedby="anat-booking-error anat-booking-help"><span class="field__error" id="anat-booking-error">Enter a web address that starts with http:// or https://</span><span class="field__help" id="anat-booking-help">The studio's own booking page. Opens in a new tab for visitors.</span></div>
+          <span class="ds-callout" style="left: 0.5%; top: 36%;" aria-hidden="true">1</span>
+          <span class="ds-callout" style="left: 0.5%; top: 56%;" aria-hidden="true">2</span>
+          <span class="ds-callout" style="left: 72%; top: 56%;" aria-hidden="true">3</span>
+          <span class="ds-callout" style="left: 0.5%; top: 69%;" aria-hidden="true">4</span>
         </figure>
         <ol class="ds-anatomy__list">
-          <li><div><b>Save status</b><small><code>.save-status</code>: 16px icon or 8px <code>.dot</code> + text, <code>--text-body-sm</code>, 44px tall so it never shifts the intro. Always present, with <code>role="status"</code>.</small></div></li>
-          <li><div><b>Invalid control</b><small><code>aria-invalid="true"</code> gives the field a 2px danger edge; <code>aria-describedby</code> lists the error first, then help, then counter.</small></div></li>
-          <li><div><b>Error</b><small><code>.field__error</code>: warning-sign glyph + text in <code>--color-danger-fg</code>, directly under the control.</small></div></li>
-          <li><div><b>Help</b><small><code>.field__help</code>: muted, stays visible while there is an error, so the rule is still on screen.</small></div></li>
+          <li><div><b>Invalid control</b><small><code>aria-invalid="true"</code> gives the danger border; <code>aria-describedby</code> lists the error first, then the help.</small></div></li>
+          <li><div><b>Glyph</b><small>A CSS <code>::before</code> with empty alternative text: "⚠" for errors, a ringed "!" for warnings. Shape plus colour, never colour alone.</small></div></li>
+          <li><div><b>Message</b><small><code>--text-body-sm</code> in <code>--color-danger-fg</code> (or <code>--color-warning-fg</code>); one sentence, wraps anywhere.</small></div></li>
+          <li><div><b>Help</b><small><code>.field__help</code> in <code>--color-fg-muted</code>; stays under the message so the guidance is not lost.</small></div></li>
         </ol>
       </div>
     </section>
 
     <section class="ds-section" id="variants"><h2><a href="#variants">Variants</a></h2>
-      <h3>Field messages</h3>
+      <h3>Help</h3>
       <div class="ds-example">
         <div class="ds-example__canvas ds-example__canvas--stack" style="max-width: 32rem;">
-          <label class="field" for="v-desc"><span class="field__label">Description</span>
-            <textarea class="textarea" id="v-desc" rows="3" maxlength="2000" aria-describedby="v-desc-help v-desc-count"></textarea>
-            <span class="cluster cluster--between"><span class="field__help" id="v-desc-help">50–2,000 characters. Leave a blank line between paragraphs.</span><span class="field__counter" id="v-desc-count">0 / 2,000</span></span>
-          </label>
-          <label class="field" for="v-guests"><span class="field__label">Guests</span>
-            <input class="input" id="v-guests" type="text" inputmode="numeric" value="500" aria-describedby="v-guests-warn">
-            <span class="field__warning" id="v-guests-warn" role="status">This caterer usually serves 20–300 guests</span>
-          </label>
-          <label class="field" for="v-caption"><span class="field__label">Caption</span>
-            <textarea class="textarea" id="v-caption" rows="2" maxlength="125" aria-invalid="true" aria-describedby="v-caption-error v-caption-count">Roti</textarea>
-            <span class="field__error" id="v-caption-error">Captions describe the photo in 5–125 characters</span>
-            <span class="field__counter" id="v-caption-count">4 / 125</span>
-          </label>
+          <div class="field"><label class="field__label" for="v-video">YouTube link or video ID <span class="optional">(optional)</span></label><input class="input" id="v-video" name="video" aria-describedby="v-video-help"><span class="field__help" id="v-video-help">Paste a youtube.com or youtu.be link, or the 11-character ID. Leave empty for no video section.</span></div>
+          <div class="field"><label class="field__label" for="v-permit">Permit source link</label><input class="input" id="v-permit" name="permitSourceUrl" type="url" aria-describedby="v-permit-help"><span class="field__help" id="v-permit-help">The page where you checked the rules, such as the City of Toronto or the site owner.</span></div>
         </div>
-        <div class="ds-example__caption"><span>Help with counter; warning (does not block sending the enquiry); error with counter. From <code>profile-details</code>, <code>dialogs/enquiry/warning</code>, <code>dialogs/photo-details/invalid</code>.</span></div>
-        <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;label class="field" for="caption"&gt;&lt;span class="field__label"&gt;Caption&lt;/span&gt;
-  &lt;textarea class="textarea" id="caption" maxlength="125" aria-invalid="true" aria-describedby="caption-error caption-count"&gt;Roti&lt;/textarea&gt;
-  &lt;span class="field__error" id="caption-error"&gt;Captions describe the photo in 5–125 characters&lt;/span&gt;
-  &lt;span class="field__counter" id="caption-count"&gt;4 / 125&lt;/span&gt;
-&lt;/label&gt;</code></pre></details>
+        <div class="ds-example__caption"><span>Spot editor. Help is linked with <code>aria-describedby</code> and never replaced by a placeholder.</span></div>
       </div>
 
-      <h3>Inline status</h3>
+      <h3>Error</h3>
       <div class="ds-example">
-        <div class="ds-example__canvas">
-          <span class="inline-status" role="status"><span class="dot dot--pulse" aria-hidden="true"></span>Checking M1B 2K3…</span>
-          <span class="inline-status inline-status--success" role="status"><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg>Contact details shared</span>
-          <span class="inline-status inline-status--danger" role="status"><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16.5v.5"/></svg>Couldn’t share your details</span>
+        <div class="ds-example__canvas ds-example__canvas--stack" style="max-width: 32rem;">
+          <div class="field"><label class="field__label" for="v-rate">Hourly rate</label><span class="input-group"><span class="addon" aria-hidden="true">$</span><input class="input" id="v-rate" name="hourlyRate" type="number" inputmode="decimal" min="0" step="0.5" value="-5" aria-invalid="true" aria-describedby="v-rate-error"></span><span class="field__error" id="v-rate-error">Enter an amount of 0 or more</span></div>
+          <div class="field"><label class="field__label" for="v-verified">Prices last verified</label><input class="input" id="v-verified" name="priceVerifiedAt" type="date" value="2026-11-02" max="2026-10-13" aria-invalid="true" aria-describedby="v-verified-error v-verified-help"><span class="field__error" id="v-verified-error">The date can't be in the future</span><span class="field__help" id="v-verified-help">Change this only when you have checked the prices again. Visitors see a warning after 183 days.</span></div>
+          <div class="field"><label class="field__label" for="v-light">Light</label><input class="input" id="v-light" name="scores.light" type="number" inputmode="numeric" min="1" max="5" value="6" aria-invalid="true" aria-describedby="v-light-error"><span class="field__error" id="v-light-error">Enter a whole number from 1 to 5</span></div>
         </div>
-        <div class="ds-example__caption"><span>Neutral (in progress), success, danger. Short, beside the control that caused it; replaces that control when the action cannot be repeated ("Share my contact details" → "Contact details shared").</span></div>
-        <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;span class="inline-status inline-status--success" role="status"&gt;&lt;svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"&gt;…&lt;/svg&gt;Contact details shared&lt;/span&gt;</code></pre></details>
+        <div class="ds-example__caption"><span>Studio editor after a refused save (L2-042.4). The <a href="form-layout.html">form summary</a> at the top lists the same messages as links.</span></div>
+      </div>
+
+      <h3>Warning</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--stack" style="max-width: 32rem;">
+          <div class="field field--warning"><label class="field__label" for="v-confirm">Prices last verified <span class="optional">(required)</span></label><input class="input" id="v-confirm" name="priceVerifiedAt" type="date" max="2026-10-13" required aria-describedby="v-confirm-warning v-confirm-help"><span class="field__warning" id="v-confirm-warning">You changed a price. Confirm the date you verified it.</span><span class="field__help" id="v-confirm-help">Previously 11 Oct 2026. Visitors see a warning after 183 days.</span></div>
+        </div>
+        <div class="ds-example__caption"><span>After the hourly rate changes, the verified date is emptied and required (README assumption 14). The control is not invalid yet, so it keeps its normal border; <code>.field--warning</code> tints the whole field as the mock does.</span></div>
+      </div>
+
+      <h3>Error without a field</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--stack" style="max-width: 32rem;">
+          <p class="field__error" id="v-entries-error">Add at least one entry before publishing</p>
+          <p class="field__error" role="alert">gallery-04.jpg didn't upload. Check your connection.</p>
+          <div class="stack stack--sm" role="alert">
+            <p class="field__error">studio-floorplan.svg isn't a supported image. Use JPEG, PNG, WebP or AVIF.</p>
+            <p class="field__error">raw-export.tif is 25 MB. The limit is 20 MB.</p>
+          </div>
+        </div>
+        <div class="ds-example__caption"><span>A guide with no entries; a gallery row whose upload failed (with Retry and Remove beside it in the <a href="image-manager.html">image manager</a>); files refused before upload. Upload errors arrive without a submit, so they are announced with <code>role="alert"</code>.</span></div>
       </div>
 
       <h3>Save status</h3>
       <div class="ds-example">
         <div class="ds-example__canvas ds-example__canvas--stack">
-          <p class="save-status" role="status"><span class="dot dot--pulse" aria-hidden="true"></span>Saving…</p>
-          <p class="save-status save-status--saved" role="status"><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg>Saved at 10:14 a.m. · live on your page within a minute</p>
-          <p class="save-status save-status--error" role="status"><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16.5v.5"/></svg>Not saved: fix 2 things below</p>
-          <p class="save-status" role="status"><span class="dot dot--pulse" aria-hidden="true"></span>Uploading 2 photos…</p>
+          <div class="form-actions"><button class="btn btn--primary" type="button">Save changes</button><a class="btn btn--ghost" href="../../mocks/dialogs/discard-changes/default.html">Cancel</a><span class="save-status" role="status">Unsaved changes</span></div>
+          <div class="form-actions"><button class="btn btn--primary" type="button" aria-busy="true" disabled>Save changes</button><a class="btn btn--ghost" href="../../mocks/dialogs/discard-changes/default.html">Cancel</a><span class="save-status" role="status">Saving…</span></div>
+          <div class="form-actions"><button class="btn btn--primary" type="button">Save changes</button><a class="btn btn--ghost" href="../../mocks/pages/admin-studios/default.html">Cancel</a><span class="save-status save-status--saved" role="status">Saved 13 Oct 2026, 10:02 am</span></div>
+          <div class="form-actions"><button class="btn btn--primary" type="button">Save changes</button><a class="btn btn--ghost" href="../../mocks/dialogs/discard-changes/default.html">Cancel</a><span class="save-status save-status--error" role="status">Not saved. Fix the 6 things listed above.</span></div>
+          <div class="form-actions"><button class="btn btn--primary" type="button" disabled aria-describedby="v-save-hint">Save changes</button><a class="btn btn--ghost" href="../../mocks/dialogs/discard-changes/default.html">Cancel</a><span class="save-status" role="status" id="v-save-hint">Wait for uploads to finish</span></div>
         </div>
-        <div class="ds-example__caption"><span>Saving, saved, error, uploading. One element per page, in the page intro beside the status label; its text changes, the element stays.</span></div>
-        <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;p class="save-status" role="status"&gt;&lt;span class="dot dot--pulse" aria-hidden="true"&gt;&lt;/span&gt;Saving…&lt;/p&gt;
-&lt;p class="save-status save-status--saved" role="status"&gt;&lt;svg class="icon icon--sm" aria-hidden="true" …&gt;…&lt;/svg&gt;Saved&lt;/p&gt;
-&lt;p class="save-status save-status--error" role="status"&gt;&lt;svg class="icon icon--sm" aria-hidden="true" …&gt;…&lt;/svg&gt;Not saved: fix 2 things below&lt;/p&gt;</code></pre></details>
+        <div class="ds-example__caption"><span>The five messages the studio editor shows. Neutral by default; <code>.save-status--saved</code> and <code>.save-status--error</code> add the success or danger ink.</span></div>
       </div>
     </section>
 
-    <section class="ds-section" id="sizes" data-na="Inline messages have one size."><h2><a href="#sizes">Sizes</a></h2>
-      <p class="ds-na">Inline messages have one size: <code>--text-body-sm</code> with a 16px icon or 8px dot. They follow the field, whatever its size.</p>
+    <section class="ds-section" id="sizes" data-na="One size"><h2><a href="#sizes">Sizes</a></h2>
+      <p>One size, <code>--text-body-sm</code>, at every width and next to every field size (including the large sign-in fields).</p>
     </section>
 
     <section class="ds-section" id="states"><h2><a href="#states">States</a></h2>
-      <h3>A field through its messages</h3>
-      <div class="ds-matrix" style="position: relative;"><table>
-        <caption class="visually-hidden">Field message states</caption>
-        <thead><tr><th scope="col">Field</th><th scope="col">Help only</th><th scope="col">Warning</th><th scope="col">Invalid</th><th scope="col">Over limit</th><th scope="col">Read-only</th></tr></thead>
+      <p>The message does not react to the pointer; the control it describes does. The matrix shows each message with its control in every state. Hover and focus are forced with <code>data-state</code>; real pages use <code>:hover</code> and <code>:focus-visible</code>.</p>
+      <div class="ds-matrix"><table>
+        <thead><tr><th scope="col">Message</th><th scope="col">Default</th><th scope="col">Hover</th><th scope="col">Focus</th><th scope="col">Active</th><th scope="col">Disabled</th><th scope="col">Invalid / busy</th></tr></thead>
         <tbody>
-          <tr><th scope="row">Text field</th>
-            <td><label class="field" style="min-width: 14rem;" for="m1"><span class="field__label">Postal code</span><input class="input" id="m1" type="text" value="M1B 2K3" aria-describedby="m1-help"><span class="field__help" id="m1-help">We use it to find caterers near you</span></label></td>
-            <td><label class="field" style="min-width: 14rem;" for="m2"><span class="field__label">Postal code</span><input class="input" id="m2" type="text" value="K1A 0B1" aria-describedby="m2-warn"><span class="field__warning" id="m2-warn" role="status">ShotThere currently serves Toronto and the GTA</span></label></td>
-            <td><label class="field" style="min-width: 14rem;" for="m3"><span class="field__label">Business name</span><input class="input" id="m3" type="text" value="" aria-invalid="true" aria-describedby="m3-error m3-help"><span class="field__error" id="m3-error">Enter a business name of 2 to 80 characters</span><span class="field__help" id="m3-help">2–80 characters</span></label></td>
-            <td><span class="text-subtle">Not applicable: <code>maxlength</code> stops typing</span></td>
-            <td><label class="field" style="min-width: 14rem;" for="m5"><span class="field__label">Business name</span><input class="input" id="m5" type="text" value="Pelau House" readonly aria-describedby="m5-help"><span class="field__help" id="m5-help">Editing is paused while we review your profile</span></label></td></tr>
-          <tr><th scope="row">Textarea</th>
-            <td><label class="field" style="min-width: 14rem;" for="m6"><span class="field__label">Your reply</span><textarea class="textarea" id="m6" rows="2" aria-describedby="m6-help m6-count"></textarea><span class="cluster cluster--between"><span class="field__help" id="m6-help">Pelau House gets an email.</span><span class="field__counter" id="m6-count">0 / 2,000</span></span></label></td>
-            <td><span class="text-subtle">Not used</span></td>
-            <td><label class="field" style="min-width: 14rem;" for="m8"><span class="field__label">Your review</span><textarea class="textarea" id="m8" rows="2" aria-invalid="true" aria-describedby="m8-error m8-help m8-count">Great food!!</textarea><span class="field__error" id="m8-error">Write at least 20 characters</span><span class="cluster cluster--between"><span class="field__help" id="m8-help">20 to 2,000 characters</span><span class="field__counter" id="m8-count">12 / 2,000</span></span></label></td>
-            <td><label class="field" style="min-width: 14rem;" for="m9"><span class="field__label">Your reply</span><textarea class="textarea" id="m9" rows="2" aria-invalid="true" aria-describedby="m9-error m9-count">Hi Kendra, yes please hold the date! A few details for the day…</textarea><span class="field__error" id="m9-error">Keep your reply under 2,000 characters. It’s 2,143 now.</span><span class="field__counter" id="m9-count" data-over>2,143 / 2,000</span></label></td>
-            <td><label class="field" style="min-width: 14rem;" for="m10"><span class="field__label">Your review</span><textarea class="textarea" id="m10" rows="2" readonly aria-describedby="m10-help">We had Pelau House for my mother’s thanksgiving service.</textarea><span class="field__help" id="m10-help">Posting your review…</span></label></td></tr>
-        </tbody>
-      </table></div>
-
-      <h3>Save status lifecycle</h3>
-      <div class="ds-matrix" style="position: relative;"><table>
-        <caption class="visually-hidden">Save status states</caption>
-        <thead><tr><th scope="col">Indicator</th><th scope="col">Saved (on load)</th><th scope="col">Saving</th><th scope="col">Saved (after a change)</th><th scope="col">Error</th></tr></thead>
-        <tbody>
+          <tr><th scope="row">Help</th>
+            <td><div class="field" style="min-width: 13rem;"><label class="field__label" for="m-h1">Booking link</label><input class="input" id="m-h1" type="url" aria-describedby="m-h1-help"><span class="field__help" id="m-h1-help">The studio's own booking page.</span></div></td>
+            <td><div class="field" style="min-width: 13rem;"><label class="field__label" for="m-h2">Booking link</label><input class="input" id="m-h2" type="url" data-state="hover" aria-describedby="m-h2-help"><span class="field__help" id="m-h2-help">The studio's own booking page.</span></div></td>
+            <td><div class="field" style="min-width: 13rem;"><label class="field__label" for="m-h3">Booking link</label><input class="input" id="m-h3" type="url" data-state="focus" aria-describedby="m-h3-help"><span class="field__help" id="m-h3-help">The studio's own booking page.</span></div></td>
+            <td><span class="text-muted">Not used</span></td>
+            <td><div class="field" style="min-width: 13rem;"><label class="field__label" for="m-h5">Booking link</label><input class="input" id="m-h5" type="url" disabled aria-describedby="m-h5-help"><span class="field__help" id="m-h5-help">The studio's own booking page.</span></div></td>
+            <td><span class="text-muted">See error</span></td>
+          </tr>
+          <tr><th scope="row">Error</th>
+            <td><span class="text-muted">Hidden until a refused submit</span></td>
+            <td><div class="field" style="min-width: 13rem;"><label class="field__label" for="m-e2">Title</label><input class="input" id="m-e2" data-state="hover" aria-invalid="true" aria-describedby="m-e2-error"><span class="field__error" id="m-e2-error">Enter a title</span></div></td>
+            <td><div class="field" style="min-width: 13rem;"><label class="field__label" for="m-e3">Title</label><input class="input" id="m-e3" data-state="focus" aria-invalid="true" aria-describedby="m-e3-error"><span class="field__error" id="m-e3-error">Enter a title</span></div></td>
+            <td><span class="text-muted">Not used</span></td>
+            <td><span class="text-muted">Never on a disabled control</span></td>
+            <td><div class="field" style="min-width: 13rem;"><label class="field__label" for="m-e6">Title</label><input class="input" id="m-e6" aria-invalid="true" aria-describedby="m-e6-error"><span class="field__error" id="m-e6-error">Enter a title</span></div></td>
+          </tr>
+          <tr><th scope="row">Warning</th>
+            <td><span class="text-muted">Hidden until a price changes</span></td>
+            <td><div class="field" style="min-width: 13rem;"><label class="field__label" for="m-w2">Prices last verified</label><input class="input" id="m-w2" type="date" data-state="hover" aria-describedby="m-w2-warning"><span class="field__warning" id="m-w2-warning">You changed a price. Confirm the date you verified it.</span></div></td>
+            <td><div class="field" style="min-width: 13rem;"><label class="field__label" for="m-w3">Prices last verified</label><input class="input" id="m-w3" type="date" data-state="focus" aria-describedby="m-w3-warning"><span class="field__warning" id="m-w3-warning">You changed a price. Confirm the date you verified it.</span></div></td>
+            <td><span class="text-muted">Not used</span></td>
+            <td><span class="text-muted">Not used</span></td>
+            <td><div class="field" style="min-width: 13rem;"><label class="field__label" for="m-w6">Prices last verified</label><input class="input" id="m-w6" type="date" value="2026-11-02" aria-invalid="true" aria-describedby="m-w6-error"><span class="field__error" id="m-w6-error">The date can't be in the future</span></div></td>
+          </tr>
           <tr><th scope="row">Save status</th>
-            <td><span class="save-status save-status--saved"><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg>Saved</span></td>
-            <td><span class="save-status" role="status"><span class="dot dot--pulse" aria-hidden="true"></span>Saving…</span></td>
-            <td><span class="save-status save-status--saved" role="status"><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg>Saved at 10:14 a.m.</span></td>
-            <td><span class="save-status save-status--error" role="status"><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16.5v.5"/></svg>Not saved: fix 2 things below</span></td></tr>
-          <tr><th scope="row">Inline status</th>
-            <td><span class="text-subtle">Absent until an action</span></td>
-            <td><span class="inline-status" role="status"><span class="dot dot--pulse" aria-hidden="true"></span>Sharing…</span></td>
-            <td><span class="inline-status inline-status--success" role="status"><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg>Contact details shared</span></td>
-            <td><span class="inline-status inline-status--danger" role="status"><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16.5v.5"/></svg>Couldn’t share your details</span></td></tr>
+            <td><span class="save-status" role="status">Unsaved changes</span></td>
+            <td><span class="text-muted">Not interactive</span></td>
+            <td><span class="text-muted">Not focusable</span></td>
+            <td><span class="text-muted">Not used</span></td>
+            <td><span class="save-status" role="status">Wait for uploads to finish</span></td>
+            <td><span class="save-status" role="status">Saving…</span></td>
+          </tr>
         </tbody>
       </table></div>
-
+      <ul>
+        <li><b>Invalid replaces warning.</b> When the confirmed date is in the future the warning gives way to the error; a field never shows both.</li>
+        <li><b>Clearing.</b> An error stays until the next submit; it is not removed while the person is still typing.</li>
+        <li><b>Save status sequence</b>: "Not saved yet" (new) → "Unsaved changes" → "Saving…" → "Saved 13 Oct 2026, 10:05 am" or "Not saved. Fix the 6 things listed above.". While images upload: "Wait for uploads to finish", with Save disabled and described by the status.</li>
+      </ul>
       <h3>Both themes</h3>
       <div class="ds-themes">
-        <div data-theme="light"><div class="stack stack--sm"><span class="field__help">2–80 characters</span><span class="field__error">Enter a business name of 2 to 80 characters</span><span class="field__warning">ShotThere currently serves Toronto and the GTA</span><span class="save-status save-status--saved"><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg>Saved</span><span class="save-status"><span class="dot dot--pulse" aria-hidden="true"></span>Saving…</span></div></div>
-        <div data-theme="dark"><div class="stack stack--sm"><span class="field__help">2–80 characters</span><span class="field__error">Enter a business name of 2 to 80 characters</span><span class="field__warning">ShotThere currently serves Toronto and the GTA</span><span class="save-status save-status--saved"><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg>Saved</span><span class="save-status"><span class="dot dot--pulse" aria-hidden="true"></span>Saving…</span></div></div>
+        <div data-theme="light"><div class="stack stack--sm"><div class="field"><label class="field__label" for="t-l1">Latitude</label><input class="input" id="t-l1" type="number" value="95" aria-invalid="true" aria-describedby="t-l1-error"><span class="field__error" id="t-l1-error">Enter a latitude from -90 to 90</span></div><span class="field__warning">You changed a price. Confirm the date you verified it.</span><span class="field__help">Visitors see a warning after 183 days.</span><span class="save-status save-status--saved">Saved 13 Oct 2026, 10:05 am</span></div></div>
+        <div data-theme="dark"><div class="stack stack--sm"><div class="field"><label class="field__label" for="t-d1">Latitude</label><input class="input" id="t-d1" type="number" value="95" aria-invalid="true" aria-describedby="t-d1-error"><span class="field__error" id="t-d1-error">Enter a latitude from -90 to 90</span></div><span class="field__warning">You changed a price. Confirm the date you verified it.</span><span class="field__help">Visitors see a warning after 183 days.</span><span class="save-status save-status--saved">Saved 13 Oct 2026, 10:05 am</span></div></div>
       </div>
     </section>
 
     <section class="ds-section" id="responsive"><h2><a href="#responsive">Responsive behaviour</a></h2>
       <ul>
-        <li>Messages take the field's width and wrap; the glyph stays aligned with the first line (<code>align-items: flex-start</code>).</li>
-        <li>Help and counter share a row (<code>.cluster--between</code>); below about 20rem the counter wraps under the help, right-aligned.</li>
-        <li>The save status keeps a 44px minimum height so "Saving…" → "Saved" never moves the page; in the dashboard intro it wraps under the status label on phones.</li>
-        <li>No breakpoint hides a message or moves it away from its control.</li>
+        <li>Messages take the field's width and wrap; long file names such as "studio-floorplan.svg" break anywhere instead of widening the form at 320px.</li>
+        <li>The save status sits after Cancel in <code>.form-actions--sticky</code>, which stays at the bottom of the viewport above the safe-area inset; on a phone it wraps to its own line under the buttons.</li>
+        <li>In two-column field rows (Hourly rate, Minimum booking) each message stays under its own field.</li>
       </ul>
     </section>
 
     <section class="ds-section" id="theming"><h2><a href="#theming">Theming</a></h2>
-      <p>Each message reads one foreground role: <code>--color-fg-muted</code> (help, neutral status), <code>--color-danger-fg</code> (error, failed), <code>--color-warning-fg</code> (warning), <code>--color-success-fg</code> (saved, done), <code>--color-fg-subtle</code> (counter). There are no backgrounds: inline messages sit on whatever surface the field is on (canvas, card, dialog), so every foreground is checked against canvas, surface and raised surface. Dark lightens each foreground to keep 4.5:1. The pulsing dot uses <code>currentColor</code>.</p>
+      <p>Messages read the status foregrounds <code>--color-danger-fg</code>, <code>--color-warning-fg</code> and <code>--color-success-fg</code>, and <code>--color-fg-muted</code> for help and neutral status. The dark theme lightens each foreground so it holds 4.5:1 on the dark canvas, surface and dialog. The glyph uses <code>currentColor</code>, so it follows the message.</p>
     </section>
 
     <section class="ds-section" id="accessibility"><h2><a href="#accessibility">Accessibility</a></h2>
       <h3>Role and pattern</h3>
-      <p>Field messages are plain text tied to their control with <code>aria-describedby</code> (WCAG 1.3.1, 3.3.1, 3.3.3). The order in the attribute is the reading order: error, help, counter. Status lines that change after load are live regions (<code>role="status"</code>, polite) that exist in the DOM before their text changes. See the <a href="https://www.w3.org/WAI/ARIA/apg/practices/names-and-descriptions/">APG names and descriptions</a> practice.</p>
+      <p>Help, errors and warnings are plain text tied to the control with <code>aria-describedby</code> (WCAG 3.3.1 Error Identification, 3.3.3 Error Suggestion). Errors that come from a submit are announced through the <a href="form-layout.html">form summary</a> (<code>role="alert"</code>, focused), not one by one. Messages that appear without a submit, like a failed upload, use <code>role="alert"</code>. The save status is a polite live region, <code>role="status"</code>, rendered with the page so changes are announced (4.1.3 Status Messages). The glyph's <code>content: "⚠" / ""</code> gives it empty alternative text.</p>
       <h3>Keyboard</h3>
-      <div class="ds-table-wrap"><table class="ds-table ds-keys"><thead><tr><th scope="col">Key</th><th scope="col">Action</th></tr></thead><tbody>
-        <tr><td><kbd>Tab</kbd></td><td>Messages are never focusable; focusing the control reads its label, then the described-by messages.</td></tr>
-        <tr><td><kbd>Enter</kbd> on a summary link</td><td>Moves focus to the field, whose error is read next.</td></tr>
-      </tbody></table></div>
+      <table class="ds-table ds-keys"><thead><tr><th scope="col">Key</th><th scope="col">Action</th></tr></thead><tbody>
+        <tr><td><kbd>Tab</kbd></td><td>Messages are not focusable; focus moves to the control, which reads its label, value, "invalid entry" and then the message.</td></tr>
+        <tr><td><kbd>Enter</kbd> on a summary link</td><td>Moves focus to the field whose message it repeats.</td></tr>
+      </tbody></table>
       <h3>Focus</h3>
-      <p>After an invalid submit, focus goes to the error summary (<code>role="alert"</code>, <code>tabindex="-1"</code>), not to an inline error. Fixing a field removes its error and <code>aria-invalid</code> as the person types (re-validate on input), silently.</p>
-      <h3>Labelling and live regions</h3>
-      <ul>
-        <li><b>Errors</b> start with a glyph and are coloured, but the words carry the meaning; the control also gets <code>aria-invalid="true"</code>. They are not live regions themselves: the summary announces them.</li>
-        <li><b>Warnings</b> that appear while typing (postal code out of area) use <code>role="status"</code>; warnings present on load are plain text.</li>
-        <li><b>Save status</b> has <code>role="status"</code> so "Saving…", "Saved" and "Not saved" are each announced once. It is not repeated in a toast.</li>
-        <li><b>Inline status</b> replaces the button it reports on when the action is one-way, and returns focus to the nearest remaining control.</li>
-      </ul>
+      <p>After a refused save focus goes to the form summary; the invalid field keeps its danger border under the focus ring.</p>
+      <h3>Labelling</h3>
+      <p>List the message before the help in <code>aria-describedby</code> ("bookingUrl-error booking-help") so the fix is heard first. The image-row error names the file ("gallery-04.jpg didn't upload"), so it makes sense out of context.</p>
       <h3>Contrast</h3>
       <div class="ds-example__canvas ds-example__canvas--stack" style="padding: 0; gap: var(--space-2);">
-        <div class="ds-pair"><span>Error on canvas</span><span class="ds-pair__ratio" data-contrast="--color-danger-fg|--color-bg-canvas" data-min="4.5"></span></div>
-        <div class="ds-pair"><span>Error on a card</span><span class="ds-pair__ratio" data-contrast="--color-danger-fg|--color-bg-surface" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Error on page</span><span class="ds-pair__ratio" data-contrast="--color-danger-fg|--color-bg-canvas" data-min="4.5"></span></div>
         <div class="ds-pair"><span>Error in a dialog</span><span class="ds-pair__ratio" data-contrast="--color-danger-fg|--color-bg-surface-raised" data-min="4.5"></span></div>
-        <div class="ds-pair"><span>Warning on canvas</span><span class="ds-pair__ratio" data-contrast="--color-warning-fg|--color-bg-canvas" data-min="4.5"></span></div>
-        <div class="ds-pair"><span>Warning on a card</span><span class="ds-pair__ratio" data-contrast="--color-warning-fg|--color-bg-surface" data-min="4.5"></span></div>
-        <div class="ds-pair"><span>Saved</span><span class="ds-pair__ratio" data-contrast="--color-success-fg|--color-bg-canvas" data-min="4.5"></span></div>
-        <div class="ds-pair"><span>Help in a dialog</span><span class="ds-pair__ratio" data-contrast="--color-fg-muted|--color-bg-surface-raised" data-min="4.5"></span></div>
-        <div class="ds-pair"><span>Counter</span><span class="ds-pair__ratio" data-contrast="--color-fg-subtle|--color-bg-surface" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Warning on page</span><span class="ds-pair__ratio" data-contrast="--color-warning-fg|--color-bg-canvas" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Help on page</span><span class="ds-pair__ratio" data-contrast="--color-fg-muted|--color-bg-canvas" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Saved status on page</span><span class="ds-pair__ratio" data-contrast="--color-success-fg|--color-bg-canvas" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Invalid input edge</span><span class="ds-pair__ratio" data-contrast="--color-danger-solid|--color-bg-surface" data-min="3"></span></div>
       </div>
       <h3>Motion</h3>
-      <p>The <code>.dot--pulse</code> fades between full and 35% opacity over <code>--duration-loop</code>. It is decorative (the text says "Saving…"), so reduced motion stops it and leaves a solid dot.</p>
+      <p>None. Messages appear and disappear without animation.</p>
       <h3>Touch</h3>
-      <p>Not interactive. Inline messages never contain the only route to an action; links inside them ("Try again") meet the 24px minimum with spacing.</p>
+      <p>No targets of their own; Retry and Remove next to an upload error are 44px on phones.</p>
     </section>
 
     <section class="ds-section" id="content"><h2><a href="#content">Content</a></h2>
       <ul>
-        <li><b>Errors</b> say what to do, in the imperative, with the limit: "Enter a business name of 2 to 80 characters", "Write at least 50 characters (35 so far)", "Keep your reply under 2,000 characters. It’s 2,143 now." Never "Invalid input" or "Error". No trailing period on single-clause errors.</li>
-        <li><b>Help</b> states the rule and who sees what: "2–80 characters. A new name goes live after our team checks it.", "Pelau House gets an email. Links show as plain text."</li>
-        <li><b>Warnings</b> describe the fact, not a fault, and address the reader correctly: to a customer, "This caterer usually serves 20–300 guests" (L2-024); to the caterer, "You don’t list Downtown Toronto as an area you serve".</li>
-        <li><b>Save status</b>: "Saving…", "Saved", "Saved at 10:14 a.m. · live on your page within a minute", "Not saved: fix 2 things below". Times lowercase with periods.</li>
-        <li>Use the ellipsis character (…) for in-progress text.</li>
+        <li>Errors say what to do, in the imperative, with no full stop: "Enter a whole number from 1 to 5", "Describe this image", "Enter who provided the session".</li>
+        <li>Name the limit, not the rule number: "The limit is 20 MB.", "Enter a latitude from -90 to 90".</li>
+        <li>Never blame: "isn't a supported image", not "invalid file". No "Error:" prefix; the glyph and colour already say it.</li>
+        <li>Help is a full sentence that adds something the label doesn't: what visitors see, where to find the value.</li>
+        <li>Save status is short and specific; times use "10:05 am" and dates "13 Oct 2026".</li>
+        <li>Email errors follow the README wording: "Enter your email address", "Enter a valid email address, like name@example.com".</li>
       </ul>
     </section>
 
     <section class="ds-section" id="do-dont"><h2><a href="#do-dont">Do and don't</a></h2>
       <div class="ds-dodont">
-        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--stack"><label class="field" for="dd1"><span class="field__label">Description</span><textarea class="textarea" id="dd1" rows="2" aria-invalid="true" aria-describedby="dd1-e dd1-h">Pelau, curry goat and macaroni pie.</textarea><span class="field__error" id="dd1-e">Write at least 50 characters (35 so far)</span><span class="field__help" id="dd1-h">50–2,000 characters.</span></label></div><figcaption>Error directly under the control, help after it, both in <code>aria-describedby</code>.</figcaption></figure>
-        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--stack"><label class="field" for="dd2"><span class="field__label">Description</span><textarea class="textarea" id="dd2" rows="2" aria-invalid="true" aria-describedby="dd2-h">Pelau, curry goat and macaroni pie.</textarea><span class="field__help" id="dd2-h">50–2,000 characters.</span><span class="field__error">Too short</span></label></div><figcaption>Don't put the error last or leave it out of <code>aria-describedby</code>, and don't write "Too short". The mocks used three different orders.</figcaption></figure>
-        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--stack"><p class="field__warning">You don’t list Downtown Toronto as an area you serve</p></div><figcaption>Address the caterer as "you" on their own dashboard.</figcaption></figure>
-        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--stack"><p class="field__warning">This caterer doesn’t list Downtown Toronto as an area they serve</p></div><figcaption>Don't reuse the customer wording on the caterer's side (<code>dashboard-enquiry</code> did).</figcaption></figure>
-        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--stack"><span class="save-status save-status--saved"><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg>Saved</span></div><figcaption>One wording, one modifier: "Saved" with <code>--saved</code>.</figcaption></figure>
-        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--stack"><span class="save-status"><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg>All changes saved</span></div><figcaption>Don't mix "All changes saved" in neutral grey with "Saved" in green for the same state.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--stack"><div class="field"><label class="field__label" for="dd-1">Booking link</label><input class="input" id="dd-1" type="url" value="corktowngarage" aria-invalid="true" aria-describedby="dd-1-error dd-1-help"><span class="field__error" id="dd-1-error">Enter a web address that starts with http:// or https://</span><span class="field__help" id="dd-1-help">The studio's own booking page.</span></div></div><figcaption>The error says how to fix it and the help stays underneath.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--stack"><div class="field"><label class="field__label" for="dd-2">Booking link</label><input class="input" id="dd-2" type="url" value="corktowngarage" aria-invalid="true" aria-describedby="dd-2-error"><span class="field__error" id="dd-2-error">Invalid URL</span></div></div><figcaption>"Invalid URL" names the problem in jargon and drops the help.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--stack"><div class="field"><label class="field__label" for="dd-3">Prices last verified</label><input class="input" id="dd-3" type="date" aria-describedby="dd-3-warning"><span class="field__warning" id="dd-3-warning">You changed a price. Confirm the date you verified it.</span></div></div><figcaption>A warning for a value that is allowed but needs checking.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--stack"><div class="field"><label class="field__label" for="dd-4">Prices last verified</label><input class="input" id="dd-4" type="date" aria-invalid="true" aria-describedby="dd-4-error"><span class="field__error" id="dd-4-error">You changed a price. Confirm the date you verified it.</span></div></div><figcaption>An error before anything was refused reads as a failure the owner did not cause.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas"><button class="btn btn--primary" type="button" disabled aria-describedby="dd-5">Save changes</button><span class="save-status" role="status" id="dd-5">Wait for uploads to finish</span></div><figcaption>A disabled Save is described by the status that says why.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas"><button class="btn btn--primary" type="button" disabled>Save changes</button><span class="save-status" role="status"></span></div><figcaption>A disabled Save with an empty status leaves the owner guessing.</figcaption></figure>
       </div>
     </section>
 
@@ -304,62 +317,65 @@
       <div class="ds-table-wrap"><table class="ds-table">
         <thead><tr><th scope="col">Part</th><th scope="col">Token</th><th scope="col">Light</th><th scope="col">Dark</th></tr></thead>
         <tbody>
+          <tr><td>Error text and glyph</td><td><code>--color-danger-fg</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-danger-fg" data-swatch></i><span data-token="--color-danger-fg"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-danger-fg" data-swatch></i><span data-token="--color-danger-fg"></span></span></td></tr>
+          <tr><td>Invalid input edge</td><td><code>--color-danger-solid</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-danger-solid" data-swatch></i><span data-token="--color-danger-solid"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-danger-solid" data-swatch></i><span data-token="--color-danger-solid"></span></span></td></tr>
+          <tr><td>Warning text and glyph</td><td><code>--color-warning-fg</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-warning-fg" data-swatch></i><span data-token="--color-warning-fg"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-warning-fg" data-swatch></i><span data-token="--color-warning-fg"></span></span></td></tr>
           <tr><td>Help, neutral status</td><td><code>--color-fg-muted</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-muted" data-swatch></i><span data-token="--color-fg-muted"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-muted" data-swatch></i><span data-token="--color-fg-muted"></span></span></td></tr>
-          <tr><td>Error, danger status</td><td><code>--color-danger-fg</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-danger-fg" data-swatch></i><span data-token="--color-danger-fg"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-danger-fg" data-swatch></i><span data-token="--color-danger-fg"></span></span></td></tr>
-          <tr><td>Warning</td><td><code>--color-warning-fg</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-warning-fg" data-swatch></i><span data-token="--color-warning-fg"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-warning-fg" data-swatch></i><span data-token="--color-warning-fg"></span></span></td></tr>
-          <tr><td>Saved, success status</td><td><code>--color-success-fg</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-success-fg" data-swatch></i><span data-token="--color-success-fg"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-success-fg" data-swatch></i><span data-token="--color-success-fg"></span></span></td></tr>
-          <tr><td>Counter</td><td><code>--color-fg-subtle</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-subtle" data-swatch></i><span data-token="--color-fg-subtle"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-subtle" data-swatch></i><span data-token="--color-fg-subtle"></span></span></td></tr>
-          <tr><td>Invalid control edge</td><td><code>--color-danger-solid</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-danger-solid" data-swatch></i><span data-token="--color-danger-solid"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-danger-solid" data-swatch></i><span data-token="--color-danger-solid"></span></span></td></tr>
-          <tr><td>Type</td><td><code>--text-body-sm</code> (counter <code>--text-caption</code>)</td><td colspan="2"><span data-token="--text-body-sm"></span></td></tr>
-          <tr><td>Glyph gap error / warning</td><td><code>--space-1</code> / <code>--space-2</code></td><td colspan="2"><span data-token="--space-1"></span> / <span data-token="--space-2"></span></td></tr>
-          <tr><td>Dot size</td><td><code>--space-2</code></td><td colspan="2"><span data-token="--space-2"></span></td></tr>
+          <tr><td>Saved status</td><td><code>--color-success-fg</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-success-fg" data-swatch></i><span data-token="--color-success-fg"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-success-fg" data-swatch></i><span data-token="--color-success-fg"></span></span></td></tr>
+          <tr><td>Message font</td><td><code>--text-body-sm</code></td><td colspan="2"><span data-token="--text-body-sm"></span></td></tr>
+          <tr><td>Glyph gap</td><td><code>--space-1</code> (error), <code>--space-2</code> (warning)</td><td colspan="2"><span data-token="--space-1"></span> / <span data-token="--space-2"></span></td></tr>
+          <tr><td>Warning ring</td><td><code>--border-width-thick</code></td><td colspan="2"><span data-token="--border-width-thick"></span></td></tr>
           <tr><td>Save status height</td><td><code>--target-comfortable</code></td><td colspan="2"><span data-token="--target-comfortable"></span></td></tr>
-          <tr><td>Pulse</td><td><code>--duration-loop</code>, <code>--ease-standard</code></td><td colspan="2"><span data-token="--duration-loop"></span></td></tr>
         </tbody>
       </table></div>
     </section>
 
     <section class="ds-section" id="code"><h2><a href="#code">Code</a></h2>
-      <pre><code>&lt;label class="field" for="name"&gt;&lt;span class="field__label"&gt;Business name&lt;/span&gt;
-  &lt;input class="input" id="name" type="text" maxlength="80" required aria-invalid="true" aria-describedby="name-error name-help"&gt;
-  &lt;span class="field__error" id="name-error"&gt;Enter a business name of 2 to 80 characters&lt;/span&gt;
-  &lt;span class="field__help" id="name-help"&gt;2–80 characters. A new name goes live after our team checks it.&lt;/span&gt;
-&lt;/label&gt;
+      <pre><code>&lt;div class="field"&gt;
+  &lt;label class="field__label" for="bookingUrl"&gt;Booking link&lt;/label&gt;
+  &lt;input class="input" id="bookingUrl" name="bookingUrl" type="url"
+         aria-invalid="true" aria-describedby="bookingUrl-error booking-help"&gt;
+  &lt;span class="field__error" id="bookingUrl-error"&gt;Enter a web address that starts with http:// or https://&lt;/span&gt;
+  &lt;span class="field__help" id="booking-help"&gt;The studio's own booking page. Opens in a new tab for visitors.&lt;/span&gt;
+&lt;/div&gt;
 
-&lt;p class="save-status save-status--error" role="status"&gt;&lt;svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"&gt;…&lt;/svg&gt;Not saved: fix 2 things below&lt;/p&gt;</code></pre>
-      <div class="ds-table-wrap"><table class="ds-table"><thead><tr><th scope="col">Class / attribute</th><th scope="col">Effect</th></tr></thead><tbody>
-        <tr><td><code>.field__help</code></td><td>Muted help text.</td></tr>
-        <tr><td><code>.field__error</code></td><td>Danger text with a leading warning-sign glyph (CSS <code>::before</code>).</td></tr>
-        <tr><td><code>.field__warning</code></td><td>Warning text with a ringed "!" glyph.</td></tr>
-        <tr><td><code>.field__counter</code> + <code>data-over</code></td><td>Character count; danger and semibold when over the limit.</td></tr>
-        <tr><td><code>.inline-status</code>, <code>--success</code>, <code>--danger</code></td><td>Small status beside an action.</td></tr>
-        <tr><td><code>.save-status</code>, <code>--saved</code>, <code>--error</code></td><td>Autosave indicator, 44px tall.</td></tr>
-        <tr><td><code>.dot</code>, <code>.dot--pulse</code></td><td>8px current-colour dot; pulsing while in progress.</td></tr>
-        <tr><td><code>aria-describedby="error help counter"</code></td><td>Ties messages to the control in reading order.</td></tr>
-        <tr><td><code>role="status"</code></td><td>Polite live region for statuses and typed-in warnings.</td></tr>
-      </tbody></table></div>
+&lt;div class="form-actions form-actions--sticky"&gt;
+  &lt;button class="btn btn--primary" type="submit"&gt;Save changes&lt;/button&gt;
+  &lt;a class="btn btn--ghost" href="…"&gt;Cancel&lt;/a&gt;
+  &lt;span class="save-status" role="status"&gt;Unsaved changes&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+      <table class="ds-table"><thead><tr><th scope="col">Class / attribute</th><th scope="col">Effect</th></tr></thead><tbody>
+        <tr><td><code>.field__help</code></td><td>Muted help line.</td></tr>
+        <tr><td><code>.field__error</code></td><td>Danger line with a "⚠" glyph. Works on a <code>span</code> in a field or a <code>p</code> on its own.</td></tr>
+        <tr><td><code>.field__warning</code></td><td>Warning line with a ringed "!" glyph.</td></tr>
+        <tr><td><code>.field--warning</code> on <code>.field</code></td><td>Warning-tinted well round the field that carries the warning.</td></tr>
+        <tr><td><code>aria-invalid="true"</code></td><td>On the control: danger border. Pair with <code>.field__error</code>.</td></tr>
+        <tr><td><code>.save-status</code></td><td>Neutral status beside the form actions, 44px tall; always <code>role="status"</code>.</td></tr>
+        <tr><td><code>.save-status--saved</code> / <code>--error</code></td><td>Success or danger ink for the saved and refused messages.</td></tr>
+      </tbody></table>
     </section>
 
     <section class="ds-section" id="sources"><h2><a href="#sources">Sources</a></h2>
       <p>Extracted from these mocks:</p>
       <ul>
-        <li>pages/profile-details/default, saving, invalid; pages/profile-cuisines/invalid</li>
-        <li>pages/profile-photos/uploading, pages/profile-menu/full</li>
-        <li>dialogs/enquiry/warning, dialogs/search/out-of-area, pages/caterers/postal-invalid</li>
-        <li>dialogs/review/invalid, dialogs/photo-details/invalid, pages/thread/invalid, pages/thread/shared, pages/dashboard-enquiry/default</li>
+        <li><a href="../../mocks/pages/studio-editor/invalid.html">pages/studio-editor/invalid</a> (booking link, hourly rate, future verified date, alt text, score, provider errors; "Not saved. Fix the 6 things listed above.")</li>
+        <li><a href="../../mocks/pages/studio-editor/price-changed.html">pages/studio-editor/price-changed</a> (the one field warning)</li>
+        <li><a href="../../mocks/pages/studio-editor/upload-failed.html">pages/studio-editor/upload-failed</a> (image-row error with <code>role="alert"</code>, refused files)</li>
+        <li><a href="../../mocks/pages/studio-editor/uploading.html">pages/studio-editor/uploading</a>, <a href="../../mocks/pages/studio-editor/submitting.html">submitting</a>, <a href="../../mocks/pages/studio-editor/success.html">success</a>, <a href="../../mocks/pages/studio-editor/default.html">default</a> (save status)</li>
+        <li><a href="../../mocks/pages/spot-editor/invalid.html">pages/spot-editor/invalid</a> (latitude, permit source link, video, alt text)</li>
+        <li><a href="../../mocks/pages/guide-editor/invalid.html">pages/guide-editor/invalid</a> (title, "Add at least one entry before publishing")</li>
+        <li><a href="../../mocks/pages/sign-in/invalid.html">pages/sign-in/invalid</a>, <a href="../../mocks/pages/home/invalid.html">pages/home/invalid</a>, <a href="../../mocks/dialogs/studio-filters/invalid.html">dialogs/studio-filters/invalid</a>, <a href="../../mocks/dialogs/guide-entry-picker/invalid.html">dialogs/guide-entry-picker/invalid</a> (errors on sign-in, signup, cost range, duplicate entry)</li>
       </ul>
-      <p>Drift fixed during extraction:</p>
+      <p>Drift found during extraction:</p>
       <ul>
-        <li>Error placement varied: before help (<code>profile-details/invalid</code>), after help and counter (<code>dialogs/review/invalid</code>), replacing help (<code>thread/invalid</code>). The order is now control → error → help → counter.</li>
-        <li>Four mocks showed "All changes saved" without <code>--saved</code> (neutral grey), 27 showed "Saved" in green; it is "Saved" with <code>--saved</code> everywhere.</li>
-        <li><code>dashboard-enquiry</code> showed the caterer "This caterer doesn’t list Downtown Toronto…"; the caterer-side wording is "You don’t list…". The enquiry warning "This caterer usually serves 20–300 guests" duplicated the help "Pelau House serves 20–300" beside it; one line, in L2-024's wording, remains.</li>
-        <li>"Contact details shared" used <code>.private-note</code> with a success icon; it is an <code>.inline-status--success</code>. <code>.inline-status</code> was otherwise unused.</li>
-        <li>An over-limit counter was coloured with an inline style; it uses <code>data-over</code>.</li>
-        <li>The <code>.field__error</code> glyph is generated text ("⚠") that some screen readers announce and some platforms draw as a colour emoji; an alt-text-empty, text-presentation form is proposed.</li>
+        <li>studio-editor/price-changed tints the warning field with an inline <code>style</code> (padding, radius, <code>--color-warning-bg</code>). <code>.field--warning</code> now does it, and the muted help and body text on that tint are checked pairs in <code>contrast-pairs.json</code>; the warning example above uses the class.</li>
+        <li>No mock uses <code>.save-status--saved</code> or <code>--error</code>: "Saved…" and "Not saved…" render neutral. Documented with the modifiers.</li>
+        <li>The refused-save status reads three ways: "Not saved. Fix the 6 things listed above." (studio), "Not saved" (spot), "Not published" (guide); studio-editor/new leaves the status empty where the other editors say "Not saved yet". Documented with the studio wording.</li>
+        <li><code>aria-describedby</code> order varies: error first in studio-editor/invalid, help first in spot-editor/invalid (video, permit source). Documented error first.</li>
       </ul>
     </section>
 
-    <footer class="ds-footer"><span>ShotThere design system · extracted from docs/mocks on 10 October 2026</span><a href="#top">Back to top</a></footer>
+    <footer class="ds-footer"><span>ShotThere design system · extracted from <a href="../../mocks/index.html">docs/mocks</a> on 13 October 2026</span><a href="#top">Back to top</a></footer>
   </main>
 </div>
 <script src="../assets/ds.js"></script>

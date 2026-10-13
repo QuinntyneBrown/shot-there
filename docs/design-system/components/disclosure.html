@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Disclosure — ShotThere design system</title>
+<meta name="description" content="The ShotThere disclosure: the quiet, fixed callout at the end of every verdict that says whether the session was paid in full, discounted or comped and by whom, with variants, states, content rules and accessibility.">
+<link rel="stylesheet" href="../tokens/tokens.css">
+<link rel="stylesheet" href="../assets/components.css">
+<link rel="stylesheet" href="../assets/ds.css">
+</head>
+<body id="top">
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="ds-shell">
+  <nav class="ds-nav" aria-label="Design system">
+    <div class="ds-nav__brand"><a href="../index.html">ShotThere DS</a><button class="ds-theme-toggle" type="button" aria-pressed="false">☾ Dark</button></div>
+    <details open><summary>Foundations</summary><ul>
+      <li><a href="../foundations/color.html">Color</a></li>
+      <li><a href="../foundations/typography.html">Typography</a></li>
+      <li><a href="../foundations/spacing.html">Spacing</a></li>
+      <li><a href="../foundations/layout.html">Layout</a></li>
+      <li><a href="../foundations/elevation.html">Elevation</a></li>
+      <li><a href="../foundations/shape.html">Shape</a></li>
+      <li><a href="../foundations/motion.html">Motion</a></li>
+      <li><a href="../foundations/iconography.html">Iconography</a></li>
+      <li><a href="../foundations/theming.html">Theming</a></li>
+      <li><a href="../foundations/responsive.html">Responsive</a></li>
+      <li><a href="../foundations/accessibility.html">Accessibility</a></li>
+      <li><a href="../foundations/content.html">Content</a></li>
+    </ul></details>
+    <details open><summary>Actions</summary><ul>
+      <li><a href="../components/button.html">Button</a></li>
+      <li><a href="../components/icon-button.html">Icon button</a></li>
+      <li><a href="../components/button-group.html">Button group</a></li>
+      <li><a href="../components/link.html">Link</a></li>
+      <li><a href="../components/compare-bar.html">Compare toggle and bar</a></li>
+    </ul></details>
+    <details open><summary>Inputs</summary><ul>
+      <li><a href="../components/form-field.html">Form field</a></li>
+      <li><a href="../components/text-field.html">Text field</a></li>
+      <li><a href="../components/textarea.html">Textarea</a></li>
+      <li><a href="../components/select.html">Select</a></li>
+      <li><a href="../components/combobox.html">Combobox</a></li>
+      <li><a href="../components/checkbox.html">Checkbox</a></li>
+      <li><a href="../components/radio-group.html">Radio group</a></li>
+      <li><a href="../components/file-upload.html">File upload</a></li>
+      <li><a href="../components/form-layout.html">Form layout</a></li>
+      <li><a href="../components/signup.html">Email signup</a></li>
+    </ul></details>
+    <details open><summary>Navigation</summary><ul>
+      <li><a href="../components/skip-link.html">Skip link</a></li>
+      <li><a href="../components/site-header.html">Site header</a></li>
+      <li><a href="../components/footer.html">Footer</a></li>
+      <li><a href="../components/breadcrumb.html">Breadcrumb</a></li>
+      <li><a href="../components/filter.html">Filters</a></li>
+    </ul></details>
+    <details open><summary>Containers and overlays</summary><ul>
+      <li><a href="../components/container.html">Container</a></li>
+      <li><a href="../components/review-layout.html">Review layout</a></li>
+      <li><a href="../components/editor-layout.html">Editor layout</a></li>
+      <li><a href="../components/dialog.html">Dialog</a></li>
+      <li><a href="../components/sheet.html">Sheet</a></li>
+      <li><a href="../components/popover.html">Popover</a></li>
+      <li><a href="../components/lightbox.html">Lightbox</a></li>
+    </ul></details>
+    <details open><summary>Data display</summary><ul>
+      <li><a href="../components/location-card.html">Location card</a></li>
+      <li><a href="../components/table.html">Table</a></li>
+      <li><a href="../components/compare-table.html">Comparison table</a></li>
+      <li><a href="../components/list.html">List rows</a></li>
+      <li><a href="../components/description-list.html">Description list</a></li>
+      <li><a href="../components/price-block.html">Price block</a></li>
+      <li><a href="../components/score.html">Score and pips</a></li>
+      <li><a href="../components/shot-grid.html">Shot grid</a></li>
+      <li><a href="../components/video-poster.html">Episode poster</a></li>
+      <li><a href="../components/map.html">Map</a></li>
+      <li><a href="../components/guide-entry.html">Guide entry</a></li>
+      <li><a href="../components/stat-tile.html">Stat tile</a></li>
+      <li><a href="../components/image-manager.html">Image manager</a></li>
+      <li><a href="../components/disclosure.html">Disclosure</a></li>
+      <li><a href="../components/badge.html">Badge</a></li>
+      <li><a href="../components/status-label.html">Status label</a></li>
+      <li><a href="../components/chip.html">Chip</a></li>
+      <li><a href="../components/tag.html">Tag</a></li>
+    </ul></details>
+    <details open><summary>Feedback</summary><ul>
+      <li><a href="../components/inline-message.html">Inline message</a></li>
+      <li><a href="../components/alert.html">Alert</a></li>
+      <li><a href="../components/toast.html">Toast</a></li>
+      <li><a href="../components/progress.html">Progress</a></li>
+      <li><a href="../components/spinner.html">Spinner</a></li>
+      <li><a href="../components/skeleton.html">Skeleton</a></li>
+      <li><a href="../components/empty-state.html">Empty state</a></li>
+      <li><a href="../components/error-page.html">Error page</a></li>
+    </ul></details>
+    <details open><summary>Patterns</summary><ul>
+      <li><a href="../patterns/forms.html">Forms</a></li>
+      <li><a href="../patterns/feedback-and-loading.html">Feedback and loading</a></li>
+      <li><a href="../patterns/empty-and-error-states.html">Empty and error states</a></li>
+      <li><a href="../patterns/navigation.html">Navigation and page structure</a></li>
+      <li><a href="../patterns/dialogs-and-overlays.html">Dialogs and overlays</a></li>
+      <li><a href="../patterns/tables-and-lists.html">Data tables and lists</a></li>
+      <li><a href="../patterns/notifications.html">Notifications</a></li>
+      <li><a href="../patterns/content-and-tone.html">Content and tone</a></li>
+    </ul></details>
+  </nav>
+
+  <main id="main" class="ds-main">
+    <header class="ds-header">
+      <p class="ds-kicker">Component · Data display</p>
+      <h1>Disclosure</h1>
+      <p class="ds-lead">The disclosure is a quiet, fixed callout at the end of every verdict that says how the session was paid for: paid in full, discounted by a named studio, or comped by a named studio. It looks the same whatever the answer, so no review can be read as more or less trustworthy from its styling.</p>
+      <div class="ds-meta"><span class="ds-pill ds-pill--ok">WCAG 2.2 AA</span><span class="ds-pill">Status: stable</span><span class="ds-pill"><code>.disclosure</code></span><span class="ds-pill"><code>.disclosure__title</code></span></div>
+      <ul class="ds-toc"><li><a href="#overview">Overview</a></li><li><a href="#anatomy">Anatomy</a></li><li><a href="#variants">Variants</a></li><li><a href="#sizes">Sizes</a></li><li><a href="#states">States</a></li><li><a href="#responsive">Responsive behaviour</a></li><li><a href="#theming">Theming</a></li><li><a href="#accessibility">Accessibility</a></li><li><a href="#content">Content</a></li><li><a href="#do-dont">Do and don't</a></li><li><a href="#tokens">Tokens</a></li><li><a href="#code">Code</a></li><li><a href="#sources">Sources</a></li></ul>
+    </header>
+
+    <section class="ds-section" id="overview"><h2><a href="#overview">Overview</a></h2>
+      <p>Every review page must disclose whether the session was paid for or comped (L1-011). Each location stores one of three values, <code>paid_in_full</code>, <code>discounted</code> or <code>comped</code>, with the provider's name for the last two (L2-045), and a location can't be published without it. The disclosure turns that value into one fixed sentence.</p>
+      <ul>
+        <li><b>Where:</b> always in the same place. On a studio it is the last thing in the "Verdict" section, after "Who it's for" and "Who should skip it" (L2-012). On a spot it is the last thing in "Best uses" (L2-020.3).</li>
+        <li><b>How:</b> one callout per review, never repeated, never moved into the summary panel, the footer or a collapsed section.</li>
+        <li><b>Not for:</b> warnings or news. Stale prices and permits use a warning <a href="alert.html">alert</a>; the disclosure is a fact about the review, not about the location.</li>
+      </ul>
+    </section>
+
+    <section class="ds-section" id="anatomy"><h2><a href="#anatomy">Anatomy</a></h2>
+      <div class="ds-anatomy">
+        <figure class="ds-anatomy__figure" style="padding: var(--space-8) var(--space-6); place-items: stretch;">
+          <div class="disclosure" style="position: relative;">
+            <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h0"/></svg>
+            <div><p class="disclosure__title">How this session was paid for</p><p>I paid the full rate for this session. No studio pays for placement or scores. <a href="../../mocks/pages/editorial-policy/default.html">Editorial policy</a></p></div>
+            <span class="ds-callout" style="left: -0.75rem; bottom: -0.75rem;" aria-hidden="true">1</span>
+            <span class="ds-callout" style="left: var(--space-5); top: -0.75rem;" aria-hidden="true">2</span>
+            <span class="ds-callout" style="left: 40%; top: -0.75rem;" aria-hidden="true">3</span>
+            <span class="ds-callout" style="left: 30%; bottom: -0.75rem;" aria-hidden="true">4</span>
+            <span class="ds-callout" style="right: var(--space-4); bottom: -0.75rem;" aria-hidden="true">5</span>
+          </div>
+        </figure>
+        <ol class="ds-anatomy__list">
+          <li><div><b>Container</b><small>Flex row on <code>--color-bg-surface-sunken</code> with a 2px <code>--color-border-strong</code> rule on the left; <code>--space-4</code> × <code>--space-5</code> padding; square left corners, <code>--radius-md</code> on the right.</small></div></li>
+          <li><div><b>Icon</b><small>The information glyph, 20px, <code>--color-fg-muted</code>, <code>aria-hidden</code>; nudged down <code>--space-0-5</code> to sit on the title's first line.</small></div></li>
+          <li><div><b>Title</b> <code>.disclosure__title</code><small>"How this session was paid for" (studio) or "How this visit was paid for" (spot), <code>--text-label</code> at 16px.</small></div></li>
+          <li><div><b>Statement</b><small>The fixed sentence for the stored value, in body text; the paragraph runs the full width of the callout (<code>max-width: none</code>).</small></div></li>
+          <li><div><b>Policy link</b><small>"Editorial policy", an inline link at the end of the statement, to the page that defines all three sentences.</small></div></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="ds-section" id="variants"><h2><a href="#variants">Variants</a></h2>
+      <p>The variants are the stored values. The container, icon and order never change; only the sentence does.</p>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--stack">
+          <div class="disclosure">
+            <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h0"/></svg>
+            <div><p class="disclosure__title">How this session was paid for</p><p>I paid the full rate for this session. No studio pays for placement or scores. <a href="../../mocks/pages/editorial-policy/default.html">Editorial policy</a></p></div>
+          </div>
+        </div>
+        <div class="ds-example__caption"><span><b>Paid in full</b> (<code>paid_in_full</code>): The Junction Loft, Ossington Blackbox, Kensington Window Room, Bloordale Sun Studio, Riverside Rooftop Studio (L2-012.1).</span></div>
+      </div>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--stack">
+          <div class="disclosure">
+            <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h0"/></svg>
+            <div><p class="disclosure__title">How this session was paid for</p><p>This session was discounted by Leslieville Daylight Studio. That did not affect the scores. <a href="../../mocks/pages/editorial-policy/default.html">Editorial policy</a></p></div>
+          </div>
+        </div>
+        <div class="ds-example__caption"><span><b>Discounted</b> (<code>discounted</code>, provider required): Leslieville Daylight Studio (L2-012.3).</span></div>
+      </div>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--stack">
+          <div class="disclosure">
+            <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h0"/></svg>
+            <div><p class="disclosure__title">How this session was paid for</p><p>This session was provided free of charge by Liberty Cyc House. That did not affect the scores. <a href="../../mocks/pages/editorial-policy/default.html">Editorial policy</a></p></div>
+          </div>
+        </div>
+        <div class="ds-example__caption"><span><b>Comped</b> (<code>comped</code>, provider required): Liberty Cyc House (L2-012.2).</span></div>
+      </div>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--stack">
+          <div class="disclosure">
+            <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h0"/></svg>
+            <div><p class="disclosure__title">How this visit was paid for</p><p>Shot on a regular visit; no one paid for or arranged this review. <a href="../../mocks/pages/editorial-policy/default.html">Editorial policy</a></p></div>
+          </div>
+        </div>
+        <div class="ds-example__caption"><span><b>Spot, regular visit</b>: every published spot (Evergreen Brick Works, Humber Bay Arch Bridge, Distillery District, Trinity Bellwoods Park, Allan Gardens Conservatory). "Visit" replaces "session" in the title.</span></div>
+        <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;div class="disclosure"&gt;
+  &lt;svg class="icon" aria-hidden="true" viewBox="0 0 24 24"&gt;&lt;circle cx="12" cy="12" r="9"/&gt;&lt;path d="M12 11v5M12 8h0"/&gt;&lt;/svg&gt;
+  &lt;div&gt;
+    &lt;p class="disclosure__title"&gt;How this visit was paid for&lt;/p&gt;
+    &lt;p&gt;Shot on a regular visit; no one paid for or arranged this review. &lt;a href="/editorial-policy"&gt;Editorial policy&lt;/a&gt;&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre></details>
+      </div>
+      <h3>In place</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--stack">
+          <div class="review-section" style="margin-top: 0;">
+          <dl class="regions">
+            <div><dt>Who it's for</dt><dd>Portrait and fashion shooters who want big north light and a usable cyc on a mid-range budget.</dd></div>
+            <div><dt>Who should skip it</dt><dd>Video crews, because of the streetcar, and anyone hauling heavy cases: the freight elevator is tiny.</dd></div>
+          </dl>
+          <div class="disclosure">
+            <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h0"/></svg>
+            <div><p class="disclosure__title">How this session was paid for</p><p>I paid the full rate for this session. No studio pays for placement or scores. <a href="../../mocks/pages/editorial-policy/default.html">Editorial policy</a></p></div>
+          </div>
+          </div>
+        </div>
+        <div class="ds-example__caption"><span>The end of The Junction Loft's verdict: <code>.review-section &gt; .disclosure</code> puts <code>--space-8</code> after the verdict text. The mocks set that gap inline; see <a href="#sources">Sources</a>.</span></div>
+      </div>
+    </section>
+
+    <section class="ds-section" id="sizes" data-na="The disclosure has one size and fills its section's width."><h2><a href="#sizes">Sizes</a></h2>
+      <p class="ds-na">One size. It fills the width of the section it ends, in the main column of the <a href="review-layout.html">review layout</a>.</p>
+    </section>
+
+    <section class="ds-section" id="states"><h2><a href="#states">States</a></h2>
+      <p>The callout itself doesn't react; its one control is the "Editorial policy" link. There is no empty state: a location without a disclosure value can't be published (L2-045.3), and a discounted or comped value without a provider can't be saved (L2-045.1).</p>
+      <div class="ds-matrix"><table>
+        <caption class="visually-hidden">Disclosure states</caption>
+        <thead><tr><th scope="col">State</th><th scope="col">Studio, paid in full</th><th scope="col">Spot, regular visit</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Default</th>
+            <td><div class="disclosure" style="width: 20rem;"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h0"/></svg><div><p class="disclosure__title">How this session was paid for</p><p>I paid the full rate for this session. No studio pays for placement or scores. <a href="../../mocks/pages/editorial-policy/default.html">Editorial policy</a></p></div></div></td>
+            <td><div class="disclosure" style="width: 20rem;"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h0"/></svg><div><p class="disclosure__title">How this visit was paid for</p><p>Shot on a regular visit; no one paid for or arranged this review. <a href="../../mocks/pages/editorial-policy/default.html">Editorial policy</a></p></div></div></td></tr>
+          <tr><th scope="row">Hover (link)</th>
+            <td><div class="disclosure" style="width: 20rem;"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h0"/></svg><div><p class="disclosure__title">How this session was paid for</p><p>I paid the full rate for this session. No studio pays for placement or scores. <a href="../../mocks/pages/editorial-policy/default.html" data-state="hover">Editorial policy</a></p></div></div></td>
+            <td><div class="disclosure" style="width: 20rem;"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h0"/></svg><div><p class="disclosure__title">How this visit was paid for</p><p>Shot on a regular visit; no one paid for or arranged this review. <a href="../../mocks/pages/editorial-policy/default.html" data-state="hover">Editorial policy</a></p></div></div></td></tr>
+          <tr><th scope="row">Focus (link)</th>
+            <td><div class="disclosure" style="width: 20rem;"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h0"/></svg><div><p class="disclosure__title">How this session was paid for</p><p>I paid the full rate for this session. No studio pays for placement or scores. <a href="../../mocks/pages/editorial-policy/default.html" data-state="focus">Editorial policy</a></p></div></div></td>
+            <td><div class="disclosure" style="width: 20rem;"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h0"/></svg><div><p class="disclosure__title">How this visit was paid for</p><p>Shot on a regular visit; no one paid for or arranged this review. <a href="../../mocks/pages/editorial-policy/default.html" data-state="focus">Editorial policy</a></p></div></div></td></tr>
+          <tr><th scope="row">Active</th>
+            <td colspan="2"><p class="ds-na">Links have no pressed style; the link looks as it does on hover.</p></td></tr>
+          <tr><th scope="row">Disabled</th>
+            <td colspan="2"><p class="ds-na">Never. The policy link always works, and the callout has nothing to disable.</p></td></tr>
+          <tr><th scope="row">Missing value</th>
+            <td colspan="2"><p class="ds-na">Can't happen on a public page: publishing is refused, naming <code>disclosure</code> (L2-045.3). Don't design a "Not disclosed" variant.</p></td></tr>
+        </tbody>
+      </table></div>
+      <h3>Both themes</h3>
+      <div class="ds-themes">
+        <div data-theme="light"><div class="disclosure"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h0"/></svg><div><p class="disclosure__title">How this session was paid for</p><p>This session was provided free of charge by Liberty Cyc House. That did not affect the scores. <a href="../../mocks/pages/editorial-policy/default.html">Editorial policy</a></p></div></div></div>
+        <div data-theme="dark"><div class="disclosure"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h0"/></svg><div><p class="disclosure__title">How this session was paid for</p><p>This session was provided free of charge by Liberty Cyc House. That did not affect the scores. <a href="../../mocks/pages/editorial-policy/default.html">Editorial policy</a></p></div></div></div>
+      </div>
+    </section>
+
+    <section class="ds-section" id="responsive"><h2><a href="#responsive">Responsive behaviour</a></h2>
+      <ul>
+        <li>The same at every breakpoint: the callout fills its column, the icon stays at the top left, and the title and statement wrap beside it. Padding doesn't change.</li>
+        <li><b>XS to MD:</b> the column is the full page width less the page margins; the statement runs to three or four lines at 360px.</li>
+        <li><b>LG and up:</b> the main column beside the summary panel; the statement fits in one or two lines.</li>
+        <li>Long provider names wrap between words like any other text; nothing truncates.</li>
+      </ul>
+      <div class="ds-iframes">
+        <iframe class="ds-iframe" src="../../mocks/pages/studio/minimal.html?chrome=0#verdict" title="Studio review mock at phone width scrolled to the verdict: Bloordale Sun Studio" loading="lazy"></iframe>
+        <iframe class="ds-iframe" src="../../mocks/pages/spot/no-video.html?chrome=0&amp;theme=dark#uses" title="Spot review mock at phone width in the dark theme scrolled to best uses: Trinity Bellwoods Park" loading="lazy"></iframe>
+      </div>
+    </section>
+
+    <section class="ds-section" id="theming"><h2><a href="#theming">Theming</a></h2>
+      <p>Neutral on purpose. The callout reads <code>--color-bg-surface-sunken</code>, <code>--color-border-strong</code> for the rule, <code>--color-fg-muted</code> for the icon and <code>--color-fg-default</code> for the text, and no tone family: it is never accent red, warning amber or success green, whatever the value. A comped session is information, not a warning; paid in full is not an achievement.</p>
+      <p>In dark the well steps up to stone-900 on the stone-950 canvas and the rule stays stone-500, so the callout still reads as set apart. No component tokens; re-theme through the semantic tokens.</p>
+    </section>
+
+    <section class="ds-section" id="accessibility"><h2><a href="#accessibility">Accessibility</a></h2>
+      <h3>Role and pattern</h3>
+      <p>Plain content: a <code>&lt;div&gt;</code> holding two paragraphs, no ARIA role and no live region. It is read in reading order at the end of the "Verdict" or "Best uses" region, which is where a screen reader user finishes the verdict, so it is found by the same route as everything else. It is not a heading: the title is a <code>&lt;p&gt;</code>, so the page outline stays one <code>&lt;h2&gt;</code> per section.</p>
+      <h3>Keyboard</h3>
+      <div class="ds-table-wrap"><table class="ds-table ds-keys"><thead><tr><th scope="col">Key</th><th scope="col">Action</th></tr></thead><tbody>
+        <tr><td><kbd>Tab</kbd></td><td>Stops once, on "Editorial policy".</td></tr>
+        <tr><td><kbd>Enter</kbd></td><td>Opens the editorial policy in the same tab.</td></tr>
+      </tbody></table></div>
+      <h3>Focus</h3>
+      <p>Never moves. The link takes the shared 2px focus ring with a 2px offset, drawn on the sunken well.</p>
+      <h3>Labelling</h3>
+      <ul>
+        <li>Read as: "How this session was paid for. This session was discounted by Leslieville Daylight Studio. That did not affect the scores. Editorial policy, link."</li>
+        <li>The icon is decorative (<code>aria-hidden="true"</code>); the title carries the meaning.</li>
+        <li>"Editorial policy" makes sense out of context in a links list (2.4.4).</li>
+        <li>The provider's name is plain text, not a link to the studio, so the disclosure can't be read as an endorsement.</li>
+      </ul>
+      <h3>Contrast</h3>
+      <div class="ds-example__canvas ds-example__canvas--stack" style="padding: 0; gap: var(--space-2);">
+        <div class="ds-pair"><span>Title and statement</span><span class="ds-pair__ratio" data-contrast="--color-fg-default|--color-bg-surface-sunken" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Icon</span><span class="ds-pair__ratio" data-contrast="--color-fg-muted|--color-bg-surface-sunken" data-min="3"></span></div>
+        <div class="ds-pair"><span>Left rule</span><span class="ds-pair__ratio" data-contrast="--color-border-strong|--color-bg-surface-sunken" data-min="3"></span></div>
+      </div>
+      <p>The policy link (<code>--color-fg-link</code>, and <code>--color-fg-link-hover</code> on hover) and the focus ring sit on <code>--color-bg-surface-sunken</code>; those three pairs are checked in <code>contrast-pairs.json</code>. The link is also underlined, so it never relies on colour alone (1.4.1).</p>
+      <h3>Motion</h3>
+      <p>None.</p>
+      <h3>Touch</h3>
+      <p>One inline link in a sentence, exempt from the 24px target minimum (2.5.8) and given the full line height. Nothing depends on hover.</p>
+    </section>
+
+    <section class="ds-section" id="content"><h2><a href="#content">Content</a></h2>
+      <p>The sentences are fixed, defined on the editorial policy page, and filled only with the provider's name as stored. Don't paraphrase them per review.</p>
+      <div class="ds-table-wrap"><table class="ds-table">
+        <caption class="visually-hidden">Disclosure sentences by stored value</caption>
+        <thead><tr><th scope="col">Value</th><th scope="col">Title</th><th scope="col">Statement</th></tr></thead>
+        <tbody>
+          <tr><td><code>paid_in_full</code></td><td>How this session was paid for</td><td>I paid the full rate for this session. No studio pays for placement or scores.</td></tr>
+          <tr><td><code>discounted</code></td><td>How this session was paid for</td><td>This session was discounted by {provider}. That did not affect the scores.</td></tr>
+          <tr><td><code>comped</code></td><td>How this session was paid for</td><td>This session was provided free of charge by {provider}. That did not affect the scores.</td></tr>
+          <tr><td>Spot</td><td>How this visit was paid for</td><td>Shot on a regular visit; no one paid for or arranged this review.</td></tr>
+        </tbody>
+      </table></div>
+      <ul>
+        <li>First person for paid in full ("I paid"): one reviewer shoots every location.</li>
+        <li>Every statement ends with the "Editorial policy" link.</li>
+        <li>Lists and summaries say it in three words: "Paid in full", "Discounted by Leslieville Daylight Studio", "Comped by Liberty Cyc House".</li>
+        <li><b>Open question:</b> the spot editor offers Discounted and Comped too (L2-045), but the policy defines only the regular-visit sentence for spots. Until it is confirmed, a discounted or comped spot uses the studio sentences with "visit" for "session".</li>
+      </ul>
+    </section>
+
+    <section class="ds-section" id="do-dont"><h2><a href="#do-dont">Do and don't</a></h2>
+      <div class="ds-dodont">
+        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--stack"><div class="disclosure"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h0"/></svg><div><p class="disclosure__title">How this session was paid for</p><p>This session was provided free of charge by Liberty Cyc House. That did not affect the scores.</p></div></div></div><figcaption>Use the same quiet callout for every value.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--stack"><div class="alert alert--warning"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3 2 20h20L12 3z"/><path d="M12 10v4M12 17h0"/></svg><div class="alert__body"><p class="alert__title">Comped session</p><p>Liberty Cyc House provided this session free of charge.</p></div></div></div><figcaption>Don't make a comped session a warning, or paid in full a green badge. The styling would score the review.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--stack"><p>This session was discounted by Leslieville Daylight Studio. That did not affect the scores.</p></div><figcaption>Name who provided the discount or the free session.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--stack"><p>This session was discounted.</p></div><figcaption>Don't leave the provider out: L2-012.3 requires it, and the editor refuses to save without it.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--stack"><p style="font: var(--text-h3);">Verdict</p><p class="text-muted">Scores · Who it's for · Who should skip it · Disclosure</p></div><figcaption>Keep it at the end of the verdict, on every review, in the open.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--stack"><details><summary>About this review</summary><p>I paid the full rate for this session.</p></details></div><figcaption>Don't fold it into a collapsed section, a tooltip or the footer, where it would be easy to miss.</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="ds-section" id="tokens"><h2><a href="#tokens">Tokens</a></h2>
+      <div class="ds-table-wrap"><table class="ds-table">
+        <thead><tr><th scope="col">Part</th><th scope="col">Token</th><th scope="col">Light</th><th scope="col">Dark</th></tr></thead>
+        <tbody>
+          <tr><td>Background</td><td><code>--color-bg-surface-sunken</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-bg-surface-sunken" data-swatch></i><span data-token="--color-bg-surface-sunken"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-bg-surface-sunken" data-swatch></i><span data-token="--color-bg-surface-sunken"></span></span></td></tr>
+          <tr><td>Left rule</td><td><code>--color-border-strong</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-border-strong" data-swatch></i><span data-token="--color-border-strong"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-border-strong" data-swatch></i><span data-token="--color-border-strong"></span></span></td></tr>
+          <tr><td>Icon</td><td><code>--color-fg-muted</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-muted" data-swatch></i><span data-token="--color-fg-muted"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-muted" data-swatch></i><span data-token="--color-fg-muted"></span></span></td></tr>
+          <tr><td>Title and statement</td><td><code>--color-fg-default</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-default" data-swatch></i><span data-token="--color-fg-default"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-default" data-swatch></i><span data-token="--color-fg-default"></span></span></td></tr>
+          <tr><td>Policy link</td><td><code>--color-fg-link</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-link" data-swatch></i><span data-token="--color-fg-link"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-link" data-swatch></i><span data-token="--color-fg-link"></span></span></td></tr>
+          <tr><td>Rule width</td><td><code>--border-width-thick</code></td><td colspan="2"><span data-token="--border-width-thick"></span></td></tr>
+          <tr><td>Padding (block · inline)</td><td><code>--space-4</code> · <code>--space-5</code></td><td colspan="2"><span data-token="--space-4"></span> · <span data-token="--space-5"></span></td></tr>
+          <tr><td>Icon to text</td><td><code>--space-3</code></td><td colspan="2"><span data-token="--space-3"></span></td></tr>
+          <tr><td>Icon nudge</td><td><code>--space-0-5</code></td><td colspan="2"><span data-token="--space-0-5"></span></td></tr>
+          <tr><td>Right corners</td><td><code>--radius-md</code></td><td colspan="2"><span data-token="--radius-md"></span></td></tr>
+          <tr><td>Title</td><td><code>--text-label</code> at <code>--font-size-md</code></td><td colspan="2"><span data-token="--font-size-md"></span></td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section class="ds-section" id="code"><h2><a href="#code">Code</a></h2>
+      <pre><code>&lt;section class="review-section" aria-labelledby="verdict"&gt;
+  &lt;h2 id="verdict"&gt;Verdict&lt;/h2&gt;
+  …scores, who it's for, who should skip it…
+  &lt;div class="disclosure"&gt;
+    &lt;svg class="icon" aria-hidden="true" viewBox="0 0 24 24"&gt;&lt;circle cx="12" cy="12" r="9"/&gt;&lt;path d="M12 11v5M12 8h0"/&gt;&lt;/svg&gt;
+    &lt;div&gt;
+      &lt;p class="disclosure__title"&gt;How this session was paid for&lt;/p&gt;
+      &lt;p&gt;This session was discounted by Leslieville Daylight Studio. That did not affect the scores. &lt;a href="/editorial-policy"&gt;Editorial policy&lt;/a&gt;&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;</code></pre>
+      <div class="ds-table-wrap"><table class="ds-table"><thead><tr><th scope="col">Class / field</th><th scope="col">Effect</th></tr></thead><tbody>
+        <tr><td><code>.disclosure</code></td><td>Sunken callout with a left rule; icon and text side by side.</td></tr>
+        <tr><td><code>.review-section &gt; .disclosure</code></td><td><code>--space-8</code> above the callout when it ends a review section.</td></tr>
+        <tr><td><code>.disclosure .icon</code></td><td>Muted, fixed size, aligned to the first line.</td></tr>
+        <tr><td><code>.disclosure__title</code></td><td>The label line.</td></tr>
+        <tr><td><code>.disclosure p</code></td><td>Full width instead of the reading measure.</td></tr>
+        <tr><td><code>disclosure</code>, <code>disclosureProvider</code></td><td>Stored value and provider (L2-045); the page picks the fixed sentence from them.</td></tr>
+      </tbody></table></div>
+    </section>
+
+    <section class="ds-section" id="sources"><h2><a href="#sources">Sources</a></h2>
+      <ul>
+        <li>Studios: <a href="../../mocks/pages/studio/default.html#verdict">pages/studio/default</a>, <a href="../../mocks/pages/studio/minimal.html">pages/studio/minimal</a>, <a href="../../mocks/pages/studio/stale.html">pages/studio/stale</a>, <a href="../../mocks/pages/studio/in-compare.html">pages/studio/in-compare</a>, <a href="../../mocks/pages/studio/media-failed.html">pages/studio/media-failed</a>, <a href="../../mocks/pages/studio/playing.html">pages/studio/playing</a></li>
+        <li>Spots: <a href="../../mocks/pages/spot/default.html#uses">pages/spot/default</a>, <a href="../../mocks/pages/spot/stale-permit.html">pages/spot/stale-permit</a>, <a href="../../mocks/pages/spot/no-rain-backup.html">pages/spot/no-rain-backup</a>, <a href="../../mocks/pages/spot/no-video.html">pages/spot/no-video</a>, <a href="../../mocks/pages/spot/map-failed.html">pages/spot/map-failed</a></li>
+        <li>Sentences: <a href="../../mocks/pages/editorial-policy/default.html">pages/editorial-policy/default</a>; values: <a href="../../mocks/pages/studio-editor/default.html">pages/studio-editor/default</a> (Disclosure section)</li>
+        <li>Requirements: L1-011, L2-012, L2-020.3, L2-045, L2-046</li>
+      </ul>
+      <p>Drift found during extraction: every review mock shows the paid-in-full or regular-visit sentence, so the discounted and comped variants on this page are written from the editorial policy and the catalog (Leslieville Daylight Studio, Liberty Cyc House). All eleven mocks space the callout from the verdict text with an inline <code>margin-top: var(--space-8)</code>; <code>.review-section &gt; .disclosure</code> now sets it, so the inline style can go. The contrast pairs for the link and focus ring on the sunken well have been added to <code>contrast-pairs.json</code>.</p>
+    </section>
+
+    <footer class="ds-footer"><span>ShotThere design system · extracted from <a href="../../mocks/index.html">docs/mocks</a> on 13 October 2026</span><a href="#top">Back to top</a></footer>
+  </main>
+</div>
+<script src="../assets/ds.js"></script>
+</body>
+</html>

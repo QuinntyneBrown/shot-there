@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Table — ShotThere design system</title>
-<meta name="description" content="ShotThere data table: default, numeric, dense, sortable and row-action variants, captions, loading, empty and error states, horizontal scrolling and both themes.">
+<meta name="description" content="ShotThere data table: the spot light, season and permit tables and the admin studio, spot and guide lists, with the label-over-value stack below 48rem, sorting, loading, tabular figures and both themes.">
 <link rel="stylesheet" href="../tokens/tokens.css">
 <link rel="stylesheet" href="../assets/components.css">
 <link rel="stylesheet" href="../assets/ds.css">
@@ -33,40 +33,61 @@
       <li><a href="../components/icon-button.html">Icon button</a></li>
       <li><a href="../components/button-group.html">Button group</a></li>
       <li><a href="../components/link.html">Link</a></li>
+      <li><a href="../components/compare-bar.html">Compare toggle and bar</a></li>
     </ul></details>
     <details open><summary>Inputs</summary><ul>
       <li><a href="../components/form-field.html">Form field</a></li>
       <li><a href="../components/text-field.html">Text field</a></li>
       <li><a href="../components/textarea.html">Textarea</a></li>
       <li><a href="../components/select.html">Select</a></li>
+      <li><a href="../components/combobox.html">Combobox</a></li>
       <li><a href="../components/checkbox.html">Checkbox</a></li>
       <li><a href="../components/radio-group.html">Radio group</a></li>
       <li><a href="../components/file-upload.html">File upload</a></li>
       <li><a href="../components/form-layout.html">Form layout</a></li>
+      <li><a href="../components/signup.html">Email signup</a></li>
     </ul></details>
     <details open><summary>Navigation</summary><ul>
       <li><a href="../components/skip-link.html">Skip link</a></li>
       <li><a href="../components/site-header.html">Site header</a></li>
       <li><a href="../components/footer.html">Footer</a></li>
+      <li><a href="../components/breadcrumb.html">Breadcrumb</a></li>
+      <li><a href="../components/filter.html">Filters</a></li>
     </ul></details>
     <details open><summary>Containers and overlays</summary><ul>
-      <li><a href="../components/container.html">Container and grid</a></li>
-      <li><a href="../components/card.html">Card</a></li>
+      <li><a href="../components/container.html">Container</a></li>
+      <li><a href="../components/review-layout.html">Review layout</a></li>
+      <li><a href="../components/editor-layout.html">Editor layout</a></li>
       <li><a href="../components/dialog.html">Dialog</a></li>
-      <li><a href="../components/sheet.html">Sheet and drawer</a></li>
-      <li><a href="../components/divider.html">Divider</a></li>
+      <li><a href="../components/sheet.html">Sheet</a></li>
+      <li><a href="../components/popover.html">Popover</a></li>
+      <li><a href="../components/lightbox.html">Lightbox</a></li>
     </ul></details>
     <details open><summary>Data display</summary><ul>
+      <li><a href="../components/location-card.html">Location card</a></li>
       <li><a href="../components/table.html">Table</a></li>
+      <li><a href="../components/compare-table.html">Comparison table</a></li>
+      <li><a href="../components/list.html">List rows</a></li>
       <li><a href="../components/description-list.html">Description list</a></li>
+      <li><a href="../components/price-block.html">Price block</a></li>
+      <li><a href="../components/score.html">Score and pips</a></li>
+      <li><a href="../components/shot-grid.html">Shot grid</a></li>
+      <li><a href="../components/video-poster.html">Episode poster</a></li>
+      <li><a href="../components/map.html">Map</a></li>
+      <li><a href="../components/guide-entry.html">Guide entry</a></li>
+      <li><a href="../components/stat-tile.html">Stat tile</a></li>
+      <li><a href="../components/image-manager.html">Image manager</a></li>
+      <li><a href="../components/disclosure.html">Disclosure</a></li>
       <li><a href="../components/badge.html">Badge</a></li>
+      <li><a href="../components/status-label.html">Status label</a></li>
       <li><a href="../components/chip.html">Chip</a></li>
+      <li><a href="../components/tag.html">Tag</a></li>
     </ul></details>
     <details open><summary>Feedback</summary><ul>
       <li><a href="../components/inline-message.html">Inline message</a></li>
-      <li><a href="../components/alert.html">Alert and banner</a></li>
+      <li><a href="../components/alert.html">Alert</a></li>
       <li><a href="../components/toast.html">Toast</a></li>
-      <li><a href="../components/progress.html">Progress and meter</a></li>
+      <li><a href="../components/progress.html">Progress</a></li>
       <li><a href="../components/spinner.html">Spinner</a></li>
       <li><a href="../components/skeleton.html">Skeleton</a></li>
       <li><a href="../components/empty-state.html">Empty state</a></li>
@@ -88,245 +109,273 @@
     <header class="ds-header">
       <p class="ds-kicker">Component · Data display</p>
       <h1>Table</h1>
-      <p class="ds-lead">Tables are for operators comparing records across the same columns: the audit log, metrics by week, caterers by status. Customers and caterers see rows, not tables.</p>
-      <div class="ds-meta"><span class="ds-pill ds-pill--ok">WCAG 2.2 AA</span><span class="ds-pill">Status: stable</span><span class="ds-pill">Native <code>&lt;table&gt;</code></span><span class="ds-pill"><code>.table</code></span></div>
-      <ul class="ds-toc"><li><a href="#overview">Overview</a></li><li><a href="#anatomy">Anatomy</a></li><li><a href="#variants">Variants</a></li><li><a href="#sizes">Sizes</a></li><li><a href="#states">States</a></li><li><a href="#responsive">Responsive behaviour</a></li><li><a href="#theming">Theming</a></li><li><a href="#accessibility">Accessibility</a></li><li><a href="#content">Content</a></li><li><a href="#do-dont">Do and don't</a></li><li><a href="#tokens">Tokens</a></li><li><a href="#code">Code</a></li><li><a href="#sources">Sources</a></li></ul>
+      <p class="ds-lead">Tables hold ShotThere's records that people read across and down at once: a spot's light by time of day and by season, its permits by shoot type, and the admin lists of studios, spots and guides. Below 48rem each row becomes a label-over-value card, so nothing scrolls sideways on a phone.</p>
+      <div class="ds-meta"><span class="ds-pill ds-pill--ok">WCAG 2.2 AA</span><span class="ds-pill">Status: stable</span><span class="ds-pill">Native <code>&lt;table&gt;</code></span><span class="ds-pill"><code>.table</code></span><span class="ds-pill"><code>.table--stack</code></span><span class="ds-pill"><code>.num</code></span></div>
+      <ul class="ds-toc"><li><a href="#overview">Overview</a></li><li><a href="#anatomy">Anatomy</a></li><li><a href="#variants">Variants</a></li><li><a href="#sizes">Sizes</a></li><li><a href="#states">States</a></li><li><a href="#responsive">Responsive</a></li><li><a href="#theming">Theming</a></li><li><a href="#accessibility">Accessibility</a></li><li><a href="#content">Content</a></li><li><a href="#do-dont">Do and don't</a></li><li><a href="#tokens">Tokens</a></li><li><a href="#code">Code</a></li><li><a href="#sources">Sources</a></li></ul>
     </header>
 
-<section class="ds-section" id="overview"><h2><a href="#overview">Overview</a></h2>
-      <p>Use a table when people read across a row and down a column at once: who did what, to which caterer, when and why (the operator audit log), or a number per week (the metrics page). Every table has a caption, header cells with <code>scope</code>, and sits in <code>.table-wrap</code> so it scrolls sideways inside itself on phones.</p>
+    <section class="ds-section" id="overview"><h2><a href="#overview">Overview</a></h2>
+      <p>Use a table when every row has the same two or more columns and the reader compares rows: "Golden hour · Strong · West light rakes the brick" against "Midday · Low · Harsh". Every ShotThere table sits in <code>.table-wrap</code>, has a <code>&lt;caption&gt;</code> (visually hidden when a heading already names it), column headers with <code>scope="col"</code> and a row header with <code>scope="row"</code>.</p>
       <ul>
-        <li><b>Default</b>: text records such as the audit log and the privacy notice's cookie and retention tables.</li>
-        <li><b>Numeric</b>: right-aligned tabular figures in <code>.num</code> cells, row headers on the left (metrics, "Caterers by status").</li>
-        <li><b>Dense</b> (<code>.table--dense</code>): half the vertical padding, for long operator lists.</li>
-        <li><b>Sortable</b>: header buttons with <code>aria-sort</code>.</li>
-        <li><b>With row actions</b>: small buttons in a last column (<code>.row-actions</code>), revealed on row hover or focus on desktop and always visible on touch.</li>
+        <li><b>Reference table</b> (<code>.table.table--stack</code>): a spot's best light by time of day (Time, Rating, Note) and by season (Season, Note) on the spot page (L2-015).</li>
+        <li><b>Permit table</b>: shoot type against "Required" or "Not required" (L2-018), followed by the verified line and its source link.</li>
+        <li><b>Admin list</b>: studios, spots or guides with Status, Last updated (sorted, newest first), Flags and an Edit action (L2-063). It is the only table with links and buttons in its rows.</li>
       </ul>
-      <p>Don't use a table for things people scan one at a time, each with a photo or a status: enquiries are inbox rows, the operator queue is queue items, cuisines and operators are settings rows, one caterer's facts are a <a href="description-list.html">description list</a>. Don't use a table for layout.</p>
+      <p>Two neighbours are not this component:</p>
+      <ul>
+        <li>A studio's <b>pricing and fees, measured specifications, gear and logistics</b> are one label and one value per row (Usable shooting space · 6.1 m × 4.3 m (20 ft × 14 ft)). They use the <a href="description-list.html"><code>.kv</code> description list</a>, not a table: there is nothing to read down a column.</li>
+        <li>The <b>side-by-side comparison</b> of two to four studios is the <a href="compare-table.html">comparison table</a>: a <code>.table.compare-table</code> with a sticky label column and studio columns, which scrolls sideways instead of stacking.</li>
+      </ul>
     </section>
 
     <section class="ds-section" id="anatomy"><h2><a href="#anatomy">Anatomy</a></h2>
       <div class="ds-anatomy">
-        <figure class="ds-anatomy__figure" style="padding-inline: var(--space-3);">
-          <div class="table-wrap" style="width: 100%;">
+        <figure class="ds-anatomy__figure" style="place-items: stretch; padding: var(--space-8) var(--space-6) var(--space-8) var(--space-10);">
+          <div class="table-wrap">
             <table class="table">
-              <caption>Caterers by status on 10 Oct 2026</caption>
-              <thead><tr><th scope="col">Status</th><th scope="col" class="num">Caterers</th></tr></thead>
-              <tbody><tr><th scope="row">Published</th><td class="num">60</td></tr><tr><th scope="row">Pending review</th><td class="num">3</td></tr><tr><th scope="row">Suspended</th><td class="num">1</td></tr></tbody>
+              <caption>Permit needed at Evergreen Brick Works by shoot type</caption>
+              <thead><tr><th scope="col">Shoot type</th><th scope="col">Permit</th></tr></thead>
+              <tbody>
+              <tr><th scope="row">Portrait</th><td><span class="badge badge--success">Not required</span></td></tr>
+              <tr><th scope="row">Commercial</th><td><span class="badge">Required</span></td></tr>
+              </tbody>
             </table>
           </div>
-          <span class="ds-callout" style="left: 4%; top: 10%;" aria-hidden="true">1</span>
-          <span class="ds-callout" style="left: 2%; top: 28%;" aria-hidden="true">2</span>
-          <span class="ds-callout" style="left: 4%; top: 42%;" aria-hidden="true">3</span>
-          <span class="ds-callout" style="left: 4%; top: 58%;" aria-hidden="true">4</span>
-          <span class="ds-callout" style="left: 90%; top: 58%;" aria-hidden="true">5</span>
-          <span class="ds-callout" style="left: 50%; top: 68%;" aria-hidden="true">6</span>
+          <span class="ds-callout" style="left: 1%; top: 15%;" aria-hidden="true">1</span>
+          <span class="ds-callout" style="left: 1%; top: 31%;" aria-hidden="true">2</span>
+          <span class="ds-callout" style="left: 1%; top: 52%;" aria-hidden="true">3</span>
+          <span class="ds-callout" style="left: 70%; top: 52%;" aria-hidden="true">4</span>
+          <span class="ds-callout" style="right: 2%; top: 7%;" aria-hidden="true">5</span>
         </figure>
         <ol class="ds-anatomy__list">
-          <li><div><b>Caption</b><small><code>&lt;caption&gt;</code>: <code>--text-label</code>, muted, left. Usually visually hidden because a heading above says the same.</small></div></li>
-          <li><div><b>Wrapper</b><small><code>.table-wrap</code>: 1px top rule, <code>--color-bg-surface</code>, scrolls sideways.</small></div></li>
-          <li><div><b>Column header</b><small><code>th scope="col"</code>: muted label, one line, sticky to the top of the wrapper.</small></div></li>
-          <li><div><b>Row header</b><small><code>th scope="row"</code>: names the row ("Published", "Week of 31 Aug").</small></div></li>
-          <li><div><b>Numeric cell</b><small><code>.num</code>: right-aligned, tabular figures.</small></div></li>
-          <li><div><b>Row separator</b><small>1px <code>--color-border-default</code> under each row except the last; no zebra stripes, no vertical lines.</small></div></li>
+          <li><div><b>Caption</b><small><code>&lt;caption&gt;</code> names the table; visually hidden (<code>.visually-hidden</code>) under a section heading, as on every ShotThere page.</small></div></li>
+          <li><div><b>Column header</b><small><code>th scope="col"</code>, <code>--text-label</code> in <code>--color-fg-muted</code> on the surface; sticky to the top of the wrap.</small></div></li>
+          <li><div><b>Row header</b><small><code>th scope="row"</code> in default ink at medium weight: the time of day, the season, the shoot type or the studio name.</small></div></li>
+          <li><div><b>Cell</b><small><code>td</code> with <code>data-label</code> when the table stacks; <code>--space-4</code> × <code>--space-3</code> padding and a hairline rule beneath.</small></div></li>
+          <li><div><b>Wrap</b><small><code>.table-wrap</code>: hairline top border, the surface fill and sideways scroll when a table cannot stack.</small></div></li>
         </ol>
       </div>
     </section>
 
     <section class="ds-section" id="variants"><h2><a href="#variants">Variants</a></h2>
-      <h3>Default: the audit log</h3>
+      <h3>Reference table: light by time of day</h3>
       <div class="ds-example">
         <div class="ds-example__canvas ds-example__canvas--stack">
-          <div class="table-wrap" style="position: relative;" tabindex="0" role="region" aria-labelledby="tv1-cap">
-            <table class="table">
-              <caption class="visually-hidden" id="tv1-cap">Audit entries, newest first</caption>
-              <thead><tr><th scope="col">When</th><th scope="col">Operator</th><th scope="col">Action</th><th scope="col">Target</th><th scope="col">Reason</th><th scope="col">Before → after</th></tr></thead>
+          <div class="table-wrap">
+            <table class="table table--stack">
+              <caption class="visually-hidden">Light at Evergreen Brick Works by time of day</caption>
+              <thead><tr><th scope="col">Time</th><th scope="col">Rating</th><th scope="col">Note</th></tr></thead>
               <tbody>
-                <tr><td><time datetime="2026-10-10T13:12:00Z">Today, 9:12 a.m.</time></td><td>Tomas Reyes</td><td><strong>Hide review</strong></td><td>Review of Maracas Bay by Devon W.<div class="list__meta">rev_7f3c9a</div></td><td>Personal attack on staff, 3 reports</td><td>Published → Hidden</td></tr>
-                <tr><td><time datetime="2026-10-10T12:47:00Z">Today, 8:47 a.m.</time></td><td>Leah Mohammed</td><td><strong>Open enquiry</strong></td><td>Enquiry with Island Pot<div class="list__meta">enq_3b9e0c41</div></td><td>Checking a reported request for off-platform payment</td><td><span class="na" aria-hidden="true">—</span><span class="visually-hidden">No change</span></td></tr>
-                <tr><td><time datetime="2026-10-09T20:30:00Z">Fri 9 Oct, 4:30 p.m.</time></td><td>Leah Mohammed</td><td><strong>Suspend</strong></td><td>Flying Fish Kitchen<div class="list__meta">cat_0e6d21</div></td><td>Food handler certificate expired on 30 Sep 2026</td><td>Published → Suspended</td></tr>
+              <tr><th scope="row">Morning</th><td data-label="Rating"><span class="light-rating"><span class="pips" aria-hidden="true"><i data-on></i><i data-on></i><i></i></span>Medium</span></td><td data-label="Note">East-facing kiln walls catch the first sun.</td></tr>
+              <tr><th scope="row">Midday</th><td data-label="Rating"><span class="light-rating"><span class="pips" aria-hidden="true"><i data-on></i><i></i><i></i></span>Low</span></td><td data-label="Note">Harsh, with little shade in the courtyard.</td></tr>
+              <tr><th scope="row">Afternoon</th><td data-label="Rating"><span class="light-rating"><span class="pips" aria-hidden="true"><i data-on></i><i data-on></i><i></i></span>Medium</span></td><td data-label="Note">Softens once the sun drops behind the west buildings.</td></tr>
+              <tr><th scope="row">Golden hour</th><td data-label="Rating"><span class="light-rating"><span class="pips" aria-hidden="true"><i data-on></i><i data-on></i><i data-on></i></span>Strong</span></td><td data-label="Note">West light rakes the brick; the best hour here.</td></tr>
+              <tr><th scope="row">Blue hour</th><td data-label="Rating"><span class="light-rating"><span class="pips" aria-hidden="true"><i data-on></i><i></i><i></i></span>Low</span></td><td data-label="Note">Few lights after closing; bring your own.</td></tr>
               </tbody>
             </table>
           </div>
         </div>
-        <div class="ds-example__caption"><span>From <code>pages/admin-audit/default</code>. A wide table's wrapper is a focusable, labelled region so keyboard users can scroll it. Empty cells use <code>.na</code>.</span></div>
-        <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;div class="table-wrap" tabindex="0" role="region" aria-labelledby="audit-cap"&gt;
-  &lt;table class="table"&gt;
-    &lt;caption class="visually-hidden" id="audit-cap"&gt;Audit entries, newest first&lt;/caption&gt;
-    &lt;thead&gt;&lt;tr&gt;&lt;th scope="col"&gt;When&lt;/th&gt;…&lt;/tr&gt;&lt;/thead&gt;
+        <div class="ds-example__caption"><span>The rating is a word with decorative <a href="score.html">pips</a>; the word is what is read. Narrow this page below 48rem to see each row become a card.</span></div>
+        <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;div class="table-wrap"&gt;
+  &lt;table class="table table--stack"&gt;
+    &lt;caption class="visually-hidden"&gt;Light at Evergreen Brick Works by time of day&lt;/caption&gt;
+    &lt;thead&gt;&lt;tr&gt;&lt;th scope="col"&gt;Time&lt;/th&gt;&lt;th scope="col"&gt;Rating&lt;/th&gt;&lt;th scope="col"&gt;Note&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
     &lt;tbody&gt;
-      &lt;tr&gt;&lt;td&gt;&lt;time datetime="2026-10-10T13:12:00Z"&gt;Today, 9:12 a.m.&lt;/time&gt;&lt;/td&gt;…
-        &lt;td&gt;&lt;span class="na" aria-hidden="true"&gt;—&lt;/span&gt;&lt;span class="visually-hidden"&gt;No change&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;th scope="row"&gt;Golden hour&lt;/th&gt;
+        &lt;td data-label="Rating"&gt;&lt;span class="light-rating"&gt;&lt;span class="pips" aria-hidden="true"&gt;&lt;i data-on&gt;&lt;/i&gt;&lt;i data-on&gt;&lt;/i&gt;&lt;i data-on&gt;&lt;/i&gt;&lt;/span&gt;Strong&lt;/span&gt;&lt;/td&gt;
+        &lt;td data-label="Note"&gt;West light rakes the brick; the best hour here.&lt;/td&gt;
+      &lt;/tr&gt;
     &lt;/tbody&gt;
   &lt;/table&gt;
 &lt;/div&gt;</code></pre></details>
       </div>
 
-      <h3>Numeric and dense</h3>
-      <div class="ds-example">
-        <div class="ds-example__canvas" style="align-items: flex-start;">
-          <div class="table-wrap" style="flex: 1 1 14rem;">
-            <table class="table">
-              <caption>Enquiries by week</caption>
-              <thead><tr><th scope="col">Week</th><th scope="col" class="num">Enquiries</th></tr></thead>
-              <tbody><tr><th scope="row">Week of 21 Sep</th><td class="num">13</td></tr><tr><th scope="row">Week of 28 Sep</th><td class="num">12</td></tr><tr><th scope="row">Week of 5 Oct</th><td class="num">12</td></tr></tbody>
-            </table>
-          </div>
-          <div class="table-wrap" style="flex: 1 1 14rem;">
-            <table class="table table--dense">
-              <caption>Listing page visits, dense</caption>
-              <thead><tr><th scope="col">Week</th><th scope="col" class="num">Visits</th></tr></thead>
-              <tbody><tr><th scope="row">Week of 21 Sep</th><td class="num">3,910</td></tr><tr><th scope="row">Week of 28 Sep</th><td class="num">4,240</td></tr><tr><th scope="row">Week of 5 Oct</th><td class="num">3,870</td></tr></tbody>
-            </table>
-          </div>
-        </div>
-        <div class="ds-example__caption"><span>From <code>pages/admin-metrics/default</code>, where each sits in a chart's "Show as a table" disclosure. Figures use Canadian separators: "3,910", "82%".</span></div>
-      </div>
-
-      <h3>Sortable, with row actions</h3>
+      <h3>Reference table: by season</h3>
       <div class="ds-example">
         <div class="ds-example__canvas ds-example__canvas--stack">
-          <div class="table-wrap" style="position: relative;" tabindex="0" role="region" aria-labelledby="tv3-cap">
-            <table class="table">
-              <caption class="visually-hidden" id="tv3-cap">Caterers, sorted by date published, newest first</caption>
-              <thead><tr><th scope="col" aria-sort="none"><button type="button">Caterer</button></th><th scope="col">Cuisine</th><th scope="col" aria-sort="descending"><button type="button">Published</button></th><th scope="col" class="num" aria-sort="none"><button type="button">Reviews</button></th><th scope="col"><span class="visually-hidden">Actions</span></th></tr></thead>
+          <div class="table-wrap">
+            <table class="table table--stack">
+              <caption class="visually-hidden">Conditions at Evergreen Brick Works by season</caption>
+              <thead><tr><th scope="col">Season</th><th scope="col">Note</th></tr></thead>
               <tbody>
-                <tr><td>Coconut Drops Bakery</td><td>Jamaican</td><td>Fri 9 Oct</td><td class="num">0</td><td><div class="row-actions"><button class="btn btn--ghost btn--sm" type="button" aria-label="Open Coconut Drops Bakery">Open</button></div></td></tr>
-                <tr data-state="hover"><td>Pelau House</td><td>Trinidadian &amp; Tobagonian</td><td>Mon 4 May</td><td class="num">23</td><td><div class="row-actions"><button class="btn btn--ghost btn--sm" type="button" aria-label="Open Pelau House">Open</button></div></td></tr>
-                <tr><td>Green Fig Catering</td><td>St. Lucian</td><td>Tue 14 Apr</td><td class="num">0</td><td><div class="row-actions"><button class="btn btn--ghost btn--sm" type="button" aria-label="Open Green Fig Catering">Open</button></div></td></tr>
+              <tr><th scope="row">Spring</th><td data-label="Note">Wet paths; the quarry garden is green by May.</td></tr>
+              <tr><th scope="row">Summer</th><td data-label="Note">The Saturday farmers' market crowds the courtyard until early afternoon.</td></tr>
+              <tr><th scope="row">Autumn</th><td data-label="Note">Valley colour peaks mid-October.</td></tr>
+              <tr><th scope="row">Winter</th><td data-label="Note">Skating rink in the courtyard; icy paths, so wear grips.</td></tr>
               </tbody>
             </table>
           </div>
         </div>
-        <div class="ds-example__caption"><span>Illustrative: no mock sorts a table yet. Only the sorted column carries <code>ascending</code> or <code>descending</code>; the arrow follows. The second row is forced to hover to show its revealed action.</span></div>
-        <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;th scope="col" aria-sort="descending"&gt;&lt;button type="button"&gt;Published&lt;/button&gt;&lt;/th&gt;
-…
-&lt;td&gt;&lt;div class="row-actions"&gt;&lt;button class="btn btn--ghost btn--sm" type="button" aria-label="Open Pelau House"&gt;Open&lt;/button&gt;&lt;/div&gt;&lt;/td&gt;</code></pre></details>
+        <div class="ds-example__caption"><span>Two columns still read as a table at MD and up (L2-015.3); at XS the season becomes the card title and the note sits under its label.</span></div>
       </div>
+
+      <h3>Permit table</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--stack">
+          <div class="table-wrap">
+            <table class="table table--stack">
+              <caption class="visually-hidden">Permit needed at Evergreen Brick Works by shoot type</caption>
+              <thead><tr><th scope="col">Shoot type</th><th scope="col">Permit</th></tr></thead>
+              <tbody>
+              <tr><th scope="row">Portrait</th><td data-label="Permit"><span class="badge badge--success">Not required</span></td></tr>
+              <tr><th scope="row">Wedding or engagement</th><td data-label="Permit"><span class="badge">Required</span></td></tr>
+              <tr><th scope="row">Commercial</th><td data-label="Permit"><span class="badge">Required</span></td></tr>
+              <tr><th scope="row">Video</th><td data-label="Permit"><span class="badge">Required</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="price-block__verified">Permit rules verified <time datetime="2026-09-01">1 September 2026</time> · Source: <a class="link--external" href="https://www.evergreen.ca/" target="_blank" rel="noopener">Evergreen: photography and filming<svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v6H4V6h6"/></svg><span class="visually-hidden"> (opens in a new tab)</span></a></p>
+        </div>
+        <div class="ds-example__caption"><span>The status is a <a href="badge.html">badge</a> with a word; "Not required" is the success tone, "Required" neutral. A stale date adds a <a href="alert.html#variants">warning alert</a> under the verified line.</span></div>
+      </div>
+
+      <h3>Admin list</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--stack">
+          <div class="table-wrap">
+            <table class="table table--stack">
+              <caption class="visually-hidden">Studios, most recently updated first</caption>
+              <thead><tr><th scope="col">Name</th><th scope="col">Status</th><th scope="col" aria-sort="descending">Last updated</th><th scope="col">Flags</th><th scope="col"><span class="visually-hidden">Actions</span></th></tr></thead>
+              <tbody>
+              <tr>
+                <th scope="row"><a href="../../mocks/pages/studio-editor/default.html">Corktown Garage Studio</a><br><span class="text-muted" style="font-weight: var(--font-weight-regular);">Corktown</span></th>
+                <td data-label="Status"><span class="status status--draft">Draft</span></td>
+                <td data-label="Last updated"><time datetime="2026-10-11">11 Oct 2026</time></td>
+                <td data-label="Flags"><span class="text-muted">None</span></td>
+                <td><a class="btn btn--sm" href="../../mocks/pages/studio-editor/default.html">Edit<span class="visually-hidden"> Corktown Garage Studio</span></a></td>
+              </tr>
+              <tr>
+                <th scope="row"><a href="../../mocks/pages/studio-editor/published.html">Liberty Cyc House</a><br><span class="text-muted" style="font-weight: var(--font-weight-regular);">Liberty Village</span></th>
+                <td data-label="Status"><span class="status status--published">Published</span></td>
+                <td data-label="Last updated"><time datetime="2026-05-02">2 May 2026</time></td>
+                <td data-label="Flags"><span class="badge badge--info">Due soon</span></td>
+                <td><a class="btn btn--sm" href="../../mocks/pages/studio-editor/published.html">Edit<span class="visually-hidden"> Liberty Cyc House</span></a></td>
+              </tr>
+              <tr>
+                <th scope="row"><a href="../../mocks/pages/studio-editor/published.html">Ossington Blackbox</a><br><span class="text-muted" style="font-weight: var(--font-weight-regular);">Ossington</span></th>
+                <td data-label="Status"><span class="status status--published">Published</span></td>
+                <td data-label="Last updated"><time datetime="2026-03-06">6 Mar 2026</time></td>
+                <td data-label="Flags"><span class="badge badge--warning">Prices stale</span></td>
+                <td><a class="btn btn--sm" href="../../mocks/pages/studio-editor/published.html">Edit<span class="visually-hidden"> Ossington Blackbox</span></a></td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="ds-example__caption"><span>Three of the nine rows on <a href="../../mocks/pages/admin-studios/default.html">admin studios</a>. The name links to the editor; Edit repeats it with a visually hidden studio name. The action cell has no <code>data-label</code>, so the button stands alone in the card.</span></div>
+      </div>
+
+      <h3>Helper: <code>.num</code></h3>
+      <ul>
+        <li><b><code>.num</code></b> sets tabular figures so prices, distances and coordinates line up: "$60.00", "3.1 km", "43.6846, −79.3653". On a <code>td</code> or <code>th</code> inside <code>.table</code> it also right-aligns the cell. The studio pricing <code>.kv</code> rows and the rain-backup list use it outside tables.</li>
+        <li><b>Missing values</b> are written as words: "Not measured". Never leave a cell blank or put a lone dash in a reference table; L2-017.2 asks for "None nearby" rather than an omitted row, and L2-007.2 for "Nothing costs extra at this studio".</li>
+      </ul>
     </section>
 
-    <section class="ds-section" id="sizes"><h2><a href="#sizes">Sizes</a></h2>
-      <p>Two densities. Text is <code>--text-body-sm</code> in both; only the vertical cell padding changes.</p>
-      <div class="ds-table-wrap"><table class="ds-table">
-        <thead><tr><th scope="col">Density</th><th scope="col">Cell padding</th><th scope="col">Row height (one line)</th><th scope="col">Use</th></tr></thead>
-        <tbody>
-          <tr><td>Default</td><td><code>--space-4</code> <code>--space-3</code></td><td>about 52px</td><td>Audit log, metrics, privacy notice.</td></tr>
-          <tr><td><code>.table--dense</code></td><td><code>--space-2</code> <code>--space-3</code></td><td>about 36px</td><td>Long numeric lists on desktop. Rows with actions keep the default density so buttons have room.</td></tr>
-        </tbody>
-      </table></div>
+    <section class="ds-section" id="sizes" data-na="One density"><h2><a href="#sizes">Sizes</a></h2>
+      <p>One density: <code>--space-4</code> block and <code>--space-3</code> inline cell padding. ShotThere tables are short (four or five reference rows, nine admin rows), so one density is enough.</p>
     </section>
 
     <section class="ds-section" id="states"><h2><a href="#states">States</a></h2>
-      <h3>Rows and headers</h3>
-      <p>Real pages get these from <code>:hover</code>, <code>:focus-within</code>, <code>aria-selected</code> and <code>aria-sort</code>; here they are forced with <code>data-state</code>.</p>
+      <p>Rows react to the pointer; only the admin list has controls in its rows. Pointer and focus states are forced with <code>data-state</code> here; real pages get them from <code>:hover</code>, <code>:focus-visible</code> and <code>:active</code>. Loading is <code>aria-busy="true"</code> on the wrap with <a href="skeleton.html">skeleton</a> cells.</p>
       <div class="ds-matrix"><table>
-        <caption class="visually-hidden">Table row and header states</caption>
-        <thead><tr><th scope="col">Part</th><th scope="col">Default</th><th scope="col">Hover</th><th scope="col">Focus</th><th scope="col">Selected / sorted</th></tr></thead>
+        <thead><tr><th scope="col">Row</th><th scope="col">Default</th><th scope="col">Hover</th><th scope="col">Focus</th><th scope="col">Active</th><th scope="col">Disabled</th><th scope="col">Loading</th></tr></thead>
         <tbody>
-          <tr><th scope="row">Body row</th>
-            <td><table class="table" style="min-width: 12rem;"><tbody><tr><td>Pelau House</td><td class="num">23</td></tr></tbody></table></td>
-            <td><table class="table" style="min-width: 12rem;"><tbody><tr data-state="hover"><td>Pelau House</td><td class="num">23</td></tr></tbody></table></td>
-            <td><table class="table" style="min-width: 12rem;"><tbody><tr><td>Pelau House</td><td class="num">23</td></tr></tbody></table></td>
-            <td><table class="table" style="min-width: 12rem;"><tbody><tr data-state="selected"><td>Pelau House</td><td class="num">23</td></tr></tbody></table></td></tr>
-          <tr><th scope="row">Row actions</th>
-            <td><table class="table" style="min-width: 12rem;"><tbody><tr><td>Ti Kay</td><td><div class="row-actions"><button class="btn btn--ghost btn--sm" type="button" aria-label="Open Ti Kay">Open</button></div></td></tr></tbody></table></td>
-            <td><table class="table" style="min-width: 12rem;"><tbody><tr data-state="hover"><td>Ti Kay</td><td><div class="row-actions"><button class="btn btn--ghost btn--sm" type="button" aria-label="Open Ti Kay">Open</button></div></td></tr></tbody></table></td>
-            <td><table class="table" style="min-width: 12rem;"><tbody><tr data-state="hover"><td>Ti Kay</td><td><div class="row-actions"><button class="btn btn--ghost btn--sm" type="button" aria-label="Open Ti Kay" data-state="focus">Open</button></div></td></tr></tbody></table></td>
-            <td><span class="text-subtle">—</span></td></tr>
-          <tr><th scope="row">Sort header</th>
-            <td><table class="table" style="min-width: 9rem;"><thead><tr><th scope="col" aria-sort="none"><button type="button">Reviews</button></th></tr></thead></table></td>
-            <td><span class="text-subtle">No fill; cursor changes</span></td>
-            <td><table class="table" style="min-width: 9rem;"><thead><tr><th scope="col" aria-sort="none"><button type="button" data-state="focus">Reviews</button></th></tr></thead></table></td>
-            <td><div class="cluster"><table class="table" style="width: auto;"><thead><tr><th scope="col" aria-sort="ascending"><button type="button">Reviews</button></th></tr></thead></table><table class="table" style="width: auto;"><thead><tr><th scope="col" aria-sort="descending"><button type="button">Reviews</button></th></tr></thead></table></div></td></tr>
+          <tr><th scope="row">Admin list</th>
+            <td><div class="table-wrap" style="min-width: 13rem;"><table class="table"><tbody><tr><td style="background: transparent;">Annex Attic Studio</td><td style="background: transparent;"><a class="btn btn--sm" href="../../mocks/pages/studio-editor/default.html">Edit<span class="visually-hidden"> Annex Attic Studio</span></a></td></tr></tbody></table></div></td>
+            <td><div class="table-wrap" style="min-width: 13rem;"><table class="table"><tbody><tr data-state="hover"><td style="background: transparent;">Annex Attic Studio</td><td style="background: transparent;"><a class="btn btn--sm" href="../../mocks/pages/studio-editor/default.html" data-state="hover">Edit<span class="visually-hidden"> Annex Attic Studio</span></a></td></tr></tbody></table></div></td>
+            <td><div class="table-wrap" style="min-width: 13rem;"><table class="table"><tbody><tr><td style="background: transparent;">Annex Attic Studio</td><td style="background: transparent;"><a class="btn btn--sm" href="../../mocks/pages/studio-editor/default.html" data-state="focus">Edit<span class="visually-hidden"> Annex Attic Studio</span></a></td></tr></tbody></table></div></td>
+            <td><div class="table-wrap" style="min-width: 13rem;"><table class="table"><tbody><tr data-state="hover"><td style="background: transparent;">Annex Attic Studio</td><td style="background: transparent;"><a class="btn btn--sm" href="../../mocks/pages/studio-editor/default.html" data-state="active">Edit<span class="visually-hidden"> Annex Attic Studio</span></a></td></tr></tbody></table></div></td>
+            <td><span class="text-muted">Not used: drafts and published rows are both editable</span></td>
+            <td><div class="table-wrap" aria-busy="true" style="min-width: 13rem;"><table class="table"><tbody><tr><td style="background: transparent;"><span class="skeleton skeleton--text" style="width: 8rem;"></span></td><td style="background: transparent;"><span class="skeleton skeleton--pill" style="width: 3.5rem; height: var(--control-height-sm);"></span></td></tr></tbody></table></div></td>
+          </tr>
+          <tr><th scope="row">Reference</th>
+            <td><div class="table-wrap" style="min-width: 13rem;"><table class="table"><tbody><tr><td style="background: transparent;">Golden hour</td><td style="background: transparent;">Strong</td></tr></tbody></table></div></td>
+            <td><div class="table-wrap" style="min-width: 13rem;"><table class="table"><tbody><tr data-state="hover"><td style="background: transparent;">Golden hour</td><td style="background: transparent;">Strong</td></tr></tbody></table></div></td>
+            <td><span class="text-muted">No focusable cells</span></td>
+            <td><span class="text-muted">No action</span></td>
+            <td><span class="text-muted">Not used</span></td>
+            <td><span class="text-muted">Server-rendered with the page</span></td>
+          </tr>
         </tbody>
       </table></div>
+      <ul>
+        <li><b>Sorted</b>: <code>aria-sort="descending"</code> on the Last updated header says how the admin list is ordered (L2-063.1). It is a fixed order, so the header holds plain text; a <code>button</code> inside an <code>aria-sort</code> header would add the arrow and make it sortable, which no mock asks for.</li>
+        <li><b>Empty, no results and error</b> replace the whole table with an <a href="empty-state.html">empty state</a> ("No studios yet", "No studios match “parkdale”", "We couldn't load your studios"); never an empty table with headers only.</li>
+        <li><b>Selected</b> (<code>aria-current="true"</code>) exists in the stylesheet; no ShotThere table selects a row.</li>
+      </ul>
       <h3>Both themes</h3>
       <div class="ds-themes">
-        <div data-theme="light"><div class="table-wrap"><table class="table"><caption class="visually-hidden">Light theme example</caption><thead><tr><th scope="col">Status</th><th scope="col" class="num">Caterers</th></tr></thead><tbody><tr><th scope="row">Published</th><td class="num">60</td></tr><tr data-state="hover"><th scope="row">Draft</th><td class="num">9</td></tr><tr data-state="selected"><th scope="row">Removed</th><td class="num"><span class="na">0</span></td></tr></tbody></table></div></div>
-        <div data-theme="dark"><div class="table-wrap"><table class="table"><caption class="visually-hidden">Dark theme example</caption><thead><tr><th scope="col">Status</th><th scope="col" class="num">Caterers</th></tr></thead><tbody><tr><th scope="row">Published</th><td class="num">60</td></tr><tr data-state="hover"><th scope="row">Draft</th><td class="num">9</td></tr><tr data-state="selected"><th scope="row">Removed</th><td class="num"><span class="na">0</span></td></tr></tbody></table></div></div>
-      </div>
-      <ul>
-        <li><b>Hover</b> fills the row with <code>--color-bg-subtle</code> to help the eye along a wide row; it means nothing else.</li>
-        <li><b>Selected</b> (<code>aria-selected="true"</code>, pepper-tinted <code>--color-accent-subtle</code>) is "you are here": the row whose detail is open beside the table. It is valid ARIA only inside <code>role="grid"</code>; a plain table marks the open row's link with <code>aria-current="true"</code> instead. No mock selects table rows yet.</li>
-        <li><b>Sorted</b>: exactly one header has <code>aria-sort="ascending"</code> or <code>"descending"</code>; the others have <code>none</code> or no attribute.</li>
-      </ul>
-      <h3>Loading, empty, no results and error</h3>
-      <div class="ds-example">
-        <div class="ds-example__canvas ds-example__canvas--stack">
-          <div class="table-wrap" aria-busy="true">
-            <table class="table">
-              <caption class="visually-hidden">Audit entries, loading</caption>
-              <thead><tr><th scope="col">When</th><th scope="col">Operator</th><th scope="col">Action</th></tr></thead>
-              <tbody><tr aria-hidden="true"><td><span class="skeleton skeleton--text"></span></td><td><span class="skeleton skeleton--text"></span></td><td><span class="skeleton skeleton--text"></span></td></tr><tr aria-hidden="true"><td><span class="skeleton skeleton--text"></span></td><td><span class="skeleton skeleton--text"></span></td><td><span class="skeleton skeleton--text"></span></td></tr></tbody>
-            </table>
-          </div>
-          <p class="visually-hidden" role="status">Loading audit entries</p>
-          <div class="empty empty--compact"><div class="empty__icon" aria-hidden="true"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></div><h4 class="empty__title">No entries match</h4><p class="empty__text">Tomas Reyes hasn't removed anything between 3 Oct and 10 Oct 2026.</p><div class="empty__actions"><button class="btn" type="button">Clear filters</button></div></div>
-          <div class="empty empty--compact empty--error" role="alert"><div class="empty__icon" aria-hidden="true"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16.5v.5"/></svg></div><h4 class="empty__title">We couldn't load the audit log</h4><p class="empty__text">Your filters are kept. Nothing in the log has changed. Try again.</p><div class="empty__actions"><button class="btn btn--primary" type="button"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.3-5.7M20 4v5h-5"/></svg>Try again</button></div></div>
-        </div>
-        <div class="ds-example__caption"><span>Loading keeps the real header with skeleton rows (<code>aria-hidden</code>) and a hidden status line. Empty, no-results and error replace the table with an <a href="empty-state.html">empty state</a>; filters stay above it.</span></div>
+        <div data-theme="light"><div class="table-wrap"><table class="table"><caption class="visually-hidden">Permits, light theme</caption><thead><tr><th scope="col">Shoot type</th><th scope="col">Permit</th></tr></thead><tbody><tr><th scope="row">Portrait</th><td><span class="badge badge--success">Not required</span></td></tr><tr data-state="hover"><th scope="row">Video</th><td><span class="badge">Required</span></td></tr></tbody></table></div></div>
+        <div data-theme="dark"><div class="table-wrap"><table class="table"><caption class="visually-hidden">Permits, dark theme</caption><thead><tr><th scope="col">Shoot type</th><th scope="col">Permit</th></tr></thead><tbody><tr><th scope="row">Portrait</th><td><span class="badge badge--success">Not required</span></td></tr><tr data-state="hover"><th scope="row">Video</th><td><span class="badge">Required</span></td></tr></tbody></table></div></div>
       </div>
     </section>
 
     <section class="ds-section" id="responsive"><h2><a href="#responsive">Responsive behaviour</a></h2>
       <ul>
-        <li><b>XS and SM (below 48rem)</b>: tables keep their columns and scroll sideways inside <code>.table-wrap</code>; the page itself never scrolls sideways. The wrapper is a focusable region (<code>tabindex="0"</code>, labelled by the caption) whenever it can overflow, so it can be scrolled with arrow keys. Narrow two-column tables (metrics, privacy) fit at 320px and need no region.</li>
-        <li>Row actions are always visible on touch screens (<code>@media (hover: none)</code>), and their small buttons grow to 44px below 48rem.</li>
-        <li><b>MD and up</b>: the audit log fits from about 62rem; column headers stay on one line and long cells wrap.</li>
-        <li>Long tables paginate below ("Showing 41–60 of 1,284" and pagination) rather than loading endlessly.</li>
-        <li>Tables are not turned into cards on phones: operators compare across rows, and the console is mainly a desktop tool.</li>
+        <li><b>Below 48rem</b> (<code>--layout-breakpoint-md</code>) <code>.table--stack</code> hides the header row visually (it stays in the accessibility tree), turns each row into a bordered card, makes the row header the card title and prints each cell's <code>data-label</code> above its value (L2-015.3, L2-017.3, L2-063.3). The wrap drops its border and scroll.</li>
+        <li><b>From 48rem</b> the same markup is an ordinary table; nothing is duplicated for phones.</li>
+        <li>Every ShotThere table stacks. The only table that scrolls sideways instead is the <a href="compare-table.html">comparison table</a>, whose columns are the point.</li>
+        <li>Long notes wrap in the cell; the admin Edit button keeps 44px on phones via the shared small-button rule (L2-065.1).</li>
       </ul>
-      <p class="ds-note">Mock previews are not included in this copy; the ShotThere mocks will replace them.</p>
+      <div class="ds-iframes">
+        <iframe class="ds-iframe" src="../../mocks/pages/spot/default.html?chrome=0#permits" title="Spot page at phone width: the permit table as stacked cards" loading="lazy"></iframe>
+        <iframe class="ds-iframe" src="../../mocks/pages/admin-studios/default.html?chrome=0" title="Admin studio list at phone width: each studio as a card with status, flags and Edit" loading="lazy"></iframe>
+      </div>
     </section>
 
     <section class="ds-section" id="theming"><h2><a href="#theming">Theming</a></h2>
-      <p>The table reads <code>--color-bg-surface</code> (wrapper and sticky header), <code>--color-border-default</code> (rules), <code>--color-fg-muted</code> (headers, caption), <code>--color-fg-default</code> (cells), <code>--color-bg-subtle</code> (hover), <code>--color-accent-subtle</code> (selected) and <code>--color-fg-subtle</code> (<code>.na</code>). No component tokens. In dark, rules drop to stone-750 and hover to stone-800; selected stays a deep pepper tint so it still reads as "you are here" without a border.</p>
+      <p>The table reads semantic tokens only: <code>--color-bg-surface</code> for the wrap and header, <code>--color-border-default</code> for the rules, <code>--color-bg-subtle</code> for the hovered row and <code>--color-fg-muted</code> / <code>--color-fg-subtle</code> for header text and stacked labels. The dark theme swaps those roles, so the same markup works in both; badges and status labels in cells bring their own tone tokens.</p>
     </section>
 
     <section class="ds-section" id="accessibility"><h2><a href="#accessibility">Accessibility</a></h2>
       <h3>Role and pattern</h3>
-      <p>A native <code>&lt;table&gt;</code> with <code>&lt;caption&gt;</code>, <code>&lt;thead&gt;</code> and <code>th scope</code> (<a href="https://www.w3.org/WAI/ARIA/apg/patterns/table/">APG Table</a>; sortable headers follow the <a href="https://www.w3.org/WAI/ARIA/apg/patterns/table/examples/sortable-table/">sortable table example</a>). It is not a grid: Tab moves between the links and buttons inside, not between cells. Dates are <code>&lt;time datetime&gt;</code> in UTC, shown in Toronto time.</p>
+      <p>A native <code>&lt;table&gt;</code> with <code>&lt;caption&gt;</code>, <code>&lt;thead&gt;</code>, <code>th scope="col"</code> and <code>th scope="row"</code>: the WAI-ARIA APG <a href="https://www.w3.org/WAI/ARIA/apg/patterns/table/">Table pattern</a> without ARIA roles. The stacked layout changes CSS <code>display</code> only; headers stay in the DOM, so screen readers still announce "Golden hour, Rating, Strong". Never rebuild a table out of <code>div</code>s for the phone layout.</p>
       <h3>Keyboard</h3>
       <table class="ds-table ds-keys"><thead><tr><th scope="col">Key</th><th scope="col">Action</th></tr></thead><tbody>
-        <tr><td><kbd>Tab</kbd></td><td>Focuses the scroll region (when it can overflow), then sort buttons, links and row actions in reading order.</td></tr>
-        <tr><td><kbd>←</kbd> / <kbd>→</kbd></td><td>With the region focused, scroll the table sideways.</td></tr>
-        <tr><td><kbd>Enter</kbd>, <kbd>Space</kbd></td><td>On a sort button, sorts by that column (descending first for dates and counts) and updates <code>aria-sort</code>.</td></tr>
+        <tr><td><kbd>Tab</kbd> / <kbd>Shift</kbd>+<kbd>Tab</kbd></td><td>Moves through the links and Edit buttons in admin rows, in reading order. Reference tables contain nothing focusable.</td></tr>
+        <tr><td><kbd>Enter</kbd></td><td>Follows the studio name link or the Edit link.</td></tr>
+        <tr><td>Screen reader table keys</td><td>Move cell by cell with headers announced; no arrow-key grid behaviour is added.</td></tr>
       </tbody></table>
       <h3>Focus</h3>
-      <p>Row actions become visible as soon as anything in the row has focus (<code>:focus-within</code>), so keyboard users never tab onto an invisible button. The sticky header must not cover a focused cell when the wrapper scrolls vertically.</p>
+      <p>Focus lands on the link or button, never the row. The shared ring (<code>--color-focus-ring</code>) stays at least 3:1 on the hovered row.</p>
       <h3>Labelling</h3>
-      <p>Every table has a caption, visually hidden when a heading says the same ("Caterers by status"). Row-action buttons name their row ("Open Pelau House"), and the actions column has a hidden header ("Actions"). The empty marker is <code>aria-hidden</code> with a hidden word ("No change") so screen readers don't say "em dash".</p>
+      <p>The caption names the table ("Studios, most recently updated first"). The empty action header holds a visually hidden "Actions". Each Edit link appends the studio name in <code>.visually-hidden</code>, so a links list reads "Edit Ossington Blackbox", not nine "Edit"s. Pips are <code>aria-hidden</code>; the rating word is the content.</p>
       <h3>Contrast</h3>
       <div class="ds-example__canvas ds-example__canvas--stack" style="padding: 0; gap: var(--space-2);">
-        <div class="ds-pair"><span>Cell text</span><span class="ds-pair__ratio" data-contrast="--color-fg-default|--color-bg-surface" data-min="4.5"></span></div>
-        <div class="ds-pair"><span>Header and caption</span><span class="ds-pair__ratio" data-contrast="--color-fg-muted|--color-bg-surface" data-min="4.5"></span></div>
-        <div class="ds-pair"><span>Text on a hovered row</span><span class="ds-pair__ratio" data-contrast="--color-fg-default|--color-bg-subtle" data-min="4.5"></span></div>
-        <div class="ds-pair"><span>Text on a selected row</span><span class="ds-pair__ratio" data-contrast="--color-fg-default|--color-accent-subtle" data-min="4.5"></span></div>
-        <div class="ds-pair"><span>Empty marker (.na)</span><span class="ds-pair__ratio" data-contrast="--color-fg-subtle|--color-bg-surface" data-min="4.5"></span></div>
-        <div class="ds-pair"><span>Focus ring on a hovered row</span><span class="ds-pair__ratio" data-contrast="--color-focus-ring|--color-bg-subtle" data-min="3"></span></div>
+        <div class="ds-pair"><span>Cell text on surface</span><span class="ds-pair__ratio" data-contrast="--color-fg-default|--color-bg-surface" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Column header on surface</span><span class="ds-pair__ratio" data-contrast="--color-fg-muted|--color-bg-surface" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Stacked label on surface</span><span class="ds-pair__ratio" data-contrast="--color-fg-subtle|--color-bg-surface" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Cell text on hovered row</span><span class="ds-pair__ratio" data-contrast="--color-fg-default|--color-bg-subtle" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Status label on hovered row</span><span class="ds-pair__ratio" data-contrast="--color-success-fg|--color-bg-subtle" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Focus ring on hovered row</span><span class="ds-pair__ratio" data-contrast="--color-focus-ring|--color-bg-subtle" data-min="3"></span></div>
       </div>
       <h3>Motion</h3>
-      <p>Row actions fade in over <code>--duration-fast</code>; nothing else moves. Skeleton shimmer stops under reduced motion.</p>
+      <p>None. Row hover is an instant fill change.</p>
       <h3>Touch</h3>
-      <p>Below 48rem row actions are always shown and their small buttons are 44px tall; sort buttons get the header's full cell height. Horizontal scrolling uses the native swipe.</p>
+      <p>Only admin rows have targets: the name link and the Edit button, 44px tall below 48rem (L2-065.1) with 8px between them in the card.</p>
     </section>
 
     <section class="ds-section" id="content"><h2><a href="#content">Content</a></h2>
       <ul>
-        <li>Column headers are one or two words in sentence case: "When", "Operator", "Before → after".</li>
-        <li>Times relative to today when recent ("Today, 9:12 a.m."), otherwise "Fri 9 Oct, 4:30 p.m."; the result line says "times in Toronto".</li>
-        <li>Numbers: thousands separators ("22,670"), percentages without a space ("82%"), money as "$2,600".</li>
-        <li>Name caterers and cuisines in full ("Trinidadian &amp; Tobagonian"); put IDs (<code>cat_0e6d21</code>) under the name in muted text, never as the only identifier.</li>
-        <li>An empty cell is a muted dash with a hidden word, not "N/A" or "null".</li>
+        <li>Column headers are one or two words in sentence case: "Shoot type", "Last updated". Row headers are the thing being described: "Golden hour", "Wedding or engagement".</li>
+        <li>Ratings are words from the fixed scale (None, Low, Medium, Strong); permits are "Required" or "Not required". No icons without words.</li>
+        <li>Notes are one sentence with a full stop: "Valley colour peaks mid-October."</li>
+        <li>Dates are short in admin lists ("6 Mar 2026") inside <code>&lt;time datetime&gt;</code>; long on public pages ("1 September 2026").</li>
+        <li>Absent values are words ("None", "Not measured"), never a blank cell.</li>
+        <li>Captions say what and whose: "Permit needed at Evergreen Brick Works by shoot type".</li>
       </ul>
     </section>
 
     <section class="ds-section" id="do-dont"><h2><a href="#do-dont">Do and don't</a></h2>
       <div class="ds-dodont">
-        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--stack"><div class="table-wrap"><table class="table"><caption class="visually-hidden">Do example</caption><thead><tr><th scope="col">Week</th><th scope="col" class="num">Visits</th></tr></thead><tbody><tr><th scope="row">Week of 5 Oct</th><td class="num">3,870</td></tr></tbody></table></div></div><figcaption>Right-align numbers in <code>.num</code> and give the row a header.</figcaption></figure>
-        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--stack"><div class="table-wrap"><table class="table"><caption class="visually-hidden">Don't example</caption><thead><tr><td>Week</td><td>Visits</td></tr></thead><tbody><tr><td>Week of 5 Oct</td><td>3870</td></tr></tbody></table></div></div><figcaption>Plain cells as headers and left-aligned unseparated numbers lose both meaning and scannability.</figcaption></figure>
-        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--stack"><ul class="inbox-list"><li><span class="photo"><img src="../assets/img/pelau-house.jpg" alt="" width="48" height="48"></span><span class="inbox-row__name">Pelau House</span><span class="inbox-row__time">9:42 a.m.</span><span class="inbox-row__meta">Sat 21 Nov · 120 guests</span><span class="inbox-row__status status status--replied">Replied</span></li></ul></div><figcaption>Customers and caterers get rows with photos.</figcaption></figure>
-        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--stack"><div class="table-wrap"><table class="table"><caption class="visually-hidden">Don't example 2</caption><thead><tr><th scope="col">Caterer</th><th scope="col">Event</th><th scope="col">Status</th></tr></thead><tbody><tr><td>Pelau House</td><td>Sat 21 Nov</td><td>Replied</td></tr></tbody></table></div></div><figcaption>Don't give a customer's inbox a spreadsheet look.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--stack"><dl class="kv"><dt>Usable shooting space</dt><dd>6.1 m × 4.3 m (20 ft × 14 ft)</dd><dt>Ceiling height</dt><dd>4.0 m (13 ft)</dd></dl></div><figcaption>One label, one value: a studio's measured specifications are a <code>.kv</code> description list.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--stack"><div class="table-wrap"><table class="table"><caption class="visually-hidden">Measured specifications of The Junction Loft</caption><thead><tr><th scope="col">Specification</th><th scope="col">Value</th></tr></thead><tbody><tr><th scope="row">Usable shooting space</th><td>6.1 m × 4.3 m (20 ft × 14 ft)</td></tr><tr><th scope="row">Ceiling height</th><td>4.0 m (13 ft)</td></tr></tbody></table></div></div><figcaption>A two-column "Specification · Value" table adds headers that say nothing and stacks into one-cell cards.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--stack"><div class="table-wrap"><table class="table"><caption class="visually-hidden">Light by time of day</caption><thead><tr><th scope="col">Time</th><th scope="col">Rating</th></tr></thead><tbody><tr><th scope="row">Midday</th><td><span class="light-rating"><span class="pips" aria-hidden="true"><i data-on></i><i></i><i></i></span>Low</span></td></tr></tbody></table></div></div><figcaption>Pips are decoration next to the rating word.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--stack"><div class="table-wrap"><table class="table"><caption class="visually-hidden">Light by time of day</caption><thead><tr><th scope="col">Time</th><th scope="col">Rating</th></tr></thead><tbody><tr><th scope="row">Midday</th><td><span class="pips"><i data-on></i><i></i><i></i></span></td></tr></tbody></table></div></div><figcaption>Pips alone carry the rating by shape only and are read as nothing.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--stack"><div class="table-wrap"><table class="table"><caption class="visually-hidden">Studios</caption><tbody><tr><th scope="row">Ossington Blackbox</th><td><a class="btn btn--sm" href="../../mocks/pages/studio-editor/published.html">Edit<span class="visually-hidden"> Ossington Blackbox</span></a></td></tr></tbody></table></div></div><figcaption>Each Edit names its studio for screen readers.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--stack"><div class="table-wrap"><table class="table"><caption class="visually-hidden">Studios</caption><tbody><tr><th scope="row">Ossington Blackbox</th><td><a class="btn btn--sm" href="../../mocks/pages/studio-editor/published.html">Edit</a></td></tr></tbody></table></div></div><figcaption>Nine identical "Edit" links: out of the row, nobody knows which studio they open.</figcaption></figure>
       </div>
     </section>
 
@@ -334,58 +383,65 @@
       <div class="ds-table-wrap"><table class="ds-table">
         <thead><tr><th scope="col">Part</th><th scope="col">Token</th><th scope="col">Light</th><th scope="col">Dark</th></tr></thead>
         <tbody>
-          <tr><td>Wrapper and sticky header</td><td><code>--color-bg-surface</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-bg-surface" data-swatch></i><span data-token="--color-bg-surface"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-bg-surface" data-swatch></i><span data-token="--color-bg-surface"></span></span></td></tr>
-          <tr><td>Rules</td><td><code>--color-border-default</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-border-default" data-swatch></i><span data-token="--color-border-default"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-border-default" data-swatch></i><span data-token="--color-border-default"></span></span></td></tr>
-          <tr><td>Header and caption text</td><td><code>--color-fg-muted</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-muted" data-swatch></i><span data-token="--color-fg-muted"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-muted" data-swatch></i><span data-token="--color-fg-muted"></span></span></td></tr>
-          <tr><td>Cell text</td><td><code>--color-fg-default</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-default" data-swatch></i><span data-token="--color-fg-default"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-default" data-swatch></i><span data-token="--color-fg-default"></span></span></td></tr>
-          <tr><td>Row hover</td><td><code>--color-bg-subtle</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-bg-subtle" data-swatch></i><span data-token="--color-bg-subtle"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-bg-subtle" data-swatch></i><span data-token="--color-bg-subtle"></span></span></td></tr>
-          <tr><td>Selected row</td><td><code>--color-accent-subtle</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-accent-subtle" data-swatch></i><span data-token="--color-accent-subtle"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-accent-subtle" data-swatch></i><span data-token="--color-accent-subtle"></span></span></td></tr>
-          <tr><td>Empty marker</td><td><code>--color-fg-subtle</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-subtle" data-swatch></i><span data-token="--color-fg-subtle"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-subtle" data-swatch></i><span data-token="--color-fg-subtle"></span></span></td></tr>
-          <tr><td>Cell padding (default / dense)</td><td><code>--space-4</code> <code>--space-3</code> / <code>--space-2</code></td><td colspan="2"><span data-token="--space-4"></span> / <span data-token="--space-3"></span> / <span data-token="--space-2"></span></td></tr>
-          <tr><td>Font (cells / headers)</td><td><code>--text-body-sm</code> / <code>--text-label</code></td><td colspan="2"><span data-token="--text-body-sm"></span> / <span data-token="--text-label"></span></td></tr>
-          <tr><td>Row action fade</td><td><code>--duration-fast</code></td><td colspan="2"><span data-token="--duration-fast"></span></td></tr>
+          <tr><td>Wrap and header fill</td><td><code>--color-bg-surface</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-bg-surface" data-swatch></i><span data-token="--color-bg-surface"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-bg-surface" data-swatch></i><span data-token="--color-bg-surface"></span></span></td></tr>
+          <tr><td>Rules and stacked card edge</td><td><code>--color-border-default</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-border-default" data-swatch></i><span data-token="--color-border-default"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-border-default" data-swatch></i><span data-token="--color-border-default"></span></span></td></tr>
+          <tr><td>Hovered row</td><td><code>--color-bg-subtle</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-bg-subtle" data-swatch></i><span data-token="--color-bg-subtle"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-bg-subtle" data-swatch></i><span data-token="--color-bg-subtle"></span></span></td></tr>
+          <tr><td>Column header text</td><td><code>--color-fg-muted</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-muted" data-swatch></i><span data-token="--color-fg-muted"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-muted" data-swatch></i><span data-token="--color-fg-muted"></span></span></td></tr>
+          <tr><td>Stacked label</td><td><code>--color-fg-subtle</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-subtle" data-swatch></i><span data-token="--color-fg-subtle"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-subtle" data-swatch></i><span data-token="--color-fg-subtle"></span></span></td></tr>
+          <tr><td>Cell padding</td><td><code>--space-4</code> / <code>--space-3</code></td><td colspan="2"><span data-token="--space-4"></span> / <span data-token="--space-3"></span></td></tr>
+          <tr><td>Stacked card radius</td><td><code>--radius-md</code></td><td colspan="2"><span data-token="--radius-md"></span></td></tr>
+          <tr><td>Header and label font</td><td><code>--text-label</code></td><td colspan="2"><span data-token="--text-label"></span></td></tr>
+          <tr><td>Cell font</td><td><code>--text-body-sm</code></td><td colspan="2"><span data-token="--text-body-sm"></span></td></tr>
         </tbody>
       </table></div>
     </section>
 
     <section class="ds-section" id="code"><h2><a href="#code">Code</a></h2>
-      <pre><code>&lt;h2 id="status-title"&gt;Caterers by status&lt;/h2&gt;
-&lt;div class="table-wrap"&gt;
-  &lt;table class="table"&gt;
-    &lt;caption class="visually-hidden"&gt;Caterers by status on 10 Oct 2026&lt;/caption&gt;
-    &lt;thead&gt;&lt;tr&gt;&lt;th scope="col"&gt;Status&lt;/th&gt;&lt;th scope="col" class="num"&gt;Caterers&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
-    &lt;tbody&gt;&lt;tr&gt;&lt;th scope="row"&gt;Published&lt;/th&gt;&lt;td class="num"&gt;60&lt;/td&gt;&lt;/tr&gt;…&lt;/tbody&gt;
+      <pre><code>&lt;div class="table-wrap"&gt;
+  &lt;table class="table table--stack"&gt;
+    &lt;caption class="visually-hidden"&gt;Studios, most recently updated first&lt;/caption&gt;
+    &lt;thead&gt;&lt;tr&gt;
+      &lt;th scope="col"&gt;Name&lt;/th&gt;&lt;th scope="col"&gt;Status&lt;/th&gt;
+      &lt;th scope="col" aria-sort="descending"&gt;Last updated&lt;/th&gt;&lt;th scope="col"&gt;Flags&lt;/th&gt;
+      &lt;th scope="col"&gt;&lt;span class="visually-hidden"&gt;Actions&lt;/span&gt;&lt;/th&gt;
+    &lt;/tr&gt;&lt;/thead&gt;
+    &lt;tbody&gt;&lt;tr&gt;
+      &lt;th scope="row"&gt;&lt;a href="/admin/studios/…"&gt;Ossington Blackbox&lt;/a&gt;&lt;br&gt;&lt;span class="text-muted"&gt;Ossington&lt;/span&gt;&lt;/th&gt;
+      &lt;td data-label="Status"&gt;&lt;span class="status status--published"&gt;Published&lt;/span&gt;&lt;/td&gt;
+      &lt;td data-label="Last updated"&gt;&lt;time datetime="2026-03-06"&gt;6 Mar 2026&lt;/time&gt;&lt;/td&gt;
+      &lt;td data-label="Flags"&gt;&lt;span class="badge badge--warning"&gt;Prices stale&lt;/span&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;a class="btn btn--sm" href="/admin/studios/…"&gt;Edit&lt;span class="visually-hidden"&gt; Ossington Blackbox&lt;/span&gt;&lt;/a&gt;&lt;/td&gt;
+    &lt;/tr&gt;&lt;/tbody&gt;
   &lt;/table&gt;
 &lt;/div&gt;</code></pre>
       <table class="ds-table"><thead><tr><th scope="col">Class / attribute</th><th scope="col">Effect</th></tr></thead><tbody>
-        <tr><td><code>.table-wrap</code></td><td>Top rule, surface, sideways scrolling. Add <code>tabindex="0" role="region" aria-labelledby</code> when it can overflow.</td></tr>
-        <tr><td><code>.table</code>, <code>.table--dense</code></td><td>Base table; dense halves the vertical padding.</td></tr>
-        <tr><td><code>.num</code></td><td>Right-aligned tabular figures (on <code>th</code> and <code>td</code>).</td></tr>
-        <tr><td><code>th[aria-sort]</code> + <code>&lt;button&gt;</code></td><td>Sortable header; arrow from <code>ascending</code>/<code>descending</code>.</td></tr>
-        <tr><td><code>.row-actions</code></td><td>Actions revealed on row hover or focus; always visible on touch.</td></tr>
-        <tr><td><code>aria-selected="true"</code> (in <code>role="grid"</code>)</td><td>Selected row tint.</td></tr>
-        <tr><td><code>.na</code></td><td>Muted empty marker.</td></tr>
-        <tr><td><code>aria-busy="true"</code> on <code>.table-wrap</code></td><td>Loading; pair with skeleton rows and a status line.</td></tr>
-        <tr><td><code>data-state="hover|selected"</code> on <code>tr</code></td><td>Documentation and mocks only.</td></tr>
+        <tr><td><code>.table-wrap</code></td><td>Container: hairline top, surface fill, sideways scroll for tables that cannot stack.</td></tr>
+        <tr><td><code>.table</code></td><td>Base table: full width, label headers, hairline rules, row hover.</td></tr>
+        <tr><td><code>.table--stack</code></td><td>Below 48rem each row is a card and each <code>td[data-label]</code> shows its label above the value.</td></tr>
+        <tr><td><code>data-label="…"</code></td><td>The column name repeated on each cell for the stacked layout; omit it on the action cell.</td></tr>
+        <tr><td><code>aria-sort="ascending|descending"</code></td><td>On the header of the column the rows are ordered by.</td></tr>
+        <tr><td><code>aria-busy="true"</code> on <code>.table-wrap</code></td><td>Loading: skeleton cells in place of values.</td></tr>
+        <tr><td><code>.num</code></td><td>Tabular figures; right-aligned on a table cell.</td></tr>
+        <tr><td><code>aria-current</code></td><td>Selected-row fill; in the stylesheet but unused by ShotThere mocks.</td></tr>
+        <tr><td><code>data-state="hover|focus|active"</code></td><td>Documentation only: forces a state on a row or control.</td></tr>
       </tbody></table>
     </section>
 
     <section class="ds-section" id="sources"><h2><a href="#sources">Sources</a></h2>
+      <p>Extracted from these mocks:</p>
       <ul>
-        <li>pages/admin-audit/default, long, loading, empty, no-results, error</li>
-        <li>pages/admin-metrics/default, partial, error</li>
-        <li>pages/privacy/default (cookie and retention tables)</li>
+        <li><a href="../../mocks/pages/spot/default.html">pages/spot/default</a> (light by time of day, by season, permit table and verified line)</li>
+        <li><a href="../../mocks/pages/spot/stale-permit.html">pages/spot/stale-permit</a> (permit table with all four "Required", stale warning beneath)</li>
+        <li><a href="../../mocks/pages/admin-studios/default.html">pages/admin-studios/default</a>, <a href="../../mocks/pages/admin-spots/default.html">pages/admin-spots/default</a>, <a href="../../mocks/pages/admin-guides/default.html">pages/admin-guides/default</a> (admin lists, sort, flags, Edit)</li>
+        <li><a href="../../mocks/pages/admin-studios/loading.html">pages/admin-studios/loading</a> (busy wrap with skeleton cells)</li>
+        <li><a href="../../mocks/pages/admin-studios/empty.html">pages/admin-studios/empty</a>, <a href="../../mocks/pages/admin-studios/no-results.html">no-results</a>, <a href="../../mocks/pages/admin-studios/error.html">error</a> (table replaced by an empty state)</li>
+        <li><a href="../../mocks/pages/studio/default.html">pages/studio/default</a> (specs, fees and logistics as <code>.kv</code>, not a table; <code>.num</code> prices)</li>
+        <li><a href="../../mocks/pages/compare/default.html">pages/compare/default</a> (the comparison table, documented separately)</li>
       </ul>
-      <p>Drift fixed during extraction:</p>
-      <ul>
-        <li>The audit log wrote empty "Before → after" cells as a bare "—", which screen readers read as "em dash"; the system uses <code>.na</code> with a hidden word.</li>
-        <li><code>.table th</code> styles every <code>th</code> as a column header: row headers in the metrics and privacy tables become muted, sticky and unwrappable ("Food handler certificate files" forces sideways scrolling at 320px). A CSS change scopes those rules to <code>thead th</code>.</li>
-        <li>Visually hidden text inside a wide table (a hidden "Actions" header, "No change") is absolutely positioned against the page, not the scrolling wrapper, so it widened the whole page at 320px. The examples here set <code>position: relative</code> on <code>.table-wrap</code>; a CSS change makes that the default.</li>
-        <li>Sortable headers, dense tables, row actions, selected rows and <code>.na</code> come from the kit; no mock uses them yet.</li>
-      </ul>
+      <p>Drift fixed during extraction: the admin loading rows put skeletons in <code>td</code> without <code>data-label</code> and with no row header, so the stacked skeleton cards have no title or labels; acceptable for a placeholder, and the loaded rows keep the full markup. No mock uses a selected row; it is documented as available, not as a pattern to copy.</p>
     </section>
 
-    <footer class="ds-footer"><span>ShotThere design system · extracted from docs/mocks on 10 October 2026</span><a href="#top">Back to top</a></footer>
+    <footer class="ds-footer"><span>ShotThere design system · extracted from <a href="../../mocks/index.html">docs/mocks</a> on 13 October 2026</span><a href="#top">Back to top</a></footer>
   </main>
 </div>
 <script src="../assets/ds.js"></script>

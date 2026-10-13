@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Spacing — ShotThere design system</title>
-<meta name="description" content="ShotThere spacing: the 4px scale, inside versus between rules, padding by component size and the three control heights.">
+<meta name="description" content="ShotThere spacing: the 4px scale, inside-versus-between rules for location cards, review sections and editor sections, padding by component size and the three control heights.">
 <link rel="stylesheet" href="../tokens/tokens.css">
 <link rel="stylesheet" href="../assets/components.css">
 <link rel="stylesheet" href="../assets/ds.css">
@@ -33,40 +33,61 @@
       <li><a href="../components/icon-button.html">Icon button</a></li>
       <li><a href="../components/button-group.html">Button group</a></li>
       <li><a href="../components/link.html">Link</a></li>
+      <li><a href="../components/compare-bar.html">Compare toggle and bar</a></li>
     </ul></details>
     <details open><summary>Inputs</summary><ul>
       <li><a href="../components/form-field.html">Form field</a></li>
       <li><a href="../components/text-field.html">Text field</a></li>
       <li><a href="../components/textarea.html">Textarea</a></li>
       <li><a href="../components/select.html">Select</a></li>
+      <li><a href="../components/combobox.html">Combobox</a></li>
       <li><a href="../components/checkbox.html">Checkbox</a></li>
       <li><a href="../components/radio-group.html">Radio group</a></li>
       <li><a href="../components/file-upload.html">File upload</a></li>
       <li><a href="../components/form-layout.html">Form layout</a></li>
+      <li><a href="../components/signup.html">Email signup</a></li>
     </ul></details>
     <details open><summary>Navigation</summary><ul>
       <li><a href="../components/skip-link.html">Skip link</a></li>
       <li><a href="../components/site-header.html">Site header</a></li>
       <li><a href="../components/footer.html">Footer</a></li>
+      <li><a href="../components/breadcrumb.html">Breadcrumb</a></li>
+      <li><a href="../components/filter.html">Filters</a></li>
     </ul></details>
     <details open><summary>Containers and overlays</summary><ul>
-      <li><a href="../components/container.html">Container and grid</a></li>
-      <li><a href="../components/card.html">Card</a></li>
+      <li><a href="../components/container.html">Container</a></li>
+      <li><a href="../components/review-layout.html">Review layout</a></li>
+      <li><a href="../components/editor-layout.html">Editor layout</a></li>
       <li><a href="../components/dialog.html">Dialog</a></li>
-      <li><a href="../components/sheet.html">Sheet and drawer</a></li>
-      <li><a href="../components/divider.html">Divider</a></li>
+      <li><a href="../components/sheet.html">Sheet</a></li>
+      <li><a href="../components/popover.html">Popover</a></li>
+      <li><a href="../components/lightbox.html">Lightbox</a></li>
     </ul></details>
     <details open><summary>Data display</summary><ul>
+      <li><a href="../components/location-card.html">Location card</a></li>
       <li><a href="../components/table.html">Table</a></li>
+      <li><a href="../components/compare-table.html">Comparison table</a></li>
+      <li><a href="../components/list.html">List rows</a></li>
       <li><a href="../components/description-list.html">Description list</a></li>
+      <li><a href="../components/price-block.html">Price block</a></li>
+      <li><a href="../components/score.html">Score and pips</a></li>
+      <li><a href="../components/shot-grid.html">Shot grid</a></li>
+      <li><a href="../components/video-poster.html">Episode poster</a></li>
+      <li><a href="../components/map.html">Map</a></li>
+      <li><a href="../components/guide-entry.html">Guide entry</a></li>
+      <li><a href="../components/stat-tile.html">Stat tile</a></li>
+      <li><a href="../components/image-manager.html">Image manager</a></li>
+      <li><a href="../components/disclosure.html">Disclosure</a></li>
       <li><a href="../components/badge.html">Badge</a></li>
+      <li><a href="../components/status-label.html">Status label</a></li>
       <li><a href="../components/chip.html">Chip</a></li>
+      <li><a href="../components/tag.html">Tag</a></li>
     </ul></details>
     <details open><summary>Feedback</summary><ul>
       <li><a href="../components/inline-message.html">Inline message</a></li>
-      <li><a href="../components/alert.html">Alert and banner</a></li>
+      <li><a href="../components/alert.html">Alert</a></li>
       <li><a href="../components/toast.html">Toast</a></li>
-      <li><a href="../components/progress.html">Progress and meter</a></li>
+      <li><a href="../components/progress.html">Progress</a></li>
       <li><a href="../components/spinner.html">Spinner</a></li>
       <li><a href="../components/skeleton.html">Skeleton</a></li>
       <li><a href="../components/empty-state.html">Empty state</a></li>
@@ -88,14 +109,14 @@
     <header class="ds-header">
       <p class="ds-kicker">Foundation</p>
       <h1>Spacing</h1>
-      <p class="ds-lead">White space is ShotThere's main divider. A 4px scale, tight inside components and generous between them, keeps screens calm enough for the food photos to lead.</p>
+      <p class="ds-lead">White space is ShotThere's main divider. A 4px scale, tight inside a location card or a fact list and generous between review sections, lets a long review read as a few calm blocks instead of a wall of boxes.</p>
       <div class="ds-meta"><span class="ds-pill ds-pill--ok">WCAG 2.2 AA</span><span class="ds-pill">4px base</span><span class="ds-pill">15 steps</span><span class="ds-pill">44px controls</span></div>
       <ul class="ds-toc"><li><a href="#overview">Overview</a></li><li><a href="#scale">The scale</a></li><li><a href="#inside-between">Inside versus between</a></li><li><a href="#component-padding">Padding by component size</a></li><li><a href="#control-heights">Control heights</a></li><li><a href="#usage">Usage</a></li><li><a href="#accessibility">Accessibility</a></li><li><a href="#tokens">Tokens</a></li></ul>
     </header>
 
-<section class="ds-section" id="overview"><h2><a href="#overview">Overview</a></h2>
-      <p>The reference design separates things with space, not lines: a wide gap between the filter column and the photo grid, big rows between caterer cards, and a short gap between a caterer's name and its "cuisine · area" line. The spacing scale encodes that rhythm so every screen in the 436 mocks uses the same handful of distances.</p>
-      <p>The scale is built on 4px (0.25rem). Token names are multiples of the base: <code>--space-4</code> is 4 × 4px = 16px. Small steps are dense (2, 4, 8, 12, 16, 20, 24px) for component internals; large steps jump (32, 40, 48, 64, 80, 96, 128px) for layout. All values are <code>rem</code>, so spacing grows with the reader's text size.</p>
+    <section class="ds-section" id="overview"><h2><a href="#overview">Overview</a></h2>
+      <p>The ShotThere mocks separate things with space, not lines: a wide gap between the filter column and the location grid, big rows between location cards, 64px between the sections of a review, and a short gap between a studio's name and its "neighbourhood · reviewed" line. The spacing scale encodes that rhythm so every screen uses the same handful of distances.</p>
+      <p>The scale is built on 4px (0.25rem). Token names are multiples of the base: <code>--space-4</code> is 4 × 4px = 16px. Small steps are dense (2, 4, 8, 12, 16, 20, 24px) for component internals; large steps jump (32, 40, 48, 64, 80, 96, 128px) for layout. All values are <code>rem</code>, so spacing grows with the visitor's text size.</p>
       <p>Spacing tokens are fixed; what changes with the viewport is the layout tier built on them (<code>--layout-gutter</code>, <code>--layout-margin</code>, <code>--layout-section-gap</code>), documented on <a href="layout.html">Layout</a>.</p>
     </section>
 
@@ -117,68 +138,134 @@
         <div class="ds-scale__row"><code>--space-24</code><span data-token="--space-24"></span><span class="ds-scale__bar" style="--size: var(--space-24);"></span></div>
         <div class="ds-scale__row"><code>--space-32</code><span data-token="--space-32"></span><span class="ds-scale__bar" style="--size: var(--space-32);"></span></div>
       </div>
-      <div class="ds-table-wrap"><table class="ds-table"><thead><tr><th scope="col">Token</th><th scope="col">Resolved value</th><th scope="col">Declared as</th><th scope="col">Use</th></tr></thead><tbody><tr><td><code>--space-0</code></td><td><span data-token="--space-0"></span></td><td><code>0</code></td><td></td></tr><tr><td><code>--space-0-5</code></td><td><span data-token="--space-0-5"></span></td><td><code>0.125rem</code></td><td>2px · hairline gaps, star spacing.</td></tr><tr><td><code>--space-1</code></td><td><span data-token="--space-1"></span></td><td><code>0.25rem</code></td><td>4px · icon-to-label, label-to-control.</td></tr><tr><td><code>--space-2</code></td><td><span data-token="--space-2"></span></td><td><code>0.5rem</code></td><td>8px · inside chips and tags, between inline items.</td></tr><tr><td><code>--space-3</code></td><td><span data-token="--space-3"></span></td><td><code>0.75rem</code></td><td>12px · compact padding, between buttons.</td></tr><tr><td><code>--space-4</code></td><td><span data-token="--space-4"></span></td><td><code>1rem</code></td><td>16px · default padding, stack gap, phone margin.</td></tr><tr><td><code>--space-5</code></td><td><span data-token="--space-5"></span></td><td><code>1.25rem</code></td><td>20px · dish row padding.</td></tr><tr><td><code>--space-6</code></td><td><span data-token="--space-6"></span></td><td><code>1.5rem</code></td><td>24px · card and dialog padding, form gap.</td></tr><tr><td><code>--space-8</code></td><td><span data-token="--space-8"></span></td><td><code>2rem</code></td><td>32px · section gap, tablet margin.</td></tr><tr><td><code>--space-10</code></td><td><span data-token="--space-10"></span></td><td><code>2.5rem</code></td><td>40px · laptop gutter.</td></tr><tr><td><code>--space-12</code></td><td><span data-token="--space-12"></span></td><td><code>3rem</code></td><td>48px · page section spacing, desktop margin.</td></tr><tr><td><code>--space-16</code></td><td><span data-token="--space-16"></span></td><td><code>4rem</code></td><td>64px · section gap on phones, caterer sections.</td></tr><tr><td><code>--space-20</code></td><td><span data-token="--space-20"></span></td><td><code>5rem</code></td><td>80px · wide-desktop margin.</td></tr><tr><td><code>--space-24</code></td><td><span data-token="--space-24"></span></td><td><code>6rem</code></td><td>96px · section gap from 62rem, footer offset.</td></tr><tr><td><code>--space-32</code></td><td><span data-token="--space-32"></span></td><td><code>8rem</code></td><td>128px admin row body basis.</td></tr></tbody></table></div>
-      <p><b>Where these came from.</b> The scale is the mocks' draft unchanged. The style harvest found every spacing value in <code>ui.css</code> on the 4px grid except sub-pixel optical nudges inside text (0.1em code padding, the 1px negative margin that tucks a tab's bar under the border) and the 2px <code>--space-0-5</code> step, which exists for hairline gaps such as star spacing and the switch thumb inset. Off-scale values in individual mocks (9rem, 11rem, 16rem, 22rem) are mock-only positioning of notes and toasts, not product spacing.</p>
+      <div class="ds-table-wrap"><table class="ds-table"><thead><tr><th scope="col">Token</th><th scope="col">Resolved value</th><th scope="col">Declared as</th><th scope="col">Use</th></tr></thead><tbody><tr><td><code>--space-0</code></td><td><span data-token="--space-0"></span></td><td><code>0</code></td><td>No space: flush media in a skeleton card.</td></tr><tr><td><code>--space-0-5</code></td><td><span data-token="--space-0-5"></span></td><td><code>0.125rem</code></td><td>2px · summary-panel label to value, icon nudge in the disclosure.</td></tr><tr><td><code>--space-1</code></td><td><span data-token="--space-1"></span></td><td><code>0.25rem</code></td><td>4px · pip gap, label to control, name to meta line, fact rows.</td></tr><tr><td><code>--space-2</code></td><td><span data-token="--space-2"></span></td><td><code>0.5rem</code></td><td>8px · inside badges and tags, card stack gap, between compare-bar buttons.</td></tr><tr><td><code>--space-3</code></td><td><span data-token="--space-3"></span></td><td><code>0.75rem</code></td><td>12px · compact padding, compare-bar block padding, between buttons.</td></tr><tr><td><code>--space-4</code></td><td><span data-token="--space-4"></span></td><td><code>1rem</code></td><td>16px · default padding, light-grid cell, fee row, phone margin, shot-grid gap.</td></tr><tr><td><code>--space-5</code></td><td><span data-token="--space-5"></span></td><td><code>1.25rem</code></td><td>20px · pip width, summary-panel gap, editor-section padding, disclosure padding.</td></tr><tr><td><code>--space-6</code></td><td><span data-token="--space-6"></span></td><td><code>1.5rem</code></td><td>24px · dialog and summary-panel padding, location-grid column gap at XS, section heading to content.</td></tr><tr><td><code>--space-8</code></td><td><span data-token="--space-8"></span></td><td><code>2rem</code></td><td>32px · editor-layout gap, review-head top margin, tablet margin.</td></tr><tr><td><code>--space-10</code></td><td><span data-token="--space-10"></span></td><td><code>2.5rem</code></td><td>40px · location-grid row gap at XS, review-layout gap on phones, laptop gutter.</td></tr><tr><td><code>--space-12</code></td><td><span data-token="--space-12"></span></td><td><code>3rem</code></td><td>48px · location-grid row gap from 62rem, browse column gap, editor-layout gap at LG.</td></tr><tr><td><code>--space-16</code></td><td><span data-token="--space-16"></span></td><td><code>4rem</code></td><td>64px · between review sections, review-layout gap at LG, home hero margin.</td></tr><tr><td><code>--space-20</code></td><td><span data-token="--space-20"></span></td><td><code>5rem</code></td><td>80px · wide-desktop margin.</td></tr><tr><td><code>--space-24</code></td><td><span data-token="--space-24"></span></td><td><code>6rem</code></td><td>96px · section gap from 62rem; room kept under the compare bar.</td></tr><tr><td><code>--space-32</code></td><td><span data-token="--space-32"></span></td><td><code>8rem</code></td><td>128px · admin row body flex basis.</td></tr></tbody></table></div>
+      <p><b>Off-scale values.</b> A few fixed sizes in <code>components.css</code> are widths, not spacing, and stay literal because nothing else reuses them: the 9rem compare-table label column and 10rem studio column (L2-031.4), the 24rem map list at LG, the 18rem editor aside, the 5.5rem map-list thumbnail and the 5–6rem image-row thumbnail. Mock-only notes and the mock bar are positioned with literals too; they are tooling, not product.</p>
     </section>
 
     <section class="ds-section" id="inside-between"><h2><a href="#inside-between">Inside versus between</a></h2>
-      <p>One rule decides almost every gap: <b>space inside a group is smaller than the space between groups.</b> A caterer's name sits 4px above its meta line, the photo sits 20px above the name, and the next card starts 48–64px away. The eye groups by proximity, so no border or card is needed.</p>
+      <p>One rule decides almost every gap: <b>space inside a group is smaller than the space between groups.</b> A studio's name sits 8px above its meta line, the photo 16px above the name, and the next card starts 40px below (48px from 62rem). The eye groups by proximity, so a location card needs no border or shadow.</p>
       <div class="ds-example">
-        <div class="ds-example__canvas" style="align-items: flex-start;">
-          <span class="photo"><img src="../assets/img/pelau-house.jpg" alt="Chicken pelau in a steel pot with lime and cucumber chutney"></span><span class="caterer-card__name">Pelau House</span><span class="caterer-card__meta">Trinidadian &amp; Tobagonian · Scarborough</span>
-          <span class="photo"><img src="../assets/img/cou-cou.jpg" alt="Sesame chicken with sweet peppers and broccoli over brown rice"></span><span class="caterer-card__name">Cou-Cou</span><span class="caterer-card__meta">Barbadian (Bajan) · North York</span>
-        </div>
-        <div class="ds-example__caption"><span>Inside a card: 4px name-to-meta (<code>--space-1</code>), 20px photo-to-name (<code>--space-5</code>). Between cards: 32–40px across, 48–64px down. No borders.</span></div>
+        <ul class="location-grid" style="grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 34rem;">
+          <li class="location-card">
+            <div class="location-card__media"><img src="../assets/img/studio-kensington-window-room.svg" alt="" width="1200" height="800"></div>
+            <h3 class="location-card__name"><a href="../../mocks/pages/studio/default.html">Kensington Window Room</a></h3>
+            <p class="location-card__meta">Kensington Market · Reviewed 3 Oct 2026</p>
+            <dl class="location-card__facts"><div><dt>All-in 2 h</dt><dd>$80.00</dd></div><div><dt>Score</dt><dd>3.2<span class="visually-hidden"> out of 5</span></dd></div></dl>
+            <div class="location-card__actions"><button class="btn btn--sm compare-toggle" type="button" aria-pressed="false">Compare<span class="visually-hidden"> Kensington Window Room</span></button></div>
+          </li>
+          <li class="location-card">
+            <div class="location-card__media"><img src="../assets/img/studio-leslieville-daylight-studio.svg" alt="" width="1200" height="800"></div>
+            <h3 class="location-card__name"><a href="../../mocks/pages/studio/default.html">Leslieville Daylight Studio</a></h3>
+            <p class="location-card__meta">Leslieville · Reviewed 14 Aug 2026</p>
+            <dl class="location-card__facts"><div><dt>All-in 2 h</dt><dd>$91.00</dd></div><div><dt>Score</dt><dd>4.0<span class="visually-hidden"> out of 5</span></dd></div></dl>
+            <div class="location-card__actions"><button class="btn btn--sm compare-toggle" type="button" aria-pressed="false">Compare<span class="visually-hidden"> Leslieville Daylight Studio</span></button></div>
+          </li>
+        </ul>
+        <div class="ds-example__caption"><span>Inside a card: 8px stack gap (<code>--space-2</code>) plus 8px under the photo; facts 4px × 16px. Between cards: 24px across at XS–MD (32px from 62rem), 40px down (48px from 62rem). From <a href="../../mocks/pages/studios/default.html">pages/studios/default</a>.</span></div>
       </div>
+
+      <h3>Review sections: 64px apart</h3>
+      <p>A studio or spot review is a run of sections (Pricing, Measured specifications, Gear, Logistics, Standard test shots, From a real shoot, Verdict, Watch the episode). Each <code>.review-section</code> starts 64px (<code>--space-16</code>) below the last, with 24px (<code>--space-6</code>) between its h2 and its content, and 32px above / 12px below an h3. The summary panel beside it uses 24px padding and a 20px internal gap.</p>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--stack" style="display: block;">
+          <section class="review-section" aria-labelledby="sp-pricing" style="margin-top: 0;">
+            <h2 id="sp-pricing">Pricing</h2>
+            <div class="price-block">
+              <p class="price-block__allin"><strong>$145.00</strong><span>All-in for a standard 2-hour shoot: 2 hours at $60.00 plus the mandatory cleaning fee.</span></p>
+              <p class="price-block__verified">Prices verified <time datetime="2026-09-22">22 September 2026</time></p>
+            </div>
+          </section>
+          <section class="review-section" aria-labelledby="sp-specs">
+            <h2 id="sp-specs">Measured specifications</h2>
+            <dl class="kv">
+              <dt>Usable shooting space</dt><dd class="num">6.1 m × 4.3 m (20 ft × 14 ft)</dd>
+              <dt>Ceiling height</dt><dd class="num">4.0 m (13 ft)</dd>
+            </dl>
+          </section>
+        </div>
+        <div class="ds-example__caption"><span>64px between sections, 24px from heading to content, 20px inside the price block. From <a href="../../mocks/pages/studio/default.html">pages/studio/default</a>.</span></div>
+      </div>
+
+      <h3>Editor sections: 16px apart, 20px inside</h3>
+      <p>The studio, spot and guide editors stack collapsible <code>.editor-section</code> panels 16px apart (<code>.editor-form</code> gap). The summary row is 52px tall with 12px / 20px padding; the body has 20px between fields and 8px / 20px / 24px padding. The status aside sits 32px away (48px from 62rem).</p>
+      <div class="ds-example">
+        <div class="editor-form" style="max-width: 36rem;">
+          <details class="editor-section" open>
+            <summary><h2>Pricing and fees</h2></summary>
+            <div class="editor-section__body">
+              <div class="field-row">
+                <label class="field"><span class="field__label">Hourly rate</span><span class="input-group"><span class="addon" aria-hidden="true">$</span><input class="input" name="sp-rate" type="number" inputmode="decimal" min="0" step="0.5" value="65.00"></span></label>
+                <label class="field"><span class="field__label">Minimum booking (hours)</span><input class="input" name="sp-min" type="number" inputmode="numeric" min="1" step="1" value="2"></label>
+              </div>
+              <div class="fee-row">
+                <label class="field"><span class="field__label">Fee name</span><input class="input" name="sp-fee" value="Cleaning"></label>
+                <label class="field"><span class="field__label">Amount</span><span class="input-group"><span class="addon" aria-hidden="true">$</span><input class="input" name="sp-amount" type="number" inputmode="decimal" min="0" value="20.00"></span></label>
+              </div>
+            </div>
+          </details>
+          <details class="editor-section">
+            <summary><h2>Measured specifications</h2></summary>
+            <div class="editor-section__body"><label class="field"><span class="field__label">Ceiling height (m)</span><input class="input" name="sp-ceiling" type="number" inputmode="decimal" step="0.1"></label></div>
+          </details>
+        </div>
+        <div class="ds-example__caption"><span>16px between sections, 20px between fields, 16px padding and 12px gap in the fee row. From <a href="../../mocks/pages/studio-editor/default.html">pages/studio-editor/default</a>.</span></div>
+      </div>
+
       <div class="ds-table-wrap"><table class="ds-table">
         <thead><tr><th scope="col">Relationship</th><th scope="col">Token</th><th scope="col">Example from the mocks</th></tr></thead>
         <tbody>
-          <tr><td>Icon to its label</td><td><code>--space-1</code>–<code>--space-2</code></td><td>Pin icon and "Scarborough"; chip and tag icons</td></tr>
-          <tr><td>Label to its control; title to its line</td><td><code>--space-1</code></td><td>"Event date" above the date input; caterer name above "Jamaican · Pickering"</td></tr>
-          <tr><td>Items in a cluster</td><td><code>--space-2</code>–<code>--space-3</code></td><td>Dietary tags; active filter chips; buttons in a dialog footer</td></tr>
-          <tr><td>Fields in a form</td><td><code>--space-6</code></td><td>The enquiry form; profile details</td></tr>
-          <tr><td>Fields side by side</td><td><code>--space-4</code></td><td>Guests and area in one row from 36rem</td></tr>
-          <tr><td>Section heading to its content</td><td><code>--space-6</code></td><td>"Menu" heading above the dish list</td></tr>
-          <tr><td>Cards in a grid</td><td><code>--space-6</code>–<code>--space-10</code> across, <code>--space-12</code>–<code>--space-16</code> down</td><td>The listing grid grows its gaps at 36rem and 62rem</td></tr>
-          <tr><td>Sections of a page</td><td><code>--space-16</code> (<code>--layout-section-gap</code>, 96px from 62rem)</td><td>Gallery, about, menu, areas and reviews on the caterer page</td></tr>
+          <tr><td>Pips in a row; fact label to value</td><td><code>--space-1</code></td><td>Rubric pips; "All-in 2 h" above "$80.00" on a card</td></tr>
+          <tr><td>Icon to its label; items in a stack</td><td><code>--space-2</code></td><td>Light level pips and "Medium"; the location card's stack; compare-bar buttons</td></tr>
+          <tr><td>Items in a cluster</td><td><code>--space-3</code></td><td>Buttons in a dialog footer; the light grid; the review meta line</td></tr>
+          <tr><td>Fields side by side; shots in a grid</td><td><code>--space-4</code></td><td>Width and depth in the editor; the 2 / 3 / 4-up shot grid</td></tr>
+          <tr><td>Fields in an editor section; summary-panel rows</td><td><code>--space-5</code></td><td>Name, neighbourhood, booking link; all-in and overall</td></tr>
+          <tr><td>Section heading to its content; dialog and summary-panel padding</td><td><code>--space-6</code></td><td>"Pricing" above the price block; dialogs; the summary panel</td></tr>
+          <tr><td>Cards in a grid</td><td><code>--space-6</code>–<code>--space-8</code> across, <code>--space-10</code>–<code>--space-12</code> down</td><td>The location grid grows its gaps at 62rem</td></tr>
+          <tr><td>Sections of a review</td><td><code>--space-16</code></td><td>Pricing, specifications, gear, logistics, test shots, verdict</td></tr>
+          <tr><td>Page sections</td><td><code>--layout-section-gap</code> (64px, 96px from 62rem)</td><td>Latest studios, latest spots and guides on the home page</td></tr>
+          <tr><td>Room under the compare bar</td><td><code>--space-24</code> + safe-area inset</td><td><code>.has-compare-bar</code> on lists and reviews (L2-030.6)</td></tr>
         </tbody>
       </table></div>
       <div class="ds-dodont">
-        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--stack" style="gap: var(--space-1);"><p style="font: var(--text-card-title);">Ti Kay</p><p class="text-muted" style="font: var(--text-body-sm);">Haitian · Etobicoke</p></div><figcaption>Keep a name and its supporting line 4px apart so they read as one thing.</figcaption></figure>
-        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--stack" style="gap: var(--space-8);"><p style="font: var(--text-card-title);">Ti Kay</p><p class="text-muted" style="font: var(--text-body-sm);">Haitian · Etobicoke</p></div><figcaption>Space a label from its own detail as far as from the next card; the grouping falls apart.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--stack" style="gap: var(--space-2);"><p style="font: var(--text-card-title);">Bloordale Sun Studio</p><p class="location-card__meta">Bloordale · Reviewed 20 Jul 2026</p></div><figcaption>Keep a name and its supporting line 8px apart so they read as one thing.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--stack" style="gap: var(--space-10);"><p style="font: var(--text-card-title);">Bloordale Sun Studio</p><p class="location-card__meta">Bloordale · Reviewed 20 Jul 2026</p></div><figcaption>Space a name from its own detail as far as from the next card; the grouping falls apart.</figcaption></figure>
+      </div>
+      <div class="ds-dodont">
+        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--stack" style="display: block;"><section class="review-section" aria-labelledby="dd-gear" style="margin-top: 0;"><h2 id="dd-gear">Gear</h2><p>Godox AD600 strobe × 2 · 60 cm LED panel × 1</p></section><section class="review-section" aria-labelledby="dd-logistics"><h2 id="dd-logistics">Logistics</h2><p>Freight elevator · small, 1.2 m wide</p></section></div><figcaption>Separate review sections with 64px of space; the headings do the rest.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--stack"><div style="width: 100%; padding: var(--space-6); border: var(--border-width-hairline) solid var(--color-border-default); border-radius: var(--radius-lg);"><p style="font: var(--text-h4);">Gear</p><p>Godox AD600 strobe × 2 · 60 cm LED panel × 1</p></div><div style="width: 100%; padding: var(--space-6); border: var(--border-width-hairline) solid var(--color-border-default); border-radius: var(--radius-lg);"><p style="font: var(--text-h4);">Logistics</p><p>Freight elevator · small, 1.2 m wide</p></div></div><figcaption>Box every section in a bordered panel with small gaps; a long review turns into a stack of forms.</figcaption></figure>
       </div>
     </section>
 
     <section class="ds-section" id="component-padding"><h2><a href="#component-padding">Padding by component size</a></h2>
-      <p>Padding scales with the component. Controls have a fixed height (see <a href="#control-heights">Control heights</a>) and only horizontal padding; containers have equal padding on all sides that steps up with their size.</p>
+      <p>Padding scales with the component. Controls have a fixed height (see <a href="#control-heights">Control heights</a>) and only horizontal padding; containers have padding on all sides that steps up with their size.</p>
       <div class="ds-table-wrap"><table class="ds-table">
         <thead><tr><th scope="col">Component and size</th><th scope="col">Height</th><th scope="col">Padding</th><th scope="col">Gap inside</th></tr></thead>
         <tbody>
-          <tr><td>Tag, badge</td><td>24px (min)</td><td><code>0 --space-2</code></td><td><code>--space-1</code></td></tr>
-          <tr><td>Chip, menu item, small button</td><td><code>--control-height-sm</code> from 48rem (44px below)</td><td><code>0 --space-3</code></td><td><code>--space-1</code>–<code>--space-3</code></td></tr>
+          <tr><td>Badge, tag</td><td>24px (min)</td><td><code>0 --space-2</code></td><td><code>--space-1</code></td></tr>
+          <tr><td>Small button (compare toggle on a card, admin row actions)</td><td><code>--control-height-sm</code> from 48rem (44px below)</td><td><code>0 --space-3</code></td><td><code>--space-2</code></td></tr>
           <tr><td>Button (default), filter trigger</td><td><code>--control-height-md</code></td><td><code>0 --space-4</code></td><td><code>--space-2</code></td></tr>
           <tr><td>Input, select</td><td><code>--control-height-md</code></td><td><code>--space-2 --space-3</code></td><td>n/a</td></tr>
-          <tr><td>Large button, large input, search field</td><td><code>--control-height-lg</code></td><td><code>0 --space-6</code> (button)</td><td><code>--space-2</code></td></tr>
-          <tr><td>Well, toast, alert, menu panel</td><td>content</td><td><code>--space-4</code> (menu panel <code>--space-1</code>)</td><td><code>--space-3</code></td></tr>
-          <tr><td>Dish row</td><td>content</td><td><code>--space-5</code> block</td><td><code>--space-1</code></td></tr>
-          <tr><td>Card, dialog</td><td>content</td><td><code>--space-6</code></td><td><code>--space-4</code></td></tr>
-          <tr><td>Enquiry panel (LG and up)</td><td>content</td><td><code>--space-8</code></td><td><code>--space-6</code></td></tr>
+          <tr><td>Large button and input (sign-in), play pill</td><td><code>--control-height-lg</code></td><td><code>0 --space-6</code></td><td><code>--space-2</code></td></tr>
+          <tr><td>Alert, toast, light-grid cell, fee row, map-unavailable</td><td>content</td><td><code>--space-4</code> (map-unavailable <code>--space-6</code>)</td><td><code>--space-2</code>–<code>--space-3</code></td></tr>
+          <tr><td>Disclosure, all-in price block</td><td>content</td><td><code>--space-4 --space-5</code>, <code>--space-5 --space-6</code></td><td><code>--space-1</code>–<code>--space-3</code></td></tr>
+          <tr><td>Compare bar</td><td>content</td><td><code>--space-3 --layout-margin</code> + safe-area inset</td><td><code>--space-2 --space-4</code></td></tr>
+          <tr><td>Stat tile, editor aside</td><td>content</td><td><code>--space-5 --space-6</code>, <code>--space-5</code></td><td><code>--space-3</code>–<code>--space-4</code></td></tr>
+          <tr><td>Dialog, summary panel</td><td>content</td><td><code>--space-6</code></td><td><code>--space-4</code>–<code>--space-5</code></td></tr>
         </tbody>
       </table></div>
       <div class="ds-example">
         <div class="ds-example__canvas">
-          <span class="tag">Vegan</span>
-          <button class="chip" type="button" aria-pressed="false">Birthdays</button>
-          <button class="btn btn--sm" type="button">Edit</button>
-          <button class="btn" type="button">Cancel</button>
-          <button class="btn btn--primary btn--lg" type="button">Send an enquiry</button>
+          <span class="badge">Mandatory</span>
+          <button class="btn btn--sm compare-toggle" type="button" aria-pressed="false">Compare<span class="visually-hidden"> Riverside Rooftop Studio</span></button>
+          <button class="btn" type="button">Apply filters</button>
+          <button class="btn btn--primary btn--lg" type="button">Sign in</button>
         </div>
-        <div class="ds-example__caption"><span>Tag 8px, chip and small button 12px, button 16px, large button 24px horizontal padding. Below 48rem the chip and small button grow to 44px tall.</span></div>
+        <div class="ds-example__caption"><span>Badge 8px, small button 12px, button 16px, large button 24px horizontal padding. Below 48rem the small button grows to 44px tall.</span></div>
       </div>
     </section>
 
     <section class="ds-section" id="control-heights"><h2><a href="#control-heights">Control heights</a></h2>
-      <p>Three heights for everything you can press or type into, so a button, an input and a select line up in one row. Medium (44px) is the default because it already meets the phone touch target (L2-065.1). Small (36px) is a <b>desktop density, from 48rem only</b>: below 48rem (XS and SM) every compact control grows to 44px through one rule at the end of <code>components.css</code>, so phones never get a target under 44 × 44px.</p>
+      <p>Three heights for everything a visitor or the admin can press or type into, so a button, an input and a select line up in one row. Medium (44px) is the default because it already meets the phone target (L2-065.3). Small (36px) is a <b>desktop density, from 48rem only</b>: below 48rem every compact control grows to 44px through one rule at the end of <code>components.css</code>, so phones never get a target under 44 × 44px.</p>
       <div class="ds-scale">
         <div class="ds-scale__row"><code>--control-height-sm</code><span data-token="--control-height-sm"></span><span class="ds-scale__bar" style="--size: var(--control-height-sm);"></span></div>
         <div class="ds-scale__row"><code>--control-height-md</code><span data-token="--control-height-md"></span><span class="ds-scale__bar" style="--size: var(--control-height-md);"></span></div>
@@ -186,46 +273,47 @@
       </div>
       <div class="ds-example">
         <div class="ds-example__canvas" style="align-items: flex-end;">
-          <label class="field" style="width: 12rem;"><span class="field__label">Guests</span><input class="input" type="number" inputmode="numeric" value="120"></label>
-          <button class="btn" type="button">Check availability</button>
-          <button class="btn btn--sm" type="button">Clear</button>
+          <div class="field" style="width: 14rem;"><label class="field__label" for="sp-space">Minimum usable space</label><select class="select" id="sp-space"><option>Any size</option><option>20 m² or more</option><option>30 m² or more</option></select></div>
+          <button class="btn" type="button">Apply filters</button>
+          <button class="btn btn--sm" type="button">Edit<span class="visually-hidden"> Ossington Blackbox prices</span></button>
         </div>
-        <div class="ds-example__caption"><span>A 44px input and a 44px button share a baseline; the small button is 36px from 48rem and 44px below it.</span></div>
+        <div class="ds-example__caption"><span>A 44px select and a 44px button share a baseline; the small button is 36px from 48rem and 44px below it.</span></div>
       </div>
-      <div class="ds-table-wrap"><table class="ds-table"><thead><tr><th scope="col">Token</th><th scope="col">Resolved value</th><th scope="col">Declared as</th><th scope="col">Use</th></tr></thead><tbody><tr><td><code>--control-height-sm</code></td><td><span data-token="--control-height-sm"></span></td><td><code>2.25rem</code></td><td>36px · row actions, chips.</td></tr><tr><td><code>--control-height-md</code></td><td><span data-token="--control-height-md"></span></td><td><code>2.75rem</code></td><td>44px · default: every control meets L2-065.</td></tr><tr><td><code>--control-height-lg</code></td><td><span data-token="--control-height-lg"></span></td><td><code>3.25rem</code></td><td>52px · hero search, auth, enquiry CTA.</td></tr></tbody></table></div>
+      <div class="ds-table-wrap"><table class="ds-table"><thead><tr><th scope="col">Token</th><th scope="col">Resolved value</th><th scope="col">Declared as</th><th scope="col">Use</th></tr></thead><tbody><tr><td><code>--control-height-sm</code></td><td><span data-token="--control-height-sm"></span></td><td><code>2.25rem</code></td><td>36px from 48rem (44px below) · compare toggle on cards, admin row actions.</td></tr><tr><td><code>--control-height-md</code></td><td><span data-token="--control-height-md"></span></td><td><code>2.75rem</code></td><td>44px · default: every button, input and select (L2-065.3).</td></tr><tr><td><code>--control-height-lg</code></td><td><span data-token="--control-height-lg"></span></td><td><code>3.25rem</code></td><td>52px · sign-in fields and button, the episode play pill, editor-section summaries.</td></tr></tbody></table></div>
       <ul>
-        <li><b>Small, 36px from 48rem:</b> chips, menu items, row actions (edit, remove, move up), small inputs in operator toolbars. Below 48rem these, plus chip remove buttons, choice rows, toast actions, breadcrumb links and alert close buttons, are 44px.</li>
-        <li><b>Medium, 44px:</b> every other button, input, select, pagination link and filter trigger.</li>
-        <li><b>Large, 52px:</b> the hero area and postal code search, sign-in and registration buttons, the enquiry call to action, device rows in account security.</li>
+        <li><b>Small, 36px from 48rem:</b> the compare toggle on location cards, "Edit" in admin rows and on the dashboard, image-row actions (move up, move down, remove), "Add fee". Below 48rem these, plus choice rows, toast actions, breadcrumb links and alert close buttons, are 44px.</li>
+        <li><b>Medium, 44px:</b> every other button, input and select; the compare toggle in a review's summary panel; the site menu button. Map markers use the same 44px as their hit area (<code>--target-comfortable</code>).</li>
+        <li><b>Large, 52px:</b> the sign-in fields and button, the episode play pill, editor-section summary rows.</li>
       </ul>
     </section>
 
     <section class="ds-section" id="usage"><h2><a href="#usage">Usage</a></h2>
       <ul>
         <li><b>Use the tokens.</b> Every margin, padding and gap is a <code>--space-*</code> token. If a design needs 14px, it needs 12 or 16.</li>
-        <li><b>Use gap, not margins, inside components.</b> <code>.stack</code> (16px), <code>.stack--sm</code> (8px), <code>.stack--lg</code> (32px) and <code>.cluster</code> (12px) set rhythm without margin collapse surprises.</li>
-        <li><b>Separate with space before lines.</b> Reach for a bigger gap first; add a hairline divider only where space alone is ambiguous (dish rows, table rows, list rows).</li>
-        <li><b>Grow between, not inside.</b> On larger screens the layout gaps grow (gutters, margins, section gaps); component padding stays the same.</li>
+        <li><b>Use gap, not margins, inside components.</b> <code>.stack</code> (16px), <code>.stack--sm</code> (8px), <code>.stack--lg</code> (32px) and <code>.cluster</code> (12px) set rhythm without margin-collapse surprises.</li>
+        <li><b>Separate with space before lines.</b> Reach for a bigger gap first; add a hairline only where space alone is ambiguous (fact rows in <code>.kv</code>, score rows, table rows, admin rows).</li>
+        <li><b>Grow between, not inside.</b> On larger screens the layout gaps grow (gutters, margins, grid gaps); component padding stays the same.</li>
         <li><b>Keep controls on the height scale.</b> Do not stretch a button with padding; choose sm, md or lg.</li>
-        <li><b>Respect safe areas.</b> Fixed bars add <code>env(safe-area-inset-bottom)</code> to their bottom padding (sticky enquiry bar, reply box, sticky form actions).</li>
+        <li><b>Respect safe areas.</b> The compare bar adds <code>env(safe-area-inset-bottom)</code> to its bottom padding, and pages that show it add the same to their own bottom padding (<code>.has-compare-bar</code>) so the last card is never hidden (L2-030.6, L2-065.1).</li>
       </ul>
     </section>
 
     <section class="ds-section" id="accessibility"><h2><a href="#accessibility">Accessibility</a></h2>
       <ul>
-        <li><b>Touch targets (2.5.8, L2-065.1).</b> On XS and SM every interactive control is at least 44 × 44px with at least 8px (<code>--space-2</code>) between neighbouring targets. Medium controls meet this by height; compact controls (<code>.btn--sm</code>, <code>.chip</code>, <code>.menu__item</code>, <code>.input--sm</code>, <code>.choice</code>, <code>.toast__action</code>, breadcrumb links, close and remove buttons) grow to 44px below 48rem and only take their 36px or 24px size from 48rem, where WCAG 2.5.8 (24px) applies.</li>
-        <li><b>Spacing survives text resizing.</b> Because every value is <code>rem</code>, a reader who sets 20px text gets proportionally larger gaps and taller controls, and nothing overlaps.</li>
-        <li><b>Text spacing (1.4.12).</b> No component uses fixed heights for text, only <code>min-height</code>, so overriding line, word and letter spacing never clips content.</li>
-        <li><b>Focus has room.</b> The focus ring sits 3px outside the element; gaps of at least <code>--space-2</code> between controls keep neighbouring rings from overlapping.</li>
+        <li><b>Target size (2.5.8, L2-065).</b> Nothing is smaller than 24 × 24px anywhere (L2-065.2); at XS and SM every navigation link, filter control, compare toggle and submit button is at least 44px tall (L2-065.3), with at least 8px (<code>--space-2</code>) between neighbouring targets. Map markers are 44 × 44px hit areas around a 24px mark.</li>
+        <li><b>Spacing survives text resizing.</b> Because every value is <code>rem</code>, a visitor who sets 20px text gets proportionally larger gaps and taller controls, and nothing overlaps.</li>
+        <li><b>Text spacing (1.4.12).</b> No component uses a fixed height for text, only <code>min-height</code>, so overriding line, word and letter spacing never clips content.</li>
+        <li><b>Focus has room.</b> The focus ring sits 3px outside the element (8px outside a location card); gaps of at least <code>--space-2</code> between controls keep neighbouring rings from overlapping.</li>
+        <li><b>Nothing hides under the compare bar.</b> The page's bottom padding reserves the bar's height, so the last card and the footer stay reachable and a focused control is never covered (2.4.11).</li>
       </ul>
     </section>
 
     <section class="ds-section" id="tokens"><h2><a href="#tokens">Tokens</a></h2>
       <p>Spacing does not change between themes or viewports.</p>
-      <div class="ds-table-wrap"><table class="ds-table"><thead><tr><th scope="col">Token</th><th scope="col">Resolved value</th><th scope="col">Declared as</th><th scope="col">Use</th></tr></thead><tbody><tr><td><code>--space-0</code></td><td><span data-token="--space-0"></span></td><td><code>0</code></td><td></td></tr><tr><td><code>--space-0-5</code></td><td><span data-token="--space-0-5"></span></td><td><code>0.125rem</code></td><td>2px · hairline gaps, star spacing.</td></tr><tr><td><code>--space-1</code></td><td><span data-token="--space-1"></span></td><td><code>0.25rem</code></td><td>4px · icon-to-label, label-to-control.</td></tr><tr><td><code>--space-2</code></td><td><span data-token="--space-2"></span></td><td><code>0.5rem</code></td><td>8px · inside chips and tags, between inline items.</td></tr><tr><td><code>--space-3</code></td><td><span data-token="--space-3"></span></td><td><code>0.75rem</code></td><td>12px · compact padding, between buttons.</td></tr><tr><td><code>--space-4</code></td><td><span data-token="--space-4"></span></td><td><code>1rem</code></td><td>16px · default padding, stack gap, phone margin.</td></tr><tr><td><code>--space-5</code></td><td><span data-token="--space-5"></span></td><td><code>1.25rem</code></td><td>20px · dish row padding.</td></tr><tr><td><code>--space-6</code></td><td><span data-token="--space-6"></span></td><td><code>1.5rem</code></td><td>24px · card and dialog padding, form gap.</td></tr><tr><td><code>--space-8</code></td><td><span data-token="--space-8"></span></td><td><code>2rem</code></td><td>32px · section gap, tablet margin.</td></tr><tr><td><code>--space-10</code></td><td><span data-token="--space-10"></span></td><td><code>2.5rem</code></td><td>40px · laptop gutter.</td></tr><tr><td><code>--space-12</code></td><td><span data-token="--space-12"></span></td><td><code>3rem</code></td><td>48px · page section spacing, desktop margin.</td></tr><tr><td><code>--space-16</code></td><td><span data-token="--space-16"></span></td><td><code>4rem</code></td><td>64px · section gap on phones, caterer sections.</td></tr><tr><td><code>--space-20</code></td><td><span data-token="--space-20"></span></td><td><code>5rem</code></td><td>80px · wide-desktop margin.</td></tr><tr><td><code>--space-24</code></td><td><span data-token="--space-24"></span></td><td><code>6rem</code></td><td>96px · section gap from 62rem, footer offset.</td></tr><tr><td><code>--space-32</code></td><td><span data-token="--space-32"></span></td><td><code>8rem</code></td><td>128px admin row body basis.</td></tr><tr><td><code>--control-height-sm</code></td><td><span data-token="--control-height-sm"></span></td><td><code>2.25rem</code></td><td>36px · row actions, chips.</td></tr><tr><td><code>--control-height-md</code></td><td><span data-token="--control-height-md"></span></td><td><code>2.75rem</code></td><td>44px · default: every control meets L2-065.</td></tr><tr><td><code>--control-height-lg</code></td><td><span data-token="--control-height-lg"></span></td><td><code>3.25rem</code></td><td>52px · hero search, auth, enquiry CTA.</td></tr></tbody></table></div>
+      <div class="ds-table-wrap"><table class="ds-table"><thead><tr><th scope="col">Token</th><th scope="col">Resolved value</th><th scope="col">Declared as</th><th scope="col">Use</th></tr></thead><tbody><tr><td><code>--space-0</code></td><td><span data-token="--space-0"></span></td><td><code>0</code></td><td>No space: flush media in a skeleton card.</td></tr><tr><td><code>--space-0-5</code></td><td><span data-token="--space-0-5"></span></td><td><code>0.125rem</code></td><td>2px · summary-panel label to value, icon nudge in the disclosure.</td></tr><tr><td><code>--space-1</code></td><td><span data-token="--space-1"></span></td><td><code>0.25rem</code></td><td>4px · pip gap, label to control, name to meta line, fact rows.</td></tr><tr><td><code>--space-2</code></td><td><span data-token="--space-2"></span></td><td><code>0.5rem</code></td><td>8px · inside badges and tags, card stack gap, between compare-bar buttons.</td></tr><tr><td><code>--space-3</code></td><td><span data-token="--space-3"></span></td><td><code>0.75rem</code></td><td>12px · compact padding, compare-bar block padding, between buttons.</td></tr><tr><td><code>--space-4</code></td><td><span data-token="--space-4"></span></td><td><code>1rem</code></td><td>16px · default padding, light-grid cell, fee row, phone margin, shot-grid gap.</td></tr><tr><td><code>--space-5</code></td><td><span data-token="--space-5"></span></td><td><code>1.25rem</code></td><td>20px · pip width, summary-panel gap, editor-section padding, disclosure padding.</td></tr><tr><td><code>--space-6</code></td><td><span data-token="--space-6"></span></td><td><code>1.5rem</code></td><td>24px · dialog and summary-panel padding, location-grid column gap at XS, section heading to content.</td></tr><tr><td><code>--space-8</code></td><td><span data-token="--space-8"></span></td><td><code>2rem</code></td><td>32px · editor-layout gap, review-head top margin, tablet margin.</td></tr><tr><td><code>--space-10</code></td><td><span data-token="--space-10"></span></td><td><code>2.5rem</code></td><td>40px · location-grid row gap at XS, review-layout gap on phones, laptop gutter.</td></tr><tr><td><code>--space-12</code></td><td><span data-token="--space-12"></span></td><td><code>3rem</code></td><td>48px · location-grid row gap from 62rem, browse column gap, editor-layout gap at LG.</td></tr><tr><td><code>--space-16</code></td><td><span data-token="--space-16"></span></td><td><code>4rem</code></td><td>64px · between review sections, review-layout gap at LG, home hero margin.</td></tr><tr><td><code>--space-20</code></td><td><span data-token="--space-20"></span></td><td><code>5rem</code></td><td>80px · wide-desktop margin.</td></tr><tr><td><code>--space-24</code></td><td><span data-token="--space-24"></span></td><td><code>6rem</code></td><td>96px · section gap from 62rem; room kept under the compare bar.</td></tr><tr><td><code>--space-32</code></td><td><span data-token="--space-32"></span></td><td><code>8rem</code></td><td>128px · admin row body flex basis.</td></tr><tr><td><code>--control-height-sm</code></td><td><span data-token="--control-height-sm"></span></td><td><code>2.25rem</code></td><td>36px from 48rem (44px below) · compare toggle on cards, admin row actions.</td></tr><tr><td><code>--control-height-md</code></td><td><span data-token="--control-height-md"></span></td><td><code>2.75rem</code></td><td>44px · default: every button, input and select (L2-065.3).</td></tr><tr><td><code>--control-height-lg</code></td><td><span data-token="--control-height-lg"></span></td><td><code>3.25rem</code></td><td>52px · sign-in fields and button, the episode play pill, editor-section summaries.</td></tr></tbody></table></div>
     </section>
 
-    <footer class="ds-footer"><span>ShotThere design system · extracted from docs/mocks on 10 October 2026</span><a href="#top">Back to top</a></footer>
+    <footer class="ds-footer"><span>ShotThere design system · extracted from <a href="../../mocks/index.html">docs/mocks</a> on 13 October 2026</span><a href="#top">Back to top</a></footer>
   </main>
 </div>
 <script src="../assets/ds.js"></script>

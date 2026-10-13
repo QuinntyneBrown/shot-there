@@ -1,0 +1,495 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lightbox — ShotThere design system</title>
+<meta name="description" content="The full-screen photo viewer for studio galleries, test shots and spot sample shots: a modal dialog with a count, Close, Previous and Next that wrap, a caption, phone pager and an alt-text fallback.">
+<link rel="stylesheet" href="../tokens/tokens.css">
+<link rel="stylesheet" href="../assets/components.css">
+<link rel="stylesheet" href="../assets/ds.css">
+</head>
+<body id="top">
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="ds-shell">
+  <nav class="ds-nav" aria-label="Design system">
+    <div class="ds-nav__brand"><a href="../index.html">ShotThere DS</a><button class="ds-theme-toggle" type="button" aria-pressed="false">☾ Dark</button></div>
+    <details open><summary>Foundations</summary><ul>
+      <li><a href="../foundations/color.html">Color</a></li>
+      <li><a href="../foundations/typography.html">Typography</a></li>
+      <li><a href="../foundations/spacing.html">Spacing</a></li>
+      <li><a href="../foundations/layout.html">Layout</a></li>
+      <li><a href="../foundations/elevation.html">Elevation</a></li>
+      <li><a href="../foundations/shape.html">Shape</a></li>
+      <li><a href="../foundations/motion.html">Motion</a></li>
+      <li><a href="../foundations/iconography.html">Iconography</a></li>
+      <li><a href="../foundations/theming.html">Theming</a></li>
+      <li><a href="../foundations/responsive.html">Responsive</a></li>
+      <li><a href="../foundations/accessibility.html">Accessibility</a></li>
+      <li><a href="../foundations/content.html">Content</a></li>
+    </ul></details>
+    <details open><summary>Actions</summary><ul>
+      <li><a href="../components/button.html">Button</a></li>
+      <li><a href="../components/icon-button.html">Icon button</a></li>
+      <li><a href="../components/button-group.html">Button group</a></li>
+      <li><a href="../components/link.html">Link</a></li>
+      <li><a href="../components/compare-bar.html">Compare toggle and bar</a></li>
+    </ul></details>
+    <details open><summary>Inputs</summary><ul>
+      <li><a href="../components/form-field.html">Form field</a></li>
+      <li><a href="../components/text-field.html">Text field</a></li>
+      <li><a href="../components/textarea.html">Textarea</a></li>
+      <li><a href="../components/select.html">Select</a></li>
+      <li><a href="../components/combobox.html">Combobox</a></li>
+      <li><a href="../components/checkbox.html">Checkbox</a></li>
+      <li><a href="../components/radio-group.html">Radio group</a></li>
+      <li><a href="../components/file-upload.html">File upload</a></li>
+      <li><a href="../components/form-layout.html">Form layout</a></li>
+      <li><a href="../components/signup.html">Email signup</a></li>
+    </ul></details>
+    <details open><summary>Navigation</summary><ul>
+      <li><a href="../components/skip-link.html">Skip link</a></li>
+      <li><a href="../components/site-header.html">Site header</a></li>
+      <li><a href="../components/footer.html">Footer</a></li>
+      <li><a href="../components/breadcrumb.html">Breadcrumb</a></li>
+      <li><a href="../components/filter.html">Filters</a></li>
+    </ul></details>
+    <details open><summary>Containers and overlays</summary><ul>
+      <li><a href="../components/container.html">Container</a></li>
+      <li><a href="../components/review-layout.html">Review layout</a></li>
+      <li><a href="../components/editor-layout.html">Editor layout</a></li>
+      <li><a href="../components/dialog.html">Dialog</a></li>
+      <li><a href="../components/sheet.html">Sheet</a></li>
+      <li><a href="../components/popover.html">Popover</a></li>
+      <li><a href="../components/lightbox.html">Lightbox</a></li>
+    </ul></details>
+    <details open><summary>Data display</summary><ul>
+      <li><a href="../components/location-card.html">Location card</a></li>
+      <li><a href="../components/table.html">Table</a></li>
+      <li><a href="../components/compare-table.html">Comparison table</a></li>
+      <li><a href="../components/list.html">List rows</a></li>
+      <li><a href="../components/description-list.html">Description list</a></li>
+      <li><a href="../components/price-block.html">Price block</a></li>
+      <li><a href="../components/score.html">Score and pips</a></li>
+      <li><a href="../components/shot-grid.html">Shot grid</a></li>
+      <li><a href="../components/video-poster.html">Episode poster</a></li>
+      <li><a href="../components/map.html">Map</a></li>
+      <li><a href="../components/guide-entry.html">Guide entry</a></li>
+      <li><a href="../components/stat-tile.html">Stat tile</a></li>
+      <li><a href="../components/image-manager.html">Image manager</a></li>
+      <li><a href="../components/disclosure.html">Disclosure</a></li>
+      <li><a href="../components/badge.html">Badge</a></li>
+      <li><a href="../components/status-label.html">Status label</a></li>
+      <li><a href="../components/chip.html">Chip</a></li>
+      <li><a href="../components/tag.html">Tag</a></li>
+    </ul></details>
+    <details open><summary>Feedback</summary><ul>
+      <li><a href="../components/inline-message.html">Inline message</a></li>
+      <li><a href="../components/alert.html">Alert</a></li>
+      <li><a href="../components/toast.html">Toast</a></li>
+      <li><a href="../components/progress.html">Progress</a></li>
+      <li><a href="../components/spinner.html">Spinner</a></li>
+      <li><a href="../components/skeleton.html">Skeleton</a></li>
+      <li><a href="../components/empty-state.html">Empty state</a></li>
+      <li><a href="../components/error-page.html">Error page</a></li>
+    </ul></details>
+    <details open><summary>Patterns</summary><ul>
+      <li><a href="../patterns/forms.html">Forms</a></li>
+      <li><a href="../patterns/feedback-and-loading.html">Feedback and loading</a></li>
+      <li><a href="../patterns/empty-and-error-states.html">Empty and error states</a></li>
+      <li><a href="../patterns/navigation.html">Navigation and page structure</a></li>
+      <li><a href="../patterns/dialogs-and-overlays.html">Dialogs and overlays</a></li>
+      <li><a href="../patterns/tables-and-lists.html">Data tables and lists</a></li>
+      <li><a href="../patterns/notifications.html">Notifications</a></li>
+      <li><a href="../patterns/content-and-tone.html">Content and tone</a></li>
+    </ul></details>
+  </nav>
+
+  <main id="main" class="ds-main">
+    <header class="ds-header">
+      <p class="ds-kicker">Component · Containers and overlays</p>
+      <h1>Lightbox</h1>
+      <p class="ds-lead">The full-screen viewer that opens from any <a href="shot-grid.html">shot grid</a> thumbnail. It shows one photo at full size with its caption, steps through the set with Previous and Next, wrapping at either end, and closes back to the thumbnail that opened it.</p>
+      <div class="ds-meta"><span class="ds-pill ds-pill--ok">WCAG 2.2 AA</span><span class="ds-pill">Status: stable</span><span class="ds-pill">APG Dialog (Modal)</span><span class="ds-pill"><code>.viewer</code></span><span class="ds-pill"><code>.lightbox</code></span><span class="ds-pill"><code>.lightbox__frame</code> <code>.lightbox__pager</code></span></div>
+      <ul class="ds-toc"><li><a href="#overview">Overview</a></li><li><a href="#anatomy">Anatomy</a></li><li><a href="#variants">Variants</a></li><li><a href="#sizes">Sizes</a></li><li><a href="#states">States</a></li><li><a href="#responsive">Responsive behaviour</a></li><li><a href="#theming">Theming</a></li><li><a href="#accessibility">Accessibility</a></li><li><a href="#content">Content</a></li><li><a href="#do-dont">Do and don't</a></li><li><a href="#tokens">Tokens</a></li><li><a href="#code">Code</a></li><li><a href="#sources">Sources</a></li></ul>
+    </header>
+
+    <section class="ds-section" id="overview"><h2><a href="#overview">Overview</a></h2>
+      <p>Use the lightbox to look closely at review photos: a studio's gallery "From a real shoot" (L2-010), its standard test shots, and a spot's sample shots (L2-016). It is the only full-screen overlay on the public site. It is a modal dialog: the page behind is inert, focus stays inside, and Escape closes it (L2-067.3).</p>
+      <ul>
+        <li><code>.viewer</code> is the generic full-screen shell: a bar with the count and Close, a stage with an arrow on each side, and a caption.</li>
+        <li><code>.lightbox</code> adds the ShotThere photo frame (rectangular photos, never cropped), the alt-text fallback and the phone pager.</li>
+      </ul>
+      <p>Do not use it for one-off images (the hero photo is not openable), for the episode video (the <a href="video-poster.html">episode poster</a> plays in place), or for anything with form fields. Confirmations go in a <a href="dialog.html">dialog</a>.</p>
+      <p>The examples below are live viewers inside a frame. They leave out <code>aria-modal</code> and <code>autofocus</code> and use a smaller heading level so this documentation page stays readable. The <a href="#code">Code</a> section shows the real attributes. Photos are capped in height to fit the frame.</p>
+    </section>
+
+    <section class="ds-section" id="anatomy"><h2><a href="#anatomy">Anatomy</a></h2>
+      <div class="ds-anatomy">
+        <figure class="ds-anatomy__figure">
+          <div style="position: relative; width: 100%;">
+          <div class="ds-frame" style="width: 100%; min-height: 34rem;">
+            <div class="viewer lightbox" role="dialog" aria-labelledby="an-title" aria-describedby="an-caption" style="animation: none;">
+              <h4 class="visually-hidden" id="an-title">Photo viewer: The Junction Loft</h4>
+              <div class="viewer__bar">
+                <p class="viewer__count">Photo 3 of 8</p>
+                <button class="icon-btn" type="button" aria-label="Close"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+              </div>
+              <div class="viewer__stage">
+                <button class="icon-btn" type="button" aria-label="Previous photo"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m15 6-6 6 6 6"/></svg></button>
+                <div class="lightbox__frame"><img src="../assets/img/gallery-3.svg" alt="Full-length fashion frame on the cyc, warm afternoon light from the left." width="800" height="1000" style="max-height: 14rem;"></div>
+                <button class="icon-btn" type="button" aria-label="Next photo"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></button>
+              </div>
+              <div class="viewer__caption" id="an-caption"><p>Full-length fashion frame on the cyc, warm afternoon light from the left.</p></div>
+              <div class="lightbox__pager">
+                <button class="btn" type="button"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m15 6-6 6 6 6"/></svg>Previous<span class="visually-hidden"> photo</span></button>
+                <button class="btn" type="button">Next<span class="visually-hidden"> photo</span><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></button>
+              </div>
+            </div>
+          </div>
+          <span class="ds-callout" style="left: 10%; top: 4%;" aria-hidden="true">1</span>
+          <span class="ds-callout" style="left: 86%; top: 4%;" aria-hidden="true">2</span>
+          <span class="ds-callout" style="left: 9%; top: 44%;" aria-hidden="true">3</span>
+          <span class="ds-callout" style="left: 63%; top: 22%;" aria-hidden="true">4</span>
+          <span class="ds-callout" style="left: 86%; top: 44%;" aria-hidden="true">5</span>
+          <span class="ds-callout" style="left: 12%; top: 84%;" aria-hidden="true">6</span>
+          </div>
+        </figure>
+        <ol class="ds-anatomy__list">
+          <li><div><b>Count</b><small><code>.viewer__count</code>: "Photo 3 of 8", muted label type, a polite live region so paging is announced.</small></div></li>
+          <li><div><b>Close</b><small>44 px <a href="icon-button.html">icon button</a> with a hairline edge, <code>aria-label="Close"</code>. Focus starts here.</small></div></li>
+          <li><div><b>Previous</b><small>Icon button, "Previous photo". From 768 px it sits beside the photo; on phones it moves into the pager.</small></div></li>
+          <li><div><b>Frame and photo</b><small><code>.lightbox__frame</code>: centres the full image at its own ratio (<code>object-fit: contain</code>) with 12 px corners. It is never cropped.</small></div></li>
+          <li><div><b>Next</b><small>Icon button, "Next photo". It wraps from the last photo to the first.</small></div></li>
+          <li><div><b>Caption</b><small><code>.viewer__caption</code>: centred under the photo. The alt text for gallery photos, or focal length and note for sample shots. It is the dialog's description.</small></div></li>
+          <li><div><b>Pager (phones)</b><small><code>.lightbox__pager</code>: labelled Previous and Next buttons under the caption, below 768 px only.</small></div></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="ds-section" id="variants"><h2><a href="#variants">Variants</a></h2>
+      <p>One viewer with two kinds of caption. The caption says what the visitor needs in order to use the photo.</p>
+      <h3>Gallery photo</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--stack">
+          <div class="ds-frame" style="min-height: 34rem;">
+            <div class="viewer lightbox" role="dialog" aria-labelledby="v1-title" aria-describedby="v1-caption" style="animation: none;">
+              <h4 class="visually-hidden" id="v1-title">Photo viewer: The Junction Loft</h4>
+              <div class="viewer__bar"><p class="viewer__count">Photo 3 of 8</p><button class="icon-btn" type="button" aria-label="Close"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+              <div class="viewer__stage">
+                <button class="icon-btn" type="button" aria-label="Previous photo"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m15 6-6 6 6 6"/></svg></button>
+                <div class="lightbox__frame"><img src="../assets/img/gallery-3.svg" alt="Full-length fashion frame on the cyc, warm afternoon light from the left." width="800" height="1000" style="max-height: 14rem;"></div>
+                <button class="icon-btn" type="button" aria-label="Next photo"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></button>
+              </div>
+              <div class="viewer__caption" id="v1-caption"><p>Full-length fashion frame on the cyc, warm afternoon light from the left.</p></div>
+              <div class="lightbox__pager"><button class="btn" type="button"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m15 6-6 6 6 6"/></svg>Previous<span class="visually-hidden"> photo</span></button><button class="btn" type="button">Next<span class="visually-hidden"> photo</span><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></button></div>
+            </div>
+          </div>
+        </div>
+        <div class="ds-example__caption"><span>The Junction Loft gallery, photo 3 of 8 (dialogs/lightbox/default). The caption is the photo's alt text.</span></div>
+      </div>
+
+      <h3>Sample shot</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--stack">
+          <div class="ds-frame" style="min-height: 34rem;">
+            <div class="viewer lightbox" role="dialog" aria-labelledby="v2-title" aria-describedby="v2-caption" style="animation: none;">
+              <h4 class="visually-hidden" id="v2-title">Photo viewer: Evergreen Brick Works</h4>
+              <div class="viewer__bar"><p class="viewer__count">Photo 1 of 5</p><button class="icon-btn" type="button" aria-label="Close"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+              <div class="viewer__stage">
+                <button class="icon-btn" type="button" aria-label="Previous photo"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m15 6-6 6 6 6"/></svg></button>
+                <div class="lightbox__frame"><img src="../assets/img/sample-1.svg" alt="Couple on the lower steps with the brick kiln wall soft behind them." width="1200" height="800" style="max-height: 14rem;"></div>
+                <button class="icon-btn" type="button" aria-label="Next photo"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></button>
+              </div>
+              <div class="viewer__caption" id="v2-caption"><p><strong>85 mm</strong> · Shoot north from the lower steps</p></div>
+              <div class="lightbox__pager"><button class="btn" type="button"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m15 6-6 6 6 6"/></svg>Previous<span class="visually-hidden"> photo</span></button><button class="btn" type="button">Next<span class="visually-hidden"> photo</span><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></button></div>
+            </div>
+          </div>
+        </div>
+        <div class="ds-example__caption"><span>Evergreen Brick Works, sample 1 of 5 (dialogs/lightbox/sample-shot). Same viewer, but the caption carries the focal length and position note (L2-016.2). The landscape frame shows uncropped.</span></div>
+      </div>
+    </section>
+
+    <section class="ds-section" id="sizes" data-na="The viewer always fills the screen; the photo scales to fit."><h2><a href="#sizes">Sizes</a></h2>
+      <p class="ds-na">There is one size: the viewer always covers the viewport (<code>position: fixed; inset: 0</code>). The photo scales to fit the width and up to the viewport height minus 13rem for the bar and caption, at its own aspect ratio.</p>
+    </section>
+
+    <section class="ds-section" id="states"><h2><a href="#states">States</a></h2>
+      <h3>Controls</h3>
+      <p>Close and the arrows are <a href="icon-button.html">icon buttons</a>. Inside <code>.viewer</code> they get a 1 px <code>--color-border-default</code> edge so they read as controls on a bare canvas; the matrix sits in a <code>.viewer</code>, held in the page flow for this documentation, to show it. The phone pager uses secondary <a href="button.html">buttons</a>.</p>
+      <div class="ds-matrix"><div class="viewer" style="position: static; animation: none;"><table>
+        <thead><tr><th scope="col">Control</th><th scope="col">Default</th><th scope="col">Hover</th><th scope="col">Focus</th><th scope="col">Active</th><th scope="col">Disabled</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Close</th>
+            <td><button class="icon-btn" type="button" aria-label="Close"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></td>
+            <td><button class="icon-btn" type="button" aria-label="Close" data-state="hover"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></td>
+            <td><button class="icon-btn" type="button" aria-label="Close" data-state="focus"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></td>
+            <td><button class="icon-btn" type="button" aria-label="Close" data-state="active"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></td>
+            <td><span class="text-caption">Never. Close always works.</span></td>
+          </tr>
+          <tr><th scope="row">Previous / Next arrow</th>
+            <td><button class="icon-btn" type="button" aria-label="Next photo"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></button></td>
+            <td><button class="icon-btn" type="button" aria-label="Next photo" data-state="hover"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></button></td>
+            <td><button class="icon-btn" type="button" aria-label="Next photo" data-state="focus"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></button></td>
+            <td><button class="icon-btn" type="button" aria-label="Next photo" data-state="active"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></button></td>
+            <td><span class="text-caption">Never. Navigation wraps (L2-010.3).</span></td>
+          </tr>
+          <tr><th scope="row">Pager button (phones)</th>
+            <td><button class="btn" type="button">Next<span class="visually-hidden"> photo</span><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></button></td>
+            <td><button class="btn" type="button" data-state="hover">Next<span class="visually-hidden"> photo</span><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></button></td>
+            <td><button class="btn" type="button" data-state="focus">Next<span class="visually-hidden"> photo</span><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></button></td>
+            <td><button class="btn" type="button" data-state="active">Next<span class="visually-hidden"> photo</span><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></button></td>
+            <td><span class="text-caption">Never. Navigation wraps.</span></td>
+          </tr>
+        </tbody>
+      </table></div></div>
+
+      <h3>Position: first, middle, last</h3>
+      <p>The count changes and the arrows do not. Next on the last photo shows photo 1, and Previous on photo 1 shows the last (L2-010.3), so neither end ever disables an arrow. The middle position is the <a href="#variants">gallery example</a> above.</p>
+      <div style="display: grid; gap: var(--space-4); grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));">
+        <div>
+          <div class="ds-frame" style="min-height: 32rem;">
+            <div class="viewer lightbox" role="dialog" aria-labelledby="s1-title" aria-describedby="s1-caption" style="animation: none;">
+              <h4 class="visually-hidden" id="s1-title">Photo viewer: The Junction Loft</h4>
+              <div class="viewer__bar"><p class="viewer__count">Photo 1 of 8</p><button class="icon-btn" type="button" aria-label="Close"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+              <div class="viewer__stage">
+                <button class="icon-btn" type="button" aria-label="Previous photo"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m15 6-6 6 6 6"/></svg></button>
+                <div class="lightbox__frame"><img src="../assets/img/gallery-1.svg" alt="Portrait in window light, subject turned three-quarters toward the north windows." width="800" height="1000" style="max-height: 11rem;"></div>
+                <button class="icon-btn" type="button" aria-label="Next photo"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></button>
+              </div>
+              <div class="viewer__caption" id="s1-caption"><p>Portrait in window light, subject turned three-quarters toward the north windows.</p></div>
+              <div class="lightbox__pager"><button class="btn" type="button"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m15 6-6 6 6 6"/></svg>Previous<span class="visually-hidden"> photo</span></button><button class="btn" type="button">Next<span class="visually-hidden"> photo</span><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></button></div>
+            </div>
+          </div>
+          <p class="text-caption" style="margin-top: var(--space-3);">First: Previous goes to photo 8.</p>
+        </div>
+        <div>
+          <div class="ds-frame" style="min-height: 32rem;">
+            <div class="viewer lightbox" role="dialog" aria-labelledby="s3-title" aria-describedby="s3-caption" style="animation: none;">
+              <h4 class="visually-hidden" id="s3-title">Photo viewer: The Junction Loft</h4>
+              <div class="viewer__bar"><p class="viewer__count">Photo 8 of 8</p><button class="icon-btn" type="button" aria-label="Close"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+              <div class="viewer__stage">
+                <button class="icon-btn" type="button" aria-label="Previous photo"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m15 6-6 6 6 6"/></svg></button>
+                <div class="lightbox__frame"><img src="../assets/img/gallery-8.svg" alt="Wide frame of the whole space showing the cyc, the windows and the light stands." width="800" height="1000" style="max-height: 11rem;"></div>
+                <button class="icon-btn" type="button" aria-label="Next photo"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></button>
+              </div>
+              <div class="viewer__caption" id="s3-caption"><p>Wide frame of the whole space showing the cyc, the windows and the light stands.</p></div>
+              <div class="lightbox__pager"><button class="btn" type="button"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m15 6-6 6 6 6"/></svg>Previous<span class="visually-hidden"> photo</span></button><button class="btn" type="button">Next<span class="visually-hidden"> photo</span><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></button></div>
+            </div>
+          </div>
+          <p class="text-caption" style="margin-top: var(--space-3);">Last: Next is still enabled and goes to photo 1 (dialogs/lightbox/last).</p>
+        </div>
+      </div>
+
+      <h3>Image failed</h3>
+      <p>If the full-size image returns an error, the frame keeps a 4:5 slot and shows the alt text with an image-off icon (L2-086.1). The count, caption, Close and both arrows keep working, so the visitor can move on.</p>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--stack">
+          <div class="ds-frame" style="min-height: 34rem;">
+            <div class="viewer lightbox" role="dialog" aria-labelledby="s4-title" aria-describedby="s4-caption" style="animation: none;">
+              <h4 class="visually-hidden" id="s4-title">Photo viewer: The Junction Loft</h4>
+              <div class="viewer__bar"><p class="viewer__count">Photo 3 of 8</p><button class="icon-btn" type="button" aria-label="Close"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+              <div class="viewer__stage">
+                <button class="icon-btn" type="button" aria-label="Previous photo"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m15 6-6 6 6 6"/></svg></button>
+                <div class="lightbox__frame"><div class="media-fallback" style="width: min(100%, 11rem);"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 16 5-5 4 4 2-2 7 7"/><path d="M3 3l18 18"/></svg><span>Full-length fashion frame on the cyc, warm afternoon light from the left.</span></div></div>
+                <button class="icon-btn" type="button" aria-label="Next photo"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></button>
+              </div>
+              <div class="viewer__caption" id="s4-caption"><p>Full-length fashion frame on the cyc, warm afternoon light from the left.</p></div>
+              <div class="lightbox__pager"><button class="btn" type="button"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m15 6-6 6 6 6"/></svg>Previous<span class="visually-hidden"> photo</span></button><button class="btn" type="button">Next<span class="visually-hidden"> photo</span><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></button></div>
+            </div>
+          </div>
+        </div>
+        <div class="ds-example__caption"><span>dialogs/lightbox/image-failed. The fallback is 22rem wide on a page; it is narrowed here to fit the frame.</span></div>
+      </div>
+
+      <h3>Both themes</h3>
+      <div class="ds-themes">
+        <div data-theme="light">
+          <div class="ds-frame" style="min-height: 32rem;">
+            <div class="viewer lightbox" role="dialog" aria-labelledby="t1-title" aria-describedby="t1-caption" style="animation: none;">
+              <h4 class="visually-hidden" id="t1-title">Photo viewer: The Junction Loft</h4>
+              <div class="viewer__bar"><p class="viewer__count">Photo 5 of 8</p><button class="icon-btn" type="button" aria-label="Close"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+              <div class="viewer__stage">
+                <button class="icon-btn" type="button" aria-label="Previous photo"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m15 6-6 6 6 6"/></svg></button>
+                <div class="lightbox__frame"><img src="../assets/img/gallery-5.svg" alt="Seated portrait on the studio sofa, window light only." width="800" height="1000" style="max-height: 11rem;"></div>
+                <button class="icon-btn" type="button" aria-label="Next photo"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></button>
+              </div>
+              <div class="viewer__caption" id="t1-caption"><p>Seated portrait on the studio sofa, window light only.</p></div>
+              <div class="lightbox__pager"><button class="btn" type="button"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m15 6-6 6 6 6"/></svg>Previous<span class="visually-hidden"> photo</span></button><button class="btn" type="button">Next<span class="visually-hidden"> photo</span><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></button></div>
+            </div>
+          </div>
+        </div>
+        <div data-theme="dark">
+          <div class="ds-frame" style="min-height: 32rem;">
+            <div class="viewer lightbox" role="dialog" aria-labelledby="t2-title" aria-describedby="t2-caption" style="animation: none;">
+              <h4 class="visually-hidden" id="t2-title">Photo viewer: The Junction Loft</h4>
+              <div class="viewer__bar"><p class="viewer__count">Photo 5 of 8</p><button class="icon-btn" type="button" aria-label="Close"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+              <div class="viewer__stage">
+                <button class="icon-btn" type="button" aria-label="Previous photo"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m15 6-6 6 6 6"/></svg></button>
+                <div class="lightbox__frame"><img src="../assets/img/gallery-5.svg" alt="Seated portrait on the studio sofa, window light only." width="800" height="1000" style="max-height: 11rem;"></div>
+                <button class="icon-btn" type="button" aria-label="Next photo"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></button>
+              </div>
+              <div class="viewer__caption" id="t2-caption"><p>Seated portrait on the studio sofa, window light only.</p></div>
+              <div class="lightbox__pager"><button class="btn" type="button"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m15 6-6 6 6 6"/></svg>Previous<span class="visually-hidden"> photo</span></button><button class="btn" type="button">Next<span class="visually-hidden"> photo</span><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></button></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ds-section" id="responsive"><h2><a href="#responsive">Responsive behaviour</a></h2>
+      <ul>
+        <li><b>Below 768 px (XS, SM)</b>: the stage becomes one column and the side arrows are hidden, so the photo gets the full width less 8 px padding. Previous and Next move into <code>.lightbox__pager</code> under the caption as labelled 44 px buttons.</li>
+        <li><b>From 768 px (<code>48rem</code>)</b>: arrows sit either side of the photo with 32 px gaps and the page margin, and the pager is hidden.</li>
+        <li>The photo is never wider than the stage and never taller than the viewport minus 13rem, so the count, Close and caption are always on screen. Use <code>100dvh</code> so mobile browser chrome cannot push the caption off.</li>
+        <li><b>Safe areas</b>: the bar adds <code>env(safe-area-inset-top)</code> and the caption adds <code>env(safe-area-inset-bottom)</code>. On phones the pager comes after the caption, so below 48rem the bottom inset moves from the caption to <code>.lightbox__pager</code> and the pager clears the home indicator.</li>
+        <li>Long captions wrap and stay centred. The viewer never scrolls sideways.</li>
+      </ul>
+      <div class="ds-iframes">
+        <iframe class="ds-iframe" src="../../mocks/dialogs/lightbox/default.html?chrome=0" title="Lightbox at phone width: photo full width, Previous and Next under the caption" loading="lazy"></iframe>
+        <iframe class="ds-iframe" src="../../mocks/dialogs/lightbox/sample-shot.html?chrome=0" title="Lightbox sample shot at phone width" loading="lazy"></iframe>
+      </div>
+    </section>
+
+    <section class="ds-section" id="theming"><h2><a href="#theming">Theming</a></h2>
+      <p>The viewer is the page canvas, not a dark scrim. It uses <code>--color-bg-canvas</code> with <code>--color-fg-default</code> for the caption and controls and <code>--color-fg-muted</code> for the count. So it is white in the light theme and near-black in the dark theme, and photos are judged against the same neutral ground as the review page. Photos keep their own colours. The arrows' hairline is <code>--color-border-default</code>, and the fallback uses the photo-grey ground (<code>--color-bg-photo</code>), like every failed image slot. To re-theme the viewer, change the semantic roles. It has no component tokens.</p>
+      <p>Forced colours: the canvas becomes <code>Canvas</code> and the controls keep their glyphs and the system focus ring. The fallback text is real text, so it stays readable.</p>
+    </section>
+
+    <section class="ds-section" id="accessibility"><h2><a href="#accessibility">Accessibility</a></h2>
+      <h3>Role and pattern</h3>
+      <p>WAI-ARIA APG <a href="https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/">Dialog (Modal)</a>: <code>role="dialog"</code>, <code>aria-modal="true"</code>, opened through the UI framework's accessible dialog primitive (the detailed design names the Angular CDK <code>Dialog</code>), which traps focus and makes the page behind inert. Close, Previous and Next are native <code>&lt;button&gt;</code>s. The count is a <code>&lt;p aria-live="polite"&gt;</code>.</p>
+      <h3>Keyboard</h3>
+      <table class="ds-table ds-keys"><thead><tr><th scope="col">Key</th><th scope="col">Action</th></tr></thead><tbody>
+        <tr><td><kbd>Tab</kbd> / <kbd>Shift</kbd>+<kbd>Tab</kbd></td><td>Moves between Close, Previous and Next, and wraps inside the dialog. Focus never reaches the page behind (L2-010.4).</td></tr>
+        <tr><td><kbd>←</kbd> / <kbd>→</kbd></td><td>Shows the previous or next photo from anywhere in the viewer, wrapping at either end.</td></tr>
+        <tr><td><kbd>Enter</kbd>, <kbd>Space</kbd></td><td>Activates the focused control.</td></tr>
+        <tr><td><kbd>Esc</kbd></td><td>Closes the viewer and returns focus to the thumbnail that opened it (L2-010.2, L2-067.3).</td></tr>
+      </tbody></table>
+      <h3>Focus</h3>
+      <p>Focus moves to Close when the viewer opens. When the visitor pages, focus stays on the arrow or pager button they pressed, so repeated Next presses work. On close, by Close or Escape, focus returns to the shot that opened the viewer, even after paging. The shared ring (2 px <code>--color-focus-ring</code>, 2 px offset) shows on <code>:focus-visible</code>.</p>
+      <h3>Labelling</h3>
+      <p>The dialog is named by a visually hidden heading, "Photo viewer: The Junction Loft" (<code>aria-labelledby</code>), and described by the caption (<code>aria-describedby</code>). The image has its stored alt text. Arrows are "Previous photo" and "Next photo". Pager buttons show "Previous" and "Next" and add a hidden " photo". The polite count announces "Photo 4 of 8" after each step. The failed state shows the alt text as visible text.</p>
+      <h3>Contrast</h3>
+      <div class="ds-example__canvas ds-example__canvas--stack" style="padding: 0; gap: var(--space-2);">
+        <div class="ds-pair"><span>Caption and control glyphs on the viewer</span><span class="ds-pair__ratio" data-contrast="--color-fg-default|--color-bg-canvas" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Count on the viewer</span><span class="ds-pair__ratio" data-contrast="--color-fg-muted|--color-bg-canvas" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Glyph on a hovered icon button</span><span class="ds-pair__ratio" data-contrast="--color-fg-default|--color-bg-subtle" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Glyph on a pressed icon button</span><span class="ds-pair__ratio" data-contrast="--color-fg-default|--color-bg-subtle-hover" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Pager button edge on the viewer</span><span class="ds-pair__ratio" data-contrast="--color-border-strong|--color-bg-canvas" data-min="3"></span></div>
+        <div class="ds-pair"><span>Focus ring on the viewer</span><span class="ds-pair__ratio" data-contrast="--color-focus-ring|--color-bg-canvas" data-min="3"></span></div>
+        <div class="ds-pair"><span>Fallback alt text</span><span class="ds-pair__ratio" data-contrast="--color-fg-muted|--color-bg-photo" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Fallback icon</span><span class="ds-pair__ratio" data-contrast="--color-fg-subtle|--color-bg-photo" data-min="4.5"></span></div>
+      </div>
+      <p>The arrows' hairline (<code>--color-border-default</code>) is decorative. The glyph identifies the control and meets 3:1, as required by 1.4.11.</p>
+      <h3>Motion</h3>
+      <p>The viewer fades in over <code>--duration-base</code> with <code>--ease-enter</code>. Photos swap without a slide or crossfade. Under <code>prefers-reduced-motion</code> the duration tokens are zeroed and the viewer appears at once. Nothing auto-advances.</p>
+      <h3>Touch</h3>
+      <p>Close and the arrows are 44 × 44 px. On phones the arrows become labelled 44 px pager buttons 16 px apart, below the photo, where thumbs reach them. Swipe is not required: every step has a button (2.5.7). Pinch zoom on the photo is never blocked.</p>
+    </section>
+
+    <section class="ds-section" id="content"><h2><a href="#content">Content</a></h2>
+      <ul>
+        <li>Count: "Photo 3 of 8". Use "Photo" for galleries, test shots and sample shots alike, with no ordinal words.</li>
+        <li>Dialog name: "Photo viewer: " plus the studio or spot name.</li>
+        <li>Gallery caption: the photo's alt text, one sentence ending in a full stop. Sample-shot caption: "<strong>85 mm</strong> · Shoot north from the lower steps", with the same wording as the thumbnail caption (L2-016.2).</li>
+        <li>Control names: "Close", "Previous photo", "Next photo". Never "Back", "Forward" or "X".</li>
+        <li>No download, share or zoom buttons: the viewer is for looking.</li>
+      </ul>
+    </section>
+
+    <section class="ds-section" id="do-dont"><h2><a href="#do-dont">Do and don't</a></h2>
+      <div class="ds-dodont">
+        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--canvas"><div class="viewer" style="position: static; animation: none; width: 100%;"><div class="viewer__bar" style="padding: 0;"><p class="viewer__count" style="flex: none;">Photo 8 of 8</p><button class="icon-btn" type="button" aria-label="Previous photo"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m15 6-6 6 6 6"/></svg></button><button class="icon-btn" type="button" aria-label="Next photo"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></button></div></div></div><figcaption>On the last photo, keep Next enabled. It shows photo 1 (L2-010.3).</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--canvas"><div class="viewer" style="position: static; animation: none; width: 100%;"><div class="viewer__bar" style="padding: 0;"><p class="viewer__count" style="flex: none;">Photo 8 of 8</p><button class="icon-btn" type="button" aria-label="Previous photo"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m15 6-6 6 6 6"/></svg></button><button class="icon-btn" type="button" aria-label="Next photo" aria-disabled="true"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></button></div></div></div><figcaption>Grey out the end arrow with <code>aria-disabled</code>. Wrapping is the requirement and a dead end strands keyboard users; the viewer has no end-arrow style.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--canvas"><div class="lightbox__frame" style="width: 100%;"><div class="media-fallback" style="width: 9rem;"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 16 5-5 4 4 2-2 7 7"/><path d="M3 3l18 18"/></svg><span>Full-length fashion frame on the cyc, warm afternoon light from the left.</span></div></div></div><figcaption>When the image fails, keep the slot, show the alt text and leave every control working (L2-086.1).</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--canvas"><div class="lightbox__frame" style="width: 100%; min-height: 6rem;"><p class="text-muted">Something went wrong.</p></div></div><figcaption>Replace the photo with a generic error, or close the viewer. The visitor loses the description and their place in the set.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--canvas"><div class="lightbox__pager" style="display: flex; padding: 0; width: 100%;"><button class="btn" type="button"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m15 6-6 6 6 6"/></svg>Previous<span class="visually-hidden"> photo</span></button><button class="btn" type="button">Next<span class="visually-hidden"> photo</span><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></button></div></div><figcaption>On phones, put Previous and Next under the photo as labelled 44 px buttons, so the photo gets the full width.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--canvas"><div style="position: relative; width: 9rem; margin-inline: auto;"><img src="../assets/img/gallery-3.svg" alt="" width="800" height="1000" style="border-radius: var(--radius-md);"><button class="icon-btn" type="button" aria-label="Next photo" style="position: absolute; right: var(--space-1); top: 45%;"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></button></div></div><figcaption>Overlay arrows on the photo. They hide the part being judged and have no reliable contrast over a photo.</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="ds-section" id="tokens"><h2><a href="#tokens">Tokens</a></h2>
+      <div class="ds-table-wrap"><table class="ds-table">
+        <thead><tr><th scope="col">Part</th><th scope="col">Token</th><th scope="col">Light</th><th scope="col">Dark</th></tr></thead>
+        <tbody>
+          <tr><td>Viewer background</td><td><code>--color-bg-canvas</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-bg-canvas" data-swatch></i><span data-token="--color-bg-canvas"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-bg-canvas" data-swatch></i><span data-token="--color-bg-canvas"></span></span></td></tr>
+          <tr><td>Caption, control glyphs</td><td><code>--color-fg-default</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-default" data-swatch></i><span data-token="--color-fg-default"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-default" data-swatch></i><span data-token="--color-fg-default"></span></span></td></tr>
+          <tr><td>Count</td><td><code>--color-fg-muted</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-muted" data-swatch></i><span data-token="--color-fg-muted"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-muted" data-swatch></i><span data-token="--color-fg-muted"></span></span></td></tr>
+          <tr><td>Arrow and Close hairline</td><td><code>--color-border-default</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-border-default" data-swatch></i><span data-token="--color-border-default"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-border-default" data-swatch></i><span data-token="--color-border-default"></span></span></td></tr>
+          <tr><td>Control hover / pressed fill</td><td><code>--color-bg-subtle</code> / <code>--color-bg-subtle-hover</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-bg-subtle" data-swatch></i><span data-token="--color-bg-subtle"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-bg-subtle" data-swatch></i><span data-token="--color-bg-subtle"></span></span></td></tr>
+          <tr><td>Fallback slot</td><td><code>--color-bg-photo</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-bg-photo" data-swatch></i><span data-token="--color-bg-photo"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-bg-photo" data-swatch></i><span data-token="--color-bg-photo"></span></span></td></tr>
+          <tr><td>Focus ring</td><td><code>--color-focus-ring</code></td><td><span data-token="--color-focus-ring"></span></td><td><span data-theme="dark" data-token="--color-focus-ring"></span></td></tr>
+          <tr><td>Layer</td><td><code>--z-modal</code></td><td colspan="2"><span data-token="--z-modal"></span></td></tr>
+          <tr><td>Bar and caption padding</td><td><code>--space-4</code>, <code>--layout-margin</code>, <code>--space-8</code> + safe-area insets</td><td colspan="2"><span data-token="--space-4"></span>, <span data-token="--layout-margin"></span>, <span data-token="--space-8"></span></td></tr>
+          <tr><td>Stage gap XS / from MD</td><td><code>--space-2</code> / <code>--space-8</code></td><td colspan="2"><span data-token="--space-2"></span> / <span data-token="--space-8"></span></td></tr>
+          <tr><td>Control size</td><td><code>--target-comfortable</code></td><td colspan="2"><span data-token="--target-comfortable"></span></td></tr>
+          <tr><td>Photo and fallback corners</td><td><code>--radius-md</code></td><td colspan="2"><span data-token="--radius-md"></span></td></tr>
+          <tr><td>Count type, caption type</td><td><code>--text-label</code> at <code>--font-size-md</code>, <code>--text-body</code></td><td colspan="2"><span data-token="--text-label"></span>; <span data-token="--text-body"></span></td></tr>
+          <tr><td>Entry</td><td><code>--duration-base</code>, <code>--ease-enter</code></td><td colspan="2"><span data-token="--duration-base"></span> <span data-token="--ease-enter"></span></td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section class="ds-section" id="code"><h2><a href="#code">Code</a></h2>
+      <pre><code>&lt;div class="viewer lightbox" role="dialog" aria-modal="true" aria-labelledby="lb-title" aria-describedby="lb-caption"&gt;
+  &lt;h2 class="visually-hidden" id="lb-title"&gt;Photo viewer: The Junction Loft&lt;/h2&gt;
+  &lt;div class="viewer__bar"&gt;
+    &lt;p class="viewer__count" aria-live="polite"&gt;Photo 3 of 8&lt;/p&gt;
+    &lt;button class="icon-btn" type="button" aria-label="Close" autofocus&gt;&lt;svg class="icon" aria-hidden="true" viewBox="0 0 24 24"&gt;…&lt;/svg&gt;&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class="viewer__stage"&gt;
+    &lt;button class="icon-btn" type="button" aria-label="Previous photo"&gt;…&lt;/button&gt;
+    &lt;div class="lightbox__frame"&gt;
+      &lt;img src="…" alt="Full-length fashion frame on the cyc, warm afternoon light from the left." width="800" height="1000"&gt;
+    &lt;/div&gt;
+    &lt;button class="icon-btn" type="button" aria-label="Next photo"&gt;…&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class="viewer__caption" id="lb-caption"&gt;&lt;p&gt;Full-length fashion frame on the cyc, warm afternoon light from the left.&lt;/p&gt;&lt;/div&gt;
+  &lt;div class="lightbox__pager"&gt;
+    &lt;button class="btn" type="button"&gt;…Previous&lt;span class="visually-hidden"&gt; photo&lt;/span&gt;&lt;/button&gt;
+    &lt;button class="btn" type="button"&gt;Next&lt;span class="visually-hidden"&gt; photo&lt;/span&gt;…&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Image failed: replace the img inside the frame --&gt;
+&lt;div class="lightbox__frame"&gt;
+  &lt;div class="media-fallback"&gt;&lt;svg class="icon" aria-hidden="true" viewBox="0 0 24 24"&gt;…&lt;/svg&gt;&lt;span&gt;Full-length fashion frame on the cyc, warm afternoon light from the left.&lt;/span&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+      <table class="ds-table"><thead><tr><th scope="col">Class / attribute</th><th scope="col">Effect</th></tr></thead><tbody>
+        <tr><td><code>.viewer</code></td><td>Full-screen fixed shell on the canvas at <code>--z-modal</code>, fades in. A column: bar, stage, caption.</td></tr>
+        <tr><td><code>.viewer__bar</code>, <code>__count</code></td><td>Top row with the count, which grows to fill, and Close. Adds the top safe-area inset.</td></tr>
+        <tr><td><code>.viewer__stage</code></td><td>Three-column grid: arrow, photo, arrow. Wider gaps from 48rem.</td></tr>
+        <tr><td><code>.viewer__caption</code></td><td>Centred caption with the bottom safe-area inset. Inside <code>.lightbox</code> it uses body type and stacks lines.</td></tr>
+        <tr><td><code>.viewer .icon-btn</code></td><td>Adds the hairline edge to Close and the arrows.</td></tr>
+        <tr><td><code>.lightbox</code></td><td>Photo variant of the viewer. Below 48rem it hides the side arrows and gives the photo the full width.</td></tr>
+        <tr><td><code>.lightbox__frame</code></td><td>Centres the photo uncropped, up to 100% wide and <code>100dvh − 13rem</code> tall. Sizes <code>.media-fallback</code> to a 4:5 slot up to 22rem wide.</td></tr>
+        <tr><td><code>.lightbox__pager</code></td><td>Previous and Next buttons under the caption, phones only, with the bottom safe-area inset; hidden from 48rem.</td></tr>
+      </tbody></table>
+      <p>In Angular, <code>GalleryLightboxDialogComponent</code> receives the image list and the start index. The wrap-around rule lives in <code>gallery-lightbox.view-model.ts</code> (<code>next = (i + 1) % n</code>, <code>previous = (i − 1 + n) % n</code>), not in the template. The dialog primitive restores focus to the opening thumbnail. The spot sample shots reuse the same component.</p>
+    </section>
+
+    <section class="ds-section" id="sources"><h2><a href="#sources">Sources</a></h2>
+      <p>Extracted from these mocks:</p>
+      <ul>
+        <li><a href="../../mocks/dialogs/lightbox/default.html">dialogs/lightbox/default</a> (gallery photo 3 of 8, focus on Close, inert page behind)</li>
+        <li><a href="../../mocks/dialogs/lightbox/last.html">dialogs/lightbox/last</a> (photo 8 of 8; Next wraps to photo 1, no arrow disabled)</li>
+        <li><a href="../../mocks/dialogs/lightbox/image-failed.html">dialogs/lightbox/image-failed</a> (4:5 fallback with alt text; controls still work)</li>
+        <li><a href="../../mocks/dialogs/lightbox/sample-shot.html">dialogs/lightbox/sample-shot</a> (Evergreen Brick Works, 1 of 5, focal length and note in the caption)</li>
+        <li><a href="../../mocks/pages/studio/default.html">pages/studio/default</a> and <a href="../../mocks/pages/spot/default.html">pages/spot/default</a> (the thumbnails that open it)</li>
+      </ul>
+      <p>Drift fixed during extraction:</p>
+      <ul>
+        <li>The mocks make Close an <code>&lt;a href&gt;</code> back to the page mock, so the static files link up. The system uses <code>&lt;button type="button"&gt;</code>, because Close dismisses a dialog.</li>
+        <li>The stylesheet comment "End arrows are aria-disabled: they look unavailable but keep focus" contradicts L2-010.3 and the last-photo mock, where navigation wraps. The system follows the requirement: arrows are never disabled, and the rule has been removed from <code>components.css</code>.</li>
+        <li>On phones the pager is the last row but the bottom safe-area inset sat on the caption above it, so the pager could sit on the home indicator (L2-065). Fixed: below 48rem the inset is on <code>.lightbox__pager</code>.</li>
+        <li>The sample-shot mock declares <code>width="800" height="1000"</code> for a 1200 × 800 landscape file. The system uses the true size.</li>
+      </ul>
+    </section>
+
+    <footer class="ds-footer"><span>ShotThere design system · extracted from <a href="../../mocks/index.html">docs/mocks</a> on 13 October 2026</span><a href="#top">Back to top</a></footer>
+  </main>
+</div>
+<script src="../assets/ds.js"></script>
+</body>
+</html>

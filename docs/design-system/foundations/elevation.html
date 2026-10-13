@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Elevation — ShotThere design system</title>
-<meta name="description" content="ShotThere elevation: four shadow levels for overlays, the focus shadow, surface hierarchy in light and dark, and the z-order scale.">
+<meta name="description" content="ShotThere elevation: four shadow levels and a focus shadow, the surface hierarchy, how dark theme lifts surfaces, and the z-order from location cards to the fixed compare bar, map popup, dialogs, sheets, the lightbox and toasts.">
 <link rel="stylesheet" href="../tokens/tokens.css">
 <link rel="stylesheet" href="../assets/components.css">
 <link rel="stylesheet" href="../assets/ds.css">
@@ -33,40 +33,61 @@
       <li><a href="../components/icon-button.html">Icon button</a></li>
       <li><a href="../components/button-group.html">Button group</a></li>
       <li><a href="../components/link.html">Link</a></li>
+      <li><a href="../components/compare-bar.html">Compare toggle and bar</a></li>
     </ul></details>
     <details open><summary>Inputs</summary><ul>
       <li><a href="../components/form-field.html">Form field</a></li>
       <li><a href="../components/text-field.html">Text field</a></li>
       <li><a href="../components/textarea.html">Textarea</a></li>
       <li><a href="../components/select.html">Select</a></li>
+      <li><a href="../components/combobox.html">Combobox</a></li>
       <li><a href="../components/checkbox.html">Checkbox</a></li>
       <li><a href="../components/radio-group.html">Radio group</a></li>
       <li><a href="../components/file-upload.html">File upload</a></li>
       <li><a href="../components/form-layout.html">Form layout</a></li>
+      <li><a href="../components/signup.html">Email signup</a></li>
     </ul></details>
     <details open><summary>Navigation</summary><ul>
       <li><a href="../components/skip-link.html">Skip link</a></li>
       <li><a href="../components/site-header.html">Site header</a></li>
       <li><a href="../components/footer.html">Footer</a></li>
+      <li><a href="../components/breadcrumb.html">Breadcrumb</a></li>
+      <li><a href="../components/filter.html">Filters</a></li>
     </ul></details>
     <details open><summary>Containers and overlays</summary><ul>
-      <li><a href="../components/container.html">Container and grid</a></li>
-      <li><a href="../components/card.html">Card</a></li>
+      <li><a href="../components/container.html">Container</a></li>
+      <li><a href="../components/review-layout.html">Review layout</a></li>
+      <li><a href="../components/editor-layout.html">Editor layout</a></li>
       <li><a href="../components/dialog.html">Dialog</a></li>
-      <li><a href="../components/sheet.html">Sheet and drawer</a></li>
-      <li><a href="../components/divider.html">Divider</a></li>
+      <li><a href="../components/sheet.html">Sheet</a></li>
+      <li><a href="../components/popover.html">Popover</a></li>
+      <li><a href="../components/lightbox.html">Lightbox</a></li>
     </ul></details>
     <details open><summary>Data display</summary><ul>
+      <li><a href="../components/location-card.html">Location card</a></li>
       <li><a href="../components/table.html">Table</a></li>
+      <li><a href="../components/compare-table.html">Comparison table</a></li>
+      <li><a href="../components/list.html">List rows</a></li>
       <li><a href="../components/description-list.html">Description list</a></li>
+      <li><a href="../components/price-block.html">Price block</a></li>
+      <li><a href="../components/score.html">Score and pips</a></li>
+      <li><a href="../components/shot-grid.html">Shot grid</a></li>
+      <li><a href="../components/video-poster.html">Episode poster</a></li>
+      <li><a href="../components/map.html">Map</a></li>
+      <li><a href="../components/guide-entry.html">Guide entry</a></li>
+      <li><a href="../components/stat-tile.html">Stat tile</a></li>
+      <li><a href="../components/image-manager.html">Image manager</a></li>
+      <li><a href="../components/disclosure.html">Disclosure</a></li>
       <li><a href="../components/badge.html">Badge</a></li>
+      <li><a href="../components/status-label.html">Status label</a></li>
       <li><a href="../components/chip.html">Chip</a></li>
+      <li><a href="../components/tag.html">Tag</a></li>
     </ul></details>
     <details open><summary>Feedback</summary><ul>
       <li><a href="../components/inline-message.html">Inline message</a></li>
-      <li><a href="../components/alert.html">Alert and banner</a></li>
+      <li><a href="../components/alert.html">Alert</a></li>
       <li><a href="../components/toast.html">Toast</a></li>
-      <li><a href="../components/progress.html">Progress and meter</a></li>
+      <li><a href="../components/progress.html">Progress</a></li>
       <li><a href="../components/spinner.html">Spinner</a></li>
       <li><a href="../components/skeleton.html">Skeleton</a></li>
       <li><a href="../components/empty-state.html">Empty state</a></li>
@@ -88,24 +109,25 @@
     <header class="ds-header">
       <p class="ds-kicker">Foundation</p>
       <h1>Elevation</h1>
-      <p class="ds-lead">ShotThere is flat. White space separates things on the page; shadows exist only to lift what floats above it: menus, toasts, dialogs and sheets.</p>
+      <p class="ds-lead">ShotThere is flat. Location cards sit straight on the canvas and review sections are separated by space; shadows exist only for what floats above the page: the compare bar, map markers and their popup, toasts, dialogs and sheets.</p>
       <div class="ds-meta"><span class="ds-pill ds-pill--ok">WCAG 2.2 AA</span><span class="ds-pill">Flat by default</span><span class="ds-pill">4 shadows</span><span class="ds-pill">9 layers</span></div>
       <ul class="ds-toc"><li><a href="#overview">Overview</a></li><li><a href="#shadows">Shadow levels</a></li><li><a href="#surfaces">Surface hierarchy</a></li><li><a href="#dark">Elevation in dark theme</a></li><li><a href="#z-order">Z-order</a></li><li><a href="#usage">Usage</a></li><li><a href="#accessibility">Accessibility</a></li><li><a href="#tokens">Tokens</a></li></ul>
     </header>
 
-<section class="ds-section" id="overview"><h2><a href="#overview">Overview</a></h2>
-      <p>The reference design has no card borders and no drop shadows: round photos sit straight on the white canvas. The system keeps that. Page content is flat at every viewport, and depth appears only when something genuinely sits above the page and must be told apart from it.</p>
+    <section class="ds-section" id="overview"><h2><a href="#overview">Overview</a></h2>
+      <p>The photos are the content, so nothing on the page competes with them for depth. Page content is flat at every viewport, and depth appears only when something genuinely sits above the page and must be told apart from it.</p>
       <ul>
-        <li><b>On the page:</b> no shadow. Caterer cards have neither border nor shadow; data cards and the enquiry panel have a 1px <code>--color-border-default</code> hairline at most.</li>
-        <li><b>On hover:</b> a soft level-2 lift on the primary button and interactive cards, as feedback, not structure.</li>
-        <li><b>Floating:</b> menus, the area suggestions list, the filter dropdown, popovers and toasts use level 3.</li>
-        <li><b>Modal:</b> dialogs, side sheets and drawers use level 4 over a backdrop.</li>
+        <li><b>On the page:</b> no shadow. Location cards have neither border nor shadow; the summary panel, stat tiles, editor sections and the editor aside have a 1px <code>--color-border-default</code> hairline at most, even where they stick.</li>
+        <li><b>On hover:</b> a level-2 lift on the primary button, as feedback, not structure.</li>
+        <li><b>On the map:</b> markers and the legend overlay use level 2 so they read on any tile.</li>
+        <li><b>Floating:</b> the compare bar, the map popup, popovers, combobox suggestions, toasts and the episode play pill use level 3.</li>
+        <li><b>Modal:</b> dialogs and side sheets use level 4 over a backdrop. The photo lightbox covers the whole screen with the canvas colour, so it needs no shadow.</li>
       </ul>
-      <p>Elevation has two parts: <b>shadows</b> (<code>--shadow-*</code>) say how far a surface floats, and <b>z-order</b> (<code>--z-*</code>) decides what covers what. They are separate scales because a toast (low shadow) must still sit above a dialog (high shadow).</p>
+      <p>Elevation has two parts: <b>shadows</b> (<code>--shadow-*</code>) say how far a surface floats, and <b>z-order</b> (<code>--z-*</code>) decides what covers what. They are separate scales because a toast (level 3) must still sit above a dialog (level 4), and the compare bar (level 3) must sit below one.</p>
     </section>
 
     <section class="ds-section" id="shadows"><h2><a href="#shadows">Shadow levels</a></h2>
-      <p>Four levels, each softer and wider than a typical material shadow so they read as lift rather than outline. All are tinted with <code>--shadow-color</code>, a warm stone (28 24 20) in light theme so shadows never look blue-grey against warm type.</p>
+      <p>Four levels, each softer and wider than a typical material shadow so they read as lift rather than outline. All are tinted with <code>--shadow-color</code>, a warm stone (28 24 20) in light theme so shadows never look blue-grey beside warm photos.</p>
       <div class="ds-shadow-grid">
         <div style="--shadow: var(--shadow-1);">--shadow-1</div>
         <div style="--shadow: var(--shadow-2);">--shadow-2</div>
@@ -114,49 +136,54 @@
         <div style="--shadow: var(--shadow-focus);">--shadow-focus</div>
       </div>
       <div class="ds-table-wrap"><table class="ds-table">
-        <thead><tr><th scope="col">Level</th><th scope="col">Token</th><th scope="col">Used by</th></tr></thead>
+        <thead><tr><th scope="col">Level</th><th scope="col">Token</th><th scope="col">Used by</th><th scope="col">Mock</th></tr></thead>
         <tbody>
-          <tr><td>1 · contact</td><td><code>--shadow-1</code></td><td>Small moving parts that sit on a track: the switch thumb.</td></tr>
-          <tr><td>2 · hover lift</td><td><code>--shadow-2</code></td><td>Primary button on hover, interactive card on hover (with a 1px rise), tooltip.</td></tr>
-          <tr><td>3 · floating</td><td><code>--shadow-3</code></td><td>Menus and the account menu, area suggestions, filter dropdown, popover, toast, focused skip link.</td></tr>
-          <tr><td>4 · modal</td><td><code>--shadow-4</code></td><td>Dialog panel, side sheet, drawer.</td></tr>
-          <tr><td>Focus</td><td><code>--shadow-focus</code></td><td>A 2px offset ring plus 2px pepper ring, for places where an outline would be clipped by <code>overflow: hidden</code>. Components use the outline focus ring by default.</td></tr>
+          <tr><td>1 · contact</td><td><code>--shadow-1</code></td><td>Reserved for a small part resting on a track. No ShotThere component reads it today.</td><td>—</td></tr>
+          <tr><td>2 · lift</td><td><code>--shadow-2</code></td><td>Primary button on hover; map markers (with a 2px surface halo); the map legend overlay.</td><td><a href="../../mocks/pages/map/default.html">pages/map/default</a></td></tr>
+          <tr><td>3 · floating</td><td><code>--shadow-3</code></td><td>The compare bar, fixed to the bottom; the map marker popup; popovers; combobox suggestions in the guide entry picker; toasts; the episode play pill; the focused skip link.</td><td><a href="../../mocks/pages/studios/selected.html">pages/studios/selected</a>, <a href="../../mocks/dialogs/map-popup/default.html">dialogs/map-popup/default</a></td></tr>
+          <tr><td>4 · modal</td><td><code>--shadow-4</code></td><td>Dialog panels (unpublish, delete, discard changes, missing fields), side sheets (filters, site menu from 48rem).</td><td><a href="../../mocks/dialogs/unpublish/default.html">dialogs/unpublish/default</a>, <a href="../../mocks/dialogs/studio-filters/default.html">dialogs/studio-filters/default</a></td></tr>
+          <tr><td>Focus</td><td><code>--shadow-focus</code></td><td>A 2px offset ring plus a 2px accent ring, for places where an outline would be clipped by <code>overflow: hidden</code>. Reserved: every ShotThere component, including the location card and map markers, uses the outline ring.</td><td>—</td></tr>
         </tbody>
       </table></div>
-      <p><b>Where these came from.</b> The four shadows and their dark variants are the mocks' draft unchanged. The harvest found every shadow in <code>ui.css</code> already reading a token, plus four 1px inset or spread "rings" (the selected card edge, the invalid field edge) that are borders drawn with <code>box-shadow</code>, not elevation; they read <code>--border-width-*</code> and colour tokens and are documented on <a href="shape.html#borders">Shape</a>.</p>
+      <p>Some <code>box-shadow</code> values are not elevation: the pip's empty ring, the invalid field's inset ring, the compare table's label-column edge and the open map marker's accent ring are edges drawn with a shadow so they do not shift layout. They read <code>--border-width-*</code> and colour tokens and are documented on <a href="shape.html#borders">Shape</a>.</p>
     </section>
 
     <section class="ds-section" id="surfaces"><h2><a href="#surfaces">Surface hierarchy</a></h2>
-      <p>Four surfaces, from back to front. In light theme canvas, surface and raised are all white: separation comes from space, a hairline or a shadow. Sunken is the one tinted surface, for wells and summaries that sit <em>into</em> the page.</p>
+      <p>Four surfaces, from back to front. In light theme canvas, surface and raised are all white: separation comes from space, a hairline or a shadow. Sunken is the one tinted surface, for panels that sit <em>into</em> the page: the all-in price block, light-grid cells, the disclosure and fee rows.</p>
       <div class="ds-themes">
         <div data-theme="light">
           <div class="stack">
             <p class="text-caption">Canvas · <code>--color-bg-canvas</code></p>
-            <div style="background: var(--color-bg-surface); border: var(--border-width-hairline) solid var(--color-border-default); border-radius: var(--radius-lg); padding: var(--space-4);">
-              <p class="text-caption">Surface · card with hairline</p>
-              <div style="background: var(--color-bg-surface-sunken); border-radius: var(--radius-md); padding: var(--space-3); margin-top: var(--space-3);"><p class="text-caption">Sunken · enquiry summary</p></div>
+            <div class="summary-panel">
+              <dl class="summary-panel__row"><div><dt>All-in, 2 hours</dt><dd>$145.00</dd></div><div><dt>Overall</dt><dd>3.8<span class="visually-hidden"> out of 5</span></dd></div></dl>
+              <p class="price-block__allin"><strong>$145.00</strong><span>Sunken: 2 hours at $60.00 plus the cleaning fee.</span></p>
             </div>
-            <div style="background: var(--color-bg-surface-raised); border-radius: var(--radius-md); padding: var(--space-4); box-shadow: var(--shadow-3);"><p class="text-caption">Raised · menu with <code>--shadow-3</code></p></div>
+            <div class="compare-bar" style="position: static; border-radius: var(--radius-md);">
+              <div class="compare-bar__inner"><div class="compare-bar__status"><p class="compare-bar__count">2 selected</p><p class="compare-bar__names">The Junction Loft, Kensington Window Room</p></div></div>
+            </div>
           </div>
         </div>
         <div data-theme="dark">
           <div class="stack">
             <p class="text-caption">Canvas · <code>--color-bg-canvas</code></p>
-            <div style="background: var(--color-bg-surface); border: var(--border-width-hairline) solid var(--color-border-default); border-radius: var(--radius-lg); padding: var(--space-4);">
-              <p class="text-caption">Surface · card with hairline</p>
-              <div style="background: var(--color-bg-surface-sunken); border-radius: var(--radius-md); padding: var(--space-3); margin-top: var(--space-3);"><p class="text-caption">Sunken · enquiry summary</p></div>
+            <div class="summary-panel">
+              <dl class="summary-panel__row"><div><dt>All-in, 2 hours</dt><dd>$145.00</dd></div><div><dt>Overall</dt><dd>3.8<span class="visually-hidden"> out of 5</span></dd></div></dl>
+              <p class="price-block__allin"><strong>$145.00</strong><span>Sunken: 2 hours at $60.00 plus the cleaning fee.</span></p>
             </div>
-            <div style="background: var(--color-bg-surface-raised); border-radius: var(--radius-md); padding: var(--space-4); box-shadow: var(--shadow-3);"><p class="text-caption">Raised · menu with <code>--shadow-3</code></p></div>
+            <div class="compare-bar" style="position: static; border-radius: var(--radius-md);">
+              <div class="compare-bar__inner"><div class="compare-bar__status"><p class="compare-bar__count">2 selected</p><p class="compare-bar__names">The Junction Loft, Kensington Window Room</p></div></div>
+            </div>
           </div>
         </div>
       </div>
+      <p class="text-caption">Canvas; the summary panel as a surface with a hairline; the price block sunken into it; the compare bar raised with <code>--shadow-3</code> (shown in flow and rounded here so it fits the column).</p>
       <div class="ds-table-wrap"><table class="ds-table">
-        <thead><tr><th scope="col">Surface</th><th scope="col">Role</th><th scope="col">Light</th><th scope="col">Dark</th><th scope="col">Separated by</th></tr></thead>
+        <thead><tr><th scope="col">Surface</th><th scope="col">Role</th><th scope="col">Light</th><th scope="col">Dark</th><th scope="col">Separated by</th><th scope="col">ShotThere examples</th></tr></thead>
         <tbody>
-          <tr><td>Canvas</td><td><code>--color-bg-canvas</code></td><td>white</td><td>stone-950</td><td>n/a</td></tr>
-          <tr><td>Surface</td><td><code>--color-bg-surface</code></td><td>white</td><td>stone-950</td><td>Space, or a hairline border</td></tr>
-          <tr><td>Sunken</td><td><code>--color-bg-surface-sunken</code></td><td>stone-50</td><td>stone-900</td><td>Its tint</td></tr>
-          <tr><td>Raised</td><td><code>--color-bg-surface-raised</code></td><td>white</td><td>stone-850</td><td>Shadow (light), lighter surface plus shadow (dark)</td></tr>
+          <tr><td>Canvas</td><td><code>--color-bg-canvas</code></td><td>white</td><td>stone-950</td><td>n/a</td><td>Every page, the lightbox</td></tr>
+          <tr><td>Surface</td><td><code>--color-bg-surface</code></td><td>white</td><td>stone-950</td><td>Space, or a hairline border</td><td>Summary panel, stat tiles, editor sections, inputs</td></tr>
+          <tr><td>Sunken</td><td><code>--color-bg-surface-sunken</code></td><td>stone-50</td><td>stone-900</td><td>Its tint</td><td>Price block, light grid, disclosure, fee rows, compare-table group rows</td></tr>
+          <tr><td>Raised</td><td><code>--color-bg-surface-raised</code></td><td>white</td><td>stone-850</td><td>Shadow (light), a lighter surface plus shadow (dark)</td><td>Compare bar, map popup and legend, dialogs, sheets, suggestions</td></tr>
         </tbody>
       </table></div>
       <p>Swatches and contrast for these roles are on <a href="color.html#roles">Color</a>.</p>
@@ -165,16 +192,14 @@
     <section class="ds-section" id="dark"><h2><a href="#dark">Elevation in dark theme</a></h2>
       <p>A shadow is a darker area around a surface; on a near-black canvas there is almost nothing darker to show. Dark theme therefore does two things at once:</p>
       <ol>
-        <li><b>Raised surfaces get lighter.</b> Dialogs, sheets, menus and popovers use stone-850 against the stone-950 canvas, so the panel edge is visible without any shadow.</li>
+        <li><b>Raised surfaces get lighter.</b> The compare bar, the map popup, dialogs and sheets use stone-850 against the stone-950 canvas, so their edge is visible without any shadow.</li>
         <li><b>Shadows turn black and stronger.</b> <code>--shadow-color</code> becomes pure black (0 0 0) and opacities rise from 6–18% to 35–65%, enough to darken the area around a panel.</li>
       </ol>
-      <p>The backdrop also darkens from ink at 50% to black at 66%, so a dialog never floats over a page that looks the same as itself.</p>
+      <p>The backdrop also darkens from ink at 50% to black at 66%, so a dialog never floats over a page that looks the same as itself. The focus shadow and its offset colour are restated in the dark blocks, so a region marked <code>data-theme="dark"</code> inside a light page resolves them correctly.</p>
       <div class="ds-themes">
         <div data-theme="light"><div class="ds-shadow-grid"><div style="--shadow: var(--shadow-2);">2</div><div style="--shadow: var(--shadow-3);">3</div><div style="--shadow: var(--shadow-4);">4</div></div></div>
         <div data-theme="dark"><div class="ds-shadow-grid"><div style="--shadow: var(--shadow-2); background: var(--color-bg-surface-raised);">2</div><div style="--shadow: var(--shadow-3); background: var(--color-bg-surface-raised);">3</div><div style="--shadow: var(--shadow-4); background: var(--color-bg-surface-raised);">4</div></div></div>
       </div>
-      <div class="ds-table-wrap"><table class="ds-table"><thead><tr><th scope="col">Token</th><th scope="col">Light</th><th scope="col">Dark</th><th scope="col">Use</th></tr></thead><tbody><tr><td><code>--shadow-color</code></td><td><span data-theme="light" data-token="--shadow-color"></span></td><td><span data-theme="dark" data-token="--shadow-color"></span></td><td>RGB channels every shadow is tinted with: warm stone light, black dark.</td></tr><tr><td><code>--shadow-1</code></td><td><span data-theme="light" data-token="--shadow-1"></span></td><td><span data-theme="dark" data-token="--shadow-1"></span></td><td>Contact: the switch thumb.</td></tr><tr><td><code>--shadow-2</code></td><td><span data-theme="light" data-token="--shadow-2"></span></td><td><span data-theme="dark" data-token="--shadow-2"></span></td><td>Hover lift: primary button, interactive card; tooltip.</td></tr><tr><td><code>--shadow-3</code></td><td><span data-theme="light" data-token="--shadow-3"></span></td><td><span data-theme="dark" data-token="--shadow-3"></span></td><td>Floating: menus, suggestions, filter dropdown, popover, toast, skip link.</td></tr><tr><td><code>--shadow-4</code></td><td><span data-theme="light" data-token="--shadow-4"></span></td><td><span data-theme="dark" data-token="--shadow-4"></span></td><td>Modal: dialog panel, side sheet, drawer.</td></tr><tr><td><code>--shadow-focus</code></td><td><span data-theme="light" data-token="--shadow-focus"></span></td><td><span data-theme="dark" data-token="--shadow-focus"></span></td><td>Ring for clipped contexts: offset colour then focus colour.</td></tr></tbody></table></div>
-      <p><code>--shadow-focus</code> and <code>--color-focus-ring-offset</code> are composed once on <code>:root</code> and not restated in the dark blocks. A whole page in dark theme resolves them correctly, but a region marked <code>data-theme="dark"</code> inside a light page (like the Dark column above) inherits the light ring. Restating both in the dark blocks is a pending fix to <code>tokens.css</code>.</p>
     </section>
 
     <section class="ds-section" id="z-order"><h2><a href="#z-order">Z-order</a></h2>
@@ -182,66 +207,108 @@
       <div class="ds-table-wrap"><table class="ds-table">
         <thead><tr><th scope="col">Token</th><th scope="col">Value</th><th scope="col">What sits there</th></tr></thead>
         <tbody>
-          <tr><td><code>--z-base</code></td><td><span data-token="--z-base"></span></td><td>Page content.</td></tr>
-          <tr><td><code>--z-raised</code></td><td><span data-token="--z-raised"></span></td><td>A selected segment in a button group, so its pepper edge covers its neighbours' borders; positioned decorations inside a component.</td></tr>
-          <tr><td><code>--z-sticky</code></td><td><span data-token="--z-sticky"></span></td><td>The sticky top bar and the sticky enquiry bar on phones.</td></tr>
-          <tr><td><code>--z-dropdown</code></td><td><span data-token="--z-dropdown"></span></td><td>Menus, the account menu, the filter dropdown.</td></tr>
-          <tr><td><code>--z-overlay</code></td><td><span data-token="--z-overlay"></span></td><td>The backdrop behind a dialog or sheet.</td></tr>
-          <tr><td><code>--z-modal</code></td><td><span data-token="--z-modal"></span></td><td>Dialogs, sheets, drawers and the full-screen photo viewer.</td></tr>
-          <tr><td><code>--z-popover</code></td><td><span data-token="--z-popover"></span></td><td>Popovers, which may open from inside a dialog.</td></tr>
-          <tr><td><code>--z-toast</code></td><td><span data-token="--z-toast"></span></td><td>The toast region: a confirmation must stay visible over a dialog that triggered it.</td></tr>
-          <tr><td><code>--z-tooltip</code></td><td><span data-token="--z-tooltip"></span></td><td>Tooltips and the focused skip link: always on top.</td></tr>
+          <tr><td><code>--z-base</code></td><td><span data-token="--z-base"></span></td><td>Page content, map tiles and markers.</td></tr>
+          <tr><td><code>--z-raised</code></td><td><span data-token="--z-raised"></span></td><td>The compare toggle and tags on a location card, above the card's stretched link; the compare table's sticky label column.</td></tr>
+          <tr><td><code>--z-sticky</code></td><td><span data-token="--z-sticky"></span></td><td>The compare bar. It stays above page content but under every overlay, so a dialog or the filters sheet covers it.</td></tr>
+          <tr><td><code>--z-dropdown</code></td><td><span data-token="--z-dropdown"></span></td><td>Reserved for a list floating over the page; nothing uses it today.</td></tr>
+          <tr><td><code>--z-overlay</code></td><td><span data-token="--z-overlay"></span></td><td>The backdrop behind a dialog.</td></tr>
+          <tr><td><code>--z-modal</code></td><td><span data-token="--z-modal"></span></td><td>Dialogs, the filters and site-menu sheets and the photo lightbox.</td></tr>
+          <tr><td><code>--z-popover</code></td><td><span data-token="--z-popover"></span></td><td>Popovers and the map marker popup, which must clear the markers and legend around it.</td></tr>
+          <tr><td><code>--z-toast</code></td><td><span data-token="--z-toast"></span></td><td>The toast region: "You can compare up to 4 studios" stays visible over the compare bar, and an admin toast over the dialog that caused it.</td></tr>
+          <tr><td><code>--z-tooltip</code></td><td><span data-token="--z-tooltip"></span></td><td>The focused skip link: always on top.</td></tr>
         </tbody>
       </table></div>
-      <p>The example below is a real stack in a frame: the page and its sticky enquiry bar (100), the backdrop (1200) covering them, a confirmation dialog (1300) and a toast (1500) above it all.</p>
-      <div class="ds-frame">
-        <div class="ds-frame__page"><p><b>Pelau House</b></p><p>Trinidadian &amp; Tobagonian · Scarborough</p><p>Serves 20–300 guests.</p></div>
-        <div class="sticky-cta" role="region" aria-label="Enquire"><div class="sticky-cta__text"><strong>Pelau House</strong><span>Serves 20–300 guests</span></div><button class="btn btn--primary" type="button">Send an enquiry</button></div>
-        <div class="backdrop"></div>
-        <div class="dialog" role="dialog" aria-modal="false" aria-labelledby="z-dlg-title">
-          <div class="dialog__panel dialog__panel--sm">
-            <div class="dialog__header"><div style="flex: 1;"><h3 class="dialog__title" id="z-dlg-title">Remove “Curry goat”?</h3><p class="text-muted" style="margin-top: var(--space-1);">It comes off your page within a minute. You can add it again later.</p></div></div>
-            <div class="dialog__footer"><button class="btn" type="button">Cancel</button><button class="btn btn--danger" type="button">Remove dish</button></div>
+
+      <h3>The compare bar and a toast</h3>
+      <p>Page content (0), the compare bar fixed to the bottom (100) and the limit toast (1500) raised above the bar by <code>.has-compare-bar .toast-region</code>, as in <a href="../../mocks/notifications/public-toast/warning.html">notifications/public-toast/warning</a>:</p>
+      <div class="ds-frame has-compare-bar">
+        <div class="ds-frame__page"><p><b>Studios</b></p><p>7 studios · Most recent review</p><p>Kensington Window Room · The Junction Loft · Leslieville Daylight Studio · Bloordale Sun Studio</p></div>
+        <aside class="compare-bar" aria-label="Studios to compare, example">
+          <div class="compare-bar__inner">
+            <div class="compare-bar__status"><p class="compare-bar__count">4 selected</p><p class="compare-bar__names">Kensington Window Room, The Junction Loft, Leslieville Daylight Studio, Bloordale Sun Studio</p></div>
+            <div class="compare-bar__actions"><button class="btn btn--ghost" type="button">Clear</button><a class="btn btn--primary" href="../../mocks/pages/compare/four.html">Compare</a></div>
+          </div>
+        </aside>
+        <div class="toast-region" role="status" aria-live="off">
+          <div class="toast toast--warning">
+            <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3 2 20h20L12 3z"/><path d="M12 10v4M12 17h.01"/></svg>
+            <div class="toast__body"><div class="toast__title">You can compare up to 4 studios</div><div class="toast__text">Remove one from the bar to add Ossington Blackbox.</div></div>
           </div>
         </div>
-        <div class="toast-region toast-region--top" role="status" aria-live="off"><div class="toast toast--success"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg><div class="toast__body"><div class="toast__title">Reply sent</div><div class="toast__text">Pelau House will get an email.</div></div></div></div>
       </div>
-      <p><b>Where these came from.</b> The layer names and values are the mocks' draft. The only literal found in the harvest was <code>calc(var(--z-tooltip) + 10)</code> for the mock bar in <code>mock.css</code>, which is mock tooling and not product UI.</p>
+
+      <h3>The map popup</h3>
+      <p>Markers sit on the map at the base layer; the popup for the open marker floats above them at the popover layer (1400) with <code>--shadow-3</code>. Below 48rem it docks along the bottom of the map instead of covering the markers around it (<a href="../../mocks/dialogs/map-popup/default.html">dialogs/map-popup/default</a>).</p>
+      <div class="ds-frame ds-frame--short" style="min-height: 22rem;">
+        <div class="static-map" style="position: absolute; inset: 0; border-radius: 0;">
+          <img class="static-map__tiles" src="../assets/img/map-toronto.svg" alt="" width="1600" height="1000">
+          <a class="map-marker map-marker--studio" style="left: 30%; top: 62%;" href="../../mocks/pages/map/default.html" aria-label="The Junction Loft, studio" aria-haspopup="dialog" aria-expanded="true" aria-controls="elev-popup"></a>
+          <a class="map-marker map-marker--studio" style="left: 52%; top: 72%;" href="../../mocks/dialogs/map-popup/default.html" aria-label="Kensington Window Room, studio" aria-haspopup="dialog" aria-expanded="false"></a>
+          <a class="map-marker map-marker--spot" style="left: 70%; top: 40%;" href="../../mocks/dialogs/map-popup/spot.html" aria-label="Evergreen Brick Works, outdoor spot" aria-haspopup="dialog" aria-expanded="false"></a>
+          <div class="popover map-popup map-popup--dock" id="elev-popup" role="dialog" aria-labelledby="elev-popup-title" style="left: 30%; top: 62%;">
+            <p class="map-popup__kind">Studio</p>
+            <h4 class="map-popup__name" id="elev-popup-title">The Junction Loft</h4>
+            <p class="map-popup__fact">All-in for 2 hours: $145.00</p>
+            <a href="../../mocks/pages/studio/default.html">View the review<span class="visually-hidden">: The Junction Loft</span></a>
+            <a class="icon-btn" href="#z-order" aria-label="Close"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></a>
+          </div>
+        </div>
+      </div>
+
+      <h3>A dialog over the editor</h3>
+      <p>The backdrop (1200) covers the page and any compare bar; the dialog (1300) sits above it with <code>--shadow-4</code>, as in <a href="../../mocks/dialogs/unpublish/default.html">dialogs/unpublish/default</a>:</p>
+      <div class="ds-frame">
+        <div class="ds-frame__page"><p><b>The Junction Loft</b></p><p>Published · Last saved 29 Sep 2026</p><p>Basics · Pricing and fees · Measured specifications</p></div>
+        <div class="backdrop"></div>
+        <div class="dialog" role="dialog" aria-modal="false" aria-labelledby="z-dlg-title" aria-describedby="z-dlg-desc">
+          <div class="dialog__panel dialog__panel--sm">
+            <div class="dialog__header"><div class="dialog__heading"><h4 class="dialog__title" id="z-dlg-title">Unpublish The Junction Loft?</h4><p class="dialog__desc" id="z-dlg-desc">It goes back to draft. Its page, its map marker and its place in lists, comparisons and guides disappear within a minute.</p></div></div>
+            <div class="dialog__footer"><button class="btn" type="button">Cancel</button><button class="btn btn--primary" type="button">Unpublish</button></div>
+          </div>
+        </div>
+      </div>
+      <p class="text-caption">In the frames the bar, toast, popup and dialog are pinned to the frame instead of the window; in the product they are fixed to the viewport.</p>
     </section>
 
     <section class="ds-section" id="usage"><h2><a href="#usage">Usage</a></h2>
       <ul>
-        <li><b>No shadow on the page.</b> If something is in the page flow, it does not get a shadow. Use space first, a hairline second.</li>
-        <li><b>Shadow follows the layer.</b> Floating panels use level 3, modal panels level 4. Do not give a menu level 4 to make it "pop".</li>
-        <li><b>Raised surfaces read the raised role.</b> Every floating panel uses <code>--color-bg-surface-raised</code>, never <code>--color-bg-surface</code>, so dark theme can lift it.</li>
-        <li><b>Hover lift is feedback.</b> Level 2 appears on hover only, and only on things that are clickable as a whole.</li>
-        <li><b>One modal at a time.</b> Do not stack a dialog on a dialog; replace the content or move to a screen. Popovers and toasts may sit above a dialog; that is what their layers are for.</li>
+        <li><b>No shadow on the page.</b> If something is in the page flow, including a sticky summary panel or editor aside, it does not get a shadow. Use space first, a hairline second.</li>
+        <li><b>Shadow follows the layer.</b> Floating surfaces use level 3, modal panels level 4. Do not give the map popup level 4 to make it "pop".</li>
+        <li><b>Raised surfaces read the raised role.</b> Every floating surface uses <code>--color-bg-surface-raised</code>, never <code>--color-bg-surface</code>, so dark theme can lift it.</li>
+        <li><b>Hover lift is feedback.</b> Level 2 appears on hover only, and only on things that are clickable as a whole. Location cards scale their photo instead.</li>
+        <li><b>One modal at a time.</b> Do not stack a dialog on a dialog; replace the content or move to a screen. Toasts may sit above a dialog; that is what their layer is for.</li>
+        <li><b>Toasts clear the compare bar.</b> On screens with the bar, the toast region sits above the bar's height so the two never overlap.</li>
         <li><b>Use the z tokens.</b> No raw <code>z-index</code> numbers in component CSS.</li>
       </ul>
       <div class="ds-dodont">
-        <figure class="ds-do"><div class="ds-example__canvas"><span class="photo"><img src="../assets/img/sunday-pot.jpg" alt="Spiced rice with chicken lifted from a blue cast-iron pot"></span><span class="caterer-card__name">Sunday Pot</span><span class="caterer-card__meta">St. Lucian · Mississauga</span></div><figcaption>Let a caterer card sit flat on the canvas: the round photo is the shape.</figcaption></figure>
-        <figure class="ds-dont"><div class="ds-example__canvas"><div style="box-shadow: var(--shadow-3); border-radius: var(--radius-lg); padding: var(--space-4); width: 11rem;"><span class="photo" style="width: 6rem; margin-inline: auto;"><img src="../assets/img/sunday-pot.jpg" alt="Spiced rice with chicken lifted from a blue cast-iron pot"></span><p style="font: var(--text-card-title); text-align: center; margin-top: var(--space-3);">Sunday Pot</p></div></div><figcaption>Box a caterer in a shadowed card. The flat, photo-led grid turns into a stack of boxes.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas"><div class="location-card" style="width: 14rem;"><div class="location-card__media"><img src="../assets/img/studio-riverside-rooftop-studio.svg" alt="" width="1200" height="800"></div><p class="location-card__name">Riverside Rooftop Studio</p><p class="location-card__meta">Riverside · Reviewed 9 Jun 2026</p></div></div><figcaption>Let a location card sit flat on the canvas: the photo is the shape.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas"><div class="location-card" style="width: 14rem; box-shadow: var(--shadow-3); border-radius: var(--radius-lg); padding: var(--space-3);"><div class="location-card__media"><img src="../assets/img/studio-riverside-rooftop-studio.svg" alt="" width="1200" height="800"></div><p class="location-card__name">Riverside Rooftop Studio</p><p class="location-card__meta">Riverside · Reviewed 9 Jun 2026</p></div></div><figcaption>Box each card in a floating shadow. The calm grid of photos turns into a stack of tiles fighting the compare bar for depth.</figcaption></figure>
+      </div>
+      <div class="ds-dodont">
+        <figure class="ds-do"><div class="ds-example__canvas"><div class="summary-panel" style="width: 100%;"><dl class="summary-panel__row"><div><dt>All-in, 2 hours</dt><dd>$91.00</dd></div><div><dt>Overall</dt><dd>4.0<span class="visually-hidden"> out of 5</span></dd></div></dl></div></div><figcaption>Keep the sticky summary panel on a hairline; it moves with the page, it does not float over it.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas"><div class="summary-panel" style="width: 100%; box-shadow: var(--shadow-4); border-color: transparent;"><dl class="summary-panel__row"><div><dt>All-in, 2 hours</dt><dd>$91.00</dd></div><div><dt>Overall</dt><dd>4.0<span class="visually-hidden"> out of 5</span></dd></div></dl></div></div><figcaption>Give it a modal shadow because it sticks; it now looks like a dialog waiting to be dismissed.</figcaption></figure>
       </div>
     </section>
 
     <section class="ds-section" id="accessibility"><h2><a href="#accessibility">Accessibility</a></h2>
       <ul>
-        <li><b>Shadows are never the only edge.</b> Dialog panels sit on a backdrop; menus, popovers and suggestions also have a 1px border. In forced-colours mode shadows disappear, and those borders become <code>CanvasText</code>, so every floating panel keeps a visible edge.</li>
-        <li><b>Focus not obscured (2.4.11).</b> Sticky layers (100) never hide the focused element: the page reserves space for the sticky enquiry bar and scroll padding for the top bar. A focused element inside a dialog is never under the sticky dialog footer, because the footer is part of the scroll container.</li>
-        <li><b>Modal means inert.</b> Content under the backdrop is inert and hidden from assistive technology while a dialog is open; z-order alone does not make something modal.</li>
-        <li><b>Toasts above dialogs</b> must still not steal focus; they announce through a live region.</li>
+        <li><b>Shadows are never the only edge.</b> Dialog panels sit on a backdrop; the compare bar has a hairline top edge; popovers and the map popup have a 1px border; markers have a surface halo. In forced-colours mode shadows disappear and those edges become <code>CanvasText</code>, and dialogs and sheets add an outline.</li>
+        <li><b>Focus not obscured (2.4.11).</b> The compare bar (100) never hides the focused element: pages that show it reserve <code>--space-24</code> plus the safe-area inset at the bottom (160px below 36rem, where the bar wraps to two rows) and a 160px bottom scroll padding plus the inset, so a focused element scrolls clear of the bar (L2-030.6). A focused control inside a dialog is never under the sticky dialog footer, because the footer is part of the scroll container.</li>
+        <li><b>Modal means inert.</b> Content under the backdrop is inert and hidden from assistive technology while a dialog, sheet or the lightbox is open; z-order alone does not make something modal. Focus is trapped and returns to the invoking control on close (L2-067.3).</li>
+        <li><b>The map popup is not modal.</b> It is a non-modal dialog: Escape closes it and returns focus to its marker (L2-028.2), and the rest of the map stays operable.</li>
+        <li><b>Toasts do not steal focus.</b> They announce through a live region that exists before the first toast, even when they sit above a dialog.</li>
         <li><b>Hover lift moves 1px</b> and is a transition that respects <code>prefers-reduced-motion</code> through the motion tokens.</li>
       </ul>
     </section>
 
     <section class="ds-section" id="tokens"><h2><a href="#tokens">Tokens</a></h2>
       <h3>Shadows</h3>
-      <div class="ds-table-wrap"><table class="ds-table"><thead><tr><th scope="col">Token</th><th scope="col">Light</th><th scope="col">Dark</th><th scope="col">Use</th></tr></thead><tbody><tr><td><code>--shadow-color</code></td><td><span data-theme="light" data-token="--shadow-color"></span></td><td><span data-theme="dark" data-token="--shadow-color"></span></td><td>RGB channels every shadow is tinted with: warm stone light, black dark.</td></tr><tr><td><code>--shadow-1</code></td><td><span data-theme="light" data-token="--shadow-1"></span></td><td><span data-theme="dark" data-token="--shadow-1"></span></td><td>Contact: the switch thumb.</td></tr><tr><td><code>--shadow-2</code></td><td><span data-theme="light" data-token="--shadow-2"></span></td><td><span data-theme="dark" data-token="--shadow-2"></span></td><td>Hover lift: primary button, interactive card; tooltip.</td></tr><tr><td><code>--shadow-3</code></td><td><span data-theme="light" data-token="--shadow-3"></span></td><td><span data-theme="dark" data-token="--shadow-3"></span></td><td>Floating: menus, suggestions, filter dropdown, popover, toast, skip link.</td></tr><tr><td><code>--shadow-4</code></td><td><span data-theme="light" data-token="--shadow-4"></span></td><td><span data-theme="dark" data-token="--shadow-4"></span></td><td>Modal: dialog panel, side sheet, drawer.</td></tr><tr><td><code>--shadow-focus</code></td><td><span data-theme="light" data-token="--shadow-focus"></span></td><td><span data-theme="dark" data-token="--shadow-focus"></span></td><td>Ring for clipped contexts: offset colour then focus colour.</td></tr></tbody></table></div>
+      <div class="ds-table-wrap"><table class="ds-table"><thead><tr><th scope="col">Token</th><th scope="col">Light</th><th scope="col">Dark</th><th scope="col">Use</th></tr></thead><tbody><tr><td><code>--shadow-color</code></td><td><span data-theme="light"><span data-token="--shadow-color"></span></span></td><td><span data-theme="dark"><span data-token="--shadow-color"></span></span></td><td>The rgb channels every shadow is tinted with: warm stone in light, black in dark.</td></tr><tr><td><code>--shadow-1</code></td><td><span data-theme="light"><span data-token="--shadow-1"></span></span></td><td><span data-theme="dark"><span data-token="--shadow-1"></span></span></td><td>Contact shadow for a small part resting on a track. Reserved: no ShotThere component reads it today.</td></tr><tr><td><code>--shadow-2</code></td><td><span data-theme="light"><span data-token="--shadow-2"></span></span></td><td><span data-theme="dark"><span data-token="--shadow-2"></span></span></td><td>Hover lift on the primary button; map markers and the map legend overlay.</td></tr><tr><td><code>--shadow-3</code></td><td><span data-theme="light"><span data-token="--shadow-3"></span></span></td><td><span data-theme="dark"><span data-token="--shadow-3"></span></span></td><td>Floating: the compare bar, map popup, popovers, combobox suggestions, toasts, the episode play pill, the focused skip link.</td></tr><tr><td><code>--shadow-4</code></td><td><span data-theme="light"><span data-token="--shadow-4"></span></span></td><td><span data-theme="dark"><span data-token="--shadow-4"></span></span></td><td>Modal: dialog panels and side sheets.</td></tr><tr><td><code>--shadow-focus</code></td><td><span data-theme="light"><span data-token="--shadow-focus"></span></span></td><td><span data-theme="dark"><span data-token="--shadow-focus"></span></span></td><td>Ring-shaped focus for places an outline would be clipped by <code>overflow: hidden</code>. Reserved: every ShotThere component uses the outline ring.</td></tr></tbody></table></div>
       <h3>Z-order</h3>
-      <div class="ds-table-wrap"><table class="ds-table"><thead><tr><th scope="col">Token</th><th scope="col">Resolved value</th><th scope="col">Declared as</th><th scope="col">Use</th></tr></thead><tbody><tr><td><code>--z-base</code></td><td><span data-token="--z-base"></span></td><td><code>0</code></td><td>Page content.</td></tr><tr><td><code>--z-raised</code></td><td><span data-token="--z-raised"></span></td><td><code>1</code></td><td>Selected segment over its neighbours.</td></tr><tr><td><code>--z-sticky</code></td><td><span data-token="--z-sticky"></span></td><td><code>100</code></td><td>Sticky top bar, sticky enquiry bar.</td></tr><tr><td><code>--z-dropdown</code></td><td><span data-token="--z-dropdown"></span></td><td><code>1000</code></td><td>Menus, account menu, filter dropdown.</td></tr><tr><td><code>--z-overlay</code></td><td><span data-token="--z-overlay"></span></td><td><code>1200</code></td><td>Dialog and sheet backdrop.</td></tr><tr><td><code>--z-modal</code></td><td><span data-token="--z-modal"></span></td><td><code>1300</code></td><td>Dialog, sheet, drawer, photo viewer.</td></tr><tr><td><code>--z-popover</code></td><td><span data-token="--z-popover"></span></td><td><code>1400</code></td><td>Popovers (may open inside a dialog).</td></tr><tr><td><code>--z-toast</code></td><td><span data-token="--z-toast"></span></td><td><code>1500</code></td><td>Toast region.</td></tr><tr><td><code>--z-tooltip</code></td><td><span data-token="--z-tooltip"></span></td><td><code>1600</code></td><td>Tooltips, focused skip link.</td></tr></tbody></table></div>
+      <div class="ds-table-wrap"><table class="ds-table"><thead><tr><th scope="col">Token</th><th scope="col">Resolved value</th><th scope="col">Declared as</th><th scope="col">Use</th></tr></thead><tbody><tr><td><code>--z-base</code></td><td><span data-token="--z-base"></span></td><td><code>0</code></td><td>Page content.</td></tr><tr><td><code>--z-raised</code></td><td><span data-token="--z-raised"></span></td><td><code>1</code></td><td>Location-card actions above the stretched name link; the compare table's sticky label column.</td></tr><tr><td><code>--z-sticky</code></td><td><span data-token="--z-sticky"></span></td><td><code>100</code></td><td>The compare bar, fixed to the bottom of every list and review screen.</td></tr><tr><td><code>--z-dropdown</code></td><td><span data-token="--z-dropdown"></span></td><td><code>1000</code></td><td>Reserved for a list that floats over the page. The guide entry picker's suggestions sit in flow inside its dialog, so nothing reads it today.</td></tr><tr><td><code>--z-overlay</code></td><td><span data-token="--z-overlay"></span></td><td><code>1200</code></td><td>The backdrop behind a dialog.</td></tr><tr><td><code>--z-modal</code></td><td><span data-token="--z-modal"></span></td><td><code>1300</code></td><td>Dialogs, sheets (filters, site menu) and the photo lightbox.</td></tr><tr><td><code>--z-popover</code></td><td><span data-token="--z-popover"></span></td><td><code>1400</code></td><td>Popovers and the map marker popup.</td></tr><tr><td><code>--z-toast</code></td><td><span data-token="--z-toast"></span></td><td><code>1500</code></td><td>The toast region: a confirmation stays visible over the dialog or bar that caused it.</td></tr><tr><td><code>--z-tooltip</code></td><td><span data-token="--z-tooltip"></span></td><td><code>1600</code></td><td>The focused skip link: always on top.</td></tr></tbody></table></div>
     </section>
 
-    <footer class="ds-footer"><span>ShotThere design system · extracted from docs/mocks on 10 October 2026</span><a href="#top">Back to top</a></footer>
+    <footer class="ds-footer"><span>ShotThere design system · extracted from <a href="../../mocks/index.html">docs/mocks</a> on 13 October 2026</span><a href="#top">Back to top</a></footer>
   </main>
 </div>
 <script src="../assets/ds.js"></script>
