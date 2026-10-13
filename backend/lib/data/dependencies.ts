@@ -1,4 +1,5 @@
 import type { Clock } from '@/lib/shared/clock';
+import type { GuideRepository } from '@/lib/guides/guide-repository';
 import type { SpotRepository } from '@/lib/spots/spot-repository';
 import type { StudioRepository } from '@/lib/studios/studio-repository';
 
@@ -8,4 +9,5 @@ export interface Dependencies {
   clock: Clock;
   studios: StudioRepository;
   spots: SpotRepository;
+  guides: GuideRepository;
 }

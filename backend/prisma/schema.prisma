@@ -139,6 +139,7 @@ model Studio {
   fees                  StudioFee[]
   gear                  GearItem[]
   images                Image[]
+  guideEntries          GuideEntry[]
 
   @@index([name])
 }
@@ -226,6 +227,7 @@ model Spot {
   updatedAt          DateTime         @updatedAt
   permits            PermitStatus[]
   images             Image[]
+  guideEntries       GuideEntry[]
 
   @@index([name])
 }
@@ -238,4 +240,31 @@ model PermitStatus {
   required  Boolean
 
   @@unique([spotId, shootType])
+}
+
+model Guide {
+  id           String         @id @default(uuid())
+  slug         String         @unique
+  status       LocationStatus @default(draft)
+  title        String
+  introduction String
+  publishedAt  DateTime?
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+  entries      GuideEntry[]
+}
+
+model GuideEntry {
+  id       String  @id @default(uuid())
+  guideId  String
+  guide    Guide   @relation(fields: [guideId], references: [id], onDelete: Cascade)
+  studioId String?
+  studio   Studio? @relation(fields: [studioId], references: [id])
+  spotId   String?
+  spot     Spot?   @relation(fields: [spotId], references: [id])
+  note     String
+  position Int
+
+  @@unique([guideId, studioId])
+  @@unique([guideId, spotId])
 }

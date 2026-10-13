@@ -1,3 +1,4 @@
+import type { GuideRecord } from '@/lib/guides/guide-record';
 import type { ImageRecord } from '@/lib/images/image-record';
 import type { SpotRecord } from '@/lib/spots/spot-record';
 import type { StudioRecord } from '@/lib/studios/studio-record';
@@ -140,6 +141,22 @@ export function aSpot(overrides: Partial<SpotRecord> = {}): SpotRecord {
     publishedAt: new Date('2026-09-02T12:00:00Z'),
     updatedAt: new Date('2026-09-02T12:00:00Z'),
     images: [anImage({ role: 'sampleShot', focalLengthMm: 85, angleNote: 'From the lower steps' })],
+    ...overrides,
+  };
+}
+
+/** A published guide with no entries. */
+export function aGuide(overrides: Partial<GuideRecord> = {}): GuideRecord {
+  const id = overrides.id ?? nextId();
+  return {
+    id,
+    slug: `guide-${id}`,
+    status: 'published',
+    title: `Guide ${id}`,
+    introduction: 'Studios we have shot in and would book again.',
+    publishedAt: new Date('2026-09-05T12:00:00Z'),
+    updatedAt: new Date('2026-09-05T12:00:00Z'),
+    entries: [],
     ...overrides,
   };
 }
