@@ -151,7 +151,7 @@ application's signup component renders; it is not part of this contract.
 <st-site-footer brand="ShotThere"
   i18n-tagline tagline="Toronto photo studios and outdoor spots, reviewed first-hand. Nothing is listed unless it has been shot there."
   [links]="footerLinks" i18n-navLabel navLabel="Footer" [copy]="copyLine()">
-  <st-email-signup slot="signup" class="footer-signup" variant="compact" />
+  <st-email-signup slot="signup" class="footer-signup" variant="footer" />
 </st-site-footer>
 ```
 

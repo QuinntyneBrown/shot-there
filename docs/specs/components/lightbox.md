@@ -79,8 +79,8 @@ library strings are needed for the phone pager (D-3).
    `st-responsive-image`): the image-off icon and the alt text in the photo's
    own slot.
 10. **Caption** — `.viewer__caption` (with an ID for `aria-describedby`): a
-    `<p>` with the shot's `title` in `<strong>` followed by " · " and its
-    `caption`, or the `caption` alone.
+    `<p>` holding `Shot.caption` verbatim; when the shot has a `title` and
+    `caption` begins with it, that lead is wrapped in `<strong>` (D-6).
 11. **Pager (phones)** — `.lightbox__pager`: secondary `button[st-button]`
     "Previous" and "Next" with chevrons, below 48rem only; bottom padding plus
     `env(safe-area-inset-bottom)`.
@@ -101,7 +101,7 @@ flex children of the `.viewer` container.
 | Field | Type | Rule |
 |---|---|---|
 | `title` | `string` | The dialog's accessible name, complete: "Photo viewer: The Junction Loft". Marked for translation by the application (`$localize`), with the location name interpolated (D-4). |
-| `shots` | `readonly Shot[]` | At least one. Shown in order. Each `Shot` has `image` (`ResponsiveImage`: alt, width, height, sources, fallback URL), `caption` (the alt text for gallery and test shots; the angle or position note for sample shots) and optional `title` (the focal length "85 mm", or "1 · Headshot"). |
+| `shots` | `readonly Shot[]` | At least one. Shown in order. Each `Shot` has `image` (`ResponsiveImage`: alt, width, height, sources, fallback URL), `caption` (the full caption the lightbox shows: the alt text for gallery photos, "85 mm · Shoot north from the lower steps" for sample shots) and optional `title` (the thumbnail's bold lead, "85 mm" or "1 · Headshot") ([shot-grid.md](shot-grid.md) D-1). |
 | `startIndex` | `number` | Index of the shot shown first, `0` to `shots.length − 1`; the `shotActivated` index from `st-shot-grid`. |
 
 ### Outputs
@@ -137,8 +137,8 @@ application translates them through the extracted IDs.
 | Variant | What decides it | Caption |
 |---|---|---|
 | Gallery photo | `Shot` without `title` | The alt text: "Full-length fashion frame on the cyc, warm afternoon light from the left." |
-| Test shot | `title` "1 · Headshot" | **1 · Headshot** · Test shot 1, headshot: even falloff from the octabox, grey seamless, soft shadow under the chin. |
-| Sample shot | `title` "85 mm" | **85 mm** · Shoot north from the lower steps |
+| Test shot | `title` "1 · Headshot", `caption` as the application writes it | `caption` verbatim; **1 · Headshot** in bold when `caption` begins with it |
+| Sample shot | `title` "85 mm", `caption` "85 mm · Shoot north from the lower steps" | **85 mm** · Shoot north from the lower steps |
 | Single photo | `shots.length` 1 | Arrows and pager are not rendered; "Photo 1 of 1" (D-2) |
 
 One size: the viewer always covers the viewport. The photo scales to the stage
@@ -334,14 +334,14 @@ at once; nothing auto-advances ([lightbox.html](../../design-system/components/l
 - Dialog name: "Photo viewer: " plus the studio or spot name, written whole by
   the application.
 - Gallery caption: the alt text, one sentence ending in a full stop. Sample
-  shot: `title` "85 mm" and `caption` "Shoot north from the lower steps", the
+  shot: `caption` "85 mm · Shoot north from the lower steps" with `title` "85 mm", the
   same wording as the thumbnail caption (L2-016.2); focal lengths are formatted
   by the application.
 - Control names: "Close", "Previous photo", "Next photo"; never "Back",
   "Forward" or "X". No download, share or zoom buttons.
 - Translatable: everything in `LightboxData` (the application's) and the six
-  library strings. The " · " between `title` and `caption` is punctuation added
-  in TypeScript (D-6).
+  library strings. The lightbox adds no text to the caption: " · " is part of
+  `caption` (D-6).
 - Long captions (French about 30 % longer) wrap under the photo.
 
 ## Performance
@@ -371,7 +371,7 @@ at once; nothing auto-advances ([lightbox.html](../../design-system/components/l
 
 - **AC-1** Given The Junction Loft's gallery of 8 photos, when the visitor activates thumbnail 3 and the application opens `LightboxComponent` with `kind: 'viewer'`, `title` "Photo viewer: The Junction Loft" and `startIndex` 2, then an element with `role="dialog"`, `aria-modal="true"` and the classes `viewer lightbox` is shown, named "Photo viewer: The Junction Loft", showing "Photo 3 of 8" and the full image with the alt "Full-length fashion frame on the cyc, warm afternoon light from the left.". (L2-010)
 - **AC-2** Given the open viewer on a gallery photo without a `title`, when it renders, then `.viewer__caption` reads "Full-length fashion frame on the cyc, warm afternoon light from the left." and is the dialog's accessible description. (L2-010)
-- **AC-3** Given Evergreen Brick Works' sample shot 1 with `title` "85 mm" and `caption` "Shoot north from the lower steps", when the viewer opens on it, then the caption shows "85 mm" in `<strong>` followed by " · Shoot north from the lower steps", and the count reads "Photo 1 of 5". (L2-016)
+- **AC-3** Given Evergreen Brick Works' sample shot 1 with `caption` "85 mm · Shoot north from the lower steps" and `title` "85 mm", when the viewer opens on it, then the caption's text is exactly "85 mm · Shoot north from the lower steps" with "85 mm" in `<strong>`, and the count reads "Photo 1 of 5". (L2-016)
 - **AC-4** Given the viewer at 360 px on photo 3, when the image element is inspected, then it has a `srcset`, `sizes="100vw"`, `width="800"`, `height="1000"`, `loading="eager"` and `fetchpriority="high"`. (L2-072)
 
 ### Paging
@@ -442,8 +442,10 @@ animate between steps ([lightbox.html](../../design-system/components/lightbox.h
 - Strings: `$localize` with `@@st.lightbox.close`, `.previous`, `.next`,
   `.count` (`Photo ${current}:current: of ${total}:total:`), `.pagerPrevious`,
   `.pagerNext`.
-- Caption: `@if (shot().title) { <strong>{{ shot().title }}</strong>{{ separator }} }{{ shot().caption }}`
-  with `separator = ' · '` defined in TypeScript.
+- Caption: a `computed` splits `caption` into `lead` (the `title`, when
+  `caption` starts with it) and `rest`; the template renders
+  `@if (lead()) { <strong>{{ lead() }}</strong> }{{ rest() }}`, so the text is
+  always `caption` exactly, as in [shot-grid.md](shot-grid.md).
 - Frame: `<st-responsive-image [image]="shot().image" sizes="100vw" priority />`,
   keyed by index so a new image element replaces the old one on each step.
   The host is sized in the lightbox CSS (D-5).
@@ -462,5 +464,5 @@ animate between steps ([lightbox.html](../../design-system/components/lightbox.h
 - **D-3** *The pager shows "Previous" with a hidden " photo", but §12 has only "Previous photo", and splitting a sentence into translatable fragments breaks in other languages.* The pager buttons render a new visible string ("Previous", "Next"; additive ICD change) and take the full `st.lightbox.previous` / `.next` as `aria-label`. The accessible name is unchanged and starts with the visible word, as WCAG 2.5.3 asks.
 - **D-4** *Is `LightboxData.title` the location name or the full dialog name?* The full name ("Photo viewer: The Junction Loft"), written by the application with `$localize`, so no new library string or placeholder is needed and the ICD type stays as it is.
 - **D-5** *The DS sizes the photo with `.lightbox__frame img`, but the image is inside `st-responsive-image`, whose internals the lightbox's encapsulated CSS cannot reach.* The lightbox sizes the `st-responsive-image` host instead: `width: min(100%, calc((100dvh - 13rem) * w / h))` from the shot's `width` and `height` (bound as a style), `--radius-md` with `overflow: hidden`. The photo then fits the same box the DS describes, and a failed image keeps that box, so the placeholder takes the photo's own size and ratio rather than switching to the DS's fixed 22rem 4:5 slot; nothing shifts (L2-086.1), and the lightbox needs no error event from `st-responsive-image`.
-- **D-6** *How are the focal length and the note joined (" · " in the mocks), when ICD-I18N-3 forbids static text in library templates?* `Shot.title` is rendered in `<strong>`, then a " · " separator defined in TypeScript, then `Shot.caption`. The separator is punctuation, not a phrase; a shot without a `title` shows its caption alone.
+- **D-6** *Which `Shot` field is the lightbox caption, and how does the mocks' `<strong>85 mm</strong> · Shoot north from the lower steps` arise without library text (ICD-I18N-3)?* The lightbox shows `Shot.caption` unchanged, as [shot-grid.md](shot-grid.md) D-1 defines the fields: `caption` is the full caption ("85 mm · Shoot north from the lower steps"; the alt text for gallery photos), and `title` is only the thumbnail's bold lead. When `caption` begins with `title`, the lightbox wraps that lead in `<strong>`, exactly as the grid does, so both captions match word for word (L2-016.2) and the library renders no separator.
 - **D-7** *Which index does `DialogRef.closed` emit when the application closes the ref itself?* Whatever the application passes; the lightbox only guarantees the current index for Close and Escape. Nothing in the product closes the viewer from outside.

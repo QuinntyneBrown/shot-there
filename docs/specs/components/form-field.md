@@ -81,7 +81,8 @@ warning (`warning`, D-1) and the guide editor's unique note names
    row; `.field--warning` adds the warning-tinted well.
 2. **Label** — `label.field__label` with `for` pointing at the control's `id`.
    `--text-label` in `--color-fg-default`. A sibling of the control, never its
-   parent. Wraps, never truncates.
+   parent. Text flow (`display: block`), so it wraps between words and never
+   truncates (D-10).
 3. **Hidden label suffix (optional)** — `span.visually-hidden` inside the label,
    after the label text, from `labelSuffix`. Part of the accessible name.
 4. **Optional marker (optional)** — `span.optional` inside the label, after the
@@ -294,8 +295,9 @@ the classes, the order, `for`, `aria-invalid` and `aria-describedby` are.
   message and help. No margins on the parts.
 - Inline: row, `flex-wrap: wrap`, `align-items: center`, `gap: --space-2`; the
   control keeps its own width (`width: auto`).
-- Label `--text-label` in `--color-fg-default`; `display: flex` with
-  `gap: --space-1` so the marker and suffix sit one space apart.
+- Label `--text-label` in `--color-fg-default`; `display: block` (text
+  flow): the template writes one space between the label text and the marker,
+  and the hidden suffix starts with a space (D-10).
 - Optional marker `--color-fg-subtle`, `--font-weight-regular`.
 - Help, error and warning `--text-body-sm`; error `--color-danger-fg`, warning
   `--color-warning-fg`, help `--color-fg-muted`. Glyphs and their gaps are in
@@ -498,8 +500,8 @@ transitions over `--duration-fast`, which the tokens set to 0 under
 
 ### Responsive
 
-- **AC-24** Given the studio editor at 320 px with the error "Enter a web address that starts with http:// or https://" under a booking link holding "https://thejunctionloft.example/book/studio-a/weekday-rates", when it renders, then the label, error and help wrap inside the column and `document.documentElement.scrollWidth` equals the viewport width. (L2-064)
-- **AC-25** Given the studio list toolbar at 320 px, when the inline "Sort by" renders with "All-in cost, low to high" selected, then the select wraps below the label and nothing scrolls sideways. (L2-064)
+- **AC-24** Given the studio editor at 320 px with "Provided by (needed when discounted or comped)" and the error "Enter a web address that starts with http:// or https://" under a booking link holding "https://thejunctionloft.example/book/studio-a/weekday-rates", when it renders, then the label wraps only between words ("Provided" is never split), the error and help wrap inside the column, and `document.documentElement.scrollWidth` equals the viewport width. (L2-064)
+- **AC-25** Given the studio list toolbar at 320 px, where "Sort by" shares the row with "7 studios" and Filters, when the inline field renders with "All-in cost, low to high" selected, then the select sits beside its label when both fit and wraps below it when they do not, is never narrower than its selected text, and nothing scrolls sideways. (L2-064)
 - **AC-26** Given the sign-in page at 360 px, when the "Email" and "Password" fields render, then each field is the full width of the form and each input is 52 px tall. (L2-049)
 - **AC-27** Given `pages/studio-editor/invalid` at 200 % zoom in a 1280 px viewport, when the owner reaches the hourly rate field, then its label, input, error and help are all visible and operable with no horizontal page scroll. (L2-066)
 
@@ -555,3 +557,4 @@ without animation, and the control's edge transition takes 0 ms under
 - **D-7** *What does an inline field do if given help, a warning or an error?* They render on their own line under the label-and-control row (`flex-basis: 100%`). The DS says never to give an inline field a message, and no mock does; wrapping keeps a misuse readable instead of squeezing the select.
 - **D-8** *Does an empty string count as an error or a help text?* No. `''` renders nothing and removes `aria-invalid`, so the application can clear a message with either `null` or `''` from a typed form's error map.
 - **D-9** *Where are the group's message and help?* Under the legend and before the options, with the fieldset's `aria-describedby`, and `inputId` on the first option so a summary link lands in the group. This is the checkbox and radio-group DS pages' shape; it is heard on entering the group.
+- **D-10** *`components.css` makes `.field__label` a flex row (`gap: --space-1`) and breaks long words anywhere; at phone width a label with a long condition squeezes its first flex item, so "Provided by (needed when discounted or comped)" renders as "Provide / d by". How does the label lay out?* As text flow (`display: block`) with a literal space before the marker. The words then wrap between words as L2-064 needs; the DS rule changes at the next extraction.
