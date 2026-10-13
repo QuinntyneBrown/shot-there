@@ -110,3 +110,17 @@ test.describe('Site header', () => {
     expect(await shell.hasHorizontalScroll()).toBe(false);
   });
 });
+
+test.describe('Site footer', () => {
+  test('closes every page with the site promise and footer links', async ({ page }) => {
+    // Given any page
+    const shell = new ShellPage(page);
+    // When it loads
+    await shell.open();
+    // Then the contentinfo landmark holds the promise, the footer links and the policy line
+    await expect(shell.footer).toContainText('Nothing is listed unless it has been shot there.');
+    await expect(shell.footerLink('Studios')).toHaveAttribute('href', '/studios');
+    await expect(shell.footerLink('YouTube channel (opens in a new tab)')).toHaveAttribute('target', '_blank');
+    await expect(shell.footer).toContainText('No paid placement: order comes only from the sort you choose.');
+  });
+});

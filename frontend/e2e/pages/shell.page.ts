@@ -7,6 +7,7 @@ export class ShellPage {
   readonly menuButton: Locator;
   readonly menuDialog: Locator;
   readonly menuCloseButton: Locator;
+  readonly footer: Locator;
 
   constructor(private readonly page: Page) {
     this.skipLink = page.getByRole('link', { name: 'Skip to content' });
@@ -15,6 +16,7 @@ export class ShellPage {
     this.menuButton = page.getByRole('banner', { includeHidden: true }).getByRole('button', { name: 'Menu', includeHidden: true });
     this.menuDialog = page.getByRole('dialog', { name: 'Menu' });
     this.menuCloseButton = this.menuDialog.getByRole('button', { name: 'Close' });
+    this.footer = page.getByRole('contentinfo');
   }
 
   async open(path = '/'): Promise<void> {
@@ -47,6 +49,10 @@ export class ShellPage {
 
   headerLink(name: string): Locator {
     return this.page.getByRole('banner').getByRole('navigation', { name: 'Primary' }).getByRole('link', { name, exact: true });
+  }
+
+  footerLink(name: string): Locator {
+    return this.footer.getByRole('navigation', { name: 'Footer' }).getByRole('link', { name });
   }
 
   menuLink(name: string): Locator {
