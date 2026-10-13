@@ -52,4 +52,16 @@ describe('L2-078 oversized payloads', () => {
 
     expect(response.status).not.toBe(413);
   });
+
+  it('Given an upload over 20 MB without a session, when received, then the proxy answers 413 before the session check (ICD S-4)', async () => {
+    const response = await proxy(
+      new NextRequest('https://shotthere.ca/api/admin/images', {
+        method: 'POST',
+        headers: { 'content-length': String(20 * 1024 * 1024 + 1) },
+      }),
+    );
+
+    expect(response.status).toBe(413);
+    expect((await response.json()).type).toBe('urn:shotthere:problem:payload-too-large');
+  });
 });

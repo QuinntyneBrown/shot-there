@@ -6,6 +6,7 @@ import { MAX_JSON_BODY_BYTES } from '@/lib/http/max-json-body-bytes';
 import { payloadTooLarge } from '@/lib/http/payload-too-large';
 import { problemResponse } from '@/lib/http/problem-response';
 import { securityHeaders } from '@/lib/http/security-headers';
+import { MAX_UPLOAD_BYTES } from '@/lib/images/max-upload-bytes';
 import { CORRELATION_HEADER, correlationIdFor } from '@/lib/logging/correlation-id-for';
 
 const UPLOAD_PATH = '/api/admin/images';
@@ -28,9 +29,8 @@ function route(request: NextRequest): NextResponse {
   }
 
   const contentLength = Number(request.headers.get('content-length') ?? 0);
-  if (request.nextUrl.pathname !== UPLOAD_PATH && contentLength > MAX_JSON_BODY_BYTES) {
-    return answerProblem(request, payloadTooLarge());
-  }
+  const maxBytes = request.nextUrl.pathname === UPLOAD_PATH ? MAX_UPLOAD_BYTES : MAX_JSON_BODY_BYTES;
+  if (contentLength > maxBytes) return answerProblem(request, payloadTooLarge());
 
   // Cheap first gate; every admin handler still validates the session with requireOwnerSession.
   if (request.nextUrl.pathname.startsWith(ADMIN_PATH_PREFIX) && !request.cookies.has(SESSION_COOKIE)) {

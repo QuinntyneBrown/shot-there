@@ -32,7 +32,7 @@ describe('L2-040 signup validation and storage', () => {
   it('Given a valid new email, when submitted, then it is stored lowercase with the subscription time and source path', async () => {
     const dependencies = useFakeDependencies({ today: '2026-10-13' });
 
-    const response = await signUp({ email: '  Jane.Doe@Example.com ', sourcePath: '/studios/the-junction-loft' });
+    const response = await signUp({ email: '  Jane.Doe@Example.com ', sourcePath: ' /studios/the-junction-loft ' });
 
     expect(response.status).toBe(200);
     expect(subscribersOf(dependencies)).toEqual([
