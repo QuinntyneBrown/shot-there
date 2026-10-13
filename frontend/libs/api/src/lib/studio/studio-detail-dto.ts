@@ -1,6 +1,7 @@
 import { ImageDto } from './image-dto';
 import { StudioBasicsDto } from './studio-basics-dto';
 import { StudioDisclosureDto } from './studio-disclosure-dto';
+import { StudioEpisodeDto } from './studio-episode-dto';
 import { StudioGearDto } from './studio-gear-dto';
 import { StudioLogisticsDto } from './studio-logistics-dto';
 import { StudioPricingDto } from './studio-pricing-dto';
@@ -19,4 +20,6 @@ export interface StudioDetailDto {
   disclosure: StudioDisclosureDto;
   testShots: ImageDto[];
   gallery: ImageDto[];
+  /** Null when no video is stored. */
+  episode: StudioEpisodeDto | null;
 }

@@ -4,12 +4,13 @@ const PLACEHOLDER_SVG = '<svg xmlns="http://www.w3.org/2000/svg" width="800" hei
 
 /**
  * Every test starts with no backend: any /api request that a test has not faked is aborted,
- * and fixture images under /test-images/ load as a plain placeholder.
+ * fixture images under /test-images/ load as a plain placeholder, and the YouTube player never reaches the network.
  */
 export const test = base.extend({
   page: async ({ page }, use) => {
     await page.route('**/api/**', (route) => route.abort());
     await page.route('**/test-images/**', (route) => route.fulfill({ contentType: 'image/svg+xml', body: PLACEHOLDER_SVG }));
+    await page.route('https://www.youtube-nocookie.com/**', (route) => route.fulfill({ contentType: 'text/html', body: '<!doctype html><title>player</title>' }));
     await use(page);
   },
 });

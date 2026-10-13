@@ -27,6 +27,10 @@ export class StudioPage {
   readonly lightboxNext: Locator;
   readonly lightboxPrevious: Locator;
   readonly lightboxClose: Locator;
+  readonly episode: Locator;
+  readonly playEpisode: Locator;
+  readonly episodePlayer: Locator;
+  readonly watchOnYouTube: Locator;
 
   constructor(private readonly page: Page) {
     this.heading = page.getByRole('heading', { level: 1 });
@@ -55,6 +59,10 @@ export class StudioPage {
     this.lightboxNext = this.lightbox.getByRole('button', { name: 'Next photo' }).locator('visible=true');
     this.lightboxPrevious = this.lightbox.getByRole('button', { name: 'Previous photo' }).locator('visible=true');
     this.lightboxClose = this.lightbox.getByRole('button', { name: 'Close' });
+    this.episode = page.getByRole('region', { name: 'Watch the episode' });
+    this.playEpisode = this.episode.getByRole('link', { name: /^Play episode/ });
+    this.episodePlayer = this.episode.locator('iframe');
+    this.watchOnYouTube = this.episode.getByRole('link', { name: 'Watch on YouTube (opens in a new tab)' });
     this.lightRatings = this.specifications.getByRole('list', { name: 'Natural light by time of day' }).getByRole('listitem');
   }
 

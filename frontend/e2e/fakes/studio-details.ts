@@ -43,6 +43,7 @@ export interface FakeStudioDetail {
   disclosure: { kind: 'paidFull' | 'discounted' | 'comped'; provider: string | null };
   testShots: FakeImage[];
   gallery: FakeImage[];
+  episode: { videoId: string; title: string; posterUrl: string } | null;
 }
 
 interface FakeImage {
@@ -146,7 +147,12 @@ export const THE_JUNCTION_LOFT: FakeStudioDetail = {
     image('gallery-6', 'Standing portrait by the freight door, mixed daylight and LED.'),
     image('gallery-7', 'Headshot on grey seamless with a reflector under the chin.'),
     image('gallery-8', 'Wide frame of the whole space showing the cyc, the windows and the light stands.')
-  ]
+  ],
+  episode: {
+    videoId: 'Jx7Lq2pT9aE',
+    title: 'Episode 4: The Junction Loft — big north light, tiny elevator',
+    posterUrl: '/test-images/episode-the-junction-loft.svg'
+  }
 };
 
 export const OSSINGTON_BLACKBOX: FakeStudioDetail = {
@@ -176,7 +182,8 @@ export const OSSINGTON_BLACKBOX: FakeStudioDetail = {
   },
   disclosure: { kind: 'paidFull', provider: null },
   testShots: THE_JUNCTION_LOFT.testShots,
-  gallery: THE_JUNCTION_LOFT.gallery
+  gallery: THE_JUNCTION_LOFT.gallery,
+  episode: null
 };
 
 /** The "minimal" studio: no cyc wall, no paid extras, no changing area. */
@@ -241,7 +248,8 @@ export const BLOORDALE_SUN_STUDIO: FakeStudioDetail = {
   gallery: [
     image('bloordale-gallery-1', 'Portrait by the south window at midday.'),
     image('bloordale-gallery-2', 'Seated portrait against grey seamless.')
-  ]
+  ],
+  episode: null
 };
 
 /** A discounted session, otherwise like The Junction Loft. */

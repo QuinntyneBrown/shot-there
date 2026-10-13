@@ -23,3 +23,4 @@ export * from './lib/studio/studio-disclosure-dto';
 export * from './lib/studio/studio-verdict-dto';
 export * from './lib/studio/image-dto';
 export * from './lib/studio/image-variant-dto';
+export * from './lib/studio/studio-episode-dto';
