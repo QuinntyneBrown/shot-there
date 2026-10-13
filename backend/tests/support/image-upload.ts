@@ -6,8 +6,10 @@ interface UploadOptions {
   fileName?: string;
   type?: string;
   role?: string;
-  studioId?: string;
-  spotId?: string;
+  locationKind?: string;
+  locationId?: string;
+  /** Further form fields, e.g. one the endpoint does not declare. */
+  extraFields?: Record<string, string>;
   signedIn?: boolean;
 }
 
@@ -17,15 +19,17 @@ export function uploadRequest({
   fileName = 'photo.jpg',
   type = 'image/jpeg',
   role = 'gallery',
-  studioId,
-  spotId,
+  locationKind,
+  locationId,
+  extraFields = {},
   signedIn = true,
 }: UploadOptions): Request {
   const form = new FormData();
   form.set('file', new File([new Uint8Array(file)], fileName, { type }));
   form.set('role', role);
-  if (studioId) form.set('studioId', studioId);
-  if (spotId) form.set('spotId', spotId);
+  if (locationKind) form.set('locationKind', locationKind);
+  if (locationId) form.set('locationId', locationId);
+  for (const [name, value] of Object.entries(extraFields)) form.set(name, value);
   return new Request(`${SITE_ORIGIN}/api/admin/images`, {
     method: 'POST',
     headers: signedIn ? ownerHeaders(OWNER_TOKEN) : { origin: SITE_ORIGIN },

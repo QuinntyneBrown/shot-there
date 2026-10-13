@@ -38,10 +38,10 @@ export async function readUpload(request: Request): Promise<UploadImageInput> {
   const file = form.get('file');
   if (!(file instanceof File)) throw validationFailed([{ field: 'file', code: 'required', message: 'Choose an image to upload' }]);
   const fields = Object.fromEntries([...form.entries()].filter(([name]) => name !== 'file'));
-  const { role, studioId, spotId } = parseWithSchema(uploadFieldsSchema, fields);
+  const { role, locationKind, locationId } = parseWithSchema(uploadFieldsSchema, fields);
 
   return {
-    owner: studioId ? { kind: 'studio', id: studioId } : { kind: 'spot', id: spotId ?? '' },
+    owner: { kind: locationKind, id: locationId },
     role,
     bytes: Buffer.from(await file.arrayBuffer()),
     declaredType: file.type,

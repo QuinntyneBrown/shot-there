@@ -5,8 +5,9 @@ import { inspectImage } from '@/lib/images/inspect-image';
 import type { UploadImageInput } from '@/lib/images/upload-image-input';
 
 /**
- * Inspects the file, stores the original and its variants under server-generated keys, then records the image last in
- * its role's order. Null when the owning location does not exist; nothing is stored then.
+ * Inspects the file, then stores the original and its variants under server-generated keys and records the image last
+ * in its role's order. Content is checked before the location (ICD S-4). Null when the owning location does not exist;
+ * nothing is stored then.
  */
 export async function uploadImage({
   owner,
@@ -16,10 +17,10 @@ export async function uploadImage({
   originalName,
 }: UploadImageInput): Promise<ImageRecord | null> {
   const { studios, spots, images, objectStore } = getDependencies();
+  const inspected = await inspectImage(bytes, declaredType);
   const location = owner.kind === 'studio' ? await studios.findById(owner.id) : await spots.findById(owner.id);
   if (!location) return null;
 
-  const inspected = await inspectImage(bytes, declaredType);
   const id = crypto.randomUUID();
   const storageKey = `images/${id}/original`;
   await objectStore.putObject(storageKey, bytes, inspected.contentType);

@@ -162,10 +162,16 @@ describe('L2-058 image removal', () => {
     expect(studioRows(dependencies)[0].images.some((image) => image.id === 't')).toBe(true);
   });
 
-  it("Given a published spot's last sample shot, when the owner removes it, then the removal is refused with 409", async () => {
-    useSignedInOwner({ spots: [aSpot({ id: 'p1', images: [anImage({ id: 'x', role: 'sample_shot' })] })] });
+  it.each([
+    ["a published spot's last sample shot", { spots: [aSpot({ id: 'p1', images: [anImage({ id: 'x', role: 'sample_shot' })] })] }],
+    [
+      "a published studio's last gallery image",
+      { studios: [aStudio({ id: 's1', images: [anImage({ role: 'test_shot' }), anImage({ id: 'x', role: 'gallery' })] })] },
+    ],
+  ])('Given %s, when the owner removes it, then it is removed: only the last test shot is refused (ICD E41)', async (_label, seed) => {
+    useSignedInOwner(seed);
 
-    expect((await remove('x')).status).toBe(409);
+    expect((await remove('x')).status).toBe(204);
   });
 
   it("Given a draft studio's only test shot, when the owner removes it, then it is removed", async () => {

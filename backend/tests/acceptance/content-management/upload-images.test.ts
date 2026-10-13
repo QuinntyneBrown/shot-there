@@ -24,28 +24,33 @@ describe('L2-057 image upload', () => {
   it('Given a large JPEG, when the owner uploads it to a studio gallery, then the original and variants at 480, 960, 1440 and 2048 px are stored in AVIF, WebP and JPEG', async () => {
     const dependencies = useStudioEditor();
 
-    const response = await upload(uploadRequest({ file: await aRasterImage(2400, 1600), studioId: 's1' }));
+    const response = await upload(uploadRequest({ file: await aRasterImage(2400, 1600), locationKind: 'studio', locationId: 's1' }));
 
     expect(response.status).toBe(201);
     const body = await response.json();
-    expect(body).toMatchObject({ role: 'gallery', width: 2400, height: 1600, altText: '', contentType: 'image/jpeg' });
+    expect(body).toEqual({
+      imageId: expect.any(String),
+      role: 'gallery',
+      preview: expect.objectContaining({ alt: '', width: 2400, height: 1600, fallbackUrl: expect.stringContaining('/960.jpg') }),
+    });
+    expect(response.headers.get('location')).toBe(`/api/admin/images/${body.imageId}`);
     const store = storeOf(dependencies);
-    expect(store.get(`images/${body.id}/original`)?.contentType).toBe('image/jpeg');
+    expect(store.get(`images/${body.imageId}/original`)?.contentType).toBe('image/jpeg');
     for (const width of [480, 960, 1440, 2048]) {
-      expect(store.get(`images/${body.id}/${width}.avif`)).toMatchObject({ contentType: 'image/avif', cacheControl: IMMUTABLE });
-      expect(store.get(`images/${body.id}/${width}.webp`)).toMatchObject({ contentType: 'image/webp', cacheControl: IMMUTABLE });
-      expect(store.get(`images/${body.id}/${width}.jpg`)).toMatchObject({ contentType: 'image/jpeg', cacheControl: IMMUTABLE });
+      expect(store.get(`images/${body.imageId}/${width}.avif`)).toMatchObject({ contentType: 'image/avif', cacheControl: IMMUTABLE });
+      expect(store.get(`images/${body.imageId}/${width}.webp`)).toMatchObject({ contentType: 'image/webp', cacheControl: IMMUTABLE });
+      expect(store.get(`images/${body.imageId}/${width}.jpg`)).toMatchObject({ contentType: 'image/jpeg', cacheControl: IMMUTABLE });
     }
     expect(store.size).toBe(13);
     const [stored] = studioImages(dependencies);
-    expect(stored).toMatchObject({ id: body.id, role: 'gallery', width: 2400, height: 1600 });
+    expect(stored).toMatchObject({ id: body.imageId, role: 'gallery', width: 2400, height: 1600, altText: '' });
     expect(stored.variants).toHaveLength(12);
   }, 60_000);
 
   it('Given an image narrower than 2048 px, when uploaded, then no variant wider than the source is generated', async () => {
     const dependencies = useStudioEditor();
 
-    const response = await upload(uploadRequest({ file: await aRasterImage(1000, 700), studioId: 's1' }));
+    const response = await upload(uploadRequest({ file: await aRasterImage(1000, 700), locationKind: 'studio', locationId: 's1' }));
 
     expect(response.status).toBe(201);
     const widths = new Set(studioImages(dependencies)[0].variants.map((variant) => variant.width));
@@ -55,8 +60,8 @@ describe('L2-057 image upload', () => {
   it('Given a second upload of the same role, when stored, then it is ordered after the first', async () => {
     const dependencies = useStudioEditor();
 
-    await upload(uploadRequest({ file: await aRasterImage(600, 400), studioId: 's1', role: 'test_shot' }));
-    await upload(uploadRequest({ file: await aRasterImage(600, 400), studioId: 's1', role: 'test_shot' }));
+    await upload(uploadRequest({ file: await aRasterImage(600, 400), locationKind: 'studio', locationId: 's1', role: 'test_shot' }));
+    await upload(uploadRequest({ file: await aRasterImage(600, 400), locationKind: 'studio', locationId: 's1', role: 'test_shot' }));
 
     expect(studioImages(dependencies).map((image) => image.sortOrder)).toEqual([0, 1]);
   });
@@ -69,7 +74,8 @@ describe('L2-057 image upload', () => {
         file: await aRasterImage(600, 400, 'png'),
         fileName: 'shot.png',
         type: 'image/png',
-        spotId: 'p1',
+        locationKind: 'spot',
+        locationId: 'p1',
         role: 'sample_shot',
       }),
     );
@@ -82,7 +88,7 @@ describe('L2-057 image upload', () => {
   it('Given a file over 20 MB, when uploaded, then the server responds 413 and stores nothing', async () => {
     const dependencies = useStudioEditor();
 
-    const response = await upload(uploadRequest({ file: Buffer.alloc(20 * 1024 * 1024 + 1), studioId: 's1' }));
+    const response = await upload(uploadRequest({ file: Buffer.alloc(20 * 1024 * 1024 + 1), locationKind: 'studio', locationId: 's1' }));
 
     expect(response.status).toBe(413);
     expect(storeOf(dependencies).size).toBe(0);
@@ -97,7 +103,7 @@ describe('L2-057 image upload', () => {
     async ({ file, fileName }) => {
       const dependencies = useStudioEditor();
 
-      const response = await upload(uploadRequest({ file, fileName, studioId: 's1' }));
+      const response = await upload(uploadRequest({ file, fileName, locationKind: 'studio', locationId: 's1' }));
 
       const problem = await expectProblem(response, 'validation-failed', 400);
       expect(problem.errors).toEqual([{ field: 'file', code: 'unsupported_image_type', message: expect.any(String) }]);
@@ -109,25 +115,43 @@ describe('L2-057 image upload', () => {
     const dependencies = useStudioEditor();
 
     const response = await upload(
-      uploadRequest({ file: await aRasterImage(600, 400), fileName: 'photo.png', type: 'image/png', studioId: 's1' }),
+      uploadRequest({ file: await aRasterImage(600, 400), fileName: 'photo.png', type: 'image/png', locationKind: 'studio', locationId: 's1' }),
     );
 
     expect(response.status).toBe(400);
     expect(storeOf(dependencies).size).toBe(0);
   });
 
-  it('Given an unknown role or no owning location, when uploaded, then the server responds 400', async () => {
-    useStudioEditor();
-    const file = await aRasterImage(600, 400);
+  it.each([
+    ['an unknown role', { role: 'banner', locationKind: 'studio', locationId: 's1' }, 'role', 'invalid_value'],
+    ['no owning location', {}, 'locationKind', 'required'],
+    ['a sample shot for a studio', { role: 'sample_shot', locationKind: 'studio', locationId: 's1' }, 'role', 'invalid_value'],
+    ['a gallery image for a spot', { role: 'gallery', locationKind: 'spot', locationId: 'p1' }, 'role', 'invalid_value'],
+    ['a retired studioId field', { locationKind: 'studio', locationId: 's1', extraFields: { studioId: 's1' } }, 'studioId', 'unrecognized_key'],
+  ])('Given %s, when uploaded, then the server responds 400 naming the field', async (_label, fields, field, code) => {
+    const dependencies = useStudioEditor();
+    const problem = await expectProblem(
+      await upload(uploadRequest({ file: await aRasterImage(600, 400), ...fields })),
+      'validation-failed',
+      400,
+    );
 
-    expect((await upload(uploadRequest({ file, role: 'banner', studioId: 's1' }))).status).toBe(400);
-    expect((await upload(uploadRequest({ file }))).status).toBe(400);
+    expect(problem.errors).toContainEqual({ field, code, message: expect.any(String) });
+    expect(storeOf(dependencies).size).toBe(0);
+  });
+
+  it('Given an SVG for a studio that does not exist, when uploaded, then content inspection answers 400 before the location lookup (ICD S-4)', async () => {
+    useStudioEditor();
+
+    const response = await upload(uploadRequest({ file: SVG_IMAGE, fileName: 'logo.jpg', locationKind: 'studio', locationId: 'missing' }));
+
+    await expectProblem(response, 'validation-failed', 400);
   });
 
   it('Given a studio id that does not exist, when uploaded, then the server responds 404 and stores nothing', async () => {
     const dependencies = useStudioEditor();
 
-    const response = await upload(uploadRequest({ file: await aRasterImage(600, 400), studioId: 'missing' }));
+    const response = await upload(uploadRequest({ file: await aRasterImage(600, 400), locationKind: 'studio', locationId: 'missing' }));
 
     expect(response.status).toBe(404);
     expect(storeOf(dependencies).size).toBe(0);
@@ -139,7 +163,7 @@ describe('L2-081 upload safety', () => {
     const dependencies = useStudioEditor();
 
     const response = await upload(
-      uploadRequest({ file: await aRasterImage(600, 400), fileName: '../../etc/passwd.jpg', studioId: 's1' }),
+      uploadRequest({ file: await aRasterImage(600, 400), fileName: '../../etc/passwd.jpg', locationKind: 'studio', locationId: 's1' }),
     );
 
     expect(response.status).toBe(201);
@@ -153,7 +177,7 @@ describe('L2-081 upload safety', () => {
     const dependencies = useStudioEditor();
 
     const response = await upload(
-      uploadRequest({ file: await aRasterImage(600, 400), studioId: 's1', signedIn: false }),
+      uploadRequest({ file: await aRasterImage(600, 400), locationKind: 'studio', locationId: 's1', signedIn: false }),
     );
 
     expect(response.status).toBe(401);
