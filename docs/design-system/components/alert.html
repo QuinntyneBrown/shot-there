@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Alert and banner — ShotThere design system</title>
-<meta name="description" content="ShotThere alerts and page banners: info, success, warning and danger, with title, actions and dismiss, persistent banners, roles, both themes.">
+<meta name="description" content="ShotThere alerts: info, success, warning and danger blocks for stale prices and permits, sign-in outcomes, rate limits, compare links, drafts created and failed dialog actions, with title, body, actions, dismiss, live-region roles and both themes.">
 <link rel="stylesheet" href="../tokens/tokens.css">
 <link rel="stylesheet" href="../assets/components.css">
 <link rel="stylesheet" href="../assets/ds.css">
@@ -33,34 +33,57 @@
       <li><a href="../components/icon-button.html">Icon button</a></li>
       <li><a href="../components/button-group.html">Button group</a></li>
       <li><a href="../components/link.html">Link</a></li>
+      <li><a href="../components/compare-bar.html">Compare toggle and bar</a></li>
     </ul></details>
     <details open><summary>Inputs</summary><ul>
       <li><a href="../components/form-field.html">Form field</a></li>
       <li><a href="../components/text-field.html">Text field</a></li>
       <li><a href="../components/textarea.html">Textarea</a></li>
       <li><a href="../components/select.html">Select</a></li>
+      <li><a href="../components/combobox.html">Combobox</a></li>
       <li><a href="../components/checkbox.html">Checkbox</a></li>
       <li><a href="../components/radio-group.html">Radio group</a></li>
       <li><a href="../components/file-upload.html">File upload</a></li>
       <li><a href="../components/form-layout.html">Form layout</a></li>
+      <li><a href="../components/signup.html">Email signup</a></li>
     </ul></details>
     <details open><summary>Navigation</summary><ul>
       <li><a href="../components/skip-link.html">Skip link</a></li>
       <li><a href="../components/site-header.html">Site header</a></li>
       <li><a href="../components/footer.html">Footer</a></li>
+      <li><a href="../components/breadcrumb.html">Breadcrumb</a></li>
+      <li><a href="../components/filter.html">Filters</a></li>
     </ul></details>
     <details open><summary>Containers and overlays</summary><ul>
       <li><a href="../components/container.html">Container and grid</a></li>
+      <li><a href="../components/review-layout.html">Review layout</a></li>
+      <li><a href="../components/editor-layout.html">Editor layout</a></li>
       <li><a href="../components/card.html">Card</a></li>
       <li><a href="../components/dialog.html">Dialog</a></li>
       <li><a href="../components/sheet.html">Sheet and drawer</a></li>
+      <li><a href="../components/popover.html">Popover</a></li>
+      <li><a href="../components/lightbox.html">Lightbox</a></li>
       <li><a href="../components/divider.html">Divider</a></li>
     </ul></details>
     <details open><summary>Data display</summary><ul>
+      <li><a href="../components/location-card.html">Location card</a></li>
       <li><a href="../components/table.html">Table</a></li>
+      <li><a href="../components/compare-table.html">Comparison table</a></li>
+      <li><a href="../components/list.html">List rows</a></li>
       <li><a href="../components/description-list.html">Description list</a></li>
+      <li><a href="../components/price-block.html">Price block</a></li>
+      <li><a href="../components/score.html">Score and pips</a></li>
+      <li><a href="../components/shot-grid.html">Shot grid</a></li>
+      <li><a href="../components/video-poster.html">Episode poster</a></li>
+      <li><a href="../components/map.html">Map</a></li>
+      <li><a href="../components/guide-entry.html">Guide entry</a></li>
+      <li><a href="../components/stat-tile.html">Stat tile</a></li>
+      <li><a href="../components/image-manager.html">Image manager</a></li>
+      <li><a href="../components/disclosure.html">Disclosure</a></li>
       <li><a href="../components/badge.html">Badge</a></li>
+      <li><a href="../components/status-label.html">Status label</a></li>
       <li><a href="../components/chip.html">Chip</a></li>
+      <li><a href="../components/tag.html">Tag</a></li>
     </ul></details>
     <details open><summary>Feedback</summary><ul>
       <li><a href="../components/inline-message.html">Inline message</a></li>
@@ -88,275 +111,272 @@
     <header class="ds-header">
       <p class="ds-kicker">Component · Feedback</p>
       <h1>Alert and banner</h1>
-      <p class="ds-lead">Alerts tell people about a condition that holds right now: a certificate about to expire, a profile in review, a sign-in that failed. A banner is the same message stretched across the page under the header.</p>
-      <div class="ds-meta"><span class="ds-pill ds-pill--ok">WCAG 2.2 AA</span><span class="ds-pill">Status: stable</span><span class="ds-pill"><code>.alert</code></span><span class="ds-pill"><code>.banner</code></span></div>
-      <ul class="ds-toc"><li><a href="#overview">Overview</a></li><li><a href="#anatomy">Anatomy</a></li><li><a href="#variants">Variants</a></li><li><a href="#sizes">Sizes</a></li><li><a href="#states">States</a></li><li><a href="#responsive">Responsive behaviour</a></li><li><a href="#theming">Theming</a></li><li><a href="#accessibility">Accessibility</a></li><li><a href="#content">Content</a></li><li><a href="#do-dont">Do and don't</a></li><li><a href="#tokens">Tokens</a></li><li><a href="#code">Code</a></li><li><a href="#sources">Sources</a></li></ul>
+      <p class="ds-lead">An alert is a tinted block that stays as long as something is true: these prices may be out of date, your session expired, too many sign-in attempts, we couldn't load the re-verification list. It sits inside the content it is about.</p>
+      <div class="ds-meta"><span class="ds-pill ds-pill--ok">WCAG 2.2 AA</span><span class="ds-pill">Status: stable</span><span class="ds-pill"><code>.alert</code></span><span class="ds-pill"><code>.alert--info|success|warning|danger</code></span><span class="ds-pill"><code>role="status|alert"</code></span></div>
+      <ul class="ds-toc"><li><a href="#overview">Overview</a></li><li><a href="#anatomy">Anatomy</a></li><li><a href="#variants">Variants</a></li><li><a href="#sizes">Sizes</a></li><li><a href="#states">States</a></li><li><a href="#responsive">Responsive</a></li><li><a href="#theming">Theming</a></li><li><a href="#accessibility">Accessibility</a></li><li><a href="#content">Content</a></li><li><a href="#do-dont">Do and don't</a></li><li><a href="#tokens">Tokens</a></li><li><a href="#code">Code</a></li><li><a href="#sources">Sources</a></li></ul>
     </header>
 
-<section class="ds-section" id="overview"><h2><a href="#overview">Overview</a></h2>
-      <p>An alert is a tinted block with a tone icon, a short title, one or two sentences and, at most, one or two actions. It stays on screen for as long as the condition is true. Two layouts share the same markup:</p>
+    <section class="ds-section" id="overview"><h2><a href="#overview">Overview</a></h2>
+      <p>Use an alert for a condition on the page that the reader should know before acting: stale data on a public page, the outcome of a sign-in, a failure inside a dialog, a draft just created. It is placed next to what it is about (under the pricing, above the sign-in form, inside the dialog body) and is not dismissed on a timer.</p>
       <ul>
-        <li><b>Inline alert</b> (<code>.alert</code>) sits inside the content it is about: "Your certificate expires on Monday 9 November 2026" above the certificate form, "We couldn’t sign you in just now" above the sign-in fields, "This chart didn’t load" inside one chart card.</li>
-        <li><b>Banner</b> (<code>.alert.banner</code>) spans the page directly under the <a href="site-header.html">site header</a> and is about the whole account or the whole service: scheduled maintenance, an unverified email, a suspended profile. There is at most one banner on a screen.</li>
+        <li>For a note about one field, use an <a href="inline-message.html">inline message</a>. A failed image upload is one: it sits in the image row, not in an alert.</li>
+        <li>For a confirmation of an action that just finished (published, unpublished, link copied, save failed), use a <a href="toast.html">toast</a>.</li>
+        <li>For a page that could not load at all, use an <a href="empty-state.html">empty state</a> or the <a href="error-page.html">error page</a>.</li>
+        <li>For missing publish fields, the <a href="dialog.html">Can't publish yet dialog</a> lists them; a refused save opens the <a href="form-layout.html">form summary</a>.</li>
       </ul>
-      <p>Choose something else when the message is not a standing condition:</p>
-      <ul>
-        <li>A result of an action that people only need to glimpse ("Reply sent", "Photo order saved") is a <a href="toast.html">toast</a>.</li>
-        <li>A problem with one field is an <a href="inline-message.html">inline message</a> under that field; several field errors get the form's error summary (see <a href="../patterns/forms.html">Forms</a>).</li>
-        <li>When the content itself failed to load or there is nothing to show, use an <a href="empty-state.html">empty state</a>; when the whole page cannot be served, an <a href="error-page.html">error page</a>.</li>
-        <li>A confirmation that must be answered before continuing is a <a href="dialog.html">dialog</a>.</li>
-      </ul>
-      <p>Tone colours (info blue-grey, success callaloo green, warning mango, danger sorrel) are the only colour an alert adds. Pepper red never appears in an alert: it means "selected", not "important".</p>
+      <p><b>Banner</b>: <code>.alert.banner</code> (full width under the site header, centred, no radius) is still in the stylesheet. No ShotThere mock uses it; every ShotThere message belongs to a section, a form or a dialog. Don't introduce one without a mock.</p>
     </section>
 
     <section class="ds-section" id="anatomy"><h2><a href="#anatomy">Anatomy</a></h2>
       <div class="ds-anatomy">
-        <figure class="ds-anatomy__figure">
-          <div class="alert alert--warning" style="max-width: 28rem;">
-            <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 4 2.5 20h19z"/><path d="M12 10v4M12 17v.5"/></svg>
-            <div class="alert__body">
-              <p class="alert__title">We can’t deliver email to marcia.t@example.com</p>
-              <p>Update your email so caterers’ replies reach you.</p>
-              <div class="alert__actions"><button class="btn btn--link btn--sm" type="button">Update email</button></div>
-            </div>
-            <button class="close" type="button" aria-label="Dismiss"><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+        <figure class="ds-anatomy__figure" style="place-items: stretch; padding: var(--space-8) var(--space-6) var(--space-8) var(--space-10);">
+          <div class="alert alert--danger" role="alert">
+            <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16h.01"/></svg>
+            <div class="alert__body"><p class="alert__title">We couldn't load the re-verification list.</p><p>The counts above are current. Try again to see what needs checking.</p><div class="alert__actions"><button class="btn btn--sm" type="button"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.3-5.7M20 4v5h-5"/></svg>Try again</button></div></div>
           </div>
-          <span class="ds-callout" style="left: 7%; top: 70%;" aria-hidden="true">1</span>
-          <span class="ds-callout" style="left: 12%; top: 22%;" aria-hidden="true">2</span>
-          <span class="ds-callout" style="left: 60%; top: 16%;" aria-hidden="true">3</span>
-          <span class="ds-callout" style="left: 72%; top: 46%;" aria-hidden="true">4</span>
-          <span class="ds-callout" style="left: 44%; top: 74%;" aria-hidden="true">5</span>
-          <span class="ds-callout" style="left: 90%; top: 18%;" aria-hidden="true">6</span>
+          <span class="ds-callout" style="left: 0.5%; top: 22%;" aria-hidden="true">1</span>
+          <span class="ds-callout" style="left: 72%; top: 22%;" aria-hidden="true">2</span>
+          <span class="ds-callout" style="left: 88%; top: 40%;" aria-hidden="true">3</span>
+          <span class="ds-callout" style="left: 40%; top: 64%;" aria-hidden="true">4</span>
+          <span class="ds-callout" style="right: 0.5%; top: 80%;" aria-hidden="true">5</span>
         </figure>
         <ol class="ds-anatomy__list">
-          <li><div><b>Container</b><small>Tone background and 1px tone border, <code>--radius-md</code> (square edges for a banner), padding <code>--space-4</code>, gap <code>--space-3</code>.</small></div></li>
-          <li><div><b>Tone icon</b><small>20px outline icon in <code>--alert-icon</code>, <code>aria-hidden="true"</code>. One fixed glyph per tone: info, success, warning, danger.</small></div></li>
-          <li><div><b>Title</b> <small><code>.alert__title</code>: the condition in one line, label weight at <code>--font-size-md</code>.</small></div></li>
-          <li><div><b>Text (optional)</b><small>One or two sentences: why it matters and what happens next.</small></div></li>
-          <li><div><b>Actions (optional)</b><small><code>.alert__actions</code>: one or two links or link buttons in the alert's text colour.</small></div></li>
-          <li><div><b>Dismiss (optional)</b><small><code>.close</code>: 44px icon button below 48rem, 24px from 48rem (L2-065.1). Only for messages that can safely go away.</small></div></li>
+          <li><div><b>Tone icon</b><small><code>--icon-size-md</code>, <code>aria-hidden</code>, in <code>--alert-icon</code>. Its shape (circle i, tick, triangle, circle !) repeats the tone without colour.</small></div></li>
+          <li><div><b>Title (optional)</b><small><code>p.alert__title</code>, <code>--text-label</code> at <code>--font-size-md</code>: the condition in a few words.</small></div></li>
+          <li><div><b>Body</b><small>One or two sentences: what it means and what to do.</small></div></li>
+          <li><div><b>Actions (optional)</b><small><code>.alert__actions</code>: one small button or one link; inherits the alert's ink.</small></div></li>
+          <li><div><b>Container</b><small><code>.alert</code>: tone fill and 1px tone border, <code>--radius-md</code>, <code>--space-4</code> padding. A dismiss button (<code>.close</code>) may sit at the end.</small></div></li>
         </ol>
       </div>
     </section>
 
     <section class="ds-section" id="variants"><h2><a href="#variants">Variants</a></h2>
-      <h3>Tones</h3>
-      <p>Tone follows meaning, never decoration. Info is the default (<code>.alert</code> with no modifier).</p>
+      <p>Four tones. The tone is the meaning; pick it from what happened, not from how loud it should be.</p>
+      <h3>Warning: stale data on a public page</h3>
       <div class="ds-example">
         <div class="ds-example__canvas ds-example__canvas--stack">
-          <div class="alert" role="status">
-            <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/></svg>
-            <div class="alert__body"><p class="alert__title">Thanks — we’ll review your profile within 3 business days</p><p>While we review it, your profile is read-only. We’ll email you at beverley@auntiebevs.example when it’s live.</p></div>
+          <div class="alert alert--warning" role="status">
+            <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 4 2.5 20h19L12 4z"/><path d="M12 10v4M12 17h.01"/></svg>
+            <div class="alert__body"><p class="alert__title">Prices may be out of date</p><p>We last checked these prices 225 days ago. Confirm with the studio before you book.</p></div>
+          </div>
+          <div class="alert alert--warning" role="status">
+            <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 4 2.5 20h19L12 4z"/><path d="M12 10v4M12 17h.01"/></svg>
+            <div class="alert__body"><p class="alert__title">Permit rules may be out of date</p><p>We last checked these rules 207 days ago. Confirm with the Distillery District before you shoot.</p></div>
+          </div>
+        </div>
+        <div class="ds-example__caption"><span>Ossington Blackbox (verified 2 Mar 2026) under its pricing; Distillery District (20 Mar 2026) under its permit table. Shown only past 183 days (L2-005.2, L2-018.3); announced as a status.</span></div>
+      </div>
+
+      <h3>Info: session and comparison links</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--stack">
+          <div class="alert alert--info" role="status">
+            <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg>
+            <div class="alert__body"><p class="alert__title">Your session expired</p><p>Sign in again to carry on where you were.</p></div>
+          </div>
+          <div class="alert alert--info" role="status">
+            <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg>
+            <div class="alert__body"><p>You can compare up to 4 studios. We're showing the first 4 from this link.</p></div>
+          </div>
+          <div class="alert alert--info" role="status">
+            <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg>
+            <div class="alert__body"><p>One studio in this link couldn't be found, so we're comparing the other two.</p></div>
+          </div>
+        </div>
+        <div class="ds-example__caption"><span>Above the sign-in form after a timeout (L2-051); above the comparison table when a shared link has five studios or an unknown slug (L2-033). A one-sentence alert needs no title.</span></div>
+      </div>
+
+      <h3>Success: signed out and draft created</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--stack">
+          <div class="alert alert--success" role="status">
+            <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg>
+            <div class="alert__body"><p class="alert__title">You've signed out.</p><p>Your session has ended on this device.</p><div class="alert__actions"><a href="../../mocks/pages/home/default.html">Go to the public site</a></div></div>
           </div>
           <div class="alert alert--success" role="status">
             <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg>
-            <div class="alert__body"><p class="alert__title">Auntie Bev’s Kitchen is live</p><p>Customers can find you in the listing now.</p><div class="alert__actions">View your page</div></div>
+            <div class="alert__body"><p class="alert__title">Studio created as a draft</p><p>Its address will be <code>/studios/corktown-garage-studio</code>.</p></div>
+            <button class="close" type="button" aria-label="Dismiss"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
           </div>
-          <div class="alert alert--warning" role="status">
-            <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 4 2.5 20h19z"/><path d="M12 10v4M12 17v.5"/></svg>
-            <div class="alert__body"><p class="alert__title">Your certificate expires on Monday 9 November 2026</p><p>That’s 30 days from today. Add your renewed certificate here to keep your profile published.</p></div>
+        </div>
+        <div class="ds-example__caption"><span>The sign-in page after Sign out, with one link; the editor after the first save of a new studio, dismissible because the draft is already visible below it.</span></div>
+      </div>
+
+      <h3>Warning: rate limited</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--stack">
+          <div class="alert alert--warning" role="alert">
+            <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 4 2.5 20h19L12 4z"/><path d="M12 10v4M12 17h.01"/></svg>
+            <div class="alert__body"><p class="alert__title">Too many sign-in attempts</p><p>Wait 15 minutes, then try again.</p></div>
+          </div>
+          <div class="alert alert--warning" role="alert">
+            <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 4 2.5 20h19L12 4z"/><path d="M12 10v4M12 17h.01"/></svg>
+            <div class="alert__body"><p class="alert__title">Too many tries.</p><p>Wait a minute, then try again.</p></div>
+          </div>
+        </div>
+        <div class="ds-example__caption"><span>Owner sign-in (L2-049) and the email signup form (L2-039). The request was refused, so it is announced at once with <code>role="alert"</code>.</span></div>
+      </div>
+
+      <h3>Danger: refused or failed</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--stack">
+          <div class="alert alert--danger" role="alert">
+            <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16h.01"/></svg>
+            <div class="alert__body"><p class="alert__title">Email or password is incorrect</p><p>Check both and try again. Passwords are case-sensitive.</p></div>
           </div>
           <div class="alert alert--danger" role="alert">
-            <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16.5v.5"/></svg>
-            <div class="alert__body"><p class="alert__title">We couldn’t sign you in just now</p><p>Something went wrong on our side. Your email is still here; try again in a moment.</p><div class="alert__actions"><button class="btn btn--sm" type="button"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.3-5.7M20 4v5h-5"/></svg>Try again</button></div></div>
+            <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16h.01"/></svg>
+            <div class="alert__body"><p class="alert__title">We couldn't subscribe you just now.</p><p>Your email is still here — try again.</p></div>
+          </div>
+          <div class="alert alert--danger" role="alert">
+            <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16h.01"/></svg>
+            <div class="alert__body"><p>We couldn't unpublish it. Nothing changed. Try again.</p></div>
           </div>
         </div>
-        <div class="ds-example__caption"><span>Info (in review), success (approved), warning (expiring certificate), danger (sign-in failed). Copy from the dashboard, certificate and sign-in mocks.</span></div>
-        <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;div class="alert alert--warning" role="status"&gt;
-  &lt;svg class="icon" aria-hidden="true" viewBox="0 0 24 24"&gt;&lt;path d="M12 4 2.5 20h19z"/&gt;&lt;path d="M12 10v4M12 17v.5"/&gt;&lt;/svg&gt;
-  &lt;div class="alert__body"&gt;
-    &lt;p class="alert__title"&gt;Your certificate expires on Monday 9 November 2026&lt;/p&gt;
-    &lt;p&gt;That’s 30 days from today. Add your renewed certificate here to keep your profile published.&lt;/p&gt;
-  &lt;/div&gt;
-&lt;/div&gt;</code></pre></details>
+        <div class="ds-example__caption"><span>Wrong credentials (L2-049), a signup that failed on the server, and a failed Unpublish inside its <a href="dialog.html">dialog</a>, where the footer's Unpublish button is the retry.</span></div>
       </div>
 
-      <h3>Banner</h3>
-      <p>Add <code>.banner</code> to the same markup. The banner loses its radius and side borders, keeps only the bottom border, centres its content and pads to <code>--layout-margin</code>, so it lines up with the header above. Title and text sit on one line when they fit.</p>
+      <h3>Inside a dialog</h3>
       <div class="ds-example">
-        <div class="ds-example__canvas ds-example__canvas--stack" style="padding: 0; gap: 0;">
-          <div class="alert banner" role="status">
-            <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/></svg>
-            <div class="alert__body"><span class="alert__title">Scheduled maintenance</span><span>Sunday 18 October, 1:00–3:00 a.m. ShotThere may be unavailable for up to two hours.</span></div>
-            <button class="close" type="button" aria-label="Dismiss maintenance notice"><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
-          </div>
-          <div class="alert alert--warning banner" role="status">
-            <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 4 2.5 20h19z"/><path d="M12 10v4M12 17v.5"/></svg>
-            <div class="alert__body"><span class="alert__title">Verify your email to send enquiries</span><span>We sent a link to marcia.t@example.com.</span><span class="alert__actions"><button type="button" class="btn btn--link btn--sm">Resend verification email</button></span></div>
-          </div>
-          <div class="alert alert--danger banner">
-            <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16.5v.5"/></svg>
-            <div class="alert__body"><span class="alert__title">Your profile is suspended and hidden from customers.</span><span>Your food handler certificate expired on 30 Sep 2026.</span><span class="alert__actions">Upload a new certificate</span></div>
+        <div class="ds-example__canvas ds-example__canvas--stack">
+          <div class="alert alert--warning">
+            <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 4 2.5 20h19L12 4z"/><path d="M12 10v4M12 17h.01"/></svg>
+            <div class="alert__body" id="ex-refused-desc"><p>A published studio needs at least one standard test shot. Add another before removing this one.</p></div>
           </div>
         </div>
-        <div class="ds-example__caption"><span>Dismissible site banner (maintenance), persistent site banner (unverified email, no close), persistent profile banner (suspended). Shown stacked here; a real screen has one.</span></div>
-        <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;header class="site-header"&gt;…&lt;/header&gt;
-&lt;div class="alert alert--warning banner" role="status"&gt;
-  &lt;svg class="icon" aria-hidden="true" viewBox="0 0 24 24"&gt;…&lt;/svg&gt;
-  &lt;div class="alert__body"&gt;
-    &lt;span class="alert__title"&gt;Verify your email to send enquiries&lt;/span&gt;
-    &lt;span&gt;We sent a link to marcia.t@example.com.&lt;/span&gt;
-    &lt;span class="alert__actions"&gt;&lt;button class="btn btn--link btn--sm" type="button"&gt;Resend verification email&lt;/button&gt;&lt;/span&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-&lt;main id="main" class="container"&gt;…&lt;/main&gt;</code></pre></details>
+        <div class="ds-example__caption"><span>The Remove image dialog when the last test shot is refused (L2-058). The alert is the dialog's description (<code>aria-describedby</code>), so it has no live role of its own.</span></div>
       </div>
-
-      <h3>Persistence</h3>
-      <div class="ds-table-wrap"><table class="ds-table">
-        <thead><tr><th scope="col">Kind</th><th scope="col">Close button</th><th scope="col">Goes away when</th><th scope="col">ShotThere examples</th></tr></thead>
-        <tbody>
-          <tr><td>Dismissible</td><td>Yes</td><td>Dismissed (remembered per device) or the condition ends</td><td>Maintenance notice; "Email verified"; "Your profile is in review"</td></tr>
-          <tr><td>Persistent</td><td>No</td><td>Only when the condition ends</td><td>Unverified email (L2-023); incident in progress (L2-091); name change waiting for review; suspended profile; changes requested</td></tr>
-          <tr><td>Inline</td><td>No</td><td>The content it describes changes</td><td>Expiring certificate; read-only while in review; chart failed to load</td></tr>
-        </tbody>
-      </table></div>
     </section>
 
-    <section class="ds-section" id="sizes" data-na="Alerts have one size."><h2><a href="#sizes">Sizes</a></h2>
-      <p class="ds-na">Alerts have one size. Padding, icon and type are fixed so every alert reads the same; the banner is a layout variant (full-bleed, centred), not a size. The only size change is the dismiss button, which is 44px below 48rem and 24px from 48rem; small action buttons in <code>.alert__actions</code> likewise grow to 44px on phones (see Responsive).</p>
+    <section class="ds-section" id="sizes" data-na="One size"><h2><a href="#sizes">Sizes</a></h2>
+      <p>One size. Alerts take the width of the column they sit in: the review column, the sign-in card or the dialog body.</p>
     </section>
 
     <section class="ds-section" id="states"><h2><a href="#states">States</a></h2>
-      <p>The container has no interactive states; its actions and dismiss button do. Hover and focus are forced with <code>data-state</code>. Live-region roles are left off the matrix so this page does not announce twenty alerts.</p>
+      <p>The alert itself is static; its dismiss button and action have the usual states. Forced here with <code>data-state</code>.</p>
       <div class="ds-matrix"><table>
-        <caption class="visually-hidden">Alert states by tone</caption>
-        <thead><tr><th scope="col">Tone</th><th scope="col">Default</th><th scope="col">With action</th><th scope="col">Dismissible</th><th scope="col">Close hover</th><th scope="col">Close focus</th><th scope="col">Action focus</th></tr></thead>
+        <thead><tr><th scope="col">Part</th><th scope="col">Default</th><th scope="col">Hover</th><th scope="col">Focus</th><th scope="col">Active</th><th scope="col">Disabled</th><th scope="col">Busy</th></tr></thead>
         <tbody>
-          <tr><th scope="row">Info</th>
-            <td><div class="alert"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/></svg><div class="alert__body"><p class="alert__title">In review</p></div></div></td>
-            <td><div class="alert"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/></svg><div class="alert__body"><p class="alert__title">Name change waiting</p><div class="alert__actions">See the change</div></div></div></td>
-            <td><div class="alert"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/></svg><div class="alert__body"><p class="alert__title">In review</p></div><button class="close" type="button" aria-label="Dismiss"><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div></td>
-            <td><div class="alert"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/></svg><div class="alert__body"><p class="alert__title">In review</p></div><button class="close" type="button" aria-label="Dismiss" data-state="hover"><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div></td>
-            <td><div class="alert"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/></svg><div class="alert__body"><p class="alert__title">In review</p></div><button class="close" type="button" aria-label="Dismiss" data-state="focus"><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div></td>
-            <td><div class="alert"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/></svg><div class="alert__body"><p class="alert__title">Name change waiting</p><div class="alert__actions">See the change</div></div></div></td>
+          <tr><th scope="row">Dismiss</th>
+            <td><div class="alert alert--success" style="min-width: 15rem;"><div class="alert__body"><p>Studio created as a draft</p></div><button class="close" type="button" aria-label="Dismiss"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div></td>
+            <td><div class="alert alert--success" style="min-width: 15rem;"><div class="alert__body"><p>Studio created as a draft</p></div><button class="close" type="button" aria-label="Dismiss" data-state="hover"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div></td>
+            <td><div class="alert alert--success" style="min-width: 15rem;"><div class="alert__body"><p>Studio created as a draft</p></div><button class="close" type="button" aria-label="Dismiss" data-state="focus"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div></td>
+            <td><span class="text-muted">Same as hover</span></td>
+            <td><span class="text-muted">Not used</span></td>
+            <td><span class="text-muted">Not used</span></td>
           </tr>
-          <tr><th scope="row">Success</th>
-            <td><div class="alert alert--success"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg><div class="alert__body"><p class="alert__title">Email verified</p></div></div></td>
-            <td><div class="alert alert--success"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg><div class="alert__body"><p class="alert__title">You’re live</p><div class="alert__actions">View your page</div></div></div></td>
-            <td><div class="alert alert--success"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg><div class="alert__body"><p class="alert__title">Email verified</p></div><button class="close" type="button" aria-label="Dismiss"><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div></td>
-            <td><div class="alert alert--success"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg><div class="alert__body"><p class="alert__title">Email verified</p></div><button class="close" type="button" aria-label="Dismiss" data-state="hover"><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div></td>
-            <td><div class="alert alert--success"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg><div class="alert__body"><p class="alert__title">Email verified</p></div><button class="close" type="button" aria-label="Dismiss" data-state="focus"><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div></td>
-            <td><div class="alert alert--success"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg><div class="alert__body"><p class="alert__title">You’re live</p><div class="alert__actions">View your page</div></div></div></td>
+          <tr><th scope="row">Action</th>
+            <td><div class="alert alert--danger" style="min-width: 15rem;"><div class="alert__body"><p>We couldn't load the re-verification list.</p><div class="alert__actions"><button class="btn btn--sm" type="button">Try again</button></div></div></div></td>
+            <td><div class="alert alert--danger" style="min-width: 15rem;"><div class="alert__body"><p>We couldn't load the re-verification list.</p><div class="alert__actions"><button class="btn btn--sm" type="button" data-state="hover">Try again</button></div></div></div></td>
+            <td><div class="alert alert--danger" style="min-width: 15rem;"><div class="alert__body"><p>We couldn't load the re-verification list.</p><div class="alert__actions"><button class="btn btn--sm" type="button" data-state="focus">Try again</button></div></div></div></td>
+            <td><div class="alert alert--danger" style="min-width: 15rem;"><div class="alert__body"><p>We couldn't load the re-verification list.</p><div class="alert__actions"><button class="btn btn--sm" type="button" data-state="active">Try again</button></div></div></div></td>
+            <td><span class="text-muted">Not used: a retry is always allowed</span></td>
+            <td><div class="alert alert--danger" style="min-width: 15rem;"><div class="alert__body"><p>We couldn't load the re-verification list.</p><div class="alert__actions"><button class="btn btn--sm" type="button" aria-busy="true">Try again</button></div></div></div></td>
           </tr>
-          <tr><th scope="row">Warning</th>
-            <td><div class="alert alert--warning"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 4 2.5 20h19z"/><path d="M12 10v4M12 17v.5"/></svg><div class="alert__body"><p class="alert__title">Expires Mon 9 Nov</p></div></div></td>
-            <td><div class="alert alert--warning"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 4 2.5 20h19z"/><path d="M12 10v4M12 17v.5"/></svg><div class="alert__body"><p class="alert__title">Changes requested</p><div class="alert__actions">Go to photos</div></div></div></td>
-            <td><div class="alert alert--warning"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 4 2.5 20h19z"/><path d="M12 10v4M12 17v.5"/></svg><div class="alert__body"><p class="alert__title">Email bounced</p></div><button class="close" type="button" aria-label="Dismiss"><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div></td>
-            <td><div class="alert alert--warning"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 4 2.5 20h19z"/><path d="M12 10v4M12 17v.5"/></svg><div class="alert__body"><p class="alert__title">Email bounced</p></div><button class="close" type="button" aria-label="Dismiss" data-state="hover"><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div></td>
-            <td><div class="alert alert--warning"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 4 2.5 20h19z"/><path d="M12 10v4M12 17v.5"/></svg><div class="alert__body"><p class="alert__title">Email bounced</p></div><button class="close" type="button" aria-label="Dismiss" data-state="focus"><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div></td>
-            <td><div class="alert alert--warning"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 4 2.5 20h19z"/><path d="M12 10v4M12 17v.5"/></svg><div class="alert__body"><p class="alert__title">Changes requested</p><div class="alert__actions">Go to photos</div></div></div></td>
-          </tr>
-          <tr><th scope="row">Danger</th>
-            <td><div class="alert alert--danger"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16.5v.5"/></svg><div class="alert__body"><p class="alert__title">Profile suspended</p></div></div></td>
-            <td><div class="alert alert--danger"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16.5v.5"/></svg><div class="alert__body"><p class="alert__title">Chart didn’t load</p><div class="alert__actions"><button class="btn btn--sm" type="button">Try again</button></div></div></div></td>
-            <td><span class="ds-na">Danger is never dismissible</span></td>
-            <td><span class="ds-na">No close</span></td>
-            <td><span class="ds-na">No close</span></td>
-            <td><div class="alert alert--danger"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16.5v.5"/></svg><div class="alert__body"><p class="alert__title">Chart didn’t load</p><div class="alert__actions"><button class="btn btn--sm" type="button" data-state="focus">Try again</button></div></div></div></td>
+          <tr><th scope="row">Link action</th>
+            <td><div class="alert alert--success" style="min-width: 15rem;"><div class="alert__body"><p>You've signed out.</p><div class="alert__actions"><a href="../../mocks/pages/home/default.html">Go to the public site</a></div></div></div></td>
+            <td><div class="alert alert--success" style="min-width: 15rem;"><div class="alert__body"><p>You've signed out.</p><div class="alert__actions"><a href="../../mocks/pages/home/default.html" data-state="hover">Go to the public site</a></div></div></div></td>
+            <td><div class="alert alert--success" style="min-width: 15rem;"><div class="alert__body"><p>You've signed out.</p><div class="alert__actions"><a href="../../mocks/pages/home/default.html" data-state="focus">Go to the public site</a></div></div></div></td>
+            <td><span class="text-muted">Same as hover</span></td>
+            <td><span class="text-muted">Not used</span></td>
+            <td><span class="text-muted">Not used</span></td>
           </tr>
         </tbody>
       </table></div>
+      <ul>
+        <li><b>Present or gone</b>: an alert is rendered while its condition holds. The stale warning disappears once the price is re-verified; the rate-limit warning when the wait is over.</li>
+        <li><b>Dismissed</b>: only the "created as a draft" alert has a Dismiss; the draft is already shown below it, so nothing is lost.</li>
+      </ul>
       <h3>Both themes</h3>
       <div class="ds-themes">
-        <div data-theme="light"><div class="ds-example__canvas ds-example__canvas--stack" style="padding: 0;">
-          <div class="alert"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/></svg><div class="alert__body"><p class="alert__title">Your profile is in review</p></div></div>
-          <div class="alert alert--success"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg><div class="alert__body"><p class="alert__title">Email verified</p></div></div>
-          <div class="alert alert--warning"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 4 2.5 20h19z"/><path d="M12 10v4M12 17v.5"/></svg><div class="alert__body"><p class="alert__title">Certificate expires Mon 9 Nov</p></div></div>
-          <div class="alert alert--danger"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16.5v.5"/></svg><div class="alert__body"><p class="alert__title">Profile suspended</p></div></div>
+        <div data-theme="light"><div class="stack stack--sm">
+          <div class="alert alert--info"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><div class="alert__body"><p class="alert__title">Your session expired</p></div></div>
+          <div class="alert alert--success"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg><div class="alert__body"><p class="alert__title">You've signed out.</p></div></div>
+          <div class="alert alert--warning"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 4 2.5 20h19L12 4z"/><path d="M12 10v4M12 17h.01"/></svg><div class="alert__body"><p class="alert__title">Prices may be out of date</p></div></div>
+          <div class="alert alert--danger"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16h.01"/></svg><div class="alert__body"><p class="alert__title">Email or password is incorrect</p></div></div>
         </div></div>
-        <div data-theme="dark"><div class="ds-example__canvas ds-example__canvas--stack" style="padding: 0;">
-          <div class="alert"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/></svg><div class="alert__body"><p class="alert__title">Your profile is in review</p></div></div>
-          <div class="alert alert--success"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg><div class="alert__body"><p class="alert__title">Email verified</p></div></div>
-          <div class="alert alert--warning"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 4 2.5 20h19z"/><path d="M12 10v4M12 17v.5"/></svg><div class="alert__body"><p class="alert__title">Certificate expires Mon 9 Nov</p></div></div>
-          <div class="alert alert--danger"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16.5v.5"/></svg><div class="alert__body"><p class="alert__title">Profile suspended</p></div></div>
+        <div data-theme="dark"><div class="stack stack--sm">
+          <div class="alert alert--info"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><div class="alert__body"><p class="alert__title">Your session expired</p></div></div>
+          <div class="alert alert--success"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg><div class="alert__body"><p class="alert__title">You've signed out.</p></div></div>
+          <div class="alert alert--warning"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 4 2.5 20h19L12 4z"/><path d="M12 10v4M12 17h.01"/></svg><div class="alert__body"><p class="alert__title">Prices may be out of date</p></div></div>
+          <div class="alert alert--danger"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16h.01"/></svg><div class="alert__body"><p class="alert__title">Email or password is incorrect</p></div></div>
         </div></div>
       </div>
-      <ul>
-        <li><b>Dismissed</b> removes the alert from the DOM (no hidden copy left behind) and remembers the choice per device for the life of the condition. A maintenance notice comes back on the day of the maintenance.</li>
-        <li><b>Busy action</b>: a "Resend verification email" or "Try again" button inside an alert uses the button's own <code>aria-busy</code> state; the alert does not change while it works. When the resend succeeds, a <a href="toast.html">toast</a> confirms it and the banner stays (the email is still unverified).</li>
-        <li><b>Resolved</b>: when the condition ends while the page is open (email verified in another tab, incident over), the banner is replaced by a dismissible success banner on the next page load, not mid-reading.</li>
-      </ul>
     </section>
 
     <section class="ds-section" id="responsive"><h2><a href="#responsive">Responsive behaviour</a></h2>
       <ul>
-        <li><b>All sizes:</b> an inline alert fills the width of its column and wraps; text never truncates. Actions wrap onto a new line under the text (<code>flex-wrap</code>).</li>
-        <li><b>Below 48rem (xs, sm):</b> banner title, text and actions stack as wrapped lines. Every compact control in an alert grows to <code>--target-comfortable</code> (44px), per L2-065.1: the dismiss button (inline and banner; the banner close also pulls into the corner with a negative margin so the text does not shift) and <code>.btn--sm</code> actions such as "Resend verification email" and "Try again".</li>
-        <li><b>From 48rem (md):</b> the banner body is a single centred row (<code>.banner .alert__body</code> is <code>flex-direction: row</code>) when it fits; compact sizes apply: the dismiss button is 24px (<code>--target-min</code>) and small actions 36px, with at least 8px between targets.</li>
-        <li><b>From 62rem (lg):</b> inline alerts in the dashboard and console sit in the main column (<code>.work-main</code>), never across the side navigation; the profile banner sits above both.</li>
-        <li>Banners are never sticky. They scroll away with the page, so they never cover a focused field (WCAG 2.4.11) and never stack with the sticky enquiry bar.</li>
+        <li>The alert fills its column at every width; icon and dismiss keep their size and the body wraps between them. Long addresses such as <code>/studios/corktown-garage-studio</code> break anywhere.</li>
+        <li>Actions wrap onto a new line under the body; a small button in an alert is 44px tall below 48rem, and the dismiss button grows to 44 × 44 (L2-065.1).</li>
+        <li>On the studio page the stale warning stays in the pricing section at every width; the summary panel repeats it as a badge, which moves above the long sections below 62rem.</li>
       </ul>
-      <p class="ds-note">Mock previews are not included in this copy; the ShotThere mocks will replace them.</p>
+      <div class="ds-iframes">
+        <iframe class="ds-iframe" src="../../mocks/pages/studio/stale.html?chrome=0#pricing" title="Stale studio page at phone width: the warning under the pricing" loading="lazy"></iframe>
+        <iframe class="ds-iframe" src="../../mocks/pages/sign-in/rate-limited.html?chrome=0" title="Owner sign-in at phone width: the rate-limit warning above the form" loading="lazy"></iframe>
+      </div>
     </section>
 
     <section class="ds-section" id="theming"><h2><a href="#theming">Theming</a></h2>
-      <p>The alert reads four component tokens that each tone overrides: <code>--alert-bg</code>, <code>--alert-fg</code>, <code>--alert-border</code> and <code>--alert-icon</code>. They alias the status roles (<code>--color-info-*</code>, <code>--color-success-*</code>, <code>--color-warning-*</code>, <code>--color-danger-*</code>). The dismiss hover is an 8% <code>currentColor</code> mix, so it follows the tone automatically.</p>
-      <pre><code>/* A re-skin changes the component tokens, never .alert itself */
-.alert--notice { --alert-bg: var(--color-bg-subtle); --alert-fg: var(--color-fg-default);
-                 --alert-border: var(--color-border-default); --alert-icon: var(--color-fg-muted); }</code></pre>
-      <p>In dark the backgrounds become deep tinted surfaces (callaloo 950, mango 950, sorrel 950) and text and icons switch to the light end of each ramp, keeping text at 4.5:1 and icons at 3:1. The border stays decorative in both themes: the tint, the icon and the words carry the meaning.</p>
+      <p>Each tone modifier sets four component tokens from the status roles: <code>--alert-bg</code> (<code>--color-*-bg</code>), <code>--alert-fg</code> (<code>--color-*-fg</code>), <code>--alert-border</code> (<code>--color-*-border</code>) and <code>--alert-icon</code> (<code>--color-*-icon</code>). The dark theme darkens the fill and lightens the ink and icon, keeping 4.5:1 for text and 3:1 for the icon. In forced colours the fill vanishes and the 1px border and icon shape remain.</p>
+      <pre><code>.alert--warning { --alert-bg: var(--color-warning-bg); --alert-fg: var(--color-warning-fg);
+                  --alert-border: var(--color-warning-border); --alert-icon: var(--color-warning-icon); }</code></pre>
     </section>
 
     <section class="ds-section" id="accessibility"><h2><a href="#accessibility">Accessibility</a></h2>
       <h3>Role and pattern</h3>
-      <p>A <code>&lt;div&gt;</code> with a live-region role, following the <a href="https://www.w3.org/WAI/ARIA/apg/patterns/alert/">APG Alert pattern</a>:</p>
+      <p>WAI-ARIA APG <a href="https://www.w3.org/WAI/ARIA/apg/patterns/alert/">Alert pattern</a> and WCAG 4.1.3 Status Messages. The live role follows urgency, not tone:</p>
       <ul>
-        <li><code>role="alert"</code> (assertive) only for danger that appears as the result of what the person just did or of an incident in progress: "We couldn’t sign you in just now", "Some things aren’t working right now". One per screen.</li>
-        <li><code>role="status"</code> (polite) for everything else that appears or changes while the page is open: maintenance, unverified email, in review.</li>
-        <li>No role for an alert that is simply part of the page's content on first load and never changes (the expiring-certificate notice is fine either way). A role on static content is harmless; two <code>role="alert"</code>s on one screen are not.</li>
+        <li><code>role="status"</code> (polite) for conditions found when the page loads or after a successful step: stale prices and permits, session expired, signed out, comparison link trimmed, draft created.</li>
+        <li><code>role="alert"</code> (assertive) for a request the person just made that was refused or failed: incorrect sign-in, rate limited, signup failed, dashboard list failed, unpublish or delete failed.</li>
+        <li>No role when the alert is a dialog's description (Remove image refused); the dialog announces it through <code>aria-describedby</code>.</li>
       </ul>
-      <p>The live region must exist before its text is inserted; render the empty container with the page and fill it, or screen readers will not announce it.</p>
       <h3>Keyboard</h3>
-      <div class="ds-table-wrap"><table class="ds-table ds-keys"><thead><tr><th scope="col">Key</th><th scope="col">Action</th></tr></thead><tbody>
-        <tr><td><kbd>Tab</kbd> / <kbd>Shift</kbd>+<kbd>Tab</kbd></td><td>Moves through the alert's actions, then its dismiss button, in reading order. The container itself is not focusable.</td></tr>
-        <tr><td><kbd>Enter</kbd>, <kbd>Space</kbd></td><td>Activates the focused action or dismisses.</td></tr>
-        <tr><td><kbd>Esc</kbd></td><td>No effect. Alerts are not modal; Escape belongs to the dialog or sheet that has focus.</td></tr>
-      </tbody></table></div>
+      <table class="ds-table ds-keys"><thead><tr><th scope="col">Key</th><th scope="col">Action</th></tr></thead><tbody>
+        <tr><td><kbd>Tab</kbd></td><td>Reaches the action and the dismiss button in DOM order. The alert itself is not focusable.</td></tr>
+        <tr><td><kbd>Enter</kbd> / <kbd>Space</kbd></td><td>Activates Try again or Dismiss; Enter follows the link action.</td></tr>
+      </tbody></table>
       <h3>Focus</h3>
-      <p>Alerts never take focus when they appear, with one exception: after a failed form submit, focus moves to the danger alert's title (given <code>tabindex="-1"</code>) so the explanation is read first. After dismissing, focus moves to the start of <code>#main</code>, never to the top of the document. The dismiss button shows the shared ring on <code>:focus-visible</code>.</p>
+      <p>An alert never steals focus. On sign-in pages focus goes to the email field (<code>autofocus</code>) while the alert is announced. After Dismiss, focus moves to the next heading so it is not lost.</p>
       <h3>Labelling</h3>
-      <p>The tone is never colour alone: the icon shape and the words carry it, so "Changes requested:" and "Your profile is suspended" say what kind of message it is. Icons are <code>aria-hidden</code>. The dismiss button needs an accessible name; prefer naming what is dismissed ("Dismiss maintenance notice") over a bare "Dismiss", which the mocks use and which is acceptable only when there is one dismissible alert on the screen.</p>
+      <p>The title and body are the content; the icon is <code>aria-hidden</code> and the tone is in the words ("may be out of date", "couldn't", "incorrect"), never in colour alone. Dismiss has <code>aria-label="Dismiss"</code>.</p>
       <h3>Contrast</h3>
       <div class="ds-example__canvas ds-example__canvas--stack" style="padding: 0; gap: var(--space-2);">
-        <div class="ds-pair"><span>Info text on info background</span><span class="ds-pair__ratio" data-contrast="--color-info-fg|--color-info-bg" data-min="4.5"></span></div>
-        <div class="ds-pair"><span>Info icon on info background</span><span class="ds-pair__ratio" data-contrast="--color-info-icon|--color-info-bg" data-min="3"></span></div>
+        <div class="ds-pair"><span>Info text</span><span class="ds-pair__ratio" data-contrast="--color-info-fg|--color-info-bg" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Info icon</span><span class="ds-pair__ratio" data-contrast="--color-info-icon|--color-info-bg" data-min="3"></span></div>
         <div class="ds-pair"><span>Success text</span><span class="ds-pair__ratio" data-contrast="--color-success-fg|--color-success-bg" data-min="4.5"></span></div>
         <div class="ds-pair"><span>Success icon</span><span class="ds-pair__ratio" data-contrast="--color-success-icon|--color-success-bg" data-min="3"></span></div>
         <div class="ds-pair"><span>Warning text</span><span class="ds-pair__ratio" data-contrast="--color-warning-fg|--color-warning-bg" data-min="4.5"></span></div>
         <div class="ds-pair"><span>Warning icon</span><span class="ds-pair__ratio" data-contrast="--color-warning-icon|--color-warning-bg" data-min="3"></span></div>
         <div class="ds-pair"><span>Danger text</span><span class="ds-pair__ratio" data-contrast="--color-danger-fg|--color-danger-bg" data-min="4.5"></span></div>
         <div class="ds-pair"><span>Danger icon</span><span class="ds-pair__ratio" data-contrast="--color-danger-icon|--color-danger-bg" data-min="3"></span></div>
-        <div class="ds-pair"><span>Info border on surface (decorative, exempt)</span><span class="ds-pair__ratio" data-contrast="--color-info-border|--color-bg-surface" data-min="1"></span></div>
-        <div class="ds-pair"><span>Focus ring on canvas</span><span class="ds-pair__ratio" data-contrast="--color-focus-ring|--color-bg-canvas" data-min="3"></span></div>
+        <div class="ds-pair"><span>Focus ring on a danger alert</span><span class="ds-pair__ratio" data-contrast="--color-focus-ring|--color-danger-bg" data-min="3"></span></div>
+        <div class="ds-pair"><span>Focus ring on a success alert</span><span class="ds-pair__ratio" data-contrast="--color-focus-ring|--color-success-bg" data-min="3"></span></div>
       </div>
-      <p>The focus ring on a tinted alert background (for example pepper on sorrel 50) is not yet in the checked pairs; it is listed for addition. The 3px offset puts the ring partly over the tint, so the tone backgrounds must keep the ring at 3:1.</p>
       <h3>Motion</h3>
-      <p>Alerts appear and disappear without animation. A banner that slid in would push the page down while someone reads; it is rendered with the page instead. The dismiss hover is a colour change only.</p>
+      <p>None. Alerts appear with the content; no slide or fade.</p>
       <h3>Touch</h3>
-      <p>Below 48rem every target in an alert is at least 44px: the dismiss button (<code>.alert .close</code>, inline and banner) and the <code>.btn--sm</code> actions. From 48rem, with a pointer, the compact sizes return (24px dismiss, 36px small buttons), which still clear the 24px minimum (WCAG 2.5.8) with at least 8px between targets. Plain text links in <code>.alert__actions</code> sit on their own wrapped line so the whole line is easy to hit.</p>
+      <p>Dismiss is 24 × 24 from 48rem and 44 × 44 below; the small action button is 44px tall on phones.</p>
     </section>
 
     <section class="ds-section" id="content"><h2><a href="#content">Content</a></h2>
       <ul>
-        <li><b>Title states the condition</b>, not the category: "Your certificate expires on Monday 9 November 2026", not "Warning". No "Error:" or "Note:" prefixes; the icon does that job.</li>
-        <li><b>Text says what it means and what happens next</b>, in one or two sentences: "That’s 30 days from today. Add your renewed certificate here to keep your profile published."</li>
-        <li><b>Reassure when nothing is lost</b>: "New messages may take a few minutes to appear. Nothing you send is lost."; "Your email is still here; try again in a moment."</li>
-        <li><b>Say whose fault it is honestly</b>: "Something went wrong on our side." Never blame the person for a server failure.</li>
-        <li><b>Quote the operator's reason verbatim</b> in "Changes requested:" banners, in curly quotes, so the caterer reads exactly what was asked.</li>
-        <li><b>Actions are verb phrases</b> that name the destination: "Upload a new certificate", "Go to photos", "Resend verification email", "View your page". Never "Click here" or "Learn more".</li>
-        <li><b>Dates</b> in full on detail screens ("Monday 9 November 2026"), short in banners ("Sunday 18 October, 1:00–3:00 a.m."), always Toronto time; add "Toronto time" when the reader may be elsewhere.</li>
+        <li>Title: the condition in sentence case, a few words: "Prices may be out of date", "Your session expired", "Too many sign-in attempts".</li>
+        <li>Body: what it means and the next step, with the real number: "We last checked these prices 225 days ago. Confirm with the studio before you book."</li>
+        <li>Say "we" for ShotThere's side of a failure ("We couldn't sign you in just now") and reassure about what is kept ("What you typed is still here", "Nothing changed").</li>
+        <li>Name waits exactly: "Wait 15 minutes, then try again."</li>
+        <li>One action at most, as a verb: "Try again", "Go to the public site".</li>
+        <li>Drop the title when the alert is one sentence ("You can compare up to 4 studios. We're showing the first 4 from this link.").</li>
       </ul>
     </section>
 
     <section class="ds-section" id="do-dont"><h2><a href="#do-dont">Do and don't</a></h2>
       <div class="ds-dodont">
-        <figure class="ds-do"><div class="ds-example__canvas"><div class="alert alert--danger"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16.5v.5"/></svg><div class="alert__body"><p class="alert__title">Some things aren’t working right now</p><p>Nothing you send is lost.</p></div></div></div><figcaption>A danger banner stays for as long as the incident lasts; there is nothing to dismiss.</figcaption></figure>
-        <figure class="ds-dont"><div class="ds-example__canvas"><div class="alert alert--danger"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16.5v.5"/></svg><div class="alert__body"><p class="alert__title">Profile suspended</p></div><button class="close" type="button" aria-label="Dismiss suspended notice"><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div></div><figcaption>Don't let people dismiss a condition that still holds; they would lose the only way back to fixing it.</figcaption></figure>
-        <figure class="ds-do"><div class="ds-example__canvas"><div class="alert alert--danger"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16.5v.5"/></svg><div class="alert__body"><p class="alert__title">2 charts didn’t load</p><p>The other figures are up to date.</p><div class="alert__actions"><button class="btn btn--sm" type="button">Try again</button></div></div></div></div><figcaption>When several parts fail together, one alert (one <code>role="alert"</code>) summarises them.</figcaption></figure>
-        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--stack"><div class="alert alert--danger"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16.5v.5"/></svg><div class="alert__body"><p class="alert__title">This chart didn’t load</p></div></div><div class="alert alert--danger"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16.5v.5"/></svg><div class="alert__body"><p class="alert__title">This chart didn’t load</p></div></div></div><figcaption>Don't fire two identical assertive alerts at once (the metrics <code>partial</code> mock did); screen readers read both and interrupt each other.</figcaption></figure>
-        <figure class="ds-do"><div class="ds-example__canvas"><div class="alert alert--warning"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 4 2.5 20h19z"/><path d="M12 10v4M12 17v.5"/></svg><div class="alert__body"><p class="alert__title">Changes requested</p><div class="alert__actions">Go to photos</div></div></div></div><figcaption>Actions are links or link buttons in the alert's own colour.</figcaption></figure>
-        <figure class="ds-dont"><div class="ds-example__canvas"><div class="alert alert--warning"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 4 2.5 20h19z"/><path d="M12 10v4M12 17v.5"/></svg><div class="alert__body"><p class="alert__title">Changes requested</p><div class="alert__actions"><button class="btn btn--primary btn--sm" type="button">Go to photos</button></div></div></div></div><figcaption>Don't put an ink primary in an alert; it becomes a second primary on the screen.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--stack"><div class="alert alert--warning" role="status"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 4 2.5 20h19L12 4z"/><path d="M12 10v4M12 17h.01"/></svg><div class="alert__body"><p class="alert__title">Prices may be out of date</p><p>We last checked these prices 225 days ago. Confirm with the studio before you book.</p></div></div></div><figcaption>A stale price is a warning, with the age and what to do.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--stack"><div class="alert alert--danger" role="alert"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16h.01"/></svg><div class="alert__body"><p class="alert__title">Stale data</p></div></div></div><figcaption>Danger and an assertive role for data that is only old; and "Stale data" says nothing a visitor can act on.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--stack"><div class="alert alert--danger" role="alert"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16h.01"/></svg><div class="alert__body"><p>We couldn't delete it. Try again.</p></div></div></div><figcaption>A failed action inside its dialog stays in the dialog, next to the button that retries it.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--stack"><div class="alert alert--danger" role="alert"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16h.01"/></svg><div class="alert__body"><p>gallery-04.jpg didn't upload. Check your connection.</p></div></div></div><figcaption>A failed upload in an alert at the top of the editor is far from the image; put it in the image row as an inline error.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--stack"><div class="alert alert--info" role="status"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><div class="alert__body"><p>One studio in this link couldn't be found, so we're comparing the other two.</p></div></div></div><figcaption>Text in a <code>p</code> inside <code>.alert__body</code>.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--stack"><div class="alert alert--info" role="status"><div class="alert__body"><p>One studio in this link couldn't be found, so we're comparing the other two.</p></div></div></div><figcaption>No icon: in forced colours, or for anyone who can't tell blue from amber, the tone is lost.</figcaption></figure>
       </div>
     </section>
 
@@ -364,68 +384,70 @@
       <div class="ds-table-wrap"><table class="ds-table">
         <thead><tr><th scope="col">Part</th><th scope="col">Token</th><th scope="col">Light</th><th scope="col">Dark</th></tr></thead>
         <tbody>
-          <tr><td>Info background (<code>--alert-bg</code>)</td><td><code>--color-info-bg</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-info-bg" data-swatch></i><span data-token="--color-info-bg"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-info-bg" data-swatch></i><span data-token="--color-info-bg"></span></span></td></tr>
-          <tr><td>Info text (<code>--alert-fg</code>)</td><td><code>--color-info-fg</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-info-fg" data-swatch></i><span data-token="--color-info-fg"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-info-fg" data-swatch></i><span data-token="--color-info-fg"></span></span></td></tr>
-          <tr><td>Info icon (<code>--alert-icon</code>)</td><td><code>--color-info-icon</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-info-icon" data-swatch></i><span data-token="--color-info-icon"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-info-icon" data-swatch></i><span data-token="--color-info-icon"></span></span></td></tr>
-          <tr><td>Info border (<code>--alert-border</code>)</td><td><code>--color-info-border</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-info-border" data-swatch></i><span data-token="--color-info-border"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-info-border" data-swatch></i><span data-token="--color-info-border"></span></span></td></tr>
-          <tr><td>Success background / text</td><td><code>--color-success-bg</code> / <code>--color-success-fg</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-success-bg" data-swatch></i><span data-token="--color-success-bg"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-success-bg" data-swatch></i><span data-token="--color-success-bg"></span></span></td></tr>
-          <tr><td>Success icon</td><td><code>--color-success-icon</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-success-icon" data-swatch></i><span data-token="--color-success-icon"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-success-icon" data-swatch></i><span data-token="--color-success-icon"></span></span></td></tr>
-          <tr><td>Warning background / text</td><td><code>--color-warning-bg</code> / <code>--color-warning-fg</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-warning-bg" data-swatch></i><span data-token="--color-warning-bg"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-warning-bg" data-swatch></i><span data-token="--color-warning-bg"></span></span></td></tr>
-          <tr><td>Warning icon</td><td><code>--color-warning-icon</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-warning-icon" data-swatch></i><span data-token="--color-warning-icon"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-warning-icon" data-swatch></i><span data-token="--color-warning-icon"></span></span></td></tr>
-          <tr><td>Danger background / text</td><td><code>--color-danger-bg</code> / <code>--color-danger-fg</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-danger-bg" data-swatch></i><span data-token="--color-danger-bg"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-danger-bg" data-swatch></i><span data-token="--color-danger-bg"></span></span></td></tr>
-          <tr><td>Danger icon</td><td><code>--color-danger-icon</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-danger-icon" data-swatch></i><span data-token="--color-danger-icon"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-danger-icon" data-swatch></i><span data-token="--color-danger-icon"></span></span></td></tr>
+          <tr><td>Info fill / text</td><td><code>--color-info-bg</code> / <code>--color-info-fg</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-info-bg" data-swatch></i><span data-token="--color-info-bg"></span></span> <span class="ds-swatch-cell" data-theme="light"><i data-token="--color-info-fg" data-swatch></i><span data-token="--color-info-fg"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-info-bg" data-swatch></i><span data-token="--color-info-bg"></span></span> <span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-info-fg" data-swatch></i><span data-token="--color-info-fg"></span></span></td></tr>
+          <tr><td>Success fill / text</td><td><code>--color-success-bg</code> / <code>--color-success-fg</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-success-bg" data-swatch></i><span data-token="--color-success-bg"></span></span> <span class="ds-swatch-cell" data-theme="light"><i data-token="--color-success-fg" data-swatch></i><span data-token="--color-success-fg"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-success-bg" data-swatch></i><span data-token="--color-success-bg"></span></span> <span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-success-fg" data-swatch></i><span data-token="--color-success-fg"></span></span></td></tr>
+          <tr><td>Warning fill / text</td><td><code>--color-warning-bg</code> / <code>--color-warning-fg</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-warning-bg" data-swatch></i><span data-token="--color-warning-bg"></span></span> <span class="ds-swatch-cell" data-theme="light"><i data-token="--color-warning-fg" data-swatch></i><span data-token="--color-warning-fg"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-warning-bg" data-swatch></i><span data-token="--color-warning-bg"></span></span> <span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-warning-fg" data-swatch></i><span data-token="--color-warning-fg"></span></span></td></tr>
+          <tr><td>Danger fill / text</td><td><code>--color-danger-bg</code> / <code>--color-danger-fg</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-danger-bg" data-swatch></i><span data-token="--color-danger-bg"></span></span> <span class="ds-swatch-cell" data-theme="light"><i data-token="--color-danger-fg" data-swatch></i><span data-token="--color-danger-fg"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-danger-bg" data-swatch></i><span data-token="--color-danger-bg"></span></span> <span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-danger-fg" data-swatch></i><span data-token="--color-danger-fg"></span></span></td></tr>
+          <tr><td>Icons</td><td><code>--color-info|success|warning|danger-icon</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-warning-icon" data-swatch></i><span data-token="--color-warning-icon"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-warning-icon" data-swatch></i><span data-token="--color-warning-icon"></span></span></td></tr>
+          <tr><td>Borders</td><td><code>--color-info|success|warning|danger-border</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-warning-border" data-swatch></i><span data-token="--color-warning-border"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-warning-border" data-swatch></i><span data-token="--color-warning-border"></span></span></td></tr>
           <tr><td>Padding / gap</td><td><code>--space-4</code> / <code>--space-3</code></td><td colspan="2"><span data-token="--space-4"></span> / <span data-token="--space-3"></span></td></tr>
-          <tr><td>Banner side padding</td><td><code>--layout-margin</code></td><td colspan="2"><span data-token="--layout-margin"></span></td></tr>
-          <tr><td>Radius (inline)</td><td><code>--radius-md</code></td><td colspan="2"><span data-token="--radius-md"></span></td></tr>
+          <tr><td>Radius</td><td><code>--radius-md</code></td><td colspan="2"><span data-token="--radius-md"></span></td></tr>
           <tr><td>Icon size</td><td><code>--icon-size-md</code></td><td colspan="2"><span data-token="--icon-size-md"></span></td></tr>
-          <tr><td>Title font</td><td><code>--text-label</code> at <code>--font-size-md</code></td><td colspan="2"><span data-token="--text-label"></span></td></tr>
-          <tr><td>Dismiss size (from 48rem / below 48rem)</td><td><code>--target-min</code> / <code>--target-comfortable</code></td><td colspan="2"><span data-token="--target-min"></span> / <span data-token="--target-comfortable"></span></td></tr>
+          <tr><td>Title font</td><td><code>--text-label</code></td><td colspan="2"><span data-token="--text-label"></span></td></tr>
         </tbody>
       </table></div>
     </section>
 
     <section class="ds-section" id="code"><h2><a href="#code">Code</a></h2>
-      <pre><code>&lt;div class="alert alert--danger" role="alert"&gt;
-  &lt;svg class="icon" aria-hidden="true" viewBox="0 0 24 24"&gt;&lt;circle cx="12" cy="12" r="9"/&gt;&lt;path d="M12 7v6M12 16.5v.5"/&gt;&lt;/svg&gt;
+      <pre><code>&lt;div class="alert alert--warning" role="status"&gt;
+  &lt;svg class="icon" aria-hidden="true" viewBox="0 0 24 24"&gt;&lt;path d="M12 4 2.5 20h19L12 4z"/&gt;&lt;path d="M12 10v4M12 17h.01"/&gt;&lt;/svg&gt;
   &lt;div class="alert__body"&gt;
-    &lt;p class="alert__title" tabindex="-1"&gt;We couldn’t sign you in just now&lt;/p&gt;
-    &lt;p&gt;Something went wrong on our side. Your email is still here; try again in a moment.&lt;/p&gt;
-    &lt;div class="alert__actions"&gt;&lt;button class="btn btn--sm" type="button"&gt;Try again&lt;/button&gt;&lt;/div&gt;
+    &lt;p class="alert__title"&gt;Prices may be out of date&lt;/p&gt;
+    &lt;p&gt;We last checked these prices 225 days ago. Confirm with the studio before you book.&lt;/p&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;div class="alert banner" role="status"&gt;
-  …
-  &lt;button class="close" type="button" aria-label="Dismiss maintenance notice"&gt;&lt;svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"&gt;&lt;path d="M6 6l12 12M18 6 6 18"/&gt;&lt;/svg&gt;&lt;/button&gt;
+&lt;div class="alert alert--danger" role="alert"&gt;
+  &lt;svg class="icon" aria-hidden="true" viewBox="0 0 24 24"&gt;&lt;circle cx="12" cy="12" r="9"/&gt;&lt;path d="M12 7v6M12 16h.01"/&gt;&lt;/svg&gt;
+  &lt;div class="alert__body"&gt;
+    &lt;p class="alert__title"&gt;We couldn't load the re-verification list.&lt;/p&gt;
+    &lt;p&gt;The counts above are current. Try again to see what needs checking.&lt;/p&gt;
+    &lt;div class="alert__actions"&gt;&lt;button class="btn btn--sm" type="button"&gt;Try again&lt;/button&gt;&lt;/div&gt;
+  &lt;/div&gt;
 &lt;/div&gt;</code></pre>
-      <div class="ds-table-wrap"><table class="ds-table"><thead><tr><th scope="col">Class / attribute</th><th scope="col">Effect</th></tr></thead><tbody>
-        <tr><td><code>.alert</code></td><td>Base: info tone, inline layout. The mocks also write <code>.alert--info</code>; treat it as an explicit alias for the default.</td></tr>
-        <tr><td><code>.alert--success</code> <code>.alert--warning</code> <code>.alert--danger</code></td><td>Tone: swaps the four <code>--alert-*</code> tokens.</td></tr>
-        <tr><td><code>.banner</code></td><td>Full-bleed page banner under the header: no radius or side borders, centred, one row from 48rem.</td></tr>
-        <tr><td><code>.alert__body</code></td><td>Column holding title, text and actions.</td></tr>
-        <tr><td><code>.alert__title</code></td><td>The condition, label weight.</td></tr>
-        <tr><td><code>.alert__actions</code></td><td>Wrapping row of links or link/secondary small buttons; inherits the tone colour.</td></tr>
-        <tr><td><code>.close</code></td><td>Dismiss icon button; needs <code>aria-label</code>. Omit for persistent and danger messages.</td></tr>
-        <tr><td><code>role="alert"</code> / <code>role="status"</code></td><td>Assertive (danger caused by an action or incident) or polite live region.</td></tr>
-        <tr><td><code>data-state="hover|focus"</code></td><td>Documentation and mocks only: forces the dismiss or action state.</td></tr>
-      </tbody></table></div>
+      <table class="ds-table"><thead><tr><th scope="col">Class / attribute</th><th scope="col">Effect</th></tr></thead><tbody>
+        <tr><td><code>.alert</code></td><td>Container; info tone by default.</td></tr>
+        <tr><td><code>.alert--info</code> <code>--success</code> <code>--warning</code> <code>--danger</code></td><td>Tone: sets <code>--alert-bg|fg|border|icon</code>.</td></tr>
+        <tr><td><code>.alert__body</code>, <code>.alert__title</code></td><td>Text column; optional title.</td></tr>
+        <tr><td><code>.alert__actions</code></td><td>Row for one small button or link; inherits the alert ink.</td></tr>
+        <tr><td><code>.close</code></td><td>Dismiss button at the end; needs <code>aria-label="Dismiss"</code>.</td></tr>
+        <tr><td><code>role="status"</code> / <code>role="alert"</code></td><td>Polite for conditions, assertive for refusals and failures; none inside a dialog description.</td></tr>
+        <tr><td><code>.banner</code></td><td>Full-width page banner under the header. In the stylesheet; unused by ShotThere mocks.</td></tr>
+      </tbody></table>
     </section>
 
     <section class="ds-section" id="sources"><h2><a href="#sources">Sources</a></h2>
       <p>Extracted from these mocks:</p>
       <ul>
-        <li>notifications/site-banner/info, success, warning, danger, persistent</li>
-        <li>notifications/profile-banner/info, success, warning, danger, persistent</li>
-        <li>pages/profile-certificate/expiring (inline warning)</li>
-        <li>pages/sign-in/error (inline danger with Try again)</li>
-        <li>pages/dashboard/pending and pages/profile-details/read-only (inline info with action)</li>
-        <li>pages/admin-metrics/partial (per-chart danger)</li>
-        <li>pages/caterers/offline (offline warning banner)</li>
+        <li><a href="../../mocks/pages/studio/stale.html">pages/studio/stale</a> (stale price warning)</li>
+        <li><a href="../../mocks/pages/spot/stale-permit.html">pages/spot/stale-permit</a> (stale permit warning)</li>
+        <li><a href="../../mocks/pages/sign-in/session-expired.html">pages/sign-in/session-expired</a>, <a href="../../mocks/pages/sign-in/signed-out.html">signed-out</a>, <a href="../../mocks/pages/sign-in/incorrect.html">incorrect</a>, <a href="../../mocks/pages/sign-in/error.html">error</a>, <a href="../../mocks/pages/sign-in/rate-limited.html">rate-limited</a></li>
+        <li><a href="../../mocks/pages/home/error.html">pages/home/error</a>, <a href="../../mocks/pages/home/rate-limited.html">pages/home/rate-limited</a> (signup failures)</li>
+        <li><a href="../../mocks/pages/compare/over-limit.html">pages/compare/over-limit</a>, <a href="../../mocks/pages/compare/unknown-slug.html">pages/compare/unknown-slug</a> (info, body only)</li>
+        <li><a href="../../mocks/pages/studio-editor/success.html">pages/studio-editor/success</a>, <a href="../../mocks/pages/spot-editor/success.html">pages/spot-editor/success</a>, <a href="../../mocks/pages/guide-editor/success.html">pages/guide-editor/success</a> (draft created)</li>
+        <li><a href="../../mocks/pages/admin-dashboard/partial.html">pages/admin-dashboard/partial</a> (danger with Try again)</li>
+        <li><a href="../../mocks/dialogs/unpublish/failed.html">dialogs/unpublish/failed</a>, <a href="../../mocks/dialogs/delete-content/failed.html">dialogs/delete-content/failed</a>, <a href="../../mocks/dialogs/remove-image/refused.html">dialogs/remove-image/refused</a> (alerts inside dialogs)</li>
       </ul>
-      <p>Drift fixed during extraction: the site banners wrote the title as <code>.alert__title</code> spans while the profile banners used <code>&lt;p&gt;&lt;strong&gt;</code>; the system uses <code>.alert__title</code> everywhere. Info was written both as <code>.alert</code> and <code>.alert--info</code>; both are accepted, <code>.alert</code> is canonical. The maintenance banner used a clock instead of the info glyph; tone icons are now fixed per tone. <code>.alert__actions</code> held a mix of plain links, <code>.btn--link</code> and secondary <code>.btn--sm</code>; links or link buttons are the default, a secondary small button only for "Try again". The metrics <code>partial</code> mock rendered two identical <code>role="alert"</code> blocks; the system summarises in one. The mock kit's banner kept a left border; components.css removes all but the bottom border.</p>
+      <p>Drift found during extraction:</p>
+      <ul>
+        <li>Tone icons are drawn five ways: warning triangles <code>M12 3 2 20h20L12 3z</code>, <code>M12 4 2.5 20h19z</code> and <code>M12 4 2.5 20h19L12 4z</code>; dots as <code>h0</code>, <code>h.01</code>, <code>v.5</code>; info as <code>M12 11v5M12 8h0</code> or <code>M12 11v6M12 7.5v.5</code>. Documented with the toast mocks' set (triangle <code>M12 4 2.5 20h19L12 4z</code>, dots <code>h.01</code>).</li>
+        <li>The dialog alerts (unpublish, delete, remove image) put bare text in <code>.alert__body</code>; documented with a <code>p</code>.</li>
+        <li>Only studio-editor/success has a Dismiss; the spot and guide "created as a draft" alerts do not. Documented as optional.</li>
+        <li>No mock uses <code>.banner</code>; kept as available, not as a pattern.</li>
+      </ul>
     </section>
 
-    <footer class="ds-footer"><span>ShotThere design system · extracted from docs/mocks on 10 October 2026</span><a href="#top">Back to top</a></footer>
+    <footer class="ds-footer"><span>ShotThere design system · extracted from <a href="../../mocks/index.html">docs/mocks</a> on 13 October 2026</span><a href="#top">Back to top</a></footer>
   </main>
 </div>
 <script src="../assets/ds.js"></script>

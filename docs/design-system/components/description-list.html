@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Description list — ShotThere design system</title>
-<meta name="description" content="ShotThere description lists: caterer facts, areas served, account and admin records, enquiry summary, food handler certificate and change review, with states, responsive rules and both themes.">
+<meta name="description" content="ShotThere description lists: the .kv label-value rows for studio pricing, measured specifications, gear and logistics and spot directions and conditions, the .regions verdict pair and the summary-panel headline numbers.">
 <link rel="stylesheet" href="../tokens/tokens.css">
 <link rel="stylesheet" href="../assets/components.css">
 <link rel="stylesheet" href="../assets/ds.css">
@@ -33,34 +33,57 @@
       <li><a href="../components/icon-button.html">Icon button</a></li>
       <li><a href="../components/button-group.html">Button group</a></li>
       <li><a href="../components/link.html">Link</a></li>
+      <li><a href="../components/compare-bar.html">Compare toggle and bar</a></li>
     </ul></details>
     <details open><summary>Inputs</summary><ul>
       <li><a href="../components/form-field.html">Form field</a></li>
       <li><a href="../components/text-field.html">Text field</a></li>
       <li><a href="../components/textarea.html">Textarea</a></li>
       <li><a href="../components/select.html">Select</a></li>
+      <li><a href="../components/combobox.html">Combobox</a></li>
       <li><a href="../components/checkbox.html">Checkbox</a></li>
       <li><a href="../components/radio-group.html">Radio group</a></li>
       <li><a href="../components/file-upload.html">File upload</a></li>
       <li><a href="../components/form-layout.html">Form layout</a></li>
+      <li><a href="../components/signup.html">Email signup</a></li>
     </ul></details>
     <details open><summary>Navigation</summary><ul>
       <li><a href="../components/skip-link.html">Skip link</a></li>
       <li><a href="../components/site-header.html">Site header</a></li>
       <li><a href="../components/footer.html">Footer</a></li>
+      <li><a href="../components/breadcrumb.html">Breadcrumb</a></li>
+      <li><a href="../components/filter.html">Filters</a></li>
     </ul></details>
     <details open><summary>Containers and overlays</summary><ul>
       <li><a href="../components/container.html">Container and grid</a></li>
+      <li><a href="../components/review-layout.html">Review layout</a></li>
+      <li><a href="../components/editor-layout.html">Editor layout</a></li>
       <li><a href="../components/card.html">Card</a></li>
       <li><a href="../components/dialog.html">Dialog</a></li>
       <li><a href="../components/sheet.html">Sheet and drawer</a></li>
+      <li><a href="../components/popover.html">Popover</a></li>
+      <li><a href="../components/lightbox.html">Lightbox</a></li>
       <li><a href="../components/divider.html">Divider</a></li>
     </ul></details>
     <details open><summary>Data display</summary><ul>
+      <li><a href="../components/location-card.html">Location card</a></li>
       <li><a href="../components/table.html">Table</a></li>
+      <li><a href="../components/compare-table.html">Comparison table</a></li>
+      <li><a href="../components/list.html">List rows</a></li>
       <li><a href="../components/description-list.html">Description list</a></li>
+      <li><a href="../components/price-block.html">Price block</a></li>
+      <li><a href="../components/score.html">Score and pips</a></li>
+      <li><a href="../components/shot-grid.html">Shot grid</a></li>
+      <li><a href="../components/video-poster.html">Episode poster</a></li>
+      <li><a href="../components/map.html">Map</a></li>
+      <li><a href="../components/guide-entry.html">Guide entry</a></li>
+      <li><a href="../components/stat-tile.html">Stat tile</a></li>
+      <li><a href="../components/image-manager.html">Image manager</a></li>
+      <li><a href="../components/disclosure.html">Disclosure</a></li>
       <li><a href="../components/badge.html">Badge</a></li>
+      <li><a href="../components/status-label.html">Status label</a></li>
       <li><a href="../components/chip.html">Chip</a></li>
+      <li><a href="../components/tag.html">Tag</a></li>
     </ul></details>
     <details open><summary>Feedback</summary><ul>
       <li><a href="../components/inline-message.html">Inline message</a></li>
@@ -88,286 +111,256 @@
     <header class="ds-header">
       <p class="ds-kicker">Component · Data display</p>
       <h1>Description list</h1>
-      <p class="ds-lead">Description lists pair a label with a value: how many guests a caterer serves, which areas they cover, what an enquiry asks for, what a food handler certificate says. Seven layouts share one rule: the label is quiet, the value is what people came to read.</p>
-      <div class="ds-meta"><span class="ds-pill ds-pill--ok">WCAG 2.2 AA</span><span class="ds-pill">Status: stable</span><span class="ds-pill">Native <code>&lt;dl&gt;</code></span><span class="ds-pill"><code>.facts</code> <code>.kv</code> <code>.certificate</code></span></div>
-      <ul class="ds-toc"><li><a href="#overview">Overview</a></li><li><a href="#anatomy">Anatomy</a></li><li><a href="#variants">Variants</a></li><li><a href="#sizes">Sizes</a></li><li><a href="#states">States</a></li><li><a href="#responsive">Responsive behaviour</a></li><li><a href="#theming">Theming</a></li><li><a href="#accessibility">Accessibility</a></li><li><a href="#content">Content</a></li><li><a href="#do-dont">Do and don't</a></li><li><a href="#tokens">Tokens</a></li><li><a href="#code">Code</a></li><li><a href="#sources">Sources</a></li></ul>
+      <p class="ds-lead">Description lists carry the measured facts every review shares: a studio's pricing, specifications, gear and logistics, a spot's directions and conditions, the verdict's "Who it's for" and the two numbers at the top of the summary panel. Same labels, same order, on every location, so reviews compare side by side.</p>
+      <div class="ds-meta"><span class="ds-pill ds-pill--ok">WCAG 2.2 AA</span><span class="ds-pill">Status: stable</span><span class="ds-pill">Native <code>&lt;dl&gt;</code></span><span class="ds-pill"><code>.kv</code></span><span class="ds-pill"><code>.regions</code></span><span class="ds-pill"><code>.summary-panel__row</code></span></div>
+      <ul class="ds-toc"><li><a href="#overview">Overview</a></li><li><a href="#anatomy">Anatomy</a></li><li><a href="#variants">Variants</a></li><li><a href="#sizes">Sizes</a></li><li><a href="#states">States</a></li><li><a href="#responsive">Responsive</a></li><li><a href="#theming">Theming</a></li><li><a href="#accessibility">Accessibility</a></li><li><a href="#content">Content</a></li><li><a href="#do-dont">Do and don't</a></li><li><a href="#tokens">Tokens</a></li><li><a href="#code">Code</a></li><li><a href="#sources">Sources</a></li></ul>
     </header>
 
-<section class="ds-section" id="overview"><h2><a href="#overview">Overview</a></h2>
-      <p>Use a description list whenever the screen shows named facts about one thing. Every layout below is a real <code>&lt;dl&gt;</code>, so screen readers announce "description list" and pair each term with its value.</p>
+    <section class="ds-section" id="overview"><h2><a href="#overview">Overview</a></h2>
+      <p>Use a description list when each row is one label and one value. If people need to read down a second or third column (rating and note, status and date), use a <a href="table.html">table</a>.</p>
       <ul>
-        <li><b>Facts</b> (<code>.facts</code>): the caterer page's short, large facts — "Serves 20–300 guests" and the occasions — above the menu on phones and in the enquiry panel from 62rem.</li>
-        <li><b>Areas served</b> (<code>.regions</code>): a region as the term, its municipalities as the value: "City of Toronto — Scarborough, East York, North York".</li>
-        <li><b>Record</b> (<code>.kv</code>): account details and operator records — a label column, hairline rows, and room for a status or a small action at the end of each value.</li>
-        <li><b>Enquiry summary</b> (<code>.enquiry-summary</code>): the four things a caterer needs to answer — event date, guests, area, occasion — in a sunken well at the top of every thread, with the original message.</li>
-        <li><b>Certificate</b> (<code>.certificate</code>): the food handler certificate as the caterer entered it. It is the caterer's own statement; ShotThere does not certify kitchens.</li>
-        <li><b>Change review</b> (<code>.diff-old</code>, <code>.diff-new</code>, <code>.changed-flag</code>): what a caterer changed, for the operator who approves or reverts it.</li>
-        <li><b>Plain</b> (<code>.dl</code>): the base two-column list from the kit, for anything short that fits none of the above.</li>
+        <li><b>Key–value rows</b> (<code>.kv</code>): the studio sections Pricing, Measured specifications, Gear (included and extras) and Logistics (L2-004, L2-006, L2-007, L2-008), and the spot sections How to get there and Practical conditions (L2-014, L2-017).</li>
+        <li><b>Regions</b> (<code>.regions</code>): the verdict's two paragraphs, "Who it's for" and "Who should skip it", side by side from 48rem.</li>
+        <li><b>Summary row</b> (<code>.summary-panel__row</code>): two headline facts at the top of the <a href="review-layout.html">summary panel</a>: All-in, 2 hours and Overall for a studio; Portrait permit and Best light for a spot.</li>
       </ul>
-      <p>Don't use a description list for many records of the same shape — that is a <a href="table.html">table</a> or list rows — or for a sequence of events, which is a timeline. Values the person can edit live in a <a href="../patterns/forms.html">form</a> opened from an "Edit details" button, never inline in the list.</p>
+      <p>The studio basics under the <code>h1</code> (neighbourhood, cross streets, review date, L2-003) are a plain list in <code>.review-head__meta</code>, not a description list: they have no labels. Cards and the editor keep their own lists: <code>.location-card__facts</code> on the <a href="location-card.html">location card</a>, <code>.guide-entry__data</code> on the <a href="guide-entry.html">guide entry</a> and <code>.editor-aside__meta</code> in the <a href="editor-layout.html">editor layout</a>.</p>
     </section>
 
     <section class="ds-section" id="anatomy"><h2><a href="#anatomy">Anatomy</a></h2>
       <div class="ds-anatomy">
-        <figure class="ds-anatomy__figure" style="padding: var(--space-8) var(--space-4);">
-          <dl class="kv" style="width: 100%; max-width: 34rem;">
-            <dt>Display name</dt><dd>Marcia Thompson</dd>
-            <dt>Email</dt><dd><span>marcia.t@example.com</span><span class="status status--published">Verified</span></dd>
+        <figure class="ds-anatomy__figure" style="place-items: stretch; padding: var(--space-8) var(--space-6) var(--space-8) var(--space-10);">
+          <dl class="kv">
+            <dt>Cleaning fee</dt><dd><span class="num">$25.00</span> <span class="badge">Mandatory</span></dd>
+            <dt>Ceiling height</dt><dd>4.0 m (13 ft)</dd>
           </dl>
-          <span class="ds-callout" style="left: 8%; top: 30%;" aria-hidden="true">1</span>
-          <span class="ds-callout" style="left: 46%; top: 30%;" aria-hidden="true">2</span>
-          <span class="ds-callout" style="left: 86%; top: 60%;" aria-hidden="true">3</span>
-          <span class="ds-callout" style="left: 50%; top: 82%;" aria-hidden="true">4</span>
+          <span class="ds-callout" style="left: 0.5%; top: 26%;" aria-hidden="true">1</span>
+          <span class="ds-callout" style="left: 45%; top: 4%;" aria-hidden="true">2</span>
+          <span class="ds-callout" style="right: 3%; top: 4%;" aria-hidden="true">3</span>
+          <span class="ds-callout" style="left: 60%; top: 42%;" aria-hidden="true">4</span>
         </figure>
         <ol class="ds-anatomy__list">
-          <li><div><b>Term</b><small><code>&lt;dt&gt;</code>: a noun in sentence case, <code>--text-label</code> in <code>--color-fg-subtle</code> (<code>--color-fg-muted</code> in <code>.dl</code>).</small></div></li>
-          <li><div><b>Value</b><small><code>&lt;dd&gt;</code>: body text, or body-large in <code>.facts</code> and <code>.regions</code>. Wraps; long email addresses and certificate numbers break anywhere.</small></div></li>
-          <li><div><b>Trailing status or action (optional, <code>.kv</code>)</b><small>A status label or a small button pushed to the end of the value ("Verified", "Change password").</small></div></li>
-          <li><div><b>Divider or container</b><small>Hairline rows in <code>.kv</code>; a sunken well in <code>.enquiry-summary</code>; a hairline box in <code>.certificate</code>; nothing in <code>.facts</code> and <code>.regions</code>.</small></div></li>
+          <li><div><b>Label</b><small><code>dt</code>, <code>--text-label</code> in <code>--color-fg-subtle</code>; a 12rem column from 36rem, above the value below it.</small></div></li>
+          <li><div><b>Value</b><small><code>dd</code> in body text; prices and measurements in <code>.num</code> for tabular figures. Long values wrap anywhere.</small></div></li>
+          <li><div><b>Qualifier (optional)</b><small>A <a href="badge.html">badge</a> after the value, pushed to the end: "Mandatory", "Optional, not in all-in".</small></div></li>
+          <li><div><b>Rule</b><small>A hairline under each value (and its label from 36rem) in <code>--color-border-default</code>.</small></div></li>
         </ol>
       </div>
     </section>
 
     <section class="ds-section" id="variants"><h2><a href="#variants">Variants</a></h2>
-      <h3>Facts and areas served (public caterer page)</h3>
-      <p>Large values, quiet labels, no lines. Occasions use <code>.inline-list</code>, a real list that draws its own commas, so screen readers say "list, 5 items" instead of reading one long string.</p>
-      <div class="ds-example">
-        <div class="ds-example__canvas ds-example__canvas--stack">
-          <dl class="facts">
-            <div><dt>Guests</dt><dd>Serves 20–300 guests</dd></div>
-            <div><dt>Occasions</dt><dd><ul class="inline-list"><li>Weddings</li><li>Birthdays</li><li>Family gatherings</li><li>Corporate events</li><li>Religious and cultural celebrations</li></ul></dd></div>
-          </dl>
-          <dl class="regions">
-            <div><dt>City of Toronto</dt><dd>Scarborough, East York, North York</dd></div>
-            <div><dt>Durham</dt><dd>Pickering, Ajax</dd></div>
-          </dl>
-        </div>
-        <div class="ds-example__caption"><span>Pelau House: facts above, areas served below (two columns from 48rem). Areas are municipalities and districts, never a street or home address.</span></div>
-        <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;dl class="facts"&gt;
-  &lt;div&gt;&lt;dt&gt;Guests&lt;/dt&gt;&lt;dd&gt;Serves 20–300 guests&lt;/dd&gt;&lt;/div&gt;
-  &lt;div&gt;&lt;dt&gt;Occasions&lt;/dt&gt;&lt;dd&gt;&lt;ul class="inline-list"&gt;&lt;li&gt;Weddings&lt;/li&gt;&lt;li&gt;Birthdays&lt;/li&gt;…&lt;/ul&gt;&lt;/dd&gt;&lt;/div&gt;
-&lt;/dl&gt;
-&lt;dl class="regions"&gt;
-  &lt;div&gt;&lt;dt&gt;City of Toronto&lt;/dt&gt;&lt;dd&gt;Scarborough, East York, North York&lt;/dd&gt;&lt;/div&gt;
-  &lt;div&gt;&lt;dt&gt;Durham&lt;/dt&gt;&lt;dd&gt;Pickering, Ajax&lt;/dd&gt;&lt;/div&gt;
-&lt;/dl&gt;</code></pre></details>
-      </div>
-
-      <h3>Record (account and operator console)</h3>
-      <p><code>.kv</code> is the working layout: a 12rem label column from 36rem, a hairline under every row, and a flex value that pushes a status or small action to the end. Private details carry the lock note; operators see contact details only on caterer records.</p>
+      <h3>Key–value rows: measured specifications</h3>
       <div class="ds-example">
         <div class="ds-example__canvas ds-example__canvas--stack">
           <dl class="kv">
-            <dt>Display name</dt><dd>Marcia Thompson</dd>
-            <dt>Email</dt><dd><span>marcia.t@example.com</span><span class="status status--published">Verified</span></dd>
-            <dt>Phone</dt><dd><span>+1 647 555 0187</span><span class="private-note"><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Private until you share it in a thread</span></dd>
-            <dt>Password</dt><dd><span>Last changed Sat 14 Mar</span><button class="btn btn--sm" type="button" aria-haspopup="dialog">Change password</button></dd>
+            <dt>Usable shooting space</dt><dd>6.1 m × 4.3 m (20 ft × 14 ft)</dd>
+            <dt>Ceiling height</dt><dd>4.0 m (13 ft)</dd>
+            <dt>Window direction</dt><dd>North</dd>
+            <dt>Power</dt><dd>8 outlets, standard 15 A · 20 A circuits: Yes (2)</dd>
+            <dt>Cyc wall</dt><dd>Yes · scuffed</dd>
+            <dt>Backdrops</dt><dd>White, grey and black seamless, 2.7 m</dd>
           </dl>
         </div>
-        <div class="ds-example__caption"><span><code>pages/account/default</code>: values with a trailing status, a privacy note and a small action that opens a dialog.</span></div>
+        <div class="ds-example__caption"><span>The Junction Loft. Metric first, imperial in brackets (L2-006.1); a yes/no field is a word, with its condition after a middle dot.</span></div>
         <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;dl class="kv"&gt;
-  &lt;dt&gt;Email&lt;/dt&gt;&lt;dd&gt;&lt;span&gt;marcia.t@example.com&lt;/span&gt;&lt;span class="status status--published"&gt;Verified&lt;/span&gt;&lt;/dd&gt;
-  &lt;dt&gt;Password&lt;/dt&gt;&lt;dd&gt;&lt;span&gt;Last changed Sat 14 Mar&lt;/span&gt;
-    &lt;button class="btn btn--sm" type="button" aria-haspopup="dialog"&gt;Change password&lt;/button&gt;&lt;/dd&gt;
+  &lt;dt&gt;Usable shooting space&lt;/dt&gt;&lt;dd&gt;6.1 m × 4.3 m (20 ft × 14 ft)&lt;/dd&gt;
+  &lt;dt&gt;Ceiling height&lt;/dt&gt;&lt;dd&gt;4.0 m (13 ft)&lt;/dd&gt;
+  &lt;dt&gt;Cyc wall&lt;/dt&gt;&lt;dd&gt;Yes · scuffed&lt;/dd&gt;
 &lt;/dl&gt;</code></pre></details>
       </div>
 
-      <h3>Enquiry summary (threads)</h3>
-      <p>The well sits above the messages in both the customer's thread and the caterer's enquiry. Four short facts, two columns on phones and four from 48rem, then the first message full width with who sent it and when. The event date is written in full on this detail screen.</p>
+      <h3>Key–value rows: pricing and fees</h3>
       <div class="ds-example">
         <div class="ds-example__canvas ds-example__canvas--stack">
-          <dl class="enquiry-summary">
-            <div><dt>Event date</dt><dd>Saturday 21 November 2026</dd></div>
-            <div><dt>Guests</dt><dd>120</dd></div>
-            <div><dt>Area</dt><dd>Scarborough</dd></div>
-            <div><dt>Occasion</dt><dd>Family gatherings</dd></div>
-            <div class="enquiry-summary__message"><dt>Your enquiry</dt><dd><p>Hi Kendra, we’re planning my parents’ 40th anniversary at a hall on Ellesmere Road. We’d love pelau, curry goat, macaroni pie and callaloo for about 120 people, served buffet style around 6 p.m. Do you bring chafing dishes?</p><p class="enquiry-summary__by">Marcia Thompson · Thu 8 Oct, 7:15 p.m.</p></dd></div>
-          </dl>
+          <div class="price-block">
+            <p class="price-block__allin"><strong>$145.00</strong><span>All-in for a standard 2-hour shoot: 2 hours at $60.00 plus the mandatory cleaning fee.</span></p>
+            <dl class="kv">
+              <dt>Hourly rate</dt><dd><span class="num">$60.00</span></dd>
+              <dt>Minimum booking</dt><dd>2 hours</dd>
+              <dt>Cleaning fee</dt><dd><span class="num">$25.00</span> <span class="badge">Mandatory</span></dd>
+              <dt>After-hours access</dt><dd><span class="num">$30.00</span> <span class="badge">Optional, not in all-in</span></dd>
+            </dl>
+            <p class="price-block__verified">Prices verified <time datetime="2026-09-22">22 September 2026</time></p>
+          </div>
         </div>
-        <div class="ds-example__caption"><span><code>pages/thread/default</code>: Marcia's enquiry to Pelau House. The area is the customer's area, never the hall's street address.</span></div>
-        <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;dl class="enquiry-summary"&gt;
-  &lt;div&gt;&lt;dt&gt;Event date&lt;/dt&gt;&lt;dd&gt;&lt;time datetime="2026-11-21"&gt;Saturday 21 November 2026&lt;/time&gt;&lt;/dd&gt;&lt;/div&gt;
-  &lt;div&gt;&lt;dt&gt;Guests&lt;/dt&gt;&lt;dd&gt;120&lt;/dd&gt;&lt;/div&gt;
-  &lt;div&gt;&lt;dt&gt;Area&lt;/dt&gt;&lt;dd&gt;Scarborough&lt;/dd&gt;&lt;/div&gt;
-  &lt;div&gt;&lt;dt&gt;Occasion&lt;/dt&gt;&lt;dd&gt;Family gatherings&lt;/dd&gt;&lt;/div&gt;
-  &lt;div class="enquiry-summary__message"&gt;&lt;dt&gt;Your enquiry&lt;/dt&gt;
-    &lt;dd&gt;&lt;p&gt;Hi Kendra, …&lt;/p&gt;&lt;p class="enquiry-summary__by"&gt;Marcia Thompson · Thu 8 Oct, 7:15 p.m.&lt;/p&gt;&lt;/dd&gt;&lt;/div&gt;
-&lt;/dl&gt;</code></pre></details>
+        <div class="ds-example__caption"><span>Inside the <a href="price-block.html">price block</a>. Each fee says whether it counts toward the all-in cost (L2-004.3).</span></div>
       </div>
 
-      <h3>Food handler certificate (the caterer's own statement)</h3>
-      <p>The one description list with a border: it stands for a document the caterer holds. Only the caterer and operators ever see it; it never appears on the public page. A caption under it always says whose statement it is. The status beside the heading speaks about the date only ("Valid" means not expired), never about the kitchen.</p>
-      <div class="ds-example">
-        <div class="ds-example__canvas ds-example__canvas--stack">
-          <div class="caterer-section__head"><h3 style="margin: 0;">Food handler certificate</h3><span class="status status--published">Valid</span></div>
-          <dl class="certificate">
-            <dt>Holder</dt><dd>Kendra Baptiste</dd>
-            <dt>Issued by</dt><dd>Toronto Public Health</dd>
-            <dt>Number</dt><dd>FH-2024-118734</dd>
-            <dt>Expires</dt><dd>14 Mar 2029</dd>
-            <dt>Copy</dt><dd><button class="btn btn--link btn--sm" type="button"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 4v12m0 0-4-4m4 4 4-4M4 20h16"/></svg>food-handler-certificate.pdf (1.2 MB)</button></dd>
-          </dl>
-          <p class="text-caption">Kendra’s own statement; ShotThere doesn’t certify kitchens. The file opens through a link that expires after 5 minutes.</p>
-        </div>
-        <div class="ds-example__caption"><span><code>pages/admin-caterer/default</code>: what an operator sees. Term and value pairs are direct children of the <code>&lt;dl&gt;</code>; the grid needs them that way.</span></div>
-        <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;dl class="certificate"&gt;
-  &lt;dt&gt;Holder&lt;/dt&gt;&lt;dd&gt;Kendra Baptiste&lt;/dd&gt;
-  &lt;dt&gt;Issued by&lt;/dt&gt;&lt;dd&gt;Toronto Public Health&lt;/dd&gt;
-  &lt;dt&gt;Number&lt;/dt&gt;&lt;dd&gt;FH-2024-118734&lt;/dd&gt;
-  &lt;dt&gt;Expires&lt;/dt&gt;&lt;dd&gt;&lt;time datetime="2029-03-14"&gt;14 Mar 2029&lt;/time&gt;&lt;/dd&gt;
-&lt;/dl&gt;
-&lt;p class="text-caption"&gt;Kendra’s own statement; ShotThere doesn’t certify kitchens.&lt;/p&gt;</code></pre></details>
-      </div>
-
-      <h3>Change review</h3>
-      <p>When a caterer edits a published page, operators see the old value struck through in <code>--color-fg-muted</code> and the new value highlighted on <code>--color-warning-bg</code>. A visible label ("Was" / "Now", "Current name" / "Requested name") always says which is which, because strike-through and highlight are not announced. <code>.changed-flag</code> marks anything changed since the last review.</p>
+      <h3>Key–value rows: gear and logistics</h3>
       <div class="ds-example">
         <div class="ds-example__canvas ds-example__canvas--stack">
           <dl class="kv">
-            <dt>Current name</dt><dd><del class="diff-old">Pelau House</del></dd>
-            <dt>Requested name</dt><dd><ins class="diff-new">Pelau House by Kendra</ins></dd>
-            <dt>Requested by</dt><dd>Kendra Baptiste · Fri 9 Oct, 6:20 p.m.</dd>
+            <dt>Lights</dt><dd>Godox AD600 strobe × 2 · 60 cm LED panel × 1</dd>
+            <dt>Modifiers</dt><dd>120 cm octabox × 1 · 5-in-1 reflector × 2</dd>
+            <dt>Stands</dt><dd>C-stand × 4</dd>
+            <dt>Other</dt><dd>Garment steamer</dd>
           </dl>
-          <dl class="dl">
-            <dt>Was</dt><dd><del class="diff-old">Serves 30–150 guests</del></dd>
-            <dt>Now</dt><dd><ins class="diff-new">Serves 30–200 guests</ins></dd>
+          <dl class="kv">
+            <dt>Load-in</dt><dd>Freight elevator · small, 1.2 m wide</dd>
+            <dt>Parking</dt><dd>Street, paid, 2-hour limit on Dundas</dd>
+            <dt>Transit</dt><dd>Dundas West station, 8-minute walk · 505 streetcar at the door</dd>
+            <dt>Washroom</dt><dd>Private, in the studio</dd>
+            <dt>Changing area</dt><dd>Curtained corner with a mirror</dd>
+            <dt>Client seating</dt><dd>Sofa for 4</dd>
+            <dt>Noise</dt><dd>Streetcar rumble every few minutes; fine for stills, plan around it for video</dd>
           </dl>
-          <p><span class="changed-flag"><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/></svg>Changed since changes were requested</span></p>
         </div>
-        <div class="ds-example__caption"><span>A name change in <code>.kv</code>, Cou-Cou's guest range in <code>.dl</code>, and the flag from a resubmitted profile.</span></div>
-        <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;dt&gt;Current name&lt;/dt&gt;&lt;dd&gt;&lt;del class="diff-old"&gt;Pelau House&lt;/del&gt;&lt;/dd&gt;
-&lt;dt&gt;Requested name&lt;/dt&gt;&lt;dd&gt;&lt;ins class="diff-new"&gt;Pelau House by Kendra&lt;/ins&gt;&lt;/dd&gt;
-
-&lt;span class="changed-flag"&gt;&lt;svg class="icon icon--sm" aria-hidden="true" …&gt;…&lt;/svg&gt;Changed since changes were requested&lt;/span&gt;</code></pre></details>
+        <div class="ds-example__caption"><span>Quantities follow the item with "×" (L2-007.3); several items share one value, separated by middle dots.</span></div>
       </div>
 
-      <h3>Plain</h3>
+      <h3>Key–value rows: spot directions and conditions</h3>
       <div class="ds-example">
         <div class="ds-example__canvas ds-example__canvas--stack">
-          <dl class="dl">
-            <dt>Report</dt><dd>R-2047</dd>
-            <dt>About</dt><dd>Island Pot</dd>
-            <dt>Reason</dt><dd>Food safety concern</dd>
+          <dl class="kv">
+            <dt>Transit</dt><dd>TTC 28A shuttle from Davisville or Broadview station</dd>
+            <dt>Driving</dt><dd>Via Bayview Ave; paid lot on site</dd>
+            <dt>Walking</dt><dd>20 minutes down the Beltline from Moore Park</dd>
+          </dl>
+          <dl class="kv">
+            <dt>Crowds</dt><dd>Weekday: Low · Weekend: High</dd>
+            <dt>Parking</dt><dd>Paid lot on site</dd>
+            <dt>Washrooms</dt><dd>In the main building</dd>
+            <dt>Changing</dt><dd>Washrooms only</dd>
           </dl>
         </div>
-        <div class="ds-example__caption"><span><code>.dl</code>: label column sized to the longest label. Keep labels to a word or two; long labels belong in <code>.kv</code>.</span></div>
+        <div class="ds-example__caption"><span>Evergreen Brick Works. Crowds name both day types (L2-017.1).</span></div>
+      </div>
+
+      <h3>Regions: the verdict pair</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--stack">
+          <dl class="regions">
+            <div><dt>Who it's for</dt><dd>Portrait and fashion shooters who want big north light and a usable cyc on a mid-range budget.</dd></div>
+            <div><dt>Who should skip it</dt><dd>Video crews, because of the streetcar, and anyone hauling heavy cases: the freight elevator is tiny.</dd></div>
+          </dl>
+        </div>
+        <div class="ds-example__caption"><span>Each pair is wrapped in a <code>div</code> (allowed inside <code>dl</code>) so the grid places pairs, not labels. One column below 48rem, two from 48rem.</span></div>
+      </div>
+
+      <h3>Summary row</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas">
+          <aside class="summary-panel" aria-label="Summary of The Junction Loft" style="flex: 1 1 16rem; max-width: 22rem;">
+            <dl class="summary-panel__row">
+              <div><dt>All-in, 2 hours</dt><dd>$145.00</dd></div>
+              <div><dt>Overall</dt><dd>3.8<span class="visually-hidden"> out of 5</span></dd></div>
+            </dl>
+          </aside>
+          <aside class="summary-panel" aria-label="Summary of Evergreen Brick Works" style="flex: 1 1 16rem; max-width: 22rem;">
+            <dl class="summary-panel__row">
+              <div><dt>Portrait permit</dt><dd>Not required</dd></div>
+              <div><dt>Best light</dt><dd>Golden hour</dd></div>
+            </dl>
+          </aside>
+        </div>
+        <div class="ds-example__caption"><span>Two facts in <code>--text-h3</code>, always two columns. The score adds a visually hidden "out of 5"; the panel's other parts (booking button, compare toggle, stale badge) are on the <a href="review-layout.html">review layout</a> page.</span></div>
       </div>
     </section>
 
-    <section class="ds-section" id="sizes" data-na="Each layout has one size."><h2><a href="#sizes">Sizes</a></h2>
-      <p class="ds-na">Each layout has one size; the layouts themselves are the scale. <code>.facts</code> and <code>.regions</code> set values at <code>--text-body-lg</code> for browsing customers; <code>.kv</code>, <code>.enquiry-summary</code>, <code>.certificate</code> and <code>.dl</code> use body text for working screens.</p>
+    <section class="ds-section" id="sizes" data-na="One size per variant"><h2><a href="#sizes">Sizes</a></h2>
+      <p>Each variant has one size, set by its role: <code>.kv</code> values in body text, <code>.regions</code> values in <code>--text-body-lg</code>, summary values in <code>--text-h3</code>.</p>
     </section>
 
     <section class="ds-section" id="states"><h2><a href="#states">States</a></h2>
-      <p>Description lists are not interactive, so they have no hover, focus, active or disabled state; buttons inside a value keep their own (see <a href="button.html">button</a>). What changes is the data: loading, a missing value, a long value, a changed value and the certificate's date.</p>
-      <div class="ds-matrix" style="position: relative;"><table>
-        <caption class="visually-hidden">Description list data states by variant</caption>
-        <thead><tr><th scope="col">Variant</th><th scope="col">Default</th><th scope="col">Long value</th><th scope="col">Missing value</th><th scope="col">Loading</th></tr></thead>
+      <p>Description lists are static text with no pointer, focus or disabled states. Their real states are about the data: a sparse value written as a word, and a stale price flagged next to the list.</p>
+      <div class="ds-matrix"><table>
+        <thead><tr><th scope="col">Variant</th><th scope="col">Default</th><th scope="col">Hover / focus / active</th><th scope="col">Disabled</th><th scope="col">Sparse value</th><th scope="col">Stale</th></tr></thead>
         <tbody>
-          <tr><th scope="row">Record</th>
-            <td><dl class="kv" style="width: 16rem;"><dt>Phone</dt><dd>+1 416 555 0142</dd></dl></td>
-            <td><dl class="kv" style="width: 16rem;"><dt>Email</dt><dd>beverley@auntiebevs.example</dd></dl></td>
-            <td><dl class="kv" style="width: 16rem;"><dt>Phone</dt><dd class="text-muted">Not added</dd></dl></td>
-            <td><dl class="kv" style="width: 16rem;" aria-hidden="true"><dt><span class="skeleton skeleton--text" style="width: 5rem;"></span></dt><dd><span class="skeleton skeleton--text" style="width: 9rem;"></span></dd></dl></td></tr>
-          <tr><th scope="row">Facts</th>
-            <td><dl class="facts" style="width: 14rem;"><div><dt>Guests</dt><dd>Serves 20–300 guests</dd></div></dl></td>
-            <td><dl class="facts" style="width: 14rem;"><div><dt>Occasions</dt><dd><ul class="inline-list"><li>Weddings</li><li>Funerals and repasts</li><li>Religious and cultural celebrations</li></ul></dd></div></dl></td>
-            <td><span class="ds-na">Omit the pair</span></td>
-            <td><div class="facts" style="width: 14rem;" aria-hidden="true"><span class="skeleton skeleton--text" style="width: 4rem;"></span><span class="skeleton skeleton--text" style="width: 10rem;"></span></div></td></tr>
-          <tr><th scope="row">Enquiry summary</th>
-            <td><dl class="enquiry-summary" style="width: 16rem;"><div><dt>Guests</dt><dd>60</dd></div><div><dt>Area</dt><dd>Downtown Toronto · M5V</dd></div></dl></td>
-            <td><dl class="enquiry-summary" style="width: 16rem;"><div><dt>Event date</dt><dd>Saturday 12 June 2027</dd></div><div><dt>Occasion</dt><dd>Religious and cultural celebrations</dd></div></dl></td>
-            <td><span class="ds-na">All four are required</span></td>
-            <td><div class="enquiry-summary" style="width: 16rem;" aria-hidden="true"><span class="skeleton skeleton--text"></span><span class="skeleton skeleton--text"></span></div></td></tr>
-          <tr><th scope="row">Certificate</th>
-            <td><dl class="certificate" style="width: 17rem;"><dt>Number</dt><dd>FH-2024-118734</dd><dt>Expires</dt><dd>14 Mar 2029</dd></dl></td>
-            <td><dl class="certificate" style="width: 17rem;"><dt>Issued by</dt><dd>Durham Region Health Department</dd></dl></td>
-            <td><dl class="certificate" style="width: 17rem;"><dt>Copy</dt><dd class="text-muted">No file uploaded</dd></dl></td>
-            <td><div class="certificate" style="width: 17rem;" aria-hidden="true"><span class="skeleton skeleton--text" style="width: 4rem;"></span><span class="skeleton skeleton--text" style="width: 8rem;"></span></div></td></tr>
+          <tr><th scope="row"><code>.kv</code></th>
+            <td><dl class="kv" style="min-width: 22rem;"><dt>Cyc wall</dt><dd>Yes · scuffed</dd></dl></td>
+            <td><span class="text-muted">None: no controls inside</span></td>
+            <td><span class="text-muted">Not used</span></td>
+            <td><dl class="kv" style="min-width: 22rem;"><dt>Cyc wall</dt><dd>No</dd><dt>Changing area</dt><dd>None</dd></dl></td>
+            <td><dl class="kv" style="min-width: 22rem;"><dt>Extra fees</dt><dd>None</dd></dl><p class="price-block__verified">Prices verified <time datetime="2026-03-02">2 March 2026</time></p></td>
+          </tr>
+          <tr><th scope="row"><code>.regions</code></th>
+            <td><dl class="regions" style="min-width: 16rem;"><div><dt>Who should skip it</dt><dd>Anyone who needs a cyc wall, or a private place for talent to change.</dd></div></dl></td>
+            <td><span class="text-muted">None</span></td>
+            <td><span class="text-muted">Not used</span></td>
+            <td><span class="text-muted">Both regions are required (L2-002)</span></td>
+            <td><span class="text-muted">Not used</span></td>
+          </tr>
+          <tr><th scope="row"><code>.summary-panel__row</code></th>
+            <td><dl class="summary-panel__row" style="min-width: 14rem;"><div><dt>All-in, 2 hours</dt><dd>$130.00</dd></div><div><dt>Overall</dt><dd>4.0<span class="visually-hidden"> out of 5</span></dd></div></dl></td>
+            <td><span class="text-muted">None</span></td>
+            <td><span class="text-muted">Not used</span></td>
+            <td><span class="text-muted">Both facts are always present</span></td>
+            <td><dl class="summary-panel__row" style="min-width: 14rem;"><div><dt>All-in, 2 hours</dt><dd>$270.00</dd></div><div><dt>Overall</dt><dd>3.8<span class="visually-hidden"> out of 5</span></dd></div></dl><p><span class="badge badge--warning">Prices may be out of date</span></p></td>
+          </tr>
         </tbody>
       </table></div>
-      <h3>Certificate date states</h3>
-      <div class="ds-example">
-        <div class="ds-example__canvas">
-          <span class="status status--published">Valid</span>
-          <span class="status status--pending">Expires Mon 9 Nov</span>
-          <span class="status status--suspended">Expired</span>
-        </div>
-        <div class="ds-example__caption"><span>Kendra (valid to 14 Mar 2029), Desmond Greaves of Cou-Cou (expires Mon 9 Nov 2026, reminders at 30 and 7 days) and Sharon Best of Flying Fish Kitchen (expired 30 Sep 2026).</span></div>
-      </div>
+      <ul>
+        <li><b>Sparse</b> values are words, never a missing row (L2-006.2, L2-017.2): Bloordale Sun Studio shows "Cyc wall · No" and "Changing area · None"; a studio with no paid extras replaces the extras list with "Nothing costs extra at this studio." (L2-007.2). A value the visit did not record uses <span class="na">Not measured</span> (<code>.na</code>).</li>
+        <li><b>Stale</b> (Ossington Blackbox, verified 2 Mar 2026, 225 days ago) does not restyle the list: a <a href="alert.html">warning alert</a> follows the verified line and a warning badge joins the summary panel (L2-005.2).</li>
+      </ul>
       <h3>Both themes</h3>
       <div class="ds-themes">
-        <div data-theme="light"><dl class="enquiry-summary"><div><dt>Event date</dt><dd>Thu 5 Nov</dd></div><div><dt>Guests</dt><dd>60</dd></div></dl><dl class="kv" style="margin-top: var(--space-4);"><dt>Current name</dt><dd><del class="diff-old">Pelau House</del></dd><dt>Requested name</dt><dd><ins class="diff-new">Pelau House by Kendra</ins></dd></dl></div>
-        <div data-theme="dark"><dl class="enquiry-summary"><div><dt>Event date</dt><dd>Thu 5 Nov</dd></div><div><dt>Guests</dt><dd>60</dd></div></dl><dl class="kv" style="margin-top: var(--space-4);"><dt>Current name</dt><dd><del class="diff-old">Pelau House</del></dd><dt>Requested name</dt><dd><ins class="diff-new">Pelau House by Kendra</ins></dd></dl></div>
+        <div data-theme="light"><dl class="kv"><dt>Hourly rate</dt><dd><span class="num">$60.00</span></dd><dt>Cleaning fee</dt><dd><span class="num">$25.00</span> <span class="badge">Mandatory</span></dd></dl><dl class="summary-panel__row" style="margin-top: var(--space-6);"><div><dt>All-in, 2 hours</dt><dd>$145.00</dd></div><div><dt>Overall</dt><dd>3.8<span class="visually-hidden"> out of 5</span></dd></div></dl></div>
+        <div data-theme="dark"><dl class="kv"><dt>Hourly rate</dt><dd><span class="num">$60.00</span></dd><dt>Cleaning fee</dt><dd><span class="num">$25.00</span> <span class="badge">Mandatory</span></dd></dl><dl class="summary-panel__row" style="margin-top: var(--space-6);"><div><dt>All-in, 2 hours</dt><dd>$145.00</dd></div><div><dt>Overall</dt><dd>3.8<span class="visually-hidden"> out of 5</span></dd></div></dl></div>
       </div>
-      <ul>
-        <li><b>Loading</b>: skeletons replace terms and values inside the same layout; the container is <code>aria-hidden="true"</code> and one visually hidden status announces the load.</li>
-        <li><b>Missing</b>: on the caterer's own and operator screens say so plainly in <code>.text-muted</code> ("Not added", "No file uploaded"). On the public page leave the pair out; never show "N/A" to customers.</li>
-        <li><b>Long</b>: values wrap. <code>.certificate dd</code> breaks anywhere so long numbers and file names never overflow; give long email addresses in <code>.kv</code> the same treatment.</li>
-      </ul>
     </section>
 
     <section class="ds-section" id="responsive"><h2><a href="#responsive">Responsive behaviour</a></h2>
       <ul>
-        <li><b>Below sm (36rem):</b> <code>.kv</code> is one column — term above value, a hairline under each value. <code>.enquiry-summary</code> is two columns with the message full width. <code>.regions</code> is one column.</li>
-        <li><b>sm (36rem):</b> <code>.kv</code> gains its 12rem term column with the hairline running under both cells.</li>
-        <li><b>md (48rem):</b> <code>.enquiry-summary</code> becomes four columns in one row; <code>.regions</code> becomes two columns.</li>
-        <li><b>lg (62rem):</b> on the caterer page <code>.facts</code> moves from the content column (<code>.until-lg</code>) into the sticky enquiry panel (<code>.only-lg</code>) above "Send an enquiry". The markup is repeated, not moved; only one copy is ever displayed.</li>
-        <li><code>.facts</code>, <code>.certificate</code> and <code>.dl</code> keep their layout at every width; the certificate's term column is as wide as "Issued by", so it fits at 320px.</li>
+        <li><b><code>.kv</code></b>: below 36rem each label sits above its value in one column and only the value carries the rule, so a row reads as one block (L2-003.3, L2-017.3). From 36rem the label takes a fixed 12rem column and both cells carry the rule.</li>
+        <li><b><code>.regions</code></b>: one column below 48rem, two equal columns from 48rem.</li>
+        <li><b><code>.summary-panel__row</code></b>: two columns at every width. Below 62rem the whole summary panel moves above the long sections, straight after the hero photo; from 62rem it is a sticky sidebar.</li>
+        <li>Values wrap anywhere (<code>overflow-wrap: anywhere</code>), so a long transit note never widens the page at 320px.</li>
       </ul>
+      <div class="ds-iframes">
+        <iframe class="ds-iframe" src="../../mocks/pages/studio/default.html?chrome=0#specs" title="Studio page at phone width: measured specifications with labels above values" loading="lazy"></iframe>
+        <iframe class="ds-iframe" src="../../mocks/pages/studio/minimal.html?chrome=0#logistics" title="Bloordale Sun Studio at phone width: sparse logistics values written as words" loading="lazy"></iframe>
+      </div>
     </section>
 
     <section class="ds-section" id="theming"><h2><a href="#theming">Theming</a></h2>
-      <p>No component tokens: every layout reads semantic tokens. Terms use <code>--color-fg-subtle</code> (or <code>--color-fg-muted</code> in <code>.dl</code>), values inherit <code>--color-fg-default</code>, dividers and the certificate box use <code>--color-border-default</code>, the enquiry well uses <code>--color-bg-surface-sunken</code>, and change review uses <code>--color-fg-muted</code> (old), <code>--color-warning-bg</code> (new) and <code>--color-warning-fg</code> (flag).</p>
-      <p>In dark the well becomes <code>--palette-stone-900</code> on the stone-950 canvas and the new-value highlight a deep mango, with the text staying <code>--color-fg-default</code> above 4.5:1. The certificate border stays a hairline in both themes; it is the only bordered list, so it must not gain a shadow.</p>
+      <p>Labels read <code>--color-fg-subtle</code>, values inherit <code>--color-fg-default</code>, rules use <code>--color-border-default</code>. The lists have no fill, so they take the surface they sit on: the canvas on review pages. Badges inside values bring their own tone tokens. Nothing is overridden per theme.</p>
     </section>
 
     <section class="ds-section" id="accessibility"><h2><a href="#accessibility">Accessibility</a></h2>
       <h3>Role and pattern</h3>
-      <p>Native <code>&lt;dl&gt;</code> with <code>&lt;dt&gt;</code>/<code>&lt;dd&gt;</code> pairs. HTML allows one wrapping <code>&lt;div&gt;</code> per pair, which <code>.facts</code>, <code>.regions</code> and <code>.enquiry-summary</code> use for layout; <code>.kv</code>, <code>.certificate</code> and <code>.dl</code> need the pairs as direct children. There is no APG pattern; follow the <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-dl-element">HTML <code>dl</code> element</a>. Each list sits under a heading ("Your details", "Areas served", "Food handler certificate") so it can be found by heading navigation.</p>
+      <p>Native <code>&lt;dl&gt;</code>, <code>&lt;dt&gt;</code>, <code>&lt;dd&gt;</code>: no WAI-ARIA pattern or role is needed. Screen readers announce a list with term and definition pairs. <code>.regions</code> and <code>.summary-panel__row</code> group each pair in a <code>&lt;div&gt;</code>, which HTML allows; <code>.kv</code> must not, because its grid places <code>dt</code> and <code>dd</code> directly.</p>
       <h3>Keyboard</h3>
-      <div class="ds-table-wrap"><table class="ds-table ds-keys"><thead><tr><th scope="col">Key</th><th scope="col">Action</th></tr></thead><tbody>
-        <tr><td><kbd>Tab</kbd></td><td>Skips the list and stops only on controls inside values ("Change password", the certificate file) in reading order.</td></tr>
-        <tr><td><kbd>Enter</kbd>, <kbd>Space</kbd></td><td>Activate those controls; there is nothing to activate on a term or value.</td></tr>
-      </tbody></table></div>
+      <table class="ds-table ds-keys"><thead><tr><th scope="col">Key</th><th scope="col">Action</th></tr></thead><tbody>
+        <tr><td><kbd>Tab</kbd></td><td>Skips the list: nothing in it is focusable.</td></tr>
+        <tr><td>Screen reader list keys</td><td>Move pair by pair; the term is read before its value.</td></tr>
+      </tbody></table>
       <h3>Focus</h3>
-      <p>The list takes no focus. Buttons inside <code>.kv</code> values use the shared ring; the hairline row is tall enough that the 3px offset ring never overlaps the next row.</p>
+      <p>Not focusable. If a value ever holds a link, it gets the shared focus ring.</p>
       <h3>Labelling</h3>
-      <p>The term is the label; don't repeat it in the value where avoidable. Change review must name old and new in text (the term, or "Was" / "Now"), and should mark them up as <code>&lt;del&gt;</code> and <code>&lt;ins&gt;</code>; strike-through and highlight alone are invisible to screen readers. Dates go in <code>&lt;time datetime&gt;</code>.</p>
+      <p>Each list sits in a <code>section</code> named by its heading through <code>aria-labelledby</code> ("Measured specifications", "Practical conditions"). Units are spelled as symbols the screen reader can say ("m", "ft", "A"); the summary score adds <code>&lt;span class="visually-hidden"&gt; out of 5&lt;/span&gt;</code>. Decorative middle dots are plain text and read as a pause.</p>
       <h3>Contrast</h3>
       <div class="ds-example__canvas ds-example__canvas--stack" style="padding: 0; gap: var(--space-2);">
-        <div class="ds-pair"><span>Term on page (facts, regions, record, certificate)</span><span class="ds-pair__ratio" data-contrast="--color-fg-subtle|--color-bg-canvas" data-min="4.5"></span></div>
-        <div class="ds-pair"><span>Term in .dl; old value in change review</span><span class="ds-pair__ratio" data-contrast="--color-fg-muted|--color-bg-canvas" data-min="4.5"></span></div>
-        <div class="ds-pair"><span>Term in the enquiry summary well</span><span class="ds-pair__ratio" data-contrast="--color-fg-subtle|--color-bg-surface-sunken" data-min="4.5"></span></div>
-        <div class="ds-pair"><span>Value in the enquiry summary well</span><span class="ds-pair__ratio" data-contrast="--color-fg-default|--color-bg-surface-sunken" data-min="4.5"></span></div>
-        <div class="ds-pair"><span>Term inside a dialog</span><span class="ds-pair__ratio" data-contrast="--color-fg-subtle|--color-bg-surface-raised" data-min="4.5"></span></div>
-        <div class="ds-pair"><span>New value in change review</span><span class="ds-pair__ratio" data-contrast="--color-fg-default|--color-warning-bg" data-min="4.5"></span></div>
-        <div class="ds-pair"><span>Changed flag</span><span class="ds-pair__ratio" data-contrast="--color-warning-fg|--color-bg-canvas" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Label on page</span><span class="ds-pair__ratio" data-contrast="--color-fg-subtle|--color-bg-canvas" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Value on page</span><span class="ds-pair__ratio" data-contrast="--color-fg-default|--color-bg-canvas" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Label on a card surface</span><span class="ds-pair__ratio" data-contrast="--color-fg-subtle|--color-bg-surface" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Neutral qualifier badge</span><span class="ds-pair__ratio" data-contrast="--color-fg-muted|--color-bg-subtle" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Verified line on page</span><span class="ds-pair__ratio" data-contrast="--color-fg-muted|--color-bg-canvas" data-min="4.5"></span></div>
       </div>
       <h3>Motion</h3>
-      <p>None. Description lists never animate; loading skeletons stop shimmering under reduced motion.</p>
+      <p>None.</p>
       <h3>Touch</h3>
-      <p>Only the controls inside values are targets. Small buttons ("Change password", the certificate file) grow to 44px below 48rem (L2-065.1) and are 36px from 48rem, with at least 8px clear inside the row padding.</p>
+      <p>No targets.</p>
     </section>
 
     <section class="ds-section" id="content"><h2><a href="#content">Content</a></h2>
       <ul>
-        <li><b>Terms</b> are one or two nouns in sentence case, no colon: "Guests", "Occasions", "Issued by", "Event date", "Requested name".</li>
-        <li><b>Values</b> are as the person wrote them, and specific: "Serves 20–300 guests" with an en dash; occasions from the fixed list; areas named by municipality or district ("Scarborough, East York, North York") under their region ("City of Toronto", "Durham"), never a street address.</li>
-        <li><b>Dates</b>: full on detail screens ("Saturday 21 November 2026"), short in rows and records ("Thu 8 Oct", "14 Mar 2029"); times "7:15 p.m."; all in Toronto time.</li>
-        <li><b>Certificates</b> always carry the caption "&lt;Name&gt;’s own statement; ShotThere doesn’t certify kitchens." Never write "verified kitchen", "approved by ShotThere" or "certified" about a caterer.</li>
-        <li><b>Private values</b> (phone, email) carry a lock note saying who can see them: "Private until you share it in a thread", "Only operators and the caterer see these".</li>
+        <li>Labels are the same on every location and never change wording between reviews: "Usable shooting space", "Ceiling height", "Window direction", "Power", "Cyc wall", "Backdrops"; "Load-in", "Parking", "Transit", "Washroom", "Changing area", "Client seating", "Noise".</li>
+        <li>Measurements are metric first with imperial in brackets: "7.0 m × 5.2 m (23 ft × 17 ft)", "3.4 m (11 ft)".</li>
+        <li>Prices are CAD with two decimals in <code>.num</code>: "$45.50". Fees state whether they count: "Mandatory" or "Optional, not in all-in".</li>
+        <li>Join several facts in one value with " · ": "Weekday: Low · Weekend: High".</li>
+        <li>Absent values are words: "No", "None", "Nothing costs extra at this studio.", "Not measured". Never blank, never a dash.</li>
+        <li>Verdict regions are one or two plain sentences that name who and why: "Video crews, because of the streetcar…".</li>
       </ul>
     </section>
 
     <section class="ds-section" id="do-dont"><h2><a href="#do-dont">Do and don't</a></h2>
       <div class="ds-dodont">
-        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--stack"><dl class="certificate"><dt>Holder</dt><dd>Beverley Campbell</dd><dt>Issued by</dt><dd>Durham Region Health Department</dd></dl></div><figcaption>Pairs as direct children of <code>.certificate</code>, so the term column lines up.</figcaption></figure>
-        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--stack"><dl class="certificate"><div><dt>Holder</dt><dd>Beverley Campbell</dd></div><div><dt>Issued by</dt><dd>Durham Region Health Department</dd></div></dl></div><figcaption>Wrapping pairs in <code>&lt;div&gt;</code> breaks the grid: the pairs land side by side (as in <code>dialogs/approve-profile</code>).</figcaption></figure>
-        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--stack"><dl class="dl"><dt>Was</dt><dd><del class="diff-old">Call or text Jolene at 647-555-0119 to book.</del></dd><dt>Now</dt><dd class="text-muted">Removed</dd></dl></div><figcaption>Label the old and new values in words.</figcaption></figure>
-        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--stack"><p><span class="diff-old">Call or text Jolene at 647-555-0119 to book.</span></p></div><figcaption>A bare strike-through reads to a screen reader as if the phone number were still there.</figcaption></figure>
-        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--stack"><p class="text-caption">Kendra’s own statement; ShotThere doesn’t certify kitchens.</p></div><figcaption>Attribute the certificate to the caterer.</figcaption></figure>
-        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--stack"><p><span class="status status--published">Kitchen certified</span></p></div><figcaption>Never let a status read as ShotThere certifying the kitchen.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--stack"><dl class="kv"><dt>Cleaning fee</dt><dd><span class="num">$20.00</span> <span class="badge">Mandatory</span></dd></dl></div><figcaption>The qualifier is a word in a badge beside the price.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--stack"><dl class="kv"><dt>Cleaning fee*</dt><dd><span class="num">$20.00</span></dd></dl><p class="text-caption">* Mandatory</p></div><figcaption>An asterisk and a footnote hide whether the fee is in the all-in cost.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--stack"><dl class="kv"><dt>Cyc wall</dt><dd>No</dd><dt>Changing area</dt><dd>None</dd></dl></div><figcaption>Say "No" and "None" so every studio shows the same rows.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--stack"><dl class="kv"><dt>Client seating</dt><dd>2 chairs</dd></dl></div><figcaption>Dropping the Cyc wall and Changing area rows makes Bloordale look incomplete and breaks the comparison.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--stack"><dl class="kv"><dt>Ceiling height</dt><dd>3.4 m (11 ft)</dd><dt>Window direction</dt><dd>South</dd></dl></div><figcaption><code>.kv</code> pairs are direct children of the <code>dl</code>.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--stack"><dl class="kv"><div><dt>Ceiling height</dt><dd>3.4 m (11 ft)</dd></div><div><dt>Window direction</dt><dd>South</dd></div></dl></div><figcaption>Copying the <code>.regions</code> <code>div</code> wrappers into <code>.kv</code> breaks its two-column grid from 36rem.</figcaption></figure>
       </div>
     </section>
 
@@ -375,56 +368,59 @@
       <div class="ds-table-wrap"><table class="ds-table">
         <thead><tr><th scope="col">Part</th><th scope="col">Token</th><th scope="col">Light</th><th scope="col">Dark</th></tr></thead>
         <tbody>
-          <tr><td>Term</td><td><code>--color-fg-subtle</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-subtle" data-swatch></i><span data-token="--color-fg-subtle"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-subtle" data-swatch></i><span data-token="--color-fg-subtle"></span></span></td></tr>
-          <tr><td>Term in .dl, old value</td><td><code>--color-fg-muted</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-muted" data-swatch></i><span data-token="--color-fg-muted"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-muted" data-swatch></i><span data-token="--color-fg-muted"></span></span></td></tr>
-          <tr><td>Value, new value text</td><td><code>--color-fg-default</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-default" data-swatch></i><span data-token="--color-fg-default"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-default" data-swatch></i><span data-token="--color-fg-default"></span></span></td></tr>
-          <tr><td>Record rows, certificate box</td><td><code>--color-border-default</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-border-default" data-swatch></i><span data-token="--color-border-default"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-border-default" data-swatch></i><span data-token="--color-border-default"></span></span></td></tr>
-          <tr><td>Enquiry summary well</td><td><code>--color-bg-surface-sunken</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-bg-surface-sunken" data-swatch></i><span data-token="--color-bg-surface-sunken"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-bg-surface-sunken" data-swatch></i><span data-token="--color-bg-surface-sunken"></span></span></td></tr>
-          <tr><td>New value highlight</td><td><code>--color-warning-bg</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-warning-bg" data-swatch></i><span data-token="--color-warning-bg"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-warning-bg" data-swatch></i><span data-token="--color-warning-bg"></span></span></td></tr>
-          <tr><td>Changed flag</td><td><code>--color-warning-fg</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-warning-fg" data-swatch></i><span data-token="--color-warning-fg"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-warning-fg" data-swatch></i><span data-token="--color-warning-fg"></span></span></td></tr>
-          <tr><td>Term / value fonts</td><td><code>--text-label</code>; <code>--text-body</code> or <code>--text-body-lg</code></td><td colspan="2"><span data-token="--font-size-sm"></span> / <span data-token="--font-size-md"></span> · <span data-token="--font-size-lg"></span></td></tr>
-          <tr><td>Gaps</td><td><code>--space-1</code> term to value, <code>--space-6</code> between facts and columns, <code>--space-4</code> record row padding</td><td colspan="2"><span data-token="--space-1"></span> · <span data-token="--space-6"></span> · <span data-token="--space-4"></span></td></tr>
-          <tr><td>Well and certificate padding / radius</td><td><code>--space-6</code>, <code>--radius-lg</code></td><td colspan="2"><span data-token="--space-6"></span> · <span data-token="--radius-lg"></span></td></tr>
-          <tr><td>Highlight radius</td><td><code>--radius-xs</code></td><td colspan="2"><span data-token="--radius-xs"></span></td></tr>
+          <tr><td>Label</td><td><code>--color-fg-subtle</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-subtle" data-swatch></i><span data-token="--color-fg-subtle"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-subtle" data-swatch></i><span data-token="--color-fg-subtle"></span></span></td></tr>
+          <tr><td>Value</td><td><code>--color-fg-default</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-default" data-swatch></i><span data-token="--color-fg-default"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-default" data-swatch></i><span data-token="--color-fg-default"></span></span></td></tr>
+          <tr><td>Rule</td><td><code>--color-border-default</code>, <code>--border-width-hairline</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-border-default" data-swatch></i><span data-token="--color-border-default"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-border-default" data-swatch></i><span data-token="--color-border-default"></span></span></td></tr>
+          <tr><td>Label font</td><td><code>--text-label</code></td><td colspan="2"><span data-token="--text-label"></span></td></tr>
+          <tr><td>Region value font</td><td><code>--text-body-lg</code></td><td colspan="2"><span data-token="--text-body-lg"></span></td></tr>
+          <tr><td>Summary value font</td><td><code>--text-h3</code></td><td colspan="2"><span data-token="--text-h3"></span></td></tr>
+          <tr><td>Row padding (<code>.kv</code>)</td><td><code>--space-4</code> / <code>--space-3</code></td><td colspan="2"><span data-token="--space-4"></span> / <span data-token="--space-3"></span></td></tr>
+          <tr><td>Column gap</td><td><code>--space-6</code></td><td colspan="2"><span data-token="--space-6"></span></td></tr>
         </tbody>
       </table></div>
     </section>
 
     <section class="ds-section" id="code"><h2><a href="#code">Code</a></h2>
-      <pre><code>&lt;section aria-labelledby="areas-title"&gt;
-  &lt;h2 id="areas-title"&gt;Areas served&lt;/h2&gt;
-  &lt;dl class="regions"&gt;
-    &lt;div&gt;&lt;dt&gt;City of Toronto&lt;/dt&gt;&lt;dd&gt;Scarborough, East York, North York&lt;/dd&gt;&lt;/div&gt;
+      <pre><code>&lt;section class="review-section" aria-labelledby="logistics"&gt;
+  &lt;h2 id="logistics"&gt;Logistics&lt;/h2&gt;
+  &lt;dl class="kv"&gt;
+    &lt;dt&gt;Load-in&lt;/dt&gt;&lt;dd&gt;Stairs · one flight, 14 steps&lt;/dd&gt;
+    &lt;dt&gt;Changing area&lt;/dt&gt;&lt;dd&gt;None&lt;/dd&gt;
   &lt;/dl&gt;
-&lt;/section&gt;</code></pre>
-      <div class="ds-table-wrap"><table class="ds-table"><thead><tr><th scope="col">Class</th><th scope="col">Effect</th></tr></thead><tbody>
-        <tr><td><code>.dl</code></td><td>Base two-column list, label column sized to content.</td></tr>
-        <tr><td><code>.facts</code></td><td>Stacked facts with large values; pairs wrapped in <code>&lt;div&gt;</code>.</td></tr>
-        <tr><td><code>.inline-list</code></td><td>A <code>&lt;ul&gt;</code> that reads as a comma-separated line.</td></tr>
-        <tr><td><code>.regions</code></td><td>Region → municipalities; two columns from 48rem.</td></tr>
-        <tr><td><code>.kv</code></td><td>Record rows with hairlines; 12rem term column from 36rem; values can end in a status or action.</td></tr>
-        <tr><td><code>.enquiry-summary</code></td><td>Sunken well, 2 → 4 columns; <code>__message</code> spans the row; <code>__by</code> is the sender and time.</td></tr>
-        <tr><td><code>.certificate</code></td><td>Bordered two-column list for the food handler certificate.</td></tr>
-        <tr><td><code>.diff-old</code> / <code>.diff-new</code></td><td>Struck-through old value / highlighted new value. Use on <code>&lt;del&gt;</code> / <code>&lt;ins&gt;</code>.</td></tr>
-        <tr><td><code>.changed-flag</code></td><td>Small warning-coloured note: "Name change waiting", "New photo", "Resubmitted".</td></tr>
-      </tbody></table></div>
+&lt;/section&gt;
+
+&lt;dl class="regions"&gt;
+  &lt;div&gt;&lt;dt&gt;Who it's for&lt;/dt&gt;&lt;dd&gt;…&lt;/dd&gt;&lt;/div&gt;
+  &lt;div&gt;&lt;dt&gt;Who should skip it&lt;/dt&gt;&lt;dd&gt;…&lt;/dd&gt;&lt;/div&gt;
+&lt;/dl&gt;
+
+&lt;dl class="summary-panel__row"&gt;
+  &lt;div&gt;&lt;dt&gt;All-in, 2 hours&lt;/dt&gt;&lt;dd&gt;$145.00&lt;/dd&gt;&lt;/div&gt;
+  &lt;div&gt;&lt;dt&gt;Overall&lt;/dt&gt;&lt;dd&gt;3.8&lt;span class="visually-hidden"&gt; out of 5&lt;/span&gt;&lt;/dd&gt;&lt;/div&gt;
+&lt;/dl&gt;</code></pre>
+      <table class="ds-table"><thead><tr><th scope="col">Class</th><th scope="col">Effect</th></tr></thead><tbody>
+        <tr><td><code>.kv</code></td><td>Label–value rows: stacked below 36rem, 12rem label column from 36rem, hairline rules, value cell is a wrapping flex row so a badge sits at the end.</td></tr>
+        <tr><td><code>.regions</code></td><td>Grouped pairs (<code>div</code> wrappers): one column, two from 48rem; value in <code>--text-body-lg</code>.</td></tr>
+        <tr><td><code>.summary-panel__row</code></td><td>Two grouped pairs side by side; value in <code>--text-h3</code> with tabular figures.</td></tr>
+        <tr><td><code>.num</code></td><td>Tabular figures for prices and measurements.</td></tr>
+        <tr><td><code>.na</code></td><td>Muted "Not measured" for a value the visit did not record.</td></tr>
+        <tr><td><code>.dl</code>, <code>.facts</code>, <code>.inline-list</code></td><td>Still in the stylesheet but used by no ShotThere mock; do not use. Use <code>.kv</code>.</td></tr>
+      </tbody></table>
     </section>
 
     <section class="ds-section" id="sources"><h2><a href="#sources">Sources</a></h2>
       <p>Extracted from these mocks:</p>
       <ul>
-        <li>pages/caterer/default (facts, inline list, areas served)</li>
-        <li>pages/account/default (record with status, privacy note and action)</li>
-        <li>pages/admin-caterer/default and certificate-expired (certificate, activity record)</li>
-        <li>pages/thread/default and pages/dashboard-enquiry/default (enquiry summary)</li>
-        <li>pages/admin-profile-review/name-change, pages/admin-changes/default and resubmitted (change review, changed flag)</li>
-        <li>dialogs/approve-profile/default (certificate and record in a dialog)</li>
-        <li>pages/profile-certificate/default (the caterer's certificate form)</li>
+        <li><a href="../../mocks/pages/studio/default.html">pages/studio/default</a> (pricing, measured specifications, gear, extras, logistics, verdict regions, summary row)</li>
+        <li><a href="../../mocks/pages/studio/minimal.html">pages/studio/minimal</a> (Cyc wall No, Changing area None, "Nothing costs extra at this studio.")</li>
+        <li><a href="../../mocks/pages/studio/stale.html">pages/studio/stale</a> (Extra fees None, stale price alert after the list, warning badge in the summary panel)</li>
+        <li><a href="../../mocks/pages/spot/default.html">pages/spot/default</a> (How to get there, Practical conditions, spot summary row)</li>
+        <li><a href="../../mocks/pages/spot/stale-permit.html">pages/spot/stale-permit</a> (spot summary row beside a stale permit)</li>
       </ul>
-      <p>Drift fixed during extraction: <code>dialogs/approve-profile</code> and <code>pages/admin-profile-review</code> wrapped <code>.certificate</code> pairs in <code>&lt;div&gt;</code>, breaking its grid; the system requires direct children. Kendra's certificate file was "certificate.pdf (412 KB)" on operator screens but "food-handler-certificate.pdf · 1.2 MB" on her own page; the system uses one file. Diffs used <code>&lt;span&gt;</code> and, in <code>dialogs/moderate-review</code>, <code>&lt;mark class="diff-new"&gt;</code> for a flagged phone number that is not a change; the system uses <code>&lt;del&gt;</code>/<code>&lt;ins&gt;</code> with a visible "Was"/"Now". The resubmitted profile showed a struck-through phone line with no label. <code>.changed-flag</code> had an icon in one mock and none in another; the icon is optional and decorative. The enquiry message set <code>white-space: pre-wrap</code> inline; a CSS rule is proposed. <code>pages/dashboard-enquiry</code> wrote the event date short ("Thu 5 Nov 2026") on a detail screen where the thread writes it in full.</p>
+      <p>Drift fixed during extraction: prices are marked up two ways, <code>&lt;dd class="num"&gt;$60.00&lt;/dd&gt;</code> in studio/default and <code>&lt;dd&gt;&lt;span class="num"&gt;$55.00&lt;/span&gt;&lt;/dd&gt;</code> in studio/minimal and studio/stale; documented as the span form, which also works when a badge follows. The reviewed date in the studio/default header has no <code>&lt;time&gt;</code> while studio/minimal has one; not part of this component, noted for the review layout.</p>
     </section>
 
-    <footer class="ds-footer"><span>ShotThere design system · extracted from docs/mocks on 10 October 2026</span><a href="#top">Back to top</a></footer>
+    <footer class="ds-footer"><span>ShotThere design system · extracted from <a href="../../mocks/index.html">docs/mocks</a> on 13 October 2026</span><a href="#top">Back to top</a></footer>
   </main>
 </div>
 <script src="../assets/ds.js"></script>

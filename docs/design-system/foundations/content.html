@@ -201,7 +201,7 @@
         <li>Destructive buttons name the action and, when it's not obvious, its object: "Delete studio", "Discard", "Remove test shot".</li>
         <li>Busy buttons keep their label and show a spinner (<code>aria-busy="true"</code>): "Save changes", not "Saving…". The status line next to it says "Saving…".</li>
         <li>In repeated rows, add the object for screen readers: "Edit<span class="visually-hidden"> Ossington Blackbox prices</span>", written as <code>Edit&lt;span class="visually-hidden"&gt; Ossington Blackbox prices&lt;/span&gt;</code>.</li>
-        <li>A dialog that only informs closes with "OK".</li>
+        <li>A dialog that only informs closes with "Got it", never "OK".</li>
         <li>Never "Click here", "Learn more" alone, or "Submit".</li>
       </ul>
     </section>
@@ -480,7 +480,7 @@ Ossington Blackbox: $90.00 × 3 = $270.00</code></pre>
           <tr><td>Draft · not on the public site · Published · Not saved yet · Unsaved changes · Saving… · All changes saved</td><td>Editor status</td><td>Polite live region; "Saving…" is the one status that ends in an ellipsis</td></tr>
           <tr><td>Move up · Move down · Remove · Retry · Cancel upload · Wait for uploads to finish</td><td>Image manager</td><td>Objects in hidden spans: "Move up: test shot 1"</td></tr>
           <tr><td>Alt text · Describe what the photo shows for someone who can't see it.</td><td>Image manager field and help</td><td>Error: "Describe this image"</td></tr>
-          <tr><td>Can't publish yet · Add these and publish again: · OK</td><td>Missing-fields dialog</td><td>Lists each missing field by its label</td></tr>
+          <tr><td>Can't publish yet · Add these and publish again: · Got it</td><td>Missing-fields dialog</td><td>Lists each missing field by its label</td></tr>
           <tr><td>Discard changes? · Stay · Discard</td><td>Leaving with unsaved edits</td><td>"You changed 3 fields in Corktown Garage Studio since the last save."</td></tr>
           <tr><td>Try again</td><td>Every failed load or action</td><td>Never "Retry" outside a file row</td></tr>
           <tr><td>Cancel</td><td>Dialog secondary action</td><td>Abandons, never deletes</td></tr>
@@ -521,7 +521,7 @@ Ossington Blackbox: $90.00 × 3 = $270.00</code></pre>
     <section class="ds-section" id="tokens"><h2><a href="#tokens">Tokens</a></h2>
       <p>Content has no tokens of its own. The type roles that carry it (<code>--text-body</code>, <code>--text-label</code>, <code>--text-caption</code>, <code>--text-overline</code>, <code>--text-prose</code>) and the reading measure (<code>--layout-measure</code>, 62 characters) are documented on <a href="typography.html">Typography</a> and <a href="layout.html">Layout</a>.</p>
       <p>Sources: <a href="../../mocks/README.md">docs/mocks/README.md</a> (the cast, catalog and dates), <a href="../../mocks/pages/studio/default.html">pages/studio/default</a>, <a href="../../mocks/pages/spot/default.html">pages/spot/default</a>, <a href="../../mocks/pages/guide/default.html">pages/guide/default</a>, <a href="../../mocks/pages/compare/default.html">pages/compare/default</a>, <a href="../../mocks/pages/editorial-policy/default.html">pages/editorial-policy/default</a>, <a href="../../mocks/pages/admin-dashboard/default.html">pages/admin-dashboard/default</a>, <a href="../../mocks/pages/studio-editor/invalid.html">pages/studio-editor/invalid</a>, <a href="../../mocks/pages/studio-editor/upload-failed.html">pages/studio-editor/upload-failed</a>.</p>
-      <p>Drift found during extraction: busy buttons read "Saving…" in the spot and guide editors and "Signing in" on sign-in, but keep "Save changes" in the studio editor; the system keeps the label. Error summaries say "Fix 6 things before saving" in one editor and "Fix 4 problems before saving" in another; the system uses "things". Informational dialogs close with "OK" in two mocks and "Got it" in one; the system uses "OK". No mock shows the discounted or comped disclosure on a public page; their wording comes from the editorial policy.</p>
+      <p>Drift found during extraction: busy buttons read "Saving…" in the spot and guide editors and "Signing in" on sign-in, but keep "Save changes" in the studio editor; the system keeps the label. Error summaries say "Fix 6 things before saving" in one editor and "Fix 4 problems before saving" in another; the system uses "things". Informational dialogs close with "OK" in two mocks and "Got it" in one; the system uses "Got it", because a dialog button names what it does and "OK" is banned on confirmations. No mock shows the discounted or comped disclosure on a public page; their wording comes from the editorial policy.</p>
     </section>
 
     <footer class="ds-footer"><span>ShotThere design system · extracted from <a href="../../mocks/index.html">docs/mocks</a> on 13 October 2026</span><a href="#top">Back to top</a></footer>
