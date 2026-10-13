@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Link — ShotThere design system</title>
-<meta name="description" content="ShotThere links: inline, standalone, external, the back link (eyebrow), links in alerts, summaries and the footer; visited behaviour, states and both themes.">
+<meta name="description" content="ShotThere links: inline, standalone and external (Watch on YouTube, permit sources, Google Maps), every state, both themes, and when a link is drawn as a button.">
 <link rel="stylesheet" href="../tokens/tokens.css">
 <link rel="stylesheet" href="../assets/components.css">
 <link rel="stylesheet" href="../assets/ds.css">
@@ -33,34 +33,57 @@
       <li><a href="../components/icon-button.html">Icon button</a></li>
       <li><a href="../components/button-group.html">Button group</a></li>
       <li><a href="../components/link.html">Link</a></li>
+      <li><a href="../components/compare-bar.html">Compare toggle and bar</a></li>
     </ul></details>
     <details open><summary>Inputs</summary><ul>
       <li><a href="../components/form-field.html">Form field</a></li>
       <li><a href="../components/text-field.html">Text field</a></li>
       <li><a href="../components/textarea.html">Textarea</a></li>
       <li><a href="../components/select.html">Select</a></li>
+      <li><a href="../components/combobox.html">Combobox</a></li>
       <li><a href="../components/checkbox.html">Checkbox</a></li>
       <li><a href="../components/radio-group.html">Radio group</a></li>
       <li><a href="../components/file-upload.html">File upload</a></li>
       <li><a href="../components/form-layout.html">Form layout</a></li>
+      <li><a href="../components/signup.html">Email signup</a></li>
     </ul></details>
     <details open><summary>Navigation</summary><ul>
       <li><a href="../components/skip-link.html">Skip link</a></li>
       <li><a href="../components/site-header.html">Site header</a></li>
       <li><a href="../components/footer.html">Footer</a></li>
+      <li><a href="../components/breadcrumb.html">Breadcrumb</a></li>
+      <li><a href="../components/filter.html">Filters</a></li>
     </ul></details>
     <details open><summary>Containers and overlays</summary><ul>
       <li><a href="../components/container.html">Container and grid</a></li>
+      <li><a href="../components/review-layout.html">Review layout</a></li>
+      <li><a href="../components/editor-layout.html">Editor layout</a></li>
       <li><a href="../components/card.html">Card</a></li>
       <li><a href="../components/dialog.html">Dialog</a></li>
       <li><a href="../components/sheet.html">Sheet and drawer</a></li>
+      <li><a href="../components/popover.html">Popover</a></li>
+      <li><a href="../components/lightbox.html">Lightbox</a></li>
       <li><a href="../components/divider.html">Divider</a></li>
     </ul></details>
     <details open><summary>Data display</summary><ul>
+      <li><a href="../components/location-card.html">Location card</a></li>
       <li><a href="../components/table.html">Table</a></li>
+      <li><a href="../components/compare-table.html">Comparison table</a></li>
+      <li><a href="../components/list.html">List rows</a></li>
       <li><a href="../components/description-list.html">Description list</a></li>
+      <li><a href="../components/price-block.html">Price block</a></li>
+      <li><a href="../components/score.html">Score and pips</a></li>
+      <li><a href="../components/shot-grid.html">Shot grid</a></li>
+      <li><a href="../components/video-poster.html">Episode poster</a></li>
+      <li><a href="../components/map.html">Map</a></li>
+      <li><a href="../components/guide-entry.html">Guide entry</a></li>
+      <li><a href="../components/stat-tile.html">Stat tile</a></li>
+      <li><a href="../components/image-manager.html">Image manager</a></li>
+      <li><a href="../components/disclosure.html">Disclosure</a></li>
       <li><a href="../components/badge.html">Badge</a></li>
+      <li><a href="../components/status-label.html">Status label</a></li>
       <li><a href="../components/chip.html">Chip</a></li>
+      <li><a href="../components/tag.html">Tag</a></li>
     </ul></details>
     <details open><summary>Feedback</summary><ul>
       <li><a href="../components/inline-message.html">Inline message</a></li>
@@ -83,42 +106,38 @@
       <li><a href="../patterns/content-and-tone.html">Content and tone</a></li>
     </ul></details>
   </nav>
-
   <main id="main" class="ds-main">
     <header class="ds-header">
       <p class="ds-kicker">Component · Actions</p>
       <h1>Link</h1>
-      <p class="ds-lead">Links take people somewhere: to a caterer, the privacy notice, a field with an error. They are ink and underlined, and turn pepper on hover.</p>
-      <div class="ds-meta"><span class="ds-pill ds-pill--ok">WCAG 2.2 AA</span><span class="ds-pill">Status: stable</span><span class="ds-pill">Native <code>&lt;a href&gt;</code></span><span class="ds-pill"><code>.link--standalone</code></span><span class="ds-pill"><code>.eyebrow</code></span></div>
+      <p class="ds-lead">Links take people somewhere: to a full review, back to the studio picker, to the episode on YouTube, to the park's permit rules. They are ink and underlined, and turn accent red on hover.</p>
+      <div class="ds-meta"><span class="ds-pill ds-pill--ok">WCAG 2.2 AA</span><span class="ds-pill">Status: stable</span><span class="ds-pill">Native <code>&lt;a href&gt;</code></span><span class="ds-pill"><code>.link--standalone</code></span><span class="ds-pill"><code>.link--external</code></span></div>
       <ul class="ds-toc"><li><a href="#overview">Overview</a></li><li><a href="#anatomy">Anatomy</a></li><li><a href="#variants">Variants</a></li><li><a href="#sizes">Sizes</a></li><li><a href="#states">States</a></li><li><a href="#responsive">Responsive behaviour</a></li><li><a href="#theming">Theming</a></li><li><a href="#accessibility">Accessibility</a></li><li><a href="#content">Content</a></li><li><a href="#do-dont">Do and don't</a></li><li><a href="#tokens">Tokens</a></li><li><a href="#code">Code</a></li><li><a href="#sources">Sources</a></li></ul>
     </header>
 
-<section class="ds-section" id="overview"><h2><a href="#overview">Overview</a></h2>
-      <p>Use a link when activating it only goes somewhere: another page, a place on this page, an email address. If it changes something (sends, saves, removes, opens a dialog), use a <a href="button.html">button</a>, even if it should look like a link (<code>.btn--link</code>, as in "Clear filters"). A link can look like a button ("Browse caterers" on the 404 page uses <code>.btn</code> on an <code>&lt;a&gt;</code>), but it stays a link.</p>
+    <section class="ds-section" id="overview"><h2><a href="#overview">Overview</a></h2>
+      <p>Use a link when activating it only navigates. If it changes something on the page, it is a <a href="button.html">button</a>, even if it looks like a link ("Clear all" after the active filters is <code>.btn--link</code>).</p>
       <ul>
-        <li><b>Inline</b> (bare <code>&lt;a&gt;</code>) sits in a sentence: "I agree to the privacy notice". Ink, underlined, pepper on hover.</li>
-        <li><b>Standalone</b> (<code>.link--standalone</code>) stands on its own line or beside a heading: "All enquiries", "Forgot your password?", "View caterer". Label weight, 44px tall, an optional icon.</li>
-        <li><b>External</b> (<code>.link--external</code>) leaves ShotThere, such as the privacy notice's pointer to the Office of the Privacy Commissioner of Canada. It shows a small arrow and says so to screen readers.</li>
-        <li><b>Back link</b> (<code>.eyebrow</code>) is the quiet chevron link above a page title: "Caterers" on a caterer page, "Review queue" on an operator record, "Dashboard" on a setup screen.</li>
-        <li><b>In context</b>: links inside an <a href="alert.html">alert</a>, the error summary and the <a href="footer.html">footer</a> inherit that container's colour; the underline and wording do the work.</li>
+        <li><b>Inline</b> (bare <code>&lt;a&gt;</code>) sits in a sentence: "tell us at corrections@shotthere.ca" on the editorial policy. Ink, underlined, accent red on hover.</li>
+        <li><b>Standalone</b> (<code>.link--standalone</code>) stands on its own line as the way on from a block: "Read the full review" under each guide entry, "Change studios" above the comparison. Label weight, 44px tall.</li>
+        <li><b>External</b> (<code>.link--external</code>) leaves ShotThere: "Watch on YouTube" under an episode, "Open in Google Maps" for a spot, a permit source such as "Evergreen: photography and filming". It shows a small arrow, opens a new tab and says so to screen readers.</li>
+        <li><b>Back link</b> (<code>.eyebrow</code>) is a quiet link above a title. The CSS is kept, but no ShotThere mock uses it: review pages use the <a href="breadcrumb.html">breadcrumb</a> ("Studios › The Junction Loft") instead.</li>
       </ul>
-      <p>For a list of places to go, use the side navigation, the filter list or the <a href="site-header.html">site header</a>; their links have their own current-page styles.</p>
+      <p>A link can be drawn as a button when it is the page's main call to action. "Book on the studio's site" is <code>&lt;a class="btn btn--primary"&gt;</code> with the same external arrow and hidden "(opens in a new tab)" as <code>.link--external</code>: booking happens on the studio's own site, never on ShotThere. Links inside a <a href="location-card.html">location card</a>, the <a href="compare-table.html">comparison table</a> header, the <a href="breadcrumb.html">breadcrumb</a> and the <a href="footer.html">footer</a> take those components' styles.</p>
     </section>
 
     <section class="ds-section" id="anatomy"><h2><a href="#anatomy">Anatomy</a></h2>
       <div class="ds-anatomy">
         <figure class="ds-anatomy__figure">
-          <p style="max-width: 22rem;">If you aren’t satisfied with our answer, contact the <a class="link--standalone link--external" href="https://www.priv.gc.ca/">Office of the Privacy Commissioner of Canada<span class="visually-hidden"> (another website)</span><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M14 5h5v5M19 5l-8 8M17 14v5H5V7h5"/></svg></a></p>
-          <span class="ds-callout" style="left: 24%; top: 82%;" aria-hidden="true">1</span>
-          <span class="ds-callout" style="left: 48%; top: 80%;" aria-hidden="true">2</span>
-          <span class="ds-callout" style="left: 80%; top: 50%;" aria-hidden="true">3</span>
-          <span class="ds-callout" style="left: 10%; top: 50%;" aria-hidden="true">4</span>
+          <a class="link--external" href="https://www.youtube.com/watch?v=Jx7Lq2pT9aE" target="_blank" rel="noopener" style="font-size: var(--font-size-lg);">Watch on YouTube<svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v6H4V6h6"/></svg><span class="visually-hidden"> (opens in a new tab)</span></a>
+          <span class="ds-callout" style="left: 34%; top: 14%;" aria-hidden="true">1</span>
+          <span class="ds-callout" style="left: 34%; top: 72%;" aria-hidden="true">2</span>
+          <span class="ds-callout" style="left: 72%; top: 14%;" aria-hidden="true">3</span>
         </figure>
         <ol class="ds-anatomy__list">
           <li><div><b>Label</b><small>Says where it goes. <code>--color-fg-link</code> (ink); <code>--text-label</code> when standalone, the surrounding text style when inline.</small></div></li>
-          <li><div><b>Underline</b><small>1px (<code>--border-width-hairline</code>) at 0.15em offset; thickens to 2px on hover. Always present on inline links.</small></div></li>
-          <li><div><b>Icon (optional)</b><small>Chevron for back links, arrow for external links; 0.9em on external, <code>.icon--sm</code> on back links; <code>aria-hidden</code>.</small></div></li>
-          <li><div><b>Target</b><small>Standalone and back links are inline-flex boxes at least 44px tall (<code>--target-comfortable</code>). Inline links take the line height and are exempt from target size.</small></div></li>
+          <li><div><b>Underline</b><small>1px (<code>--border-width-hairline</code>) at 0.15em offset; 2px (<code>--border-width-thick</code>) on hover. Always present.</small></div></li>
+          <li><div><b>External arrow (external only)</b><small>The box-and-arrow icon at 0.9em, <code>aria-hidden</code>, after the label; a visually hidden " (opens in a new tab)" follows it.</small></div></li>
         </ol>
       </div>
     </section>
@@ -127,66 +146,60 @@
       <h3>Inline</h3>
       <div class="ds-example">
         <div class="ds-example__canvas ds-example__canvas--stack">
-          <p>Privacy notice version 1.0, accepted Thu 1 Oct. Read the privacy notice</p>
-          <p>Email <a href="mailto:hello@sweethand.example">hello@sweethand.example</a>. For privacy questions, see the privacy notice.</p>
+          <p class="measure">If a price, a measurement or an address is wrong, tell us at <a href="mailto:corrections@shotthere.ca">corrections@shotthere.ca</a> and we'll check it and fix it.</p>
         </div>
-        <div class="ds-example__caption"><span>Ink with a hairline underline; email addresses are their own link text.</span></div>
-        <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;p&gt;Email &lt;a href="mailto:hello@sweethand.example"&gt;hello@sweethand.example&lt;/a&gt;.
-For privacy questions, see the &lt;a href="/privacy"&gt;privacy notice&lt;/a&gt;.&lt;/p&gt;</code></pre></details>
+        <div class="ds-example__caption"><span>From <code>pages/editorial-policy/default</code>. Inline links take the sentence's type and line height.</span></div>
       </div>
+
       <h3>Standalone</h3>
       <div class="ds-example">
-        <div class="ds-example__canvas">
-          All enquiries<svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg>
-          Forgot your password?
-          View caterer
+        <div class="ds-example__canvas ds-example__canvas--stack">
+          <a class="link--standalone" href="#variants">Read the full review<span class="visually-hidden"> of Kensington Window Room</span></a>
+          <a class="link--standalone" href="#variants">Change studios</a>
         </div>
-        <div class="ds-example__caption"><span>A section-head link ("Latest enquiries · All enquiries"), the sign-in recovery link, and the thread's link to the caterer page.</span></div>
-        <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;div class="caterer-section__head"&gt;
-  &lt;h2&gt;Latest enquiries&lt;/h2&gt;
-  &lt;a class="link--standalone" href="/dashboard/enquiries"&gt;All enquiries&lt;svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"&gt;…&lt;/svg&gt;&lt;/a&gt;
-&lt;/div&gt;</code></pre></details>
+        <div class="ds-example__caption"><span>"Read the full review" ends each entry in <code>pages/guide/default</code> and names the studio in hidden text; "Change studios" returns from <code>pages/compare/default</code> to the studio list with the selection kept.</span></div>
+        <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;a class="link--standalone" href="/studios/kensington-window-room"&gt;Read the full review&lt;span class="visually-hidden"&gt; of Kensington Window Room&lt;/span&gt;&lt;/a&gt;</code></pre></details>
       </div>
+
       <h3>External</h3>
       <div class="ds-example">
-        <div class="ds-example__canvas">
-          <a class="link--standalone link--external" href="https://www.priv.gc.ca/">Office of the Privacy Commissioner of Canada<span class="visually-hidden"> (another website)</span><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M14 5h5v5M19 5l-8 8M17 14v5H5V7h5"/></svg></a>
-        </div>
-        <div class="ds-example__caption"><span>Opens in the same tab. The arrow and the hidden "(another website)" say ShotThere is being left.</span></div>
-        <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;a class="link--standalone link--external" href="https://www.priv.gc.ca/"&gt;
-  Office of the Privacy Commissioner of Canada&lt;span class="visually-hidden"&gt; (another website)&lt;/span&gt;
-  &lt;svg class="icon" aria-hidden="true" viewBox="0 0 24 24"&gt;&lt;path d="M14 5h5v5M19 5l-8 8M17 14v5H5V7h5"/&gt;&lt;/svg&gt;
-&lt;/a&gt;</code></pre></details>
-      </div>
-      <h3>Back link (eyebrow)</h3>
-      <div class="ds-example">
-        <div class="ds-example__canvas">
-          <svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></svg>Caterers
-          <svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></svg>Review queue
-          <svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></svg>Inbox
-        </div>
-        <div class="ds-example__caption"><span>Muted small text with a left chevron, named for the destination. On dashboard and inbox pages it carries <code>.until-lg</code>, because from 62rem the side nav or list is on screen.</span></div>
-      </div>
-      <h3>In alerts, the error summary and the footer</h3>
-      <div class="ds-example">
         <div class="ds-example__canvas ds-example__canvas--stack">
-          <div class="alert alert--warning" role="status"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 4 2.5 20h19z"/><path d="M12 10v4M12 17v.5"/></svg><div class="alert__body"><p><strong>Changes requested:</strong> “Photos 2 and 5 look like stock images. Please upload photos of your own food.”</p><span class="alert__actions">Go to photos</span></div></div>
-          <div class="form-summary"><p class="alert__title">Fix 2 things so we can save</p><ul><li><a href="#overview">Enter a business name of 2 to 80 characters</a></li><li><a href="#overview">Write at least 50 characters (35 so far)</a></li></ul></div>
-          <div class="site-footer" style="margin: 0; padding: 0;"><ul><li>About</li><li>Cater with us</li><li>Privacy</li><li>Terms</li></ul></div>
+          <a class="link--external" href="https://www.youtube.com/watch?v=Jx7Lq2pT9aE" target="_blank" rel="noopener">Watch on YouTube<svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v6H4V6h6"/></svg><span class="visually-hidden"> (opens in a new tab)</span></a>
+          <a class="link--external" href="https://www.google.com/maps/search/?api=1&amp;query=43.6846,-79.3653" target="_blank" rel="noopener">Open in Google Maps<svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v6H4V6h6"/></svg><span class="visually-hidden"> (opens in a new tab)</span></a>
+          <p class="price-block__verified">Permit rules verified <time datetime="2026-09-01">1 September 2026</time> · Source: <a class="link--external" href="https://www.evergreen.ca/" target="_blank" rel="noopener">Evergreen: photography and filming<svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v6H4V6h6"/></svg><span class="visually-hidden"> (opens in a new tab)</span></a></p>
         </div>
-        <div class="ds-example__caption"><span>Alert and summary links inherit the tone's text colour and keep the underline. Footer links are muted with no underline, because the footer nav identifies them; they underline on hover.</span></div>
+        <div class="ds-example__caption"><span>The episode link for The Junction Loft, the directions link and permit source for Evergreen Brick Works. Every external link opens a new tab with <code>rel="noopener"</code>.</span></div>
+        <p class="ds-note">Known gap: <code>components.css</code> makes every <code>svg</code> a block, and <code>.link--external .icon</code> only sizes the arrow, so the arrow drops onto its own line, as above and in the spot mocks. A fix keeping it inline after the last word is proposed; until it lands, don't work round it with inline styles.</p>
+        <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;a class="link--external" href="https://www.youtube.com/watch?v=Jx7Lq2pT9aE" target="_blank" rel="noopener"&gt;Watch on YouTube
+  &lt;svg class="icon" aria-hidden="true" viewBox="0 0 24 24"&gt;&lt;path d="M14 4h6v6M20 4l-9 9M18 14v6H4V6h6"/&gt;&lt;/svg&gt;
+  &lt;span class="visually-hidden"&gt; (opens in a new tab)&lt;/span&gt;&lt;/a&gt;</code></pre></details>
+      </div>
+
+      <h3>External, drawn as a button</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas">
+          <a class="btn btn--primary" href="https://thejunctionloft.example/book" target="_blank" rel="noopener">Book on the studio's site<svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v6H4V6h6"/></svg><span class="visually-hidden"> (opens in a new tab)</span></a>
+        </div>
+        <div class="ds-example__caption"><span>The summary panel's main action on <code>pages/studio/default</code>. It is still a link: <kbd>Enter</kbd> follows it, and the browser's "open in new tab" works. See <a href="button.html#variants">button</a>.</span></div>
+      </div>
+
+      <h3>Back link (no mock uses it yet)</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas">
+          <a class="eyebrow" href="#variants"><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><path d="m15 6-6 6 6 6"/></svg>Studios</a>
+        </div>
+        <div class="ds-example__caption"><span><code>.eyebrow</code>: muted, no underline until hover, 44px tall. ShotThere's review pages use the breadcrumb for the same route.</span></div>
       </div>
     </section>
 
     <section class="ds-section" id="sizes"><h2><a href="#sizes">Sizes</a></h2>
-      <p>Inline links take the size of their text: <code>--text-body</code> in forms, <code>--text-prose</code> (18px) on the about, privacy and terms pages, <code>--text-body-sm</code> in help and status lines. Standalone links use <code>--text-label</code> at <code>--font-size-md</code>. Back links use <code>--text-body-sm</code>. Every standalone and back link is at least 44px tall, whatever its text size.</p>
+      <p>Links take the size of their context. Inline links match the sentence (<code>--text-body</code>, or <code>--text-body-sm</code> in a verified line). Standalone links use <code>--text-label</code> at <code>--font-size-md</code> in a 44px box. External links take their parent's size; the arrow scales with it at 0.9em.</p>
       <div class="ds-example">
         <div class="ds-example__canvas ds-example__canvas--stack">
-          <p class="text-sm">Signed in as leah.mohammed@sweethand.example · Not you?</p>
-          <p>Shown on your listing card. How we use your area</p>
-          <div class="prose"><p>Write to <a href="mailto:privacy@sweethand.example">privacy@sweethand.example</a>.</p></div>
+          <p class="text-caption">Small: Source: <a class="link--external" href="https://www.toronto.ca/" target="_blank" rel="noopener">City of Toronto: filming and photography in parks<svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v6H4V6h6"/></svg><span class="visually-hidden"> (opens in a new tab)</span></a></p>
+          <p>Body: tell us at <a href="mailto:corrections@shotthere.ca">corrections@shotthere.ca</a></p>
+          <a class="link--standalone" href="#sizes">Read the full review<span class="visually-hidden"> of Leslieville Daylight Studio</span></a>
         </div>
-        <div class="ds-example__caption"><span>14px status line, 16px body, 18px prose: the link follows its sentence.</span></div>
       </div>
     </section>
 
@@ -194,88 +207,82 @@ For privacy questions, see the &lt;a href="/privacy"&gt;privacy notice&lt;/a&gt;
       <p>Hover and focus are forced with <code>data-state</code>; real pages get them from <code>:hover</code> and <code>:focus-visible</code>.</p>
       <div class="ds-matrix"><table>
         <caption class="visually-hidden">Link states by variant</caption>
-        <thead><tr><th scope="col">Variant</th><th scope="col">Default</th><th scope="col">Hover</th><th scope="col">Focus</th><th scope="col">Visited</th></tr></thead>
+        <thead><tr><th scope="col">Variant</th><th scope="col">Default</th><th scope="col">Hover</th><th scope="col">Focus</th><th scope="col">Active</th><th scope="col">Visited</th><th scope="col">Disabled</th></tr></thead>
         <tbody>
-          <tr><th scope="row">Inline</th><td>privacy notice</td><td>privacy notice</td><td>privacy notice</td><td>privacy notice</td></tr>
-          <tr><th scope="row">Standalone</th><td>Forgot your password?</td><td>Forgot your password?</td><td>Forgot your password?</td><td>Forgot your password?</td></tr>
-          <tr><th scope="row">External</th><td><a class="link--standalone link--external" href="https://www.priv.gc.ca/">Privacy Commissioner<span class="visually-hidden"> (another website)</span><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M14 5h5v5M19 5l-8 8M17 14v5H5V7h5"/></svg></a></td><td><a class="link--standalone link--external" href="https://www.priv.gc.ca/" data-state="hover">Privacy Commissioner<span class="visually-hidden"> (another website)</span><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M14 5h5v5M19 5l-8 8M17 14v5H5V7h5"/></svg></a></td><td><a class="link--standalone link--external" href="https://www.priv.gc.ca/" data-state="focus">Privacy Commissioner<span class="visually-hidden"> (another website)</span><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M14 5h5v5M19 5l-8 8M17 14v5H5V7h5"/></svg></a></td><td><a class="link--standalone link--external" href="https://www.priv.gc.ca/" data-state="visited">Privacy Commissioner<span class="visually-hidden"> (another website)</span><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M14 5h5v5M19 5l-8 8M17 14v5H5V7h5"/></svg></a></td></tr>
-          <tr><th scope="row">Back link</th><td><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></svg>Caterers</td><td><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></svg>Caterers</td><td><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></svg>Caterers</td><td><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></svg>Caterers</td></tr>
-          <tr><th scope="row">Footer</th><td><span class="site-footer" style="margin: 0; padding: 0;">Terms</span></td><td><span class="site-footer" style="margin: 0; padding: 0;">Terms</span></td><td><span class="site-footer" style="margin: 0; padding: 0;">Terms</span></td><td><span class="site-footer" style="margin: 0; padding: 0;">Terms</span></td></tr>
+          <tr><th scope="row">Inline</th><td><a href="#states">corrections@shotthere.ca</a></td><td><a href="#states" data-state="hover">corrections@shotthere.ca</a></td><td><a href="#states" data-state="focus">corrections@shotthere.ca</a></td><td><span class="ds-na">As hover</span></td><td><span class="ds-na">Not styled</span></td><td><span class="ds-na">Plain text instead</span></td></tr>
+          <tr><th scope="row">Standalone</th><td><a class="link--standalone" href="#states">Change studios</a></td><td><a class="link--standalone" href="#states" data-state="hover">Change studios</a></td><td><a class="link--standalone" href="#states" data-state="focus">Change studios</a></td><td><span class="ds-na">As hover</span></td><td><span class="ds-na">Not styled</span></td><td><span class="ds-na">Plain text instead</span></td></tr>
+          <tr><th scope="row">External</th><td><a class="link--external" href="https://www.youtube.com/watch?v=Ev7Bw3kGh2Q" target="_blank" rel="noopener">Watch on YouTube<svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v6H4V6h6"/></svg><span class="visually-hidden"> (opens in a new tab)</span></a></td><td><a class="link--external" href="https://www.youtube.com/watch?v=Ev7Bw3kGh2Q" target="_blank" rel="noopener" data-state="hover">Watch on YouTube<svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v6H4V6h6"/></svg><span class="visually-hidden"> (opens in a new tab)</span></a></td><td><a class="link--external" href="https://www.youtube.com/watch?v=Ev7Bw3kGh2Q" target="_blank" rel="noopener" data-state="focus">Watch on YouTube<svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v6H4V6h6"/></svg><span class="visually-hidden"> (opens in a new tab)</span></a></td><td><span class="ds-na">As hover</span></td><td><span class="ds-na">Not styled</span></td><td><span class="ds-na">Plain text instead</span></td></tr>
+          <tr><th scope="row">Back link</th><td><a class="eyebrow" href="#states">Studios</a></td><td><a class="eyebrow" href="#states" data-state="hover">Studios</a></td><td><a class="eyebrow" href="#states" data-state="focus">Studios</a></td><td><span class="ds-na">As hover</span></td><td><span class="ds-na">Not styled</span></td><td><span class="ds-na">Plain text instead</span></td></tr>
         </tbody>
       </table></div>
       <h3>Both themes</h3>
       <div class="ds-themes">
-        <div data-theme="light"><div class="ds-example__canvas ds-example__canvas--stack" style="padding: 0;"><p>See the privacy notice, or how we use your area.</p><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></svg>CaterersAll enquiries</div></div>
-        <div data-theme="dark"><div class="ds-example__canvas ds-example__canvas--stack" style="padding: 0;"><p>See the privacy notice, or how we use your area.</p><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></svg>CaterersAll enquiries</div></div>
+        <div data-theme="light"><div class="ds-example__canvas ds-example__canvas--stack" style="padding: 0;"><p>Tell us at <a href="mailto:corrections@shotthere.ca">corrections@shotthere.ca</a></p><a class="link--standalone" href="#states">Change studios</a><a class="link--external" href="https://www.youtube.com/watch?v=Jx7Lq2pT9aE" target="_blank" rel="noopener">Watch on YouTube<svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v6H4V6h6"/></svg><span class="visually-hidden"> (opens in a new tab)</span></a></div></div>
+        <div data-theme="dark"><div class="ds-example__canvas ds-example__canvas--stack" style="padding: 0;"><p>Tell us at <a href="mailto:corrections@shotthere.ca">corrections@shotthere.ca</a></p><a class="link--standalone" href="#states">Change studios</a><a class="link--external" href="https://www.youtube.com/watch?v=Jx7Lq2pT9aE" target="_blank" rel="noopener">Watch on YouTube<svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v6H4V6h6"/></svg><span class="visually-hidden"> (opens in a new tab)</span></a></div></div>
       </div>
       <ul>
-        <li><b>Visited</b> is deliberately not styled: links are navigation within a small product, and a purple or faded link would break the ink look. Pages that need "seen" use real state instead: inbox rows show unread with a dot and a hidden "Unread." label.</li>
-        <li><b>Active</b> (pressed) has no separate look; navigation follows immediately. <b>Disabled</b> does not exist: a link that cannot go anywhere is plain text.</li>
-        <li><b>Current page</b>: don't link to the page you are on. Navigation components (<a href="site-header.html">site header</a>, side nav) mark theirs with <code>aria-current="page"</code> and their own style.</li>
+        <li><b>Visited</b> is deliberately not styled: a returning visitor comparing studios opens the same reviews again and again, and a faded link would read as unavailable.</li>
+        <li><b>Active</b> has no separate look; navigation follows at once. <b>Disabled</b> does not exist: a link that cannot go anywhere is plain text.</li>
+        <li><b>Current page</b>: don't link to the page you are on. The <a href="breadcrumb.html">breadcrumb</a> shows the current page as text with <code>aria-current="page"</code>; the <a href="site-header.html">site header</a> marks its current section.</li>
       </ul>
     </section>
 
     <section class="ds-section" id="responsive"><h2><a href="#responsive">Responsive behaviour</a></h2>
       <ul>
-        <li>Inline links wrap with their sentence. Long unbroken strings (email addresses such as kendra@pelauhouse.example in a 320px menu) need <code>overflow-wrap: anywhere</code> on the container, as <code>.account-menu__email</code> already does.</li>
-        <li>Back links with <code>.until-lg</code> show below 62rem only. From LG the side nav (dashboard, operator console) or the list column (inbox) is on screen and gives the same route. Back links without it (caterer page "Caterers", operator record "Review queue") show at every width.</li>
-        <li>Section-head links (<code>.caterer-section__head</code>) wrap under their heading when space runs out, and keep their 44px height.</li>
-        <li>Footer links wrap in rows with <code>--space-6</code> between them, each 44px tall.</li>
+        <li>Inline links wrap with their sentence. A long unbroken string (an email address, a URL) needs <code>overflow-wrap: anywhere</code> on its container so it never forces a sideways scroll at 320px.</li>
+        <li>Standalone links keep their 44px box at every width and wrap their label if it is longer than the column.</li>
+        <li>On review pages the episode's "Watch on YouTube" sits beside the episode title in <code>.episode__links</code>, which wraps under it on phones.</li>
+        <li>An external link's arrow belongs after the last word; keep the label, icon and hidden suffix together with no whitespace between them. Today it wraps onto its own line (see the known gap under External).</li>
       </ul>
     </section>
 
     <section class="ds-section" id="theming"><h2><a href="#theming">Theming</a></h2>
-      <p>Links read <code>--color-fg-link</code> (ink: stone-950 in light, stone-100 in dark) and <code>--color-fg-link-hover</code> (pepper-600, pepper-300 in dark). The underline uses <code>--border-width-hairline</code>, then <code>--border-width-thick</code> on hover. Back links and footer links read <code>--color-fg-muted</code> and go to <code>--color-fg-default</code> on hover. In alerts, the error summary and the footer, <code>color: inherit</code> hands the link its container's tone. Hover keeps that colour and only thickens the underline.</p>
-      <p>Pepper on hover is the one place a link uses the accent. It is momentary, so it never competes with a selected filter. To re-skin, override the two semantic link tokens in a theme; don't add colours to <code>a</code>.</p>
+      <p>Links read <code>--color-fg-link</code> and <code>--color-fg-link-hover</code>; the back link reads <code>--color-fg-muted</code> and <code>--color-fg-default</code>. In dark the link becomes light stone and its hover a light accent red. There are no component tokens; inside an <a href="alert.html">alert</a>, a <a href="toast.html">toast</a> or the <a href="footer.html">footer</a> links inherit that container's colour and keep the underline.</p>
     </section>
 
     <section class="ds-section" id="accessibility"><h2><a href="#accessibility">Accessibility</a></h2>
       <h3>Role and pattern</h3>
-      <p>Native <code>&lt;a href&gt;</code> (<a href="https://www.w3.org/WAI/ARIA/apg/patterns/link/">APG Link</a>). Never a <code>&lt;span&gt;</code> with a click handler, never an <code>&lt;a&gt;</code> without <code>href</code>. A link that only performs an action is a button.</p>
+      <p>Native <code>&lt;a href&gt;</code> (<a href="https://www.w3.org/WAI/ARIA/apg/patterns/link/">APG Link</a>). Never a <code>&lt;span&gt;</code> with a click handler, and never <code>role="link"</code> on a button.</p>
       <h3>Keyboard</h3>
-      <table class="ds-table ds-keys"><thead><tr><th scope="col">Key</th><th scope="col">Action</th></tr></thead><tbody>
-        <tr><td><kbd>Tab</kbd> / <kbd>Shift</kbd>+<kbd>Tab</kbd></td><td>Moves to and from the link in DOM order.</td></tr>
-        <tr><td><kbd>Enter</kbd></td><td>Follows the link. Space scrolls the page (it does not activate links).</td></tr>
-        <tr><td>Browser shortcuts</td><td>Open in new tab, copy link address: these work because it is a real link.</td></tr>
-      </tbody></table>
+      <div class="ds-table-wrap"><table class="ds-table ds-keys"><thead><tr><th scope="col">Key</th><th scope="col">Action</th></tr></thead><tbody>
+        <tr><td><kbd>Tab</kbd> / <kbd>Shift</kbd>+<kbd>Tab</kbd></td><td>Moves focus to and from the link in DOM order.</td></tr>
+        <tr><td><kbd>Enter</kbd></td><td>Follows the link. External links open a new tab.</td></tr>
+      </tbody></table></div>
       <h3>Focus</h3>
-      <p>The shared 2px pepper ring with a 3px offset and <code>--radius-sm</code> corners. On standalone and back links it wraps the whole 44px box. An error-summary link moves focus to its field (<code>href="#name"</code> with the input's id), so the field's label and error are read next.</p>
+      <p>The shared ring (2px, 3px offset, <code>--color-focus-ring</code>) on <code>:focus-visible</code>, with a small radius so it hugs a wrapped inline link.</p>
       <h3>Labelling</h3>
-      <p>The link text is the name and makes sense on its own (WCAG 2.4.4): "Read the privacy notice", "Go to photos", "Review the name change". External links add hidden text "(another website)". ShotThere does not open new tabs; if one ever must, say "(opens in a new tab)" too. Don't give a link a <code>title</code> or an <code>aria-label</code> that differs from its visible words.</p>
+      <p>The text is the name, and it must make sense out of context: "Read the full review" adds the studio in hidden text ("of Kensington Window Room"). External links add " (opens in a new tab)" in hidden text, since the arrow is hidden from assistive technology.</p>
       <h3>Contrast</h3>
       <div class="ds-example__canvas ds-example__canvas--stack" style="padding: 0; gap: var(--space-2);">
-        <div class="ds-pair"><span>Link on canvas</span><span class="ds-pair__ratio" data-contrast="--color-fg-link|--color-bg-canvas" data-min="4.5"></span></div>
-        <div class="ds-pair"><span>Link hover on surface</span><span class="ds-pair__ratio" data-contrast="--color-fg-link-hover|--color-bg-surface" data-min="4.5"></span></div>
-        <div class="ds-pair"><span>Back link and footer link</span><span class="ds-pair__ratio" data-contrast="--color-fg-muted|--color-bg-canvas" data-min="4.5"></span></div>
-        <div class="ds-pair"><span>Link in a warning banner</span><span class="ds-pair__ratio" data-contrast="--color-warning-fg|--color-warning-bg" data-min="4.5"></span></div>
-        <div class="ds-pair"><span>Link in the error summary</span><span class="ds-pair__ratio" data-contrast="--color-danger-fg|--color-danger-bg" data-min="4.5"></span></div>
-        <div class="ds-pair"><span>Focus ring on canvas</span><span class="ds-pair__ratio" data-contrast="--color-focus-ring|--color-bg-canvas" data-min="3"></span></div>
+        <div class="ds-pair"><span>Link on page</span><span class="ds-pair__ratio" data-contrast="--color-fg-link|--color-bg-canvas" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Link on a card</span><span class="ds-pair__ratio" data-contrast="--color-fg-link|--color-bg-surface" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Hovered link on page</span><span class="ds-pair__ratio" data-contrast="--color-fg-link-hover|--color-bg-canvas" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Hovered link on a card</span><span class="ds-pair__ratio" data-contrast="--color-fg-link-hover|--color-bg-surface" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Back link and verified line</span><span class="ds-pair__ratio" data-contrast="--color-fg-muted|--color-bg-canvas" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Focus ring</span><span class="ds-pair__ratio" data-contrast="--color-focus-ring|--color-bg-canvas" data-min="3"></span></div>
       </div>
-      <p>Inline links are ink like the text around them, so the underline identifies them, not colour (WCAG 1.4.1). Never remove it in running text.</p>
+      <p>Links are told apart from text by the underline, not by colour alone (WCAG 1.4.1).</p>
       <h3>Motion</h3>
-      <p>None at rest; hover changes colour and underline thickness instantly. Smooth scrolling to an in-page target turns off with reduced motion (<code>scroll-behavior: auto</code>).</p>
+      <p>None. The colour and underline change instantly on hover.</p>
       <h3>Touch</h3>
-      <p>Standalone and back links are 44px tall. Inline links in sentences are exempt from WCAG 2.5.8, but don't place two inline links side by side with only a space between them. A link that stands alone in a paragraph ("Forgot your password?") is a standalone link, not an inline one.</p>
+      <p>Standalone and back links are at least 44px tall (<code>--target-comfortable</code>). Inline links are exempt from target size because they sit in a sentence (WCAG 2.5.8); keep at least one word between two inline links.</p>
     </section>
 
     <section class="ds-section" id="content"><h2><a href="#content">Content</a></h2>
       <ul>
-        <li>Say where it goes, in sentence case: "Read the privacy notice", "Go to photos", "View your page", "Upload a new certificate". Never "Click here", "Learn more" or a bare URL.</li>
-        <li>Error-summary links repeat the field's error exactly: "Enter a business name of 2 to 80 characters".</li>
-        <li>Back links name the destination only, because the chevron already says "back": "Caterers", "Dashboard", "Inbox". Not "Back to inbox".</li>
-        <li>Questions are fine when they are the task: "Forgot your password?", "Not you?".</li>
-        <li>Name external organisations in full the first time: "Office of the Privacy Commissioner of Canada".</li>
+        <li>Say where it goes, in sentence case: "Read the full review", "Change studios", "Watch on YouTube", "Open in Google Maps". Never "Click here", "More" or a bare URL.</li>
+        <li>Name an external source by its owner and topic: "Evergreen: photography and filming", "City of Toronto: filming and photography in parks", "Distillery District: filming and photography".</li>
+        <li>Show an email address in full as its own text: "corrections@shotthere.ca".</li>
+        <li>A link drawn as a button keeps a verb phrase: "Book on the studio's site", "Browse studios".</li>
       </ul>
     </section>
 
     <section class="ds-section" id="do-dont"><h2><a href="#do-dont">Do and don't</a></h2>
       <div class="ds-dodont">
-        <figure class="ds-do"><div class="ds-example__canvas"><p>Accepted Thu 1 Oct. Read the privacy notice</p></div><figcaption>The link text says where it goes.</figcaption></figure>
-        <figure class="ds-dont"><div class="ds-example__canvas"><p>To read the privacy notice, click here.</p></div><figcaption>"Click here" means nothing in a list of links.</figcaption></figure>
-        <figure class="ds-do"><div class="ds-example__canvas">Forgot your password?</div><figcaption>A link on its own line is standalone: a 44px target.</figcaption></figure>
-        <figure class="ds-dont"><div class="ds-example__canvas"><p class="text-sm">Forgot your password?</p></div><figcaption>A bare link alone in a paragraph is only as tall as its line (about 21px). The sign-in and dashboard mocks did this.</figcaption></figure>
-        <figure class="ds-do"><div class="ds-example__canvas"><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></svg>Inbox</div><figcaption>The back link names the destination.</figcaption></figure>
-        <figure class="ds-dont"><div class="ds-example__canvas"><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></svg>Back to inbox</div><figcaption>"Back to" repeats the chevron (28 mocks; 117 others name the destination only).</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas"><a class="link--external" href="https://www.youtube.com/watch?v=Ev7Bw3kGh2Q" target="_blank" rel="noopener">Watch on YouTube<svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v6H4V6h6"/></svg><span class="visually-hidden"> (opens in a new tab)</span></a></div><figcaption>Every external link shows the arrow, so sighted users know a new tab opens too.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas"><a class="link--external" href="https://www.youtube.com/watch?v=Ev7Bw3kGh2Q" target="_blank" rel="noopener">Watch on YouTube<span class="visually-hidden"> (opens in a new tab)</span></a></div><figcaption>Don't drop the arrow (seven review mocks did): only screen-reader users would be warned.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas"><a class="link--standalone" href="#do-dont">Read the full review<span class="visually-hidden"> of Riverside Rooftop Studio</span></a></div><figcaption>Repeated links name their target in hidden text, so a links list reads "Read the full review of Riverside Rooftop Studio".</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas"><a class="link--standalone" href="#do-dont">Read more</a></div><figcaption>Don't use a vague label that repeats identically under every guide entry.</figcaption></figure>
       </div>
     </section>
 
@@ -285,49 +292,52 @@ For privacy questions, see the &lt;a href="/privacy"&gt;privacy notice&lt;/a&gt;
         <tbody>
           <tr><td>Link</td><td><code>--color-fg-link</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-link" data-swatch></i><span data-token="--color-fg-link"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-link" data-swatch></i><span data-token="--color-fg-link"></span></span></td></tr>
           <tr><td>Link, hover</td><td><code>--color-fg-link-hover</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-link-hover" data-swatch></i><span data-token="--color-fg-link-hover"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-link-hover" data-swatch></i><span data-token="--color-fg-link-hover"></span></span></td></tr>
-          <tr><td>Back link, footer link</td><td><code>--color-fg-muted</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-muted" data-swatch></i><span data-token="--color-fg-muted"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-muted" data-swatch></i><span data-token="--color-fg-muted"></span></span></td></tr>
-          <tr><td>Back link, hover</td><td><code>--color-fg-default</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-default" data-swatch></i><span data-token="--color-fg-default"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-default" data-swatch></i><span data-token="--color-fg-default"></span></span></td></tr>
-          <tr><td>Focus ring</td><td><code>--color-focus-ring</code></td><td><span data-token="--color-focus-ring"></span></td><td><span data-theme="dark" data-token="--color-focus-ring"></span></td></tr>
+          <tr><td>Back link</td><td><code>--color-fg-muted</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-muted" data-swatch></i><span data-token="--color-fg-muted"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-muted" data-swatch></i><span data-token="--color-fg-muted"></span></span></td></tr>
+          <tr><td>Focus ring</td><td><code>--color-focus-ring</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-focus-ring" data-swatch></i><span data-token="--color-focus-ring"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-focus-ring" data-swatch></i><span data-token="--color-focus-ring"></span></span></td></tr>
           <tr><td>Underline / hover underline</td><td><code>--border-width-hairline</code> / <code>--border-width-thick</code></td><td colspan="2"><span data-token="--border-width-hairline"></span> / <span data-token="--border-width-thick"></span></td></tr>
           <tr><td>Standalone label</td><td><code>--text-label</code> at <code>--font-size-md</code></td><td colspan="2"><span data-token="--text-label"></span></td></tr>
-          <tr><td>Back link text</td><td><code>--text-body-sm</code></td><td colspan="2"><span data-token="--text-body-sm"></span></td></tr>
-          <tr><td>Target height</td><td><code>--target-comfortable</code></td><td colspan="2"><span data-token="--target-comfortable"></span></td></tr>
+          <tr><td>Standalone height</td><td><code>--target-comfortable</code></td><td colspan="2"><span data-token="--target-comfortable"></span></td></tr>
           <tr><td>Icon gap</td><td><code>--space-1</code></td><td colspan="2"><span data-token="--space-1"></span></td></tr>
         </tbody>
       </table></div>
     </section>
 
     <section class="ds-section" id="code"><h2><a href="#code">Code</a></h2>
-      <pre><code>&lt;a class="eyebrow until-lg" href="/dashboard"&gt;
-  &lt;svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"&gt;&lt;path d="m15 18-6-6 6-6"/&gt;&lt;/svg&gt;Dashboard
-&lt;/a&gt;
-&lt;p&gt;&lt;a class="link--standalone" href="/forgot-password"&gt;Forgot your password?&lt;/a&gt;&lt;/p&gt;</code></pre>
-      <table class="ds-table"><thead><tr><th scope="col">Class / attribute</th><th scope="col">Effect</th></tr></thead><tbody>
-        <tr><td><code>a</code></td><td>Inline link: ink, hairline underline, pepper and thick underline on hover.</td></tr>
-        <tr><td><code>.link--standalone</code></td><td>Inline-flex, 44px tall, label font; icon gap <code>--space-1</code>.</td></tr>
-        <tr><td><code>.link--external</code></td><td>Sizes the trailing arrow to 0.9em; pair with hidden "(another website)".</td></tr>
-        <tr><td><code>.eyebrow</code></td><td>Back link: muted, small, no underline until hover, 44px tall.</td></tr>
-        <tr><td><code>.until-lg</code></td><td>Hides the back link from 62rem where the side nav takes over.</td></tr>
+      <pre><code>&lt;a class="link--standalone" href="/studios?compare=the-junction-loft,leslieville-daylight-studio"&gt;Change studios&lt;/a&gt;
+
+&lt;a class="link--external" href="https://www.google.com/maps/search/?api=1&amp;amp;query=43.6846,-79.3653" target="_blank" rel="noopener"&gt;Open in Google Maps
+  &lt;svg class="icon" aria-hidden="true" viewBox="0 0 24 24"&gt;&lt;path d="M14 4h6v6M20 4l-9 9M18 14v6H4V6h6"/&gt;&lt;/svg&gt;
+  &lt;span class="visually-hidden"&gt; (opens in a new tab)&lt;/span&gt;&lt;/a&gt;</code></pre>
+      <div class="ds-table-wrap"><table class="ds-table"><thead><tr><th scope="col">Class / attribute</th><th scope="col">Effect</th></tr></thead><tbody>
+        <tr><td><code>a</code></td><td>Inline link: ink, underlined, accent red and thicker underline on hover.</td></tr>
+        <tr><td><code>.link--standalone</code></td><td>Label weight, inline-flex, 44px tall.</td></tr>
+        <tr><td><code>.link--external</code> + <code>target="_blank" rel="noopener"</code></td><td>Sizes the trailing arrow to 0.9em. Add the hidden " (opens in a new tab)".</td></tr>
+        <tr><td><code>.eyebrow</code></td><td>Muted back link, underlined on hover, 44px tall. No mock uses it yet.</td></tr>
         <tr><td><code>data-state="hover|focus"</code></td><td>Documentation and mocks only.</td></tr>
-      </tbody></table>
+      </tbody></table></div>
     </section>
 
     <section class="ds-section" id="sources"><h2><a href="#sources">Sources</a></h2>
       <p>Extracted from these mocks:</p>
       <ul>
-        <li>pages/terms/default and pages/privacy/default (inline and email links in prose)</li>
-        <li>pages/caterer/default (back link "Caterers")</li>
-        <li>pages/profile-details/invalid (back link with <code>.until-lg</code>, error summary links)</li>
-        <li>pages/dashboard/default ("All enquiries" beside a section heading)</li>
-        <li>pages/sign-in/default ("Forgot your password?")</li>
-        <li>pages/thread/default ("View caterer"; "Back to inbox")</li>
-        <li>notifications/profile-banner/warning ("Go to photos" in a banner)</li>
-        <li>pages/caterers/default (footer links)</li>
+        <li><a href="../../mocks/pages/editorial-policy/default.html">pages/editorial-policy/default</a> (inline email link)</li>
+        <li><a href="../../mocks/pages/guide/default.html">pages/guide/default</a> ("Read the full review" with hidden studio names)</li>
+        <li><a href="../../mocks/pages/compare/default.html">pages/compare/default</a> ("Change studios")</li>
+        <li><a href="../../mocks/pages/spot/default.html">pages/spot/default</a> and <a href="../../mocks/pages/spot/map-failed.html">pages/spot/map-failed</a> (permit source, "Open in Google Maps", "Watch on YouTube")</li>
+        <li><a href="../../mocks/pages/spot/stale-permit.html">pages/spot/stale-permit</a> ("Distillery District: filming and photography")</li>
+        <li><a href="../../mocks/pages/studio/default.html">pages/studio/default</a> ("Watch on YouTube", "Book on the studio's site" drawn as a button)</li>
+        <li><a href="../../mocks/dialogs/map-popup/default.html">dialogs/map-popup/default</a> ("View the review")</li>
       </ul>
-      <p>Drift fixed during extraction: standalone links ("All enquiries", "Forgot your password?", "View caterer", "Public page", "Not you?") were bare <code>&lt;a&gt;</code> with line-height targets; they now use <code>.link--standalone</code>, which the mocks never used. Back links said "Back to inbox" or "Back to enquiries" in 28 mocks and named the destination in 117; the system names the destination. The privacy page names the Office of the Privacy Commissioner of Canada without linking it; the external link is the documented fix. The account page says "Privacy notice version 2026-03, accepted Sat 14 Mar", but the README's placeholder is version 1.0 dated Thu 1 Oct 2026; this page uses the README's.</p>
+      <p>Drift fixed during extraction:</p>
+      <ul>
+        <li>"Watch on YouTube" carries <code>.link--external</code> and the hidden "(opens in a new tab)" but no arrow in seven mocks (studio/default, playing, in-compare, media-failed; spot/default, map-failed, no-rain-backup), while every other external link shows it. The system always shows the arrow.</li>
+        <li>The map popup's "View the review" is a bare inline <code>&lt;a&gt;</code> on its own line, about 24px tall. As the popup's only way on it should be <code>.link--standalone</code> (44px).</li>
+        <li>The footer's "YouTube channel" opens a new tab with no arrow; the <a href="footer.html">footer</a> page decides its treatment.</li>
+        <li>Not fixed: the external arrow renders on its own line because <code>svg</code> is <code>display: block</code> and nothing in <code>.link--external</code> overrides it. This may be why "Watch on YouTube" dropped the arrow. A CSS rule is proposed.</li>
+      </ul>
     </section>
 
-    <footer class="ds-footer"><span>ShotThere design system · extracted from docs/mocks on 10 October 2026</span><a href="#top">Back to top</a></footer>
+    <footer class="ds-footer"><span>ShotThere design system · extracted from <a href="../../mocks/index.html">docs/mocks</a> on 13 October 2026</span><a href="#top">Back to top</a></footer>
   </main>
 </div>
 <script src="../assets/ds.js"></script>
