@@ -26,6 +26,8 @@ export interface StudioDetailDto {
   episode: EpisodeDto | null;
   /** The Open Graph image URL, or null when none was made. */
   ogImageUrl: string | null;
+  /** The time of the latest publish (ICD OI-4). */
+  reviewedAt: string;
   /** Published guides that include the studio. */
   featuredIn: GuideLinkDto[];
 }

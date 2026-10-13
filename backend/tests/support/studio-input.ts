@@ -42,7 +42,6 @@ export function aStudioInput(overrides: Record<string, unknown> = {}): Record<st
     scoreCondition: 5,
     disclosure: 'paid_in_full',
     disclosureProvider: null,
-    reviewedAt: '2026-10-01',
     episodeTitle: null,
     fees: [{ name: 'Cleaning', amount: 25, mandatory: true }],
     gear: [{ name: 'Profoto B10', category: 'lights', quantity: 2, included: true, extraCost: null }],

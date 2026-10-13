@@ -41,11 +41,10 @@ export class PrismaStudioRepository implements StudioRepository {
   }
 
   async save(studio: StudioRecord): Promise<void> {
-    const { id, fees, gear, images, priceVerifiedAt, reviewedAt, ...fields } = studio;
+    const { id, fees, gear, images, priceVerifiedAt, ...fields } = studio;
     const data = {
       ...fields,
       priceVerifiedAt: fromIsoDate(priceVerifiedAt),
-      reviewedAt: reviewedAt ? fromIsoDate(reviewedAt) : null,
     };
     await this.prisma.$transaction([
       this.prisma.studio.upsert({ where: { id }, create: { id, ...data }, update: data }),
@@ -95,7 +94,6 @@ function toStudioRecord(row: StudioRow): StudioRecord {
     usableWidthM: toNumber(row.usableWidthM),
     usableDepthM: toNumber(row.usableDepthM),
     ceilingHeightM: toNumber(row.ceilingHeightM),
-    reviewedAt: row.reviewedAt ? toIsoDate(row.reviewedAt) : null,
     fees: row.fees.map((fee) => ({ name: fee.name, amount: fee.amount.toNumber(), mandatory: fee.mandatory })),
     gear: row.gear.map((item) => ({
       name: item.name,

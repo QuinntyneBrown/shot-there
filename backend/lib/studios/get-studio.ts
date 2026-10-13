@@ -73,6 +73,7 @@ export async function getStudio(slug: string): Promise<StudioDetailDto | null> {
     episode: studio.videoId ? { videoId: studio.videoId, title: studio.episodeTitle } : null,
     ogImageUrl: studio.ogImageUrl,
     featuredIn: await listGuidesForStudio(studio.id),
+    reviewedAt: (studio.publishedAt ?? studio.updatedAt).toISOString(),
   };
 }
 

@@ -96,12 +96,13 @@ describe('L2-056 and L2-002 publish a studio', () => {
     expect((await response.json()).missingFields).toEqual(['disclosureProvider']);
   });
 
-  it('Given a draft studio that has no review date, when it is published, then the review date becomes today', async () => {
-    const dependencies = useSignedInOwner({ today: '2026-10-13', studios: [aStudio({ id: 's1', status: 'draft', reviewedAt: null })] });
+  it('Given a draft studio, when it is published, then its public review time is the time of that publish (ICD OI-4)', async () => {
+    const dependencies = useSignedInOwner({ studios: [aStudio({ id: 's1', slug: 'loft', status: 'draft', publishedAt: null })] });
 
     await publish('s1');
 
-    expect((dependencies.studios as InMemoryStudioRepository).rows[0].reviewedAt).toBe('2026-10-13');
+    const page = await getPublicStudio(new Request('http://localhost/api/studios/loft'), { params: Promise.resolve({ slug: 'loft' }) });
+    expect((await page.json()).reviewedAt).toBe(dependencies.clock.now().toISOString());
   });
 
   it('Given a studio featured in a published guide, when it is published, then its page, list, map, comparison, sitemap and that guide are revalidated', async () => {

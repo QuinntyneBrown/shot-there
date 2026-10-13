@@ -134,7 +134,6 @@ model Studio {
   videoId               String?
   episodeTitle          String?
   ogImageUrl            String?
-  reviewedAt            DateTime?       @db.Date
   publishedAt           DateTime?
   createdAt             DateTime        @default(now())
   updatedAt             DateTime        @updatedAt

@@ -133,7 +133,6 @@ export const studioInputSchema = (today: string) =>
     scoreCondition: score(),
     disclosure: optionalEnum(['paid_in_full', 'discounted', 'comped']),
     disclosureProvider: optionalText(200),
-    reviewedAt: pastOrTodayDate(today, 'The review date cannot be in the future').nullable().default(null),
     episodeTitle: optionalText(200),
     videoLink: videoIdField(),
     fees: z.array(studioFeeInputSchema).max(50).default([]),

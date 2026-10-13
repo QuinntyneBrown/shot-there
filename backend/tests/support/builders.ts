@@ -86,7 +86,6 @@ export function aStudio(overrides: Partial<StudioRecord> = {}): StudioRecord {
     videoId: null,
     episodeTitle: null,
     ogImageUrl: null,
-    reviewedAt: '2026-09-01',
     publishedAt: new Date('2026-09-02T12:00:00Z'),
     updatedAt: new Date('2026-09-02T12:00:00Z'),
     fees: [],
