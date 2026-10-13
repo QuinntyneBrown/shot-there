@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Dialog — ShotThere design system</title>
-<meta name="description" content="ShotThere modal dialog: default, destructive, form and success variants, four widths, phone bottom sheet and full-screen enquiry, every state, both themes.">
+<meta name="description" content="ShotThere modal dialog: the admin confirmations (delete, unpublish, discard changes, remove image), the can't-publish-yet list and the add-guide-entry form, with busy, failed, invalid and refused states, phone bottom docking and both themes.">
 <link rel="stylesheet" href="../tokens/tokens.css">
 <link rel="stylesheet" href="../assets/components.css">
 <link rel="stylesheet" href="../assets/ds.css">
@@ -33,34 +33,57 @@
       <li><a href="../components/icon-button.html">Icon button</a></li>
       <li><a href="../components/button-group.html">Button group</a></li>
       <li><a href="../components/link.html">Link</a></li>
+      <li><a href="../components/compare-bar.html">Compare toggle and bar</a></li>
     </ul></details>
     <details open><summary>Inputs</summary><ul>
       <li><a href="../components/form-field.html">Form field</a></li>
       <li><a href="../components/text-field.html">Text field</a></li>
       <li><a href="../components/textarea.html">Textarea</a></li>
       <li><a href="../components/select.html">Select</a></li>
+      <li><a href="../components/combobox.html">Combobox</a></li>
       <li><a href="../components/checkbox.html">Checkbox</a></li>
       <li><a href="../components/radio-group.html">Radio group</a></li>
       <li><a href="../components/file-upload.html">File upload</a></li>
       <li><a href="../components/form-layout.html">Form layout</a></li>
+      <li><a href="../components/signup.html">Email signup</a></li>
     </ul></details>
     <details open><summary>Navigation</summary><ul>
       <li><a href="../components/skip-link.html">Skip link</a></li>
       <li><a href="../components/site-header.html">Site header</a></li>
       <li><a href="../components/footer.html">Footer</a></li>
+      <li><a href="../components/breadcrumb.html">Breadcrumb</a></li>
+      <li><a href="../components/filter.html">Filters</a></li>
     </ul></details>
     <details open><summary>Containers and overlays</summary><ul>
       <li><a href="../components/container.html">Container and grid</a></li>
+      <li><a href="../components/review-layout.html">Review layout</a></li>
+      <li><a href="../components/editor-layout.html">Editor layout</a></li>
       <li><a href="../components/card.html">Card</a></li>
       <li><a href="../components/dialog.html">Dialog</a></li>
       <li><a href="../components/sheet.html">Sheet and drawer</a></li>
+      <li><a href="../components/popover.html">Popover</a></li>
+      <li><a href="../components/lightbox.html">Lightbox</a></li>
       <li><a href="../components/divider.html">Divider</a></li>
     </ul></details>
     <details open><summary>Data display</summary><ul>
+      <li><a href="../components/location-card.html">Location card</a></li>
       <li><a href="../components/table.html">Table</a></li>
+      <li><a href="../components/compare-table.html">Comparison table</a></li>
+      <li><a href="../components/list.html">List rows</a></li>
       <li><a href="../components/description-list.html">Description list</a></li>
+      <li><a href="../components/price-block.html">Price block</a></li>
+      <li><a href="../components/score.html">Score and pips</a></li>
+      <li><a href="../components/shot-grid.html">Shot grid</a></li>
+      <li><a href="../components/video-poster.html">Episode poster</a></li>
+      <li><a href="../components/map.html">Map</a></li>
+      <li><a href="../components/guide-entry.html">Guide entry</a></li>
+      <li><a href="../components/stat-tile.html">Stat tile</a></li>
+      <li><a href="../components/image-manager.html">Image manager</a></li>
+      <li><a href="../components/disclosure.html">Disclosure</a></li>
       <li><a href="../components/badge.html">Badge</a></li>
+      <li><a href="../components/status-label.html">Status label</a></li>
       <li><a href="../components/chip.html">Chip</a></li>
+      <li><a href="../components/tag.html">Tag</a></li>
     </ul></details>
     <details open><summary>Feedback</summary><ul>
       <li><a href="../components/inline-message.html">Inline message</a></li>
@@ -88,343 +111,474 @@
     <header class="ds-header">
       <p class="ds-kicker">Component · Containers and overlays</p>
       <h1>Dialog</h1>
-      <p class="ds-lead">A dialog stops the page for one decision or one short form: send an enquiry, suspend a caterer, remove a photo. On phones it rises from the bottom; the enquiry form fills the screen.</p>
-      <div class="ds-meta"><span class="ds-pill ds-pill--ok">WCAG 2.2 AA</span><span class="ds-pill">Status: stable</span><span class="ds-pill">APG Dialog (Modal)</span><span class="ds-pill"><code>.dialog</code></span></div>
+      <p class="ds-lead">A dialog stops the admin for one decision: delete a draft, unpublish a studio, discard edits, remove a test shot, or pick a guide entry. On phones it docks to the bottom of the screen.</p>
+      <div class="ds-meta"><span class="ds-pill ds-pill--ok">WCAG 2.2 AA</span><span class="ds-pill">Status: stable</span><span class="ds-pill">APG Dialog (Modal)</span><span class="ds-pill"><code>.dialog</code> <code>.dialog__panel</code></span><span class="ds-pill"><code>.backdrop</code></span></div>
       <ul class="ds-toc"><li><a href="#overview">Overview</a></li><li><a href="#anatomy">Anatomy</a></li><li><a href="#variants">Variants</a></li><li><a href="#sizes">Sizes</a></li><li><a href="#states">States</a></li><li><a href="#responsive">Responsive behaviour</a></li><li><a href="#theming">Theming</a></li><li><a href="#accessibility">Accessibility</a></li><li><a href="#content">Content</a></li><li><a href="#do-dont">Do and don't</a></li><li><a href="#tokens">Tokens</a></li><li><a href="#code">Code</a></li><li><a href="#sources">Sources</a></li></ul>
     </header>
 
-<section class="ds-section" id="overview"><h2><a href="#overview">Overview</a></h2>
-      <p>Use a dialog when the person must finish or abandon one focused task before carrying on, and the task is short enough to fit on one panel: a confirmation, a form of up to about six fields, or the result of either. The page behind becomes <code>inert</code> and is dimmed by a backdrop.</p>
+    <section class="ds-section" id="overview"><h2><a href="#overview">Overview</a></h2>
+      <p>Every ShotThere dialog belongs to the administration area: the visitor side of the site never interrupts. Use a dialog when the owner must answer one question before carrying on, and the answer fits on one small panel. The editor behind stays visible for context but is <code>inert</code> and dimmed by a backdrop.</p>
       <ul>
-        <li><b>Default</b>: a confirmation that changes something but is easy to undo. "Approve Auntie Bev's Kitchen?", "Sign out of Safari on iPhone?". The primary is ink.</li>
-        <li><b>Destructive</b>: removes, suspends or deletes. A danger icon in the header and a danger button that names the loss: "Suspend caterer", "Remove photo", "Delete my account".</li>
-        <li><b>Form</b>: collects input. Wider panel (<code>.dialog__panel--form</code>), fields in the body, a submit button in the footer: "Send an enquiry", "Add a dish", "Report this review".</li>
-        <li><b>Success</b>: confirms a task that has a follow-up worth reading. A success icon, one or two sentences and a single "Done" or a next step ("Go to your inbox").</li>
+        <li><b>Destructive confirmation</b>: something is lost. "Delete Corktown Garage Studio?" (L2-061), "Discard changes?" (L2-062), "Remove test shot 2?" (L2-058). The confirm button is danger red and names the loss.</li>
+        <li><b>Reversible confirmation</b>: something changes for visitors but can be undone. "Unpublish The Junction Loft?" (L2-056). The confirm button is ink.</li>
+        <li><b>Acknowledgement</b>: the server refused, and the owner needs to know why. "Can't publish yet" lists the missing fields as links (L2-056.3); "Can't remove this test shot" explains the rule (L2-058.4). One button.</li>
+        <li><b>Form dialog</b>: one short input. "Add an entry" searches published studios and spots with a <a href="combobox.html">combobox</a> (L2-060.4).</li>
       </ul>
       <p>Use something else when:</p>
       <ul>
-        <li>The panel is a long list of choices or links, such as phone filters or the site menu: use a <a href="sheet.html">sheet</a>.</li>
-        <li>The choice is small and should not block the page, such as the cuisine filter on tablets or the account menu: use a popover.</li>
-        <li>Nothing needs deciding, only confirming that something happened ("Photo removed. Undo"): use a <a href="toast.html">toast</a>.</li>
-        <li>The task has steps, sections or more than about six fields, such as registering as a caterer or setting up a profile: use a page with a <a href="form-layout.html">form layout</a>.</li>
+        <li>The panel is navigation or a long set of filters (the site menu, studio and spot filters below 62rem): use a <a href="sheet.html">sheet</a>.</li>
+        <li>The content is photos to page through: use the <a href="lightbox.html">lightbox</a> viewer.</li>
+        <li>The content is a small, non-blocking detail attached to something (a map marker): use a <a href="popover.html">popover</a>.</li>
+        <li>Nothing needs deciding, only confirming that it happened ("Saved", "Unpublished"): use a <a href="toast.html">toast</a>.</li>
+        <li>The task is editing a studio, spot or guide: use the editor page (<a href="editor-layout.html">editor layout</a>). No inline forms in dialogs beyond one field.</li>
       </ul>
     </section>
 
     <section class="ds-section" id="anatomy"><h2><a href="#anatomy">Anatomy</a></h2>
       <div class="ds-anatomy">
         <figure class="ds-anatomy__figure" style="background: var(--color-bg-backdrop);">
-          <div class="dialog__panel" style="animation: none;">
+          <div class="dialog__panel dialog__panel--sm" style="animation: none;">
             <div class="dialog__header">
-              <div class="dialog__icon dialog__icon--danger" aria-hidden="true"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 4 2.5 20h19z"/><path d="M12 10v4M12 17v.5"/></svg></div>
-              <div style="flex: 1;">
-                <h3 class="dialog__title">Suspend Pelau House?</h3>
-                <p class="text-muted" style="margin-top: var(--space-1);">It leaves the listing within a minute. You can reinstate it later.</p>
+              <div class="dialog__heading">
+                <p class="dialog__title">Delete Corktown Garage Studio?</p>
+                <p class="dialog__desc">This deletes the draft and its 2 images. It can't be undone.</p>
               </div>
-              <button class="icon-btn" type="button" aria-label="Close"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+              <button class="btn btn--ghost btn--icon" type="button" aria-label="Close"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
             </div>
-            <div class="dialog__body"><label class="field" for="anat-reason"><span class="field__label">Reason (sent to Kendra)</span><textarea class="textarea" id="anat-reason" rows="2"></textarea></label></div>
-            <div class="dialog__footer"><button class="btn" type="button">Cancel</button><button class="btn btn--danger" type="button">Suspend caterer</button></div>
+            <div class="dialog__footer"><button class="btn" type="button">Cancel</button><button class="btn btn--danger" type="button">Delete studio</button></div>
           </div>
           <span class="ds-callout" style="left: 3%; top: 4%;" aria-hidden="true">1</span>
-          <span class="ds-callout" style="left: 14%; top: 13%;" aria-hidden="true">2</span>
-          <span class="ds-callout" style="left: 26%; top: 13%;" aria-hidden="true">3</span>
-          <span class="ds-callout" style="left: 26%; top: 30%;" aria-hidden="true">4</span>
-          <span class="ds-callout" style="left: 86%; top: 13%;" aria-hidden="true">5</span>
-          <span class="ds-callout" style="left: 14%; top: 55%;" aria-hidden="true">6</span>
-          <span class="ds-callout" style="left: 50%; top: 82%;" aria-hidden="true">7</span>
-          <span class="ds-callout" style="left: 92%; top: 92%;" aria-hidden="true">8</span>
+          <span class="ds-callout" style="left: 12%; top: 18%;" aria-hidden="true">2</span>
+          <span class="ds-callout" style="left: 12%; top: 40%;" aria-hidden="true">3</span>
+          <span class="ds-callout" style="left: 84%; top: 18%;" aria-hidden="true">4</span>
+          <span class="ds-callout" style="left: 52%; top: 74%;" aria-hidden="true">5</span>
+          <span class="ds-callout" style="left: 92%; top: 90%;" aria-hidden="true">6</span>
         </figure>
         <ol class="ds-anatomy__list">
-          <li><div><b>Backdrop</b><small><code>.backdrop</code>: <code>--color-bg-backdrop</code> over the inert page, at <code>--z-overlay</code>. Clicking it does nothing; Escape and Cancel close.</small></div></li>
-          <li><div><b>Header icon (optional)</b><small><code>.dialog__icon--danger|info|success|warning</code>: a 40px tinted circle. Decorative; the title says the same thing.</small></div></li>
-          <li><div><b>Title</b><small><code>.dialog__title</code> in <code>--text-h3</code>, an <code>&lt;h2&gt;</code> referenced by <code>aria-labelledby</code>.</small></div></li>
-          <li><div><b>Description</b><small>One sentence of consequence in <code>.text-muted</code>, referenced by <code>aria-describedby</code>.</small></div></li>
-          <li><div><b>Close</b><small>A 44px <a href="icon-button.html">icon button</a> named "Close". Same as Cancel.</small></div></li>
-          <li><div><b>Body</b><small><code>.dialog__body</code>: fields, checklists, alerts, photos. Padding <code>--space-4 --space-6</code>; scrolls when tall.</small></div></li>
-          <li><div><b>Footer</b><small><code>.dialog__footer</code>: right-aligned, wraps, sticky to the panel bottom. Cancel first, primary last.</small></div></li>
-          <li><div><b>Panel</b><small><code>.dialog__panel</code>: <code>--color-bg-surface-raised</code>, <code>--radius-lg</code> (<code>--radius-xl</code> top corners on phones), <code>--shadow-4</code>, 32rem by default.</small></div></li>
+          <li><div><b>Backdrop</b><small><code>.backdrop</code>: <code>--color-bg-backdrop</code> over the inert page, at <code>--z-overlay</code>. Clicking it does nothing; Escape, Close and Cancel close.</small></div></li>
+          <li><div><b>Title</b><small><code>.dialog__title</code> (<code>--text-h3</code>), an <code>&lt;h2&gt;</code> referenced by <code>aria-labelledby</code>. Phrased as the question, naming the item.</small></div></li>
+          <li><div><b>Description</b><small><code>.dialog__desc</code>: the consequence in one or two sentences, muted, referenced by <code>aria-describedby</code>. Title and description sit in <code>.dialog__heading</code>.</small></div></li>
+          <li><div><b>Close</b><small>A ghost <a href="icon-button.html">icon button</a> (<code>.btn--ghost.btn--icon</code>) named "Close". Same as Cancel; disabled while busy.</small></div></li>
+          <li><div><b>Footer</b><small><code>.dialog__footer</code>: right-aligned, wraps, sticky to the panel bottom. Safe action first, confirm last.</small></div></li>
+          <li><div><b>Panel</b><small><code>.dialog__panel</code>: <code>--color-bg-surface-raised</code>, <code>--radius-lg</code> (<code>--radius-xl</code> top corners when docked on phones), <code>--shadow-4</code>. <code>.dialog__body</code> (not shown) holds lists, alerts, an image row or a field.</small></div></li>
         </ol>
       </div>
     </section>
 
     <section class="ds-section" id="variants"><h2><a href="#variants">Variants</a></h2>
-      <p>The examples below are live dialogs inside a frame, so they lay out exactly as on a page of this width (narrow your window below 36rem to see the bottom sheet). They leave out <code>aria-modal</code> and <code>autofocus</code> so this documentation page stays readable; the code shows the real attributes.</p>
-      <h3>Default</h3>
+      <p>The examples are live dialogs inside a frame, so they lay out exactly as on a page of this width (narrow your window below 36rem to see them dock to the bottom). They leave out <code>aria-modal</code> and <code>autofocus</code> so this page stays usable; the code shows the real attributes.</p>
+
+      <h3>Delete (destructive)</h3>
       <div class="ds-example">
         <div class="ds-example__canvas ds-example__canvas--stack">
           <div class="ds-frame">
-            <div class="ds-frame__page"><p>Profile review · Auntie Bev's Kitchen</p></div>
+            <div class="ds-frame__page"><p>Corktown Garage Studio · Draft · Last saved 11 Oct 2026, 4:12 pm</p></div>
             <div class="backdrop"></div>
             <div class="dialog" role="dialog" aria-labelledby="dv1-title" aria-describedby="dv1-desc">
-              <div class="dialog__panel">
-                <div class="dialog__header">
-                  <div class="dialog__caterer" style="flex: 1; align-items: flex-start;">
-                    <span class="photo"><img src="../assets/img/green-fig-catering.jpg" alt="" width="56" height="56"></span>
-                    <div><h3 class="dialog__title" id="dv1-title">Approve Auntie Bev's Kitchen?</h3><p class="text-muted" id="dv1-desc" style="margin-top: var(--space-1);">The profile appears in the listing within a minute, and Beverley Campbell gets an email.</p></div>
-                  </div>
-                  <button class="icon-btn" type="button" aria-label="Close"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
-                </div>
-                <div class="dialog__body"><ul class="checklist"><li><span class="check check--done" aria-hidden="true"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m5 12 5 5 9-10"/></svg></span>All submission rules pass</li><li><span class="check check--done" aria-hidden="true"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m5 12 5 5 9-10"/></svg></span>Certificate valid until 22 Jan 2030</li></ul></div>
-                <div class="dialog__footer"><button class="btn" type="button">Cancel</button><button class="btn btn--primary" type="button">Approve and publish</button></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="ds-example__caption"><span>From <code>dialogs/approve-profile/default</code>. <code>.dialog__caterer</code> puts the caterer's round photo beside the title instead of an icon. Initial focus: the primary.</span></div>
-        <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;div class="backdrop"&gt;&lt;/div&gt;
-&lt;div class="dialog" role="dialog" aria-modal="true" aria-labelledby="dlg-title" aria-describedby="dlg-desc"&gt;
-  &lt;form class="dialog__panel" novalidate&gt;
-    &lt;div class="dialog__header"&gt;
-      &lt;div class="dialog__caterer"&gt;&lt;span class="photo"&gt;&lt;img src="green-fig-catering.jpg" alt=""&gt;&lt;/span&gt;
-        &lt;div&gt;&lt;h2 class="dialog__title" id="dlg-title"&gt;Approve Auntie Bev's Kitchen?&lt;/h2&gt;
-          &lt;p class="text-muted" id="dlg-desc"&gt;The profile appears in the listing within a minute…&lt;/p&gt;&lt;/div&gt;
-      &lt;/div&gt;
-      &lt;button class="icon-btn" type="button" aria-label="Close"&gt;…&lt;/button&gt;
-    &lt;/div&gt;
-    &lt;div class="dialog__body"&gt;…&lt;/div&gt;
-    &lt;div class="dialog__footer"&gt;
-      &lt;button class="btn" type="button"&gt;Cancel&lt;/button&gt;
-      &lt;button class="btn btn--primary" type="submit" autofocus&gt;Approve and publish&lt;/button&gt;
-    &lt;/div&gt;
-  &lt;/form&gt;
-&lt;/div&gt;</code></pre></details>
-      </div>
-
-      <h3>Destructive</h3>
-      <div class="ds-example">
-        <div class="ds-example__canvas ds-example__canvas--stack">
-          <div class="ds-frame ds-frame--tall">
-            <div class="ds-frame__page"><p>Your photos · 6 of 30</p></div>
-            <div class="backdrop"></div>
-            <div class="dialog" role="dialog" aria-labelledby="dv2-title" aria-describedby="dv2-desc">
               <div class="dialog__panel dialog__panel--sm">
                 <div class="dialog__header">
-                  <div style="flex: 1;"><h3 class="dialog__title" id="dv2-title">Remove this photo?</h3><p class="text-muted" id="dv2-desc" style="margin-top: var(--space-1);">"Curry chicken with rice and buss up shut in a steel karahi" leaves your page within a minute.</p></div>
-                  <button class="icon-btn" type="button" aria-label="Close"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+                  <div class="dialog__heading">
+                    <h4 class="dialog__title" id="dv1-title">Delete Corktown Garage Studio?</h4>
+                    <p class="dialog__desc" id="dv1-desc">This deletes the draft and its 2 images. It can't be undone.</p>
+                  </div>
+                  <button class="btn btn--ghost btn--icon" type="button" aria-label="Close"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
                 </div>
-                <div class="dialog__body"><div class="dialog__photo"><span class="photo"><img src="../assets/img/maracas-bay.jpg" alt="" width="160" height="160"></span></div></div>
-                <div class="dialog__footer"><button class="btn" type="button">Cancel</button><button class="btn btn--danger" type="button">Remove photo</button></div>
+                <div class="dialog__footer"><button class="btn" type="button">Cancel</button><button class="btn btn--danger" type="button">Delete studio</button></div>
               </div>
             </div>
           </div>
         </div>
-        <div class="ds-example__caption"><span>From <code>dialogs/remove-photo/default</code>: small panel, the photo itself as <code>.dialog__photo</code>. Initial focus: Cancel, the safe action. Bigger consequences add <code>.dialog__icon--danger</code> (see Anatomy).</span></div>
-        <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;div class="dialog" role="dialog" aria-modal="true" aria-labelledby="dlg-title" aria-describedby="dlg-desc"&gt;
+        <div class="ds-example__caption"><span>From <a href="../../mocks/dialogs/delete-content/default.html">dialogs/delete-content/default</a>. Small panel, no body. Initial focus: Cancel. On success the owner lands on the studio list with a confirmation toast.</span></div>
+        <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;div class="backdrop"&gt;&lt;/div&gt;
+&lt;div class="dialog" role="dialog" aria-modal="true" aria-labelledby="dlg-title" aria-describedby="dlg-desc"&gt;
   &lt;div class="dialog__panel dialog__panel--sm"&gt;
-    &lt;div class="dialog__header"&gt;…title "Remove this photo?"…&lt;/div&gt;
-    &lt;div class="dialog__body"&gt;&lt;div class="dialog__photo"&gt;&lt;span class="photo"&gt;&lt;img src="maracas-bay.jpg" alt=""&gt;&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="dialog__header"&gt;
+      &lt;div class="dialog__heading"&gt;
+        &lt;h2 class="dialog__title" id="dlg-title"&gt;Delete Corktown Garage Studio?&lt;/h2&gt;
+        &lt;p class="dialog__desc" id="dlg-desc"&gt;This deletes the draft and its 2 images. It can't be undone.&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;button class="btn btn--ghost btn--icon" type="button" aria-label="Close"&gt;…&lt;/button&gt;
+    &lt;/div&gt;
     &lt;div class="dialog__footer"&gt;
       &lt;button class="btn" type="button" autofocus&gt;Cancel&lt;/button&gt;
-      &lt;button class="btn btn--danger" type="button"&gt;Remove photo&lt;/button&gt;
+      &lt;button class="btn btn--danger" type="button"&gt;Delete studio&lt;/button&gt;
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre></details>
       </div>
 
-      <h3>Form</h3>
-      <div class="ds-example">
-        <div class="ds-example__canvas ds-example__canvas--stack">
-          <div class="ds-frame ds-frame--tall">
-            <div class="ds-frame__page"><p>Pelau House · Trinidadian &amp; Tobagonian, Guyanese</p></div>
-            <div class="backdrop"></div>
-            <div class="dialog" role="dialog" aria-labelledby="dv3-title" aria-describedby="dv3-desc">
-              <form class="dialog__panel dialog__panel--form" action="#variants" novalidate>
-                <div class="dialog__header">
-                  <div class="dialog__caterer" style="flex: 1;"><span class="photo"><img src="../assets/img/pelau-house.jpg" alt="" width="56" height="56"></span><div><h3 class="dialog__title" id="dv3-title">Send an enquiry</h3><p class="dialog__caterer-name" id="dv3-desc">to Pelau House</p></div></div>
-                  <button class="icon-btn" type="button" aria-label="Close"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
-                </div>
-                <div class="dialog__body stack">
-                  <div class="field-row">
-                    <label class="field" for="dv3-date"><span class="field__label">Event date</span><input class="input" id="dv3-date" type="date" aria-describedby="dv3-date-help"><span class="field__help" id="dv3-date-help">At least 2 days from today</span></label>
-                    <label class="field" for="dv3-guests"><span class="field__label">Guests</span><input class="input" id="dv3-guests" type="text" inputmode="numeric" aria-describedby="dv3-guests-help"><span class="field__help" id="dv3-guests-help">Pelau House serves 20–300</span></label>
-                  </div>
-                  <label class="field" for="dv3-message"><span class="field__label">Message</span><textarea class="textarea" id="dv3-message" rows="3" aria-describedby="dv3-message-help"></textarea><span class="field__help" id="dv3-message-help">What you'd like to eat, serving style, timing</span></label>
-                  <p class="private-note"><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Pelau House sees your name, not your email or phone.</p>
-                </div>
-                <div class="dialog__footer"><button class="btn" type="button">Cancel</button><button class="btn btn--primary" type="submit">Send enquiry</button></div>
-              </form>
-            </div>
-          </div>
-        </div>
-        <div class="ds-example__caption"><span>From <code>dialogs/enquiry/default</code> (shortened). <code>.dialog__panel--form</code> is 40rem; <code>.field-row</code> pairs fields from 36rem. Initial focus: the first field.</span></div>
-        <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;div class="dialog dialog--full" role="dialog" aria-modal="true" aria-labelledby="dlg-title" aria-describedby="dlg-desc"&gt;
-  &lt;form class="dialog__panel dialog__panel--form" novalidate&gt;
-    &lt;div class="dialog__header"&gt;
-      &lt;div class="dialog__caterer"&gt;&lt;span class="photo"&gt;…&lt;/span&gt;
-        &lt;div&gt;&lt;h2 class="dialog__title" id="dlg-title"&gt;Send an enquiry&lt;/h2&gt;&lt;p class="dialog__caterer-name" id="dlg-desc"&gt;to Pelau House&lt;/p&gt;&lt;/div&gt;
-      &lt;/div&gt;
-      &lt;button class="icon-btn" type="button" aria-label="Close"&gt;…&lt;/button&gt;
-    &lt;/div&gt;
-    &lt;div class="dialog__body stack"&gt;…fields, first one autofocus…&lt;/div&gt;
-    &lt;div class="dialog__footer"&gt;&lt;button class="btn" type="button"&gt;Cancel&lt;/button&gt;&lt;button class="btn btn--primary" type="submit"&gt;Send enquiry&lt;/button&gt;&lt;/div&gt;
-  &lt;/form&gt;
-&lt;/div&gt;</code></pre></details>
-      </div>
-
-      <h3>Success</h3>
+      <h3>Unpublish (reversible)</h3>
       <div class="ds-example">
         <div class="ds-example__canvas ds-example__canvas--stack">
           <div class="ds-frame">
-            <div class="ds-frame__page"><p>Account · Your data</p></div>
+            <div class="ds-frame__page"><p>The Junction Loft · Published</p></div>
             <div class="backdrop"></div>
-            <div class="dialog" role="dialog" aria-labelledby="dv4-title" aria-describedby="dv4-desc">
+            <div class="dialog" role="dialog" aria-labelledby="dv2-title" aria-describedby="dv2-desc">
               <div class="dialog__panel dialog__panel--sm">
                 <div class="dialog__header">
-                  <div class="dialog__icon dialog__icon--success" aria-hidden="true"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg></div>
-                  <div style="flex: 1;"><h3 class="dialog__title" id="dv4-title">Export requested</h3><p class="text-muted" id="dv4-desc" style="margin-top: var(--space-1);">Nothing else to do for now.</p></div>
-                  <button class="icon-btn" type="button" aria-label="Close"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+                  <div class="dialog__heading">
+                    <h4 class="dialog__title" id="dv2-title">Unpublish The Junction Loft?</h4>
+                    <p class="dialog__desc" id="dv2-desc">It goes back to draft. Its page, its map marker and its place in lists, comparisons and guides disappear within a minute. You can publish it again any time.</p>
+                  </div>
+                  <button class="btn btn--ghost btn--icon" type="button" aria-label="Close"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
                 </div>
-                <div class="dialog__body"><p>We'll email a download link to <strong>marcia.t@example.com</strong> within 24 hours.</p></div>
-                <div class="dialog__footer"><button class="btn btn--primary" type="button">Done</button></div>
+                <div class="dialog__footer"><button class="btn" type="button">Cancel</button><button class="btn btn--primary" type="button">Unpublish</button></div>
               </div>
             </div>
           </div>
         </div>
-        <div class="ds-example__caption"><span>From <code>dialogs/download-data/success</code>. One button. Initial focus: Done. When there is nothing to read, use a toast instead.</span></div>
+        <div class="ds-example__caption"><span>From <a href="../../mocks/dialogs/unpublish/default.html">dialogs/unpublish/default</a>. Reversible, so the confirm is the ink primary, not danger. Escape or Cancel returns focus to the editor's Unpublish button; on success a warning toast confirms.</span></div>
       </div>
 
-      <h3>Widths and parts</h3>
-      <div class="ds-table-wrap"><table class="ds-table">
-        <thead><tr><th scope="col">Modifier</th><th scope="col">Max width</th><th scope="col">Used for</th></tr></thead>
-        <tbody>
-          <tr><td><code>.dialog__panel--sm</code></td><td>24rem</td><td>One-line confirmations with no fields: remove photo, remove dish, delete review, close enquiry.</td></tr>
-          <tr><td>(default)</td><td>32rem (<code>--layout-dialog-width</code>)</td><td>Confirmations with a reason field or a checklist: suspend, approve, retire cuisine.</td></tr>
-          <tr><td><code>.dialog__panel--form</code></td><td>40rem</td><td>Forms: enquiry, dish, review, report, change password, delete account.</td></tr>
-          <tr><td><code>.dialog__panel--lg</code></td><td>48rem</td><td>Reserved for side-by-side comparison; no current mock uses it.</td></tr>
-          <tr><td><code>.dialog__icon--info|warning|danger|success</code></td><td>40px circle</td><td>Header tone. Warning is for "can't do that yet" (<code>remove-dish/blocked</code>: "Keep at least 3 dishes").</td></tr>
-          <tr><td><code>.dialog-people</code></td><td>8rem per person</td><td>Round photos of the caterers affected (<code>retire-cuisine</code>: Mauby &amp; Co., Sea Moss &amp; Spice).</td></tr>
-          <tr><td><code>.push-start</code></td><td>—</td><td>On a footer button: pushes it to the start, away from Cancel and the primary ("Delete response" in <code>review-response/edit</code>).</td></tr>
-        </tbody>
-      </table></div>
+      <h3>Discard changes (destructive, "Stay")</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--stack">
+          <div class="ds-frame ds-frame--short">
+            <div class="ds-frame__page"><p>Corktown Garage Studio · 3 unsaved changes</p></div>
+            <div class="backdrop"></div>
+            <div class="dialog" role="dialog" aria-labelledby="dv3-title" aria-describedby="dv3-desc">
+              <div class="dialog__panel dialog__panel--sm">
+                <div class="dialog__header">
+                  <div class="dialog__heading">
+                    <h4 class="dialog__title" id="dv3-title">Discard changes?</h4>
+                    <p class="dialog__desc" id="dv3-desc">You changed 3 fields in Corktown Garage Studio since the last save.</p>
+                  </div>
+                  <button class="btn btn--ghost btn--icon" type="button" aria-label="Close"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+                </div>
+                <div class="dialog__footer"><button class="btn" type="button">Stay</button><button class="btn btn--danger" type="button">Discard</button></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ds-example__caption"><span>From <a href="../../mocks/dialogs/discard-changes/default.html">dialogs/discard-changes/default</a>. Opens for any in-app link while there are unsaved edits (L2-062.1). The safe action is "Stay", because "Cancel" would be ambiguous here (cancel the edits, or cancel leaving?).</span></div>
+      </div>
+
+      <h3>Remove image (with a preview)</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--stack">
+          <div class="ds-frame">
+            <div class="ds-frame__page"><p>Corktown Garage Studio · Test shots</p></div>
+            <div class="backdrop"></div>
+            <div class="dialog" role="dialog" aria-labelledby="dv4-title" aria-describedby="dv4-desc">
+              <div class="dialog__panel dialog__panel--sm">
+                <div class="dialog__header">
+                  <div class="dialog__heading">
+                    <h4 class="dialog__title" id="dv4-title">Remove test shot 2?</h4>
+                    <p class="dialog__desc" id="dv4-desc">It's removed when you save the studio. Test shot 1 stays.</p>
+                  </div>
+                  <button class="btn btn--ghost btn--icon" type="button" aria-label="Close"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+                </div>
+                <div class="dialog__body">
+                  <div class="image-row">
+                    <div class="image-row__thumb"><img src="../assets/img/test-liberty-cyc-house-2.svg" alt="" width="800" height="1000"></div>
+                    <div class="image-row__body">
+                      <span class="image-row__meta">full-length.jpg · alt text</span>
+                      <p>Test shot 2, full length on the cyc with an even floor sweep.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="dialog__footer"><button class="btn" type="button">Cancel</button><button class="btn btn--danger" type="button">Remove test shot</button></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ds-example__caption"><span>From <a href="../../mocks/dialogs/remove-image/default.html">dialogs/remove-image/default</a>. The body repeats the <a href="image-manager.html">image row</a> (thumbnail, file name, alt text) so the owner removes the right one. The thumbnail is decorative here (<code>alt=""</code>): the alt text is printed beside it. Removal is staged until Save changes (L2-058.2).</span></div>
+      </div>
+
+      <h3>Can't publish yet (acknowledgement)</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--stack">
+          <div class="ds-frame">
+            <div class="ds-frame__page"><p>Corktown Garage Studio · Draft</p></div>
+            <div class="backdrop"></div>
+            <div class="dialog" role="dialog" aria-labelledby="dv5-title" aria-describedby="dv5-desc">
+              <div class="dialog__panel dialog__panel--sm">
+                <div class="dialog__header">
+                  <div class="dialog__heading">
+                    <h4 class="dialog__title" id="dv5-title">Can't publish yet</h4>
+                    <p class="dialog__desc" id="dv5-desc">Add these and publish again:</p>
+                  </div>
+                  <button class="btn btn--ghost btn--icon" type="button" aria-label="Close"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+                </div>
+                <div class="dialog__body">
+                  <ul style="padding-left: var(--space-5); display: grid; gap: var(--space-2);">
+                    <li><a href="../../mocks/pages/studio-editor/default.html">Ceiling height</a></li>
+                    <li><a href="../../mocks/pages/studio-editor/default.html">At least one gallery image</a></li>
+                  </ul>
+                </div>
+                <div class="dialog__footer"><button class="btn btn--primary" type="button">Got it</button></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ds-example__caption"><span>From <a href="../../mocks/dialogs/missing-fields/default.html">dialogs/missing-fields/default</a> (studio) and <a href="../../mocks/dialogs/missing-fields/spot.html">spot</a> ("Permit source link", "At least one best use"). It lists exactly what the server named; each link closes the dialog, opens its editor section and focuses the field (L2-056.3). One button, focused on open.</span></div>
+      </div>
+
+      <h3>Add an entry (form dialog)</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--stack">
+          <div class="ds-frame ds-frame--tall">
+            <div class="ds-frame__page"><p>Best for headshots · Draft guide · 2 entries</p></div>
+            <div class="backdrop"></div>
+            <div class="dialog" role="dialog" aria-labelledby="dv6-title" aria-describedby="dv6-desc">
+              <div class="dialog__panel dialog__panel--form">
+                <div class="dialog__header">
+                  <div class="dialog__heading">
+                    <h4 class="dialog__title" id="dv6-title">Add an entry</h4>
+                    <p class="dialog__desc" id="dv6-desc">Search published studios and spots. The entry goes to the end of the list; move it after adding.</p>
+                  </div>
+                  <button class="btn btn--ghost btn--icon" type="button" aria-label="Close"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+                </div>
+                <div class="dialog__body">
+                  <div class="field">
+                    <label class="field__label" for="dv6-search">Studio or spot</label>
+                    <div class="search-field">
+                      <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+                      <input class="input" id="dv6-search" type="text" role="combobox" aria-expanded="true" aria-controls="dv6-options" aria-autocomplete="list" autocomplete="off" aria-describedby="dv6-hint" aria-activedescendant="dv6-opt-1" value="studio">
+                    </div>
+                    <span class="field__help" id="dv6-hint">Type part of a name</span>
+                  </div>
+                  <ul class="suggestions" id="dv6-options" role="listbox" aria-label="Matching studios and spots">
+                    <li class="suggestion" id="dv6-opt-1" role="option" aria-selected="true"><span>Leslieville Daylight <mark>Studio</mark></span><span class="suggestion__hint">Studio · Leslieville</span></li>
+                    <li class="suggestion" id="dv6-opt-2" role="option" aria-selected="false"><span>Bloordale Sun <mark>Studio</mark></span><span class="suggestion__hint">Studio · Bloordale</span></li>
+                    <li class="suggestion" id="dv6-opt-3" role="option" aria-selected="false"><span>Riverside Rooftop <mark>Studio</mark></span><span class="suggestion__hint">Studio · Riverside</span></li>
+                  </ul>
+                </div>
+                <div class="dialog__footer"><button class="btn" type="button">Cancel</button><button class="btn btn--primary" type="button">Add entry</button></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ds-example__caption"><span>From <a href="../../mocks/dialogs/guide-entry-picker/results.html">dialogs/guide-entry-picker/results</a>: the wider <code>.dialog__panel--form</code> with one <a href="combobox.html">combobox</a>. Focus starts in the field; arrows move through the options, Enter picks one, Escape closes the list first and then the dialog, returning focus to Add entry.</span></div>
+        <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;div class="dialog" role="dialog" aria-modal="true" aria-labelledby="dlg-title" aria-describedby="dlg-desc"&gt;
+  &lt;div class="dialog__panel dialog__panel--form"&gt;
+    &lt;div class="dialog__header"&gt;…"Add an entry"…&lt;/div&gt;
+    &lt;div class="dialog__body"&gt;
+      &lt;div class="field"&gt;
+        &lt;label class="field__label" for="entry-search"&gt;Studio or spot&lt;/label&gt;
+        &lt;div class="search-field"&gt;…&lt;input class="input" id="entry-search" type="text" role="combobox" aria-expanded="false"
+          aria-controls="entry-options" aria-autocomplete="list" autocomplete="off" aria-describedby="entry-hint" autofocus&gt;&lt;/div&gt;
+        &lt;span class="field__help" id="entry-hint"&gt;Type part of a name&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;ul class="suggestions" id="entry-options" role="listbox" aria-label="Matching studios and spots" hidden&gt;&lt;/ul&gt;
+    &lt;/div&gt;
+    &lt;div class="dialog__footer"&gt;
+      &lt;button class="btn" type="button"&gt;Cancel&lt;/button&gt;
+      &lt;button class="btn btn--primary" type="button" disabled&gt;Add entry&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre></details>
+      </div>
+
+      <h3>With a header icon</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas">
+          <div class="dialog__panel dialog__panel--sm" style="animation: none; box-shadow: var(--shadow-2);">
+            <div class="dialog__header">
+              <div class="dialog__icon dialog__icon--danger" aria-hidden="true"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 4 2.5 20h19L12 4z"/><path d="M12 10v4M12 17h.01"/></svg></div>
+              <div class="dialog__heading"><p class="dialog__title">Delete Annex Attic Studio?</p><p class="dialog__desc">This deletes the draft and its images. It can't be undone.</p></div>
+            </div>
+            <div class="dialog__footer"><button class="btn" type="button">Cancel</button><button class="btn btn--danger" type="button">Delete studio</button></div>
+          </div>
+        </div>
+        <div class="ds-example__caption"><span><code>.dialog__icon--danger</code>, <code>--warning</code>, <code>--info</code>, <code>--success</code>: a 40px tinted circle before the heading. The CSS exists but no ShotThere mock uses it; the title already says what kind of dialog it is. Keep it for a future dialog whose consequence is easy to miss.</span></div>
+      </div>
     </section>
 
     <section class="ds-section" id="sizes"><h2><a href="#sizes">Sizes</a></h2>
-      <p>Size is width only; height follows the content up to the viewport less 48px, then the body scrolls and the footer stays pinned. Pick the narrowest width that keeps fields on one line.</p>
-      <div class="ds-example">
-        <div class="ds-example__canvas ds-example__canvas--stack ds-example__canvas--canvas">
-          <div class="dialog__panel dialog__panel--sm" style="animation: none;"><div class="dialog__header"><h3 class="dialog__title">Small · 24rem</h3></div><div class="dialog__body"><p class="text-muted">Remove this photo?</p></div></div>
-          <div class="dialog__panel" style="animation: none;"><div class="dialog__header"><h3 class="dialog__title">Default · 32rem</h3></div><div class="dialog__body"><p class="text-muted">Suspend Pelau House?</p></div></div>
-          <div class="dialog__panel dialog__panel--form" style="animation: none;"><div class="dialog__header"><h3 class="dialog__title">Form · 40rem</h3></div><div class="dialog__body"><p class="text-muted">Send an enquiry</p></div></div>
-          <div class="dialog__panel dialog__panel--lg" style="animation: none;"><div class="dialog__header"><h3 class="dialog__title">Large · 48rem</h3></div><div class="dialog__body"><p class="text-muted">Reserved</p></div></div>
-        </div>
-        <div class="ds-example__caption"><span>Bare panels, shown without the overlay so the widths line up. All share padding <code>--space-6</code>.</span></div>
-      </div>
+      <div class="ds-table-wrap"><table class="ds-table">
+        <caption class="visually-hidden">Dialog panel widths</caption>
+        <thead><tr><th scope="col">Class</th><th scope="col">Max width</th><th scope="col">Used for</th></tr></thead>
+        <tbody>
+          <tr><td><code>.dialog__panel--sm</code></td><td>24rem</td><td>Every confirmation and acknowledgement: delete, unpublish, discard changes, remove image, can't publish yet</td></tr>
+          <tr><td><code>.dialog__panel</code> (default)</td><td><span data-token="--layout-dialog-width"></span></td><td>No mock yet; a confirmation with a longer body</td></tr>
+          <tr><td><code>.dialog__panel--form</code></td><td>40rem</td><td>Add an entry (one combobox and its results)</td></tr>
+          <tr><td><code>.dialog__panel--lg</code></td><td>48rem</td><td>No mock; reserved</td></tr>
+          <tr><td><code>.dialog--full</code></td><td>Full screen below 48rem</td><td>No mock; the long panels (filters, menu) are <a href="sheet.html">sheets</a> instead</td></tr>
+        </tbody>
+      </table></div>
+      <p>Height grows with content up to <code>100dvh</code> minus <code>--space-12</code>; beyond that the panel scrolls and the footer stays pinned. Padding: <code>--space-6</code> around, <code>--space-4</code> between header, body and footer.</p>
     </section>
 
     <section class="ds-section" id="states"><h2><a href="#states">States</a></h2>
-      <p>The dialog's own states are about the task; hover, focus and pressed belong to its <a href="button.html">buttons</a> and fields. Every form and destructive dialog in the mocks has default, invalid, busy and failed; forms that end with something to read have success.</p>
+      <p>The panel itself has no pointer states; its buttons do. The matrix shows the footer pair of each confirmation in every state, forced with <code>data-state</code> where no attribute exists. Busy uses the real <code>aria-busy</code> and <code>disabled</code>.</p>
       <div class="ds-matrix"><table>
-        <caption class="visually-hidden">Dialog states by variant</caption>
-        <thead><tr><th scope="col">Variant</th><th scope="col">Default</th><th scope="col">Invalid</th><th scope="col">Busy</th><th scope="col">Failed</th><th scope="col">Success</th></tr></thead>
+        <caption class="visually-hidden">Dialog footer states by variant</caption>
+        <thead><tr><th scope="col">Variant</th><th scope="col">Default</th><th scope="col">Hover</th><th scope="col">Focus (on open)</th><th scope="col">Active</th><th scope="col">Disabled</th><th scope="col">Busy</th></tr></thead>
         <tbody>
-          <tr><th scope="row">Default</th>
-            <td><div class="dialog__panel dialog__panel--sm" style="animation: none; min-width: 16rem;"><div class="dialog__header"><h3 class="dialog__title">Sign out of Safari on iPhone?</h3></div><div class="dialog__footer"><button class="btn btn--sm" type="button">Cancel</button><button class="btn btn--primary btn--sm" type="button">Sign out device</button></div></div></td>
-            <td><span class="text-subtle">No fields</span></td>
-            <td><div class="dialog__panel dialog__panel--sm" style="animation: none; min-width: 16rem;" aria-busy="true"><div class="dialog__header"><h3 class="dialog__title">Sign out of Safari on iPhone?</h3></div><div class="dialog__body"><p class="visually-hidden" role="status">Signing out the device</p></div><div class="dialog__footer"><button class="btn btn--sm" type="button" disabled>Cancel</button><button class="btn btn--primary btn--sm" type="button" aria-busy="true" aria-disabled="true">Sign out device</button></div></div></td>
-            <td><div class="dialog__panel dialog__panel--sm" style="animation: none; min-width: 16rem;"><div class="dialog__header"><h3 class="dialog__title">Sign out of Safari on iPhone?</h3></div><div class="dialog__body"><div class="alert alert--danger" role="alert"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16.5v.5"/></svg><div class="alert__body"><p class="alert__title">We couldn't sign out that device</p></div></div></div><div class="dialog__footer"><button class="btn btn--sm" type="button">Cancel</button><button class="btn btn--primary btn--sm" type="button">Sign out device</button></div></div></td>
-            <td><span class="text-subtle">A toast confirms</span></td></tr>
           <tr><th scope="row">Destructive</th>
-            <td><div class="dialog__panel dialog__panel--sm" style="animation: none; min-width: 16rem;"><div class="dialog__header"><div class="dialog__icon dialog__icon--danger" aria-hidden="true"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 4 2.5 20h19z"/><path d="M12 10v4M12 17v.5"/></svg></div><h3 class="dialog__title">Suspend Pelau House?</h3></div><div class="dialog__body"><label class="field" for="st-d1"><span class="field__label">Reason</span><textarea class="textarea" id="st-d1" rows="2"></textarea></label></div><div class="dialog__footer"><button class="btn btn--sm" type="button">Cancel</button><button class="btn btn--danger btn--sm" type="button">Suspend caterer</button></div></div></td>
-            <td><div class="dialog__panel dialog__panel--sm" style="animation: none; min-width: 16rem;"><div class="dialog__header"><div class="dialog__icon dialog__icon--danger" aria-hidden="true"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 4 2.5 20h19z"/><path d="M12 10v4M12 17v.5"/></svg></div><h3 class="dialog__title">Suspend Pelau House?</h3></div><div class="dialog__body stack stack--sm"><div class="form-summary" role="alert"><h4>Fix 1 thing before you continue</h4><ul><li><a href="#st-d2">Add a reason for this change</a></li></ul></div><label class="field" for="st-d2"><span class="field__label">Reason</span><textarea class="textarea" id="st-d2" rows="2" aria-invalid="true" aria-describedby="st-d2-err"></textarea><span class="field__error" id="st-d2-err">Add a reason for this change</span></label></div><div class="dialog__footer"><button class="btn btn--sm" type="button">Cancel</button><button class="btn btn--danger btn--sm" type="button">Suspend caterer</button></div></div></td>
-            <td><div class="dialog__panel dialog__panel--sm" style="animation: none; min-width: 16rem;" aria-busy="true"><div class="dialog__header"><div class="dialog__icon dialog__icon--danger" aria-hidden="true"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 4 2.5 20h19z"/><path d="M12 10v4M12 17v.5"/></svg></div><h3 class="dialog__title">Suspend Pelau House?</h3></div><div class="dialog__body"><label class="field" for="st-d3"><span class="field__label">Reason</span><textarea class="textarea" id="st-d3" rows="2" readonly>Food safety concern after report R-2047.</textarea></label><p class="visually-hidden" role="status">Suspending Pelau House</p></div><div class="dialog__footer"><button class="btn btn--sm" type="button" disabled>Cancel</button><button class="btn btn--danger btn--sm" type="button" aria-busy="true" aria-disabled="true">Suspend caterer</button></div></div></td>
-            <td><div class="dialog__panel dialog__panel--sm" style="animation: none; min-width: 16rem;"><div class="dialog__header"><div class="dialog__icon dialog__icon--danger" aria-hidden="true"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 4 2.5 20h19z"/><path d="M12 10v4M12 17v.5"/></svg></div><h3 class="dialog__title">Suspend Pelau House?</h3></div><div class="dialog__body"><div class="alert alert--danger" role="alert"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16.5v.5"/></svg><div class="alert__body"><p class="alert__title">We couldn't suspend Pelau House</p><p>Nothing has changed; your reason is kept.</p></div></div></div><div class="dialog__footer"><button class="btn btn--sm" type="button">Cancel</button><button class="btn btn--danger btn--sm" type="button">Suspend caterer</button></div></div></td>
-            <td><span class="text-subtle">Page updates and a toast confirms</span></td></tr>
+            <td><div class="dialog__footer" style="position: static; padding: 0;"><button class="btn" type="button">Cancel</button><button class="btn btn--danger" type="button">Delete studio</button></div></td>
+            <td><div class="dialog__footer" style="position: static; padding: 0;"><button class="btn" type="button">Cancel</button><button class="btn btn--danger" type="button" data-state="hover">Delete studio</button></div></td>
+            <td><div class="dialog__footer" style="position: static; padding: 0;"><button class="btn" type="button" data-state="focus">Cancel</button><button class="btn btn--danger" type="button">Delete studio</button></div></td>
+            <td><div class="dialog__footer" style="position: static; padding: 0;"><button class="btn" type="button">Cancel</button><button class="btn btn--danger" type="button" data-state="active">Delete studio</button></div></td>
+            <td><div class="dialog__footer" style="position: static; padding: 0;"><button class="btn" type="button" disabled>Cancel</button><button class="btn btn--danger" type="button" disabled>Delete studio</button></div></td>
+            <td><div class="dialog__footer" style="position: static; padding: 0;"><button class="btn" type="button" disabled>Cancel</button><button class="btn btn--danger" type="button" aria-busy="true" disabled>Delete studio</button></div></td></tr>
+          <tr><th scope="row">Reversible</th>
+            <td><div class="dialog__footer" style="position: static; padding: 0;"><button class="btn" type="button">Cancel</button><button class="btn btn--primary" type="button">Unpublish</button></div></td>
+            <td><div class="dialog__footer" style="position: static; padding: 0;"><button class="btn" type="button">Cancel</button><button class="btn btn--primary" type="button" data-state="hover">Unpublish</button></div></td>
+            <td><div class="dialog__footer" style="position: static; padding: 0;"><button class="btn" type="button" data-state="focus">Cancel</button><button class="btn btn--primary" type="button">Unpublish</button></div></td>
+            <td><div class="dialog__footer" style="position: static; padding: 0;"><button class="btn" type="button">Cancel</button><button class="btn btn--primary" type="button" data-state="active">Unpublish</button></div></td>
+            <td><div class="dialog__footer" style="position: static; padding: 0;"><button class="btn" type="button" disabled>Cancel</button><button class="btn btn--primary" type="button" disabled>Unpublish</button></div></td>
+            <td><div class="dialog__footer" style="position: static; padding: 0;"><button class="btn" type="button" disabled>Cancel</button><button class="btn btn--primary" type="button" aria-busy="true" disabled>Unpublish</button></div></td></tr>
           <tr><th scope="row">Form</th>
-            <td><div class="dialog__panel dialog__panel--sm" style="animation: none; min-width: 16rem;"><div class="dialog__header"><h3 class="dialog__title">Add a cuisine</h3></div><div class="dialog__body"><label class="field" for="st-f1"><span class="field__label">Name</span><input class="input" id="st-f1" type="text"></label></div><div class="dialog__footer"><button class="btn btn--sm" type="button">Cancel</button><button class="btn btn--primary btn--sm" type="button">Add cuisine</button></div></div></td>
-            <td><div class="dialog__panel dialog__panel--sm" style="animation: none; min-width: 16rem;"><div class="dialog__header"><h3 class="dialog__title">Add a cuisine</h3></div><div class="dialog__body"><label class="field" for="st-f2"><span class="field__label">Name</span><input class="input" id="st-f2" type="text" value="Jamaican" aria-invalid="true" aria-describedby="st-f2-err"><span class="field__error" id="st-f2-err">Jamaican is already a cuisine</span></label></div><div class="dialog__footer"><button class="btn btn--sm" type="button">Cancel</button><button class="btn btn--primary btn--sm" type="button">Add cuisine</button></div></div></td>
-            <td><div class="dialog__panel dialog__panel--sm" style="animation: none; min-width: 16rem;" aria-busy="true"><div class="dialog__header"><h3 class="dialog__title">Add a cuisine</h3></div><div class="dialog__body"><label class="field" for="st-f3"><span class="field__label">Name</span><input class="input" id="st-f3" type="text" value="Caymanian" readonly></label><p class="visually-hidden" role="status">Adding Caymanian</p></div><div class="dialog__footer"><button class="btn btn--sm" type="button" disabled>Cancel</button><button class="btn btn--primary btn--sm" type="button" aria-busy="true" aria-disabled="true">Add cuisine</button></div></div></td>
-            <td><div class="dialog__panel dialog__panel--sm" style="animation: none; min-width: 16rem;"><div class="dialog__header"><h3 class="dialog__title">Add a cuisine</h3></div><div class="dialog__body"><div class="alert alert--danger" role="alert"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16.5v.5"/></svg><div class="alert__body"><p class="alert__title">We couldn't add Caymanian</p><p>Try again; what you typed is kept.</p></div></div></div><div class="dialog__footer"><button class="btn btn--sm" type="button">Cancel</button><button class="btn btn--primary btn--sm" type="button">Add cuisine</button></div></div></td>
-            <td><div class="dialog__panel dialog__panel--sm" style="animation: none; min-width: 16rem;"><div class="dialog__header"><div class="dialog__icon dialog__icon--success" aria-hidden="true"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg></div><h3 class="dialog__title">Enquiry sent to Pelau House</h3></div><div class="dialog__footer"><button class="btn btn--sm" type="button">Back to Pelau House</button><button class="btn btn--primary btn--sm" type="button">Go to your inbox</button></div></div></td></tr>
-          <tr><th scope="row">Success</th>
-            <td><div class="dialog__panel dialog__panel--sm" style="animation: none; min-width: 16rem;"><div class="dialog__header"><div class="dialog__icon dialog__icon--success" aria-hidden="true"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg></div><h3 class="dialog__title">Export requested</h3></div><div class="dialog__footer"><button class="btn btn--primary btn--sm" type="button">Done</button></div></div></td>
-            <td><span class="text-subtle">—</span></td><td><span class="text-subtle">—</span></td><td><span class="text-subtle">—</span></td><td><span class="text-subtle">—</span></td></tr>
+            <td><div class="dialog__footer" style="position: static; padding: 0;"><button class="btn" type="button">Cancel</button><button class="btn btn--primary" type="button">Add entry</button></div></td>
+            <td><div class="dialog__footer" style="position: static; padding: 0;"><button class="btn" type="button">Cancel</button><button class="btn btn--primary" type="button" data-state="hover">Add entry</button></div></td>
+            <td>Focus starts in the search field</td>
+            <td><div class="dialog__footer" style="position: static; padding: 0;"><button class="btn" type="button">Cancel</button><button class="btn btn--primary" type="button" data-state="active">Add entry</button></div></td>
+            <td><div class="dialog__footer" style="position: static; padding: 0;"><button class="btn" type="button">Cancel</button><button class="btn btn--primary" type="button" disabled>Add entry</button></div></td>
+            <td>n/a: adding is staged in the editor</td></tr>
         </tbody>
       </table></div>
-      <h3>Both themes</h3>
-      <div class="ds-themes">
-        <div data-theme="light"><div class="dialog__panel" style="animation: none;"><div class="dialog__header"><div class="dialog__icon dialog__icon--danger" aria-hidden="true"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 4 2.5 20h19z"/><path d="M12 10v4M12 17v.5"/></svg></div><div style="flex: 1;"><h3 class="dialog__title">Retire Pan-Caribbean?</h3><p class="text-muted" style="margin-top: var(--space-1);">It leaves the listing filter.</p></div></div><div class="dialog__footer"><button class="btn" type="button">Cancel</button><button class="btn btn--danger" type="button">Retire cuisine</button></div></div></div>
-        <div data-theme="dark"><div class="dialog__panel" style="animation: none;"><div class="dialog__header"><div class="dialog__icon dialog__icon--danger" aria-hidden="true"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 4 2.5 20h19z"/><path d="M12 10v4M12 17v.5"/></svg></div><div style="flex: 1;"><h3 class="dialog__title">Retire Pan-Caribbean?</h3><p class="text-muted" style="margin-top: var(--space-1);">It leaves the listing filter.</p></div></div><div class="dialog__footer"><button class="btn" type="button">Cancel</button><button class="btn btn--danger" type="button">Retire cuisine</button></div></div></div>
+
+      <h3>Busy, failed, invalid and refused</h3>
+      <div class="ds-iframes">
+        <div class="ds-frame ds-frame--phone" style="flex: 1; min-width: min(100%, 20rem);">
+          <div class="backdrop"></div>
+          <div class="dialog" role="dialog" aria-labelledby="ds1-title" aria-describedby="ds1-desc">
+            <div class="dialog__panel dialog__panel--sm">
+              <div class="dialog__header">
+                <div class="dialog__heading"><h4 class="dialog__title" id="ds1-title">Delete Corktown Garage Studio?</h4><p class="dialog__desc" id="ds1-desc">This deletes the draft and its 2 images. It can't be undone.</p></div>
+                <button class="btn btn--ghost btn--icon" type="button" aria-label="Close" disabled><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+              </div>
+              <div class="dialog__body"><p class="visually-hidden" role="status">Deleting Corktown Garage Studio…</p></div>
+              <div class="dialog__footer"><button class="btn" type="button" disabled>Cancel</button><button class="btn btn--danger" type="button" aria-busy="true" disabled>Delete studio</button></div>
+            </div>
+          </div>
+        </div>
+        <div class="ds-frame ds-frame--phone" style="flex: 1; min-width: min(100%, 20rem);">
+          <div class="backdrop"></div>
+          <div class="dialog" role="dialog" aria-labelledby="ds2-title" aria-describedby="ds2-desc">
+            <div class="dialog__panel dialog__panel--sm">
+              <div class="dialog__header">
+                <div class="dialog__heading"><h4 class="dialog__title" id="ds2-title">Unpublish The Junction Loft?</h4><p class="dialog__desc" id="ds2-desc">It goes back to draft. You can publish it again any time.</p></div>
+                <button class="btn btn--ghost btn--icon" type="button" aria-label="Close"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+              </div>
+              <div class="dialog__body">
+                <div class="alert alert--danger"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16h.01"/></svg><div class="alert__body">We couldn't unpublish it. Nothing changed. Try again.</div></div>
+              </div>
+              <div class="dialog__footer"><button class="btn" type="button">Cancel</button><button class="btn btn--primary" type="button">Unpublish</button></div>
+            </div>
+          </div>
+        </div>
+        <div class="ds-frame ds-frame--phone" style="flex: 1; min-width: min(100%, 20rem);">
+          <div class="backdrop"></div>
+          <div class="dialog" role="dialog" aria-labelledby="ds3-title" aria-describedby="ds3-desc">
+            <div class="dialog__panel dialog__panel--form">
+              <div class="dialog__header">
+                <div class="dialog__heading"><h4 class="dialog__title" id="ds3-title">Add an entry</h4><p class="dialog__desc" id="ds3-desc">Search published studios and spots.</p></div>
+                <button class="btn btn--ghost btn--icon" type="button" aria-label="Close"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+              </div>
+              <div class="dialog__body">
+                <div class="field">
+                  <label class="field__label" for="ds3-search">Studio or spot</label>
+                  <div class="search-field"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input class="input" id="ds3-search" type="text" role="combobox" aria-expanded="false" aria-autocomplete="list" autocomplete="off" aria-describedby="ds3-hint ds3-error" aria-invalid="true" value="Leslieville Daylight Studio"></div>
+                  <span class="field__error" id="ds3-error">This studio is already in the guide</span>
+                  <span class="field__help" id="ds3-hint">Type part of a name</span>
+                </div>
+              </div>
+              <div class="dialog__footer"><button class="btn" type="button">Cancel</button><button class="btn btn--primary" type="button" disabled>Add entry</button></div>
+            </div>
+          </div>
+        </div>
+        <div class="ds-frame ds-frame--phone" style="flex: 1; min-width: min(100%, 20rem);">
+          <div class="backdrop"></div>
+          <div class="dialog" role="dialog" aria-labelledby="ds4-title" aria-describedby="ds4-desc">
+            <div class="dialog__panel dialog__panel--sm">
+              <div class="dialog__header">
+                <div class="dialog__heading"><h4 class="dialog__title" id="ds4-title">Can't remove this test shot</h4></div>
+                <button class="btn btn--ghost btn--icon" type="button" aria-label="Close"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+              </div>
+              <div class="dialog__body">
+                <div class="alert alert--warning"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 4 2.5 20h19L12 4z"/><path d="M12 10v4M12 17h.01"/></svg><div class="alert__body" id="ds4-desc">A published studio needs at least one standard test shot. Add another before removing this one.</div></div>
+              </div>
+              <div class="dialog__footer"><button class="btn btn--primary" type="button">Got it</button></div>
+            </div>
+          </div>
+        </div>
       </div>
       <ul>
-        <li><b>Invalid</b>: on submit, an error summary (<code>.form-summary</code>, <code>role="alert"</code>, focused) lists each problem as a link to its field; each field gets <code>aria-invalid="true"</code> and a <code>.field__error</code> joined by <code>aria-describedby</code>. The dialog never closes on invalid input.</li>
-        <li><b>Busy</b>: <code>aria-busy="true"</code> on the panel; fields become read-only (not disabled, so their values stay legible); Cancel and Close are disabled together and Escape is ignored; the primary shows its spinner and keeps its label; a visually hidden <code>role="status"</code> line says what is happening ("Suspending Pelau House").</li>
-        <li><b>Failed</b>: an <code>.alert--danger</code> with <code>role="alert"</code> at the top of the body says what failed, that nothing changed and that input is kept. Buttons return to normal for a retry.</li>
-        <li><b>Success</b>: either the dialog closes and a toast confirms (most actions), or the panel swaps to the success layout in place, keeping the title as the label (enquiry, report, review, export, submit profile).</li>
-        <li>Rarer mock states reuse these: <b>conflict</b> (<code>decline-enquiry/conflict</code>: someone replied first) and <b>blocked</b> (<code>remove-photo/blocked</code>: keep at least 3) are warning-toned default dialogs; <b>duplicate</b> and <b>limit</b> in the enquiry and report forms are failed states with their own copy.</li>
+        <li><b>Busy</b> (<a href="../../mocks/dialogs/delete-content/busy.html">delete-content/busy</a>, <a href="../../mocks/dialogs/unpublish/busy.html">unpublish/busy</a>): the confirm keeps its label with <code>aria-busy="true"</code>; Cancel, Close and Escape wait for the answer; a visually hidden <code>role="status"</code> line says "Deleting Corktown Garage Studio…". A body holding only that line takes no space.</li>
+        <li><b>Failed</b> (<a href="../../mocks/dialogs/delete-content/failed.html">delete-content/failed</a>, <a href="../../mocks/dialogs/unpublish/failed.html">unpublish/failed</a>): a danger <a href="alert.html">alert</a> with <code>role="alert"</code> in the body says nothing changed; the confirm retries the same request.</li>
+        <li><b>Invalid</b> (<a href="../../mocks/dialogs/guide-entry-picker/invalid.html">guide-entry-picker/invalid</a>): the field's error, <code>aria-invalid="true"</code>, and Add entry disabled until the choice is valid. Also <a href="../../mocks/dialogs/guide-entry-picker/busy.html">busy</a> ("Searching") and <a href="../../mocks/dialogs/guide-entry-picker/no-matches.html">no-matches</a> ("No published studios or spots match “parkdale”"); see <a href="combobox.html">combobox</a>.</li>
+        <li><b>Refused</b> (<a href="../../mocks/dialogs/remove-image/refused.html">remove-image/refused</a>): the rule in a warning alert, which is also the description; one "Got it".</li>
       </ul>
+      <p class="ds-note">The failed example leaves <code>role="alert"</code> off so this page does not interrupt on load; the mocks carry it.</p>
+
+      <h3>Both themes</h3>
+      <div class="ds-themes">
+        <div data-theme="light"><div class="ds-example__canvas" style="padding: 0;"><div class="dialog__panel dialog__panel--sm" style="animation: none; box-shadow: var(--shadow-2);"><div class="dialog__header"><div class="dialog__heading"><p class="dialog__title">Discard changes?</p><p class="dialog__desc">You changed 3 fields in Corktown Garage Studio since the last save.</p></div></div><div class="dialog__footer"><button class="btn" type="button">Stay</button><button class="btn btn--danger" type="button">Discard</button></div></div></div></div>
+        <div data-theme="dark"><div class="ds-example__canvas" style="padding: 0;"><div class="dialog__panel dialog__panel--sm" style="animation: none; box-shadow: var(--shadow-2);"><div class="dialog__header"><div class="dialog__heading"><p class="dialog__title">Discard changes?</p><p class="dialog__desc">You changed 3 fields in Corktown Garage Studio since the last save.</p></div></div><div class="dialog__footer"><button class="btn" type="button">Stay</button><button class="btn btn--danger" type="button">Discard</button></div></div></div></div>
+      </div>
     </section>
 
     <section class="ds-section" id="responsive"><h2><a href="#responsive">Responsive behaviour</a></h2>
       <ul>
-        <li><b>XS (below 36rem)</b>: every dialog is a <b>bottom sheet</b>. The panel spans the width, sits on the bottom edge with <code>--radius-xl</code> top corners only, slides up, and pads its bottom by <code>env(safe-area-inset-bottom)</code> so the footer clears the home indicator. Footer buttons wrap; the primary stays last.</li>
-        <li><b>SM and up (36rem+)</b>: the panel is centred with <code>--space-6</code> around it, rounded on all corners (<code>--radius-lg</code>), and scales in.</li>
-        <li><b>Enquiry below 48rem</b>: <code>.dialog--full</code> makes the panel fill the screen (<code>100dvh</code>, no radius) because the form is long and typed on a phone keyboard; the sticky footer keeps "Send enquiry" above the keyboard (L2-026.1). From 48rem it is a normal 40rem form dialog.</li>
-        <li><b>Height</b>: the panel never exceeds the viewport less 48px (<code>100dvh</code>, so mobile browser bars are respected). Long bodies scroll inside the panel; header and footer stay put.</li>
+        <li><b>Below 36rem</b> the panel docks to the bottom edge at full width, with <code>--radius-xl</code> top corners, square bottom corners and <code>env(safe-area-inset-bottom)</code> padding so the footer clears the home indicator. It rises in (<code>slide-up</code>).</li>
+        <li><b>From 36rem</b> it is centred with <code>--space-6</code> around it and scales in.</li>
+        <li>The footer wraps when its buttons do not fit and stays pinned to the panel bottom while the body scrolls. Buttons stay 44px tall on phones.</li>
+        <li><code>.dialog--full</code> (CSS only, no mock) fills the screen below 48rem for a long form; ShotThere uses a <a href="sheet.html">sheet</a> for its long panels instead.</li>
       </ul>
-      <p class="ds-note">Mock previews are not included in this copy; the ShotThere mocks will replace them.</p>
+      <div class="ds-iframes">
+        <iframe class="ds-iframe" src="../../mocks/dialogs/delete-content/default.html?chrome=0" title="Delete dialog mock at phone width, docked to the bottom" loading="lazy"></iframe>
+        <iframe class="ds-iframe" src="../../mocks/dialogs/guide-entry-picker/results.html?chrome=0" title="Add an entry dialog mock at phone width, with results" loading="lazy"></iframe>
+      </div>
     </section>
 
     <section class="ds-section" id="theming"><h2><a href="#theming">Theming</a></h2>
-      <p>The dialog reads semantic tokens directly: <code>--color-bg-surface-raised</code> for the panel and the sticky footer, <code>--color-bg-backdrop</code>, <code>--shadow-4</code>, <code>--radius-lg</code>/<code>--radius-xl</code>, and the status <code>-bg</code>/<code>-icon</code> pairs for header icons. Width comes from <code>--layout-dialog-width</code>; the other widths are fixed rems in the component.</p>
-      <p>This is the one place ShotThere lifts a surface: the panel has a shadow because it floats over the page. In dark, the raised surface is stone-850, a step lighter than the stone-950 canvas, and the backdrop deepens from 50% to 66% black so the panel separates without a border. Icon tints switch to their 950-step backgrounds with 300-step glyphs. Re-skin by overriding those semantic tokens on a theme scope; never give a dialog a pepper header or a coloured panel.</p>
+      <p>The panel reads <code>--color-bg-surface-raised</code>, <code>--color-fg-default</code>, <code>--color-fg-muted</code> (description), <code>--shadow-4</code> and the radius tokens; the backdrop reads <code>--color-bg-backdrop</code>. In dark the raised surface is lighter than the canvas and the backdrop darker (66% black), so the panel reads as on top without relying on the shadow. In forced colours the shadow and backdrop vanish and a 1px <code>CanvasText</code> outline keeps the panel apart.</p>
     </section>
 
     <section class="ds-section" id="accessibility"><h2><a href="#accessibility">Accessibility</a></h2>
       <h3>Role and pattern</h3>
-      <p><a href="https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/">APG Dialog (Modal)</a>: <code>role="dialog"</code> and <code>aria-modal="true"</code> on <code>.dialog</code>, <code>aria-labelledby</code> on the title, <code>aria-describedby</code> on the consequence sentence. Everything outside gets <code>inert</code>, so focus, find-in-page and screen-reader browsing cannot reach it. Use the native <code>&lt;dialog&gt;</code> element with <code>showModal()</code>, or the UI framework's accessible dialog primitive, to get this behaviour; don't hand-roll it. Destructive confirmations stay <code>role="dialog"</code>: the person asked for them. <code>role="alertdialog"</code> is reserved for interruptions the system starts.</p>
+      <p><a href="https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/">APG Dialog (Modal)</a>: <code>role="dialog"</code>, <code>aria-modal="true"</code>, <code>aria-labelledby</code> on the title and <code>aria-describedby</code> on the description (or, when refused, on the alert text). The page behind gets <code>inert</code> (and <code>aria-hidden="true"</code> for older assistive technology), as every dialog mock does. The trigger carries <code>aria-haspopup="dialog"</code>.</p>
       <h3>Keyboard</h3>
-      <table class="ds-table ds-keys"><thead><tr><th scope="col">Key</th><th scope="col">Action</th></tr></thead><tbody>
-        <tr><td><kbd>Tab</kbd> / <kbd>Shift</kbd>+<kbd>Tab</kbd></td><td>Moves through the panel's controls and wraps from the last to the first; focus never leaves the dialog.</td></tr>
-        <tr><td><kbd>Esc</kbd></td><td>Closes, same as Cancel and Close. Ignored while busy.</td></tr>
-        <tr><td><kbd>Enter</kbd></td><td>In a field, submits the form (the footer primary is <code>type="submit"</code>). In a textarea it adds a line.</td></tr>
-        <tr><td><kbd>Space</kbd>, <kbd>Enter</kbd> on a button</td><td>Activates it.</td></tr>
-      </tbody></table>
+      <div class="ds-table-wrap"><table class="ds-table ds-keys"><thead><tr><th scope="col">Key</th><th scope="col">Action</th></tr></thead><tbody>
+        <tr><td><kbd>Tab</kbd> / <kbd>Shift</kbd>+<kbd>Tab</kbd></td><td>Cycles through the dialog's controls only: Close, body links or field, then the footer.</td></tr>
+        <tr><td><kbd>Esc</kbd></td><td>Same as Cancel (or Stay, or Got it). In the picker it first closes an open list. While busy it does nothing until the answer comes back.</td></tr>
+        <tr><td><kbd>Enter</kbd>, <kbd>Space</kbd></td><td>Activates the focused button. In the picker <kbd>Enter</kbd> picks the active option.</td></tr>
+        <tr><td><kbd>↓</kbd> / <kbd>↑</kbd></td><td>Picker only: moves through the options (<code>aria-activedescendant</code>).</td></tr>
+      </tbody></table></div>
       <h3>Focus</h3>
-      <ul>
-        <li><b>On open</b>: the first field in a form; Cancel in a destructive dialog without fields; the primary in a default confirmation; Done or the next step in a success panel.</li>
-        <li><b>On close</b>: back to the button that opened it. When that button is gone (the photo was removed), to the next item in the list, or the list heading.</li>
-        <li><b>On invalid submit</b>: to the error summary, which links to each field.</li>
-        <li>The sticky footer must not cover a focused field (WCAG 2.4.11): the body scrolls the field into view above it.</li>
-      </ul>
+      <p>On open, focus goes to the safe action for confirmations (Cancel, Stay), to the only button for acknowledgements (Got it) and to the search field in the picker. On close it returns to the control that opened the dialog (Delete studio, Unpublish, Remove, Add entry). A link in "Can't publish yet" closes the dialog and moves focus to the named field instead (L2-056.3). The shared ring is 3:1 against the raised surface.</p>
       <h3>Labelling</h3>
-      <p>Close is an icon button named "Close" (the dialog's name gives context; "Close filters" and "Close menu" are used on sheets). Header icons are <code>aria-hidden</code>. Photos in the header and in <code>.dialog-people</code> have empty <code>alt</code> because the names beside them say the same; <code>.dialog-people</code> itself is a list with an <code>aria-label</code> ("Caterers using Pan-Caribbean").</p>
+      <p>The title names the item ("Delete Corktown Garage Studio?"), so the dialog is announced with what is at stake. The Close icon button is named "Close". A busy dialog announces progress through its status line, not by changing the button label.</p>
       <h3>Contrast</h3>
       <div class="ds-example__canvas ds-example__canvas--stack" style="padding: 0; gap: var(--space-2);">
-        <div class="ds-pair"><span>Title and body on panel</span><span class="ds-pair__ratio" data-contrast="--color-fg-default|--color-bg-surface-raised" data-min="4.5"></span></div>
-        <div class="ds-pair"><span>Description on panel</span><span class="ds-pair__ratio" data-contrast="--color-fg-muted|--color-bg-surface-raised" data-min="4.5"></span></div>
-        <div class="ds-pair"><span>Field error in a dialog</span><span class="ds-pair__ratio" data-contrast="--color-danger-fg|--color-bg-surface-raised" data-min="4.5"></span></div>
-        <div class="ds-pair"><span>Invalid field edge in a dialog</span><span class="ds-pair__ratio" data-contrast="--color-danger-solid|--color-bg-surface-raised" data-min="3"></span></div>
-        <div class="ds-pair"><span>Primary edge on panel</span><span class="ds-pair__ratio" data-contrast="--color-action|--color-bg-surface-raised" data-min="3"></span></div>
-        <div class="ds-pair"><span>Danger icon on its circle</span><span class="ds-pair__ratio" data-contrast="--color-danger-icon|--color-danger-bg" data-min="3"></span></div>
-        <div class="ds-pair"><span>Success icon on its circle</span><span class="ds-pair__ratio" data-contrast="--color-success-icon|--color-success-bg" data-min="3"></span></div>
-        <div class="ds-pair"><span>Warning icon on its circle</span><span class="ds-pair__ratio" data-contrast="--color-warning-icon|--color-warning-bg" data-min="3"></span></div>
-        <div class="ds-pair"><span>Info icon on its circle</span><span class="ds-pair__ratio" data-contrast="--color-info-icon|--color-info-bg" data-min="3"></span></div>
-        <div class="ds-pair"><span>Focus ring on panel</span><span class="ds-pair__ratio" data-contrast="--color-focus-ring|--color-bg-surface-raised" data-min="3"></span></div>
+        <div class="ds-pair"><span>Title on the panel</span><span class="ds-pair__ratio" data-contrast="--color-fg-default|--color-bg-surface-raised" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Description on the panel</span><span class="ds-pair__ratio" data-contrast="--color-fg-muted|--color-bg-surface-raised" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Delete label on danger</span><span class="ds-pair__ratio" data-contrast="--color-fg-on-danger|--color-danger-solid" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Unpublish label on ink</span><span class="ds-pair__ratio" data-contrast="--color-fg-on-action|--color-action" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Ink button edge on the panel</span><span class="ds-pair__ratio" data-contrast="--color-action|--color-bg-surface-raised" data-min="3"></span></div>
+        <div class="ds-pair"><span>Field edge in the picker</span><span class="ds-pair__ratio" data-contrast="--color-border-strong|--color-bg-surface-raised" data-min="3"></span></div>
+        <div class="ds-pair"><span>Field error in the picker</span><span class="ds-pair__ratio" data-contrast="--color-danger-fg|--color-bg-surface-raised" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Failed alert text</span><span class="ds-pair__ratio" data-contrast="--color-danger-fg|--color-danger-bg" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Refused alert text</span><span class="ds-pair__ratio" data-contrast="--color-warning-fg|--color-warning-bg" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Focus ring on the panel</span><span class="ds-pair__ratio" data-contrast="--color-focus-ring|--color-bg-surface-raised" data-min="3"></span></div>
       </div>
       <h3>Motion</h3>
-      <p>The backdrop fades in over <code>--duration-base</code>; the panel scales in (SM+) or slides up (XS) over <code>--duration-slow</code> (320ms) with <code>--ease-enter</code>. Closing is instant. Reduced motion removes both animations; the busy spinner keeps turning because it reports status.</p>
+      <p>The backdrop fades in over <code>--duration-base</code>; the panel slides up on phones and scales in from 36rem over <code>--duration-slow</code> with <code>--ease-enter</code>. Reduced motion zeroes both durations, so the dialog simply appears. The busy spinner keeps turning.</p>
       <h3>Touch</h3>
-      <p>Close and every footer button are at least 44px. The bottom sheet keeps the actions in the thumb zone on phones, and the safe-area padding keeps them clear of the home indicator. Tapping the backdrop does not close a dialog, so a stray tap never loses a typed enquiry.</p>
+      <p>Footer buttons and Close are 44px. Docking to the bottom on phones puts Cancel and the confirm within thumb reach; tapping the backdrop does nothing, so a stray tap never confirms or cancels.</p>
     </section>
 
     <section class="ds-section" id="content"><h2><a href="#content">Content</a></h2>
       <ul>
-        <li><b>Titles</b>: confirmations are questions that name the thing: "Suspend Pelau House?", "Remove this photo?", "Sign out of Safari on iPhone?". Forms are the task as a verb phrase: "Send an enquiry", "Add a dish". Success is a statement: "Export requested", "Enquiry sent to Pelau House". Never "Are you sure?" or "Confirm".</li>
-        <li><b>Description</b>: one sentence of consequence, in plain words: "It leaves the listing within a minute and its page returns 'not found'. You can reinstate it later."</li>
-        <li><b>Buttons</b>: the primary repeats the title's verb ("Suspend caterer", "Retire cuisine", "Approve and publish"). The other is always "Cancel"; a success panel's only button is "Done" unless there is a next step.</li>
-        <li><b>Failure copy</b>: what failed, that nothing changed, what is kept: "We couldn't suspend Pelau House. Nothing has changed. Check your connection and try again; your reason is kept."</li>
-        <li><b>Field help in dialogs</b> names the caterer and the limit: "Pelau House serves 20–300", "We keep only the first 3 characters".</li>
+        <li>Title as the question, naming the item: "Delete Corktown Garage Studio?", "Unpublish The Junction Loft?", "Remove test shot 2?". Refusals state the fact: "Can't publish yet", "Can't remove this test shot".</li>
+        <li>Description says what happens and whether it can be undone: "It can't be undone." / "You can publish it again any time." / "It's removed when you save the studio."</li>
+        <li>Confirm repeats the verb and the object: "Delete studio", "Remove test shot", "Unpublish", "Add entry". Never "OK", "Yes" or "Confirm".</li>
+        <li>The safe action is "Cancel", or "Stay" when leaving is the question. An acknowledgement's only button is "Got it".</li>
+        <li>Failure copy says nothing changed and what to do: "We couldn't unpublish it. Nothing changed. Try again."</li>
       </ul>
     </section>
 
     <section class="ds-section" id="do-dont"><h2><a href="#do-dont">Do and don't</a></h2>
       <div class="ds-dodont">
-        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--canvas"><div class="dialog__panel dialog__panel--sm" style="animation: none;"><div class="dialog__header"><h3 class="dialog__title">Retire Pan-Caribbean?</h3></div><div class="dialog__footer"><button class="btn" type="button">Cancel</button><button class="btn btn--danger" type="button">Retire cuisine</button></div></div></div><figcaption>Name the thing in the title and the verb on the button.</figcaption></figure>
-        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--canvas"><div class="dialog__panel dialog__panel--sm" style="animation: none;"><div class="dialog__header"><h3 class="dialog__title">Are you sure?</h3></div><div class="dialog__footer"><button class="btn" type="button">No</button><button class="btn btn--primary" type="button">Yes</button></div></div></div><figcaption>"Are you sure?" with Yes and No makes people reread the page to know what they agreed to.</figcaption></figure>
-        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--canvas"><div class="dialog__panel dialog__panel--sm" style="animation: none;" aria-busy="true"><div class="dialog__header"><h3 class="dialog__title">Approve Auntie Bev's Kitchen?</h3><button class="icon-btn" type="button" aria-label="Close" disabled><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div><div class="dialog__footer"><button class="btn" type="button" disabled>Cancel</button><button class="btn btn--primary" type="button" aria-busy="true" aria-disabled="true">Approve and publish</button></div></div></div><figcaption>While busy, disable Close and Cancel together, and keep the label.</figcaption></figure>
-        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--canvas"><div class="dialog__panel dialog__panel--sm" style="animation: none;" aria-busy="true"><div class="dialog__header"><h3 class="dialog__title">Approve Auntie Bev's Kitchen?</h3><button class="icon-btn" type="button" aria-label="Close"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div><div class="dialog__footer"><button class="btn" type="button" disabled>Cancel</button><button class="btn btn--primary" type="button" aria-busy="true" aria-disabled="true">Approve and publish</button></div></div></div><figcaption>Ten busy mocks disabled Cancel but left Close working, so the request could be abandoned halfway.</figcaption></figure>
-        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--canvas"><div class="dialog__panel dialog__panel--sm" style="animation: none;"><div class="dialog__header"><h3 class="dialog__title">Edit your response</h3></div><div class="dialog__footer"><button class="btn btn--ghost push-start" type="button"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/></svg>Delete response</button><button class="btn" type="button">Cancel</button><button class="btn btn--primary" type="button">Save response</button></div></div></div><figcaption>A secondary destructive action goes to the start with <code>.push-start</code>, away from the primary.</figcaption></figure>
-        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--canvas"><div class="dialog__panel dialog__panel--sm" style="animation: none;"><div class="dialog__header"><h3 class="dialog__title">Filters</h3></div><div class="dialog__body"><p class="text-muted">Cuisine: 18 checkboxes… Area: 5 regions…</p></div></div></div><figcaption>Don't put long lists of choices in a dialog. Phone filters are a full-height <a href="sheet.html">sheet</a>.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas"><div class="dialog__footer" style="position: static; padding: 0; width: 100%;"><button class="btn btn--primary" type="button">Got it</button></div></div><figcaption>An acknowledgement's one button says "Got it", as <code>remove-image/refused</code> does.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas"><div class="dialog__footer" style="position: static; padding: 0; width: 100%;"><button class="btn btn--primary" type="button">OK</button></div></div><figcaption>Don't use "OK" (<code>missing-fields</code> did): it reads as agreeing that the studio can't be published.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas"><div class="dialog__footer" style="position: static; padding: 0; width: 100%;"><button class="btn" type="button">Cancel</button><button class="btn btn--primary" type="button">Unpublish</button></div></div><figcaption>A reversible change confirms with the ink primary.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas"><div class="dialog__footer" style="position: static; padding: 0; width: 100%;"><button class="btn" type="button">Cancel</button><button class="btn btn--danger" type="button">Unpublish</button></div></div><figcaption>Don't paint every confirmation red. Danger is for loss (delete, discard, remove); unpublishing can be undone.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas"><div class="dialog__footer" style="position: static; padding: 0; width: 100%;"><button class="btn" type="button" disabled>Cancel</button><button class="btn btn--danger" type="button" aria-busy="true" disabled>Delete studio</button></div></div><figcaption>While busy, keep the label and disable the way out until the server answers.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas"><ul style="padding-left: var(--space-5); display: grid; gap: var(--space-2);"><li><a href="../../mocks/pages/studio-editor/default.html">Ceiling height</a></li><li><a href="../../mocks/pages/studio-editor/default.html">At least one gallery image</a></li></ul></div><figcaption>Don't style a body list inline (<code>missing-fields</code> sets padding and a grid gap by hand); this needs a dialog list rule (reported).</figcaption></figure>
       </div>
     </section>
 
@@ -432,86 +586,68 @@
       <div class="ds-table-wrap"><table class="ds-table">
         <thead><tr><th scope="col">Part</th><th scope="col">Token</th><th scope="col">Light</th><th scope="col">Dark</th></tr></thead>
         <tbody>
-          <tr><td>Panel and sticky footer</td><td><code>--color-bg-surface-raised</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-bg-surface-raised" data-swatch></i><span data-token="--color-bg-surface-raised"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-bg-surface-raised" data-swatch></i><span data-token="--color-bg-surface-raised"></span></span></td></tr>
+          <tr><td>Panel</td><td><code>--color-bg-surface-raised</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-bg-surface-raised" data-swatch></i><span data-token="--color-bg-surface-raised"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-bg-surface-raised" data-swatch></i><span data-token="--color-bg-surface-raised"></span></span></td></tr>
           <tr><td>Backdrop</td><td><code>--color-bg-backdrop</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-bg-backdrop" data-swatch></i><span data-token="--color-bg-backdrop"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-bg-backdrop" data-swatch></i><span data-token="--color-bg-backdrop"></span></span></td></tr>
-          <tr><td>Title and body text</td><td><code>--color-fg-default</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-default" data-swatch></i><span data-token="--color-fg-default"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-default" data-swatch></i><span data-token="--color-fg-default"></span></span></td></tr>
           <tr><td>Description</td><td><code>--color-fg-muted</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-muted" data-swatch></i><span data-token="--color-fg-muted"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-muted" data-swatch></i><span data-token="--color-fg-muted"></span></span></td></tr>
-          <tr><td>Danger icon circle</td><td><code>--color-danger-bg</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-danger-bg" data-swatch></i><span data-token="--color-danger-bg"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-danger-bg" data-swatch></i><span data-token="--color-danger-bg"></span></span></td></tr>
-          <tr><td>Danger icon</td><td><code>--color-danger-icon</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-danger-icon" data-swatch></i><span data-token="--color-danger-icon"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-danger-icon" data-swatch></i><span data-token="--color-danger-icon"></span></span></td></tr>
-          <tr><td>Success icon circle</td><td><code>--color-success-bg</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-success-bg" data-swatch></i><span data-token="--color-success-bg"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-success-bg" data-swatch></i><span data-token="--color-success-bg"></span></span></td></tr>
-          <tr><td>Success icon</td><td><code>--color-success-icon</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-success-icon" data-swatch></i><span data-token="--color-success-icon"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-success-icon" data-swatch></i><span data-token="--color-success-icon"></span></span></td></tr>
-          <tr><td>Warning icon circle</td><td><code>--color-warning-bg</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-warning-bg" data-swatch></i><span data-token="--color-warning-bg"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-warning-bg" data-swatch></i><span data-token="--color-warning-bg"></span></span></td></tr>
-          <tr><td>Info icon circle</td><td><code>--color-info-bg</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-info-bg" data-swatch></i><span data-token="--color-info-bg"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-info-bg" data-swatch></i><span data-token="--color-info-bg"></span></span></td></tr>
+          <tr><td>Destructive confirm</td><td><code>--color-danger-solid</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-danger-solid" data-swatch></i><span data-token="--color-danger-solid"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-danger-solid" data-swatch></i><span data-token="--color-danger-solid"></span></span></td></tr>
           <tr><td>Shadow</td><td><code>--shadow-4</code></td><td colspan="2"><span data-token="--shadow-4"></span></td></tr>
-          <tr><td>Radius (SM+ / phone top corners)</td><td><code>--radius-lg</code> / <code>--radius-xl</code></td><td colspan="2"><span data-token="--radius-lg"></span> / <span data-token="--radius-xl"></span></td></tr>
+          <tr><td>Radius / docked top corners</td><td><code>--radius-lg</code> / <code>--radius-xl</code></td><td colspan="2"><span data-token="--radius-lg"></span> / <span data-token="--radius-xl"></span></td></tr>
           <tr><td>Default width</td><td><code>--layout-dialog-width</code></td><td colspan="2"><span data-token="--layout-dialog-width"></span></td></tr>
-          <tr><td>Padding / footer gap</td><td><code>--space-6</code> / <code>--space-3</code></td><td colspan="2"><span data-token="--space-6"></span> / <span data-token="--space-3"></span></td></tr>
-          <tr><td>Header icon size</td><td><code>--space-10</code></td><td colspan="2"><span data-token="--space-10"></span></td></tr>
-          <tr><td>Layers (backdrop / dialog)</td><td><code>--z-overlay</code> / <code>--z-modal</code></td><td colspan="2"><span data-token="--z-overlay"></span> / <span data-token="--z-modal"></span></td></tr>
-          <tr><td>Panel / backdrop entrance</td><td><code>--duration-slow</code> / <code>--duration-base</code>, <code>--ease-enter</code></td><td colspan="2"><span data-token="--duration-slow"></span> / <span data-token="--duration-base"></span> / <span data-token="--ease-enter"></span></td></tr>
+          <tr><td>Padding / between parts</td><td><code>--space-6</code> / <code>--space-4</code></td><td colspan="2"><span data-token="--space-6"></span> / <span data-token="--space-4"></span></td></tr>
+          <tr><td>Title</td><td><code>--text-h3</code></td><td colspan="2"><span data-token="--text-h3"></span></td></tr>
+          <tr><td>Layers</td><td><code>--z-overlay</code> / <code>--z-modal</code></td><td colspan="2"><span data-token="--z-overlay"></span> / <span data-token="--z-modal"></span></td></tr>
+          <tr><td>Enter</td><td><code>--duration-slow</code>, <code>--duration-base</code>, <code>--ease-enter</code></td><td colspan="2"><span data-token="--duration-slow"></span> · <span data-token="--duration-base"></span></td></tr>
         </tbody>
       </table></div>
     </section>
 
     <section class="ds-section" id="code"><h2><a href="#code">Code</a></h2>
-      <pre><code>&lt;div class="page" inert&gt;…&lt;/div&gt;
+      <pre><code>&lt;div inert aria-hidden="true"&gt;…the editor…&lt;/div&gt;
 &lt;div class="backdrop"&gt;&lt;/div&gt;
 &lt;div class="dialog" role="dialog" aria-modal="true" aria-labelledby="dlg-title" aria-describedby="dlg-desc"&gt;
-  &lt;form class="dialog__panel" novalidate aria-busy="true"&gt;
+  &lt;div class="dialog__panel dialog__panel--sm"&gt;
     &lt;div class="dialog__header"&gt;
-      &lt;div class="dialog__icon dialog__icon--danger" aria-hidden="true"&gt;&lt;svg class="icon" …&gt;&lt;/svg&gt;&lt;/div&gt;
-      &lt;div&gt;&lt;h2 class="dialog__title" id="dlg-title"&gt;Suspend Pelau House?&lt;/h2&gt;
-        &lt;p class="text-muted" id="dlg-desc"&gt;It leaves the listing within a minute…&lt;/p&gt;&lt;/div&gt;
-      &lt;button class="icon-btn" type="button" aria-label="Close" disabled&gt;…&lt;/button&gt;
+      &lt;div class="dialog__heading"&gt;
+        &lt;h2 class="dialog__title" id="dlg-title"&gt;Unpublish The Junction Loft?&lt;/h2&gt;
+        &lt;p class="dialog__desc" id="dlg-desc"&gt;It goes back to draft. … You can publish it again any time.&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;button class="btn btn--ghost btn--icon" type="button" aria-label="Close" disabled&gt;…&lt;/button&gt;
     &lt;/div&gt;
-    &lt;div class="dialog__body stack"&gt;
-      &lt;label class="field" for="reason"&gt;…&lt;textarea class="textarea" id="reason" readonly&gt;…&lt;/textarea&gt;&lt;/label&gt;
-      &lt;p class="visually-hidden" role="status"&gt;Suspending Pelau House&lt;/p&gt;
-    &lt;/div&gt;
+    &lt;div class="dialog__body"&gt;&lt;p class="visually-hidden" role="status"&gt;Unpublishing The Junction Loft…&lt;/p&gt;&lt;/div&gt;
     &lt;div class="dialog__footer"&gt;
       &lt;button class="btn" type="button" disabled&gt;Cancel&lt;/button&gt;
-      &lt;button class="btn btn--danger" type="submit" aria-busy="true" aria-disabled="true"&gt;Suspend caterer&lt;/button&gt;
+      &lt;button class="btn btn--primary" type="button" aria-busy="true" disabled&gt;Unpublish&lt;/button&gt;
     &lt;/div&gt;
-  &lt;/form&gt;
+  &lt;/div&gt;
 &lt;/div&gt;</code></pre>
-      <table class="ds-table"><thead><tr><th scope="col">Class / attribute</th><th scope="col">Effect</th></tr></thead><tbody>
-        <tr><td><code>.backdrop</code></td><td>Fixed dimmer at <code>--z-overlay</code>, fades in.</td></tr>
-        <tr><td><code>.dialog</code></td><td>Fixed full-viewport grid at <code>--z-modal</code>; bottom-aligned below 36rem, centred above.</td></tr>
-        <tr><td><code>.dialog--full</code></td><td>Below 48rem the panel fills the screen (enquiry only).</td></tr>
-        <tr><td><code>.dialog__panel</code> + <code>--sm</code> <code>--form</code> <code>--lg</code></td><td>The surface; 32rem by default, or 24 / 40 / 48rem.</td></tr>
-        <tr><td><code>.dialog__header</code> <code>.dialog__title</code> <code>.dialog__body</code> <code>.dialog__footer</code></td><td>Regions; the footer is sticky to the panel bottom.</td></tr>
-        <tr><td><code>.dialog__icon--danger|info|success|warning</code></td><td>40px tinted icon circle in the header.</td></tr>
-        <tr><td><code>.dialog__caterer</code>, <code>.dialog__caterer-name</code></td><td>Caterer photo (3.5rem) beside the title, with "to Pelau House" under it.</td></tr>
-        <tr><td><code>.dialog__photo</code></td><td>Centres one large round photo in the body.</td></tr>
-        <tr><td><code>.dialog-people</code></td><td>Centred list of round photos with names.</td></tr>
-        <tr><td><code>.push-start</code></td><td>On a footer button: moves it to the start.</td></tr>
-        <tr><td><code>aria-busy="true"</code> on the panel</td><td>Busy: pair with read-only fields, disabled Cancel and Close, a busy primary and a status line.</td></tr>
-      </tbody></table>
+      <div class="ds-table-wrap"><table class="ds-table"><thead><tr><th scope="col">Class / attribute</th><th scope="col">Effect</th></tr></thead><tbody>
+        <tr><td><code>.backdrop</code></td><td>Fixed dim layer at <code>--z-overlay</code>.</td></tr>
+        <tr><td><code>.dialog</code></td><td>Fixed positioner at <code>--z-modal</code>: docks to the bottom below 36rem, centres from 36rem.</td></tr>
+        <tr><td><code>.dialog--full</code></td><td>Below 48rem the panel fills the screen.</td></tr>
+        <tr><td><code>.dialog__panel</code> <code>--sm</code> <code>--form</code> <code>--lg</code></td><td>The surface; 32rem by default, 24 / 40 / 48rem.</td></tr>
+        <tr><td><code>.dialog__header</code> <code>.dialog__heading</code> <code>.dialog__title</code> <code>.dialog__desc</code></td><td>Title row; heading block; <code>--text-h3</code> title; muted description.</td></tr>
+        <tr><td><code>.dialog__icon</code> <code>--danger</code> <code>--warning</code> <code>--info</code> <code>--success</code></td><td>Optional 40px tinted icon circle before the heading.</td></tr>
+        <tr><td><code>.dialog__body</code></td><td>Content; collapses when it holds only a visually hidden status line.</td></tr>
+        <tr><td><code>.dialog__footer</code>, <code>.push-start</code></td><td>Sticky, wrapping action row; <code>.push-start</code> sends one button to the start.</td></tr>
+        <tr><td><code>data-dismiss-on-escape</code></td><td>Mocks only: marks dialogs that close on Escape.</td></tr>
+      </tbody></table></div>
     </section>
 
     <section class="ds-section" id="sources"><h2><a href="#sources">Sources</a></h2>
-      <p>Extracted from 40 dialog mocks; the main references:</p>
+      <p>Extracted from these mocks:</p>
       <ul>
-        <li>dialogs/enquiry/default, busy, success (form, full screen on phones)</li>
-        <li>dialogs/suspend-caterer/default, invalid, busy, failed (destructive with a reason)</li>
-        <li>dialogs/approve-profile/default (default with <code>.dialog__caterer</code>)</li>
-        <li>dialogs/remove-photo/default (small, <code>.dialog__photo</code>), dialogs/remove-dish/blocked (warning)</li>
-        <li>dialogs/retire-cuisine/default (<code>.dialog-people</code>)</li>
-        <li>dialogs/download-data/success (success), dialogs/add-cuisine/invalid (form invalid)</li>
-        <li>dialogs/review-response/edit (start-aligned footer action), dialogs/delete-review/default</li>
+        <li><a href="../../mocks/dialogs/delete-content/default.html">dialogs/delete-content/default</a>, <a href="../../mocks/dialogs/delete-content/busy.html">busy</a>, <a href="../../mocks/dialogs/delete-content/failed.html">failed</a> (L2-061)</li>
+        <li><a href="../../mocks/dialogs/unpublish/default.html">dialogs/unpublish/default</a>, <a href="../../mocks/dialogs/unpublish/busy.html">busy</a>, <a href="../../mocks/dialogs/unpublish/failed.html">failed</a> (L2-056)</li>
+        <li><a href="../../mocks/dialogs/discard-changes/default.html">dialogs/discard-changes/default</a> (L2-062)</li>
+        <li><a href="../../mocks/dialogs/missing-fields/default.html">dialogs/missing-fields/default</a>, <a href="../../mocks/dialogs/missing-fields/spot.html">spot</a> (L2-056, L2-002, L2-055)</li>
+        <li><a href="../../mocks/dialogs/remove-image/default.html">dialogs/remove-image/default</a>, <a href="../../mocks/dialogs/remove-image/refused.html">refused</a> (L2-058)</li>
+        <li><a href="../../mocks/dialogs/guide-entry-picker/default.html">dialogs/guide-entry-picker/default</a>, <a href="../../mocks/dialogs/guide-entry-picker/results.html">results</a>, <a href="../../mocks/dialogs/guide-entry-picker/busy.html">busy</a>, <a href="../../mocks/dialogs/guide-entry-picker/invalid.html">invalid</a>, <a href="../../mocks/dialogs/guide-entry-picker/no-matches.html">no-matches</a> (L2-060)</li>
       </ul>
-      <p>Drift fixed during extraction:</p>
-      <ul>
-        <li>Busy dialogs put <code>aria-busy</code> on <code>.dialog</code> (3 mocks), on <code>.dialog__panel</code> (4) or nowhere (30). The system puts it on the panel.</li>
-        <li>10 busy mocks (approve-profile, change-password, decline-enquiry, delete-account, download-data, edit-details, end-session, request-changes, review-response, search) disabled Cancel but left Close enabled. Both are disabled while busy.</li>
-        <li>No busy dialog announced progress; the system adds a visually hidden <code>role="status"</code> line. Busy labels that changed ("Suspending…", "Sending…") keep their label (see <a href="button.html">button</a>).</li>
-        <li><code>delete-review</code> used <code>role="alertdialog"</code>, had no Close button and labelled Cancel "Keep review"; it now matches every other destructive dialog.</li>
-        <li><code>review-response/edit</code> pushed "Delete response" aside with an inline <code>margin-right: auto</code>; it uses <code>.push-start</code>.</li>
-        <li>Every dialog wrapped its title in <code>&lt;div style="flex: 1;"&gt;</code> and gave the description an inline top margin; dedicated classes are requested (see the CSS notes for <code>.dialog__heading</code> and <code>.dialog__desc</code>).</li>
-      </ul>
+      <p>The photo viewer (<code>dialogs/lightbox/*</code>) is documented on <a href="lightbox.html">lightbox</a>, the site menu and filter panels on <a href="sheet.html">sheet</a>, and the map marker popup on <a href="popover.html">popover</a>.</p>
+      <p>Drift found during extraction (recorded, mocks unchanged): <code>missing-fields</code> labels its only button "OK" while <code>remove-image/refused</code> uses "Got it"; the system uses "Got it". <code>missing-fields</code> styles its body list inline (padding and grid gap). The default and failed mocks use <code>&lt;a&gt;</code> elements for Close, Cancel and the confirm so the static set can be clicked through; the product uses <code>&lt;button type="button"&gt;</code> as the busy mocks do. <code>guide-entry-picker/busy</code> sets the gap and margin of its "Searching" row inline. <code>.dialog__icon</code>, <code>.dialog__panel--lg</code>, the default 32rem panel and <code>.dialog--full</code> have CSS but no ShotThere mock.</p>
     </section>
 
-    <footer class="ds-footer"><span>ShotThere design system · extracted from docs/mocks on 10 October 2026</span><a href="#top">Back to top</a></footer>
+    <footer class="ds-footer"><span>ShotThere design system · extracted from <a href="../../mocks/index.html">docs/mocks</a> on 13 October 2026</span><a href="#top">Back to top</a></footer>
   </main>
 </div>
 <script src="../assets/ds.js"></script>
