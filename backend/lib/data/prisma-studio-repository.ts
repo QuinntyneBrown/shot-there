@@ -1,5 +1,5 @@
 import type { Prisma, PrismaClient } from '@/generated/prisma/client';
-import { toIsoDate, toNumber } from '@/lib/data/prisma-values';
+import { fromIsoDate, toIsoDate, toNumber } from '@/lib/data/prisma-values';
 import type { ImageRecord } from '@/lib/images/image-record';
 import type { StudioRecord } from '@/lib/studios/studio-record';
 import type { StudioRepository } from '@/lib/studios/studio-repository';
@@ -29,6 +29,31 @@ export class PrismaStudioRepository implements StudioRepository {
   async listAll(): Promise<StudioRecord[]> {
     const rows = await this.prisma.studio.findMany({ include: studioInclude });
     return rows.map(toStudioRecord);
+  }
+
+  async findById(id: string): Promise<StudioRecord | null> {
+    const row = await this.prisma.studio.findUnique({ where: { id }, include: studioInclude });
+    return row ? toStudioRecord(row) : null;
+  }
+
+  async isSlugTaken(slug: string): Promise<boolean> {
+    return (await this.prisma.studio.count({ where: { slug } })) > 0;
+  }
+
+  async save(studio: StudioRecord): Promise<void> {
+    const { id, fees, gear, images: _images, priceVerifiedAt, reviewedAt, ...fields } = studio;
+    const data = {
+      ...fields,
+      priceVerifiedAt: fromIsoDate(priceVerifiedAt),
+      reviewedAt: reviewedAt ? fromIsoDate(reviewedAt) : null,
+    };
+    await this.prisma.$transaction([
+      this.prisma.studio.upsert({ where: { id }, create: { id, ...data }, update: data }),
+      this.prisma.studioFee.deleteMany({ where: { studioId: id } }),
+      this.prisma.studioFee.createMany({ data: fees.map((fee, position) => ({ studioId: id, position, ...fee })) }),
+      this.prisma.gearItem.deleteMany({ where: { studioId: id } }),
+      this.prisma.gearItem.createMany({ data: gear.map((item, position) => ({ studioId: id, position, ...item })) }),
+    ]);
   }
 }
 
