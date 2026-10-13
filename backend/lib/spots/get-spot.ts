@@ -1,6 +1,7 @@
 import { getDependencies } from '@/lib/data/dependency-container';
 import { imagesWithRole, toImageDto } from '@/lib/images/to-image-dto';
 import { isStale } from '@/lib/shared/is-stale';
+import { findNearestStudios } from '@/lib/spots/find-nearest-studios';
 import type { Season } from '@/lib/spots/season';
 import type { ShootType } from '@/lib/spots/shoot-type';
 import type { SpotDetailDto } from '@/lib/spots/spot-detail-dto';
@@ -52,5 +53,7 @@ export async function getSpot(slug: string): Promise<SpotDetailDto | null> {
     bestUses: spot.bestUses,
     disclosure: { kind: spot.disclosure, provider: spot.disclosureProvider },
     videoId: spot.videoId,
+    rainBackup:
+      spot.latitude !== null && spot.longitude !== null ? await findNearestStudios(spot.latitude, spot.longitude) : [],
   };
 }

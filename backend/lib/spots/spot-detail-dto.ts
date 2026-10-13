@@ -1,5 +1,6 @@
 import type { DisclosureDto } from '@/lib/publishing/disclosure-dto';
 import type { BestUse } from '@/lib/spots/best-use';
+import type { RainBackupStudioDto } from '@/lib/spots/rain-backup-studio-dto';
 import type { SpotConditionsDto } from '@/lib/spots/spot-conditions-dto';
 import type { SpotLightBySeasonRecord } from '@/lib/spots/spot-light-by-season-record';
 import type { SpotLightByTimeRecord } from '@/lib/spots/spot-light-by-time-record';
@@ -22,4 +23,5 @@ export interface SpotDetailDto {
   bestUses: BestUse[];
   disclosure: DisclosureDto;
   videoId: string | null;
+  rainBackup: RainBackupStudioDto[];
 }
