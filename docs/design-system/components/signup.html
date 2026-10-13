@@ -1,0 +1,525 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Email signup — ShotThere design system</title>
+<meta name="description" content="ShotThere email signup: the home page and footer forms that subscribe a visitor to new reviews, with invalid, submitting, success, rate-limited and server-error states in both themes.">
+<link rel="stylesheet" href="../tokens/tokens.css">
+<link rel="stylesheet" href="../assets/components.css">
+<link rel="stylesheet" href="../assets/ds.css">
+</head>
+<body id="top">
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="ds-shell">
+  <nav class="ds-nav" aria-label="Design system">
+    <div class="ds-nav__brand"><a href="../index.html">ShotThere DS</a><button class="ds-theme-toggle" type="button" aria-pressed="false">☾ Dark</button></div>
+    <details open><summary>Foundations</summary><ul>
+      <li><a href="../foundations/color.html">Color</a></li>
+      <li><a href="../foundations/typography.html">Typography</a></li>
+      <li><a href="../foundations/spacing.html">Spacing</a></li>
+      <li><a href="../foundations/layout.html">Layout</a></li>
+      <li><a href="../foundations/elevation.html">Elevation</a></li>
+      <li><a href="../foundations/shape.html">Shape</a></li>
+      <li><a href="../foundations/motion.html">Motion</a></li>
+      <li><a href="../foundations/iconography.html">Iconography</a></li>
+      <li><a href="../foundations/theming.html">Theming</a></li>
+      <li><a href="../foundations/responsive.html">Responsive</a></li>
+      <li><a href="../foundations/accessibility.html">Accessibility</a></li>
+      <li><a href="../foundations/content.html">Content</a></li>
+    </ul></details>
+    <details open><summary>Actions</summary><ul>
+      <li><a href="../components/button.html">Button</a></li>
+      <li><a href="../components/icon-button.html">Icon button</a></li>
+      <li><a href="../components/button-group.html">Button group</a></li>
+      <li><a href="../components/link.html">Link</a></li>
+      <li><a href="../components/compare-bar.html">Compare toggle and bar</a></li>
+    </ul></details>
+    <details open><summary>Inputs</summary><ul>
+      <li><a href="../components/form-field.html">Form field</a></li>
+      <li><a href="../components/text-field.html">Text field</a></li>
+      <li><a href="../components/textarea.html">Textarea</a></li>
+      <li><a href="../components/select.html">Select</a></li>
+      <li><a href="../components/combobox.html">Combobox</a></li>
+      <li><a href="../components/checkbox.html">Checkbox</a></li>
+      <li><a href="../components/radio-group.html">Radio group</a></li>
+      <li><a href="../components/file-upload.html">File upload</a></li>
+      <li><a href="../components/form-layout.html">Form layout</a></li>
+      <li><a href="../components/signup.html">Email signup</a></li>
+    </ul></details>
+    <details open><summary>Navigation</summary><ul>
+      <li><a href="../components/skip-link.html">Skip link</a></li>
+      <li><a href="../components/site-header.html">Site header</a></li>
+      <li><a href="../components/footer.html">Footer</a></li>
+      <li><a href="../components/breadcrumb.html">Breadcrumb</a></li>
+      <li><a href="../components/filter.html">Filters</a></li>
+    </ul></details>
+    <details open><summary>Containers and overlays</summary><ul>
+      <li><a href="../components/container.html">Container and grid</a></li>
+      <li><a href="../components/review-layout.html">Review layout</a></li>
+      <li><a href="../components/editor-layout.html">Editor layout</a></li>
+      <li><a href="../components/card.html">Card</a></li>
+      <li><a href="../components/dialog.html">Dialog</a></li>
+      <li><a href="../components/sheet.html">Sheet and drawer</a></li>
+      <li><a href="../components/popover.html">Popover</a></li>
+      <li><a href="../components/lightbox.html">Lightbox</a></li>
+      <li><a href="../components/divider.html">Divider</a></li>
+    </ul></details>
+    <details open><summary>Data display</summary><ul>
+      <li><a href="../components/location-card.html">Location card</a></li>
+      <li><a href="../components/table.html">Table</a></li>
+      <li><a href="../components/compare-table.html">Comparison table</a></li>
+      <li><a href="../components/list.html">List rows</a></li>
+      <li><a href="../components/description-list.html">Description list</a></li>
+      <li><a href="../components/price-block.html">Price block</a></li>
+      <li><a href="../components/score.html">Score and pips</a></li>
+      <li><a href="../components/shot-grid.html">Shot grid</a></li>
+      <li><a href="../components/video-poster.html">Episode poster</a></li>
+      <li><a href="../components/map.html">Map</a></li>
+      <li><a href="../components/guide-entry.html">Guide entry</a></li>
+      <li><a href="../components/stat-tile.html">Stat tile</a></li>
+      <li><a href="../components/image-manager.html">Image manager</a></li>
+      <li><a href="../components/disclosure.html">Disclosure</a></li>
+      <li><a href="../components/badge.html">Badge</a></li>
+      <li><a href="../components/status-label.html">Status label</a></li>
+      <li><a href="../components/chip.html">Chip</a></li>
+      <li><a href="../components/tag.html">Tag</a></li>
+    </ul></details>
+    <details open><summary>Feedback</summary><ul>
+      <li><a href="../components/inline-message.html">Inline message</a></li>
+      <li><a href="../components/alert.html">Alert and banner</a></li>
+      <li><a href="../components/toast.html">Toast</a></li>
+      <li><a href="../components/progress.html">Progress and meter</a></li>
+      <li><a href="../components/spinner.html">Spinner</a></li>
+      <li><a href="../components/skeleton.html">Skeleton</a></li>
+      <li><a href="../components/empty-state.html">Empty state</a></li>
+      <li><a href="../components/error-page.html">Error page</a></li>
+    </ul></details>
+    <details open><summary>Patterns</summary><ul>
+      <li><a href="../patterns/forms.html">Forms</a></li>
+      <li><a href="../patterns/feedback-and-loading.html">Feedback and loading</a></li>
+      <li><a href="../patterns/empty-and-error-states.html">Empty and error states</a></li>
+      <li><a href="../patterns/navigation.html">Navigation and page structure</a></li>
+      <li><a href="../patterns/dialogs-and-overlays.html">Dialogs and overlays</a></li>
+      <li><a href="../patterns/tables-and-lists.html">Data tables and lists</a></li>
+      <li><a href="../patterns/notifications.html">Notifications</a></li>
+      <li><a href="../patterns/content-and-tone.html">Content and tone</a></li>
+    </ul></details>
+  </nav>
+
+  <main id="main" class="ds-main">
+    <header class="ds-header">
+      <p class="ds-kicker">Component · Inputs</p>
+      <h1>Email signup</h1>
+      <p class="ds-lead">The email signup is the one form visitors fill in: an email address and a Subscribe button that gets them one email per new review. It sits in the home page hero and in the footer of every public page, and confirms inline without leaving the page.</p>
+      <div class="ds-meta"><span class="ds-pill ds-pill--ok">WCAG 2.2 AA</span><span class="ds-pill">Status: stable</span><span class="ds-pill">Native <code>&lt;form&gt;</code></span><span class="ds-pill"><code>.signup</code></span></div>
+      <ul class="ds-toc"><li><a href="#overview">Overview</a></li><li><a href="#anatomy">Anatomy</a></li><li><a href="#variants">Variants</a></li><li><a href="#sizes">Sizes</a></li><li><a href="#states">States</a></li><li><a href="#responsive">Responsive behaviour</a></li><li><a href="#theming">Theming</a></li><li><a href="#accessibility">Accessibility</a></li><li><a href="#content">Content</a></li><li><a href="#do-dont">Do and don't</a></li><li><a href="#tokens">Tokens</a></li><li><a href="#code">Code</a></li><li><a href="#sources">Sources</a></li></ul>
+    </header>
+
+    <section class="ds-section" id="overview"><h2><a href="#overview">Overview</a></h2>
+      <p>ShotThere has no visitor accounts. The signup is how a visitor follows the site: they give an email address and hear when a new studio or spot review goes up (L2-039). It is a small, self-contained form built from the <a href="form-field.html">form field</a>, <a href="text-field.html">text field</a>, <a href="button.html">button</a> and <a href="alert.html">alert</a>; this page documents how they combine and behave.</p>
+      <ul>
+        <li><b>Hero</b> placement on the home page has the primary (ink) Subscribe: it is the page's one primary action.</li>
+        <li><b>Footer</b> placement repeats on every public page with a secondary Subscribe, so it never competes with the page's own primary action.</li>
+        <li>Never put the signup in a dialog, a sheet or a toast, and never ask for anything besides the email address. Admin forms are not signups; they use the <a href="form-layout.html">form layout</a>.</li>
+      </ul>
+      <p>The browser checks the address before anything is sent; the server checks it again, stores it lowercase with the time and source page, ignores the honeypot and rate-limits by client (L2-040). An address that is already subscribed gets the same confirmation as a new one, so the form never reveals who is on the list (L2-039.4).</p>
+    </section>
+
+    <section class="ds-section" id="anatomy"><h2><a href="#anatomy">Anatomy</a></h2>
+      <div class="ds-anatomy">
+        <figure class="ds-anatomy__figure" style="place-items: stretch;">
+          <form class="signup" action="#anatomy" method="post" novalidate aria-labelledby="an-signup-title" style="position: relative;">
+            <h3 class="signup__title" id="an-signup-title" style="position: relative;">Get new reviews by email<span class="ds-callout" style="left: -1.75rem; top: 0;" aria-hidden="true">1</span></h3>
+            <p style="position: relative;">One short email per new review. No ads, no sponsors.<span class="ds-callout" style="left: -1.75rem; top: 0;" aria-hidden="true">2</span></p>
+            <div class="signup__row" style="position: relative;">
+              <div class="field" style="position: relative;">
+                <label class="field__label" for="an-email">Email address</label>
+                <input class="input" id="an-email" name="email" type="email" autocomplete="email" inputmode="email">
+                <span class="ds-callout" style="left: -1.75rem; top: 0;" aria-hidden="true">3</span>
+              </div>
+              <button class="btn btn--primary" type="submit" style="align-self: flex-end; position: relative;">Subscribe<span class="ds-callout" style="right: -0.75rem; top: -0.75rem;" aria-hidden="true">5</span></button>
+              <span class="ds-callout" style="left: 40%; bottom: -1.75rem;" aria-hidden="true">4</span>
+            </div>
+            <div class="signup__trap" aria-hidden="true"><label for="an-website">Leave this field empty</label><input id="an-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+            <span class="ds-callout" style="left: -1.75rem; bottom: -1.75rem;" aria-hidden="true">6</span>
+          </form>
+        </figure>
+        <ol class="ds-anatomy__list">
+          <li><div><b>Title</b><small><code>.signup__title</code>: a real heading in <code>--text-h4</code>; it names the form through <code>aria-labelledby</code>.</small></div></li>
+          <li><div><b>Promise</b><small>One plain <code>&lt;p&gt;</code> saying how often and what is sent.</small></div></li>
+          <li><div><b>Email field</b><small>A <code>.field</code> with a visible "Email address" label and a 44px <code>.input type="email"</code>.</small></div></li>
+          <li><div><b>Row</b><small><code>.signup__row</code>: field and button stacked at XS, side by side from SM.</small></div></li>
+          <li><div><b>Subscribe</b><small>Primary in the hero, secondary in the footer; <code>type="submit"</code>.</small></div></li>
+          <li><div><b>Honeypot</b><small><code>.signup__trap</code>: an off-screen "website" field, out of the tab order and hidden from assistive technology. Not visible.</small></div></li>
+        </ol>
+      </div>
+      <p>Below the row, the form can hold one message at a time: the field error (<code>.field__error</code>), a warning alert for rate limiting or a danger alert for a failed request. On success the whole form is replaced by <code>.signup__done</code>.</p>
+    </section>
+
+    <section class="ds-section" id="variants"><h2><a href="#variants">Variants</a></h2>
+      <p>Same fields, same behaviour; the placement sets the emphasis and the copy.</p>
+      <h3>Hero (home page)</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--stack">
+          <form class="signup" action="#variants" method="post" novalidate aria-labelledby="v1-title">
+            <h4 class="signup__title" id="v1-title">Get new reviews by email</h4>
+            <p>One short email per new review. No ads, no sponsors.</p>
+            <div class="signup__row">
+              <div class="field"><label class="field__label" for="v1-email">Email address</label><input class="input" id="v1-email" name="email" type="email" autocomplete="email" inputmode="email"></div>
+              <button class="btn btn--primary" type="submit" style="align-self: flex-end;">Subscribe</button>
+            </div>
+            <div class="signup__trap" aria-hidden="true"><label for="v1-website">Leave this field empty</label><input id="v1-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+          </form>
+        </div>
+        <div class="ds-example__caption"><span>The page's one primary action. Up to 32rem wide (<code>max-width</code> on <code>.signup</code>).</span></div>
+        <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;form class="signup" action="/api/signup" method="post" novalidate aria-labelledby="hero-signup-title"&gt;
+  &lt;h2 class="signup__title" id="hero-signup-title"&gt;Get new reviews by email&lt;/h2&gt;
+  &lt;p&gt;One short email per new review. No ads, no sponsors.&lt;/p&gt;
+  &lt;div class="signup__row"&gt;
+    &lt;div class="field"&gt;
+      &lt;label class="field__label" for="hero-email"&gt;Email address&lt;/label&gt;
+      &lt;input class="input" id="hero-email" name="email" type="email" autocomplete="email" inputmode="email"&gt;
+    &lt;/div&gt;
+    &lt;button class="btn btn--primary" type="submit"&gt;Subscribe&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class="signup__trap" aria-hidden="true"&gt;
+    &lt;label for="hero-website"&gt;Leave this field empty&lt;/label&gt;
+    &lt;input id="hero-website" name="website" type="text" tabindex="-1" autocomplete="off"&gt;
+  &lt;/div&gt;
+&lt;/form&gt;</code></pre></details>
+      </div>
+      <h3>Footer (every public page)</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--stack ds-example__canvas--canvas">
+          <div class="site-footer" style="margin: 0; padding: 0;">
+            <div class="site-footer__brand"><strong>ShotThere</strong><span>Toronto photo studios and outdoor spots, reviewed first-hand. Nothing is listed unless it has been shot there.</span></div>
+            <form class="signup" action="#variants" method="post" novalidate aria-labelledby="v2-title">
+              <h4 class="signup__title" id="v2-title">New reviews by email</h4>
+              <p>One email when a new studio or spot goes up. Unsubscribe any time.</p>
+              <div class="signup__row">
+                <div class="field"><label class="field__label" for="v2-email">Email address</label><input class="input" id="v2-email" name="email" type="email" autocomplete="email" inputmode="email"></div>
+                <button class="btn" type="submit" style="align-self: flex-end;">Subscribe</button>
+              </div>
+              <div class="signup__trap" aria-hidden="true"><label for="v2-website">Leave this field empty</label><input id="v2-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+            </form>
+          </div>
+        </div>
+        <div class="ds-example__caption"><span>Inside <code>.site-footer</code> the form flexes from 20rem (<code>.site-footer .signup</code>), the Subscribe button is secondary, and the footer's muted link styles are undone so the button keeps its own colour and 44px height.</span></div>
+      </div>
+    </section>
+
+    <section class="ds-section" id="sizes" data-na="One size: every control is 44px tall at every width (L2-065.1)."><h2><a href="#sizes">Sizes</a></h2>
+      <p class="ds-na">One size. The input and Subscribe are both <code>--control-height-md</code> (44px) everywhere; the form is capped at 32rem and fills its column below that.</p>
+    </section>
+
+    <section class="ds-section" id="states"><h2><a href="#states">States</a></h2>
+      <p>The parts first, then the whole form in each state the mocks define. Pointer and focus states are forced with <code>data-state</code>; real pages get them from <code>:hover</code>, <code>:focus-visible</code> and <code>:active</code>, and invalid and busy from <code>aria-invalid</code> and <code>aria-busy</code>.</p>
+      <div class="ds-matrix"><table>
+        <caption class="visually-hidden">Email signup part states</caption>
+        <thead><tr><th scope="col">Part</th><th scope="col">Default</th><th scope="col">Hover</th><th scope="col">Focus</th><th scope="col">Active</th><th scope="col">Disabled</th><th scope="col">Invalid</th><th scope="col">Busy</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Email input</th>
+            <td><input class="input" type="email" aria-label="Email address, default" style="width: 12rem;"></td>
+            <td><input class="input" type="email" aria-label="Email address, hover" data-state="hover" style="width: 12rem;"></td>
+            <td><input class="input" type="email" aria-label="Email address, focus" data-state="focus" value="maya.chen@example.com" style="width: 12rem;"></td>
+            <td><small class="text-muted" style="display: block; min-width: 9rem;">Same as focus.</small></td>
+            <td><small class="text-muted" style="display: block; min-width: 9rem;">Never disabled; it stays editable while submitting.</small></td>
+            <td><input class="input" type="email" aria-label="Email address, invalid" aria-invalid="true" value="not-an-email" style="width: 12rem;"></td>
+            <td><input class="input" type="email" aria-label="Email address, while submitting" value="maya.chen@example.com" style="width: 12rem;"></td>
+          </tr>
+          <tr><th scope="row">Subscribe (hero)</th>
+            <td><button class="btn btn--primary" type="button">Subscribe</button></td>
+            <td><button class="btn btn--primary" type="button" data-state="hover">Subscribe</button></td>
+            <td><button class="btn btn--primary" type="button" data-state="focus">Subscribe</button></td>
+            <td><button class="btn btn--primary" type="button" data-state="active">Subscribe</button></td>
+            <td><small class="text-muted" style="display: block; min-width: 9rem;">Only while busy.</small></td>
+            <td><small class="text-muted" style="display: block; min-width: 9rem;">Stays enabled.</small></td>
+            <td><button class="btn btn--primary" type="button" aria-busy="true" disabled>Subscribe</button></td>
+          </tr>
+          <tr><th scope="row">Subscribe (footer)</th>
+            <td><button class="btn" type="button">Subscribe</button></td>
+            <td><button class="btn" type="button" data-state="hover">Subscribe</button></td>
+            <td><button class="btn" type="button" data-state="focus">Subscribe</button></td>
+            <td><button class="btn" type="button" data-state="active">Subscribe</button></td>
+            <td><small class="text-muted" style="display: block; min-width: 9rem;">Only while busy.</small></td>
+            <td><small class="text-muted" style="display: block; min-width: 9rem;">Stays enabled.</small></td>
+            <td><button class="btn" type="button" aria-busy="true" disabled>Subscribe</button></td>
+          </tr>
+        </tbody>
+      </table></div>
+
+      <h3>Invalid: empty field</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--stack">
+          <form class="signup" action="#states" method="post" novalidate aria-labelledby="s1-title">
+            <h4 class="signup__title" id="s1-title">Get new reviews by email</h4>
+            <p>One short email per new review. No ads, no sponsors.</p>
+            <div class="signup__row">
+              <div class="field"><label class="field__label" for="s1-email">Email address</label><input class="input" id="s1-email" name="email" type="email" autocomplete="email" inputmode="email" aria-invalid="true" aria-describedby="s1-email-error"></div>
+              <button class="btn btn--primary" type="submit" style="align-self: flex-end;">Subscribe</button>
+            </div>
+            <p class="field__error" id="s1-email-error">Enter your email address</p>
+            <div class="signup__trap" aria-hidden="true"><label for="s1-website">Leave this field empty</label><input id="s1-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+          </form>
+        </div>
+        <div class="ds-example__caption"><span>Checked in the browser; no request is sent, focus moves to the field and the message is linked by <code>aria-describedby</code> (L2-039.2).</span></div>
+      </div>
+
+      <h3>Invalid: not an email address</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--stack">
+          <form class="signup" action="#states" method="post" novalidate aria-labelledby="s2-title">
+            <h4 class="signup__title" id="s2-title">Get new reviews by email</h4>
+            <p>One short email per new review. No ads, no sponsors.</p>
+            <div class="signup__row">
+              <div class="field"><label class="field__label" for="s2-email">Email address</label><input class="input" id="s2-email" name="email" type="email" autocomplete="email" inputmode="email" value="not-an-email" aria-invalid="true" aria-describedby="s2-email-error"></div>
+              <button class="btn btn--primary" type="submit" style="align-self: flex-end;">Subscribe</button>
+            </div>
+            <p class="field__error" id="s2-email-error">Enter a valid email address, like name@example.com</p>
+            <div class="signup__trap" aria-hidden="true"><label for="s2-website">Leave this field empty</label><input id="s2-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+          </form>
+        </div>
+        <div class="ds-example__caption"><span>The address stays in the field so it can be corrected, not retyped (L2-039.3).</span></div>
+      </div>
+
+      <h3>Submitting</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--stack">
+          <form class="signup" action="#states" method="post" novalidate aria-labelledby="s3-title">
+            <h4 class="signup__title" id="s3-title">Get new reviews by email</h4>
+            <p>One short email per new review. No ads, no sponsors.</p>
+            <div class="signup__row">
+              <div class="field"><label class="field__label" for="s3-email">Email address</label><input class="input" id="s3-email" name="email" type="email" autocomplete="email" inputmode="email" value="maya.chen@example.com"></div>
+              <button class="btn btn--primary" type="submit" style="align-self: flex-end;" aria-busy="true" disabled>Subscribe</button>
+            </div>
+            <div class="signup__trap" aria-hidden="true"><label for="s3-website">Leave this field empty</label><input id="s3-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+          </form>
+        </div>
+        <div class="ds-example__caption"><span>Subscribe is disabled and busy until the response arrives (L2-041.3); its width does not change.</span></div>
+      </div>
+
+      <h3>Success</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--stack">
+          <div class="signup" role="status" aria-live="polite">
+            <p class="signup__done"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg><span>You're subscribed. We'll email maya.chen@example.com when a new review goes up.</span></p>
+          </div>
+        </div>
+        <div class="ds-example__caption"><span>The form is replaced by the confirmation in a polite status region (L2-039.1). Already-subscribed addresses get the same message (L2-039.4).</span></div>
+      </div>
+
+      <h3>Rate limited</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--stack">
+          <form class="signup" action="#states" method="post" novalidate aria-labelledby="s5-title">
+            <h4 class="signup__title" id="s5-title">Get new reviews by email</h4>
+            <p>One short email per new review. No ads, no sponsors.</p>
+            <div class="signup__row">
+              <div class="field"><label class="field__label" for="s5-email">Email address</label><input class="input" id="s5-email" name="email" type="email" autocomplete="email" inputmode="email" value="maya.chen@example.com"></div>
+              <button class="btn btn--primary" type="submit" style="align-self: flex-end;">Subscribe</button>
+            </div>
+            <div class="alert alert--warning" role="alert"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3 2 20h20L12 3z"/><path d="M12 10v4M12 17h.01"/></svg><div class="alert__body"><p class="alert__title">Too many tries.</p><p>Wait a minute, then try again.</p></div></div>
+            <div class="signup__trap" aria-hidden="true"><label for="s5-website">Leave this field empty</label><input id="s5-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+          </form>
+        </div>
+        <div class="ds-example__caption"><span>HTTP 429 after six tries in a minute (L2-040.3, L2-041.2). The address stays; Subscribe stays enabled.</span></div>
+      </div>
+
+      <h3>Server error</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--stack">
+          <form class="signup" action="#states" method="post" novalidate aria-labelledby="s6-title">
+            <h4 class="signup__title" id="s6-title">Get new reviews by email</h4>
+            <p>One short email per new review. No ads, no sponsors.</p>
+            <div class="signup__row">
+              <div class="field"><label class="field__label" for="s6-email">Email address</label><input class="input" id="s6-email" name="email" type="email" autocomplete="email" inputmode="email" value="maya.chen@example.com"></div>
+              <button class="btn btn--primary" type="submit" style="align-self: flex-end;">Subscribe</button>
+            </div>
+            <div class="alert alert--danger" role="alert"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16h.01"/></svg><div class="alert__body"><p class="alert__title">We couldn't subscribe you just now.</p><p>Your email is still here — try again.</p></div></div>
+            <div class="signup__trap" aria-hidden="true"><label for="s6-website">Leave this field empty</label><input id="s6-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+          </form>
+        </div>
+        <div class="ds-example__caption"><span>HTTP 500 (L2-041.1). Nothing is cleared; Subscribe retries the same address.</span></div>
+      </div>
+
+      <h3>Both themes</h3>
+      <div class="ds-themes">
+        <div data-theme="light">
+          <form class="signup" action="#states" method="post" novalidate aria-labelledby="t1-title">
+            <h4 class="signup__title" id="t1-title">Get new reviews by email</h4>
+            <div class="signup__row">
+              <div class="field"><label class="field__label" for="t1-email">Email address</label><input class="input" id="t1-email" name="email" type="email" autocomplete="email" value="not-an-email" aria-invalid="true" aria-describedby="t1-email-error"></div>
+              <button class="btn btn--primary" type="submit" style="align-self: flex-end;">Subscribe</button>
+            </div>
+            <p class="field__error" id="t1-email-error">Enter a valid email address, like name@example.com</p>
+          </form>
+          <div class="signup" role="status" style="margin-top: var(--space-6);"><p class="signup__done"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg><span>You're subscribed. We'll email maya.chen@example.com when a new review goes up.</span></p></div>
+        </div>
+        <div data-theme="dark">
+          <form class="signup" action="#states" method="post" novalidate aria-labelledby="t2-title">
+            <h4 class="signup__title" id="t2-title">Get new reviews by email</h4>
+            <div class="signup__row">
+              <div class="field"><label class="field__label" for="t2-email">Email address</label><input class="input" id="t2-email" name="email" type="email" autocomplete="email" value="not-an-email" aria-invalid="true" aria-describedby="t2-email-error"></div>
+              <button class="btn btn--primary" type="submit" style="align-self: flex-end;">Subscribe</button>
+            </div>
+            <p class="field__error" id="t2-email-error">Enter a valid email address, like name@example.com</p>
+          </form>
+          <div class="signup" role="status" style="margin-top: var(--space-6);"><p class="signup__done"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg><span>You're subscribed. We'll email maya.chen@example.com when a new review goes up.</span></p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ds-section" id="responsive"><h2><a href="#responsive">Responsive behaviour</a></h2>
+      <ul>
+        <li><b>XS (below 36rem)</b>: the field and Subscribe stack and both are full width (L2-039.5). Messages sit under the button.</li>
+        <li><b>SM and up (36rem)</b>: one row; the field grows (<code>flex: 1</code>) and Subscribe keeps its natural width, aligned to the bottom of the input rather than the top of the label.</li>
+        <li>The form is capped at 32rem so the input never becomes a page-wide bar on desktop.</li>
+        <li><b>Footer</b>: the form takes a flexible column from 20rem beside the brand and links, and wraps under the brand when the footer is narrower.</li>
+        <li>The honeypot is positioned off-screen with <code>left: -100vw</code> inside a 1px box, so it never causes horizontal scroll.</li>
+      </ul>
+      <div class="ds-iframes">
+        <iframe class="ds-iframe" src="../../mocks/pages/home/invalid.html?chrome=0" title="Home page signup, invalid state, at phone width" loading="lazy"></iframe>
+        <iframe class="ds-iframe" src="../../mocks/pages/home/success.html?chrome=0" title="Home page signup, success state, at phone width" loading="lazy"></iframe>
+      </div>
+    </section>
+
+    <section class="ds-section" id="theming"><h2><a href="#theming">Theming</a></h2>
+      <p>The signup has no component tokens. It reads the field tokens (<code>--field-bg</code>, <code>--field-border</code>, <code>--field-fg</code>), the button tokens (<code>--btn-bg</code>, <code>--btn-fg</code>, <code>--btn-border</code>) and the alert tokens, so a theme or re-skin of those parts changes the signup with them. Its own colours are <code>--color-fg-default</code> for the title and confirmation and <code>--color-success-icon</code> for the tick.</p>
+      <p>The footer placement needs one override: <code>.site-footer a</code> and <code>.site-footer</code> text are muted, so <code>.site-footer .signup .btn</code> sets the label back to <code>--btn-fg</code> and keeps it on hover. In dark the primary Subscribe flips to light stone with near-black text, the input sits on the stone 950 surface and is defined by its neutral stone 500 border, and the success tick lightens to success green 300.</p>
+    </section>
+
+    <section class="ds-section" id="accessibility"><h2><a href="#accessibility">Accessibility</a></h2>
+      <h3>Role and pattern</h3>
+      <p>A native <code>&lt;form&gt;</code> named by its heading (<code>aria-labelledby</code>), so it is a form landmark ("Get new reviews by email, form"). A native <code>&lt;input type="email"&gt;</code> and a native submit <code>&lt;button&gt;</code>. <code>novalidate</code> turns off browser bubbles; the page validates and shows its own message. The honeypot wrapper is <code>aria-hidden="true"</code> and its input has <code>tabindex="-1"</code>, so neither keyboard nor screen reader users reach it.</p>
+      <h3>Keyboard</h3>
+      <table class="ds-table ds-keys"><thead><tr><th scope="col">Key</th><th scope="col">Action</th></tr></thead><tbody>
+        <tr><td><kbd>Tab</kbd> / <kbd>Shift</kbd>+<kbd>Tab</kbd></td><td>Email field, then Subscribe. The honeypot is skipped.</td></tr>
+        <tr><td><kbd>Enter</kbd> in the field</td><td>Submits the form, like pressing Subscribe.</td></tr>
+        <tr><td><kbd>Enter</kbd>, <kbd>Space</kbd> on Subscribe</td><td>Submits. While busy the button ignores further presses.</td></tr>
+      </tbody></table>
+      <h3>Focus</h3>
+      <p>On an invalid submit, focus moves to the email field, whose error is then read with it. On success, focus would be lost with the removed form, so it moves to the confirmation (give the wrapper <code>tabindex="-1"</code> and focus it), which the status region also announces. On a server error or rate limit, focus stays on Subscribe so the visitor can retry at once. Never use <code>autofocus</code> on page load.</p>
+      <h3>Labelling</h3>
+      <p>"Email address" is a visible <code>&lt;label&gt;</code>; there is no placeholder. The input sets <code>autocomplete="email"</code> and <code>inputmode="email"</code> (WCAG 1.3.5). Errors use <code>aria-invalid="true"</code> and <code>aria-describedby</code> pointing at the <code>.field__error</code> (L2-069.2). The confirmation is in <code>role="status"</code> with <code>aria-live="polite"</code>; rate-limit and server errors are <code>role="alert"</code>. The busy button keeps its name "Subscribe" with <code>aria-busy="true"</code>.</p>
+      <h3>Contrast</h3>
+      <div class="ds-example__canvas ds-example__canvas--stack" style="padding: 0; gap: var(--space-2);">
+        <div class="ds-pair"><span>Title, label and confirmation on page</span><span class="ds-pair__ratio" data-contrast="--color-fg-default|--color-bg-canvas" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Footer text on page</span><span class="ds-pair__ratio" data-contrast="--color-fg-muted|--color-bg-canvas" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Input border on page</span><span class="ds-pair__ratio" data-contrast="--color-border-strong|--color-bg-canvas" data-min="3"></span></div>
+        <div class="ds-pair"><span>Invalid input edge</span><span class="ds-pair__ratio" data-contrast="--color-danger-solid|--color-bg-surface" data-min="3"></span></div>
+        <div class="ds-pair"><span>Field error on page</span><span class="ds-pair__ratio" data-contrast="--color-danger-fg|--color-bg-canvas" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Primary Subscribe label</span><span class="ds-pair__ratio" data-contrast="--color-fg-on-action|--color-action" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Rate-limit alert text</span><span class="ds-pair__ratio" data-contrast="--color-warning-fg|--color-warning-bg" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Server-error alert text</span><span class="ds-pair__ratio" data-contrast="--color-danger-fg|--color-danger-bg" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Focus ring on page</span><span class="ds-pair__ratio" data-contrast="--color-focus-ring|--color-bg-canvas" data-min="3"></span></div>
+      </div>
+      <p>The success tick (<code>--color-success-icon</code> on the page) repeats what the text says, so the confirmation does not depend on it; its 3:1 pair against <code>--color-bg-canvas</code> is not yet in <code>contrast-pairs.json</code> and is listed as a need.</p>
+      <h3>Motion</h3>
+      <p>Only the busy spinner moves; it keeps turning under reduced motion because it reports status. The swap from form to confirmation is instant, with no animation.</p>
+      <h3>Touch</h3>
+      <p>The input and Subscribe are 44px tall at every width, and full width on phones (L2-065.1). <code>inputmode="email"</code> brings up the email keyboard. The input text is 16px, so iOS does not zoom on focus.</p>
+    </section>
+
+    <section class="ds-section" id="content"><h2><a href="#content">Content</a></h2>
+      <ul>
+        <li><b>Title</b> says what arrives: "Get new reviews by email" (hero), "New reviews by email" (footer).</li>
+        <li><b>Promise</b> says how often and what is not sent: "One short email per new review. No ads, no sponsors." / "One email when a new studio or spot goes up. Unsubscribe any time."</li>
+        <li><b>Button</b> is always "Subscribe". Not "Sign up" (there are no accounts) and not "Submit".</li>
+        <li><b>Errors</b> say how to fix it: "Enter your email address", "Enter a valid email address, like name@example.com".</li>
+        <li><b>Rate limit</b>: "Too many tries." with "Wait a minute, then try again." <b>Server error</b>: "We couldn't subscribe you just now." with "Your email is still here — try again."</li>
+        <li><b>Confirmation</b> repeats the address so a typo is visible: "You're subscribed. We'll email maya.chen@example.com when a new review goes up." It never says "already subscribed".</li>
+        <li>The honeypot label "Leave this field empty" is only for the rare bot that reads labels; it is never shown.</li>
+      </ul>
+    </section>
+
+    <section class="ds-section" id="do-dont"><h2><a href="#do-dont">Do and don't</a></h2>
+      <div class="ds-dodont">
+        <figure class="ds-do"><div class="ds-example__canvas"><button class="btn btn--primary" type="button">Subscribe</button><span class="text-muted">hero</span><button class="btn" type="button">Subscribe</button><span class="text-muted">footer</span></div><figcaption>Primary in the home hero, secondary in the footer: one primary action per page.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas"><button class="btn btn--primary" type="button">Subscribe</button><button class="btn btn--primary" type="button">Subscribe</button></div><figcaption>Make the footer Subscribe primary too. On the home page both forms are visible and would compete.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--stack"><div class="signup" role="status"><p class="signup__done"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg><span>You're subscribed. We'll email maya.chen@example.com when a new review goes up.</span></p></div></div><figcaption>Give new and existing subscribers the same confirmation (L2-039.4).</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--stack"><p class="field__error">maya.chen@example.com is already subscribed</p></div><figcaption>Tell a visitor an address is already on the list. Anyone could test who subscribes.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--stack"><div class="field"><label class="field__label" for="dd-email">Email address</label><input class="input" id="dd-email" type="email" autocomplete="email" inputmode="email"></div></div><figcaption>Keep a visible label above the input.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--stack"><input class="input" type="email" aria-label="Email address" placeholder="Your email"></div><figcaption>Replace the label with a placeholder. It disappears as the visitor types and fails 3.3.2.</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="ds-section" id="tokens"><h2><a href="#tokens">Tokens</a></h2>
+      <div class="ds-table-wrap"><table class="ds-table">
+        <thead><tr><th scope="col">Part</th><th scope="col">Token</th><th scope="col">Light</th><th scope="col">Dark</th></tr></thead>
+        <tbody>
+          <tr><td>Title, label, confirmation text</td><td><code>--color-fg-default</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-default" data-swatch></i><span data-token="--color-fg-default"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-default" data-swatch></i><span data-token="--color-fg-default"></span></span></td></tr>
+          <tr><td>Success tick</td><td><code>--color-success-icon</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-success-icon" data-swatch></i><span data-token="--color-success-icon"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-success-icon" data-swatch></i><span data-token="--color-success-icon"></span></span></td></tr>
+          <tr><td>Input border</td><td><code>--color-border-strong</code> (via <code>--field-border</code>)</td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-border-strong" data-swatch></i><span data-token="--color-border-strong"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-border-strong" data-swatch></i><span data-token="--color-border-strong"></span></span></td></tr>
+          <tr><td>Invalid input edge</td><td><code>--color-danger-solid</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-danger-solid" data-swatch></i><span data-token="--color-danger-solid"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-danger-solid" data-swatch></i><span data-token="--color-danger-solid"></span></span></td></tr>
+          <tr><td>Field error text</td><td><code>--color-danger-fg</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-danger-fg" data-swatch></i><span data-token="--color-danger-fg"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-danger-fg" data-swatch></i><span data-token="--color-danger-fg"></span></span></td></tr>
+          <tr><td>Primary Subscribe</td><td><code>--color-action</code> / <code>--color-fg-on-action</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-action" data-swatch></i><span data-token="--color-action"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-action" data-swatch></i><span data-token="--color-action"></span></span></td></tr>
+          <tr><td>Footer text</td><td><code>--color-fg-muted</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-muted" data-swatch></i><span data-token="--color-fg-muted"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-muted" data-swatch></i><span data-token="--color-fg-muted"></span></span></td></tr>
+          <tr><td>Title type</td><td><code>--text-h4</code></td><td colspan="2"><span data-token="--text-h4"></span></td></tr>
+          <tr><td>Control height</td><td><code>--control-height-md</code></td><td colspan="2"><span data-token="--control-height-md"></span></td></tr>
+          <tr><td>Gap between title, promise, row and message</td><td><code>--space-3</code></td><td colspan="2"><span data-token="--space-3"></span></td></tr>
+          <tr><td>Gap between field and button</td><td><code>--space-2</code></td><td colspan="2"><span data-token="--space-2"></span></td></tr>
+          <tr><td>Tick offset</td><td><code>--space-0-5</code></td><td colspan="2"><span data-token="--space-0-5"></span></td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section class="ds-section" id="code"><h2><a href="#code">Code</a></h2>
+      <pre><code>&lt;form class="signup" action="/api/signup" method="post" novalidate aria-labelledby="footer-signup-title"&gt;
+  &lt;h2 class="signup__title" id="footer-signup-title"&gt;New reviews by email&lt;/h2&gt;
+  &lt;p&gt;One email when a new studio or spot goes up. Unsubscribe any time.&lt;/p&gt;
+  &lt;div class="signup__row"&gt;
+    &lt;div class="field"&gt;
+      &lt;label class="field__label" for="footer-email"&gt;Email address&lt;/label&gt;
+      &lt;input class="input" id="footer-email" name="email" type="email" autocomplete="email" inputmode="email"
+             aria-invalid="true" aria-describedby="footer-email-error"&gt;
+    &lt;/div&gt;
+    &lt;button class="btn" type="submit"&gt;Subscribe&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;p class="field__error" id="footer-email-error"&gt;Enter your email address&lt;/p&gt;
+  &lt;div class="signup__trap" aria-hidden="true"&gt;…honeypot…&lt;/div&gt;
+&lt;/form&gt;
+
+&lt;!-- Success: the form is replaced --&gt;
+&lt;div class="signup" role="status" aria-live="polite" tabindex="-1"&gt;
+  &lt;p class="signup__done"&gt;&lt;svg class="icon" aria-hidden="true" viewBox="0 0 24 24"&gt;…&lt;/svg&gt;&lt;span&gt;You're subscribed. …&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+      <table class="ds-table"><thead><tr><th scope="col">Class / attribute</th><th scope="col">Effect</th></tr></thead><tbody>
+        <tr><td><code>.signup</code></td><td>Column of title, promise, row and message; full width up to 32rem.</td></tr>
+        <tr><td><code>.signup__title</code></td><td>Heading in <code>--text-h4</code>; names the form.</td></tr>
+        <tr><td><code>.signup__row</code></td><td>Field and button: stacked and full width below 36rem, one row from 36rem.</td></tr>
+        <tr><td><code>.signup__trap</code></td><td>Honeypot wrapper, off-screen; pair with <code>aria-hidden="true"</code> and <code>tabindex="-1"</code> on its input.</td></tr>
+        <tr><td><code>.signup__done</code></td><td>Confirmation line with the success tick; put it in a <code>role="status"</code> wrapper.</td></tr>
+        <tr><td><code>.site-footer .signup</code></td><td>Footer placement: flexible 20rem column, button keeps its own colour and 44px height.</td></tr>
+        <tr><td><code>aria-invalid</code> + <code>aria-describedby</code></td><td>Invalid field with its <code>.field__error</code>.</td></tr>
+        <tr><td><code>aria-busy="true"</code> + <code>disabled</code></td><td>Submitting: spinner, label hidden, width kept.</td></tr>
+        <tr><td><code>style="align-self: flex-end;"</code> on Subscribe</td><td>Stop-gap from the mocks that bottom-aligns the button with the input from 36rem. Remove it once the proposed <code>.signup__row .btn { align-self: flex-end; }</code> rule is in <code>components.css</code>.</td></tr>
+      </tbody></table>
+    </section>
+
+    <section class="ds-section" id="sources"><h2><a href="#sources">Sources</a></h2>
+      <p>Extracted from these mocks:</p>
+      <ul>
+        <li><a href="../../mocks/pages/home/default.html">pages/home/default</a> (hero and footer forms)</li>
+        <li><a href="../../mocks/pages/home/invalid.html">pages/home/invalid</a> (empty field error; the note gives the not-an-email wording)</li>
+        <li><a href="../../mocks/pages/home/submitting.html">pages/home/submitting</a> (busy Subscribe)</li>
+        <li><a href="../../mocks/pages/home/success.html">pages/home/success</a> (confirmation in a status region)</li>
+        <li><a href="../../mocks/pages/home/rate-limited.html">pages/home/rate-limited</a> (warning alert)</li>
+        <li><a href="../../mocks/pages/home/error.html">pages/home/error</a> (danger alert)</li>
+        <li><a href="../../mocks/pages/studio/default.html">pages/studio/default</a> (footer form on a public page)</li>
+      </ul>
+      <p>Drift found during extraction:</p>
+      <ul>
+        <li>Every mock's hero and footer Subscribe carries an inline <code>style="align-self: flex-end;"</code> to line the button up with the input instead of the label. The examples here keep it so they render as the mocks do; the fix is a rule in <code>.signup__row</code> (proposed), after which the inline style goes.</li>
+        <li><code>pages/home/invalid</code> puts <code>autofocus</code> on the invalid input to show where focus lands. On a real page focus moves there after submit, not on load.</li>
+        <li><code>pages/home/success</code> replaces the form without moving focus. Documented: move focus to the confirmation.</li>
+        <li>The "not-an-email" message exists only as a mock note (README assumption 13); no mock renders it. Shown here.</li>
+      </ul>
+    </section>
+
+    <footer class="ds-footer"><span>ShotThere design system · extracted from <a href="../../mocks/index.html">docs/mocks</a> on 13 October 2026</span><a href="#top">Back to top</a></footer>
+  </main>
+</div>
+<script src="../assets/ds.js"></script>
+</body>
+</html>
