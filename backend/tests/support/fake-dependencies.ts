@@ -36,14 +36,15 @@ export interface FakeSeed {
 
 /** Installs in-memory dependencies seeded with the given data. No database is involved. */
 export function useFakeDependencies(seed: FakeSeed = {}): Dependencies {
-  const studios = new InMemoryStudioRepository(seed.studios ?? []);
-  const spots = new InMemorySpotRepository(seed.spots ?? []);
+  const guides = new InMemoryGuideRepository(seed.guides ?? []);
+  const studios = new InMemoryStudioRepository(seed.studios ?? [], guides);
+  const spots = new InMemorySpotRepository(seed.spots ?? [], guides);
   const dependencies: Dependencies = {
     probeDatabase: seed.probeDatabase ?? (async () => {}),
     clock: fixedClock(seed.today ?? '2026-10-13'),
     studios,
     spots,
-    guides: new InMemoryGuideRepository(seed.guides ?? []),
+    guides,
     slugRedirects: new InMemorySlugRedirectRepository(seed.slugRedirects ?? []),
     subscribers: new InMemorySubscriberRepository(seed.subscribers ?? []),
     owners: new InMemoryOwnerRepository(seed.owners ?? []),

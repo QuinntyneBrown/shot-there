@@ -57,6 +57,14 @@ export class PrismaSpotRepository implements SpotRepository {
       ),
     ]);
   }
+
+  /** Permits, images and image variants go with the spot through cascading relations. */
+  async delete(id: string): Promise<void> {
+    await this.prisma.$transaction([
+      this.prisma.guideEntry.deleteMany({ where: { spotId: id } }),
+      this.prisma.spot.delete({ where: { id } }),
+    ]);
+  }
 }
 
 function toSpotRecord(row: SpotRow): SpotRecord {

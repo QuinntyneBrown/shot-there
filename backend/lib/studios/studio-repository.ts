@@ -13,4 +13,6 @@ export interface StudioRepository {
    * stored images. Images are never added or removed here.
    */
   save(studio: StudioRecord): Promise<void>;
+  /** Deletes the studio with its fees, gear, images and every guide entry that references it, in one transaction. */
+  delete(id: string): Promise<void>;
 }

@@ -49,6 +49,11 @@ export class PrismaGuideRepository implements GuideRepository {
       }),
     ]);
   }
+
+  /** Entries go with the guide through the cascading relation. */
+  async delete(id: string): Promise<void> {
+    await this.prisma.guide.delete({ where: { id } });
+  }
 }
 
 function toGuideRecord(row: GuideRow): GuideRecord {

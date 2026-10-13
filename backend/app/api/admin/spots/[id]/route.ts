@@ -1,5 +1,6 @@
 import { requireOwnerSession } from '@/lib/auth/require-owner-session';
 import { verifyCsrf } from '@/lib/auth/verify-csrf';
+import { deleteLocation } from '@/lib/deletion/delete-location';
 import type { IdParams } from '@/lib/http/id-params';
 import { notFound } from '@/lib/http/not-found';
 import { withRequestLogging } from '@/lib/logging/with-request-logging';
@@ -17,4 +18,9 @@ export const PUT = withRequestLogging(async (request: Request, { params }: IdPar
   verifyCsrf(request, await requireOwnerSession(request));
   const spot = await updateSpot((await params).id, await parseSpotInput(request));
   return spot ? Response.json(spot) : notFound();
+});
+
+export const DELETE = withRequestLogging(async (request: Request, { params }: IdParams) => {
+  verifyCsrf(request, await requireOwnerSession(request));
+  return (await deleteLocation('spot', (await params).id)) ? new Response(null, { status: 204 }) : notFound();
 });

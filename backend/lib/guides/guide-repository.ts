@@ -10,4 +10,6 @@ export interface GuideRepository {
   isSlugTaken(slug: string): Promise<boolean>;
   /** Creates or replaces the guide and its entries in one transaction. */
   save(guide: GuideRecord): Promise<void>;
+  /** Deletes the guide and its entries in one transaction. */
+  delete(id: string): Promise<void>;
 }

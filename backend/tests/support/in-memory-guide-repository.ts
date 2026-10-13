@@ -29,4 +29,15 @@ export class InMemoryGuideRepository implements GuideRepository {
     if (index === -1) this.rows.push(structuredClone(guide));
     else this.rows[index] = structuredClone(guide);
   }
+
+  async delete(id: string): Promise<void> {
+    this.rows.splice(0, this.rows.length, ...this.rows.filter((row) => row.id !== id));
+  }
+
+  /** Drops entries that reference a deleted location, as the database does in the location's delete transaction. */
+  removeEntriesFor(kind: 'studio' | 'spot', locationId: string): void {
+    for (const guide of this.rows) {
+      guide.entries = guide.entries.filter((entry) => !(entry.kind === kind && entry.locationId === locationId));
+    }
+  }
 }

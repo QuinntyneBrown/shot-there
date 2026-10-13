@@ -13,4 +13,6 @@ export interface SpotRepository {
    * images. Images are never added or removed here.
    */
   save(spot: SpotRecord): Promise<void>;
+  /** Deletes the spot with its permits, images and every guide entry that references it, in one transaction. */
+  delete(id: string): Promise<void>;
 }

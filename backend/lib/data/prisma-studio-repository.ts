@@ -58,6 +58,14 @@ export class PrismaStudioRepository implements StudioRepository {
       ),
     ]);
   }
+
+  /** Fees, gear, images and image variants go with the studio through cascading relations. */
+  async delete(id: string): Promise<void> {
+    await this.prisma.$transaction([
+      this.prisma.guideEntry.deleteMany({ where: { studioId: id } }),
+      this.prisma.studio.delete({ where: { id } }),
+    ]);
+  }
 }
 
 export function toImageRecord(row: ImageRow): ImageRecord {

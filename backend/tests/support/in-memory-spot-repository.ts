@@ -1,9 +1,13 @@
 import { withOrderAndAltText } from '@/tests/support/with-order-and-alt-text';
+import type { InMemoryGuideRepository } from '@/tests/support/in-memory-guide-repository';
 import type { SpotRecord } from '@/lib/spots/spot-record';
 import type { SpotRepository } from '@/lib/spots/spot-repository';
 
 export class InMemorySpotRepository implements SpotRepository {
-  constructor(readonly rows: SpotRecord[] = []) {}
+  constructor(
+    readonly rows: SpotRecord[] = [],
+    private readonly guides?: InMemoryGuideRepository,
+  ) {}
 
   async findPublishedBySlug(slug: string): Promise<SpotRecord | null> {
     return structuredClone(this.rows.find((row) => row.slug === slug && row.status === 'published') ?? null);
@@ -32,5 +36,10 @@ export class InMemorySpotRepository implements SpotRepository {
     } else {
       this.rows[index] = structuredClone({ ...spot, images: withOrderAndAltText(this.rows[index].images, spot.images) });
     }
+  }
+
+  async delete(id: string): Promise<void> {
+    this.rows.splice(0, this.rows.length, ...this.rows.filter((row) => row.id !== id));
+    this.guides?.removeEntriesFor('spot', id);
   }
 }

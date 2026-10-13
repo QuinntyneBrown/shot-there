@@ -1,9 +1,13 @@
 import { withOrderAndAltText } from '@/tests/support/with-order-and-alt-text';
+import type { InMemoryGuideRepository } from '@/tests/support/in-memory-guide-repository';
 import type { StudioRecord } from '@/lib/studios/studio-record';
 import type { StudioRepository } from '@/lib/studios/studio-repository';
 
 export class InMemoryStudioRepository implements StudioRepository {
-  constructor(readonly rows: StudioRecord[] = []) {}
+  constructor(
+    readonly rows: StudioRecord[] = [],
+    private readonly guides?: InMemoryGuideRepository,
+  ) {}
 
   async findPublishedBySlug(slug: string): Promise<StudioRecord | null> {
     return structuredClone(this.rows.find((row) => row.slug === slug && row.status === 'published') ?? null);
@@ -32,5 +36,10 @@ export class InMemoryStudioRepository implements StudioRepository {
     } else {
       this.rows[index] = structuredClone({ ...studio, images: withOrderAndAltText(this.rows[index].images, studio.images) });
     }
+  }
+
+  async delete(id: string): Promise<void> {
+    this.rows.splice(0, this.rows.length, ...this.rows.filter((row) => row.id !== id));
+    this.guides?.removeEntriesFor('studio', id);
   }
 }
