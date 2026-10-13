@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Owner sign-in · default — ShotThere mocks</title>
+<meta name="mock:kind" content="page">
+<meta name="mock:screen" content="sign-in">
+<meta name="mock:state" content="default">
+<meta name="mock:requirements" content="L2-049 L2-050 L2-051">
+<meta name="description" content="Email and password, full width on phones.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="../../../design-system/tokens/tokens.css">
+<link rel="stylesheet" href="../../../design-system/assets/components.css">
+<link rel="stylesheet" href="../../assets/mock.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header admin-header"><a class="wordmark" href="../../pages/studios/default.html">ShotThere <span class="wordmark__tag">Admin</span></a></header>
+<main id="main" tabindex="-1"><div class="auth">
+    <div class="auth__head"><h1>Sign in</h1><p class="subtitle">Owner access to ShotThere administration.</p></div>
+    <form class="stack" action="../../pages/admin-dashboard/default.html" method="get" novalidate>
+      
+      <div class="field"><label class="field__label" for="email">Email</label><input class="input" id="email" name="email" type="email" autocomplete="username" autofocus></div>
+      <div class="field"><label class="field__label" for="password">Password</label><input class="input" id="password" name="password" type="password" autocomplete="current-password"></div>
+      <button class="btn btn--primary btn--lg btn--block" type="submit">Sign in</button>
+    </form>
+    <p class="auth__alt"><a href="../../pages/studios/default.html">Back to the public site</a></p>
+  </div></main><p class="mock-note" style="top: 6rem; right: 1rem;">MVP: no session-expired message after an idle timeout, and no return to the page that was requested (maintain-session minimal scope).</p>
+<nav class="mock-bar" aria-label="Mock navigation">
+  <a class="mock-bar__home" href="../../index.html" aria-label="All mocks">⌂</a>
+  <span class="mock-bar__screen">Owner sign-in</span>
+  <ul class="mock-bar__states"><li><a href="default.html" aria-current="page">default</a></li><li><a href="invalid.html">invalid</a></li><li><a href="submitting.html">submitting</a></li><li><a href="error.html">error</a></li><li><a href="rate-limited.html">rate-limited</a></li></ul>
+  <button type="button" data-theme-toggle aria-pressed="false">☾ Dark</button>
+  <button type="button" data-chrome-toggle aria-label="Hide mock chrome">×</button>
+</nav>
+<script src="../../assets/mock.js"></script>
+</body>
+</html>

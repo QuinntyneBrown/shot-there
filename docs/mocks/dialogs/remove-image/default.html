@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Remove image · default — ShotThere mocks</title>
+<meta name="mock:kind" content="dialog">
+<meta name="mock:screen" content="remove-image">
+<meta name="mock:state" content="default">
+<meta name="mock:requirements" content="L2-058">
+<meta name="description" content="Confirm removing gallery image 3.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="../../../design-system/tokens/tokens.css">
+<link rel="stylesheet" href="../../../design-system/assets/components.css">
+<link rel="stylesheet" href="../../assets/mock.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div inert aria-hidden="true">
+<header class="site-header admin-header">
+  <a class="wordmark" href="../../pages/admin-dashboard/default.html">ShotThere <span class="wordmark__tag">Admin</span></a>
+  <nav class="site-nav" aria-label="Administration">
+    <a class="site-nav__link site-nav__extra" href="../../pages/admin-dashboard/default.html">Dashboard</a><a class="site-nav__link site-nav__extra" href="../../pages/admin-studios/default.html" aria-current="page">Studios</a>
+    <a class="site-nav__link site-nav__extra" href="../../pages/studios/default.html">View site</a>
+    <form class="site-nav__extra" action="../../pages/sign-in/default.html" method="get"><button class="btn btn--sm" type="submit"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M15 4h4v16h-4M10 8l-4 4 4 4M6 12h10"/></svg>Sign out</button></form>
+    <button class="btn btn--ghost site-nav__menu" type="button" aria-expanded="false" aria-controls="admin-menu"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M4 8h16M4 16h16"/></svg>Menu</button>
+  </nav>
+</header>
+<nav class="site-menu" id="admin-menu" aria-label="Administration menu" hidden><ul><li><a href="../../pages/admin-dashboard/default.html">Dashboard</a></li><li><a href="../../pages/admin-studios/default.html" aria-current="page">Studios</a></li><li><a href="../../pages/studios/default.html">View site</a></li><li><a href="../../pages/sign-in/default.html">Sign out</a></li></ul></nav>
+<main id="main" class="container" tabindex="-1">
+<div class="editor-head"><div class="editor-head__title">
+    <a class="eyebrow" href="../../pages/admin-studios/default.html"><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><path d="M19 12H5m6-6-6 6 6 6"/></svg>Studios</a>
+    <h1>Parkdale Daylight Loft</h1><div class="editor-head__meta"><span class="status status--published">Published</span><span class="slug-line">/studios/parkdale-daylight-loft</span><span>Last saved September 28, 2026</span><a href="../../pages/studio/default.html">View public page</a></div></div></div><form class="editor" action="../../pages/studio-editor/default.html" method="get" novalidate><details class="form-section" open><summary><h2>Basics</h2></summary><div class="form-section__body"><div class="field"><label class="field__label" for="name">Name</label><input class="input" id="name" name="name" type="text" value="Parkdale Daylight Loft" autocomplete="off"></div><div class="field-row"><div class="field"><label class="field__label" for="hood">Neighbourhood</label><input class="input" id="hood" name="hood" type="text" value="Parkdale"></div><div class="field"><label class="field__label" for="address">Address or cross streets</label><input class="input" id="address" name="address" type="text" value="1520 Queen St W, Unit 3 (at Lansdowne Ave)"></div></div><div class="field"><label class="field__label" for="booking">Booking link</label><input class="input" id="booking" name="booking" type="url" value="https://parkdaledaylightloft.ca/book" aria-describedby="booking-help"><p class="field__help" id="booking-help">The studio's own booking page. It opens in a new tab on the review.</p></div></div></details><details class="form-section" open><summary><h2>Pricing</h2></summary><div class="form-section__body"><div class="field-row"><div class="field"><label class="field__label" for="rate">Hourly rate ($)</label><input class="input" id="rate" name="rate" type="number" value="65.00" min="0" step="0.01" inputmode="decimal"></div><div class="field"><label class="field__label" for="min">Minimum booking (hours)</label><input class="input" id="min" name="min" type="number" value="2" min="1" step="0.5" inputmode="decimal"></div></div><div class="field"><label class="field__label" for="verified">Prices verified on</label><input class="input" id="verified" name="verified" type="date" value="2026-09-28" max="2026-10-13" aria-describedby="verified-help"><p class="field__help" id="verified-help">Change it only when you have re-checked the prices with the studio.</p></div><fieldset><legend>Fees</legend><ul class="fee-list"><li class="fee-row">
+          <label class="field"><span class="field__label">Fee name</span><input class="input" name="fee-name" value="Cleaning fee"></label>
+          <label class="field"><span class="field__label">Amount ($)</span><input class="input" name="fee-amount" type="number" min="0" step="0.01" value="25.00"></label>
+          <label class="field"><span class="field__label">Mandatory or optional</span><select class="select" name="fee-type"><option selected>Mandatory</option><option>Optional</option></select></label>
+          <button class="btn btn--ghost" type="button" aria-label="Remove fee: Cleaning fee"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"/></svg>Remove</button></li><li class="fee-row">
+          <label class="field"><span class="field__label">Fee name</span><input class="input" name="fee-name" value="Strobe kit rental"></label>
+          <label class="field"><span class="field__label">Amount ($)</span><input class="input" name="fee-amount" type="number" min="0" step="0.01" value="40.00"></label>
+          <label class="field"><span class="field__label">Mandatory or optional</span><select class="select" name="fee-type"><option>Mandatory</option><option selected>Optional</option></select></label>
+          <button class="btn btn--ghost" type="button" aria-label="Remove fee: Strobe kit rental"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"/></svg>Remove</button></li></ul><button class="btn btn--sm" type="button" style="margin-top: var(--space-3);"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>Add fee</button></fieldset></div></details><details class="form-section" open><summary><h2>Standard test shots</h2></summary><div class="form-section__body"><ul class="image-list"><li class="image-row">
+          <img class="image-row__thumb" src="../../assets/img/test-parkdale-1.svg" alt="" width="96" height="96" loading="lazy">
+          <div class="image-row__fields"><div class="field"><label class="field__label" for="test-1-alt">Test shot 1: alt text</label><input class="input" id="test-1-alt" name="test-1-alt" type="text" value="Head-and-shoulders test portrait of our stand-in model, lit only by the studio window"></div></div>
+          <div class="image-row__actions">
+            <button class="btn btn--sm" type="button" aria-disabled="true" aria-label="Move test shot 1 up"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 19V5m-6 6 6-6 6 6"/></svg>Move up</button>
+            <button class="btn btn--sm" type="button" aria-label="Move test shot 1 down"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 5v14m-6-6 6 6 6-6"/></svg>Move down</button>
+            <button class="btn btn--sm btn--ghost" type="button" aria-haspopup="dialog" aria-label="Remove test shot 1"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"/></svg>Remove</button>
+          </div></li><li class="image-row">
+          <img class="image-row__thumb" src="../../assets/img/test-parkdale-2.svg" alt="" width="96" height="96" loading="lazy">
+          <div class="image-row__fields"><div class="field"><label class="field__label" for="test-2-alt">Test shot 2: alt text</label><input class="input" id="test-2-alt" name="test-2-alt" type="text" value="Head-and-shoulders test portrait of our stand-in model with one strobe camera left"></div></div>
+          <div class="image-row__actions">
+            <button class="btn btn--sm" type="button" aria-label="Move test shot 2 up"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 19V5m-6 6 6-6 6 6"/></svg>Move up</button>
+            <button class="btn btn--sm" type="button" aria-label="Move test shot 2 down"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 5v14m-6-6 6 6 6-6"/></svg>Move down</button>
+            <button class="btn btn--sm btn--ghost" type="button" aria-haspopup="dialog" aria-label="Remove test shot 2"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"/></svg>Remove</button>
+          </div></li><li class="image-row">
+          <img class="image-row__thumb" src="../../assets/img/test-parkdale-3.svg" alt="" width="96" height="96" loading="lazy">
+          <div class="image-row__fields"><div class="field"><label class="field__label" for="test-3-alt">Test shot 3: alt text</label><input class="input" id="test-3-alt" name="test-3-alt" type="text" value="Full-length test portrait of our stand-in model on the main backdrop"></div></div>
+          <div class="image-row__actions">
+            <button class="btn btn--sm" type="button" aria-label="Move test shot 3 up"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 19V5m-6 6 6-6 6 6"/></svg>Move up</button>
+            <button class="btn btn--sm" type="button" aria-disabled="true" aria-label="Move test shot 3 down"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 5v14m-6-6 6 6 6-6"/></svg>Move down</button>
+            <button class="btn btn--sm btn--ghost" type="button" aria-haspopup="dialog" aria-label="Remove test shot 3"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"/></svg>Remove</button>
+          </div></li></ul>
+      <div class="upload-actions"><input class="file-input visually-hidden" type="file" id="test-file" accept="image/jpeg,image/png,image/webp,image/avif" aria-describedby="test-file-help">
+      <label class="btn" for="test-file"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 16V4m0 0-4 4m4-4 4 4M4 16v4h16v-4"/></svg>Add test shot</label><span class="field__help" id="test-file-help">JPEG, PNG, WebP or AVIF, up to 20 MB.</span></div></div></details><details class="form-section" open><summary><h2>Gallery</h2></summary><div class="form-section__body"><ul class="image-list"><li class="image-row">
+          <img class="image-row__thumb" src="../../assets/img/gallery-parkdale-1.svg" alt="" width="96" height="96" loading="lazy">
+          <div class="image-row__fields"><div class="field"><label class="field__label" for="gallery-1-alt">Gallery image 1: alt text</label><input class="input" id="gallery-1-alt" name="gallery-1-alt" type="text" value="Gallery image 1"></div></div>
+          <div class="image-row__actions">
+            <button class="btn btn--sm" type="button" aria-disabled="true" aria-label="Move gallery image 1 up"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 19V5m-6 6 6-6 6 6"/></svg>Move up</button>
+            <button class="btn btn--sm" type="button" aria-label="Move gallery image 1 down"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 5v14m-6-6 6 6 6-6"/></svg>Move down</button>
+            <button class="btn btn--sm btn--ghost" type="button" aria-haspopup="dialog" aria-label="Remove gallery image 1"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"/></svg>Remove</button>
+          </div></li><li class="image-row">
+          <img class="image-row__thumb" src="../../assets/img/gallery-parkdale-2.svg" alt="" width="96" height="96" loading="lazy">
+          <div class="image-row__fields"><div class="field"><label class="field__label" for="gallery-2-alt">Gallery image 2: alt text</label><input class="input" id="gallery-2-alt" name="gallery-2-alt" type="text" value="Gallery image 2"></div></div>
+          <div class="image-row__actions">
+            <button class="btn btn--sm" type="button" aria-label="Move gallery image 2 up"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 19V5m-6 6 6-6 6 6"/></svg>Move up</button>
+            <button class="btn btn--sm" type="button" aria-label="Move gallery image 2 down"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 5v14m-6-6 6 6 6-6"/></svg>Move down</button>
+            <button class="btn btn--sm btn--ghost" type="button" aria-haspopup="dialog" aria-label="Remove gallery image 2"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"/></svg>Remove</button>
+          </div></li><li class="image-row">
+          <img class="image-row__thumb" src="../../assets/img/gallery-parkdale-3.svg" alt="" width="96" height="96" loading="lazy">
+          <div class="image-row__fields"><div class="field"><label class="field__label" for="gallery-3-alt">Gallery image 3: alt text</label><input class="input" id="gallery-3-alt" name="gallery-3-alt" type="text" value="Gallery image 3"></div></div>
+          <div class="image-row__actions">
+            <button class="btn btn--sm" type="button" aria-label="Move gallery image 3 up"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 19V5m-6 6 6-6 6 6"/></svg>Move up</button>
+            <button class="btn btn--sm" type="button" aria-label="Move gallery image 3 down"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 5v14m-6-6 6 6 6-6"/></svg>Move down</button>
+            <button class="btn btn--sm btn--ghost" type="button" aria-haspopup="dialog" aria-label="Remove gallery image 3"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"/></svg>Remove</button>
+          </div></li><li class="image-row">
+          <img class="image-row__thumb" src="../../assets/img/gallery-parkdale-4.svg" alt="" width="96" height="96" loading="lazy">
+          <div class="image-row__fields"><div class="field"><label class="field__label" for="gallery-4-alt">Gallery image 4: alt text</label><input class="input" id="gallery-4-alt" name="gallery-4-alt" type="text" value="Gallery image 4"></div></div>
+          <div class="image-row__actions">
+            <button class="btn btn--sm" type="button" aria-label="Move gallery image 4 up"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 19V5m-6 6 6-6 6 6"/></svg>Move up</button>
+            <button class="btn btn--sm" type="button" aria-disabled="true" aria-label="Move gallery image 4 down"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 5v14m-6-6 6 6 6-6"/></svg>Move down</button>
+            <button class="btn btn--sm btn--ghost" type="button" aria-haspopup="dialog" aria-label="Remove gallery image 4"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"/></svg>Remove</button>
+          </div></li></ul>
+      <div class="upload-actions"><input class="file-input visually-hidden" type="file" id="gallery-file" accept="image/jpeg,image/png,image/webp,image/avif" aria-describedby="gallery-file-help">
+      <label class="btn" for="gallery-file"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 16V4m0 0-4 4m4-4 4 4M4 16v4h16v-4"/></svg>Add gallery image</label><span class="field__help" id="gallery-file-help">JPEG, PNG, WebP or AVIF, up to 20 MB.</span></div></div></details><details class="form-section" open><summary><h2>Rubric scores</h2></summary><div class="form-section__body"><p class="field__help">Whole numbers from 1 to 5. The overall score is calculated when you save.</p><div class="score-inputs"><div class="field"><label class="field__label" for="score-value">Value</label><input class="input" id="score-value" name="score-value" type="number" value="4" min="1" max="5" step="1" inputmode="numeric"></div><div class="field"><label class="field__label" for="score-light">Light</label><input class="input" id="score-light" name="score-light" type="number" value="5" min="1" max="5" step="1" inputmode="numeric"></div><div class="field"><label class="field__label" for="score-space">Space</label><input class="input" id="score-space" name="score-space" type="number" value="3" min="1" max="5" step="1" inputmode="numeric"></div><div class="field"><label class="field__label" for="score-gear">Gear</label><input class="input" id="score-gear" name="score-gear" type="number" value="4" min="1" max="5" step="1" inputmode="numeric"></div><div class="field"><label class="field__label" for="score-logistics">Logistics</label><input class="input" id="score-logistics" name="score-logistics" type="number" value="2" min="1" max="5" step="1" inputmode="numeric"></div><div class="field"><label class="field__label" for="score-condition">Condition</label><input class="input" id="score-condition" name="score-condition" type="number" value="5" min="1" max="5" step="1" inputmode="numeric"></div></div></div></details><details class="form-section" open><summary><h2>Verdict</h2></summary><div class="form-section__body"><div class="field"><label class="field__label" for="who-for">Who it's for</label><textarea class="textarea" id="who-for" name="who-for" rows="4">Portrait, headshot and small product shoots that want big, soft window light in the afternoon, and anyone who would rather not rent lights: two strobes and modifiers are in the rate.</textarea></div><div class="field"><label class="field__label" for="who-skip">Who should skip it</label><textarea class="textarea" id="who-skip" name="who-skip" rows="4">Crews that need a cyc wall, full-length fashion with a large set, or easy load-in for heavy gear: the freight elevator is narrow and booked through the front desk.</textarea></div></div></details><details class="form-section" open><summary><h2>Disclosure</h2></summary><div class="form-section__body"><fieldset><legend>Who paid for the session</legend><label class="choice"><input type="radio" name="disclosure" value="paid_in_full" checked><span class="choice__text">Paid in full<small>We paid the public rate.</small></span></label><label class="choice"><input type="radio" name="disclosure" value="discounted"><span class="choice__text">Discounted<small>Someone gave us a lower rate.</small></span></label><label class="choice"><input type="radio" name="disclosure" value="comped"><span class="choice__text">Comped<small>Someone gave us the session free.</small></span></label></fieldset>
+        <div class="field"><label class="field__label" for="provider">Provider</label><input class="input" id="provider" name="provider" type="text" aria-describedby="provider-help"><p class="field__help" id="provider-help">Required for discounted and comped sessions, for example the studio's name.</p></div></div></details><details class="form-section" open><summary><h2>Episode</h2></summary><div class="form-section__body"><div class="field"><label class="field__label" for="video">YouTube link or video ID <span class="optional">(optional)</span></label><input class="input" id="video" name="video" type="text" value="https://youtu.be/kL7mQ2xRb9c" inputmode="url" aria-describedby="video-help"><p class="field__help" id="video-help">Paste a link like https://youtu.be/kL7mQ2xRb9c or the 11-character ID. Leave it empty if there is no episode.</p></div></div></details><div class="form-actions form-actions--sticky"><button class="btn btn--primary" type="submit">Save changes</button>
+        <button class="btn" type="button" aria-haspopup="dialog">Unpublish</button>
+        <button class="btn btn--ghost push-end" type="button" aria-disabled="true" aria-describedby="delete-hint"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"/></svg>Delete</button>
+        <p class="action-hint" id="delete-hint">Unpublish this studio before you can delete it.</p></div></form>
+</main>
+</div><div class="backdrop"></div>
+<div class="dialog" role="dialog" aria-modal="true" aria-labelledby="dlg-title" aria-describedby="dlg-desc" data-dismiss-on-escape>
+  <div class="dialog__panel">
+    <div class="dialog__header"><div class="dialog__icon dialog__icon--danger" aria-hidden="true"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"/></svg></div>
+      <div class="dialog__heading"><h2 class="dialog__title" id="dlg-title">Remove gallery image 3?</h2><p class="dialog__desc" id="dlg-desc">It is deleted now and leaves the public page within 60 seconds.</p></div>
+      <button class="btn btn--ghost btn--icon" type="button" aria-label="Close"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    </div>
+    <div class="dialog__body stack"><div class="cluster"><img src="../../assets/img/gallery-parkdale-3.svg" alt="" width="96" height="96" style="width: 6rem; border-radius: var(--radius-sm);"><p class="text-muted">“Full-length shot of a model in a navy coat on white seamless paper”</p></div></div>
+    <div class="dialog__footer"><button class="btn" type="button" autofocus>Cancel</button><button class="btn btn--danger" type="button">Remove image</button></div>
+  </div>
+</div>
+<nav class="mock-bar" aria-label="Mock navigation">
+  <a class="mock-bar__home" href="../../index.html" aria-label="All mocks">⌂</a>
+  <span class="mock-bar__screen">Remove image</span>
+  <ul class="mock-bar__states"><li><a href="default.html" aria-current="page">default</a></li><li><a href="busy.html">busy</a></li><li><a href="failed.html">failed</a></li><li><a href="refused.html">refused</a></li></ul>
+  <button type="button" data-theme-toggle aria-pressed="false">☾ Dark</button>
+  <button type="button" data-chrome-toggle aria-label="Hide mock chrome">×</button>
+</nav>
+<script src="../../assets/mock.js"></script>
+</body>
+</html>

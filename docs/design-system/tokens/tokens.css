@@ -238,7 +238,7 @@
   --layout-columns: 4;
   --layout-gutter: var(--space-6);
   --layout-margin: var(--space-4);
-  --layout-container-max: 90rem;    /* 1440px incl. margins, like the reference */
+  --layout-container-max: 80rem;    /* 1280px incl. margins: L2-064.3 caps content at 1280px */
   --layout-measure: 62ch;
   --layout-sidebar-width: 15rem;    /* filter column, dashboard side nav */
   --layout-panel-width: 22rem;      /* sticky enquiry panel on the caterer page */

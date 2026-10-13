@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Guide editor · invalid — ShotThere mocks</title>
+<meta name="mock:kind" content="page">
+<meta name="mock:screen" content="guide-editor">
+<meta name="mock:state" content="invalid">
+<meta name="mock:requirements" content="L2-060">
+<meta name="description" content="Publish refused: no entries.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="../../../design-system/tokens/tokens.css">
+<link rel="stylesheet" href="../../../design-system/assets/components.css">
+<link rel="stylesheet" href="../../assets/mock.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header admin-header">
+  <a class="wordmark" href="../../pages/admin-dashboard/default.html">ShotThere <span class="wordmark__tag">Admin</span></a>
+  <nav class="site-nav" aria-label="Administration">
+    <a class="site-nav__link site-nav__extra" href="../../pages/admin-dashboard/default.html" aria-current="page">Dashboard</a><a class="site-nav__link site-nav__extra" href="../../pages/admin-studios/default.html">Studios</a>
+    <a class="site-nav__link site-nav__extra" href="../../pages/studios/default.html">View site</a>
+    <form class="site-nav__extra" action="../../pages/sign-in/default.html" method="get"><button class="btn btn--sm" type="submit"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M15 4h4v16h-4M10 8l-4 4 4 4M6 12h10"/></svg>Sign out</button></form>
+    <button class="btn btn--ghost site-nav__menu" type="button" aria-expanded="false" aria-controls="admin-menu"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M4 8h16M4 16h16"/></svg>Menu</button>
+  </nav>
+</header>
+<nav class="site-menu" id="admin-menu" aria-label="Administration menu" hidden><ul><li><a href="../../pages/admin-dashboard/default.html" aria-current="page">Dashboard</a></li><li><a href="../../pages/admin-studios/default.html">Studios</a></li><li><a href="../../pages/studios/default.html">View site</a></li><li><a href="../../pages/sign-in/default.html">Sign out</a></li></ul></nav>
+<main id="main" class="container" tabindex="-1">
+<div class="editor-head"><div class="editor-head__title">
+    <a class="eyebrow" href="../../pages/admin-dashboard/default.html"><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><path d="M19 12H5m6-6-6 6 6 6"/></svg>Dashboard</a>
+    <h1>Best studios with on-site parking</h1><div class="editor-head__meta"><span class="status status--draft">Draft</span><span class="slug-line">/guides/best-studios-with-on-site-parking</span><span>Last saved today at 9:12 am</span></div></div></div><form class="editor" action="../../pages/guide-editor/default.html" method="get" novalidate><div class="form-summary" role="alert" tabindex="-1" id="error-summary"><h2>This guide can't be published yet</h2><ul><li><a href="#entries">Entries: add at least one studio (entries)</a></li></ul></div><details class="form-section" open><summary><h2>Guide</h2></summary><div class="form-section__body"><div class="field"><label class="field__label" for="title">Title</label><input class="input" id="title" name="title" type="text" value="Best studios with on-site parking"></div><div class="field"><label class="field__label" for="slug">Slug</label><input class="input" id="slug" name="slug" type="text" value="best-studios-with-on-site-parking" aria-describedby="slug-help"><p class="field__help" id="slug-help">Lowercase words joined by hyphens. The guide's address is /guides/ followed by the slug.</p></div><div class="field"><label class="field__label" for="intro">Introduction</label><textarea class="textarea" id="intro" name="intro" rows="4">Studios where you can park beside the door, for shoots with a lot of gear.</textarea></div></div></details><details class="form-section" open><summary><h2>Entries</h2><span class="form-section__count">1 problem</span></summary><div class="form-section__body"><p class="text-muted" id="entries" tabindex="-1">No entries yet. Add the studios this guide recommends, in order.</p><p class="field__error" id="entries-error">Add at least one entry before publishing</p><div class="upload-actions"><a class="btn" href="../../dialogs/guide-entry-picker/default.html"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>Add studio</a></div></div></details><div class="form-actions form-actions--sticky"><button class="btn btn--primary" type="submit">Save changes</button><button class="btn" type="button">Publish</button></div></form>
+</main><p class="mock-note" style="top: 6rem; right: 1rem;">Publishing with no entries is refused, naming entries (L2-060.3). The draft itself saved.</p>
+<nav class="mock-bar" aria-label="Mock navigation">
+  <a class="mock-bar__home" href="../../index.html" aria-label="All mocks">⌂</a>
+  <span class="mock-bar__screen">Guide editor</span>
+  <ul class="mock-bar__states"><li><a href="default.html">default</a></li><li><a href="empty.html">empty</a></li><li><a href="invalid.html" aria-current="page">invalid</a></li><li><a href="submitting.html">submitting</a></li><li><a href="published.html">published</a></li><li><a href="loading.html">loading</a></li><li><a href="error.html">error</a></li></ul>
+  <button type="button" data-theme-toggle aria-pressed="false">☾ Dark</button>
+  <button type="button" data-chrome-toggle aria-label="Hide mock chrome">×</button>
+</nav>
+<script src="../../assets/mock.js"></script>
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Studio list · compare-two — ShotThere mocks</title>
+<meta name="mock:kind" content="page">
+<meta name="mock:screen" content="studios">
+<meta name="mock:state" content="compare-two">
+<meta name="mock:requirements" content="L2-021 L2-022 L2-023 L2-025 L2-026 L2-030 L2-043 L2-064">
+<meta name="description" content="Two studios selected: the compare bar opens the comparison.">
+<link rel="stylesheet" href="../../../design-system/tokens/tokens.css">
+<link rel="stylesheet" href="../../../design-system/assets/components.css">
+<link rel="stylesheet" href="../../assets/mock.css">
+</head>
+<body class="has-compare-bar">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <a class="wordmark" href="../../pages/studios/default.html">ShotThere <span class="wordmark__tag">Toronto</span></a>
+  <nav class="site-nav" aria-label="Primary">
+    <a class="site-nav__link site-nav__extra" href="../../pages/studios/default.html" aria-current="page">Studios</a><a class="site-nav__link site-nav__extra" href="../../pages/spots/default.html">Spots</a><a class="site-nav__link site-nav__extra" href="../../pages/map/default.html">Map</a><a class="site-nav__link site-nav__extra" href="../../pages/compare/empty.html">Compare</a><a class="site-nav__link site-nav__extra" href="../../pages/guides/default.html">Guides</a>
+    <button class="btn btn--ghost site-nav__menu" type="button" aria-expanded="false" aria-controls="site-menu"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M4 8h16M4 16h16"/></svg>Menu</button>
+  </nav>
+</header>
+<nav class="site-menu" id="site-menu" aria-label="Menu" hidden><ul><li><a href="../../pages/studios/default.html" aria-current="page">Studios</a></li><li><a href="../../pages/spots/default.html">Spots</a></li><li><a href="../../pages/map/default.html">Map</a></li><li><a href="../../pages/compare/empty.html">Compare</a></li><li><a href="../../pages/guides/default.html">Guides</a></li></ul></nav>
+<main id="main" class="container" tabindex="-1">
+<div class="page-intro">
+    <h1>Studios</h1>
+    <p class="subtitle">Rental studios in Toronto, each measured and shot with the same three test setups. Prices are all-in for a standard 2-hour shoot.</p>
+  </div>
+  <div class="list-layout"><div><details class="filter-panel" data-open-from-lg>
+      <summary>Filters</summary>
+      <form class="filter-panel__body" id="studio-filters" action="../../pages/studios/filtered.html" method="get">
+        <fieldset>
+          <legend class="filter-group__title">All-in cost, 2 hours</legend>
+          <div class="field-row">
+            <label class="field"><span class="field__label">Minimum ($)</span><input class="input" type="number" name="costMin" min="0" step="1" inputmode="numeric" value=""></label>
+            <label class="field"><span class="field__label">Maximum ($)</span><input class="input" type="number" name="costMax" min="0" step="1" inputmode="numeric" value=""></label>
+          </div>
+        </fieldset>
+        <fieldset><legend class="filter-group__title">Neighbourhood</legend><label class="choice"><input type="checkbox" name="hood" value="leslieville"><span>Leslieville</span></label><label class="choice"><input type="checkbox" name="hood" value="liberty-village"><span>Liberty Village</span></label><label class="choice"><input type="checkbox" name="hood" value="parkdale"><span>Parkdale</span></label><label class="choice"><input type="checkbox" name="hood" value="queen-west"><span>Queen West</span></label><label class="choice"><input type="checkbox" name="hood" value="the-junction"><span>The Junction</span></label></fieldset>
+        <fieldset><legend class="filter-group__title">Light and space</legend>
+          <label class="choice"><input type="checkbox" name="light" value="medium"><span class="choice__text">Natural light<small>Medium or better at some time of day</small></span></label>
+          <label class="choice"><input type="checkbox" name="cyc" value="yes"><span>Cyc wall</span></label>
+          <label class="field"><span class="field__label">Minimum usable space (m²)</span><input class="input" type="number" name="spaceMin" min="0" step="1" inputmode="numeric" value=""></label>
+        </fieldset>
+        <fieldset><legend class="filter-group__title">Included gear</legend><label class="choice"><input type="checkbox" name="gear" value="lights"><span>Lights</span></label><label class="choice"><input type="checkbox" name="gear" value="modifiers"><span>Modifiers</span></label><label class="choice"><input type="checkbox" name="gear" value="stands"><span>Stands</span></label><label class="choice"><input type="checkbox" name="gear" value="backdrops"><span>Backdrops</span></label></fieldset>
+        <fieldset><legend class="filter-group__title">Parking</legend><label class="choice"><input type="radio" name="parking" value="any" checked><span>Any</span></label><label class="choice"><input type="radio" name="parking" value="on-site"><span>On-site</span></label><label class="choice"><input type="radio" name="parking" value="street"><span>Street</span></label><label class="choice"><input type="radio" name="parking" value="none"><span>None</span></label></fieldset>
+        <div class="filter-panel__actions">
+          <button class="btn" type="submit">Apply filters</button>
+          <a href="../../pages/studios/default.html">Clear filters</a>
+        </div>
+      </form>
+    </details></div><section aria-labelledby="results-title"><h2 class="visually-hidden" id="results-title">Results</h2><div class="results-head">
+        <p class="result-count" role="status" aria-live="polite">5 studios</p>
+        <label class="field"><span class="field__label">Sort</span><select class="select input--sm" name="sort" form="studio-filters"><option selected>Most recent review</option><option>All-in cost, low to high</option><option>Overall score, high to low</option></select></label>
+      </div><ul class="location-grid"><li><article class="location-card">
+      <div class="location-card__media"><img src="../../assets/img/studio-parkdale.svg" alt="" width="1200" height="800" loading="eager" fetchpriority="high"></div>
+      <h3 class="location-card__name"><a href="../../pages/studio/default.html">Parkdale Daylight Loft</a></h3>
+      <p class="location-card__meta">Parkdale · Reviewed September 28, 2026</p>
+      <dl class="location-card__facts">
+        <div><dt>All-in, 2 hours</dt><dd>$155.00</dd></div>
+        <div><dt>Overall score</dt><dd>3.8 <span class="text-muted">/ 5</span></dd></div>
+      </dl>
+      <div class="location-card__actions"><button class="btn btn--sm compare-toggle" type="button" aria-pressed="true" aria-label="Remove Parkdale Daylight Loft from comparison"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>Remove</button></div>
+    </article></li><li><article class="location-card">
+      <div class="location-card__media"><img src="../../assets/img/studio-junction.svg" alt="" width="1200" height="800" loading="lazy"></div>
+      <h3 class="location-card__name"><a href="../../pages/studio/sparse.html">Junction Cyc Studio</a></h3>
+      <p class="location-card__meta">The Junction · Reviewed August 14, 2026</p>
+      <dl class="location-card__facts">
+        <div><dt>All-in, 2 hours</dt><dd>$190.00</dd></div>
+        <div><dt>Overall score</dt><dd>4.2 <span class="text-muted">/ 5</span></dd></div>
+      </dl>
+      <div class="location-card__flags"><span class="badge badge--warning">Prices may be out of date</span></div><div class="location-card__actions"><button class="btn btn--sm compare-toggle" type="button" aria-pressed="true" aria-label="Remove Junction Cyc Studio from comparison"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>Remove</button></div>
+    </article></li><li><article class="location-card">
+      <div class="location-card__media"><img src="../../assets/img/studio-leslieville.svg" alt="" width="1200" height="800" loading="lazy"></div>
+      <h3 class="location-card__name"><a href="../../pages/studio/default.html">Leslieville Window Room</a></h3>
+      <p class="location-card__meta">Leslieville · Reviewed July 30, 2026</p>
+      <dl class="location-card__facts">
+        <div><dt>All-in, 2 hours</dt><dd>$91.00</dd></div>
+        <div><dt>Overall score</dt><dd>3.3 <span class="text-muted">/ 5</span></dd></div>
+      </dl>
+      <div class="location-card__actions"><button class="btn btn--sm compare-toggle" type="button" aria-pressed="false" aria-label="Compare Leslieville Window Room"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M4 4h7v16H4zM13 4h7v16h-7z"/></svg>Compare</button></div>
+    </article></li><li><article class="location-card">
+      <div class="location-card__media"><img src="../../assets/img/studio-liberty.svg" alt="" width="1200" height="800" loading="lazy"></div>
+      <h3 class="location-card__name"><a href="../../pages/studio/default.html">Liberty Village Studio B</a></h3>
+      <p class="location-card__meta">Liberty Village · Reviewed June 18, 2026</p>
+      <dl class="location-card__facts">
+        <div><dt>All-in, 2 hours</dt><dd>$180.00</dd></div>
+        <div><dt>Overall score</dt><dd>3.8 <span class="text-muted">/ 5</span></dd></div>
+      </dl>
+      <div class="location-card__actions"><button class="btn btn--sm compare-toggle" type="button" aria-pressed="false" aria-label="Compare Liberty Village Studio B"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M4 4h7v16H4zM13 4h7v16h-7z"/></svg>Compare</button></div>
+    </article></li><li><article class="location-card">
+      <div class="location-card__media"><img src="../../assets/img/studio-queen-west.svg" alt="" width="1200" height="800" loading="lazy"></div>
+      <h3 class="location-card__name"><a href="../../pages/studio/default.html">Queen West Black Box</a></h3>
+      <p class="location-card__meta">Queen West · Reviewed May 9, 2026</p>
+      <dl class="location-card__facts">
+        <div><dt>All-in, 2 hours</dt><dd>$120.00</dd></div>
+        <div><dt>Overall score</dt><dd>3.2 <span class="text-muted">/ 5</span></dd></div>
+      </dl>
+      <div class="location-card__flags"><span class="badge badge--warning">Prices may be out of date</span></div><div class="location-card__actions"><button class="btn btn--sm compare-toggle" type="button" aria-pressed="false" aria-label="Compare Queen West Black Box"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M4 4h7v16H4zM13 4h7v16h-7z"/></svg>Compare</button></div>
+    </article></li></ul></section></div>
+</main>
+<footer class="site-footer">
+  <div class="site-footer__brand"><strong>ShotThere</strong><span>Toronto photo studios and outdoor spots, reviewed first-hand with the same measurements and test shots.</span></div>
+  <form class="signup" id="signup" action="../../pages/email-signup/success.html" method="get" novalidate>
+      <label class="signup__title" for="signup-email">Get new reviews by email</label>
+      
+      <div class="signup__row">
+        <input class="input" id="signup-email" name="email" type="email" autocomplete="email" maxlength="254" aria-describedby="signup-help">
+        <button class="btn" type="submit">Subscribe</button>
+      </div>
+      
+      <p class="field__help" id="signup-help">One email when a new review goes up.</p>
+      <div class="visually-hidden" aria-hidden="true"><label for="signup-website">Leave this field empty</label><input id="signup-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+    </form>
+  <ul>
+    <li><a href="../../pages/editorial-policy/default.html">Editorial policy</a></li>
+    <li><a href="https://www.youtube.com/@shotthere" target="_blank" rel="noopener">ShotThere on YouTube<svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v6H4V6h6"/></svg><span class="visually-hidden"> (opens in a new tab)</span></a></li>
+  </ul>
+</footer>
+<aside class="compare-bar" aria-label="Comparison">
+  <div class="compare-bar__inner">
+    <div class="compare-bar__text"><span class="compare-bar__count">2 selected</span><span class="compare-bar__names">Parkdale Daylight Loft, Junction Cyc Studio</span></div>
+    <a class="btn btn--primary" href="../../pages/compare/default.html"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M4 4h7v16H4zM13 4h7v16h-7z"/></svg>Compare 2 studios</a>
+  </div>
+</aside>
+<nav class="mock-bar" aria-label="Mock navigation">
+  <a class="mock-bar__home" href="../../index.html" aria-label="All mocks">⌂</a>
+  <span class="mock-bar__screen">Studio list</span>
+  <ul class="mock-bar__states"><li><a href="default.html">default</a></li><li><a href="filtered.html">filtered</a></li><li><a href="no-results.html">no-results</a></li><li><a href="loading.html">loading</a></li><li><a href="error.html">error</a></li><li><a href="empty.html">empty</a></li><li><a href="compare-one.html">compare-one</a></li><li><a href="compare-two.html" aria-current="page">compare-two</a></li><li><a href="compare-limit.html">compare-limit</a></li><li><a href="menu-open.html">menu-open</a></li></ul>
+  <button type="button" data-theme-toggle aria-pressed="false">☾ Dark</button>
+  <button type="button" data-chrome-toggle aria-label="Hide mock chrome">×</button>
+</nav>
+<script src="../../assets/mock.js"></script>
+</body>
+</html>

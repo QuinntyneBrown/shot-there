@@ -1,0 +1,532 @@
+{
+  "project": "ShotThere",
+  "screens": [
+    {
+      "id": "studios",
+      "kind": "page",
+      "title": "Studio list",
+      "route": "/studios",
+      "requirements": [
+        "L2-021",
+        "L2-022",
+        "L2-023",
+        "L2-025",
+        "L2-026",
+        "L2-030",
+        "L2-043",
+        "L2-064"
+      ],
+      "states": [
+        "default",
+        "filtered",
+        "no-results",
+        "loading",
+        "error",
+        "empty",
+        "compare-one",
+        "compare-two",
+        "compare-limit",
+        "menu-open"
+      ]
+    },
+    {
+      "id": "studio",
+      "kind": "page",
+      "title": "Studio review",
+      "route": "/studios/{slug}",
+      "requirements": [
+        "L2-003",
+        "L2-004",
+        "L2-006",
+        "L2-007",
+        "L2-008",
+        "L2-009",
+        "L2-010",
+        "L2-011",
+        "L2-012",
+        "L2-013",
+        "L2-036",
+        "L2-047",
+        "L2-048",
+        "L2-086"
+      ],
+      "states": [
+        "default",
+        "sparse",
+        "image-failed"
+      ],
+      "not_applicable": {
+        "loading": "Prerendered static HTML (L2-074, L2-087): the page arrives complete, so there is no client loading state.",
+        "empty": "A published studio always has the standard data set (L2-002).",
+        "error": "An unknown or draft slug renders the not-found page; a server failure renders the error page."
+      }
+    },
+    {
+      "id": "spots",
+      "kind": "page",
+      "title": "Outdoor spot list",
+      "route": "/spots",
+      "requirements": [
+        "L2-024",
+        "L2-025",
+        "L2-026"
+      ],
+      "states": [
+        "default",
+        "filtered",
+        "no-results",
+        "loading",
+        "error",
+        "empty"
+      ]
+    },
+    {
+      "id": "spot",
+      "kind": "page",
+      "title": "Outdoor spot",
+      "route": "/spots/{slug}",
+      "requirements": [
+        "L2-014",
+        "L2-015",
+        "L2-016",
+        "L2-018",
+        "L2-019",
+        "L2-020",
+        "L2-037",
+        "L2-038",
+        "L2-043"
+      ],
+      "states": [
+        "default",
+        "permit-stale",
+        "no-backup"
+      ],
+      "not_applicable": {
+        "loading": "Prerendered static HTML (L2-074, L2-087): the page arrives complete, so there is no client loading state.",
+        "empty": "A published spot always has the standard data set (L2-002).",
+        "error": "An unknown or draft slug renders the not-found page; a server failure renders the error page."
+      }
+    },
+    {
+      "id": "map",
+      "kind": "page",
+      "title": "Map",
+      "route": "/map",
+      "requirements": [
+        "L2-027",
+        "L2-028",
+        "L2-029"
+      ],
+      "states": [
+        "default",
+        "studios-only",
+        "popup",
+        "loading",
+        "error",
+        "empty"
+      ]
+    },
+    {
+      "id": "compare",
+      "kind": "page",
+      "title": "Comparison",
+      "route": "/compare?studios={slugs}",
+      "requirements": [
+        "L2-031",
+        "L2-032",
+        "L2-033",
+        "L2-043"
+      ],
+      "states": [
+        "default",
+        "unknown-studio",
+        "over-limit",
+        "empty"
+      ],
+      "not_applicable": {
+        "loading": "Server-rendered for the studios in the URL (L2-033.1); no client loading state.",
+        "error": "A server failure renders the error page."
+      }
+    },
+    {
+      "id": "guides",
+      "kind": "page",
+      "title": "Guides index",
+      "route": "/guides",
+      "requirements": [
+        "L2-035"
+      ],
+      "states": [
+        "default"
+      ],
+      "not_applicable": {
+        "loading": "Prerendered static HTML (L2-074, L2-087): the page arrives complete, so there is no client loading state.",
+        "error": "Prerendered; a server failure renders the error page.",
+        "empty": "MVP drops the empty-state message (browse-guides minimal scope); guides launch with content."
+      }
+    },
+    {
+      "id": "guide",
+      "kind": "page",
+      "title": "Guide",
+      "route": "/guides/{slug}",
+      "requirements": [
+        "L2-034"
+      ],
+      "states": [
+        "default"
+      ],
+      "not_applicable": {
+        "loading": "Prerendered static HTML (L2-074, L2-087): the page arrives complete, so there is no client loading state.",
+        "error": "An unknown or draft slug renders the not-found page; a server failure renders the error page.",
+        "empty": "A guide cannot be published without entries (L2-060.3)."
+      }
+    },
+    {
+      "id": "editorial-policy",
+      "kind": "page",
+      "title": "Editorial policy",
+      "route": "/editorial-policy",
+      "requirements": [
+        "L2-046"
+      ],
+      "states": [
+        "default"
+      ],
+      "not_applicable": {
+        "loading": "Prerendered static HTML (L2-074, L2-087): the page arrives complete, so there is no client loading state.",
+        "empty": "Static content.",
+        "error": "Static content; a server failure renders the error page."
+      }
+    },
+    {
+      "id": "not-found",
+      "kind": "page",
+      "title": "Not found (404)",
+      "route": "(any unknown URL)",
+      "requirements": [
+        "L2-083",
+        "L2-001"
+      ],
+      "states": [
+        "default"
+      ],
+      "not_applicable": {
+        "loading": "Static page.",
+        "empty": "Static page.",
+        "error": "This is an error page."
+      }
+    },
+    {
+      "id": "server-error",
+      "kind": "page",
+      "title": "Server error (500)",
+      "route": "(any server failure)",
+      "requirements": [
+        "L2-083"
+      ],
+      "states": [
+        "default"
+      ],
+      "not_applicable": {
+        "loading": "Static page.",
+        "empty": "Static page.",
+        "error": "This is the error page."
+      }
+    },
+    {
+      "id": "email-signup",
+      "kind": "page",
+      "title": "Email signup (footer)",
+      "route": "(site footer on every public page)",
+      "requirements": [
+        "L2-039",
+        "L2-040",
+        "L2-041"
+      ],
+      "states": [
+        "default",
+        "invalid",
+        "invalid-format",
+        "submitting",
+        "success",
+        "error"
+      ],
+      "not_applicable": {
+        "loading": "The form is part of the server-rendered footer.",
+        "empty": "A form, not a collection."
+      }
+    },
+    {
+      "id": "sign-in",
+      "kind": "page",
+      "title": "Owner sign-in",
+      "route": "/admin/sign-in",
+      "requirements": [
+        "L2-049",
+        "L2-050",
+        "L2-051"
+      ],
+      "states": [
+        "default",
+        "invalid",
+        "submitting",
+        "error",
+        "rate-limited"
+      ],
+      "not_applicable": {
+        "loading": "A static form; nothing to load.",
+        "empty": "A form, not a collection."
+      }
+    },
+    {
+      "id": "admin-dashboard",
+      "kind": "page",
+      "title": "Admin dashboard",
+      "route": "/admin",
+      "requirements": [
+        "L2-053",
+        "L2-044",
+        "L2-052"
+      ],
+      "states": [
+        "default",
+        "up-to-date",
+        "empty",
+        "loading",
+        "error"
+      ]
+    },
+    {
+      "id": "admin-studios",
+      "kind": "page",
+      "title": "Admin studio list",
+      "route": "/admin/studios",
+      "requirements": [
+        "L2-063"
+      ],
+      "states": [
+        "default",
+        "search",
+        "no-results",
+        "loading",
+        "error",
+        "empty"
+      ]
+    },
+    {
+      "id": "studio-editor",
+      "kind": "page",
+      "title": "Studio editor",
+      "route": "/admin/studios/{id}",
+      "requirements": [
+        "L2-054",
+        "L2-042",
+        "L2-045",
+        "L2-056",
+        "L2-057",
+        "L2-058",
+        "L2-059",
+        "L2-061",
+        "L2-002"
+      ],
+      "states": [
+        "default",
+        "empty",
+        "invalid",
+        "submitting",
+        "published",
+        "uploading",
+        "upload-rejected",
+        "loading",
+        "error"
+      ]
+    },
+    {
+      "id": "spot-editor",
+      "kind": "page",
+      "title": "Outdoor spot editor",
+      "route": "/admin/spots/{id}",
+      "requirements": [
+        "L2-055",
+        "L2-042",
+        "L2-045",
+        "L2-056",
+        "L2-057",
+        "L2-059",
+        "L2-002"
+      ],
+      "states": [
+        "default",
+        "empty",
+        "invalid",
+        "submitting",
+        "published",
+        "loading",
+        "error"
+      ]
+    },
+    {
+      "id": "guide-editor",
+      "kind": "page",
+      "title": "Guide editor",
+      "route": "/admin/guides/{id}",
+      "requirements": [
+        "L2-060"
+      ],
+      "states": [
+        "default",
+        "empty",
+        "invalid",
+        "submitting",
+        "published",
+        "loading",
+        "error"
+      ]
+    },
+    {
+      "id": "lightbox",
+      "kind": "dialog",
+      "title": "Lightbox",
+      "opens_from": "studio",
+      "requirements": [
+        "L2-010",
+        "L2-016",
+        "L2-067"
+      ],
+      "states": [
+        "default",
+        "busy",
+        "sample-shot"
+      ],
+      "not_applicable": {
+        "invalid": "No inputs."
+      }
+    },
+    {
+      "id": "guide-entry-picker",
+      "kind": "dialog",
+      "title": "Add a studio to a guide",
+      "opens_from": "guide-editor",
+      "requirements": [
+        "L2-060"
+      ],
+      "states": [
+        "default",
+        "busy",
+        "invalid",
+        "failed",
+        "no-results"
+      ]
+    },
+    {
+      "id": "missing-fields",
+      "kind": "dialog",
+      "title": "Can't publish yet",
+      "opens_from": "studio-editor",
+      "requirements": [
+        "L2-056",
+        "L2-002",
+        "L2-045",
+        "L2-055"
+      ],
+      "states": [
+        "default",
+        "spot"
+      ],
+      "not_applicable": {
+        "busy": "Opens with the server's refusal; it submits nothing.",
+        "invalid": "No inputs."
+      }
+    },
+    {
+      "id": "unpublish",
+      "kind": "dialog",
+      "title": "Unpublish",
+      "opens_from": "studio-editor",
+      "requirements": [
+        "L2-056"
+      ],
+      "states": [
+        "default",
+        "busy",
+        "failed"
+      ],
+      "not_applicable": {
+        "invalid": "No inputs."
+      }
+    },
+    {
+      "id": "delete-location",
+      "kind": "dialog",
+      "title": "Delete studio",
+      "opens_from": "studio-editor",
+      "requirements": [
+        "L2-061"
+      ],
+      "states": [
+        "default",
+        "busy",
+        "failed"
+      ],
+      "not_applicable": {
+        "invalid": "No inputs."
+      }
+    },
+    {
+      "id": "remove-image",
+      "kind": "dialog",
+      "title": "Remove image",
+      "opens_from": "studio-editor",
+      "requirements": [
+        "L2-058"
+      ],
+      "states": [
+        "default",
+        "busy",
+        "failed",
+        "refused"
+      ],
+      "not_applicable": {
+        "invalid": "No inputs."
+      }
+    },
+    {
+      "id": "unsaved-changes",
+      "kind": "dialog",
+      "title": "Unsaved changes",
+      "opens_from": "studio-editor",
+      "requirements": [
+        "L2-062"
+      ],
+      "states": [
+        "default"
+      ],
+      "not_applicable": {
+        "busy": "Nothing is sent to the server.",
+        "invalid": "No inputs."
+      }
+    },
+    {
+      "id": "admin-toast",
+      "kind": "notification",
+      "title": "Admin toast",
+      "opens_from": "studio-editor",
+      "requirements": [
+        "L2-054",
+        "L2-056",
+        "L2-061"
+      ],
+      "states": [
+        "success",
+        "published",
+        "info",
+        "danger",
+        "deleted"
+      ],
+      "not_applicable": {
+        "warning": "No admin action ends in a warning; stale dates show inline on the dashboard and editors."
+      }
+    }
+  ]
+}

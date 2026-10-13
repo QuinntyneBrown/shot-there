@@ -1,0 +1,3 @@
+/* The mocks consume the design system: this file only forwards to its tokens
+   so the generated gallery (index.html) themes like every mock. */
+@import url("../../design-system/tokens/tokens.css");

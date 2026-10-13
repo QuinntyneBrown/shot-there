@@ -122,9 +122,11 @@ The look comes from the reference design: a white canvas, a bold wordmark, a qui
   Light is `:root` (restated under `[data-theme="light"]`). Dark is `[data-theme="dark"]` plus an identical block under `prefers-color-scheme: dark`. Reduced motion, `prefers-contrast: more` and forced colours are handled in the tokens.
 - `tokens/tokens.json` is the W3C DTCG export: aliases are preserved and theme overrides sit under `$extensions`. Regenerate it with `tokens_to_json.py` after editing `tokens.css`.
 - `tokens/contrast-pairs.json` holds the 111 foreground/background pairings the components rely on, checked in both themes.
-- Breakpoints are the L2 viewport classes: sm 36rem, md 48rem, lg 62rem, xl 75rem; 2xl 90rem is the container max. Below 48rem every control is at least 44 × 44px (L2-065.1).
+- Breakpoints are the L2 viewport classes: sm 36rem, md 48rem, lg 62rem, xl 75rem; 2xl 90rem is a breakpoint only; the container max is 80rem (1280px, L2-064.3). Below 48rem every control is at least 44 × 44px (L2-065.1).
 
 ## Pending for ShotThere
+
+- **ShotThere domain components (added 13 October 2026):** the ShotThere MVP mocks in `docs/mocks/` added a "ShotThere domain components" section at the end of `assets/components.css` (cards, compare bar, scores, light levels, shots, lightbox frame, episode, map, comparison table, guides, footer signup, admin editors). They have no component pages yet; re-run `extracting-design-systems` over the mocks to document them.
 
 - **Dropped component pages (35):** accordion, avatar, bar chart, breadcrumb, calendar, caterer card, checklist, combobox, dish, filter list, filter trigger, gallery and viewer, inbox row, list rows, map, menu, message thread, pagination, photo, photo tile, popover, queue item, rating, review, side navigation, stat, status label, sticky call to action, switch, tabs, tag, timeline, tooltip. ShotThere's own versions (listing cards, gallery and lightbox, map, filters, compare bar, score display, admin lists) come from the ShotThere mocks.
 - **CSS for dropped components:** `assets/components.css` dropped the accordion, switch, stat, bar chart, timeline, directory map and calendar sections. The other dropped components' CSS stays for now because the foundations, patterns and kept component pages still render them in examples (caterer cards, inbox rows, round photos, status labels, filter lists). Cut each one when its example is rewritten.
