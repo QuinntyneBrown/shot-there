@@ -12,7 +12,7 @@ export async function updateStudio(id: string, input: StudioInput): Promise<Stud
   const stored = await studios.findById(id);
   if (!stored) return null;
 
-  const { priceVerifiedAt, slug = stored.slug, ...fields } = input;
+  const { priceVerifiedAt, slug = stored.slug, videoLink, ...fields } = input;
   const slugChanged = slug !== stored.slug;
   if (slugChanged && (await studios.isSlugTaken(slug))) {
     throw validationFailed([{ field: 'slug', message: 'This address is already used by another studio' }]);
@@ -22,6 +22,7 @@ export async function updateStudio(id: string, input: StudioInput): Promise<Stud
     ...stored,
     ...fields,
     slug,
+    videoId: videoLink,
     priceVerifiedAt: priceVerifiedAt ?? stored.priceVerifiedAt,
     updatedAt: clock.now(),
   };

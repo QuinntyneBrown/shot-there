@@ -6,14 +6,14 @@ import type { StudioRecord } from '@/lib/studios/studio-record';
 /** Creates a draft studio with a unique slug from its name; pricing is verified today unless the owner says otherwise. */
 export async function createStudio(input: StudioInput): Promise<StudioRecord> {
   const { studios, clock } = getDependencies();
-  const { priceVerifiedAt, slug, ...fields } = input;
+  const { priceVerifiedAt, slug, videoLink, ...fields } = input;
   const studio: StudioRecord = {
     ...fields,
     id: crypto.randomUUID(),
     slug: await assignUniqueSlug(slug ?? input.name, 'studio', (slug) => studios.isSlugTaken(slug)),
     status: 'draft',
     priceVerifiedAt: priceVerifiedAt ?? clock.today(),
-    videoId: null,
+    videoId: videoLink,
     publishedAt: null,
     updatedAt: clock.now(),
     images: [],

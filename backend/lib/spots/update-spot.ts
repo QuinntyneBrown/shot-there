@@ -12,7 +12,7 @@ export async function updateSpot(id: string, input: SpotInput): Promise<SpotReco
   const stored = await spots.findById(id);
   if (!stored) return null;
 
-  const { permitVerifiedAt, slug = stored.slug, ...fields } = input;
+  const { permitVerifiedAt, slug = stored.slug, videoLink, ...fields } = input;
   const slugChanged = slug !== stored.slug;
   if (slugChanged && (await spots.isSlugTaken(slug))) {
     throw validationFailed([{ field: 'slug', message: 'This address is already used by another spot' }]);
@@ -22,6 +22,7 @@ export async function updateSpot(id: string, input: SpotInput): Promise<SpotReco
     ...stored,
     ...fields,
     slug,
+    videoId: videoLink,
     permitVerifiedAt: permitVerifiedAt ?? stored.permitVerifiedAt,
     updatedAt: clock.now(),
   };

@@ -14,6 +14,7 @@ import {
   slugField,
 } from '@/lib/http/input-fields';
 import type { StudioListQuery } from '@/lib/studios/studio-list-query';
+import { videoIdField } from '@/lib/videos/schemas';
 
 const PARKING_VALUES = { 'on-site': 'onSite', street: 'street', none: 'none' } as const;
 
@@ -132,6 +133,7 @@ export const studioInputSchema = (today: string) =>
     disclosureProvider: optionalText(200),
     reviewedAt: pastOrTodayDate(today, 'The review date cannot be in the future').nullable().default(null),
     episodeTitle: optionalText(200),
+    videoLink: videoIdField(),
     fees: z.array(studioFeeInputSchema).max(50).default([]),
     gear: z.array(gearItemInputSchema).max(200).default([]),
   });

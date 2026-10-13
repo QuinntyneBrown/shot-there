@@ -12,6 +12,7 @@ import {
 import type { BestUse } from '@/lib/spots/best-use';
 import type { SpotListQuery } from '@/lib/spots/spot-list-query';
 import type { SpotType } from '@/lib/spots/spot-type';
+import { videoIdField } from '@/lib/videos/schemas';
 
 const TYPE_VALUES: Record<string, SpotType> = {
   park: 'park',
@@ -94,4 +95,5 @@ export const spotInputSchema = (today: string) =>
       .superRefine(uniqueBy((use) => use, null, 'This use is already selected')),
     disclosure: optionalEnum(['paid_in_full', 'discounted', 'comped']),
     disclosureProvider: optionalText(200),
+    videoLink: videoIdField(),
   });
