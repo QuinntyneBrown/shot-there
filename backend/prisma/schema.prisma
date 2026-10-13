@@ -1,0 +1,321 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum LocationStatus {
+  draft
+  published
+}
+
+enum Disclosure {
+  paid_in_full
+  discounted
+  comped
+}
+
+enum LightRating {
+  none
+  low
+  medium
+  strong
+}
+
+enum LoadIn {
+  stairs
+  elevator
+  freightElevator
+}
+
+enum ParkingOption {
+  onSite
+  street
+  none
+}
+
+enum GearCategory {
+  lights
+  modifiers
+  stands
+  other
+}
+
+enum SpotType {
+  park
+  architecture
+  waterfront
+  indoorPublic
+}
+
+enum CrowdLevel {
+  low
+  medium
+  high
+}
+
+enum ShootType {
+  portrait
+  weddingEngagement
+  commercial
+  video
+}
+
+enum BestUse {
+  engagement
+  family
+  portrait
+  brand
+  video
+}
+
+enum ImageRole {
+  testShot
+  gallery
+  sampleShot
+}
+
+enum ImageFormat {
+  avif
+  webp
+  jpeg
+}
+
+model Studio {
+  id                    String          @id @default(uuid())
+  slug                  String          @unique
+  status                LocationStatus  @default(draft)
+  name                  String
+  neighbourhood         String?
+  addressOrCrossStreets String?
+  bookingUrl            String?
+  latitude              Float?
+  longitude             Float?
+  hourlyRate            Decimal?        @db.Decimal(10, 2)
+  minBookingHours       Decimal?        @db.Decimal(4, 2)
+  priceVerifiedAt       DateTime        @db.Date
+  usableWidthM          Decimal?        @db.Decimal(6, 2)
+  usableDepthM          Decimal?        @db.Decimal(6, 2)
+  ceilingHeightM        Decimal?        @db.Decimal(6, 2)
+  windowDirection       String?
+  lightMorning          LightRating?
+  lightMidday           LightRating?
+  lightAfternoon        LightRating?
+  lightEvening          LightRating?
+  outletCount           Int?
+  outletType            String?
+  has20ACircuits        Boolean?
+  hasCycWall            Boolean?
+  cycWallCondition      String?
+  backdrops             String?
+  loadIn                LoadIn?
+  loadInNote            String?
+  parking               ParkingOption?
+  parkingNote           String?
+  transit               String?
+  washroom              String?
+  changingArea          String?
+  clientSeating         String?
+  noise                 String?
+  whoItsFor             String?
+  whoShouldSkip         String?
+  scoreValue            Int?
+  scoreLight            Int?
+  scoreSpace            Int?
+  scoreGear             Int?
+  scoreLogistics        Int?
+  scoreCondition        Int?
+  disclosure            Disclosure?
+  disclosureProvider    String?
+  videoId               String?
+  episodeTitle          String?
+  ogImageUrl            String?
+  reviewedAt            DateTime?       @db.Date
+  publishedAt           DateTime?
+  createdAt             DateTime        @default(now())
+  updatedAt             DateTime        @updatedAt
+  fees                  StudioFee[]
+  gear                  GearItem[]
+  images                Image[]
+  guideEntries          GuideEntry[]
+
+  @@index([name])
+}
+
+model StudioFee {
+  id        String  @id @default(uuid())
+  studioId  String
+  studio    Studio  @relation(fields: [studioId], references: [id], onDelete: Cascade)
+  position  Int
+  name      String
+  amount    Decimal @db.Decimal(10, 2)
+  mandatory Boolean
+}
+
+model GearItem {
+  id        String       @id @default(uuid())
+  studioId  String
+  studio    Studio       @relation(fields: [studioId], references: [id], onDelete: Cascade)
+  position  Int
+  name      String
+  category  GearCategory
+  quantity  Int
+  included  Boolean
+  extraCost Decimal?     @db.Decimal(10, 2)
+}
+
+model Image {
+  id            String         @id @default(uuid())
+  studioId      String?
+  studio        Studio?        @relation(fields: [studioId], references: [id], onDelete: Cascade)
+  spotId        String?
+  spot          Spot?          @relation(fields: [spotId], references: [id], onDelete: Cascade)
+  role          ImageRole
+  sortOrder     Int
+  altText       String
+  caption       String?
+  focalLengthMm Int?
+  angleNote     String?
+  width         Int
+  height        Int
+  storageKey    String         @unique
+  contentType   String
+  originalName  String
+  createdAt     DateTime       @default(now())
+  variants      ImageVariant[]
+}
+
+model ImageVariant {
+  id         String      @id @default(uuid())
+  imageId    String
+  image      Image       @relation(fields: [imageId], references: [id], onDelete: Cascade)
+  width      Int
+  format     ImageFormat
+  storageKey String      @unique
+  url        String
+}
+
+model Spot {
+  id                 String           @id @default(uuid())
+  slug               String           @unique
+  status             LocationStatus   @default(draft)
+  name               String
+  neighbourhood      String?
+  type               SpotType?
+  latitude           Float?
+  longitude          Float?
+  directions         String?
+  /// SpotLightByTimeRecord[]
+  lightByTime        Json             @default("[]")
+  /// SpotLightBySeasonRecord[]
+  lightBySeason      Json             @default("[]")
+  weekdayCrowds      CrowdLevel?
+  weekendCrowds      CrowdLevel?
+  parking            String?
+  washrooms          String?
+  changing           String?
+  permitSourceUrl    String?
+  permitVerifiedAt   DateTime         @db.Date
+  bestUses           BestUse[]
+  disclosure         Disclosure?
+  disclosureProvider String?
+  videoId            String?
+  publishedAt        DateTime?
+  createdAt          DateTime         @default(now())
+  updatedAt          DateTime         @updatedAt
+  permits            PermitStatus[]
+  images             Image[]
+  guideEntries       GuideEntry[]
+
+  @@index([name])
+}
+
+model PermitStatus {
+  id        String    @id @default(uuid())
+  spotId    String
+  spot      Spot      @relation(fields: [spotId], references: [id], onDelete: Cascade)
+  shootType ShootType
+  required  Boolean
+
+  @@unique([spotId, shootType])
+}
+
+model Guide {
+  id           String         @id @default(uuid())
+  slug         String         @unique
+  status       LocationStatus @default(draft)
+  title        String
+  introduction String
+  publishedAt  DateTime?
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+  entries      GuideEntry[]
+}
+
+model GuideEntry {
+  id       String  @id @default(uuid())
+  guideId  String
+  guide    Guide   @relation(fields: [guideId], references: [id], onDelete: Cascade)
+  studioId String?
+  studio   Studio? @relation(fields: [studioId], references: [id])
+  spotId   String?
+  spot     Spot?   @relation(fields: [spotId], references: [id])
+  note     String
+  position Int
+
+  @@unique([guideId, studioId])
+  @@unique([guideId, spotId])
+}
+
+enum ContentType {
+  studio
+  spot
+  guide
+}
+
+model SlugRedirect {
+  id        String      @id @default(uuid())
+  type      ContentType
+  fromSlug  String
+  toSlug    String
+  createdAt DateTime    @default(now())
+
+  @@unique([type, fromSlug])
+}
+
+model Subscriber {
+  id           String   @id @default(uuid())
+  email        String   @unique
+  subscribedAt DateTime
+  sourcePath   String
+}
+
+model Owner {
+  id           String         @id @default(uuid())
+  email        String         @unique
+  passwordHash String
+  sessions     OwnerSession[]
+}
+
+model OwnerSession {
+  id         String   @id
+  ownerId    String
+  owner      Owner    @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  tokenHash  String   @unique
+  csrfToken  String
+  createdAt  DateTime
+  lastSeenAt DateTime
+}
+
+model SignInAttempt {
+  id          String   @id @default(uuid())
+  clientKey   String
+  email       String
+  attemptedAt DateTime
+
+  @@index([clientKey, attemptedAt])
+  @@index([email, attemptedAt])
+}
