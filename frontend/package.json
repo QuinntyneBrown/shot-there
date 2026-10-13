@@ -10,7 +10,8 @@
     "lint": "eslint .",
     "e2e": "playwright test",
     "serve:ssr:shot-there": "node dist/shot-there/server/server.mjs",
-    "build:libs": "ng build api && ng build components"
+    "build:libs": "ng build api && ng build components",
+    "serve:ssr:components-harness": "node dist/components-harness/server/server.mjs"
   },
   "private": true,
   "packageManager": "npm@11.19.1",

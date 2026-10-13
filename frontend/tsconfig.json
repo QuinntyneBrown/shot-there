@@ -41,6 +41,9 @@
     },
     {
       "path": "./projects/components/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/components-harness/tsconfig.app.json"
     }
   ]
 }
