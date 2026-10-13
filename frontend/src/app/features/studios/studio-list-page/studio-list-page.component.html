@@ -1,0 +1,28 @@
+<div class="browse">
+  <div class="browse__title">
+    <h1 i18n>Studios</h1>
+    <p class="subtitle" i18n>Every studio here was shot in with the same test setup. All-in is the cost of a 2-hour shoot with mandatory fees.</p>
+  </div>
+
+  <section class="browse__results" aria-labelledby="results-title">
+    <h2 class="st-visually-hidden" id="results-title" i18n>Results</h2>
+    @if (state().status === 'loaded') {
+      @if (studios().length === 0) {
+        <div class="empty">
+          <div class="empty__icon"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M4 8h3l2-3h6l2 3h3v11H4z" /><circle cx="12" cy="13" r="3.5" /></svg></div>
+          <h3 class="empty__title" i18n>No studio reviews yet</h3>
+          <p class="empty__text" i18n>The first reviews are being shot now. Each one goes up only after a full test shoot.</p>
+        </div>
+      } @else {
+        <div class="results-head">
+          <p class="result-count" role="status" aria-live="polite" i18n>{studios().length, plural, =1 {1 studio} other {{{studios().length}} studios}}</p>
+        </div>
+        <ul class="location-grid" aria-label="Studios" i18n-aria-label>
+          @for (studio of studios(); track studio.slug; let i = $index) {
+            <li><st-studio-card [studio]="studio" [eager]="i < 3" /></li>
+          }
+        </ul>
+      }
+    }
+  </section>
+</div>
