@@ -34,7 +34,7 @@ export interface StudioRecord {
   has20ACircuits: boolean | null;
   hasCycWall: boolean | null;
   cycWallCondition: string | null;
-  backdrops: string | null;
+  backdrops: string[];
   loadIn: LoadIn | null;
   loadInNote: string | null;
   parking: ParkingOption | null;

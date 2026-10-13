@@ -10,3 +10,9 @@ ALTER TYPE "GearCategory" ADD VALUE 'backdrops' BEFORE 'other';
 
 -- ICD OI-4: a studio's review time is the time of its latest publish (publishedAt)
 ALTER TABLE "Studio" DROP COLUMN "reviewedAt";
+
+-- ICD §13.2: backdrops are a list
+ALTER TABLE "Studio" ALTER COLUMN "backdrops" TYPE TEXT[]
+  USING CASE WHEN "backdrops" IS NULL OR btrim("backdrops") = '' THEN ARRAY[]::TEXT[] ELSE ARRAY["backdrops"] END;
+ALTER TABLE "Studio" ALTER COLUMN "backdrops" SET DEFAULT ARRAY[]::TEXT[];
+ALTER TABLE "Studio" ALTER COLUMN "backdrops" SET NOT NULL;

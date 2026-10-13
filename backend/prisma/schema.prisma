@@ -111,7 +111,7 @@ model Studio {
   has20ACircuits        Boolean?
   hasCycWall            Boolean?
   cycWallCondition      String?
-  backdrops             String?
+  backdrops             String[]        @default([])
   loadIn                LoadIn?
   loadInNote            String?
   parking               ParkingOption?

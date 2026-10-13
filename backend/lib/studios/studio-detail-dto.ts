@@ -24,8 +24,8 @@ export interface StudioDetailDto {
   disclosure: DisclosureDto;
   /** Null when no video is stored. */
   episode: EpisodeDto | null;
-  /** The Open Graph image URL, or null when none was made. */
-  ogImageUrl: string | null;
+  /** The 1200×630 Open Graph image, or a page image when none could be made. */
+  ogImageUrl: string;
   /** The time of the latest publish (ICD OI-4). */
   reviewedAt: string;
   /** Published guides that include the studio. */

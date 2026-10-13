@@ -51,11 +51,12 @@ describe('L2-076 Open Graph image', () => {
     expect(red.mean).toBeGreaterThan(blue.mean);
   });
 
-  it('Given the gallery original cannot be read, when the owner publishes the studio, then publishing still succeeds without an Open Graph image', async () => {
+  it('Given the gallery original cannot be read, when the owner publishes the studio, then publishing still succeeds and the Open Graph image falls back to the first gallery image', async () => {
     useSignedInOwner({ studios: [draftStudioWithGallery()] });
 
     expect((await publish('s1')).status).toBe(200);
 
-    expect((await getStudioPage('loft')).body.ogImageUrl).toBeNull();
+    const { body } = await getStudioPage('loft');
+    expect(body.ogImageUrl).toBe(body.gallery[0].fallbackUrl);
   });
 });

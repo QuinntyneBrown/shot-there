@@ -4,14 +4,14 @@ import { useFakeDependencies } from '@/tests/support/fake-dependencies';
 import { getStudioPage } from '@/tests/support/get-studio-page';
 
 describe('L2-036 cross-links to guides', () => {
-  it('Given a studio in two published guides and one draft guide, when its page is requested, then featuredIn links the two published guides by title', async () => {
+  it('Given a studio in two published guides and one draft guide, when its page is requested, then featuredIn links the two published guides, most recently published first (ICD OI-9)', async () => {
     const entry = { kind: 'studio' as const, locationId: 'loft-id', note: '', position: 0 };
     useFakeDependencies({
       studios: [aStudio({ id: 'loft-id', slug: 'loft' })],
       guides: [
-        aGuide({ slug: 'natural-light', title: 'Best natural light', entries: [entry] }),
+        aGuide({ slug: 'headshots', title: 'Best for headshots', entries: [entry], publishedAt: new Date('2026-08-01T12:00:00Z') }),
         aGuide({ slug: 'secret', title: 'Draft guide', status: 'draft', entries: [entry] }),
-        aGuide({ slug: 'headshots', title: 'Best for headshots', entries: [entry] }),
+        aGuide({ slug: 'natural-light', title: 'Best natural light', entries: [entry], publishedAt: new Date('2026-09-01T12:00:00Z') }),
         aGuide({ slug: 'unrelated', title: 'Another guide', entries: [{ ...entry, locationId: 'other' }] }),
       ],
     });
@@ -19,8 +19,8 @@ describe('L2-036 cross-links to guides', () => {
     const { body } = await getStudioPage('loft');
 
     expect(body.featuredIn).toEqual([
-      { slug: 'headshots', title: 'Best for headshots' },
       { slug: 'natural-light', title: 'Best natural light' },
+      { slug: 'headshots', title: 'Best for headshots' },
     ]);
   });
 

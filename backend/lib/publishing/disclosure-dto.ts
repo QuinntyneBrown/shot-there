@@ -1,6 +1,6 @@
 import type { Disclosure } from '@/lib/publishing/disclosure';
 
 export interface DisclosureDto {
-  kind: Disclosure | null;
+  kind: Disclosure;
   provider: string | null;
 }

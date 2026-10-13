@@ -113,7 +113,7 @@ export const studioInputSchema = (today: string) =>
     has20ACircuits: optionalBoolean(),
     hasCycWall: optionalBoolean(),
     cycWallCondition: optionalText(200),
-    backdrops: optionalText(500),
+    backdrops: z.array(requiredText('Name the backdrop', 80)).max(20).default([]),
     loadIn: optionalEnum(['stairs', 'elevator', 'freight_elevator']),
     loadInNote: optionalText(500),
     parking: optionalEnum(['on_site', 'street', 'none']),

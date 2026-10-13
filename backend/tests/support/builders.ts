@@ -63,7 +63,7 @@ export function aStudio(overrides: Partial<StudioRecord> = {}): StudioRecord {
     has20ACircuits: false,
     hasCycWall: false,
     cycWallCondition: null,
-    backdrops: 'White, grey and black seamless',
+    backdrops: ['White seamless', 'Grey seamless', 'Black seamless'],
     loadIn: 'elevator',
     loadInNote: null,
     parking: 'street',

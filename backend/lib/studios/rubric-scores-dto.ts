@@ -1,8 +1,9 @@
+/** The six rubric scores, integers from 1 to 5. */
 export interface RubricScoresDto {
-  value: number | null;
-  light: number | null;
-  space: number | null;
-  gear: number | null;
-  logistics: number | null;
-  condition: number | null;
+  value: number;
+  light: number;
+  space: number;
+  gear: number;
+  logistics: number;
+  condition: number;
 }

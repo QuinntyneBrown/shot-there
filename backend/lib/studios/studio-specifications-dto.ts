@@ -1,15 +1,16 @@
-import type { CycWallDto } from '@/lib/studios/cyc-wall-dto';
 import type { NaturalLightDto } from '@/lib/studios/natural-light-dto';
-import type { StudioPowerDto } from '@/lib/studios/studio-power-dto';
+import type { PowerDto } from '@/lib/studios/power-dto';
 
 /** Measured specifications; lengths are in metres. */
 export interface StudioSpecificationsDto {
-  usableWidthM: number | null;
-  usableDepthM: number | null;
-  ceilingHeightM: number | null;
-  windowDirection: string | null;
+  usableWidth: number;
+  usableDepth: number;
+  ceilingHeight: number;
+  windowDirection: string;
   naturalLight: NaturalLightDto;
-  power: StudioPowerDto;
-  cycWall: CycWallDto;
-  backdrops: string | null;
+  power: PowerDto;
+  hasCycWall: boolean;
+  /** Null whenever there is no cyc wall. */
+  cycWallCondition: string | null;
+  backdrops: string[];
 }

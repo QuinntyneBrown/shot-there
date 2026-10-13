@@ -102,18 +102,18 @@ describe('L2-022 studio filters', () => {
       studios: [
         aStudio({
           slug: 'backdrops',
-          backdrops: 'Grey seamless',
+          backdrops: ['Grey seamless'],
           gear: [{ name: 'Paper roll', category: 'backdrops', quantity: 3, included: true, extraCost: null }],
           publishedAt: new Date('2026-09-01T12:00:00Z'),
         }),
-        aStudio({ slug: 'listed-backdrop-only', backdrops: 'White seamless', gear: [], publishedAt: new Date('2026-07-01T12:00:00Z') }),
+        aStudio({ slug: 'listed-backdrop-only', backdrops: ['White seamless'], gear: [], publishedAt: new Date('2026-07-01T12:00:00Z') }),
         aStudio({
           slug: 'stands',
-          backdrops: null,
+          backdrops: [],
           gear: [{ name: 'C-stand', category: 'stands', quantity: 4, included: true, extraCost: null }],
           publishedAt: new Date('2026-08-01T12:00:00Z'),
         }),
-        aStudio({ slug: 'bare', backdrops: null, gear: [] }),
+        aStudio({ slug: 'bare', backdrops: [], gear: [] }),
       ],
     });
 
