@@ -35,6 +35,24 @@ export class ButtonComponent {
     return this.root.evaluate((el) => getComputedStyle(el).color);
   }
 
+  /** True while the DS busy spinner turns over the label. */
+  showsSpinner(): Promise<boolean> {
+    return this.root.evaluate((el) => {
+      const after = getComputedStyle(el, '::after');
+      return after.content !== 'none' && after.animationName !== 'none';
+    });
+  }
+
+  /** The element's opacity: 0.5 is the DS disabled look. */
+  opacity(): Promise<number> {
+    return this.root.evaluate((el) => parseFloat(getComputedStyle(el).opacity));
+  }
+
+  /** Fires a click event on the element itself, as assistive technology does, bypassing pointer hit-testing. */
+  async activate(): Promise<void> {
+    await this.root.dispatchEvent('click');
+  }
+
   async click(): Promise<void> {
     await this.root.click();
   }

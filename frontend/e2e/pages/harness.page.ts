@@ -31,6 +31,11 @@ export class HarnessPage {
     return this.page.getByRole('log', { name: 'Activations' }).getByRole('listitem').allInnerTexts();
   }
 
+  /** Flips a harness checkbox that drives a component input (for example "Busy"). */
+  async toggle(label: string): Promise<void> {
+    await this.page.getByRole('checkbox', { name: label, exact: true }).click();
+  }
+
   hasHorizontalScroll(): Promise<boolean> {
     return this.page.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth);
   }

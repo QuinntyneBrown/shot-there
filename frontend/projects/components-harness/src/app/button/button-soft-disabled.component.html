@@ -1,0 +1,7 @@
+<main class="container stack">
+  <div class="cluster">
+    <button st-button size="sm" softDisabled type="button" (click)="record('click: Move up test shot 1')">Move up<span class="visually-hidden"> test shot 1</span></button>
+    <button st-button size="sm" type="button" (click)="record('click: Move up test shot 2')">Move up<span class="visually-hidden"> test shot 2</span></button>
+  </div>
+  <st-activation-log [entries]="log()" />
+</main>

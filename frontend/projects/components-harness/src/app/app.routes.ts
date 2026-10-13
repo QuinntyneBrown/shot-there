@@ -1,4 +1,6 @@
 import { Routes } from '@angular/router';
+import { ButtonSoftDisabledComponent } from './button/button-soft-disabled.component';
+import { ButtonBusyComponent } from './button/button-busy.component';
 import { ButtonLinkComponent } from './button/button-link.component';
 import { ButtonBlockComponent } from './button/button-block.component';
 import { ButtonSizesComponent } from './button/button-sizes.component';
@@ -18,4 +20,6 @@ export const routes: Routes = [
   { path: 'button/sizes', component: ButtonSizesComponent },
   { path: 'button/block', component: ButtonBlockComponent },
   { path: 'button/link', component: ButtonLinkComponent },
+  { path: 'button/busy', component: ButtonBusyComponent },
+  { path: 'button/soft-disabled', component: ButtonSoftDisabledComponent },
 ];

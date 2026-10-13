@@ -21,6 +21,14 @@
 :host(.btn--sm) { min-height: var(--control-height-sm); padding-inline: var(--space-3); font-size: var(--font-size-sm); }
 :host(.btn--lg) { min-height: var(--control-height-lg); padding-inline: var(--space-6); font-size: var(--font-size-lg); }
 :host(.btn--block) { display: flex; width: 100%; }
+/* Busy is never dimmed: the spinner keeps the label colour and its 3:1 (button D-5). The label stays, transparent, so the width holds. */
+:host([aria-busy="true"]) { opacity: 1; cursor: progress; color: transparent; pointer-events: none; }
+:host([aria-busy="true"])::after {
+  content: ""; position: absolute; inset: 0; margin: auto; width: 1.1em; height: 1.1em;
+  border: var(--border-width-thick) solid var(--btn-fg); border-right-color: transparent; border-radius: 50%;
+  animation: spin var(--duration-loop-fast) linear infinite;
+}
+@keyframes spin { to { rotate: 360deg; } }
 
 @media (prefers-reduced-motion: reduce) {
   :host(:active) { transform: none; }

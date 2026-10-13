@@ -1,4 +1,4 @@
-import { booleanAttribute, ChangeDetectionStrategy, Component, input } from '@angular/core';
+import { booleanAttribute, ChangeDetectionStrategy, Component, ElementRef, inject, input, Renderer2 } from '@angular/core';
 import { ButtonVariant } from '../types/button-variant';
 import { ControlSize } from '../types/control-size';
 
@@ -20,10 +20,30 @@ import { ControlSize } from '../types/control-size';
     '[class.btn--sm]': "size() === 'sm'",
     '[class.btn--lg]': "size() === 'lg'",
     '[class.btn--block]': 'block()',
+    '[attr.aria-busy]': 'busy() || null',
+    '[attr.aria-disabled]': 'busy() || softDisabled() || null',
   },
 })
 export class ButtonComponent {
   readonly variant = input<ButtonVariant>('secondary');
   readonly size = input<ControlSize>('md');
   readonly block = input(false, { transform: booleanAttribute });
+  readonly busy = input(false, { transform: booleanAttribute });
+  readonly softDisabled = input(false, { transform: booleanAttribute });
+
+  constructor() {
+    // A capture listener on the host runs before any consumer listener on it, so while busy or
+    // soft-disabled no consumer sees the activation and a submit button submits nothing (ICD-FORM-8).
+    inject(Renderer2).listen(
+      inject(ElementRef).nativeElement,
+      'click',
+      (event: Event) => {
+        if (this.busy() || this.softDisabled()) {
+          event.preventDefault();
+          event.stopImmediatePropagation();
+        }
+      },
+      { capture: true },
+    );
+  }
 }
