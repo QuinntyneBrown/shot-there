@@ -9,7 +9,8 @@
     "test": "vitest run",
     "typecheck": "tsc --noEmit",
     "lint": "eslint .",
-    "prisma:generate": "prisma generate"
+    "prisma:generate": "prisma generate",
+    "owner:set-password": "tsx scripts/set-owner-password.ts"
   },
   "dependencies": {
     "@prisma/adapter-pg": "7.10.0",
@@ -26,6 +27,7 @@
     "eslint": "9.39.5",
     "eslint-config-next": "16.4.0",
     "prisma": "7.10.0",
+    "tsx": "4.23.15",
     "typescript": "6.0.3",
     "vitest": "5.0.4"
   },
