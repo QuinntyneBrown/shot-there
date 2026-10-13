@@ -8,4 +8,12 @@ export class PrismaSignInAttemptRepository implements SignInAttemptRepository {
   async add(attempt: SignInAttemptRecord): Promise<void> {
     await this.prisma.signInAttempt.create({ data: attempt });
   }
+
+  async countForClientSince(clientKey: string, since: Date): Promise<number> {
+    return this.prisma.signInAttempt.count({ where: { clientKey, attemptedAt: { gte: since } } });
+  }
+
+  async countForEmailSince(email: string, since: Date): Promise<number> {
+    return this.prisma.signInAttempt.count({ where: { email, attemptedAt: { gte: since } } });
+  }
 }

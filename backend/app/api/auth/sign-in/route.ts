@@ -12,6 +12,7 @@ export const POST = withRequestLogging(async (request: Request) => {
   const input = parseWithSchema(signInSchema, await readJsonBody(request));
   const result = await signInOwner(input, clientIp(request));
 
+  if (result.outcome === 'rateLimited') return Response.json({ status: 429 }, { status: 429 });
   if (result.outcome === 'invalidCredentials') {
     return Response.json({ status: 401, message: INVALID_CREDENTIALS }, { status: 401 });
   }
