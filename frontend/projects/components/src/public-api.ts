@@ -29,3 +29,4 @@ export * from './lib/types/lightbox-data';
 export * from './lib/types/dialog-options';
 export * from './lib/types/toast-options';
 export * from './lib/types/toast-ref';
+export * from './lib/icon/icon.component';

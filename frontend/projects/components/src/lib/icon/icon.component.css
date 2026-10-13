@@ -1,0 +1,7 @@
+/* The host adds no box: the block is the <svg class="icon"> (ICD-DOM-1). */
+:host { display: contents; }
+
+.icon { width: var(--icon-size-md); height: var(--icon-size-md); fill: none; stroke: currentColor; stroke-width: var(--icon-stroke); stroke-linecap: round; stroke-linejoin: round; flex: none; }
+.icon--sm { width: var(--icon-size-sm); height: var(--icon-size-sm); }
+.icon--lg { width: var(--icon-size-lg); height: var(--icon-size-lg); }
+.icon--xl { width: var(--icon-size-xl); height: var(--icon-size-xl); }
