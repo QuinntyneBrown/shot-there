@@ -100,7 +100,7 @@ describe('L2-008 logistics', () => {
       studios: [
         aStudio({
           slug: 's',
-          loadIn: 'freightElevator',
+          loadIn: 'freight_elevator',
           loadInNote: 'small, 1.2 m wide',
           parking: 'street',
           parkingNote: 'Metered on Queen',
@@ -116,7 +116,7 @@ describe('L2-008 logistics', () => {
     const { body } = await getStudioPage('s');
 
     expect(body.logistics).toEqual({
-      loadIn: 'freightElevator',
+      loadIn: 'freight_elevator',
       loadInNote: 'small, 1.2 m wide',
       parking: 'street',
       parkingNote: 'Metered on Queen',

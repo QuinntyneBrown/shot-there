@@ -28,11 +28,11 @@ enum LightRating {
 enum LoadIn {
   stairs
   elevator
-  freightElevator
+  freight_elevator
 }
 
 enum ParkingOption {
-  onSite
+  on_site
   street
   none
 }
@@ -41,6 +41,7 @@ enum GearCategory {
   lights
   modifiers
   stands
+  backdrops
   other
 }
 
@@ -48,7 +49,7 @@ enum SpotType {
   park
   architecture
   waterfront
-  indoorPublic
+  indoor_public
 }
 
 enum CrowdLevel {
@@ -73,9 +74,9 @@ enum BestUse {
 }
 
 enum ImageRole {
-  testShot
+  test_shot
   gallery
-  sampleShot
+  sample_shot
 }
 
 enum ImageFormat {

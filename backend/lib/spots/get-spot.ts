@@ -30,7 +30,7 @@ export async function getSpot(slug: string): Promise<SpotDetailDto | null> {
     lightBySeason: [...spot.lightBySeason].sort(
       (a, b) => SEASON_ORDER.indexOf(a.season) - SEASON_ORDER.indexOf(b.season),
     ),
-    sampleShots: imagesWithRole(spot.images, 'sampleShot').map((image) => ({
+    sampleShots: imagesWithRole(spot.images, 'sample_shot').map((image) => ({
       ...toImageDto(image),
       focalLengthMm: image.focalLengthMm,
       angleNote: image.angleNote,

@@ -20,7 +20,7 @@ const TYPE_VALUES: Record<string, SpotType> = {
   park: 'park',
   architecture: 'architecture',
   waterfront: 'waterfront',
-  'indoor-public': 'indoorPublic',
+  indoor_public: 'indoor_public',
 };
 const USE_VALUES: BestUse[] = ['engagement', 'family', 'portrait', 'brand', 'video'];
 
@@ -30,7 +30,7 @@ export const spotListQuerySchema = z.object({
   useCases: z
     .array(z.string())
     .transform((values) => values.filter((value): value is BestUse => (USE_VALUES as string[]).includes(value))),
-  permit: z.enum(['none-needed', 'any']).catch('any'),
+  permit: z.enum(['none_needed', 'any']).catch('any'),
 });
 
 export function parseSpotListQuery(searchParams: URLSearchParams): SpotListQuery {
@@ -41,7 +41,7 @@ export function parseSpotListQuery(searchParams: URLSearchParams): SpotListQuery
   });
 }
 
-const SPOT_TYPES = ['park', 'architecture', 'waterfront', 'indoorPublic'] as const;
+const SPOT_TYPES = ['park', 'architecture', 'waterfront', 'indoor_public'] as const;
 const BEST_USES = ['engagement', 'family', 'portrait', 'brand', 'video'] as const;
 const SHOOT_TYPES = ['portrait', 'weddingEngagement', 'commercial', 'video'] as const;
 const CROWDS = ['low', 'medium', 'high'] as const;

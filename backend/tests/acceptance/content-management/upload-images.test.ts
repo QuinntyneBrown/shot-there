@@ -55,8 +55,8 @@ describe('L2-057 image upload', () => {
   it('Given a second upload of the same role, when stored, then it is ordered after the first', async () => {
     const dependencies = useStudioEditor();
 
-    await upload(uploadRequest({ file: await aRasterImage(600, 400), studioId: 's1', role: 'testShot' }));
-    await upload(uploadRequest({ file: await aRasterImage(600, 400), studioId: 's1', role: 'testShot' }));
+    await upload(uploadRequest({ file: await aRasterImage(600, 400), studioId: 's1', role: 'test_shot' }));
+    await upload(uploadRequest({ file: await aRasterImage(600, 400), studioId: 's1', role: 'test_shot' }));
 
     expect(studioImages(dependencies).map((image) => image.sortOrder)).toEqual([0, 1]);
   });
@@ -70,13 +70,13 @@ describe('L2-057 image upload', () => {
         fileName: 'shot.png',
         type: 'image/png',
         spotId: 'p1',
-        role: 'sampleShot',
+        role: 'sample_shot',
       }),
     );
 
     expect(response.status).toBe(201);
     const [image] = (dependencies.spots as InMemorySpotRepository).rows[0].images;
-    expect(image).toMatchObject({ role: 'sampleShot', contentType: 'image/png', originalName: 'shot.png' });
+    expect(image).toMatchObject({ role: 'sample_shot', contentType: 'image/png', originalName: 'shot.png' });
   });
 
   it('Given a file over 20 MB, when uploaded, then the server responds 413 and stores nothing', async () => {

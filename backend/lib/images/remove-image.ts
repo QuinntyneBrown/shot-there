@@ -4,9 +4,9 @@ import type { ImageRole } from '@/lib/images/image-role';
 import { deleteStoredObjects } from '@/lib/storage/delete-stored-objects';
 
 const REQUIRED_WHILE_PUBLISHED: Partial<Record<ImageRole, string>> = {
-  testShot: 'At least one standard test shot is required while the studio is published',
+  test_shot: 'At least one standard test shot is required while the studio is published',
   gallery: 'At least one gallery image is required while the studio is published',
-  sampleShot: 'At least one sample shot is required while the spot is published',
+  sample_shot: 'At least one sample shot is required while the spot is published',
 };
 
 /**

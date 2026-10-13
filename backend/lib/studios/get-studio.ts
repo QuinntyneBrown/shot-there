@@ -61,7 +61,7 @@ export async function getStudio(slug: string): Promise<StudioDetailDto | null> {
       clientSeating: studio.clientSeating,
       noise: studio.noise,
     },
-    testShots: imagesWithRole(studio.images, 'testShot').map(toImageDto),
+    testShots: imagesWithRole(studio.images, 'test_shot').map(toImageDto),
     gallery: imagesWithRole(studio.images, 'gallery').map(toImageDto),
     verdict: {
       whoItsFor: studio.whoItsFor,

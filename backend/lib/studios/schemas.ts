@@ -18,24 +18,24 @@ import { imageOrderItemSchema } from '@/lib/images/schemas';
 import { videoIdField } from '@/lib/videos/schemas';
 import { requireDisclosureProvider } from '@/lib/publishing/schemas';
 
-const PARKING_VALUES = { 'on-site': 'onSite', street: 'street', none: 'none' } as const;
-
 const optionalQueryAmount = z.coerce.number().nonnegative().finite().optional().catch(undefined);
 const knownValues = <T extends string>(values: readonly T[]) =>
   z.array(z.string()).transform((list) => list.filter((value): value is T => (values as readonly string[]).includes(value)));
-const yesFlag = z.string().optional().transform((value) => value === 'yes');
+/** A boolean query flag is on only when its value is exactly `true` (ICD C-20). */
+const flag = z.string().optional().transform((value) => value === 'true');
+const positiveQueryAmount = z.coerce.number().positive().finite().optional().catch(undefined);
 
 /** Lenient: unknown values are dropped and an inverted cost range is unset; parsing never fails. */
 export const studioListQuerySchema = z
   .object({
     costMin: optionalQueryAmount,
     costMax: optionalQueryAmount,
-    hood: z.array(z.string().trim().min(1)).catch([]),
-    light: yesFlag,
-    cyc: yesFlag,
-    space: optionalQueryAmount,
+    hood: z.array(z.string()).transform((list) => list.map((hood) => hood.trim()).filter(Boolean)),
+    light: flag,
+    cyc: flag,
+    space: positiveQueryAmount,
     gear: knownValues(['lights', 'modifiers', 'stands', 'backdrops'] as const),
-    parking: z.enum(['on-site', 'street', 'none']).optional().catch(undefined),
+    parking: z.enum(['on_site', 'street', 'none']).optional().catch(undefined),
     sort: z.enum(['cost', 'score', 'recent']).catch('recent'),
   })
   .transform(({ costMin, costMax, hood, light, cyc, space, gear, parking, sort }): StudioListQuery => {
@@ -48,7 +48,7 @@ export const studioListQuerySchema = z
       cycWall: cyc,
       minSpaceSqm: space,
       gear,
-      parking: parking && PARKING_VALUES[parking],
+      parking,
       sort,
     };
   });
@@ -114,9 +114,9 @@ export const studioInputSchema = (today: string) =>
     hasCycWall: optionalBoolean(),
     cycWallCondition: optionalText(200),
     backdrops: optionalText(500),
-    loadIn: optionalEnum(['stairs', 'elevator', 'freightElevator']),
+    loadIn: optionalEnum(['stairs', 'elevator', 'freight_elevator']),
     loadInNote: optionalText(500),
-    parking: optionalEnum(['onSite', 'street', 'none']),
+    parking: optionalEnum(['on_site', 'street', 'none']),
     parkingNote: optionalText(500),
     transit: optionalText(500),
     washroom: optionalText(500),

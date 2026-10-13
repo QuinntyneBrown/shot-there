@@ -91,7 +91,7 @@ export function aStudio(overrides: Partial<StudioRecord> = {}): StudioRecord {
     updatedAt: new Date('2026-09-02T12:00:00Z'),
     fees: [],
     gear: [],
-    images: [anImage({ role: 'testShot' }), anImage({ role: 'gallery' })],
+    images: [anImage({ role: 'test_shot' }), anImage({ role: 'gallery' })],
     ...overrides,
   };
 }
@@ -141,7 +141,7 @@ export function aSpot(overrides: Partial<SpotRecord> = {}): SpotRecord {
     videoId: null,
     publishedAt: new Date('2026-09-02T12:00:00Z'),
     updatedAt: new Date('2026-09-02T12:00:00Z'),
-    images: [anImage({ role: 'sampleShot', focalLengthMm: 85, angleNote: 'From the lower steps' })],
+    images: [anImage({ role: 'sample_shot', focalLengthMm: 85, angleNote: 'From the lower steps' })],
     ...overrides,
   };
 }

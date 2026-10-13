@@ -29,7 +29,7 @@ describe('L2-024 outdoor spot list', () => {
           bestUses: ['engagement', 'family'],
           permits: permitsWhere(false),
           permitVerifiedAt: '2026-03-01',
-          images: [anImage({ id: 'cover', role: 'sampleShot', altText: 'Skyline from the hill' })],
+          images: [anImage({ id: 'cover', role: 'sample_shot', altText: 'Skyline from the hill' })],
         }),
         aSpot({ slug: 'harbourfront', name: 'Harbourfront', type: 'waterfront' }),
         aSpot({ slug: 'hidden', name: 'Draft Spot', status: 'draft' }),
@@ -62,7 +62,7 @@ describe('L2-024 outdoor spot list', () => {
     expect(slugsOf(body)).toEqual(['water']);
   });
 
-  it('Given use case family and permit "none-needed", when listed, then only family spots whose portrait permit is not required are listed', async () => {
+  it('Given use case family and permit "none_needed", when listed, then only family spots whose portrait permit is not required are listed', async () => {
     useFakeDependencies({
       spots: [
         aSpot({ slug: 'family-free', bestUses: ['family'], permits: permitsWhere(false) }),
@@ -71,7 +71,7 @@ describe('L2-024 outdoor spot list', () => {
       ],
     });
 
-    const { body } = await listSpotsPage('?use=family&permit=none-needed');
+    const { body } = await listSpotsPage('?use=family&permit=none_needed');
 
     expect(slugsOf(body)).toEqual(['family-free']);
   });

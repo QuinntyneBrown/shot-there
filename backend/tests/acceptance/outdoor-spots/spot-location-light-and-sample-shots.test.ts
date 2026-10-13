@@ -93,10 +93,10 @@ describe('L2-016 spot sample shots', () => {
         aSpot({
           slug: 's',
           images: [
-            anImage({ role: 'sampleShot', sortOrder: 1, altText: 'Second', focalLengthMm: 35, angleNote: 'From the bridge' }),
+            anImage({ role: 'sample_shot', sortOrder: 1, altText: 'Second', focalLengthMm: 35, angleNote: 'From the bridge' }),
             anImage({
               id: 'first',
-              role: 'sampleShot',
+              role: 'sample_shot',
               sortOrder: 0,
               altText: 'Couple on the steps',
               focalLengthMm: 85,

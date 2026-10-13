@@ -65,7 +65,7 @@ describe('L2-032 shareable comparison URL', () => {
 
 describe('L2-031 and L2-043 comparison columns', () => {
   it('Given three studios, when compared, then each column carries the comparison rows with server-computed values', async () => {
-    const testShot = anImage({ role: 'testShot', altText: 'Standard headshot setup' });
+    const testShot = anImage({ role: 'test_shot', altText: 'Standard headshot setup' });
     useFakeDependencies({
       today: '2026-10-13',
       studios: [
@@ -84,7 +84,7 @@ describe('L2-031 and L2-043 comparison columns', () => {
           hasCycWall: true,
           cycWallCondition: 'scuffed',
           parking: 'street',
-          loadIn: 'freightElevator',
+          loadIn: 'freight_elevator',
           gear: [
             { name: 'Strobe head', category: 'lights', quantity: 2, included: true, extraCost: null },
             { name: 'Paper roll', category: 'other', quantity: 1, included: false, extraCost: 15 },
@@ -120,7 +120,7 @@ describe('L2-031 and L2-043 comparison columns', () => {
       cycWall: { present: true, condition: 'scuffed' },
       includedGear: [{ name: 'Strobe head', category: 'lights', quantity: 2, extraCost: null }],
       parking: 'street',
-      loadIn: 'freightElevator',
+      loadIn: 'freight_elevator',
       scores: { value: 4, light: 5, space: 3, gear: 4, logistics: 2, condition: 5 },
       overallScore: 3.8,
       priceVerifiedAt: '2026-03-27',

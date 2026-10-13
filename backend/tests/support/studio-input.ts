@@ -23,7 +23,7 @@ export function aStudioInput(overrides: Record<string, unknown> = {}): Record<st
     hasCycWall: true,
     cycWallCondition: 'scuffed',
     backdrops: 'White seamless',
-    loadIn: 'freightElevator',
+    loadIn: 'freight_elevator',
     loadInNote: 'small, 1.2 m wide',
     parking: 'street',
     parkingNote: null,

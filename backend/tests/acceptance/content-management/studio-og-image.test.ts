@@ -24,7 +24,7 @@ function draftStudioWithGallery() {
     status: 'draft',
     publishedAt: null,
     images: [
-      anImage({ id: 't', role: 'testShot' }),
+      anImage({ id: 't', role: 'test_shot' }),
       anImage({ id: 'second', role: 'gallery', sortOrder: 1, storageKey: 'images/second/original' }),
       anImage({ id: 'first', role: 'gallery', sortOrder: 0, storageKey: 'images/first/original' }),
     ],

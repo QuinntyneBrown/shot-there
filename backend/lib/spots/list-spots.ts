@@ -33,14 +33,14 @@ export async function listSpots(query: SpotListQuery): Promise<SpotSummaryDto[]>
       bestUses: spot.bestUses,
       permitSummary: summarizePermits(spot.permits),
       permitStale: isStale(spot.permitVerifiedAt, today),
-      thumbnail: toThumbnailDto(imagesWithRole(spot.images, 'sampleShot')[0]),
+      thumbnail: toThumbnailDto(imagesWithRole(spot.images, 'sample_shot')[0]),
     }));
 }
 
 function matchesSpotFilters(spot: SpotRecord, query: SpotListQuery): boolean {
   if (query.types.length > 0 && (spot.type === null || !query.types.includes(spot.type))) return false;
   if (query.useCases.length > 0 && !query.useCases.some((use) => spot.bestUses.includes(use))) return false;
-  if (query.permit === 'none-needed') {
+  if (query.permit === 'none_needed') {
     const shootTypes = query.useCases.length > 0 ? query.useCases.map((use) => PERMIT_SHOOT_TYPE[use]) : undefined;
     const relevant = spot.permits.filter((permit) => !shootTypes || shootTypes.includes(permit.shootType));
     if (relevant.length === 0 || relevant.some((permit) => permit.required)) return false;

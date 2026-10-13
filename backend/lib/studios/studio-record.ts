@@ -56,7 +56,7 @@ export interface StudioRecord {
   disclosureProvider: string | null;
   videoId: string | null;
   episodeTitle: string | null;
-  /** The 1200×630 Open Graph image made from the first gallery image on publish. */
+  /** The 1200Ã—630 Open Graph image made from the first gallery image on publish. */
   ogImageUrl: string | null;
   reviewedAt: string | null;
   publishedAt: Date | null;

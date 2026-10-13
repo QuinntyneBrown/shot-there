@@ -10,10 +10,10 @@ describe('L2-009 standard test shots', () => {
         aStudio({
           slug: 's',
           images: [
-            anImage({ role: 'testShot', sortOrder: 2, altText: 'Backlit portrait', caption: 'Key at 45°' }),
+            anImage({ role: 'test_shot', sortOrder: 2, altText: 'Backlit portrait', caption: 'Key at 45°' }),
             anImage({ role: 'gallery', sortOrder: 0, altText: 'Gallery shot' }),
-            anImage({ role: 'testShot', sortOrder: 0, altText: 'Window light portrait', caption: 'Window only' }),
-            anImage({ role: 'testShot', sortOrder: 1, altText: 'Strobe portrait', caption: 'One strobe' }),
+            anImage({ role: 'test_shot', sortOrder: 0, altText: 'Window light portrait', caption: 'Window only' }),
+            anImage({ role: 'test_shot', sortOrder: 1, altText: 'Strobe portrait', caption: 'One strobe' }),
           ],
         }),
       ],
@@ -36,7 +36,7 @@ describe('L2-010 gallery', () => {
       anImage({ role: 'gallery', sortOrder: 7 - index, altText: `Gallery ${7 - index}` }),
     );
     useFakeDependencies({
-      studios: [aStudio({ slug: 's', images: [anImage({ role: 'testShot', altText: 'Test' }), ...gallery] })],
+      studios: [aStudio({ slug: 's', images: [anImage({ role: 'test_shot', altText: 'Test' }), ...gallery] })],
     });
 
     const { body } = await getStudioPage('s');

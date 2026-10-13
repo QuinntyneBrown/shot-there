@@ -25,7 +25,7 @@ export async function getGuide(slug: string): Promise<GuideDto | null> {
         const studio = studiosById.get(entry.locationId);
         if (!studio) return [];
         const thumbnail = toThumbnailDto(
-          imagesWithRole(studio.images, 'gallery')[0] ?? imagesWithRole(studio.images, 'testShot')[0],
+          imagesWithRole(studio.images, 'gallery')[0] ?? imagesWithRole(studio.images, 'test_shot')[0],
         );
         return [
           {
@@ -42,7 +42,7 @@ export async function getGuide(slug: string): Promise<GuideDto | null> {
       }
       const spot = spotsById.get(entry.locationId);
       if (!spot) return [];
-      const thumbnail = toThumbnailDto(imagesWithRole(spot.images, 'sampleShot')[0]);
+      const thumbnail = toThumbnailDto(imagesWithRole(spot.images, 'sample_shot')[0]);
       return [
         {
           position: entry.position,

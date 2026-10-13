@@ -2,6 +2,7 @@ import { getDependencies } from '@/lib/data/dependency-container';
 import { imagesWithRole } from '@/lib/images/to-image-dto';
 import { toThumbnailDto } from '@/lib/images/to-thumbnail-dto';
 import { isStale } from '@/lib/shared/is-stale';
+import { toSlug } from '@/lib/slugs/to-slug';
 import { allInCostOf } from '@/lib/studios/all-in-cost-of';
 import { computeOverallScore } from '@/lib/studios/compute-overall-score';
 import { matchesStudioFilters } from '@/lib/studios/matches-studio-filters';
@@ -15,7 +16,7 @@ export async function listStudios(query: StudioListQuery): Promise<StudioSummary
   const { studios, clock } = getDependencies();
   const today = clock.today();
   const published = await studios.listPublished();
-  const knownNeighbourhoods = new Set(published.map((studio) => studio.neighbourhood));
+  const knownNeighbourhoods = new Set(published.map((studio) => toSlug(studio.neighbourhood ?? '')));
   const effectiveQuery = {
     ...query,
     neighbourhoods: query.neighbourhoods.filter((hood) => knownNeighbourhoods.has(hood)),
@@ -31,7 +32,7 @@ export async function listStudios(query: StudioListQuery): Promise<StudioSummary
     priceStale: isStale(studio.priceVerifiedAt, today),
     reviewedAt: studio.reviewedAt,
     thumbnail: toThumbnailDto(
-      imagesWithRole(studio.images, 'gallery')[0] ?? imagesWithRole(studio.images, 'testShot')[0],
+      imagesWithRole(studio.images, 'gallery')[0] ?? imagesWithRole(studio.images, 'test_shot')[0],
     ),
   }));
   return cards.sort(SORTS[query.sort]);

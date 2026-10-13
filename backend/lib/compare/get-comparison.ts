@@ -50,7 +50,7 @@ export async function getComparison(slugs: string[]): Promise<ComparisonDto> {
         overallScore: computeOverallScore(rubricScoresOf(studio)),
         priceVerifiedAt: studio.priceVerifiedAt,
         priceStale: isStale(studio.priceVerifiedAt, today),
-        testShots: imagesWithRole(studio.images, 'testShot').map(toImageDto),
+        testShots: imagesWithRole(studio.images, 'test_shot').map(toImageDto),
       };
     }),
     notFoundSlugs: slugs.filter((slug) => !bySlug.has(slug)),

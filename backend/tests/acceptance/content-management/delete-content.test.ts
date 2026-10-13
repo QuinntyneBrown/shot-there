@@ -35,7 +35,7 @@ async function storeImageObjects(dependencies: Dependencies, ...images: ReturnTy
 
 describe('L2-061 delete a draft studio', () => {
   it('Given a draft studio, when the owner deletes it, then the studio and its images are deleted', async () => {
-    const images = [anImage({ role: 'testShot' }), anImage({ role: 'gallery' })];
+    const images = [anImage({ role: 'test_shot' }), anImage({ role: 'gallery' })];
     const dependencies = useSignedInOwner({ studios: [aStudio({ id: 's1', ...draft, images }), aStudio({ id: 's2' })] });
     await storeImageObjects(dependencies, ...images);
 
@@ -104,7 +104,7 @@ describe('L2-061 delete a draft studio', () => {
 
 describe('L2-061 delete a draft spot', () => {
   it('Given a draft spot referenced by a guide, when the owner deletes it, then the spot, its images and the guide entry are deleted', async () => {
-    const image = anImage({ role: 'sampleShot' });
+    const image = anImage({ role: 'sample_shot' });
     const dependencies = useSignedInOwner({
       spots: [aSpot({ id: 'p1', ...draft, images: [image] })],
       guides: [aGuide({ id: 'g1', entries: [{ kind: 'spot', locationId: 'p1', note: '', position: 0 }] })],

@@ -1,3 +1,4 @@
+import { toSlug } from '@/lib/slugs/to-slug';
 import type { LightRating } from '@/lib/studios/light-rating';
 import type { StudioListQuery } from '@/lib/studios/studio-list-query';
 import type { StudioRecord } from '@/lib/studios/studio-record';
@@ -8,7 +9,7 @@ const GOOD_LIGHT: (LightRating | null)[] = ['medium', 'strong'];
 export function matchesStudioFilters(studio: StudioRecord, allInCost: number | null, query: StudioListQuery): boolean {
   if (query.costMin !== undefined && (allInCost === null || allInCost < query.costMin)) return false;
   if (query.costMax !== undefined && (allInCost === null || allInCost > query.costMax)) return false;
-  if (query.neighbourhoods.length > 0 && !query.neighbourhoods.includes(studio.neighbourhood ?? '')) return false;
+  if (query.neighbourhoods.length > 0 && !query.neighbourhoods.includes(toSlug(studio.neighbourhood ?? ''))) return false;
   if (query.naturalLight && !hasGoodNaturalLight(studio)) return false;
   if (query.cycWall && !studio.hasCycWall) return false;
   if (query.minSpaceSqm !== undefined && usableSpaceSqm(studio) < query.minSpaceSqm) return false;
@@ -28,6 +29,5 @@ function usableSpaceSqm(studio: StudioRecord): number {
 }
 
 function offersGear(studio: StudioRecord, gear: StudioListQuery['gear'][number]): boolean {
-  if (gear === 'backdrops') return Boolean(studio.backdrops?.trim());
   return studio.gear.some((item) => item.included && item.category === gear);
 }

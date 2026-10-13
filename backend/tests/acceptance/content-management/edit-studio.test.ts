@@ -41,7 +41,7 @@ describe('L2-054 studio editor: create', () => {
     expect(response.status).toBe(201);
     expect(studiosOf(dependencies)[0]).toMatchObject({
       hourlyRate: 60,
-      loadIn: 'freightElevator',
+      loadIn: 'freight_elevator',
       scoreLight: 5,
       fees: [{ name: 'Cleaning', amount: 25, mandatory: true }],
       gear: [{ name: 'Profoto B10', category: 'lights', quantity: 2, included: true, extraCost: null }],

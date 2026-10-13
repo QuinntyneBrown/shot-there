@@ -32,7 +32,7 @@ const gallery = () => [
 describe('L2-058 image ordering', () => {
   it('Given a gallery of three images, when the owner moves the third to first and saves, then the public page shows it first', async () => {
     useSignedInOwner({
-      studios: [aStudio({ id: 's1', slug: 'loft', images: [anImage({ role: 'testShot' }), ...gallery()] })],
+      studios: [aStudio({ id: 's1', slug: 'loft', images: [anImage({ role: 'test_shot' }), ...gallery()] })],
     });
 
     const response = await putStudio(
@@ -53,7 +53,7 @@ describe('L2-058 image ordering', () => {
 
   it('Given an edited alt text, when saved, then the stored image carries it and the other images are unchanged', async () => {
     const dependencies = useSignedInOwner({
-      studios: [aStudio({ id: 's1', images: [anImage({ role: 'testShot', altText: 'Test shot' }), ...gallery()] })],
+      studios: [aStudio({ id: 's1', images: [anImage({ role: 'test_shot', altText: 'Test shot' }), ...gallery()] })],
     });
 
     await putStudio('s1', aStudioInput({ images: [{ id: 'b', altText: 'White cyc wall, lit', sortOrder: 1 }] }));
@@ -72,8 +72,8 @@ describe('L2-058 image ordering', () => {
         aSpot({
           id: 'p1',
           images: [
-            anImage({ id: 'x', role: 'sampleShot', sortOrder: 0, altText: 'Bridge' }),
-            anImage({ id: 'y', role: 'sampleShot', sortOrder: 1, altText: 'Meadow' }),
+            anImage({ id: 'x', role: 'sample_shot', sortOrder: 0, altText: 'Bridge' }),
+            anImage({ id: 'y', role: 'sample_shot', sortOrder: 1, altText: 'Meadow' }),
           ],
         }),
       ],
@@ -121,7 +121,7 @@ describe('L2-057 alt text is required', () => {
 
 describe('L2-058 image removal', () => {
   it('Given a gallery image, when the owner removes it, then it is deleted with its stored objects and no longer appears publicly', async () => {
-    const dependencies = useSignedInOwner({ studios: [aStudio({ id: 's1', slug: 'loft', images: [anImage({ role: 'testShot' }), ...gallery()] })] });
+    const dependencies = useSignedInOwner({ studios: [aStudio({ id: 's1', slug: 'loft', images: [anImage({ role: 'test_shot' }), ...gallery()] })] });
     const removed = gallery()[1];
     for (const key of [removed.storageKey, ...removed.variants.map((variant) => variant.storageKey)]) {
       await objectStore(dependencies).putObject(key, Buffer.from('x'), 'image/jpeg');
@@ -137,7 +137,7 @@ describe('L2-058 image removal', () => {
 
   it("Given a published studio's last standard test shot, when the owner removes it, then the removal is refused with 409 saying at least one is required while published", async () => {
     const dependencies = useSignedInOwner({
-      studios: [aStudio({ id: 's1', images: [anImage({ id: 't', role: 'testShot' }), ...gallery()] })],
+      studios: [aStudio({ id: 's1', images: [anImage({ id: 't', role: 'test_shot' }), ...gallery()] })],
     });
 
     const response = await remove('t');
@@ -147,14 +147,14 @@ describe('L2-058 image removal', () => {
   });
 
   it("Given a published spot's last sample shot, when the owner removes it, then the removal is refused with 409", async () => {
-    useSignedInOwner({ spots: [aSpot({ id: 'p1', images: [anImage({ id: 'x', role: 'sampleShot' })] })] });
+    useSignedInOwner({ spots: [aSpot({ id: 'p1', images: [anImage({ id: 'x', role: 'sample_shot' })] })] });
 
     expect((await remove('x')).status).toBe(409);
   });
 
   it("Given a draft studio's only test shot, when the owner removes it, then it is removed", async () => {
     const dependencies = useSignedInOwner({
-      studios: [aStudio({ id: 's1', status: 'draft', publishedAt: null, images: [anImage({ id: 't', role: 'testShot' })] })],
+      studios: [aStudio({ id: 's1', status: 'draft', publishedAt: null, images: [anImage({ id: 't', role: 'test_shot' })] })],
     });
 
     expect((await remove('t')).status).toBe(204);
@@ -163,7 +163,7 @@ describe('L2-058 image removal', () => {
 
   it('Given the object store fails after the rows are deleted, when the owner removes an image, then the removal still succeeds and the failure is logged', async () => {
     const logs = captureLogs();
-    const dependencies = useSignedInOwner({ studios: [aStudio({ id: 's1', images: [anImage({ role: 'testShot' }), ...gallery()] })] });
+    const dependencies = useSignedInOwner({ studios: [aStudio({ id: 's1', images: [anImage({ role: 'test_shot' }), ...gallery()] })] });
     objectStore(dependencies).deleteObjects = async () => {
       throw new Error('bucket unavailable');
     };

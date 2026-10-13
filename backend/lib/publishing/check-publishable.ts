@@ -33,7 +33,7 @@ export function checkStudioPublishable(studio: StudioRecord): string[] {
     ['naturalLight', allPresent(studio.lightMorning, studio.lightMidday, studio.lightAfternoon, studio.lightEvening)],
     ['power', allPresent(studio.outletCount, studio.outletType, studio.has20ACircuits)],
     ['cycWall', present(studio.hasCycWall)],
-    ['testShots', hasImage('testShot')],
+    ['testShots', hasImage('test_shot')],
     ['gallery', hasImage('gallery')],
     [
       'scores',
@@ -60,7 +60,7 @@ export function checkSpotPublishable(spot: SpotRecord): string[] {
     ['directions', present(spot.directions)],
     ['lightByTime', spot.lightByTime.length > 0],
     ['lightBySeason', spot.lightBySeason.length > 0],
-    ['sampleShots', spot.images.some((image) => image.role === 'sampleShot')],
+    ['sampleShots', spot.images.some((image) => image.role === 'sample_shot')],
     ['permitStatus', spot.permits.length > 0],
     ['permitSourceUrl', present(spot.permitSourceUrl)],
     ['permitVerifiedAt', present(spot.permitVerifiedAt)],
