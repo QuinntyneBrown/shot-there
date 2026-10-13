@@ -568,8 +568,8 @@ take 0 ms, and result updates never animate
   `StudioFiltersComponent` and `SpotFiltersComponent` hold the groups and are
   used in the column and in the sheet; `StudioFiltersDialogComponent` and
   `SpotFiltersDialogComponent` (the detailed design's names;
-  [sheet.md](sheet.md) calls them `StudioFiltersSheetComponent` and
-  `SpotFiltersSheetComponent`) wrap them in `st-sheet`. The `.browse*` rules are
+  [sheet.md](sheet.md) calls them `StudioFiltersDialogComponent` and
+  `SpotFiltersDialogComponent`) wrap them in `st-sheet`. The `.browse*` rules are
   ported from `components.css` into the list pages' feature CSS; the `.cost-range`
   legend, the minimum and maximum grid and the column `h2` are the filter
   component's own CSS (D-9, D-10).
