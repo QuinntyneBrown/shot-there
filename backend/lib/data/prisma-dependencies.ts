@@ -1,5 +1,8 @@
 import type { Dependencies } from '@/lib/data/dependencies';
 import { prismaClient } from '@/lib/data/prisma-client';
+import { PrismaOwnerRepository } from '@/lib/data/prisma-owner-repository';
+import { PrismaOwnerSessionRepository } from '@/lib/data/prisma-owner-session-repository';
+import { PrismaSignInAttemptRepository } from '@/lib/data/prisma-sign-in-attempt-repository';
 import { PrismaGuideRepository } from '@/lib/data/prisma-guide-repository';
 import { PrismaSlugRedirectRepository } from '@/lib/data/prisma-slug-redirect-repository';
 import { PrismaSpotRepository } from '@/lib/data/prisma-spot-repository';
@@ -19,5 +22,8 @@ export function createPrismaDependencies(): Dependencies {
     guides: new PrismaGuideRepository(prisma),
     slugRedirects: new PrismaSlugRedirectRepository(prisma),
     subscribers: new PrismaSubscriberRepository(prisma),
+    owners: new PrismaOwnerRepository(prisma),
+    ownerSessions: new PrismaOwnerSessionRepository(prisma),
+    signInAttempts: new PrismaSignInAttemptRepository(prisma),
   };
 }

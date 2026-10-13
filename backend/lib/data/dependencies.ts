@@ -1,3 +1,6 @@
+import type { OwnerRepository } from '@/lib/auth/owner-repository';
+import type { OwnerSessionRepository } from '@/lib/auth/owner-session-repository';
+import type { SignInAttemptRepository } from '@/lib/auth/sign-in-attempt-repository';
 import type { Clock } from '@/lib/shared/clock';
 import type { GuideRepository } from '@/lib/guides/guide-repository';
 import type { SlugRedirectRepository } from '@/lib/slugs/slug-redirect-repository';
@@ -14,4 +17,7 @@ export interface Dependencies {
   guides: GuideRepository;
   slugRedirects: SlugRedirectRepository;
   subscribers: SubscriberRepository;
+  owners: OwnerRepository;
+  ownerSessions: OwnerSessionRepository;
+  signInAttempts: SignInAttemptRepository;
 }
