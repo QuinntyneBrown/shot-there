@@ -4,6 +4,7 @@
 @if (studio(); as s) {
   <article class="review">
     <st-studio-basics [basics]="s.basics" />
+    <div class="review-actions"><st-compare-toggle [slug]="s.slug" [name]="s.basics.name" /></div>
     <div class="review-main">
       <st-studio-pricing [pricing]="s.pricing" />
       <st-studio-specifications [specifications]="s.specifications" />

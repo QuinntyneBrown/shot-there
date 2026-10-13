@@ -8,6 +8,7 @@ import { catchError, map, of, startWith, switchMap, throwError } from 'rxjs';
 
 import { formatPageTitle } from '../../../core/routing/format-page-title';
 import { PAGE_TITLES } from '../../../core/routing/page-titles';
+import { CompareToggleComponent } from '../../compare/compare-toggle.component';
 import { NotFoundPageComponent } from '../../errors/not-found-page.component';
 import { StudioBasicsComponent } from '../studio-basics/studio-basics.component';
 import { StudioDisclosureComponent } from '../studio-disclosure/studio-disclosure.component';
@@ -34,7 +35,8 @@ import { StudioPageState } from './studio-page-state';
     StudioDisclosureComponent,
     StudioTestShotsComponent,
     StudioGalleryComponent,
-    StudioEpisodeComponent
+    StudioEpisodeComponent,
+    CompareToggleComponent
   ],
   templateUrl: './studio-page.component.html',
   styleUrl: './studio-page.component.css'

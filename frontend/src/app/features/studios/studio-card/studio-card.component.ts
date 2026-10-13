@@ -4,10 +4,11 @@ import { RouterLink } from '@angular/router';
 import { StudioSummary } from '@shot-there/api';
 
 import { APP_PATHS } from '../../../core/routing/app-paths';
+import { CompareToggleComponent } from '../../compare/compare-toggle.component';
 
 @Component({
   selector: 'st-studio-card',
-  imports: [RouterLink, CurrencyPipe, DatePipe, DecimalPipe],
+  imports: [RouterLink, CurrencyPipe, DatePipe, DecimalPipe, CompareToggleComponent],
   templateUrl: './studio-card.component.html',
   styleUrl: './studio-card.component.css'
 })

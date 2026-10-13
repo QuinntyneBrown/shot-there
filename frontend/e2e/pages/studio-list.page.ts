@@ -86,6 +86,19 @@ export class StudioListPage {
     return new URL(this.page.url()).searchParams;
   }
 
+  compareToggle(name: string): Locator {
+    return this.page.getByRole('main').getByRole('button', { name: new RegExp(`^(Compare|Remove) ${name}$`) });
+  }
+
+  async reload(): Promise<void> {
+    await this.page.reload();
+  }
+
+  currentPath(): string {
+    const url = new URL(this.page.url());
+    return `${url.pathname}${url.search}`;
+  }
+
   async cardNames(): Promise<string[]> {
     return this.cards.getByRole('heading').allInnerTexts();
   }
