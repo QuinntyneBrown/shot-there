@@ -1,0 +1,621 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Image manager — ShotThere design system</title>
+<meta name="description" content="The editor's image manager: ordered image rows with thumbnail, alt text, Move up, Move down and Remove, per-file upload progress and failures, the upload area, guide entry rows and the remove-image confirmation.">
+<link rel="stylesheet" href="../tokens/tokens.css">
+<link rel="stylesheet" href="../assets/components.css">
+<link rel="stylesheet" href="../assets/ds.css">
+</head>
+<body id="top">
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="ds-shell">
+  <nav class="ds-nav" aria-label="Design system">
+    <div class="ds-nav__brand"><a href="../index.html">ShotThere DS</a><button class="ds-theme-toggle" type="button" aria-pressed="false">☾ Dark</button></div>
+    <details open><summary>Foundations</summary><ul>
+      <li><a href="../foundations/color.html">Color</a></li>
+      <li><a href="../foundations/typography.html">Typography</a></li>
+      <li><a href="../foundations/spacing.html">Spacing</a></li>
+      <li><a href="../foundations/layout.html">Layout</a></li>
+      <li><a href="../foundations/elevation.html">Elevation</a></li>
+      <li><a href="../foundations/shape.html">Shape</a></li>
+      <li><a href="../foundations/motion.html">Motion</a></li>
+      <li><a href="../foundations/iconography.html">Iconography</a></li>
+      <li><a href="../foundations/theming.html">Theming</a></li>
+      <li><a href="../foundations/responsive.html">Responsive</a></li>
+      <li><a href="../foundations/accessibility.html">Accessibility</a></li>
+      <li><a href="../foundations/content.html">Content</a></li>
+    </ul></details>
+    <details open><summary>Actions</summary><ul>
+      <li><a href="../components/button.html">Button</a></li>
+      <li><a href="../components/icon-button.html">Icon button</a></li>
+      <li><a href="../components/button-group.html">Button group</a></li>
+      <li><a href="../components/link.html">Link</a></li>
+      <li><a href="../components/compare-bar.html">Compare toggle and bar</a></li>
+    </ul></details>
+    <details open><summary>Inputs</summary><ul>
+      <li><a href="../components/form-field.html">Form field</a></li>
+      <li><a href="../components/text-field.html">Text field</a></li>
+      <li><a href="../components/textarea.html">Textarea</a></li>
+      <li><a href="../components/select.html">Select</a></li>
+      <li><a href="../components/combobox.html">Combobox</a></li>
+      <li><a href="../components/checkbox.html">Checkbox</a></li>
+      <li><a href="../components/radio-group.html">Radio group</a></li>
+      <li><a href="../components/file-upload.html">File upload</a></li>
+      <li><a href="../components/form-layout.html">Form layout</a></li>
+      <li><a href="../components/signup.html">Email signup</a></li>
+    </ul></details>
+    <details open><summary>Navigation</summary><ul>
+      <li><a href="../components/skip-link.html">Skip link</a></li>
+      <li><a href="../components/site-header.html">Site header</a></li>
+      <li><a href="../components/footer.html">Footer</a></li>
+      <li><a href="../components/breadcrumb.html">Breadcrumb</a></li>
+      <li><a href="../components/filter.html">Filters</a></li>
+    </ul></details>
+    <details open><summary>Containers and overlays</summary><ul>
+      <li><a href="../components/container.html">Container and grid</a></li>
+      <li><a href="../components/review-layout.html">Review layout</a></li>
+      <li><a href="../components/editor-layout.html">Editor layout</a></li>
+      <li><a href="../components/card.html">Card</a></li>
+      <li><a href="../components/dialog.html">Dialog</a></li>
+      <li><a href="../components/sheet.html">Sheet and drawer</a></li>
+      <li><a href="../components/popover.html">Popover</a></li>
+      <li><a href="../components/lightbox.html">Lightbox</a></li>
+      <li><a href="../components/divider.html">Divider</a></li>
+    </ul></details>
+    <details open><summary>Data display</summary><ul>
+      <li><a href="../components/location-card.html">Location card</a></li>
+      <li><a href="../components/table.html">Table</a></li>
+      <li><a href="../components/compare-table.html">Comparison table</a></li>
+      <li><a href="../components/list.html">List rows</a></li>
+      <li><a href="../components/description-list.html">Description list</a></li>
+      <li><a href="../components/price-block.html">Price block</a></li>
+      <li><a href="../components/score.html">Score and pips</a></li>
+      <li><a href="../components/shot-grid.html">Shot grid</a></li>
+      <li><a href="../components/video-poster.html">Episode poster</a></li>
+      <li><a href="../components/map.html">Map</a></li>
+      <li><a href="../components/guide-entry.html">Guide entry</a></li>
+      <li><a href="../components/stat-tile.html">Stat tile</a></li>
+      <li><a href="../components/image-manager.html">Image manager</a></li>
+      <li><a href="../components/disclosure.html">Disclosure</a></li>
+      <li><a href="../components/badge.html">Badge</a></li>
+      <li><a href="../components/status-label.html">Status label</a></li>
+      <li><a href="../components/chip.html">Chip</a></li>
+      <li><a href="../components/tag.html">Tag</a></li>
+    </ul></details>
+    <details open><summary>Feedback</summary><ul>
+      <li><a href="../components/inline-message.html">Inline message</a></li>
+      <li><a href="../components/alert.html">Alert and banner</a></li>
+      <li><a href="../components/toast.html">Toast</a></li>
+      <li><a href="../components/progress.html">Progress and meter</a></li>
+      <li><a href="../components/spinner.html">Spinner</a></li>
+      <li><a href="../components/skeleton.html">Skeleton</a></li>
+      <li><a href="../components/empty-state.html">Empty state</a></li>
+      <li><a href="../components/error-page.html">Error page</a></li>
+    </ul></details>
+    <details open><summary>Patterns</summary><ul>
+      <li><a href="../patterns/forms.html">Forms</a></li>
+      <li><a href="../patterns/feedback-and-loading.html">Feedback and loading</a></li>
+      <li><a href="../patterns/empty-and-error-states.html">Empty and error states</a></li>
+      <li><a href="../patterns/navigation.html">Navigation and page structure</a></li>
+      <li><a href="../patterns/dialogs-and-overlays.html">Dialogs and overlays</a></li>
+      <li><a href="../patterns/tables-and-lists.html">Data tables and lists</a></li>
+      <li><a href="../patterns/notifications.html">Notifications</a></li>
+      <li><a href="../patterns/content-and-tone.html">Content and tone</a></li>
+    </ul></details>
+  </nav>
+
+  <main id="main" class="ds-main">
+    <header class="ds-header">
+      <p class="ds-kicker">Component · Data display</p>
+      <h1>Image manager</h1>
+      <p class="ds-lead">The image manager is how the admin builds a location's standard test shots, gallery and sample shots: an ordered list of rows, each with its thumbnail, its alt text and buttons to move or remove it, plus an upload area that shows every file's progress.</p>
+      <div class="ds-meta"><span class="ds-pill ds-pill--ok">WCAG 2.2 AA</span><span class="ds-pill">Status: stable</span><span class="ds-pill">Native <code>&lt;fieldset&gt;</code> + <code>&lt;ol&gt;</code> + <code>&lt;input type="file"&gt;</code></span><span class="ds-pill"><code>.image-list</code> <code>.image-row</code> <code>.upload-drop</code></span></div>
+      <ul class="ds-toc"><li><a href="#overview">Overview</a></li><li><a href="#anatomy">Anatomy</a></li><li><a href="#variants">Variants</a></li><li><a href="#sizes">Sizes</a></li><li><a href="#states">States</a></li><li><a href="#responsive">Responsive behaviour</a></li><li><a href="#theming">Theming</a></li><li><a href="#accessibility">Accessibility</a></li><li><a href="#content">Content</a></li><li><a href="#do-dont">Do and don't</a></li><li><a href="#tokens">Tokens</a></li><li><a href="#code">Code</a></li><li><a href="#sources">Sources</a></li></ul>
+    </header>
+
+    <section class="ds-section" id="overview"><h2><a href="#overview">Overview</a></h2>
+      <p>Every studio review has three standard test shots taken with the same setup, and a gallery from a real shoot; every outdoor spot has sample shots with a focal length and angle note. The image manager is the one place those are added, described, ordered and removed, inside the Images section of the <a href="editor-layout.html">editor</a> (L2-057, L2-058).</p>
+      <ul>
+        <li><b>Use it</b> for any ordered set of images the admin uploads: standard test shots, gallery, sample shots. One <code>&lt;fieldset&gt;</code> per set, each with its own upload area.</li>
+        <li><b>The same row</b> (<code>.image-row--entry</code>) orders guide entries, with a rank badge in place of the thumbnail (L2-060).</li>
+        <li><b>Don't use it</b> to show photos to visitors; that is the <a href="shot-grid.html">shot grid</a> and the <a href="lightbox.html">lightbox</a>. For a single file that is not an image set, use <a href="file-upload.html">file upload</a>.</li>
+        <li>Order is changed with Move up and Move down buttons, not by dragging, so it works with a keyboard, a switch or one finger (WCAG 2.5.7).</li>
+      </ul>
+    </section>
+
+    <section class="ds-section" id="anatomy"><h2><a href="#anatomy">Anatomy</a></h2>
+      <div class="ds-anatomy">
+        <figure class="ds-anatomy__figure">
+          <div class="image-row" style="width: min(100%, 34rem);">
+            <div class="image-row__thumb"><img src="../assets/img/test-the-junction-loft-2.svg" alt="" width="800" height="1000"></div>
+            <div class="image-row__body">
+              <span class="image-row__meta">2 of 3 · full-length.jpg · 4.6 MB</span>
+              <label class="field"><span class="field__label">Alt text</span><input class="input" name="anatomy.alt" value="Test shot 2, full length on the cyc; scuffs show where the wall meets the floor."></label>
+            </div>
+            <div class="image-row__actions">
+              <button class="btn btn--sm" type="button">Move up<span class="visually-hidden">: test shot 2</span></button>
+              <button class="btn btn--sm" type="button">Move down<span class="visually-hidden">: test shot 2</span></button>
+              <button class="btn btn--sm btn--ghost" type="button" aria-haspopup="dialog">Remove<span class="visually-hidden"> test shot 2</span></button>
+            </div>
+          </div>
+          <span class="ds-callout" style="left: 10%; top: 24%;" aria-hidden="true">1</span>
+          <span class="ds-callout" style="left: 64%; top: 17%;" aria-hidden="true">2</span>
+          <span class="ds-callout" style="left: 23%; top: 52%;" aria-hidden="true">3</span>
+          <span class="ds-callout" style="left: 93%; top: 30%;" aria-hidden="true">4</span>
+          <span class="ds-callout" style="left: 50%; top: 86%;" aria-hidden="true">5</span>
+        </figure>
+        <ol class="ds-anatomy__list">
+          <li><div><b>Thumbnail</b><small><code>.image-row__thumb</code>: 4:5 crop, <code>--radius-sm</code>, <code>--color-bg-photo</code> behind. The image is <code>alt=""</code> because the alt text field beside it describes it.</small></div></li>
+          <li><div><b>Meta</b><small><code>.image-row__meta</code>: position, file name and size ("2 of 3 · full-length.jpg · 4.6 MB"), muted small text that wraps anywhere.</small></div></li>
+          <li><div><b>Alt text field</b><small>A required <a href="text-field.html">text field</a> labelled "Alt text". Sample shots add focal length and angle note; guide entries use an editor's note textarea.</small></div></li>
+          <li><div><b>Actions</b><small><code>.image-row__actions</code>: small Move up, Move down and ghost Remove buttons. A row along the bottom on phones, a stretched column from 48rem.</small></div></li>
+          <li><div><b>Container</b><small><code>.image-row</code>: a grid of thumbnail and body (plus actions from 48rem), 1px <code>--color-border-default</code>, <code>--radius-md</code>, <code>--space-3</code> padding.</small></div></li>
+        </ol>
+      </div>
+      <p>The list (<code>ol.image-list</code>, 12px between rows) and the upload area (<code>.upload-drop</code>: a visually hidden <code>input.file-input</code>, its <code>&lt;label class="btn btn--sm"&gt;</code> and the accepted-types hint, inside a dashed edge) sit together in one <code>&lt;fieldset&gt;</code> whose legend names the set.</p>
+    </section>
+
+    <section class="ds-section" id="variants"><h2><a href="#variants">Variants</a></h2>
+      <h3>Image set: standard test shots</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--stack">
+          <fieldset class="stack">
+            <legend>Standard test shots</legend>
+            <ol class="image-list">
+              <li class="image-row">
+                <div class="image-row__thumb"><img src="../assets/img/test-the-junction-loft-1.svg" alt="" width="800" height="1000"></div>
+                <div class="image-row__body">
+                  <span class="image-row__meta">1 of 3 · headshot.jpg · 4.2 MB</span>
+                  <label class="field"><span class="field__label">Alt text</span><input class="input" name="testShots[0].alt" value="Test shot 1, headshot: soft octabox light from 45 degrees, gentle shadow side, true skin tones."></label>
+                </div>
+                <div class="image-row__actions">
+                  <button class="btn btn--sm" type="button" aria-disabled="true">Move up<span class="visually-hidden">: test shot 1</span></button>
+                  <button class="btn btn--sm" type="button">Move down<span class="visually-hidden">: test shot 1</span></button>
+                  <button class="btn btn--sm btn--ghost" type="button" aria-haspopup="dialog">Remove<span class="visually-hidden"> test shot 1</span></button>
+                </div>
+              </li>
+              <li class="image-row">
+                <div class="image-row__thumb"><img src="../assets/img/test-the-junction-loft-2.svg" alt="" width="800" height="1000"></div>
+                <div class="image-row__body">
+                  <span class="image-row__meta">2 of 3 · full-length.jpg · 4.6 MB</span>
+                  <label class="field"><span class="field__label">Alt text</span><input class="input" name="testShots[1].alt" value="Test shot 2, full length on the cyc; scuffs show where the wall meets the floor."></label>
+                </div>
+                <div class="image-row__actions">
+                  <button class="btn btn--sm" type="button">Move up<span class="visually-hidden">: test shot 2</span></button>
+                  <button class="btn btn--sm" type="button">Move down<span class="visually-hidden">: test shot 2</span></button>
+                  <button class="btn btn--sm btn--ghost" type="button" aria-haspopup="dialog">Remove<span class="visually-hidden"> test shot 2</span></button>
+                </div>
+              </li>
+              <li class="image-row">
+                <div class="image-row__thumb"><img src="../assets/img/test-the-junction-loft-3.svg" alt="" width="800" height="1000"></div>
+                <div class="image-row__body">
+                  <span class="image-row__meta">3 of 3 · product-table.jpg · 3.9 MB</span>
+                  <label class="field"><span class="field__label">Alt text</span><input class="input" name="testShots[2].alt" value="Test shot 3, product on a table: even light, crisp edges, no colour cast."></label>
+                </div>
+                <div class="image-row__actions">
+                  <button class="btn btn--sm" type="button">Move up<span class="visually-hidden">: test shot 3</span></button>
+                  <button class="btn btn--sm" type="button" aria-disabled="true">Move down<span class="visually-hidden">: test shot 3</span></button>
+                  <button class="btn btn--sm btn--ghost" type="button" aria-haspopup="dialog">Remove<span class="visually-hidden"> test shot 3</span></button>
+                </div>
+              </li>
+            </ol>
+            <div class="upload-drop">
+              <input class="file-input visually-hidden" id="ex-test-upload" type="file" accept="image/jpeg,image/png,image/webp,image/avif" multiple>
+              <label class="btn btn--sm" for="ex-test-upload">Add test shots</label>
+              <span>JPEG, PNG, WebP or AVIF, up to 20 MB each.</span>
+            </div>
+          </fieldset>
+        </div>
+        <div class="ds-example__caption"><span>The Junction Loft's three test shots. Move up is <code>aria-disabled</code> on the first row and Move down on the last.</span></div>
+        <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;fieldset class="stack"&gt;
+  &lt;legend&gt;Standard test shots&lt;/legend&gt;
+  &lt;ol class="image-list"&gt;
+    &lt;li class="image-row"&gt;
+      &lt;div class="image-row__thumb"&gt;&lt;img src="…" alt="" width="800" height="1000"&gt;&lt;/div&gt;
+      &lt;div class="image-row__body"&gt;
+        &lt;span class="image-row__meta"&gt;1 of 3 · headshot.jpg · 4.2 MB&lt;/span&gt;
+        &lt;label class="field"&gt;&lt;span class="field__label"&gt;Alt text&lt;/span&gt;&lt;input class="input" name="testShots[0].alt" value="…"&gt;&lt;/label&gt;
+      &lt;/div&gt;
+      &lt;div class="image-row__actions"&gt;
+        &lt;button class="btn btn--sm" type="button" aria-disabled="true"&gt;Move up&lt;span class="visually-hidden"&gt;: test shot 1&lt;/span&gt;&lt;/button&gt;
+        &lt;button class="btn btn--sm" type="button"&gt;Move down&lt;span class="visually-hidden"&gt;: test shot 1&lt;/span&gt;&lt;/button&gt;
+        &lt;button class="btn btn--sm btn--ghost" type="button" aria-haspopup="dialog"&gt;Remove&lt;span class="visually-hidden"&gt; test shot 1&lt;/span&gt;&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+  &lt;div class="upload-drop"&gt;
+    &lt;input class="file-input visually-hidden" id="test-upload" type="file" accept="image/jpeg,image/png,image/webp,image/avif" multiple&gt;
+    &lt;label class="btn btn--sm" for="test-upload"&gt;Add test shots&lt;/label&gt;
+    &lt;span&gt;JPEG, PNG, WebP or AVIF, up to 20 MB each.&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/fieldset&gt;</code></pre></details>
+      </div>
+
+      <h3>Empty set</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--stack">
+          <fieldset class="stack">
+            <legend>Gallery</legend>
+            <p class="text-muted">No gallery images yet. Publishing needs at least one.</p>
+            <div class="upload-drop">
+              <input class="file-input visually-hidden" id="ex-gallery-upload" type="file" accept="image/jpeg,image/png,image/webp,image/avif" multiple>
+              <label class="btn btn--sm" for="ex-gallery-upload">Add gallery images</label>
+              <span>JPEG, PNG, WebP or AVIF, up to 20 MB each.</span>
+            </div>
+          </fieldset>
+        </div>
+        <div class="ds-example__caption"><span>No list is drawn; one sentence says what is missing and why it matters, and the upload area stays.</span></div>
+      </div>
+
+      <h3>Sample shot row (outdoor spots)</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--stack">
+          <ol class="image-list">
+            <li class="image-row">
+              <div class="image-row__thumb"><img src="../assets/img/sample-1.svg" alt="" width="1200" height="800"></div>
+              <div class="image-row__body">
+                <span class="image-row__meta">1 of 2 · sunrise-cliffs.jpg · 5.2 MB</span>
+                <label class="field"><span class="field__label">Alt text</span><input class="input" name="samples[0].alt" value="Sample shot: the white cliffs at sunrise, seen from the marina breakwall."></label>
+                <div class="field-row">
+                  <label class="field"><span class="field__label">Focal length (mm)</span><input class="input" name="samples[0].focalLength" type="number" value="70" inputmode="numeric" min="1" step="1"></label>
+                  <label class="field"><span class="field__label">Angle note</span><input class="input" name="samples[0].angle" value="From the marina breakwall, facing east along the cliffs"></label>
+                </div>
+              </div>
+              <div class="image-row__actions">
+                <button class="btn btn--sm" type="button" aria-disabled="true">Move up<span class="visually-hidden">: sample shot 1</span></button>
+                <button class="btn btn--sm" type="button">Move down<span class="visually-hidden">: sample shot 1</span></button>
+                <button class="btn btn--sm btn--ghost" type="button" aria-haspopup="dialog">Remove<span class="visually-hidden"> sample shot 1</span></button>
+              </div>
+            </li>
+          </ol>
+        </div>
+        <div class="ds-example__caption"><span>Scarborough Bluffs: a sample shot carries its focal length and angle note in a <code>.field-row</code> under the alt text. Landscape files crop to the 4:5 thumbnail.</span></div>
+      </div>
+
+      <h3>Entry row (guide editor)</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--stack">
+          <p class="field__help">Visitors see entries in this order. Move up and Move down change the rank.</p>
+          <ol class="image-list" aria-label="Entries in rank order">
+            <li class="image-row image-row--entry">
+              <span class="guide-entry__rank" aria-hidden="true">1</span>
+              <div class="image-row__body">
+                <h4 style="font: var(--text-h4);"><span class="visually-hidden">Entry 1: </span>Leslieville Daylight Studio</h4>
+                <span class="image-row__meta">Studio · Leslieville</span>
+                <label class="field"><span class="field__label">Editor's note<span class="visually-hidden"> for Leslieville Daylight Studio</span></span><textarea class="textarea" name="entries[0].note" rows="2">East windows give clean morning light for a whole headshot day.</textarea></label>
+              </div>
+              <div class="image-row__actions">
+                <button class="btn btn--sm" type="button" aria-disabled="true">Move up<span class="visually-hidden">: Leslieville Daylight Studio</span></button>
+                <button class="btn btn--sm" type="button">Move down<span class="visually-hidden">: Leslieville Daylight Studio</span></button>
+                <button class="btn btn--sm btn--ghost" type="button">Remove<span class="visually-hidden"> Leslieville Daylight Studio</span></button>
+              </div>
+            </li>
+            <li class="image-row image-row--entry">
+              <span class="guide-entry__rank" aria-hidden="true">2</span>
+              <div class="image-row__body">
+                <h4 style="font: var(--text-h4);"><span class="visually-hidden">Entry 2: </span>Kensington Window Room</h4>
+                <span class="image-row__meta">Studio · Kensington Market</span>
+                <label class="field"><span class="field__label">Editor's note<span class="visually-hidden"> for Kensington Window Room</span></span><textarea class="textarea" name="entries[1].note" rows="2">The cheapest good window in the city; book mornings.</textarea></label>
+              </div>
+              <div class="image-row__actions">
+                <button class="btn btn--sm" type="button">Move up<span class="visually-hidden">: Kensington Window Room</span></button>
+                <button class="btn btn--sm" type="button" aria-disabled="true">Move down<span class="visually-hidden">: Kensington Window Room</span></button>
+                <button class="btn btn--sm btn--ghost" type="button">Remove<span class="visually-hidden"> Kensington Window Room</span></button>
+              </div>
+            </li>
+          </ol>
+          <div><a class="btn btn--sm" href="../../mocks/dialogs/guide-entry-picker/default.html" aria-haspopup="dialog"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>Add entry</a></div>
+        </div>
+        <div class="ds-example__caption"><span>Best for headshots. <code>.image-row--entry</code> sizes the first column to the <a href="guide-entry.html">rank badge</a>. Entry removal is staged until Save and asks no confirmation, so Remove is a plain button here.</span></div>
+      </div>
+    </section>
+
+    <section class="ds-section" id="sizes" data-na="One size: only the thumbnail column changes, by breakpoint."><h2><a href="#sizes">Sizes</a></h2>
+      <p class="ds-na">One size. The thumbnail column is 5rem on phones and 6rem from 48rem (see Responsive behaviour); the row buttons are always <code>.btn--sm</code>.</p>
+    </section>
+
+    <section class="ds-section" id="states"><h2><a href="#states">States</a></h2>
+      <h3>Controls</h3>
+      <p>Pointer and focus states are forced with <code>data-state</code>; real pages get them from <code>:hover</code>, <code>:focus-visible</code> and <code>:active</code>. The ends of the list use <code>aria-disabled="true"</code>, not <code>disabled</code>, so a button that just moved its row to the end keeps focus.</p>
+      <div class="ds-matrix"><table>
+        <caption class="visually-hidden">Image manager control states</caption>
+        <thead><tr><th scope="col">Control</th><th scope="col">Default</th><th scope="col">Hover</th><th scope="col">Focus</th><th scope="col">Active</th><th scope="col">Disabled</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Move up / down</th>
+            <td><button class="btn btn--sm" type="button">Move up<span class="visually-hidden">: gallery image 2</span></button></td>
+            <td><button class="btn btn--sm" type="button" data-state="hover">Move up<span class="visually-hidden">: gallery image 2</span></button></td>
+            <td><button class="btn btn--sm" type="button" data-state="focus">Move up<span class="visually-hidden">: gallery image 2</span></button></td>
+            <td><button class="btn btn--sm" type="button" data-state="active">Move up<span class="visually-hidden">: gallery image 2</span></button></td>
+            <td><button class="btn btn--sm" type="button" aria-disabled="true">Move up<span class="visually-hidden">: gallery image 1</span></button></td>
+          </tr>
+          <tr><th scope="row">Remove</th>
+            <td><button class="btn btn--sm btn--ghost" type="button" aria-haspopup="dialog">Remove<span class="visually-hidden"> gallery image 2</span></button></td>
+            <td><button class="btn btn--sm btn--ghost" type="button" aria-haspopup="dialog" data-state="hover">Remove<span class="visually-hidden"> gallery image 2</span></button></td>
+            <td><button class="btn btn--sm btn--ghost" type="button" aria-haspopup="dialog" data-state="focus">Remove<span class="visually-hidden"> gallery image 2</span></button></td>
+            <td><button class="btn btn--sm btn--ghost" type="button" aria-haspopup="dialog" data-state="active">Remove<span class="visually-hidden"> gallery image 2</span></button></td>
+            <td><span class="text-muted">Never disabled; the dialog refuses instead (see Remove).</span></td>
+          </tr>
+          <tr><th scope="row">Add images</th>
+            <td><input class="file-input visually-hidden" id="st-up-1" type="file" accept="image/jpeg,image/png,image/webp,image/avif" multiple><label class="btn btn--sm" for="st-up-1">Add gallery images</label></td>
+            <td><input class="file-input visually-hidden" id="st-up-2" type="file" accept="image/jpeg,image/png,image/webp,image/avif" multiple><label class="btn btn--sm" for="st-up-2" data-state="hover">Add gallery images</label></td>
+            <td><input class="file-input visually-hidden" id="st-up-3" type="file" accept="image/jpeg,image/png,image/webp,image/avif" multiple><label class="btn btn--sm" for="st-up-3" data-state="focus">Add gallery images</label></td>
+            <td><input class="file-input visually-hidden" id="st-up-4" type="file" accept="image/jpeg,image/png,image/webp,image/avif" multiple><label class="btn btn--sm" for="st-up-4" data-state="active">Add gallery images</label></td>
+            <td><input class="file-input visually-hidden" id="st-up-5" type="file" accept="image/jpeg,image/png,image/webp,image/avif" multiple disabled><label class="btn btn--sm" for="st-up-5">Add gallery images</label></td>
+          </tr>
+          <tr><th scope="row">Alt text</th>
+            <td><label class="field" style="min-width: 12rem;"><span class="field__label">Alt text</span><input class="input" name="st.alt1" value="Portrait by the north windows."></label></td>
+            <td><label class="field" style="min-width: 12rem;"><span class="field__label">Alt text</span><input class="input" name="st.alt2" value="Portrait by the north windows." data-state="hover"></label></td>
+            <td><label class="field" style="min-width: 12rem;"><span class="field__label">Alt text</span><input class="input" name="st.alt3" value="Portrait by the north windows." data-state="focus"></label></td>
+            <td><span class="text-muted">Same as focus.</span></td>
+            <td><label class="field" style="min-width: 12rem;"><span class="field__label">Alt text</span><input class="input" name="st.alt5" value="Portrait by the north windows." disabled></label></td>
+          </tr>
+        </tbody>
+      </table></div>
+      <p>No mock disables the upload or the alt text today; the disabled cells show what the stylesheet does if a page ever must (for example, while a save is in flight). Prefer leaving them enabled.</p>
+
+      <h3>Rows</h3>
+      <div class="ds-matrix"><table>
+        <caption class="visually-hidden">Image row states</caption>
+        <thead><tr><th scope="col">State</th><th scope="col">Row</th><th scope="col">Attribute and behaviour</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Ready</th>
+            <td><div class="image-row" style="min-width: 26rem;"><div class="image-row__thumb"><img src="../assets/img/gallery-2.svg" alt="" width="800" height="1000" loading="lazy"></div><div class="image-row__body"><span class="image-row__meta">2 of 8 · gallery-02.jpg · 6.1 MB</span><label class="field"><span class="field__label">Alt text</span><input class="input" name="rows.ready" value="Model in a long coat on the white cyc, full length."></label></div><div class="image-row__actions"><button class="btn btn--sm" type="button">Move up<span class="visually-hidden">: gallery image 2</span></button><button class="btn btn--sm" type="button">Move down<span class="visually-hidden">: gallery image 2</span></button><button class="btn btn--sm btn--ghost" type="button" aria-haspopup="dialog">Remove<span class="visually-hidden"> gallery image 2</span></button></div></div></td>
+            <td>No attribute. Uploaded, described, movable both ways.</td></tr>
+          <tr><th scope="row">Only image</th>
+            <td><div class="image-row" style="min-width: 26rem;"><div class="image-row__thumb"><img src="../assets/img/gallery-1.svg" alt="" width="800" height="1000" loading="lazy"></div><div class="image-row__body"><span class="image-row__meta">1 of 1 · gallery-01.jpg · 5.2 MB</span><label class="field"><span class="field__label">Alt text</span><input class="input" name="rows.only" value="Portrait at the roll-up garage door, soft light from the lane."></label></div><div class="image-row__actions"><button class="btn btn--sm" type="button" aria-disabled="true">Move up<span class="visually-hidden">: gallery image 1</span></button><button class="btn btn--sm" type="button" aria-disabled="true">Move down<span class="visually-hidden">: gallery image 1</span></button><button class="btn btn--sm btn--ghost" type="button" aria-haspopup="dialog">Remove<span class="visually-hidden"> gallery image 1</span></button></div></div></td>
+            <td>Both moves <code>aria-disabled="true"</code>. They stay in the tab order; activating one does nothing.</td></tr>
+          <tr><th scope="row">Uploading</th>
+            <td><div class="image-row" data-state="uploading" style="min-width: 26rem;"><div class="image-row__thumb"><img src="../assets/img/gallery-3.svg" alt="" width="800" height="1000" loading="lazy"></div><div class="image-row__body"><span class="image-row__meta">3 of 3 · gallery-03.jpg · 4.9 MB</span><div class="progress" role="progressbar" aria-label="Uploading gallery-03.jpg" aria-valuemin="0" aria-valuemax="100" aria-valuenow="45"><div class="progress__bar" style="--value: 45%;"></div></div><span class="image-row__meta" aria-hidden="true">Uploading… 45%</span></div><div class="image-row__actions"><button class="btn btn--sm btn--ghost" type="button">Cancel upload<span class="visually-hidden"> gallery-03.jpg</span></button></div></div></td>
+            <td><code>data-state="uploading"</code>: thumbnail at 50%, a <a href="progress.html">progress bar</a> with <code>role="progressbar"</code> and the value, Cancel upload instead of the row actions. Save changes is disabled until every upload ends (L2-057.6). When it finishes, the new alt text field takes focus (L2-057.1).</td></tr>
+          <tr><th scope="row">Failed</th>
+            <td><div class="image-row" data-state="failed" style="min-width: 26rem;"><div class="image-row__thumb"><div class="media-fallback"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 16 5-5 4 4 3-3 6 6"/></svg></div></div><div class="image-row__body"><span class="image-row__meta">4 of 4 · gallery-04.jpg · 7.1 MB</span><p class="field__error">gallery-04.jpg didn't upload. Check your connection.</p></div><div class="image-row__actions"><button class="btn btn--sm" type="button">Retry<span class="visually-hidden"> gallery-04.jpg</span></button><button class="btn btn--sm btn--ghost" type="button">Remove<span class="visually-hidden"> gallery-04.jpg</span></button></div></div></td>
+            <td><code>data-state="failed"</code>: danger edge, image placeholder, the error in a <code>role="alert"</code> paragraph. Retry re-sends only this file (L2-057.7). Remove drops it at once with no dialog: nothing was saved.</td></tr>
+          <tr><th scope="row">Invalid alt text</th>
+            <td><div class="image-row" style="min-width: 26rem;"><div class="image-row__thumb"><img src="../assets/img/gallery-1.svg" alt="" width="800" height="1000" loading="lazy"></div><div class="image-row__body"><span class="image-row__meta">1 of 1 · gallery-01.jpg · 5.2 MB</span><div class="field"><label class="field__label" for="rows-invalid-alt">Alt text</label><input class="input" id="rows-invalid-alt" name="rows.invalid" aria-invalid="true" aria-describedby="rows-invalid-alt-error"><span class="field__error" id="rows-invalid-alt-error">Describe this image</span></div></div><div class="image-row__actions"><button class="btn btn--sm" type="button" aria-disabled="true">Move up<span class="visually-hidden">: gallery image 1</span></button><button class="btn btn--sm" type="button" aria-disabled="true">Move down<span class="visually-hidden">: gallery image 1</span></button><button class="btn btn--sm btn--ghost" type="button" aria-haspopup="dialog">Remove<span class="visually-hidden"> gallery image 1</span></button></div></div></td>
+            <td><code>aria-invalid="true"</code> + <code>aria-describedby</code> on the field after a refused save (L2-057.4). The form summary links straight to it.</td></tr>
+          <tr><th scope="row">Files refused before upload</th>
+            <td><div class="upload-drop" style="min-width: 26rem;"><input class="file-input visually-hidden" id="rows-refused-upload" type="file" accept="image/jpeg,image/png,image/webp,image/avif" multiple><label class="btn btn--sm" for="rows-refused-upload">Add gallery images</label><span>JPEG, PNG, WebP or AVIF, up to 20 MB each.</span><div class="stack stack--sm" style="flex-basis: 100%;"><p class="field__error">studio-floorplan.svg isn't a supported image. Use JPEG, PNG, WebP or AVIF.</p><p class="field__error">raw-export.tif is 25 MB. The limit is 20 MB.</p></div></div></td>
+            <td>Type or size refused in the browser (L2-057.2, L2-057.3): no row is created; the messages sit in the upload area in a <code>role="alert"</code> group. The server checks again.</td></tr>
+        </tbody>
+      </table></div>
+
+      <h3>Remove</h3>
+      <p>Remove opens the remove-image <a href="dialog.html">dialog</a>. Confirming stages the removal: the row goes, and Save changes makes it permanent (L2-058.2). If removing would leave a published studio with no standard test shot, the dialog refuses instead (L2-058.4); the count includes removals already staged in this edit.</p>
+      <div class="ds-example">
+        <div class="ds-example__canvas" style="align-items: flex-start;">
+          <div class="dialog__panel dialog__panel--sm" style="animation: none;">
+            <div class="dialog__header">
+              <div class="dialog__heading">
+                <h4 class="dialog__title">Remove test shot 2?</h4>
+                <p class="dialog__desc">It's removed when you save the studio. Test shot 1 stays.</p>
+              </div>
+              <button class="btn btn--ghost btn--icon" type="button" aria-label="Close"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+            </div>
+            <div class="dialog__body">
+              <div class="image-row">
+                <div class="image-row__thumb"><img src="../assets/img/test-the-junction-loft-2.svg" alt="" width="800" height="1000" loading="lazy"></div>
+                <div class="image-row__body">
+                  <span class="image-row__meta">full-length.jpg · alt text</span>
+                  <p>Test shot 2, full length on the cyc; scuffs show where the wall meets the floor.</p>
+                </div>
+              </div>
+            </div>
+            <div class="dialog__footer">
+              <button class="btn" type="button">Cancel</button>
+              <button class="btn btn--danger" type="button">Remove test shot</button>
+            </div>
+          </div>
+          <div class="dialog__panel dialog__panel--sm" style="animation: none;">
+            <div class="dialog__header">
+              <div class="dialog__heading">
+                <h4 class="dialog__title">Can't remove this test shot</h4>
+              </div>
+              <button class="btn btn--ghost btn--icon" type="button" aria-label="Close"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+            </div>
+            <div class="dialog__body">
+              <div class="alert alert--warning">
+                <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 4 2.5 20h19L12 4z"/><path d="M12 10v4M12 17h.01"/></svg>
+                <div class="alert__body">A published studio needs at least one standard test shot. Add another before removing this one.</div>
+              </div>
+            </div>
+            <div class="dialog__footer">
+              <button class="btn btn--primary" type="button">Got it</button>
+            </div>
+          </div>
+        </div>
+        <div class="ds-example__caption"><span>Left: confirm, with the image and its alt text as a preview row (no actions), Cancel focused first. Right: refused, with one acknowledgement and no way to force it.</span></div>
+      </div>
+
+      <h3>Both themes</h3>
+      <div class="ds-themes">
+        <div data-theme="light">
+          <ol class="image-list">
+            <li class="image-row"><div class="image-row__thumb"><img src="../assets/img/gallery-1.svg" alt="" width="800" height="1000" loading="lazy"></div><div class="image-row__body"><span class="image-row__meta">1 of 3 · gallery-01.jpg · 5.2 MB</span><label class="field"><span class="field__label">Alt text</span><input class="input" name="light.alt" value="Portrait at the roll-up garage door, soft light from the lane."></label></div><div class="image-row__actions"><button class="btn btn--sm" type="button" aria-disabled="true">Move up<span class="visually-hidden">: gallery image 1</span></button><button class="btn btn--sm" type="button">Move down<span class="visually-hidden">: gallery image 1</span></button><button class="btn btn--sm btn--ghost" type="button" aria-haspopup="dialog">Remove<span class="visually-hidden"> gallery image 1</span></button></div></li>
+            <li class="image-row" data-state="uploading"><div class="image-row__thumb"><img src="../assets/img/gallery-2.svg" alt="" width="800" height="1000" loading="lazy"></div><div class="image-row__body"><span class="image-row__meta">2 of 3 · gallery-02.jpg · 6.4 MB</span><div class="progress" role="progressbar" aria-label="Uploading gallery-02.jpg" aria-valuemin="0" aria-valuemax="100" aria-valuenow="80"><div class="progress__bar" style="--value: 80%;"></div></div><span class="image-row__meta" aria-hidden="true">Uploading… 80%</span></div><div class="image-row__actions"><button class="btn btn--sm btn--ghost" type="button">Cancel upload<span class="visually-hidden"> gallery-02.jpg</span></button></div></li>
+            <li class="image-row" data-state="failed"><div class="image-row__thumb"><div class="media-fallback"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 16 5-5 4 4 3-3 6 6"/></svg></div></div><div class="image-row__body"><span class="image-row__meta">3 of 3 · gallery-03.jpg · 4.9 MB</span><p class="field__error">gallery-03.jpg didn't upload. Check your connection.</p></div><div class="image-row__actions"><button class="btn btn--sm" type="button">Retry<span class="visually-hidden"> gallery-03.jpg</span></button><button class="btn btn--sm btn--ghost" type="button">Remove<span class="visually-hidden"> gallery-03.jpg</span></button></div></li>
+          </ol>
+        </div>
+        <div data-theme="dark">
+          <ol class="image-list">
+            <li class="image-row"><div class="image-row__thumb"><img src="../assets/img/gallery-1.svg" alt="" width="800" height="1000" loading="lazy"></div><div class="image-row__body"><span class="image-row__meta">1 of 3 · gallery-01.jpg · 5.2 MB</span><label class="field"><span class="field__label">Alt text</span><input class="input" name="dark.alt" value="Portrait at the roll-up garage door, soft light from the lane."></label></div><div class="image-row__actions"><button class="btn btn--sm" type="button" aria-disabled="true">Move up<span class="visually-hidden">: gallery image 1</span></button><button class="btn btn--sm" type="button">Move down<span class="visually-hidden">: gallery image 1</span></button><button class="btn btn--sm btn--ghost" type="button" aria-haspopup="dialog">Remove<span class="visually-hidden"> gallery image 1</span></button></div></li>
+            <li class="image-row" data-state="uploading"><div class="image-row__thumb"><img src="../assets/img/gallery-2.svg" alt="" width="800" height="1000" loading="lazy"></div><div class="image-row__body"><span class="image-row__meta">2 of 3 · gallery-02.jpg · 6.4 MB</span><div class="progress" role="progressbar" aria-label="Uploading gallery-02.jpg" aria-valuemin="0" aria-valuemax="100" aria-valuenow="80"><div class="progress__bar" style="--value: 80%;"></div></div><span class="image-row__meta" aria-hidden="true">Uploading… 80%</span></div><div class="image-row__actions"><button class="btn btn--sm btn--ghost" type="button">Cancel upload<span class="visually-hidden"> gallery-02.jpg</span></button></div></li>
+            <li class="image-row" data-state="failed"><div class="image-row__thumb"><div class="media-fallback"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 16 5-5 4 4 3-3 6 6"/></svg></div></div><div class="image-row__body"><span class="image-row__meta">3 of 3 · gallery-03.jpg · 4.9 MB</span><p class="field__error">gallery-03.jpg didn't upload. Check your connection.</p></div><div class="image-row__actions"><button class="btn btn--sm" type="button">Retry<span class="visually-hidden"> gallery-03.jpg</span></button><button class="btn btn--sm btn--ghost" type="button">Remove<span class="visually-hidden"> gallery-03.jpg</span></button></div></li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="ds-section" id="responsive"><h2><a href="#responsive">Responsive behaviour</a></h2>
+      <ul>
+        <li><b>Below 48rem</b> a row is two columns, a 5rem thumbnail and the body, and the actions wrap in a row along the bottom across the full width (<code>grid-column: 1 / -1</code>). The small buttons grow to 44px (L2-065.1).</li>
+        <li><b>From 48rem</b> a row is three columns: a 6rem thumbnail, the body, and the actions stacked in a column of equal-width buttons on the right.</li>
+        <li><b>Entry rows</b> (<code>--entry</code>) swap the thumbnail column for <code>auto</code>, sized to the 40px rank badge, at both widths.</li>
+        <li>The body is <code>min-width: 0</code> and the meta wraps anywhere, so a long file name ("raw-export-final-final-v3.jpg") never pushes the row wider than the screen. The sample-shot field row is one column below 36rem and two from 36rem.</li>
+        <li>The upload area wraps: the button, then the hint, then any refusal messages on their own full-width line.</li>
+      </ul>
+    </section>
+
+    <section class="ds-section" id="theming"><h2><a href="#theming">Theming</a></h2>
+      <p>Rows draw only an edge (<code>--color-border-default</code>, or <code>--color-danger-border</code> when failed) and sit on the editor section's <code>--color-bg-surface</code>. The thumbnail well is <code>--color-bg-photo</code>; photos keep their own colours in both themes. The upload area's dashed edge is <code>--color-border-strong</code> with <code>--color-fg-muted</code> text. Progress reads <code>--color-action</code> on <code>--color-bg-subtle-hover</code>. All are roles, so the dark theme needs no extra rules.</p>
+      <pre><code>/* A failed row only changes its edge; the error text and icon carry the meaning. */
+.image-row[data-state="failed"] { border-color: var(--color-danger-border); }</code></pre>
+    </section>
+
+    <section class="ds-section" id="accessibility"><h2><a href="#accessibility">Accessibility</a></h2>
+      <h3>Role and pattern</h3>
+      <p>Native elements, no ARIA widget: a <code>&lt;fieldset&gt;</code> and <code>&lt;legend&gt;</code> name the set, an ordered list (<code>&lt;ol&gt;</code>) carries the order ("list, 3 items"), buttons move and remove, and a real <code>&lt;input type="file"&gt;</code> is the upload control, with its <code>&lt;label&gt;</code> styled as a button. Remove opens an <a href="https://www.w3.org/WAI/ARIA/apg/patterns/alertdialog/">APG Alert dialog</a>-style confirmation (<code>role="dialog"</code>, <code>aria-modal="true"</code>, labelled by its title and described by its message). Uploads use <code>role="progressbar"</code>; errors use <code>role="alert"</code>.</p>
+      <h3>Keyboard</h3>
+      <table class="ds-table ds-keys"><thead><tr><th scope="col">Key</th><th scope="col">Action</th></tr></thead><tbody>
+        <tr><td><kbd>Tab</kbd> / <kbd>Shift</kbd>+<kbd>Tab</kbd></td><td>Moves through each row in order: alt text (and sample or note fields), Move up, Move down, Remove; then the upload button. <code>aria-disabled</code> moves stay in the order.</td></tr>
+        <tr><td><kbd>Enter</kbd>, <kbd>Space</kbd></td><td>On Move up or Move down: moves the row one place, keeps focus on the same button in its new position and announces the new position. On Remove: opens the dialog. On the upload button: opens the system file picker.</td></tr>
+        <tr><td><kbd>Esc</kbd></td><td>In the remove dialog: closes it, same as Cancel, and returns focus to that row's Remove.</td></tr>
+      </tbody></table>
+      <h3>Focus</h3>
+      <p>After a move, focus stays on the button that was pressed, now in the row's new place; if the row reached the end, that button becomes <code>aria-disabled</code> but keeps focus, which is why the ends never use <code>disabled</code>. When an upload finishes, its alt text field takes focus (L2-057.1). The remove dialog opens with focus on Cancel (the safe choice) or on "Got it" when refused; on close focus returns to Remove, or to the next row's Remove (or the upload button) when the row is gone. The upload button shows the ring through <code>.file-input:focus-visible + label</code>.</p>
+      <h3>Labelling</h3>
+      <p>Every repeated button carries its object in visually hidden text: "Move up: test shot 1", "Remove gallery image 2", "Retry gallery-04.jpg", "Cancel upload gallery-02.jpg". Moves are announced in a polite live region: "Test shot 3, now 2 of 3", or for guide entries "Leslieville Daylight Studio, now 2 of 2". The progress bar is named "Uploading gallery-02.jpg" and carries the value, so the visible "Uploading… 45%" is <code>aria-hidden</code>. Thumbnails are <code>alt=""</code>: the alt text field next to them is the description, and reading both would repeat it. The guide entry rank badge is <code>aria-hidden</code>; the hidden "Entry 1:" in the heading says the rank instead.</p>
+      <h3>Contrast</h3>
+      <div class="ds-example__canvas ds-example__canvas--stack" style="padding: 0; gap: var(--space-2);">
+        <div class="ds-pair"><span>Meta on the editor surface</span><span class="ds-pair__ratio" data-contrast="--color-fg-muted|--color-bg-surface" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Alt text field edge</span><span class="ds-pair__ratio" data-contrast="--color-border-strong|--color-bg-surface" data-min="3"></span></div>
+        <div class="ds-pair"><span>Upload area edge and hint</span><span class="ds-pair__ratio" data-contrast="--color-border-strong|--color-bg-surface" data-min="3"></span></div>
+        <div class="ds-pair"><span>Error text in a row</span><span class="ds-pair__ratio" data-contrast="--color-danger-fg|--color-bg-surface" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Invalid field edge</span><span class="ds-pair__ratio" data-contrast="--color-danger-solid|--color-bg-surface" data-min="3"></span></div>
+        <div class="ds-pair"><span>Progress fill on track</span><span class="ds-pair__ratio" data-contrast="--color-action|--color-bg-subtle-hover" data-min="3"></span></div>
+        <div class="ds-pair"><span>Placeholder icon on failed thumbnail</span><span class="ds-pair__ratio" data-contrast="--color-fg-subtle|--color-bg-surface-sunken" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Rank badge number</span><span class="ds-pair__ratio" data-contrast="--color-fg-default|--color-bg-subtle" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Focus ring on the editor surface</span><span class="ds-pair__ratio" data-contrast="--color-focus-ring|--color-bg-surface" data-min="3"></span></div>
+        <div class="ds-pair"><span>Remove dialog: danger label</span><span class="ds-pair__ratio" data-contrast="--color-fg-on-danger|--color-danger-solid" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Remove dialog: preview text</span><span class="ds-pair__ratio" data-contrast="--color-fg-default|--color-bg-surface-raised" data-min="4.5"></span></div>
+      </div>
+      <p>Row edges are decorative. The failed edge (<code>--color-danger-border</code>) only adds emphasis: the placeholder icon, the error sentence and the Retry button carry the state.</p>
+      <h3>Motion</h3>
+      <p>The progress bar animates its width over <code>--duration-deliberate</code>, which reduced motion zeroes, so it jumps to each new value. Moves re-render the list without animation. Nothing else moves.</p>
+      <h3>Touch</h3>
+      <p>Row buttons are 44px tall below 48rem with 8px between them (L2-065.1); the actions wrap rather than shrink. There is no drag to reorder, so no gesture is needed (2.5.7). The upload button is the whole target; dropping files on the area is not offered.</p>
+    </section>
+
+    <section class="ds-section" id="content"><h2><a href="#content">Content</a></h2>
+      <ul>
+        <li><b>Legends</b> name the set: "Standard test shots", "Gallery", "Sample shots", "Entries".</li>
+        <li><b>Upload buttons</b> say what is added: "Add test shots", "Add gallery images". The hint is always "JPEG, PNG, WebP or AVIF, up to 20 MB each."</li>
+        <li><b>Meta</b>: "{position} of {total} · {file name} · {size in MB, one decimal}". Position is 1-based and updates after every move.</li>
+        <li><b>Alt text</b> says what the photo shows, not that it is a photo: "Test shot 1, headshot: soft octabox light from 45 degrees, gentle shadow side, true skin tones." The required message is "Describe this image".</li>
+        <li><b>Errors</b> name the file and the fix: "gallery-04.jpg didn't upload. Check your connection.", "raw-export.tif is 25 MB. The limit is 20 MB."</li>
+        <li><b>Remove dialog</b>: the title asks with the object ("Remove test shot 2?"), the description says when it takes effect and what stays ("It's removed when you save the studio. Test shot 1 stays."), the danger button names the loss ("Remove test shot"). A refusal says what to do instead ("Add another before removing this one.").</li>
+      </ul>
+    </section>
+
+    <section class="ds-section" id="do-dont"><h2><a href="#do-dont">Do and don't</a></h2>
+      <div class="ds-dodont">
+        <figure class="ds-do"><div class="ds-example__canvas"><button class="btn btn--sm" type="button" aria-disabled="true">Move up<span class="visually-hidden">: test shot 1</span></button><button class="btn btn--sm" type="button">Move down<span class="visually-hidden">: test shot 1</span></button></div><figcaption>At the ends, mark the move <code>aria-disabled</code> so it keeps focus after the last move.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas"><button class="btn btn--sm" type="button" disabled>Move up</button><button class="btn btn--sm" type="button">Move down</button></div><figcaption>A native <code>disabled</code> end drops focus to the page when the row arrives there, and the bare "Move up" doesn't say which image.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas"><button class="btn btn--sm btn--ghost" type="button" aria-haspopup="dialog">Remove<span class="visually-hidden"> test shot 2</span></button></div><figcaption>Remove is a button that opens the confirmation dialog.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas"><a class="btn btn--sm btn--ghost" href="../../mocks/dialogs/remove-image/default.html">Remove<span class="visually-hidden"> test shot 2</span></a></div><figcaption>The static mocks link to the dialog's page. In the product it opens a dialog, so it is a <code>&lt;button&gt;</code>, not a link.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--stack"><div class="image-row"><div class="image-row__thumb"><img src="../assets/img/gallery-1.svg" alt="" width="800" height="1000" loading="lazy"></div><div class="image-row__body"><span class="image-row__meta">1 of 1 · gallery-01.jpg · 5.2 MB</span><label class="field"><span class="field__label">Alt text</span><input class="input" name="do.alt" value="Portrait by the north windows, soft light wrapping from the left."></label></div></div></div><figcaption>The thumbnail is <code>alt=""</code>; the alt text field is the description.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--stack"><div class="image-row"><div class="image-row__thumb"><img src="../assets/img/gallery-1.svg" alt="gallery-01.jpg" width="800" height="1000" loading="lazy"></div><div class="image-row__body"><span class="image-row__meta">1 of 1 · gallery-01.jpg · 5.2 MB</span><label class="field"><span class="field__label">Alt text</span><input class="input" name="dont.alt" placeholder="Describe this image"></label></div></div></div><figcaption>Don't use the file name as alt, and don't use a placeholder as the only hint; leave the field empty and let a refused save say "Describe this image".</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="ds-section" id="tokens"><h2><a href="#tokens">Tokens</a></h2>
+      <div class="ds-table-wrap"><table class="ds-table">
+        <thead><tr><th scope="col">Part</th><th scope="col">Token</th><th scope="col">Light</th><th scope="col">Dark</th></tr></thead>
+        <tbody>
+          <tr><td>Row edge</td><td><code>--color-border-default</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-border-default" data-swatch></i><span data-token="--color-border-default"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-border-default" data-swatch></i><span data-token="--color-border-default"></span></span></td></tr>
+          <tr><td>Failed row edge</td><td><code>--color-danger-border</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-danger-border" data-swatch></i><span data-token="--color-danger-border"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-danger-border" data-swatch></i><span data-token="--color-danger-border"></span></span></td></tr>
+          <tr><td>Thumbnail well</td><td><code>--color-bg-photo</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-bg-photo" data-swatch></i><span data-token="--color-bg-photo"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-bg-photo" data-swatch></i><span data-token="--color-bg-photo"></span></span></td></tr>
+          <tr><td>Meta and upload hint</td><td><code>--color-fg-muted</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-muted" data-swatch></i><span data-token="--color-fg-muted"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-muted" data-swatch></i><span data-token="--color-fg-muted"></span></span></td></tr>
+          <tr><td>Upload area edge</td><td><code>--color-border-strong</code>, dashed <code>--border-width-thick</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-border-strong" data-swatch></i><span data-token="--color-border-strong"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-border-strong" data-swatch></i><span data-token="--color-border-strong"></span></span></td></tr>
+          <tr><td>Progress fill / track</td><td><code>--color-action</code> / <code>--color-bg-subtle-hover</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-action" data-swatch></i><span data-token="--color-action"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-action" data-swatch></i><span data-token="--color-action"></span></span></td></tr>
+          <tr><td>Error text</td><td><code>--color-danger-fg</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-danger-fg" data-swatch></i><span data-token="--color-danger-fg"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-danger-fg" data-swatch></i><span data-token="--color-danger-fg"></span></span></td></tr>
+          <tr><td>Rank badge fill</td><td><code>--color-bg-subtle</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-bg-subtle" data-swatch></i><span data-token="--color-bg-subtle"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-bg-subtle" data-swatch></i><span data-token="--color-bg-subtle"></span></span></td></tr>
+          <tr><td>Row padding / gaps</td><td><code>--space-3</code>; columns <code>--space-4</code>; list gap <code>--space-3</code></td><td colspan="2"><span data-token="--space-3"></span> / <span data-token="--space-4"></span></td></tr>
+          <tr><td>Thumbnail column</td><td>5rem, 6rem from 48rem; 4:5</td><td colspan="2">80px / 96px</td></tr>
+          <tr><td>Row and upload radius</td><td><code>--radius-md</code>; thumbnail <code>--radius-sm</code></td><td colspan="2"><span data-token="--radius-md"></span> / <span data-token="--radius-sm"></span></td></tr>
+          <tr><td>Meta font</td><td><code>--text-body-sm</code></td><td colspan="2"><span data-token="--text-body-sm"></span></td></tr>
+          <tr><td>Progress height</td><td><code>--space-2</code>, <code>--radius-full</code></td><td colspan="2"><span data-token="--space-2"></span></td></tr>
+          <tr><td>Progress transition</td><td><code>--duration-deliberate</code>, <code>--ease-standard</code></td><td colspan="2"><span data-token="--duration-deliberate"></span></td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section class="ds-section" id="code"><h2><a href="#code">Code</a></h2>
+      <pre><code>&lt;!-- Uploading row --&gt;
+&lt;li class="image-row" data-state="uploading"&gt;
+  &lt;div class="image-row__thumb"&gt;&lt;img src="blob:…" alt="" width="800" height="1000"&gt;&lt;/div&gt;
+  &lt;div class="image-row__body"&gt;
+    &lt;span class="image-row__meta"&gt;2 of 3 · gallery-02.jpg · 6.4 MB&lt;/span&gt;
+    &lt;div class="progress" role="progressbar" aria-label="Uploading gallery-02.jpg"
+         aria-valuemin="0" aria-valuemax="100" aria-valuenow="45"&gt;
+      &lt;div class="progress__bar" style="--value: 45%;"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;span class="image-row__meta" aria-hidden="true"&gt;Uploading… 45%&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class="image-row__actions"&gt;
+    &lt;button class="btn btn--sm btn--ghost" type="button"&gt;Cancel upload&lt;span class="visually-hidden"&gt; gallery-02.jpg&lt;/span&gt;&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/li&gt;
+
+&lt;!-- Failed row --&gt;
+&lt;li class="image-row" data-state="failed"&gt;
+  &lt;div class="image-row__thumb"&gt;&lt;div class="media-fallback"&gt;&lt;svg class="icon" aria-hidden="true" …&gt;&lt;/svg&gt;&lt;/div&gt;&lt;/div&gt;
+  &lt;div class="image-row__body"&gt;
+    &lt;span class="image-row__meta"&gt;4 of 4 · gallery-04.jpg · 7.1 MB&lt;/span&gt;
+    &lt;p class="field__error" role="alert"&gt;gallery-04.jpg didn't upload. Check your connection.&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class="image-row__actions"&gt;
+    &lt;button class="btn btn--sm" type="button"&gt;Retry&lt;span class="visually-hidden"&gt; gallery-04.jpg&lt;/span&gt;&lt;/button&gt;
+    &lt;button class="btn btn--sm btn--ghost" type="button"&gt;Remove&lt;span class="visually-hidden"&gt; gallery-04.jpg&lt;/span&gt;&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/li&gt;
+
+&lt;!-- One polite region per editor announces moves --&gt;
+&lt;p class="visually-hidden" role="status"&gt;Test shot 3, now 2 of 3&lt;/p&gt;</code></pre>
+      <div class="ds-table-wrap"><table class="ds-table"><thead><tr><th scope="col">Class / attribute</th><th scope="col">Effect</th></tr></thead><tbody>
+        <tr><td><code>.image-list</code></td><td>Unstyled ordered column, 12px between rows. Use <code>&lt;ol&gt;</code>.</td></tr>
+        <tr><td><code>.image-row</code></td><td>Bordered grid: thumbnail + body, plus an actions column from 48rem.</td></tr>
+        <tr><td><code>.image-row__thumb</code></td><td>4:5 cover crop on <code>--color-bg-photo</code>.</td></tr>
+        <tr><td><code>.image-row__body</code> · <code>.image-row__meta</code></td><td>Shrinking column with 8px gaps; muted small meta that wraps anywhere.</td></tr>
+        <tr><td><code>.image-row__actions</code></td><td>Full-width wrapping row on phones; stretched column from 48rem. Dims <code>[aria-disabled="true"]</code> children.</td></tr>
+        <tr><td><code>.image-row--entry</code></td><td>First column sized to the guide entry rank badge.</td></tr>
+        <tr><td><code>data-state="uploading"</code></td><td>Thumbnail at 50% opacity; pair with a <code>.progress</code> bar.</td></tr>
+        <tr><td><code>data-state="failed"</code></td><td>Danger edge; pair with <code>.media-fallback</code>, an error and Retry.</td></tr>
+        <tr><td><code>.upload-drop</code></td><td>Dashed, wrapping container for the upload button, hint and refusals.</td></tr>
+        <tr><td><code>.file-input</code> (+ <code>.visually-hidden</code>)</td><td>The real file input; its next-sibling label shows the focus ring and the disabled look.</td></tr>
+        <tr><td><code>aria-disabled="true"</code></td><td>End-of-list moves: dimmed, focusable, inert.</td></tr>
+        <tr><td><code>aria-haspopup="dialog"</code></td><td>On Remove, which opens the remove-image dialog.</td></tr>
+      </tbody></table></div>
+    </section>
+
+    <section class="ds-section" id="sources"><h2><a href="#sources">Sources</a></h2>
+      <p>Extracted from these mocks:</p>
+      <ul>
+        <li><a href="../../mocks/pages/studio-editor/default.html">pages/studio-editor/default</a> (test shots, empty gallery, upload areas)</li>
+        <li><a href="../../mocks/pages/studio-editor/published.html">pages/studio-editor/published</a> (The Junction Loft's three test shots and eight gallery images)</li>
+        <li><a href="../../mocks/pages/studio-editor/uploading.html">pages/studio-editor/uploading</a> (per-file progress, Cancel upload, focused alt text)</li>
+        <li><a href="../../mocks/pages/studio-editor/upload-failed.html">pages/studio-editor/upload-failed</a> (failed row, Retry, type and size refusals)</li>
+        <li><a href="../../mocks/pages/studio-editor/invalid.html">pages/studio-editor/invalid</a> ("Describe this image", only image with both moves at the ends)</li>
+        <li><a href="../../mocks/pages/spot-editor/default.html">pages/spot-editor/default</a> (sample shots with focal length and angle note)</li>
+        <li><a href="../../mocks/pages/guide-editor/default.html">pages/guide-editor/default</a> (entry rows with rank badge, editor's note, announced moves)</li>
+        <li><a href="../../mocks/dialogs/remove-image/default.html">dialogs/remove-image/default</a> (confirm with preview row) and <a href="../../mocks/dialogs/remove-image/refused.html">refused</a> (last standard test shot)</li>
+      </ul>
+      <p>Requirements: L2-057 (upload, alt text, progress, retry), L2-058 (reorder, remove, refusal), L2-060 (guide entries), L2-065.1 (phone targets).</p>
+      <p>Drift found during extraction:</p>
+      <ul>
+        <li>Remove triggers are <code>&lt;a href&gt;</code> links to the dialog's mock page in every editor mock; the system uses <code>&lt;button type="button" aria-haspopup="dialog"&gt;</code>. The guide editor and failed-row Remove are already buttons.</li>
+        <li>The guide editor styles each entry heading inline (<code>&lt;h3 style="font: var(--text-h4)"&gt;</code>). An <code>.image-row__title</code> rule is proposed; the example above copies the mock until it exists.</li>
+        <li>The upload refusal group in <a href="../../mocks/pages/studio-editor/upload-failed.html">upload-failed</a> sets <code>flex-basis: 100%</code> inline; an <code>.upload-drop__errors</code> rule is proposed.</li>
+        <li>The Corktown Garage Studio editor mocks reuse Liberty Cyc House test-shot images; the examples here use The Junction Loft's own test shots from the published editor.</li>
+        <li>The mocks show no announcement for moves on images (only the guide editor's note asks for one); the system announces moves the same way everywhere (L2-058.3).</li>
+      </ul>
+    </section>
+
+    <footer class="ds-footer"><span>ShotThere design system · extracted from <a href="../../mocks/index.html">docs/mocks</a> on 13 October 2026</span><a href="#top">Back to top</a></footer>
+  </main>
+</div>
+<script src="../assets/ds.js"></script>
+</body>
+</html>
