@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Owner sign-in · default — ShotThere mocks</title>
+<meta name="mock:kind" content="page">
+<meta name="mock:screen" content="sign-in">
+<meta name="mock:state" content="default">
+<meta name="mock:requirements" content="L2-049 L2-050 L2-051 L2-052">
+<meta name="description" content="Owner sign-in form at /admin/sign-in: email and password with a Show toggle and a full-width Sign in button; focus starts on Email.">
+<link rel="stylesheet" href="../../../design-system/tokens/tokens.css">
+<link rel="stylesheet" href="../../../design-system/assets/components.css">
+<link rel="stylesheet" href="../../assets/mock.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <a class="wordmark" href="../home/default.html">ShotThere</a>
+</header>
+
+<main id="main" class="auth" tabindex="-1">
+  <div class="auth__head">
+    <h1>Sign in</h1>
+    <p class="subtitle">Owner access to the ShotThere administration area.</p>
+  </div>
+  <form class="stack" action="../admin-dashboard/default.html" method="post" novalidate>
+    <div class="field">
+      <label class="field__label" for="email">Email</label>
+      <input class="input input--lg" id="email" name="email" type="email" autocomplete="username" spellcheck="false" autofocus>
+    </div>
+    <div class="field">
+      <label class="field__label" for="password">Password</label>
+      <span class="input-group">
+        <input class="input input--lg" id="password" name="password" type="password" autocomplete="current-password" style="flex: 1; min-width: 0;">
+        <button class="btn btn--lg" type="button" aria-pressed="false" aria-controls="password">Show<span class="visually-hidden"> password</span></button>
+      </span>
+    </div>
+    <div style="margin-top: var(--space-2);">
+      <button class="btn btn--primary btn--lg btn--block" type="submit">Sign in</button>
+    </div>
+  </form>
+</main>
+
+<p class="mock-note" style="top: 8rem; right: 1rem;">Success creates the session and opens the dashboard (L2-049.1). There is no password reset in this phase.</p>
+
+<nav class="mock-bar" aria-label="Mock navigation">
+  <a class="mock-bar__home" href="../../index.html" aria-label="All mocks">⌂</a>
+  <span class="mock-bar__screen">Owner sign-in</span>
+  <ul class="mock-bar__states">
+    <li><a href="default.html" aria-current="page">default</a></li>
+    <li><a href="invalid.html">invalid</a></li>
+    <li><a href="incorrect.html">incorrect</a></li>
+    <li><a href="submitting.html">submitting</a></li>
+    <li><a href="rate-limited.html">rate-limited</a></li>
+    <li><a href="error.html">error</a></li>
+    <li><a href="session-expired.html">session-expired</a></li>
+    <li><a href="signed-out.html">signed-out</a></li>
+  </ul>
+  <button type="button" data-theme-toggle aria-pressed="false">☾ Dark</button>
+  <button type="button" data-chrome-toggle aria-label="Hide mock chrome">×</button>
+</nav>
+<script src="../../assets/mock.js"></script>
+</body>
+</html>

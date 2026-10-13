@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Public toasts · danger — ShotThere mocks</title>
+<meta name="mock:kind" content="notification">
+<meta name="mock:screen" content="public-toast">
+<meta name="mock:state" content="danger">
+<meta name="mock:requirements" content="L2-030 L2-032">
+<meta name="description" content="Error toast on the comparison page when copying the link fails: it says how to share instead and stays until dismissed.">
+<link rel="stylesheet" href="../../../design-system/tokens/tokens.css">
+<link rel="stylesheet" href="../../../design-system/assets/components.css">
+<link rel="stylesheet" href="../../assets/mock.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <a class="wordmark" href="../../pages/home/default.html">ShotThere <span class="wordmark__tag">Toronto</span></a>
+  <nav class="site-nav" aria-label="Primary">
+    <a class="site-nav__link site-nav__extra" href="../../pages/studios/default.html">Studios</a>
+    <a class="site-nav__link site-nav__extra" href="../../pages/spots/default.html">Spots</a>
+    <a class="site-nav__link site-nav__extra" href="../../pages/map/default.html">Map</a>
+    <a class="site-nav__link site-nav__extra" href="../../pages/compare/default.html" aria-current="page">Compare</a>
+    <a class="site-nav__link site-nav__extra" href="../../pages/guides/default.html">Guides</a>
+    <a class="btn btn--ghost site-nav__menu" href="../../dialogs/site-menu/default.html" aria-haspopup="dialog" aria-expanded="false">
+      <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>Menu
+    </a>
+  </nav>
+</header>
+
+<main id="main" class="container" tabindex="-1">
+  <div class="page-header">
+    <div><h1>Compare 3 studios</h1><p class="subtitle">All-in is a 2-hour shoot with mandatory fees.</p></div>
+    <div class="cluster"><button class="btn" type="button">Copy link</button><a href="../../pages/studios/selected.html">Change studios</a></div>
+  </div>
+  <div class="table-wrap">
+    <table class="table compare-table" style="--compare-cols: 3;">
+      <caption class="visually-hidden">The Junction Loft, Leslieville Daylight Studio and Kensington Window Room side by side</caption>
+      <colgroup><col class="compare-table__labels"><col><col><col></colgroup>
+      <thead><tr><td></td><th scope="col"><img src="../../assets/img/studio-the-junction-loft.svg" alt="" width="1200" height="800"><a href="../../pages/studio/default.html">The Junction Loft</a></th><th scope="col"><img src="../../assets/img/studio-leslieville-daylight-studio.svg" alt="" width="1200" height="800"><a href="../../pages/studio/default.html">Leslieville Daylight Studio</a></th><th scope="col"><img src="../../assets/img/studio-kensington-window-room.svg" alt="" width="1200" height="800"><a href="../../pages/studio/default.html">Kensington Window Room</a></th></tr></thead>
+      <tbody>
+          <tr><th class="compare-table__label" scope="row">All-in 2 h</th><td><span class="compare-table__value">$145.00</span></td><td><span class="compare-table__value">$91.00</span></td><td><span class="compare-table__value">$80.00 <span class="badge badge--success">Lowest</span></span></td></tr>
+          <tr><th class="compare-table__label" scope="row">Hourly rate</th><td><span class="compare-table__value">$60.00</span></td><td><span class="compare-table__value">$45.50</span></td><td><span class="compare-table__value">$40.00</span></td></tr>
+          <tr><th class="compare-table__label" scope="row">Minimum booking</th><td><span class="compare-table__value">2 h</span></td><td><span class="compare-table__value">2 h</span></td><td><span class="compare-table__value">1 h</span></td></tr>
+          <tr><th class="compare-table__label" scope="row">Overall score</th><td><span class="compare-table__value">3.8<span class="visually-hidden"> out of 5</span></span></td><td><span class="compare-table__value">4.0<span class="visually-hidden"> out of 5</span></span></td><td><span class="compare-table__value">3.2<span class="visually-hidden"> out of 5</span></span></td></tr>
+          <tr><th class="compare-table__label" scope="row">Price verified</th><td><span class="compare-table__value">22 Sep 2026</span></td><td><span class="compare-table__value">10 Aug 2026</span></td><td><span class="compare-table__value">30 Sep 2026</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__brand">
+    <strong>ShotThere</strong>
+    <span>Toronto photo studios and outdoor spots, reviewed first-hand. Nothing is listed unless it has been shot there.</span>
+  </div>
+  <form class="signup" action="../../pages/home/success.html" method="post" novalidate aria-labelledby="footer-signup-title">
+    <h2 class="signup__title" id="footer-signup-title">New reviews by email</h2>
+    <p>One email when a new studio or spot goes up. Unsubscribe any time.</p>
+    <div class="signup__row">
+      <div class="field">
+        <label class="field__label" for="footer-email">Email address</label>
+        <input class="input" id="footer-email" name="email" type="email" autocomplete="email" inputmode="email">
+      </div>
+      <button class="btn" type="submit" style="align-self: flex-end;">Subscribe</button>
+    </div>
+    <div class="signup__trap" aria-hidden="true"><label for="footer-website">Leave this field empty</label><input id="footer-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+  </form>
+  <nav class="site-footer__links" aria-label="Footer">
+    <ul>
+      <li><a href="../../pages/studios/default.html">Studios</a></li>
+      <li><a href="../../pages/spots/default.html">Spots</a></li>
+      <li><a href="../../pages/guides/default.html">Guides</a></li>
+      <li><a href="../../pages/editorial-policy/default.html">Editorial policy</a></li>
+      <li><a href="https://www.youtube.com/@ShotThere" target="_blank" rel="noopener">YouTube channel<span class="visually-hidden"> (opens in a new tab)</span></a></li>
+    </ul>
+  </nav>
+  <p class="site-footer__copy">© 2026 ShotThere · No paid placement: order comes only from the sort you choose.</p>
+</footer>
+
+<!-- The region is in the DOM before any toast so screen readers announce new ones. -->
+<div class="toast-region" role="status" aria-live="polite">
+  <div class="toast toast--danger" role="alert">
+    <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16h.01"/></svg>
+    <div class="toast__body">
+      <div class="toast__title">Couldn't copy the link</div>
+      <div class="toast__text">Copy the address from your browser's address bar instead.</div>
+    </div>
+    <button class="close" type="button" aria-label="Dismiss">
+      <svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg>
+    </button>
+  </div>
+</div>
+
+<p class="mock-note" style="bottom: 10rem; right: 1rem;">Never auto-dismisses; announced as an alert. The address bar already holds the shareable link.</p>
+<nav class="mock-bar" aria-label="Mock navigation">
+  <a class="mock-bar__home" href="../../index.html" aria-label="All mocks">⌂</a>
+  <span class="mock-bar__screen">Public toasts</span>
+  <ul class="mock-bar__states">
+    <li><a href="success.html">success</a></li>
+    <li><a href="warning.html">warning</a></li>
+    <li><a href="danger.html" aria-current="page">danger</a></li>
+  </ul>
+  <button type="button" data-theme-toggle aria-pressed="false">☾ Dark</button>
+  <button type="button" data-chrome-toggle aria-label="Hide mock chrome">×</button>
+</nav>
+<script src="../../assets/mock.js"></script>
+</body>
+</html>

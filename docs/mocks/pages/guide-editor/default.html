@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Guide editor · default — ShotThere mocks</title>
+<meta name="mock:kind" content="page">
+<meta name="mock:screen" content="guide-editor">
+<meta name="mock:state" content="default">
+<meta name="mock:requirements" content="L2-060 L2-061 L2-062">
+<meta name="description" content="Editing the draft guide Best for headshots: title, slug, introduction and two ranked studio entries with editor&#x27;s notes, reorder and remove controls.">
+<link rel="stylesheet" href="../../../design-system/tokens/tokens.css">
+<link rel="stylesheet" href="../../../design-system/assets/components.css">
+<link rel="stylesheet" href="../../assets/mock.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <a class="wordmark" href="../admin-dashboard/default.html">ShotThere <span class="wordmark__tag">Admin</span></a>
+  <nav class="site-nav" aria-label="Administration">
+    <a class="site-nav__link site-nav__extra" href="../admin-dashboard/default.html">Dashboard</a>
+    <a class="site-nav__link site-nav__extra" href="../admin-studios/default.html">Studios</a>
+    <a class="site-nav__link site-nav__extra" href="../admin-spots/default.html">Spots</a>
+    <a class="site-nav__link site-nav__extra" href="../admin-guides/default.html" aria-current="page">Guides</a>
+    <a class="site-nav__link site-nav__extra" href="../home/default.html">View site</a>
+    <form class="site-nav__extra" action="../sign-in/signed-out.html" method="post"><button class="btn btn--ghost" type="submit">Sign out</button></form>
+    <a class="btn btn--ghost site-nav__menu" href="../../dialogs/site-menu/admin.html" aria-haspopup="dialog" aria-expanded="false">
+      <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>Menu
+    </a>
+  </nav>
+</header>
+
+<main id="main" class="container" tabindex="-1">
+  <nav aria-label="Breadcrumb" style="margin-top: var(--space-4);"><ol class="breadcrumb"><li><a href="../admin-guides/default.html">Guides</a></li><li aria-current="page">Best for headshots</li></ol></nav>
+  <div class="page-header">
+    <div>
+      <h1>Best for headshots</h1>
+      <p class="subtitle"><span class="status status--draft">Draft</span> · Last saved 9 Oct 2026, 2:30 pm</p>
+    </div>
+  </div>
+
+  <div class="editor-layout">
+    <aside class="editor-aside" aria-labelledby="status-title">
+      <h2 id="status-title" style="font: var(--text-h4);">Status</h2>
+      <dl class="editor-aside__meta">
+        <dt>Visibility</dt><dd><span class="status status--draft">Draft</span> · not on the public site</dd>
+        <dt>Public address once published</dt><dd><code>/guides/best-for-headshots</code></dd>
+      </dl>
+      <a class="btn" href="published.html">Publish</a>
+      <a class="btn btn--ghost" href="../../dialogs/delete-content/default.html" style="color: var(--color-danger-fg);">Delete guide</a>
+    </aside>
+    <form class="editor-form" action="success.html" method="post" novalidate aria-labelledby="form-title">
+      <h2 class="visually-hidden" id="form-title">Guide details</h2>
+
+      <details class="editor-section" open>
+        <summary><h2>Basics</h2></summary>
+        <div class="editor-section__body">
+          <label class="field"><span class="field__label">Title</span><input class="input" id="title" name="title" value="Best for headshots" autocomplete="off"></label>
+          <label class="field"><span class="field__label">Slug</span><input class="input" id="slug" name="slug" value="best-for-headshots" autocomplete="off" spellcheck="false" aria-describedby="slug-help"><span class="field__help" id="slug-help">Lowercase words and hyphens. Changing it after publishing redirects the old address.</span></label>
+          <label class="field"><span class="field__label">Introduction</span><textarea class="textarea" id="intro" name="introduction" rows="4">Two studios where a full headshot day looks good from the first frame to the last: soft window light, room for a stool and a backdrop, and rates that leave money for retouching.</textarea></label>
+        </div>
+      </details>
+
+      <details class="editor-section" id="entries" open>
+        <summary><h2>Entries</h2></summary>
+        <div class="editor-section__body">
+          <p class="field__help">Visitors see entries in this order. Move up and Move down change the rank.</p>
+          <ol class="image-list" aria-label="Entries in rank order">
+              <li class="image-row image-row--entry">
+                <span class="guide-entry__rank" aria-hidden="true">1</span>
+                <div class="image-row__body">
+                  <h3 style="font: var(--text-h4);"><span class="visually-hidden">Entry 1: </span>Leslieville Daylight Studio</h3>
+                  <span class="image-row__meta">Studio · Leslieville</span>
+                  <label class="field"><span class="field__label">Editor's note<span class="visually-hidden"> for Leslieville Daylight Studio</span></span><textarea class="textarea" name="entries[0].note" rows="2">East windows give clean morning light for a whole headshot day.</textarea></label>
+                </div>
+                <div class="image-row__actions">
+                  <button class="btn btn--sm" type="button" aria-disabled="true">Move up<span class="visually-hidden">: Leslieville Daylight Studio</span></button>
+                  <button class="btn btn--sm" type="button">Move down<span class="visually-hidden">: Leslieville Daylight Studio</span></button>
+                  <button class="btn btn--sm btn--ghost" type="button">Remove<span class="visually-hidden"> Leslieville Daylight Studio</span></button>
+                </div>
+              </li>
+              <li class="image-row image-row--entry">
+                <span class="guide-entry__rank" aria-hidden="true">2</span>
+                <div class="image-row__body">
+                  <h3 style="font: var(--text-h4);"><span class="visually-hidden">Entry 2: </span>Kensington Window Room</h3>
+                  <span class="image-row__meta">Studio · Kensington Market</span>
+                  <label class="field"><span class="field__label">Editor's note<span class="visually-hidden"> for Kensington Window Room</span></span><textarea class="textarea" name="entries[1].note" rows="2">The cheapest good window in the city; book mornings.</textarea></label>
+                </div>
+                <div class="image-row__actions">
+                  <button class="btn btn--sm" type="button">Move up<span class="visually-hidden">: Kensington Window Room</span></button>
+                  <button class="btn btn--sm" type="button" aria-disabled="true">Move down<span class="visually-hidden">: Kensington Window Room</span></button>
+                  <button class="btn btn--sm btn--ghost" type="button">Remove<span class="visually-hidden"> Kensington Window Room</span></button>
+                </div>
+              </li>
+          </ol>
+          <div><a class="btn btn--sm" href="../../dialogs/guide-entry-picker/default.html" aria-haspopup="dialog"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>Add entry</a></div>
+        </div>
+      </details>
+
+      <div class="form-actions form-actions--sticky">
+        <button class="btn btn--primary" type="submit">Save changes</button>
+        <a class="btn btn--ghost" href="../../dialogs/discard-changes/default.html">Cancel</a>
+        <span class="save-status" role="status">Unsaved changes</span>
+      </div>
+    </form>
+  </div>
+</main>
+
+<p class="mock-note" style="top: 13rem; right: 1rem;">Move up and Move down announce the new rank (&ldquo;Leslieville Daylight Studio, now 2 of 2&rdquo;) and keep focus on the moved button. Leaving with unsaved changes asks first (L2-062).</p>
+
+<nav class="mock-bar" aria-label="Mock navigation">
+  <a class="mock-bar__home" href="../../index.html" aria-label="All mocks">⌂</a>
+  <span class="mock-bar__screen">Guide editor</span>
+  <ul class="mock-bar__states">
+    <li><a href="new.html">new</a></li>
+    <li><a href="default.html" aria-current="page">default</a></li>
+    <li><a href="published.html">published</a></li>
+    <li><a href="loading.html">loading</a></li>
+    <li><a href="error.html">error</a></li>
+    <li><a href="invalid.html">invalid</a></li>
+    <li><a href="submitting.html">submitting</a></li>
+    <li><a href="success.html">success</a></li>
+  </ul>
+  <button type="button" data-theme-toggle aria-pressed="false">☾ Dark</button>
+  <button type="button" data-chrome-toggle aria-label="Hide mock chrome">×</button>
+</nav>
+<script src="../../assets/mock.js"></script>
+</body>
+</html>

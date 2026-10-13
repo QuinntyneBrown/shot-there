@@ -1,0 +1,455 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Studio editor · published — ShotThere mocks</title>
+<meta name="mock:kind" content="page">
+<meta name="mock:screen" content="studio-editor">
+<meta name="mock:state" content="published">
+<meta name="mock:requirements" content="L2-054 L2-042 L2-045 L2-057 L2-058 L2-059 L2-002 L2-056 L2-061 L2-062">
+<meta name="description" content="Editing the published The Junction Loft with every field filled: status panel with its public link, Unpublish, and Delete disabled with a hint to unpublish first; only Basics is open.">
+<link rel="stylesheet" href="../../../design-system/tokens/tokens.css">
+<link rel="stylesheet" href="../../../design-system/assets/components.css">
+<link rel="stylesheet" href="../../assets/mock.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <a class="wordmark" href="../admin-dashboard/default.html">ShotThere <span class="wordmark__tag">Admin</span></a>
+  <nav class="site-nav" aria-label="Administration">
+    <a class="site-nav__link site-nav__extra" href="../admin-dashboard/default.html">Dashboard</a>
+    <a class="site-nav__link site-nav__extra" href="../admin-studios/default.html" aria-current="page">Studios</a>
+    <a class="site-nav__link site-nav__extra" href="../admin-spots/default.html">Spots</a>
+    <a class="site-nav__link site-nav__extra" href="../admin-guides/default.html">Guides</a>
+    <a class="site-nav__link site-nav__extra" href="../home/default.html">View site</a>
+    <form class="site-nav__extra" action="../sign-in/signed-out.html" method="post"><button class="btn btn--ghost" type="submit">Sign out</button></form>
+    <a class="btn btn--ghost site-nav__menu" href="../../dialogs/site-menu/admin.html" aria-haspopup="dialog" aria-expanded="false">
+      <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>Menu
+    </a>
+  </nav>
+</header>
+
+<main id="main" class="container" tabindex="-1">
+  <nav aria-label="Breadcrumb" style="margin-top: var(--space-4);"><ol class="breadcrumb"><li><a href="../admin-studios/default.html">Studios</a></li><li aria-current="page">The Junction Loft</li></ol></nav>
+  <div class="page-header">
+    <div>
+      <h1>The Junction Loft</h1>
+      <p class="subtitle"><span class="status status--published">Published</span> · Last saved 29 Sep 2026, 9:40 am</p>
+    </div>
+  </div>
+
+  <div class="editor-layout">
+    <aside class="editor-aside" aria-labelledby="status-title">
+      <h2 id="status-title" style="font: var(--text-h4);">Status</h2>
+      <dl class="editor-aside__meta">
+        <dt>Visibility</dt><dd><span class="status status--published">Published</span> · on the public site</dd>
+        <dt>Public address</dt><dd><a href="../studio/default.html"><code>/studios/the-junction-loft</code></a></dd>
+      </dl>
+      <a class="btn" href="../../dialogs/unpublish/default.html">Unpublish</a>
+      <button class="btn btn--ghost" type="button" disabled aria-describedby="delete-hint" style="color: var(--color-danger-fg);">Delete studio</button>
+      <p class="text-caption" id="delete-hint">Unpublish before deleting.</p>
+    </aside>
+
+    <form class="editor-form" action="success.html" method="post" novalidate aria-labelledby="form-title">
+      <h2 class="visually-hidden" id="form-title">Studio details</h2>
+
+      <details class="editor-section" open>
+        <summary><h2>Basics</h2></summary>
+        <div class="editor-section__body">
+          <label class="field"><span class="field__label">Name</span><input class="input" name="name" value="The Junction Loft" autocomplete="off"></label>
+          <div class="field-row">
+            <label class="field"><span class="field__label">Neighbourhood</span><input class="input" name="neighbourhood" value="Junction" autocomplete="off"></label>
+            <label class="field"><span class="field__label">Address or cross streets</span><input class="input" name="address" value="Dundas St W at Pacific Ave" autocomplete="off"></label>
+          </div>
+          <label class="field"><span class="field__label">Booking link</span><input class="input" name="bookingUrl" type="url" value="https://thejunctionloft.example/book" aria-describedby="booking-help"><span class="field__help" id="booking-help">The studio's own booking page. Opens in a new tab for visitors.</span></label>
+        </div>
+      </details>
+
+      <details class="editor-section">
+        <summary><h2>Pricing and fees</h2></summary>
+        <div class="editor-section__body">
+          <div class="field-row">
+            <label class="field"><span class="field__label">Hourly rate</span><span class="input-group"><span class="addon" aria-hidden="true">$</span><input class="input" name="hourlyRate" type="number" inputmode="decimal" min="0" step="0.5" value="60.00"></span></label>
+            <label class="field"><span class="field__label">Minimum booking (hours)</span><input class="input" name="minimumHours" type="number" inputmode="numeric" min="1" step="1" value="2"></label>
+          </div>
+          <label class="field"><span class="field__label">Prices last verified</span><input class="input" name="priceVerifiedAt" type="date" value="2026-09-22" max="2026-10-13" aria-describedby="verified-help"><span class="field__help" id="verified-help">Change this only when you have checked the prices again. Visitors see a warning after 183 days.</span></label>
+          <fieldset class="stack stack--sm">
+            <legend>Fees</legend>
+            <div class="fee-row">
+              <label class="field"><span class="field__label">Fee name</span><input class="input" name="fees[0].name" value="Cleaning"></label>
+              <label class="field"><span class="field__label">Amount</span><span class="input-group"><span class="addon" aria-hidden="true">$</span><input class="input" name="fees[0].amount" type="number" inputmode="decimal" min="0" value="25.00"></span></label>
+              <label class="field"><span class="field__label">Type</span><select class="select" name="fees[0].mandatory"><option selected>Mandatory</option><option>Optional</option></select></label>
+              <button class="btn btn--ghost" type="button">Remove<span class="visually-hidden"> Cleaning fee</span></button>
+            </div>
+            <div class="fee-row">
+              <label class="field"><span class="field__label">Fee name</span><input class="input" name="fees[1].name" value="After-hours access"></label>
+              <label class="field"><span class="field__label">Amount</span><span class="input-group"><span class="addon" aria-hidden="true">$</span><input class="input" name="fees[1].amount" type="number" inputmode="decimal" min="0" value="30.00"></span></label>
+              <label class="field"><span class="field__label">Type</span><select class="select" name="fees[1].mandatory"><option>Mandatory</option><option selected>Optional</option></select></label>
+              <button class="btn btn--ghost" type="button">Remove<span class="visually-hidden"> After-hours access fee</span></button>
+            </div>
+            <div><button class="btn btn--sm" type="button"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>Add fee</button></div>
+          </fieldset>
+          <p class="text-muted">All-in for 2 hours: <strong class="num">$145.00</strong>, calculated by the server when you save.</p>
+        </div>
+      </details>
+
+      <details class="editor-section">
+        <summary><h2>Measured specifications</h2></summary>
+        <div class="editor-section__body">
+          <div class="field-row">
+            <label class="field"><span class="field__label">Usable width (m)</span><input class="input" name="spaceWidth" type="number" inputmode="decimal" step="0.1" value="6.1"></label>
+            <label class="field"><span class="field__label">Usable depth (m)</span><input class="input" name="spaceDepth" type="number" inputmode="decimal" step="0.1" value="4.3"></label>
+          </div>
+          <div class="field-row">
+            <label class="field"><span class="field__label">Ceiling height (m)</span><input class="input" name="ceilingHeight" type="number" inputmode="decimal" step="0.1" value="4.0"></label>
+            <label class="field"><span class="field__label">Window direction</span><select class="select" name="windowDirection"><option value="">No windows</option><option selected>North</option><option>East</option><option>South</option><option>West</option></select></label>
+          </div>
+          <fieldset>
+            <legend>Natural light</legend>
+            <div class="field-row" style="grid-template-columns: repeat(auto-fit, minmax(min(100%, 9rem), 1fr));">
+              <label class="field"><span class="field__label">Morning</span><select class="select" name="light.morning"><option>None</option><option>Low</option><option selected>Medium</option><option>Strong</option></select></label>
+              <label class="field"><span class="field__label">Midday</span><select class="select" name="light.midday"><option>None</option><option>Low</option><option>Medium</option><option selected>Strong</option></select></label>
+              <label class="field"><span class="field__label">Afternoon</span><select class="select" name="light.afternoon"><option>None</option><option>Low</option><option>Medium</option><option selected>Strong</option></select></label>
+              <label class="field"><span class="field__label">Evening</span><select class="select" name="light.evening"><option>None</option><option selected>Low</option><option>Medium</option><option>Strong</option></select></label>
+            </div>
+          </fieldset>
+          <div class="field-row">
+            <label class="field"><span class="field__label">Outlets</span><input class="input" name="power.outlets" type="number" inputmode="numeric" value="8"></label>
+            <label class="field"><span class="field__label">Outlet type</span><input class="input" name="power.type" value="Standard 15 A"></label>
+          </div>
+          <label class="choice"><input type="checkbox" name="power.has20A" checked><span>20 A circuits available</span></label>
+          <div class="field-row">
+            <label class="field"><span class="field__label">Cyc wall</span><select class="select" name="cyc"><option>No</option><option selected>Yes</option></select></label>
+            <label class="field"><span class="field__label">Cyc condition</span><input class="input" name="cycCondition" value="Scuffed"></label>
+          </div>
+          <label class="field"><span class="field__label">Backdrops <span class="optional">(optional)</span></span><input class="input" name="backdrops" value="White, grey and black seamless, 2.7 m"></label>
+        </div>
+      </details>
+
+      <details class="editor-section">
+        <summary><h2>Gear</h2></summary>
+        <div class="editor-section__body">
+          <fieldset class="stack stack--sm">
+            <legend>Included in the hourly rate</legend>
+            <div class="fee-row">
+              <label class="field"><span class="field__label">Category</span><select class="select" name="included[0].category"><option selected>Lights</option><option>Modifiers</option><option>Stands</option><option>Other</option></select></label>
+              <label class="field"><span class="field__label">Item</span><input class="input" name="included[0].name" value="Godox AD600 strobe"></label>
+              <label class="field"><span class="field__label">Quantity</span><input class="input" name="included[0].quantity" type="number" inputmode="numeric" min="1" value="2"></label>
+              <button class="btn btn--ghost" type="button">Remove<span class="visually-hidden"> Godox AD600 strobe</span></button>
+            </div>
+            <div class="fee-row">
+              <label class="field"><span class="field__label">Category</span><select class="select" name="included[1].category"><option selected>Lights</option><option>Modifiers</option><option>Stands</option><option>Other</option></select></label>
+              <label class="field"><span class="field__label">Item</span><input class="input" name="included[1].name" value="60 cm LED panel"></label>
+              <label class="field"><span class="field__label">Quantity</span><input class="input" name="included[1].quantity" type="number" inputmode="numeric" min="1" value="1"></label>
+              <button class="btn btn--ghost" type="button">Remove<span class="visually-hidden"> 60 cm LED panel</span></button>
+            </div>
+            <div class="fee-row">
+              <label class="field"><span class="field__label">Category</span><select class="select" name="included[2].category"><option>Lights</option><option selected>Modifiers</option><option>Stands</option><option>Other</option></select></label>
+              <label class="field"><span class="field__label">Item</span><input class="input" name="included[2].name" value="120 cm octabox"></label>
+              <label class="field"><span class="field__label">Quantity</span><input class="input" name="included[2].quantity" type="number" inputmode="numeric" min="1" value="1"></label>
+              <button class="btn btn--ghost" type="button">Remove<span class="visually-hidden"> 120 cm octabox</span></button>
+            </div>
+            <div class="fee-row">
+              <label class="field"><span class="field__label">Category</span><select class="select" name="included[3].category"><option>Lights</option><option selected>Modifiers</option><option>Stands</option><option>Other</option></select></label>
+              <label class="field"><span class="field__label">Item</span><input class="input" name="included[3].name" value="5-in-1 reflector"></label>
+              <label class="field"><span class="field__label">Quantity</span><input class="input" name="included[3].quantity" type="number" inputmode="numeric" min="1" value="2"></label>
+              <button class="btn btn--ghost" type="button">Remove<span class="visually-hidden"> 5-in-1 reflector</span></button>
+            </div>
+            <div class="fee-row">
+              <label class="field"><span class="field__label">Category</span><select class="select" name="included[4].category"><option>Lights</option><option>Modifiers</option><option selected>Stands</option><option>Other</option></select></label>
+              <label class="field"><span class="field__label">Item</span><input class="input" name="included[4].name" value="C-stand"></label>
+              <label class="field"><span class="field__label">Quantity</span><input class="input" name="included[4].quantity" type="number" inputmode="numeric" min="1" value="4"></label>
+              <button class="btn btn--ghost" type="button">Remove<span class="visually-hidden"> C-stand</span></button>
+            </div>
+            <div class="fee-row">
+              <label class="field"><span class="field__label">Category</span><select class="select" name="included[5].category"><option>Lights</option><option>Modifiers</option><option>Stands</option><option selected>Other</option></select></label>
+              <label class="field"><span class="field__label">Item</span><input class="input" name="included[5].name" value="Garment steamer"></label>
+              <label class="field"><span class="field__label">Quantity</span><input class="input" name="included[5].quantity" type="number" inputmode="numeric" min="1" value="1"></label>
+              <button class="btn btn--ghost" type="button">Remove<span class="visually-hidden"> Garment steamer</span></button>
+            </div>
+            <div><button class="btn btn--sm" type="button"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>Add included item</button></div>
+          </fieldset>
+          <fieldset class="stack stack--sm">
+            <legend>Costs extra</legend>
+            <div class="fee-row">
+              <label class="field"><span class="field__label">Category</span><select class="select" name="extras[0].category"><option>Lights</option><option>Modifiers</option><option>Stands</option><option selected>Other</option></select></label>
+              <label class="field"><span class="field__label">Item</span><input class="input" name="extras[0].name" value="Hazer"></label>
+              <label class="field"><span class="field__label">Price</span><span class="input-group"><span class="addon" aria-hidden="true">$</span><input class="input" name="extras[0].price" type="number" inputmode="decimal" min="0" value="20.00"></span></label>
+              <button class="btn btn--ghost" type="button">Remove<span class="visually-hidden"> Hazer</span></button>
+            </div>
+            <div class="fee-row">
+              <label class="field"><span class="field__label">Category</span><select class="select" name="extras[1].category"><option>Lights</option><option>Modifiers</option><option>Stands</option><option selected>Other</option></select></label>
+              <label class="field"><span class="field__label">Item</span><input class="input" name="extras[1].name" value="Extra seamless roll"></label>
+              <label class="field"><span class="field__label">Price</span><span class="input-group"><span class="addon" aria-hidden="true">$</span><input class="input" name="extras[1].price" type="number" inputmode="decimal" min="0" value="15.00"></span></label>
+              <button class="btn btn--ghost" type="button">Remove<span class="visually-hidden"> Extra seamless roll</span></button>
+            </div>
+            <div><button class="btn btn--sm" type="button"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>Add extra</button></div>
+          </fieldset>
+        </div>
+      </details>
+
+      <details class="editor-section">
+        <summary><h2>Logistics</h2></summary>
+        <div class="editor-section__body">
+          <div class="field-row">
+            <label class="field"><span class="field__label">Load-in</span><select class="select" name="loadIn"><option>Stairs</option><option>Elevator</option><option selected>Freight elevator</option><option>Ground level</option></select></label>
+            <label class="field"><span class="field__label">Load-in note <span class="optional">(optional)</span></span><input class="input" name="loadInNote" value="Small, 1.2 m wide"></label>
+          </div>
+          <div class="field-row">
+            <label class="field"><span class="field__label">Parking</span><select class="select" name="parking"><option>On-site</option><option selected>Street</option><option>None</option></select></label>
+            <label class="field"><span class="field__label">Parking note <span class="optional">(optional)</span></span><input class="input" name="parkingNote" value="Paid, 2-hour limit"></label>
+          </div>
+          <label class="field"><span class="field__label">Transit</span><input class="input" name="transit" value="Dundas West station, 8-minute walk; 505 streetcar at the door"></label>
+          <div class="field-row">
+            <label class="field"><span class="field__label">Washroom</span><input class="input" name="washroom" value="Private"></label>
+            <label class="field"><span class="field__label">Changing area</span><input class="input" name="changingArea" value="Curtained corner with mirror" aria-describedby="changing-help"><span class="field__help" id="changing-help">Write "None" rather than leaving it empty.</span></label>
+          </div>
+          <div class="field-row">
+            <label class="field"><span class="field__label">Client seating</span><input class="input" name="clientSeating" value="Sofa for 4"></label>
+            <label class="field"><span class="field__label">Noise</span><input class="input" name="noise" value="Streetcar rumble every few minutes"></label>
+          </div>
+        </div>
+      </details>
+
+      <details class="editor-section">
+        <summary><h2>Images</h2></summary>
+        <div class="editor-section__body">
+          <fieldset class="stack">
+            <legend>Standard test shots</legend>
+            <ol class="image-list">
+              <li class="image-row">
+                <div class="image-row__thumb"><img src="../../assets/img/test-the-junction-loft-1.svg" alt="" width="800" height="1000"></div>
+                <div class="image-row__body">
+                  <span class="image-row__meta">1 of 3 · headshot.jpg · 4.2 MB</span>
+                  <label class="field"><span class="field__label">Alt text</span><input class="input" name="testShots[0].alt" value="Test shot 1, headshot: soft octabox light from 45 degrees, gentle shadow side, true skin tones."></label>
+                </div>
+                <div class="image-row__actions">
+                  <button class="btn btn--sm" type="button" aria-disabled="true">Move up<span class="visually-hidden">: test shot 1</span></button>
+                  <button class="btn btn--sm" type="button">Move down<span class="visually-hidden">: test shot 1</span></button>
+                  <a class="btn btn--sm btn--ghost" href="../../dialogs/remove-image/default.html">Remove<span class="visually-hidden"> test shot 1</span></a>
+                </div>
+              </li>
+              <li class="image-row">
+                <div class="image-row__thumb"><img src="../../assets/img/test-the-junction-loft-2.svg" alt="" width="800" height="1000"></div>
+                <div class="image-row__body">
+                  <span class="image-row__meta">2 of 3 · full-length.jpg · 4.6 MB</span>
+                  <label class="field"><span class="field__label">Alt text</span><input class="input" name="testShots[1].alt" value="Test shot 2, full length on the cyc; scuffs show where the wall meets the floor."></label>
+                </div>
+                <div class="image-row__actions">
+                  <button class="btn btn--sm" type="button">Move up<span class="visually-hidden">: test shot 2</span></button>
+                  <button class="btn btn--sm" type="button">Move down<span class="visually-hidden">: test shot 2</span></button>
+                  <a class="btn btn--sm btn--ghost" href="../../dialogs/remove-image/default.html">Remove<span class="visually-hidden"> test shot 2</span></a>
+                </div>
+              </li>
+              <li class="image-row">
+                <div class="image-row__thumb"><img src="../../assets/img/test-the-junction-loft-3.svg" alt="" width="800" height="1000"></div>
+                <div class="image-row__body">
+                  <span class="image-row__meta">3 of 3 · product-table.jpg · 3.9 MB</span>
+                  <label class="field"><span class="field__label">Alt text</span><input class="input" name="testShots[2].alt" value="Test shot 3, product on a table: even light, crisp edges, no colour cast."></label>
+                </div>
+                <div class="image-row__actions">
+                  <button class="btn btn--sm" type="button">Move up<span class="visually-hidden">: test shot 3</span></button>
+                  <button class="btn btn--sm" type="button" aria-disabled="true">Move down<span class="visually-hidden">: test shot 3</span></button>
+                  <a class="btn btn--sm btn--ghost" href="../../dialogs/remove-image/default.html">Remove<span class="visually-hidden"> test shot 3</span></a>
+                </div>
+              </li>
+            </ol>
+            <div class="upload-drop">
+              <input class="file-input visually-hidden" id="test-upload" type="file" accept="image/jpeg,image/png,image/webp,image/avif" multiple>
+              <label class="btn btn--sm" for="test-upload">Add test shots</label>
+              <span>JPEG, PNG, WebP or AVIF, up to 20 MB each.</span>
+            </div>
+          </fieldset>
+          <fieldset class="stack">
+            <legend>Gallery</legend>
+            <ol class="image-list">
+              <li class="image-row">
+                <div class="image-row__thumb"><img src="../../assets/img/gallery-1.svg" alt="" width="800" height="1000"></div>
+                <div class="image-row__body">
+                  <span class="image-row__meta">1 of 8 · gallery-01.jpg · 5.4 MB</span>
+                  <label class="field"><span class="field__label">Alt text</span><input class="input" name="gallery[0].alt" value="Portrait by the north windows, soft light wrapping from the left."></label>
+                </div>
+                <div class="image-row__actions">
+                  <button class="btn btn--sm" type="button" aria-disabled="true">Move up<span class="visually-hidden">: gallery image 1</span></button>
+                  <button class="btn btn--sm" type="button">Move down<span class="visually-hidden">: gallery image 1</span></button>
+                  <a class="btn btn--sm btn--ghost" href="../../dialogs/remove-image/default.html">Remove<span class="visually-hidden"> gallery image 1</span></a>
+                </div>
+              </li>
+              <li class="image-row">
+                <div class="image-row__thumb"><img src="../../assets/img/gallery-2.svg" alt="" width="800" height="1000"></div>
+                <div class="image-row__body">
+                  <span class="image-row__meta">2 of 8 · gallery-02.jpg · 6.1 MB</span>
+                  <label class="field"><span class="field__label">Alt text</span><input class="input" name="gallery[1].alt" value="Model in a long coat on the white cyc, full length."></label>
+                </div>
+                <div class="image-row__actions">
+                  <button class="btn btn--sm" type="button">Move up<span class="visually-hidden">: gallery image 2</span></button>
+                  <button class="btn btn--sm" type="button">Move down<span class="visually-hidden">: gallery image 2</span></button>
+                  <a class="btn btn--sm btn--ghost" href="../../dialogs/remove-image/default.html">Remove<span class="visually-hidden"> gallery image 2</span></a>
+                </div>
+              </li>
+              <li class="image-row">
+                <div class="image-row__thumb"><img src="../../assets/img/gallery-3.svg" alt="" width="800" height="1000"></div>
+                <div class="image-row__body">
+                  <span class="image-row__meta">3 of 8 · gallery-03.jpg · 4.8 MB</span>
+                  <label class="field"><span class="field__label">Alt text</span><input class="input" name="gallery[2].alt" value="Close-up portrait against grey seamless with window light."></label>
+                </div>
+                <div class="image-row__actions">
+                  <button class="btn btn--sm" type="button">Move up<span class="visually-hidden">: gallery image 3</span></button>
+                  <button class="btn btn--sm" type="button">Move down<span class="visually-hidden">: gallery image 3</span></button>
+                  <a class="btn btn--sm btn--ghost" href="../../dialogs/remove-image/default.html">Remove<span class="visually-hidden"> gallery image 3</span></a>
+                </div>
+              </li>
+            </ol>
+            <details>
+              <summary class="btn btn--sm btn--ghost">Show 5 more gallery images</summary>
+              <ol class="image-list" start="4" style="margin-top: var(--space-3);">
+                <li class="image-row">
+                  <div class="image-row__thumb"><img src="../../assets/img/gallery-4.svg" alt="" width="800" height="1000"></div>
+                  <div class="image-row__body">
+                    <span class="image-row__meta">4 of 8 · gallery-04.jpg · 5.9 MB</span>
+                    <label class="field"><span class="field__label">Alt text</span><input class="input" name="gallery[3].alt" value="Two models on the sofa in afternoon light."></label>
+                  </div>
+                  <div class="image-row__actions">
+                    <button class="btn btn--sm" type="button">Move up<span class="visually-hidden">: gallery image 4</span></button>
+                    <button class="btn btn--sm" type="button">Move down<span class="visually-hidden">: gallery image 4</span></button>
+                    <a class="btn btn--sm btn--ghost" href="../../dialogs/remove-image/default.html">Remove<span class="visually-hidden"> gallery image 4</span></a>
+                  </div>
+                </li>
+                <li class="image-row">
+                  <div class="image-row__thumb"><img src="../../assets/img/gallery-5.svg" alt="" width="800" height="1000"></div>
+                  <div class="image-row__body">
+                    <span class="image-row__meta">5 of 8 · gallery-05.jpg · 5.2 MB</span>
+                    <label class="field"><span class="field__label">Alt text</span><input class="input" name="gallery[4].alt" value="Seated portrait on black seamless lit by one strobe."></label>
+                  </div>
+                  <div class="image-row__actions">
+                    <button class="btn btn--sm" type="button">Move up<span class="visually-hidden">: gallery image 5</span></button>
+                    <button class="btn btn--sm" type="button">Move down<span class="visually-hidden">: gallery image 5</span></button>
+                    <a class="btn btn--sm btn--ghost" href="../../dialogs/remove-image/default.html">Remove<span class="visually-hidden"> gallery image 5</span></a>
+                  </div>
+                </li>
+                <li class="image-row">
+                  <div class="image-row__thumb"><img src="../../assets/img/gallery-6.svg" alt="" width="800" height="1000"></div>
+                  <div class="image-row__body">
+                    <span class="image-row__meta">6 of 8 · gallery-06.jpg · 6.6 MB</span>
+                    <label class="field"><span class="field__label">Alt text</span><input class="input" name="gallery[5].alt" value="Model laughing by the windows, backlit."></label>
+                  </div>
+                  <div class="image-row__actions">
+                    <button class="btn btn--sm" type="button">Move up<span class="visually-hidden">: gallery image 6</span></button>
+                    <button class="btn btn--sm" type="button">Move down<span class="visually-hidden">: gallery image 6</span></button>
+                    <a class="btn btn--sm btn--ghost" href="../../dialogs/remove-image/default.html">Remove<span class="visually-hidden"> gallery image 6</span></a>
+                  </div>
+                </li>
+                <li class="image-row">
+                  <div class="image-row__thumb"><img src="../../assets/img/gallery-7.svg" alt="" width="800" height="1000"></div>
+                  <div class="image-row__body">
+                    <span class="image-row__meta">7 of 8 · gallery-07.jpg · 5.0 MB</span>
+                    <label class="field"><span class="field__label">Alt text</span><input class="input" name="gallery[6].alt" value="Fashion look on the cyc with a deep shadow from the octabox."></label>
+                  </div>
+                  <div class="image-row__actions">
+                    <button class="btn btn--sm" type="button">Move up<span class="visually-hidden">: gallery image 7</span></button>
+                    <button class="btn btn--sm" type="button">Move down<span class="visually-hidden">: gallery image 7</span></button>
+                    <a class="btn btn--sm btn--ghost" href="../../dialogs/remove-image/default.html">Remove<span class="visually-hidden"> gallery image 7</span></a>
+                  </div>
+                </li>
+                <li class="image-row">
+                  <div class="image-row__thumb"><img src="../../assets/img/gallery-8.svg" alt="" width="800" height="1000"></div>
+                  <div class="image-row__body">
+                    <span class="image-row__meta">8 of 8 · gallery-08.jpg · 7.3 MB</span>
+                    <label class="field"><span class="field__label">Alt text</span><input class="input" name="gallery[7].alt" value="Wide view of the loft: windows, cyc and sofa."></label>
+                  </div>
+                  <div class="image-row__actions">
+                    <button class="btn btn--sm" type="button">Move up<span class="visually-hidden">: gallery image 8</span></button>
+                    <button class="btn btn--sm" type="button" aria-disabled="true">Move down<span class="visually-hidden">: gallery image 8</span></button>
+                    <a class="btn btn--sm btn--ghost" href="../../dialogs/remove-image/default.html">Remove<span class="visually-hidden"> gallery image 8</span></a>
+                  </div>
+                </li>
+              </ol>
+            </details>
+            <div class="upload-drop">
+              <input class="file-input visually-hidden" id="gallery-upload" type="file" accept="image/jpeg,image/png,image/webp,image/avif" multiple>
+              <label class="btn btn--sm" for="gallery-upload">Add gallery images</label>
+              <span>JPEG, PNG, WebP or AVIF, up to 20 MB each.</span>
+            </div>
+          </fieldset>
+        </div>
+      </details>
+
+      <details class="editor-section">
+        <summary><h2>Rubric scores</h2></summary>
+        <div class="editor-section__body">
+          <p class="field__help">Whole numbers from 1 to 5. The overall score is calculated by the server.</p>
+          <div class="field-row" style="grid-template-columns: repeat(auto-fit, minmax(min(100%, 7rem), 1fr));">
+            <label class="field"><span class="field__label">Value</span><input class="input" name="scores.value" type="number" inputmode="numeric" min="1" max="5" value="4"></label>
+            <label class="field"><span class="field__label">Light</span><input class="input" name="scores.light" type="number" inputmode="numeric" min="1" max="5" value="5"></label>
+            <label class="field"><span class="field__label">Space</span><input class="input" name="scores.space" type="number" inputmode="numeric" min="1" max="5" value="3"></label>
+            <label class="field"><span class="field__label">Gear</span><input class="input" name="scores.gear" type="number" inputmode="numeric" min="1" max="5" value="4"></label>
+            <label class="field"><span class="field__label">Logistics</span><input class="input" name="scores.logistics" type="number" inputmode="numeric" min="1" max="5" value="2"></label>
+            <label class="field"><span class="field__label">Condition</span><input class="input" name="scores.condition" type="number" inputmode="numeric" min="1" max="5" value="5"></label>
+          </div>
+        </div>
+      </details>
+
+      <details class="editor-section">
+        <summary><h2>Verdict</h2></summary>
+        <div class="editor-section__body">
+          <label class="field"><span class="field__label">Who it's for</span><textarea class="textarea" name="verdictFor" rows="3">Portrait and fashion shooters who want big north light and a usable cyc on a mid-range budget.</textarea></label>
+          <label class="field"><span class="field__label">Who should skip it</span><textarea class="textarea" name="verdictSkip" rows="3">Video crews and anyone hauling heavy cases.</textarea></label>
+        </div>
+      </details>
+
+      <details class="editor-section">
+        <summary><h2>Disclosure</h2></summary>
+        <div class="editor-section__body">
+          <fieldset>
+            <legend>How was this session paid for?</legend>
+            <label class="choice"><input type="radio" name="disclosure" value="paid_in_full" checked><span>I paid the full rate</span></label>
+            <label class="choice"><input type="radio" name="disclosure" value="discounted"><span>Discounted</span></label>
+            <label class="choice"><input type="radio" name="disclosure" value="comped"><span>Comped (free of charge)</span></label>
+          </fieldset>
+          <label class="field"><span class="field__label">Provided by <span class="optional">(needed when discounted or comped)</span></span><input class="input" name="disclosureProvider" disabled></label>
+        </div>
+      </details>
+
+      <details class="editor-section">
+        <summary><h2>Episode video</h2></summary>
+        <div class="editor-section__body">
+          <label class="field"><span class="field__label">YouTube link or video ID <span class="optional">(optional)</span></span><input class="input" name="video" value="https://www.youtube.com/watch?v=Jx7Lq2pT9aE" aria-describedby="video-help"><span class="field__help" id="video-help">Paste a youtube.com or youtu.be link, or the 11-character ID. Leave empty for no video section.</span></label>
+        </div>
+      </details>
+
+      <div class="form-actions form-actions--sticky">
+        <button class="btn btn--primary" type="submit">Save changes</button>
+        <a class="btn btn--ghost" href="../admin-studios/default.html">Cancel</a>
+        <span class="save-status" role="status">All changes saved</span>
+      </div>
+    </form>
+  </div>
+</main>
+
+<p class="mock-note" style="top: 13rem; right: 1rem;">Delete stays disabled while the studio is published (L2-061.2). Sections remember whether they are open; collapsed sections keep their values.</p>
+
+<nav class="mock-bar" aria-label="Mock navigation">
+  <a class="mock-bar__home" href="../../index.html" aria-label="All mocks">⌂</a>
+  <span class="mock-bar__screen">Studio editor</span>
+  <ul class="mock-bar__states">
+    <li><a href="new.html">new</a></li>
+    <li><a href="default.html">default</a></li>
+    <li><a href="published.html" aria-current="page">published</a></li>
+    <li><a href="loading.html">loading</a></li>
+    <li><a href="error.html">error</a></li>
+    <li><a href="invalid.html">invalid</a></li>
+    <li><a href="submitting.html">submitting</a></li>
+    <li><a href="success.html">success</a></li>
+    <li><a href="uploading.html">uploading</a></li>
+    <li><a href="upload-failed.html">upload-failed</a></li>
+    <li><a href="price-changed.html">price-changed</a></li>
+  </ul>
+  <button type="button" data-theme-toggle aria-pressed="false">☾ Dark</button>
+  <button type="button" data-chrome-toggle aria-label="Hide mock chrome">×</button>
+</nav>
+<script src="../../assets/mock.js"></script>
+</body>
+</html>

@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Spot filters · selected — ShotThere mocks</title>
+<meta name="mock:kind" content="dialog">
+<meta name="mock:screen" content="spot-filters">
+<meta name="mock:state" content="selected">
+<meta name="mock:requirements" content="L2-024 L2-025 L2-067">
+<meta name="description" content="Spot filters with Family and No permit needed chosen: the footer previews Show 2 spots.">
+<link rel="stylesheet" href="../../../design-system/tokens/tokens.css">
+<link rel="stylesheet" href="../../../design-system/assets/components.css">
+<link rel="stylesheet" href="../../assets/mock.css">
+</head>
+<body>
+
+<!-- The spot list behind is inert while the dialog is open. -->
+<div inert aria-hidden="true">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <a class="wordmark" href="../../pages/home/default.html">ShotThere <span class="wordmark__tag">Toronto</span></a>
+    <nav class="site-nav" aria-label="Primary">
+      <a class="site-nav__link site-nav__extra" href="../../pages/studios/default.html">Studios</a>
+      <a class="site-nav__link site-nav__extra" href="../../pages/spots/default.html" aria-current="page">Spots</a>
+      <a class="site-nav__link site-nav__extra" href="../../pages/map/default.html">Map</a>
+      <a class="site-nav__link site-nav__extra" href="../../pages/compare/default.html">Compare</a>
+      <a class="site-nav__link site-nav__extra" href="../../pages/guides/default.html">Guides</a>
+      <a class="btn btn--ghost site-nav__menu" href="../../dialogs/site-menu/default.html" aria-haspopup="dialog" aria-expanded="false">
+        <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>Menu
+      </a>
+    </nav>
+  </header>
+  <main id="main" class="container" tabindex="-1">
+    <div class="browse">
+      <div class="browse__title">
+        <h1>Outdoor spots</h1>
+        <p class="subtitle">Every spot here was shot at first-hand. Permit notes show what each kind of shoot needs and when the rule was last checked.</p>
+      </div>
+
+      <aside class="browse__aside" aria-labelledby="filters-title">
+        <form class="stack stack--lg" action="../../pages/spots/default.html" method="get">
+          <h2 class="filter-group__title" id="filters-title" style="font: var(--text-h4); color: var(--color-fg-default);">Filter spots</h2>
+          <fieldset class="filter-group">
+            <legend class="filter-group__title">Type</legend>
+            <label class="choice"><input type="checkbox" name="type" value="park"><span>Park</span></label>
+            <label class="choice"><input type="checkbox" name="type" value="architecture"><span>Architecture</span></label>
+            <label class="choice"><input type="checkbox" name="type" value="waterfront"><span>Waterfront</span></label>
+            <label class="choice"><input type="checkbox" name="type" value="indoor-public"><span>Indoor public</span></label>
+          </fieldset>
+          <fieldset class="filter-group">
+            <legend class="filter-group__title">Use case</legend>
+            <label class="choice"><input type="checkbox" name="use" value="engagement"><span>Engagement</span></label>
+            <label class="choice"><input type="checkbox" name="use" value="family"><span>Family</span></label>
+            <label class="choice"><input type="checkbox" name="use" value="portrait"><span>Portrait</span></label>
+            <label class="choice"><input type="checkbox" name="use" value="brand"><span>Brand</span></label>
+            <label class="choice"><input type="checkbox" name="use" value="video"><span>Video</span></label>
+          </fieldset>
+          <fieldset class="filter-group">
+            <legend class="filter-group__title">Permit</legend>
+            <label class="choice"><input type="radio" name="permit" value="" checked><span>Any</span></label>
+            <label class="choice"><input type="radio" name="permit" value="none-needed"><span>No permit needed for the selected use</span></label>
+          </fieldset>
+          <div class="cluster">
+            <button class="btn" type="submit">Apply filters</button>
+          </div>
+        </form>
+      </aside>
+
+      <section class="browse__results" aria-labelledby="results-title">
+        <h2 class="visually-hidden" id="results-title">Results</h2>
+        <div class="cluster cluster--between" style="margin-bottom: var(--space-8);">
+          <p class="result-count" role="status" aria-live="polite">5 spots</p>
+          <div class="cluster">
+            <a class="filter-trigger until-lg" href="../../dialogs/spot-filters/default.html" aria-haspopup="dialog">
+              <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12M20 18h0"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/></svg>Filters
+            </a>
+          </div>
+        </div>
+        <ul class="location-grid">
+          <li class="location-card">
+            <div class="location-card__media"><img src="../../assets/img/spot-allan-gardens-conservatory.svg" alt="" width="1200" height="800" loading="eager" fetchpriority="high"></div>
+            <h3 class="location-card__name"><a href="../../pages/spot/default.html">Allan Gardens Conservatory</a></h3>
+            <p class="location-card__meta">Garden District · Indoor public</p>
+            <ul class="tags" aria-label="Best uses"><li class="tag">Portrait</li><li class="tag">Engagement</li><li class="tag">Brand</li></ul>
+            <p class="location-card__meta">Portraits: no permit needed · Commercial: permit required</p>
+          </li>
+          <li class="location-card">
+            <div class="location-card__media"><img src="../../assets/img/spot-trinity-bellwoods-park.svg" alt="" width="1200" height="800" loading="eager"></div>
+            <h3 class="location-card__name"><a href="../../pages/spot/default.html">Trinity Bellwoods Park</a></h3>
+            <p class="location-card__meta">Trinity Bellwoods · Park</p>
+            <ul class="tags" aria-label="Best uses"><li class="tag">Family</li><li class="tag">Portrait</li><li class="tag">Engagement</li></ul>
+            <p class="location-card__meta">Portraits: no permit needed · Commercial: permit required</p>
+          </li>
+          <li class="location-card">
+            <div class="location-card__media"><img src="../../assets/img/spot-evergreen-brick-works.svg" alt="" width="1200" height="800" loading="eager"></div>
+            <h3 class="location-card__name"><a href="../../pages/spot/default.html">Evergreen Brick Works</a></h3>
+            <p class="location-card__meta">Don Valley · Park</p>
+            <ul class="tags" aria-label="Best uses"><li class="tag">Engagement</li><li class="tag">Family</li><li class="tag">Portrait</li><li class="tag">Brand</li></ul>
+            <p class="location-card__meta">Portraits: no permit needed · Commercial: permit required</p>
+          </li>
+          <li class="location-card">
+            <div class="location-card__media"><img src="../../assets/img/spot-humber-bay-arch-bridge.svg" alt="" width="1200" height="800" loading="lazy"></div>
+            <h3 class="location-card__name"><a href="../../pages/spot/default.html">Humber Bay Arch Bridge</a></h3>
+            <p class="location-card__meta">Humber Bay · Waterfront</p>
+            <ul class="tags" aria-label="Best uses"><li class="tag">Engagement</li><li class="tag">Portrait</li><li class="tag">Video</li></ul>
+            <p class="location-card__meta">Portraits: no permit needed · Commercial: permit required</p>
+          </li>
+          <li class="location-card">
+            <div class="location-card__media"><img src="../../assets/img/spot-distillery-district.svg" alt="" width="1200" height="800" loading="lazy"></div>
+            <h3 class="location-card__name"><a href="../../pages/spot/stale-permit.html">Distillery District</a></h3>
+            <p class="location-card__meta">Distillery District · Architecture</p>
+            <ul class="tags" aria-label="Best uses"><li class="tag">Engagement</li><li class="tag">Brand</li><li class="tag">Portrait</li></ul>
+            <p class="location-card__meta">Portraits: permit required · Commercial: permit required</p>
+            <p><span class="badge badge--warning">Permit info may be out of date</span></p>
+          </li>
+        </ul>
+      </section>
+    </div>
+  </main>
+</div>
+
+<div class="sheet" role="dialog" aria-modal="true" aria-labelledby="dlg-title" aria-describedby="dlg-desc" data-dismiss-on-escape>
+  <div class="sheet__header">
+    <h2 class="sheet__title" id="dlg-title">Filters</h2>
+    <a class="btn btn--ghost btn--icon" href="../../pages/spots/default.html" aria-label="Close" autofocus>
+      <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg>
+    </a>
+  </div>
+  <form class="sheet__body" id="spot-filters" action="../../pages/spots/default.html" method="get">
+    <p class="subtitle" id="dlg-desc">Narrow the spots by type, the kind of shoot and permits. The list updates when you show the results.</p>
+    <fieldset class="filter-group">
+      <legend class="filter-group__title">Type</legend>
+      <label class="choice"><input type="checkbox" name="type" value="park"><span>Park</span></label>
+      <label class="choice"><input type="checkbox" name="type" value="architecture"><span>Architecture</span></label>
+      <label class="choice"><input type="checkbox" name="type" value="waterfront"><span>Waterfront</span></label>
+      <label class="choice"><input type="checkbox" name="type" value="indoor-public"><span>Indoor public</span></label>
+    </fieldset>
+    <fieldset class="filter-group">
+      <legend class="filter-group__title">Use case</legend>
+      <label class="choice"><input type="checkbox" name="use" value="engagement"><span>Engagement</span></label>
+      <label class="choice"><input type="checkbox" name="use" value="family" checked><span>Family</span></label>
+      <label class="choice"><input type="checkbox" name="use" value="portrait"><span>Portrait</span></label>
+      <label class="choice"><input type="checkbox" name="use" value="brand"><span>Brand</span></label>
+      <label class="choice"><input type="checkbox" name="use" value="video"><span>Video</span></label>
+    </fieldset>
+    <fieldset class="filter-group">
+      <legend class="filter-group__title">Permit</legend>
+      <label class="choice"><input type="radio" name="permit" value=""><span>Any</span></label>
+      <label class="choice"><input type="radio" name="permit" value="none-needed" checked><span>No permit needed for the selected use</span></label>
+    </fieldset>
+  </form>
+  <div class="sheet__footer">
+    <a class="btn" href="default.html">Clear all</a>
+    <a class="btn btn--primary" href="../../pages/spots/filtered.html">Show 2 spots</a>
+  </div>
+</div>
+
+<p class="mock-note" style="top: 5rem; right: 1rem;">“No permit needed” uses each spot's portrait-shoot rule (L2-024.2).</p>
+<nav class="mock-bar" aria-label="Mock navigation">
+  <a class="mock-bar__home" href="../../index.html" aria-label="All mocks">⌂</a>
+  <span class="mock-bar__screen">Spot filters</span>
+  <ul class="mock-bar__states">
+    <li><a href="default.html">default</a></li>
+    <li><a href="selected.html" aria-current="page">selected</a></li>
+  </ul>
+  <button type="button" data-theme-toggle aria-pressed="false">☾ Dark</button>
+  <button type="button" data-chrome-toggle aria-label="Hide mock chrome">×</button>
+</nav>
+<script src="../../assets/mock.js"></script>
+</body>
+</html>

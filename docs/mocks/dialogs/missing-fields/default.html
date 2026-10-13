@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Can't publish yet · default — ShotThere mocks</title>
+<meta name="mock:kind" content="dialog">
+<meta name="mock:screen" content="missing-fields">
+<meta name="mock:state" content="default">
+<meta name="mock:requirements" content="L2-056 L2-002 L2-045 L2-055 L2-060">
+<meta name="description" content="Publishing Corktown Garage Studio was refused: the dialog lists Ceiling height and At least one gallery image, each linking to its field.">
+<link rel="stylesheet" href="../../../design-system/tokens/tokens.css">
+<link rel="stylesheet" href="../../../design-system/assets/components.css">
+<link rel="stylesheet" href="../../assets/mock.css">
+</head>
+<body>
+
+<!-- The editor behind stays visible for context but is inert while the dialog is open. -->
+<div inert aria-hidden="true">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <span class="wordmark">ShotThere <span class="wordmark__tag">Admin</span></span>
+    <nav class="site-nav" aria-label="Administration">
+      <span class="site-nav__link site-nav__extra">Dashboard</span>
+      <span class="site-nav__link site-nav__extra" aria-current="page">Studios</span>
+      <span class="site-nav__link site-nav__extra">Spots</span>
+      <span class="site-nav__link site-nav__extra">Guides</span>
+    </nav>
+  </header>
+  <main id="main" class="container">
+    <div class="page-header"><div><h1>Corktown Garage Studio</h1><p class="subtitle"><span class="status status--draft">Draft</span> · Last saved 11 Oct 2026, 4:12 pm</p></div></div>
+    <div class="editor-layout">
+      <aside class="editor-aside">
+        <h2 style="font: var(--text-h4);">Status</h2>
+        <p class="editor-aside__meta">Draft · not on the public site</p>
+        <span class="btn">Publish</span>
+        <span class="btn btn--ghost" style="color: var(--color-danger-fg);">Delete studio</span>
+      </aside>
+      <div class="editor-form">
+        <div class="editor-section"><div class="editor-section__body" style="padding-top: var(--space-5);"><h2 style="font: var(--text-h4);">Basics</h2><div class="read-only-value">Corktown Garage Studio · Corktown</div></div></div>
+        <div class="editor-section"><div class="editor-section__body" style="padding-top: var(--space-5);"><h2 style="font: var(--text-h4);">Pricing and fees</h2><div class="read-only-value">$65.00 an hour · 2-hour minimum</div></div></div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<div class="backdrop"></div>
+<div class="dialog" role="dialog" aria-modal="true" aria-labelledby="dlg-title" aria-describedby="dlg-desc" data-dismiss-on-escape>
+  <div class="dialog__panel dialog__panel--sm">
+    <div class="dialog__header">
+      <div class="dialog__heading">
+        <h2 class="dialog__title" id="dlg-title">Can't publish yet</h2>
+        <p class="dialog__desc" id="dlg-desc">Add these and publish again:</p>
+      </div>
+      <a class="btn btn--ghost btn--icon" href="../../pages/studio-editor/default.html" aria-label="Close">
+        <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg>
+      </a>
+    </div>
+    <div class="dialog__body">
+      <ul style="padding-left: var(--space-5); display: grid; gap: var(--space-2);">
+          <li><a href="../../pages/studio-editor/default.html">Ceiling height</a></li>
+          <li><a href="../../pages/studio-editor/default.html">At least one gallery image</a></li>
+      </ul>
+    </div>
+    <div class="dialog__footer">
+      <a class="btn btn--primary" href="../../pages/studio-editor/default.html" autofocus>OK</a>
+    </div>
+  </div>
+</div>
+
+<p class="mock-note" style="top: 1rem; right: 1rem;">Lists exactly what the server named (ceilingHeight, galleryImages). Each link closes the dialog, opens its section and focuses the field (L2-056.3). Nothing was published.</p>
+
+<nav class="mock-bar" aria-label="Mock navigation">
+  <a class="mock-bar__home" href="../../index.html" aria-label="All mocks">⌂</a>
+  <span class="mock-bar__screen">Can't publish yet</span>
+  <ul class="mock-bar__states">
+    <li><a href="default.html" aria-current="page">default</a></li>
+    <li><a href="spot.html">spot</a></li>
+  </ul>
+  <button type="button" data-theme-toggle aria-pressed="false">☾ Dark</button>
+  <button type="button" data-chrome-toggle aria-label="Hide mock chrome">×</button>
+</nav>
+<script src="../../assets/mock.js"></script>
+</body>
+</html>

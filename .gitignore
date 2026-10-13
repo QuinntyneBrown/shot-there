@@ -1,0 +1,8 @@
+node_modules/
+
+# Design-system and mock scratch output
+docs/mocks/.cache/
+docs/design-system/.cache/
+
+# Video tooling scratch (timing, renders)
+.cache/

@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Home · default — ShotThere mocks</title>
+<meta name="mock:kind" content="page">
+<meta name="mock:screen" content="home">
+<meta name="mock:state" content="default">
+<meta name="mock:requirements" content="L2-039 L2-041 L2-035 L2-046 L2-048">
+<meta name="description" content="Home page: the promise, an email signup, the three latest studio reviews, the guides and two outdoor spots.">
+<link rel="stylesheet" href="../../../design-system/tokens/tokens.css">
+<link rel="stylesheet" href="../../../design-system/assets/components.css">
+<link rel="stylesheet" href="../../assets/mock.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <a class="wordmark" href="../home/default.html">ShotThere <span class="wordmark__tag">Toronto</span></a>
+  <nav class="site-nav" aria-label="Primary">
+    <a class="site-nav__link site-nav__extra" href="../studios/default.html">Studios</a>
+    <a class="site-nav__link site-nav__extra" href="../spots/default.html">Spots</a>
+    <a class="site-nav__link site-nav__extra" href="../map/default.html">Map</a>
+    <a class="site-nav__link site-nav__extra" href="../compare/default.html">Compare</a>
+    <a class="site-nav__link site-nav__extra" href="../guides/default.html">Guides</a>
+    <a class="btn btn--ghost site-nav__menu" href="../../dialogs/site-menu/default.html" aria-haspopup="dialog" aria-expanded="false">
+      <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>Menu
+    </a>
+  </nav>
+</header>
+
+<main id="main" class="container" tabindex="-1">
+  <section class="home-hero" aria-labelledby="home-title">
+    <h1 id="home-title">Toronto photo studios and outdoor spots, reviewed first-hand</h1>
+    <p class="subtitle">Nothing is listed unless it has been shot there. Same measurements, same test setup, side by side.</p>
+    <form class="signup" action="success.html" method="post" novalidate aria-labelledby="hero-signup-title">
+      <h2 class="signup__title" id="hero-signup-title">Get new reviews by email</h2>
+      <p>One short email per new review. No ads, no sponsors.</p>
+      <div class="signup__row">
+        <div class="field">
+          <label class="field__label" for="hero-email">Email address</label>
+          <input class="input" id="hero-email" name="email" type="email" autocomplete="email" inputmode="email">
+        </div>
+        <button class="btn btn--primary" type="submit" style="align-self: flex-end;">Subscribe</button>
+      </div>
+      <div class="signup__trap" aria-hidden="true"><label for="hero-website">Leave this field empty</label><input id="hero-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+    </form>
+  </section>
+
+  <section class="section-gap" aria-labelledby="latest-title">
+    <div class="section-head"><h2 id="latest-title">Latest reviews</h2><a href="../studios/default.html">All studios</a></div>
+    <ul class="location-grid">
+      <li class="location-card">
+        <div class="location-card__media"><img src="../../assets/img/studio-kensington-window-room.svg" alt="" width="1200" height="800" loading="lazy"></div>
+        <h3 class="location-card__name"><a href="../studio/default.html">Kensington Window Room</a></h3>
+        <p class="location-card__meta">Kensington Market · Reviewed 3 Oct 2026</p>
+        <dl class="location-card__facts">
+          <div><dt>All-in 2 h</dt><dd>$80.00</dd></div>
+          <div><dt>Score</dt><dd>3.2<span class="visually-hidden"> out of 5</span></dd></div>
+        </dl>
+      </li>
+      <li class="location-card">
+        <div class="location-card__media"><img src="../../assets/img/studio-the-junction-loft.svg" alt="" width="1200" height="800" loading="lazy"></div>
+        <h3 class="location-card__name"><a href="../studio/default.html">The Junction Loft</a></h3>
+        <p class="location-card__meta">Junction · Reviewed 29 Sep 2026</p>
+        <dl class="location-card__facts">
+          <div><dt>All-in 2 h</dt><dd>$145.00</dd></div>
+          <div><dt>Score</dt><dd>3.8<span class="visually-hidden"> out of 5</span></dd></div>
+        </dl>
+      </li>
+      <li class="location-card">
+        <div class="location-card__media"><img src="../../assets/img/studio-leslieville-daylight-studio.svg" alt="" width="1200" height="800" loading="lazy"></div>
+        <h3 class="location-card__name"><a href="../studio/default.html">Leslieville Daylight Studio</a></h3>
+        <p class="location-card__meta">Leslieville · Reviewed 14 Aug 2026</p>
+        <dl class="location-card__facts">
+          <div><dt>All-in 2 h</dt><dd>$91.00</dd></div>
+          <div><dt>Score</dt><dd>4.0<span class="visually-hidden"> out of 5</span></dd></div>
+        </dl>
+      </li>
+    </ul>
+  </section>
+
+  <section class="section-gap" aria-labelledby="guides-title">
+    <div class="section-head"><h2 id="guides-title">Guides</h2><a href="../guides/default.html">All guides</a></div>
+    <ul class="guide-index">
+    <li class="stack stack--sm"><h3><a href="../guide/default.html">Best studios under $120 for 2 hours</a></h3><p class="subtitle">Three studios where 2 hours with mandatory fees comes in under $120.00.</p></li>
+    <li class="stack stack--sm"><h3><a href="../guide/default.html">Best natural light</a></h3><p class="subtitle">The three brightest rooms, ranked by light score and window direction.</p></li>
+    <li class="stack stack--sm"><h3><a href="../guide/default.html">Best for a large crew</a></h3><p class="subtitle">Two studios with the most usable floor space and ceiling height.</p></li>
+    </ul>
+  </section>
+
+  <section class="section-gap" aria-labelledby="spots-title">
+    <div class="section-head"><h2 id="spots-title">Outdoor spots</h2><a href="../spots/default.html">All spots</a></div>
+    <ul class="location-grid">
+      <li class="location-card">
+        <div class="location-card__media"><img src="../../assets/img/spot-evergreen-brick-works.svg" alt="" width="1200" height="800" loading="lazy"></div>
+        <h3 class="location-card__name"><a href="../spot/default.html">Evergreen Brick Works</a></h3>
+        <p class="location-card__meta">Don Valley · Park</p>
+        <ul class="tags" aria-label="Best uses"><li class="tag">Engagement</li><li class="tag">Family</li><li class="tag">Portrait</li><li class="tag">Brand</li></ul>
+        <p class="location-card__meta">Portraits: no permit needed · Commercial: permit required</p>
+      </li>
+      <li class="location-card">
+        <div class="location-card__media"><img src="../../assets/img/spot-trinity-bellwoods-park.svg" alt="" width="1200" height="800" loading="lazy"></div>
+        <h3 class="location-card__name"><a href="../spot/default.html">Trinity Bellwoods Park</a></h3>
+        <p class="location-card__meta">Trinity Bellwoods · Park</p>
+        <ul class="tags" aria-label="Best uses"><li class="tag">Family</li><li class="tag">Portrait</li><li class="tag">Engagement</li></ul>
+        <p class="location-card__meta">Portraits: no permit needed · Commercial: permit required</p>
+      </li>
+    </ul>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__brand">
+    <strong>ShotThere</strong>
+    <span>Toronto photo studios and outdoor spots, reviewed first-hand. Nothing is listed unless it has been shot there.</span>
+  </div>
+  <form class="signup" action="../home/success.html" method="post" novalidate aria-labelledby="footer-signup-title">
+    <h2 class="signup__title" id="footer-signup-title">New reviews by email</h2>
+    <p>One email when a new studio or spot goes up. Unsubscribe any time.</p>
+    <div class="signup__row">
+      <div class="field">
+        <label class="field__label" for="footer-email">Email address</label>
+        <input class="input" id="footer-email" name="email" type="email" autocomplete="email" inputmode="email">
+      </div>
+      <button class="btn" type="submit" style="align-self: flex-end;">Subscribe</button>
+    </div>
+    <div class="signup__trap" aria-hidden="true"><label for="footer-website">Leave this field empty</label><input id="footer-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+  </form>
+  <nav class="site-footer__links" aria-label="Footer">
+    <ul>
+      <li><a href="../studios/default.html">Studios</a></li>
+      <li><a href="../spots/default.html">Spots</a></li>
+      <li><a href="../guides/default.html">Guides</a></li>
+      <li><a href="../editorial-policy/default.html">Editorial policy</a></li>
+      <li><a href="https://www.youtube.com/@ShotThere" target="_blank" rel="noopener">YouTube channel<span class="visually-hidden"> (opens in a new tab)</span></a></li>
+    </ul>
+  </nav>
+  <p class="site-footer__copy">© 2026 ShotThere · No paid placement: order comes only from the sort you choose.</p>
+</footer>
+
+<p class="mock-note" style="top: 5rem; right: 1rem;">Server-rendered; no loading state. The hero Subscribe is the page's one primary action; the footer signup stays secondary.</p>
+<nav class="mock-bar" aria-label="Mock navigation">
+  <a class="mock-bar__home" href="../../index.html" aria-label="All mocks">⌂</a>
+  <span class="mock-bar__screen">Home</span>
+  <ul class="mock-bar__states">
+    <li><a href="default.html" aria-current="page">default</a></li>
+    <li><a href="empty.html">empty</a></li>
+    <li><a href="invalid.html">invalid</a></li>
+    <li><a href="submitting.html">submitting</a></li>
+    <li><a href="success.html">success</a></li>
+    <li><a href="error.html">error</a></li>
+    <li><a href="rate-limited.html">rate-limited</a></li>
+  </ul>
+  <button type="button" data-theme-toggle aria-pressed="false">☾ Dark</button>
+  <button type="button" data-chrome-toggle aria-label="Hide mock chrome">×</button>
+</nav>
+<script src="../../assets/mock.js"></script>
+</body>
+</html>
