@@ -75,12 +75,14 @@ describe('L2-040 signup validation and storage', () => {
     useFakeDependencies();
     const clientIp = newClientIp();
 
-    const statuses = [];
+    const responses = [];
     for (let attempt = 1; attempt <= 7; attempt++) {
-      statuses.push((await signUp({ email: `fan${attempt}@example.com`, sourcePath: '/' }, clientIp)).status);
+      responses.push(await signUp({ email: `fan${attempt}@example.com`, sourcePath: '/' }, clientIp));
     }
 
-    expect(statuses).toEqual([200, 200, 200, 200, 200, 200, 429]);
+    expect(responses.map((response) => response.status)).toEqual([200, 200, 200, 200, 200, 200, 429]);
+    await expectProblem(responses[6], 'rate-limited', 429);
+    expect(responses[6].headers.get('retry-after')).toBe('60');
     expect((await signUp({ email: 'other@example.com', sourcePath: '/' })).status).toBe(200);
   });
 });

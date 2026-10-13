@@ -1,6 +1,8 @@
 import { getDependencies } from '@/lib/data/dependency-container';
 
-const WINDOW_MS = 15 * 60_000;
+/** Failures older than this no longer count, so a refused client can retry after it. */
+export const SIGN_IN_WINDOW_SECONDS = 15 * 60;
+const WINDOW_MS = SIGN_IN_WINDOW_SECONDS * 1000;
 const MAX_CLIENT_FAILURES = 5;
 const MAX_ACCOUNT_FAILURES = 10;
 

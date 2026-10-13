@@ -1,10 +1,14 @@
 import { beforeAll, describe, expect, it } from 'vitest';
 import type { OwnerRecord } from '@/lib/auth/owner-record';
+import { stubSiteOriginPerTest } from '@/tests/support/admin-session';
+import { expectProblem } from '@/tests/support/expect-problem';
 import type { InMemoryOwnerSessionRepository } from '@/tests/support/in-memory-owner-session-repository';
 import { captureLogs } from '@/tests/support/captured-logs';
 import { useFakeDependencies } from '@/tests/support/fake-dependencies';
 import { OWNER_EMAIL, OWNER_PASSWORD, anOwner } from '@/tests/support/owner-account';
 import { setCookie, signIn } from '@/tests/support/sign-in';
+
+stubSiteOriginPerTest();
 
 function sessionsOf(dependencies: ReturnType<typeof useFakeDependencies>) {
   return (dependencies.ownerSessions as InMemoryOwnerSessionRepository).rows;
@@ -54,25 +58,53 @@ describe('L2-049 owner sign-in', () => {
     expect(response.status).toBe(204);
   });
 
-  it('Given a wrong password, when submitted, then the response is 401 "Email or password is incorrect" and no session is created', async () => {
+  it('Given a wrong password, when submitted, then the response is 401 with an empty body and no session is created', async () => {
     const dependencies = useOwnerAccount();
 
     const response = await signIn({ email: OWNER_EMAIL, password: 'wrong password' });
 
     expect(response.status).toBe(401);
-    expect(await response.json()).toEqual({ status: 401, message: 'Email or password is incorrect' });
+    expect(await response.text()).toBe('');
     expect(setCookie(response, 'st_session')).toBeUndefined();
     expect(sessionsOf(dependencies).length).toBe(0);
   });
 
-  it('Given an email that does not match the owner, when submitted, then the same message as a wrong password is returned', async () => {
+  it('Given an email that does not match the owner, when submitted, then the response is the same as for a wrong password', async () => {
     useOwnerAccount();
 
     const unknown = await signIn({ email: 'someone@example.com', password: OWNER_PASSWORD });
     const wrong = await signIn({ email: OWNER_EMAIL, password: 'wrong password' });
 
     expect(unknown.status).toBe(401);
-    expect(await unknown.json()).toEqual(await wrong.json());
+    expect(await unknown.text()).toBe(await wrong.text());
+  });
+
+  it('Given the right password with surrounding spaces, when submitted, then it is trimmed and sign-in succeeds (ICD C-14)', async () => {
+    useOwnerAccount();
+
+    const response = await signIn({ email: OWNER_EMAIL, password: `  ${OWNER_PASSWORD}  ` });
+
+    expect(response.status).toBe(204);
+  });
+
+  it('Given a password over 200 characters, when submitted, then the response is 400 out_of_range on password', async () => {
+    useOwnerAccount();
+
+    const problem = await expectProblem(await signIn({ email: OWNER_EMAIL, password: 'x'.repeat(201) }), 'validation-failed', 400);
+
+    expect(problem.errors).toContainEqual({ field: 'password', code: 'out_of_range', message: expect.any(String) });
+  });
+
+  it.each([
+    ['a foreign origin', 'https://evil.example'],
+    ['no origin', null],
+  ])('Given %s, when credentials are submitted, then the response is 403 csrf-rejected and no session is created (ICD S-3)', async (_label, origin) => {
+    const dependencies = useOwnerAccount();
+
+    const response = await signIn({ email: OWNER_EMAIL, password: OWNER_PASSWORD }, '198.51.100.7', origin);
+
+    await expectProblem(response, 'csrf-rejected', 403);
+    expect(sessionsOf(dependencies)).toEqual([]);
   });
 
   it('Given a wrong password or unknown email, when submitted, then the response time is within 100 ms of the success path', async () => {
@@ -107,15 +139,9 @@ describe('L2-051 session cookie', () => {
     const response = await signIn({ email: OWNER_EMAIL, password: OWNER_PASSWORD });
 
     const session = setCookie(response, 'st_session') ?? '';
-    expect(session).toMatch(/^st_session=[^;]{20,}/);
-    expect(session).toContain('HttpOnly');
-    expect(session).toContain('Secure');
-    expect(session).toContain('SameSite=Lax');
-    expect(session).toContain('Path=/');
+    expect(session).toMatch(/^st_session=[^;]{20,}; HttpOnly; Secure; SameSite=Lax; Path=\/api; Max-Age=604800$/);
     const csrf = setCookie(response, 'st_csrf') ?? '';
-    expect(csrf).toMatch(/^st_csrf=[^;]{20,}/);
-    expect(csrf).toContain('Secure');
-    expect(csrf).not.toContain('HttpOnly');
+    expect(csrf).toMatch(/^st_csrf=[^;]{20,}; Secure; SameSite=Lax; Path=\/; Max-Age=604800$/);
   });
 
   it('Given a successful sign-in, when stored, then only a hash of the session token is kept', async () => {

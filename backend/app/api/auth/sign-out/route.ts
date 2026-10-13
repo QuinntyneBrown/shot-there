@@ -1,11 +1,18 @@
-import { SESSION_COOKIE, clearedSessionCookie } from '@/lib/auth/session-cookies';
+import { SESSION_COOKIE, clearedCookies } from '@/lib/auth/session-cookies';
 import { signOutOwner } from '@/lib/auth/sign-out-owner';
+import { validateOwnerSession } from '@/lib/auth/validate-owner-session';
+import { verifyCsrf } from '@/lib/auth/verify-csrf';
 import { readCookie } from '@/lib/http/read-cookie';
 import { withRequestLogging } from '@/lib/logging/with-request-logging';
 
 export const POST = withRequestLogging(async (request: Request) => {
-  await signOutOwner(readCookie(request, SESSION_COOKIE));
+  const token = readCookie(request, SESSION_COOKIE);
+  const session = await validateOwnerSession(token);
+  if (session) {
+    verifyCsrf(request, session);
+    await signOutOwner(token);
+  }
   const response = new Response(null, { status: 204 });
-  response.headers.append('Set-Cookie', clearedSessionCookie());
+  for (const cookie of clearedCookies()) response.headers.append('Set-Cookie', cookie);
   return response;
 });
