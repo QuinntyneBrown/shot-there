@@ -1,0 +1,5 @@
+/** Every page title, plus the suffix the title strategy appends. */
+export const PAGE_TITLES = {
+  suffix: $localize`ShotThere`,
+  notFound: $localize`Page not found`
+} as const;

@@ -1,3 +1,7 @@
 import { Routes } from '@angular/router';
 
-export const routes: Routes = [];
+import { errorRoutes } from './features/errors/routes';
+
+export const routes: Routes = [
+  ...errorRoutes
+];
