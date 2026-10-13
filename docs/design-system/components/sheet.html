@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Sheet and drawer — ShotThere design system</title>
-<meta name="description" content="ShotThere sheet: the site menu (public and admin) and the studio and spot filters, full screen on phones and a 28rem side sheet from 48rem, with selected and invalid states; plus the drawer classes kept for parity.">
+<title>Sheet — ShotThere design system</title>
+<meta name="description" content="ShotThere sheet: the site menu (public and admin) and the studio and spot filters, full screen on phones and a 28rem side sheet from 48rem, with selected and invalid states.">
 <link rel="stylesheet" href="../tokens/tokens.css">
 <link rel="stylesheet" href="../assets/components.css">
 <link rel="stylesheet" href="../assets/ds.css">
@@ -55,15 +55,13 @@
       <li><a href="../components/filter.html">Filters</a></li>
     </ul></details>
     <details open><summary>Containers and overlays</summary><ul>
-      <li><a href="../components/container.html">Container and grid</a></li>
+      <li><a href="../components/container.html">Container</a></li>
       <li><a href="../components/review-layout.html">Review layout</a></li>
       <li><a href="../components/editor-layout.html">Editor layout</a></li>
-      <li><a href="../components/card.html">Card</a></li>
       <li><a href="../components/dialog.html">Dialog</a></li>
-      <li><a href="../components/sheet.html">Sheet and drawer</a></li>
+      <li><a href="../components/sheet.html">Sheet</a></li>
       <li><a href="../components/popover.html">Popover</a></li>
       <li><a href="../components/lightbox.html">Lightbox</a></li>
-      <li><a href="../components/divider.html">Divider</a></li>
     </ul></details>
     <details open><summary>Data display</summary><ul>
       <li><a href="../components/location-card.html">Location card</a></li>
@@ -87,9 +85,9 @@
     </ul></details>
     <details open><summary>Feedback</summary><ul>
       <li><a href="../components/inline-message.html">Inline message</a></li>
-      <li><a href="../components/alert.html">Alert and banner</a></li>
+      <li><a href="../components/alert.html">Alert</a></li>
       <li><a href="../components/toast.html">Toast</a></li>
-      <li><a href="../components/progress.html">Progress and meter</a></li>
+      <li><a href="../components/progress.html">Progress</a></li>
       <li><a href="../components/spinner.html">Spinner</a></li>
       <li><a href="../components/skeleton.html">Skeleton</a></li>
       <li><a href="../components/empty-state.html">Empty state</a></li>
@@ -110,9 +108,9 @@
   <main id="main" class="ds-main">
     <header class="ds-header">
       <p class="ds-kicker">Component · Containers and overlays</p>
-      <h1>Sheet and drawer</h1>
+      <h1>Sheet</h1>
       <p class="ds-lead">A sheet is a full-height modal panel for things too long for a dialog: the site menu on phones and the studio and spot filters below 62rem. It fills the phone screen and becomes a 28rem side sheet from 48rem.</p>
-      <div class="ds-meta"><span class="ds-pill ds-pill--ok">WCAG 2.2 AA</span><span class="ds-pill">Status: stable</span><span class="ds-pill">APG Dialog (Modal)</span><span class="ds-pill"><code>.sheet</code></span><span class="ds-pill"><code>.drawer</code> (no mock)</span></div>
+      <div class="ds-meta"><span class="ds-pill ds-pill--ok">WCAG 2.2 AA</span><span class="ds-pill">Status: stable</span><span class="ds-pill">APG Dialog (Modal)</span><span class="ds-pill"><code>.sheet</code></span></div>
       <ul class="ds-toc"><li><a href="#overview">Overview</a></li><li><a href="#anatomy">Anatomy</a></li><li><a href="#variants">Variants</a></li><li><a href="#sizes">Sizes</a></li><li><a href="#states">States</a></li><li><a href="#responsive">Responsive behaviour</a></li><li><a href="#theming">Theming</a></li><li><a href="#accessibility">Accessibility</a></li><li><a href="#content">Content</a></li><li><a href="#do-dont">Do and don't</a></li><li><a href="#tokens">Tokens</a></li><li><a href="#code">Code</a></li><li><a href="#sources">Sources</a></li></ul>
     </header>
 
@@ -334,24 +332,10 @@
         <div class="ds-example__caption"><span>From <a href="../../mocks/dialogs/spot-filters/selected.html">dialogs/spot-filters/selected</a>: Family and "No permit needed" chosen, so the primary reads "Show 2 spots". "No permit needed" uses each spot's portrait-shoot rule (L2-024.2).</span></div>
       </div>
 
-      <h3>Drawer (CSS only)</h3>
-      <div class="ds-example">
-        <div class="ds-example__canvas ds-example__canvas--stack">
-          <div class="ds-frame ds-frame--short" style="min-height: 18rem;">
-            <div class="ds-frame__page"><p>Studios · 7 studios</p></div>
-            <div class="drawer" style="animation: none;">
-              <div class="drawer__header"><p class="drawer__title">Filters</p><button class="btn btn--ghost btn--icon" type="button" aria-label="Close"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
-              <div class="drawer__body"><p class="text-muted">Same content as the studio filters sheet.</p></div>
-              <div class="drawer__footer"><button class="btn" type="button">Clear all</button><button class="btn btn--primary" type="button">Show 7 studios</button></div>
-            </div>
-          </div>
-        </div>
-        <div class="ds-example__caption"><span><code>.drawer</code> (right) and <code>.drawer--left</code> are a fixed 28rem side panel at every width, with <code>__header</code>, <code>__body</code> and a right-aligned <code>__footer</code>. No ShotThere mock uses them: the sheet already becomes a side panel from 48rem and fills the phone screen below it. Keep the drawer for a future side panel that should never go full screen.</span></div>
-      </div>
     </section>
 
     <section class="ds-section" id="sizes"><h2><a href="#sizes">Sizes</a></h2>
-      <p>One size. Below 48rem the sheet fills the viewport; from 48rem it is <code>min(100%, --layout-sheet-width)</code> (<span data-token="--layout-sheet-width"></span>) wide and full height, against the right edge. The drawer is the same width at every viewport.</p>
+      <p>One size. Below 48rem the sheet fills the viewport; from 48rem it is <code>min(100%, --layout-sheet-width)</code> (<span data-token="--layout-sheet-width"></span>) wide and full height, against the right edge.</p>
     </section>
 
     <section class="ds-section" id="states"><h2><a href="#states">States</a></h2>
@@ -480,7 +464,7 @@
       </div>
       <p>Header and footer hairlines are decorative and exempt from 1.4.11.</p>
       <h3>Motion</h3>
-      <p>The sheet slides up on phones and in from the right from 48rem, over <code>--duration-slow</code> with <code>--ease-enter</code>; the drawer slides in from its edge. Reduced motion zeroes the duration.</p>
+      <p>The sheet slides up on phones and in from the right from 48rem, over <code>--duration-slow</code> with <code>--ease-enter</code>. Reduced motion zeroes the duration.</p>
       <h3>Touch</h3>
       <p>Menu rows are at least 72px tall (<code>min-height: 4.5rem</code>); Close, checkboxes, radios and footer buttons are 44px on phones. No swipe to dismiss: Close and Escape are the only ways out, so nothing depends on a gesture.</p>
     </section>
@@ -544,7 +528,6 @@
         <tr><td><code>.sheet__header</code> <code>.sheet__title</code></td><td>Title row with hairline and top safe area; <code>--text-h4</code> title.</td></tr>
         <tr><td><code>.sheet__body</code></td><td>Scrolling content, <code>--space-8</code> between children.</td></tr>
         <tr><td><code>.sheet__footer</code></td><td>Hairline-topped action row; buttons share the width; bottom safe area.</td></tr>
-        <tr><td><code>.drawer</code> / <code>--left</code>, <code>__header</code> <code>__title</code> <code>__body</code> <code>__footer</code></td><td>Fixed 28rem side panel at every width (no mock).</td></tr>
         <tr><td><code>.section-list</code> / <code>.section-link</code></td><td>Menu rows; see <a href="list.html">list rows</a>.</td></tr>
       </tbody></table></div>
     </section>
@@ -557,7 +540,7 @@
         <li><a href="../../mocks/dialogs/spot-filters/default.html">dialogs/spot-filters/default</a>, <a href="../../mocks/dialogs/spot-filters/selected.html">selected</a> (L2-024, L2-025, L2-067)</li>
         <li><a href="../../mocks/pages/studios/default.html">pages/studios/default</a> (the Filters trigger, <code>.until-lg</code>, and the sidebar it replaces)</li>
       </ul>
-      <p>Drift found during extraction (recorded, mocks unchanged): the admin menu marks Dashboard with <code>aria-current="page"</code>, but <code>.section-link</code> had no current-page style, so it looked like every other row; <code>.section-link[aria-current="page"]</code> now adds an accent bar and title. No sheet mock has a <code>.backdrop</code>, so from 48rem the side sheet sits over an undimmed (inert) page, unlike the dialogs. The cost fields force two columns with an inline <code>grid-template-columns</code> on <code>.field-row</code> (which is one column below 36rem); the examples here use <code>.field-row--pair</code> instead. The mocks use <code>&lt;a&gt;</code> for Close, Clear all and the primary so the static set can be clicked through; the product uses buttons and <code>form="…"</code>. <code>.drawer</code> and <code>.drawer--left</code> have CSS but no mock.</p>
+      <p>Drift found during extraction (recorded, mocks unchanged): the admin menu marks Dashboard with <code>aria-current="page"</code>, but <code>.section-link</code> had no current-page style, so it looked like every other row; <code>.section-link[aria-current="page"]</code> now adds an accent bar and title. No sheet mock has a <code>.backdrop</code>, so from 48rem the side sheet sits over an undimmed (inert) page, unlike the dialogs. The cost fields force two columns with an inline <code>grid-template-columns</code> on <code>.field-row</code> (which is one column below 36rem); the examples here use <code>.field-row--pair</code> instead. The mocks use <code>&lt;a&gt;</code> for Close, Clear all and the primary so the static set can be clicked through; the product uses buttons and <code>form="…"</code>.</p>
     </section>
 
     <footer class="ds-footer"><span>ShotThere design system · extracted from <a href="../../mocks/index.html">docs/mocks</a> on 13 October 2026</span><a href="#top">Back to top</a></footer>

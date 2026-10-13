@@ -37,15 +37,15 @@ Three rules hold everywhere:
 
 ## Components
 
-55 components, every one found in the ShotThere mocks. Every page has the same thirteen sections: overview, anatomy, variants, sizes, states, responsive, theming, accessibility, content, do and don't, tokens, code, sources.
+53 components, every one found in the ShotThere mocks. Every page has the same thirteen sections: overview, anatomy, variants, sizes, states, responsive, theming, accessibility, content, do and don't, tokens, code, sources.
 
 ### Actions
 
 | Component | Variants | States | Source mocks |
 |---|---|---|---|
-| [Button](components/button.html) | primary, secondary, ghost, link, danger, compare toggle; sm, md, lg; icon, block, wrap | default, hover, focus, active, disabled, busy, pressed, aria-disabled | studio/default, in-compare; studios/selected, selected-one, filtered; studio-filters/*; studio-editor/*; delete-content/*; discard-changes; remove-image; sign-in; admin-dashboard |
-| [Icon button](components/icon-button.html) | ghost, outline | default, hover, focus, active, disabled | lightbox/*, map-popup/* |
-| [Button group](components/button-group.html) | segmented (map Show and View as), button group | default, hover, focus, disabled, pressed | map/*, map-popup/* |
+| [Button](components/button.html) | primary, secondary, ghost, link, danger, compare toggle; sm, md, lg; icon, block | default, hover, focus, active, disabled, busy, pressed, aria-disabled | studio/default, in-compare; studios/selected, selected-one, filtered; studio-filters/*; studio-editor/*; delete-content/*; discard-changes; remove-image; sign-in; admin-dashboard |
+| [Icon button](components/icon-button.html) | ghost, in the viewer (ringed by `.viewer`) | default, hover, focus, active, disabled | lightbox/*, map-popup/* |
+| [Button group](components/button-group.html) | segmented (map Show and View as) | default, hover, focus, disabled, pressed | map/*, map-popup/* |
 | [Link](components/link.html) | inline, standalone, external, external as a button | default, hover, focus | editorial-policy, guide, compare, spot/*, studio/default, map-popup |
 | [Compare toggle and bar](components/compare-bar.html) | card toggle (sm), review toggle (md); bar with 1 or 2–4 picked | toggle off/on × default, hover, focus, active; bar hidden, 1 with hint, 2–4, over the limit | studios/selected-one, selected; studio/default, in-compare; public-toast/*; compare/over-limit |
 
@@ -53,13 +53,13 @@ Three rules hold everywhere:
 
 | Component | Variants | States | Source mocks |
 |---|---|---|---|
-| [Form field](components/form-field.html) | help, optional, conditional, error, warning, inline, counter, read-only value | default, hover, focus, invalid, warning, disabled, read-only | sign-in; studio-editor/default, invalid, price-changed; spot and guide editor invalid; studios; studio-filters/invalid; home/invalid |
-| [Text field](components/text-field.html) | email, password with Show, text, url, date, decimal and whole numbers, $ addon, unit suffix, search, read-only; sm, md, lg | default, hover, focus, invalid, disabled, read-only | sign-in; studio and spot editors; studio-filters; home; admin-studios; admin-guides |
+| [Form field](components/form-field.html) | help, optional, conditional, error, warning, inline, read-only value | default, hover, focus, invalid, warning, disabled, read-only | sign-in; studio-editor/default, invalid, price-changed; spot and guide editor invalid; studios; studio-filters/invalid; home/invalid |
+| [Text field](components/text-field.html) | email, password with Show, text, url, date, decimal and whole numbers, $ addon, unit suffix, search, read-only; md, lg | default, hover, focus, invalid, disabled, read-only | sign-in; studio and spot editors; studio-filters; home; admin-studios; admin-guides |
 | [Textarea](components/textarea.html) | verdict, introduction, editor's note, directions; rows 2–4 | default, hover, focus, invalid, disabled, read-only | studio, guide and spot editors |
 | [Select](components/select.html) | form, fieldset set, filter, inline sort, fee row | default, hover, focus, invalid, disabled | studios/default, filtered; studio-filters; studio and spot editors |
-| [Combobox](components/combobox.html) | raised listbox, flat listbox (`--inline`), empty message | closed, hover, focus, disabled, invalid, expanded, active option, no matches, busy | dialogs/guide-entry-picker/*; guide-editor/default |
-| [Checkbox](components/checkbox.html) | single, studio and spot filter groups, editor group with help, option grid | unchecked, checked, indeterminate × default, hover, focus, disabled, invalid; group error | studio-filters, spot-filters, studios, spots, studio and spot editors, missing-fields/spot |
-| [Radio group](components/radio-group.html) | filter group, disclosure with dependent field, card | default, hover, focus, selected, disabled, invalid; nothing chosen | studio-filters, spot-filters, spots/filtered, studio and spot editors |
+| [Combobox](components/combobox.html) | listbox, empty message | closed, hover, focus, disabled, invalid, expanded, active option, no matches, busy | dialogs/guide-entry-picker/*; guide-editor/default |
+| [Checkbox](components/checkbox.html) | single, studio and spot filter groups, editor group with help | unchecked, checked, indeterminate × default, hover, focus, disabled, invalid; group error | studio-filters, spot-filters, studios, spots, studio and spot editors, missing-fields/spot |
+| [Radio group](components/radio-group.html) | filter group, disclosure with dependent field | default, hover, focus, selected, disabled, invalid; nothing chosen | studio-filters, spot-filters, spots/filtered, studio and spot editors |
 | [File upload](components/file-upload.html) | after a list, empty group, with refused files | default, hover, focus, active, disabled, refused | studio-editor/default, new, uploading, upload-failed; spot-editor/default, new |
 | [Form layout](components/form-layout.html) | editor form, field rows (default, pair, fit), fieldset with follow-up, error summary, sign-in layout | default, busy, saved, invalid, disabled | studio, spot and guide editors; sign-in/default, invalid, incorrect, submitting; studio filters |
 | [Email signup](components/signup.html) | hero (primary), footer (secondary) | default, hover, focus, active, invalid (empty, not an email), submitting, success, rate limited, server error | home/default, invalid, submitting, success, rate-limited, error; footer of studio/default |
@@ -78,15 +78,13 @@ Three rules hold everywhere:
 
 | Component | Variants | States | Source mocks |
 |---|---|---|---|
-| [Container and grid](components/container.html) | container, narrow, stack, cluster, grid, prose, section-gap, browse, page-header, home-hero, section-head, has-compare-bar, auth | default, loading, empty, no results, error, selected | studios, spots, home, sign-in, editorial-policy, admin-studios, compare, studio-editor, guide |
+| [Container](components/container.html) | container, narrow, stack, cluster, prose, section-gap, browse, page-header, home-hero, section-head, has-compare-bar, auth | default, loading, empty, no results, error, selected | studios, spots, home, sign-in, editorial-policy, admin-studios, compare, studio-editor, guide |
 | [Review layout](components/review-layout.html) | studio, spot, head-only (guide); studio and spot summary panels | default, hover, focus, active, stale, in compare, hero failed, minimal, playing, no video, no rain backup, map failed | studio/*, spot/*, guide/default |
 | [Editor layout](components/editor-layout.html) | status panel (new, draft, published); section (closed, open, invalid); repeating rows (fees, included gear) | default, hover, focus, active, open, invalid; screens new, default, invalid, submitting, success, published, price changed, uploading, upload failed, loading, error | studio-editor/*, spot-editor/*, guide-editor/*, dialogs/discard-changes, unpublish/*, missing-fields/* |
-| [Card](components/card.html) | default, header and footer, flush, interactive, selected, well | default, hover, focus, selected | none use `.card` directly; informs location card, stat tile, summary panel, editor aside |
-| [Dialog](components/dialog.html) | delete, unpublish, discard changes, remove image, can't publish yet, add entry (form), with icon; sm, default, form, lg, full | default, hover, focus, active, disabled, busy, failed, invalid, refused | dialogs/delete-content, unpublish, discard-changes, missing-fields, remove-image, guide-entry-picker |
-| [Sheet and drawer](components/sheet.html) | site menu (visitor, admin), studio filters, spot filters, drawer, drawer left | row default, hover, focus, current; footer states; selected, invalid | dialogs/site-menu, studio-filters, spot-filters |
-| [Popover](components/popover.html) | title and text, with actions, map marker popup | trigger default, hover, focus, expanded; open, closed, static | dialogs/map-popup/*, map/default |
+| [Dialog](components/dialog.html) | delete, unpublish, discard changes, remove image, can't publish yet, add entry (form); sm, default, form | default, hover, focus, active, disabled, busy, failed, invalid, refused | dialogs/delete-content, unpublish, discard-changes, missing-fields, remove-image, guide-entry-picker |
+| [Sheet](components/sheet.html) | site menu (visitor, admin), studio filters, spot filters | row default, hover, focus, current; footer states; selected, invalid | dialogs/site-menu, studio-filters, spot-filters |
+| [Popover](components/popover.html) | map marker popup (studio, outdoor spot) | trigger default, hover, focus, expanded; open, closed, static | dialogs/map-popup/*, map/default |
 | [Lightbox](components/lightbox.html) | gallery photo, sample shot | controls default, hover, focus, active; first, middle, last (wraps); image failed; phone pager | dialogs/lightbox/* |
-| [Divider](components/divider.html) | horizontal, vertical, labelled | static | none (core) |
 
 ### Data display
 
@@ -95,7 +93,7 @@ Three rules hold everywhere:
 | [Location card](components/location-card.html) | studio card with or without compare toggle, spot card, stale, compact map-list item, inside a guide entry; 1/2/3-column grid | default, hover, focus, loading, image failed, stale | studios/*, spots/*, home/default, map/list, map/loading, studio/media-failed, guide/default |
 | [Table](components/table.html) | reference table (light by time and season), permit table, admin list; `.num`, `.na` | default, hover, focus, loading, sorted, stacked below 48rem, empty and error replaced by an empty state | spot/default, stale-permit; admin-studios/*, admin-spots/*, admin-guides/* |
 | [Comparison table](components/compare-table.html) | 2, 3 or 4 columns; empty below 2 | row hover, header link hover and focus, lowest, missing value, stale price, unknown slug, over the limit, empty | compare/*; public-toast/success, danger |
-| [List rows](components/list.html) | list row, full-row link, admin row with badge and Edit, section link, section link with attention meta | default, hover, focus, active, selected, current, loading, empty | spot/default, stale-permit, no-video, map-failed; admin-dashboard/*; dialogs/site-menu/* |
+| [List rows](components/list.html) | list row, admin row with badge and Edit, section link, section link with attention meta | default, hover, focus, active, selected, current, loading, empty | spot/default, stale-permit, no-video, map-failed; admin-dashboard/*; dialogs/site-menu/* |
 | [Description list](components/description-list.html) | `.kv` (specs, pricing and fees, gear, logistics, spot directions and conditions), `.regions`, summary-panel rows | static, sparse value, stale | studio/default, minimal, stale; spot/default, stale-permit |
 | [Price block](components/price-block.html) | no fees, mandatory fee, mandatory and optional fees, minimum above 2 h, verified line under a permit table | fresh, due soon, stale, price changed (editor), source link hover/focus | studio/default, minimal, stale; spot/default, stale-permit; studios/default; compare/default; studio-editor/price-changed |
 | [Score and pips](components/score.html) | verdict (overall plus six rubric rows), studio light grid, spot light table, compact number only | static values: rubric 1–5, light None/Low/Medium/Strong, overall | studio/default, stale, minimal, in-compare, playing, media-failed; spot/default, no-video; compare/default; studios/default; guide/default |
@@ -106,7 +104,7 @@ Three rules hold everywhere:
 | [Stat tile](components/stat-tile.html) | primary or secondary action; one size | default, hover, focus, active, loading, zero counts; dashboard error, partial, up to date | admin-dashboard/*; dialogs/site-menu/admin |
 | [Image manager](components/image-manager.html) | image set, empty set, sample shot row, entry row, preview row, upload area | ready, only image, uploading, failed, invalid alt text, files refused; remove confirm and refused; move at the ends | studio-editor/default, published, uploading, upload-failed, invalid; spot-editor/default; guide-editor/default; dialogs/remove-image/* |
 | [Disclosure](components/disclosure.html) | paid in full, discounted by …, comped by …, spot regular visit | default, link hover, link focus | studio/*, spot/*, editorial-policy/default, studio-editor/default |
-| [Badge](components/badge.html) | neutral, success, warning, info; danger, solid, count | tones, wrapped | studio/default, stale; studios/default; spot/default, stale-permit; spots/default; compare/*; admin-dashboard; admin-studios; admin-spots |
+| [Badge](components/badge.html) | neutral, success, warning, info | tones, wrapped | studio/default, stale; studios/default; spot/default, stale-permit; spots/default; compare/*; admin-dashboard; admin-studios; admin-spots |
 | [Status label](components/status-label.html) | published, draft; in an admin row and the editor | default, in a hovered row, stacked card at XS | admin-studios/default, admin-spots/default, admin-guides/default, studio-editor/default, published, guide-editor/default, spot-editor/default, notifications/admin-toast/success |
 | [Chip](components/chip.html) | active filter (removable), toggle, static | default, hover, focus, active, pressed, disabled | studios/filtered, no-results; spots/filtered, no-results |
 | [Tag](components/tag.html) | static on a card or under a caption, link to filtered spots or guides; compact and large | link default, hover, focus | spots/default, filtered; home/default; spot/default; studio/default, stale |
@@ -116,10 +114,10 @@ Three rules hold everywhere:
 | Component | Variants | States | Source mocks |
 |---|---|---|---|
 | [Inline message](components/inline-message.html) | help, error, warning, error without a field, save status | default, invalid, busy, saved, error | studio-editor/*, spot-editor/invalid, guide-editor/invalid, sign-in/invalid, home/invalid, studio-filters/invalid, guide-entry-picker/invalid |
-| [Alert and banner](components/alert.html) | info, success, warning, danger; title and body, body only, with actions, dismissible, in a dialog; `.banner` | dismiss and action default, hover, focus, active, disabled, busy | studio/stale, spot/stale-permit, sign-in/*, home/error, rate-limited, compare/over-limit, unknown-slug, editor success, admin-dashboard/partial, dialogs failed |
-| [Toast](components/toast.html) | public (success, warning, danger), admin (info, success, warning, danger), stacked; action, progress; region bottom, above compare bar, top, static | dismiss and action states; entering, counting down, paused, persistent, leaving | notifications/public-toast/*, admin-toast/* |
-| [Progress and meter](components/progress.html) | upload bar, toast timer; indeterminate, success, danger, meter | 0%, uploading, complete, processing, succeeded, failed | studio-editor/uploading, upload-failed; admin-toast/*, public-toast/* |
-| [Spinner](components/spinner.html) | busy button (default, primary, danger; sm, md, lg), inline with caption | default, hover, focus, active, disabled, busy | delete-content/busy, unpublish/busy, sign-in/submitting, home/submitting, editors' submitting, guide-entry-picker/busy |
+| [Alert](components/alert.html) | info, success, warning, danger; title and body, body only, with actions, dismissible, in a dialog | dismiss and action default, hover, focus, active, disabled, busy | studio/stale, spot/stale-permit, sign-in/*, home/error, rate-limited, compare/over-limit, unknown-slug, editor success, admin-dashboard/partial, dialogs failed |
+| [Toast](components/toast.html) | public (success, warning, danger), admin (info, success, warning, danger), stacked; action, progress; region bottom, above compare bar | dismiss and action states; entering, counting down, paused, persistent, leaving | notifications/public-toast/*, admin-toast/* |
+| [Progress](components/progress.html) | upload bar, toast timer | 0%, uploading, complete, processing | studio-editor/uploading, upload-failed; admin-toast/*, public-toast/* |
+| [Spinner](components/spinner.html) | busy button (default, primary, danger; sm, md, lg), inline with caption; one spinner size | default, hover, focus, active, disabled, busy | delete-content/busy, unpublish/busy, sign-in/submitting, home/submitting, editors' submitting, guide-entry-picker/busy |
 | [Skeleton](components/skeleton.html) | text, title, rect, pill; location card, map row and area, admin row, stat tile, editor | loading, loaded, failed | studios, spots, map, admin-*, editors loading |
 | [Empty state](components/empty-state.html) | nothing published yet, no results, didn't load, all done, compact | default, hover, focus, active, busy | studios/spots/guides/home/map/compare empty; no-results; errors; admin-dashboard/up-to-date; spot/no-rain-backup; guide-editor/new |
 | [Error page](components/error-page.html) | 404, 500 with reference; compare unknown slug and rate limit as in-page cases | action default, hover, focus, active | not-found/default, server-error/default, compare/unknown-slug, sign-in/rate-limited |
@@ -318,6 +316,7 @@ Decisions the mocks and requirements leave open. Each is noted on the page it af
 - `assets/components.css`: 502 selectors for components the ShotThere mocks do not use were removed (listing cards with round photos, inbox and message threads, dish rows, ratings, menus, tabs, pagination, side navigation, tooltips, avatars, photo tiles, checklists and their layouts). New rules replace inline styles the mocks repeat, and fix the defects found while documenting (see the drift log).
 - Tokens: `--color-star`, `--color-star-empty`, `--photo-card-size` and `--duration-hover-delay` were retired with their contrast pairs. No other token name changed; comments now describe ShotThere. 13 contrast pairs were added.
 - Not carried over: menu, tabs, pagination, side navigation, tooltip, switch and avatar. No ShotThere mock uses them; add a page (and restore the CSS from git history) when a mock does.
+- Removed because no ShotThere mock uses them: the Card and Divider components, and the unused standard variants of the components that stay (drawer, dialog icons, large and full-screen dialogs, banner, meter, success, danger and indeterminate progress, count, solid and danger badges, button group, wrapping and outline buttons, small inputs, card radios, option grid, character counter, file rows and upload tiles, table density and row actions, inline status and dots, toast top region and actions, popover title and actions, large spinner, circle skeleton, the info empty state, and unused utilities such as `.sr-only`, `.truncate`, `.overline` and the visibility helpers other than `.until-lg`). `toast-region--static` and `popover--static` moved to `assets/ds.css` as documentation-only helpers. Restore any of them from git history when a mock needs it.
 - `assets/img/`: the earlier product's photos were replaced by the ShotThere stand-ins.
 
 ## Verification
@@ -327,10 +326,11 @@ Run on Tuesday 13 October 2026 against this folder and `docs/mocks`:
 | Check | Command | Result |
 |---|---|---|
 | Contrast, both themes | `python .claude/skills/extracting-design-systems/scripts/check_contrast.py docs/design-system/tokens/tokens.css` | 236 checks passed (118 pairs × 2 themes), 0 failed, 0 unresolved |
-| Structure, sections, labels, links, raw colours | `python .claude/skills/extracting-design-systems/scripts/check_design_system.py docs/design-system` | 76 pages (12 foundations, 55 components, 8 patterns, index), 0 errors, 0 warnings |
+| Structure, sections, labels, links, raw colours | `python .claude/skills/extracting-design-systems/scripts/check_design_system.py docs/design-system` | 74 pages (12 foundations, 53 components, 8 patterns, index), 0 errors, 0 warnings |
+| Classes in the documentation | script over every page's `class` attributes | every class exists in `assets/components.css` or `assets/ds.css` |
 | Token coverage | script over every foundation page's `#tokens` section | all 221 tokens documented on exactly one foundation page |
 | Mocks against this system | `python .claude/skills/writing-html-mocks/scripts/check_mocks.py docs/mocks` | 33 screens, 143 mocks, 0 errors, 0 warnings |
 | Overflow and script errors | Chromium (Playwright): every design-system page at 360px; every mock at 360, 768 and 1280px with `?chrome=0` | no horizontal page scroll, no script errors |
-| Visual review | Chromium screenshots of the index, Color, Location card, Comparison table, Editor layout, Map and Forms pages at 360 and 1280px in light and dark | reviewed; the squeezed fee row it found is fixed (container query) |
+| Visual review | Chromium screenshots of the index, Color, Location card, Comparison table, Editor layout, Map, Forms, Popover, Icon button, Progress, List rows and Dialog pages at 360 and 1280px in light and dark | reviewed; the squeezed fee row it found is fixed (container query) |
 
 The mocks still carry the inline styles and link-for-button markup listed in the drift log; the CSS resolutions already apply to them through this stylesheet, and the markup changes are for the next pass over the mocks.

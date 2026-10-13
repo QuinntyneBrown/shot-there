@@ -55,15 +55,13 @@
       <li><a href="../components/filter.html">Filters</a></li>
     </ul></details>
     <details open><summary>Containers and overlays</summary><ul>
-      <li><a href="../components/container.html">Container and grid</a></li>
+      <li><a href="../components/container.html">Container</a></li>
       <li><a href="../components/review-layout.html">Review layout</a></li>
       <li><a href="../components/editor-layout.html">Editor layout</a></li>
-      <li><a href="../components/card.html">Card</a></li>
       <li><a href="../components/dialog.html">Dialog</a></li>
-      <li><a href="../components/sheet.html">Sheet and drawer</a></li>
+      <li><a href="../components/sheet.html">Sheet</a></li>
       <li><a href="../components/popover.html">Popover</a></li>
       <li><a href="../components/lightbox.html">Lightbox</a></li>
-      <li><a href="../components/divider.html">Divider</a></li>
     </ul></details>
     <details open><summary>Data display</summary><ul>
       <li><a href="../components/location-card.html">Location card</a></li>
@@ -87,9 +85,9 @@
     </ul></details>
     <details open><summary>Feedback</summary><ul>
       <li><a href="../components/inline-message.html">Inline message</a></li>
-      <li><a href="../components/alert.html">Alert and banner</a></li>
+      <li><a href="../components/alert.html">Alert</a></li>
       <li><a href="../components/toast.html">Toast</a></li>
-      <li><a href="../components/progress.html">Progress and meter</a></li>
+      <li><a href="../components/progress.html">Progress</a></li>
       <li><a href="../components/spinner.html">Spinner</a></li>
       <li><a href="../components/skeleton.html">Skeleton</a></li>
       <li><a href="../components/empty-state.html">Empty state</a></li>
@@ -156,7 +154,7 @@
       </table></div>
       <p>The demo below is live: resize the window and it switches between 4, 8 and 12 columns. Right now: <span data-token="--layout-columns"></span> columns, <span data-token="--layout-gutter"></span> gutter, <span data-token="--layout-margin"></span> margin.</p>
       <div class="ds-grid-demo" aria-hidden="true"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span></div>
-      <p>The column grid is a guide, not a cage. Most ShotThere screens use purpose-made layouts (the location grid, the review layout, the map page, the editor layout) whose tracks line up with the grid at each class; use <code>.grid</code> with <code>.span-full</code> for anything new, and <code>.grid--auto</code> (cards at least 18rem wide) for card collections.</p>
+      <p>The column grid is a guide, not a cage. Most ShotThere screens use purpose-made layouts (the location grid, the review layout, the map page, the editor layout) whose tracks line up with the grid at each class.</p>
       <h3>Location grid</h3>
       <p>Studio and spot cards go 1 / 2 / 2 / 3 / 3 across XS / SM / MD / LG / XL on the home page and in the guides, with gaps growing from 40 × 24px to 48 × 32px. Beside the filter column on the studio and spot lists the grid is 1 / 2 / 2 / 2 / 3, because a 15rem column plus three cards would make each photo too small at 992px. L2-021.4 asks for three columns "at LG and above"; the lists meet it from XL only, an open question for the requirements.</p>
       <div class="ds-example">
@@ -177,7 +175,6 @@
         <tbody>
           <tr><td><code>--layout-container-max</code> · <span data-token="--layout-container-max"></span></td><td>Every page container (<code>.container</code>, <code>.site-header</code>, the compare bar's inner row)</td></tr>
           <tr><td>42rem · <code>.container--narrow</code></td><td>The editorial policy</td></tr>
-          <tr><td>40rem · <code>.form</code></td><td>Maximum width of a standalone form</td></tr>
           <tr><td>34rem · <code>.system-page</code></td><td>Page not found, something went wrong</td></tr>
           <tr><td>32rem · <code>.signup</code></td><td>The "New reviews by email" form on the home page and in the footer</td></tr>
           <tr><td>28rem · <code>.auth</code></td><td>Owner sign-in in every state</td></tr>

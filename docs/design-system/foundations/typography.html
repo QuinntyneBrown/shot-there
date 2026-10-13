@@ -55,15 +55,13 @@
       <li><a href="../components/filter.html">Filters</a></li>
     </ul></details>
     <details open><summary>Containers and overlays</summary><ul>
-      <li><a href="../components/container.html">Container and grid</a></li>
+      <li><a href="../components/container.html">Container</a></li>
       <li><a href="../components/review-layout.html">Review layout</a></li>
       <li><a href="../components/editor-layout.html">Editor layout</a></li>
-      <li><a href="../components/card.html">Card</a></li>
       <li><a href="../components/dialog.html">Dialog</a></li>
-      <li><a href="../components/sheet.html">Sheet and drawer</a></li>
+      <li><a href="../components/sheet.html">Sheet</a></li>
       <li><a href="../components/popover.html">Popover</a></li>
       <li><a href="../components/lightbox.html">Lightbox</a></li>
-      <li><a href="../components/divider.html">Divider</a></li>
     </ul></details>
     <details open><summary>Data display</summary><ul>
       <li><a href="../components/location-card.html">Location card</a></li>
@@ -87,9 +85,9 @@
     </ul></details>
     <details open><summary>Feedback</summary><ul>
       <li><a href="../components/inline-message.html">Inline message</a></li>
-      <li><a href="../components/alert.html">Alert and banner</a></li>
+      <li><a href="../components/alert.html">Alert</a></li>
       <li><a href="../components/toast.html">Toast</a></li>
-      <li><a href="../components/progress.html">Progress and meter</a></li>
+      <li><a href="../components/progress.html">Progress</a></li>
       <li><a href="../components/spinner.html">Spinner</a></li>
       <li><a href="../components/skeleton.html">Skeleton</a></li>
       <li><a href="../components/empty-state.html">Empty state</a></li>
@@ -208,7 +206,7 @@
     </section>
 
     <section class="ds-section" id="measure"><h2><a href="#measure">Measure and wrapping</a></h2>
-      <p>Paragraphs stop at <code>--layout-measure</code> (62ch, about 10–12 words per line). Every <code>&lt;p&gt;</code> has it by default in <code>components.css</code>, and <code>.measure</code> applies it to anything else; verdicts, guide notes and the editorial policy rely on it. The token itself lives on <a href="layout.html#container">Layout</a>.</p>
+      <p>Paragraphs stop at <code>--layout-measure</code> (62ch, about 10–12 words per line). Every <code>&lt;p&gt;</code> has it by default in <code>components.css</code>; verdicts, guide notes and the editorial policy rely on it. The token itself lives on <a href="layout.html#container">Layout</a>.</p>
       <ul>
         <li><b>Headings</b> use <code>text-wrap: balance</code> so a two-line title ("Best studios under $120 for 2 hours") splits evenly.</li>
         <li><b>Paragraphs</b> use <code>text-wrap: pretty</code> to avoid a single short last line.</li>
@@ -263,7 +261,7 @@
       </ul>
       <div class="ds-dodont">
         <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--stack"><p style="font: var(--text-card-title);">Kensington Window Room</p><p style="font: var(--text-body-sm); color: var(--color-fg-muted);">Kensington Market · Reviewed 3 Oct 2026</p><p class="num" style="font: var(--text-label); font-size: var(--font-size-md);">$80.00</p></div><figcaption>Name in the card title role, supporting line in muted body-sm, the price in tabular label weight.</figcaption></figure>
-        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--stack"><p class="overline">Kensington Window Room</p><p style="font: var(--text-h4);">Kensington Market · Reviewed 3 Oct 2026</p><p style="font: var(--text-caption);">$80.00</p></div><figcaption>Shout the name in an overline, make the metadata the biggest line and shrink the price to a caption.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--stack"><p style="font: var(--text-overline); letter-spacing: var(--letter-spacing-wide); text-transform: uppercase;">Kensington Window Room</p><p style="font: var(--text-h4);">Kensington Market · Reviewed 3 Oct 2026</p><p style="font: var(--text-caption);">$80.00</p></div><figcaption>Shout the name in an overline, make the metadata the biggest line and shrink the price to a caption.</figcaption></figure>
       </div>
       <div class="ds-dodont">
         <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--stack"><p class="num">$80.00</p><p class="num">$91.00</p><p class="num">$145.00</p></div><figcaption>Set compared prices in tabular figures so the decimal points line up.</figcaption></figure>

@@ -55,15 +55,13 @@
       <li><a href="../components/filter.html">Filters</a></li>
     </ul></details>
     <details open><summary>Containers and overlays</summary><ul>
-      <li><a href="../components/container.html">Container and grid</a></li>
+      <li><a href="../components/container.html">Container</a></li>
       <li><a href="../components/review-layout.html">Review layout</a></li>
       <li><a href="../components/editor-layout.html">Editor layout</a></li>
-      <li><a href="../components/card.html">Card</a></li>
       <li><a href="../components/dialog.html">Dialog</a></li>
-      <li><a href="../components/sheet.html">Sheet and drawer</a></li>
+      <li><a href="../components/sheet.html">Sheet</a></li>
       <li><a href="../components/popover.html">Popover</a></li>
       <li><a href="../components/lightbox.html">Lightbox</a></li>
-      <li><a href="../components/divider.html">Divider</a></li>
     </ul></details>
     <details open><summary>Data display</summary><ul>
       <li><a href="../components/location-card.html">Location card</a></li>
@@ -87,9 +85,9 @@
     </ul></details>
     <details open><summary>Feedback</summary><ul>
       <li><a href="../components/inline-message.html">Inline message</a></li>
-      <li><a href="../components/alert.html">Alert and banner</a></li>
+      <li><a href="../components/alert.html">Alert</a></li>
       <li><a href="../components/toast.html">Toast</a></li>
-      <li><a href="../components/progress.html">Progress and meter</a></li>
+      <li><a href="../components/progress.html">Progress</a></li>
       <li><a href="../components/spinner.html">Spinner</a></li>
       <li><a href="../components/skeleton.html">Skeleton</a></li>
       <li><a href="../components/empty-state.html">Empty state</a></li>
@@ -169,7 +167,7 @@
           <li><div><b>Time of day</b><small><code>.light-grid__time</code>: Morning, Midday, Afternoon, Evening (studios); spots add Golden hour and Blue hour.</small></div></li>
           <li><div><b>Pips</b><small>Three narrower bars (16 × 8 px): None 0, Low 1, Medium 2, Strong 3. Hidden from assistive technology.</small></div></li>
           <li><div><b>Rating word</b><small>The text of <code>.light-rating</code>: None, Low, Medium or Strong. This is what is read out.</small></div></li>
-          <li><div><b>Tile</b><small><code>.light-grid__item</code>: sunken surface, 16 px padding, 12 px corners. An optional <code>.light-grid__note</code> line goes under the rating.</small></div></li>
+          <li><div><b>Tile</b><small><code>.light-grid__item</code>: sunken surface, 16 px padding, 12 px corners.</small></div></li>
         </ol>
       </div>
     </section>
@@ -256,7 +254,7 @@
           </dl>
           <span class="num">4<span aria-hidden="true"> / 5</span><span class="visually-hidden"> out of 5</span></span>
         </div>
-        <div class="ds-example__caption"><span>Card facts for The Junction Loft (pages/studios/default) and a comparison cell (pages/compare/default).</span></div>
+        <div class="ds-example__caption"><span>Location card facts for The Junction Loft (pages/studios/default) and a comparison cell (pages/compare/default).</span></div>
       </div>
     </section>
 
@@ -366,7 +364,6 @@
         <div class="ds-pair"><span>Empty pip edge in a stacked table card</span><span class="ds-pair__ratio" data-contrast="--color-border-strong|--color-bg-surface" data-min="3"></span></div>
         <div class="ds-pair"><span>"overall, out of 5" on the page</span><span class="ds-pair__ratio" data-contrast="--color-fg-muted|--color-bg-canvas" data-min="4.5"></span></div>
         <div class="ds-pair"><span>Time of day on a light tile</span><span class="ds-pair__ratio" data-contrast="--color-fg-subtle|--color-bg-surface-sunken" data-min="4.5"></span></div>
-        <div class="ds-pair"><span>Light note on a light tile</span><span class="ds-pair__ratio" data-contrast="--color-fg-muted|--color-bg-surface-sunken" data-min="4.5"></span></div>
       </div>
       <p>Filled and empty pips are told apart by fill, not by hue. The empty edge meets 3:1 against every surface the pips sit on (L2-068.1). Colour is never the only cue (1.4.1): the number or word is always there.</p>
       <h3>Motion</h3>
@@ -403,7 +400,7 @@
           <tr><td>Filled pip, label, number, rating word</td><td><code>--color-fg-default</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-default" data-swatch></i><span data-token="--color-fg-default"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-default" data-swatch></i><span data-token="--color-fg-default"></span></span></td></tr>
           <tr><td>Empty pip edge</td><td><code>--color-border-strong</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-border-strong" data-swatch></i><span data-token="--color-border-strong"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-border-strong" data-swatch></i><span data-token="--color-border-strong"></span></span></td></tr>
           <tr><td>Score row divider</td><td><code>--color-border-default</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-border-default" data-swatch></i><span data-token="--color-border-default"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-border-default" data-swatch></i><span data-token="--color-border-default"></span></span></td></tr>
-          <tr><td>Overall scale, light note</td><td><code>--color-fg-muted</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-muted" data-swatch></i><span data-token="--color-fg-muted"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-muted" data-swatch></i><span data-token="--color-fg-muted"></span></span></td></tr>
+          <tr><td>Overall scale</td><td><code>--color-fg-muted</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-muted" data-swatch></i><span data-token="--color-fg-muted"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-muted" data-swatch></i><span data-token="--color-fg-muted"></span></span></td></tr>
           <tr><td>Time of day</td><td><code>--color-fg-subtle</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-subtle" data-swatch></i><span data-token="--color-fg-subtle"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-subtle" data-swatch></i><span data-token="--color-fg-subtle"></span></span></td></tr>
           <tr><td>Light tile</td><td><code>--color-bg-surface-sunken</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-bg-surface-sunken" data-swatch></i><span data-token="--color-bg-surface-sunken"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-bg-surface-sunken" data-swatch></i><span data-token="--color-bg-surface-sunken"></span></span></td></tr>
           <tr><td>Rubric pip width × height</td><td><code>--space-5</code> × <code>--space-2</code></td><td colspan="2"><span data-token="--space-5"></span> × <span data-token="--space-2"></span></td></tr>
@@ -437,7 +434,7 @@
         <tr><td><code>.score-list</code></td><td>Unstyled list of rows: one column, two from 48rem. Name it with <code>aria-label="Rubric scores"</code>.</td></tr>
         <tr><td><code>.score</code>, <code>__label</code>, <code>__value</code></td><td>One 44 px row: label, pips, right-aligned 2ch number, hairline divider.</td></tr>
         <tr><td><code>.light-rating</code></td><td>Narrower three-pip bars (16 px) followed by the rating word.</td></tr>
-        <tr><td><code>.light-grid</code>, <code>__item</code>, <code>__time</code>, <code>__note</code></td><td>Natural-light tiles: stacked, then four across from 48rem. <code>__note</code> is an optional muted line under the rating. The current mocks do not use it.</td></tr>
+        <tr><td><code>.light-grid</code>, <code>__item</code>, <code>__time</code></td><td>Natural-light tiles: stacked, then four across from 48rem.</td></tr>
       </tbody></table>
       <p>In Angular the pip count comes from a view model beside the page (for example <code>pips(score, max)</code> returning booleans). The template never computes the overall: it prints <code>overallScore</code> from the API, formatted to one decimal.</p>
     </section>
@@ -455,7 +452,7 @@
         <li><a href="../../mocks/pages/studios/default.html">pages/studios/default</a> (card score "3.8" with hidden "out of 5", no pips)</li>
         <li><a href="../../mocks/pages/guide/default.html">pages/guide/default</a> (entry "Overall 3.2")</li>
       </ul>
-      <p>Drift fixed during extraction: none in the markup. Every mock uses <code>.pips</code> with <code>data-on</code> and the hidden "Category: n out of 5" sentence. Three points were noted for follow-up; two are fixed. The comparison table and cards show scores without pips, which this page records as the compact variant. <code>.light-grid__note</code> is styled but no mock uses it, because spots put their notes in a table column. The stylesheet comment "one row of four (or five)" was wrong (the grid is four columns, and the five-row spot case is a table); it now reads "one row of four". In forced colours the pips disappeared because they are drawn with background and box shadow; a forced-colours rule now draws them in <code>CanvasText</code>.</p>
+      <p>Drift fixed during extraction: none in the markup. Every mock uses <code>.pips</code> with <code>data-on</code> and the hidden "Category: n out of 5" sentence. Three points were noted for follow-up; two are fixed. The comparison table and cards show scores without pips, which this page records as the compact variant. The stylesheet comment "one row of four (or five)" was wrong (the grid is four columns, and the five-row spot case is a table); it now reads "one row of four". In forced colours the pips disappeared because they are drawn with background and box shadow; a forced-colours rule now draws them in <code>CanvasText</code>.</p>
     </section>
 
     <footer class="ds-footer"><span>ShotThere design system · extracted from <a href="../../mocks/index.html">docs/mocks</a> on 13 October 2026</span><a href="#top">Back to top</a></footer>

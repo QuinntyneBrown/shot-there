@@ -55,15 +55,13 @@
       <li><a href="../components/filter.html">Filters</a></li>
     </ul></details>
     <details open><summary>Containers and overlays</summary><ul>
-      <li><a href="../components/container.html">Container and grid</a></li>
+      <li><a href="../components/container.html">Container</a></li>
       <li><a href="../components/review-layout.html">Review layout</a></li>
       <li><a href="../components/editor-layout.html">Editor layout</a></li>
-      <li><a href="../components/card.html">Card</a></li>
       <li><a href="../components/dialog.html">Dialog</a></li>
-      <li><a href="../components/sheet.html">Sheet and drawer</a></li>
+      <li><a href="../components/sheet.html">Sheet</a></li>
       <li><a href="../components/popover.html">Popover</a></li>
       <li><a href="../components/lightbox.html">Lightbox</a></li>
-      <li><a href="../components/divider.html">Divider</a></li>
     </ul></details>
     <details open><summary>Data display</summary><ul>
       <li><a href="../components/location-card.html">Location card</a></li>
@@ -87,9 +85,9 @@
     </ul></details>
     <details open><summary>Feedback</summary><ul>
       <li><a href="../components/inline-message.html">Inline message</a></li>
-      <li><a href="../components/alert.html">Alert and banner</a></li>
+      <li><a href="../components/alert.html">Alert</a></li>
       <li><a href="../components/toast.html">Toast</a></li>
-      <li><a href="../components/progress.html">Progress and meter</a></li>
+      <li><a href="../components/progress.html">Progress</a></li>
       <li><a href="../components/spinner.html">Spinner</a></li>
       <li><a href="../components/skeleton.html">Skeleton</a></li>
       <li><a href="../components/empty-state.html">Empty state</a></li>
@@ -289,8 +287,7 @@
       <table class="ds-table"><thead><tr><th scope="col">Region</th><th scope="col">Placement</th><th scope="col">Used on</th></tr></thead><tbody>
         <tr><td><code>.toast-region</code></td><td>Fixed at the bottom; 16px from each side below 36rem, 24rem wide at the bottom right (24px in) from 36rem; padded by the bottom safe-area inset.</td><td>Every screen: the comparison page, every editor.</td></tr>
         <tr><td>Above the compare bar</td><td><code>.has-compare-bar .toast-region</code>: raised by the compare bar's height plus the safe-area inset, so the toast never covers Clear or Compare (L2-030.6).</td><td>Studio list and studio page while the compare bar is showing.</td></tr>
-        <tr><td><code>.toast-region--top</code></td><td>Fixed at the top.</td><td>In the stylesheet; no ShotThere mock needs it.</td></tr>
-        <tr><td><code>.toast-region--static</code></td><td>In the flow, pointer events on.</td><td>Documentation only.</td></tr>
+        <tr><td><code>.toast-region--static</code></td><td>In the flow, pointer events on.</td><td>Documentation only (in <code>ds.css</code>, not the product stylesheet).</td></tr>
       </tbody></table>
       <ul>
         <li>The region ignores pointer events and each toast takes them back, so the page under the gap stays clickable.</li>
@@ -386,11 +383,11 @@
 &lt;/div&gt;</code></pre>
       <table class="ds-table"><thead><tr><th scope="col">Class / attribute</th><th scope="col">Effect</th></tr></thead><tbody>
         <tr><td><code>.toast-region</code></td><td>Fixed stack at the bottom; pointer events only on toasts.</td></tr>
-        <tr><td><code>.toast-region--top</code> / <code>--static</code></td><td>Top placement (unused) / in-flow for documentation.</td></tr>
+        <tr><td><code>.toast-region--static</code></td><td>Documentation only (in <code>ds.css</code>, not the product stylesheet): in the flow, so the examples here can show a toast in the page.</td></tr>
         <tr><td><code>.toast</code></td><td>Inverse surface, icon, body, dismiss.</td></tr>
         <tr><td><code>.toast--info</code> <code>--success</code> <code>--warning</code> <code>--danger</code></td><td>Tone: picks the icon; danger adds <code>role="alert"</code> and drops the timer.</td></tr>
         <tr><td><code>.toast__title</code>, <code>.toast__text</code></td><td>What happened; the consequence or next step.</td></tr>
-        <tr><td><code>.toast__action</code></td><td>One underlined link or button inside <code>.toast__body</code>. (<code>.toast__actions</code> wraps two; no ShotThere toast has two.)</td></tr>
+        <tr><td><code>.toast__action</code></td><td>One underlined link or button inside <code>.toast__body</code>. A toast has at most one.</td></tr>
         <tr><td><code>.toast__progress</code></td><td>Timer bar; omit on danger toasts. The script animates its width over 8 s.</td></tr>
         <tr><td><code>data-state="leaving"</code></td><td>Exit animation before removal.</td></tr>
       </tbody></table>

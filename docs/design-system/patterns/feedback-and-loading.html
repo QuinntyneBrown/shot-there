@@ -55,15 +55,13 @@
       <li><a href="../components/filter.html">Filters</a></li>
     </ul></details>
     <details open><summary>Containers and overlays</summary><ul>
-      <li><a href="../components/container.html">Container and grid</a></li>
+      <li><a href="../components/container.html">Container</a></li>
       <li><a href="../components/review-layout.html">Review layout</a></li>
       <li><a href="../components/editor-layout.html">Editor layout</a></li>
-      <li><a href="../components/card.html">Card</a></li>
       <li><a href="../components/dialog.html">Dialog</a></li>
-      <li><a href="../components/sheet.html">Sheet and drawer</a></li>
+      <li><a href="../components/sheet.html">Sheet</a></li>
       <li><a href="../components/popover.html">Popover</a></li>
       <li><a href="../components/lightbox.html">Lightbox</a></li>
-      <li><a href="../components/divider.html">Divider</a></li>
     </ul></details>
     <details open><summary>Data display</summary><ul>
       <li><a href="../components/location-card.html">Location card</a></li>
@@ -87,9 +85,9 @@
     </ul></details>
     <details open><summary>Feedback</summary><ul>
       <li><a href="../components/inline-message.html">Inline message</a></li>
-      <li><a href="../components/alert.html">Alert and banner</a></li>
+      <li><a href="../components/alert.html">Alert</a></li>
       <li><a href="../components/toast.html">Toast</a></li>
-      <li><a href="../components/progress.html">Progress and meter</a></li>
+      <li><a href="../components/progress.html">Progress</a></li>
       <li><a href="../components/spinner.html">Spinner</a></li>
       <li><a href="../components/skeleton.html">Skeleton</a></li>
       <li><a href="../components/empty-state.html">Empty state</a></li>
@@ -346,7 +344,7 @@
       </div>
       <p>Skeletons are decorative and carry no contrast requirement; the hidden status carries the meaning.</p>
       <h3>Motion</h3>
-      <p>Under reduced motion the skeleton shimmer and the indeterminate progress stop; the spinner keeps turning because it reports status. Toasts appear without sliding.</p>
+      <p>Under reduced motion the skeleton shimmer stops; the spinner keeps turning because it reports status. Toasts appear without sliding.</p>
       <h3>Touch</h3>
       <p>Retry, Remove and Cancel upload are 44px tall below 48rem. A toast's dismiss button grows to 44px on phones.</p>
     </section>
@@ -368,7 +366,7 @@
         <figure class="ds-do"><div class="ds-example__canvas"><button class="btn btn--sm compare-toggle" type="button" aria-pressed="true">Remove<span class="visually-hidden"> The Junction Loft</span></button><span class="text-caption">Bar: "2 selected"</span></div><figcaption>Flip local choices at once: Compare needs no server and no spinner.</figcaption></figure>
         <figure class="ds-dont"><div class="ds-example__canvas"><span class="badge badge--success">Published</span><span class="text-caption">shown before the server answered</span></div><figcaption>Don't show Published optimistically: publishing can be refused for missing fields, and the public site must match what the admin sees.</figcaption></figure>
         <figure class="ds-do"><div class="ds-example__canvas" style="display: block;"><ul class="location-grid" aria-hidden="true" style="grid-template-columns: repeat(2, minmax(0, 1fr));"><li class="location-card location-card--skeleton"><div class="location-card__media"><span class="skeleton skeleton--rect"></span></div><span class="skeleton skeleton--title"></span></li><li class="location-card location-card--skeleton"><div class="location-card__media"><span class="skeleton skeleton--rect"></span></div><span class="skeleton skeleton--title"></span></li></ul></div><figcaption>Use skeletons shaped like the content they stand for.</figcaption></figure>
-        <figure class="ds-dont"><div class="ds-example__canvas" style="justify-content: center; min-height: 8rem;"><span class="spinner spinner--lg" aria-hidden="true"></span></div><figcaption>Don't replace a list with a page spinner: the layout jumps when results arrive and the filters look broken.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas" style="justify-content: center; min-height: 8rem;"><span class="spinner" aria-hidden="true"></span></div><figcaption>Don't replace a list with a page spinner: the layout jumps when results arrive and the filters look broken.</figcaption></figure>
       </div>
     </section>
 

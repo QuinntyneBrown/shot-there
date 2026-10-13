@@ -55,15 +55,13 @@
       <li><a href="../components/filter.html">Filters</a></li>
     </ul></details>
     <details open><summary>Containers and overlays</summary><ul>
-      <li><a href="../components/container.html">Container and grid</a></li>
+      <li><a href="../components/container.html">Container</a></li>
       <li><a href="../components/review-layout.html">Review layout</a></li>
       <li><a href="../components/editor-layout.html">Editor layout</a></li>
-      <li><a href="../components/card.html">Card</a></li>
       <li><a href="../components/dialog.html">Dialog</a></li>
-      <li><a href="../components/sheet.html">Sheet and drawer</a></li>
+      <li><a href="../components/sheet.html">Sheet</a></li>
       <li><a href="../components/popover.html">Popover</a></li>
       <li><a href="../components/lightbox.html">Lightbox</a></li>
-      <li><a href="../components/divider.html">Divider</a></li>
     </ul></details>
     <details open><summary>Data display</summary><ul>
       <li><a href="../components/location-card.html">Location card</a></li>
@@ -87,9 +85,9 @@
     </ul></details>
     <details open><summary>Feedback</summary><ul>
       <li><a href="../components/inline-message.html">Inline message</a></li>
-      <li><a href="../components/alert.html">Alert and banner</a></li>
+      <li><a href="../components/alert.html">Alert</a></li>
       <li><a href="../components/toast.html">Toast</a></li>
-      <li><a href="../components/progress.html">Progress and meter</a></li>
+      <li><a href="../components/progress.html">Progress</a></li>
       <li><a href="../components/spinner.html">Spinner</a></li>
       <li><a href="../components/skeleton.html">Skeleton</a></li>
       <li><a href="../components/empty-state.html">Empty state</a></li>
@@ -124,7 +122,6 @@
         <li><b>Message slot</b> holds at most one message, directly under the control: an error (<code>.field__error</code>, danger red, blocks the save: "Enter an amount of 0 or more") or a warning (<code>.field__warning</code>, warning amber, asks for attention but doesn't block: "You changed a price. Confirm the date you verified it.").</li>
         <li><b>Help</b> (<code>.field__help</code>) says what a good answer is or what happens with it: "The studio's own booking page. Opens in a new tab for visitors."</li>
         <li><b>Inline field</b> (<code>.field--inline</code>) puts a short label beside its control, for the "Sort by" select above the studio list.</li>
-        <li><b>Counter</b> (<code>.field__counter</code>) is in the stylesheet but no ShotThere mock uses it, because no field has a character limit yet (see Variants).</li>
       </ul>
       <p>Groups of checkboxes or radios use a <code>&lt;fieldset&gt;</code> and <code>&lt;legend&gt;</code> instead (see <a href="checkbox.html">checkbox</a> and <a href="radio-group.html">radio group</a>); in the filters each group is a <a href="filter.html">filter group</a>. Layout across fields (rows, sections, sticky actions) is <a href="form-layout.html">form layout</a>; validation timing and the error summary are the <a href="../patterns/forms.html">forms pattern</a>.</p>
     </section>
@@ -228,14 +225,6 @@
 &lt;/div&gt;</code></pre></details>
       </div>
 
-      <h3>Counter (no mock uses it yet)</h3>
-      <div class="ds-example">
-        <div class="ds-example__canvas ds-example__canvas--stack" style="max-width: 32rem;">
-          <div class="field"><label class="field__label" for="v-intro">Introduction</label><textarea class="textarea" id="v-intro" name="introduction" rows="4" aria-describedby="v-intro-help v-intro-count">Two studios where a full headshot day looks good from the first frame to the last: soft window light, room for a stool and a backdrop, and rates that leave money for retouching.</textarea><span class="cluster cluster--between"><span class="field__help" id="v-intro-help">Shown above the entries on the guide page</span><span class="field__counter" id="v-intro-count">178 / 600</span></span></div>
-        </div>
-        <div class="ds-example__caption"><span><code>.field__counter</code> sits end-aligned beside the help and takes <code>data-over</code> past the limit. No ShotThere field has a character limit in the specs; the 600 here only shows the layout. Add a counter when a limit is set, not before.</span></div>
-      </div>
-
       <h3>Read-only value</h3>
       <div class="ds-example">
         <div class="ds-example__canvas ds-example__canvas--stack" style="max-width: 32rem;">
@@ -246,7 +235,7 @@
     </section>
 
     <section class="ds-section" id="sizes"><h2><a href="#sizes">Sizes</a></h2>
-      <p>The field itself has one size: label <code>--text-label</code>, help and messages <code>--text-body-sm</code>, counter <code>--text-caption</code>. It follows its control's size without changing its own text or spacing: sign-in uses <code>.input--lg</code> (52px), everything else the medium control (44px).</p>
+      <p>The field itself has one size: label <code>--text-label</code>, help and messages <code>--text-body-sm</code>. It follows its control's size without changing its own text or spacing: sign-in uses <code>.input--lg</code> (52px), everything else the medium control (44px).</p>
       <div class="ds-example">
         <div class="ds-example__canvas ds-example__canvas--stack" style="max-width: 28rem;">
           <div class="field"><label class="field__label" for="s-email">Email</label><input class="input input--lg" id="s-email" name="email" type="email" autocomplete="username" spellcheck="false" value="owner@shotthere.ca"></div>
@@ -329,7 +318,7 @@
     </section>
 
     <section class="ds-section" id="theming"><h2><a href="#theming">Theming</a></h2>
-      <p>The field reads semantic tokens only: <code>--color-fg-default</code> (label), <code>--color-fg-subtle</code> (optional marker, counter), <code>--color-fg-muted</code> (help), <code>--color-danger-fg</code> (error, over-limit counter) and <code>--color-warning-fg</code> (warning). The control's own tokens (<code>--field-bg</code>, <code>--field-border</code>, <code>--field-fg</code>) live on the <a href="text-field.html#theming">text field</a>.</p>
+      <p>The field reads semantic tokens only: <code>--color-fg-default</code> (label), <code>--color-fg-subtle</code> (optional marker), <code>--color-fg-muted</code> (help), <code>--color-danger-fg</code> (error) and <code>--color-warning-fg</code> (warning). The control's own tokens (<code>--field-bg</code>, <code>--field-border</code>, <code>--field-fg</code>) live on the <a href="text-field.html#theming">text field</a>.</p>
       <p>In dark, the canvas and the dialog surface both darken and the message colours lighten to their 300 steps (danger red and warning amber), so each text pair keeps 4.5:1 on the page, in the filters sheet and in dialogs. <code>prefers-contrast: more</code> lifts muted and subtle text a step without any change here.</p>
     </section>
 
@@ -350,7 +339,7 @@
       <div class="ds-example__canvas ds-example__canvas--stack" style="padding: 0; gap: var(--space-2);">
         <div class="ds-pair"><span>Label on page</span><span class="ds-pair__ratio" data-contrast="--color-fg-default|--color-bg-canvas" data-min="4.5"></span></div>
         <div class="ds-pair"><span>Help on page</span><span class="ds-pair__ratio" data-contrast="--color-fg-muted|--color-bg-canvas" data-min="4.5"></span></div>
-        <div class="ds-pair"><span>Optional marker and counter on page</span><span class="ds-pair__ratio" data-contrast="--color-fg-subtle|--color-bg-canvas" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Optional marker on page</span><span class="ds-pair__ratio" data-contrast="--color-fg-subtle|--color-bg-canvas" data-min="4.5"></span></div>
         <div class="ds-pair"><span>Error on page</span><span class="ds-pair__ratio" data-contrast="--color-danger-fg|--color-bg-canvas" data-min="4.5"></span></div>
         <div class="ds-pair"><span>Warning on page</span><span class="ds-pair__ratio" data-contrast="--color-warning-fg|--color-bg-canvas" data-min="4.5"></span></div>
         <div class="ds-pair"><span>Help in the filters sheet and dialogs</span><span class="ds-pair__ratio" data-contrast="--color-fg-muted|--color-bg-surface-raised" data-min="4.5"></span></div>
@@ -391,12 +380,11 @@
         <tbody>
           <tr><td>Label</td><td><code>--color-fg-default</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-default" data-swatch></i><span data-token="--color-fg-default"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-default" data-swatch></i><span data-token="--color-fg-default"></span></span></td></tr>
           <tr><td>Help</td><td><code>--color-fg-muted</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-muted" data-swatch></i><span data-token="--color-fg-muted"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-muted" data-swatch></i><span data-token="--color-fg-muted"></span></span></td></tr>
-          <tr><td>Optional marker, counter</td><td><code>--color-fg-subtle</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-subtle" data-swatch></i><span data-token="--color-fg-subtle"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-subtle" data-swatch></i><span data-token="--color-fg-subtle"></span></span></td></tr>
-          <tr><td>Error, over-limit counter</td><td><code>--color-danger-fg</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-danger-fg" data-swatch></i><span data-token="--color-danger-fg"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-danger-fg" data-swatch></i><span data-token="--color-danger-fg"></span></span></td></tr>
+          <tr><td>Optional marker</td><td><code>--color-fg-subtle</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-subtle" data-swatch></i><span data-token="--color-fg-subtle"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-subtle" data-swatch></i><span data-token="--color-fg-subtle"></span></span></td></tr>
+          <tr><td>Error</td><td><code>--color-danger-fg</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-danger-fg" data-swatch></i><span data-token="--color-danger-fg"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-danger-fg" data-swatch></i><span data-token="--color-danger-fg"></span></span></td></tr>
           <tr><td>Warning</td><td><code>--color-warning-fg</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-warning-fg" data-swatch></i><span data-token="--color-warning-fg"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-warning-fg" data-swatch></i><span data-token="--color-warning-fg"></span></span></td></tr>
           <tr><td>Label type</td><td><code>--text-label</code></td><td colspan="2"><span data-token="--text-label"></span></td></tr>
           <tr><td>Help and message type</td><td><code>--text-body-sm</code></td><td colspan="2"><span data-token="--text-body-sm"></span></td></tr>
-          <tr><td>Counter type</td><td><code>--text-caption</code></td><td colspan="2"><span data-token="--text-caption"></span></td></tr>
           <tr><td>Gap inside a field / inline field</td><td><code>--space-1</code> / <code>--space-2</code></td><td colspan="2"><span data-token="--space-1"></span> / <span data-token="--space-2"></span></td></tr>
           <tr><td>Gap between fields (editor / sign-in and rows / filter group)</td><td><code>--space-5</code> / <code>--space-4</code> / <code>--space-3</code></td><td colspan="2"><span data-token="--space-5"></span> / <span data-token="--space-4"></span> / <span data-token="--space-3"></span></td></tr>
           <tr><td>Optional marker weight</td><td><code>--font-weight-regular</code></td><td colspan="2"><span data-token="--font-weight-regular"></span></td></tr>
@@ -418,9 +406,8 @@
         <tr><td><code>.optional</code></td><td>"(optional)" or a condition inside the label, subtle and regular weight.</td></tr>
         <tr><td><code>.field__error</code> / <code>.field__warning</code></td><td>Message slot, directly under the control; icon added by CSS.</td></tr>
         <tr><td><code>.field__help</code></td><td>Help text, muted, small.</td></tr>
-        <tr><td><code>.field__counter</code> + <code>data-over</code></td><td>Counter; danger red and semibold past the limit. Unused so far.</td></tr>
         <tr><td><code>.read-only-value</code></td><td>A value shown as text, 18px.</td></tr>
-        <tr><td><code>aria-describedby</code> order</td><td>Message, help, counter: the order they appear.</td></tr>
+        <tr><td><code>aria-describedby</code> order</td><td>Message, help: the order they appear.</td></tr>
       </tbody></table>
     </section>
 

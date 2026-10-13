@@ -55,15 +55,13 @@
       <li><a href="../components/filter.html">Filters</a></li>
     </ul></details>
     <details open><summary>Containers and overlays</summary><ul>
-      <li><a href="../components/container.html">Container and grid</a></li>
+      <li><a href="../components/container.html">Container</a></li>
       <li><a href="../components/review-layout.html">Review layout</a></li>
       <li><a href="../components/editor-layout.html">Editor layout</a></li>
-      <li><a href="../components/card.html">Card</a></li>
       <li><a href="../components/dialog.html">Dialog</a></li>
-      <li><a href="../components/sheet.html">Sheet and drawer</a></li>
+      <li><a href="../components/sheet.html">Sheet</a></li>
       <li><a href="../components/popover.html">Popover</a></li>
       <li><a href="../components/lightbox.html">Lightbox</a></li>
-      <li><a href="../components/divider.html">Divider</a></li>
     </ul></details>
     <details open><summary>Data display</summary><ul>
       <li><a href="../components/location-card.html">Location card</a></li>
@@ -87,9 +85,9 @@
     </ul></details>
     <details open><summary>Feedback</summary><ul>
       <li><a href="../components/inline-message.html">Inline message</a></li>
-      <li><a href="../components/alert.html">Alert and banner</a></li>
+      <li><a href="../components/alert.html">Alert</a></li>
       <li><a href="../components/toast.html">Toast</a></li>
-      <li><a href="../components/progress.html">Progress and meter</a></li>
+      <li><a href="../components/progress.html">Progress</a></li>
       <li><a href="../components/spinner.html">Spinner</a></li>
       <li><a href="../components/skeleton.html">Skeleton</a></li>
       <li><a href="../components/empty-state.html">Empty state</a></li>
@@ -265,8 +263,8 @@
       <div class="ds-table-wrap"><table class="ds-table">
         <thead><tr><th scope="col">Media query</th><th scope="col">What changes</th></tr></thead>
         <tbody>
-          <tr><td><code>prefers-contrast: more</code></td><td>Default borders take <code>--color-border-strong</code>, so card, editor-section and table edges reach 3:1; muted text becomes default ink and subtle text becomes muted. Applies in both themes.</td></tr>
-          <tr><td><code>forced-colors: active</code> (Windows High Contrast)</td><td>The focus ring becomes <code>Highlight</code> and borders <code>CanvasText</code>. Buttons, fields, chips, badges, tags, cards and filter triggers draw a system-colour border so their edges stay visible; the primary button uses <code>Highlight</code>/<code>HighlightText</code>; pressed segments in the Map/List and Both/Studios/Spots toggles are underlined because colour alone disappears; dialogs, sheets and toasts gain a 1px <code>CanvasText</code> edge.</td></tr>
+          <tr><td><code>prefers-contrast: more</code></td><td>Default borders take <code>--color-border-strong</code>, so summary-panel, stat-tile, editor-section and table edges reach 3:1; muted text becomes default ink and subtle text becomes muted. Applies in both themes.</td></tr>
+          <tr><td><code>forced-colors: active</code> (Windows High Contrast)</td><td>The focus ring becomes <code>Highlight</code> and borders <code>CanvasText</code>. Buttons, fields, chips, badges, tags and filter triggers draw a system-colour border so their edges stay visible; the primary button uses <code>Highlight</code>/<code>HighlightText</code>; pressed segments in the Map/List and Both/Studios/Spots toggles are underlined because colour alone disappears; dialogs, sheets and toasts gain a 1px <code>CanvasText</code> edge.</td></tr>
         </tbody>
       </table></div>
       <p>Icons draw with <code>currentColor</code> and need nothing extra. Never use <code>forced-color-adjust: none</code> on content such as photos or map tiles; it is reserved for the controls above, which then supply system colours themselves.</p>

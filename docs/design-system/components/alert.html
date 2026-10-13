@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Alert and banner — ShotThere design system</title>
+<title>Alert — ShotThere design system</title>
 <meta name="description" content="ShotThere alerts: info, success, warning and danger blocks for stale prices and permits, sign-in outcomes, rate limits, compare links, drafts created and failed dialog actions, with title, body, actions, dismiss, live-region roles and both themes.">
 <link rel="stylesheet" href="../tokens/tokens.css">
 <link rel="stylesheet" href="../assets/components.css">
@@ -55,15 +55,13 @@
       <li><a href="../components/filter.html">Filters</a></li>
     </ul></details>
     <details open><summary>Containers and overlays</summary><ul>
-      <li><a href="../components/container.html">Container and grid</a></li>
+      <li><a href="../components/container.html">Container</a></li>
       <li><a href="../components/review-layout.html">Review layout</a></li>
       <li><a href="../components/editor-layout.html">Editor layout</a></li>
-      <li><a href="../components/card.html">Card</a></li>
       <li><a href="../components/dialog.html">Dialog</a></li>
-      <li><a href="../components/sheet.html">Sheet and drawer</a></li>
+      <li><a href="../components/sheet.html">Sheet</a></li>
       <li><a href="../components/popover.html">Popover</a></li>
       <li><a href="../components/lightbox.html">Lightbox</a></li>
-      <li><a href="../components/divider.html">Divider</a></li>
     </ul></details>
     <details open><summary>Data display</summary><ul>
       <li><a href="../components/location-card.html">Location card</a></li>
@@ -87,9 +85,9 @@
     </ul></details>
     <details open><summary>Feedback</summary><ul>
       <li><a href="../components/inline-message.html">Inline message</a></li>
-      <li><a href="../components/alert.html">Alert and banner</a></li>
+      <li><a href="../components/alert.html">Alert</a></li>
       <li><a href="../components/toast.html">Toast</a></li>
-      <li><a href="../components/progress.html">Progress and meter</a></li>
+      <li><a href="../components/progress.html">Progress</a></li>
       <li><a href="../components/spinner.html">Spinner</a></li>
       <li><a href="../components/skeleton.html">Skeleton</a></li>
       <li><a href="../components/empty-state.html">Empty state</a></li>
@@ -110,7 +108,7 @@
   <main id="main" class="ds-main">
     <header class="ds-header">
       <p class="ds-kicker">Component · Feedback</p>
-      <h1>Alert and banner</h1>
+      <h1>Alert</h1>
       <p class="ds-lead">An alert is a tinted block that stays as long as something is true: these prices may be out of date, your session expired, too many sign-in attempts, we couldn't load the re-verification list. It sits inside the content it is about.</p>
       <div class="ds-meta"><span class="ds-pill ds-pill--ok">WCAG 2.2 AA</span><span class="ds-pill">Status: stable</span><span class="ds-pill"><code>.alert</code></span><span class="ds-pill"><code>.alert--info|success|warning|danger</code></span><span class="ds-pill"><code>role="status|alert"</code></span></div>
       <ul class="ds-toc"><li><a href="#overview">Overview</a></li><li><a href="#anatomy">Anatomy</a></li><li><a href="#variants">Variants</a></li><li><a href="#sizes">Sizes</a></li><li><a href="#states">States</a></li><li><a href="#responsive">Responsive</a></li><li><a href="#theming">Theming</a></li><li><a href="#accessibility">Accessibility</a></li><li><a href="#content">Content</a></li><li><a href="#do-dont">Do and don't</a></li><li><a href="#tokens">Tokens</a></li><li><a href="#code">Code</a></li><li><a href="#sources">Sources</a></li></ul>
@@ -124,7 +122,6 @@
         <li>For a page that could not load at all, use an <a href="empty-state.html">empty state</a> or the <a href="error-page.html">error page</a>.</li>
         <li>For missing publish fields, the <a href="dialog.html">Can't publish yet dialog</a> lists them; a refused save opens the <a href="form-layout.html">form summary</a>.</li>
       </ul>
-      <p><b>Banner</b>: <code>.alert.banner</code> (full width under the site header, centred, no radius) is still in the stylesheet. No ShotThere mock uses it; every ShotThere message belongs to a section, a form or a dialog. Don't introduce one without a mock.</p>
     </section>
 
     <section class="ds-section" id="anatomy"><h2><a href="#anatomy">Anatomy</a></h2>
@@ -422,7 +419,6 @@
         <tr><td><code>.alert__actions</code></td><td>Row for one small button or link; inherits the alert ink.</td></tr>
         <tr><td><code>.close</code></td><td>Dismiss button at the end; needs <code>aria-label="Dismiss"</code>.</td></tr>
         <tr><td><code>role="status"</code> / <code>role="alert"</code></td><td>Polite for conditions, assertive for refusals and failures; none inside a dialog description.</td></tr>
-        <tr><td><code>.banner</code></td><td>Full-width page banner under the header. In the stylesheet; unused by ShotThere mocks.</td></tr>
       </tbody></table>
     </section>
 
@@ -443,7 +439,6 @@
         <li>Tone icons are drawn five ways: warning triangles <code>M12 3 2 20h20L12 3z</code>, <code>M12 4 2.5 20h19z</code> and <code>M12 4 2.5 20h19L12 4z</code>; dots as <code>h0</code>, <code>h.01</code>, <code>v.5</code>; info as <code>M12 11v5M12 8h0</code> or <code>M12 11v6M12 7.5v.5</code>. Documented with the toast mocks' set (triangle <code>M12 4 2.5 20h19L12 4z</code>, dots <code>h.01</code>).</li>
         <li>The dialog alerts (unpublish, delete, remove image) put bare text in <code>.alert__body</code>; documented with a <code>p</code>.</li>
         <li>Only studio-editor/success has a Dismiss; the spot and guide "created as a draft" alerts do not. Documented as optional.</li>
-        <li>No mock uses <code>.banner</code>; kept as available, not as a pattern.</li>
       </ul>
     </section>
 

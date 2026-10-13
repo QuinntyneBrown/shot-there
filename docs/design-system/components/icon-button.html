@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Icon button — ShotThere design system</title>
-<meta name="description" content="ShotThere icon buttons: the 44px round glyph-only control that closes the photo lightbox and the map popup and steps between photos, in ghost and outline, every state, both themes.">
+<meta name="description" content="ShotThere icon buttons: the 44px round glyph-only control that closes the photo lightbox and the map popup and steps between photos, on the page and in the viewer, every state, both themes.">
 <link rel="stylesheet" href="../tokens/tokens.css">
 <link rel="stylesheet" href="../assets/components.css">
 <link rel="stylesheet" href="../assets/ds.css">
@@ -55,15 +55,13 @@
       <li><a href="../components/filter.html">Filters</a></li>
     </ul></details>
     <details open><summary>Containers and overlays</summary><ul>
-      <li><a href="../components/container.html">Container and grid</a></li>
+      <li><a href="../components/container.html">Container</a></li>
       <li><a href="../components/review-layout.html">Review layout</a></li>
       <li><a href="../components/editor-layout.html">Editor layout</a></li>
-      <li><a href="../components/card.html">Card</a></li>
       <li><a href="../components/dialog.html">Dialog</a></li>
-      <li><a href="../components/sheet.html">Sheet and drawer</a></li>
+      <li><a href="../components/sheet.html">Sheet</a></li>
       <li><a href="../components/popover.html">Popover</a></li>
       <li><a href="../components/lightbox.html">Lightbox</a></li>
-      <li><a href="../components/divider.html">Divider</a></li>
     </ul></details>
     <details open><summary>Data display</summary><ul>
       <li><a href="../components/location-card.html">Location card</a></li>
@@ -87,9 +85,9 @@
     </ul></details>
     <details open><summary>Feedback</summary><ul>
       <li><a href="../components/inline-message.html">Inline message</a></li>
-      <li><a href="../components/alert.html">Alert and banner</a></li>
+      <li><a href="../components/alert.html">Alert</a></li>
       <li><a href="../components/toast.html">Toast</a></li>
-      <li><a href="../components/progress.html">Progress and meter</a></li>
+      <li><a href="../components/progress.html">Progress</a></li>
       <li><a href="../components/spinner.html">Spinner</a></li>
       <li><a href="../components/skeleton.html">Skeleton</a></li>
       <li><a href="../components/empty-state.html">Empty state</a></li>
@@ -111,7 +109,7 @@
       <p class="ds-kicker">Component · Actions</p>
       <h1>Icon button</h1>
       <p class="ds-lead">A 44px round button that holds one outline icon and no visible text. On ShotThere it closes the photo lightbox and the map popup, and steps to the previous or next photo.</p>
-      <div class="ds-meta"><span class="ds-pill ds-pill--ok">WCAG 2.2 AA</span><span class="ds-pill">Status: stable</span><span class="ds-pill">Native <code>&lt;button&gt;</code></span><span class="ds-pill"><code>.icon-btn</code></span><span class="ds-pill"><code>.icon-btn--outline</code></span></div>
+      <div class="ds-meta"><span class="ds-pill ds-pill--ok">WCAG 2.2 AA</span><span class="ds-pill">Status: stable</span><span class="ds-pill">Native <code>&lt;button&gt;</code></span><span class="ds-pill"><code>.icon-btn</code></span></div>
       <ul class="ds-toc"><li><a href="#overview">Overview</a></li><li><a href="#anatomy">Anatomy</a></li><li><a href="#variants">Variants</a></li><li><a href="#sizes">Sizes</a></li><li><a href="#states">States</a></li><li><a href="#responsive">Responsive behaviour</a></li><li><a href="#theming">Theming</a></li><li><a href="#accessibility">Accessibility</a></li><li><a href="#content">Content</a></li><li><a href="#do-dont">Do and don't</a></li><li><a href="#tokens">Tokens</a></li><li><a href="#code">Code</a></li><li><a href="#sources">Sources</a></li></ul>
     </header>
 
@@ -119,7 +117,7 @@
       <p>Use an icon button only where a glyph is universally understood and space is tight: over a photo, on a map, in a viewer's bar. Everywhere else a visible word wins, so the site header's phone control is "Menu" with an icon and a label, not a bare glyph.</p>
       <ul>
         <li><b>Ghost</b> (<code>.icon-btn</code>) has no border and no fill at rest. It is the Close in the corner of the map marker popup ("The Junction Loft · All-in for 2 hours: $145.00").</li>
-        <li><b>Outline</b> adds a hairline ring so the target reads against a large photo. In the photo lightbox Close, "Previous photo" and "Next photo" get it from their container (<code>.viewer .icon-btn</code>). <code>.icon-btn--outline</code> applies the same ring anywhere else; no ShotThere mock uses the class directly yet.</li>
+        <li><b>In the viewer</b>, a hairline ring is added so the target reads against a large photo. In the photo lightbox Close, "Previous photo" and "Next photo" get it from their container (<code>.viewer .icon-btn</code>); there is no class to add.</li>
       </ul>
       <p>Not icon buttons: the Close in dialog and sheet headers (filters, confirmations, site menu) is a ghost <a href="button.html">button</a> with <code>.btn--icon</code>, so it lines up with the dialog's other buttons; the × on an active filter is the chip's own <code>.remove</code> button (<a href="chip.html">chip</a>); the play control on an episode poster is part of the <a href="video-poster.html">episode poster</a>.</p>
     </section>
@@ -127,14 +125,14 @@
     <section class="ds-section" id="anatomy"><h2><a href="#anatomy">Anatomy</a></h2>
       <div class="ds-anatomy">
         <figure class="ds-anatomy__figure">
-          <button class="icon-btn icon-btn--outline" type="button" aria-label="Next photo"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></button>
+          <div class="viewer" style="position: static; animation: none;"><button class="icon-btn" type="button" aria-label="Next photo"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></button></div>
           <span class="ds-callout" style="left: 54%; top: 34%;" aria-hidden="true">1</span>
           <span class="ds-callout" style="left: 62%; top: 14%;" aria-hidden="true">2</span>
           <span class="ds-callout" style="left: 40%; top: 72%;" aria-hidden="true">3</span>
         </figure>
         <ol class="ds-anatomy__list">
           <li><div><b>Icon</b><small>24-unit outline icon at 20px (<code>--icon-size-md</code>), <code>--icon-stroke</code>, <code>currentColor</code>, <code>aria-hidden="true"</code>.</small></div></li>
-          <li><div><b>Ring (outline only)</b><small>1px <code>--color-border-default</code>. Decorative: the 44px hit area and the hover fill do the work, so the ring needs no 3:1.</small></div></li>
+          <li><div><b>Ring (in the viewer only)</b><small>1px <code>--color-border-default</code> from <code>.viewer .icon-btn</code>. Decorative: the 44px hit area and the hover fill do the work, so the ring needs no 3:1.</small></div></li>
           <li><div><b>Container</b><small>44px circle (<code>--target-comfortable</code>, <code>--radius-full</code>). Transparent at rest; <code>--color-bg-subtle</code> on hover, <code>--color-bg-subtle-hover</code> while pressed down. The accessible name is its <code>aria-label</code>.</small></div></li>
         </ol>
       </div>
@@ -158,14 +156,16 @@
 &lt;/button&gt;</code></pre></details>
       </div>
 
-      <h3>Outline, in the photo lightbox</h3>
+      <h3>In the photo lightbox</h3>
       <div class="ds-example">
-        <div class="ds-example__canvas" style="display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: var(--space-2);">
-          <button class="icon-btn icon-btn--outline" type="button" aria-label="Previous photo"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m15 6-6 6 6 6"/></svg></button>
-          <img src="../assets/img/gallery-8.svg" alt="Wide frame of the whole space showing the cyc, the windows and the light stands." width="800" height="1000" style="justify-self: center; max-height: 14rem; width: auto; border-radius: var(--radius-md);">
-          <button class="icon-btn icon-btn--outline" type="button" aria-label="Next photo"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></button>
+        <div class="ds-example__canvas" style="display: block; padding: 0;">
+          <div class="viewer" style="position: static; animation: none;"><div class="viewer__stage">
+            <button class="icon-btn" type="button" aria-label="Previous photo"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m15 6-6 6 6 6"/></svg></button>
+            <img src="../assets/img/gallery-8.svg" alt="Wide frame of the whole space showing the cyc, the windows and the light stands." width="800" height="1000" style="justify-self: center; max-height: 14rem; max-width: 100%; width: auto; height: auto; border-radius: var(--radius-md);">
+            <button class="icon-btn" type="button" aria-label="Next photo"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></button>
+          </div></div>
         </div>
-        <div class="ds-example__caption"><span>From <code>dialogs/lightbox/last</code>, "Photo 8 of 8" of The Junction Loft. Inside <code>.viewer</code> the ring comes from the container; here <code>.icon-btn--outline</code> draws it. Next on the last photo wraps to photo 1, so neither arrow is ever disabled (L2-010.3).</span></div>
+        <div class="ds-example__caption"><span>From <code>dialogs/lightbox/last</code>, "Photo 8 of 8" of The Junction Loft. The ring comes from the container (<code>.viewer .icon-btn</code>). Next on the last photo wraps to photo 1, so neither arrow is ever disabled (L2-010.3).</span></div>
         <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;div class="viewer__bar"&gt;
   &lt;p class="viewer__count" aria-live="polite"&gt;Photo 8 of 8&lt;/p&gt;
   &lt;button class="icon-btn" type="button" aria-label="Close"&gt;…&lt;/button&gt;
@@ -192,7 +192,7 @@
       <div class="ds-example">
         <div class="ds-example__canvas">
           <button class="icon-btn" type="button" aria-label="Close"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
-          <button class="icon-btn icon-btn--outline" type="button" aria-label="Previous photo"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m15 6-6 6 6 6"/></svg></button>
+          <div class="viewer" style="position: static; animation: none;"><button class="icon-btn" type="button" aria-label="Previous photo"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m15 6-6 6 6 6"/></svg></button></div>
         </div>
         <div class="ds-example__caption"><span>44px container, 20px glyph, 12px clear space around the glyph.</span></div>
       </div>
@@ -211,19 +211,19 @@
             <td><button class="icon-btn" type="button" aria-label="Close" data-state="active"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></td>
             <td><button class="icon-btn" type="button" aria-label="Close" disabled><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></td>
             <td><span class="ds-na">No ShotThere use yet</span></td></tr>
-          <tr><th scope="row">Outline</th>
-            <td><button class="icon-btn icon-btn--outline" type="button" aria-label="Next photo"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></button></td>
-            <td><button class="icon-btn icon-btn--outline" type="button" aria-label="Next photo" data-state="hover"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></button></td>
-            <td><button class="icon-btn icon-btn--outline" type="button" aria-label="Next photo" data-state="focus"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></button></td>
-            <td><button class="icon-btn icon-btn--outline" type="button" aria-label="Next photo" data-state="active"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></button></td>
+          <tr><th scope="row">In the viewer</th>
+            <td><div class="viewer" style="position: static; animation: none;"><button class="icon-btn" type="button" aria-label="Next photo"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></button></div></td>
+            <td><div class="viewer" style="position: static; animation: none;"><button class="icon-btn" type="button" aria-label="Next photo" data-state="hover"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></button></div></td>
+            <td><div class="viewer" style="position: static; animation: none;"><button class="icon-btn" type="button" aria-label="Next photo" data-state="focus"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></button></div></td>
+            <td><div class="viewer" style="position: static; animation: none;"><button class="icon-btn" type="button" aria-label="Next photo" data-state="active"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></button></div></td>
             <td><span class="ds-na">Never: arrows wrap</span></td>
             <td><span class="ds-na">No ShotThere use yet</span></td></tr>
         </tbody>
       </table></div>
       <h3>Both themes</h3>
       <div class="ds-themes">
-        <div data-theme="light"><div class="ds-example__canvas" style="padding: 0;"><button class="icon-btn" type="button" aria-label="Close"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button><button class="icon-btn" type="button" aria-label="Close" data-state="hover"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button><button class="icon-btn icon-btn--outline" type="button" aria-label="Previous photo"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m15 6-6 6 6 6"/></svg></button><button class="icon-btn icon-btn--outline" type="button" aria-label="Next photo"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></button></div></div>
-        <div data-theme="dark"><div class="ds-example__canvas" style="padding: 0;"><button class="icon-btn" type="button" aria-label="Close"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button><button class="icon-btn" type="button" aria-label="Close" data-state="hover"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button><button class="icon-btn icon-btn--outline" type="button" aria-label="Previous photo"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m15 6-6 6 6 6"/></svg></button><button class="icon-btn icon-btn--outline" type="button" aria-label="Next photo"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></button></div></div>
+        <div data-theme="light"><div class="ds-example__canvas" style="padding: 0;"><button class="icon-btn" type="button" aria-label="Close"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button><button class="icon-btn" type="button" aria-label="Close" data-state="hover"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button><div class="viewer" style="position: static; animation: none; flex-direction: row; gap: var(--space-4);"><button class="icon-btn" type="button" aria-label="Previous photo"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m15 6-6 6 6 6"/></svg></button><button class="icon-btn" type="button" aria-label="Next photo"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></button></div></div></div>
+        <div data-theme="dark"><div class="ds-example__canvas" style="padding: 0;"><button class="icon-btn" type="button" aria-label="Close"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button><button class="icon-btn" type="button" aria-label="Close" data-state="hover"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button><div class="viewer" style="position: static; animation: none; flex-direction: row; gap: var(--space-4);"><button class="icon-btn" type="button" aria-label="Previous photo"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m15 6-6 6 6 6"/></svg></button><button class="icon-btn" type="button" aria-label="Next photo"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></button></div></div></div>
       </div>
       <ul>
         <li><b>Disabled</b> uses the native attribute at 50% opacity with no hover fill. No current ShotThere icon button is ever disabled: the lightbox arrows wrap, and the only busy overlay (the delete dialog) disables its <code>.btn--icon</code> Close, not an <code>.icon-btn</code>.</li>
@@ -242,7 +242,7 @@
     </section>
 
     <section class="ds-section" id="theming"><h2><a href="#theming">Theming</a></h2>
-      <p>The icon button reads <code>--color-fg-default</code> for the glyph, <code>--color-bg-subtle</code> and <code>--color-bg-subtle-hover</code> for hover and active, <code>--color-border-default</code> for the outline ring and <code>--color-fg-accent</code> for a pressed or current glyph. It has no component tokens. In dark the glyph turns light stone and the hover fill a dark stone, keeping the same contrast steps; the lightbox's canvas background darkens with it, so the photo stays the brightest thing on screen.</p>
+      <p>The icon button reads <code>--color-fg-default</code> for the glyph, <code>--color-bg-subtle</code> and <code>--color-bg-subtle-hover</code> for hover and active, <code>--color-border-default</code> for the ring inside the viewer and <code>--color-fg-accent</code> for a pressed or current glyph. It has no component tokens. In dark the glyph turns light stone and the hover fill a dark stone, keeping the same contrast steps; the lightbox's canvas background darkens with it, so the photo stays the brightest thing on screen.</p>
     </section>
 
     <section class="ds-section" id="accessibility"><h2><a href="#accessibility">Accessibility</a></h2>
@@ -283,8 +283,8 @@
 
     <section class="ds-section" id="do-dont"><h2><a href="#do-dont">Do and don't</a></h2>
       <div class="ds-dodont">
-        <figure class="ds-do"><div class="ds-example__canvas"><button class="icon-btn icon-btn--outline" type="button" aria-label="Previous photo"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m15 6-6 6 6 6"/></svg></button><span class="text-muted">Photo 1 of 8</span><button class="icon-btn icon-btn--outline" type="button" aria-label="Next photo"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></button></div><figcaption>Keep both arrows live on the first and last photo; they wrap round the gallery.</figcaption></figure>
-        <figure class="ds-dont"><div class="ds-example__canvas"><button class="icon-btn icon-btn--outline" type="button" aria-label="Previous photo" disabled><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m15 6-6 6 6 6"/></svg></button><span class="text-muted">Photo 1 of 8</span><button class="icon-btn icon-btn--outline" type="button" aria-label="Next photo"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></button></div><figcaption>Don't disable an end arrow. L2-010.3 wraps Next to photo 1; a dead arrow strands keyboard users.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas"><button class="icon-btn" type="button" aria-label="Previous photo"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m15 6-6 6 6 6"/></svg></button><span class="text-muted">Photo 1 of 8</span><button class="icon-btn" type="button" aria-label="Next photo"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></button></div><figcaption>Keep both arrows live on the first and last photo; they wrap round the gallery.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas"><button class="icon-btn" type="button" aria-label="Previous photo" disabled><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m15 6-6 6 6 6"/></svg></button><span class="text-muted">Photo 1 of 8</span><button class="icon-btn" type="button" aria-label="Next photo"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></button></div><figcaption>Don't disable an end arrow. L2-010.3 wraps Next to photo 1; a dead arrow strands keyboard users.</figcaption></figure>
         <figure class="ds-do"><div class="ds-example__canvas"><a class="btn btn--ghost" href="#do-dont" aria-haspopup="dialog" aria-expanded="false"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>Menu</a></div><figcaption>The phone site menu keeps its word: a ghost button with icon and "Menu".</figcaption></figure>
         <figure class="ds-dont"><div class="ds-example__canvas"><button class="icon-btn" type="button" aria-label="Menu"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button></div><figcaption>Don't strip navigation down to a glyph to save 40px; use icon buttons only over photos and maps.</figcaption></figure>
       </div>
@@ -297,7 +297,7 @@
           <tr><td>Glyph</td><td><code>--color-fg-default</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-default" data-swatch></i><span data-token="--color-fg-default"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-default" data-swatch></i><span data-token="--color-fg-default"></span></span></td></tr>
           <tr><td>Hover fill</td><td><code>--color-bg-subtle</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-bg-subtle" data-swatch></i><span data-token="--color-bg-subtle"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-bg-subtle" data-swatch></i><span data-token="--color-bg-subtle"></span></span></td></tr>
           <tr><td>Active fill</td><td><code>--color-bg-subtle-hover</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-bg-subtle-hover" data-swatch></i><span data-token="--color-bg-subtle-hover"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-bg-subtle-hover" data-swatch></i><span data-token="--color-bg-subtle-hover"></span></span></td></tr>
-          <tr><td>Outline ring</td><td><code>--color-border-default</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-border-default" data-swatch></i><span data-token="--color-border-default"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-border-default" data-swatch></i><span data-token="--color-border-default"></span></span></td></tr>
+          <tr><td>Viewer ring</td><td><code>--color-border-default</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-border-default" data-swatch></i><span data-token="--color-border-default"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-border-default" data-swatch></i><span data-token="--color-border-default"></span></span></td></tr>
           <tr><td>Pressed / current glyph</td><td><code>--color-fg-accent</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-accent" data-swatch></i><span data-token="--color-fg-accent"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-accent" data-swatch></i><span data-token="--color-fg-accent"></span></span></td></tr>
           <tr><td>Focus ring</td><td><code>--color-focus-ring</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-focus-ring" data-swatch></i><span data-token="--color-focus-ring"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-focus-ring" data-swatch></i><span data-token="--color-focus-ring"></span></span></td></tr>
           <tr><td>Size</td><td><code>--target-comfortable</code></td><td colspan="2"><span data-token="--target-comfortable"></span></td></tr>
@@ -313,12 +313,15 @@
   &lt;svg class="icon" aria-hidden="true" viewBox="0 0 24 24"&gt;&lt;path d="M6 6l12 12M18 6 6 18"/&gt;&lt;/svg&gt;
 &lt;/button&gt;
 
-&lt;button class="icon-btn icon-btn--outline" type="button" aria-label="Next photo"&gt;
-  &lt;svg class="icon" aria-hidden="true" viewBox="0 0 24 24"&gt;&lt;path d="m9 6 6 6-6 6"/&gt;&lt;/svg&gt;
-&lt;/button&gt;</code></pre>
+&lt;!-- inside .viewer the same button gets the hairline ring --&gt;
+&lt;div class="viewer__stage"&gt;
+  &lt;button class="icon-btn" type="button" aria-label="Next photo"&gt;
+    &lt;svg class="icon" aria-hidden="true" viewBox="0 0 24 24"&gt;&lt;path d="m9 6 6 6-6 6"/&gt;&lt;/svg&gt;
+  &lt;/button&gt;
+&lt;/div&gt;</code></pre>
       <div class="ds-table-wrap"><table class="ds-table"><thead><tr><th scope="col">Class / attribute</th><th scope="col">Effect</th></tr></thead><tbody>
         <tr><td><code>.icon-btn</code></td><td>Ghost: 44px circle, transparent at rest.</td></tr>
-        <tr><td><code>.icon-btn--outline</code></td><td>Adds the hairline ring. Inside <code>.viewer</code> the ring is applied automatically.</td></tr>
+        <tr><td><code>.viewer .icon-btn</code></td><td>Adds the hairline ring to every icon button inside the viewer.</td></tr>
         <tr><td><code>aria-label</code></td><td>Required: the accessible name.</td></tr>
         <tr><td><code>disabled</code> / <code>aria-disabled="true"</code></td><td>50% opacity, no hover fill.</td></tr>
         <tr><td><code>aria-pressed="true"</code> / <code>aria-expanded="true"</code> / <code>aria-current="page"</code></td><td>Hover fill kept; pressed and current glyph in <code>--color-fg-accent</code>. No mock uses these yet.</td></tr>

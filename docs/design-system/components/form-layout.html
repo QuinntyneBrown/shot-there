@@ -55,15 +55,13 @@
       <li><a href="../components/filter.html">Filters</a></li>
     </ul></details>
     <details open><summary>Containers and overlays</summary><ul>
-      <li><a href="../components/container.html">Container and grid</a></li>
+      <li><a href="../components/container.html">Container</a></li>
       <li><a href="../components/review-layout.html">Review layout</a></li>
       <li><a href="../components/editor-layout.html">Editor layout</a></li>
-      <li><a href="../components/card.html">Card</a></li>
       <li><a href="../components/dialog.html">Dialog</a></li>
-      <li><a href="../components/sheet.html">Sheet and drawer</a></li>
+      <li><a href="../components/sheet.html">Sheet</a></li>
       <li><a href="../components/popover.html">Popover</a></li>
       <li><a href="../components/lightbox.html">Lightbox</a></li>
-      <li><a href="../components/divider.html">Divider</a></li>
     </ul></details>
     <details open><summary>Data display</summary><ul>
       <li><a href="../components/location-card.html">Location card</a></li>
@@ -87,9 +85,9 @@
     </ul></details>
     <details open><summary>Feedback</summary><ul>
       <li><a href="../components/inline-message.html">Inline message</a></li>
-      <li><a href="../components/alert.html">Alert and banner</a></li>
+      <li><a href="../components/alert.html">Alert</a></li>
       <li><a href="../components/toast.html">Toast</a></li>
-      <li><a href="../components/progress.html">Progress and meter</a></li>
+      <li><a href="../components/progress.html">Progress</a></li>
       <li><a href="../components/spinner.html">Spinner</a></li>
       <li><a href="../components/skeleton.html">Skeleton</a></li>
       <li><a href="../components/empty-state.html">Empty state</a></li>
@@ -493,7 +491,6 @@
         <tr><td><code>.form-summary</code></td><td>Danger-tinted box with a heading and a list of links.</td></tr>
         <tr><td><code>.auth</code>, <code>.auth__head</code></td><td>Sign-in page: 28rem centred column; heading and subtitle.</td></tr>
         <tr><td><code>data-invalid</code> on <code>.editor-section</code></td><td>Danger edge on a section that holds an error.</td></tr>
-        <tr><td><code>.form</code>, <code>.form--compact</code>, <code>.toolbar</code></td><td>In the stylesheet; no ShotThere mock uses them.</td></tr>
       </tbody></table></div>
     </section>
 
@@ -516,7 +513,6 @@
         <li>32 field rows override <code>grid-template-columns</code> inline (14 always-two, 18 auto-fit); <code>.field-row--pair</code>, <code>.field-row--fit</code> and <code>.field-row--fit-sm</code> now replace them.</li>
         <li>The sign-in summary has no <code>aria-labelledby</code> and relies on <code>autofocus</code>; it now matches the editors' summary.</li>
         <li>Nothing stopped the sticky bar covering a focused field at the bottom of the screen (WCAG 2.4.11); <code>html:has(.form-actions--sticky)</code> now adds the bottom scroll padding.</li>
-        <li><code>.form</code>, <code>.form--compact</code> and <code>.toolbar</code> have CSS and no ShotThere use.</li>
       </ul>
     </section>
 

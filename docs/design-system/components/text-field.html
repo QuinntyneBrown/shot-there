@@ -55,15 +55,13 @@
       <li><a href="../components/filter.html">Filters</a></li>
     </ul></details>
     <details open><summary>Containers and overlays</summary><ul>
-      <li><a href="../components/container.html">Container and grid</a></li>
+      <li><a href="../components/container.html">Container</a></li>
       <li><a href="../components/review-layout.html">Review layout</a></li>
       <li><a href="../components/editor-layout.html">Editor layout</a></li>
-      <li><a href="../components/card.html">Card</a></li>
       <li><a href="../components/dialog.html">Dialog</a></li>
-      <li><a href="../components/sheet.html">Sheet and drawer</a></li>
+      <li><a href="../components/sheet.html">Sheet</a></li>
       <li><a href="../components/popover.html">Popover</a></li>
       <li><a href="../components/lightbox.html">Lightbox</a></li>
-      <li><a href="../components/divider.html">Divider</a></li>
     </ul></details>
     <details open><summary>Data display</summary><ul>
       <li><a href="../components/location-card.html">Location card</a></li>
@@ -87,9 +85,9 @@
     </ul></details>
     <details open><summary>Feedback</summary><ul>
       <li><a href="../components/inline-message.html">Inline message</a></li>
-      <li><a href="../components/alert.html">Alert and banner</a></li>
+      <li><a href="../components/alert.html">Alert</a></li>
       <li><a href="../components/toast.html">Toast</a></li>
-      <li><a href="../components/progress.html">Progress and meter</a></li>
+      <li><a href="../components/progress.html">Progress</a></li>
       <li><a href="../components/spinner.html">Spinner</a></li>
       <li><a href="../components/skeleton.html">Skeleton</a></li>
       <li><a href="../components/empty-state.html">Empty state</a></li>
@@ -259,14 +257,13 @@
     </section>
 
     <section class="ds-section" id="sizes"><h2><a href="#sizes">Sizes</a></h2>
-      <p>Medium is the default everywhere. Large is for sign-in, where the two fields are the whole task. Small is in the stylesheet for dense desktop toolbars but no ShotThere mock uses it yet: from 48rem it is 36px; below 48rem it grows to 44px and 16px text (L2-065.3).</p>
+      <p>Medium is the default everywhere. Large is for sign-in, where the two fields are the whole task.</p>
       <div class="ds-example">
         <div class="ds-example__canvas ds-example__canvas--stack" style="max-width: 28rem;">
-          <div class="field"><label class="field__label" for="z-sm">Small · 36px (unused)</label><input class="input input--sm" id="z-sm" type="search" value="parkdale"></div>
           <div class="field"><label class="field__label" for="z-md">Medium · 44px</label><input class="input" id="z-md" value="Corktown"></div>
           <div class="field"><label class="field__label" for="z-lg">Large · 52px</label><input class="input input--lg" id="z-lg" type="email" value="owner@shotthere.ca" spellcheck="false"></div>
         </div>
-        <div class="ds-example__caption"><span>Heights <code>--control-height-sm/md/lg</code>; text <code>--font-size-sm</code> / <code>md</code> / <code>lg</code>. An input group's addon or button matches its input: Show is <code>.btn--lg</code> beside the large password.</span></div>
+        <div class="ds-example__caption"><span>Heights <code>--control-height-md/lg</code>; text <code>--font-size-md</code> / <code>lg</code>. An input group's addon or button matches its input: Show is <code>.btn--lg</code> beside the large password.</span></div>
       </div>
     </section>
 
@@ -343,7 +340,7 @@
     <section class="ds-section" id="responsive"><h2><a href="#responsive">Responsive behaviour</a></h2>
       <ul>
         <li>Every input is <code>width: 100%</code> of its field. Short pairs (Usable width and depth, Latitude and Longitude, Hourly rate and Minimum booking) share a <code>.field-row</code> from 36rem; the cost minimum and maximum in the filters stay side by side at every width because both are short.</li>
-        <li>Text is 16px at medium and large, so iOS Safari never zooms the page on focus. Small is 14px only from 48rem.</li>
+        <li>Text is 16px at medium and large, so iOS Safari never zooms the page on focus.</li>
         <li>Input groups never wrap: the addon or Show stays joined to the field. At 320px the password keeps 190px for typing beside Show; keep addons to one or two characters.</li>
         <li>Date inputs use the platform picker: a wheel on iOS, a calendar on Android and desktop. <code>max</code> (today) limits it; the server checks again.</li>
         <li>The admin search is capped at 28rem so it doesn't run across the whole table on wide screens.</li>
@@ -428,7 +425,7 @@
           <tr><td>Disabled and addon fill</td><td><code>--color-bg-subtle</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-bg-subtle" data-swatch></i><span data-token="--color-bg-subtle"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-bg-subtle" data-swatch></i><span data-token="--color-bg-subtle"></span></span></td></tr>
           <tr><td>Disabled text</td><td><code>--color-fg-disabled</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-disabled" data-swatch></i><span data-token="--color-fg-disabled"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-disabled" data-swatch></i><span data-token="--color-fg-disabled"></span></span></td></tr>
           <tr><td>Disabled edge</td><td><code>--color-border-default</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-border-default" data-swatch></i><span data-token="--color-border-default"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-border-default" data-swatch></i><span data-token="--color-border-default"></span></span></td></tr>
-          <tr><td>Height sm / md / lg</td><td><code>--control-height-sm/md/lg</code></td><td colspan="2"><span data-token="--control-height-sm"></span> / <span data-token="--control-height-md"></span> / <span data-token="--control-height-lg"></span></td></tr>
+          <tr><td>Height md / lg</td><td><code>--control-height-md/lg</code></td><td colspan="2"><span data-token="--control-height-md"></span> / <span data-token="--control-height-lg"></span></td></tr>
           <tr><td>Padding; search start padding</td><td><code>--space-2</code> <code>--space-3</code>; <code>--space-10</code></td><td colspan="2"><span data-token="--space-2"></span> <span data-token="--space-3"></span> · <span data-token="--space-10"></span></td></tr>
           <tr><td>Radius</td><td><code>--radius-md</code></td><td colspan="2"><span data-token="--radius-md"></span></td></tr>
           <tr><td>Value type</td><td><code>--text-body</code></td><td colspan="2"><span data-token="--text-body"></span></td></tr>
@@ -449,7 +446,7 @@
 &lt;/div&gt;</code></pre>
       <table class="ds-table"><thead><tr><th scope="col">Class / attribute</th><th scope="col">Effect</th></tr></thead><tbody>
         <tr><td><code>.input</code></td><td>Base field, medium (44px).</td></tr>
-        <tr><td><code>.input--lg</code> / <code>.input--sm</code></td><td>52px (sign-in) / 36px from 48rem, 44px below (unused).</td></tr>
+        <tr><td><code>.input--lg</code></td><td>52px (sign-in).</td></tr>
         <tr><td><code>.input-group</code> + <code>.addon</code></td><td>Joined prefix or suffix, or a joined button; inner corners squared, 1px seams, and the focused part drawn on top so its ring shows in full.</td></tr>
         <tr><td><code>.search</code></td><td>Wrapper adding a leading search icon.</td></tr>
         <tr><td><code>.read-only-value</code></td><td>Value as 18px text, replacing the input.</td></tr>
@@ -473,7 +470,7 @@
         <li><a href="../../mocks/pages/admin-studios/default.html">pages/admin-studios/default</a>, <a href="../../mocks/pages/admin-studios/loading.html">loading</a> and <a href="../../mocks/pages/admin-studios/no-results.html">no-results</a>, <a href="../../mocks/pages/admin-guides/default.html">pages/admin-guides/default</a> (search)</li>
         <li><a href="../../mocks/dialogs/missing-fields/default.html">dialogs/missing-fields/default</a> (read-only values)</li>
       </ul>
-      <p>Drift fixed during extraction: every sign-in state puts <code>style="flex: 1; min-width: 0;"</code> on the password; the group already fits at 320px without it, so it is dropped. The joined Show button and any suffix addon sat beside the input with both edges showing, a 2px seam where a prefix has 1px; <code>.input-group</code> now overlaps every joined part by 1px, and the focused part rises above its neighbour so its ring is never clipped. Fee and extra amounts in the studio editor have no <code>step</code>, so cents are a step mismatch; money fields now take <code>step="0.01"</code> (the hourly rate's <code>step="0.5"</code> also rejects $45.25). No mock uses a suffix addon, <code>.input--sm</code> or a placeholder; they are kept from the stylesheet and marked unused. The admin search form has an inline <code>max-width</code> and margin; that is page layout, documented here as a 28rem cap.</p>
+      <p>Drift fixed during extraction: every sign-in state puts <code>style="flex: 1; min-width: 0;"</code> on the password; the group already fits at 320px without it, so it is dropped. The joined Show button and any suffix addon sat beside the input with both edges showing, a 2px seam where a prefix has 1px; <code>.input-group</code> now overlaps every joined part by 1px, and the focused part rises above its neighbour so its ring is never clipped. Fee and extra amounts in the studio editor have no <code>step</code>, so cents are a step mismatch; money fields now take <code>step="0.01"</code> (the hourly rate's <code>step="0.5"</code> also rejects $45.25). No mock uses a suffix addon or a placeholder; they are kept from the stylesheet and marked unused. The admin search form has an inline <code>max-width</code> and margin; that is page layout, documented here as a 28rem cap.</p>
     </section>
 
     <footer class="ds-footer"><span>ShotThere design system · extracted from <a href="../../mocks/index.html">docs/mocks</a> on 13 October 2026</span><a href="#top">Back to top</a></footer>

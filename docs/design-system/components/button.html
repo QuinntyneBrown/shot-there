@@ -55,15 +55,13 @@
       <li><a href="../components/filter.html">Filters</a></li>
     </ul></details>
     <details open><summary>Containers and overlays</summary><ul>
-      <li><a href="../components/container.html">Container and grid</a></li>
+      <li><a href="../components/container.html">Container</a></li>
       <li><a href="../components/review-layout.html">Review layout</a></li>
       <li><a href="../components/editor-layout.html">Editor layout</a></li>
-      <li><a href="../components/card.html">Card</a></li>
       <li><a href="../components/dialog.html">Dialog</a></li>
-      <li><a href="../components/sheet.html">Sheet and drawer</a></li>
+      <li><a href="../components/sheet.html">Sheet</a></li>
       <li><a href="../components/popover.html">Popover</a></li>
       <li><a href="../components/lightbox.html">Lightbox</a></li>
-      <li><a href="../components/divider.html">Divider</a></li>
     </ul></details>
     <details open><summary>Data display</summary><ul>
       <li><a href="../components/location-card.html">Location card</a></li>
@@ -87,9 +85,9 @@
     </ul></details>
     <details open><summary>Feedback</summary><ul>
       <li><a href="../components/inline-message.html">Inline message</a></li>
-      <li><a href="../components/alert.html">Alert and banner</a></li>
+      <li><a href="../components/alert.html">Alert</a></li>
       <li><a href="../components/toast.html">Toast</a></li>
-      <li><a href="../components/progress.html">Progress and meter</a></li>
+      <li><a href="../components/progress.html">Progress</a></li>
       <li><a href="../components/spinner.html">Spinner</a></li>
       <li><a href="../components/skeleton.html">Skeleton</a></li>
       <li><a href="../components/empty-state.html">Empty state</a></li>
@@ -176,7 +174,7 @@
 &lt;button class="btn compare-toggle" type="button" aria-pressed="true"&gt;Remove from compare&lt;/button&gt;</code></pre></details>
       </div>
 
-      <h3>With icons, icon-only, block and wrapping</h3>
+      <h3>With icons, icon-only and block</h3>
       <div class="ds-example">
         <div class="ds-example__canvas">
           <a class="btn btn--primary" href="#variants"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>New studio</a>
@@ -184,9 +182,8 @@
           <button class="btn btn--sm" type="button"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>Add fee</button>
           <button class="btn btn--ghost btn--icon" type="button" aria-label="Close"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
           <button class="btn btn--primary btn--lg btn--block" type="button" style="max-width: 20rem;">Sign in</button>
-          <a class="btn btn--wrap" href="#variants" style="max-width: 12rem;">Get an email when they go up</a>
         </div>
-        <div class="ds-example__caption"><span><code>.btn--icon</code> is the dialog and sheet Close and needs <code>aria-label</code>; <code>.btn--block</code> fills its container (sign-in, summary panel, editor status panel); <code>.btn--wrap</code> lets a long label wrap left-aligned. No ShotThere mock uses <code>.btn--wrap</code> yet; every current label fits at 320px.</span></div>
+        <div class="ds-example__caption"><span><code>.btn--icon</code> is the dialog and sheet Close and needs <code>aria-label</code>; <code>.btn--block</code> fills its container (sign-in, summary panel, editor status panel). Every current label fits at 320px.</span></div>
       </div>
 
       <h3>Links drawn as buttons</h3>
@@ -244,7 +241,7 @@
         <li>Below 48rem every small button grows to 44px (L2-065.3), so card "Compare" toggles and row "Edit", "Move up", "Remove" are comfortable on a phone.</li>
         <li>The studio page's summary panel and the editor's status panel stretch their buttons to full width at every size (<code>.summary-panel .btn</code>, <code>.editor-aside .btn</code>). Below 62rem the summary panel moves above the review, so "Book on the studio's site" is the first action on a phone.</li>
         <li>Dialog footers keep buttons on one row and wrap when they don't fit; the confirming action stays last. The phone filters sheet stretches both buttons ("Clear all", "Show 7 studios") with <code>.sheet__footer .btn</code>.</li>
-        <li><code>.btn</code> never exceeds its container (<code>max-width: 100%</code>). A label that would overflow at 320px gets <code>.btn--wrap</code> or a shorter verb phrase; it never truncates.</li>
+        <li><code>.btn</code> never exceeds its container (<code>max-width: 100%</code>). A label that would overflow at 320px gets a shorter verb phrase; it never truncates.</li>
       </ul>
     </section>
 
@@ -350,7 +347,6 @@
         <tr><td><code>.btn--sm</code> <code>.btn--lg</code></td><td>Size; omit for medium. Small grows to 44px below 48rem.</td></tr>
         <tr><td><code>.btn--icon</code></td><td>Square icon-only button (dialog and sheet Close); requires <code>aria-label</code>.</td></tr>
         <tr><td><code>.btn--block</code></td><td>Full width.</td></tr>
-        <tr><td><code>.btn--wrap</code> / <code>data-wrap</code></td><td>Lets a long label wrap, left-aligned. No mock uses it yet.</td></tr>
         <tr><td><code>disabled</code> / <code>aria-disabled="true"</code></td><td>Disabled look; the native attribute also removes it from the tab order.</td></tr>
         <tr><td><code>aria-busy="true"</code></td><td>Busy: spinner, label hidden, clicks ignored, width kept. Pair with <code>disabled</code>.</td></tr>
         <tr><td><code>data-state="hover|focus|active|loading|disabled"</code></td><td>Documentation and mocks only: forces a state statically.</td></tr>

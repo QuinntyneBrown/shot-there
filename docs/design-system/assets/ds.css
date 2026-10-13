@@ -189,3 +189,7 @@ pre code { background: none; padding: 0; }
 
 /* ShotThere: placeholder where a Sweet Hand mock preview used to be embedded */
 .ds-note { padding: var(--space-3) var(--space-4); background: var(--color-bg-subtle); border-radius: var(--radius-md); color: var(--color-fg-muted); font: var(--text-body-sm); }
+
+/* Documentation only: show toasts and popovers in the page flow instead of fixed or anchored. */
+.toast-region--static { position: static; width: auto; pointer-events: auto; }
+.popover--static { position: static; animation: none; }

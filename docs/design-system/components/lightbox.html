@@ -55,15 +55,13 @@
       <li><a href="../components/filter.html">Filters</a></li>
     </ul></details>
     <details open><summary>Containers and overlays</summary><ul>
-      <li><a href="../components/container.html">Container and grid</a></li>
+      <li><a href="../components/container.html">Container</a></li>
       <li><a href="../components/review-layout.html">Review layout</a></li>
       <li><a href="../components/editor-layout.html">Editor layout</a></li>
-      <li><a href="../components/card.html">Card</a></li>
       <li><a href="../components/dialog.html">Dialog</a></li>
-      <li><a href="../components/sheet.html">Sheet and drawer</a></li>
+      <li><a href="../components/sheet.html">Sheet</a></li>
       <li><a href="../components/popover.html">Popover</a></li>
       <li><a href="../components/lightbox.html">Lightbox</a></li>
-      <li><a href="../components/divider.html">Divider</a></li>
     </ul></details>
     <details open><summary>Data display</summary><ul>
       <li><a href="../components/location-card.html">Location card</a></li>
@@ -87,9 +85,9 @@
     </ul></details>
     <details open><summary>Feedback</summary><ul>
       <li><a href="../components/inline-message.html">Inline message</a></li>
-      <li><a href="../components/alert.html">Alert and banner</a></li>
+      <li><a href="../components/alert.html">Alert</a></li>
       <li><a href="../components/toast.html">Toast</a></li>
-      <li><a href="../components/progress.html">Progress and meter</a></li>
+      <li><a href="../components/progress.html">Progress</a></li>
       <li><a href="../components/spinner.html">Spinner</a></li>
       <li><a href="../components/skeleton.html">Skeleton</a></li>
       <li><a href="../components/empty-state.html">Empty state</a></li>
@@ -218,22 +216,22 @@
 
     <section class="ds-section" id="states"><h2><a href="#states">States</a></h2>
       <h3>Controls</h3>
-      <p>Close and the arrows are <a href="icon-button.html">icon buttons</a>. Inside <code>.viewer</code> they get a hairline edge so they read as controls on a bare canvas. Outside a viewer, the matrix shows that edge with <code>.icon-btn--outline</code>, which draws the same 1 px <code>--color-border-default</code> line. The phone pager uses secondary <a href="button.html">buttons</a>.</p>
-      <div class="ds-matrix"><table>
+      <p>Close and the arrows are <a href="icon-button.html">icon buttons</a>. Inside <code>.viewer</code> they get a 1 px <code>--color-border-default</code> edge so they read as controls on a bare canvas; the matrix sits in a <code>.viewer</code>, held in the page flow for this documentation, to show it. The phone pager uses secondary <a href="button.html">buttons</a>.</p>
+      <div class="ds-matrix"><div class="viewer" style="position: static; animation: none;"><table>
         <thead><tr><th scope="col">Control</th><th scope="col">Default</th><th scope="col">Hover</th><th scope="col">Focus</th><th scope="col">Active</th><th scope="col">Disabled</th></tr></thead>
         <tbody>
           <tr><th scope="row">Close</th>
-            <td><button class="icon-btn icon-btn--outline" type="button" aria-label="Close"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></td>
-            <td><button class="icon-btn icon-btn--outline" type="button" aria-label="Close" data-state="hover"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></td>
-            <td><button class="icon-btn icon-btn--outline" type="button" aria-label="Close" data-state="focus"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></td>
-            <td><button class="icon-btn icon-btn--outline" type="button" aria-label="Close" data-state="active"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></td>
+            <td><button class="icon-btn" type="button" aria-label="Close"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></td>
+            <td><button class="icon-btn" type="button" aria-label="Close" data-state="hover"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></td>
+            <td><button class="icon-btn" type="button" aria-label="Close" data-state="focus"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></td>
+            <td><button class="icon-btn" type="button" aria-label="Close" data-state="active"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></td>
             <td><span class="text-caption">Never. Close always works.</span></td>
           </tr>
           <tr><th scope="row">Previous / Next arrow</th>
-            <td><button class="icon-btn icon-btn--outline" type="button" aria-label="Next photo"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></button></td>
-            <td><button class="icon-btn icon-btn--outline" type="button" aria-label="Next photo" data-state="hover"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></button></td>
-            <td><button class="icon-btn icon-btn--outline" type="button" aria-label="Next photo" data-state="focus"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></button></td>
-            <td><button class="icon-btn icon-btn--outline" type="button" aria-label="Next photo" data-state="active"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></button></td>
+            <td><button class="icon-btn" type="button" aria-label="Next photo"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></button></td>
+            <td><button class="icon-btn" type="button" aria-label="Next photo" data-state="hover"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></button></td>
+            <td><button class="icon-btn" type="button" aria-label="Next photo" data-state="focus"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></button></td>
+            <td><button class="icon-btn" type="button" aria-label="Next photo" data-state="active"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></button></td>
             <td><span class="text-caption">Never. Navigation wraps (L2-010.3).</span></td>
           </tr>
           <tr><th scope="row">Pager button (phones)</th>
@@ -244,7 +242,7 @@
             <td><span class="text-caption">Never. Navigation wraps.</span></td>
           </tr>
         </tbody>
-      </table></div>
+      </table></div></div>
 
       <h3>Position: first, middle, last</h3>
       <p>The count changes and the arrows do not. Next on the last photo shows photo 1, and Previous on photo 1 shows the last (L2-010.3), so neither end ever disables an arrow. The middle position is the <a href="#variants">gallery example</a> above.</p>
@@ -402,8 +400,8 @@
 
     <section class="ds-section" id="do-dont"><h2><a href="#do-dont">Do and don't</a></h2>
       <div class="ds-dodont">
-        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--canvas"><p class="viewer__count" style="flex: none;">Photo 8 of 8</p><button class="icon-btn icon-btn--outline" type="button" aria-label="Previous photo"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m15 6-6 6 6 6"/></svg></button><button class="icon-btn icon-btn--outline" type="button" aria-label="Next photo"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></button></div><figcaption>On the last photo, keep Next enabled. It shows photo 1 (L2-010.3).</figcaption></figure>
-        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--canvas"><p class="viewer__count" style="flex: none;">Photo 8 of 8</p><button class="icon-btn icon-btn--outline" type="button" aria-label="Previous photo"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m15 6-6 6 6 6"/></svg></button><button class="icon-btn icon-btn--outline" type="button" aria-label="Next photo" aria-disabled="true"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></button></div><figcaption>Grey out the end arrow with <code>aria-disabled</code>. Wrapping is the requirement and a dead end strands keyboard users; the viewer has no end-arrow style.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--canvas"><div class="viewer" style="position: static; animation: none; width: 100%;"><div class="viewer__bar" style="padding: 0;"><p class="viewer__count" style="flex: none;">Photo 8 of 8</p><button class="icon-btn" type="button" aria-label="Previous photo"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m15 6-6 6 6 6"/></svg></button><button class="icon-btn" type="button" aria-label="Next photo"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></button></div></div></div><figcaption>On the last photo, keep Next enabled. It shows photo 1 (L2-010.3).</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--canvas"><div class="viewer" style="position: static; animation: none; width: 100%;"><div class="viewer__bar" style="padding: 0;"><p class="viewer__count" style="flex: none;">Photo 8 of 8</p><button class="icon-btn" type="button" aria-label="Previous photo"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m15 6-6 6 6 6"/></svg></button><button class="icon-btn" type="button" aria-label="Next photo" aria-disabled="true"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></button></div></div></div><figcaption>Grey out the end arrow with <code>aria-disabled</code>. Wrapping is the requirement and a dead end strands keyboard users; the viewer has no end-arrow style.</figcaption></figure>
         <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--canvas"><div class="lightbox__frame" style="width: 100%;"><div class="media-fallback" style="width: 9rem;"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 16 5-5 4 4 2-2 7 7"/><path d="M3 3l18 18"/></svg><span>Full-length fashion frame on the cyc, warm afternoon light from the left.</span></div></div></div><figcaption>When the image fails, keep the slot, show the alt text and leave every control working (L2-086.1).</figcaption></figure>
         <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--canvas"><div class="lightbox__frame" style="width: 100%; min-height: 6rem;"><p class="text-muted">Something went wrong.</p></div></div><figcaption>Replace the photo with a generic error, or close the viewer. The visitor loses the description and their place in the set.</figcaption></figure>
         <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--canvas"><div class="lightbox__pager" style="display: flex; padding: 0; width: 100%;"><button class="btn" type="button"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m15 6-6 6 6 6"/></svg>Previous<span class="visually-hidden"> photo</span></button><button class="btn" type="button">Next<span class="visually-hidden"> photo</span><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></button></div></div><figcaption>On phones, put Previous and Next under the photo as labelled 44 px buttons, so the photo gets the full width.</figcaption></figure>

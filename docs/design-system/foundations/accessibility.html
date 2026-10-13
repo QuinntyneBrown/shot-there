@@ -55,15 +55,13 @@
       <li><a href="../components/filter.html">Filters</a></li>
     </ul></details>
     <details open><summary>Containers and overlays</summary><ul>
-      <li><a href="../components/container.html">Container and grid</a></li>
+      <li><a href="../components/container.html">Container</a></li>
       <li><a href="../components/review-layout.html">Review layout</a></li>
       <li><a href="../components/editor-layout.html">Editor layout</a></li>
-      <li><a href="../components/card.html">Card</a></li>
       <li><a href="../components/dialog.html">Dialog</a></li>
-      <li><a href="../components/sheet.html">Sheet and drawer</a></li>
+      <li><a href="../components/sheet.html">Sheet</a></li>
       <li><a href="../components/popover.html">Popover</a></li>
       <li><a href="../components/lightbox.html">Lightbox</a></li>
-      <li><a href="../components/divider.html">Divider</a></li>
     </ul></details>
     <details open><summary>Data display</summary><ul>
       <li><a href="../components/location-card.html">Location card</a></li>
@@ -87,9 +85,9 @@
     </ul></details>
     <details open><summary>Feedback</summary><ul>
       <li><a href="../components/inline-message.html">Inline message</a></li>
-      <li><a href="../components/alert.html">Alert and banner</a></li>
+      <li><a href="../components/alert.html">Alert</a></li>
       <li><a href="../components/toast.html">Toast</a></li>
-      <li><a href="../components/progress.html">Progress and meter</a></li>
+      <li><a href="../components/progress.html">Progress</a></li>
       <li><a href="../components/spinner.html">Spinner</a></li>
       <li><a href="../components/skeleton.html">Skeleton</a></li>
       <li><a href="../components/empty-state.html">Empty state</a></li>
@@ -130,7 +128,7 @@
         <thead><tr><th scope="col">Requirement</th><th scope="col">SC</th><th scope="col">ShotThere commitment</th></tr></thead>
         <tbody>
           <tr><td>Text contrast</td><td>1.4.3</td><td>Body, label, metadata and caption text are at least 4.5:1 on every surface they sit on, in both themes; large text at least 3:1 (L2-068.1). Every pair is declared in <code>tokens/contrast-pairs.json</code> and checked. No text is set directly on a photo or a map tile: the play label has its own solid pill, the map legend and popup their own raised surface.</td></tr>
-          <tr><td>Non-text contrast</td><td>1.4.11</td><td>Field and secondary button edges (<code>--color-border-strong</code>), the focus ring, filled and empty score pips, map markers (with a surface-coloured halo against any tile), the upload progress fill against its track, and meaningful icons are at least 3:1. Card and section hairlines are decorative and exempt.</td></tr>
+          <tr><td>Non-text contrast</td><td>1.4.11</td><td>Field and secondary button edges (<code>--color-border-strong</code>), the focus ring, filled and empty score pips, map markers (with a surface-coloured halo against any tile), the upload progress fill against its track, and meaningful icons are at least 3:1. Summary-panel, editor-section, list-row and table hairlines are decorative and exempt.</td></tr>
           <tr><td>Use of colour</td><td>1.4.1</td><td><b>Scores</b> are a number beside the pips ("4") and read as "Light: 5 out of 5" (L2-011.3, L2-068.3). <b>Light levels</b> are a word beside the pips ("Strong"). <b>Map markers</b> differ by shape, not only colour: studios are squares, spots are ringed circles, explained by a visible legend, and every location is also in the list view (L2-027.1, L2-029.2). <b>Stale data</b> is a sentence ("Prices may be out of date"). <b>"Lowest"</b> in the comparison is a word (L2-031.2). <b>Permits</b> are "Required" or "Not required". <b>Pressed</b> toggles change weight and label as well as colour. Links in prose are underlined.</td></tr>
           <tr><td>Images</td><td>1.1.1</td><td><b>Alt text is required on every uploaded image</b>: the editor refuses to save a gallery image, test shot or sample shot without it and shows "Describe this image" (L2-057.4). Alt describes what the photo shows a photographer: "Test shot 2, full length on the cyc: the scuffs show as faint marks behind the feet." Thumbnails whose name follows (location cards, comparison headers, the episode poster) and map tiles use <code>alt=""</code>. A photo that fails to load keeps its slot and shows its alt text (L2-086.1). Icons are <code>aria-hidden="true"</code>.</td></tr>
           <tr><td>Video</td><td>1.2.2, 1.2.5</td><td>Episodes play on YouTube, where they carry captions. Every fact in an episode (measurements, prices, scores, the verdict) is also on the review page as text, so the video is never the only source.</td></tr>
@@ -247,7 +245,7 @@
         <div class="ds-example__canvas" style="align-items: flex-end;">
           <span style="display: grid; place-items: center; width: var(--target-min); height: var(--target-min); border: var(--border-width-hairline) dashed var(--color-accent); background: var(--color-accent-subtle); border-radius: var(--radius-xs);" aria-hidden="true"></span>
           <span style="display: grid; place-items: center; width: var(--target-comfortable); height: var(--target-comfortable); border: var(--border-width-hairline) dashed var(--color-accent); background: var(--color-accent-subtle); border-radius: var(--radius-xs);" aria-hidden="true"></span>
-          <button class="icon-btn icon-btn--outline" type="button" aria-label="Next photo"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></button>
+          <button class="icon-btn" type="button" aria-label="Next photo"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></button>
           <button class="btn compare-toggle" type="button" aria-pressed="false">Add to compare</button>
           <button class="btn btn--sm compare-toggle" type="button" aria-pressed="false">Compare<span class="visually-hidden"> Liberty Cyc House</span></button>
         </div>
@@ -316,7 +314,7 @@ python3 .claude/skills/extracting-design-systems/scripts/check_design_system.py 
       </div>
       <div class="ds-dodont">
         <figure class="ds-do"><div class="ds-example__canvas"><ul class="map-legend"><li><span class="map-legend__key map-legend__key--studio" aria-hidden="true"></span>Studio</li><li><span class="map-legend__key map-legend__key--spot" aria-hidden="true"></span>Outdoor spot</li></ul></div><figcaption>Tell studios and spots apart by shape, explain the shapes in a legend, and offer the same locations as a list.</figcaption></figure>
-        <figure class="ds-dont"><div class="ds-example__canvas"><span class="dot" style="color: var(--color-accent); width: var(--space-4); height: var(--space-4);" aria-hidden="true"></span><span class="dot" style="color: var(--color-success-solid); width: var(--space-4); height: var(--space-4);" aria-hidden="true"></span></div><figcaption>Use two colours of the same dot. Red and green look alike to many people, and on a busy tile neither is clear.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas"><span style="display: inline-block; width: var(--space-4); height: var(--space-4); border-radius: var(--radius-full); background: var(--color-accent);" aria-hidden="true"></span><span style="display: inline-block; width: var(--space-4); height: var(--space-4); border-radius: var(--radius-full); background: var(--color-success-solid);" aria-hidden="true"></span></div><figcaption>Use two colours of the same dot. Red and green look alike to many people, and on a busy tile neither is clear.</figcaption></figure>
       </div>
       <div class="ds-dodont">
         <figure class="ds-do"><div class="ds-example__canvas"><div class="field" style="width: 100%;"><label class="field__label" for="dodont-email-a">Email address</label><input class="input" id="dodont-email-a" type="email" autocomplete="email" inputmode="email"></div></div><figcaption>Give every field a visible label, as the signup form does.</figcaption></figure>

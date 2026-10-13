@@ -55,15 +55,13 @@
       <li><a href="../components/filter.html">Filters</a></li>
     </ul></details>
     <details open><summary>Containers and overlays</summary><ul>
-      <li><a href="../components/container.html">Container and grid</a></li>
+      <li><a href="../components/container.html">Container</a></li>
       <li><a href="../components/review-layout.html">Review layout</a></li>
       <li><a href="../components/editor-layout.html">Editor layout</a></li>
-      <li><a href="../components/card.html">Card</a></li>
       <li><a href="../components/dialog.html">Dialog</a></li>
-      <li><a href="../components/sheet.html">Sheet and drawer</a></li>
+      <li><a href="../components/sheet.html">Sheet</a></li>
       <li><a href="../components/popover.html">Popover</a></li>
       <li><a href="../components/lightbox.html">Lightbox</a></li>
-      <li><a href="../components/divider.html">Divider</a></li>
     </ul></details>
     <details open><summary>Data display</summary><ul>
       <li><a href="../components/location-card.html">Location card</a></li>
@@ -87,9 +85,9 @@
     </ul></details>
     <details open><summary>Feedback</summary><ul>
       <li><a href="../components/inline-message.html">Inline message</a></li>
-      <li><a href="../components/alert.html">Alert and banner</a></li>
+      <li><a href="../components/alert.html">Alert</a></li>
       <li><a href="../components/toast.html">Toast</a></li>
-      <li><a href="../components/progress.html">Progress and meter</a></li>
+      <li><a href="../components/progress.html">Progress</a></li>
       <li><a href="../components/spinner.html">Spinner</a></li>
       <li><a href="../components/skeleton.html">Skeleton</a></li>
       <li><a href="../components/empty-state.html">Empty state</a></li>
@@ -121,7 +119,6 @@
         <li><b>Inline</b> (bare <code>&lt;a&gt;</code>) sits in a sentence: "tell us at corrections@shotthere.ca" on the editorial policy. Ink, underlined, accent red on hover.</li>
         <li><b>Standalone</b> (<code>.link--standalone</code>) stands on its own line as the way on from a block: "Read the full review" under each guide entry, "Change studios" above the comparison. Label weight, 44px tall.</li>
         <li><b>External</b> (<code>.link--external</code>) leaves ShotThere: "Watch on YouTube" under an episode, "Open in Google Maps" for a spot, a permit source such as "Evergreen: photography and filming". It shows a small arrow, opens a new tab and says so to screen readers.</li>
-        <li><b>Back link</b> (<code>.eyebrow</code>) is a quiet link above a title. The CSS is kept, but no ShotThere mock uses it: review pages use the <a href="breadcrumb.html">breadcrumb</a> ("Studios › The Junction Loft") instead.</li>
       </ul>
       <p>A link can be drawn as a button when it is the page's main call to action. "Book on the studio's site" is <code>&lt;a class="btn btn--primary"&gt;</code> with the same external arrow and hidden "(opens in a new tab)" as <code>.link--external</code>: booking happens on the studio's own site, never on ShotThere. Links inside a <a href="location-card.html">location card</a>, the <a href="compare-table.html">comparison table</a> header, the <a href="breadcrumb.html">breadcrumb</a> and the <a href="footer.html">footer</a> take those components' styles.</p>
     </section>
@@ -146,7 +143,7 @@
       <h3>Inline</h3>
       <div class="ds-example">
         <div class="ds-example__canvas ds-example__canvas--stack">
-          <p class="measure">If a price, a measurement or an address is wrong, tell us at <a href="mailto:corrections@shotthere.ca">corrections@shotthere.ca</a> and we'll check it and fix it.</p>
+          <p>If a price, a measurement or an address is wrong, tell us at <a href="mailto:corrections@shotthere.ca">corrections@shotthere.ca</a> and we'll check it and fix it.</p>
         </div>
         <div class="ds-example__caption"><span>From <code>pages/editorial-policy/default</code>. Inline links take the sentence's type and line height.</span></div>
       </div>
@@ -182,14 +179,6 @@
         </div>
         <div class="ds-example__caption"><span>The summary panel's main action on <code>pages/studio/default</code>. It is still a link: <kbd>Enter</kbd> follows it, and the browser's "open in new tab" works. See <a href="button.html#variants">button</a>.</span></div>
       </div>
-
-      <h3>Back link (no mock uses it yet)</h3>
-      <div class="ds-example">
-        <div class="ds-example__canvas">
-          <a class="eyebrow" href="#variants"><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><path d="m15 6-6 6 6 6"/></svg>Studios</a>
-        </div>
-        <div class="ds-example__caption"><span><code>.eyebrow</code>: muted, no underline until hover, 44px tall. ShotThere's review pages use the breadcrumb for the same route.</span></div>
-      </div>
     </section>
 
     <section class="ds-section" id="sizes"><h2><a href="#sizes">Sizes</a></h2>
@@ -212,7 +201,6 @@
           <tr><th scope="row">Inline</th><td><a href="#states">corrections@shotthere.ca</a></td><td><a href="#states" data-state="hover">corrections@shotthere.ca</a></td><td><a href="#states" data-state="focus">corrections@shotthere.ca</a></td><td><span class="ds-na">As hover</span></td><td><span class="ds-na">Not styled</span></td><td><span class="ds-na">Plain text instead</span></td></tr>
           <tr><th scope="row">Standalone</th><td><a class="link--standalone" href="#states">Change studios</a></td><td><a class="link--standalone" href="#states" data-state="hover">Change studios</a></td><td><a class="link--standalone" href="#states" data-state="focus">Change studios</a></td><td><span class="ds-na">As hover</span></td><td><span class="ds-na">Not styled</span></td><td><span class="ds-na">Plain text instead</span></td></tr>
           <tr><th scope="row">External</th><td><a class="link--external" href="https://www.youtube.com/watch?v=Ev7Bw3kGh2Q" target="_blank" rel="noopener">Watch on YouTube<svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v6H4V6h6"/></svg><span class="visually-hidden"> (opens in a new tab)</span></a></td><td><a class="link--external" href="https://www.youtube.com/watch?v=Ev7Bw3kGh2Q" target="_blank" rel="noopener" data-state="hover">Watch on YouTube<svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v6H4V6h6"/></svg><span class="visually-hidden"> (opens in a new tab)</span></a></td><td><a class="link--external" href="https://www.youtube.com/watch?v=Ev7Bw3kGh2Q" target="_blank" rel="noopener" data-state="focus">Watch on YouTube<svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v6H4V6h6"/></svg><span class="visually-hidden"> (opens in a new tab)</span></a></td><td><span class="ds-na">As hover</span></td><td><span class="ds-na">Not styled</span></td><td><span class="ds-na">Plain text instead</span></td></tr>
-          <tr><th scope="row">Back link</th><td><a class="eyebrow" href="#states">Studios</a></td><td><a class="eyebrow" href="#states" data-state="hover">Studios</a></td><td><a class="eyebrow" href="#states" data-state="focus">Studios</a></td><td><span class="ds-na">As hover</span></td><td><span class="ds-na">Not styled</span></td><td><span class="ds-na">Plain text instead</span></td></tr>
         </tbody>
       </table></div>
       <h3>Both themes</h3>
@@ -237,7 +225,7 @@
     </section>
 
     <section class="ds-section" id="theming"><h2><a href="#theming">Theming</a></h2>
-      <p>Links read <code>--color-fg-link</code> and <code>--color-fg-link-hover</code>; the back link reads <code>--color-fg-muted</code> and <code>--color-fg-default</code>. In dark the link becomes light stone and its hover a light accent red. There are no component tokens; inside an <a href="alert.html">alert</a>, a <a href="toast.html">toast</a> or the <a href="footer.html">footer</a> links inherit that container's colour and keep the underline.</p>
+      <p>Links read <code>--color-fg-link</code> and <code>--color-fg-link-hover</code>. In dark the link becomes light stone and its hover a light accent red. There are no component tokens; inside an <a href="alert.html">alert</a>, a <a href="toast.html">toast</a> or the <a href="footer.html">footer</a> links inherit that container's colour and keep the underline.</p>
     </section>
 
     <section class="ds-section" id="accessibility"><h2><a href="#accessibility">Accessibility</a></h2>
@@ -258,14 +246,14 @@
         <div class="ds-pair"><span>Link on a card</span><span class="ds-pair__ratio" data-contrast="--color-fg-link|--color-bg-surface" data-min="4.5"></span></div>
         <div class="ds-pair"><span>Hovered link on page</span><span class="ds-pair__ratio" data-contrast="--color-fg-link-hover|--color-bg-canvas" data-min="4.5"></span></div>
         <div class="ds-pair"><span>Hovered link on a card</span><span class="ds-pair__ratio" data-contrast="--color-fg-link-hover|--color-bg-surface" data-min="4.5"></span></div>
-        <div class="ds-pair"><span>Back link and verified line</span><span class="ds-pair__ratio" data-contrast="--color-fg-muted|--color-bg-canvas" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Verified line</span><span class="ds-pair__ratio" data-contrast="--color-fg-muted|--color-bg-canvas" data-min="4.5"></span></div>
         <div class="ds-pair"><span>Focus ring</span><span class="ds-pair__ratio" data-contrast="--color-focus-ring|--color-bg-canvas" data-min="3"></span></div>
       </div>
       <p>Links are told apart from text by the underline, not by colour alone (WCAG 1.4.1).</p>
       <h3>Motion</h3>
       <p>None. The colour and underline change instantly on hover.</p>
       <h3>Touch</h3>
-      <p>Standalone and back links are at least 44px tall (<code>--target-comfortable</code>). Inline links are exempt from target size because they sit in a sentence (WCAG 2.5.8); keep at least one word between two inline links.</p>
+      <p>Standalone links are at least 44px tall (<code>--target-comfortable</code>). Inline links are exempt from target size because they sit in a sentence (WCAG 2.5.8); keep at least one word between two inline links.</p>
     </section>
 
     <section class="ds-section" id="content"><h2><a href="#content">Content</a></h2>
@@ -292,7 +280,6 @@
         <tbody>
           <tr><td>Link</td><td><code>--color-fg-link</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-link" data-swatch></i><span data-token="--color-fg-link"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-link" data-swatch></i><span data-token="--color-fg-link"></span></span></td></tr>
           <tr><td>Link, hover</td><td><code>--color-fg-link-hover</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-link-hover" data-swatch></i><span data-token="--color-fg-link-hover"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-link-hover" data-swatch></i><span data-token="--color-fg-link-hover"></span></span></td></tr>
-          <tr><td>Back link</td><td><code>--color-fg-muted</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-muted" data-swatch></i><span data-token="--color-fg-muted"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-muted" data-swatch></i><span data-token="--color-fg-muted"></span></span></td></tr>
           <tr><td>Focus ring</td><td><code>--color-focus-ring</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-focus-ring" data-swatch></i><span data-token="--color-focus-ring"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-focus-ring" data-swatch></i><span data-token="--color-focus-ring"></span></span></td></tr>
           <tr><td>Underline / hover underline</td><td><code>--border-width-hairline</code> / <code>--border-width-thick</code></td><td colspan="2"><span data-token="--border-width-hairline"></span> / <span data-token="--border-width-thick"></span></td></tr>
           <tr><td>Standalone label</td><td><code>--text-label</code> at <code>--font-size-md</code></td><td colspan="2"><span data-token="--text-label"></span></td></tr>
@@ -312,7 +299,6 @@
         <tr><td><code>a</code></td><td>Inline link: ink, underlined, accent red and thicker underline on hover.</td></tr>
         <tr><td><code>.link--standalone</code></td><td>Label weight, inline-flex, 44px tall.</td></tr>
         <tr><td><code>.link--external</code> + <code>target="_blank" rel="noopener"</code></td><td>Keeps the trailing arrow inline after the last word at 0.9em. Add the hidden " (opens in a new tab)".</td></tr>
-        <tr><td><code>.eyebrow</code></td><td>Muted back link, underlined on hover, 44px tall. No mock uses it yet.</td></tr>
         <tr><td><code>data-state="hover|focus"</code></td><td>Documentation and mocks only.</td></tr>
       </tbody></table></div>
     </section>

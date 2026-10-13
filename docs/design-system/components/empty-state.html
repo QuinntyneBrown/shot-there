@@ -55,15 +55,13 @@
       <li><a href="../components/filter.html">Filters</a></li>
     </ul></details>
     <details open><summary>Containers and overlays</summary><ul>
-      <li><a href="../components/container.html">Container and grid</a></li>
+      <li><a href="../components/container.html">Container</a></li>
       <li><a href="../components/review-layout.html">Review layout</a></li>
       <li><a href="../components/editor-layout.html">Editor layout</a></li>
-      <li><a href="../components/card.html">Card</a></li>
       <li><a href="../components/dialog.html">Dialog</a></li>
-      <li><a href="../components/sheet.html">Sheet and drawer</a></li>
+      <li><a href="../components/sheet.html">Sheet</a></li>
       <li><a href="../components/popover.html">Popover</a></li>
       <li><a href="../components/lightbox.html">Lightbox</a></li>
-      <li><a href="../components/divider.html">Divider</a></li>
     </ul></details>
     <details open><summary>Data display</summary><ul>
       <li><a href="../components/location-card.html">Location card</a></li>
@@ -87,9 +85,9 @@
     </ul></details>
     <details open><summary>Feedback</summary><ul>
       <li><a href="../components/inline-message.html">Inline message</a></li>
-      <li><a href="../components/alert.html">Alert and banner</a></li>
+      <li><a href="../components/alert.html">Alert</a></li>
       <li><a href="../components/toast.html">Toast</a></li>
-      <li><a href="../components/progress.html">Progress and meter</a></li>
+      <li><a href="../components/progress.html">Progress</a></li>
       <li><a href="../components/spinner.html">Spinner</a></li>
       <li><a href="../components/skeleton.html">Skeleton</a></li>
       <li><a href="../components/empty-state.html">Empty state</a></li>
@@ -258,7 +256,6 @@
         </div>
         <div class="ds-example__caption"><span>A spot page's Rain backup section before any studio is published (L2-038), and the map's error card floating over the map tiles (<code>.static-map__overlay</code> centres it and gives it its raised card).</span></div>
       </div>
-      <p><code>.empty--info</code> is still in the stylesheet but no ShotThere screen uses it; a neutral empty state uses the default stone circle.</p>
     </section>
 
     <section class="ds-section" id="sizes"><h2><a href="#sizes">Sizes</a></h2>
@@ -442,7 +439,7 @@
         <li>All done: <a href="../../mocks/pages/admin-dashboard/up-to-date.html">pages/admin-dashboard/up-to-date</a>.</li>
         <li>Compact in a section: <a href="../../mocks/pages/spot/no-rain-backup.html">pages/spot/no-rain-backup</a> (L2-038), <a href="../../mocks/pages/guide-editor/new.html">pages/guide-editor/new</a>.</li>
       </ul>
-      <p>Drift found during extraction, documented here and left in the mocks for their owner: the admin list, dashboard and studio editor errors have no <code>role="alert"</code> while the public lists, map and spot and guide editors do; the system requires it on every error that replaces content after a request. The guide editor's "No entries yet" overrides the title to <code>--text-h4</code> inline while the spot page's "Studio reviews are coming" keeps h3 size; the system keeps h3. The map's floating card sets its surface, radius and shadow inline. The error icon's dot is drawn two ways (<code>M12 16h.01</code> and <code>M12 16.5v.5</code>); either renders the same. <code>.empty--info</code> has no ShotThere use.</p>
+      <p>Drift found during extraction, documented here and left in the mocks for their owner: the admin list, dashboard and studio editor errors have no <code>role="alert"</code> while the public lists, map and spot and guide editors do; the system requires it on every error that replaces content after a request. The guide editor's "No entries yet" overrides the title to <code>--text-h4</code> inline while the spot page's "Studio reviews are coming" keeps h3 size; the system keeps h3. The map's floating card sets its surface, radius and shadow inline. The error icon's dot is drawn two ways (<code>M12 16h.01</code> and <code>M12 16.5v.5</code>); either renders the same.</p>
     </section>
 
     <footer class="ds-footer"><span>ShotThere design system · extracted from <a href="../../mocks/index.html">docs/mocks</a> on 13 October 2026</span><a href="#top">Back to top</a></footer>

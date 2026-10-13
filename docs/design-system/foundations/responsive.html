@@ -55,15 +55,13 @@
       <li><a href="../components/filter.html">Filters</a></li>
     </ul></details>
     <details open><summary>Containers and overlays</summary><ul>
-      <li><a href="../components/container.html">Container and grid</a></li>
+      <li><a href="../components/container.html">Container</a></li>
       <li><a href="../components/review-layout.html">Review layout</a></li>
       <li><a href="../components/editor-layout.html">Editor layout</a></li>
-      <li><a href="../components/card.html">Card</a></li>
       <li><a href="../components/dialog.html">Dialog</a></li>
-      <li><a href="../components/sheet.html">Sheet and drawer</a></li>
+      <li><a href="../components/sheet.html">Sheet</a></li>
       <li><a href="../components/popover.html">Popover</a></li>
       <li><a href="../components/lightbox.html">Lightbox</a></li>
-      <li><a href="../components/divider.html">Divider</a></li>
     </ul></details>
     <details open><summary>Data display</summary><ul>
       <li><a href="../components/location-card.html">Location card</a></li>
@@ -87,9 +85,9 @@
     </ul></details>
     <details open><summary>Feedback</summary><ul>
       <li><a href="../components/inline-message.html">Inline message</a></li>
-      <li><a href="../components/alert.html">Alert and banner</a></li>
+      <li><a href="../components/alert.html">Alert</a></li>
       <li><a href="../components/toast.html">Toast</a></li>
-      <li><a href="../components/progress.html">Progress and meter</a></li>
+      <li><a href="../components/progress.html">Progress</a></li>
       <li><a href="../components/spinner.html">Spinner</a></li>
       <li><a href="../components/skeleton.html">Skeleton</a></li>
       <li><a href="../components/empty-state.html">Empty state</a></li>
@@ -139,30 +137,24 @@
         </tbody>
       </table></div>
       <p>Media queries cannot read custom properties, so <code>components.css</code> repeats these four values literally (36rem, 48rem, 62rem, 75rem). One exception sits below the scale: under 24rem the "Toronto" tag beside the ShotThere wordmark hides so the header fits at 320px.</p>
-      <h3>Which class am I in?</h3>
+      <h3>Am I below LG?</h3>
       <div class="ds-example">
         <div class="ds-example__canvas">
-          <span class="badge badge--solid only-xs-sm">XS or SM: below 48rem</span>
-          <span class="badge badge--solid only-md">MD: 48rem to 62rem</span>
-          <span class="badge badge--solid only-lg">LG or XL: 62rem and up</span>
           <span class="badge until-lg">Below LG</span>
         </div>
-        <div class="ds-example__caption"><span>Live: resize the window. Each badge uses the visibility utility it names.</span></div>
+        <div class="ds-example__caption"><span>Live: resize the window. The badge uses <code>.until-lg</code>, so it disappears from 62rem.</span></div>
       </div>
     </section>
 
     <section class="ds-section" id="utilities"><h2><a href="#utilities">Visibility utilities</a></h2>
-      <p>When a component has two genuinely different forms (a Filters button and a filter sidebar), render both and show one with these classes, rather than rearranging one element with many queries. Both forms must hold the same options with the same accessible names.</p>
+      <p>When a component has two genuinely different forms (a Filters button and a filter sidebar), render both and show one with this class, rather than rearranging one element with many queries. Both forms must hold the same options with the same accessible names.</p>
       <div class="ds-table-wrap"><table class="ds-table">
         <thead><tr><th scope="col">Class</th><th scope="col">Visible</th><th scope="col">Used for in ShotThere</th></tr></thead>
         <tbody>
           <tr><td><code>.until-lg</code></td><td>Below 62rem</td><td>The "Filters" trigger on the studio and spot lists, which opens the filters sheet; the sidebar (<code>.browse__aside</code>) takes over from LG</td></tr>
-          <tr><td><code>.only-xs-sm</code></td><td>Below 48rem</td><td>Available; no ShotThere mock uses it</td></tr>
-          <tr><td><code>.only-md</code></td><td>48rem to 62rem</td><td>Available; no ShotThere mock uses it</td></tr>
-          <tr><td><code>.only-lg</code></td><td>62rem and up</td><td>Available; no ShotThere mock uses it</td></tr>
         </tbody>
       </table></div>
-      <p>They use <code>display: none !important</code>, so hidden content is also hidden from screen readers; never hide something at one size that has no equivalent at the other. Component-owned switches (<code>.site-nav__extra</code> and <code>.site-nav__menu</code> in the header, <code>.map-page__toggle</code> on the map) follow the same rule.</p>
+      <p>It uses <code>display: none !important</code>, so hidden content is also hidden from screen readers; never hide something at one size that has no equivalent at the other. Component-owned switches (<code>.site-nav__extra</code> and <code>.site-nav__menu</code> in the header, <code>.map-page__toggle</code> on the map) follow the same rule.</p>
     </section>
 
     <section class="ds-section" id="behaviours"><h2><a href="#behaviours">Component behaviour by breakpoint</a></h2>

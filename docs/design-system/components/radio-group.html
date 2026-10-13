@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Radio group — ShotThere design system</title>
-<meta name="description" content="ShotThere radio groups: parking in the studio filters, the permit filter for spots and the disclosure question in the studio and spot editors, with the card variant; every state in both themes.">
+<meta name="description" content="ShotThere radio groups: parking in the studio filters, the permit filter for spots and the disclosure question in the studio and spot editors; every state in both themes.">
 <link rel="stylesheet" href="../tokens/tokens.css">
 <link rel="stylesheet" href="../assets/components.css">
 <link rel="stylesheet" href="../assets/ds.css">
@@ -55,15 +55,13 @@
       <li><a href="../components/filter.html">Filters</a></li>
     </ul></details>
     <details open><summary>Containers and overlays</summary><ul>
-      <li><a href="../components/container.html">Container and grid</a></li>
+      <li><a href="../components/container.html">Container</a></li>
       <li><a href="../components/review-layout.html">Review layout</a></li>
       <li><a href="../components/editor-layout.html">Editor layout</a></li>
-      <li><a href="../components/card.html">Card</a></li>
       <li><a href="../components/dialog.html">Dialog</a></li>
-      <li><a href="../components/sheet.html">Sheet and drawer</a></li>
+      <li><a href="../components/sheet.html">Sheet</a></li>
       <li><a href="../components/popover.html">Popover</a></li>
       <li><a href="../components/lightbox.html">Lightbox</a></li>
-      <li><a href="../components/divider.html">Divider</a></li>
     </ul></details>
     <details open><summary>Data display</summary><ul>
       <li><a href="../components/location-card.html">Location card</a></li>
@@ -87,9 +85,9 @@
     </ul></details>
     <details open><summary>Feedback</summary><ul>
       <li><a href="../components/inline-message.html">Inline message</a></li>
-      <li><a href="../components/alert.html">Alert and banner</a></li>
+      <li><a href="../components/alert.html">Alert</a></li>
       <li><a href="../components/toast.html">Toast</a></li>
-      <li><a href="../components/progress.html">Progress and meter</a></li>
+      <li><a href="../components/progress.html">Progress</a></li>
       <li><a href="../components/spinner.html">Spinner</a></li>
       <li><a href="../components/skeleton.html">Skeleton</a></li>
       <li><a href="../components/empty-state.html">Empty state</a></li>
@@ -112,7 +110,7 @@
       <p class="ds-kicker">Component · Inputs</p>
       <h1>Radio group</h1>
       <p class="ds-lead">A radio group asks for exactly one answer and keeps every option in view: what parking a studio must have, whether a spot needs a permit for the shoot, and how the session behind a review was paid for.</p>
-      <div class="ds-meta"><span class="ds-pill ds-pill--ok">WCAG 2.2 AA</span><span class="ds-pill">Status: stable</span><span class="ds-pill">Native <code>&lt;input type="radio"&gt;</code></span><span class="ds-pill"><code>.choice</code></span><span class="ds-pill"><code>.choice--card</code></span></div>
+      <div class="ds-meta"><span class="ds-pill ds-pill--ok">WCAG 2.2 AA</span><span class="ds-pill">Status: stable</span><span class="ds-pill">Native <code>&lt;input type="radio"&gt;</code></span><span class="ds-pill"><code>.choice</code></span></div>
       <ul class="ds-toc"><li><a href="#overview">Overview</a></li><li><a href="#anatomy">Anatomy</a></li><li><a href="#variants">Variants</a></li><li><a href="#sizes">Sizes</a></li><li><a href="#states">States</a></li><li><a href="#responsive">Responsive behaviour</a></li><li><a href="#theming">Theming</a></li><li><a href="#accessibility">Accessibility</a></li><li><a href="#content">Content</a></li><li><a href="#do-dont">Do and don't</a></li><li><a href="#tokens">Tokens</a></li><li><a href="#code">Code</a></li><li><a href="#sources">Sources</a></li></ul>
     </header>
 
@@ -200,25 +198,10 @@
   &lt;input class="input" id="disclosureProvider" name="disclosureProvider"&gt;
 &lt;/div&gt;</code></pre></details>
       </div>
-
-      <h3>Card (<code>.choice--card</code>, no mock uses it yet)</h3>
-      <div class="ds-example">
-        <div class="ds-example__canvas ds-example__canvas--stack" style="max-width: 32rem;">
-          <fieldset class="stack stack--sm">
-            <legend>How was this session paid for?</legend>
-            <label class="choice choice--card"><input type="radio" name="v-card" value="paid_in_full" checked><span class="choice__text">I paid the full rate<small>Visitors see "Paid in full"</small></span></label>
-            <label class="choice choice--card"><input type="radio" name="v-card" value="discounted"><span class="choice__text">Discounted<small>Visitors see "Discounted by" and the provider</small></span></label>
-            <label class="choice choice--card"><input type="radio" name="v-card" value="comped"><span class="choice__text">Comped (free of charge)<small>Visitors see "Comped by" and the provider</small></span></label>
-          </fieldset>
-        </div>
-        <div class="ds-example__caption"><span>The card puts a 16px-padded edge round each option; the selected one gets a doubled accent edge, and focus rings the card, not the circle. Use it when each option needs a line of consequence. The editors use plain rows today.</span></div>
-        <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;label class="choice choice--card"&gt;&lt;input type="radio" name="disclosure" value="discounted"&gt;
-  &lt;span class="choice__text"&gt;Discounted&lt;small&gt;Visitors see "Discounted by" and the provider&lt;/small&gt;&lt;/span&gt;&lt;/label&gt;</code></pre></details>
-      </div>
     </section>
 
     <section class="ds-section" id="sizes" data-na="Radios have one size."><h2><a href="#sizes">Sizes</a></h2>
-      <p class="ds-na">One size: a 20px circle beside 16px text. The row is the target; the card variant is the larger presentation.</p>
+      <p class="ds-na">One size: a 20px circle beside 16px text. The whole row is the target.</p>
     </section>
 
     <section class="ds-section" id="states"><h2><a href="#states">States</a></h2>
@@ -239,12 +222,6 @@
             <td><label class="choice"><input type="radio" name="m-c3" checked data-state="focus"><span>On-site</span></label></td>
             <td><label class="choice"><input type="radio" name="m-c4" checked disabled><span>On-site</span></label></td>
             <td><small class="text-muted">A choice made is never wrong</small></td></tr>
-          <tr><th scope="row">Card</th>
-            <td><label class="choice choice--card"><input type="radio" name="m-k1"><span>Discounted</span></label></td>
-            <td><label class="choice choice--card"><input type="radio" name="m-k2" data-state="hover"><span>Discounted</span></label></td>
-            <td><label class="choice choice--card"><input type="radio" name="m-k3" data-state="focus"><span>Discounted</span></label></td>
-            <td><label class="choice choice--card"><input type="radio" name="m-k4" disabled><span>Discounted</span></label></td>
-            <td><small class="text-muted">The error sits on the group</small></td></tr>
         </tbody>
       </table></div>
       <h3>Both themes</h3>
@@ -273,12 +250,11 @@
         <li>Options stack, one per line, at every width. Long options ("No permit needed for the selected use") wrap under their own text.</li>
         <li>Below 48rem every row is at least 44px tall (L2-065.3); from 48rem, 24px.</li>
         <li>In the filters the group sits in the sidebar from LG and in the full-height sheet below it (L2-022.5); it looks the same in both.</li>
-        <li>Cards are full width; their 16px padding keeps the text clear of the edge on a 320px phone.</li>
       </ul>
     </section>
 
     <section class="ds-section" id="theming"><h2><a href="#theming">Theming</a></h2>
-      <p>The radio shares the checkbox's tokens: <code>--color-border-strong</code> ring on <code>--color-bg-surface</code>, <code>--color-accent</code> fill with a <code>--color-fg-on-accent</code> dot when selected, <code>--color-danger-solid</code> double ring when invalid. The card adds a <code>--color-border-strong</code> edge that turns <code>--color-accent</code> and doubles when its radio is selected. In dark every part moves to its dark value with no extra rules; in forced colours the selected circle takes <code>Highlight</code>.</p>
+      <p>The radio shares the checkbox's tokens: <code>--color-border-strong</code> ring on <code>--color-bg-surface</code>, <code>--color-accent</code> fill with a <code>--color-fg-on-accent</code> dot when selected, <code>--color-danger-solid</code> double ring when invalid. In dark every part moves to its dark value with no extra rules; in forced colours the selected circle takes <code>Highlight</code>.</p>
     </section>
 
     <section class="ds-section" id="accessibility"><h2><a href="#accessibility">Accessibility</a></h2>
@@ -291,7 +267,7 @@
         <tr><td><kbd>Space</kbd></td><td>Selects the focused option when none is selected yet.</td></tr>
       </tbody></table>
       <h3>Focus</h3>
-      <p>The shared ring draws round the circle with its offset; on a card it rings the card instead, so only one ring shows (2px at 3:1 or more, L2-067.2). Choosing Discounted or Comped enables "Provided by" but doesn't move focus to it.</p>
+      <p>The shared ring draws round the circle with its offset (2px at 3:1 or more, L2-067.2). Choosing Discounted or Comped enables "Provided by" but doesn't move focus to it.</p>
       <h3>Labelling</h3>
       <p>The legend is the question; each option's text is its name. A dependent field outside the group names its condition in its label ("needed when discounted or comped"), so it makes sense when reached on its own.</p>
       <h3>Contrast</h3>
@@ -309,7 +285,7 @@
       <h3>Motion</h3>
       <p>Fill and ring colour transition over <code>--duration-fast</code>; reduced motion zeroes it. The dot appears at once.</p>
       <h3>Touch</h3>
-      <p>The whole row (or card) is the target: 44px tall below 48rem and at least 24px above (L2-065.2–3).</p>
+      <p>The whole row is the target: 44px tall below 48rem and at least 24px above (L2-065.2–3).</p>
     </section>
 
     <section class="ds-section" id="content"><h2><a href="#content">Content</a></h2>
@@ -336,14 +312,13 @@
         <thead><tr><th scope="col">Part</th><th scope="col">Token</th><th scope="col">Light</th><th scope="col">Dark</th></tr></thead>
         <tbody>
           <tr><td>Circle fill</td><td><code>--color-bg-surface</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-bg-surface" data-swatch></i><span data-token="--color-bg-surface"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-bg-surface" data-swatch></i><span data-token="--color-bg-surface"></span></span></td></tr>
-          <tr><td>Ring, card edge</td><td><code>--color-border-strong</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-border-strong" data-swatch></i><span data-token="--color-border-strong"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-border-strong" data-swatch></i><span data-token="--color-border-strong"></span></span></td></tr>
-          <tr><td>Hover ring and card edge</td><td><code>--color-fg-muted</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-muted" data-swatch></i><span data-token="--color-fg-muted"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-muted" data-swatch></i><span data-token="--color-fg-muted"></span></span></td></tr>
-          <tr><td>Selected fill, selected card edge</td><td><code>--color-accent</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-accent" data-swatch></i><span data-token="--color-accent"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-accent" data-swatch></i><span data-token="--color-accent"></span></span></td></tr>
+          <tr><td>Ring</td><td><code>--color-border-strong</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-border-strong" data-swatch></i><span data-token="--color-border-strong"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-border-strong" data-swatch></i><span data-token="--color-border-strong"></span></span></td></tr>
+          <tr><td>Hover ring</td><td><code>--color-fg-muted</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-muted" data-swatch></i><span data-token="--color-fg-muted"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-muted" data-swatch></i><span data-token="--color-fg-muted"></span></span></td></tr>
+          <tr><td>Selected fill</td><td><code>--color-accent</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-accent" data-swatch></i><span data-token="--color-accent"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-accent" data-swatch></i><span data-token="--color-accent"></span></span></td></tr>
           <tr><td>Dot</td><td><code>--color-fg-on-accent</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-on-accent" data-swatch></i><span data-token="--color-fg-on-accent"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-on-accent" data-swatch></i><span data-token="--color-fg-on-accent"></span></span></td></tr>
           <tr><td>Invalid ring</td><td><code>--color-danger-solid</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-danger-solid" data-swatch></i><span data-token="--color-danger-solid"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-danger-solid" data-swatch></i><span data-token="--color-danger-solid"></span></span></td></tr>
           <tr><td>Disabled label</td><td><code>--color-fg-disabled</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-disabled" data-swatch></i><span data-token="--color-fg-disabled"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-disabled" data-swatch></i><span data-token="--color-fg-disabled"></span></span></td></tr>
           <tr><td>Circle / dot size</td><td><code>--icon-size-md</code> / <code>--space-2</code></td><td colspan="2"><span data-token="--icon-size-md"></span> / <span data-token="--space-2"></span></td></tr>
-          <tr><td>Card padding / radius</td><td><code>--space-4</code> / <code>--radius-md</code></td><td colspan="2"><span data-token="--space-4"></span> / <span data-token="--radius-md"></span></td></tr>
           <tr><td>Row height (desktop / phone)</td><td><code>--target-min</code> / <code>--target-comfortable</code></td><td colspan="2"><span data-token="--target-min"></span> / <span data-token="--target-comfortable"></span></td></tr>
         </tbody>
       </table></div>
@@ -357,7 +332,6 @@
 &lt;/fieldset&gt;</code></pre>
       <table class="ds-table"><thead><tr><th scope="col">Class / attribute</th><th scope="col">Effect</th></tr></thead><tbody>
         <tr><td><code>label.choice</code> + <code>input type="radio"</code></td><td>Row with a round box; the whole row selects.</td></tr>
-        <tr><td><code>.choice--card</code></td><td>Bordered, padded card; doubled accent edge when selected; the ring goes on the card (unused so far).</td></tr>
         <tr><td><code>.choice__text</code> + <code>small</code></td><td>Option with a muted description.</td></tr>
         <tr><td><code>checked</code> / <code>disabled</code> / <code>aria-invalid="true"</code></td><td>Selected dot / faded / danger red double ring.</td></tr>
         <tr><td><code>fieldset[aria-describedby]</code></td><td>Points the group at its error or help.</td></tr>
@@ -373,7 +347,7 @@
         <li><a href="../../mocks/pages/studio-editor/default.html">pages/studio-editor/default</a>, <a href="../../mocks/pages/studio-editor/new.html">new</a> and <a href="../../mocks/pages/studio-editor/invalid.html">invalid</a> (disclosure and the dependent "Provided by")</li>
         <li><a href="../../mocks/pages/spot-editor/default.html">pages/spot-editor/default</a> and <a href="../../mocks/pages/spot-editor/new.html">new</a> (disclosure)</li>
       </ul>
-      <p>Drift fixed during extraction: the new editors leave the disclosure empty but no mock shows what happens when it is saved that way; the group error above fills the gap. In <code>pages/studio-editor/invalid</code> Comped is chosen and "Provided by" is invalid, but the "Provided by" field sits outside the fieldset with no link back to the answer that requires it; its label carries the condition. No mock uses <code>.choice--card</code> or a disabled or invalid radio; they are kept from the stylesheet and marked unused.</p>
+      <p>Drift fixed during extraction: the new editors leave the disclosure empty but no mock shows what happens when it is saved that way; the group error above fills the gap. In <code>pages/studio-editor/invalid</code> Comped is chosen and "Provided by" is invalid, but the "Provided by" field sits outside the fieldset with no link back to the answer that requires it; its label carries the condition. No mock uses a disabled or invalid radio; they are kept from the stylesheet and marked unused.</p>
     </section>
 
     <footer class="ds-footer"><span>ShotThere design system · extracted from <a href="../../mocks/index.html">docs/mocks</a> on 13 October 2026</span><a href="#top">Back to top</a></footer>

@@ -55,15 +55,13 @@
       <li><a href="../components/filter.html">Filters</a></li>
     </ul></details>
     <details open><summary>Containers and overlays</summary><ul>
-      <li><a href="../components/container.html">Container and grid</a></li>
+      <li><a href="../components/container.html">Container</a></li>
       <li><a href="../components/review-layout.html">Review layout</a></li>
       <li><a href="../components/editor-layout.html">Editor layout</a></li>
-      <li><a href="../components/card.html">Card</a></li>
       <li><a href="../components/dialog.html">Dialog</a></li>
-      <li><a href="../components/sheet.html">Sheet and drawer</a></li>
+      <li><a href="../components/sheet.html">Sheet</a></li>
       <li><a href="../components/popover.html">Popover</a></li>
       <li><a href="../components/lightbox.html">Lightbox</a></li>
-      <li><a href="../components/divider.html">Divider</a></li>
     </ul></details>
     <details open><summary>Data display</summary><ul>
       <li><a href="../components/location-card.html">Location card</a></li>
@@ -87,9 +85,9 @@
     </ul></details>
     <details open><summary>Feedback</summary><ul>
       <li><a href="../components/inline-message.html">Inline message</a></li>
-      <li><a href="../components/alert.html">Alert and banner</a></li>
+      <li><a href="../components/alert.html">Alert</a></li>
       <li><a href="../components/toast.html">Toast</a></li>
-      <li><a href="../components/progress.html">Progress and meter</a></li>
+      <li><a href="../components/progress.html">Progress</a></li>
       <li><a href="../components/spinner.html">Spinner</a></li>
       <li><a href="../components/skeleton.html">Skeleton</a></li>
       <li><a href="../components/empty-state.html">Empty state</a></li>
@@ -325,7 +323,7 @@
             <td><div class="static-map" style="min-height: 0; width: 5.5rem; height: 5.5rem;"><img class="static-map__tiles" src="../assets/img/map-spot.svg" alt="" width="1200" height="675"><button class="map-marker map-marker--studio" type="button" data-state="hover" style="left: 50%; top: 50%;" aria-label="The Junction Loft, studio (hover)" aria-haspopup="dialog" aria-expanded="false"></button></div></td>
             <td><div class="static-map" style="min-height: 0; width: 5.5rem; height: 5.5rem;"><img class="static-map__tiles" src="../assets/img/map-spot.svg" alt="" width="1200" height="675"><button class="map-marker map-marker--studio" type="button" data-state="focus" style="left: 50%; top: 50%;" aria-label="The Junction Loft, studio (focus)" aria-haspopup="dialog" aria-expanded="false"></button></div></td>
             <td><div class="static-map" style="min-height: 0; width: 5.5rem; height: 5.5rem;"><img class="static-map__tiles" src="../assets/img/map-spot.svg" alt="" width="1200" height="675"><button class="map-marker map-marker--studio" type="button" data-state="hover" style="left: 50%; top: 50%;" aria-label="The Junction Loft, studio (active)" aria-haspopup="dialog" aria-expanded="false"></button></div></td>
-            <td><span class="text-muted text-sm" style="display: block; width: 9rem;">Never disabled; unpublished locations get no marker.</span></td>
+            <td><span class="text-muted" style="font: var(--text-body-sm); display: block; width: 9rem;">Never disabled; unpublished locations get no marker.</span></td>
             <td><div class="static-map" style="min-height: 0; width: 5.5rem; height: 5.5rem;"><img class="static-map__tiles" src="../assets/img/map-spot.svg" alt="" width="1200" height="675"><button class="map-marker map-marker--studio" type="button" style="left: 50%; top: 50%;" aria-label="The Junction Loft, studio (selected)" aria-haspopup="dialog" aria-expanded="true"></button></div></td>
           </tr>
           <tr><th scope="row">Spot</th>
@@ -333,12 +331,12 @@
             <td><div class="static-map" style="min-height: 0; width: 5.5rem; height: 5.5rem;"><img class="static-map__tiles" src="../assets/img/map-spot.svg" alt="" width="1200" height="675"><button class="map-marker map-marker--spot" type="button" data-state="hover" style="left: 50%; top: 50%;" aria-label="Evergreen Brick Works, outdoor spot (hover)" aria-haspopup="dialog" aria-expanded="false"></button></div></td>
             <td><div class="static-map" style="min-height: 0; width: 5.5rem; height: 5.5rem;"><img class="static-map__tiles" src="../assets/img/map-spot.svg" alt="" width="1200" height="675"><button class="map-marker map-marker--spot" type="button" data-state="focus" style="left: 50%; top: 50%;" aria-label="Evergreen Brick Works, outdoor spot (focus)" aria-haspopup="dialog" aria-expanded="false"></button></div></td>
             <td><div class="static-map" style="min-height: 0; width: 5.5rem; height: 5.5rem;"><img class="static-map__tiles" src="../assets/img/map-spot.svg" alt="" width="1200" height="675"><button class="map-marker map-marker--spot" type="button" data-state="hover" style="left: 50%; top: 50%;" aria-label="Evergreen Brick Works, outdoor spot (active)" aria-haspopup="dialog" aria-expanded="false"></button></div></td>
-            <td><span class="text-muted text-sm" style="display: block; width: 9rem;">Never disabled.</span></td>
+            <td><span class="text-muted" style="font: var(--text-body-sm); display: block; width: 9rem;">Never disabled.</span></td>
             <td><div class="static-map" style="min-height: 0; width: 5.5rem; height: 5.5rem;"><img class="static-map__tiles" src="../assets/img/map-spot.svg" alt="" width="1200" height="675"><button class="map-marker map-marker--spot" type="button" style="left: 50%; top: 50%;" aria-label="Evergreen Brick Works, outdoor spot (selected)" aria-haspopup="dialog" aria-expanded="true"></button></div></td>
           </tr>
         </tbody>
       </table></div>
-      <p class="text-muted text-sm">Active has no style of its own: the pointer is over the marker, so it shows the hover scale until the popup opens and the marker becomes selected.</p>
+      <p class="text-muted" style="font: var(--text-body-sm);">Active has no style of its own: the pointer is over the marker, so it shows the hover scale until the popup opens and the marker becomes selected.</p>
 
       <h3>Popup open: studio and spot</h3>
       <div class="ds-example">
@@ -389,7 +387,7 @@
               <li><span class="map-legend__key map-legend__key--spot" aria-hidden="true"></span>Outdoor spot</li>
             </ul>
           </div>
-          <p class="text-muted text-sm">Status read out: "7 locations".</p>
+          <p class="text-muted" style="font: var(--text-body-sm);">Status read out: "7 locations".</p>
         </div>
         <div class="ds-example__caption"><span>"Studios" pressed in the <a href="button-group.html">segmented control</a>: seven ink squares, and the list beside or behind the map shows the same seven (L2-027.2). The filter is kept in the URL (<code>?type=studios</code>) and does not refetch.</span></div>
       </div>
@@ -423,7 +421,7 @@
             </div>
           </div>
         </div>
-        <div class="ds-example__caption"><span><b>Loading</b>: a full-bleed <a href="skeleton.html">skeleton</a> in the frame, <code>aria-busy="true"</code>, status "Loading locations…", skeleton rows in the list. <b>Empty</b>: tiles stay, an <a href="empty-state.html">empty state</a> on a raised card; status "0 locations". <b>Error</b>: the same card in its error tone with <code>role="alert"</code>, Try again and Browse studios; the list says "Locations didn't load."</span></div>
+        <div class="ds-example__caption"><span><b>Loading</b>: a full-bleed <a href="skeleton.html">skeleton</a> in the frame, <code>aria-busy="true"</code>, status "Loading locations…", skeleton rows in the list. <b>Empty</b>: tiles stay, an <a href="empty-state.html">empty state</a> on a raised panel; status "0 locations". <b>Error</b>: the same panel in its error tone with <code>role="alert"</code>, Try again and Browse studios; the list says "Locations didn't load."</span></div>
       </div>
 
       <h3>Tiles failed</h3>
@@ -575,7 +573,7 @@
         <div class="ds-pair"><span>Tiles-failed message text</span><span class="ds-pair__ratio" data-contrast="--color-fg-muted|--color-bg-surface-sunken" data-min="4.5"></span></div>
         <div class="ds-pair"><span>Pressed filter segment on page</span><span class="ds-pair__ratio" data-contrast="--color-fg-accent|--color-bg-canvas" data-min="4.5"></span></div>
       </div>
-      <p class="text-muted text-sm">Marks sit on tiles, which no token controls; the surface halo and shadow separate them from any tile colour. The popup link and the "Open in Google Maps" link on the sunken panel use <code>--color-fg-link</code>, checked at 4.5:1 on both surfaces in <code>contrast-pairs.json</code>.</p>
+      <p class="text-muted" style="font: var(--text-body-sm);">Marks sit on tiles, which no token controls; the surface halo and shadow separate them from any tile colour. The popup link and the "Open in Google Maps" link on the sunken panel use <code>--color-fg-link</code>, checked at 4.5:1 on both surfaces in <code>contrast-pairs.json</code>.</p>
       <h3>Motion</h3>
       <p>Marks scale on hover and selection over <code>--duration-fast</code>; the popup enters with the popover's <code>scale-in</code>. Reduced motion zeroes both durations, so the change still happens, instantly. The loading skeleton's shimmer stops under reduced motion.</p>
       <h3>Touch</h3>
@@ -691,7 +689,7 @@
         <tr><td><code>.map-page</code>, <code>__bar</code>, <code>__toggle</code>, <code>__list</code>, <code>__map</code></td><td>Map page layout: one view at a time below LG, side by side from LG.</td></tr>
         <tr><td><code>data-view="map|list"</code> on <code>.map-page</code></td><td>Which view shows below LG.</td></tr>
         <tr><td><code>.map-list-item</code></td><td>Thumbnail row in the list column; reuses <code>.location-card__media</code>, <code>__name</code> (label type at 16px), <code>__meta</code>. The focus ring goes round the row.</td></tr>
-        <tr><td><code>.static-map__overlay</code></td><td>Centres an empty, error or loading notice over the map; a <code>.empty</code> inside it becomes a raised card up to 24rem wide.</td></tr>
+        <tr><td><code>.static-map__overlay</code></td><td>Centres an empty, error or loading notice over the map; a <code>.empty</code> inside it becomes a raised panel up to 24rem wide.</td></tr>
         <tr><td><code>data-state="hover|focus"</code></td><td>Documentation and mocks only: forces a marker state statically.</td></tr>
       </tbody></table></div>
     </section>
@@ -710,7 +708,7 @@
         <li>The key fact is worded "All-in for 2 hours: $145.00" in the popup but "All-in 2 h: $145.00" in the map list rows. The system uses the popup's wording in both.</li>
         <li>Every <code>.map-list-item</code> heading carries the same inline <code>style="font: var(--text-label); font-size: var(--font-size-md)"</code>; <code>.map-list-item .location-card__name</code> now sets that font, so the examples here drop it.</li>
         <li><code>.map-list-item</code> had no visible focus: <code>.location-card__name a:focus-visible</code> removes the link outline and the replacement ring was only defined for <code>.location-card</code>. <code>.map-list-item:has(.location-card__name a:focus-visible)</code> now rings the row.</li>
-        <li>The empty, error and loading overlays are positioned with inline styles in the mocks; <code>.static-map__overlay</code> now centres the notice over the map and <code>.static-map__overlay &gt; .empty</code> gives it its raised card, so the examples here use the class.</li>
+        <li>The empty, error and loading overlays are positioned with inline styles in the mocks; <code>.static-map__overlay</code> now centres the notice over the map and <code>.static-map__overlay &gt; .empty</code> gives it its raised panel, so the examples here use the class.</li>
         <li>The map-page tiles image has no <code>width</code>/<code>height</code>; the system gives it 1600 × 1000.</li>
         <li>The spot editor puts <code>aria-describedby</code> on a plain <code>&lt;div&gt;</code>, where it is ignored. The system gives the preview <code>role="group"</code> and <code>aria-label="Map preview"</code> so the help text is announced.</li>
         <li><code>.map-unavailable</code> has <code>role="status"</code> on the spot review but no role on the map page. Tiles fail after the page loads, so the system announces it politely on both.</li>

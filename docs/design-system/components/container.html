@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Container and grid — ShotThere design system</title>
+<title>Container — ShotThere design system</title>
 <meta name="description" content="ShotThere layout primitives (container, narrow container, stack, cluster, grid, prose, section gap) and page layouts: browse, page header, home hero, section head, compare-bar padding, auth, review, editor and map page.">
 <link rel="stylesheet" href="../tokens/tokens.css">
 <link rel="stylesheet" href="../assets/components.css">
@@ -55,15 +55,13 @@
       <li><a href="../components/filter.html">Filters</a></li>
     </ul></details>
     <details open><summary>Containers and overlays</summary><ul>
-      <li><a href="../components/container.html">Container and grid</a></li>
+      <li><a href="../components/container.html">Container</a></li>
       <li><a href="../components/review-layout.html">Review layout</a></li>
       <li><a href="../components/editor-layout.html">Editor layout</a></li>
-      <li><a href="../components/card.html">Card</a></li>
       <li><a href="../components/dialog.html">Dialog</a></li>
-      <li><a href="../components/sheet.html">Sheet and drawer</a></li>
+      <li><a href="../components/sheet.html">Sheet</a></li>
       <li><a href="../components/popover.html">Popover</a></li>
       <li><a href="../components/lightbox.html">Lightbox</a></li>
-      <li><a href="../components/divider.html">Divider</a></li>
     </ul></details>
     <details open><summary>Data display</summary><ul>
       <li><a href="../components/location-card.html">Location card</a></li>
@@ -87,9 +85,9 @@
     </ul></details>
     <details open><summary>Feedback</summary><ul>
       <li><a href="../components/inline-message.html">Inline message</a></li>
-      <li><a href="../components/alert.html">Alert and banner</a></li>
+      <li><a href="../components/alert.html">Alert</a></li>
       <li><a href="../components/toast.html">Toast</a></li>
-      <li><a href="../components/progress.html">Progress and meter</a></li>
+      <li><a href="../components/progress.html">Progress</a></li>
       <li><a href="../components/spinner.html">Spinner</a></li>
       <li><a href="../components/skeleton.html">Skeleton</a></li>
       <li><a href="../components/empty-state.html">Empty state</a></li>
@@ -110,7 +108,7 @@
   <main id="main" class="ds-main">
     <header class="ds-header">
       <p class="ds-kicker">Component · Containers and overlays</p>
-      <h1>Container and grid</h1>
+      <h1>Container</h1>
       <p class="ds-lead">The layout every ShotThere screen is built from: one centred container, stack and cluster for rhythm, and a small set of page layouts for the studio and spot lists, the home page, sign-in, reviews, editors and the map.</p>
       <div class="ds-meta"><span class="ds-pill ds-pill--ok">WCAG 2.2 AA</span><span class="ds-pill">Status: stable</span><span class="ds-pill"><code>.container</code></span><span class="ds-pill"><code>.stack</code> <code>.cluster</code></span><span class="ds-pill"><code>.browse</code> <code>.page-header</code> <code>.auth</code></span><span class="ds-pill">Layout tokens</span></div>
       <ul class="ds-toc"><li><a href="#overview">Overview</a></li><li><a href="#anatomy">Anatomy</a></li><li><a href="#variants">Variants</a></li><li><a href="#sizes">Sizes</a></li><li><a href="#states">States</a></li><li><a href="#responsive">Responsive behaviour</a></li><li><a href="#theming">Theming</a></li><li><a href="#accessibility">Accessibility</a></li><li><a href="#content">Content</a></li><li><a href="#do-dont">Do and don't</a></li><li><a href="#tokens">Tokens</a></li><li><a href="#code">Code</a></li><li><a href="#sources">Sources</a></li></ul>
@@ -119,7 +117,7 @@
     <section class="ds-section" id="overview"><h2><a href="#overview">Overview</a></h2>
       <p>Layout classes carry no colour and no meaning; they only place things. The gaps come from tokens that grow with the screen, so a page built from these classes reflows from 320px to a wide desktop without sideways scrolling (L2-069.3). Reach for them before writing a one-off margin.</p>
       <ul>
-        <li><b>Primitives</b>: <code>.container</code> wraps every page's <code>main</code>, the site header and the footer; <code>.container--narrow</code> caps reading pages at 42rem. <code>.stack</code> spaces children top to bottom, <code>.cluster</code> lays them in a wrapping row, <code>.grid</code> follows the layout columns, <code>.prose</code> sets long text and <code>.section-gap</code> separates the big blocks of a page.</li>
+        <li><b>Primitives</b>: <code>.container</code> wraps every page's <code>main</code>, the site header and the footer; <code>.container--narrow</code> caps reading pages at 42rem. <code>.stack</code> spaces children top to bottom, <code>.cluster</code> lays them in a wrapping row, <code>.prose</code> sets long text and <code>.section-gap</code> separates the big blocks of a page.</li>
         <li><b>Page layouts</b>: <code>.browse</code> (studio and spot lists, with the filter sidebar from 62rem), <code>.page-header</code> (the <code>h1</code> block of every other page), <code>.home-hero</code>, <code>.section-head</code> (a section title with its "All studios" link), <code>.has-compare-bar</code> (room for the fixed compare bar), and <code>.auth</code> (owner sign-in).</li>
         <li><b>Layouts with their own page</b>: <a href="review-layout.html">review layout</a> (<code>.review-layout</code>, studio and spot reviews with the summary panel), <a href="editor-layout.html">editor layout</a> (<code>.editor-layout</code>, the admin editors with the status aside) and the <a href="map.html">map page</a> (<code>.map-page</code>, list beside map).</li>
       </ul>
@@ -158,31 +156,26 @@
         <div class="ds-example__canvas ds-example__canvas--stack">
           <div class="ds-grid-demo" aria-hidden="true"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span></div>
         </div>
-        <div class="ds-example__caption"><span>Twelve cells on the real tokens: one row of 12 from 62rem, rows of 8 on tablets, rows of 4 on phones. Resize the window to watch columns, gutters and margins change together. No mock places content on <code>.grid</code> directly; the card grids (<code>.location-grid</code>, <code>.stat-grid</code>, <code>.guide-index</code>) set their own column counts.</span></div>
-        <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;div class="grid"&gt;
-  &lt;div class="span-full"&gt;…&lt;/div&gt;
-  &lt;div&gt;…&lt;/div&gt;&lt;div&gt;…&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="grid grid--auto"&gt;…&lt;/div&gt;</code></pre></details>
+        <div class="ds-example__caption"><span>Twelve cells on the real tokens: one row of 12 from 62rem, rows of 8 on tablets, rows of 4 on phones. Resize the window to watch columns, gutters and margins change together. The layout grid is a set of tokens, not a class: the card grids (<code>.location-grid</code>, <code>.stat-grid</code>, <code>.guide-index</code>) set their own column counts.</span></div>
       </div>
 
       <h3>Stack and cluster</h3>
       <div class="ds-example">
         <div class="ds-example__canvas" style="align-items: flex-start; gap: var(--space-10);">
           <div class="stack stack--sm" style="max-width: 16rem;">
-            <span class="overline">stack--sm</span>
+            <span style="font: var(--text-overline); color: var(--color-fg-subtle);">stack--sm</span>
             <b>Best natural light</b>
             <span class="text-muted">The three brightest rooms, ranked by light score and window direction.</span>
           </div>
           <div class="stack" style="max-width: 16rem;">
-            <span class="overline">stack</span>
+            <span style="font: var(--text-overline); color: var(--color-fg-subtle);">stack</span>
             <span>Email</span>
             <span>Password</span>
           </div>
           <div class="stack" style="flex: 1; min-width: min(100%, 16rem);">
-            <span class="overline">cluster--between</span>
+            <span style="font: var(--text-overline); color: var(--color-fg-subtle);">cluster--between</span>
             <div class="cluster cluster--between"><span class="result-count">7 studios</span><button class="btn btn--sm" type="button">Filters</button></div>
-            <span class="overline">cluster--end</span>
+            <span style="font: var(--text-overline); color: var(--color-fg-subtle);">cluster--end</span>
             <div class="cluster cluster--end"><button class="btn btn--sm" type="button">Filters</button></div>
           </div>
         </div>
@@ -273,7 +266,7 @@
           <tr><td><code>.container</code></td><td><span data-token="--layout-container-max"></span> (incl. margins)</td><td>Every page's <code>main</code>, the site header and the footer</td></tr>
           <tr><td><code>.container--narrow</code></td><td>42rem</td><td>Editorial policy</td></tr>
           <tr><td><code>.auth</code></td><td>28rem</td><td>Owner sign-in in every state</td></tr>
-          <tr><td><code>p</code>, <code>.measure</code></td><td><span data-token="--layout-measure"></span></td><td>Any paragraph; keeps lines readable</td></tr>
+          <tr><td><code>p</code></td><td><span data-token="--layout-measure"></span></td><td>Any paragraph; keeps lines readable</td></tr>
           <tr><td><code>--layout-sidebar-width</code></td><td><span data-token="--layout-sidebar-width"></span></td><td>Filter sidebar in <code>.browse</code>, 62rem and wider</td></tr>
           <tr><td><code>--layout-panel-width</code></td><td><span data-token="--layout-panel-width"></span></td><td>Summary panel in <code>.review-layout</code>, 62rem and wider</td></tr>
         </tbody>
@@ -420,7 +413,6 @@
         <tr><td><code>.container</code> / <code>--narrow</code></td><td>Centred, max 90rem / 42rem, side margin from the token.</td></tr>
         <tr><td><code>.stack</code> <code>--sm</code> <code>--lg</code></td><td>Vertical flex with a gap of 16 / 8 / 32px.</td></tr>
         <tr><td><code>.cluster</code> <code>--between</code> <code>--end</code></td><td>Wrapping row, 12px gap, centred vertically.</td></tr>
-        <tr><td><code>.grid</code> / <code>--auto</code> / <code>.span-full</code></td><td>Layout-column grid / auto-fill 18rem tracks / full-row child.</td></tr>
         <tr><td><code>.prose</code></td><td>Large body text with paragraph, list and heading rhythm.</td></tr>
         <tr><td><code>.section-gap</code></td><td>Top margin of <code>--layout-section-gap</code>.</td></tr>
         <tr><td><code>.browse</code> <code>__title</code> <code>__aside</code> <code>__results</code> <code>__head</code>, <code>.result-count</code></td><td>List page: title and results; sidebar from 62rem.</td></tr>
@@ -443,7 +435,7 @@
         <li><a href="../../mocks/pages/sign-in/default.html">pages/sign-in/default</a> (<code>.auth</code>, <code>.auth__head</code>)</li>
         <li><a href="../../mocks/pages/studio/default.html">pages/studio/default</a>, <a href="../../mocks/pages/studio-editor/default.html">pages/studio-editor/default</a>, <a href="../../mocks/pages/map/default.html">pages/map/default</a> (the layouts documented on their own pages)</li>
       </ul>
-      <p>Drift found during extraction (recorded, mocks unchanged): the 12 list mocks space the results row with an inline <code>margin-bottom: var(--space-8)</code> on a <code>.cluster</code> instead of <code>.browse__head</code>; the system uses <code>.browse__head</code>. <code>pages/guide/default</code> puts <code>.prose</code> on one paragraph with an inline <code>max-width</code> and margins. The studio sidebar heading sets its <code>font</code> and colour inline. <code>.grid</code>, <code>.grid--auto</code>, <code>.span-full</code>, <code>.page</code> and <code>.section</code> are not used by any ShotThere mock; they stay as core primitives.</p>
+      <p>Drift found during extraction (recorded, mocks unchanged): the 12 list mocks space the results row with an inline <code>margin-bottom: var(--space-8)</code> on a <code>.cluster</code> instead of <code>.browse__head</code>; the system uses <code>.browse__head</code>. <code>pages/guide/default</code> puts <code>.prose</code> on one paragraph with an inline <code>max-width</code> and margins. The studio sidebar heading sets its <code>font</code> and colour inline.</p>
     </section>
 
     <footer class="ds-footer"><span>ShotThere design system · extracted from <a href="../../mocks/index.html">docs/mocks</a> on 13 October 2026</span><a href="#top">Back to top</a></footer>

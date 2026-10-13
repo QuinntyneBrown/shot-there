@@ -55,15 +55,13 @@
       <li><a href="../components/filter.html">Filters</a></li>
     </ul></details>
     <details open><summary>Containers and overlays</summary><ul>
-      <li><a href="../components/container.html">Container and grid</a></li>
+      <li><a href="../components/container.html">Container</a></li>
       <li><a href="../components/review-layout.html">Review layout</a></li>
       <li><a href="../components/editor-layout.html">Editor layout</a></li>
-      <li><a href="../components/card.html">Card</a></li>
       <li><a href="../components/dialog.html">Dialog</a></li>
-      <li><a href="../components/sheet.html">Sheet and drawer</a></li>
+      <li><a href="../components/sheet.html">Sheet</a></li>
       <li><a href="../components/popover.html">Popover</a></li>
       <li><a href="../components/lightbox.html">Lightbox</a></li>
-      <li><a href="../components/divider.html">Divider</a></li>
     </ul></details>
     <details open><summary>Data display</summary><ul>
       <li><a href="../components/location-card.html">Location card</a></li>
@@ -87,9 +85,9 @@
     </ul></details>
     <details open><summary>Feedback</summary><ul>
       <li><a href="../components/inline-message.html">Inline message</a></li>
-      <li><a href="../components/alert.html">Alert and banner</a></li>
+      <li><a href="../components/alert.html">Alert</a></li>
       <li><a href="../components/toast.html">Toast</a></li>
-      <li><a href="../components/progress.html">Progress and meter</a></li>
+      <li><a href="../components/progress.html">Progress</a></li>
       <li><a href="../components/spinner.html">Spinner</a></li>
       <li><a href="../components/skeleton.html">Skeleton</a></li>
       <li><a href="../components/empty-state.html">Empty state</a></li>
@@ -112,7 +110,7 @@
       <p class="ds-kicker">Component · Data display</p>
       <h1>Table</h1>
       <p class="ds-lead">Tables hold ShotThere's records that people read across and down at once: a spot's light by time of day and by season, its permits by shoot type, and the admin lists of studios, spots and guides. Below 48rem each row becomes a label-over-value card, so nothing scrolls sideways on a phone.</p>
-      <div class="ds-meta"><span class="ds-pill ds-pill--ok">WCAG 2.2 AA</span><span class="ds-pill">Status: stable</span><span class="ds-pill">Native <code>&lt;table&gt;</code></span><span class="ds-pill"><code>.table</code></span><span class="ds-pill"><code>.table--stack</code></span><span class="ds-pill"><code>.num</code> <code>.na</code></span></div>
+      <div class="ds-meta"><span class="ds-pill ds-pill--ok">WCAG 2.2 AA</span><span class="ds-pill">Status: stable</span><span class="ds-pill">Native <code>&lt;table&gt;</code></span><span class="ds-pill"><code>.table</code></span><span class="ds-pill"><code>.table--stack</code></span><span class="ds-pill"><code>.num</code></span></div>
       <ul class="ds-toc"><li><a href="#overview">Overview</a></li><li><a href="#anatomy">Anatomy</a></li><li><a href="#variants">Variants</a></li><li><a href="#sizes">Sizes</a></li><li><a href="#states">States</a></li><li><a href="#responsive">Responsive</a></li><li><a href="#theming">Theming</a></li><li><a href="#accessibility">Accessibility</a></li><li><a href="#content">Content</a></li><li><a href="#do-dont">Do and don't</a></li><li><a href="#tokens">Tokens</a></li><li><a href="#code">Code</a></li><li><a href="#sources">Sources</a></li></ul>
     </header>
 
@@ -268,15 +266,15 @@
         <div class="ds-example__caption"><span>Three of the nine rows on <a href="../../mocks/pages/admin-studios/default.html">admin studios</a>. The name links to the editor; Edit repeats it with a visually hidden studio name. The action cell has no <code>data-label</code>, so the button stands alone in the card.</span></div>
       </div>
 
-      <h3>Helpers: <code>.num</code> and <code>.na</code></h3>
+      <h3>Helper: <code>.num</code></h3>
       <ul>
         <li><b><code>.num</code></b> sets tabular figures so prices, distances and coordinates line up: "$60.00", "3.1 km", "43.6846, −79.3653". On a <code>td</code> or <code>th</code> inside <code>.table</code> it also right-aligns the cell. The studio pricing <code>.kv</code> rows and the rain-backup list use it outside tables.</li>
-        <li><b><code>.na</code></b> mutes a value the visit did not record, written as words: <span class="na">Not measured</span>. Never leave a cell blank or put a lone dash in a reference table; L2-017.2 asks for "None nearby" rather than an omitted row, and L2-007.2 for "Nothing costs extra at this studio".</li>
+        <li><b>Missing values</b> are written as words: "Not measured". Never leave a cell blank or put a lone dash in a reference table; L2-017.2 asks for "None nearby" rather than an omitted row, and L2-007.2 for "Nothing costs extra at this studio".</li>
       </ul>
     </section>
 
     <section class="ds-section" id="sizes" data-na="One density"><h2><a href="#sizes">Sizes</a></h2>
-      <p>One density: <code>--space-4</code> block and <code>--space-3</code> inline cell padding. ShotThere tables are short (four or five reference rows, nine admin rows), so no mock uses <code>.table--dense</code>; the class remains in the stylesheet for a long list but should not be reached for by default.</p>
+      <p>One density: <code>--space-4</code> block and <code>--space-3</code> inline cell padding. ShotThere tables are short (four or five reference rows, nine admin rows), so one density is enough.</p>
     </section>
 
     <section class="ds-section" id="states"><h2><a href="#states">States</a></h2>
@@ -329,8 +327,6 @@
 
     <section class="ds-section" id="theming"><h2><a href="#theming">Theming</a></h2>
       <p>The table reads semantic tokens only: <code>--color-bg-surface</code> for the wrap and header, <code>--color-border-default</code> for the rules, <code>--color-bg-subtle</code> for the hovered row and <code>--color-fg-muted</code> / <code>--color-fg-subtle</code> for header text and stacked labels. The dark theme swaps those roles, so the same markup works in both; badges and status labels in cells bring their own tone tokens.</p>
-      <pre><code>/* A denser admin list would override padding, not colour */
-.table--dense th, .table--dense td { padding-block: var(--space-2); }</code></pre>
     </section>
 
     <section class="ds-section" id="accessibility"><h2><a href="#accessibility">Accessibility</a></h2>
@@ -391,7 +387,7 @@
           <tr><td>Rules and stacked card edge</td><td><code>--color-border-default</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-border-default" data-swatch></i><span data-token="--color-border-default"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-border-default" data-swatch></i><span data-token="--color-border-default"></span></span></td></tr>
           <tr><td>Hovered row</td><td><code>--color-bg-subtle</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-bg-subtle" data-swatch></i><span data-token="--color-bg-subtle"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-bg-subtle" data-swatch></i><span data-token="--color-bg-subtle"></span></span></td></tr>
           <tr><td>Column header text</td><td><code>--color-fg-muted</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-muted" data-swatch></i><span data-token="--color-fg-muted"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-muted" data-swatch></i><span data-token="--color-fg-muted"></span></span></td></tr>
-          <tr><td>Stacked label, <code>.na</code></td><td><code>--color-fg-subtle</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-subtle" data-swatch></i><span data-token="--color-fg-subtle"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-subtle" data-swatch></i><span data-token="--color-fg-subtle"></span></span></td></tr>
+          <tr><td>Stacked label</td><td><code>--color-fg-subtle</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-subtle" data-swatch></i><span data-token="--color-fg-subtle"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-subtle" data-swatch></i><span data-token="--color-fg-subtle"></span></span></td></tr>
           <tr><td>Cell padding</td><td><code>--space-4</code> / <code>--space-3</code></td><td colspan="2"><span data-token="--space-4"></span> / <span data-token="--space-3"></span></td></tr>
           <tr><td>Stacked card radius</td><td><code>--radius-md</code></td><td colspan="2"><span data-token="--radius-md"></span></td></tr>
           <tr><td>Header and label font</td><td><code>--text-label</code></td><td colspan="2"><span data-token="--text-label"></span></td></tr>
@@ -426,8 +422,7 @@
         <tr><td><code>aria-sort="ascending|descending"</code></td><td>On the header of the column the rows are ordered by.</td></tr>
         <tr><td><code>aria-busy="true"</code> on <code>.table-wrap</code></td><td>Loading: skeleton cells in place of values.</td></tr>
         <tr><td><code>.num</code></td><td>Tabular figures; right-aligned on a table cell.</td></tr>
-        <tr><td><code>.na</code></td><td>Muted text for a value that was not recorded ("Not measured").</td></tr>
-        <tr><td><code>.table--dense</code>, <code>.row-actions</code>, <code>aria-current</code></td><td>In the stylesheet but unused by ShotThere mocks.</td></tr>
+        <tr><td><code>aria-current</code></td><td>Selected-row fill; in the stylesheet but unused by ShotThere mocks.</td></tr>
         <tr><td><code>data-state="hover|focus|active"</code></td><td>Documentation only: forces a state on a row or control.</td></tr>
       </tbody></table>
     </section>
@@ -443,7 +438,7 @@
         <li><a href="../../mocks/pages/studio/default.html">pages/studio/default</a> (specs, fees and logistics as <code>.kv</code>, not a table; <code>.num</code> prices)</li>
         <li><a href="../../mocks/pages/compare/default.html">pages/compare/default</a> (the comparison table, documented separately)</li>
       </ul>
-      <p>Drift fixed during extraction: the admin loading rows put skeletons in <code>td</code> without <code>data-label</code> and with no row header, so the stacked skeleton cards have no title or labels; acceptable for a placeholder, and the loaded rows keep the full markup. No mock uses <code>.na</code>, <code>.table--dense</code>, <code>.row-actions</code> or a selected row; they are documented as available, not as patterns to copy.</p>
+      <p>Drift fixed during extraction: the admin loading rows put skeletons in <code>td</code> without <code>data-label</code> and with no row header, so the stacked skeleton cards have no title or labels; acceptable for a placeholder, and the loaded rows keep the full markup. No mock uses a selected row; it is documented as available, not as a pattern to copy.</p>
     </section>
 
     <footer class="ds-footer"><span>ShotThere design system · extracted from <a href="../../mocks/index.html">docs/mocks</a> on 13 October 2026</span><a href="#top">Back to top</a></footer>

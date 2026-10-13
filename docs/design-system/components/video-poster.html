@@ -55,15 +55,13 @@
       <li><a href="../components/filter.html">Filters</a></li>
     </ul></details>
     <details open><summary>Containers and overlays</summary><ul>
-      <li><a href="../components/container.html">Container and grid</a></li>
+      <li><a href="../components/container.html">Container</a></li>
       <li><a href="../components/review-layout.html">Review layout</a></li>
       <li><a href="../components/editor-layout.html">Editor layout</a></li>
-      <li><a href="../components/card.html">Card</a></li>
       <li><a href="../components/dialog.html">Dialog</a></li>
-      <li><a href="../components/sheet.html">Sheet and drawer</a></li>
+      <li><a href="../components/sheet.html">Sheet</a></li>
       <li><a href="../components/popover.html">Popover</a></li>
       <li><a href="../components/lightbox.html">Lightbox</a></li>
-      <li><a href="../components/divider.html">Divider</a></li>
     </ul></details>
     <details open><summary>Data display</summary><ul>
       <li><a href="../components/location-card.html">Location card</a></li>
@@ -87,9 +85,9 @@
     </ul></details>
     <details open><summary>Feedback</summary><ul>
       <li><a href="../components/inline-message.html">Inline message</a></li>
-      <li><a href="../components/alert.html">Alert and banner</a></li>
+      <li><a href="../components/alert.html">Alert</a></li>
       <li><a href="../components/toast.html">Toast</a></li>
-      <li><a href="../components/progress.html">Progress and meter</a></li>
+      <li><a href="../components/progress.html">Progress</a></li>
       <li><a href="../components/spinner.html">Spinner</a></li>
       <li><a href="../components/skeleton.html">Skeleton</a></li>
       <li><a href="../components/empty-state.html">Empty state</a></li>
@@ -241,11 +239,11 @@
             <td><div style="width: 14rem;"><a class="video-poster" href="https://www.youtube.com/watch?v=Jx7Lq2pT9aE" data-state="hover"><img src="../assets/img/episode-the-junction-loft.svg" alt="" width="1200" height="800" loading="lazy"><span class="video-poster__play"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor" stroke="none"/></svg>Play episode<span class="visually-hidden">: Episode 4 (hover)</span></span></a></div></td>
             <td><div style="width: 14rem;"><a class="video-poster" href="https://www.youtube.com/watch?v=Jx7Lq2pT9aE" data-state="focus"><img src="../assets/img/episode-the-junction-loft.svg" alt="" width="1200" height="800" loading="lazy"><span class="video-poster__play"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor" stroke="none"/></svg>Play episode<span class="visually-hidden">: Episode 4 (focus)</span></span></a></div></td>
             <td><div style="width: 14rem;"><a class="video-poster" href="https://www.youtube.com/watch?v=Jx7Lq2pT9aE" data-state="active"><img src="../assets/img/episode-the-junction-loft.svg" alt="" width="1200" height="800" loading="lazy"><span class="video-poster__play"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor" stroke="none"/></svg>Play episode<span class="visually-hidden">: Episode 4 (active)</span></span></a></div></td>
-            <td><span class="text-muted text-sm" style="display: block; width: 12rem;">Never disabled. With no video ID there is no section (L2-020.1).</span></td>
+            <td><span class="text-muted" style="font: var(--text-body-sm); display: block; width: 12rem;">Never disabled. With no video ID there is no section (L2-020.1).</span></td>
           </tr>
         </tbody>
       </table></div>
-      <p class="text-muted text-sm">Active: while the pointer is down the pill takes the pressed fill, <code>--color-action-active</code> (<code>.video-poster:active</code>, forced here with <code>data-state="active"</code>).</p>
+      <p class="text-muted" style="font: var(--text-body-sm);">Active: while the pointer is down the pill takes the pressed fill, <code>--color-action-active</code> (<code>.video-poster:active</code>, forced here with <code>data-state="active"</code>).</p>
       <h3>Content and loading states</h3>
       <div class="ds-matrix"><table>
         <caption class="visually-hidden">Episode poster content states</caption>
@@ -254,7 +252,7 @@
           <tr><th scope="row">Slot</th>
             <td><div style="width: 16rem;"><iframe class="video-frame" title="Episode 4: The Junction Loft — big north light, tiny elevator (playing state)" allow="accelerated-sensor; encrypted-media; picture-in-picture" allowfullscreen srcdoc="<link rel='stylesheet' href='../tokens/tokens.css'><body style='margin: 0; height: 100vh; display: grid; place-items: center; text-align: center; padding: var(--space-3); box-sizing: border-box; background: var(--color-bg-inverse); color: var(--color-fg-inverse); font: var(--text-body-sm);'><p>YouTube player from youtube-nocookie.com, no autoplay.</p></body>"></iframe></div></td>
             <td><div style="width: 24rem;"><a class="video-poster" href="https://www.youtube.com/watch?v=Jx7Lq2pT9aE"><span class="media-fallback" aria-hidden="true"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 16 5-5 4 4 2-2 7 7"/><path d="M3 3l18 18"/></svg><span>Episode 4: The Junction Loft</span></span><span class="video-poster__play"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor" stroke="none"/></svg>Play episode<span class="visually-hidden">: Episode 4, The Junction Loft (poster failed)</span></span></a></div></td>
-            <td><span class="text-muted text-sm" style="display: block; width: 14rem;">Nothing is rendered: no "Watch the episode" heading, no poster, no placeholder. The next section follows directly.</span></td>
+            <td><span class="text-muted" style="font: var(--text-body-sm); display: block; width: 14rem;">Nothing is rendered: no "Watch the episode" heading, no poster, no placeholder. The next section follows directly.</span></td>
           </tr>
         </tbody>
       </table></div>
@@ -317,7 +315,7 @@
         <div class="ds-pair"><span>"Watch on YouTube" on page</span><span class="ds-pair__ratio" data-contrast="--color-fg-link|--color-bg-canvas" data-min="4.5"></span></div>
         <div class="ds-pair"><span>Focus ring on page</span><span class="ds-pair__ratio" data-contrast="--color-focus-ring|--color-bg-canvas" data-min="3"></span></div>
       </div>
-      <p class="text-muted text-sm">The pill sits on a photo, which no token can guarantee; its solid fill carries the label's contrast and <code>--shadow-3</code> separates it from light and dark stills alike. On a failed poster the pill and the ground are the same ink, so only the label and the shadow show; the label keeps its 4.5:1 and the whole poster is the target, so nothing depends on seeing the pill's edge.</p>
+      <p class="text-muted" style="font: var(--text-body-sm);">The pill sits on a photo, which no token can guarantee; its solid fill carries the label's contrast and <code>--shadow-3</code> separates it from light and dark stills alike. On a failed poster the pill and the ground are the same ink, so only the label and the shadow show; the label keeps its 4.5:1 and the whole poster is the target, so nothing depends on seeing the pill's edge.</p>
       <h3>Motion</h3>
       <p>Nothing moves: the hover fill changes without a transition, and the player never autoplays (L2-047.2). Reduced motion needs no extra rule.</p>
       <h3>Touch</h3>
@@ -340,7 +338,7 @@
         <figure class="ds-do"><div class="ds-example__canvas" style="display: block;"><a class="video-poster" href="https://www.youtube.com/watch?v=Jx7Lq2pT9aE"><img src="../assets/img/episode-the-junction-loft.svg" alt="" width="1200" height="800" loading="lazy"><span class="video-poster__play"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor" stroke="none"/></svg>Play episode<span class="visually-hidden">: Episode 4, The Junction Loft (do example)</span></span></a></div><figcaption>Load the poster link first; insert the <code>youtube-nocookie.com</code> iframe only when the visitor presses Play episode.</figcaption></figure>
         <figure class="ds-dont"><div class="ds-example__canvas" style="display: block;"><iframe class="video-frame" title="Episode 4 embedded on page load (don't example)" srcdoc="<link rel='stylesheet' href='../tokens/tokens.css'><body style='margin: 0; height: 100vh; display: grid; place-items: center; text-align: center; padding: var(--space-3); box-sizing: border-box; background: var(--color-bg-inverse); color: var(--color-fg-inverse); font: var(--text-body-sm);'><p>youtube.com/embed/Jx7Lq2pT9aE?autoplay=1, loaded with the page</p></body>"></iframe></div><figcaption>Don't embed the player on load, use <code>youtube.com</code>, or add <code>autoplay</code>: every visit would hit YouTube before anyone chose to watch.</figcaption></figure>
         <figure class="ds-do"><div class="ds-example__canvas" style="display: block;"><a class="video-poster" href="https://www.youtube.com/watch?v=Jx7Lq2pT9aE"><span class="media-fallback" aria-hidden="true"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 16 5-5 4 4 2-2 7 7"/><path d="M3 3l18 18"/></svg><span>Episode 4: The Junction Loft</span></span><span class="video-poster__play"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor" stroke="none"/></svg>Play episode<span class="visually-hidden">: Episode 4, The Junction Loft (failed poster do example)</span></span></a></div><figcaption>When the still fails, keep the slot, the title and a working Play episode (L2-086.3).</figcaption></figure>
-        <figure class="ds-dont"><div class="ds-example__canvas" style="display: block;"><div class="video-frame" style="display: grid; place-items: center; color: var(--color-fg-inverse);"><span class="text-sm">Video coming soon</span></div></div><figcaption>Don't show a placeholder for a review with no video. The section is omitted entirely, as on Trinity Bellwoods Park (L2-020.1).</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas" style="display: block;"><div class="video-frame" style="display: grid; place-items: center; color: var(--color-fg-inverse);"><span style="font: var(--text-body-sm);">Video coming soon</span></div></div><figcaption>Don't show a placeholder for a review with no video. The section is omitted entirely, as on Trinity Bellwoods Park (L2-020.1).</figcaption></figure>
       </div>
     </section>
 

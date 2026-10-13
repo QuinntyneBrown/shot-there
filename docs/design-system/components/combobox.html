@@ -55,15 +55,13 @@
       <li><a href="../components/filter.html">Filters</a></li>
     </ul></details>
     <details open><summary>Containers and overlays</summary><ul>
-      <li><a href="../components/container.html">Container and grid</a></li>
+      <li><a href="../components/container.html">Container</a></li>
       <li><a href="../components/review-layout.html">Review layout</a></li>
       <li><a href="../components/editor-layout.html">Editor layout</a></li>
-      <li><a href="../components/card.html">Card</a></li>
       <li><a href="../components/dialog.html">Dialog</a></li>
-      <li><a href="../components/sheet.html">Sheet and drawer</a></li>
+      <li><a href="../components/sheet.html">Sheet</a></li>
       <li><a href="../components/popover.html">Popover</a></li>
       <li><a href="../components/lightbox.html">Lightbox</a></li>
-      <li><a href="../components/divider.html">Divider</a></li>
     </ul></details>
     <details open><summary>Data display</summary><ul>
       <li><a href="../components/location-card.html">Location card</a></li>
@@ -87,9 +85,9 @@
     </ul></details>
     <details open><summary>Feedback</summary><ul>
       <li><a href="../components/inline-message.html">Inline message</a></li>
-      <li><a href="../components/alert.html">Alert and banner</a></li>
+      <li><a href="../components/alert.html">Alert</a></li>
       <li><a href="../components/toast.html">Toast</a></li>
-      <li><a href="../components/progress.html">Progress and meter</a></li>
+      <li><a href="../components/progress.html">Progress</a></li>
       <li><a href="../components/spinner.html">Spinner</a></li>
       <li><a href="../components/skeleton.html">Skeleton</a></li>
       <li><a href="../components/empty-state.html">Empty state</a></li>
@@ -163,7 +161,7 @@
     </section>
 
     <section class="ds-section" id="variants"><h2><a href="#variants">Variants</a></h2>
-      <p>One field, one popup. What varies is what the popup holds: options with hints, or a single message when nothing matches. A flat listbox (<code>.suggestions--inline</code>) drops the raised surface for a list that sits in the flow of an already raised panel.</p>
+      <p>One field, one popup. What varies is what the popup holds: options with hints, or a single message when nothing matches.</p>
       <h3>Raised listbox (default)</h3>
       <div class="ds-example">
         <div class="ds-example__canvas ds-example__canvas--stack" style="max-width: 30rem;">
@@ -187,16 +185,6 @@
   &lt;/li&gt;
 &lt;/ul&gt;</code></pre></details>
       </div>
-      <h3>Flat listbox</h3>
-      <div class="ds-example">
-        <div class="ds-example__canvas ds-example__canvas--stack" style="max-width: 30rem;">
-          <ul class="suggestions suggestions--inline" id="v2-options" role="listbox" aria-label="Matching studios and spots">
-            <li class="suggestion" id="v2-opt-1" role="option" aria-selected="true"><span>Riverside <mark>Ro</mark>oftop Studio</span><span class="suggestion__hint">Studio · Riverside</span></li>
-            <li class="suggestion" id="v2-opt-2" role="option" aria-selected="false"><span>Kensington Window <mark>Ro</mark>om</span><span class="suggestion__hint">Studio · Kensington Market</span></li>
-          </ul>
-        </div>
-        <div class="ds-example__caption"><span><code>.suggestions--inline</code>: no border, shadow, padding or fill. No mock uses it yet; reach for it only inside a panel that is already raised.</span></div>
-      </div>
       <h3>Empty message</h3>
       <div class="ds-example">
         <div class="ds-example__canvas ds-example__canvas--stack" style="max-width: 30rem;">
@@ -219,17 +207,17 @@
             <td><div class="search-field" style="min-width: 13rem;"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input class="input" type="text" role="combobox" aria-expanded="false" aria-autocomplete="list" autocomplete="off" aria-label="Studio or spot, default"></div></td>
             <td><div class="search-field" style="min-width: 13rem;"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input class="input" type="text" role="combobox" aria-expanded="false" aria-autocomplete="list" autocomplete="off" aria-label="Studio or spot, hover" data-state="hover"></div></td>
             <td><div class="search-field" style="min-width: 13rem;"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input class="input" type="text" role="combobox" aria-expanded="false" aria-autocomplete="list" autocomplete="off" aria-label="Studio or spot, focus" data-state="focus" value="stu"></div></td>
-            <td><span class="text-subtle" style="display: inline-block; min-width: 9rem;">Not used: the text box has no pressed state</span></td>
+            <td><span class="text-muted" style="display: inline-block; min-width: 9rem;">Not used: the text box has no pressed state</span></td>
             <td><div class="search-field" style="min-width: 13rem;"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input class="input" type="text" role="combobox" aria-expanded="false" aria-autocomplete="list" autocomplete="off" aria-label="Studio or spot, disabled" disabled></div></td>
             <td><div class="search-field" style="min-width: 13rem;"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input class="input" type="text" role="combobox" aria-expanded="false" aria-autocomplete="list" autocomplete="off" aria-label="Studio or spot, invalid" aria-invalid="true" value="Leslieville Daylight Studio"></div></td>
           </tr>
           <tr><th scope="row">Option</th>
             <td><ul class="suggestions" style="min-width: 15rem;" role="listbox" aria-label="Option, default"><li class="suggestion" role="option" aria-selected="false"><span>Bloordale Sun <mark>Studio</mark></span><span class="suggestion__hint">Studio · Bloordale</span></li></ul></td>
             <td><ul class="suggestions" style="min-width: 15rem;" role="listbox" aria-label="Option, hover"><li class="suggestion" role="option" aria-selected="false" data-state="hover"><span>Bloordale Sun <mark>Studio</mark></span><span class="suggestion__hint">Studio · Bloordale</span></li></ul></td>
-            <td><span class="text-subtle" style="display: inline-block; min-width: 9rem;">Not used: DOM focus stays in the text box</span></td>
+            <td><span class="text-muted" style="display: inline-block; min-width: 9rem;">Not used: DOM focus stays in the text box</span></td>
             <td><ul class="suggestions" style="min-width: 15rem;" role="listbox" aria-label="Option, active"><li class="suggestion" role="option" aria-selected="true"><span>Bloordale Sun <mark>Studio</mark></span><span class="suggestion__hint">Studio · Bloordale</span></li></ul></td>
-            <td><span class="text-subtle" style="display: inline-block; min-width: 9rem;">Not used: unpublished places are left out, not greyed out</span></td>
-            <td><span class="text-subtle" style="display: inline-block; min-width: 9rem;">Not used: the error belongs to the field</span></td>
+            <td><span class="text-muted" style="display: inline-block; min-width: 9rem;">Not used: unpublished places are left out, not greyed out</span></td>
+            <td><span class="text-muted" style="display: inline-block; min-width: 9rem;">Not used: the error belongs to the field</span></td>
           </tr>
         </tbody>
       </table></div>
@@ -497,7 +485,6 @@
       <table class="ds-table"><thead><tr><th scope="col">Class / attribute</th><th scope="col">Effect</th></tr></thead><tbody>
         <tr><td><code>.search-field</code></td><td>Wraps the icon and <code>.input</code>: full pill, 52px tall, left padding that clears the icon.</td></tr>
         <tr><td><code>.suggestions</code></td><td>The listbox panel: raised surface, border, <code>--radius-lg</code>, <code>--shadow-3</code>, scrolls after eight options.</td></tr>
-        <tr><td><code>.suggestions--inline</code></td><td>Flat list: no surface, border, shadow or padding.</td></tr>
         <tr><td><code>.suggestion</code></td><td>One option row, at least 44px, name and hint wrapping onto two lines when narrow.</td></tr>
         <tr><td><code>.suggestion mark</code></td><td>The matched text, bold with no fill.</td></tr>
         <tr><td><code>.suggestion__hint</code></td><td>Kind and neighbourhood, caption type, subtle colour.</td></tr>
@@ -519,7 +506,7 @@
         <li><a href="../../mocks/dialogs/guide-entry-picker/invalid.html">dialogs/guide-entry-picker/invalid</a> (already in the guide)</li>
         <li><a href="../../mocks/pages/guide-editor/default.html">pages/guide-editor/default</a> (the Add entry button that opens the picker)</li>
       </ul>
-      <p>Drift fixed during extraction: the no-matches mock replaced the listbox with a <code>&lt;div class="suggestions" id="entry-options"&gt;</code>, so <code>aria-controls</code> pointed at a non-listbox; the system keeps the listbox in the DOM, <code>hidden</code>, and shows the message in a sibling box. The invalid mock listed the help before the error in <code>aria-describedby</code> (<code>entry-hint entry-error</code>), unlike every other invalid field; the system puts the error first. The results mock's note has Escape close the whole dialog while the list is open; the system follows APG, where the first Escape closes the list and the second closes the dialog. <code>.suggestions--inline</code> is in the stylesheet but no mock uses it.</p>
+      <p>Drift fixed during extraction: the no-matches mock replaced the listbox with a <code>&lt;div class="suggestions" id="entry-options"&gt;</code>, so <code>aria-controls</code> pointed at a non-listbox; the system keeps the listbox in the DOM, <code>hidden</code>, and shows the message in a sibling box. The invalid mock listed the help before the error in <code>aria-describedby</code> (<code>entry-hint entry-error</code>), unlike every other invalid field; the system puts the error first. The results mock's note has Escape close the whole dialog while the list is open; the system follows APG, where the first Escape closes the list and the second closes the dialog.</p>
     </section>
 
     <footer class="ds-footer"><span>ShotThere design system · extracted from <a href="../../mocks/index.html">docs/mocks</a> on 13 October 2026</span><a href="#top">Back to top</a></footer>

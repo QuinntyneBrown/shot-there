@@ -55,15 +55,13 @@
       <li><a href="../components/filter.html">Filters</a></li>
     </ul></details>
     <details open><summary>Containers and overlays</summary><ul>
-      <li><a href="../components/container.html">Container and grid</a></li>
+      <li><a href="../components/container.html">Container</a></li>
       <li><a href="../components/review-layout.html">Review layout</a></li>
       <li><a href="../components/editor-layout.html">Editor layout</a></li>
-      <li><a href="../components/card.html">Card</a></li>
       <li><a href="../components/dialog.html">Dialog</a></li>
-      <li><a href="../components/sheet.html">Sheet and drawer</a></li>
+      <li><a href="../components/sheet.html">Sheet</a></li>
       <li><a href="../components/popover.html">Popover</a></li>
       <li><a href="../components/lightbox.html">Lightbox</a></li>
-      <li><a href="../components/divider.html">Divider</a></li>
     </ul></details>
     <details open><summary>Data display</summary><ul>
       <li><a href="../components/location-card.html">Location card</a></li>
@@ -87,9 +85,9 @@
     </ul></details>
     <details open><summary>Feedback</summary><ul>
       <li><a href="../components/inline-message.html">Inline message</a></li>
-      <li><a href="../components/alert.html">Alert and banner</a></li>
+      <li><a href="../components/alert.html">Alert</a></li>
       <li><a href="../components/toast.html">Toast</a></li>
-      <li><a href="../components/progress.html">Progress and meter</a></li>
+      <li><a href="../components/progress.html">Progress</a></li>
       <li><a href="../components/spinner.html">Spinner</a></li>
       <li><a href="../components/skeleton.html">Skeleton</a></li>
       <li><a href="../components/empty-state.html">Empty state</a></li>
@@ -112,7 +110,7 @@
       <p class="ds-kicker">Component · Inputs</p>
       <h1>Checkbox</h1>
       <p class="ds-lead">Checkboxes let people pick any number of options: the neighbourhoods and gear in the studio filters, the spot types and uses in the spot filters, a spot's best uses in the editor. A single checkbox records one yes-or-no fact, like "20 A circuits available".</p>
-      <div class="ds-meta"><span class="ds-pill ds-pill--ok">WCAG 2.2 AA</span><span class="ds-pill">Status: stable</span><span class="ds-pill">Native <code>&lt;input type="checkbox"&gt;</code></span><span class="ds-pill"><code>.choice</code></span><span class="ds-pill"><code>.choice__text</code></span><span class="ds-pill"><code>.option-grid</code></span></div>
+      <div class="ds-meta"><span class="ds-pill ds-pill--ok">WCAG 2.2 AA</span><span class="ds-pill">Status: stable</span><span class="ds-pill">Native <code>&lt;input type="checkbox"&gt;</code></span><span class="ds-pill"><code>.choice</code></span><span class="ds-pill"><code>.choice__text</code></span></div>
       <ul class="ds-toc"><li><a href="#overview">Overview</a></li><li><a href="#anatomy">Anatomy</a></li><li><a href="#variants">Variants</a></li><li><a href="#sizes">Sizes</a></li><li><a href="#states">States</a></li><li><a href="#responsive">Responsive behaviour</a></li><li><a href="#theming">Theming</a></li><li><a href="#accessibility">Accessibility</a></li><li><a href="#content">Content</a></li><li><a href="#do-dont">Do and don't</a></li><li><a href="#tokens">Tokens</a></li><li><a href="#code">Code</a></li><li><a href="#sources">Sources</a></li></ul>
     </header>
 
@@ -236,25 +234,6 @@
   …
 &lt;/fieldset&gt;</code></pre></details>
       </div>
-
-      <h3>Two columns with <code>.option-grid</code> (no mock uses it yet)</h3>
-      <div class="ds-example">
-        <div class="ds-example__canvas ds-example__canvas--stack" style="max-width: 32rem;">
-          <fieldset>
-            <legend>Neighbourhood</legend>
-            <div class="option-grid">
-              <label class="choice"><input type="checkbox" name="g-hood" value="bloordale"><span>Bloordale</span></label>
-              <label class="choice"><input type="checkbox" name="g-hood" value="junction"><span>Junction</span></label>
-              <label class="choice"><input type="checkbox" name="g-hood" value="kensington-market"><span>Kensington Market</span></label>
-              <label class="choice"><input type="checkbox" name="g-hood" value="leslieville"><span>Leslieville</span></label>
-              <label class="choice"><input type="checkbox" name="g-hood" value="liberty-village"><span>Liberty Village</span></label>
-              <label class="choice"><input type="checkbox" name="g-hood" value="ossington"><span>Ossington</span></label>
-              <label class="choice"><input type="checkbox" name="g-hood" value="riverside"><span>Riverside</span></label>
-            </div>
-          </fieldset>
-        </div>
-        <div class="ds-example__caption"><span><code>.option-grid</code> is one column on phones and two from 36rem. The filter sidebar and sheet are too narrow for two columns, so no mock uses it; it suits a long list in a wide form. The order reads down the rows, left to right.</span></div>
-      </div>
     </section>
 
     <section class="ds-section" id="sizes" data-na="Checkboxes have one size."><h2><a href="#sizes">Sizes</a></h2>
@@ -316,7 +295,6 @@
         <li>Below LG the studio and spot filters open in a full-height sheet; from LG they sit in a sidebar beside the list (L2-022.5). The checkbox rows are the same in both, one per line.</li>
         <li>Below 48rem every <code>.choice</code> row is at least 44px tall (L2-065.3); from 48rem, 24px, so the sidebar's seven neighbourhoods fit without scrolling.</li>
         <li>Long labels ("No permit needed for the selected use") wrap under themselves, never under the box.</li>
-        <li><code>.option-grid</code> goes to two columns from 36rem and adds 8px between rows on phones.</li>
       </ul>
     </section>
 
@@ -406,8 +384,6 @@
       <table class="ds-table"><thead><tr><th scope="col">Class / attribute</th><th scope="col">Effect</th></tr></thead><tbody>
         <tr><td><code>label.choice</code></td><td>Row: box plus text, the whole row clickable.</td></tr>
         <tr><td><code>.choice__text</code> + <code>small</code></td><td>Label with a muted description under it.</td></tr>
-        <tr><td><code>.option-grid</code></td><td>One column, two from 36rem (unused so far).</td></tr>
-        <tr><td><code>.choice--card</code></td><td>Bordered card row; see <a href="radio-group.html#variants">radio group</a> (unused so far).</td></tr>
         <tr><td><code>checked</code> / <code>indeterminate</code> (property)</td><td>Accent fill with a tick / with a bar.</td></tr>
         <tr><td><code>aria-invalid="true"</code> / <code>disabled</code></td><td>Danger red double edge / faded box and label.</td></tr>
         <tr><td><code>data-state="hover|focus|checked|indeterminate|disabled|invalid"</code></td><td>Documentation and mocks only.</td></tr>
@@ -424,7 +400,7 @@
         <li><a href="../../mocks/pages/spot-editor/default.html">pages/spot-editor/default</a> and <a href="../../mocks/pages/spot-editor/published.html">published</a> (best uses)</li>
         <li><a href="../../mocks/dialogs/missing-fields/spot.html">dialogs/missing-fields/spot</a> ("At least one best use")</li>
       </ul>
-      <p>Drift fixed during extraction: the spot editor puts the best-uses help after the fieldset and doesn't reference it; it now sits under the legend and the fieldset's <code>aria-describedby</code> names it. The spot editor's invalid state shows no inline best-uses error although publishing refuses an empty set; the group error above is the shape to use. The best-uses fieldset has <code>id="uses"</code> but the missing-fields dialog links to the page, not to <code>#uses</code>. No mock uses <code>.option-grid</code>, <code>.choice--card</code>, an indeterminate, disabled or invalid checkbox; they are kept from the stylesheet and marked unused.</p>
+      <p>Drift fixed during extraction: the spot editor puts the best-uses help after the fieldset and doesn't reference it; it now sits under the legend and the fieldset's <code>aria-describedby</code> names it. The spot editor's invalid state shows no inline best-uses error although publishing refuses an empty set; the group error above is the shape to use. The best-uses fieldset has <code>id="uses"</code> but the missing-fields dialog links to the page, not to <code>#uses</code>. No mock uses an indeterminate, disabled or invalid checkbox; they are kept from the stylesheet and marked unused.</p>
     </section>
 
     <footer class="ds-footer"><span>ShotThere design system · extracted from <a href="../../mocks/index.html">docs/mocks</a> on 13 October 2026</span><a href="#top">Back to top</a></footer>

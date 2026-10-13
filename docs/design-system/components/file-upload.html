@@ -55,15 +55,13 @@
       <li><a href="../components/filter.html">Filters</a></li>
     </ul></details>
     <details open><summary>Containers and overlays</summary><ul>
-      <li><a href="../components/container.html">Container and grid</a></li>
+      <li><a href="../components/container.html">Container</a></li>
       <li><a href="../components/review-layout.html">Review layout</a></li>
       <li><a href="../components/editor-layout.html">Editor layout</a></li>
-      <li><a href="../components/card.html">Card</a></li>
       <li><a href="../components/dialog.html">Dialog</a></li>
-      <li><a href="../components/sheet.html">Sheet and drawer</a></li>
+      <li><a href="../components/sheet.html">Sheet</a></li>
       <li><a href="../components/popover.html">Popover</a></li>
       <li><a href="../components/lightbox.html">Lightbox</a></li>
-      <li><a href="../components/divider.html">Divider</a></li>
     </ul></details>
     <details open><summary>Data display</summary><ul>
       <li><a href="../components/location-card.html">Location card</a></li>
@@ -87,9 +85,9 @@
     </ul></details>
     <details open><summary>Feedback</summary><ul>
       <li><a href="../components/inline-message.html">Inline message</a></li>
-      <li><a href="../components/alert.html">Alert and banner</a></li>
+      <li><a href="../components/alert.html">Alert</a></li>
       <li><a href="../components/toast.html">Toast</a></li>
-      <li><a href="../components/progress.html">Progress and meter</a></li>
+      <li><a href="../components/progress.html">Progress</a></li>
       <li><a href="../components/spinner.html">Spinner</a></li>
       <li><a href="../components/skeleton.html">Skeleton</a></li>
       <li><a href="../components/empty-state.html">Empty state</a></li>
@@ -227,15 +225,6 @@
         <div class="ds-example__caption"><span>From <a href="../../mocks/pages/studio-editor/upload-failed.html">pages/studio-editor/upload-failed</a> (L2-057.2, L2-057.3). A file that fails in transit is a failed image row with Retry, not a line here.</span></div>
       </div>
 
-      <h3>Kit parts no ShotThere mock uses</h3>
-      <p><code>.upload-tile</code> (a square dashed tile with a full radius, so it renders as a circle) and <code>.file-row</code> (one attached file with its meta) are still in <code>components.css</code>, but no editor mock uses them: images are always listed as image rows. Don't reach for them in new screens; they are shown so they can be recognised.</p>
-      <div class="ds-example">
-        <div class="ds-example__canvas">
-          <input class="file-input visually-hidden" id="fu-v-tile" type="file" accept="image/jpeg,image/png,image/webp,image/avif" multiple><label class="upload-tile" for="fu-v-tile"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M12 9v6M9 12h6"/></svg>Add sample shots</label>
-          <div class="file-row" style="flex: 1 1 18rem;"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 16 5-5 4 4 3-3 6 6"/></svg><span class="file-row__name"><span>golden-hour-kiln.jpg</span><span class="file-row__meta">JPEG · 5.2 MB</span></span></div>
-        </div>
-        <div class="ds-example__caption"><span><code>.upload-tile</code> and <code>.file-row</code>: not in any mock. Prefer <code>.upload-drop</code> and the image manager.</span></div>
-      </div>
     </section>
 
     <section class="ds-section" id="sizes"><h2><a href="#sizes">Sizes</a></h2>
@@ -372,7 +361,6 @@
         <tr><td><code>.upload-drop</code></td><td>Dashed, wrapping box for the trigger, the accepted types and the refusals. A <code>role="alert"</code> child takes its own full-width line.</td></tr>
         <tr><td><code>accept</code>, <code>multiple</code></td><td><code>image/jpeg,image/png,image/webp,image/avif</code>; several files at once. The picker filter is a convenience; the client and the server still check.</td></tr>
         <tr><td><code>role="alert"</code></td><td>On the stack of refusal lines, so they are announced.</td></tr>
-        <tr><td><code>.upload-tile</code>, <code>.file-row</code></td><td>In the stylesheet, in no ShotThere mock.</td></tr>
         <tr><td><code>data-state="hover|focus|active"</code></td><td>Documentation only, on the label.</td></tr>
       </tbody></table></div>
     </section>
@@ -391,7 +379,6 @@
         <li>No mock ties the accepted-types line to the input; the system adds an <code>id</code> and <code>aria-describedby</code>.</li>
         <li>The refusal stack in <a href="../../mocks/pages/studio-editor/upload-failed.html">pages/studio-editor/upload-failed</a> uses an inline <code>flex-basis: 100%</code>; <code>.upload-drop &gt; [role="alert"]</code> now sets it, so the examples here drop the inline style.</li>
         <li>The name <code>.upload-drop</code> suggests dropping files, but no mock shows a drag state and L2-057 does not ask for one. The box is documented as a frame, with the button as the way in.</li>
-        <li><code>.upload-tile</code> and <code>.file-row</code> have CSS but no ShotThere use; the inherited examples for them were replaced with ShotThere ones and marked as unused.</li>
       </ul>
     </section>
 

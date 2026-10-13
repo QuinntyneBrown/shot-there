@@ -55,15 +55,13 @@
       <li><a href="../components/filter.html">Filters</a></li>
     </ul></details>
     <details open><summary>Containers and overlays</summary><ul>
-      <li><a href="../components/container.html">Container and grid</a></li>
+      <li><a href="../components/container.html">Container</a></li>
       <li><a href="../components/review-layout.html">Review layout</a></li>
       <li><a href="../components/editor-layout.html">Editor layout</a></li>
-      <li><a href="../components/card.html">Card</a></li>
       <li><a href="../components/dialog.html">Dialog</a></li>
-      <li><a href="../components/sheet.html">Sheet and drawer</a></li>
+      <li><a href="../components/sheet.html">Sheet</a></li>
       <li><a href="../components/popover.html">Popover</a></li>
       <li><a href="../components/lightbox.html">Lightbox</a></li>
-      <li><a href="../components/divider.html">Divider</a></li>
     </ul></details>
     <details open><summary>Data display</summary><ul>
       <li><a href="../components/location-card.html">Location card</a></li>
@@ -87,9 +85,9 @@
     </ul></details>
     <details open><summary>Feedback</summary><ul>
       <li><a href="../components/inline-message.html">Inline message</a></li>
-      <li><a href="../components/alert.html">Alert and banner</a></li>
+      <li><a href="../components/alert.html">Alert</a></li>
       <li><a href="../components/toast.html">Toast</a></li>
-      <li><a href="../components/progress.html">Progress and meter</a></li>
+      <li><a href="../components/progress.html">Progress</a></li>
       <li><a href="../components/spinner.html">Spinner</a></li>
       <li><a href="../components/skeleton.html">Skeleton</a></li>
       <li><a href="../components/empty-state.html">Empty state</a></li>
@@ -289,7 +287,7 @@
         </tbody>
       </table></div>
       <ul>
-        <li><b>Sparse</b> values are words, never a missing row (L2-006.2, L2-017.2): Bloordale Sun Studio shows "Cyc wall · No" and "Changing area · None"; a studio with no paid extras replaces the extras list with "Nothing costs extra at this studio." (L2-007.2). A value the visit did not record uses <span class="na">Not measured</span> (<code>.na</code>).</li>
+        <li><b>Sparse</b> values are words, never a missing row (L2-006.2, L2-017.2): Bloordale Sun Studio shows "Cyc wall · No" and "Changing area · None"; a studio with no paid extras replaces the extras list with "Nothing costs extra at this studio." (L2-007.2). A value the visit did not record reads "Not measured".</li>
         <li><b>Stale</b> (Ossington Blackbox, verified 2 Mar 2026, 225 days ago) does not restyle the list: a <a href="alert.html">warning alert</a> follows the verified line and a warning badge joins the summary panel (L2-005.2).</li>
       </ul>
       <h3>Both themes</h3>
@@ -332,7 +330,7 @@
       <div class="ds-example__canvas ds-example__canvas--stack" style="padding: 0; gap: var(--space-2);">
         <div class="ds-pair"><span>Label on page</span><span class="ds-pair__ratio" data-contrast="--color-fg-subtle|--color-bg-canvas" data-min="4.5"></span></div>
         <div class="ds-pair"><span>Value on page</span><span class="ds-pair__ratio" data-contrast="--color-fg-default|--color-bg-canvas" data-min="4.5"></span></div>
-        <div class="ds-pair"><span>Label on a card surface</span><span class="ds-pair__ratio" data-contrast="--color-fg-subtle|--color-bg-surface" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Label on a surface</span><span class="ds-pair__ratio" data-contrast="--color-fg-subtle|--color-bg-surface" data-min="4.5"></span></div>
         <div class="ds-pair"><span>Neutral qualifier badge</span><span class="ds-pair__ratio" data-contrast="--color-fg-muted|--color-bg-subtle" data-min="4.5"></span></div>
         <div class="ds-pair"><span>Verified line on page</span><span class="ds-pair__ratio" data-contrast="--color-fg-muted|--color-bg-canvas" data-min="4.5"></span></div>
       </div>
@@ -403,8 +401,6 @@
         <tr><td><code>.regions</code></td><td>Grouped pairs (<code>div</code> wrappers): one column, two from 48rem; value in <code>--text-body-lg</code>.</td></tr>
         <tr><td><code>.summary-panel__row</code></td><td>Two grouped pairs side by side; value in <code>--text-h3</code> with tabular figures.</td></tr>
         <tr><td><code>.num</code></td><td>Tabular figures for prices and measurements.</td></tr>
-        <tr><td><code>.na</code></td><td>Muted "Not measured" for a value the visit did not record.</td></tr>
-        <tr><td><code>.dl</code>, <code>.facts</code>, <code>.inline-list</code></td><td>Still in the stylesheet but used by no ShotThere mock; do not use. Use <code>.kv</code>.</td></tr>
       </tbody></table>
     </section>
 

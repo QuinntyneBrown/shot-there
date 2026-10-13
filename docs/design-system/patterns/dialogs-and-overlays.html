@@ -55,15 +55,13 @@
       <li><a href="../components/filter.html">Filters</a></li>
     </ul></details>
     <details open><summary>Containers and overlays</summary><ul>
-      <li><a href="../components/container.html">Container and grid</a></li>
+      <li><a href="../components/container.html">Container</a></li>
       <li><a href="../components/review-layout.html">Review layout</a></li>
       <li><a href="../components/editor-layout.html">Editor layout</a></li>
-      <li><a href="../components/card.html">Card</a></li>
       <li><a href="../components/dialog.html">Dialog</a></li>
-      <li><a href="../components/sheet.html">Sheet and drawer</a></li>
+      <li><a href="../components/sheet.html">Sheet</a></li>
       <li><a href="../components/popover.html">Popover</a></li>
       <li><a href="../components/lightbox.html">Lightbox</a></li>
-      <li><a href="../components/divider.html">Divider</a></li>
     </ul></details>
     <details open><summary>Data display</summary><ul>
       <li><a href="../components/location-card.html">Location card</a></li>
@@ -87,9 +85,9 @@
     </ul></details>
     <details open><summary>Feedback</summary><ul>
       <li><a href="../components/inline-message.html">Inline message</a></li>
-      <li><a href="../components/alert.html">Alert and banner</a></li>
+      <li><a href="../components/alert.html">Alert</a></li>
       <li><a href="../components/toast.html">Toast</a></li>
-      <li><a href="../components/progress.html">Progress and meter</a></li>
+      <li><a href="../components/progress.html">Progress</a></li>
       <li><a href="../components/spinner.html">Spinner</a></li>
       <li><a href="../components/skeleton.html">Skeleton</a></li>
       <li><a href="../components/empty-state.html">Empty state</a></li>
@@ -193,7 +191,7 @@
           </div>
         </div>
         <div class="ds-example__caption"><span>Left: Unpublish, reversible, so its action is the ink primary. Right: Delete after a failure; the draft is untouched and Delete studio retries. Both name the item in the title; Cancel comes first and has focus.</span><span>Sources: dialogs/unpublish/default, dialogs/delete-content/failed</span></div>
-        <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;div class="page" inert&gt;…&lt;/div&gt;
+        <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;div inert aria-hidden="true"&gt;…&lt;/div&gt;
 &lt;div class="backdrop"&gt;&lt;/div&gt;
 &lt;div class="dialog" role="dialog" aria-modal="true" aria-labelledby="dlg-title" aria-describedby="dlg-desc"&gt;
   &lt;div class="dialog__panel dialog__panel--sm"&gt;
@@ -393,8 +391,8 @@
 
     <section class="ds-section" id="responsive"><h2><a href="#responsive">Responsive behaviour</a></h2>
       <ul>
-        <li><b>Below 36rem</b> a confirmation dialog docks to the bottom as a sheet with rounded top corners and clears the bottom safe area; from 36rem it centres.</li>
-        <li><b>Below 48rem</b> the filters and menu sheets fill the screen; the entry picker fills the screen when marked <code>.dialog--full</code>. From 48rem sheets slide in from the right at the sheet width.</li>
+        <li><b>Below 36rem</b> a confirmation or form dialog docks to the bottom as a sheet with rounded top corners and clears the bottom safe area; from 36rem it centres.</li>
+        <li><b>Below 48rem</b> the filters and menu sheets fill the screen. From 48rem sheets slide in from the right at the sheet width.</li>
         <li><b>The lightbox</b> moves Previous and Next under the photo below 48rem (<code>.lightbox__pager</code>) so the photo gets the full width; from 48rem the arrows sit beside it.</li>
         <li><b>The map popup</b> docks along the bottom of the map below 48rem (<code>.map-popup--dock</code>) and floats above its marker from 48rem.</li>
         <li>Footers wrap with the consequence action last; long titles wrap and never truncate.</li>

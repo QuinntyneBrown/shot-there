@@ -55,15 +55,13 @@
       <li><a href="../components/filter.html">Filters</a></li>
     </ul></details>
     <details open><summary>Containers and overlays</summary><ul>
-      <li><a href="../components/container.html">Container and grid</a></li>
+      <li><a href="../components/container.html">Container</a></li>
       <li><a href="../components/review-layout.html">Review layout</a></li>
       <li><a href="../components/editor-layout.html">Editor layout</a></li>
-      <li><a href="../components/card.html">Card</a></li>
       <li><a href="../components/dialog.html">Dialog</a></li>
-      <li><a href="../components/sheet.html">Sheet and drawer</a></li>
+      <li><a href="../components/sheet.html">Sheet</a></li>
       <li><a href="../components/popover.html">Popover</a></li>
       <li><a href="../components/lightbox.html">Lightbox</a></li>
-      <li><a href="../components/divider.html">Divider</a></li>
     </ul></details>
     <details open><summary>Data display</summary><ul>
       <li><a href="../components/location-card.html">Location card</a></li>
@@ -87,9 +85,9 @@
     </ul></details>
     <details open><summary>Feedback</summary><ul>
       <li><a href="../components/inline-message.html">Inline message</a></li>
-      <li><a href="../components/alert.html">Alert and banner</a></li>
+      <li><a href="../components/alert.html">Alert</a></li>
       <li><a href="../components/toast.html">Toast</a></li>
-      <li><a href="../components/progress.html">Progress and meter</a></li>
+      <li><a href="../components/progress.html">Progress</a></li>
       <li><a href="../components/spinner.html">Spinner</a></li>
       <li><a href="../components/skeleton.html">Skeleton</a></li>
       <li><a href="../components/empty-state.html">Empty state</a></li>
@@ -370,19 +368,6 @@
 &lt;/div&gt;</code></pre></details>
       </div>
 
-      <h3>With a header icon</h3>
-      <div class="ds-example">
-        <div class="ds-example__canvas">
-          <div class="dialog__panel dialog__panel--sm" style="animation: none; box-shadow: var(--shadow-2);">
-            <div class="dialog__header">
-              <div class="dialog__icon dialog__icon--danger" aria-hidden="true"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 4 2.5 20h19L12 4z"/><path d="M12 10v4M12 17h.01"/></svg></div>
-              <div class="dialog__heading"><p class="dialog__title">Delete Annex Attic Studio?</p><p class="dialog__desc">This deletes the draft and its images. It can't be undone.</p></div>
-            </div>
-            <div class="dialog__footer"><button class="btn" type="button">Cancel</button><button class="btn btn--danger" type="button">Delete studio</button></div>
-          </div>
-        </div>
-        <div class="ds-example__caption"><span><code>.dialog__icon--danger</code>, <code>--warning</code>, <code>--info</code>, <code>--success</code>: a 40px tinted circle before the heading. The CSS exists but no ShotThere mock uses it; the title already says what kind of dialog it is. Keep it for a future dialog whose consequence is easy to miss.</span></div>
-      </div>
     </section>
 
     <section class="ds-section" id="sizes"><h2><a href="#sizes">Sizes</a></h2>
@@ -393,8 +378,6 @@
           <tr><td><code>.dialog__panel--sm</code></td><td>24rem</td><td>Every confirmation and acknowledgement: delete, unpublish, discard changes, remove image, can't publish yet</td></tr>
           <tr><td><code>.dialog__panel</code> (default)</td><td><span data-token="--layout-dialog-width"></span></td><td>No mock yet; a confirmation with a longer body</td></tr>
           <tr><td><code>.dialog__panel--form</code></td><td>40rem</td><td>Add an entry (one combobox and its results)</td></tr>
-          <tr><td><code>.dialog__panel--lg</code></td><td>48rem</td><td>No mock; reserved</td></tr>
-          <tr><td><code>.dialog--full</code></td><td>Full screen below 48rem</td><td>No mock; the long panels (filters, menu) are <a href="sheet.html">sheets</a> instead</td></tr>
         </tbody>
       </table></div>
       <p>Height grows with content up to <code>100dvh</code> minus <code>--space-12</code>; beyond that the panel scrolls and the footer stays pinned. Padding: <code>--space-6</code> around, <code>--space-4</code> between header, body and footer.</p>
@@ -516,7 +499,6 @@
         <li><b>Below 36rem</b> the panel docks to the bottom edge at full width, with <code>--radius-xl</code> top corners, square bottom corners and <code>env(safe-area-inset-bottom)</code> padding so the footer clears the home indicator. It rises in (<code>slide-up</code>).</li>
         <li><b>From 36rem</b> it is centred with <code>--space-6</code> around it and scales in.</li>
         <li>The footer wraps when its buttons do not fit and stays pinned to the panel bottom while the body scrolls. Buttons stay 44px tall on phones.</li>
-        <li><code>.dialog--full</code> (CSS only, no mock) fills the screen below 48rem for a long form; ShotThere uses a <a href="sheet.html">sheet</a> for its long panels instead.</li>
       </ul>
       <div class="ds-iframes">
         <iframe class="ds-iframe" src="../../mocks/dialogs/delete-content/default.html?chrome=0" title="Delete dialog mock at phone width, docked to the bottom" loading="lazy"></iframe>
@@ -623,12 +605,10 @@
       <div class="ds-table-wrap"><table class="ds-table"><thead><tr><th scope="col">Class / attribute</th><th scope="col">Effect</th></tr></thead><tbody>
         <tr><td><code>.backdrop</code></td><td>Fixed dim layer at <code>--z-overlay</code>.</td></tr>
         <tr><td><code>.dialog</code></td><td>Fixed positioner at <code>--z-modal</code>: docks to the bottom below 36rem, centres from 36rem.</td></tr>
-        <tr><td><code>.dialog--full</code></td><td>Below 48rem the panel fills the screen.</td></tr>
-        <tr><td><code>.dialog__panel</code> <code>--sm</code> <code>--form</code> <code>--lg</code></td><td>The surface; 32rem by default, 24 / 40 / 48rem.</td></tr>
+        <tr><td><code>.dialog__panel</code> <code>--sm</code> <code>--form</code></td><td>The surface; 32rem by default, 24 / 40rem.</td></tr>
         <tr><td><code>.dialog__header</code> <code>.dialog__heading</code> <code>.dialog__title</code> <code>.dialog__desc</code></td><td>Title row; heading block; <code>--text-h3</code> title; muted description.</td></tr>
-        <tr><td><code>.dialog__icon</code> <code>--danger</code> <code>--warning</code> <code>--info</code> <code>--success</code></td><td>Optional 40px tinted icon circle before the heading.</td></tr>
         <tr><td><code>.dialog__body</code></td><td>Content; collapses when it holds only a visually hidden status line. A list inside it gets a 20px indent and 8px between items.</td></tr>
-        <tr><td><code>.dialog__footer</code>, <code>.push-start</code></td><td>Sticky, wrapping action row; <code>.push-start</code> sends one button to the start.</td></tr>
+        <tr><td><code>.dialog__footer</code></td><td>Sticky, wrapping action row.</td></tr>
         <tr><td><code>data-dismiss-on-escape</code></td><td>Mocks only: marks dialogs that close on Escape.</td></tr>
       </tbody></table></div>
     </section>
@@ -644,7 +624,7 @@
         <li><a href="../../mocks/dialogs/guide-entry-picker/default.html">dialogs/guide-entry-picker/default</a>, <a href="../../mocks/dialogs/guide-entry-picker/results.html">results</a>, <a href="../../mocks/dialogs/guide-entry-picker/busy.html">busy</a>, <a href="../../mocks/dialogs/guide-entry-picker/invalid.html">invalid</a>, <a href="../../mocks/dialogs/guide-entry-picker/no-matches.html">no-matches</a> (L2-060)</li>
       </ul>
       <p>The photo viewer (<code>dialogs/lightbox/*</code>) is documented on <a href="lightbox.html">lightbox</a>, the site menu and filter panels on <a href="sheet.html">sheet</a>, and the map marker popup on <a href="popover.html">popover</a>.</p>
-      <p>Drift found during extraction (recorded, mocks unchanged): <code>missing-fields</code> labels its only button "OK" while <code>remove-image/refused</code> uses "Got it"; the system uses "Got it". <code>missing-fields</code> styles its body list inline (padding and grid gap); <code>.dialog__body ul</code> now does it, so the example here drops the inline style. The default and failed mocks use <code>&lt;a&gt;</code> elements for Close, Cancel and the confirm so the static set can be clicked through; the product uses <code>&lt;button type="button"&gt;</code> as the busy mocks do. <code>guide-entry-picker/busy</code> sets the gap and margin of its "Searching" row inline. <code>.dialog__icon</code>, <code>.dialog__panel--lg</code>, the default 32rem panel and <code>.dialog--full</code> have CSS but no ShotThere mock.</p>
+      <p>Drift found during extraction (recorded, mocks unchanged): <code>missing-fields</code> labels its only button "OK" while <code>remove-image/refused</code> uses "Got it"; the system uses "Got it". <code>missing-fields</code> styles its body list inline (padding and grid gap); <code>.dialog__body ul</code> now does it, so the example here drops the inline style. The default and failed mocks use <code>&lt;a&gt;</code> elements for Close, Cancel and the confirm so the static set can be clicked through; the product uses <code>&lt;button type="button"&gt;</code> as the busy mocks do. <code>guide-entry-picker/busy</code> sets the gap and margin of its "Searching" row inline. The default 32rem panel has CSS but no ShotThere mock.</p>
     </section>
 
     <footer class="ds-footer"><span>ShotThere design system · extracted from <a href="../../mocks/index.html">docs/mocks</a> on 13 October 2026</span><a href="#top">Back to top</a></footer>

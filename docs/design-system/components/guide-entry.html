@@ -55,15 +55,13 @@
       <li><a href="../components/filter.html">Filters</a></li>
     </ul></details>
     <details open><summary>Containers and overlays</summary><ul>
-      <li><a href="../components/container.html">Container and grid</a></li>
+      <li><a href="../components/container.html">Container</a></li>
       <li><a href="../components/review-layout.html">Review layout</a></li>
       <li><a href="../components/editor-layout.html">Editor layout</a></li>
-      <li><a href="../components/card.html">Card</a></li>
       <li><a href="../components/dialog.html">Dialog</a></li>
-      <li><a href="../components/sheet.html">Sheet and drawer</a></li>
+      <li><a href="../components/sheet.html">Sheet</a></li>
       <li><a href="../components/popover.html">Popover</a></li>
       <li><a href="../components/lightbox.html">Lightbox</a></li>
-      <li><a href="../components/divider.html">Divider</a></li>
     </ul></details>
     <details open><summary>Data display</summary><ul>
       <li><a href="../components/location-card.html">Location card</a></li>
@@ -87,9 +85,9 @@
     </ul></details>
     <details open><summary>Feedback</summary><ul>
       <li><a href="../components/inline-message.html">Inline message</a></li>
-      <li><a href="../components/alert.html">Alert and banner</a></li>
+      <li><a href="../components/alert.html">Alert</a></li>
       <li><a href="../components/toast.html">Toast</a></li>
-      <li><a href="../components/progress.html">Progress and meter</a></li>
+      <li><a href="../components/progress.html">Progress</a></li>
       <li><a href="../components/spinner.html">Spinner</a></li>
       <li><a href="../components/skeleton.html">Skeleton</a></li>
       <li><a href="../components/empty-state.html">Empty state</a></li>
@@ -153,7 +151,7 @@
           </ol>
         </figure>
         <ol class="ds-anatomy__list">
-          <li><div><b>Divider</b><small>Hairline <code>--color-border-default</code> top border with <code>--space-8</code> above the entry; entries sit <code>--space-12</code> apart.</small></div></li>
+          <li><div><b>Hairline</b><small>Hairline <code>--color-border-default</code> top border with <code>--space-8</code> above the entry; entries sit <code>--space-12</code> apart.</small></div></li>
           <li><div><b>Location card</b><small>The standard <a href="location-card.html">location card</a> (photo 3:2, name, neighbourhood and review date). The photo is decorative (<code>alt=""</code>); the name link covers the card.</small></div></li>
           <li><div><b>Rank</b><small><code>.guide-entry__rank</code>: a 40px <code>--color-bg-subtle</code> disc with the position in <code>--text-h4</code> tabular figures, beside the name. <code>aria-hidden</code>; the <code>&lt;ol&gt;</code> position is the programmatic rank.</small></div></li>
           <li><div><b>Data points</b><small><code>.guide-entry__data</code>: a <code>&lt;dl&gt;</code> of the one or two values the guide ranks by. Label in <code>--text-label</code>, <code>--color-fg-subtle</code>; value in <code>--text-h4</code>.</small></div></li>
@@ -410,7 +408,7 @@
       <div class="ds-table-wrap"><table class="ds-table">
         <thead><tr><th scope="col">Part</th><th scope="col">Token</th><th scope="col">Light</th><th scope="col">Dark</th></tr></thead>
         <tbody>
-          <tr><td>Entry divider</td><td><code>--color-border-default</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-border-default" data-swatch></i><span data-token="--color-border-default"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-border-default" data-swatch></i><span data-token="--color-border-default"></span></span></td></tr>
+          <tr><td>Entry hairline</td><td><code>--color-border-default</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-border-default" data-swatch></i><span data-token="--color-border-default"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-border-default" data-swatch></i><span data-token="--color-border-default"></span></span></td></tr>
           <tr><td>Rank disc</td><td><code>--color-bg-subtle</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-bg-subtle" data-swatch></i><span data-token="--color-bg-subtle"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-bg-subtle" data-swatch></i><span data-token="--color-bg-subtle"></span></span></td></tr>
           <tr><td>Rank, value, note</td><td><code>--color-fg-default</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-default" data-swatch></i><span data-token="--color-fg-default"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-default" data-swatch></i><span data-token="--color-fg-default"></span></span></td></tr>
           <tr><td>Data label</td><td><code>--color-fg-subtle</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-subtle" data-swatch></i><span data-token="--color-fg-subtle"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-subtle" data-swatch></i><span data-token="--color-fg-subtle"></span></span></td></tr>
@@ -422,7 +420,7 @@
           <tr><td>Rank and value type</td><td><code>--text-h4</code></td><td colspan="2"><span data-token="--text-h4"></span></td></tr>
           <tr><td>Data label type</td><td><code>--text-label</code></td><td colspan="2"><span data-token="--text-label"></span></td></tr>
           <tr><td>Note type</td><td><code>--text-body-lg</code></td><td colspan="2"><span data-token="--text-body-lg"></span></td></tr>
-          <tr><td>Divider width</td><td><code>--border-width-hairline</code></td><td colspan="2"><span data-token="--border-width-hairline"></span></td></tr>
+          <tr><td>Hairline width</td><td><code>--border-width-hairline</code></td><td colspan="2"><span data-token="--border-width-hairline"></span></td></tr>
         </tbody>
       </table></div>
     </section>

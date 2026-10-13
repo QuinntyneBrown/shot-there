@@ -55,15 +55,13 @@
       <li><a href="../components/filter.html">Filters</a></li>
     </ul></details>
     <details open><summary>Containers and overlays</summary><ul>
-      <li><a href="../components/container.html">Container and grid</a></li>
+      <li><a href="../components/container.html">Container</a></li>
       <li><a href="../components/review-layout.html">Review layout</a></li>
       <li><a href="../components/editor-layout.html">Editor layout</a></li>
-      <li><a href="../components/card.html">Card</a></li>
       <li><a href="../components/dialog.html">Dialog</a></li>
-      <li><a href="../components/sheet.html">Sheet and drawer</a></li>
+      <li><a href="../components/sheet.html">Sheet</a></li>
       <li><a href="../components/popover.html">Popover</a></li>
       <li><a href="../components/lightbox.html">Lightbox</a></li>
-      <li><a href="../components/divider.html">Divider</a></li>
     </ul></details>
     <details open><summary>Data display</summary><ul>
       <li><a href="../components/location-card.html">Location card</a></li>
@@ -87,9 +85,9 @@
     </ul></details>
     <details open><summary>Feedback</summary><ul>
       <li><a href="../components/inline-message.html">Inline message</a></li>
-      <li><a href="../components/alert.html">Alert and banner</a></li>
+      <li><a href="../components/alert.html">Alert</a></li>
       <li><a href="../components/toast.html">Toast</a></li>
-      <li><a href="../components/progress.html">Progress and meter</a></li>
+      <li><a href="../components/progress.html">Progress</a></li>
       <li><a href="../components/spinner.html">Spinner</a></li>
       <li><a href="../components/skeleton.html">Skeleton</a></li>
       <li><a href="../components/empty-state.html">Empty state</a></li>
@@ -190,13 +188,13 @@
         <thead><tr><th scope="col">Token</th><th scope="col">Drives</th><th scope="col">In ShotThere</th></tr></thead>
         <tbody>
           <tr><td><code>--duration-loop-fast</code></td><td>One spinner revolution, linear</td><td>Busy buttons (<code>aria-busy="true"</code>: Subscribe, Save changes, Unpublish, Delete studio) and the "Searching" spinner in Add an entry.</td></tr>
-          <tr><td><code>--duration-loop</code></td><td>Skeleton shimmer; the indeterminate bar and pulse dot</td><td>The six skeleton location cards while studios load, skeleton admin rows, the dashboard and editor while loading. The indeterminate bar and pulse dot stay in the system but no ShotThere mock uses them. Slow enough to read as "working", never as flashing (WCAG 2.3.1).</td></tr>
+          <tr><td><code>--duration-loop</code></td><td>Skeleton shimmer</td><td>The six skeleton location cards while studios load, skeleton admin rows, the dashboard and editor while loading. Slow enough to read as "working", never as flashing (WCAG 2.3.1).</td></tr>
         </tbody>
       </table></div>
     </section>
 
     <section class="ds-section" id="choreography"><h2><a href="#choreography">Choreography</a></h2>
-      <p>Each overlay enters one way and always the same way. The keyframes live once at the end of the base section of <code>components.css</code> (<code>fade-in</code>, <code>fade-out</code>, <code>slide-up</code>, <code>scale-in</code>, <code>slide-in-right</code>, <code>slide-in-left</code>, <code>spin</code>, <code>shimmer</code>, <code>indeterminate</code>, <code>pulse</code>); components pick a name, a duration and an easing.</p>
+      <p>Each overlay enters one way and always the same way. The keyframes live once at the end of the base section of <code>components.css</code> (<code>fade-in</code>, <code>fade-out</code>, <code>slide-up</code>, <code>scale-in</code>, <code>slide-in-right</code>, <code>spin</code>, <code>shimmer</code>); components pick a name, a duration and an easing.</p>
       <div class="ds-table-wrap"><table class="ds-table">
         <thead><tr><th scope="col">Element</th><th scope="col">Enters</th><th scope="col">Leaves</th><th scope="col">Duration · easing</th></tr></thead>
         <tbody>
@@ -327,7 +325,7 @@
       </ul>
       <div class="ds-dodont">
         <figure class="ds-do"><div class="ds-example__canvas"><button class="btn compare-toggle" type="button" aria-pressed="true">Remove from compare</button></div><figcaption>Let the compare toggle change fill in 120ms and settle. The count in the bar ("2 selected") is announced politely; the photos do the attention-getting.</figcaption></figure>
-        <figure class="ds-dont"><div class="ds-example__canvas"><span class="dot dot--pulse" aria-hidden="true"></span><button class="btn btn--primary" type="button">Compare</button></div><figcaption>Pulse, bounce or shake the compare bar's button to draw the eye. It reads as an error and distracts people with attention or vestibular conditions.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas"><button class="btn btn--primary" type="button">Compare</button></div><figcaption>Pulse, bounce or shake the compare bar's button to draw the eye. It reads as an error and distracts people with attention or vestibular conditions.</figcaption></figure>
       </div>
       <div class="ds-dodont">
         <figure class="ds-do"><div class="ds-example__canvas"><code>transition: scale var(--duration-slow) var(--ease-standard);</code></div><figcaption>Read both timing values from tokens so reduced motion and future retiming apply everywhere.</figcaption></figure>
@@ -379,7 +377,7 @@
         </tbody>
       </table></div>
       <p>Sources: <a href="../../mocks/dialogs/studio-filters/default.html">dialogs/studio-filters/default</a>, <a href="../../mocks/dialogs/unpublish/default.html">dialogs/unpublish/default</a>, <a href="../../mocks/dialogs/lightbox/default.html">dialogs/lightbox/default</a>, <a href="../../mocks/dialogs/map-popup/default.html">dialogs/map-popup/default</a>, <a href="../../mocks/notifications/public-toast/success.html">notifications/public-toast/success</a>, <a href="../../mocks/notifications/admin-toast/stacked.html">notifications/admin-toast/stacked</a>, <a href="../../mocks/pages/studios/default.html">pages/studios/default</a>, <a href="../../mocks/pages/studios/selected.html">pages/studios/selected</a>, <a href="../../mocks/pages/studio-editor/uploading.html">pages/studio-editor/uploading</a>.</p>
-      <p>Drift fixed during extraction: the tooltip and its hover delay are gone, because ShotThere has no tooltips (every icon-only control's name is enough on its own). The indeterminate bar and pulse dot remain in the system but no ShotThere mock uses them.</p>
+      <p>Drift fixed during extraction: the tooltip and its hover delay are gone, because ShotThere has no tooltips (every icon-only control's name is enough on its own).</p>
     </section>
 
     <footer class="ds-footer"><span>ShotThere design system · extracted from <a href="../../mocks/index.html">docs/mocks</a> on 13 October 2026</span><a href="#top">Back to top</a></footer>

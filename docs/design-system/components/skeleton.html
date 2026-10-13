@@ -55,15 +55,13 @@
       <li><a href="../components/filter.html">Filters</a></li>
     </ul></details>
     <details open><summary>Containers and overlays</summary><ul>
-      <li><a href="../components/container.html">Container and grid</a></li>
+      <li><a href="../components/container.html">Container</a></li>
       <li><a href="../components/review-layout.html">Review layout</a></li>
       <li><a href="../components/editor-layout.html">Editor layout</a></li>
-      <li><a href="../components/card.html">Card</a></li>
       <li><a href="../components/dialog.html">Dialog</a></li>
-      <li><a href="../components/sheet.html">Sheet and drawer</a></li>
+      <li><a href="../components/sheet.html">Sheet</a></li>
       <li><a href="../components/popover.html">Popover</a></li>
       <li><a href="../components/lightbox.html">Lightbox</a></li>
-      <li><a href="../components/divider.html">Divider</a></li>
     </ul></details>
     <details open><summary>Data display</summary><ul>
       <li><a href="../components/location-card.html">Location card</a></li>
@@ -87,9 +85,9 @@
     </ul></details>
     <details open><summary>Feedback</summary><ul>
       <li><a href="../components/inline-message.html">Inline message</a></li>
-      <li><a href="../components/alert.html">Alert and banner</a></li>
+      <li><a href="../components/alert.html">Alert</a></li>
       <li><a href="../components/toast.html">Toast</a></li>
-      <li><a href="../components/progress.html">Progress and meter</a></li>
+      <li><a href="../components/progress.html">Progress</a></li>
       <li><a href="../components/spinner.html">Spinner</a></li>
       <li><a href="../components/skeleton.html">Skeleton</a></li>
       <li><a href="../components/empty-state.html">Empty state</a></li>
@@ -394,7 +392,7 @@
     <section class="ds-section" id="do-dont"><h2><a href="#do-dont">Do and don't</a></h2>
       <div class="ds-dodont">
         <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--stack"><ul class="location-grid" aria-hidden="true" style="grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-4);"><li class="location-card location-card--skeleton"><div class="location-card__media"><span class="skeleton skeleton--rect"></span></div><span class="skeleton skeleton--title"></span><span class="skeleton skeleton--text"></span></li><li class="location-card location-card--skeleton"><div class="location-card__media"><span class="skeleton skeleton--rect"></span></div><span class="skeleton skeleton--title"></span><span class="skeleton skeleton--text"></span></li></ul></div><figcaption>Fill the card's 3:2 media box with a <code>--rect</code>, so the photo lands in the same place.</figcaption></figure>
-        <figure class="ds-dont"><div class="ds-example__canvas" style="justify-content: center;"><span class="skeleton skeleton--circle" aria-hidden="true" style="width: 6rem; height: 6rem;"></span></div><figcaption>Don't use round placeholders: ShotThere photos are 3:2 and 4:5 rectangles, and <code>--circle</code> has no ShotThere use.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas" style="justify-content: center;"><span class="skeleton" aria-hidden="true" style="width: 6rem; height: 6rem; border-radius: var(--radius-full);"></span></div><figcaption>Don't use round placeholders: ShotThere photos are 3:2 and 4:5 rectangles.</figcaption></figure>
         <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--stack"><p class="result-count" role="status">Loading studios…</p><ul class="admin-list" aria-hidden="true"><li class="admin-row admin-row--skeleton"><div class="admin-row__body"><span class="skeleton skeleton--title"></span><span class="skeleton skeleton--text"></span></div><span class="skeleton skeleton--rect"></span></li></ul></div><figcaption>Hide the placeholders and announce the region once.</figcaption></figure>
         <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--stack"><span class="skeleton skeleton--text" role="img" aria-label="Loading"></span><span class="skeleton skeleton--text" role="img" aria-label="Loading"></span><span class="skeleton skeleton--text" role="img" aria-label="Loading"></span></div><figcaption>Don't label each placeholder "Loading": a screen reader hears it once per line, 18 times for six cards.</figcaption></figure>
       </div>
@@ -443,7 +441,7 @@
         <li><a href="../../mocks/pages/admin-studios/loading.html">pages/admin-studios/loading</a>, <a href="../../mocks/pages/admin-spots/loading.html">pages/admin-spots/loading</a> and <a href="../../mocks/pages/admin-guides/loading.html">pages/admin-guides/loading</a>: skeleton table rows.</li>
         <li><a href="../../mocks/pages/studio-editor/loading.html">pages/studio-editor/loading</a>, <a href="../../mocks/pages/spot-editor/loading.html">pages/spot-editor/loading</a> and <a href="../../mocks/pages/guide-editor/loading.html">pages/guide-editor/loading</a>: editor skeletons with hidden "Loading" words.</li>
       </ul>
-      <p>Drift found during extraction, documented here and left in the mocks for their owner: the map list rows repeat the card skeleton widths with inline styles; the system adds <code>location-card--skeleton</code> to <code>.map-list-item</code>, which gives the same result with no new CSS. The dashboard's Edit placeholder is <code>--rect</code> (rounded corners) while the real Edit button and every other button placeholder are pills. The studio and spot lists mark the status <code>role="status" aria-live="polite"</code>, the admin lists <code>role="status"</code> alone; both work, <code>role="status"</code> is enough. The dashboard and editor loading mocks size their placeholders inline; <code>.stat-tile--skeleton</code> and <code>.editor-section--skeleton</code> now do it, and the examples here use them. <code>.skeleton--circle</code> is still in the stylesheet with no ShotThere use.</p>
+      <p>Drift found during extraction, documented here and left in the mocks for their owner: the map list rows repeat the card skeleton widths with inline styles; the system adds <code>location-card--skeleton</code> to <code>.map-list-item</code>, which gives the same result with no new CSS. The dashboard's Edit placeholder is <code>--rect</code> (rounded corners) while the real Edit button and every other button placeholder are pills. The studio and spot lists mark the status <code>role="status" aria-live="polite"</code>, the admin lists <code>role="status"</code> alone; both work, <code>role="status"</code> is enough. The dashboard and editor loading mocks size their placeholders inline; <code>.stat-tile--skeleton</code> and <code>.editor-section--skeleton</code> now do it, and the examples here use them.</p>
     </section>
 
     <footer class="ds-footer"><span>ShotThere design system · extracted from <a href="../../mocks/index.html">docs/mocks</a> on 13 October 2026</span><a href="#top">Back to top</a></footer>

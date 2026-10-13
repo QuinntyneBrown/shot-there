@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Elevation — ShotThere design system</title>
-<meta name="description" content="ShotThere elevation: four shadow levels and a focus shadow, the surface hierarchy, how dark theme lifts surfaces, and the z-order from cards to the fixed compare bar, map popup, dialogs, sheets, the lightbox and toasts.">
+<meta name="description" content="ShotThere elevation: four shadow levels and a focus shadow, the surface hierarchy, how dark theme lifts surfaces, and the z-order from location cards to the fixed compare bar, map popup, dialogs, sheets, the lightbox and toasts.">
 <link rel="stylesheet" href="../tokens/tokens.css">
 <link rel="stylesheet" href="../assets/components.css">
 <link rel="stylesheet" href="../assets/ds.css">
@@ -55,15 +55,13 @@
       <li><a href="../components/filter.html">Filters</a></li>
     </ul></details>
     <details open><summary>Containers and overlays</summary><ul>
-      <li><a href="../components/container.html">Container and grid</a></li>
+      <li><a href="../components/container.html">Container</a></li>
       <li><a href="../components/review-layout.html">Review layout</a></li>
       <li><a href="../components/editor-layout.html">Editor layout</a></li>
-      <li><a href="../components/card.html">Card</a></li>
       <li><a href="../components/dialog.html">Dialog</a></li>
-      <li><a href="../components/sheet.html">Sheet and drawer</a></li>
+      <li><a href="../components/sheet.html">Sheet</a></li>
       <li><a href="../components/popover.html">Popover</a></li>
       <li><a href="../components/lightbox.html">Lightbox</a></li>
-      <li><a href="../components/divider.html">Divider</a></li>
     </ul></details>
     <details open><summary>Data display</summary><ul>
       <li><a href="../components/location-card.html">Location card</a></li>
@@ -87,9 +85,9 @@
     </ul></details>
     <details open><summary>Feedback</summary><ul>
       <li><a href="../components/inline-message.html">Inline message</a></li>
-      <li><a href="../components/alert.html">Alert and banner</a></li>
+      <li><a href="../components/alert.html">Alert</a></li>
       <li><a href="../components/toast.html">Toast</a></li>
-      <li><a href="../components/progress.html">Progress and meter</a></li>
+      <li><a href="../components/progress.html">Progress</a></li>
       <li><a href="../components/spinner.html">Spinner</a></li>
       <li><a href="../components/skeleton.html">Skeleton</a></li>
       <li><a href="../components/empty-state.html">Empty state</a></li>
@@ -120,10 +118,10 @@
       <p>The photos are the content, so nothing on the page competes with them for depth. Page content is flat at every viewport, and depth appears only when something genuinely sits above the page and must be told apart from it.</p>
       <ul>
         <li><b>On the page:</b> no shadow. Location cards have neither border nor shadow; the summary panel, stat tiles, editor sections and the editor aside have a 1px <code>--color-border-default</code> hairline at most, even where they stick.</li>
-        <li><b>On hover:</b> a level-2 lift on the primary button and interactive cards, as feedback, not structure.</li>
+        <li><b>On hover:</b> a level-2 lift on the primary button, as feedback, not structure.</li>
         <li><b>On the map:</b> markers and the legend overlay use level 2 so they read on any tile.</li>
         <li><b>Floating:</b> the compare bar, the map popup, popovers, combobox suggestions, toasts and the episode play pill use level 3.</li>
-        <li><b>Modal:</b> dialogs, side sheets and drawers use level 4 over a backdrop. The photo lightbox covers the whole screen with the canvas colour, so it needs no shadow.</li>
+        <li><b>Modal:</b> dialogs and side sheets use level 4 over a backdrop. The photo lightbox covers the whole screen with the canvas colour, so it needs no shadow.</li>
       </ul>
       <p>Elevation has two parts: <b>shadows</b> (<code>--shadow-*</code>) say how far a surface floats, and <b>z-order</b> (<code>--z-*</code>) decides what covers what. They are separate scales because a toast (level 3) must still sit above a dialog (level 4), and the compare bar (level 3) must sit below one.</p>
     </section>
@@ -141,13 +139,13 @@
         <thead><tr><th scope="col">Level</th><th scope="col">Token</th><th scope="col">Used by</th><th scope="col">Mock</th></tr></thead>
         <tbody>
           <tr><td>1 · contact</td><td><code>--shadow-1</code></td><td>Reserved for a small part resting on a track. No ShotThere component reads it today.</td><td>—</td></tr>
-          <tr><td>2 · lift</td><td><code>--shadow-2</code></td><td>Primary button and interactive card on hover; map markers (with a 2px surface halo); the map legend overlay.</td><td><a href="../../mocks/pages/map/default.html">pages/map/default</a></td></tr>
+          <tr><td>2 · lift</td><td><code>--shadow-2</code></td><td>Primary button on hover; map markers (with a 2px surface halo); the map legend overlay.</td><td><a href="../../mocks/pages/map/default.html">pages/map/default</a></td></tr>
           <tr><td>3 · floating</td><td><code>--shadow-3</code></td><td>The compare bar, fixed to the bottom; the map marker popup; popovers; combobox suggestions in the guide entry picker; toasts; the episode play pill; the focused skip link.</td><td><a href="../../mocks/pages/studios/selected.html">pages/studios/selected</a>, <a href="../../mocks/dialogs/map-popup/default.html">dialogs/map-popup/default</a></td></tr>
-          <tr><td>4 · modal</td><td><code>--shadow-4</code></td><td>Dialog panels (unpublish, delete, discard changes, missing fields), side sheets (filters, site menu from 48rem), drawers.</td><td><a href="../../mocks/dialogs/unpublish/default.html">dialogs/unpublish/default</a>, <a href="../../mocks/dialogs/studio-filters/default.html">dialogs/studio-filters/default</a></td></tr>
+          <tr><td>4 · modal</td><td><code>--shadow-4</code></td><td>Dialog panels (unpublish, delete, discard changes, missing fields), side sheets (filters, site menu from 48rem).</td><td><a href="../../mocks/dialogs/unpublish/default.html">dialogs/unpublish/default</a>, <a href="../../mocks/dialogs/studio-filters/default.html">dialogs/studio-filters/default</a></td></tr>
           <tr><td>Focus</td><td><code>--shadow-focus</code></td><td>A 2px offset ring plus a 2px accent ring, for places where an outline would be clipped by <code>overflow: hidden</code>. Reserved: every ShotThere component, including the location card and map markers, uses the outline ring.</td><td>—</td></tr>
         </tbody>
       </table></div>
-      <p>Some <code>box-shadow</code> values are not elevation: the pip's empty ring, the invalid field's inset ring, the selected card ring, the compare table's label-column edge and the open map marker's accent ring are edges drawn with a shadow so they do not shift layout. They read <code>--border-width-*</code> and colour tokens and are documented on <a href="shape.html#borders">Shape</a>.</p>
+      <p>Some <code>box-shadow</code> values are not elevation: the pip's empty ring, the invalid field's inset ring, the compare table's label-column edge and the open map marker's accent ring are edges drawn with a shadow so they do not shift layout. They read <code>--border-width-*</code> and colour tokens and are documented on <a href="shape.html#borders">Shape</a>.</p>
     </section>
 
     <section class="ds-section" id="surfaces"><h2><a href="#surfaces">Surface hierarchy</a></h2>
@@ -210,11 +208,11 @@
         <thead><tr><th scope="col">Token</th><th scope="col">Value</th><th scope="col">What sits there</th></tr></thead>
         <tbody>
           <tr><td><code>--z-base</code></td><td><span data-token="--z-base"></span></td><td>Page content, map tiles and markers.</td></tr>
-          <tr><td><code>--z-raised</code></td><td><span data-token="--z-raised"></span></td><td>The compare toggle and tags on a location card, above the card's stretched link; the compare table's sticky label column; a selected button-group segment.</td></tr>
+          <tr><td><code>--z-raised</code></td><td><span data-token="--z-raised"></span></td><td>The compare toggle and tags on a location card, above the card's stretched link; the compare table's sticky label column.</td></tr>
           <tr><td><code>--z-sticky</code></td><td><span data-token="--z-sticky"></span></td><td>The compare bar. It stays above page content but under every overlay, so a dialog or the filters sheet covers it.</td></tr>
           <tr><td><code>--z-dropdown</code></td><td><span data-token="--z-dropdown"></span></td><td>Reserved for a list floating over the page; nothing uses it today.</td></tr>
           <tr><td><code>--z-overlay</code></td><td><span data-token="--z-overlay"></span></td><td>The backdrop behind a dialog.</td></tr>
-          <tr><td><code>--z-modal</code></td><td><span data-token="--z-modal"></span></td><td>Dialogs, the filters and site-menu sheets, drawers and the photo lightbox.</td></tr>
+          <tr><td><code>--z-modal</code></td><td><span data-token="--z-modal"></span></td><td>Dialogs, the filters and site-menu sheets and the photo lightbox.</td></tr>
           <tr><td><code>--z-popover</code></td><td><span data-token="--z-popover"></span></td><td>Popovers and the map marker popup, which must clear the markers and legend around it.</td></tr>
           <tr><td><code>--z-toast</code></td><td><span data-token="--z-toast"></span></td><td>The toast region: "You can compare up to 4 studios" stays visible over the compare bar, and an admin toast over the dialog that caused it.</td></tr>
           <tr><td><code>--z-tooltip</code></td><td><span data-token="--z-tooltip"></span></td><td>The focused skip link: always on top.</td></tr>
@@ -305,9 +303,9 @@
 
     <section class="ds-section" id="tokens"><h2><a href="#tokens">Tokens</a></h2>
       <h3>Shadows</h3>
-      <div class="ds-table-wrap"><table class="ds-table"><thead><tr><th scope="col">Token</th><th scope="col">Light</th><th scope="col">Dark</th><th scope="col">Use</th></tr></thead><tbody><tr><td><code>--shadow-color</code></td><td><span data-theme="light"><span data-token="--shadow-color"></span></span></td><td><span data-theme="dark"><span data-token="--shadow-color"></span></span></td><td>The rgb channels every shadow is tinted with: warm stone in light, black in dark.</td></tr><tr><td><code>--shadow-1</code></td><td><span data-theme="light"><span data-token="--shadow-1"></span></span></td><td><span data-theme="dark"><span data-token="--shadow-1"></span></span></td><td>Contact shadow for a small part resting on a track. Reserved: no ShotThere component reads it today.</td></tr><tr><td><code>--shadow-2</code></td><td><span data-theme="light"><span data-token="--shadow-2"></span></span></td><td><span data-theme="dark"><span data-token="--shadow-2"></span></span></td><td>Hover lift on the primary button and interactive cards; map markers and the map legend overlay.</td></tr><tr><td><code>--shadow-3</code></td><td><span data-theme="light"><span data-token="--shadow-3"></span></span></td><td><span data-theme="dark"><span data-token="--shadow-3"></span></span></td><td>Floating: the compare bar, map popup, popovers, combobox suggestions, toasts, the episode play pill, the focused skip link.</td></tr><tr><td><code>--shadow-4</code></td><td><span data-theme="light"><span data-token="--shadow-4"></span></span></td><td><span data-theme="dark"><span data-token="--shadow-4"></span></span></td><td>Modal: dialog panels, side sheets and drawers.</td></tr><tr><td><code>--shadow-focus</code></td><td><span data-theme="light"><span data-token="--shadow-focus"></span></span></td><td><span data-theme="dark"><span data-token="--shadow-focus"></span></span></td><td>Ring-shaped focus for places an outline would be clipped by <code>overflow: hidden</code>. Reserved: every ShotThere component uses the outline ring.</td></tr></tbody></table></div>
+      <div class="ds-table-wrap"><table class="ds-table"><thead><tr><th scope="col">Token</th><th scope="col">Light</th><th scope="col">Dark</th><th scope="col">Use</th></tr></thead><tbody><tr><td><code>--shadow-color</code></td><td><span data-theme="light"><span data-token="--shadow-color"></span></span></td><td><span data-theme="dark"><span data-token="--shadow-color"></span></span></td><td>The rgb channels every shadow is tinted with: warm stone in light, black in dark.</td></tr><tr><td><code>--shadow-1</code></td><td><span data-theme="light"><span data-token="--shadow-1"></span></span></td><td><span data-theme="dark"><span data-token="--shadow-1"></span></span></td><td>Contact shadow for a small part resting on a track. Reserved: no ShotThere component reads it today.</td></tr><tr><td><code>--shadow-2</code></td><td><span data-theme="light"><span data-token="--shadow-2"></span></span></td><td><span data-theme="dark"><span data-token="--shadow-2"></span></span></td><td>Hover lift on the primary button; map markers and the map legend overlay.</td></tr><tr><td><code>--shadow-3</code></td><td><span data-theme="light"><span data-token="--shadow-3"></span></span></td><td><span data-theme="dark"><span data-token="--shadow-3"></span></span></td><td>Floating: the compare bar, map popup, popovers, combobox suggestions, toasts, the episode play pill, the focused skip link.</td></tr><tr><td><code>--shadow-4</code></td><td><span data-theme="light"><span data-token="--shadow-4"></span></span></td><td><span data-theme="dark"><span data-token="--shadow-4"></span></span></td><td>Modal: dialog panels and side sheets.</td></tr><tr><td><code>--shadow-focus</code></td><td><span data-theme="light"><span data-token="--shadow-focus"></span></span></td><td><span data-theme="dark"><span data-token="--shadow-focus"></span></span></td><td>Ring-shaped focus for places an outline would be clipped by <code>overflow: hidden</code>. Reserved: every ShotThere component uses the outline ring.</td></tr></tbody></table></div>
       <h3>Z-order</h3>
-      <div class="ds-table-wrap"><table class="ds-table"><thead><tr><th scope="col">Token</th><th scope="col">Resolved value</th><th scope="col">Declared as</th><th scope="col">Use</th></tr></thead><tbody><tr><td><code>--z-base</code></td><td><span data-token="--z-base"></span></td><td><code>0</code></td><td>Page content.</td></tr><tr><td><code>--z-raised</code></td><td><span data-token="--z-raised"></span></td><td><code>1</code></td><td>Card actions above the stretched card link; the compare table's sticky label column; a selected button-group segment.</td></tr><tr><td><code>--z-sticky</code></td><td><span data-token="--z-sticky"></span></td><td><code>100</code></td><td>The compare bar, fixed to the bottom of every list and review screen.</td></tr><tr><td><code>--z-dropdown</code></td><td><span data-token="--z-dropdown"></span></td><td><code>1000</code></td><td>Reserved for a list that floats over the page. The guide entry picker's suggestions sit in flow inside its dialog, so nothing reads it today.</td></tr><tr><td><code>--z-overlay</code></td><td><span data-token="--z-overlay"></span></td><td><code>1200</code></td><td>The backdrop behind a dialog.</td></tr><tr><td><code>--z-modal</code></td><td><span data-token="--z-modal"></span></td><td><code>1300</code></td><td>Dialogs, sheets (filters, site menu), drawers and the photo lightbox.</td></tr><tr><td><code>--z-popover</code></td><td><span data-token="--z-popover"></span></td><td><code>1400</code></td><td>Popovers and the map marker popup.</td></tr><tr><td><code>--z-toast</code></td><td><span data-token="--z-toast"></span></td><td><code>1500</code></td><td>The toast region: a confirmation stays visible over the dialog or bar that caused it.</td></tr><tr><td><code>--z-tooltip</code></td><td><span data-token="--z-tooltip"></span></td><td><code>1600</code></td><td>The focused skip link: always on top.</td></tr></tbody></table></div>
+      <div class="ds-table-wrap"><table class="ds-table"><thead><tr><th scope="col">Token</th><th scope="col">Resolved value</th><th scope="col">Declared as</th><th scope="col">Use</th></tr></thead><tbody><tr><td><code>--z-base</code></td><td><span data-token="--z-base"></span></td><td><code>0</code></td><td>Page content.</td></tr><tr><td><code>--z-raised</code></td><td><span data-token="--z-raised"></span></td><td><code>1</code></td><td>Location-card actions above the stretched name link; the compare table's sticky label column.</td></tr><tr><td><code>--z-sticky</code></td><td><span data-token="--z-sticky"></span></td><td><code>100</code></td><td>The compare bar, fixed to the bottom of every list and review screen.</td></tr><tr><td><code>--z-dropdown</code></td><td><span data-token="--z-dropdown"></span></td><td><code>1000</code></td><td>Reserved for a list that floats over the page. The guide entry picker's suggestions sit in flow inside its dialog, so nothing reads it today.</td></tr><tr><td><code>--z-overlay</code></td><td><span data-token="--z-overlay"></span></td><td><code>1200</code></td><td>The backdrop behind a dialog.</td></tr><tr><td><code>--z-modal</code></td><td><span data-token="--z-modal"></span></td><td><code>1300</code></td><td>Dialogs, sheets (filters, site menu) and the photo lightbox.</td></tr><tr><td><code>--z-popover</code></td><td><span data-token="--z-popover"></span></td><td><code>1400</code></td><td>Popovers and the map marker popup.</td></tr><tr><td><code>--z-toast</code></td><td><span data-token="--z-toast"></span></td><td><code>1500</code></td><td>The toast region: a confirmation stays visible over the dialog or bar that caused it.</td></tr><tr><td><code>--z-tooltip</code></td><td><span data-token="--z-tooltip"></span></td><td><code>1600</code></td><td>The focused skip link: always on top.</td></tr></tbody></table></div>
     </section>
 
     <footer class="ds-footer"><span>ShotThere design system · extracted from <a href="../../mocks/index.html">docs/mocks</a> on 13 October 2026</span><a href="#top">Back to top</a></footer>

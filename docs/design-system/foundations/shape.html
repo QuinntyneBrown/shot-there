@@ -55,15 +55,13 @@
       <li><a href="../components/filter.html">Filters</a></li>
     </ul></details>
     <details open><summary>Containers and overlays</summary><ul>
-      <li><a href="../components/container.html">Container and grid</a></li>
+      <li><a href="../components/container.html">Container</a></li>
       <li><a href="../components/review-layout.html">Review layout</a></li>
       <li><a href="../components/editor-layout.html">Editor layout</a></li>
-      <li><a href="../components/card.html">Card</a></li>
       <li><a href="../components/dialog.html">Dialog</a></li>
-      <li><a href="../components/sheet.html">Sheet and drawer</a></li>
+      <li><a href="../components/sheet.html">Sheet</a></li>
       <li><a href="../components/popover.html">Popover</a></li>
       <li><a href="../components/lightbox.html">Lightbox</a></li>
-      <li><a href="../components/divider.html">Divider</a></li>
     </ul></details>
     <details open><summary>Data display</summary><ul>
       <li><a href="../components/location-card.html">Location card</a></li>
@@ -87,9 +85,9 @@
     </ul></details>
     <details open><summary>Feedback</summary><ul>
       <li><a href="../components/inline-message.html">Inline message</a></li>
-      <li><a href="../components/alert.html">Alert and banner</a></li>
+      <li><a href="../components/alert.html">Alert</a></li>
       <li><a href="../components/toast.html">Toast</a></li>
-      <li><a href="../components/progress.html">Progress and meter</a></li>
+      <li><a href="../components/progress.html">Progress</a></li>
       <li><a href="../components/spinner.html">Spinner</a></li>
       <li><a href="../components/skeleton.html">Skeleton</a></li>
       <li><a href="../components/empty-state.html">Empty state</a></li>
@@ -140,10 +138,10 @@
           <tr><td><code>--radius-xs</code></td><td>Checkbox; the studio map marker and its legend key</td><td>16–24px</td></tr>
           <tr><td><code>--radius-sm</code></td><td>Test-shot thumbnails in the compare table; image-row thumbnails in the editors; skeleton blocks; inline code and keys; the default focus outline</td><td>20–96px</td></tr>
           <tr><td><code>--radius-md</code></td><td>Test and gallery shots; the lightbox photo; compare-table header photos and map-list thumbnails; light-grid cells; fee rows and image rows; inputs and selects; alerts, toasts, popovers, the map popup and legend; stacked table cards; the upload drop zone</td><td>36–400px</td></tr>
-          <tr><td><code>--radius-lg</code></td><td>Location card media (and its focus outline); the review hero; the static map; the episode poster and video frame; the summary panel and price block; editor sections and the editor aside; stat tiles; cards; combobox suggestions; dialog panels from 36rem</td><td>Panels and large media</td></tr>
+          <tr><td><code>--radius-lg</code></td><td>Location card media (and its focus outline); the review hero; the static map; the episode poster and video frame; the summary panel and price block; editor sections and the editor aside; stat tiles; combobox suggestions; dialog panels from 36rem</td><td>Panels and large media</td></tr>
           <tr><td><code>--radius-xl</code></td><td>Top corners of a dialog that rises as a bottom sheet below 36rem</td><td>Full width</td></tr>
           <tr><td><code>--radius-full</code></td><td>Buttons, the compare toggle, chips, tags and badges; radio buttons; pips; the spot map marker and legend key; the episode play pill; the guide rank circle; the wordmark's "Toronto" tag; progress bars</td><td>Any</td></tr>
-          <tr><td>none</td><td>Anything that touches the screen edge: the compare bar, the map on the map page, side sheets, full-screen dialogs, the lightbox</td><td>Edge to edge</td></tr>
+          <tr><td>none</td><td>Anything that touches the screen edge: the compare bar, the map on the map page, side sheets, the lightbox</td><td>Edge to edge</td></tr>
         </tbody>
       </table></div>
       <div class="ds-example">
@@ -244,7 +242,7 @@
       <div class="ds-table-wrap"><table class="ds-table">
         <thead><tr><th scope="col">Width</th><th scope="col">Used for</th></tr></thead>
         <tbody>
-          <tr><td><code>--border-width-hairline</code></td><td>Inputs, secondary buttons and the compare toggle, badges and tags, cards, the summary panel, editor sections, stat tiles, popovers, dividers, table, fact and admin rows, the compare bar's top edge. Also 1px rings drawn with <code>box-shadow</code>: empty pips, the invalid field, the selected card and the compare table's label-column edge, which add an edge without shifting layout.</td></tr>
+          <tr><td><code>--border-width-hairline</code></td><td>Inputs, secondary buttons and the compare toggle, badges and tags, the summary panel, editor sections and the editor aside, stat tiles, popovers, list, table, fact and admin rows, the compare bar's top edge. Also 1px rings drawn with <code>box-shadow</code>: empty pips, the invalid field and the compare table's label-column edge, which add an edge without shifting layout.</td></tr>
           <tr><td><code>--border-width-thick</code></td><td>The map marker's surface halo and the open marker's accent ring; the spot legend key; the disclosure's left stripe; the "Draft" status ring; the dashed upload drop zone; the editor section chevron; the combobox active-option bar; toast progress; a hovered toast action's underline.</td></tr>
         </tbody>
       </table></div>
@@ -276,14 +274,14 @@
         <li><b>Shape never carries meaning alone.</b> Every marker has an accessible name that says its type ("The Junction Loft, studio"), and the legend names both shapes in text (L2-027.1). Status labels pair a filled or hollow dot with a word (1.4.1).</li>
         <li><b>Edges hold 3:1.</b> A pill control's outline and an empty pip's ring use <code>--color-border-strong</code> (3:1 on every surface, 1.4.11, L2-068.1); radius does not lower that requirement.</li>
         <li><b>Targets are measured by their box.</b> A map marker's 24px mark sits in a 44 × 44px hit area; never shrink the hit area to the visible shape.</li>
-        <li><b>Forced colours.</b> Buttons, inputs, cards, chips, badges and tags get a 1px <code>CanvasText</code> border in forced-colours mode, so rounded controls keep a visible edge when backgrounds are removed; markers keep their shapes.</li>
+        <li><b>Forced colours.</b> Buttons, inputs, chips, badges and tags get a 1px <code>CanvasText</code> border in forced-colours mode, so rounded controls keep a visible edge when backgrounds are removed; markers keep their shapes.</li>
         <li><b>Crops must not hide what the alt text describes.</b> The admin writes alt text for the full photo ("two tall north windows over a brick wall, a white cyc in the right corner"); a 3:2 crop must keep those things in frame.</li>
       </ul>
     </section>
 
     <section class="ds-section" id="tokens"><h2><a href="#tokens">Tokens</a></h2>
       <p>Shape does not change between themes or viewports.</p>
-      <div class="ds-table-wrap"><table class="ds-table"><thead><tr><th scope="col">Token</th><th scope="col">Resolved value</th><th scope="col">Declared as</th><th scope="col">Use</th></tr></thead><tbody><tr><td><code>--radius-xs</code></td><td><span data-token="--radius-xs"></span></td><td><code>0.25rem</code></td><td>4px · checkbox, studio map marker and legend key.</td></tr><tr><td><code>--radius-sm</code></td><td><span data-token="--radius-sm"></span></td><td><code>0.375rem</code></td><td>6px · test-shot thumbnails in the compare table, image-row thumbnails, skeleton, inline code.</td></tr><tr><td><code>--radius-md</code></td><td><span data-token="--radius-md"></span></td><td><code>0.75rem</code></td><td>12px · test and gallery shots, light-grid cells, inputs, alerts, toasts, popovers, fee rows.</td></tr><tr><td><code>--radius-lg</code></td><td><span data-token="--radius-lg"></span></td><td><code>1.25rem</code></td><td>20px · location card media, review hero, static map, episode poster, summary panel, editor sections, dialogs.</td></tr><tr><td><code>--radius-xl</code></td><td><span data-token="--radius-xl"></span></td><td><code>1.75rem</code></td><td>28px · top corners of a dialog rising as a sheet on phones.</td></tr><tr><td><code>--radius-full</code></td><td><span data-token="--radius-full"></span></td><td><code>9999px</code></td><td>Buttons, chips, tags, badges, pips, spot map marker, play pill, guide rank.</td></tr><tr><td><code>--border-width-hairline</code></td><td><span data-token="--border-width-hairline"></span></td><td><code>1px</code></td><td>Every default edge: cards, inputs, table and kv rows, the compare-bar top edge, empty pips.</td></tr><tr><td><code>--border-width-thick</code></td><td><span data-token="--border-width-thick"></span></td><td><code>2px</code></td><td>Marker ring, legend spot key, disclosure stripe, draft status ring, upload drop zone, editor chevron.</td></tr></tbody></table></div>
+      <div class="ds-table-wrap"><table class="ds-table"><thead><tr><th scope="col">Token</th><th scope="col">Resolved value</th><th scope="col">Declared as</th><th scope="col">Use</th></tr></thead><tbody><tr><td><code>--radius-xs</code></td><td><span data-token="--radius-xs"></span></td><td><code>0.25rem</code></td><td>4px · checkbox, studio map marker and legend key.</td></tr><tr><td><code>--radius-sm</code></td><td><span data-token="--radius-sm"></span></td><td><code>0.375rem</code></td><td>6px · test-shot thumbnails in the compare table, image-row thumbnails, skeleton, inline code.</td></tr><tr><td><code>--radius-md</code></td><td><span data-token="--radius-md"></span></td><td><code>0.75rem</code></td><td>12px · test and gallery shots, light-grid cells, inputs, alerts, toasts, popovers, fee rows.</td></tr><tr><td><code>--radius-lg</code></td><td><span data-token="--radius-lg"></span></td><td><code>1.25rem</code></td><td>20px · location card media, review hero, static map, episode poster, summary panel, editor sections, dialogs.</td></tr><tr><td><code>--radius-xl</code></td><td><span data-token="--radius-xl"></span></td><td><code>1.75rem</code></td><td>28px · top corners of a dialog rising as a sheet on phones.</td></tr><tr><td><code>--radius-full</code></td><td><span data-token="--radius-full"></span></td><td><code>9999px</code></td><td>Buttons, chips, tags, badges, pips, spot map marker, play pill, guide rank.</td></tr><tr><td><code>--border-width-hairline</code></td><td><span data-token="--border-width-hairline"></span></td><td><code>1px</code></td><td>Every default edge: the summary panel, stat tiles, editor sections, inputs, table and kv rows, the compare-bar top edge, empty pips.</td></tr><tr><td><code>--border-width-thick</code></td><td><span data-token="--border-width-thick"></span></td><td><code>2px</code></td><td>Marker ring, legend spot key, disclosure stripe, draft status ring, upload drop zone, editor chevron.</td></tr></tbody></table></div>
     </section>
 
     <footer class="ds-footer"><span>ShotThere design system · extracted from <a href="../../mocks/index.html">docs/mocks</a> on 13 October 2026</span><a href="#top">Back to top</a></footer>

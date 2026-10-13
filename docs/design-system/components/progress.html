@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Progress and meter — ShotThere design system</title>
-<meta name="description" content="ShotThere progress bars: per-file upload progress in the studio editor's image manager, the toast timer, and the indeterminate, success, danger and meter variants the stylesheet keeps, in both themes.">
+<title>Progress — ShotThere design system</title>
+<meta name="description" content="ShotThere progress bars: per-file upload progress in the studio editor's image manager and the toast timer, in both themes.">
 <link rel="stylesheet" href="../tokens/tokens.css">
 <link rel="stylesheet" href="../assets/components.css">
 <link rel="stylesheet" href="../assets/ds.css">
@@ -55,15 +55,13 @@
       <li><a href="../components/filter.html">Filters</a></li>
     </ul></details>
     <details open><summary>Containers and overlays</summary><ul>
-      <li><a href="../components/container.html">Container and grid</a></li>
+      <li><a href="../components/container.html">Container</a></li>
       <li><a href="../components/review-layout.html">Review layout</a></li>
       <li><a href="../components/editor-layout.html">Editor layout</a></li>
-      <li><a href="../components/card.html">Card</a></li>
       <li><a href="../components/dialog.html">Dialog</a></li>
-      <li><a href="../components/sheet.html">Sheet and drawer</a></li>
+      <li><a href="../components/sheet.html">Sheet</a></li>
       <li><a href="../components/popover.html">Popover</a></li>
       <li><a href="../components/lightbox.html">Lightbox</a></li>
-      <li><a href="../components/divider.html">Divider</a></li>
     </ul></details>
     <details open><summary>Data display</summary><ul>
       <li><a href="../components/location-card.html">Location card</a></li>
@@ -87,9 +85,9 @@
     </ul></details>
     <details open><summary>Feedback</summary><ul>
       <li><a href="../components/inline-message.html">Inline message</a></li>
-      <li><a href="../components/alert.html">Alert and banner</a></li>
+      <li><a href="../components/alert.html">Alert</a></li>
       <li><a href="../components/toast.html">Toast</a></li>
-      <li><a href="../components/progress.html">Progress and meter</a></li>
+      <li><a href="../components/progress.html">Progress</a></li>
       <li><a href="../components/spinner.html">Spinner</a></li>
       <li><a href="../components/skeleton.html">Skeleton</a></li>
       <li><a href="../components/empty-state.html">Empty state</a></li>
@@ -110,9 +108,9 @@
   <main id="main" class="ds-main">
     <header class="ds-header">
       <p class="ds-kicker">Component · Feedback</p>
-      <h1>Progress and meter</h1>
+      <h1>Progress</h1>
       <p class="ds-lead">A progress bar shows how far an image upload has got in the admin editors: one bar per file, named after the file, until the image is in and its alt text field takes focus.</p>
-      <div class="ds-meta"><span class="ds-pill ds-pill--ok">WCAG 2.2 AA</span><span class="ds-pill">Status: stable</span><span class="ds-pill"><code>role="progressbar"</code></span><span class="ds-pill"><code>.progress</code></span><span class="ds-pill"><code>.meter</code></span><span class="ds-pill"><code>.toast__progress</code></span></div>
+      <div class="ds-meta"><span class="ds-pill ds-pill--ok">WCAG 2.2 AA</span><span class="ds-pill">Status: stable</span><span class="ds-pill"><code>role="progressbar"</code></span><span class="ds-pill"><code>.progress</code></span><span class="ds-pill"><code>.toast__progress</code></span></div>
       <ul class="ds-toc"><li><a href="#overview">Overview</a></li><li><a href="#anatomy">Anatomy</a></li><li><a href="#variants">Variants</a></li><li><a href="#sizes">Sizes</a></li><li><a href="#states">States</a></li><li><a href="#responsive">Responsive behaviour</a></li><li><a href="#theming">Theming</a></li><li><a href="#accessibility">Accessibility</a></li><li><a href="#content">Content</a></li><li><a href="#do-dont">Do and don't</a></li><li><a href="#tokens">Tokens</a></li><li><a href="#code">Code</a></li><li><a href="#sources">Sources</a></li></ul>
     </header>
 
@@ -121,7 +119,6 @@
       <ul>
         <li><b>Upload bar</b> (<code>.progress</code> in <code>.image-row[data-state="uploading"]</code>): under the file line "2 of 3 · gallery-02.jpg · 6.4 MB", with "Uploading… 45%" beneath and a Cancel upload button beside it. Save changes stays disabled until every upload has ended.</li>
         <li><b>Toast timer</b> (<code>.toast__progress</code>): a thin decorative bar along the bottom of an auto-dismissing toast ("Corktown Garage Studio is published", "Link copied"). It shows the 8 seconds running out; it is not a progressbar and is hidden from assistive technology. The <a href="toast.html">toast</a> page owns it.</li>
-        <li><b>Kept from the stylesheet, not on a screen yet</b>: indeterminate, success, danger and the counted <code>.meter</code>. Their CSS exists and is documented below with ShotThere copy so they are built right if a screen needs them.</li>
       </ul>
       <p>Choose something else when:</p>
       <ul>
@@ -224,48 +221,6 @@
 &lt;/div&gt;</code></pre></details>
       </div>
 
-      <h3>Indeterminate, success and danger (no screen yet)</h3>
-      <p>No mock uses these. Indeterminate fits a wait with no amount that still belongs in the row, such as the server making the 480, 960, 1440 and 2048 px variants after the bytes are in (L2-057.1). Success and danger are end states that last about a second before the row changes.</p>
-      <div class="ds-example">
-        <div class="ds-example__canvas ds-example__canvas--stack" style="max-width: 24rem;">
-          <div class="stack stack--sm">
-            <span class="image-row__meta" id="ind-1">Processing gallery-03.jpg</span>
-            <div class="progress progress--indeterminate" role="progressbar" aria-labelledby="ind-1"><div class="progress__bar"></div></div>
-          </div>
-          <div class="stack stack--sm">
-            <span class="image-row__meta" id="ok-1">gallery-02.jpg uploaded</span>
-            <div class="progress progress--success" role="progressbar" aria-labelledby="ok-1" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100" aria-valuetext="Uploaded"><div class="progress__bar" style="--value: 100%;"></div></div>
-          </div>
-          <div class="stack stack--sm">
-            <span class="image-row__meta" id="bad-1">gallery-04.jpg didn't upload</span>
-            <div class="progress progress--danger" role="progressbar" aria-labelledby="bad-1" aria-valuemin="0" aria-valuemax="100" aria-valuenow="30" aria-valuetext="Stopped at 30%"><div class="progress__bar" style="--value: 30%;"></div></div>
-          </div>
-        </div>
-        <div class="ds-example__caption"><span><code>.progress--indeterminate</code> has no value attributes; <code>--success</code> and <code>--danger</code> only recolour the fill. The words beside the bar carry the outcome.</span></div>
-        <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;div class="progress progress--indeterminate" role="progressbar" aria-labelledby="processing-label"&gt;&lt;div class="progress__bar"&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;div class="progress progress--success" role="progressbar" … aria-valuenow="100" aria-valuetext="Uploaded"&gt;…&lt;/div&gt;
-&lt;div class="progress progress--danger"  role="progressbar" … aria-valuenow="30"  aria-valuetext="Stopped at 30%"&gt;…&lt;/div&gt;</code></pre></details>
-      </div>
-      <p>The mocked failure does not use the danger bar: <a href="../../mocks/pages/studio-editor/upload-failed.html">upload-failed</a> removes the bar and shows "gallery-04.jpg didn't upload. Check your connection." with Retry and Remove. That is the required end state; a danger fill may only flash before it.</p>
-
-      <h3>Meter (no screen yet)</h3>
-      <p><code>.meter</code> stacks a label row over a bar and counts things rather than bytes. No ShotThere screen uses it; if a batch summary is ever needed above the image list, this is its shape.</p>
-      <div class="ds-example">
-        <div class="ds-example__canvas ds-example__canvas--stack" style="max-width: 28rem;">
-          <div class="meter">
-            <div class="meter__label"><span id="m-1">Gallery uploads</span><span>1 of 3 done</span></div>
-            <div class="progress" role="progressbar" aria-labelledby="m-1" aria-valuemin="0" aria-valuemax="3" aria-valuenow="1" aria-valuetext="1 of 3 done"><div class="progress__bar" style="--value: 33%;"></div></div>
-          </div>
-        </div>
-        <div class="ds-example__caption"><span>A counted meter: value text in words, the same words in <code>aria-valuetext</code>.</span></div>
-        <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;div class="meter"&gt;
-  &lt;div class="meter__label"&gt;&lt;span id="meter-label"&gt;Gallery uploads&lt;/span&gt;&lt;span&gt;1 of 3 done&lt;/span&gt;&lt;/div&gt;
-  &lt;div class="progress" role="progressbar" aria-labelledby="meter-label"
-       aria-valuemin="0" aria-valuemax="3" aria-valuenow="1" aria-valuetext="1 of 3 done"&gt;
-    &lt;div class="progress__bar" style="--value: 33%;"&gt;&lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;</code></pre></details>
-      </div>
     </section>
 
     <section class="ds-section" id="sizes" data-na="One height."><h2><a href="#sizes">Sizes</a></h2>
@@ -276,30 +231,18 @@
       <p>A progress bar is not interactive, so hover, focus, active and disabled do not apply; the controls beside it (Cancel upload) have their own states on the <a href="button.html">button</a> page. The states that matter are values and outcomes, set with the real ARIA attributes.</p>
       <div class="ds-matrix"><table>
         <caption class="visually-hidden">Progress states by variant</caption>
-        <thead><tr><th scope="col">Variant</th><th scope="col">Default (0%)</th><th scope="col">Hover, focus, active, disabled</th><th scope="col">Uploading</th><th scope="col">Complete</th><th scope="col">Processing</th><th scope="col">Succeeded</th><th scope="col">Failed</th></tr></thead>
+        <thead><tr><th scope="col">Variant</th><th scope="col">Default (0%)</th><th scope="col">Hover, focus, active, disabled</th><th scope="col">Uploading</th><th scope="col">Complete</th></tr></thead>
         <tbody>
           <tr><th scope="row">Upload bar</th>
             <td><div class="progress" role="progressbar" aria-label="Uploading gallery-01.jpg" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" style="width: 8rem;"><div class="progress__bar" style="--value: 0%;"></div></div></td>
             <td><span class="ds-na">Not interactive</span></td>
             <td><div class="progress" role="progressbar" aria-label="Uploading gallery-02.jpg" aria-valuemin="0" aria-valuemax="100" aria-valuenow="45" style="width: 8rem;"><div class="progress__bar" style="--value: 45%;"></div></div></td>
             <td><div class="progress" role="progressbar" aria-label="Uploading gallery-03.jpg" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100" style="width: 8rem;"><div class="progress__bar" style="--value: 100%;"></div></div></td>
-            <td><div class="progress progress--indeterminate" role="progressbar" aria-label="Processing gallery-03.jpg" style="width: 8rem;"><div class="progress__bar"></div></div></td>
-            <td><div class="progress progress--success" role="progressbar" aria-label="gallery-02.jpg uploaded" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100" aria-valuetext="Uploaded" style="width: 8rem;"><div class="progress__bar" style="--value: 100%;"></div></div></td>
-            <td><div class="progress progress--danger" role="progressbar" aria-label="gallery-04.jpg didn't upload" aria-valuemin="0" aria-valuemax="100" aria-valuenow="30" aria-valuetext="Stopped at 30%" style="width: 8rem;"><div class="progress__bar" style="--value: 30%;"></div></div></td>
-          </tr>
-          <tr><th scope="row">Meter</th>
-            <td><div class="meter" style="width: 10rem;"><div class="meter__label"><span id="sm-0">Gallery uploads</span><span>0 of 3</span></div><div class="progress" role="progressbar" aria-labelledby="sm-0" aria-valuemin="0" aria-valuemax="3" aria-valuenow="0" aria-valuetext="0 of 3 done"><div class="progress__bar" style="--value: 0%;"></div></div></div></td>
-            <td><span class="ds-na">Not interactive</span></td>
-            <td><div class="meter" style="width: 10rem;"><div class="meter__label"><span id="sm-2">Gallery uploads</span><span>2 of 3</span></div><div class="progress" role="progressbar" aria-labelledby="sm-2" aria-valuemin="0" aria-valuemax="3" aria-valuenow="2" aria-valuetext="2 of 3 done"><div class="progress__bar" style="--value: 67%;"></div></div></div></td>
-            <td><div class="meter" style="width: 10rem;"><div class="meter__label"><span id="sm-3">Gallery uploads</span><span>3 of 3</span></div><div class="progress" role="progressbar" aria-labelledby="sm-3" aria-valuemin="0" aria-valuemax="3" aria-valuenow="3" aria-valuetext="3 of 3 done"><div class="progress__bar" style="--value: 100%;"></div></div></div></td>
-            <td><span class="ds-na">The count is always known</span></td>
-            <td><span class="ds-na">Not an outcome</span></td>
-            <td><span class="ds-na">Not an outcome</span></td>
           </tr>
           <tr><th scope="row">Toast timer</th>
             <td><div class="ds-example__canvas ds-example__canvas--inverse" style="position: relative; width: 8rem; height: 2rem; padding: 0; overflow: hidden; border-radius: var(--radius-md);"><span class="toast__progress" aria-hidden="true"></span></div></td>
             <td><span class="ds-na">Pauses on toast hover and focus</span></td>
-            <td colspan="5"><span class="ds-na">Decorative: one running state, removed with the toast</span></td>
+            <td colspan="2"><span class="ds-na">Decorative: one running state, removed with the toast</span></td>
           </tr>
         </tbody>
       </table></div>
@@ -317,8 +260,6 @@
               <div class="image-row__actions"><button class="btn btn--sm btn--ghost" type="button">Cancel upload<span class="visually-hidden"> gallery-02.jpg, light theme</span></button></div>
             </li>
           </ol>
-          <div class="progress progress--success" role="progressbar" aria-label="gallery-03.jpg uploaded, light theme" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100"><div class="progress__bar" style="--value: 100%;"></div></div>
-          <div class="progress progress--danger" role="progressbar" aria-label="gallery-04.jpg didn't upload, light theme" aria-valuemin="0" aria-valuemax="100" aria-valuenow="30"><div class="progress__bar" style="--value: 30%;"></div></div>
         </div></div>
         <div data-theme="dark"><div class="ds-example__canvas ds-example__canvas--stack" style="padding: 0;">
           <ol class="image-list">
@@ -332,8 +273,6 @@
               <div class="image-row__actions"><button class="btn btn--sm btn--ghost" type="button">Cancel upload<span class="visually-hidden"> gallery-02.jpg, dark theme</span></button></div>
             </li>
           </ol>
-          <div class="progress progress--success" role="progressbar" aria-label="gallery-03.jpg uploaded, dark theme" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100"><div class="progress__bar" style="--value: 100%;"></div></div>
-          <div class="progress progress--danger" role="progressbar" aria-label="gallery-04.jpg didn't upload, dark theme" aria-valuemin="0" aria-valuemax="100" aria-valuenow="30"><div class="progress__bar" style="--value: 30%;"></div></div>
         </div></div>
       </div>
       <ul>
@@ -354,17 +293,13 @@
     </section>
 
     <section class="ds-section" id="theming"><h2><a href="#theming">Theming</a></h2>
-      <p>The track reads <code>--color-bg-subtle-hover</code>; the fill reads <code>--color-action</code> (ink), <code>--color-success-solid</code> or <code>--color-danger-solid</code>; the file lines read <code>--color-fg-muted</code>. There are no component tokens, so a theme changes only the semantic roles.</p>
+      <p>The track reads <code>--color-bg-subtle-hover</code>; the fill reads <code>--color-action</code> (ink); the file lines read <code>--color-fg-muted</code>. There are no component tokens, so a theme changes only the semantic roles.</p>
       <p>In dark, ink flips to light stone and the track to a raised dark stone, so the filled part is still the brighter one. The toast timer uses <code>currentColor</code>, so it follows the inverse toast text in both themes.</p>
-      <pre><code>/* The fill is one declaration per variant; a theme never edits .progress */
-.progress__bar                    { background: var(--color-action); }
-.progress--success .progress__bar { background: var(--color-success-solid); }
-.progress--danger  .progress__bar { background: var(--color-danger-solid); }</code></pre>
     </section>
 
     <section class="ds-section" id="accessibility"><h2><a href="#accessibility">Accessibility</a></h2>
       <h3>Role and pattern</h3>
-      <p><code>role="progressbar"</code> with <code>aria-valuemin="0"</code>, <code>aria-valuemax="100"</code> and <code>aria-valuenow</code>. Add <code>aria-valuetext</code> only when the number alone is not the meaning ("Uploaded", "1 of 3 done"). Indeterminate bars omit the value attributes. See WAI-ARIA <a href="https://www.w3.org/TR/wai-aria-1.2/#progressbar">progressbar</a>; the APG has no separate pattern, so follow its <a href="https://www.w3.org/WAI/ARIA/apg/practices/range-related-properties/">range properties guidance</a>. The toast timer is <code>aria-hidden="true"</code>.</p>
+      <p><code>role="progressbar"</code> with <code>aria-valuemin="0"</code>, <code>aria-valuemax="100"</code> and <code>aria-valuenow</code>. A plain percentage needs no <code>aria-valuetext</code>. See WAI-ARIA <a href="https://www.w3.org/TR/wai-aria-1.2/#progressbar">progressbar</a>; the APG has no separate pattern, so follow its <a href="https://www.w3.org/WAI/ARIA/apg/practices/range-related-properties/">range properties guidance</a>. The toast timer is <code>aria-hidden="true"</code>.</p>
       <h3>Keyboard</h3>
       <div class="ds-table-wrap"><table class="ds-table ds-keys"><thead><tr><th scope="col">Key</th><th scope="col">Action</th></tr></thead><tbody>
         <tr><td><kbd>Tab</kbd></td><td>Skips the bar; it is not focusable. Cancel upload, Move up, Move down and Remove in the other rows are.</td></tr>
@@ -377,14 +312,12 @@
       <h3>Contrast</h3>
       <div class="ds-example__canvas ds-example__canvas--stack" style="padding: 0; gap: var(--space-2);">
         <div class="ds-pair"><span>Ink fill on track</span><span class="ds-pair__ratio" data-contrast="--color-action|--color-bg-subtle-hover" data-min="3"></span></div>
-        <div class="ds-pair"><span>Success fill on track</span><span class="ds-pair__ratio" data-contrast="--color-success-solid|--color-bg-subtle-hover" data-min="3"></span></div>
-        <div class="ds-pair"><span>Danger fill on track</span><span class="ds-pair__ratio" data-contrast="--color-danger-solid|--color-bg-subtle-hover" data-min="3"></span></div>
         <div class="ds-pair"><span>File line in an editor section</span><span class="ds-pair__ratio" data-contrast="--color-fg-muted|--color-bg-surface" data-min="4.5"></span></div>
         <div class="ds-pair"><span>Toast text (timer uses the same colour, decorative)</span><span class="ds-pair__ratio" data-contrast="--color-fg-inverse|--color-bg-inverse" data-min="4.5"></span></div>
       </div>
       <p>The fill must reach 3:1 against the track (WCAG 1.4.11), because the boundary between them is the information. The track does not need 3:1 against the section: the value is also in text.</p>
       <h3>Motion</h3>
-      <p>Fill changes read <code>--duration-deliberate</code>, which reduced motion zeroes, so the bar jumps to the new value. The indeterminate sweep stops under reduced motion and becomes a full-width fill at 60% opacity; its label still says what is happening.</p>
+      <p>Fill changes read <code>--duration-deliberate</code>, which reduced motion zeroes, so the bar jumps to the new value.</p>
       <h3>Touch</h3>
       <p>Nothing to touch. Cancel upload keeps a 44px target on phones and sits on its own line below the bar, never on top of it.</p>
     </section>
@@ -403,7 +336,7 @@
         <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--stack"><div class="progress" role="progressbar" aria-label="Uploading gallery-03.jpg" aria-valuemin="0" aria-valuemax="100" aria-valuenow="80"><div class="progress__bar" style="--value: 80%;"></div></div><span class="image-row__meta" aria-hidden="true">Uploading… 80%</span></div><figcaption>Name each bar after its file, so a list of three bars reads as three files.</figcaption></figure>
         <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--stack"><div class="progress" role="progressbar" aria-label="Upload progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="80"><div class="progress__bar" style="--value: 80%;"></div></div></div><figcaption>Don't give every bar the same generic name; a screen reader hears "Upload progress" three times and can't tell which file is slow.</figcaption></figure>
         <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--stack"><p class="field__error">gallery-04.jpg didn't upload. Check your connection.</p><div class="cluster"><button class="btn btn--sm" type="button">Retry<span class="visually-hidden"> gallery-04.jpg</span></button><button class="btn btn--sm btn--ghost" type="button">Remove<span class="visually-hidden"> gallery-04.jpg</span></button></div></div><figcaption>When an upload fails, replace the bar with the reason and a Retry for that file.</figcaption></figure>
-        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--stack"><div class="progress progress--danger" role="progressbar" aria-label="gallery-04.jpg" aria-valuemin="0" aria-valuemax="100" aria-valuenow="30"><div class="progress__bar" style="--value: 30%;"></div></div></div><figcaption>Don't leave a red bar stuck at 30% as the only sign of failure: no words, no way to retry.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--stack"><div class="progress" role="progressbar" aria-label="gallery-04.jpg" aria-valuemin="0" aria-valuemax="100" aria-valuenow="30"><div class="progress__bar" style="--value: 30%;"></div></div></div><figcaption>Don't leave a bar stuck at 30% as the only sign of failure: no words, no way to retry.</figcaption></figure>
       </div>
     </section>
 
@@ -413,14 +346,11 @@
         <tbody>
           <tr><td>Track</td><td><code>--color-bg-subtle-hover</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-bg-subtle-hover" data-swatch></i><span data-token="--color-bg-subtle-hover"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-bg-subtle-hover" data-swatch></i><span data-token="--color-bg-subtle-hover"></span></span></td></tr>
           <tr><td>Fill</td><td><code>--color-action</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-action" data-swatch></i><span data-token="--color-action"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-action" data-swatch></i><span data-token="--color-action"></span></span></td></tr>
-          <tr><td>Fill, success</td><td><code>--color-success-solid</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-success-solid" data-swatch></i><span data-token="--color-success-solid"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-success-solid" data-swatch></i><span data-token="--color-success-solid"></span></span></td></tr>
-          <tr><td>Fill, danger</td><td><code>--color-danger-solid</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-danger-solid" data-swatch></i><span data-token="--color-danger-solid"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-danger-solid" data-swatch></i><span data-token="--color-danger-solid"></span></span></td></tr>
-          <tr><td>File line, value text, meter label</td><td><code>--color-fg-muted</code>, <code>--text-body-sm</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-muted" data-swatch></i><span data-token="--color-fg-muted"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-muted" data-swatch></i><span data-token="--color-fg-muted"></span></span></td></tr>
+          <tr><td>File line, value text</td><td><code>--color-fg-muted</code>, <code>--text-body-sm</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-muted" data-swatch></i><span data-token="--color-fg-muted"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-muted" data-swatch></i><span data-token="--color-fg-muted"></span></span></td></tr>
           <tr><td>Toast timer</td><td><code>currentColor</code> on <code>--color-bg-inverse</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-inverse" data-swatch></i><span data-token="--color-fg-inverse"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-inverse" data-swatch></i><span data-token="--color-fg-inverse"></span></span></td></tr>
           <tr><td>Height</td><td><code>--space-2</code> (timer <code>--border-width-thick</code>)</td><td colspan="2"><span data-token="--space-2"></span> · <span data-token="--border-width-thick"></span></td></tr>
           <tr><td>Radius</td><td><code>--radius-full</code></td><td colspan="2"><span data-token="--radius-full"></span></td></tr>
           <tr><td>Fill transition</td><td><code>--duration-deliberate</code>, <code>--ease-standard</code></td><td colspan="2"><span data-token="--duration-deliberate"></span> · <span data-token="--ease-standard"></span></td></tr>
-          <tr><td>Indeterminate sweep</td><td><code>--duration-loop</code></td><td colspan="2"><span data-token="--duration-loop"></span></td></tr>
         </tbody>
       </table></div>
     </section>
@@ -439,9 +369,6 @@ valueText.textContent = 'Uploading… ' + pct + '%';</code></pre>
       <div class="ds-table-wrap"><table class="ds-table"><thead><tr><th scope="col">Class / attribute</th><th scope="col">Effect</th></tr></thead><tbody>
         <tr><td><code>.progress</code></td><td>Track: full width, 8px, pill.</td></tr>
         <tr><td><code>.progress__bar</code></td><td>Fill; width from <code>--value</code> (default 0%).</td></tr>
-        <tr><td><code>.progress--indeterminate</code></td><td>40% sweep loop; full-width 60% fill under reduced motion. Omit value attributes.</td></tr>
-        <tr><td><code>.progress--success</code> <code>.progress--danger</code></td><td>End-state fill colours.</td></tr>
-        <tr><td><code>.meter</code> / <code>.meter__label</code></td><td>Label row above a bar; space-between, muted, small, wraps instead of truncating.</td></tr>
         <tr><td><code>.toast__progress</code></td><td>2px timer along the bottom of a toast, <code>currentColor</code> at 40%. Always <code>aria-hidden</code>.</td></tr>
         <tr><td><code>.image-row[data-state="uploading"]</code></td><td>Dims the thumbnail to 50% while the bar runs.</td></tr>
         <tr><td><code>role="progressbar"</code> + <code>aria-valuemin/max/now</code></td><td>Required on every determinate bar.</td></tr>
@@ -457,7 +384,7 @@ valueText.textContent = 'Uploading… ' + pct + '%';</code></pre>
         <li><a href="../../mocks/notifications/admin-toast/success.html">notifications/admin-toast/success</a>, <a href="../../mocks/notifications/admin-toast/info.html">info</a>, <a href="../../mocks/notifications/admin-toast/warning.html">warning</a> and <a href="../../mocks/notifications/admin-toast/stacked.html">stacked</a>: the toast timer.</li>
         <li><a href="../../mocks/notifications/public-toast/success.html">notifications/public-toast/success</a> and <a href="../../mocks/notifications/public-toast/warning.html">warning</a>: the timer on public toasts; <a href="../../mocks/notifications/public-toast/danger.html">danger</a> has none.</li>
       </ul>
-      <p>Drift fixed during extraction: none. Not shown by any mock and documented from the stylesheet only: <code>.progress--indeterminate</code>, <code>.progress--success</code>, <code>.progress--danger</code> and <code>.meter</code>. The mocked bars carry no <code>aria-valuetext</code>; for a plain percentage none is needed, so the system makes it optional.</p>
+      <p>Drift fixed during extraction: none. The mocked bars carry no <code>aria-valuetext</code>; for a plain percentage none is needed, so the system makes it optional.</p>
     </section>
 
     <footer class="ds-footer"><span>ShotThere design system · extracted from <a href="../../mocks/index.html">docs/mocks</a> on 13 October 2026</span><a href="#top">Back to top</a></footer>

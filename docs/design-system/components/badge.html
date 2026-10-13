@@ -55,15 +55,13 @@
       <li><a href="../components/filter.html">Filters</a></li>
     </ul></details>
     <details open><summary>Containers and overlays</summary><ul>
-      <li><a href="../components/container.html">Container and grid</a></li>
+      <li><a href="../components/container.html">Container</a></li>
       <li><a href="../components/review-layout.html">Review layout</a></li>
       <li><a href="../components/editor-layout.html">Editor layout</a></li>
-      <li><a href="../components/card.html">Card</a></li>
       <li><a href="../components/dialog.html">Dialog</a></li>
-      <li><a href="../components/sheet.html">Sheet and drawer</a></li>
+      <li><a href="../components/sheet.html">Sheet</a></li>
       <li><a href="../components/popover.html">Popover</a></li>
       <li><a href="../components/lightbox.html">Lightbox</a></li>
-      <li><a href="../components/divider.html">Divider</a></li>
     </ul></details>
     <details open><summary>Data display</summary><ul>
       <li><a href="../components/location-card.html">Location card</a></li>
@@ -87,9 +85,9 @@
     </ul></details>
     <details open><summary>Feedback</summary><ul>
       <li><a href="../components/inline-message.html">Inline message</a></li>
-      <li><a href="../components/alert.html">Alert and banner</a></li>
+      <li><a href="../components/alert.html">Alert</a></li>
       <li><a href="../components/toast.html">Toast</a></li>
-      <li><a href="../components/progress.html">Progress and meter</a></li>
+      <li><a href="../components/progress.html">Progress</a></li>
       <li><a href="../components/spinner.html">Spinner</a></li>
       <li><a href="../components/skeleton.html">Skeleton</a></li>
       <li><a href="../components/empty-state.html">Empty state</a></li>
@@ -122,7 +120,6 @@
         <li><b>Success</b> (<code>.badge--success</code>): good news about a value. "Not required" for a permit; "Lowest" beside the cheapest all-in in the comparison.</li>
         <li><b>Warning</b> (<code>.badge--warning</code>): data may be stale. Visitors see "Prices may be out of date" on a studio card, summary panel and comparison column, and "Permit rules may be out of date" on a spot; the admin sees "Prices stale", "Permits stale" and "Stale". Stale means verified more than 183 days ago.</li>
         <li><b>Info</b> (<code>.badge--info</code>): a neutral heads-up for the admin. "Due soon" when a verification is 153 to 183 days old.</li>
-        <li><b>Danger</b>, <b>solid</b> and <b>count</b> (<code>.badge--danger</code>, <code>.badge--solid</code>, <code>.badge--count</code>) keep their CSS but no ShotThere mock uses them yet.</li>
       </ul>
       <p>Not a badge: whether a studio or guide is draft or published is a <a href="status-label.html">status label</a>; the best uses on a spot card are <a href="tag.html">tags</a>; an active filter is a <a href="chip.html">chip</a>; a long stale-price explanation in the pricing section is a warning <a href="alert.html">alert</a>; who paid for a shoot is the <a href="disclosure.html">disclosure</a>.</p>
     </section>
@@ -136,7 +133,7 @@
           <span class="ds-callout" style="left: 84%; top: 74%;" aria-hidden="true">3</span>
         </figure>
         <ol class="ds-anatomy__list">
-          <li><div><b>Dot</b><small>6px circle in the text colour (<code>::before</code>), so the badge reads as a marker even in greyscale. Hidden on solid and count badges.</small></div></li>
+          <li><div><b>Dot</b><small>6px circle in the text colour (<code>::before</code>), so the badge reads as a marker even in greyscale.</small></div></li>
           <li><div><b>Label</b><small>One short phrase, <code>--text-label</code> at <code>--font-size-xs</code>, in the tone's <code>-fg</code> colour. It does not wrap by default.</small></div></li>
           <li><div><b>Container</b><small>Pill (<code>--radius-full</code>) at least 24px tall (<code>--target-min</code>), <code>--space-2</code> side padding, tone <code>-bg</code> fill, no border.</small></div></li>
         </ol>
@@ -226,19 +223,10 @@
         <div class="ds-example__caption"><span>The dashboard's "Needs re-verification" and "Due soon" lists (<code>pages/admin-dashboard/default</code>) and the Flags column of the admin lists (<code>pages/admin-studios/default</code>, <code>pages/admin-spots/default</code>).</span></div>
       </div>
 
-      <h3>Danger, solid and count (no mock uses them yet)</h3>
-      <div class="ds-example">
-        <div class="ds-example__canvas">
-          <span class="badge badge--danger">Missing ceiling height</span>
-          <span class="badge badge--solid">Episode</span>
-          <span>Needs re-verification <span class="badge badge--count">2</span></span>
-        </div>
-        <div class="ds-example__caption"><span>Kept for later use. Today a draft's missing fields are listed by the "Can't publish yet" dialog, and the dashboard writes its counts in words ("7 published, 2 draft").</span></div>
-      </div>
     </section>
 
     <section class="ds-section" id="sizes"><h2><a href="#sizes">Sizes</a></h2>
-      <p>One size: <code>--font-size-xs</code> label, at least 24px tall (<code>--target-min</code>), <code>--space-2</code> side padding. It sits on the text baseline beside a value or name and never grows with its container. Count badges are at least 1.375rem wide so single digits stay round.</p>
+      <p>One size: <code>--font-size-xs</code> label, at least 24px tall (<code>--target-min</code>), <code>--space-2</code> side padding. It sits on the text baseline beside a value or name and never grows with its container.</p>
       <div class="ds-example">
         <div class="ds-example__canvas">
           <span class="badge">Mandatory</span>
@@ -262,8 +250,8 @@
       </table></div>
       <h3>Both themes</h3>
       <div class="ds-themes">
-        <div data-theme="light"><div class="ds-example__canvas" style="padding: 0;"><span class="badge">Mandatory</span><span class="badge badge--success">Not required</span><span class="badge badge--warning">Prices may be out of date</span><span class="badge badge--info">Due soon</span><span class="badge badge--danger">Missing ceiling height</span></div></div>
-        <div data-theme="dark"><div class="ds-example__canvas" style="padding: 0;"><span class="badge">Mandatory</span><span class="badge badge--success">Not required</span><span class="badge badge--warning">Prices may be out of date</span><span class="badge badge--info">Due soon</span><span class="badge badge--danger">Missing ceiling height</span></div></div>
+        <div data-theme="light"><div class="ds-example__canvas" style="padding: 0;"><span class="badge">Mandatory</span><span class="badge badge--success">Not required</span><span class="badge badge--warning">Prices may be out of date</span><span class="badge badge--info">Due soon</span></div></div>
+        <div data-theme="dark"><div class="ds-example__canvas" style="padding: 0;"><span class="badge">Mandatory</span><span class="badge badge--success">Not required</span><span class="badge badge--warning">Prices may be out of date</span><span class="badge badge--info">Due soon</span></div></div>
       </div>
       <ul>
         <li><b>Appears</b> when the server says so: a warning badge shows when a verification date is more than 183 days before today (Monday 13 October 2026, so before 13 Apr 2026); "Due soon" from 153 days. The server computes staleness and the page only shows its flag (L2-043).</li>
@@ -282,7 +270,7 @@
     </section>
 
     <section class="ds-section" id="theming"><h2><a href="#theming">Theming</a></h2>
-      <p>Each tone reads a feedback pair: <code>--color-success-bg</code> / <code>--color-success-fg</code>, <code>--color-warning-bg</code> / <code>--color-warning-fg</code>, <code>--color-info-bg</code> / <code>--color-info-fg</code>, <code>--color-danger-bg</code> / <code>--color-danger-fg</code>. Neutral reads <code>--color-bg-subtle</code> / <code>--color-fg-muted</code>; solid reads <code>--color-info-solid</code> with <code>--color-bg-surface</code> text; count reads <code>--color-danger-solid</code> with <code>--color-fg-on-danger</code>. Info is a neutral stone, not blue. In dark every tint becomes a deep tone with a light label at the same contrast. No component tokens; re-tone the semantic pair.</p>
+      <p>Each tone reads a feedback pair: <code>--color-success-bg</code> / <code>--color-success-fg</code>, <code>--color-warning-bg</code> / <code>--color-warning-fg</code> and <code>--color-info-bg</code> / <code>--color-info-fg</code>. Neutral reads <code>--color-bg-subtle</code> / <code>--color-fg-muted</code>. Info is a neutral stone, not blue. In dark every tint becomes a deep tone with a light label at the same contrast. No component tokens; re-tone the semantic pair.</p>
     </section>
 
     <section class="ds-section" id="accessibility"><h2><a href="#accessibility">Accessibility</a></h2>
@@ -295,16 +283,13 @@
       <h3>Focus</h3>
       <p>Not applicable: a badge never takes focus.</p>
       <h3>Labelling</h3>
-      <p>The words carry the meaning, the colour only supports them (WCAG 1.4.1). The label must make sense next to its neighbour, so in the comparison "Lowest" sits in the all-in row, whose header is "All-in, 2 hours". A count badge needs hidden text for its noun.</p>
+      <p>The words carry the meaning, the colour only supports them (WCAG 1.4.1). The label must make sense next to its neighbour, so in the comparison "Lowest" sits in the all-in row, whose header is "All-in, 2 hours".</p>
       <h3>Contrast</h3>
       <div class="ds-example__canvas ds-example__canvas--stack" style="padding: 0; gap: var(--space-2);">
         <div class="ds-pair"><span>Neutral</span><span class="ds-pair__ratio" data-contrast="--color-fg-muted|--color-bg-subtle" data-min="4.5"></span></div>
         <div class="ds-pair"><span>Success</span><span class="ds-pair__ratio" data-contrast="--color-success-fg|--color-success-bg" data-min="4.5"></span></div>
         <div class="ds-pair"><span>Warning</span><span class="ds-pair__ratio" data-contrast="--color-warning-fg|--color-warning-bg" data-min="4.5"></span></div>
         <div class="ds-pair"><span>Info</span><span class="ds-pair__ratio" data-contrast="--color-info-fg|--color-info-bg" data-min="4.5"></span></div>
-        <div class="ds-pair"><span>Danger</span><span class="ds-pair__ratio" data-contrast="--color-danger-fg|--color-danger-bg" data-min="4.5"></span></div>
-        <div class="ds-pair"><span>Solid</span><span class="ds-pair__ratio" data-contrast="--color-bg-surface|--color-info-solid" data-min="4.5"></span></div>
-        <div class="ds-pair"><span>Count</span><span class="ds-pair__ratio" data-contrast="--color-fg-on-danger|--color-danger-solid" data-min="4.5"></span></div>
       </div>
       <p>The tinted fills are not a boundary and need no 3:1 against the page; the label carries the contrast.</p>
       <h3>Motion</h3>
@@ -327,7 +312,7 @@
         <figure class="ds-do"><div class="ds-example__canvas"><span class="badge badge--warning">Permit rules may be out of date</span></div><figcaption>One visitor wording per kind of data, matching the "Permit rules verified" line.</figcaption></figure>
         <figure class="ds-dont"><div class="ds-example__canvas"><span class="badge badge--warning">Permit info may be out of date</span></div><figcaption>Don't vary it: spot cards said "Permit info" while the spot page said "Permit rules".</figcaption></figure>
         <figure class="ds-do"><div class="ds-example__canvas"><span><span class="num">$25.00</span> <span class="badge">Mandatory</span></span></div><figcaption>A neutral badge qualifies the fee next to it.</figcaption></figure>
-        <figure class="ds-dont"><div class="ds-example__canvas"><span><span class="num">$25.00</span> <span class="badge badge--danger">Mandatory</span></span></div><figcaption>Don't use danger for a normal cost: a mandatory fee is information, not an error.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas"><span><span class="num">$25.00</span> <span class="badge badge--warning">Mandatory</span></span></div><figcaption>Don't use warning for a normal cost: a mandatory fee is information, not a caution. Warning means the data may be stale.</figcaption></figure>
         <figure class="ds-do"><div class="ds-example__canvas"><span class="status status--draft">Draft</span></div><figcaption>A record's state is a status label: a word and a shape.</figcaption></figure>
         <figure class="ds-dont"><div class="ds-example__canvas"><span class="badge badge--info">Draft</span></div><figcaption>Don't show draft or published as a badge; it would read like "Due soon".</figcaption></figure>
       </div>
@@ -344,9 +329,6 @@
           <tr><td>Warning label</td><td><code>--color-warning-fg</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-warning-fg" data-swatch></i><span data-token="--color-warning-fg"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-warning-fg" data-swatch></i><span data-token="--color-warning-fg"></span></span></td></tr>
           <tr><td>Info fill</td><td><code>--color-info-bg</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-info-bg" data-swatch></i><span data-token="--color-info-bg"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-info-bg" data-swatch></i><span data-token="--color-info-bg"></span></span></td></tr>
           <tr><td>Info label</td><td><code>--color-info-fg</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-info-fg" data-swatch></i><span data-token="--color-info-fg"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-info-fg" data-swatch></i><span data-token="--color-info-fg"></span></span></td></tr>
-          <tr><td>Danger fill / label</td><td><code>--color-danger-bg</code> / <code>--color-danger-fg</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-danger-fg" data-swatch></i><span data-token="--color-danger-fg"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-danger-fg" data-swatch></i><span data-token="--color-danger-fg"></span></span></td></tr>
-          <tr><td>Solid fill</td><td><code>--color-info-solid</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-info-solid" data-swatch></i><span data-token="--color-info-solid"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-info-solid" data-swatch></i><span data-token="--color-info-solid"></span></span></td></tr>
-          <tr><td>Count fill</td><td><code>--color-danger-solid</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-danger-solid" data-swatch></i><span data-token="--color-danger-solid"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-danger-solid" data-swatch></i><span data-token="--color-danger-solid"></span></span></td></tr>
           <tr><td>Label size</td><td><code>--text-label</code> at <code>--font-size-xs</code></td><td colspan="2"><span data-token="--font-size-xs"></span></td></tr>
           <tr><td>Height / padding</td><td><code>--target-min</code> / <code>--space-2</code></td><td colspan="2"><span data-token="--target-min"></span> / <span data-token="--space-2"></span></td></tr>
           <tr><td>Radius</td><td><code>--radius-full</code></td><td colspan="2"><span data-token="--radius-full"></span></td></tr>
@@ -362,9 +344,6 @@
       <div class="ds-table-wrap"><table class="ds-table"><thead><tr><th scope="col">Class</th><th scope="col">Effect</th></tr></thead><tbody>
         <tr><td><code>.badge</code></td><td>Neutral pill with a dot.</td></tr>
         <tr><td><code>.badge--success</code> <code>.badge--warning</code> <code>.badge--info</code></td><td>Tone. Used by the mocks.</td></tr>
-        <tr><td><code>.badge--danger</code></td><td>Danger tone. No mock uses it yet.</td></tr>
-        <tr><td><code>.badge--solid</code></td><td>Dark neutral fill, light label, no dot. No mock uses it yet.</td></tr>
-        <tr><td><code>.badge--count</code></td><td>Round number on danger red, tabular figures, no dot. No mock uses it yet.</td></tr>
       </tbody></table></div>
     </section>
 
