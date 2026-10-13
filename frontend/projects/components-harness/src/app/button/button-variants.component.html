@@ -1,0 +1,10 @@
+<main class="container stack">
+  <div class="cluster">
+    <button st-button variant="primary" type="button" (click)="record('click: Save changes')">Save changes</button>
+    <button st-button type="button" (click)="record('click: Apply filters')">Apply filters</button>
+    <button st-button variant="ghost" type="button">Remove<span class="visually-hidden"> test shot 3</span></button>
+    <button st-button variant="link" type="button">Clear all</button>
+    <button st-button variant="danger" type="button">Delete studio</button>
+  </div>
+  <st-activation-log [entries]="log()" />
+</main>

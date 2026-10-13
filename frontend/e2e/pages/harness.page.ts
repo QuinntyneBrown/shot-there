@@ -26,6 +26,11 @@ export class HarnessPage {
     return this.page.getByRole('region', { name, exact: true });
   }
 
+  /** What the harness's listeners received, oldest first: each line names one event (`click: Save changes`). */
+  activations(): Promise<string[]> {
+    return this.page.getByRole('log', { name: 'Activations' }).getByRole('listitem').allInnerTexts();
+  }
+
   hasHorizontalScroll(): Promise<boolean> {
     return this.page.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth);
   }

@@ -12,7 +12,7 @@ module.exports = tseslint.config(
     processor: angular.processInlineTemplates,
     rules: {
       '@angular-eslint/directive-selector': ['error', { type: 'attribute', prefix: 'st', style: 'camelCase' }],
-      '@angular-eslint/component-selector': ['error', { type: 'element', prefix: 'st', style: 'kebab-case' }],
+      '@angular-eslint/component-selector': ['error', { type: ['element', 'attribute'], prefix: 'st', style: 'kebab-case' }],
     },
   },
   {

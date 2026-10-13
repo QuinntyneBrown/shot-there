@@ -1,4 +1,8 @@
 import { Routes } from '@angular/router';
+import { ButtonLinkComponent } from './button/button-link.component';
+import { ButtonBlockComponent } from './button/button-block.component';
+import { ButtonSizesComponent } from './button/button-sizes.component';
+import { ButtonVariantsComponent } from './button/button-variants.component';
 import { FallbackImageBrokenComponent } from './fallback-image/fallback-image-broken.component';
 import { HarnessIndexComponent } from './harness-index/harness-index.component';
 import { IconSheetComponent } from './icon/icon-sheet.component';
@@ -10,4 +14,8 @@ export const routes: Routes = [
   { path: 'fallback-image/broken', component: FallbackImageBrokenComponent },
   { path: 'icon/sheet', component: IconSheetComponent },
   { path: 'icon/sizes', component: IconSizesComponent },
+  { path: 'button/variants', component: ButtonVariantsComponent },
+  { path: 'button/sizes', component: ButtonSizesComponent },
+  { path: 'button/block', component: ButtonBlockComponent },
+  { path: 'button/link', component: ButtonLinkComponent },
 ];
