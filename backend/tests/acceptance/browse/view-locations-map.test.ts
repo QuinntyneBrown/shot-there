@@ -9,21 +9,21 @@ async function getMapLocations() {
 }
 
 describe('L2-027 map markers for all locations', () => {
-  it('Given two published studios and three published spots, when the map data is requested, then five locations are returned with their kind', async () => {
+  it('Given two published studios and three published spots, when the map data is requested, then studios then spots are returned, each by slug', async () => {
     useFakeDependencies({
-      studios: [aStudio({ slug: 's1' }), aStudio({ slug: 's2' })],
-      spots: [aSpot({ slug: 'p1' }), aSpot({ slug: 'p2' }), aSpot({ slug: 'p3' })],
+      studios: [aStudio({ slug: 's2' }), aStudio({ slug: 's1' })],
+      spots: [aSpot({ slug: 'p3' }), aSpot({ slug: 'p1' }), aSpot({ slug: 'p2' })],
     });
 
     const { status, body } = await getMapLocations();
 
     expect(status).toBe(200);
-    expect(body.map((location: { kind: string; slug: string }) => `${location.kind}:${location.slug}`).sort()).toEqual([
+    expect(body.map((location: { kind: string; slug: string }) => `${location.kind}:${location.slug}`)).toEqual([
+      'studio:s1',
+      'studio:s2',
       'spot:p1',
       'spot:p2',
       'spot:p3',
-      'studio:s1',
-      'studio:s2',
     ]);
   });
 
@@ -51,10 +51,7 @@ describe('L2-028 marker popup facts', () => {
           name: 'High Park',
           latitude: 43.6465,
           longitude: -79.4637,
-          permits: [
-            { shootType: 'portrait', required: false },
-            { shootType: 'commercial', required: true },
-          ],
+          permitVerifiedAt: '2026-10-01',
         }),
       ],
     });
@@ -68,6 +65,7 @@ describe('L2-028 marker popup facts', () => {
       latitude: 43.65,
       longitude: -79.45,
       allInCost2h: 120,
+      priceStale: false,
     });
     expect(body).toContainEqual({
       kind: 'spot',
@@ -75,7 +73,16 @@ describe('L2-028 marker popup facts', () => {
       name: 'High Park',
       latitude: 43.6465,
       longitude: -79.4637,
-      permitSummary: 'someRequired',
+      permits: { portrait: 'not_required', weddingEngagement: 'not_required', commercial: 'required', video: 'required' },
+      permitStale: false,
     });
+  });
+
+  it('Given a published studio without coordinates, when the map data is requested, then it is left out (ICD OI-3)', async () => {
+    useFakeDependencies({ studios: [aStudio({ slug: 'placed' }), aStudio({ slug: 'unplaced', latitude: null, longitude: null })] });
+
+    const { body } = await getMapLocations();
+
+    expect(body.map((location: { slug: string }) => location.slug)).toEqual(['placed']);
   });
 });
