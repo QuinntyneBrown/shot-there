@@ -32,6 +32,9 @@ export function withRequestLogging<C = unknown>(
     }
 
     const path = new URL(request.url).pathname;
+    if (response.headers.get('content-type') === 'application/json') {
+      response.headers.set('content-type', 'application/json; charset=utf-8');
+    }
     response.headers.set(CORRELATION_HEADER, correlationId);
     response.headers.set('cache-control', cachePolicy(request.method, path, response.status));
     log('info', correlationId, {

@@ -1,5 +1,6 @@
 import { NextResponse, type NextRequest } from 'next/server';
 import { SESSION_COOKIE } from '@/lib/auth/session-cookies';
+import { allowedMethods } from '@/lib/http/allowed-methods';
 import { HttpProblem } from '@/lib/http/http-problem';
 import { MAX_JSON_BODY_BYTES } from '@/lib/http/max-json-body-bytes';
 import { payloadTooLarge } from '@/lib/http/payload-too-large';
@@ -19,6 +20,11 @@ function route(request: NextRequest): NextResponse {
     const secureUrl = new URL(request.url);
     secureUrl.protocol = 'https:';
     return answer(request, NextResponse.redirect(secureUrl, 301));
+  }
+
+  const allow = allowedMethods(request.nextUrl.pathname);
+  if (allow && !allow.split(', ').includes(request.method)) {
+    return answer(request, new NextResponse(null, { status: 405, headers: { allow } }));
   }
 
   const contentLength = Number(request.headers.get('content-length') ?? 0);
