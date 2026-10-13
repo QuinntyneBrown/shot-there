@@ -13,6 +13,10 @@ export class StudioPage {
   readonly gear: Locator;
   readonly logistics: Locator;
   readonly lightRatings: Locator;
+  readonly verdict: Locator;
+  readonly overallScore: Locator;
+  readonly rubricScores: Locator;
+  readonly disclosure: Locator;
 
   constructor(private readonly page: Page) {
     this.heading = page.getByRole('heading', { level: 1 });
@@ -26,6 +30,11 @@ export class StudioPage {
     this.specifications = page.getByRole('region', { name: 'Measured specifications' });
     this.gear = page.getByRole('region', { name: 'Gear' });
     this.logistics = page.getByRole('region', { name: 'Logistics' });
+    this.verdict = page.getByRole('region', { name: 'Verdict' });
+    this.overallScore = this.verdict.locator('.score-overall');
+    // Each score's text for assistive technology, e.g. "Light: 5 out of 5".
+    this.rubricScores = this.verdict.getByRole('list', { name: 'Rubric scores' }).locator('li .st-visually-hidden');
+    this.disclosure = this.verdict.getByRole('note', { name: 'How this session was paid for' });
     this.lightRatings = this.specifications.getByRole('list', { name: 'Natural light by time of day' }).getByRole('listitem');
   }
 
@@ -49,6 +58,11 @@ export class StudioPage {
   /** The value beside a label in a section's description list. */
   row(section: Locator, label: string): Locator {
     return section.locator('dt', { hasText: new RegExp(`^${label}$`) }).locator('xpath=following-sibling::dd[1]');
+  }
+
+  /** The verdict's "Who it's for" or "Who should skip it" text. */
+  verdictPart(label: string): Locator {
+    return this.row(this.verdict, label);
   }
 
   /** Whether a row's value sits beside its label or below it. */

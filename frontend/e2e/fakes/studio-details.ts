@@ -34,6 +34,13 @@ export interface FakeStudioDetail {
     clientSeating: string;
     noise: string;
   };
+  verdict: {
+    whoItsFor: string;
+    whoShouldSkip: string;
+    scores: Record<'value' | 'light' | 'space' | 'gear' | 'logistics' | 'condition', number>;
+    overallScore: number;
+  };
+  disclosure: { kind: 'paidFull' | 'discounted' | 'comped'; provider: string | null };
 }
 
 interface FakeGearItem {
@@ -98,7 +105,14 @@ export const THE_JUNCTION_LOFT: FakeStudioDetail = {
     changingArea: 'Curtained corner with a mirror',
     clientSeating: 'Sofa for 4',
     noise: 'Streetcar rumble every few minutes; fine for stills, plan around it for video'
-  }
+  },
+  verdict: {
+    whoItsFor: 'Portrait and fashion shooters who want big north light and a usable cyc on a mid-range budget.',
+    whoShouldSkip: 'Video crews, because of the streetcar, and anyone hauling heavy cases: the freight elevator is tiny.',
+    scores: { value: 4, light: 5, space: 3, gear: 4, logistics: 2, condition: 5 },
+    overallScore: 3.8
+  },
+  disclosure: { kind: 'paidFull', provider: null }
 };
 
 export const OSSINGTON_BLACKBOX: FakeStudioDetail = {
@@ -119,7 +133,14 @@ export const OSSINGTON_BLACKBOX: FakeStudioDetail = {
   },
   specifications: { ...THE_JUNCTION_LOFT.specifications },
   gear: THE_JUNCTION_LOFT.gear,
-  logistics: THE_JUNCTION_LOFT.logistics
+  logistics: THE_JUNCTION_LOFT.logistics,
+  verdict: {
+    whoItsFor: 'Large crews and video shoots that need space and full blackout.',
+    whoShouldSkip: 'Anyone who wants daylight, or a quick one-hour session.',
+    scores: { value: 3, light: 2, space: 5, gear: 5, logistics: 4, condition: 4 },
+    overallScore: 3.8
+  },
+  disclosure: { kind: 'paidFull', provider: null }
 };
 
 /** The "minimal" studio: no cyc wall, no paid extras, no changing area. */
@@ -168,5 +189,20 @@ export const BLOORDALE_SUN_STUDIO: FakeStudioDetail = {
     changingArea: null,
     clientSeating: '2 chairs',
     noise: 'Quiet on weekdays; the café below gets busy on weekend mornings'
-  }
+  },
+  verdict: {
+    whoItsFor: 'Natural-light portraits on a budget.',
+    whoShouldSkip: 'Anyone who needs a cyc wall.',
+    scores: { value: 3, light: 3, space: 3, gear: 3, logistics: 3, condition: 3 },
+    overallScore: 3.0
+  },
+  disclosure: { kind: 'comped', provider: 'Bloordale Sun Studio' }
+};
+
+/** A discounted session, otherwise like The Junction Loft. */
+export const LESLIEVILLE_DAYLIGHT_STUDIO: FakeStudioDetail = {
+  ...THE_JUNCTION_LOFT,
+  slug: 'leslieville-daylight-studio',
+  basics: { ...THE_JUNCTION_LOFT.basics, name: 'Leslieville Daylight Studio', neighbourhood: 'Leslieville' },
+  disclosure: { kind: 'discounted', provider: 'Leslieville Daylight Studio' }
 };

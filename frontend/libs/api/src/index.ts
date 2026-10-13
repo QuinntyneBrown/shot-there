@@ -17,3 +17,7 @@ export * from './lib/studio/natural-light-dto';
 export * from './lib/studio/studio-gear-dto';
 export * from './lib/studio/studio-logistics-dto';
 export * from './lib/studio/studio-specifications-dto';
+export * from './lib/studio/disclosure-kind';
+export * from './lib/studio/rubric-scores-dto';
+export * from './lib/studio/studio-disclosure-dto';
+export * from './lib/studio/studio-verdict-dto';
