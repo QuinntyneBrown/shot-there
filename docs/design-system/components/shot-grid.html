@@ -1,0 +1,416 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Shot grid — ShotThere design system</title>
+<meta name="description" content="The photo grid for standard test shots, studio galleries and spot sample shots: 2, 3 or 4 columns of 4:5 thumbnails that open the lightbox, with captions, the test setup line and an alt-text fallback.">
+<link rel="stylesheet" href="../tokens/tokens.css">
+<link rel="stylesheet" href="../assets/components.css">
+<link rel="stylesheet" href="../assets/ds.css">
+</head>
+<body id="top">
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="ds-shell">
+  <nav class="ds-nav" aria-label="Design system">
+    <div class="ds-nav__brand"><a href="../index.html">ShotThere DS</a><button class="ds-theme-toggle" type="button" aria-pressed="false">☾ Dark</button></div>
+    <details open><summary>Foundations</summary><ul>
+      <li><a href="../foundations/color.html">Color</a></li>
+      <li><a href="../foundations/typography.html">Typography</a></li>
+      <li><a href="../foundations/spacing.html">Spacing</a></li>
+      <li><a href="../foundations/layout.html">Layout</a></li>
+      <li><a href="../foundations/elevation.html">Elevation</a></li>
+      <li><a href="../foundations/shape.html">Shape</a></li>
+      <li><a href="../foundations/motion.html">Motion</a></li>
+      <li><a href="../foundations/iconography.html">Iconography</a></li>
+      <li><a href="../foundations/theming.html">Theming</a></li>
+      <li><a href="../foundations/responsive.html">Responsive</a></li>
+      <li><a href="../foundations/accessibility.html">Accessibility</a></li>
+      <li><a href="../foundations/content.html">Content</a></li>
+    </ul></details>
+    <details open><summary>Actions</summary><ul>
+      <li><a href="../components/button.html">Button</a></li>
+      <li><a href="../components/icon-button.html">Icon button</a></li>
+      <li><a href="../components/button-group.html">Button group</a></li>
+      <li><a href="../components/link.html">Link</a></li>
+      <li><a href="../components/compare-bar.html">Compare toggle and bar</a></li>
+    </ul></details>
+    <details open><summary>Inputs</summary><ul>
+      <li><a href="../components/form-field.html">Form field</a></li>
+      <li><a href="../components/text-field.html">Text field</a></li>
+      <li><a href="../components/textarea.html">Textarea</a></li>
+      <li><a href="../components/select.html">Select</a></li>
+      <li><a href="../components/combobox.html">Combobox</a></li>
+      <li><a href="../components/checkbox.html">Checkbox</a></li>
+      <li><a href="../components/radio-group.html">Radio group</a></li>
+      <li><a href="../components/file-upload.html">File upload</a></li>
+      <li><a href="../components/form-layout.html">Form layout</a></li>
+      <li><a href="../components/signup.html">Email signup</a></li>
+    </ul></details>
+    <details open><summary>Navigation</summary><ul>
+      <li><a href="../components/skip-link.html">Skip link</a></li>
+      <li><a href="../components/site-header.html">Site header</a></li>
+      <li><a href="../components/footer.html">Footer</a></li>
+      <li><a href="../components/breadcrumb.html">Breadcrumb</a></li>
+      <li><a href="../components/filter.html">Filters</a></li>
+    </ul></details>
+    <details open><summary>Containers and overlays</summary><ul>
+      <li><a href="../components/container.html">Container and grid</a></li>
+      <li><a href="../components/review-layout.html">Review layout</a></li>
+      <li><a href="../components/editor-layout.html">Editor layout</a></li>
+      <li><a href="../components/card.html">Card</a></li>
+      <li><a href="../components/dialog.html">Dialog</a></li>
+      <li><a href="../components/sheet.html">Sheet and drawer</a></li>
+      <li><a href="../components/popover.html">Popover</a></li>
+      <li><a href="../components/lightbox.html">Lightbox</a></li>
+      <li><a href="../components/divider.html">Divider</a></li>
+    </ul></details>
+    <details open><summary>Data display</summary><ul>
+      <li><a href="../components/location-card.html">Location card</a></li>
+      <li><a href="../components/table.html">Table</a></li>
+      <li><a href="../components/compare-table.html">Comparison table</a></li>
+      <li><a href="../components/list.html">List rows</a></li>
+      <li><a href="../components/description-list.html">Description list</a></li>
+      <li><a href="../components/price-block.html">Price block</a></li>
+      <li><a href="../components/score.html">Score and pips</a></li>
+      <li><a href="../components/shot-grid.html">Shot grid</a></li>
+      <li><a href="../components/video-poster.html">Episode poster</a></li>
+      <li><a href="../components/map.html">Map</a></li>
+      <li><a href="../components/guide-entry.html">Guide entry</a></li>
+      <li><a href="../components/stat-tile.html">Stat tile</a></li>
+      <li><a href="../components/image-manager.html">Image manager</a></li>
+      <li><a href="../components/disclosure.html">Disclosure</a></li>
+      <li><a href="../components/badge.html">Badge</a></li>
+      <li><a href="../components/status-label.html">Status label</a></li>
+      <li><a href="../components/chip.html">Chip</a></li>
+      <li><a href="../components/tag.html">Tag</a></li>
+    </ul></details>
+    <details open><summary>Feedback</summary><ul>
+      <li><a href="../components/inline-message.html">Inline message</a></li>
+      <li><a href="../components/alert.html">Alert and banner</a></li>
+      <li><a href="../components/toast.html">Toast</a></li>
+      <li><a href="../components/progress.html">Progress and meter</a></li>
+      <li><a href="../components/spinner.html">Spinner</a></li>
+      <li><a href="../components/skeleton.html">Skeleton</a></li>
+      <li><a href="../components/empty-state.html">Empty state</a></li>
+      <li><a href="../components/error-page.html">Error page</a></li>
+    </ul></details>
+    <details open><summary>Patterns</summary><ul>
+      <li><a href="../patterns/forms.html">Forms</a></li>
+      <li><a href="../patterns/feedback-and-loading.html">Feedback and loading</a></li>
+      <li><a href="../patterns/empty-and-error-states.html">Empty and error states</a></li>
+      <li><a href="../patterns/navigation.html">Navigation and page structure</a></li>
+      <li><a href="../patterns/dialogs-and-overlays.html">Dialogs and overlays</a></li>
+      <li><a href="../patterns/tables-and-lists.html">Data tables and lists</a></li>
+      <li><a href="../patterns/notifications.html">Notifications</a></li>
+      <li><a href="../patterns/content-and-tone.html">Content and tone</a></li>
+    </ul></details>
+  </nav>
+
+  <main id="main" class="ds-main">
+    <header class="ds-header">
+      <p class="ds-kicker">Component · Data display</p>
+      <h1>Shot grid</h1>
+      <p class="ds-lead">The photo evidence on every review. Each studio gets the same three test shots under the same light setup, plus a gallery from a real shoot, and each spot gets sample shots. Every thumbnail opens the <a href="lightbox.html">lightbox</a>.</p>
+      <div class="ds-meta"><span class="ds-pill ds-pill--ok">WCAG 2.2 AA</span><span class="ds-pill">Status: stable</span><span class="ds-pill"><code>.shot-grid</code></span><span class="ds-pill"><code>.shot</code></span><span class="ds-pill"><code>.shot-grid__setup</code></span><span class="ds-pill"><code>.media-fallback</code></span></div>
+      <ul class="ds-toc"><li><a href="#overview">Overview</a></li><li><a href="#anatomy">Anatomy</a></li><li><a href="#variants">Variants</a></li><li><a href="#sizes">Sizes</a></li><li><a href="#states">States</a></li><li><a href="#responsive">Responsive behaviour</a></li><li><a href="#theming">Theming</a></li><li><a href="#accessibility">Accessibility</a></li><li><a href="#content">Content</a></li><li><a href="#do-dont">Do and don't</a></li><li><a href="#tokens">Tokens</a></li><li><a href="#code">Code</a></li><li><a href="#sources">Sources</a></li></ul>
+    </header>
+
+    <section class="ds-section" id="overview"><h2><a href="#overview">Overview</a></h2>
+      <p>Use the shot grid for any set of photos a visitor should be able to scan and then open full size:</p>
+      <ul>
+        <li><b>Standard test shots</b> are three images taken with the identical setup at every studio: 1 · Headshot, 2 · Full length, 3 · Product on table. They appear in that order and at the same place in the page outline on every studio page, under one setup line (L2-009). This is the side-by-side evidence the site exists for.</li>
+        <li><b>Gallery</b> ("From a real shoot") is eight or so photos from a real session in the studio, with no captions (L2-010.1).</li>
+        <li><b>Sample shots</b> on a spot page are captioned with the focal length and a position note, such as "85 mm · Shoot north from the lower steps" (L2-016).</li>
+      </ul>
+      <p>Do not use it for the hero photo (that is <code>.review-hero</code>, one image, not openable), for card media (<a href="location-card.html">location card</a>) or for the owner's image list (<a href="image-manager.html">image manager</a>). Test shots in the <a href="compare-table.html">comparison table</a> sit in table cells instead, one studio per column.</p>
+    </section>
+
+    <section class="ds-section" id="anatomy"><h2><a href="#anatomy">Anatomy</a></h2>
+      <div class="ds-anatomy">
+        <figure class="ds-anatomy__figure">
+          <div style="position: relative; width: min(100%, 24rem);">
+            <p class="shot-grid__setup">Same setup in every studio: one Godox AD600 in a 120 cm octabox at 45°, 1.5 m from the subject · f/8 · 1/160 s · ISO 100 · 85 mm.</p>
+            <ul class="shot-grid" style="grid-template-columns: repeat(2, minmax(0, 1fr));">
+              <li><figure><button class="shot" type="button"><img src="../assets/img/test-the-junction-loft-1.svg" alt="Test shot 1, headshot: even falloff from the octabox, grey seamless, soft shadow under the chin." width="800" height="1000"></button><figcaption><strong>1 · Headshot</strong></figcaption></figure></li>
+              <li><figure><button class="shot" type="button"><img src="../assets/img/test-the-junction-loft-2.svg" alt="Test shot 2, full length on the cyc: the scuffs show as faint marks behind the feet." width="800" height="1000"></button><figcaption><strong>2 · Full length</strong></figcaption></figure></li>
+            </ul>
+            <span class="ds-callout" style="left: -2rem; top: 0;" aria-hidden="true">1</span>
+            <span class="ds-callout" style="left: -2rem; top: 7rem;" aria-hidden="true">2</span>
+            <span class="ds-callout" style="left: 38%; top: 6.5rem;" aria-hidden="true">3</span>
+            <span class="ds-callout" style="left: -2rem; top: calc(100% - 1.5rem);" aria-hidden="true">4</span>
+            <span class="ds-callout" style="left: calc(100% + 0.5rem); top: 6rem;" aria-hidden="true">5</span>
+          </div>
+        </figure>
+        <ol class="ds-anatomy__list">
+          <li><div><b>Setup line</b><small><code>.shot-grid__setup</code>: the standard test setup, once, above the grid. Muted small text, 16 px above the grid.</small></div></li>
+          <li><div><b>Grid</b><small><code>ul.shot-grid</code>: 2, 3 or 4 equal columns with a 16 px gap. Each <code>&lt;li&gt;</code> holds one shot.</small></div></li>
+          <li><div><b>Shot</b><small><code>button.shot</code>: a 4:5 slot with 12 px corners and a photo-grey fill while the image loads. The image covers the slot. A pointer shows the zoom cursor.</small></div></li>
+          <li><div><b>Caption (optional)</b><small><code>figcaption</code>: small muted text 8 px below. <code>&lt;strong&gt;</code> picks out the number and name of a test shot or the focal length of a sample shot.</small></div></li>
+          <li><div><b>Figure (with captions)</b><small><code>figure</code>: stacks shot and caption with an 8 px gap. A gallery shot without a caption skips the figure.</small></div></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="ds-section" id="variants"><h2><a href="#variants">Variants</a></h2>
+      <p>One grid in three variants. The variant is chosen by what the photos are evidence of, not by look.</p>
+
+      <h3>Standard test shots</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--stack ds-example__canvas--canvas">
+          <section aria-labelledby="ex-test-shots">
+            <h4 id="ex-test-shots">Standard test shots</h4>
+            <p class="shot-grid__setup" style="margin-top: var(--space-3);">Same setup in every studio: one Godox AD600 in a 120 cm octabox at 45°, 1.5 m from the subject · f/8 · 1/160 s · ISO 100 · 85 mm.</p>
+            <ul class="shot-grid">
+              <li><figure><button class="shot" type="button"><img src="../assets/img/test-the-junction-loft-1.svg" alt="Test shot 1, headshot: even falloff from the octabox, grey seamless, soft shadow under the chin." width="800" height="1000"></button><figcaption><strong>1 · Headshot</strong></figcaption></figure></li>
+              <li><figure><button class="shot" type="button"><img src="../assets/img/test-the-junction-loft-2.svg" alt="Test shot 2, full length on the cyc: the scuffs show as faint marks behind the feet." width="800" height="1000"></button><figcaption><strong>2 · Full length</strong></figcaption></figure></li>
+              <li><figure><button class="shot" type="button"><img src="../assets/img/test-the-junction-loft-3.svg" alt="Test shot 3, product on a table: clean highlight on the bottle, neutral background." width="800" height="1000"></button><figcaption><strong>3 · Product on table</strong></figcaption></figure></li>
+            </ul>
+          </section>
+        </div>
+        <div class="ds-example__caption"><span>The Junction Loft (pages/studio/default). Always three, always in this order, always under the setup line.</span></div>
+        <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;section class="review-section" aria-labelledby="test-shots"&gt;
+  &lt;h2 id="test-shots"&gt;Standard test shots&lt;/h2&gt;
+  &lt;p class="shot-grid__setup"&gt;Same setup in every studio: one Godox AD600 in a 120 cm octabox at 45°, 1.5 m from the subject · f/8 · 1/160 s · ISO 100 · 85 mm.&lt;/p&gt;
+  &lt;ul class="shot-grid"&gt;
+    &lt;li&gt;&lt;figure&gt;
+      &lt;button class="shot" type="button"&gt;&lt;img src="…" alt="Test shot 1, headshot: even falloff from the octabox, grey seamless, soft shadow under the chin." width="800" height="1000" loading="lazy"&gt;&lt;/button&gt;
+      &lt;figcaption&gt;&lt;strong&gt;1 · Headshot&lt;/strong&gt;&lt;/figcaption&gt;
+    &lt;/figure&gt;&lt;/li&gt;
+    …2 · Full length, 3 · Product on table
+  &lt;/ul&gt;
+&lt;/section&gt;</code></pre></details>
+      </div>
+
+      <h3>Gallery</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--stack ds-example__canvas--canvas">
+          <div class="section-head" style="margin-bottom: 0;"><h4>From a real shoot</h4><span class="text-caption">8 photos</span></div>
+          <ul class="shot-grid">
+            <li><button class="shot" type="button"><img src="../assets/img/gallery-1.svg" alt="Portrait in window light, subject turned three-quarters toward the north windows." width="800" height="1000"></button></li>
+            <li><button class="shot" type="button"><img src="../assets/img/gallery-2.svg" alt="Close portrait against the brick wall with the octabox as fill." width="800" height="1000"></button></li>
+            <li><button class="shot" type="button"><img src="../assets/img/gallery-3.svg" alt="Full-length fashion frame on the cyc, warm afternoon light from the left." width="800" height="1000"></button></li>
+            <li><button class="shot" type="button"><img src="../assets/img/gallery-4.svg" alt="Low-key portrait with a black seamless and a single strobe." width="800" height="1000"></button></li>
+            <li><button class="shot" type="button"><img src="../assets/img/gallery-5.svg" alt="Seated portrait on the studio sofa, window light only." width="800" height="1000"></button></li>
+            <li><button class="shot" type="button"><img src="../assets/img/gallery-6.svg" alt="Standing portrait by the freight door, mixed daylight and LED." width="800" height="1000"></button></li>
+            <li><button class="shot" type="button"><img src="../assets/img/gallery-7.svg" alt="Headshot on grey seamless with a reflector under the chin." width="800" height="1000"></button></li>
+            <li><button class="shot" type="button"><img src="../assets/img/gallery-8.svg" alt="Wide frame of the whole space showing the cyc, the windows and the light stands." width="800" height="1000"></button></li>
+          </ul>
+        </div>
+        <div class="ds-example__caption"><span>Eight gallery photos: two rows of four at LG, three columns at MD, two at XS (L2-010.1). No captions; the alt text describes each photo.</span></div>
+        <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;div class="section-head"&gt;&lt;h2 id="gallery"&gt;From a real shoot&lt;/h2&gt;&lt;span class="text-caption"&gt;8 photos&lt;/span&gt;&lt;/div&gt;
+&lt;ul class="shot-grid"&gt;
+  &lt;li&gt;&lt;button class="shot" type="button"&gt;&lt;img src="…" alt="Portrait in window light, subject turned three-quarters toward the north windows." width="800" height="1000" loading="lazy"&gt;&lt;/button&gt;&lt;/li&gt;
+  …
+&lt;/ul&gt;</code></pre></details>
+      </div>
+
+      <h3>Sample shots (spots)</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--stack ds-example__canvas--canvas">
+          <div class="section-head" style="margin-bottom: 0;"><h4>Sample shots</h4><span class="text-caption">5 photos</span></div>
+          <ul class="shot-grid">
+            <li><figure><button class="shot" type="button"><img src="../assets/img/sample-1.svg" alt="Couple on the lower steps with the brick kiln wall soft behind them." width="1200" height="800"></button><figcaption><strong>85 mm</strong> · Shoot north from the lower steps</figcaption></figure></li>
+            <li><figure><button class="shot" type="button"><img src="../assets/img/sample-2.svg" alt="Portrait in the kiln tunnel with a rim of light from the west door." width="1200" height="800"></button><figcaption><strong>35 mm</strong> · Kiln tunnel, backlit from the west door</figcaption></figure></li>
+            <li><figure><button class="shot" type="button"><img src="../assets/img/sample-3.svg" alt="Family on the quarry boardwalk with the city skyline in the distance." width="1200" height="800"></button><figcaption><strong>50 mm</strong> · Quarry boardwalk, facing the skyline</figcaption></figure></li>
+            <li><figure><button class="shot" type="button"><img src="../assets/img/sample-4.svg" alt="Wide frame of the chimney courtyard, the subject small in the corner." width="1200" height="800"></button><figcaption><strong>24 mm</strong> · Chimney courtyard from the north-east corner</figcaption></figure></li>
+            <li><figure><button class="shot" type="button"><img src="../assets/img/sample-5.svg" alt="Tight portrait with the valley trees compressed into a wall of colour." width="1200" height="800"></button><figcaption><strong>135 mm</strong> · Compress the valley from the top of the Beltline</figcaption></figure></li>
+          </ul>
+        </div>
+        <div class="ds-example__caption"><span>Evergreen Brick Works (pages/spot/default). Landscape originals are cropped to the 4:5 slot; the lightbox shows the full frame.</span></div>
+      </div>
+    </section>
+
+    <section class="ds-section" id="sizes" data-na="One size: the grid sets the width and every slot is 4:5."><h2><a href="#sizes">Sizes</a></h2>
+      <p class="ds-na">There is one size. The column count sets each shot's width (see <a href="#responsive">Responsive behaviour</a>) and the slot is always 4:5, so a slow or failed image never changes the layout.</p>
+    </section>
+
+    <section class="ds-section" id="states"><h2><a href="#states">States</a></h2>
+      <p>Pointer and focus states are forced here with <code>data-state</code>. Real pages get them from <code>:hover</code> and <code>:focus-visible</code>. A failed image swaps the <code>&lt;img&gt;</code> for <code>.media-fallback</code> inside the same button.</p>
+      <div class="ds-matrix"><table>
+        <thead><tr><th scope="col">Variant</th><th scope="col">Default</th><th scope="col">Hover</th><th scope="col">Focus</th><th scope="col">Active</th><th scope="col">Disabled</th><th scope="col">Loading</th><th scope="col">Failed</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Test shot</th>
+            <td><figure style="width: 8.5rem;"><button class="shot" type="button"><img src="../assets/img/test-the-junction-loft-1.svg" alt="Test shot 1, headshot: even falloff from the octabox, grey seamless, soft shadow under the chin." width="800" height="1000"></button></figure></td>
+            <td><figure style="width: 8.5rem;"><button class="shot" type="button" data-state="hover"><img src="../assets/img/test-the-junction-loft-1.svg" alt="Test shot 1, headshot: even falloff from the octabox, grey seamless, soft shadow under the chin." width="800" height="1000"></button></figure></td>
+            <td><figure style="width: 8.5rem;"><button class="shot" type="button" data-state="focus"><img src="../assets/img/test-the-junction-loft-1.svg" alt="Test shot 1, headshot: even falloff from the octabox, grey seamless, soft shadow under the chin." width="800" height="1000"></button></figure></td>
+            <td><span class="text-caption">Same as hover; the lightbox opens on release.</span></td>
+            <td><span class="text-caption">Never disabled.</span></td>
+            <td><div style="width: 8.5rem;"><span class="shot" aria-hidden="true"></span></div></td>
+            <td><div style="width: 8.5rem;"><button class="shot" type="button"><span class="media-fallback"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 16 5-5 4 4 2-2 7 7"/><path d="M3 3l18 18"/></svg><span>Test shot 1, headshot</span></span></button></div></td>
+          </tr>
+          <tr><th scope="row">Gallery</th>
+            <td><div style="width: 8.5rem;"><button class="shot" type="button"><img src="../assets/img/gallery-2.svg" alt="Close portrait against the brick wall with the octabox as fill." width="800" height="1000"></button></div></td>
+            <td><div style="width: 8.5rem;"><button class="shot" type="button" data-state="hover"><img src="../assets/img/gallery-2.svg" alt="Close portrait against the brick wall with the octabox as fill." width="800" height="1000"></button></div></td>
+            <td><div style="width: 8.5rem;"><button class="shot" type="button" data-state="focus"><img src="../assets/img/gallery-2.svg" alt="Close portrait against the brick wall with the octabox as fill." width="800" height="1000"></button></div></td>
+            <td><span class="text-caption">Same as hover.</span></td>
+            <td><span class="text-caption">Never disabled.</span></td>
+            <td><div style="width: 8.5rem;"><span class="shot" aria-hidden="true"></span></div></td>
+            <td><div style="width: 8.5rem;"><button class="shot" type="button"><span class="media-fallback"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 16 5-5 4 4 2-2 7 7"/><path d="M3 3l18 18"/></svg><span>Close portrait against the brick wall with the octabox as fill.</span></span></button></div></td>
+          </tr>
+          <tr><th scope="row">Sample shot</th>
+            <td><div style="width: 8.5rem;"><button class="shot" type="button"><img src="../assets/img/sample-2.svg" alt="Portrait in the kiln tunnel with a rim of light from the west door." width="1200" height="800"></button></div></td>
+            <td><div style="width: 8.5rem;"><button class="shot" type="button" data-state="hover"><img src="../assets/img/sample-2.svg" alt="Portrait in the kiln tunnel with a rim of light from the west door." width="1200" height="800"></button></div></td>
+            <td><div style="width: 8.5rem;"><button class="shot" type="button" data-state="focus"><img src="../assets/img/sample-2.svg" alt="Portrait in the kiln tunnel with a rim of light from the west door." width="1200" height="800"></button></div></td>
+            <td><span class="text-caption">Same as hover.</span></td>
+            <td><span class="text-caption">Never disabled.</span></td>
+            <td><div style="width: 8.5rem;"><span class="shot" aria-hidden="true"></span></div></td>
+            <td><div style="width: 8.5rem;"><button class="shot" type="button"><span class="media-fallback"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 16 5-5 4 4 2-2 7 7"/><path d="M3 3l18 18"/></svg><span>Portrait in the kiln tunnel</span></span></button></div></td>
+          </tr>
+        </tbody>
+      </table></div>
+      <ul>
+        <li><b>Hover</b> zooms the photo to 104% inside its clipped slot over <code>--duration-slow</code>. The slot itself does not move.</li>
+        <li><b>Focus</b> draws the shared ring around the slot, following its 12 px corners.</li>
+        <li><b>Loading</b> is the empty slot in <code>--color-bg-photo</code> at its final size. Images below the first screen use <code>loading="lazy"</code>.</li>
+        <li><b>Failed</b> (HTTP 404 or a network error) keeps the slot and shows an image-off icon with the photo's alt text on the sunken surface (L2-086.1). The button still opens the lightbox, which shows the same fallback.</li>
+      </ul>
+      <h3>Both themes</h3>
+      <div class="ds-themes">
+        <div data-theme="light">
+          <ul class="shot-grid" style="grid-template-columns: repeat(2, minmax(0, 1fr));">
+            <li><figure><button class="shot" type="button"><img src="../assets/img/sample-1.svg" alt="Couple on the lower steps with the brick kiln wall soft behind them." width="1200" height="800"></button><figcaption><strong>85 mm</strong> · Shoot north from the lower steps</figcaption></figure></li>
+            <li><figure><button class="shot" type="button"><span class="media-fallback"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 16 5-5 4 4 2-2 7 7"/><path d="M3 3l18 18"/></svg><span>Portrait in the kiln tunnel with a rim of light from the west door.</span></span></button><figcaption><strong>35 mm</strong> · Kiln tunnel, backlit from the west door</figcaption></figure></li>
+          </ul>
+        </div>
+        <div data-theme="dark">
+          <ul class="shot-grid" style="grid-template-columns: repeat(2, minmax(0, 1fr));">
+            <li><figure><button class="shot" type="button"><img src="../assets/img/sample-1.svg" alt="Couple on the lower steps with the brick kiln wall soft behind them." width="1200" height="800"></button><figcaption><strong>85 mm</strong> · Shoot north from the lower steps</figcaption></figure></li>
+            <li><figure><button class="shot" type="button"><span class="media-fallback"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 16 5-5 4 4 2-2 7 7"/><path d="M3 3l18 18"/></svg><span>Portrait in the kiln tunnel with a rim of light from the west door.</span></span></button><figcaption><strong>35 mm</strong> · Kiln tunnel, backlit from the west door</figcaption></figure></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="ds-section" id="responsive"><h2><a href="#responsive">Responsive behaviour</a></h2>
+      <div class="ds-table-wrap"><table class="ds-table">
+        <thead><tr><th scope="col">Width</th><th scope="col">Columns</th><th scope="col">Eight gallery photos</th><th scope="col">Three test shots</th></tr></thead>
+        <tbody>
+          <tr><td>XS, SM (below 768 px)</td><td>2</td><td>4 rows of 2</td><td>2 + 1</td></tr>
+          <tr><td>MD (768 px, <code>48rem</code>)</td><td>3</td><td>3 + 3 + 2</td><td>1 row</td></tr>
+          <tr><td>LG and up (992 px, <code>62rem</code>)</td><td>4</td><td>2 rows of 4</td><td>1 row, last column empty</td></tr>
+        </tbody>
+      </table></div>
+      <ul>
+        <li>The columns are <code>minmax(0, 1fr)</code>, so long captions wrap under their shot and never widen the grid. At 320 px each shot is about 136 px wide.</li>
+        <li>The gap stays 16 px at every width. The grid sits inside the review column, which already carries the page margins.</li>
+        <li>Shots are well over 44 × 44 px at every width, so no extra target padding is needed on phones.</li>
+        <li>Serve the variant that fits: <code>srcset</code> over the 480, 960, 1440 and 2048 px variants with <code>sizes="(min-width: 62rem) 25vw, (min-width: 48rem) 33vw, 50vw"</code>.</li>
+      </ul>
+    </section>
+
+    <section class="ds-section" id="theming"><h2><a href="#theming">Theming</a></h2>
+      <p>Photos are content and keep their own colours in both themes. The chrome around them is themed: the loading slot uses <code>--color-bg-photo</code>, captions and the setup line use <code>--color-fg-muted</code> with <code>--color-fg-default</code> for the strong part, and the failed slot uses <code>--color-bg-surface-sunken</code> with muted text and a subtle icon. In the dark theme the slot darkens to stone-800 so an unloaded photo does not flash white. The grid has no component tokens. To re-theme it, change the semantic roles.</p>
+      <p>Forced colours: images still show and the focus outline becomes the system highlight. The fallback text stays readable because it is real text.</p>
+    </section>
+
+    <section class="ds-section" id="accessibility"><h2><a href="#accessibility">Accessibility</a></h2>
+      <h3>Role and pattern</h3>
+      <p>A native list (<code>&lt;ul&gt;</code>) of native buttons (<code>&lt;button type="button"&gt;</code>) that open a modal <a href="lightbox.html">lightbox</a> (WAI-ARIA APG <a href="https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/">Dialog (Modal)</a> pattern). Captioned shots use <code>&lt;figure&gt;</code> and <code>&lt;figcaption&gt;</code>. The grid is not a <code>grid</code> or <code>listbox</code> widget: every shot is its own tab stop.</p>
+      <h3>Keyboard</h3>
+      <table class="ds-table ds-keys"><thead><tr><th scope="col">Key</th><th scope="col">Action</th></tr></thead><tbody>
+        <tr><td><kbd>Tab</kbd> / <kbd>Shift</kbd>+<kbd>Tab</kbd></td><td>Moves through the shots in reading order: left to right, then down.</td></tr>
+        <tr><td><kbd>Enter</kbd>, <kbd>Space</kbd></td><td>Opens the lightbox on this shot, for example "Photo 3 of 8".</td></tr>
+        <tr><td><kbd>Esc</kbd> (in the lightbox)</td><td>Closes the lightbox and returns focus to this shot (L2-010.2, L2-067.3).</td></tr>
+      </tbody></table>
+      <h3>Focus</h3>
+      <p>The shared 2 px ring with a 2 px offset follows the slot's 12 px corners. Focus returns to the same shot after the lightbox closes, even if the visitor paged to another photo.</p>
+      <h3>Labelling</h3>
+      <p>The button's accessible name is the image's alt text, which is required and non-empty for every test shot, gallery photo and sample shot (L2-009.3, L2-010, L2-016). A failed image keeps that name because the fallback prints the alt text. Captions are read after the button as part of the figure. The setup line is plain text before the list, so it is read once. The section heading ("Standard test shots", "From a real shoot", "Sample shots") names the region.</p>
+      <h3>Contrast</h3>
+      <div class="ds-example__canvas ds-example__canvas--stack" style="padding: 0; gap: var(--space-2);">
+        <div class="ds-pair"><span>Caption and setup line on the page</span><span class="ds-pair__ratio" data-contrast="--color-fg-muted|--color-bg-canvas" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Caption strong part on the page</span><span class="ds-pair__ratio" data-contrast="--color-fg-default|--color-bg-canvas" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Fallback alt text on the failed slot</span><span class="ds-pair__ratio" data-contrast="--color-fg-muted|--color-bg-surface-sunken" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Fallback icon on the failed slot</span><span class="ds-pair__ratio" data-contrast="--color-fg-subtle|--color-bg-surface-sunken" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Focus ring on the page</span><span class="ds-pair__ratio" data-contrast="--color-focus-ring|--color-bg-canvas" data-min="3"></span></div>
+      </div>
+      <h3>Motion</h3>
+      <p>The hover zoom (104%, <code>--duration-slow</code>, <code>--ease-standard</code>) is the only motion. Under <code>prefers-reduced-motion</code> the duration token is zeroed, so the zoom happens without animating. Nothing moves on its own.</p>
+      <h3>Touch</h3>
+      <p>Each shot is a large target, at least 136 × 170 px at 320 px wide, with 16 px between shots. There is no hover on touch, so nothing depends on it: a tap opens the lightbox.</p>
+    </section>
+
+    <section class="ds-section" id="content"><h2><a href="#content">Content</a></h2>
+      <ul>
+        <li>The setup line starts "Same setup in every studio:" and lists light, modifier, angle, distance, then exposure separated by " · ": "f/8 · 1/160 s · ISO 100 · 85 mm". Metric first.</li>
+        <li>Test-shot captions are "number · name", with the whole caption in <code>&lt;strong&gt;</code>: "1 · Headshot", "2 · Full length", "3 · Product on table".</li>
+        <li>Sample-shot captions are "<strong>focal length</strong> · position note". The note starts with a capital and has no full stop: "<strong>135 mm</strong> · Compress the valley from the top of the Beltline".</li>
+        <li>Alt text says what the photo shows and what it proves about the place, in one sentence: "Test shot 2, full length on the cyc: the scuffs show as faint marks behind the feet." Never "Image 2" or the file name.</li>
+        <li>The section head may count the photos: "8 photos", "5 photos".</li>
+      </ul>
+    </section>
+
+    <section class="ds-section" id="do-dont"><h2><a href="#do-dont">Do and don't</a></h2>
+      <div class="ds-dodont">
+        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--stack ds-example__canvas--canvas"><p class="shot-grid__setup" style="margin: 0;">Same setup in every studio: one Godox AD600 in a 120 cm octabox at 45°, 1.5 m from the subject · f/8 · 1/160 s · ISO 100 · 85 mm.</p><ul class="shot-grid" style="grid-template-columns: repeat(3, minmax(0, 1fr));"><li><figure><button class="shot" type="button"><img src="../assets/img/test-the-junction-loft-1.svg" alt="Test shot 1, headshot: even falloff from the octabox, grey seamless, soft shadow under the chin." width="800" height="1000"></button><figcaption><strong>1 · Headshot</strong></figcaption></figure></li><li><figure><button class="shot" type="button"><img src="../assets/img/test-the-junction-loft-2.svg" alt="Test shot 2, full length on the cyc: the scuffs show as faint marks behind the feet." width="800" height="1000"></button><figcaption><strong>2 · Full length</strong></figcaption></figure></li><li><figure><button class="shot" type="button"><img src="../assets/img/test-the-junction-loft-3.svg" alt="Test shot 3, product on a table: clean highlight on the bottle, neutral background." width="800" height="1000"></button><figcaption><strong>3 · Product on table</strong></figcaption></figure></li></ul></div><figcaption>State the setup once, above the three test shots, so the captions stay short and the shots line up.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--stack ds-example__canvas--canvas"><ul class="shot-grid" style="grid-template-columns: repeat(3, minmax(0, 1fr));"><li><figure><button class="shot" type="button"><img src="../assets/img/test-the-junction-loft-1.svg" alt="Test shot 1, headshot: even falloff from the octabox, grey seamless, soft shadow under the chin." width="800" height="1000"></button><figcaption><strong>1 · Headshot</strong> · Godox AD600, 120 cm octabox at 45°, f/8</figcaption></figure></li><li><figure><button class="shot" type="button"><img src="../assets/img/test-the-junction-loft-2.svg" alt="Test shot 2, full length on the cyc: the scuffs show as faint marks behind the feet." width="800" height="1000"></button><figcaption><strong>2 · Full length</strong> · Godox AD600, 120 cm octabox at 45°, f/8</figcaption></figure></li><li><figure><button class="shot" type="button"><img src="../assets/img/test-the-junction-loft-3.svg" alt="Test shot 3, product on a table: clean highlight on the bottle, neutral background." width="800" height="1000"></button><figcaption><strong>3</strong></figcaption></figure></li></ul></div><figcaption>Repeat the setup under each shot and drop names: captions wrap unevenly, the rows misalign, and "3" says nothing.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--canvas"><ul class="shot-grid" style="grid-template-columns: repeat(2, minmax(0, 1fr)); width: 100%;"><li><button class="shot" type="button"><img src="../assets/img/gallery-1.svg" alt="Portrait in window light, subject turned three-quarters toward the north windows." width="800" height="1000"></button></li><li><button class="shot" type="button"><span class="media-fallback"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 16 5-5 4 4 2-2 7 7"/><path d="M3 3l18 18"/></svg><span>Close portrait against the brick wall with the octabox as fill.</span></span></button></li></ul></div><figcaption>A failed photo keeps its 4:5 slot and shows its alt text, so the grid does not shift and the button keeps its name (L2-086.1).</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--canvas"><ul class="shot-grid" style="grid-template-columns: repeat(2, minmax(0, 1fr)); width: 100%;"><li><button class="shot" type="button"><img src="../assets/img/gallery-1.svg" alt="Portrait in window light, subject turned three-quarters toward the north windows." width="800" height="1000"></button></li><li><button class="shot" type="button" aria-label="Photo unavailable" style="aspect-ratio: auto; height: var(--space-6);"></button></li></ul></div><figcaption>Collapse the failed slot or replace the alt text with "Photo unavailable": the row jumps and the visitor loses what the photo showed.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--canvas"><div style="width: 9rem;"><figure><button class="shot" type="button"><img src="../assets/img/sample-1.svg" alt="Couple on the lower steps with the brick kiln wall soft behind them." width="1200" height="800"></button><figcaption><strong>85 mm</strong> · Shoot north from the lower steps</figcaption></figure></div></div><figcaption>Use a button whose name is the alt text, and caption sample shots with the focal length and where to stand.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--canvas"><div style="width: 9rem;"><figure><span class="shot"><img src="../assets/img/sample-1.svg" alt="" width="1200" height="800"></span><figcaption>85 mm</figcaption></figure></div></div><figcaption>Use a clickable <code>&lt;span&gt;</code> with <code>alt=""</code>: keyboard users cannot open it, screen readers hear nothing, and "85 mm" alone does not say where to stand (L2-016.1).</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="ds-section" id="tokens"><h2><a href="#tokens">Tokens</a></h2>
+      <div class="ds-table-wrap"><table class="ds-table">
+        <thead><tr><th scope="col">Part</th><th scope="col">Token</th><th scope="col">Light</th><th scope="col">Dark</th></tr></thead>
+        <tbody>
+          <tr><td>Slot while loading</td><td><code>--color-bg-photo</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-bg-photo" data-swatch></i><span data-token="--color-bg-photo"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-bg-photo" data-swatch></i><span data-token="--color-bg-photo"></span></span></td></tr>
+          <tr><td>Caption, setup line, fallback text</td><td><code>--color-fg-muted</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-muted" data-swatch></i><span data-token="--color-fg-muted"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-muted" data-swatch></i><span data-token="--color-fg-muted"></span></span></td></tr>
+          <tr><td>Caption strong part</td><td><code>--color-fg-default</code>, <code>--font-weight-semibold</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-default" data-swatch></i><span data-token="--color-fg-default"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-default" data-swatch></i><span data-token="--color-fg-default"></span></span></td></tr>
+          <tr><td>Failed slot</td><td><code>--color-bg-surface-sunken</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-bg-surface-sunken" data-swatch></i><span data-token="--color-bg-surface-sunken"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-bg-surface-sunken" data-swatch></i><span data-token="--color-bg-surface-sunken"></span></span></td></tr>
+          <tr><td>Failed slot icon</td><td><code>--color-fg-subtle</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-subtle" data-swatch></i><span data-token="--color-fg-subtle"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-subtle" data-swatch></i><span data-token="--color-fg-subtle"></span></span></td></tr>
+          <tr><td>Focus ring</td><td><code>--color-focus-ring</code>, <code>--focus-ring-width</code>, <code>--focus-ring-offset</code></td><td><span data-token="--color-focus-ring"></span></td><td><span data-theme="dark" data-token="--color-focus-ring"></span></td></tr>
+          <tr><td>Grid gap</td><td><code>--space-4</code></td><td colspan="2"><span data-token="--space-4"></span></td></tr>
+          <tr><td>Shot to caption, setup to grid</td><td><code>--space-2</code>, <code>--space-4</code></td><td colspan="2"><span data-token="--space-2"></span>, <span data-token="--space-4"></span></td></tr>
+          <tr><td>Slot corners</td><td><code>--radius-md</code></td><td colspan="2"><span data-token="--radius-md"></span></td></tr>
+          <tr><td>Caption and setup type</td><td><code>--text-body-sm</code></td><td colspan="2"><span data-token="--text-body-sm"></span></td></tr>
+          <tr><td>Hover zoom</td><td><code>--duration-slow</code>, <code>--ease-standard</code></td><td colspan="2"><span data-token="--duration-slow"></span> <span data-token="--ease-standard"></span></td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section class="ds-section" id="code"><h2><a href="#code">Code</a></h2>
+      <pre><code>&lt;ul class="shot-grid"&gt;
+  &lt;li&gt;&lt;figure&gt;
+    &lt;button class="shot" type="button"&gt;
+      &lt;img src="…" srcset="… 480w, … 960w, … 1440w" sizes="(min-width: 62rem) 25vw, (min-width: 48rem) 33vw, 50vw"
+           alt="Couple on the lower steps with the brick kiln wall soft behind them." width="1200" height="800" loading="lazy"&gt;
+    &lt;/button&gt;
+    &lt;figcaption&gt;&lt;strong&gt;85 mm&lt;/strong&gt; · Shoot north from the lower steps&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!-- The image failed: same button, same slot, alt text shown --&gt;
+&lt;button class="shot" type="button"&gt;
+  &lt;span class="media-fallback"&gt;&lt;svg class="icon" aria-hidden="true" viewBox="0 0 24 24"&gt;…&lt;/svg&gt;&lt;span&gt;Close portrait against the brick wall with the octabox as fill.&lt;/span&gt;&lt;/span&gt;
+&lt;/button&gt;</code></pre>
+      <table class="ds-table"><thead><tr><th scope="col">Class / attribute</th><th scope="col">Effect</th></tr></thead><tbody>
+        <tr><td><code>.shot-grid</code></td><td>Unstyled list, 2 / 3 / 4 columns at XS / MD / LG, 16 px gap.</td></tr>
+        <tr><td><code>.shot-grid figure</code>, <code>figcaption</code></td><td>Stacks shot and caption 8 px apart. Caption is small and muted; <code>&lt;strong&gt;</code> inside is ink and semibold.</td></tr>
+        <tr><td><code>.shot-grid__setup</code></td><td>The standard setup line above the test shots, 16 px above the grid.</td></tr>
+        <tr><td><code>.shot</code></td><td>Resets a <code>&lt;button&gt;</code> into a 4:5 photo slot with 12 px corners and a zoom cursor. The image covers the slot and zooms on hover.</td></tr>
+        <tr><td><code>.media-fallback</code></td><td>Fills a slot whose image failed: sunken surface, centred icon and alt text, wraps long words.</td></tr>
+        <tr><td><code>data-state="hover|focus"</code></td><td>Documentation only: forces the state in static pages.</td></tr>
+      </tbody></table>
+      <p>In Angular, <code>StudioTestShotsComponent</code>, <code>StudioGalleryComponent</code> and the spot sample-shot section render this markup. Each button calls the lightbox dialog with the list and its index. An <code>(error)</code> handler on the image swaps in the fallback.</p>
+    </section>
+
+    <section class="ds-section" id="sources"><h2><a href="#sources">Sources</a></h2>
+      <p>Extracted from these mocks:</p>
+      <ul>
+        <li><a href="../../mocks/pages/studio/default.html">pages/studio/default</a> (setup line, three test shots, eight-photo gallery, hover on photo 2)</li>
+        <li><a href="../../mocks/pages/studio/media-failed.html">pages/studio/media-failed</a> (gallery photos 2 and 5 failed: fallback in the slot)</li>
+        <li><a href="../../mocks/pages/spot/default.html">pages/spot/default</a> (five sample shots captioned with focal length and note)</li>
+        <li><a href="../../mocks/dialogs/lightbox/default.html">dialogs/lightbox/default</a> (what a shot opens)</li>
+      </ul>
+      <p>Drift fixed during extraction: the mocks make each <code>.shot</code> an <code>&lt;a href&gt;</code> to the lightbox mock file, only so the static set can be clicked through. The detailed design renders thumbnails as buttons that open a dialog, so the system uses <code>&lt;button type="button"&gt;</code>, which the <code>.shot</code> reset already expects. The spot mocks declare the sample images as <code>width="800" height="1000"</code>, but the files are 1200 × 800 landscape. The system uses the true size so the browser reserves the right ratio before the 4:5 crop.</p>
+    </section>
+
+    <footer class="ds-footer"><span>ShotThere design system · extracted from <a href="../../mocks/index.html">docs/mocks</a> on 13 October 2026</span><a href="#top">Back to top</a></footer>
+  </main>
+</div>
+<script src="../assets/ds.js"></script>
+</body>
+</html>
