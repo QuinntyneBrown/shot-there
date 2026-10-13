@@ -33,6 +33,7 @@ export interface SpotRecord {
   disclosure: Disclosure | null;
   disclosureProvider: string | null;
   videoId: string | null;
+  episodeTitle: string | null;
   publishedAt: Date | null;
   updatedAt: Date;
   images: ImageRecord[];

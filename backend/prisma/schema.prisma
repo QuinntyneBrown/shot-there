@@ -223,6 +223,7 @@ model Spot {
   disclosure         Disclosure?
   disclosureProvider String?
   videoId            String?
+  episodeTitle       String?
   publishedAt        DateTime?
   createdAt          DateTime         @default(now())
   updatedAt          DateTime         @updatedAt

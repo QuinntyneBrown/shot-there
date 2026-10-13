@@ -33,6 +33,8 @@ describe('L2-014 spot location and directions', () => {
       slug: 'riverdale-park-east',
       name: 'Riverdale Park East',
       neighbourhood: 'Riverdale',
+      type: 'park',
+      reviewedAt: '2026-09-02T12:00:00.000Z',
       latitude: 43.6703,
       longitude: -79.3542,
       directions: 'Take Line 2 to Broadview and walk south.',
@@ -56,8 +58,8 @@ describe('L2-015 spot best light by time and season', () => {
           lightBySeason: [
             { season: 'winter', note: 'closed path after snowfall' },
             { season: 'spring', note: 'blossoms in May' },
-            { season: 'autumn', note: null },
-            { season: 'summer', note: null },
+            { season: 'autumn', note: 'maples turn red' },
+            { season: 'summer', note: 'full shade by noon' },
           ],
         }),
       ],
@@ -65,24 +67,19 @@ describe('L2-015 spot best light by time and season', () => {
 
     const { body } = await getSpotPage('s');
 
-    expect(body.lightByTime.map((row: { timeOfDay: string }) => row.timeOfDay)).toEqual([
-      'morning',
-      'midday',
-      'afternoon',
-      'goldenHour',
-      'blueHour',
-    ]);
-    expect(body.lightByTime[3]).toEqual({
-      timeOfDay: 'goldenHour',
-      rating: 'strong',
-      note: 'west-facing, sun drops behind the skyline',
+    expect(body.lightByTime).toEqual({
+      morning: { rating: 'medium', note: null },
+      midday: { rating: 'none', note: null },
+      afternoon: { rating: 'medium', note: null },
+      goldenHour: { rating: 'strong', note: 'west-facing, sun drops behind the skyline' },
+      blueHour: { rating: 'low', note: null },
     });
-    expect(body.lightBySeason).toEqual([
-      { season: 'spring', note: 'blossoms in May' },
-      { season: 'summer', note: null },
-      { season: 'autumn', note: null },
-      { season: 'winter', note: 'closed path after snowfall' },
-    ]);
+    expect(body.lightBySeason).toEqual({
+      spring: 'blossoms in May',
+      summer: 'full shade by noon',
+      autumn: 'maples turn red',
+      winter: 'closed path after snowfall',
+    });
   });
 });
 

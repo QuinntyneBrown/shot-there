@@ -98,6 +98,7 @@ export const spotInputSchema = (today: string) =>
     disclosure: optionalEnum(['paid_in_full', 'discounted', 'comped']),
     disclosureProvider: optionalText(200),
     videoLink: videoIdField(),
+    episodeTitle: optionalText(150),
     images: z.array(imageOrderItemSchema).max(200).optional(),
   })
   .superRefine(requireDisclosureProvider);

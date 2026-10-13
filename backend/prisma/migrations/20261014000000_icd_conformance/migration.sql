@@ -16,3 +16,6 @@ ALTER TABLE "Studio" ALTER COLUMN "backdrops" TYPE TEXT[]
   USING CASE WHEN "backdrops" IS NULL OR btrim("backdrops") = '' THEN ARRAY[]::TEXT[] ELSE ARRAY["backdrops"] END;
 ALTER TABLE "Studio" ALTER COLUMN "backdrops" SET DEFAULT ARRAY[]::TEXT[];
 ALTER TABLE "Studio" ALTER COLUMN "backdrops" SET NOT NULL;
+
+-- ICD §13.1 A8: spots carry an episode title like studios
+ALTER TABLE "Spot" ADD COLUMN "episodeTitle" TEXT;
