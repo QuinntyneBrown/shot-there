@@ -1,10 +1,8 @@
 import { HttpProblem } from '@/lib/http/http-problem';
 import { problemResponse } from '@/lib/http/problem-response';
 import { correlationContext } from '@/lib/logging/correlation-context';
+import { CORRELATION_HEADER, correlationIdFor } from '@/lib/logging/correlation-id-for';
 import { log } from '@/lib/logging/logger';
-
-const CORRELATION_HEADER = 'x-correlation-id';
-const SAFE_CORRELATION_ID = /^[A-Za-z0-9-]{1,64}$/;
 
 type RouteHandler<C> = (request: Request, context: C) => Promise<Response>;
 
@@ -14,8 +12,7 @@ export function withRequestLogging<C = unknown>(
 ): (request: Request, context?: C) => Promise<Response> {
   return async (request, context) => {
     const started = performance.now();
-    const incoming = request.headers.get(CORRELATION_HEADER);
-    const correlationId = incoming && SAFE_CORRELATION_ID.test(incoming) ? incoming : crypto.randomUUID();
+    const correlationId = correlationIdFor(request);
 
     let response: Response;
     try {

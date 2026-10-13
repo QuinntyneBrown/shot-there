@@ -1,9 +1,11 @@
 import { NextResponse, type NextRequest } from 'next/server';
 import { SESSION_COOKIE } from '@/lib/auth/session-cookies';
+import { HttpProblem } from '@/lib/http/http-problem';
 import { MAX_JSON_BODY_BYTES } from '@/lib/http/max-json-body-bytes';
 import { payloadTooLarge } from '@/lib/http/payload-too-large';
 import { problemResponse } from '@/lib/http/problem-response';
 import { securityHeaders } from '@/lib/http/security-headers';
+import { CORRELATION_HEADER, correlationIdFor } from '@/lib/logging/correlation-id-for';
 
 const UPLOAD_PATH = '/api/admin/images';
 const ADMIN_PATH_PREFIX = '/api/admin/';
@@ -16,21 +18,34 @@ function route(request: NextRequest): NextResponse {
   if (process.env.NODE_ENV === 'production' && request.headers.get('x-forwarded-proto') === 'http') {
     const secureUrl = new URL(request.url);
     secureUrl.protocol = 'https:';
-    return NextResponse.redirect(secureUrl, 301);
+    return answer(request, NextResponse.redirect(secureUrl, 301));
   }
 
   const contentLength = Number(request.headers.get('content-length') ?? 0);
   if (request.nextUrl.pathname !== UPLOAD_PATH && contentLength > MAX_JSON_BODY_BYTES) {
-    const problem = problemResponse(payloadTooLarge(), crypto.randomUUID());
-    return new NextResponse(problem.body, problem);
+    return answerProblem(request, payloadTooLarge());
   }
 
   // Cheap first gate; every admin handler still validates the session with requireOwnerSession.
   if (request.nextUrl.pathname.startsWith(ADMIN_PATH_PREFIX) && !request.cookies.has(SESSION_COOKIE)) {
-    return new NextResponse(null, { status: 401 });
+    return answerProblem(request, new HttpProblem(401, null));
   }
 
   return NextResponse.next();
+}
+
+/** A response the proxy gives itself, without reaching a handler, carrying a correlation ID (ICD O-1). */
+function answer(request: NextRequest, response: NextResponse): NextResponse {
+  response.headers.set(CORRELATION_HEADER, correlationIdFor(request));
+  return response;
+}
+
+function answerProblem(request: NextRequest, problem: HttpProblem): NextResponse {
+  const correlationId = correlationIdFor(request);
+  const response = problemResponse(problem, correlationId);
+  const answered = new NextResponse(response.body, response);
+  answered.headers.set(CORRELATION_HEADER, correlationId);
+  return answered;
 }
 
 function withSecurityHeaders(response: NextResponse): NextResponse {
