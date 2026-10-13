@@ -7,15 +7,6 @@ const WEB_ADDRESS = /^https?:\/\/[^\s/$.?#][^\s]*$/i;
 export const requiredText = (message: string, max = 200) =>
   z.string({ error: message }).trim().min(1, { error: message }).max(max, { error: `Use ${max} characters or fewer` });
 
-export const optionalText = (max = 2000) =>
-  z
-    .string()
-    .trim()
-    .max(max, { error: `Use ${max} characters or fewer` })
-    .transform((value) => (value === '' ? null : value))
-    .nullable()
-    .default(null);
-
 /** An ISO date that is not after today. */
 export const pastOrTodayDate = (today: string, futureMessage: string) =>
   z.iso
