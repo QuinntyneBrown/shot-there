@@ -1,4 +1,5 @@
 import { getDependencies } from '@/lib/data/dependency-container';
+import { imagesWithRole, toImageDto } from '@/lib/images/to-image-dto';
 import { isStale } from '@/lib/shared/is-stale';
 import { allInCostOf } from '@/lib/studios/all-in-cost-of';
 import type { GearItemDto } from '@/lib/studios/gear-item-dto';
@@ -57,6 +58,8 @@ export async function getStudio(slug: string): Promise<StudioDetailDto | null> {
       clientSeating: studio.clientSeating,
       noise: studio.noise,
     },
+    testShots: imagesWithRole(studio.images, 'testShot').map(toImageDto),
+    gallery: imagesWithRole(studio.images, 'gallery').map(toImageDto),
   };
 }
 

@@ -1,3 +1,4 @@
+import type { ImageDto } from '@/lib/images/image-dto';
 import type { StudioBasicsDto } from '@/lib/studios/studio-basics-dto';
 import type { StudioGearDto } from '@/lib/studios/studio-gear-dto';
 import type { StudioLogisticsDto } from '@/lib/studios/studio-logistics-dto';
@@ -12,4 +13,6 @@ export interface StudioDetailDto {
   specifications: StudioSpecificationsDto;
   gear: StudioGearDto;
   logistics: StudioLogisticsDto;
+  testShots: ImageDto[];
+  gallery: ImageDto[];
 }
