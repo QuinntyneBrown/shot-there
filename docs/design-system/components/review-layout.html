@@ -1,0 +1,501 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Review layout — ShotThere design system</title>
+<meta name="description" content="The page skeleton for ShotThere studio and spot reviews: review head, hero photo, review sections in a fixed order and a summary panel that is sticky from LG and comes first on phones, with states, responsive rules and accessibility.">
+<link rel="stylesheet" href="../tokens/tokens.css">
+<link rel="stylesheet" href="../assets/components.css">
+<link rel="stylesheet" href="../assets/ds.css">
+</head>
+<body id="top">
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="ds-shell">
+  <nav class="ds-nav" aria-label="Design system">
+    <div class="ds-nav__brand"><a href="../index.html">ShotThere DS</a><button class="ds-theme-toggle" type="button" aria-pressed="false">☾ Dark</button></div>
+    <details open><summary>Foundations</summary><ul>
+      <li><a href="../foundations/color.html">Color</a></li>
+      <li><a href="../foundations/typography.html">Typography</a></li>
+      <li><a href="../foundations/spacing.html">Spacing</a></li>
+      <li><a href="../foundations/layout.html">Layout</a></li>
+      <li><a href="../foundations/elevation.html">Elevation</a></li>
+      <li><a href="../foundations/shape.html">Shape</a></li>
+      <li><a href="../foundations/motion.html">Motion</a></li>
+      <li><a href="../foundations/iconography.html">Iconography</a></li>
+      <li><a href="../foundations/theming.html">Theming</a></li>
+      <li><a href="../foundations/responsive.html">Responsive</a></li>
+      <li><a href="../foundations/accessibility.html">Accessibility</a></li>
+      <li><a href="../foundations/content.html">Content</a></li>
+    </ul></details>
+    <details open><summary>Actions</summary><ul>
+      <li><a href="../components/button.html">Button</a></li>
+      <li><a href="../components/icon-button.html">Icon button</a></li>
+      <li><a href="../components/button-group.html">Button group</a></li>
+      <li><a href="../components/link.html">Link</a></li>
+      <li><a href="../components/compare-bar.html">Compare toggle and bar</a></li>
+    </ul></details>
+    <details open><summary>Inputs</summary><ul>
+      <li><a href="../components/form-field.html">Form field</a></li>
+      <li><a href="../components/text-field.html">Text field</a></li>
+      <li><a href="../components/textarea.html">Textarea</a></li>
+      <li><a href="../components/select.html">Select</a></li>
+      <li><a href="../components/combobox.html">Combobox</a></li>
+      <li><a href="../components/checkbox.html">Checkbox</a></li>
+      <li><a href="../components/radio-group.html">Radio group</a></li>
+      <li><a href="../components/file-upload.html">File upload</a></li>
+      <li><a href="../components/form-layout.html">Form layout</a></li>
+      <li><a href="../components/signup.html">Email signup</a></li>
+    </ul></details>
+    <details open><summary>Navigation</summary><ul>
+      <li><a href="../components/skip-link.html">Skip link</a></li>
+      <li><a href="../components/site-header.html">Site header</a></li>
+      <li><a href="../components/footer.html">Footer</a></li>
+      <li><a href="../components/breadcrumb.html">Breadcrumb</a></li>
+      <li><a href="../components/filter.html">Filters</a></li>
+    </ul></details>
+    <details open><summary>Containers and overlays</summary><ul>
+      <li><a href="../components/container.html">Container and grid</a></li>
+      <li><a href="../components/review-layout.html">Review layout</a></li>
+      <li><a href="../components/editor-layout.html">Editor layout</a></li>
+      <li><a href="../components/card.html">Card</a></li>
+      <li><a href="../components/dialog.html">Dialog</a></li>
+      <li><a href="../components/sheet.html">Sheet and drawer</a></li>
+      <li><a href="../components/popover.html">Popover</a></li>
+      <li><a href="../components/lightbox.html">Lightbox</a></li>
+      <li><a href="../components/divider.html">Divider</a></li>
+    </ul></details>
+    <details open><summary>Data display</summary><ul>
+      <li><a href="../components/location-card.html">Location card</a></li>
+      <li><a href="../components/table.html">Table</a></li>
+      <li><a href="../components/compare-table.html">Comparison table</a></li>
+      <li><a href="../components/list.html">List rows</a></li>
+      <li><a href="../components/description-list.html">Description list</a></li>
+      <li><a href="../components/price-block.html">Price block</a></li>
+      <li><a href="../components/score.html">Score and pips</a></li>
+      <li><a href="../components/shot-grid.html">Shot grid</a></li>
+      <li><a href="../components/video-poster.html">Episode poster</a></li>
+      <li><a href="../components/map.html">Map</a></li>
+      <li><a href="../components/guide-entry.html">Guide entry</a></li>
+      <li><a href="../components/stat-tile.html">Stat tile</a></li>
+      <li><a href="../components/image-manager.html">Image manager</a></li>
+      <li><a href="../components/disclosure.html">Disclosure</a></li>
+      <li><a href="../components/badge.html">Badge</a></li>
+      <li><a href="../components/status-label.html">Status label</a></li>
+      <li><a href="../components/chip.html">Chip</a></li>
+      <li><a href="../components/tag.html">Tag</a></li>
+    </ul></details>
+    <details open><summary>Feedback</summary><ul>
+      <li><a href="../components/inline-message.html">Inline message</a></li>
+      <li><a href="../components/alert.html">Alert and banner</a></li>
+      <li><a href="../components/toast.html">Toast</a></li>
+      <li><a href="../components/progress.html">Progress and meter</a></li>
+      <li><a href="../components/spinner.html">Spinner</a></li>
+      <li><a href="../components/skeleton.html">Skeleton</a></li>
+      <li><a href="../components/empty-state.html">Empty state</a></li>
+      <li><a href="../components/error-page.html">Error page</a></li>
+    </ul></details>
+    <details open><summary>Patterns</summary><ul>
+      <li><a href="../patterns/forms.html">Forms</a></li>
+      <li><a href="../patterns/feedback-and-loading.html">Feedback and loading</a></li>
+      <li><a href="../patterns/empty-and-error-states.html">Empty and error states</a></li>
+      <li><a href="../patterns/navigation.html">Navigation and page structure</a></li>
+      <li><a href="../patterns/dialogs-and-overlays.html">Dialogs and overlays</a></li>
+      <li><a href="../patterns/tables-and-lists.html">Data tables and lists</a></li>
+      <li><a href="../patterns/notifications.html">Notifications</a></li>
+      <li><a href="../patterns/content-and-tone.html">Content and tone</a></li>
+    </ul></details>
+  </nav>
+
+  <main id="main" class="ds-main">
+    <header class="ds-header">
+      <p class="ds-kicker">Component · Containers and overlays</p>
+      <h1>Review layout</h1>
+      <p class="ds-lead">The page skeleton every studio and spot review shares: a head with the name and the basic facts, one hero photo, the review sections in a fixed order, and a summary panel that sits beside them from LG and comes straight after the photo on phones and tablets. Because every review uses the same skeleton, two locations read the same way and compare side by side.</p>
+      <div class="ds-meta"><span class="ds-pill ds-pill--ok">WCAG 2.2 AA</span><span class="ds-pill">Status: stable</span><span class="ds-pill"><code>.review-layout</code></span><span class="ds-pill"><code>.review-head</code></span><span class="ds-pill"><code>.review-hero</code></span><span class="ds-pill"><code>.review-section</code></span><span class="ds-pill"><code>.summary-panel</code></span></div>
+      <ul class="ds-toc"><li><a href="#overview">Overview</a></li><li><a href="#anatomy">Anatomy</a></li><li><a href="#variants">Variants</a></li><li><a href="#sizes">Sizes</a></li><li><a href="#states">States</a></li><li><a href="#responsive">Responsive behaviour</a></li><li><a href="#theming">Theming</a></li><li><a href="#accessibility">Accessibility</a></li><li><a href="#content">Content</a></li><li><a href="#do-dont">Do and don't</a></li><li><a href="#tokens">Tokens</a></li><li><a href="#code">Code</a></li><li><a href="#sources">Sources</a></li></ul>
+    </header>
+
+    <section class="ds-section" id="overview"><h2><a href="#overview">Overview</a></h2>
+      <p>Use the review layout for the two public review pages, and only for them:</p>
+      <ul>
+        <li><b>Studio review</b> (<code>/studios/the-junction-loft</code>): basics, pricing, measured specifications, gear, logistics, standard test shots, gallery, verdict with the <a href="disclosure.html">disclosure</a>, episode and "Featured in" (L2-003 to L2-013, L2-036).</li>
+        <li><b>Outdoor spot review</b> (<code>/spots/evergreen-brick-works</code>): map, directions, light, sample shots, conditions, permits, best uses with the disclosure, episode and rain backup (L2-014 to L2-020, L2-037, L2-038).</li>
+      </ul>
+      <p>The layout owns the frame, not the contents: the <a href="price-block.html">price block</a>, <a href="score.html">score and pips</a>, <a href="shot-grid.html">shot grid</a>, <a href="video-poster.html">episode poster</a>, <a href="map.html">map</a> and <a href="description-list.html">description lists</a> each have their own page. The <b>guide page</b> reuses <code>.review-head</code> on its own, without the hero, columns or summary.</p>
+      <p><b>Don't use it</b> for the studio and spot lists (they use the browse layout on <a href="container.html">Container and grid</a>), the comparison (<a href="compare-table.html">Comparison table</a>) or the admin editors (<a href="editor-layout.html">Editor layout</a>).</p>
+    </section>
+
+    <section class="ds-section" id="anatomy"><h2><a href="#anatomy">Anatomy</a></h2>
+      <div class="ds-anatomy" style="grid-template-columns: minmax(0, 1fr);">
+        <figure class="ds-anatomy__figure" style="padding: var(--space-6); place-items: stretch;">
+          <div>
+            <div class="review-head" style="margin-top: 0; position: relative;">
+              <p style="font: var(--text-display); letter-spacing: var(--letter-spacing-tight);">The Junction Loft</p>
+              <ul class="review-head__meta" style="position: relative;">
+                <li>Junction</li>
+                <li>Dundas St W at Pacific Ave, 2nd floor</li>
+                <li>Reviewed <time datetime="2026-09-29">29 September 2026</time></li>
+              </ul>
+              <span class="ds-callout" style="left: -1.5rem; top: -0.5rem;" aria-hidden="true">1</span>
+              <span class="ds-callout" style="left: -1.5rem; bottom: 0;" aria-hidden="true">2</span>
+            </div>
+            <div class="review-hero" style="position: relative;"><img src="../assets/img/studio-the-junction-loft.svg" alt="" width="1200" height="800"><span class="ds-callout" style="left: var(--space-3); top: var(--space-3);" aria-hidden="true">3</span></div>
+            <div class="review-layout">
+              <div class="review-main" style="position: relative;">
+                <span class="ds-callout" style="left: -1.5rem; top: var(--space-8);" aria-hidden="true">4</span>
+                <div class="review-section" style="margin-top: var(--space-8);">
+                  <p style="font: var(--text-h2); letter-spacing: var(--letter-spacing-tight); margin-bottom: var(--space-6);">Pricing</p>
+                  <div class="price-block"><p class="price-block__allin"><strong>$145.00</strong><span>All-in for a standard 2-hour shoot: 2 hours at $60.00 plus the mandatory cleaning fee.</span></p></div>
+                </div>
+                <div class="review-section">
+                  <div class="section-head" style="position: relative;"><p style="font: var(--text-h2); letter-spacing: var(--letter-spacing-tight);">From a real shoot</p><span class="text-caption">8 photos</span><span class="ds-callout" style="right: 0; top: -1.75rem;" aria-hidden="true">5</span></div>
+                  <ul class="shot-grid">
+                    <li><span class="shot"><img src="../assets/img/gallery-1.svg" alt="" width="800" height="1000"></span></li>
+                    <li><span class="shot"><img src="../assets/img/gallery-2.svg" alt="" width="800" height="1000"></span></li>
+                    <li><span class="shot"><img src="../assets/img/gallery-3.svg" alt="" width="800" height="1000"></span></li>
+                    <li><span class="shot"><img src="../assets/img/gallery-4.svg" alt="" width="800" height="1000"></span></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="summary-panel" style="position: relative;">
+                <span class="ds-callout" style="right: -0.75rem; top: -0.75rem;" aria-hidden="true">6</span>
+                <dl class="summary-panel__row" style="position: relative;">
+                  <div><dt>All-in, 2 hours</dt><dd>$145.00</dd></div>
+                  <div><dt>Overall</dt><dd>3.8<span class="visually-hidden"> out of 5</span></dd></div>
+                  <span class="ds-callout" style="left: -1.5rem; top: 0;" aria-hidden="true">7</span>
+                </dl>
+                <a class="btn btn--primary" href="https://thejunctionloft.example/book" target="_blank" rel="noopener">Book on the studio's site<svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v6H4V6h6"/></svg><span class="visually-hidden"> (opens in a new tab)</span></a>
+                <button class="btn compare-toggle" type="button" aria-pressed="false">Add to compare</button>
+                <p class="text-caption" style="position: relative;">ShotThere doesn't take bookings or payments. Prices verified 22 Sep 2026.<span class="ds-callout" style="left: -1.5rem; top: 0;" aria-hidden="true">8</span></p>
+              </div>
+            </div>
+          </div>
+        </figure>
+        <ol class="ds-anatomy__list">
+          <li><div><b>Review head</b> <code>.review-head</code><small>The location's name is the page's only <code>&lt;h1&gt;</code>, set in <code>--text-display</code> with tight tracking; long names wrap anywhere rather than overflow. <code>--space-8</code> above, <code>--space-3</code> to the meta line.</small></div></li>
+          <li><div><b>Meta list</b> <code>.review-head__meta</code><small>A <code>&lt;ul&gt;</code> of short facts in <code>--text-body-lg</code>, <code>--color-fg-muted</code>. The "·" separators are generated content with empty alternative text, so screen readers hear a plain list.</small></div></li>
+          <li><div><b>Hero</b> <code>.review-hero</code><small>One photo, 3:2 on phones, 16:7 from MD, <code>--radius-lg</code>, <code>--color-bg-photo</code> behind it while it loads. Loaded eagerly with <code>fetchpriority="high"</code>: it is the largest paint.</small></div></li>
+          <li><div><b>Main column and sections</b> <code>.review-main</code> · <code>.review-section</code><small>Each section is a <code>&lt;section aria-labelledby&gt;</code> with an <code>&lt;h2&gt;</code>; <code>--space-16</code> between sections, <code>--space-6</code> under the heading, <code>--space-8</code> above an <code>&lt;h3&gt;</code>.</small></div></li>
+          <li><div><b>Section head</b> <code>.section-head</code><small>Heading plus a count or caption on one baseline ("From a real shoot · 8 photos", "Sample shots · 5 photos"); wraps on narrow screens.</small></div></li>
+          <li><div><b>Summary panel</b> <code>.summary-panel</code><small>An <code>&lt;aside aria-label="Summary"&gt;</code>, 22rem wide from LG, hairline border, <code>--radius-lg</code>, <code>--space-6</code> padding, <code>--space-5</code> between parts. Sticky from LG.</small></div></li>
+          <li><div><b>Summary facts</b> <code>.summary-panel__row</code><small>A two-column <code>&lt;dl&gt;</code>: label in <code>--text-label</code> and <code>--color-fg-subtle</code>, value in <code>--text-h3</code> with tabular figures. Exactly two facts.</small></div></li>
+          <li><div><b>Action and caption</b><small>One full-width primary action (the studio's booking page or Google Maps), the compare toggle on studios, and a <code>.text-caption</code> that says what ShotThere doesn't do and when the data was checked.</small></div></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="ds-section" id="variants"><h2><a href="#variants">Variants</a></h2>
+      <p>There are two variants of one skeleton. They differ only in which sections they hold and what the summary panel says; the head, hero, spacing and breakpoints are identical.</p>
+      <h3>Section order</h3>
+      <p>The order is fixed for every studio and for every spot, so a reader who knows where the test shots sit on one review finds them in the same place on the next (L2-009.2). Optional sections disappear completely when there is nothing to show; required sections always render.</p>
+      <div class="ds-table-wrap"><table class="ds-table">
+        <caption class="visually-hidden">Review sections in order, studio and spot</caption>
+        <thead><tr><th scope="col">#</th><th scope="col">Studio review</th><th scope="col">Spot review</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>Pricing</td><td>Location and map</td></tr>
+          <tr><td>2</td><td>Measured specifications</td><td>How to get there</td></tr>
+          <tr><td>3</td><td>Gear</td><td>Best light</td></tr>
+          <tr><td>4</td><td>Logistics</td><td>Sample shots</td></tr>
+          <tr><td>5</td><td>Standard test shots</td><td>Practical conditions</td></tr>
+          <tr><td>6</td><td>From a real shoot</td><td>Permits</td></tr>
+          <tr><td>7</td><td>Verdict, ending with the disclosure</td><td>Best uses, ending with the disclosure</td></tr>
+          <tr><td>8</td><td>Watch the episode <span class="text-caption">(only with a video ID, L2-013.2)</span></td><td>Watch the episode <span class="text-caption">(only with a video ID, L2-020.1)</span></td></tr>
+          <tr><td>9</td><td>Featured in <span class="text-caption">(only when in a guide, L2-036.2)</span></td><td>Rain backup <span class="text-caption">(always; an empty state when no studios are published, L2-038.1)</span></td></tr>
+        </tbody>
+      </table></div>
+      <h3>Studio and spot, live</h3>
+      <p>The mocks themselves at phone width, where the summary panel has moved up under the photo.</p>
+      <div class="ds-iframes">
+        <iframe class="ds-iframe" src="../../mocks/pages/studio/default.html?chrome=0" title="Studio review mock at phone width: The Junction Loft" loading="lazy"></iframe>
+        <iframe class="ds-iframe" src="../../mocks/pages/spot/default.html?chrome=0" title="Spot review mock at phone width: Evergreen Brick Works" loading="lazy"></iframe>
+      </div>
+      <h3>Summary panel per variant</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas" style="align-items: flex-start;">
+          <div class="summary-panel" style="margin-top: 0; width: min(100%, 22rem);">
+            <dl class="summary-panel__row">
+              <div><dt>All-in, 2 hours</dt><dd>$145.00</dd></div>
+              <div><dt>Overall</dt><dd>3.8<span class="visually-hidden"> out of 5</span></dd></div>
+            </dl>
+            <a class="btn btn--primary" href="https://thejunctionloft.example/book" target="_blank" rel="noopener">Book on the studio's site<svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v6H4V6h6"/></svg><span class="visually-hidden"> (opens in a new tab)</span></a>
+            <button class="btn compare-toggle" type="button" aria-pressed="false">Add to compare</button>
+            <p class="text-caption">ShotThere doesn't take bookings or payments. Prices verified 22 Sep 2026.</p>
+          </div>
+          <div class="summary-panel" style="margin-top: 0; width: min(100%, 22rem);">
+            <dl class="summary-panel__row">
+              <div><dt>Portrait permit</dt><dd>Not required</dd></div>
+              <div><dt>Best light</dt><dd>Golden hour</dd></div>
+            </dl>
+            <div>
+              <p class="text-caption">Best for</p>
+              <ul class="tags"><li><span class="tag">Engagement</span></li><li><span class="tag">Family</span></li><li><span class="tag">Portrait</span></li><li><span class="tag">Brand</span></li></ul>
+            </div>
+            <a class="btn btn--primary" href="https://www.google.com/maps/search/?api=1&amp;query=43.6846,-79.3653" target="_blank" rel="noopener">Open in Google Maps<svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v6H4V6h6"/></svg><span class="visually-hidden"> (opens in a new tab)</span></a>
+            <p class="text-caption">Permit rules verified 1 Sep 2026. Check the source before a paid shoot.</p>
+          </div>
+        </div>
+        <div class="ds-example__caption"><span>Studio: all-in cost and overall score, book, compare. Spot: portrait permit and best light, best-use tags, open the map. Spots have no compare toggle; comparison is for studios only (L2-030). The examples use a <code>&lt;div&gt;</code>; the product uses <code>&lt;aside aria-label="Summary"&gt;</code>.</span></div>
+        <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;aside class="summary-panel" aria-label="Summary"&gt;
+  &lt;dl class="summary-panel__row"&gt;
+    &lt;div&gt;&lt;dt&gt;All-in, 2 hours&lt;/dt&gt;&lt;dd&gt;$145.00&lt;/dd&gt;&lt;/div&gt;
+    &lt;div&gt;&lt;dt&gt;Overall&lt;/dt&gt;&lt;dd&gt;3.8&lt;span class="visually-hidden"&gt; out of 5&lt;/span&gt;&lt;/dd&gt;&lt;/div&gt;
+  &lt;/dl&gt;
+  &lt;a class="btn btn--primary" href="https://thejunctionloft.example/book" target="_blank" rel="noopener"&gt;Book on the studio's site
+    &lt;svg class="icon" aria-hidden="true" viewBox="0 0 24 24"&gt;…&lt;/svg&gt;&lt;span class="visually-hidden"&gt; (opens in a new tab)&lt;/span&gt;&lt;/a&gt;
+  &lt;button class="btn compare-toggle" type="button" aria-pressed="false"&gt;Add to compare&lt;/button&gt;
+  &lt;p class="text-caption"&gt;ShotThere doesn't take bookings or payments. Prices verified 22 Sep 2026.&lt;/p&gt;
+&lt;/aside&gt;</code></pre></details>
+      </div>
+      <h3>Head on its own (guide page)</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--stack">
+          <div class="review-head" style="margin-top: 0;">
+            <p style="font: var(--text-display); letter-spacing: var(--letter-spacing-tight);">Best studios under $120 for 2 hours</p>
+            <ul class="review-head__meta"><li>3 studios</li><li>Updated <time datetime="2026-10-03">3 October 2026</time></li></ul>
+          </div>
+        </div>
+        <div class="ds-example__caption"><span><code>pages/guide/default</code>: the same head, then the guide's own list. No hero, no columns, no summary panel.</span></div>
+      </div>
+    </section>
+
+    <section class="ds-section" id="sizes" data-na="The layout has one size; widths come from the container and the panel token."><h2><a href="#sizes">Sizes</a></h2>
+      <p class="ds-na">One size. The page sits in <code>.container</code> (up to <code>--layout-container-max</code> with <code>--layout-margin</code> either side); from LG the summary panel is fixed at <code>--layout-panel-width</code> (22rem) and the main column takes the rest. Below LG everything is full width.</p>
+    </section>
+
+    <section class="ds-section" id="states"><h2><a href="#states">States</a></h2>
+      <p>The skeleton itself is not interactive. Its interactive parts are the summary panel's action and compare toggle, and what changes from review to review is data: stale prices or permits, a photo that didn't load, a studio already in the comparison. The matrix shows the summary panel, where every one of those shows up.</p>
+      <div class="ds-matrix"><table>
+        <caption class="visually-hidden">Summary panel states, studio and spot</caption>
+        <thead><tr><th scope="col">State</th><th scope="col">Studio summary</th><th scope="col">Spot summary</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Default</th>
+            <td><div class="summary-panel" style="margin-top: 0; width: 18rem;"><dl class="summary-panel__row"><div><dt>All-in, 2 hours</dt><dd>$145.00</dd></div><div><dt>Overall</dt><dd>3.8<span class="visually-hidden"> out of 5</span></dd></div></dl><a class="btn btn--primary" href="https://thejunctionloft.example/book" target="_blank" rel="noopener">Book on the studio's site<span class="visually-hidden"> (opens in a new tab)</span></a><button class="btn compare-toggle" type="button" aria-pressed="false">Add to compare</button></div></td>
+            <td><div class="summary-panel" style="margin-top: 0; width: 18rem;"><dl class="summary-panel__row"><div><dt>Portrait permit</dt><dd>Not required</dd></div><div><dt>Best light</dt><dd>Golden hour</dd></div></dl><a class="btn btn--primary" href="https://www.google.com/maps/search/?api=1&amp;query=43.6846,-79.3653" target="_blank" rel="noopener">Open in Google Maps<span class="visually-hidden"> (opens in a new tab)</span></a></div></td></tr>
+          <tr><th scope="row">Hover</th>
+            <td><div class="summary-panel" style="margin-top: 0; width: 18rem;"><dl class="summary-panel__row"><div><dt>All-in, 2 hours</dt><dd>$145.00</dd></div><div><dt>Overall</dt><dd>3.8<span class="visually-hidden"> out of 5</span></dd></div></dl><a class="btn btn--primary" data-state="hover" href="https://thejunctionloft.example/book" target="_blank" rel="noopener">Book on the studio's site<span class="visually-hidden"> (opens in a new tab)</span></a><button class="btn compare-toggle" type="button" aria-pressed="false">Add to compare</button></div></td>
+            <td><div class="summary-panel" style="margin-top: 0; width: 18rem;"><dl class="summary-panel__row"><div><dt>Portrait permit</dt><dd>Not required</dd></div><div><dt>Best light</dt><dd>Golden hour</dd></div></dl><a class="btn btn--primary" data-state="hover" href="https://www.google.com/maps/search/?api=1&amp;query=43.6846,-79.3653" target="_blank" rel="noopener">Open in Google Maps<span class="visually-hidden"> (opens in a new tab)</span></a></div></td></tr>
+          <tr><th scope="row">Focus</th>
+            <td><div class="summary-panel" style="margin-top: 0; width: 18rem;"><dl class="summary-panel__row"><div><dt>All-in, 2 hours</dt><dd>$145.00</dd></div><div><dt>Overall</dt><dd>3.8<span class="visually-hidden"> out of 5</span></dd></div></dl><a class="btn btn--primary" href="https://thejunctionloft.example/book" target="_blank" rel="noopener">Book on the studio's site<span class="visually-hidden"> (opens in a new tab)</span></a><button class="btn compare-toggle" data-state="focus" type="button" aria-pressed="false">Add to compare</button></div></td>
+            <td><div class="summary-panel" style="margin-top: 0; width: 18rem;"><dl class="summary-panel__row"><div><dt>Portrait permit</dt><dd>Not required</dd></div><div><dt>Best light</dt><dd>Golden hour</dd></div></dl><a class="btn btn--primary" data-state="focus" href="https://www.google.com/maps/search/?api=1&amp;query=43.6846,-79.3653" target="_blank" rel="noopener">Open in Google Maps<span class="visually-hidden"> (opens in a new tab)</span></a></div></td></tr>
+          <tr><th scope="row">Active</th>
+            <td><div class="summary-panel" style="margin-top: 0; width: 18rem;"><dl class="summary-panel__row"><div><dt>All-in, 2 hours</dt><dd>$145.00</dd></div><div><dt>Overall</dt><dd>3.8<span class="visually-hidden"> out of 5</span></dd></div></dl><a class="btn btn--primary" data-state="active" href="https://thejunctionloft.example/book" target="_blank" rel="noopener">Book on the studio's site<span class="visually-hidden"> (opens in a new tab)</span></a><button class="btn compare-toggle" type="button" aria-pressed="false">Add to compare</button></div></td>
+            <td><div class="summary-panel" style="margin-top: 0; width: 18rem;"><dl class="summary-panel__row"><div><dt>Portrait permit</dt><dd>Not required</dd></div><div><dt>Best light</dt><dd>Golden hour</dd></div></dl><a class="btn btn--primary" data-state="active" href="https://www.google.com/maps/search/?api=1&amp;query=43.6846,-79.3653" target="_blank" rel="noopener">Open in Google Maps<span class="visually-hidden"> (opens in a new tab)</span></a></div></td></tr>
+          <tr><th scope="row">Disabled</th>
+            <td colspan="2"><p class="ds-na">Never. A studio can't be published without a booking link, or a spot without coordinates (L2-002), so the primary action always works. The compare toggle stays enabled at the four-studio limit and explains the limit in a toast instead (L2-030.3).</p></td></tr>
+          <tr><th scope="row">Stale</th>
+            <td><div class="summary-panel" style="margin-top: 0; width: 18rem;"><dl class="summary-panel__row"><div><dt>All-in, 2 hours</dt><dd>$270.00</dd></div><div><dt>Overall</dt><dd>3.8<span class="visually-hidden"> out of 5</span></dd></div></dl><p><span class="badge badge--warning">Prices may be out of date</span></p><a class="btn btn--primary" href="https://ossingtonblackbox.example/book" target="_blank" rel="noopener">Book on the studio's site<span class="visually-hidden"> (opens in a new tab)</span></a><button class="btn compare-toggle" type="button" aria-pressed="false">Add to compare</button><p class="text-caption">ShotThere doesn't take bookings or payments. Prices verified 2 Mar 2026.</p></div></td>
+            <td><div class="summary-panel" style="margin-top: 0; width: 18rem;"><dl class="summary-panel__row"><div><dt>Portrait permit</dt><dd>Required</dd></div><div><dt>Best light</dt><dd>Golden hour</dd></div></dl><p><span class="badge badge--warning">Permit rules may be out of date</span></p><a class="btn btn--primary" href="https://www.google.com/maps/search/?api=1&amp;query=43.6503,-79.3596" target="_blank" rel="noopener">Open in Google Maps<span class="visually-hidden"> (opens in a new tab)</span></a><p class="text-caption">Permit rules verified 20 Mar 2026. Check the source before a paid shoot.</p></div></td></tr>
+          <tr><th scope="row">In compare <code>aria-pressed</code></th>
+            <td><div class="summary-panel" style="margin-top: 0; width: 18rem;"><dl class="summary-panel__row"><div><dt>All-in, 2 hours</dt><dd>$145.00</dd></div><div><dt>Overall</dt><dd>3.8<span class="visually-hidden"> out of 5</span></dd></div></dl><a class="btn" href="https://thejunctionloft.example/book" target="_blank" rel="noopener">Book on the studio's site<span class="visually-hidden"> (opens in a new tab)</span></a><button class="btn compare-toggle" type="button" aria-pressed="true">Remove from compare</button></div></td>
+            <td><p class="ds-na">Spots are not compared.</p></td></tr>
+        </tbody>
+      </table></div>
+      <p>Stale is Ossington Blackbox (prices verified 2 Mar 2026, 225 days) and Distillery District (permit rules verified 20 Mar 2026, 207 days). In compare, Book steps down to a secondary button so the pressed toggle reads as the panel's current state, and the <a href="compare-bar.html">compare bar</a> appears at the bottom of the window.</p>
+
+      <h3>Hero</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas" style="align-items: flex-start;">
+          <div style="flex: 1 1 16rem; min-width: 0;"><p class="text-caption">Loaded</p><div class="review-hero" style="margin-top: var(--space-2);"><img src="../assets/img/studio-the-junction-loft.svg" alt="The Junction Loft: two tall north windows over a brick wall, a white cyc in the right corner and a softbox on a stand." width="1200" height="800"></div></div>
+          <div style="flex: 1 1 16rem; min-width: 0;"><p class="text-caption">Failed to load</p><div class="review-hero" style="margin-top: var(--space-2);"><div class="media-fallback"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 16 5-5 4 4 2-2 7 7"/><path d="M3 3l18 18"/></svg><span>The Junction Loft: two tall north windows over a brick wall, a white cyc in the right corner and a softbox on a stand.</span></div></div></div>
+        </div>
+        <div class="ds-example__caption"><span>A failed hero keeps its slot and aspect ratio and shows its alt text in <code>.media-fallback</code>, so nothing below it moves (L2-086.1).</span></div>
+      </div>
+
+      <h3>Page states</h3>
+      <div class="ds-table-wrap"><table class="ds-table">
+        <caption class="visually-hidden">What the layout does in each review mock state</caption>
+        <thead><tr><th scope="col">Mock</th><th scope="col">What the layout does</th></tr></thead>
+        <tbody>
+          <tr><td><a href="../../mocks/pages/studio/stale.html">studio/stale</a></td><td>Warning alert inside the price block, warning badge in the summary; no episode section (no video).</td></tr>
+          <tr><td><a href="../../mocks/pages/studio/minimal.html">studio/minimal</a></td><td>No episode and no "Featured in": both sections are gone, not empty. Rows with "None" or "No" still render.</td></tr>
+          <tr><td><a href="../../mocks/pages/studio/playing.html">studio/playing</a></td><td>The poster is replaced by the player in place; the section keeps its 16:9 slot.</td></tr>
+          <tr><td><a href="../../mocks/pages/studio/media-failed.html">studio/media-failed</a></td><td>Hero, two gallery photos and the poster show alt-text fallbacks at the same size.</td></tr>
+          <tr><td><a href="../../mocks/pages/studio/in-compare.html">studio/in-compare</a></td><td><code>main</code> gains <code>.has-compare-bar</code>, padding its end by <code>--space-24</code> plus the safe-area inset so the fixed bar never covers the last section.</td></tr>
+          <tr><td><a href="../../mocks/pages/spot/stale-permit.html">spot/stale-permit</a></td><td>Warning alert in the Permits section, warning badge in the summary.</td></tr>
+          <tr><td><a href="../../mocks/pages/spot/no-rain-backup.html">spot/no-rain-backup</a></td><td>Rain backup stays and holds a compact empty state linking to the studio list.</td></tr>
+          <tr><td><a href="../../mocks/pages/spot/no-video.html">spot/no-video</a></td><td>No "Watch the episode" section and no placeholder.</td></tr>
+          <tr><td><a href="../../mocks/pages/spot/map-failed.html">spot/map-failed</a></td><td>The map slot keeps its size and offers the coordinates and Google Maps; nothing else changes.</td></tr>
+        </tbody>
+      </table></div>
+
+      <h3>Both themes</h3>
+      <div class="ds-themes">
+        <div data-theme="light">
+          <div class="review-head" style="margin-top: 0;"><p style="font: var(--text-h1); letter-spacing: var(--letter-spacing-tight);">Ossington Blackbox</p><ul class="review-head__meta"><li>Ossington</li><li>Reviewed <time datetime="2026-03-06">6 March 2026</time></li></ul></div>
+          <div class="summary-panel" style="margin-top: var(--space-5);"><dl class="summary-panel__row"><div><dt>All-in, 2 hours</dt><dd>$270.00</dd></div><div><dt>Overall</dt><dd>3.8<span class="visually-hidden"> out of 5</span></dd></div></dl><p><span class="badge badge--warning">Prices may be out of date</span></p><a class="btn btn--primary" href="https://ossingtonblackbox.example/book" target="_blank" rel="noopener">Book on the studio's site<span class="visually-hidden"> (opens in a new tab)</span></a><button class="btn compare-toggle" type="button" aria-pressed="true">Remove from compare</button></div>
+        </div>
+        <div data-theme="dark">
+          <div class="review-head" style="margin-top: 0;"><p style="font: var(--text-h1); letter-spacing: var(--letter-spacing-tight);">Ossington Blackbox</p><ul class="review-head__meta"><li>Ossington</li><li>Reviewed <time datetime="2026-03-06">6 March 2026</time></li></ul></div>
+          <div class="summary-panel" style="margin-top: var(--space-5);"><dl class="summary-panel__row"><div><dt>All-in, 2 hours</dt><dd>$270.00</dd></div><div><dt>Overall</dt><dd>3.8<span class="visually-hidden"> out of 5</span></dd></div></dl><p><span class="badge badge--warning">Prices may be out of date</span></p><a class="btn btn--primary" href="https://ossingtonblackbox.example/book" target="_blank" rel="noopener">Book on the studio's site<span class="visually-hidden"> (opens in a new tab)</span></a><button class="btn compare-toggle" type="button" aria-pressed="true">Remove from compare</button></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ds-section" id="responsive"><h2><a href="#responsive">Responsive behaviour</a></h2>
+      <div class="ds-table-wrap"><table class="ds-table">
+        <caption class="visually-hidden">Review layout by breakpoint</caption>
+        <thead><tr><th scope="col">Breakpoint</th><th scope="col">Columns</th><th scope="col">Summary panel</th><th scope="col">Hero</th></tr></thead>
+        <tbody>
+          <tr><td>XS, below 36rem</td><td>One, gap <code>--space-10</code></td><td>Straight after the hero, before Pricing or the map (<code>order: -1</code>), <code>--space-8</code> above it, buttons full width</td><td>3:2</td></tr>
+          <tr><td>SM, 36rem</td><td>One</td><td>As XS</td><td>3:2</td></tr>
+          <tr><td>MD, 48rem</td><td>One</td><td>As XS</td><td>16:7</td></tr>
+          <tr><td>LG, 62rem</td><td>Two: <code>minmax(0, 1fr)</code> and 22rem, gap <code>--space-16</code></td><td>Right column, sticky at <code>--space-8</code> from the top, <code>--space-16</code> down so it lines up with the first section</td><td>16:7</td></tr>
+          <tr><td>XL, 75rem</td><td>As LG; the container stops growing at <code>--layout-container-max</code></td><td>As LG</td><td>16:7</td></tr>
+        </tbody>
+      </table></div>
+      <ul>
+        <li>The head and hero sit above the two columns at every width, so the photo always spans the content width.</li>
+        <li>The main column is <code>min-width: 0</code>, so wide content inside it (tables, the comparison of light by time of day) wraps or scrolls inside its own wrapper and never pushes the page sideways at 320px.</li>
+        <li>Long names and addresses wrap anywhere ("Leslieville Daylight Studio", "Ossington Ave at Dundas St W, ground floor"); the meta list wraps between items, keeping each fact whole.</li>
+        <li>Section headings land <code>--space-8</code> below the top of the window when reached from a link (<code>scroll-margin-top</code>).</li>
+        <li>When the compare bar is showing, <code>.has-compare-bar</code> on <code>&lt;main&gt;</code> adds the bar's height plus <code>env(safe-area-inset-bottom)</code> to the end of the page.</li>
+      </ul>
+      <div class="ds-iframes">
+        <iframe class="ds-iframe" src="../../mocks/pages/studio/stale.html?chrome=0" title="Stale studio review mock at phone width: Ossington Blackbox" loading="lazy"></iframe>
+        <iframe class="ds-iframe" src="../../mocks/pages/spot/stale-permit.html?chrome=0&amp;theme=dark" title="Stale permit spot review mock at phone width in the dark theme: Distillery District" loading="lazy"></iframe>
+      </div>
+    </section>
+
+    <section class="ds-section" id="theming"><h2><a href="#theming">Theming</a></h2>
+      <p>The layout reads semantic tokens only and has no component tokens: <code>--color-fg-muted</code> for the meta line, <code>--color-fg-subtle</code> for separators and summary labels, <code>--color-border-default</code> for the panel's hairline, <code>--color-bg-photo</code> behind the hero, plus the type, spacing and radius tokens below.</p>
+      <p>The summary panel has no fill in either theme: it is an outline on the page canvas, so it never competes with the photos. In dark the canvas goes to deep stone, the hairline to <code>--palette-stone-750</code>, and the hero placeholder darkens so a loading photo doesn't flash light. Photos are content and keep their own colours in both themes.</p>
+      <p>To re-theme, change the semantic tokens; don't give the panel its own background or shadow. A raised, filled panel beside the review reads like an advertisement.</p>
+    </section>
+
+    <section class="ds-section" id="accessibility"><h2><a href="#accessibility">Accessibility</a></h2>
+      <h3>Role and pattern</h3>
+      <p>Native landmarks and headings, no ARIA widget. <code>&lt;main&gt;</code> holds the page; the breadcrumb is a <code>&lt;nav aria-label="Breadcrumb"&gt;</code>; the name is the only <code>&lt;h1&gt;</code> (L2-003.1); each review section is a <code>&lt;section aria-labelledby&gt;</code> named by its <code>&lt;h2&gt;</code>, so it is listed as a region; the summary is an <code>&lt;aside aria-label="Summary"&gt;</code> (complementary landmark). The meta line is a <code>&lt;ul&gt;</code> whose separators are written as <code>content: "·" / ""</code>, empty alternative text, so they are not read. See <a href="https://www.w3.org/WAI/ARIA/apg/practices/landmark-regions/">APG: Landmark regions</a>.</p>
+      <h3>Keyboard</h3>
+      <div class="ds-table-wrap"><table class="ds-table ds-keys"><thead><tr><th scope="col">Key</th><th scope="col">Action</th></tr></thead><tbody>
+        <tr><td><kbd>Tab</kbd></td><td>Skip link, header, breadcrumb, then each section's links and controls in reading order, then the summary panel's action and compare toggle, then the footer.</td></tr>
+        <tr><td><kbd>Shift</kbd> + <kbd>Tab</kbd></td><td>The same, backwards.</td></tr>
+        <tr><td><kbd>Enter</kbd></td><td>On "Book on the studio's site" or "Open in Google Maps": opens the page in a new tab.</td></tr>
+        <tr><td><kbd>Space</kbd> / <kbd>Enter</kbd></td><td>On the compare toggle: adds or removes the studio; <code>aria-pressed</code> and the label change together.</td></tr>
+      </tbody></table></div>
+      <h3>Focus</h3>
+      <p>Nothing moves focus on load. The skip link targets <code>&lt;main tabindex="-1"&gt;</code>, which shows no ring. The sticky panel has its own column from LG, so it never covers a focused element (2.4.11). <b>Known gap:</b> below LG the panel is shown first but is last in the source, so it is reached by <kbd>Tab</kbd> only after the whole review (1.3.2, 2.4.3). The fix proposed for <code>components.css</code> is to move the <code>&lt;aside&gt;</code> first in the source and place it in the second column from LG; until then keep the panel's contents short so nothing important is only there. Every fact in the panel is repeated in the sections below it.</p>
+      <h3>Labelling</h3>
+      <ul>
+        <li>The <code>&lt;aside&gt;</code> is named "Summary"; each <code>&lt;section&gt;</code> is named by its heading through <code>aria-labelledby</code>.</li>
+        <li>Scores carry the scale in hidden text: "3.8 out of 5".</li>
+        <li>External actions add "(opens in a new tab)" in visually hidden text; the arrow icon is <code>aria-hidden</code>.</li>
+        <li>The hero has real alt text describing the space (stored with the image); the review date is a <code>&lt;time datetime&gt;</code>.</li>
+      </ul>
+      <h3>Contrast</h3>
+      <div class="ds-example__canvas ds-example__canvas--stack" style="padding: 0; gap: var(--space-2);">
+        <div class="ds-pair"><span>Name and summary values</span><span class="ds-pair__ratio" data-contrast="--color-fg-default|--color-bg-canvas" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Meta line and captions</span><span class="ds-pair__ratio" data-contrast="--color-fg-muted|--color-bg-canvas" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Summary labels and separators</span><span class="ds-pair__ratio" data-contrast="--color-fg-subtle|--color-bg-canvas" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Primary action</span><span class="ds-pair__ratio" data-contrast="--color-fg-on-action|--color-action" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Secondary button edge</span><span class="ds-pair__ratio" data-contrast="--color-border-strong|--color-bg-canvas" data-min="3"></span></div>
+        <div class="ds-pair"><span>Pressed compare toggle</span><span class="ds-pair__ratio" data-contrast="--color-fg-accent|--color-accent-subtle" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Stale badge</span><span class="ds-pair__ratio" data-contrast="--color-warning-fg|--color-warning-bg" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Hero alt-text fallback</span><span class="ds-pair__ratio" data-contrast="--color-fg-muted|--color-bg-photo" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Focus ring</span><span class="ds-pair__ratio" data-contrast="--color-focus-ring|--color-bg-canvas" data-min="3"></span></div>
+      </div>
+      <p>The panel's hairline (<code>--color-border-default</code>) is decorative: it groups, but nothing depends on seeing it, and every control inside has its own 3:1 edge.</p>
+      <h3>Motion</h3>
+      <p>None of its own. Sticky positioning is not animation. In-page links scroll smoothly, and <code>prefers-reduced-motion</code> turns that off (<code>scroll-behavior: auto</code>).</p>
+      <h3>Touch</h3>
+      <p>The summary panel's buttons fill its width and are 44px tall (<code>--control-height-md</code>). Nothing in the layout depends on hover.</p>
+    </section>
+
+    <section class="ds-section" id="content"><h2><a href="#content">Content</a></h2>
+      <ul>
+        <li><b>Head:</b> the name exactly as the location writes it, then two or three facts. Studio: neighbourhood · cross streets with the floor · "Reviewed 29 September 2026". Spot: neighbourhood · type ("Don Valley · Park"). Guide: "3 studios · Updated 3 October 2026". Long dates in the head.</li>
+        <li><b>Section titles</b> are fixed and sentence case: "Pricing", "Measured specifications", "Gear", "Logistics", "Standard test shots", "From a real shoot", "Verdict", "Watch the episode", "Featured in"; "Location and map", "How to get there", "Best light", "Sample shots", "Practical conditions", "Permits", "Best uses", "Rain backup".</li>
+        <li><b>Summary facts:</b> two, the ones a reader decides on. Studio: "All-in, 2 hours" and "Overall". Spot: "Portrait permit" and "Best light".</li>
+        <li><b>Summary action:</b> "Book on the studio's site" or "Open in Google Maps", naming where it goes. Never "Book now": ShotThere takes no bookings.</li>
+        <li><b>Summary caption:</b> what we don't do, then when the data was checked, short date: "ShotThere doesn't take bookings or payments. Prices verified 22 Sep 2026." / "Permit rules verified 1 Sep 2026. Check the source before a paid shoot."</li>
+      </ul>
+    </section>
+
+    <section class="ds-section" id="do-dont"><h2><a href="#do-dont">Do and don't</a></h2>
+      <div class="ds-dodont">
+        <figure class="ds-do"><div class="ds-example__canvas"><div class="summary-panel" style="margin-top: 0; width: 100%;"><dl class="summary-panel__row"><div><dt>All-in, 2 hours</dt><dd>$145.00</dd></div><div><dt>Overall</dt><dd>3.8<span class="visually-hidden"> out of 5</span></dd></div></dl><a class="btn btn--primary" href="https://thejunctionloft.example/book" target="_blank" rel="noopener">Book on the studio's site<span class="visually-hidden"> (opens in a new tab)</span></a></div></div><figcaption>Keep the summary to two facts and one action; the detail lives in the sections.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas"><div class="summary-panel" style="margin-top: 0; width: 100%;"><dl class="summary-panel__row"><div><dt>Hourly rate</dt><dd>$60.00</dd></div><div><dt>Minimum</dt><dd>2 hours</dd></div><div><dt>Cleaning fee</dt><dd>$25.00</dd></div><div><dt>After hours</dt><dd>$30.00</dd></div><div><dt>Light</dt><dd>5</dd></div><div><dt>Space</dt><dd>3</dd></div></dl></div></div><figcaption>Don't copy the price block and the rubric into the panel. On phones it comes first and pushes the review down.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--stack"><p style="font: var(--text-h3);">Verdict</p><p style="font: var(--text-h3);">Featured in</p></div><figcaption>No video ID, no section: go straight from the verdict to "Featured in" (L2-013.2).</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--stack"><p style="font: var(--text-h3);">Watch the episode</p><p class="text-muted">Video coming soon.</p></div><figcaption>Don't leave an empty "Watch the episode" placeholder. Rain backup is the one section that stays and explains itself.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas"><ul class="review-head__meta"><li>Junction</li><li>Reviewed <time datetime="2026-09-29">29 September 2026</time></li></ul></div><figcaption>Mark the review date with <code>&lt;time datetime&gt;</code>, as studio/stale and studio/minimal do.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--stack"><p class="text-muted">Gallery · Verdict · Pricing · Test shots</p></div><figcaption>Don't reorder sections for one location (a gallery first because the photos are good). The fixed order is what makes reviews comparable (L2-009.2).</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="ds-section" id="tokens"><h2><a href="#tokens">Tokens</a></h2>
+      <div class="ds-table-wrap"><table class="ds-table">
+        <thead><tr><th scope="col">Part</th><th scope="col">Token</th><th scope="col">Light</th><th scope="col">Dark</th></tr></thead>
+        <tbody>
+          <tr><td>Meta line</td><td><code>--color-fg-muted</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-muted" data-swatch></i><span data-token="--color-fg-muted"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-muted" data-swatch></i><span data-token="--color-fg-muted"></span></span></td></tr>
+          <tr><td>Separators, summary labels</td><td><code>--color-fg-subtle</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-subtle" data-swatch></i><span data-token="--color-fg-subtle"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-subtle" data-swatch></i><span data-token="--color-fg-subtle"></span></span></td></tr>
+          <tr><td>Panel border</td><td><code>--color-border-default</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-border-default" data-swatch></i><span data-token="--color-border-default"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-border-default" data-swatch></i><span data-token="--color-border-default"></span></span></td></tr>
+          <tr><td>Hero placeholder</td><td><code>--color-bg-photo</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-bg-photo" data-swatch></i><span data-token="--color-bg-photo"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-bg-photo" data-swatch></i><span data-token="--color-bg-photo"></span></span></td></tr>
+          <tr><td>Page</td><td><code>--color-bg-canvas</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-bg-canvas" data-swatch></i><span data-token="--color-bg-canvas"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-bg-canvas" data-swatch></i><span data-token="--color-bg-canvas"></span></span></td></tr>
+          <tr><td>Panel width (LG and up)</td><td><code>--layout-panel-width</code></td><td colspan="2"><span data-token="--layout-panel-width"></span></td></tr>
+          <tr><td>Name</td><td><code>--text-display</code>, <code>--letter-spacing-tight</code></td><td colspan="2"><span data-token="--text-display"></span></td></tr>
+          <tr><td>Meta line</td><td><code>--text-body-lg</code></td><td colspan="2"><span data-token="--text-body-lg"></span></td></tr>
+          <tr><td>Summary value</td><td><code>--text-h3</code></td><td colspan="2"><span data-token="--text-h3"></span></td></tr>
+          <tr><td>Between sections · column gap from LG</td><td><code>--space-16</code></td><td colspan="2"><span data-token="--space-16"></span></td></tr>
+          <tr><td>Column gap below LG</td><td><code>--space-10</code></td><td colspan="2"><span data-token="--space-10"></span></td></tr>
+          <tr><td>Head top · sticky offset · h3 top</td><td><code>--space-8</code></td><td colspan="2"><span data-token="--space-8"></span></td></tr>
+          <tr><td>Panel padding · hero top · heading bottom</td><td><code>--space-6</code></td><td colspan="2"><span data-token="--space-6"></span></td></tr>
+          <tr><td>Panel gap</td><td><code>--space-5</code></td><td colspan="2"><span data-token="--space-5"></span></td></tr>
+          <tr><td>Hero and panel corners</td><td><code>--radius-lg</code></td><td colspan="2"><span data-token="--radius-lg"></span></td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section class="ds-section" id="code"><h2><a href="#code">Code</a></h2>
+      <pre><code>&lt;main id="main" class="container" tabindex="-1"&gt;
+  &lt;nav aria-label="Breadcrumb"&gt;…&lt;/nav&gt;
+  &lt;div class="review-head"&gt;
+    &lt;h1&gt;The Junction Loft&lt;/h1&gt;
+    &lt;ul class="review-head__meta"&gt;
+      &lt;li&gt;Junction&lt;/li&gt;
+      &lt;li&gt;Dundas St W at Pacific Ave, 2nd floor&lt;/li&gt;
+      &lt;li&gt;Reviewed &lt;time datetime="2026-09-29"&gt;29 September 2026&lt;/time&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/div&gt;
+  &lt;div class="review-hero"&gt;&lt;img src="…" alt="The Junction Loft: two tall north windows over a brick wall, …" width="1200" height="800" loading="eager" fetchpriority="high"&gt;&lt;/div&gt;
+
+  &lt;div class="review-layout"&gt;
+    &lt;div class="review-main"&gt;
+      &lt;section class="review-section" aria-labelledby="pricing"&gt;
+        &lt;h2 id="pricing"&gt;Pricing&lt;/h2&gt; …
+      &lt;/section&gt;
+      &lt;section class="review-section" aria-labelledby="gallery"&gt;
+        &lt;div class="section-head"&gt;&lt;h2 id="gallery"&gt;From a real shoot&lt;/h2&gt;&lt;span class="text-caption"&gt;8 photos&lt;/span&gt;&lt;/div&gt; …
+      &lt;/section&gt;
+      …
+    &lt;/div&gt;
+    &lt;aside class="summary-panel" aria-label="Summary"&gt;…&lt;/aside&gt;
+  &lt;/div&gt;
+&lt;/main&gt;</code></pre>
+      <div class="ds-table-wrap"><table class="ds-table"><thead><tr><th scope="col">Class / attribute</th><th scope="col">Effect</th></tr></thead><tbody>
+        <tr><td><code>.review-head</code>, <code>.review-head__meta</code></td><td>Name in display type; dot-separated fact list.</td></tr>
+        <tr><td><code>.review-hero</code></td><td>Photo slot: 3:2, 16:7 from MD, rounded, photo-grey placeholder.</td></tr>
+        <tr><td><code>.review-layout</code></td><td>One column; from LG main plus a 22rem panel column.</td></tr>
+        <tr><td><code>.review-main</code></td><td>Main column; <code>min-width: 0</code> so its contents can't widen the page.</td></tr>
+        <tr><td><code>.review-section</code></td><td>Section spacing, heading spacing, scroll margin.</td></tr>
+        <tr><td><code>.section-head</code></td><td>Heading and caption on one baseline, wrapping.</td></tr>
+        <tr><td><code>.summary-panel</code>, <code>.summary-panel__row</code></td><td>Outlined panel; first below LG, sticky from LG; two-fact grid.</td></tr>
+        <tr><td><code>main.has-compare-bar</code></td><td>Pads the page end while the compare bar shows.</td></tr>
+      </tbody></table></div>
+    </section>
+
+    <section class="ds-section" id="sources"><h2><a href="#sources">Sources</a></h2>
+      <ul>
+        <li>Studio review: <a href="../../mocks/pages/studio/default.html">pages/studio/default</a>, <a href="../../mocks/pages/studio/minimal.html">pages/studio/minimal</a>, <a href="../../mocks/pages/studio/stale.html">pages/studio/stale</a>, <a href="../../mocks/pages/studio/in-compare.html">pages/studio/in-compare</a>, <a href="../../mocks/pages/studio/media-failed.html">pages/studio/media-failed</a>, <a href="../../mocks/pages/studio/playing.html">pages/studio/playing</a></li>
+        <li>Spot review: <a href="../../mocks/pages/spot/default.html">pages/spot/default</a>, <a href="../../mocks/pages/spot/stale-permit.html">pages/spot/stale-permit</a>, <a href="../../mocks/pages/spot/no-rain-backup.html">pages/spot/no-rain-backup</a>, <a href="../../mocks/pages/spot/no-video.html">pages/spot/no-video</a>, <a href="../../mocks/pages/spot/map-failed.html">pages/spot/map-failed</a></li>
+        <li>Head reused: <a href="../../mocks/pages/guide/default.html">pages/guide/default</a>, <a href="../../mocks/dialogs/lightbox/default.html">dialogs/lightbox/default</a> (behind the dialog)</li>
+        <li>Requirements: L2-003, L2-009.2, L2-013.2, L2-020, L2-030.6, L2-036.2, L2-038.1, L2-086.1</li>
+      </ul>
+      <p>Drift fixed during extraction: the review date in studio/default, in-compare, media-failed and playing was plain text; the system uses <code>&lt;time datetime&gt;</code> as studio/stale and studio/minimal already do. Not fixed (needs a CSS change): below LG the summary panel is moved first with <code>order: -1</code> while it stays last in the source, so visual and Tab order differ; the mocks also space the breadcrumb, the disclosure and the score list with inline <code>margin-top</code> styles that belong in the stylesheet.</p>
+    </section>
+
+    <footer class="ds-footer"><span>ShotThere design system · extracted from <a href="../../mocks/index.html">docs/mocks</a> on 13 October 2026</span><a href="#top">Back to top</a></footer>
+  </main>
+</div>
+<script src="../assets/ds.js"></script>
+</body>
+</html>
