@@ -19,3 +19,14 @@ ALTER TABLE "Studio" ALTER COLUMN "backdrops" SET NOT NULL;
 
 -- ICD §13.1 A8: spots carry an episode title like studios
 ALTER TABLE "Spot" ADD COLUMN "episodeTitle" TEXT;
+
+-- ICD §13.6, §13.12, A21, OI-8: guides store a summary and their data points; introduction and entry notes may be empty
+CREATE TYPE "GuideDataPointKey" AS ENUM ('all_in_cost_2h', 'overall_score');
+ALTER TABLE "Guide" ADD COLUMN "summary" TEXT;
+ALTER TABLE "Guide" ADD COLUMN "dataPoints" "GuideDataPointKey"[] NOT NULL DEFAULT ARRAY[]::"GuideDataPointKey"[];
+-- Existing guides showed both facts on studio entries; keep that.
+UPDATE "Guide" SET "dataPoints" = ARRAY['all_in_cost_2h', 'overall_score']::"GuideDataPointKey"[];
+ALTER TABLE "Guide" ALTER COLUMN "introduction" DROP NOT NULL;
+UPDATE "Guide" SET "introduction" = NULL WHERE btrim("introduction") = '';
+ALTER TABLE "GuideEntry" ALTER COLUMN "note" DROP NOT NULL;
+UPDATE "GuideEntry" SET "note" = NULL WHERE btrim("note") = '';

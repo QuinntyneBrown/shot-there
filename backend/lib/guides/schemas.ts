@@ -6,7 +6,7 @@ const DUPLICATE_MESSAGE = { studio: 'This studio is already in the guide', spot:
 const guideEntryInputSchema = z.strictObject({
   kind: z.enum(['studio', 'spot'], { error: 'Choose a studio or a spot' }),
   locationId: z.string({ error: 'Choose a studio or a spot' }).min(1, { error: 'Choose a studio or a spot' }),
-  note: optionalText(1000).transform((note) => note ?? ''),
+  note: optionalText(1000),
   position: z
     .number({ error: 'Enter a whole number of 0 or more' })
     .int({ error: 'Enter a whole number of 0 or more' })
@@ -17,7 +17,7 @@ const guideEntryInputSchema = z.strictObject({
 export const guideInputSchema = z.strictObject({
   title: requiredText('Enter a title'),
   slug: slugField().optional(),
-  introduction: optionalText(5000).transform((introduction) => introduction ?? ''),
+  introduction: optionalText(5000),
   entries: z
     .array(guideEntryInputSchema)
     .max(100)

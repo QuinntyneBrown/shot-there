@@ -62,7 +62,9 @@ function toGuideRecord(row: GuideRow): GuideRecord {
     slug: row.slug,
     status: row.status,
     title: row.title,
+    summary: row.summary,
     introduction: row.introduction,
+    dataPoints: row.dataPoints,
     publishedAt: row.publishedAt,
     updatedAt: row.updatedAt,
     entries: row.entries.map((entry) => ({

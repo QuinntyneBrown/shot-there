@@ -249,7 +249,9 @@ model Guide {
   slug         String         @unique
   status       LocationStatus @default(draft)
   title        String
-  introduction String
+  summary      String?
+  introduction String?
+  dataPoints   GuideDataPointKey[] @default([])
   publishedAt  DateTime?
   createdAt    DateTime       @default(now())
   updatedAt    DateTime       @updatedAt
@@ -264,11 +266,16 @@ model GuideEntry {
   studio   Studio? @relation(fields: [studioId], references: [id])
   spotId   String?
   spot     Spot?   @relation(fields: [spotId], references: [id])
-  note     String
+  note     String?
   position Int
 
   @@unique([guideId, studioId])
   @@unique([guideId, spotId])
+}
+
+enum GuideDataPointKey {
+  all_in_cost_2h
+  overall_score
 }
 
 enum ContentType {
