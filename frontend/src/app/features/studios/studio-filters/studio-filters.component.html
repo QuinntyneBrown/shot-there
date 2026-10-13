@@ -1,0 +1,51 @@
+@let q = query();
+@let id = idPrefix();
+<fieldset class="filter-group">
+  <legend class="filter-group__title" i18n>All-in cost for 2 hours</legend>
+  <div class="field-row field-row--pair">
+    <div class="field">
+      <label class="field__label" [for]="id + '-cost-min'" i18n>Minimum</label>
+      <span class="input-group"><span class="addon" aria-hidden="true">$</span><input class="input" [id]="id + '-cost-min'" type="number" inputmode="decimal" min="0" step="10" autocomplete="off" [value]="q.costMin ?? ''" (input)="setCost('costMin', $any($event.target).value)" /></span>
+    </div>
+    <div class="field">
+      <label class="field__label" [for]="id + '-cost-max'" i18n>Maximum</label>
+      <span class="input-group"><span class="addon" aria-hidden="true">$</span><input class="input" [id]="id + '-cost-max'" type="number" inputmode="decimal" min="0" step="10" autocomplete="off" [value]="q.costMax ?? ''" (input)="setCost('costMax', $any($event.target).value)" /></span>
+    </div>
+  </div>
+</fieldset>
+
+<fieldset class="filter-group">
+  <legend class="filter-group__title" i18n>Neighbourhood</legend>
+  @for (hood of neighbourhoods; track hood.slug) {
+    <label class="choice"><input type="checkbox" [checked]="q.neighbourhoods.includes(hood.slug)" (change)="toggleNeighbourhood(hood.slug, $any($event.target).checked)" /><span>{{ hood.label }}</span></label>
+  }
+</fieldset>
+
+<fieldset class="filter-group">
+  <legend class="filter-group__title" i18n>Space and light</legend>
+  <label class="choice"><input type="checkbox" [checked]="q.naturalLight" (change)="update({ naturalLight: $any($event.target).checked })" /><span class="choice__text"><ng-container i18n>Natural light</ng-container><small i18n>At least medium at some time of day</small></span></label>
+  <label class="choice"><input type="checkbox" [checked]="q.cycWall" (change)="update({ cycWall: $any($event.target).checked })" /><span i18n>Cyc wall</span></label>
+  <div class="field field--spaced">
+    <label class="field__label" [for]="id + '-space'" i18n>Minimum usable space</label>
+    <select class="select" [id]="id + '-space'" (change)="setSpace($any($event.target).value)">
+      <option value="" [selected]="q.minSpaceSqm === undefined" i18n>Any size</option>
+      @for (space of spaces; track space) {
+        <option [value]="space" [selected]="q.minSpaceSqm === space" i18n>{{ space }} m² or more</option>
+      }
+    </select>
+  </div>
+</fieldset>
+
+<fieldset class="filter-group">
+  <legend class="filter-group__title" i18n>Included gear</legend>
+  @for (gear of gearOptions; track gear.value) {
+    <label class="choice"><input type="checkbox" [checked]="q.gear.includes(gear.value)" (change)="toggleGear(gear.value, $any($event.target).checked)" /><span>{{ gear.label }}</span></label>
+  }
+</fieldset>
+
+<fieldset class="filter-group">
+  <legend class="filter-group__title" i18n>Parking</legend>
+  @for (parking of parkingOptions; track parking.label) {
+    <label class="choice"><input type="radio" [name]="id + '-parking'" [checked]="q.parking === parking.value" (change)="update({ parking: parking.value })" /><span>{{ parking.label }}</span></label>
+  }
+</fieldset>

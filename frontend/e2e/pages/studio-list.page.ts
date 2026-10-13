@@ -1,5 +1,7 @@
 import { Locator, Page } from '@playwright/test';
 
+import { StudioFiltersPanel } from './studio-filters.panel';
+
 export class StudioListPage {
   readonly heading: Locator;
   readonly resultCount: Locator;
@@ -12,6 +14,10 @@ export class StudioListPage {
   readonly tryAgainButton: Locator;
   readonly sortControl: Locator;
   readonly announcer: Locator;
+  readonly filtersSidebar: StudioFiltersPanel;
+  readonly applyFiltersButton: Locator;
+  readonly noMatches: Locator;
+  readonly clearFiltersButton: Locator;
 
   constructor(private readonly page: Page) {
     this.heading = page.getByRole('heading', { level: 1 });
@@ -25,6 +31,18 @@ export class StudioListPage {
     this.tryAgainButton = page.getByRole('button', { name: 'Try again' });
     this.sortControl = page.getByRole('combobox', { name: 'Sort by' });
     this.announcer = page.locator('.cdk-live-announcer-element');
+    this.filtersSidebar = new StudioFiltersPanel(page.getByRole('complementary', { name: 'Filter studios' }));
+    this.applyFiltersButton = this.filtersSidebar.root.getByRole('button', { name: 'Apply filters' });
+    this.noMatches = page.getByRole('heading', { name: 'No studios match these filters' });
+    this.clearFiltersButton = page.getByRole('main').getByRole('button', { name: 'Clear filters' });
+  }
+
+  async useDesktopWidth(): Promise<void> {
+    await this.page.setViewportSize({ width: 1280, height: 900 });
+  }
+
+  async usePhoneWidth(): Promise<void> {
+    await this.page.setViewportSize({ width: 320, height: 700 });
   }
 
   async open(query = ''): Promise<void> {

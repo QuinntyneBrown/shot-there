@@ -1,20 +1,24 @@
-import { Component, computed, inject } from '@angular/core';
+import { Component, computed, effect, inject, linkedSignal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, Router } from '@angular/router';
 import { StudiosService, StudioSummary } from '@shot-there/api';
 import { BehaviorSubject, catchError, combineLatest, map, of, startWith, switchMap } from 'rxjs';
 
+import { AnnouncerService } from '../../../core/a11y/announcer.service';
 import { StudioCardComponent } from '../studio-card/studio-card.component';
+import { StudioFiltersComponent } from '../studio-filters/studio-filters.component';
 import { StudioSortControlComponent } from '../studio-sort-control/studio-sort-control.component';
+import { countActiveFilters } from './count-active-filters';
 import { parseStudioListQuery } from './parse-studio-list-query';
 import { StudioListQuery } from './studio-list-query';
 import { StudioListState } from './studio-list-state';
 import { StudioSort } from './studio-sort';
 import { toStudioListQueryParams } from './to-studio-list-query-params';
+import { withoutFilters } from './without-filters';
 
 @Component({
   selector: 'st-studio-list-page',
-  imports: [StudioCardComponent, StudioSortControlComponent],
+  imports: [StudioCardComponent, StudioSortControlComponent, StudioFiltersComponent],
   templateUrl: './studio-list-page.component.html',
   styleUrl: './studio-list-page.component.css'
 })
@@ -22,10 +26,15 @@ export class StudioListPageComponent {
   private readonly studiosService = inject(StudiosService);
   private readonly route = inject(ActivatedRoute);
   private readonly router = inject(Router);
+  private readonly announcer = inject(AnnouncerService);
   private readonly retries = new BehaviorSubject<void>(undefined);
   private readonly query$ = this.route.queryParamMap.pipe(map(parseStudioListQuery));
+  private announceNextCount = false;
 
   protected readonly query = toSignal(this.query$, { requireSync: true });
+  protected readonly activeFilterCount = computed(() => countActiveFilters(this.query()));
+  /** The sidebar's unapplied filters; reset whenever the URL changes. */
+  protected readonly sidebarDraft = linkedSignal(() => this.query());
   protected readonly state = toSignal(
     combineLatest([this.query$, this.retries]).pipe(
       switchMap(([query]) =>
@@ -45,12 +54,31 @@ export class StudioListPageComponent {
     return state.status === 'loaded' ? state.studios : [];
   });
 
+  constructor() {
+    effect(() => {
+      if (this.state().status === 'loaded' && this.announceNextCount) {
+        this.announceNextCount = false;
+        const count = this.studios().length;
+        this.announcer.announcePolite(count === 1 ? $localize`1 studio` : $localize`${count}:count: studios`);
+      }
+    });
+  }
+
   retry(): void {
     this.retries.next();
   }
 
   changeSort(sort: StudioSort): void {
     this.applyQuery({ ...this.query(), sort });
+  }
+
+  applyFilters(query: StudioListQuery): void {
+    this.announceNextCount = true;
+    this.applyQuery(query);
+  }
+
+  clearFilters(): void {
+    this.applyFilters(withoutFilters(this.query()));
   }
 
   private applyQuery(query: StudioListQuery): void {

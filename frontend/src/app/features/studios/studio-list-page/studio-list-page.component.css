@@ -3,6 +3,10 @@
 .browse__title { grid-area: title; display: flex; flex-direction: column; gap: var(--space-1); margin-block: var(--space-6); }
 @media (min-width: 62rem) { .browse__title { margin: 0 0 var(--space-8); } }
 .browse__results { grid-area: results; min-width: 0; }
+.browse__aside { grid-area: aside; display: none; }
+@media (min-width: 62rem) { .browse__aside { display: flex; flex-direction: column; align-self: start; } }
+.filters-form { display: flex; flex-direction: column; gap: var(--space-8); }
+.filters-title { font: var(--text-h4); }
 .subtitle { color: var(--color-fg-muted); }
 .results-head { display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: center; justify-content: space-between; margin-bottom: var(--space-8); }
 .result-count { font: var(--text-body-sm); color: var(--color-fg-muted); }

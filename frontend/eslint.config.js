@@ -20,7 +20,7 @@ module.exports = tseslint.config(
     extends: [...angular.configs.templateRecommended, ...angular.configs.templateAccessibility],
     rules: {
       '@angular-eslint/template/i18n': ['error', { checkId: false, checkText: true, ignoreAttributes: [
-        'd', 'rel', 'loading', 'ariaCurrentWhenActive',
+        'd', 'rel', 'loading', 'inputmode', 'ariaCurrentWhenActive',
         'aria-controls', 'aria-current', 'aria-describedby', 'aria-haspopup', 'aria-labelledby', 'aria-live', 'aria-modal'
       ] }],
     },

@@ -4,6 +4,14 @@
     <p class="subtitle" i18n>Every studio here was shot in with the same test setup. All-in is the cost of a 2-hour shoot with mandatory fees.</p>
   </div>
 
+  <aside class="browse__aside" aria-labelledby="filters-title">
+    <form class="filters-form" (submit)="$event.preventDefault(); applyFilters(sidebarDraft())">
+      <h2 class="filters-title" id="filters-title" i18n>Filter studios</h2>
+      <st-studio-filters [idPrefix]="'aside'" [query]="sidebarDraft()" (queryChange)="sidebarDraft.set($event)" />
+      <div><button class="btn" type="submit" i18n>Apply filters</button></div>
+    </form>
+  </aside>
+
   <section class="browse__results" aria-labelledby="results-title" [attr.aria-busy]="state().status === 'loading' ? 'true' : null">
     <h2 class="st-visually-hidden" id="results-title" i18n>Results</h2>
     @if (state().status === 'loading') {
@@ -34,7 +42,14 @@
       </div>
     }
     @if (state().status === 'loaded') {
-      @if (studios().length === 0) {
+      @if (studios().length === 0 && activeFilterCount() > 0) {
+        <div class="empty">
+          <div class="empty__icon"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6" /><path d="m20 20-4.5-4.5" /></svg></div>
+          <h3 class="empty__title" i18n>No studios match these filters</h3>
+          <p class="empty__text" i18n>Try removing a filter, or clear them all to see every studio.</p>
+          <div class="empty__actions"><button class="btn" type="button" (click)="clearFilters()" i18n>Clear filters</button></div>
+        </div>
+      } @else if (studios().length === 0) {
         <div class="empty">
           <div class="empty__icon"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M4 8h3l2-3h6l2 3h3v11H4z" /><circle cx="12" cy="13" r="3.5" /></svg></div>
           <h3 class="empty__title" i18n>No studio reviews yet</h3>
