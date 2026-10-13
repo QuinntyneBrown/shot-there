@@ -11,6 +11,7 @@ import {
   optionalWholeNumber,
   pastOrTodayDate,
   requiredText,
+  slugField,
 } from '@/lib/http/input-fields';
 import type { StudioListQuery } from '@/lib/studios/studio-list-query';
 
@@ -87,6 +88,7 @@ const gearItemInputSchema = z.strictObject({
 export const studioInputSchema = (today: string) =>
   z.strictObject({
     name: requiredText('Enter a name'),
+    slug: slugField().optional(),
     neighbourhood: optionalText(200),
     addressOrCrossStreets: optionalText(200),
     bookingUrl: optionalWebAddress(),

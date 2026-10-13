@@ -52,3 +52,10 @@ export const optionalEnum = <const T extends readonly [string, ...string[]]>(val
   z.enum(values).nullable().default(null);
 
 export const optionalBoolean = () => z.boolean().nullable().default(null);
+
+/** A lowercase, hyphenated URL slug. */
+export const slugField = () =>
+  z
+    .string({ error: 'Use lowercase letters, numbers and single hyphens' })
+    .regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, { error: 'Use lowercase letters, numbers and single hyphens' })
+    .max(200);
