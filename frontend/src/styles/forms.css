@@ -1,0 +1,42 @@
+/* Form fields, from docs/design-system/components (form-field, text-field, select, checkbox, radio-group). */
+.field { display: flex; flex-direction: column; gap: var(--space-1); }
+.field__label { font: var(--text-label); color: var(--color-fg-default); display: flex; gap: var(--space-1); }
+.input, .select, .textarea {
+  --field-bg: var(--color-bg-surface); --field-border: var(--color-border-strong); --field-fg: var(--color-fg-default);
+  width: 100%; min-height: var(--control-height-md); padding: var(--space-2) var(--space-3);
+  font: var(--text-body); color: var(--field-fg); background-color: var(--field-bg);
+  border: var(--border-width-hairline) solid var(--field-border); border-radius: var(--radius-md);
+  transition: border-color var(--duration-fast) var(--ease-standard), box-shadow var(--duration-fast) var(--ease-standard);
+}
+.input:hover, .select:hover { --field-border: var(--color-fg-muted); }
+.input:focus-visible, .select:focus-visible { outline: var(--focus-ring-width) solid var(--color-focus-ring); outline-offset: 0; --field-border: var(--color-focus-ring); border-radius: var(--radius-md); }
+.input[aria-invalid="true"] { --field-border: var(--color-danger-solid); }
+.textarea { min-height: calc(var(--control-height-md) * 2.5); resize: vertical; }
+
+/* ---------- Select · components/select.html -------------------------------- */
+.select {
+  appearance: none; padding-right: var(--space-10);
+  background-image: linear-gradient(45deg, transparent 50%, currentColor 50%), linear-gradient(135deg, currentColor 50%, transparent 50%);
+  background-position: calc(100% - var(--space-4) - var(--space-0-5)) 50%, calc(100% - var(--space-3)) 50%;
+  background-size: 0.3125rem 0.3125rem; background-repeat: no-repeat;
+}
+.choice { display: flex; gap: var(--space-3); align-items: flex-start; cursor: pointer; font: var(--text-body); padding-block: var(--space-1); min-height: var(--target-min); }
+.choice input { appearance: none; flex: none; width: var(--icon-size-md); height: var(--icon-size-md); margin: var(--space-0-5) 0 0; border: var(--border-width-hairline) solid var(--color-border-strong); background: var(--color-bg-surface); display: grid; place-content: center; cursor: pointer; transition: background-color var(--duration-fast) var(--ease-standard), border-color var(--duration-fast) var(--ease-standard); }
+.choice input[type="checkbox"] { border-radius: var(--radius-xs); }
+.choice input[type="radio"] { border-radius: var(--radius-full); }
+.choice input:checked, .choice input[data-state="checked"] { background: var(--color-accent); border-color: var(--color-accent); }
+.choice input[type="checkbox"]:checked::before, .choice input[type="checkbox"][data-state="checked"]::before { content: ""; width: 0.75rem; height: 0.75rem; clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%); background: var(--color-fg-on-accent); }
+.choice input[type="radio"]:checked::before, .choice input[type="radio"][data-state="checked"]::before { content: ""; width: var(--space-2); height: var(--space-2); border-radius: 50%; background: var(--color-fg-on-accent); }
+.choice input:disabled, .choice input[data-state="disabled"] { background: var(--color-bg-subtle); border-color: var(--color-border-default); cursor: not-allowed; }
+.choice__text { display: flex; flex-direction: column; gap: var(--space-0-5); }
+.choice__text small { color: var(--color-fg-muted); }
+.field-row { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-4); }
+.field__error { font: var(--text-body-sm); color: var(--color-danger-fg); display: flex; gap: var(--space-1); align-items: flex-start; }
+.field__error::before { content: "⚠\FE0E"; content: "⚠\FE0E" / ""; flex: none; }
+.field--inline { flex-direction: row; flex-wrap: wrap; align-items: center; gap: var(--space-2); }
+.field--inline .select, .field--inline .input { width: auto; }
+.input-group { display: flex; align-items: stretch; }
+.input-group .input { border-radius: 0; }
+.input-group > :first-child { border-radius: var(--radius-md) 0 0 var(--radius-md); }
+.input-group > :last-child { border-radius: 0 var(--radius-md) var(--radius-md) 0; }
+.input-group .addon { display: inline-flex; align-items: center; padding-inline: var(--space-3); background: var(--color-bg-subtle); border: var(--border-width-hairline) solid var(--color-border-strong); color: var(--color-fg-muted); font: var(--text-body-sm); }

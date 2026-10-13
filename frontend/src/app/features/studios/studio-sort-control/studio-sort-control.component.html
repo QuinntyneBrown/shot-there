@@ -1,0 +1,8 @@
+<div class="field field--inline">
+  <label class="field__label" for="studio-sort" i18n>Sort by</label>
+  <select class="select" id="studio-sort" (change)="choose($any($event.target).value)">
+    @for (option of options; track option.value) {
+      <option [value]="option.value" [selected]="option.value === sort()">{{ option.label }}</option>
+    }
+  </select>
+</div>

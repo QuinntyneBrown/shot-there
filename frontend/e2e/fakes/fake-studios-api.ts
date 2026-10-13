@@ -4,9 +4,14 @@ import { FakeStudioSummary } from './studio-summaries';
 
 const isStudioList = (url: URL) => url.pathname === '/api/studios';
 
-/** The studio list endpoint answers with these studios. */
-export async function givenStudios(page: Page, studios: FakeStudioSummary[]): Promise<void> {
-  await page.route(isStudioList, (route: Route) => route.fulfill({ json: studios }));
+/** The studio list endpoint answers with these studios. Returns the query of every request it receives. */
+export async function givenStudios(page: Page, studios: FakeStudioSummary[]): Promise<URLSearchParams[]> {
+  const requests: URLSearchParams[] = [];
+  await page.route(isStudioList, (route: Route) => {
+    requests.push(new URL(route.request().url()).searchParams);
+    return route.fulfill({ json: studios });
+  });
+  return requests;
 }
 
 /** The studio list endpoint fails with a server error. */

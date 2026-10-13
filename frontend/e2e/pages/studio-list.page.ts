@@ -10,6 +10,8 @@ export class StudioListPage {
   readonly skeletonCards: Locator;
   readonly errorAlert: Locator;
   readonly tryAgainButton: Locator;
+  readonly sortControl: Locator;
+  readonly announcer: Locator;
 
   constructor(private readonly page: Page) {
     this.heading = page.getByRole('heading', { level: 1 });
@@ -21,10 +23,28 @@ export class StudioListPage {
     this.skeletonCards = page.locator('.location-card--skeleton');
     this.errorAlert = page.getByRole('alert').filter({ hasText: "We couldn't load the studios" });
     this.tryAgainButton = page.getByRole('button', { name: 'Try again' });
+    this.sortControl = page.getByRole('combobox', { name: 'Sort by' });
+    this.announcer = page.locator('.cdk-live-announcer-element');
   }
 
   async open(query = ''): Promise<void> {
     await this.page.goto(`/studios${query}`);
+  }
+
+  async sortBy(label: string): Promise<void> {
+    await this.sortControl.selectOption({ label });
+  }
+
+  async selectedSort(): Promise<string> {
+    return this.sortControl.locator('option:checked').innerText();
+  }
+
+  async goBack(): Promise<void> {
+    await this.page.goBack();
+  }
+
+  currentQuery(): URLSearchParams {
+    return new URL(this.page.url()).searchParams;
   }
 
   async cardNames(): Promise<string[]> {
