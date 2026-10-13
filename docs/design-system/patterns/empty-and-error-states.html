@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Empty and error states — ShotThere design system</title>
-<meta name="description" content="ShotThere empty and error states: first-run, no results with filters, failed loads, offline, forbidden, not found, removed caterer and system pages, with copy formulas.">
+<meta name="description" content="ShotThere empty and error states: first run before any studio is published, no results with Clear filters, comparison links that are empty, unknown or over the limit, map and media failures, 404 and 500 pages, rate limits, session expiry and the admin lists.">
 <link rel="stylesheet" href="../tokens/tokens.css">
 <link rel="stylesheet" href="../assets/components.css">
 <link rel="stylesheet" href="../assets/ds.css">
@@ -33,34 +33,57 @@
       <li><a href="../components/icon-button.html">Icon button</a></li>
       <li><a href="../components/button-group.html">Button group</a></li>
       <li><a href="../components/link.html">Link</a></li>
+      <li><a href="../components/compare-bar.html">Compare toggle and bar</a></li>
     </ul></details>
     <details open><summary>Inputs</summary><ul>
       <li><a href="../components/form-field.html">Form field</a></li>
       <li><a href="../components/text-field.html">Text field</a></li>
       <li><a href="../components/textarea.html">Textarea</a></li>
       <li><a href="../components/select.html">Select</a></li>
+      <li><a href="../components/combobox.html">Combobox</a></li>
       <li><a href="../components/checkbox.html">Checkbox</a></li>
       <li><a href="../components/radio-group.html">Radio group</a></li>
       <li><a href="../components/file-upload.html">File upload</a></li>
       <li><a href="../components/form-layout.html">Form layout</a></li>
+      <li><a href="../components/signup.html">Email signup</a></li>
     </ul></details>
     <details open><summary>Navigation</summary><ul>
       <li><a href="../components/skip-link.html">Skip link</a></li>
       <li><a href="../components/site-header.html">Site header</a></li>
       <li><a href="../components/footer.html">Footer</a></li>
+      <li><a href="../components/breadcrumb.html">Breadcrumb</a></li>
+      <li><a href="../components/filter.html">Filters</a></li>
     </ul></details>
     <details open><summary>Containers and overlays</summary><ul>
       <li><a href="../components/container.html">Container and grid</a></li>
+      <li><a href="../components/review-layout.html">Review layout</a></li>
+      <li><a href="../components/editor-layout.html">Editor layout</a></li>
       <li><a href="../components/card.html">Card</a></li>
       <li><a href="../components/dialog.html">Dialog</a></li>
       <li><a href="../components/sheet.html">Sheet and drawer</a></li>
+      <li><a href="../components/popover.html">Popover</a></li>
+      <li><a href="../components/lightbox.html">Lightbox</a></li>
       <li><a href="../components/divider.html">Divider</a></li>
     </ul></details>
     <details open><summary>Data display</summary><ul>
+      <li><a href="../components/location-card.html">Location card</a></li>
       <li><a href="../components/table.html">Table</a></li>
+      <li><a href="../components/compare-table.html">Comparison table</a></li>
+      <li><a href="../components/list.html">List rows</a></li>
       <li><a href="../components/description-list.html">Description list</a></li>
+      <li><a href="../components/price-block.html">Price block</a></li>
+      <li><a href="../components/score.html">Score and pips</a></li>
+      <li><a href="../components/shot-grid.html">Shot grid</a></li>
+      <li><a href="../components/video-poster.html">Episode poster</a></li>
+      <li><a href="../components/map.html">Map</a></li>
+      <li><a href="../components/guide-entry.html">Guide entry</a></li>
+      <li><a href="../components/stat-tile.html">Stat tile</a></li>
+      <li><a href="../components/image-manager.html">Image manager</a></li>
+      <li><a href="../components/disclosure.html">Disclosure</a></li>
       <li><a href="../components/badge.html">Badge</a></li>
+      <li><a href="../components/status-label.html">Status label</a></li>
       <li><a href="../components/chip.html">Chip</a></li>
+      <li><a href="../components/tag.html">Tag</a></li>
     </ul></details>
     <details open><summary>Feedback</summary><ul>
       <li><a href="../components/inline-message.html">Inline message</a></li>
@@ -83,203 +106,285 @@
       <li><a href="../patterns/content-and-tone.html">Content and tone</a></li>
     </ul></details>
   </nav>
-
   <main id="main" class="ds-main">
     <header class="ds-header">
       <p class="ds-kicker">Pattern</p>
       <h1>Empty and error states</h1>
-      <p class="ds-lead">When there is nothing to show, ShotThere says why in a line, says what happens next in another, and offers one way forward. Errors own the problem, say what is safe, and give a Try again.</p>
-      <div class="ds-meta"><span class="ds-pill ds-pill--ok">WCAG 2.2 AA</span><span class="ds-pill">Status: stable</span><span class="ds-pill"><code>.empty</code></span><span class="ds-pill"><code>.system-page</code></span></div>
-      <ul class="ds-toc"><li><a href="#overview">Overview</a></li><li><a href="#when">When to use which state</a></li><li><a href="#structure">Structure</a></li><li><a href="#states">States</a></li><li><a href="#responsive">Responsive behaviour</a></li><li><a href="#accessibility">Accessibility</a></li><li><a href="#content">Content</a></li><li><a href="#do-dont">Do and don't</a></li><li><a href="#sources">Sources</a></li></ul>
+      <p class="ds-lead">An empty or failed region on ShotThere says what is missing, why, and the one thing to do next, in the place the content would have been. Filters, chrome and everything that did load stay put, and nothing typed or chosen is lost.</p>
+      <div class="ds-meta"><span class="ds-pill ds-pill--ok">WCAG 2.2 AA</span><span class="ds-pill">Status: stable</span><span class="ds-pill"><code>.empty</code></span><span class="ds-pill"><code>.empty--compact</code></span><span class="ds-pill"><code>.empty--error</code></span><span class="ds-pill"><code>.system-page</code></span><span class="ds-pill"><code>.media-fallback</code></span><span class="ds-pill"><code>.map-unavailable</code></span></div>
+      <ul class="ds-toc"><li><a href="#overview">Overview</a></li><li><a href="#when">When to use which</a></li><li><a href="#structure">Structure</a></li><li><a href="#states">States</a></li><li><a href="#responsive">Responsive behaviour</a></li><li><a href="#accessibility">Accessibility</a></li><li><a href="#content">Content</a></li><li><a href="#do-dont">Do and don't</a></li><li><a href="#sources">Sources</a></li></ul>
     </header>
 
 <section class="ds-section" id="overview"><h2><a href="#overview">Overview</a></h2>
-      <p>An empty or failed screen is still a screen people have to act on. ShotThere uses two components for them: the <a href="../components/empty-state.html">empty state</a> (<code>.empty</code>, inside the page shell, in place of the list or region that has nothing) and the <a href="../components/error-page.html">error page</a> (<code>.system-page</code>, a whole page for 403, 404, 410, 429, 500, 503 and offline). Both are centred, short, and carry at most two actions: one ink primary and one quiet alternative.</p>
+      <p>Three families, each with its own tool:</p>
       <ul>
-        <li><b>Keep the frame.</b> The header, filters and side navigation stay, so people can change course without the Back button. Only the region that has nothing changes.</li>
-        <li><b>One reason, one next step.</b> The title says what is (or isn't) there; the line under it says why or what will happen; the action moves them on.</li>
-        <li><b>Food, not illustrations.</b> System pages use the round food photos (<code>.photo-row</code>); in-page empty states use a 24-unit outline icon in a stone circle. No mascots, no cartoons.</li>
-        <li><b>Errors say what is safe.</b> "Your filters are kept", "Your messages are safe", "Nothing you saved is lost".</li>
+        <li><b>Nothing here yet</b> (first run, a section with nothing to show): the <a href="../components/empty-state.html">empty state</a> (<code>.empty</code>, <code>.empty--compact</code> inside a section). ShotThere only lists places it has shot, so "empty" always means "not reviewed yet", never "nothing exists".</li>
+        <li><b>Nothing matches</b> (filters or a search): a compact empty state under the active filter chips or the search box, with the action that undoes the narrowing: Clear filters, Clear search.</li>
+        <li><b>Something failed</b>: <code>.empty--error</code> where a whole region failed, an <a href="../components/alert.html">alert</a> where part of a screen failed or the server refused (rate limited, session expired, partial dashboard), <code>.media-fallback</code> and <code>.map-unavailable</code> where an image or the map tiles failed, and the <a href="../components/error-page.html">error page</a> (<code>.system-page</code>) for 404 and 500.</li>
       </ul>
+      <p>Every one follows the same formula: an icon that is decoration, a title that names the thing ("No studios match these filters", "We couldn't load the studios"), one sentence on why or what happens next, and at most two actions, the first being the way forward.</p>
     </section>
 
-    <section class="ds-section" id="when"><h2><a href="#when">When to use which state</a></h2>
+    <section class="ds-section" id="when"><h2><a href="#when">When to use which</a></h2>
       <div class="ds-table-wrap"><table class="ds-table">
-        <thead><tr><th scope="col">Situation</th><th scope="col">Component</th><th scope="col">Primary action</th><th scope="col">Mock</th></tr></thead>
+        <thead><tr><th scope="col">Situation</th><th scope="col">Composition</th><th scope="col">Copy and action</th><th scope="col">Mock</th></tr></thead>
         <tbody>
-          <tr><td><b>First run</b>: nothing exists yet (new inbox, new caterer, empty queue)</td><td><code>.empty</code> in the region</td><td>The action that creates the first item ("Browse caterers", "Add photos", "Add your first dish")</td><td>inbox/empty, profile-photos/empty, admin-queue/empty</td></tr>
-          <tr><td><b>Platform empty</b>: no caterers published yet</td><td><code>.empty</code> in the results</td><td>The other audience's door ("Cater with ShotThere")</td><td>caterers/empty</td></tr>
-          <tr><td><b>No results</b> for chosen filters</td><td><code>.empty</code> under the active filter chips</td><td>"Clear filters"; the filter list stays usable with counts</td><td>caterers/no-results, admin-audit/no-results, admin-caterers/no-results</td></tr>
-          <tr><td><b>Empty segment</b> of a status filter</td><td><code>.empty--compact</code></td><td>"Show all enquiries"</td><td>inbox/no-results</td></tr>
-          <tr><td><b>Failed load</b> of a page or region</td><td><code>.empty.empty--error</code> with <code>role="alert"</code> and a reference</td><td>"Try again"; secondary goes somewhere that works</td><td>inbox/error, caterers/error, admin-audit/error</td></tr>
-          <tr><td><b>Partial failure</b>: one panel failed</td><td>Danger <a href="../components/alert.html">alert</a> in that panel only</td><td>"Try again" for that panel</td><td>admin-metrics/partial</td></tr>
-          <tr><td><b>Offline</b> with a cached copy</td><td>Warning banner over cached content</td><td>None needed; network actions disabled with a reason</td><td>inbox/offline, caterer/offline</td></tr>
-          <tr><td><b>Offline</b> with nothing cached</td><td><code>.system-page</code></td><td>"Try again", plus links to saved pages</td><td>offline/default</td></tr>
-          <tr><td><b>Forbidden</b> inside a work area (operator without Admin)</td><td><code>.empty</code> in the shell, naming who to ask</td><td>"Back to the queue"</td><td>admin-audit/forbidden, admin-operators/forbidden</td></tr>
-          <tr><td><b>Forbidden</b> area for the wrong kind of account</td><td><code>.system-page</code> 403</td><td>"Go to ShotThere"; secondary "Sign in with another account"</td><td>forbidden/default</td></tr>
-          <tr><td><b>Not found</b>, or exists but not yours (same body)</td><td><code>.system-page</code> 404, or <code>.empty</code> inside the inbox</td><td>"Browse caterers" / "Back to inbox"</td><td>not-found/default, thread/not-found</td></tr>
-          <tr><td><b>Removed caterer</b></td><td><code>.system-page</code> 410</td><td>"Browse caterers"; secondary "Browse by occasion"</td><td>caterer/removed</td></tr>
-          <tr><td>Server error, rate limit, maintenance</td><td><code>.system-page</code> 500 / 429 / 503</td><td>"Try again", "Try again in 1 minute", "Check again"</td><td>server-error, rate-limited, maintenance</td></tr>
+          <tr><td>First run: no studio published</td><td><code>.empty</code> in the results area; no filters, no sort</td><td>"No studio reviews yet" · Browse outdoor spots</td><td>studios/empty</td></tr>
+          <tr><td>First run on the home page and map</td><td><code>.empty</code> in place of Latest reviews; a card over the map tiles</td><td>"The first studio reviews are coming" · Get an email when they go up</td><td>home/empty, map/empty</td></tr>
+          <tr><td>A review section with nothing to list</td><td><code>.empty--compact</code> inside the section, which never disappears</td><td>Rain backup: "Studio reviews are coming" · Browse studios</td><td>spot/no-rain-backup</td></tr>
+          <tr><td>Optional content that is absent</td><td>No section and no placeholder</td><td>No episode video, no Featured in</td><td>spot/no-video, studio/minimal</td></tr>
+          <tr><td>Filters match nothing</td><td>Chips stay above; <code>.empty</code> below</td><td>"No studios match these filters" · Clear filters</td><td>studios/no-results, spots/no-results</td></tr>
+          <tr><td>Admin search matches nothing</td><td><code>.empty--compact</code> under the search box</td><td>"No studios match “parkdale”" · Clear search</td><td>admin-studios/no-results</td></tr>
+          <tr><td>Admin first run</td><td>Zero counts on the tiles, then <code>.empty</code> with the first action</td><td>"Nothing published yet" · New studio; "No studios yet" · New studio</td><td>admin-dashboard/empty, admin-studios/empty</td></tr>
+          <tr><td>Comparison link with fewer than 2 valid studios</td><td><code>.empty</code> as the page body</td><td>"Pick at least two studios to compare" · Browse studios</td><td>compare/empty</td></tr>
+          <tr><td>Comparison link with an unknown slug, or over 4</td><td>Info <code>.alert</code> above the table; compare what is valid</td><td>"One studio in this link couldn't be found…" / "You can compare up to 4 studios…"</td><td>compare/unknown-slug, compare/over-limit</td></tr>
+          <tr><td>A list or screen failed to load</td><td><code>.empty.empty--error</code> with <code>role="alert"</code>; chrome and filters stay</td><td>"We couldn't load the studios" · Try again, Go to the home page</td><td>studios/error, admin-*/error, admin-dashboard/error, map/error</td></tr>
+          <tr><td>Part of a screen failed</td><td><code>.alert--danger</code> inside that section only</td><td>"We couldn't load the re-verification list." · Try again</td><td>admin-dashboard/partial</td></tr>
+          <tr><td>A record can't be opened</td><td><code>.empty--error</code> as the page heading; no ids or status codes</td><td>"We couldn't open this studio" · Back to studios, Try again</td><td>studio-editor/error</td></tr>
+          <tr><td>Map tiles failed</td><td><code>.map-unavailable</code> in the map slot; the list still works</td><td>"The map didn't load" · Show the list, or the coordinates and Open in Google Maps</td><td>map/tiles-failed, spot/map-failed</td></tr>
+          <tr><td>An image failed</td><td><code>.media-fallback</code> in the same slot, showing the alt text</td><td>The alt text; Play episode still works on a failed poster</td><td>studio/media-failed, lightbox/image-failed</td></tr>
+          <tr><td>Unknown or draft URL, server failure</td><td><code>.system-page</code> with HTTP 404 or 500</td><td>"We couldn't find that page" · Go to the home page, Browse studios</td><td>not-found, server-error</td></tr>
+          <tr><td>Too many tries</td><td>Warning <code>.alert</code> above or inside the form; input kept</td><td>"Too many sign-in attempts. Wait 15 minutes, then try again."</td><td>sign-in/rate-limited, home/rate-limited</td></tr>
+          <tr><td>Session expired</td><td>Info <code>.alert</code> on sign-in; return to the same page after</td><td>"Your session expired. Sign in again to carry on where you were."</td><td>sign-in/session-expired</td></tr>
         </tbody>
       </table></div>
     </section>
 
     <section class="ds-section" id="structure"><h2><a href="#structure">Structure</a></h2>
-      <h3>First run, no results, failed load</h3>
+      <h3>No results, with the filters still visible</h3>
       <div class="ds-example">
-        <div class="ds-example__canvas" style="align-items: stretch; gap: var(--space-6);">
-          <div class="empty empty--compact" style="flex: 1 1 14rem;">
-            <span class="empty__icon"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span>
-            <h3 class="empty__title">No enquiries yet</h3>
-            <p class="empty__text">When you send an enquiry to a caterer, the conversation lives here.</p>
-            <div class="empty__actions">Browse caterers</div>
-          </div>
-          <div class="empty empty--compact" style="flex: 1 1 14rem;">
-            <span class="empty__icon"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></span>
-            <h3 class="empty__title">No caterers match these filters</h3>
-            <p class="empty__text">No Haitian caterers list Durham yet. Try a nearby area, or clear the filters.</p>
-            <div class="empty__actions"><button class="btn btn--primary" type="button">Clear filters</button></div>
-          </div>
-          <div class="empty empty--compact empty--error" style="flex: 1 1 14rem;">
-            <span class="empty__icon"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16.5v.5"/></svg></span>
-            <h3 class="empty__title">We couldn’t load your enquiries</h3>
-            <p class="empty__text">Your messages are safe. Check your connection and try again.</p>
-            <div class="empty__actions"><button class="btn btn--primary" type="button"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.3-5.7M20 4v5h-5"/></svg>Try again</button>Browse caterers</div>
-            <p class="text-caption">Reference 7f3c-91ad</p>
-          </div>
+        <div class="ds-example__canvas ds-example__canvas--canvas" style="display: block;">
+          <section class="browse__results" aria-labelledby="ee-results-title">
+            <h4 class="visually-hidden" id="ee-results-title">Results</h4>
+            <p class="result-count" role="status" aria-live="polite" style="margin-bottom: var(--space-4);">0 studios</p>
+            <div class="active-filters" style="margin-bottom: var(--space-8);">
+              <span class="visually-hidden">Active filters:</span>
+              <span class="chip chip--filter">Up to $120.00<button class="remove" type="button" aria-label="Remove filter: Up to $120.00"><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></span>
+              <span class="chip chip--filter">Cyc wall<button class="remove" type="button" aria-label="Remove filter: Cyc wall"><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></span>
+              <span class="chip chip--filter">Parking: on-site<button class="remove" type="button" aria-label="Remove filter: Parking: on-site"><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></span>
+            </div>
+            <div class="empty">
+              <div class="empty__icon" aria-hidden="true"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="m20 20-4.5-4.5"/></svg></div>
+              <h4 class="empty__title">No studios match these filters</h4>
+              <p class="empty__text">Try removing a filter, or clear them all to see all 7 studios.</p>
+              <div class="empty__actions"><a class="btn" href="#structure">Clear filters</a></div>
+            </div>
+          </section>
         </div>
-        <div class="ds-example__caption"><span>Icon in a stone circle (danger tint for errors), title, one line, then actions. The reference goes last, small.</span><span>Sources: inbox/empty, caterers/no-results, inbox/error</span></div>
-        <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;div class="empty empty--error" role="alert"&gt;
-  &lt;span class="empty__icon"&gt;&lt;svg class="icon" aria-hidden="true" …&gt;&lt;/svg&gt;&lt;/span&gt;
-  &lt;h2 class="empty__title"&gt;We couldn’t load your enquiries&lt;/h2&gt;
-  &lt;p class="empty__text"&gt;Your messages are safe. Check your connection and try again.&lt;/p&gt;
-  &lt;div class="empty__actions"&gt;
-    &lt;button class="btn btn--primary" type="button"&gt;Try again&lt;/button&gt;
-    &lt;a class="btn btn--ghost" href="/caterers"&gt;Browse caterers&lt;/a&gt;
-  &lt;/div&gt;
-  &lt;p class="text-caption"&gt;Reference 7f3c-91ad&lt;/p&gt;
+        <div class="ds-example__caption"><span>URL <code>?costMax=120&amp;cyc=yes&amp;parking=on-site</code>. Removing a chip updates the list at once; Clear filters returns to all 7.</span><span>Source: pages/studios/no-results</span></div>
+        <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;p class="result-count" role="status" aria-live="polite"&gt;0 studios&lt;/p&gt;
+&lt;div class="active-filters"&gt; … chip chip--filter … &lt;/div&gt;
+&lt;div class="empty"&gt;
+  &lt;div class="empty__icon" aria-hidden="true"&gt;&lt;svg class="icon" …&gt;&lt;/svg&gt;&lt;/div&gt;
+  &lt;h3 class="empty__title"&gt;No studios match these filters&lt;/h3&gt;
+  &lt;p class="empty__text"&gt;Try removing a filter, or clear them all to see all 7 studios.&lt;/p&gt;
+  &lt;div class="empty__actions"&gt;&lt;a class="btn" href="/studios"&gt;Clear filters&lt;/a&gt;&lt;/div&gt;
 &lt;/div&gt;</code></pre></details>
       </div>
 
-      <h3>No results keeps the filters in view</h3>
+      <h3>First run and load failure</h3>
       <div class="ds-example">
-        <div class="ds-example__canvas ds-example__canvas--stack">
-          <p class="result-count">0 caterers</p>
-          <div class="active-filters"><span class="chip chip--filter">Haitian<button class="remove" type="button" aria-label="Remove Haitian"><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></span><span class="chip chip--filter">Durham<button class="remove" type="button" aria-label="Remove Durham"><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></span><button class="btn btn--link" type="button">Clear filters</button></div>
-          <div class="empty">
-            <h3 class="empty__title">No caterers match these filters</h3>
-            <p class="empty__text">No Haitian caterers list Durham yet. Try a nearby area, or clear the filters.</p>
+        <div class="ds-example__canvas ds-example__canvas--canvas" style="align-items: stretch;">
+          <div class="empty" style="flex: 1 1 18rem;">
+            <div class="empty__icon" aria-hidden="true"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg></div>
+            <h4 class="empty__title">No studio reviews yet</h4>
+            <p class="empty__text">The first reviews are being shot now. Each one goes up only after a full test shoot.</p>
+            <div class="empty__actions"><a class="btn" href="../../mocks/pages/spots/default.html">Browse outdoor spots</a></div>
+          </div>
+          <div class="empty empty--error" role="alert" style="flex: 1 1 18rem;">
+            <div class="empty__icon" aria-hidden="true"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16h.01"/></svg></div>
+            <h4 class="empty__title">We couldn't load the studios</h4>
+            <p class="empty__text">The studio list didn't arrive. Check your connection and try again; your filters are kept.</p>
+            <div class="empty__actions"><button class="btn" type="button"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.3-5.6"/><path d="M20 4v5h-5"/></svg>Try again</button><a class="btn btn--ghost" href="../../mocks/pages/home/default.html">Go to the home page</a></div>
           </div>
         </div>
-        <div class="ds-example__caption"><span>Each filter can be removed on its own; the counts in the filter list (Haitian 0, Durham 0) show which choice emptied the list.</span><span>Source: pages/caterers/no-results</span></div>
+        <div class="ds-example__caption"><span>Left: the studio list before anything is published (no filters shown). Right: the list request failed; filters stay visible above and Try again re-requests the same filters and sort.</span><span>Sources: pages/studios/empty, pages/studios/error</span></div>
       </div>
 
-      <h3>System page</h3>
+      <h3>Comparison links that don't add up</h3>
       <div class="ds-example">
-        <div class="ds-example__canvas ds-example__canvas--canvas" style="justify-content: center;">
-          <div class="system-page" style="padding-block: var(--space-8);">
-            <div class="photo-row"><span class="photo"><img src="../assets/img/ti-kay.jpg" alt="" width="72" height="72"></span><span class="photo"><img src="../assets/img/demerara-kitchen.jpg" alt="" width="104" height="104"></span><span class="photo"><img src="../assets/img/black-cake-co.jpg" alt="" width="72" height="72"></span></div>
-            <h3 style="font: var(--text-display);">This caterer has left ShotThere</h3>
-            <p>The page you followed is no longer available. There are 60 other caterers cooking across Toronto and the GTA.</p>
-            <div class="system-page__actions">Browse caterersBrowse by occasion</div>
-            <p class="system-page__code">410 · Gone</p>
+        <div class="ds-example__canvas ds-example__canvas--canvas ds-example__canvas--stack">
+          <div class="alert alert--info" role="status">
+            <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h0"/></svg>
+            <div class="alert__body"><p>One studio in this link couldn't be found, so we're comparing the other two.</p></div>
+          </div>
+          <div class="alert alert--info" role="status">
+            <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h0"/></svg>
+            <div class="alert__body"><p>You can compare up to 4 studios. We're showing the first 4 from this link.</p></div>
+          </div>
+          <div class="empty">
+            <div class="empty__icon" aria-hidden="true"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="4" width="7" height="16" rx="1.5"/><rect x="14" y="4" width="7" height="16" rx="1.5"/></svg></div>
+            <h4 class="empty__title">Pick at least two studios to compare</h4>
+            <p class="empty__text">Use Compare on any studio card, then open the comparison from the bar.</p>
+            <div class="empty__actions"><a class="btn btn--primary" href="../../mocks/pages/studios/default.html">Browse studios</a></div>
           </div>
         </div>
-        <div class="ds-example__caption"><span>Decorative photos (<code>alt=""</code>), display-size heading (the page's <code>&lt;h1&gt;</code> in the product), large actions, status code last.</span><span>Source: pages/caterer/removed</span></div>
+        <div class="ds-example__caption"><span><code>/compare?studios=the-junction-loft,annex-attic-studio,leslieville-daylight-studio</code> drops the draft and keeps the order; six slugs show the first four valid ones; fewer than two valid slugs show the empty state.</span><span>Sources: pages/compare/unknown-slug, over-limit, empty</span></div>
+      </div>
+
+      <h3>Map and media failures</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--canvas" style="align-items: stretch;">
+          <div class="static-map" style="flex: 1 1 18rem; min-height: 16rem;">
+            <div class="map-unavailable">
+              <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 21s-7-6.5-7-12a7 7 0 0 1 14 0c0 5.5-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>
+              <strong>The map didn't load</strong>
+              <p>The list of locations still works.</p>
+              <a class="btn" href="../../mocks/pages/map/list.html">Show the list</a>
+            </div>
+          </div>
+          <div class="static-map" style="flex: 1 1 18rem; min-height: 16rem;">
+            <div class="map-unavailable" role="status">
+              <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-12a7 7 0 0 1 14 0c0 5.8-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>
+              <strong>The map didn't load</strong>
+              <p class="num">43.6846, −79.3653</p>
+              <a class="link--external" href="https://www.google.com/maps/search/?api=1&amp;query=43.6846,-79.3653" target="_blank" rel="noopener">Open in Google Maps<svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v6H4V6h6"/></svg><span class="visually-hidden"> (opens in a new tab)</span></a>
+            </div>
+          </div>
+          <ul class="shot-grid" style="flex: 1 1 14rem; max-width: 20rem; grid-template-columns: repeat(2, minmax(0, 1fr)); align-self: flex-start;">
+            <li><a class="shot" href="../../mocks/dialogs/lightbox/default.html"><img src="../assets/img/gallery-1.svg" alt="Portrait in window light, subject turned three-quarters toward the north windows." width="800" height="1000" loading="lazy"></a></li>
+            <li><a class="shot" href="../../mocks/dialogs/lightbox/image-failed.html"><span class="media-fallback"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 16 5-5 4 4 2-2 7 7"/><path d="M3 3l18 18"/></svg><span>Close portrait against the brick wall with the octabox as fill.</span></span></a></li>
+          </ul>
+        </div>
+        <div class="ds-example__caption"><span>Map page tiles failed (the list keeps working); Evergreen Brick Works tiles failed (coordinates and an external map); a gallery photo failed (same 4:5 slot, alt text shown).</span><span>Sources: pages/map/tiles-failed, pages/spot/map-failed, pages/studio/media-failed</span></div>
+      </div>
+
+      <h3>Not found and server error</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--canvas" style="align-items: stretch;">
+          <div class="system-page" style="flex: 1 1 18rem; padding-block: var(--space-8);">
+            <p class="system-page__code">Error 404</p>
+            <h4 style="font: var(--text-h1);">We couldn't find that page</h4>
+            <p>It may have been renamed, or the location isn't published.</p>
+            <div class="system-page__actions"><a class="btn btn--primary" href="../../mocks/pages/home/default.html">Go to the home page</a><a class="btn" href="../../mocks/pages/studios/default.html">Browse studios</a></div>
+          </div>
+          <div class="system-page" style="flex: 1 1 18rem; padding-block: var(--space-8);">
+            <h4 style="font: var(--text-h1);">Something went wrong on our side</h4>
+            <p>Try again in a minute. If it keeps happening, tell us at <a href="mailto:hello@shotthere.ca">hello@shotthere.ca</a> and quote this reference.</p>
+            <p class="system-page__code">Reference 7f3a-91c2</p>
+            <div class="system-page__actions"><a class="btn btn--primary" href="../../mocks/pages/server-error/default.html">Try again</a><a class="btn" href="../../mocks/pages/home/default.html">Go to the home page</a></div>
+          </div>
+        </div>
+        <div class="ds-example__caption"><span>404 is also returned for draft locations, so a draft can't be found by guessing its slug. The 500 reference is the request's correlation id; no stack trace reaches the page.</span><span>Sources: pages/not-found/default, pages/server-error/default</span></div>
+      </div>
+
+      <h3>Admin lists and the dashboard</h3>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--canvas ds-example__canvas--stack">
+          <div class="empty empty--compact">
+            <div class="empty__icon" aria-hidden="true"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></div>
+            <h4 class="empty__title">No studios match “parkdale”</h4>
+            <p class="empty__text">Check the spelling, or clear the search to see all 9 studios.</p>
+            <div class="empty__actions"><a class="btn" href="../../mocks/pages/admin-studios/default.html">Clear search</a></div>
+          </div>
+          <div class="alert alert--danger" role="alert">
+            <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16.5v.5"/></svg>
+            <div class="alert__body"><p class="alert__title">We couldn't load the re-verification list.</p><p>The counts above are current. Try again to see what needs checking.</p><div class="alert__actions"><button class="btn btn--sm" type="button"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.3-5.7M20 4v5h-5"/></svg>Try again</button></div></div>
+          </div>
+          <div class="empty empty--compact empty--success">
+            <div class="empty__icon" aria-hidden="true"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg></div>
+            <h4 class="empty__title">Everything is up to date</h4>
+            <p class="empty__text">No prices or permits are older than 153 days.</p>
+          </div>
+        </div>
+        <div class="ds-example__caption"><span>Admin search with no match; the dashboard's re-verification list failed while the counts loaded; nothing stale or due soon.</span><span>Sources: pages/admin-studios/no-results, pages/admin-dashboard/partial, pages/admin-dashboard/up-to-date</span></div>
       </div>
     </section>
 
     <section class="ds-section" id="states"><h2><a href="#states">States</a></h2>
-      <p>Each kind has a fixed recipe. Use the copy formula, fill in the specifics, and keep to the actions listed.</p>
+      <p>Which states each screen has, and where they come from.</p>
       <div class="ds-table-wrap"><table class="ds-table">
-        <thead><tr><th scope="col">Kind</th><th scope="col">Title formula</th><th scope="col">Line formula</th><th scope="col">Actions</th><th scope="col">Shown</th></tr></thead>
+        <thead><tr><th scope="col">Screen</th><th scope="col">Empty</th><th scope="col">No results</th><th scope="col">Error</th><th scope="col">Other</th></tr></thead>
         <tbody>
-          <tr><td>First run</td><td>"No <i>things</i> yet" / an inviting question</td><td>"When <i>trigger</i>, <i>what happens</i> here."</td><td>Create the first one</td><td>Icon or photo</td></tr>
-          <tr><td>No results</td><td>"No <i>things</i> match these filters"</td><td>"No <i>specific</i> … yet. Try <i>nearby</i>, or clear the filters."</td><td>Clear filters</td><td>Search icon, active chips</td></tr>
-          <tr><td>Empty segment</td><td>"No <i>status</i> <i>things</i>"</td><td>What would appear here</td><td>Show all</td><td>Compact</td></tr>
-          <tr><td>Failed load</td><td>"We couldn’t load <i>thing</i>"</td><td>What is safe + "Try again"</td><td>Try again · a place that works</td><td>Danger icon, reference</td></tr>
-          <tr><td>Forbidden (in shell)</td><td>"Only <i>role</i> can <i>do this</i>"</td><td>Who you are signed in as + who to ask, by name</td><td>Back to the work area</td><td>No code</td></tr>
-          <tr><td>Not found</td><td>"We can’t find that <i>thing</i>" / "Page not found"</td><td>"The link may be old, or it belongs to a different account."</td><td>Back to the list</td><td>Error 404</td></tr>
-          <tr><td>Removed</td><td>"This caterer has left ShotThere"</td><td>Count of others still cooking</td><td>Browse caterers · Browse by occasion</td><td>410 · Gone</td></tr>
-          <tr><td>Server error</td><td>"Something went wrong"</td><td>"That one’s on us, not you." + support email + reference</td><td>Try again · Browse caterers</td><td>Reference with Copy</td></tr>
-          <tr><td>Offline</td><td>"You’re offline"</td><td>What still works</td><td>Try again</td><td>Saved pages</td></tr>
+          <tr><td>Studios, Spots</td><td><a href="../../mocks/pages/studios/empty.html">studios/empty</a>, <a href="../../mocks/pages/spots/empty.html">spots/empty</a></td><td><a href="../../mocks/pages/studios/no-results.html">studios/no-results</a>, <a href="../../mocks/pages/spots/no-results.html">spots/no-results</a></td><td><a href="../../mocks/pages/studios/error.html">studios/error</a>, <a href="../../mocks/pages/spots/error.html">spots/error</a></td><td>—</td></tr>
+          <tr><td>Map</td><td><a href="../../mocks/pages/map/empty.html">map/empty</a></td><td>—</td><td><a href="../../mocks/pages/map/error.html">map/error</a></td><td><a href="../../mocks/pages/map/tiles-failed.html">tiles-failed</a></td></tr>
+          <tr><td>Compare</td><td><a href="../../mocks/pages/compare/empty.html">compare/empty</a></td><td>—</td><td>—</td><td><a href="../../mocks/pages/compare/unknown-slug.html">unknown-slug</a>, <a href="../../mocks/pages/compare/over-limit.html">over-limit</a></td></tr>
+          <tr><td>Home, Guides</td><td><a href="../../mocks/pages/home/empty.html">home/empty</a>, <a href="../../mocks/pages/guides/empty.html">guides/empty</a></td><td>—</td><td><a href="../../mocks/pages/home/error.html">home/error</a> (signup)</td><td><a href="../../mocks/pages/home/rate-limited.html">rate-limited</a></td></tr>
+          <tr><td>Studio and spot reviews</td><td><a href="../../mocks/pages/spot/no-rain-backup.html">spot/no-rain-backup</a></td><td>—</td><td>—</td><td><a href="../../mocks/pages/studio/media-failed.html">media-failed</a>, <a href="../../mocks/pages/spot/map-failed.html">map-failed</a>, <a href="../../mocks/pages/spot/no-video.html">no-video</a></td></tr>
+          <tr><td>Dashboard</td><td><a href="../../mocks/pages/admin-dashboard/empty.html">empty</a></td><td>—</td><td><a href="../../mocks/pages/admin-dashboard/error.html">error</a></td><td><a href="../../mocks/pages/admin-dashboard/partial.html">partial</a>, <a href="../../mocks/pages/admin-dashboard/up-to-date.html">up-to-date</a></td></tr>
+          <tr><td>Admin studios, spots, guides</td><td><a href="../../mocks/pages/admin-studios/empty.html">studios</a>, <a href="../../mocks/pages/admin-spots/empty.html">spots</a>, <a href="../../mocks/pages/admin-guides/empty.html">guides</a></td><td><a href="../../mocks/pages/admin-studios/no-results.html">studios</a>, <a href="../../mocks/pages/admin-spots/no-results.html">spots</a>, <a href="../../mocks/pages/admin-guides/no-results.html">guides</a></td><td><a href="../../mocks/pages/admin-studios/error.html">studios</a>, <a href="../../mocks/pages/admin-spots/error.html">spots</a>, <a href="../../mocks/pages/admin-guides/error.html">guides</a></td><td>—</td></tr>
+          <tr><td>Editors</td><td>—</td><td><a href="../../mocks/dialogs/guide-entry-picker/no-matches.html">entry picker no-matches</a></td><td><a href="../../mocks/pages/studio-editor/error.html">studio</a>, <a href="../../mocks/pages/spot-editor/error.html">spot</a>, <a href="../../mocks/pages/guide-editor/error.html">guide</a></td><td><a href="../../mocks/pages/studio-editor/upload-failed.html">upload-failed</a></td></tr>
+          <tr><td>Sign-in</td><td>—</td><td>—</td><td><a href="../../mocks/pages/sign-in/error.html">error</a></td><td><a href="../../mocks/pages/sign-in/rate-limited.html">rate-limited</a>, <a href="../../mocks/pages/sign-in/session-expired.html">session-expired</a></td></tr>
+          <tr><td>Anywhere</td><td>—</td><td>—</td><td><a href="../../mocks/pages/not-found/default.html">404</a>, <a href="../../mocks/pages/server-error/default.html">500</a></td><td>—</td></tr>
         </tbody>
       </table></div>
       <h3>Both themes</h3>
       <div class="ds-themes">
-        <div data-theme="light"><div class="empty empty--compact empty--error"><span class="empty__icon"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16.5v.5"/></svg></span><p class="empty__title">We couldn’t load caterers</p><p class="empty__text">Your filters are kept.</p><div class="empty__actions"><button class="btn btn--primary" type="button">Try again</button></div></div></div>
-        <div data-theme="dark"><div class="empty empty--compact empty--error"><span class="empty__icon"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16.5v.5"/></svg></span><p class="empty__title">We couldn’t load caterers</p><p class="empty__text">Your filters are kept.</p><div class="empty__actions"><button class="btn btn--primary" type="button">Try again</button></div></div></div>
+        <div data-theme="light"><div class="empty empty--compact empty--error"><div class="empty__icon" aria-hidden="true"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16h.01"/></svg></div><p class="empty__title">We couldn't load the locations</p><p class="empty__text">The map is here, but the studio and spot data didn't arrive. Try again in a moment.</p><div class="empty__actions"><button class="btn" type="button">Try again</button></div></div></div>
+        <div data-theme="dark"><div class="empty empty--compact empty--error"><div class="empty__icon" aria-hidden="true"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16h.01"/></svg></div><p class="empty__title">We couldn't load the locations</p><p class="empty__text">The map is here, but the studio and spot data didn't arrive. Try again in a moment.</p><div class="empty__actions"><button class="btn" type="button">Try again</button></div></div></div>
       </div>
     </section>
 
     <section class="ds-section" id="responsive"><h2><a href="#responsive">Responsive behaviour</a></h2>
       <ul>
-        <li>Empty states are centred in their region at every width; the text is held to 36 characters per line so it stays two or three lines on a phone.</li>
-        <li>Actions wrap and stay centred; on phones the primary comes first and both stay full size (44px).</li>
-        <li>On phones the browse page shows no-results under the "Filters 2" trigger and the active chips, so the way out is one tap away.</li>
-        <li>System pages hold to 34rem; the photo row (72 / 104 / 72px, 280px in all) fits inside 320px without scrolling sideways.</li>
-        <li>In the inbox, a not-found thread replaces only the thread column on large screens; below 62rem it is the whole view with "Back to inbox".</li>
+        <li>Empty states centre in their region, text capped at 36ch, actions wrapping and centred; nothing overflows at 320px.</li>
+        <li>On the map page the empty and error cards float over the tiles, centred, at most 24rem wide; below LG the map/list toggle stays usable.</li>
+        <li>Map tiles failing below LG offer "Show the list"; from LG the list is already beside the message, so the button is hidden (<code>.until-lg</code>).</li>
+        <li><code>.media-fallback</code> fills the slot the image would have had (3:2 hero, 4:5 shot, 16:9 poster), so nothing shifts; long alt text wraps.</li>
+        <li>The 404 and 500 pages use <code>.system-page</code> (34rem, centred) and stay readable with no horizontal scroll at XS.</li>
       </ul>
     </section>
 
     <section class="ds-section" id="accessibility"><h2><a href="#accessibility">Accessibility</a></h2>
       <h3>Role and pattern</h3>
-      <p>An empty region is plain content with a heading at the region's level (<code>h2</code> in a page, <code>h3</code> inside a section). A load failure that replaces content after the person acted gets <code>role="alert"</code>; a first-run state does not. System pages put the title in the page's only <code>&lt;h1&gt;</code> and return the matching HTTP status (404, 410, 403, 429 with Retry-After, 503).</p>
+      <p>Empty states are plain content with a heading at the region's level; no live role, because the result count (<code>role="status"</code>, "0 studios") already announced the change. Error states that replace content after a request carry <code>role="alert"</code>. Alerts for compare links and session expiry are <code>role="status"</code> (information, not failure); rate limits are <code>role="alert"</code>.</p>
       <h3>Keyboard</h3>
       <table class="ds-table ds-keys"><thead><tr><th scope="col">Key</th><th scope="col">Action</th></tr></thead><tbody>
-        <tr><td><kbd>Tab</kbd></td><td>Reaches the primary, then the secondary, then the reference's Copy button.</td></tr>
-        <tr><td><kbd>Enter</kbd></td><td>Try again reloads the region and moves focus to its heading when content arrives.</td></tr>
+        <tr><td><kbd>Tab</kbd></td><td>Reaches the remaining filter chips' remove buttons, then the empty state's action.</td></tr>
+        <tr><td><kbd>Enter</kbd> on Try again</td><td>Re-sends the same request; focus stays on the button while it loads.</td></tr>
       </tbody></table>
       <h3>Focus</h3>
-      <p>After "Clear filters" focus moves to the result count, which announces "60 caterers". After a failed "Try again" focus returns to Try again. Navigating to a system page puts focus at the top as on any page load.</p>
+      <p>Empty and error states never steal focus, except on a full page (404, 500, editor error), where focus lands on the main landmark like any page load. After Clear filters or Clear search, focus moves to the first result or stays on the search box.</p>
       <h3>Labelling</h3>
-      <p>Icons are decorative (<code>aria-hidden="true"</code>) and photos on system pages have <code>alt=""</code>; the title carries the meaning. Chip remove buttons name the filter ("Remove Haitian").</p>
+      <p>Icons are decoration (<code>aria-hidden</code> on the icon wrapper). Fallback images show their alt text as visible text, so the meaning survives the failure. External links say "(opens in a new tab)" in hidden text.</p>
       <h3>Contrast</h3>
       <div class="ds-example__canvas ds-example__canvas--stack" style="padding: 0; gap: var(--space-2);">
-        <div class="ds-pair"><span>Empty line text</span><span class="ds-pair__ratio" data-contrast="--color-fg-muted|--color-bg-canvas" data-min="4.5"></span></div>
-        <div class="ds-pair"><span>Icon in its stone circle</span><span class="ds-pair__ratio" data-contrast="--color-fg-default|--color-bg-subtle" data-min="3"></span></div>
-        <div class="ds-pair"><span>Error icon on its tint</span><span class="ds-pair__ratio" data-contrast="--color-danger-icon|--color-danger-bg" data-min="3"></span></div>
-        <div class="ds-pair"><span>Status code</span><span class="ds-pair__ratio" data-contrast="--color-fg-subtle|--color-bg-canvas" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Empty-state text</span><span class="ds-pair__ratio" data-contrast="--color-fg-muted|--color-bg-canvas" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Media fallback text</span><span class="ds-pair__ratio" data-contrast="--color-fg-muted|--color-bg-surface-sunken" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Info alert text</span><span class="ds-pair__ratio" data-contrast="--color-info-fg|--color-info-bg" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Danger alert text</span><span class="ds-pair__ratio" data-contrast="--color-danger-fg|--color-danger-bg" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Danger icon on its tint</span><span class="ds-pair__ratio" data-contrast="--color-danger-icon|--color-danger-bg" data-min="3"></span></div>
+        <div class="ds-pair"><span>Error page code and reference</span><span class="ds-pair__ratio" data-contrast="--color-fg-subtle|--color-bg-canvas" data-min="4.5"></span></div>
       </div>
       <h3>Motion</h3>
-      <p>No animation. A region that is retrying shows the skeleton again (shimmer stops under reduced motion).</p>
+      <p>None. Empty and error states appear in place; there is no shake or bounce.</p>
       <h3>Touch</h3>
-      <p>Actions are 44px (52px on system pages) with 12px between them.</p>
+      <p>Actions are full-size buttons (44px on phones); chip remove buttons grow to 44px below 48rem.</p>
     </section>
 
     <section class="ds-section" id="content"><h2><a href="#content">Content</a></h2>
       <ul>
-        <li><b>Be specific.</b> "No Haitian caterers list Durham yet" beats "No results". "Tomas Reyes hasn’t removed anything between 3 Oct and 10 Oct 2026" tells an operator exactly what was searched.</li>
-        <li><b>"Yet" for first runs.</b> It promises things will arrive: "No enquiries yet", "Your first review is on its way", "The first caterers are on their way".</li>
-        <li><b>Own errors plainly.</b> "Something went wrong on our side." "That one’s on us, not you." Never blame the person or show raw codes as the message.</li>
-        <li><b>Name a person to ask</b> on forbidden screens: "Ask Leah Mohammed, an Admin, to add or deactivate an operator."</li>
-        <li><b>Not found never confirms existence.</b> "The link may be old, or it belongs to a different account." The same body is used for missing and not-yours.</li>
-        <li><b>References</b> are labelled "Reference" and copyable; they go last, in small text.</li>
+        <li><b>Empty:</b> say what isn't here yet and why, in ShotThere's terms: "No studio reviews yet. The first reviews are being shot now. Each one goes up only after a full test shoot." Never "No data".</li>
+        <li><b>No results:</b> "No <i>things</i> match these filters" or "No studios match “parkdale”", then how to widen: "Try removing a filter, or clear them all to see all 7 studios."</li>
+        <li><b>Failure:</b> "We couldn't <i>verb</i> the <i>thing</i>", then what is safe and what to do: "Nothing has changed. Check your connection, then try again." "Your content is safe."</li>
+        <li><b>Partial:</b> say what did load: "The counts above are current."</li>
+        <li><b>Actions</b> are the way forward: Clear filters, Clear search, Try again, Browse studios, Browse outdoor spots, New studio, Back to dashboard, Go to the home page.</li>
       </ul>
     </section>
 
     <section class="ds-section" id="do-dont"><h2><a href="#do-dont">Do and don't</a></h2>
       <div class="ds-dodont">
-        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--stack"><div class="empty empty--compact"><p class="empty__title">No open enquiries</p><p class="empty__text">Enquiries waiting for a caterer’s first reply show here.</p><div class="empty__actions"><button class="btn" type="button">Show all enquiries</button></div></div></div><figcaption>Explain what would be here and offer the way back to everything.</figcaption></figure>
-        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--stack"><div class="empty empty--compact"><p class="empty__title">Nothing here</p></div></div><figcaption>A bare "Nothing here" leaves people guessing whether it is broken.</figcaption></figure>
-        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--stack"><div class="empty empty--compact"><p class="empty__title">Only Admins can see the audit log</p><p class="empty__text">Ask Leah Mohammed, an Admin, if you need an entry checked.</p></div></div><figcaption>Forbidden in the shell: say who can, and who to ask.</figcaption></figure>
-        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--stack"><div class="empty empty--compact empty--error"><p class="empty__title">Error 403: Forbidden</p></div></div><figcaption>Don't lead with the status code or the HTTP phrase.</figcaption></figure>
-        <figure class="ds-do"><div class="ds-example__canvas"><button class="btn btn--primary" type="button">Clear filters</button></div><figcaption>One primary per empty state.</figcaption></figure>
-        <figure class="ds-dont"><div class="ds-example__canvas"><button class="btn btn--primary" type="button">Clear filters</button><button class="btn btn--primary" type="button">Browse occasions</button></div><figcaption>Two ink buttons compete; make the second ghost or secondary.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--stack"><div class="empty empty--compact"><p class="empty__title">Studio reviews are coming</p><p class="empty__text">When we've shot in studios nearby, the closest three will show here.</p><div class="empty__actions"><a class="btn" href="../../mocks/pages/studios/empty.html">Browse studios</a></div></div></div><figcaption>Keep a required review section and explain it: Rain backup never disappears.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--stack"><div class="empty empty--compact"><p class="empty__title">No episode yet</p><p class="empty__text">Check back soon.</p></div></div><figcaption>Don't add placeholders for optional content: a review without a video has no episode section at all.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--stack"><div class="empty empty--compact empty--error"><p class="empty__title">We couldn't open this studio</p><p class="empty__text">It may have been deleted. Go back to the studio list.</p></div></div><figcaption>Say what happened in the admin's words.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--stack"><div class="empty empty--compact empty--error"><p class="empty__title">Error 404: studio id 3f9c not found</p><p class="empty__text">GET /api/admin/studios failed.</p></div></div><figcaption>Never show ids, status codes or server messages on an editor error.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--stack"><div class="active-filters"><span class="chip chip--filter">Waterfront<button class="remove" type="button" aria-label="Remove filter: Waterfront"><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></span><span class="chip chip--filter">Family<button class="remove" type="button" aria-label="Remove filter: Family"><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></span></div><p class="text-muted">No spots match these filters</p></div><figcaption>Keep the active filters visible above a no-results state.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--stack"><p class="text-muted">Nothing found.</p></div><figcaption>Don't hide the filters or leave a bare "Nothing found" with no way back.</figcaption></figure>
       </div>
     </section>
 
     <section class="ds-section" id="sources"><h2><a href="#sources">Sources</a></h2>
       <ul>
-        <li>First run: inbox/empty, caterers/empty, dashboard/empty, profile-photos/empty, profile-menu/empty, dashboard-enquiries/empty, dashboard-reviews/empty, admin-queue/empty, admin-audit/empty</li>
-        <li>No results: caterers/no-results, inbox/no-results, admin-audit/no-results, admin-caterers/no-results</li>
-        <li>Failures: caterers/error, inbox/error, caterer/error, profile-details/error, admin-audit/error, admin-metrics/partial</li>
-        <li>System: not-found, forbidden, server-error, offline, rate-limited, maintenance, caterer/removed, thread/not-found, admin-audit/forbidden, admin-operators/forbidden</li>
+        <li>First run: <a href="../../mocks/pages/studios/empty.html">studios/empty</a>, <a href="../../mocks/pages/spots/empty.html">spots/empty</a>, <a href="../../mocks/pages/home/empty.html">home/empty</a>, <a href="../../mocks/pages/map/empty.html">map/empty</a>, <a href="../../mocks/pages/guides/empty.html">guides/empty</a>, <a href="../../mocks/pages/spot/no-rain-backup.html">spot/no-rain-backup</a>, <a href="../../mocks/pages/admin-dashboard/empty.html">admin-dashboard/empty</a>, <a href="../../mocks/pages/admin-studios/empty.html">admin-studios/empty</a></li>
+        <li>No results: <a href="../../mocks/pages/studios/no-results.html">studios/no-results</a>, <a href="../../mocks/pages/spots/no-results.html">spots/no-results</a>, <a href="../../mocks/pages/admin-studios/no-results.html">admin-studios/no-results</a>, <a href="../../mocks/dialogs/guide-entry-picker/no-matches.html">guide-entry-picker/no-matches</a></li>
+        <li>Compare: <a href="../../mocks/pages/compare/empty.html">empty</a>, <a href="../../mocks/pages/compare/unknown-slug.html">unknown-slug</a>, <a href="../../mocks/pages/compare/over-limit.html">over-limit</a></li>
+        <li>Failures: <a href="../../mocks/pages/studios/error.html">studios/error</a>, <a href="../../mocks/pages/map/error.html">map/error</a>, <a href="../../mocks/pages/map/tiles-failed.html">map/tiles-failed</a>, <a href="../../mocks/pages/spot/map-failed.html">spot/map-failed</a>, <a href="../../mocks/pages/studio/media-failed.html">studio/media-failed</a>, <a href="../../mocks/dialogs/lightbox/image-failed.html">lightbox/image-failed</a>, <a href="../../mocks/pages/admin-dashboard/error.html">admin-dashboard/error</a>, <a href="../../mocks/pages/admin-dashboard/partial.html">admin-dashboard/partial</a>, <a href="../../mocks/pages/studio-editor/error.html">studio-editor/error</a>, <a href="../../mocks/pages/not-found/default.html">not-found</a>, <a href="../../mocks/pages/server-error/default.html">server-error</a></li>
+        <li>Server limits: <a href="../../mocks/pages/sign-in/rate-limited.html">sign-in/rate-limited</a>, <a href="../../mocks/pages/home/rate-limited.html">home/rate-limited</a>, <a href="../../mocks/pages/sign-in/session-expired.html">sign-in/session-expired</a></li>
       </ul>
-      <p>Drift fixed during extraction: reference labels varied ("Reference 7F3K-92QD.", "Reference: 51cd-88e3-0a19", references inside the body sentence); the system puts "Reference <i>id</i>" on its own caption line. The two in-shell forbidden screens used different back labels ("Back to review queue", "Back to the queue"); use "Back to the queue". caterers/error paired "Try again" with "Browse occasions" while every other public error offers "Browse caterers"; on the listing itself the secondary is "Browse occasions" by design, elsewhere "Browse caterers".</p>
+      <p>Drift fixed during extraction: load errors carry <code>role="alert"</code> on the public lists and map but not on the dashboard and admin lists; the system gives every content-replacing error <code>role="alert"</code>. Some mocks hide the empty-state icon on its wrapper and others only on the SVG; the system hides the wrapper. The map's empty and error cards are styled inline (surface, radius, shadow, max width); listed as a CSS need. The 404 page puts its code above the title while the 500 page puts its reference below the text; both are kept, since the 404 code orients and the 500 reference is for quoting.</p>
     </section>
 
-    <footer class="ds-footer"><span>ShotThere design system · extracted from docs/mocks on 10 October 2026</span><a href="#top">Back to top</a></footer>
+    <footer class="ds-footer"><span>ShotThere design system · extracted from <a href="../../mocks/index.html">docs/mocks</a> on 13 October 2026</span><a href="#top">Back to top</a></footer>
   </main>
 </div>
 <script src="../assets/ds.js"></script>
