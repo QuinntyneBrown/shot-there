@@ -1,0 +1,22 @@
+[
+  { "name": "signin", "mock": "pages/sign-in/default" },
+  { "name": "signin-invalid", "mock": "pages/sign-in/invalid" },
+  { "name": "signin-submitting", "mock": "pages/sign-in/submitting" },
+  { "name": "signin-error", "mock": "pages/sign-in/error" },
+  { "name": "signin-rate-limited", "mock": "pages/sign-in/rate-limited" },
+  { "name": "signin-phone", "mock": "pages/sign-in/default", "viewport": "phone" },
+  { "name": "dashboard", "mock": "pages/admin-dashboard/default" },
+  { "name": "dashboard-full", "mock": "pages/admin-dashboard/default", "clip": "main" },
+  { "name": "dashboard-up-to-date", "mock": "pages/admin-dashboard/up-to-date" },
+  { "name": "dashboard-empty", "mock": "pages/admin-dashboard/empty" },
+  { "name": "dashboard-loading", "mock": "pages/admin-dashboard/loading" },
+  { "name": "dashboard-error", "mock": "pages/admin-dashboard/error" },
+  { "name": "dashboard-phone", "mock": "pages/admin-dashboard/default", "viewport": "phone" },
+  { "name": "studios", "mock": "pages/admin-studios/default" },
+  { "name": "studios-search", "mock": "pages/admin-studios/search" },
+  { "name": "studios-no-results", "mock": "pages/admin-studios/no-results" },
+  { "name": "studios-loading", "mock": "pages/admin-studios/loading" },
+  { "name": "studios-error", "mock": "pages/admin-studios/error" },
+  { "name": "studios-empty", "mock": "pages/admin-studios/empty" },
+  { "name": "studios-phone", "mock": "pages/admin-studios/default", "viewport": "phone" }
+]

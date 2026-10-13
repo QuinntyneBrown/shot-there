@@ -1,0 +1,196 @@
+[
+  {
+    "name": "new",
+    "mock": "pages/studio-editor/empty"
+  },
+  {
+    "name": "new-full",
+    "mock": "pages/studio-editor/empty",
+    "clip": [
+      ".form-section:has(h2:text-is('Basics'))",
+      ".form-section:has(h2:text-is('Gallery'))"
+    ]
+  },
+  {
+    "name": "toast-created",
+    "mock": "notifications/admin-toast/success"
+  },
+  {
+    "name": "toast-created-zoom",
+    "mock": "notifications/admin-toast/success",
+    "clip": ".toast",
+    "pad": 16
+  },
+  {
+    "name": "editor",
+    "mock": "pages/studio-editor/default"
+  },
+  {
+    "name": "basics-pricing",
+    "mock": "pages/studio-editor/default",
+    "clip": [
+      ".form-section:has(h2:text-is('Basics'))",
+      ".form-section:has(h2:text-is('Pricing'))"
+    ]
+  },
+  {
+    "name": "images",
+    "mock": "pages/studio-editor/default",
+    "clip": [
+      ".form-section:has(h2:text-is('Standard test shots'))",
+      ".form-section:has(h2:text-is('Gallery'))"
+    ]
+  },
+  {
+    "name": "scores-verdict",
+    "mock": "pages/studio-editor/default",
+    "clip": [
+      ".form-section:has(h2:text-is('Rubric scores'))",
+      ".form-section:has(h2:text-is('Verdict'))"
+    ]
+  },
+  {
+    "name": "disclosure-episode",
+    "mock": "pages/studio-editor/default",
+    "clip": [
+      ".form-section:has(h2:text-is('Disclosure'))",
+      ".form-section:has(h2:text-is('Episode'))"
+    ]
+  },
+  {
+    "name": "editor-phone",
+    "mock": "pages/studio-editor/default",
+    "viewport": "phone"
+  },
+  {
+    "name": "uploading",
+    "mock": "pages/studio-editor/uploading",
+    "clip": ".form-section:has(h2:text-is('Gallery'))"
+  },
+  {
+    "name": "upload-rejected",
+    "mock": "pages/studio-editor/upload-rejected",
+    "clip": [
+      ".form-section:has(h2:text-is('Standard test shots'))",
+      ".form-section:has(h2:text-is('Gallery'))"
+    ]
+  },
+  {
+    "name": "remove-image",
+    "mock": "dialogs/remove-image/default"
+  },
+  {
+    "name": "remove-image-busy",
+    "mock": "dialogs/remove-image/busy",
+    "clip": ".dialog__panel",
+    "pad": 16
+  },
+  {
+    "name": "remove-image-failed",
+    "mock": "dialogs/remove-image/failed",
+    "clip": ".dialog__panel",
+    "pad": 16
+  },
+  {
+    "name": "remove-image-refused",
+    "mock": "dialogs/remove-image/refused",
+    "clip": ".dialog__panel",
+    "pad": 16
+  },
+  {
+    "name": "submitting",
+    "mock": "pages/studio-editor/submitting"
+  },
+  {
+    "name": "invalid",
+    "mock": "pages/studio-editor/invalid"
+  },
+  {
+    "name": "invalid-summary",
+    "mock": "pages/studio-editor/invalid",
+    "clip": ".form-summary",
+    "pad": 16
+  },
+  {
+    "name": "toast-danger",
+    "mock": "notifications/admin-toast/danger"
+  },
+  {
+    "name": "loading",
+    "mock": "pages/studio-editor/loading"
+  },
+  {
+    "name": "error",
+    "mock": "pages/studio-editor/error"
+  },
+  {
+    "name": "missing-fields",
+    "mock": "dialogs/missing-fields/default"
+  },
+  {
+    "name": "missing-fields-zoom",
+    "mock": "dialogs/missing-fields/default",
+    "clip": ".dialog__panel",
+    "pad": 16
+  },
+  {
+    "name": "toast-published",
+    "mock": "notifications/admin-toast/published"
+  },
+  {
+    "name": "published",
+    "mock": "pages/studio-editor/published",
+    "clip": ".form-actions",
+    "pad": 16
+  },
+  {
+    "name": "unpublish",
+    "mock": "dialogs/unpublish/default"
+  },
+  {
+    "name": "unpublish-busy",
+    "mock": "dialogs/unpublish/busy",
+    "clip": ".dialog__panel",
+    "pad": 16
+  },
+  {
+    "name": "unpublish-failed",
+    "mock": "dialogs/unpublish/failed",
+    "clip": ".dialog__panel",
+    "pad": 16
+  },
+  {
+    "name": "toast-info",
+    "mock": "notifications/admin-toast/info"
+  },
+  {
+    "name": "delete",
+    "mock": "dialogs/delete-location/default"
+  },
+  {
+    "name": "delete-busy",
+    "mock": "dialogs/delete-location/busy",
+    "clip": ".dialog__panel",
+    "pad": 16
+  },
+  {
+    "name": "delete-failed",
+    "mock": "dialogs/delete-location/failed",
+    "clip": ".dialog__panel",
+    "pad": 16
+  },
+  {
+    "name": "toast-deleted",
+    "mock": "notifications/admin-toast/deleted"
+  },
+  {
+    "name": "unsaved",
+    "mock": "dialogs/unsaved-changes/default"
+  },
+  {
+    "name": "unsaved-zoom",
+    "mock": "dialogs/unsaved-changes/default",
+    "clip": ".dialog__panel",
+    "pad": 16
+  }
+]

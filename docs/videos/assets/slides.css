@@ -1,0 +1,59 @@
+/* Shared slide styles for docs/videos decks. 1920x1080, one slide visible at a time.
+   Bottom 150px stay clear for burned-in captions. */
+:root {
+  --paper: #f7f6f3;
+  --ink: #17171a;
+  --muted: #5d5d66;
+  --line: #dcdad4;
+  --accent: #b23a1d;
+  --card: #ffffff;
+  --sans: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --display: "Inter Display", "Inter", "Helvetica Neue", Arial, sans-serif;
+  --header: 84px;
+  --captions: 150px;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; width: 1920px; height: 1080px; overflow: hidden; }
+body { background: var(--paper); color: var(--ink); font: 400 30px/1.4 var(--sans); }
+
+.deck-header {
+  position: fixed; inset: 0 0 auto 0; height: var(--header);
+  display: flex; align-items: center; gap: 24px; padding: 0 80px;
+  font-size: 24px; color: var(--muted); border-bottom: 1px solid var(--line);
+}
+.deck-header strong { color: var(--ink); font: 700 26px var(--display); letter-spacing: -0.01em; }
+.deck-header .part { margin-left: auto; font-weight: 600; color: var(--ink); }
+.deck-progress { position: fixed; top: calc(var(--header) - 4px); left: 0; height: 4px; background: var(--accent); }
+
+section {
+  display: none; position: fixed; left: 0; right: 0;
+  top: var(--header); bottom: var(--captions);
+  padding: 36px 80px 24px; flex-direction: column; justify-content: center; align-items: center; gap: 24px;
+}
+section.active { display: flex; }
+
+h1 { font: 700 104px/1.02 var(--display); letter-spacing: -0.03em; margin: 0; text-wrap: balance; }
+h2 { font: 700 60px/1.1 var(--display); letter-spacing: -0.02em; margin: 0; text-align: center; text-wrap: balance; }
+.kicker { font-size: 24px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); }
+.lead { font-size: 36px; color: var(--muted); margin: 0; max-width: 1300px; text-align: center; }
+
+/* Screenshots: one or more figures in a row, each scaled to fit. */
+.row { display: flex; gap: 40px; align-items: center; justify-content: center; width: 100%; min-height: 0; flex: 1; }
+figure { margin: 0; display: flex; flex-direction: column; align-items: center; gap: 14px; min-width: 0; min-height: 0; height: 100%; justify-content: center; }
+.row > figure { flex: 0 0 auto; }
+figure img {
+  display: block; max-width: 100%; object-fit: contain;
+  border: 1px solid var(--line); border-radius: 14px; background: var(--card);
+  box-shadow: 0 18px 48px rgb(23 23 26 / 0.14), 0 2px 6px rgb(23 23 26 / 0.08);
+}
+figure.phone img { border-radius: 28px; border-width: 2px; border-color: var(--ink); }
+figcaption {
+  font-size: 26px; font-weight: 600; padding: 6px 18px; border-radius: 999px;
+  background: var(--ink); color: var(--paper); white-space: nowrap;
+}
+figcaption.warn { background: var(--accent); }
+
+/* Title slide: name above a strip of screenshots. */
+section.title { justify-content: flex-start; gap: 20px; padding-top: 70px; }
+section.title .row { flex: 1; }

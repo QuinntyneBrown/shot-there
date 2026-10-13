@@ -1,0 +1,21 @@
+[
+  { "name": "guides", "mock": "pages/guides/default" },
+  { "name": "guides-list", "mock": "pages/guides/default", "clip": ".guide-list" },
+  { "name": "guide", "mock": "pages/guide/default" },
+  { "name": "guide-entries", "mock": "pages/guide/default", "clip": ".guide-entries" },
+  { "name": "guide-phone", "mock": "pages/guide/default", "viewport": "phone" },
+  { "name": "featured-in", "mock": "pages/studio/default", "clip": ".review-section:has(#featured-title)" },
+  { "name": "signup-page", "mock": "pages/email-signup/default", "focus": ".signup" },
+  { "name": "signup-default", "mock": "pages/email-signup/default", "clip": ".signup", "pad": 24 },
+  { "name": "signup-invalid", "mock": "pages/email-signup/invalid", "clip": ".signup", "pad": 24 },
+  { "name": "signup-invalid-format", "mock": "pages/email-signup/invalid-format", "clip": ".signup", "pad": 24 },
+  { "name": "signup-submitting", "mock": "pages/email-signup/submitting", "clip": ".signup", "pad": 24 },
+  { "name": "signup-success", "mock": "pages/email-signup/success", "clip": ".signup", "pad": 24 },
+  { "name": "signup-error", "mock": "pages/email-signup/error", "clip": ".signup", "pad": 24 },
+  { "name": "signup-phone", "mock": "pages/email-signup/default", "viewport": "phone", "focus": ".signup" },
+  { "name": "policy", "mock": "pages/editorial-policy/default" },
+  { "name": "policy-full", "mock": "pages/editorial-policy/default", "clip": "main" },
+  { "name": "not-found", "mock": "pages/not-found/default" },
+  { "name": "server-error", "mock": "pages/server-error/default" },
+  { "name": "not-found-phone", "mock": "pages/not-found/default", "viewport": "phone" }
+]

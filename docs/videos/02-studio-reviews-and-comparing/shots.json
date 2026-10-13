@@ -1,0 +1,132 @@
+[
+  {
+    "name": "review-top",
+    "mock": "pages/studio/default"
+  },
+  {
+    "name": "review-phone",
+    "mock": "pages/studio/default",
+    "viewport": "phone"
+  },
+  {
+    "name": "pricing",
+    "mock": "pages/studio/default",
+    "clip": ".review-section:has(#pricing-title)"
+  },
+  {
+    "name": "specs",
+    "mock": "pages/studio/default",
+    "clip": ".review-section:has(#specs-title)"
+  },
+  {
+    "name": "gear-logistics",
+    "mock": "pages/studio/default",
+    "clip": [
+      ".review-section:has(#gear-title)",
+      ".review-section:has(#logistics-title)"
+    ]
+  },
+  {
+    "name": "tests",
+    "mock": "pages/studio/default",
+    "clip": ".review-section:has(#tests-title)",
+    "pad": 24
+  },
+  {
+    "name": "gallery",
+    "mock": "pages/studio/default",
+    "clip": ".review-section:has(#gallery-title)"
+  },
+  {
+    "name": "lightbox",
+    "mock": "dialogs/lightbox/default"
+  },
+  {
+    "name": "lightbox-busy",
+    "mock": "dialogs/lightbox/busy"
+  },
+  {
+    "name": "verdict",
+    "mock": "pages/studio/default",
+    "clip": ".review-section:has(#verdict-title)"
+  },
+  {
+    "name": "episode",
+    "mock": "pages/studio/default",
+    "clip": [
+      ".review-section:has(#episode-title)",
+      ".review-section:has(#featured-title)"
+    ]
+  },
+  {
+    "name": "sparse",
+    "mock": "pages/studio/sparse",
+    "focus": ".review-section:has(#verdict-title)"
+  },
+  {
+    "name": "image-failed",
+    "mock": "pages/studio/image-failed",
+    "clip": ".review-section:has(#gallery-title)"
+  },
+  {
+    "name": "compare-one",
+    "mock": "pages/studios/compare-one"
+  },
+  {
+    "name": "bar-one",
+    "mock": "pages/studios/compare-one",
+    "clip": ".compare-bar",
+    "pad": 0
+  },
+  {
+    "name": "bar-two",
+    "mock": "pages/studios/compare-two",
+    "clip": ".compare-bar",
+    "pad": 0
+  },
+  {
+    "name": "compare-limit",
+    "mock": "pages/studios/compare-limit"
+  },
+  {
+    "name": "bar-limit",
+    "mock": "pages/studios/compare-limit",
+    "clip": ".compare-bar",
+    "pad": 0
+  },
+  {
+    "name": "compare-top",
+    "mock": "pages/compare/default"
+  },
+  {
+    "name": "compare-scores",
+    "mock": "pages/compare/default",
+    "clip": [
+      ".compare-table__group >> nth=3",
+      "tr:has(th:text-is('Overall'))"
+    ]
+  },
+  {
+    "name": "compare-shots",
+    "mock": "pages/compare/default",
+    "focus": ".compare-table__shot"
+  },
+  {
+    "name": "compare-phone",
+    "mock": "pages/compare/default",
+    "viewport": "phone",
+    "focus": ".table-wrap"
+  },
+  {
+    "name": "over-limit",
+    "mock": "pages/compare/over-limit"
+  },
+  {
+    "name": "unknown-studio",
+    "mock": "pages/compare/unknown-studio"
+  },
+  {
+    "name": "compare-empty",
+    "mock": "pages/compare/empty"
+  }
+]

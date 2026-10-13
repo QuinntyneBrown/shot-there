@@ -1,0 +1,74 @@
+[
+  {
+    "name": "list-default",
+    "mock": "pages/studios/default"
+  },
+  {
+    "name": "list-phone",
+    "mock": "pages/studios/default",
+    "viewport": "phone"
+  },
+  {
+    "name": "card-parkdale",
+    "mock": "pages/studios/default",
+    "clip": ".location-card >> nth=0",
+    "pad": 24
+  },
+  {
+    "name": "card-junction",
+    "mock": "pages/studios/default",
+    "clip": ".location-card >> nth=1",
+    "pad": 24
+  },
+  {
+    "name": "sort",
+    "mock": "pages/studios/default",
+    "clip": ".results-head",
+    "pad": 24
+  },
+  {
+    "name": "filters-a",
+    "mock": "pages/studios/filtered",
+    "clip": [
+      ".filter-panel fieldset >> nth=0",
+      ".filter-panel fieldset >> nth=2"
+    ],
+    "pad": 24
+  },
+  {
+    "name": "filters-b",
+    "mock": "pages/studios/filtered",
+    "clip": [
+      ".filter-panel fieldset >> nth=3",
+      ".filter-panel__actions"
+    ],
+    "pad": 24
+  },
+  {
+    "name": "filtered",
+    "mock": "pages/studios/filtered"
+  },
+  {
+    "name": "loading",
+    "mock": "pages/studios/loading"
+  },
+  {
+    "name": "no-results",
+    "mock": "pages/studios/no-results",
+    "focus": ".results-head"
+  },
+  {
+    "name": "error",
+    "mock": "pages/studios/error",
+    "focus": ".results-head"
+  },
+  {
+    "name": "empty",
+    "mock": "pages/studios/empty"
+  },
+  {
+    "name": "phone-menu",
+    "mock": "pages/studios/menu-open",
+    "viewport": "phone"
+  }
+]

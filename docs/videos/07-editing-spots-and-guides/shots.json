@@ -1,0 +1,159 @@
+[
+  {
+    "name": "spot-editor",
+    "mock": "pages/spot-editor/default"
+  },
+  {
+    "name": "spot-new",
+    "mock": "pages/spot-editor/empty"
+  },
+  {
+    "name": "spot-basics-location",
+    "mock": "pages/spot-editor/default",
+    "clip": [
+      ".form-section:has(h2:text-is('Basics'))",
+      ".form-section:has(h2:text-is('Location'))"
+    ]
+  },
+  {
+    "name": "spot-permits-uses",
+    "mock": "pages/spot-editor/default",
+    "clip": [
+      ".form-section:has(h2:text-is('Permits'))",
+      ".form-section:has(h2:text-is('Best uses'))"
+    ]
+  },
+  {
+    "name": "spot-samples",
+    "mock": "pages/spot-editor/default",
+    "clip": [
+      ".form-section:has(h2:text-is('Sample shots'))",
+      ".form-section:has(h2:text-is('Episode'))"
+    ]
+  },
+  {
+    "name": "spot-phone",
+    "mock": "pages/spot-editor/default",
+    "viewport": "phone"
+  },
+  {
+    "name": "spot-submitting",
+    "mock": "pages/spot-editor/submitting"
+  },
+  {
+    "name": "spot-invalid",
+    "mock": "pages/spot-editor/invalid"
+  },
+  {
+    "name": "spot-invalid-summary",
+    "mock": "pages/spot-editor/invalid",
+    "clip": ".form-summary",
+    "pad": 16
+  },
+  {
+    "name": "spot-loading",
+    "mock": "pages/spot-editor/loading"
+  },
+  {
+    "name": "spot-error",
+    "mock": "pages/spot-editor/error"
+  },
+  {
+    "name": "spot-missing",
+    "mock": "dialogs/missing-fields/spot"
+  },
+  {
+    "name": "spot-missing-zoom",
+    "mock": "dialogs/missing-fields/spot",
+    "clip": ".dialog__panel",
+    "pad": 16
+  },
+  {
+    "name": "spot-published",
+    "mock": "pages/spot-editor/published"
+  },
+  {
+    "name": "spot-published-actions",
+    "mock": "pages/spot-editor/published",
+    "clip": ".form-actions",
+    "pad": 16
+  },
+  {
+    "name": "guide-new",
+    "mock": "pages/guide-editor/empty"
+  },
+  {
+    "name": "guide-editor",
+    "mock": "pages/guide-editor/default"
+  },
+  {
+    "name": "guide-entries",
+    "mock": "pages/guide-editor/default",
+    "clip": ".form-section:has(h2:text-is('Entries'))"
+  },
+  {
+    "name": "guide-phone",
+    "mock": "pages/guide-editor/default",
+    "viewport": "phone"
+  },
+  {
+    "name": "picker",
+    "mock": "dialogs/guide-entry-picker/default"
+  },
+  {
+    "name": "picker-zoom",
+    "mock": "dialogs/guide-entry-picker/default",
+    "clip": ".dialog__panel",
+    "pad": 16
+  },
+  {
+    "name": "picker-busy",
+    "mock": "dialogs/guide-entry-picker/busy",
+    "clip": ".dialog__panel",
+    "pad": 16
+  },
+  {
+    "name": "picker-failed",
+    "mock": "dialogs/guide-entry-picker/failed",
+    "clip": ".dialog__panel",
+    "pad": 16
+  },
+  {
+    "name": "picker-invalid",
+    "mock": "dialogs/guide-entry-picker/invalid",
+    "clip": ".dialog__panel",
+    "pad": 16
+  },
+  {
+    "name": "picker-no-results",
+    "mock": "dialogs/guide-entry-picker/no-results",
+    "clip": ".dialog__panel",
+    "pad": 16
+  },
+  {
+    "name": "guide-submitting",
+    "mock": "pages/guide-editor/submitting"
+  },
+  {
+    "name": "guide-invalid",
+    "mock": "pages/guide-editor/invalid"
+  },
+  {
+    "name": "guide-published",
+    "mock": "pages/guide-editor/published"
+  },
+  {
+    "name": "guide-published-actions",
+    "mock": "pages/guide-editor/published",
+    "clip": ".form-actions",
+    "pad": 16
+  },
+  {
+    "name": "guide-loading",
+    "mock": "pages/guide-editor/loading"
+  },
+  {
+    "name": "guide-error",
+    "mock": "pages/guide-editor/error"
+  }
+]
