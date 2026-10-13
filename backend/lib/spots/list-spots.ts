@@ -1,13 +1,10 @@
 import { getDependencies } from '@/lib/data/dependency-container';
-import { imagesWithRole } from '@/lib/images/to-image-dto';
-import { toThumbnailDto } from '@/lib/images/to-thumbnail-dto';
-import { isStale } from '@/lib/shared/is-stale';
 import type { BestUse } from '@/lib/spots/best-use';
 import type { ShootType } from '@/lib/spots/shoot-type';
 import type { SpotListQuery } from '@/lib/spots/spot-list-query';
 import type { SpotRecord } from '@/lib/spots/spot-record';
-import type { SpotSummaryDto } from '@/lib/spots/spot-summary-dto';
-import { summarizePermits } from '@/lib/spots/summarize-permits';
+import type { SpotSummary } from '@/lib/spots/spot-summary';
+import { toSpotSummary } from '@/lib/spots/to-spot-summary';
 
 /** The shoot type whose permit status answers "is a permit needed" for each use case. */
 const PERMIT_SHOOT_TYPE: Record<BestUse, ShootType> = {
@@ -18,32 +15,28 @@ const PERMIT_SHOOT_TYPE: Record<BestUse, ShootType> = {
   video: 'video',
 };
 
-/** Published spots matching the query as list cards, by name. */
-export async function listSpots(query: SpotListQuery): Promise<SpotSummaryDto[]> {
+/** Published spots matching the query as list cards, most recently reviewed first, ties by slug. */
+export async function listSpots(query: SpotListQuery): Promise<SpotSummary[]> {
   const { spots, clock } = getDependencies();
   const today = clock.today();
   return (await spots.listPublished())
     .filter((spot) => matchesSpotFilters(spot, query))
-    .sort((a, b) => a.name.localeCompare(b.name))
-    .map((spot) => ({
-      slug: spot.slug,
-      name: spot.name,
-      neighbourhood: spot.neighbourhood,
-      type: spot.type,
-      bestUses: spot.bestUses,
-      permitSummary: summarizePermits(spot.permits),
-      permitStale: isStale(spot.permitVerifiedAt, today),
-      thumbnail: toThumbnailDto(imagesWithRole(spot.images, 'sample_shot')[0]),
-    }));
+    .sort((a, b) => reviewTime(b) - reviewTime(a) || a.slug.localeCompare(b.slug))
+    .flatMap((spot) => toSpotSummary(spot, today) ?? []);
 }
+
+/** The time of the latest publish (ICD OI-4). */
+const reviewTime = (spot: SpotRecord) => spot.publishedAt?.getTime() ?? 0;
 
 function matchesSpotFilters(spot: SpotRecord, query: SpotListQuery): boolean {
   if (query.types.length > 0 && (spot.type === null || !query.types.includes(spot.type))) return false;
   if (query.useCases.length > 0 && !query.useCases.some((use) => spot.bestUses.includes(use))) return false;
   if (query.permit === 'none_needed') {
-    const shootTypes = query.useCases.length > 0 ? query.useCases.map((use) => PERMIT_SHOOT_TYPE[use]) : undefined;
-    const relevant = spot.permits.filter((permit) => !shootTypes || shootTypes.includes(permit.shootType));
-    if (relevant.length === 0 || relevant.some((permit) => permit.required)) return false;
+    // With no use case selected, a spot must need no permit for a portrait (ICD OI-6).
+    const shootTypes: ShootType[] = query.useCases.length > 0 ? query.useCases.map((use) => PERMIT_SHOOT_TYPE[use]) : ['portrait'];
+    const needsNone = (shootType: ShootType) =>
+      spot.permits.some((permit) => permit.shootType === shootType && !permit.required);
+    if (!shootTypes.every(needsNone)) return false;
   }
   return true;
 }
