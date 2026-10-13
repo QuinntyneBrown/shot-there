@@ -1,4 +1,4 @@
-import { givenStudios } from './fakes/fake-studios-api';
+import { givenStudioListFails, givenStudioListPending, givenStudios } from './fakes/fake-studios-api';
 import { PUBLISHED_STUDIOS } from './fakes/studio-summaries';
 import { expect, test } from './fakes/test';
 import { StudioListPage } from './pages/studio-list.page';
@@ -51,5 +51,39 @@ test.describe('Studio list', () => {
     // Then the empty state explains it
     await expect(list.emptyState).toBeVisible();
     await expect(list.cards).toHaveCount(0);
+  });
+
+  test('shows a loading state while the studios are on their way', async ({ page }) => {
+    // Given the studio list has not arrived yet
+    const release = await givenStudioListPending(page, PUBLISHED_STUDIOS);
+    const list = new StudioListPage(page);
+    // When the visitor opens the studio list
+    await list.open();
+    // Then the results are busy, say they are loading and show six placeholder cards
+    await expect(list.results).toHaveAttribute('aria-busy', 'true');
+    await expect(list.loadingStatus).toBeVisible();
+    await expect(list.skeletonCards).toHaveCount(6);
+    // When the list arrives
+    release();
+    // Then the cards replace the placeholders
+    await expect(list.cards).toHaveCount(7);
+    await expect(list.results).not.toHaveAttribute('aria-busy', 'true');
+  });
+
+  test('shows an error with a retry when the studios cannot be loaded', async ({ page }) => {
+    // Given the studio list request fails
+    await givenStudioListFails(page);
+    const list = new StudioListPage(page);
+    // When the visitor opens the studio list
+    await list.open();
+    // Then an error explains it and offers a retry
+    await expect(list.errorAlert).toBeVisible();
+    await expect(list.cards).toHaveCount(0);
+    // When the API recovers and the visitor presses Try again
+    await givenStudios(page, PUBLISHED_STUDIOS);
+    await list.tryAgainButton.click();
+    // Then the studios show
+    await expect(list.cards).toHaveCount(7);
+    await expect(list.errorAlert).toBeHidden();
   });
 });

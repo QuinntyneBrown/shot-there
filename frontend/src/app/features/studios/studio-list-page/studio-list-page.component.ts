@@ -13,6 +13,8 @@ import { StudioListState } from './studio-list-state';
 export class StudioListPageComponent {
   private readonly studiosService = inject(StudiosService);
   protected readonly state = signal<StudioListState>({ status: 'loading' });
+  /** Six placeholder cards: two rows at LG. */
+  protected readonly skeletons = [1, 2, 3, 4, 5, 6];
   protected readonly studios = computed<StudioSummary[]>(() => {
     const state = this.state();
     return state.status === 'loaded' ? state.studios : [];
