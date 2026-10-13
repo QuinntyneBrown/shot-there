@@ -268,3 +268,19 @@ model GuideEntry {
   @@unique([guideId, studioId])
   @@unique([guideId, spotId])
 }
+
+enum ContentType {
+  studio
+  spot
+  guide
+}
+
+model SlugRedirect {
+  id        String      @id @default(uuid())
+  type      ContentType
+  fromSlug  String
+  toSlug    String
+  createdAt DateTime    @default(now())
+
+  @@unique([type, fromSlug])
+}

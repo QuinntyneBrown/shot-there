@@ -1,10 +1,12 @@
 import { setDependencies } from '@/lib/data/dependency-container';
 import type { Dependencies } from '@/lib/data/dependencies';
 import type { GuideRecord } from '@/lib/guides/guide-record';
+import type { SlugRedirectRecord } from '@/lib/slugs/slug-redirect-record';
 import type { SpotRecord } from '@/lib/spots/spot-record';
 import type { StudioRecord } from '@/lib/studios/studio-record';
 import { fixedClock } from '@/tests/support/fixed-clock';
 import { InMemoryGuideRepository } from '@/tests/support/in-memory-guide-repository';
+import { InMemorySlugRedirectRepository } from '@/tests/support/in-memory-slug-redirect-repository';
 import { InMemorySpotRepository } from '@/tests/support/in-memory-spot-repository';
 import { InMemoryStudioRepository } from '@/tests/support/in-memory-studio-repository';
 
@@ -13,6 +15,7 @@ export interface FakeSeed {
   studios?: StudioRecord[];
   spots?: SpotRecord[];
   guides?: GuideRecord[];
+  slugRedirects?: SlugRedirectRecord[];
   probeDatabase?: () => Promise<void>;
 }
 
@@ -24,6 +27,7 @@ export function useFakeDependencies(seed: FakeSeed = {}): Dependencies {
     studios: new InMemoryStudioRepository(seed.studios ?? []),
     spots: new InMemorySpotRepository(seed.spots ?? []),
     guides: new InMemoryGuideRepository(seed.guides ?? []),
+    slugRedirects: new InMemorySlugRedirectRepository(seed.slugRedirects ?? []),
   };
   setDependencies(dependencies);
   return dependencies;
