@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Form layout — ShotThere design system</title>
-<meta name="description" content="ShotThere form layout: .form column, fieldset and legend, .field-row, .form-actions and sticky actions, .form-summary error summary, .toolbar filters and the autosave status; submitting, saving, invalid and saved states.">
+<meta name="description" content="How ShotThere forms are put together: field rows, fieldsets, the sticky form actions with save status, the error summary, the editor forms and the narrow owner sign-in layout.">
 <link rel="stylesheet" href="../tokens/tokens.css">
 <link rel="stylesheet" href="../assets/components.css">
 <link rel="stylesheet" href="../assets/ds.css">
@@ -33,34 +33,57 @@
       <li><a href="../components/icon-button.html">Icon button</a></li>
       <li><a href="../components/button-group.html">Button group</a></li>
       <li><a href="../components/link.html">Link</a></li>
+      <li><a href="../components/compare-bar.html">Compare toggle and bar</a></li>
     </ul></details>
     <details open><summary>Inputs</summary><ul>
       <li><a href="../components/form-field.html">Form field</a></li>
       <li><a href="../components/text-field.html">Text field</a></li>
       <li><a href="../components/textarea.html">Textarea</a></li>
       <li><a href="../components/select.html">Select</a></li>
+      <li><a href="../components/combobox.html">Combobox</a></li>
       <li><a href="../components/checkbox.html">Checkbox</a></li>
       <li><a href="../components/radio-group.html">Radio group</a></li>
       <li><a href="../components/file-upload.html">File upload</a></li>
       <li><a href="../components/form-layout.html">Form layout</a></li>
+      <li><a href="../components/signup.html">Email signup</a></li>
     </ul></details>
     <details open><summary>Navigation</summary><ul>
       <li><a href="../components/skip-link.html">Skip link</a></li>
       <li><a href="../components/site-header.html">Site header</a></li>
       <li><a href="../components/footer.html">Footer</a></li>
+      <li><a href="../components/breadcrumb.html">Breadcrumb</a></li>
+      <li><a href="../components/filter.html">Filters</a></li>
     </ul></details>
     <details open><summary>Containers and overlays</summary><ul>
       <li><a href="../components/container.html">Container and grid</a></li>
+      <li><a href="../components/review-layout.html">Review layout</a></li>
+      <li><a href="../components/editor-layout.html">Editor layout</a></li>
       <li><a href="../components/card.html">Card</a></li>
       <li><a href="../components/dialog.html">Dialog</a></li>
       <li><a href="../components/sheet.html">Sheet and drawer</a></li>
+      <li><a href="../components/popover.html">Popover</a></li>
+      <li><a href="../components/lightbox.html">Lightbox</a></li>
       <li><a href="../components/divider.html">Divider</a></li>
     </ul></details>
     <details open><summary>Data display</summary><ul>
+      <li><a href="../components/location-card.html">Location card</a></li>
       <li><a href="../components/table.html">Table</a></li>
+      <li><a href="../components/compare-table.html">Comparison table</a></li>
+      <li><a href="../components/list.html">List rows</a></li>
       <li><a href="../components/description-list.html">Description list</a></li>
+      <li><a href="../components/price-block.html">Price block</a></li>
+      <li><a href="../components/score.html">Score and pips</a></li>
+      <li><a href="../components/shot-grid.html">Shot grid</a></li>
+      <li><a href="../components/video-poster.html">Episode poster</a></li>
+      <li><a href="../components/map.html">Map</a></li>
+      <li><a href="../components/guide-entry.html">Guide entry</a></li>
+      <li><a href="../components/stat-tile.html">Stat tile</a></li>
+      <li><a href="../components/image-manager.html">Image manager</a></li>
+      <li><a href="../components/disclosure.html">Disclosure</a></li>
       <li><a href="../components/badge.html">Badge</a></li>
+      <li><a href="../components/status-label.html">Status label</a></li>
       <li><a href="../components/chip.html">Chip</a></li>
+      <li><a href="../components/tag.html">Tag</a></li>
     </ul></details>
     <details open><summary>Feedback</summary><ul>
       <li><a href="../components/inline-message.html">Inline message</a></li>
@@ -88,250 +111,353 @@
     <header class="ds-header">
       <p class="ds-kicker">Component · Inputs</p>
       <h1>Form layout</h1>
-      <p class="ds-lead">Form layout arranges fields into one calm column: fieldsets with legends, paired fields in a row, an error summary that links to each problem, and either a submit button or an autosave status. ShotThere has two kinds of form and they never mix.</p>
-      <div class="ds-meta"><span class="ds-pill ds-pill--ok">WCAG 2.2 AA</span><span class="ds-pill">Status: stable</span><span class="ds-pill"><code>.form</code></span><span class="ds-pill"><code>.field-row</code></span><span class="ds-pill"><code>.form-summary</code></span><span class="ds-pill"><code>.form-actions</code></span></div>
+      <p class="ds-lead">ShotThere has two kinds of form: the long studio, spot and guide editors the owner fills in after a shoot, and the short owner sign-in. Both use the same parts: field rows, fieldsets, an error summary that links to each problem, and actions that say what happened.</p>
+      <div class="ds-meta"><span class="ds-pill ds-pill--ok">WCAG 2.2 AA</span><span class="ds-pill">Status: stable</span><span class="ds-pill">Native <code>&lt;form&gt;</code>, <code>&lt;fieldset&gt;</code></span><span class="ds-pill"><code>.field-row</code></span><span class="ds-pill"><code>.form-actions--sticky</code></span><span class="ds-pill"><code>.save-status</code></span><span class="ds-pill"><code>.form-summary</code></span><span class="ds-pill"><code>.auth</code></span></div>
       <ul class="ds-toc"><li><a href="#overview">Overview</a></li><li><a href="#anatomy">Anatomy</a></li><li><a href="#variants">Variants</a></li><li><a href="#sizes">Sizes</a></li><li><a href="#states">States</a></li><li><a href="#responsive">Responsive behaviour</a></li><li><a href="#theming">Theming</a></li><li><a href="#accessibility">Accessibility</a></li><li><a href="#content">Content</a></li><li><a href="#do-dont">Do and don't</a></li><li><a href="#tokens">Tokens</a></li><li><a href="#code">Code</a></li><li><a href="#sources">Sources</a></li></ul>
     </header>
 
-<section class="ds-section" id="overview"><h2><a href="#overview">Overview</a></h2>
-      <p>Form layout is the set of containers around <a href="form-field.html">form fields</a>: the column, groups, rows, the actions bar, the error summary and the save status. It decides spacing and order; the fields decide everything inside a field.</p>
-      <p>ShotThere has <b>two kinds of form</b>:</p>
+    <section class="ds-section" id="overview"><h2><a href="#overview">Overview</a></h2>
+      <p>Form layout arranges <a href="form-field.html">form fields</a>; it does not style them. Every form is a native <code>&lt;form novalidate&gt;</code>: the browser's own bubbles are off and the server's messages are shown instead, because the server is the authority for every rule.</p>
       <ul>
-        <li><b>Submit forms</b> do one thing when a button is pressed: create an account, sign in, send an enquiry, save a certificate, add a dish, record a breach. They end in a primary button, show a busy state while sending, and show an error summary if the server or the client finds problems.</li>
-        <li><b>Autosave forms</b> are the caterer's profile editor (business details, cuisines and areas, guests and occasions). Every change saves on its own after 2 seconds or on blur (L2-038.1). There is no Save button; a <b>save status</b> under the page title says "Saving…", "Saved" or "Not saved: fix 2 things below", and the page ends with a quiet "Done" link back to the overview.</li>
+        <li><b>Editor forms</b> (<code>.editor-form</code>): the studio, spot and guide editors. A column of collapsible sections (<a href="editor-layout.html">Editor layout</a>) beside the status panel, ending in a sticky action bar. One column at XS (L2-054.6).</li>
+        <li><b>Field rows</b> (<code>.field-row</code>): two short fields that belong together side by side from 36rem, such as Neighbourhood and Address or cross streets, Hourly rate and Minimum booking, Usable width and depth.</li>
+        <li><b>Fieldsets</b>: a <code>&lt;fieldset&gt;</code> and <code>&lt;legend&gt;</code> around anything answered together: Fees, Natural light, How was this session paid for?, each image group.</li>
+        <li><b>Form actions</b> (<code>.form-actions.form-actions--sticky</code>): Save changes (or Create studio), Cancel, and the <code>.save-status</code> line, pinned to the bottom of the screen while the form scrolls.</li>
+        <li><b>Error summary</b> (<code>.form-summary</code>): when a save is refused, a box at the top of the form that counts the problems and links to each field.</li>
+        <li><b>Sign-in</b> (<code>main.auth</code>): one narrow column with the heading, any alert, then email, password and a full-width Sign in button.</li>
       </ul>
-      <p>Use a <a href="dialog.html">dialog</a> for a short form that belongs to something on the page (enquiry, report, dish, review). Use a full page for anything longer or anything people return to. Never place an inline form inside a page's content to edit something already shown; button-triggered editing opens a dialog (AGENTS.md).</p>
+      <p>Public pages have no forms except the <a href="signup.html">email signup</a> and the <a href="filter.html">filters</a>. Anything the owner edits opens its own editor screen or a dialog; there are no inline edit forms in lists.</p>
     </section>
 
     <section class="ds-section" id="anatomy"><h2><a href="#anatomy">Anatomy</a></h2>
       <div class="ds-anatomy">
-        <figure class="ds-anatomy__figure">
-          <form class="form" style="width: 100%;" aria-label="Food safety, anatomy example" novalidate>
-            <div class="form-summary"><h3>Fix 1 thing to save</h3><ul><li><a href="#fl-anat-expiry">This certificate has expired</a></li></ul></div>
-            <label class="field" for="fl-anat-holder"><span class="field__label">Name on the certificate</span><input class="input" id="fl-anat-holder" type="text" value="Beverley Campbell"></label>
-            <div class="field-row">
-              <label class="field" for="fl-anat-number"><span class="field__label">Certificate number</span><input class="input" id="fl-anat-number" type="text" value="FH-2021-076412"></label>
-              <label class="field" for="fl-anat-expiry"><span class="field__label">Expiry date</span><input class="input" id="fl-anat-expiry" type="date" value="2026-06-30" aria-invalid="true" aria-describedby="fl-anat-err"><span class="field__error" id="fl-anat-err">This certificate has expired</span></label>
+        <figure class="ds-anatomy__figure" style="padding: var(--space-8) var(--space-4) var(--space-8) var(--space-12); place-items: stretch;">
+          <form class="editor-form" action="../../mocks/pages/studio-editor/success.html" method="post" novalidate aria-label="Studio details (anatomy example)">
+            <details class="editor-section" open>
+              <summary><h3 style="font: var(--text-h4);">Basics</h3></summary>
+              <div class="editor-section__body">
+                <div class="field-row">
+                  <label class="field"><span class="field__label">Neighbourhood</span><input class="input" name="neighbourhood" value="Junction" autocomplete="off"></label>
+                  <label class="field"><span class="field__label">Address or cross streets</span><input class="input" name="address" value="Dundas St W at Pacific Ave" autocomplete="off"></label>
+                </div>
+                <fieldset>
+                  <legend>How was this session paid for?</legend>
+                  <label class="choice"><input type="radio" name="fl-anat-disclosure" value="paid_in_full" checked><span>I paid the full rate</span></label>
+                  <label class="choice"><input type="radio" name="fl-anat-disclosure" value="discounted"><span>Discounted</span></label>
+                </fieldset>
+              </div>
+            </details>
+            <div class="form-actions form-actions--sticky" style="position: static;">
+              <button class="btn btn--primary" type="button">Save changes</button>
+              <button class="btn btn--ghost" type="button">Cancel</button>
+              <span class="save-status">Unsaved changes</span>
             </div>
-            <div class="form-actions" style="justify-content: flex-start;"><button class="btn btn--primary" type="button">Save certificate</button></div>
           </form>
-          <span class="ds-callout" style="left: 4%; top: 6%;" aria-hidden="true">1</span>
-          <span class="ds-callout" style="left: 4%; top: 36%;" aria-hidden="true">2</span>
-          <span class="ds-callout" style="left: 50%; top: 52%;" aria-hidden="true">3</span>
-          <span class="ds-callout" style="left: 4%; top: 88%;" aria-hidden="true">4</span>
-          <span class="ds-callout" style="left: 94%; top: 36%;" aria-hidden="true">5</span>
+          <span class="ds-callout" style="left: 2%; top: 9%;" aria-hidden="true">1</span>
+          <span class="ds-callout" style="left: 2%; top: 30%;" aria-hidden="true">2</span>
+          <span class="ds-callout" style="left: 2%; top: 52%;" aria-hidden="true">3</span>
+          <span class="ds-callout" style="left: 2%; top: 80%;" aria-hidden="true">4</span>
+          <span class="ds-callout" style="left: 76%; top: 80%; z-index: 2;" aria-hidden="true">5</span>
         </figure>
         <ol class="ds-anatomy__list">
-          <li><div><b>Error summary</b><small><code>.form-summary</code>: heading with the count, one link per problem. Only after a failed submit or save.</small></div></li>
-          <li><div><b>Field</b><small>A <a href="form-field.html">form field</a>: label, control, help, error.</small></div></li>
-          <li><div><b>Field row</b><small><code>.field-row</code>: two short related fields side by side from 36rem.</small></div></li>
-          <li><div><b>Actions</b><small><code>.form-actions</code>: the primary button (and a save status) under the last field.</small></div></li>
-          <li><div><b>Column</b><small><code>.form</code>: a flex column, <code>--space-6</code> between blocks, 40rem maximum width.</small></div></li>
+          <li><div><b>Editor section</b><small>A <code>details.editor-section</code> with an <code>h2</code> in its summary (here an <code>h3</code>, under this page's own headings); sections sit <code>--space-4</code> apart in <code>.editor-form</code>.</small></div></li>
+          <li><div><b>Field row</b><small><code>.field-row</code>: a grid of one column, two from 36rem, <code>--space-4</code> gap. Only for short fields that are read together.</small></div></li>
+          <li><div><b>Fieldset and legend</b><small>No border; the legend is <code>--text-label</code>, the group's question or name. A whole optional group says so in the legend with <code>.optional</code>.</small></div></li>
+          <li><div><b>Form actions</b><small><code>.form-actions--sticky</code>: primary first, then ghost Cancel, on <code>--color-bg-canvas</code> with a hairline top edge and the safe-area inset below. Shown unstuck in this figure.</small></div></li>
+          <li><div><b>Save status</b><small><code>.save-status</code>, a <code>role="status"</code> line after the buttons: "Unsaved changes", "Saving…", "Saved 13 Oct 2026, 10:02 am".</small></div></li>
         </ol>
       </div>
     </section>
 
     <section class="ds-section" id="variants"><h2><a href="#variants">Variants</a></h2>
-      <h3>Groups: fieldset and legend</h3>
-      <p>A <code>&lt;fieldset&gt;</code> groups fields that answer one question; its <code>&lt;legend&gt;</code> is the question. In the profile editor the legend holds the section heading (<code>&lt;legend&gt;&lt;h2&gt;Guests&lt;/h2&gt;&lt;/legend&gt;</code>) so the group and the outline agree. Fieldsets lose the browser border and padding.</p>
+      <h3>Editor form</h3>
+      <p>The editors are one <code>form.editor-form</code> named by a visually hidden heading ("Studio details"), holding the sections in a fixed order and the sticky actions last. The status panel beside it and the sections themselves are on <a href="editor-layout.html">Editor layout</a>.</p>
       <div class="ds-example">
-        <div class="ds-example__canvas ds-example__canvas--stack">
-          <form class="form" aria-label="Guests, example" novalidate>
-            <fieldset class="stack">
-              <legend>Guests</legend>
-              <div class="field-row">
-                <label class="field" for="fl-min"><span class="field__label">Smallest event</span><input class="input" id="fl-min" type="text" inputmode="numeric" value="20" aria-describedby="fl-guests-help"></label>
-                <label class="field" for="fl-max"><span class="field__label">Largest event</span><input class="input" id="fl-max" type="text" inputmode="numeric" value="300" aria-describedby="fl-guests-help"></label>
+        <div class="ds-example__canvas ds-example__canvas--canvas ds-example__canvas--stack">
+          <form class="editor-form" action="../../mocks/pages/studio-editor/success.html" method="post" novalidate aria-labelledby="fl-v-form-title" style="width: 100%;">
+            <h3 class="visually-hidden" id="fl-v-form-title">Studio details</h3>
+            <details class="editor-section" open>
+              <summary><h4>Pricing and fees</h4></summary>
+              <div class="editor-section__body">
+                <div class="field-row">
+                  <label class="field"><span class="field__label">Hourly rate</span><span class="input-group"><span class="addon" aria-hidden="true">$</span><input class="input" name="hourlyRate" type="number" inputmode="decimal" min="0" step="0.5" value="60.00"></span></label>
+                  <label class="field"><span class="field__label">Minimum booking (hours)</span><input class="input" name="minimumHours" type="number" inputmode="numeric" min="1" step="1" value="2"></label>
+                </div>
+                <label class="field"><span class="field__label">Prices last verified</span><input class="input" name="priceVerifiedAt" type="date" value="2026-09-22" max="2026-10-13" aria-describedby="fl-v-verified-help"><span class="field__help" id="fl-v-verified-help">Change this only when you have checked the prices again. Visitors see a warning after 183 days.</span></label>
+                <p class="text-muted">All-in for 2 hours: <strong class="num">$145.00</strong>, calculated by the server when you save.</p>
               </div>
-              <p class="field__help" id="fl-guests-help">Whole numbers from 1 to 5,000. Your page says “Serves 20–300 guests”.</p>
-            </fieldset>
+            </details>
+            <details class="editor-section">
+              <summary><h4>Measured specifications</h4></summary>
+              <div class="editor-section__body"><p class="text-muted">Collapsed sections keep their values.</p></div>
+            </details>
+            <div class="form-actions form-actions--sticky">
+              <button class="btn btn--primary" type="submit">Save changes</button>
+              <a class="btn btn--ghost" href="../../mocks/dialogs/discard-changes/default.html">Cancel</a>
+              <span class="save-status" role="status">Unsaved changes</span>
+            </div>
           </form>
         </div>
-        <div class="ds-example__caption"><span>From <code>pages/profile-events</code>. One help line serves both fields of the row.</span></div>
-        <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;form class="form" aria-labelledby="page-title" novalidate&gt;
-  &lt;fieldset class="stack"&gt;
-    &lt;legend&gt;&lt;h2&gt;Guests&lt;/h2&gt;&lt;/legend&gt;
-    &lt;div class="field-row"&gt; …Smallest event… …Largest event… &lt;/div&gt;
-    &lt;p class="field__help" id="guests-help"&gt;Whole numbers from 1 to 5,000…&lt;/p&gt;
-  &lt;/fieldset&gt;
+        <div class="ds-example__caption"><span>The Junction Loft in the studio editor (<a href="../../mocks/pages/studio-editor/default.html">pages/studio-editor/default</a>). Cancel with unsaved changes opens <a href="../../mocks/dialogs/discard-changes/default.html">dialogs/discard-changes</a> (L2-062).</span></div>
+        <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;form class="editor-form" action="…" method="post" novalidate aria-labelledby="form-title"&gt;
+  &lt;h2 class="visually-hidden" id="form-title"&gt;Studio details&lt;/h2&gt;
+  &lt;details class="editor-section" open&gt;
+    &lt;summary&gt;&lt;h2&gt;Pricing and fees&lt;/h2&gt;&lt;/summary&gt;
+    &lt;div class="editor-section__body"&gt;
+      &lt;div class="field-row"&gt;
+        &lt;label class="field"&gt;&lt;span class="field__label"&gt;Hourly rate&lt;/span&gt;…&lt;/label&gt;
+        &lt;label class="field"&gt;&lt;span class="field__label"&gt;Minimum booking (hours)&lt;/span&gt;…&lt;/label&gt;
+      &lt;/div&gt;
+      …
+    &lt;/div&gt;
+  &lt;/details&gt;
+  …
+  &lt;div class="form-actions form-actions--sticky"&gt;
+    &lt;button class="btn btn--primary" type="submit"&gt;Save changes&lt;/button&gt;
+    &lt;a class="btn btn--ghost" href="/admin/studios"&gt;Cancel&lt;/a&gt;
+    &lt;span class="save-status" role="status"&gt;Unsaved changes&lt;/span&gt;
+  &lt;/div&gt;
 &lt;/form&gt;</code></pre></details>
       </div>
 
-      <h3>Submit form with actions</h3>
-      <p>Page forms put the primary button at the start of <code>.form-actions</code>, under the last field, where the eye already is; a save status may follow it. Dialog forms use the <a href="dialog.html">dialog footer</a> instead: Cancel then the primary, at the end.</p>
+      <h3>Field rows</h3>
+      <p>The default row is one column at XS and two from 36rem. The mocks need two more layouts, which they get with an inline <code>grid-template-columns</code>: a pair that stays side by side even on phones (minimum and maximum all-in cost in the studio filters) and an auto-fit row for many tiny fields (natural light by time of day, the six rubric scores).</p>
       <div class="ds-example">
         <div class="ds-example__canvas ds-example__canvas--stack">
-          <div class="form-actions" style="justify-content: flex-start;"><button class="btn btn--primary" type="button">Save certificate</button><span class="save-status save-status--saved"><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg>Saved Tue 2 Sep</span></div>
+          <div class="field-row" style="width: 100%;">
+            <label class="field"><span class="field__label">Usable width (m)</span><input class="input" name="spaceWidth" type="number" inputmode="decimal" step="0.1" value="6.1"></label>
+            <label class="field"><span class="field__label">Usable depth (m)</span><input class="input" name="spaceDepth" type="number" inputmode="decimal" step="0.1" value="4.3"></label>
+          </div>
+          <fieldset style="width: 100%;">
+            <legend>All-in cost for 2 hours</legend>
+            <div class="field-row" style="grid-template-columns: repeat(2, minmax(0, 1fr));">
+              <label class="field"><span class="field__label">Minimum</span><span class="input-group"><span class="addon" aria-hidden="true">$</span><input class="input" type="number" inputmode="decimal" min="0" step="10" name="costMin" autocomplete="off"></span></label>
+              <label class="field"><span class="field__label">Maximum</span><span class="input-group"><span class="addon" aria-hidden="true">$</span><input class="input" type="number" inputmode="decimal" min="0" step="10" name="costMax" autocomplete="off" value="120"></span></label>
+            </div>
+          </fieldset>
+          <div class="field-row" style="width: 100%; grid-template-columns: repeat(auto-fit, minmax(min(100%, 7rem), 1fr));">
+            <label class="field"><span class="field__label">Value</span><input class="input" name="scores.value" type="number" inputmode="numeric" min="1" max="5" value="4"></label>
+            <label class="field"><span class="field__label">Light</span><input class="input" name="scores.light" type="number" inputmode="numeric" min="1" max="5" value="5"></label>
+            <label class="field"><span class="field__label">Space</span><input class="input" name="scores.space" type="number" inputmode="numeric" min="1" max="5" value="3"></label>
+            <label class="field"><span class="field__label">Gear</span><input class="input" name="scores.gear" type="number" inputmode="numeric" min="1" max="5" value="4"></label>
+            <label class="field"><span class="field__label">Logistics</span><input class="input" name="scores.logistics" type="number" inputmode="numeric" min="1" max="5" value="2"></label>
+            <label class="field"><span class="field__label">Condition</span><input class="input" name="scores.condition" type="number" inputmode="numeric" min="1" max="5" value="5"></label>
+          </div>
         </div>
-        <div class="ds-example__caption"><span><code>pages/profile-certificate</code>. Every mock overrode the kit's end alignment inline; the system makes start the default (see the report).</span></div>
-        <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;div class="form-actions"&gt;
-  &lt;button class="btn btn--primary" type="submit"&gt;Save certificate&lt;/button&gt;
-  &lt;span class="save-status save-status--saved"&gt;&lt;svg class="icon icon--sm" aria-hidden="true" …&gt;…&lt;/svg&gt;Saved Tue 2 Sep&lt;/span&gt;
+        <div class="ds-example__caption"><span>Default (The Junction Loft, 6.1 m × 4.3 m), always-two (<a href="../../mocks/pages/studios/default.html">pages/studios/default</a> filters) and auto-fit (The Junction Loft's scores 4 5 3 4 2 5). The two inline layouts are proposed as modifiers.</span></div>
+      </div>
+
+      <h3>Fieldset with an optional follow-up</h3>
+      <p>A radio group in a fieldset, followed by the field it unlocks. The follow-up says when it is needed in its label, and stays <code>disabled</code> until then.</p>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--stack">
+          <fieldset>
+            <legend>How was this session paid for?</legend>
+            <label class="choice"><input type="radio" name="fl-v-disclosure" value="paid_in_full"><span>I paid the full rate</span></label>
+            <label class="choice"><input type="radio" name="fl-v-disclosure" value="discounted" checked><span>Discounted</span></label>
+            <label class="choice"><input type="radio" name="fl-v-disclosure" value="comped"><span>Comped (free of charge)</span></label>
+          </fieldset>
+          <label class="field" style="width: 100%; max-width: 28rem;"><span class="field__label">Provided by <span class="optional">(needed when discounted or comped)</span></span><input class="input" name="disclosureProvider" value="Leslieville Daylight Studio"></label>
+        </div>
+        <div class="ds-example__caption"><span>Disclosure section; Leslieville Daylight Studio is "Discounted by Leslieville Daylight Studio" on its review (<a href="../../mocks/pages/studio-editor/default.html">pages/studio-editor/default</a>).</span></div>
+      </div>
+
+      <h3>Error summary</h3>
+      <p>After a refused save the summary appears at the top of the form, takes focus, and lists each problem as "Field: message", linking to the field. Sections with a problem open and carry <code>data-invalid</code>; each field shows the same message under it.</p>
+      <div class="ds-example">
+        <div class="ds-example__canvas ds-example__canvas--canvas ds-example__canvas--stack">
+          <div class="form-summary" role="alert" tabindex="-1" aria-labelledby="fl-v-summary-title" style="width: 100%;">
+            <h3 id="fl-v-summary-title">Fix 3 things before saving</h3>
+            <ul>
+              <li><a href="#fl-v-rate">Hourly rate: Enter an amount of 0 or more</a></li>
+              <li><a href="#fl-v-booking">Booking link: Enter a web address that starts with http:// or https://</a></li>
+              <li><a href="#fl-v-light">Light score: Enter a whole number from 1 to 5</a></li>
+            </ul>
+          </div>
+          <div class="field" style="width: 100%; max-width: 28rem;"><label class="field__label" for="fl-v-rate">Hourly rate</label><span class="input-group"><span class="addon" aria-hidden="true">$</span><input class="input" id="fl-v-rate" name="hourlyRate" type="number" inputmode="decimal" min="0" step="0.5" value="-5" aria-invalid="true" aria-describedby="fl-v-rate-error"></span><span class="field__error" id="fl-v-rate-error">Enter an amount of 0 or more</span></div>
+          <div class="field" style="width: 100%; max-width: 28rem;"><label class="field__label" for="fl-v-booking">Booking link</label><input class="input" id="fl-v-booking" name="bookingUrl" type="url" value="junctionloft" aria-invalid="true" aria-describedby="fl-v-booking-error"><span class="field__error" id="fl-v-booking-error">Enter a web address that starts with http:// or https://</span></div>
+          <div class="field" style="width: 100%; max-width: 28rem;"><label class="field__label" for="fl-v-light">Light</label><input class="input" id="fl-v-light" name="scores.light" type="number" inputmode="numeric" min="1" max="5" value="6" aria-invalid="true" aria-describedby="fl-v-light-error"><span class="field__error" id="fl-v-light-error">Enter a whole number from 1 to 5</span></div>
+        </div>
+        <div class="ds-example__caption"><span>From <a href="../../mocks/pages/studio-editor/invalid.html">pages/studio-editor/invalid</a> (L2-054.2–4, L2-069.2). Each link moves focus to its field.</span></div>
+        <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;div class="form-summary" role="alert" tabindex="-1" aria-labelledby="summary-title"&gt;
+  &lt;h2 id="summary-title"&gt;Fix 3 things before saving&lt;/h2&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href="#hourlyRate"&gt;Hourly rate: Enter an amount of 0 or more&lt;/a&gt;&lt;/li&gt;
+    …
+  &lt;/ul&gt;
 &lt;/div&gt;</code></pre></details>
       </div>
 
-      <h3>Sticky actions</h3>
-      <p><code>.form-actions--sticky</code> pins the actions to the bottom of the viewport on a long form, above the home indicator (<code>env(safe-area-inset-bottom)</code>), with a hairline top border. No mock needs it yet: ShotThere's long forms autosave. Use it only for a long submit form on phones.</p>
-      <div class="ds-frame ds-frame--short ds-frame--phone">
-        <div class="ds-frame__page" style="height: 14rem; overflow: auto; padding-bottom: 0;">
-          <p>Describe what happened, who was affected and when it was found…</p>
-          <p style="margin-top: var(--space-4);">Information involved, number of people, risk assessment, notification decision…</p>
-          <p style="margin-top: var(--space-4);">(The record continues.)</p>
-          <div class="form-actions form-actions--sticky" style="margin-top: var(--space-8);"><button class="btn btn--primary btn--block" type="button">Save breach record</button></div>
-        </div>
-      </div>
-
-      <h3>Autosave form with a save status</h3>
-      <p>The status sits in the page intro, under the title, as a polite live region. It has four messages.</p>
+      <h3>Sign-in (auth layout)</h3>
+      <p>The owner sign-in is the page's <code>&lt;main class="auth"&gt;</code>: a 28rem column, centred, with <code>--space-8</code> between the head, any alert or summary, and the form. The form is a <code>.stack</code> of large fields and one large, full-width primary button (L2-049.4). There is no password reset in this phase.</p>
       <div class="ds-example">
-        <div class="ds-example__canvas ds-example__canvas--stack">
-          <p class="save-status"><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><path d="m5 12 5 5 9-10"/></svg>All changes saved</p>
-          <p class="save-status"><span class="dot dot--pulse" aria-hidden="true"></span>Saving…</p>
-          <p class="save-status save-status--saved"><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg>Saved at 10:14 a.m. · live on your page within a minute</p>
-          <p class="save-status save-status--error"><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16.5v.5"/></svg>Not saved: fix 2 things below</p>
+        <div class="ds-example__canvas ds-example__canvas--canvas" style="display: block; padding-block: var(--space-2) var(--space-8);">
+          <div class="auth" style="margin-top: var(--space-4);">
+            <div class="auth__head">
+              <h3 style="font: var(--text-h1); letter-spacing: var(--letter-spacing-tight);">Sign in</h3>
+              <p class="subtitle">Owner access to the ShotThere administration area.</p>
+            </div>
+            <div class="alert alert--danger" role="alert">
+              <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16.5v.5"/></svg>
+              <div class="alert__body"><p class="alert__title">Email or password is incorrect</p><p>Check both and try again. Passwords are case-sensitive.</p></div>
+            </div>
+            <form class="stack" action="../../mocks/pages/admin-dashboard/default.html" method="post" novalidate>
+              <div class="field">
+                <label class="field__label" for="fl-v-email">Email</label>
+                <input class="input input--lg" id="fl-v-email" name="email" type="email" autocomplete="username" spellcheck="false" value="owner@shotthere.ca">
+              </div>
+              <div class="field">
+                <label class="field__label" for="fl-v-password">Password</label>
+                <span class="input-group">
+                  <input class="input input--lg" id="fl-v-password" name="password" type="password" autocomplete="current-password" style="flex: 1; min-width: 0;">
+                  <button class="btn btn--lg" type="button" aria-pressed="false" aria-controls="fl-v-password">Show<span class="visually-hidden"> password</span></button>
+                </span>
+              </div>
+              <div style="margin-top: var(--space-2);">
+                <button class="btn btn--primary btn--lg btn--block" type="submit">Sign in</button>
+              </div>
+            </form>
+          </div>
         </div>
-        <div class="ds-example__caption"><span>Loaded, saving, saved, not saved (<code>pages/profile-details</code>). A polite <code>role="status"</code> on the page; static here.</span></div>
-        <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;div class="page-intro"&gt;
-  &lt;h1 id="page-title"&gt;Business details&lt;/h1&gt;
-  &lt;p class="save-status" role="status"&gt;&lt;span class="dot dot--pulse" aria-hidden="true"&gt;&lt;/span&gt;Saving…&lt;/p&gt;
-&lt;/div&gt;
-&lt;!-- then: class="save-status save-status--saved" … "Saved at 10:14 a.m." --&gt;
-&lt;!-- or:   class="save-status save-status--error" … "Not saved: fix 2 things below" --&gt;</code></pre></details>
+        <div class="ds-example__caption"><span>From <a href="../../mocks/pages/sign-in/incorrect.html">pages/sign-in/incorrect</a> (L2-049.2). The heading is an <code>h1</code> on the real page; here it is an <code>h3</code> styled as one.</span></div>
+        <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;main id="main" class="auth" tabindex="-1"&gt;
+  &lt;div class="auth__head"&gt;
+    &lt;h1&gt;Sign in&lt;/h1&gt;
+    &lt;p class="subtitle"&gt;Owner access to the ShotThere administration area.&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;!-- alert or .form-summary here --&gt;
+  &lt;form class="stack" action="/admin/sign-in" method="post" novalidate&gt;
+    &lt;div class="field"&gt;&lt;label class="field__label" for="email"&gt;Email&lt;/label&gt;
+      &lt;input class="input input--lg" id="email" name="email" type="email" autocomplete="username" spellcheck="false"&gt;&lt;/div&gt;
+    &lt;div class="field"&gt;&lt;label class="field__label" for="password"&gt;Password&lt;/label&gt;…&lt;/div&gt;
+    &lt;div&gt;&lt;button class="btn btn--primary btn--lg btn--block" type="submit"&gt;Sign in&lt;/button&gt;&lt;/div&gt;
+  &lt;/form&gt;
+&lt;/main&gt;</code></pre></details>
       </div>
-
-      <h3>Filter toolbar</h3>
-      <p><code>.toolbar</code> lines up a few filter fields and an Apply button on one wrapping row, bottoms aligned. It is a small <code>&lt;form&gt;</code> with an <code>aria-label</code>, used on operator pages.</p>
-      <div class="ds-example">
-        <div class="ds-example__canvas ds-example__canvas--stack">
-          <form class="toolbar" aria-label="Date range" style="margin-bottom: 0;">
-            <label class="field" for="fl-from"><span class="field__label">From</span><input class="input" id="fl-from" type="date" value="2026-08-31"></label>
-            <label class="field" for="fl-to"><span class="field__label">To</span><input class="input" id="fl-to" type="date" value="2026-10-10"></label>
-            <label class="field" for="fl-by"><span class="field__label">Show by</span><select class="select" id="fl-by"><option>Day</option><option selected>Week</option><option>Month</option></select></label>
-            <button class="btn btn--primary" type="button">Apply</button>
-            <button class="btn" type="button"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 4v12m0 0-4-4m4 4 4-4M4 20h16"/></svg>Export CSV</button>
-          </form>
-        </div>
-        <div class="ds-example__caption"><span>From <code>pages/admin-metrics</code>. Fields keep a 10rem minimum and wrap.</span></div>
-      </div>
-
-      <h3>In a dialog</h3>
-      <p>The enquiry form is a dialog that fills the screen below 48rem; the summary sits at the top of the dialog body and the footer holds Cancel and "Send enquiry".</p>
-      <p class="ds-note">Mock previews are not included in this copy; the ShotThere mocks will replace them.</p>
     </section>
 
     <section class="ds-section" id="sizes"><h2><a href="#sizes">Sizes</a></h2>
-      <p>Forms have three widths, set by their container, never by the fields:</p>
-      <ul>
-        <li><b>Auth</b> (<code>.auth</code>, 28rem): sign in, create account, reset password. Large inputs (<code>.input--lg</code>, 52px) and a full-width large primary.</li>
-        <li><b>Page form</b> (<code>.form</code>, 40rem): the profile editor and certificate. Medium (44px) inputs.</li>
-        <li><b>Dialog form</b> (<code>.dialog__panel--form</code>, 40rem; default panel 32rem): enquiry, dish, report, breach.</li>
-      </ul>
-      <p>Gaps: <code>--space-6</code> between blocks in <code>.form</code>; the auth and dialog forms in the mocks use <code>--space-5</code> between fields (set inline). A <code>.form--compact</code> modifier is proposed to replace the inline gap.</p>
+      <p>Forms take the width of their layout; fields take the width of their column. Height comes from the control size.</p>
+      <div class="ds-table-wrap"><table class="ds-table">
+        <thead><tr><th scope="col">Form</th><th scope="col">Width</th><th scope="col">Controls</th><th scope="col">Spacing</th></tr></thead>
+        <tbody>
+          <tr><td>Editor form</td><td>The main column of <code>.editor-layout</code> (full width below 62rem, beside an 18rem status panel from 62rem)</td><td>Medium (44px); small row buttons</td><td>Sections <code>--space-4</code> apart; fields <code>--space-5</code> apart inside a section</td></tr>
+          <tr><td>Field row</td><td>Its section; two equal columns from 36rem</td><td>Any</td><td><code>--space-4</code> gap</td></tr>
+          <tr><td>Sign-in</td><td>At most 28rem</td><td>Large (52px): <code>.input--lg</code>, <code>.btn--lg</code></td><td><code>--space-8</code> between head, message and form</td></tr>
+        </tbody>
+      </table></div>
     </section>
 
     <section class="ds-section" id="states"><h2><a href="#states">States</a></h2>
-      <div class="ds-matrix" style="position: relative;"><table>
-        <caption class="visually-hidden">Form states by kind of form</caption>
-        <thead><tr><th scope="col">Form</th><th scope="col">Default</th><th scope="col">Submitting / saving</th><th scope="col">Invalid</th><th scope="col">Done</th><th scope="col">Failed</th></tr></thead>
+      <p>The layout's states are the form's: what the action bar and the summary show. Hover, focus and active are forced on the Save button with <code>data-state</code>; disabled uses the real <code>disabled</code>, busy the real <code>aria-busy="true"</code>, and the summary takes real focus after a refused save.</p>
+      <div class="ds-matrix"><table>
+        <caption class="visually-hidden">Form action bar and summary states</caption>
+        <thead><tr><th scope="col">Part</th><th scope="col">Default</th><th scope="col">Hover</th><th scope="col">Focus</th><th scope="col">Active</th><th scope="col">Disabled (uploading)</th><th scope="col">Busy (saving)</th><th scope="col">Saved</th><th scope="col">Invalid</th></tr></thead>
         <tbody>
-          <tr><th scope="row">Submit</th>
-            <td><button class="btn btn--primary" type="button">Create account</button></td>
-            <td><button class="btn btn--primary" type="button" aria-busy="true" aria-disabled="true">Create account</button></td>
-            <td><div class="form-summary" style="min-width: 12rem;"><p><b>Fix 3 things to create your account</b></p></div></td>
-            <td><small class="text-muted">Next screen (success)</small></td>
-            <td><div class="form-summary" style="min-width: 12rem;"><p>We couldn’t create your account. Try again.</p></div></td></tr>
-          <tr><th scope="row">Autosave</th>
-            <td><span class="save-status"><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><path d="m5 12 5 5 9-10"/></svg>All changes saved</span></td>
-            <td><span class="save-status"><span class="dot dot--pulse" aria-hidden="true"></span>Saving…</span></td>
-            <td><span class="save-status save-status--error"><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16.5v.5"/></svg>Not saved: fix 2 things below</span></td>
-            <td><span class="save-status save-status--saved"><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg>Saved at 10:14 a.m.</span></td>
-            <td><span class="save-status save-status--error"><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16.5v.5"/></svg>Not saved. Check your connection</span></td></tr>
+          <tr><th scope="row">Action bar</th>
+            <td><div class="form-actions" style="padding-top: 0; flex-direction: column; align-items: flex-start;"><button class="btn btn--primary" type="button">Save changes</button><span class="save-status">Unsaved changes</span></div></td>
+            <td><div class="form-actions" style="padding-top: 0; flex-direction: column; align-items: flex-start;"><button class="btn btn--primary" type="button" data-state="hover">Save changes</button><span class="save-status">Unsaved changes</span></div></td>
+            <td><div class="form-actions" style="padding-top: 0; flex-direction: column; align-items: flex-start;"><button class="btn btn--primary" type="button" data-state="focus">Save changes</button><span class="save-status">Unsaved changes</span></div></td>
+            <td><div class="form-actions" style="padding-top: 0; flex-direction: column; align-items: flex-start;"><button class="btn btn--primary" type="button" data-state="active">Save changes</button><span class="save-status">Unsaved changes</span></div></td>
+            <td><div class="form-actions" style="padding-top: 0; flex-direction: column; align-items: flex-start;"><button class="btn btn--primary" type="button" disabled aria-describedby="fl-m-hint">Save changes</button><span class="save-status" id="fl-m-hint">Wait for uploads to finish</span></div></td>
+            <td><div class="form-actions" style="padding-top: 0; flex-direction: column; align-items: flex-start;"><button class="btn btn--primary" type="button" aria-busy="true" aria-disabled="true">Save changes</button><span class="save-status">Saving…</span></div></td>
+            <td><div class="form-actions" style="padding-top: 0; flex-direction: column; align-items: flex-start;"><button class="btn btn--primary" type="button">Save changes</button><span class="save-status save-status--saved">Saved 13 Oct 2026, 10:02 am</span></div></td>
+            <td><div class="form-actions" style="padding-top: 0; flex-direction: column; align-items: flex-start;"><button class="btn btn--primary" type="button">Save changes</button><span class="save-status save-status--error">Not saved. Fix the 6 things listed above.</span></div></td></tr>
+          <tr><th scope="row">Error summary</th>
+            <td colspan="2"><small class="text-muted">Not shown until a save is refused</small></td>
+            <td><div class="form-summary" data-state="focus" style="margin: 0; min-width: 14rem;"><h3>Fix 2 things to sign in</h3><ul><li><a href="#fl-v-email">Enter your email address</a></li><li><a href="#fl-v-password">Enter your password</a></li></ul></div></td>
+            <td colspan="4"><small class="text-muted">Links take the shared focus ring; activating one moves focus to its field. The summary goes away on the next successful save.</small></td>
+            <td><div class="form-summary" style="margin: 0; min-width: 14rem;"><h3>Fix 2 things to sign in</h3><ul><li><a href="#fl-v-email">Enter your email address</a></li><li><a href="#fl-v-password">Enter your password</a></li></ul></div></td></tr>
+        </tbody>
+      </table></div>
+      <h3>Save status by form state</h3>
+      <div class="ds-table-wrap"><table class="ds-table">
+        <thead><tr><th scope="col">State</th><th scope="col">Primary button</th><th scope="col">Save status</th><th scope="col">Mock</th></tr></thead>
+        <tbody>
+          <tr><td>New, untouched</td><td>Create studio / Create spot / Create guide</td><td>Not saved yet</td><td><a href="../../mocks/pages/studio-editor/new.html">studio-editor/new</a></td></tr>
+          <tr><td>Changed</td><td>Save changes</td><td>Unsaved changes</td><td><a href="../../mocks/pages/studio-editor/default.html">studio-editor/default</a></td></tr>
+          <tr><td>Uploading images</td><td>Save changes, <code>disabled</code></td><td>Wait for uploads to finish</td><td><a href="../../mocks/pages/studio-editor/uploading.html">studio-editor/uploading</a> (L2-057.6)</td></tr>
+          <tr><td>Saving</td><td>Save changes, <code>aria-busy="true"</code></td><td>Saving…</td><td><a href="../../mocks/pages/studio-editor/submitting.html">studio-editor/submitting</a></td></tr>
+          <tr><td>Saved</td><td>Save changes</td><td>Saved 13 Oct 2026, 10:02 am (<code>.save-status--saved</code>)</td><td><a href="../../mocks/pages/studio-editor/success.html">studio-editor/success</a></td></tr>
+          <tr><td>Opened with nothing changed</td><td>Save changes</td><td>All changes saved</td><td><a href="../../mocks/pages/studio-editor/published.html">studio-editor/published</a></td></tr>
+          <tr><td>Refused</td><td>Save changes</td><td>Not saved. Fix the 6 things listed above. (<code>.save-status--error</code>)</td><td><a href="../../mocks/pages/studio-editor/invalid.html">studio-editor/invalid</a></td></tr>
         </tbody>
       </table></div>
       <h3>Both themes</h3>
       <div class="ds-themes">
-        <div data-theme="light"><div class="ds-example__canvas ds-example__canvas--stack" style="padding: 0;"><div class="form-summary"><h3>Fix 2 things so we can save</h3><ul><li><a href="#fl-t-name">Enter a business name of 2 to 80 characters</a></li><li><a href="#fl-t-name">Write at least 50 characters (35 so far)</a></li></ul></div><label class="field" for="fl-t-name"><span class="field__label">Business name</span><input class="input" id="fl-t-name" type="text" value="P" aria-invalid="true"></label><div class="form-actions" style="justify-content: flex-start; padding-top: 0;"><button class="btn btn--primary" type="button">Save</button></div></div></div>
-        <div data-theme="dark"><div class="ds-example__canvas ds-example__canvas--stack" style="padding: 0;"><div class="form-summary"><h3>Fix 2 things so we can save</h3><ul><li><a href="#fl-t-name2">Enter a business name of 2 to 80 characters</a></li><li><a href="#fl-t-name2">Write at least 50 characters (35 so far)</a></li></ul></div><label class="field" for="fl-t-name2"><span class="field__label">Business name</span><input class="input" id="fl-t-name2" type="text" value="P" aria-invalid="true"></label><div class="form-actions" style="justify-content: flex-start; padding-top: 0;"><button class="btn btn--primary" type="button">Save</button></div></div></div>
+        <div data-theme="light"><div class="stack"><div class="form-summary" style="margin: 0;"><h3>Fix 4 things before saving</h3><ul><li><a href="#variants">Latitude: Enter a latitude from -90 to 90</a></li></ul></div><div class="form-actions form-actions--sticky" style="position: static;"><button class="btn btn--primary" type="button">Save changes</button><button class="btn btn--ghost" type="button">Cancel</button><span class="save-status save-status--error">Not saved. Fix the 4 things listed above.</span></div></div></div>
+        <div data-theme="dark"><div class="stack"><div class="form-summary" style="margin: 0;"><h3>Fix 4 things before saving</h3><ul><li><a href="#variants">Latitude: Enter a latitude from -90 to 90</a></li></ul></div><div class="form-actions form-actions--sticky" style="position: static;"><button class="btn btn--primary" type="button">Save changes</button><button class="btn btn--ghost" type="button">Cancel</button><span class="save-status save-status--error">Not saved. Fix the 4 things listed above.</span></div></div></div>
       </div>
-      <h3>How each state behaves</h3>
-      <ul>
-        <li><b>Submitting</b> (<code>pages/register/submitting</code>, <code>pages/sign-in/submitting</code>): fields become <code>readonly</code> (not <code>disabled</code>, so values stay readable and are still sent), the primary gets <code>aria-busy="true"</code> and ignores further presses, Cancel stays available in dialogs.</li>
-        <li><b>Invalid</b>: validation runs on submit (<code>novalidate</code> plus our own messages, and the same rules on the server, L2-022.6). The summary appears above the form with <code>role="alert"</code> and <code>tabindex="-1"</code> and takes focus; every field keeps its value and shows its own error. An error clears as soon as its field is fixed; the summary refreshes on the next submit.</li>
-        <li><b>Autosave invalid</b>: a field that breaks a rule is not saved; the status says "Not saved: fix 2 things below" and the same summary appears. Valid fields keep saving.</li>
-        <li><b>Saved</b>: the status shows "Saved" with the time when it helps ("Saved at 10:14 a.m. · live on your page within a minute").</li>
-        <li><b>Failed</b> (network or server): submit forms show a danger <a href="alert.html">alert</a> above the actions and keep every value; autosave shows a danger status and retries on the next change.</li>
-        <li><b>Read-only</b> (profile under review): the form is replaced by a <a href="description-list.html">description list</a> and an alert explaining why, not by disabled fields.</li>
-      </ul>
     </section>
 
     <section class="ds-section" id="responsive"><h2><a href="#responsive">Responsive behaviour</a></h2>
       <ul>
-        <li><b>Below 36rem</b> everything is one column, including <code>.field-row</code>; buttons in auth forms are full width (<code>.btn--block</code>).</li>
-        <li><b>From 36rem</b> <code>.field-row</code> splits into two equal columns (<code>--space-4</code> gap). Never three: date, guests and postal code would truncate.</li>
-        <li><b>Below 48rem</b> the enquiry dialog fills the screen (<code>.dialog--full</code>) and its footer sticks to the bottom; other dialogs dock to the bottom edge.</li>
-        <li><b>From 62rem</b> the profile editor gains the side navigation and, from 75rem, the live preview; the form column stays 40rem wide.</li>
-        <li><code>.toolbar</code> wraps fields onto new lines with a 10rem minimum each; Apply wraps with them.</li>
-        <li><code>.form-actions--sticky</code> pads by <code>env(safe-area-inset-bottom)</code>; when the on-screen keyboard is open the focused field must stay visible above it (WCAG 2.4.11).</li>
+        <li><b>XS (below 36rem)</b>: one column everywhere; every field row stacks except the always-two pair (L2-054.6). The editor's status panel comes first, above the form.</li>
+        <li><b>SM and up (36rem)</b>: field rows go two-up.</li>
+        <li><b>LG and up (62rem)</b>: the status panel moves beside the form and sticks; the form keeps one column of sections (<a href="editor-layout.html">Editor layout</a>).</li>
+        <li>The sticky action bar wraps: Save changes and Cancel stay on one line, the save status drops below them on narrow phones. Its bottom padding adds <code>env(safe-area-inset-bottom)</code>, so the buttons clear the home indicator (L2-065).</li>
+        <li>Sign-in: full width with the page margin at XS (fields and button full width, L2-049.4), <code>--space-8</code> from the header; from 48rem, a 28rem column <code>--space-16</code> below the header.</li>
+        <li>Nothing scrolls sideways at 320px: grids use <code>minmax(0, 1fr)</code> and labels wrap (L2-064.1).</li>
       </ul>
+      <div class="ds-iframes">
+        <iframe class="ds-iframe" src="../../mocks/pages/studio-editor/invalid.html?chrome=0" title="Studio editor with the error summary at phone width" loading="lazy"></iframe>
+        <iframe class="ds-iframe" src="../../mocks/pages/sign-in/invalid.html?chrome=0" title="Owner sign-in with the error summary at phone width" loading="lazy"></iframe>
+      </div>
     </section>
 
     <section class="ds-section" id="theming"><h2><a href="#theming">Theming</a></h2>
-      <p>Form layout is mostly space. The colours it owns: <code>.form-summary</code> uses <code>--color-danger-bg</code> with <code>--color-danger-fg</code> text and links (links inherit the colour, underlined); <code>.form-actions--sticky</code> uses <code>--color-bg-canvas</code> with a <code>--color-border-default</code> top edge; the save status uses <code>--color-fg-muted</code>, <code>--color-success-fg</code> and <code>--color-danger-fg</code>. In dark the summary becomes deep sorrel (<code>--palette-sorrel-950</code>) with light sorrel text. There are no component tokens.</p>
+      <p>Form layout reads semantic tokens only. The summary is <code>--color-danger-fg</code> on <code>--color-danger-bg</code>, with its links in the same colour (<code>color: inherit</code>). The sticky bar is <code>--color-bg-canvas</code> with a <code>--color-border-default</code> hairline above. The save status is <code>--color-fg-muted</code>, <code>--color-success-fg</code> when saved and <code>--color-danger-fg</code> when refused. In forced colours the summary's tint is lost, so it gets a hairline in <code>CanvasText</code>.</p>
     </section>
 
     <section class="ds-section" id="accessibility"><h2><a href="#accessibility">Accessibility</a></h2>
       <h3>Role and pattern</h3>
-      <p>A <code>&lt;form&gt;</code> named by the page heading (<code>aria-labelledby="page-title"</code>) or an <code>aria-label</code> becomes a form landmark. Groups are <code>&lt;fieldset&gt;</code>/<code>&lt;legend&gt;</code>. The error summary follows the <a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA21">ARIA21</a> and <a href="https://www.w3.org/WAI/WCAG22/Understanding/error-identification.html">error identification</a> guidance: identify each error in text and link to the field.</p>
+      <p>Native <code>&lt;form&gt;</code>, <code>&lt;fieldset&gt;</code> and <code>&lt;legend&gt;</code>. The editor form is named by its heading through <code>aria-labelledby</code>. The error summary is <code>role="alert"</code> with <code>tabindex="-1"</code>, named by its heading, and receives focus after a refused submit; each field with an error has <code>aria-invalid="true"</code> and <code>aria-describedby</code> pointing at its message (L2-069.2). The save status is <code>role="status"</code>, so its changes are announced politely.</p>
       <h3>Keyboard</h3>
       <div class="ds-table-wrap"><table class="ds-table ds-keys"><thead><tr><th scope="col">Key</th><th scope="col">Action</th></tr></thead><tbody>
-        <tr><td><kbd>Tab</kbd> / <kbd>Shift</kbd>+<kbd>Tab</kbd></td><td>Moves through fields in visual order: left then right in a field row, top to bottom otherwise.</td></tr>
-        <tr><td><kbd>Enter</kbd> in a text field</td><td>Submit forms: submits. Autosave forms: saves the field (as on blur); never navigates away.</td></tr>
-        <tr><td><kbd>Enter</kbd> on a summary link</td><td>Moves focus into the field it names.</td></tr>
-        <tr><td><kbd>Esc</kbd></td><td>In a dialog form, closes the dialog (same as Cancel); nothing is sent.</td></tr>
+        <tr><td><kbd>Tab</kbd> / <kbd>Shift</kbd>+<kbd>Tab</kbd></td><td>Moves through fields in reading order: down each section, left to right in a field row, then Save changes and Cancel.</td></tr>
+        <tr><td><kbd>Enter</kbd></td><td>In a text field, submits the form; on a section summary, opens or closes it; on a summary link, moves focus to that field.</td></tr>
+        <tr><td><kbd>Space</kbd></td><td>Toggles a section summary, a radio or checkbox; activates a button.</td></tr>
+        <tr><td><kbd>Esc</kbd></td><td>No effect on the form. In the discard dialog it means Stay (L2-062.1).</td></tr>
       </tbody></table></div>
       <h3>Focus</h3>
-      <p>On a failed submit, focus goes to the summary, never to the first field, so screen-reader users hear how many problems there are. Sticky actions must not cover the focused field (WCAG 2.4.11); scroll padding equals their height.</p>
+      <p>After a refused save, focus goes to the summary; after a successful save it stays on Save changes. When a field is focused near the bottom, it must not hide behind the sticky bar (WCAG 2.4.11): the page needs bottom scroll padding at least the bar's height, which is listed as a CSS fix.</p>
       <h3>Labelling</h3>
-      <ul>
-        <li>The summary heading has an <code>id</code> and the summary is <code>aria-labelledby</code> it.</li>
-        <li>Field errors are referenced by <code>aria-describedby</code> (error first, then help) and the field gets <code>aria-invalid="true"</code>.</li>
-        <li>The save status is <code>role="status"</code> (polite). Busy buttons keep their label.</li>
-        <li>Optional fields say "(optional)"; required ones carry <code>required</code> and no asterisk.</li>
-      </ul>
+      <p>Every field has a visible label. Help sits under the field and is joined by <code>aria-describedby</code>. A field that is only sometimes needed says when in its label: "Provided by (needed when discounted or comped)". Summary links repeat the field's label, so "Light score: Enter a whole number from 1 to 5" makes sense out of context.</p>
       <h3>Contrast</h3>
       <div class="ds-example__canvas ds-example__canvas--stack" style="padding: 0; gap: var(--space-2);">
-        <div class="ds-pair"><span>Summary text and links</span><span class="ds-pair__ratio" data-contrast="--color-danger-fg|--color-danger-bg" data-min="4.5"></span></div>
-        <div class="ds-pair"><span>Field error under an input</span><span class="ds-pair__ratio" data-contrast="--color-danger-fg|--color-bg-canvas" data-min="4.5"></span></div>
-        <div class="ds-pair"><span>Field error in a dialog</span><span class="ds-pair__ratio" data-contrast="--color-danger-fg|--color-bg-surface-raised" data-min="4.5"></span></div>
-        <div class="ds-pair"><span>Saved status</span><span class="ds-pair__ratio" data-contrast="--color-success-fg|--color-bg-canvas" data-min="4.5"></span></div>
-        <div class="ds-pair"><span>Saving status</span><span class="ds-pair__ratio" data-contrast="--color-fg-muted|--color-bg-canvas" data-min="4.5"></span></div>
-        <div class="ds-pair"><span>Help text</span><span class="ds-pair__ratio" data-contrast="--color-fg-muted|--color-bg-surface" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Summary text and links on its tint</span><span class="ds-pair__ratio" data-contrast="--color-danger-fg|--color-danger-bg" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Focus ring on the summary</span><span class="ds-pair__ratio" data-contrast="--color-focus-ring|--color-danger-bg" data-min="3"></span></div>
+        <div class="ds-pair"><span>Save status on canvas</span><span class="ds-pair__ratio" data-contrast="--color-fg-muted|--color-bg-canvas" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Saved status on canvas</span><span class="ds-pair__ratio" data-contrast="--color-success-fg|--color-bg-canvas" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Refused status and field errors on canvas</span><span class="ds-pair__ratio" data-contrast="--color-danger-fg|--color-bg-canvas" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Field errors on the editor surface</span><span class="ds-pair__ratio" data-contrast="--color-danger-fg|--color-bg-surface" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Legends and labels on the editor surface</span><span class="ds-pair__ratio" data-contrast="--color-fg-default|--color-bg-surface" data-min="4.5"></span></div>
       </div>
       <h3>Motion</h3>
-      <p>The saving dot pulses over <code>--duration-loop</code>; reduced motion stops it and the word "Saving…" carries the state. Focus moving to the summary does not animate a scroll under reduced motion.</p>
+      <p>None of its own. Sections open instantly; the Save spinner keeps turning under reduced motion because it reports status.</p>
       <h3>Touch</h3>
-      <p>Every control is at least 44px tall; the space between fields (<code>--space-5</code>/<code>--space-6</code>) keeps neighbouring targets well over 8px apart. Fields declare <code>inputmode</code>, <code>type</code> and <code>autocomplete</code> so phones show the right keyboard (L2-065.2).</p>
+      <p>All controls are at least 44px tall below 48rem, and every editor control at least 24px at any width (L2-054.6, L2-065). Save changes and Cancel sit <code>--space-3</code> apart.</p>
     </section>
 
     <section class="ds-section" id="content"><h2><a href="#content">Content</a></h2>
       <ul>
-        <li>Summary heading: "Fix {n} thing(s) to {goal}": "Fix 4 things to send your enquiry", "Fix 1 thing to save", "Fix 2 things so we can save". For uploads, name the result: "2 photos weren’t added".</li>
-        <li>Summary items repeat the field's own error, word for word, and link to it.</li>
-        <li>Save status: "All changes saved", "Saving…", "Saved at 10:14 a.m.", "Not saved: fix 2 things below". Times in Toronto time, "a.m."/"p.m.".</li>
-        <li>Legends are nouns ("Guests", "Occasions", "Areas you serve"); help lines state the rule with numbers ("Whole numbers from 1 to 5,000").</li>
-        <li>The page form's button says what it saves ("Save certificate"); a dialog's says what it does ("Send enquiry", "Add dish", "Send report").</li>
-        <li>Reassure when nothing was lost: "Your choices are safe. Try again in a moment."</li>
+        <li>Summary heading: "Fix <i>n</i> things before saving" in the editors, "Fix <i>n</i> things to sign in" on the sign-in page. Write the number as a numeral.</li>
+        <li>Summary items: "<i>Field label</i>: <i>the field's own message</i>", the message exactly as it appears under the field, capital first letter: "Hourly rate: Enter an amount of 0 or more".</li>
+        <li>Field messages say what to do: "Enter a whole number from 1 to 5", "The date can't be in the future", "Describe this image".</li>
+        <li>Primary button: "Save changes" on an existing item, "Create studio", "Create spot", "Create guide" on a new one, "Sign in" on the sign-in page. Cancel is always "Cancel".</li>
+        <li>Save status: "Not saved yet", "Unsaved changes", "Wait for uploads to finish", "Saving…", "Saved 13 Oct 2026, 10:02 am", "All changes saved", "Not saved. Fix the 6 things listed above."</li>
+        <li>Optional fields say "(optional)" in the label; required is the default and is not marked.</li>
       </ul>
     </section>
 
     <section class="ds-section" id="do-dont"><h2><a href="#do-dont">Do and don't</a></h2>
       <div class="ds-dodont">
-        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--stack"><div class="form-summary"><h3>Fix 3 things to create your account</h3></div></div><figcaption>One heading formula everywhere: a count and the goal.</figcaption></figure>
-        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--stack"><div class="form-summary"><h3>There are 3 problems</h3></div></div><figcaption><code>pages/register</code> said "There are 3 problems" while profile pages said "Fix 2 things so we can save". Say what to do, not that something is wrong.</figcaption></figure>
-        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--stack"><p class="save-status"><span class="dot dot--pulse" aria-hidden="true"></span>Saving…</p><a class="btn" href="#overview">Done</a></div><figcaption>Autosave forms show a status and end with "Done", a link back to the overview.</figcaption></figure>
-        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--stack"><p class="save-status"><svg class="icon icon--sm" aria-hidden="true" viewBox="0 0 24 24"><path d="m5 12 5 5 9-10"/></svg>All changes saved</p><button class="btn btn--primary" type="button">Save changes</button></div><figcaption>A Save button on an autosave form makes people wonder what is not yet saved. Pick one model per form.</figcaption></figure>
-        <figure class="ds-do"><div class="ds-example__canvas ds-example__canvas--stack"><div class="field-row"><label class="field" for="fl-dd-date"><span class="field__label">Event date</span><input class="input" id="fl-dd-date" type="date" value="2026-11-21"></label><label class="field" for="fl-dd-guests"><span class="field__label">Guests</span><input class="input" id="fl-dd-guests" type="text" inputmode="numeric" value="120"></label></div></div><figcaption>Pair short fields that belong together (date and guests).</figcaption></figure>
-        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--stack"><div class="field-row"><label class="field" for="fl-dd-name"><span class="field__label">Business name</span><input class="input" id="fl-dd-name" type="text" value="Pelau House by Kendra"></label><label class="field" for="fl-dd-issuer"><span class="field__label">Issued by</span><input class="input" id="fl-dd-issuer" type="text" value="Toronto Public Health"></label></div></div><figcaption>Don't pair unrelated or long fields to save space; long values get cut off.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas"><div class="form-actions" style="padding-top: 0;"><button class="btn btn--primary" type="button" aria-busy="true" aria-disabled="true">Save changes</button><span class="save-status">Saving…</span></div></div><figcaption>Keep the button's label while busy; the save status says "Saving…".</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas"><div class="form-actions" style="padding-top: 0;"><button class="btn btn--primary" type="button" aria-busy="true" aria-disabled="true">Saving…</button><span class="save-status">Saving…</span></div></div><figcaption>Don't swap it as the spot and guide editor mocks do; the name changes under the user and "Saving…" is announced twice.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas"><div class="form-summary" style="margin: 0;"><h3>Fix 4 things before saving</h3><ul><li><a href="#variants">Latitude: Enter a latitude from -90 to 90</a></li></ul></div></div><figcaption>One heading formula and messages copied verbatim from the field.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas"><div class="form-summary" style="margin: 0;"><h3>Fix 4 problems before saving</h3><ul><li><a href="#variants">Latitude: enter a latitude from -90 to 90</a></li></ul></div></div><figcaption>Don't vary the wording per editor (<a href="../../mocks/pages/spot-editor/invalid.html">spot-editor/invalid</a> says "problems" and lower-cases the message).</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas"><div class="field-row" style="width: 100%;"><label class="field"><span class="field__label">Parking</span><select class="select" name="parking"><option selected>Street</option><option>On-site</option><option>None</option></select></label><label class="field"><span class="field__label">Parking note <span class="optional">(optional)</span></span><input class="input" name="parkingNote" value="Paid, 2-hour limit"></label></div></div><figcaption>Pair a choice with its note in one field row.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas"><div class="field-row" style="width: 100%;"><label class="field"><span class="field__label">Who it's for</span><textarea class="textarea" name="verdictFor" rows="3">Portrait and fashion shooters who want big north light and a usable cyc on a mid-range budget.</textarea></label><label class="field"><span class="field__label">Who should skip it</span><textarea class="textarea" name="verdictSkip" rows="3">Video crews and anyone hauling heavy cases.</textarea></label></div></div><figcaption>Don't put long text side by side; the verdict fields stay full width, one under the other.</figcaption></figure>
       </div>
     </section>
 
@@ -340,61 +466,59 @@
         <thead><tr><th scope="col">Part</th><th scope="col">Token</th><th scope="col">Light</th><th scope="col">Dark</th></tr></thead>
         <tbody>
           <tr><td>Summary background</td><td><code>--color-danger-bg</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-danger-bg" data-swatch></i><span data-token="--color-danger-bg"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-danger-bg" data-swatch></i><span data-token="--color-danger-bg"></span></span></td></tr>
-          <tr><td>Summary text and links</td><td><code>--color-danger-fg</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-danger-fg" data-swatch></i><span data-token="--color-danger-fg"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-danger-fg" data-swatch></i><span data-token="--color-danger-fg"></span></span></td></tr>
-          <tr><td>Sticky actions background</td><td><code>--color-bg-canvas</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-bg-canvas" data-swatch></i><span data-token="--color-bg-canvas"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-bg-canvas" data-swatch></i><span data-token="--color-bg-canvas"></span></span></td></tr>
-          <tr><td>Sticky actions edge</td><td><code>--color-border-default</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-border-default" data-swatch></i><span data-token="--color-border-default"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-border-default" data-swatch></i><span data-token="--color-border-default"></span></span></td></tr>
-          <tr><td>Status: idle, saving</td><td><code>--color-fg-muted</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-muted" data-swatch></i><span data-token="--color-fg-muted"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-muted" data-swatch></i><span data-token="--color-fg-muted"></span></span></td></tr>
-          <tr><td>Status: saved</td><td><code>--color-success-fg</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-success-fg" data-swatch></i><span data-token="--color-success-fg"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-success-fg" data-swatch></i><span data-token="--color-success-fg"></span></span></td></tr>
-          <tr><td>Status: not saved</td><td><code>--color-danger-fg</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-danger-fg" data-swatch></i><span data-token="--color-danger-fg"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-danger-fg" data-swatch></i><span data-token="--color-danger-fg"></span></span></td></tr>
-          <tr><td>Gap between blocks (<code>.form</code>)</td><td><code>--space-6</code> (compact: <code>--space-5</code>)</td><td colspan="2"><span data-token="--space-6"></span> / <span data-token="--space-5"></span></td></tr>
+          <tr><td>Summary text, refused status</td><td><code>--color-danger-fg</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-danger-fg" data-swatch></i><span data-token="--color-danger-fg"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-danger-fg" data-swatch></i><span data-token="--color-danger-fg"></span></span></td></tr>
+          <tr><td>Saved status</td><td><code>--color-success-fg</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-success-fg" data-swatch></i><span data-token="--color-success-fg"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-success-fg" data-swatch></i><span data-token="--color-success-fg"></span></span></td></tr>
+          <tr><td>Status text</td><td><code>--color-fg-muted</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-muted" data-swatch></i><span data-token="--color-fg-muted"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-muted" data-swatch></i><span data-token="--color-fg-muted"></span></span></td></tr>
+          <tr><td>Sticky bar</td><td><code>--color-bg-canvas</code>, <code>--color-border-default</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-border-default" data-swatch></i><span data-token="--color-border-default"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-border-default" data-swatch></i><span data-token="--color-border-default"></span></span></td></tr>
           <tr><td>Field row gap / actions gap</td><td><code>--space-4</code> / <code>--space-3</code></td><td colspan="2"><span data-token="--space-4"></span> / <span data-token="--space-3"></span></td></tr>
-          <tr><td>Actions top padding</td><td><code>--space-4</code> (+ safe area when sticky)</td><td colspan="2"><span data-token="--space-4"></span></td></tr>
           <tr><td>Summary padding / radius</td><td><code>--space-4</code> / <code>--radius-md</code></td><td colspan="2"><span data-token="--space-4"></span> / <span data-token="--radius-md"></span></td></tr>
-          <tr><td>Legend</td><td><code>--text-label</code>, margin <code>--space-2</code></td><td colspan="2"><span data-token="--text-label"></span></td></tr>
-          <tr><td>Toolbar gap / bottom margin</td><td><code>--space-3</code> / <code>--space-6</code></td><td colspan="2"><span data-token="--space-3"></span> / <span data-token="--space-6"></span></td></tr>
-          <tr><td>Sticky layer</td><td><code>--z-raised</code></td><td colspan="2"><span data-token="--z-raised"></span></td></tr>
-          <tr><td>Saving pulse</td><td><code>--duration-loop</code></td><td colspan="2"><span data-token="--duration-loop"></span></td></tr>
+          <tr><td>Sign-in gap / offset</td><td><code>--space-8</code> / <code>--space-16</code> from 48rem</td><td colspan="2"><span data-token="--space-8"></span> / <span data-token="--space-16"></span></td></tr>
+          <tr><td>Legend and summary heading</td><td><code>--text-label</code></td><td colspan="2"><span data-token="--text-label"></span></td></tr>
+          <tr><td>Save status</td><td><code>--text-body-sm</code>, <code>--target-comfortable</code> tall</td><td colspan="2"><span data-token="--text-body-sm"></span> / <span data-token="--target-comfortable"></span></td></tr>
+          <tr><td>Sticky bar layer</td><td><code>--z-raised</code></td><td colspan="2"><span data-token="--z-raised"></span></td></tr>
         </tbody>
       </table></div>
     </section>
 
     <section class="ds-section" id="code"><h2><a href="#code">Code</a></h2>
-      <pre><code>&lt;div class="form-summary" role="alert" tabindex="-1" id="error-summary" aria-labelledby="summary-title"&gt;
-  &lt;h2 id="summary-title"&gt;Fix 2 things so we can save&lt;/h2&gt;
-  &lt;ul&gt;&lt;li&gt;&lt;a href="#name"&gt;Enter a business name of 2 to 80 characters&lt;/a&gt;&lt;/li&gt; … &lt;/ul&gt;
-&lt;/div&gt;
-&lt;form class="form" aria-labelledby="page-title" novalidate&gt;
-  …fields, fieldsets, .field-row…
-  &lt;div class="form-actions"&gt;&lt;button class="btn btn--primary" type="submit"&gt;Save certificate&lt;/button&gt;&lt;/div&gt;
-&lt;/form&gt;</code></pre>
       <div class="ds-table-wrap"><table class="ds-table"><thead><tr><th scope="col">Class / attribute</th><th scope="col">Effect</th></tr></thead><tbody>
-        <tr><td><code>.form</code></td><td>Column, <code>--space-6</code> gaps, 40rem maximum.</td></tr>
-        <tr><td><code>fieldset</code> / <code>legend</code></td><td>Unstyled group; legend in label type.</td></tr>
+        <tr><td><code>.editor-form</code></td><td>The editor's column of sections, <code>--space-4</code> apart; see <a href="editor-layout.html">Editor layout</a>.</td></tr>
         <tr><td><code>.field-row</code></td><td>One column, two from 36rem.</td></tr>
-        <tr><td><code>.form-actions</code> / <code>--sticky</code></td><td>Actions row; sticky bottom bar with safe-area padding.</td></tr>
-        <tr><td><code>.form-summary</code></td><td>Danger-tinted error summary; style its <code>h2</code>/<code>h3</code> as a label.</td></tr>
-        <tr><td><code>.toolbar</code></td><td>Wrapping row of filter fields and buttons, bottoms aligned.</td></tr>
-        <tr><td><code>.save-status</code> <code>--saved</code> <code>--error</code></td><td>Autosave status, 44px tall: muted, success (<code>--saved</code>) or danger (<code>--error</code>).</td></tr>
-        <tr><td><code>novalidate</code>, <code>role="alert" tabindex="-1"</code></td><td>Our messages instead of the browser's; focusable summary.</td></tr>
-        <tr><td><code>readonly</code> + <code>aria-busy</code></td><td>Submitting state.</td></tr>
+        <tr><td><code>fieldset</code>, <code>legend</code>, <code>legend .optional</code></td><td>Reset fieldset; label-style legend; quiet "(optional)".</td></tr>
+        <tr><td><code>.form-actions</code></td><td>Wrapping row of actions, primary first.</td></tr>
+        <tr><td><code>.form-actions--sticky</code></td><td>Sticks to the bottom on the canvas with a hairline and the safe-area inset.</td></tr>
+        <tr><td><code>.save-status</code>, <code>--saved</code>, <code>--error</code></td><td>The status line; success or danger colour.</td></tr>
+        <tr><td><code>.form-summary</code></td><td>Danger-tinted box with a heading and a list of links.</td></tr>
+        <tr><td><code>.auth</code>, <code>.auth__head</code></td><td>Sign-in page: 28rem centred column; heading and subtitle.</td></tr>
+        <tr><td><code>data-invalid</code> on <code>.editor-section</code></td><td>Danger edge on a section that holds an error.</td></tr>
+        <tr><td><code>.form</code>, <code>.form--compact</code>, <code>.toolbar</code></td><td>In the stylesheet; no ShotThere mock uses them.</td></tr>
       </tbody></table></div>
     </section>
 
     <section class="ds-section" id="sources"><h2><a href="#sources">Sources</a></h2>
       <p>Extracted from these mocks:</p>
       <ul>
-        <li>pages/register/default, invalid, submitting (auth form)</li>
-        <li>pages/sign-in/default, submitting</li>
-        <li>pages/profile-details/default, saving, saved, invalid (autosave)</li>
-        <li>pages/profile-events/default (fieldsets, field row)</li>
-        <li>pages/profile-certificate/default, invalid (submit form on a page, actions)</li>
-        <li>dialogs/enquiry/invalid, busy (dialog form)</li>
-        <li>pages/admin-metrics/default, pages/admin-audit/default (toolbar)</li>
+        <li><a href="../../mocks/pages/studio-editor/default.html">pages/studio-editor/default</a>, <a href="../../mocks/pages/studio-editor/new.html">new</a>, <a href="../../mocks/pages/studio-editor/published.html">published</a>, <a href="../../mocks/pages/studio-editor/success.html">success</a> (field rows, fieldsets, sticky actions)</li>
+        <li><a href="../../mocks/pages/studio-editor/invalid.html">pages/studio-editor/invalid</a>, <a href="../../mocks/pages/spot-editor/invalid.html">pages/spot-editor/invalid</a>, <a href="../../mocks/pages/guide-editor/invalid.html">pages/guide-editor/invalid</a> (error summary)</li>
+        <li><a href="../../mocks/pages/studio-editor/submitting.html">pages/studio-editor/submitting</a>, <a href="../../mocks/pages/spot-editor/submitting.html">pages/spot-editor/submitting</a>, <a href="../../mocks/pages/studio-editor/uploading.html">pages/studio-editor/uploading</a> (busy and disabled)</li>
+        <li><a href="../../mocks/pages/sign-in/default.html">pages/sign-in/default</a>, <a href="../../mocks/pages/sign-in/invalid.html">invalid</a>, <a href="../../mocks/pages/sign-in/incorrect.html">incorrect</a>, <a href="../../mocks/pages/sign-in/submitting.html">submitting</a> (auth layout)</li>
+        <li><a href="../../mocks/pages/studios/default.html">pages/studios/default</a> and <a href="../../mocks/dialogs/studio-filters/invalid.html">dialogs/studio-filters/invalid</a> (always-two field row)</li>
       </ul>
-      <p>Drift fixed during extraction: <code>.save-status</code> (42 mocks) was missing from the extracted stylesheet and has been added. "Saved" used a plain tick without <code>--saved</code> in some mocks ("All changes saved") and a circled tick with <code>--saved</code> in others; the system uses the circled success icon for saved and the plain tick, muted, for the loaded state. Summary headings used four formulas; the system uses "Fix {n} things to {goal}". Every <code>.form-actions</code> on a page overrode its end alignment inline; the default becomes start. Auth and dialog forms set <code>gap: var(--space-5)</code> inline on a <code>.stack</code>; a <code>.form--compact</code> modifier replaces it. Empty spacer <code>&lt;div style="height: var(--space-6)"&gt;</code> elements after summaries and alerts (four mocks) are replaced by a margin rule. <code>.form-actions--sticky</code> is in the kit but unused.</p>
+      <p>Drift fixed during extraction:</p>
+      <ul>
+        <li>Summary headings vary ("Fix 6 things before saving", "Fix 4 problems before saving", "This guide can't be published yet"); the system uses "Fix <i>n</i> things before saving".</li>
+        <li>The spot editor's summary lower-cases each message after the colon; the system copies the field message verbatim.</li>
+        <li>The spot and guide editors (and the sign-in button, "Signing in") swap the busy button's label to "Saving…"; the studio editor keeps "Save changes". The system keeps the label.</li>
+        <li>The refused save status reads "Not saved. Fix the 6 things listed above.", "Not saved" or "Not published"; the new-item status is empty in the studio editor and "Not saved yet" elsewhere. The system uses one string each.</li>
+        <li><code>.save-status--saved</code> and <code>--error</code> exist in the stylesheet but no mock uses them; the system applies them to the saved and refused states.</li>
+        <li>32 field rows override <code>grid-template-columns</code> inline (14 always-two, 18 auto-fit); two modifiers are proposed.</li>
+        <li>The sign-in summary has no <code>aria-labelledby</code> and relies on <code>autofocus</code>; it now matches the editors' summary.</li>
+        <li>Nothing stops the sticky bar covering a focused field at the bottom of the screen (WCAG 2.4.11); bottom scroll padding is proposed.</li>
+        <li><code>.form</code>, <code>.form--compact</code> and <code>.toolbar</code> have CSS and no ShotThere use.</li>
+      </ul>
     </section>
 
-    <footer class="ds-footer"><span>ShotThere design system · extracted from docs/mocks on 10 October 2026</span><a href="#top">Back to top</a></footer>
+    <footer class="ds-footer"><span>ShotThere design system · extracted from <a href="../../mocks/index.html">docs/mocks</a> on 13 October 2026</span><a href="#top">Back to top</a></footer>
   </main>
 </div>
 <script src="../assets/ds.js"></script>

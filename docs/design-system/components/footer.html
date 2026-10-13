@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Footer — ShotThere design system</title>
-<meta name="description" content="ShotThere site footer: public, caterer and operator variants, the legacy bordered footer, states in both themes, safe areas, accessibility and tokens.">
+<meta name="description" content="The ShotThere site footer: the brand promise, the compact email signup, the footer links with the YouTube channel and the no-paid-placement copy line.">
 <link rel="stylesheet" href="../tokens/tokens.css">
 <link rel="stylesheet" href="../assets/components.css">
 <link rel="stylesheet" href="../assets/ds.css">
@@ -33,34 +33,57 @@
       <li><a href="../components/icon-button.html">Icon button</a></li>
       <li><a href="../components/button-group.html">Button group</a></li>
       <li><a href="../components/link.html">Link</a></li>
+      <li><a href="../components/compare-bar.html">Compare toggle and bar</a></li>
     </ul></details>
     <details open><summary>Inputs</summary><ul>
       <li><a href="../components/form-field.html">Form field</a></li>
       <li><a href="../components/text-field.html">Text field</a></li>
       <li><a href="../components/textarea.html">Textarea</a></li>
       <li><a href="../components/select.html">Select</a></li>
+      <li><a href="../components/combobox.html">Combobox</a></li>
       <li><a href="../components/checkbox.html">Checkbox</a></li>
       <li><a href="../components/radio-group.html">Radio group</a></li>
       <li><a href="../components/file-upload.html">File upload</a></li>
       <li><a href="../components/form-layout.html">Form layout</a></li>
+      <li><a href="../components/signup.html">Email signup</a></li>
     </ul></details>
     <details open><summary>Navigation</summary><ul>
       <li><a href="../components/skip-link.html">Skip link</a></li>
       <li><a href="../components/site-header.html">Site header</a></li>
       <li><a href="../components/footer.html">Footer</a></li>
+      <li><a href="../components/breadcrumb.html">Breadcrumb</a></li>
+      <li><a href="../components/filter.html">Filters</a></li>
     </ul></details>
     <details open><summary>Containers and overlays</summary><ul>
       <li><a href="../components/container.html">Container and grid</a></li>
+      <li><a href="../components/review-layout.html">Review layout</a></li>
+      <li><a href="../components/editor-layout.html">Editor layout</a></li>
       <li><a href="../components/card.html">Card</a></li>
       <li><a href="../components/dialog.html">Dialog</a></li>
       <li><a href="../components/sheet.html">Sheet and drawer</a></li>
+      <li><a href="../components/popover.html">Popover</a></li>
+      <li><a href="../components/lightbox.html">Lightbox</a></li>
       <li><a href="../components/divider.html">Divider</a></li>
     </ul></details>
     <details open><summary>Data display</summary><ul>
+      <li><a href="../components/location-card.html">Location card</a></li>
       <li><a href="../components/table.html">Table</a></li>
+      <li><a href="../components/compare-table.html">Comparison table</a></li>
+      <li><a href="../components/list.html">List rows</a></li>
       <li><a href="../components/description-list.html">Description list</a></li>
+      <li><a href="../components/price-block.html">Price block</a></li>
+      <li><a href="../components/score.html">Score and pips</a></li>
+      <li><a href="../components/shot-grid.html">Shot grid</a></li>
+      <li><a href="../components/video-poster.html">Episode poster</a></li>
+      <li><a href="../components/map.html">Map</a></li>
+      <li><a href="../components/guide-entry.html">Guide entry</a></li>
+      <li><a href="../components/stat-tile.html">Stat tile</a></li>
+      <li><a href="../components/image-manager.html">Image manager</a></li>
+      <li><a href="../components/disclosure.html">Disclosure</a></li>
       <li><a href="../components/badge.html">Badge</a></li>
+      <li><a href="../components/status-label.html">Status label</a></li>
       <li><a href="../components/chip.html">Chip</a></li>
+      <li><a href="../components/tag.html">Tag</a></li>
     </ul></details>
     <details open><summary>Feedback</summary><ul>
       <li><a href="../components/inline-message.html">Inline message</a></li>
@@ -88,195 +111,228 @@
     <header class="ds-header">
       <p class="ds-kicker">Component · Navigation</p>
       <h1>Footer</h1>
-      <p class="ds-lead">The footer closes every page with the wordmark, one line about who ShotThere is for, and a few quiet links. It has no band, border or background: it is just text on the canvas.</p>
-      <div class="ds-meta"><span class="ds-pill ds-pill--ok">WCAG 2.2 AA</span><span class="ds-pill">Status: stable</span><span class="ds-pill"><code>.site-footer</code></span><span class="ds-pill"><code>&lt;footer&gt;</code> landmark</span></div>
+      <p class="ds-lead">The end of every public page. It repeats the promise (nothing is listed unless it has been shot there), offers new reviews by email, links to the lists, the editorial policy and the YouTube channel, and says plainly that nobody pays for placement.</p>
+      <div class="ds-meta"><span class="ds-pill ds-pill--ok">WCAG 2.2 AA</span><span class="ds-pill">Status: stable</span><span class="ds-pill"><code>&lt;footer&gt;</code> + <code>&lt;nav aria-label="Footer"&gt;</code></span><span class="ds-pill"><code>.site-footer</code></span></div>
       <ul class="ds-toc"><li><a href="#overview">Overview</a></li><li><a href="#anatomy">Anatomy</a></li><li><a href="#variants">Variants</a></li><li><a href="#sizes">Sizes</a></li><li><a href="#states">States</a></li><li><a href="#responsive">Responsive behaviour</a></li><li><a href="#theming">Theming</a></li><li><a href="#accessibility">Accessibility</a></li><li><a href="#content">Content</a></li><li><a href="#do-dont">Do and don't</a></li><li><a href="#tokens">Tokens</a></li><li><a href="#code">Code</a></li><li><a href="#sources">Sources</a></li></ul>
     </header>
 
-<section class="ds-section" id="overview"><h2><a href="#overview">Overview</a></h2>
-      <p>Every page in the mocks ends with <code>.site-footer</code>, including system pages such as 404 and maintenance. It holds what people look for last: what ShotThere is, how to join as a caterer, and the privacy and terms pages. Three audiences get three link sets; the layout never changes.</p>
+    <section class="ds-section" id="overview"><h2><a href="#overview">Overview</a></h2>
+      <p><code>.site-footer</code> closes every public page: home, the studio and spot lists, every review, compare, the guides, the editorial policy and the 404 and server-error pages. It is quiet: canvas background, muted small text, no border, and <code>--space-24</code> of air above it.</p>
       <ul>
-        <li><b>Public</b> (listing, caterer page, inbox, auth, legal pages): "Caribbean caterers in Toronto and the GTA." with About · Cater with us · Privacy · Terms.</li>
-        <li><b>Caterer dashboard</b>: the same line, but About · Privacy · Terms. A signed-in caterer does not need to be asked to cater with us.</li>
-        <li><b>Operator console</b>: "Operator console. Every action is written to the audit log." with Privacy · Terms. The line is a standing reminder, not decoration.</li>
-        <li><b>Legacy</b> <code>.footer</code>: a bordered bar from the base kit. No ShotThere screen uses it; it is kept for parity only. Don't use it.</li>
+        <li><b>Brand</b>: "ShotThere" and the one-line promise.</li>
+        <li><b>Email signup</b>: the compact form of the <a href="signup.html">email signup</a>, "New reviews by email" with a secondary Subscribe button. Its invalid, sending, done and rate-limited states are documented on that page (L2-039, L2-041).</li>
+        <li><b>Links</b>: Studios, Spots, Guides, Editorial policy, and the YouTube channel, which opens in a new tab. Map and Compare are left out; the header has them.</li>
+        <li><b>Copy line</b>: "© 2026 ShotThere · No paid placement: order comes only from the sort you choose."</li>
       </ul>
-      <p>The footer is not navigation for the task at hand: account actions live in the account menu, sections in the <a href="site-header.html">site header</a> or side navigation.</p>
+      <p>Admin screens and the owner sign-in have no footer: the owner needs the editor's sticky actions at the bottom, not a newsletter form. The map page has none either, because the map fills the screen.</p>
     </section>
 
     <section class="ds-section" id="anatomy"><h2><a href="#anatomy">Anatomy</a></h2>
-      <div class="ds-anatomy">
-        <figure class="ds-anatomy__figure">
-          <footer class="site-footer" style="margin: 0; padding: 0;">
-            <div class="site-footer__brand"><strong>ShotThere</strong><span>Caribbean caterers in Toronto and the GTA.</span></div>
-            <nav aria-label="Footer (anatomy)"><ul>
-              <li>About</li>
-              <li>Cater with us</li>
-              <li>Privacy</li>
-              <li>Terms</li>
-            </ul></nav>
+      <div class="ds-anatomy" style="grid-template-columns: minmax(0, 1fr);">
+        <figure class="ds-anatomy__figure" style="padding: 0; place-items: stretch;">
+          <footer class="site-footer" style="margin-top: 0;">
+            <div class="site-footer__brand">
+              <strong>ShotThere</strong>
+              <span>Toronto photo studios and outdoor spots, reviewed first-hand. Nothing is listed unless it has been shot there.</span>
+            </div>
+            <form class="signup" action="../../mocks/pages/home/success.html" method="post" novalidate aria-labelledby="ft-anat-title">
+              <h2 class="signup__title" id="ft-anat-title">New reviews by email</h2>
+              <p>One email when a new studio or spot goes up. Unsubscribe any time.</p>
+              <div class="signup__row">
+                <div class="field">
+                  <label class="field__label" for="ft-anat-email">Email address</label>
+                  <input class="input" id="ft-anat-email" name="email" type="email" autocomplete="email" inputmode="email">
+                </div>
+                <button class="btn" type="submit" style="align-self: flex-end;">Subscribe</button>
+              </div>
+            </form>
+            <nav class="site-footer__links" aria-label="Footer (anatomy example)">
+              <ul>
+                <li><a href="../../mocks/pages/studios/default.html">Studios</a></li>
+                <li><a href="../../mocks/pages/spots/default.html">Spots</a></li>
+                <li><a href="../../mocks/pages/guides/default.html">Guides</a></li>
+                <li><a href="../../mocks/pages/editorial-policy/default.html">Editorial policy</a></li>
+                <li><a href="https://www.youtube.com/@ShotThere" target="_blank" rel="noopener">YouTube channel<span class="visually-hidden"> (opens in a new tab)</span></a></li>
+              </ul>
+            </nav>
+            <p class="site-footer__copy">© 2026 ShotThere · No paid placement: order comes only from the sort you choose.</p>
           </footer>
-          <span class="ds-callout" style="left: 6%; top: 18%;" aria-hidden="true">1</span>
-          <span class="ds-callout" style="left: 6%; top: 54%;" aria-hidden="true">2</span>
-          <span class="ds-callout" style="left: 62%; top: 18%;" aria-hidden="true">3</span>
-          <span class="ds-callout" style="left: 94%; top: 82%;" aria-hidden="true">4</span>
+          <span class="ds-callout" style="left: 2%; top: 10%;" aria-hidden="true">1</span>
+          <span class="ds-callout" style="left: 49%; top: 10%;" aria-hidden="true">2</span>
+          <span class="ds-callout" style="left: 2%; top: 64%;" aria-hidden="true">3</span>
+          <span class="ds-callout" style="left: 2%; top: 84%;" aria-hidden="true">4</span>
         </figure>
         <ol class="ds-anatomy__list">
-          <li><div><b>Wordmark</b><small><code>.site-footer__brand strong</code>: "ShotThere" in <code>--text-h4</code>, ink. Plain text, not a link; the header wordmark already goes home.</small></div></li>
-          <li><div><b>Line</b><small>One sentence, muted, max 22rem wide so it wraps before the links.</small></div></li>
-          <li><div><b>Footer navigation</b><small><code>&lt;nav aria-label="Footer"&gt;</code> with a list of links, 44px tall, <code>--space-6</code> apart.</small></div></li>
-          <li><div><b>Container</b><small>Same max width and side margin as the header (<code>--layout-container-max</code>, <code>--layout-margin</code>); <code>--space-24</code> above, <code>--space-10</code> padding plus the bottom safe area.</small></div></li>
+          <li><div><b>Brand</b><small><code>.site-footer__brand</code>: the name in <code>--text-h4</code> and <code>--color-fg-default</code>, the promise in muted <code>--text-body-sm</code>; at most 22rem wide.</small></div></li>
+          <li><div><b>Email signup</b><small>A <code>.signup</code> form labelled by its <code>.signup__title</code> heading, with one email field, a secondary Subscribe button and the hidden <code>.signup__trap</code> honeypot. Grows to fill the row (<code>flex: 1 1 20rem</code>).</small></div></li>
+          <li><div><b>Footer links</b><small><code>.site-footer__links</code>, a <code>&lt;nav aria-label="Footer"&gt;</code> around a plain list. Muted text, no underline until hover, each 44px tall. Stacked at XS, one row from 36rem.</small></div></li>
+          <li><div><b>Copy line</b><small><code>.site-footer__copy</code>, full width (<code>flex-basis: 100%</code>) on its own line at the end.</small></div></li>
         </ol>
       </div>
     </section>
 
     <section class="ds-section" id="variants"><h2><a href="#variants">Variants</a></h2>
+      <p>One footer, identical on every public page. The only thing that changes is the current link: on the studio and spot lists the matching footer link carries <code>aria-current="page"</code>, like the header.</p>
       <div class="ds-example">
-        <div class="ds-example__canvas ds-example__canvas--stack">
-          <footer class="site-footer" style="margin: 0; padding-inline: 0; padding-block: var(--space-4);">
-            <div class="site-footer__brand"><strong>ShotThere</strong><span>Caribbean caterers in Toronto and the GTA.</span></div>
-            <nav aria-label="Footer (public example)"><ul>
-              <li>About</li>
-              <li>Cater with us</li>
-              <li>Privacy</li>
-              <li>Terms</li>
-            </ul></nav>
-          </footer>
-          <footer class="site-footer" style="margin: 0; padding-inline: 0; padding-block: var(--space-4);">
-            <div class="site-footer__brand"><strong>ShotThere</strong><span>Caribbean caterers in Toronto and the GTA.</span></div>
-            <nav aria-label="Footer (caterer example)"><ul>
-              <li>About</li>
-              <li>Privacy</li>
-              <li>Terms</li>
-            </ul></nav>
-          </footer>
-          <footer class="site-footer" style="margin: 0; padding-inline: 0; padding-block: var(--space-4);">
-            <div class="site-footer__brand"><strong>ShotThere</strong><span>Operator console. Every action is written to the audit log.</span></div>
-            <nav aria-label="Footer (operator example)"><ul>
-              <li>Privacy</li>
-              <li>Terms</li>
-            </ul></nav>
+        <div class="ds-example__canvas ds-example__canvas--canvas" style="padding: 0; display: block;">
+          <footer class="site-footer" style="margin-top: 0;">
+            <div class="site-footer__brand">
+              <strong>ShotThere</strong>
+              <span>Toronto photo studios and outdoor spots, reviewed first-hand. Nothing is listed unless it has been shot there.</span>
+            </div>
+            <form class="signup" action="../../mocks/pages/home/success.html" method="post" novalidate aria-labelledby="ft-v-title">
+              <h2 class="signup__title" id="ft-v-title">New reviews by email</h2>
+              <p>One email when a new studio or spot goes up. Unsubscribe any time.</p>
+              <div class="signup__row">
+                <div class="field">
+                  <label class="field__label" for="ft-v-email">Email address</label>
+                  <input class="input" id="ft-v-email" name="email" type="email" autocomplete="email" inputmode="email">
+                </div>
+                <button class="btn" type="submit" style="align-self: flex-end;">Subscribe</button>
+              </div>
+              <div class="signup__trap" aria-hidden="true"><label for="ft-v-website">Leave this field empty</label><input id="ft-v-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+            </form>
+            <nav class="site-footer__links" aria-label="Footer (example)">
+              <ul>
+                <li><a href="../../mocks/pages/studios/default.html">Studios</a></li>
+                <li><a href="../../mocks/pages/spots/default.html" aria-current="page">Spots</a></li>
+                <li><a href="../../mocks/pages/guides/default.html">Guides</a></li>
+                <li><a href="../../mocks/pages/editorial-policy/default.html">Editorial policy</a></li>
+                <li><a href="https://www.youtube.com/@ShotThere" target="_blank" rel="noopener">YouTube channel<span class="visually-hidden"> (opens in a new tab)</span></a></li>
+              </ul>
+            </nav>
+            <p class="site-footer__copy">© 2026 ShotThere · No paid placement: order comes only from the sort you choose.</p>
           </footer>
         </div>
-        <div class="ds-example__caption"><span>Public, caterer dashboard and operator console. Only the line and the link set change.</span></div>
+        <div class="ds-example__caption"><span>On the spot list (<a href="../../mocks/pages/spots/default.html">pages/spots/default</a>): Spots is current.</span></div>
         <details class="ds-example__code"><summary>HTML</summary><pre><code>&lt;footer class="site-footer"&gt;
-  &lt;div class="site-footer__brand"&gt;&lt;strong&gt;ShotThere&lt;/strong&gt;&lt;span&gt;Caribbean caterers in Toronto and the GTA.&lt;/span&gt;&lt;/div&gt;
-  &lt;nav aria-label="Footer"&gt;
+  &lt;div class="site-footer__brand"&gt;
+    &lt;strong&gt;ShotThere&lt;/strong&gt;
+    &lt;span&gt;Toronto photo studios and outdoor spots, reviewed first-hand. Nothing is listed unless it has been shot there.&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;form class="signup" action="/signup" method="post" novalidate aria-labelledby="footer-signup-title"&gt;
+    &lt;h2 class="signup__title" id="footer-signup-title"&gt;New reviews by email&lt;/h2&gt;
+    &lt;p&gt;One email when a new studio or spot goes up. Unsubscribe any time.&lt;/p&gt;
+    &lt;div class="signup__row"&gt;
+      &lt;div class="field"&gt;
+        &lt;label class="field__label" for="footer-email"&gt;Email address&lt;/label&gt;
+        &lt;input class="input" id="footer-email" name="email" type="email" autocomplete="email" inputmode="email"&gt;
+      &lt;/div&gt;
+      &lt;button class="btn" type="submit"&gt;Subscribe&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;div class="signup__trap" aria-hidden="true"&gt;&lt;label for="footer-website"&gt;Leave this field empty&lt;/label&gt;&lt;input id="footer-website" name="website" type="text" tabindex="-1" autocomplete="off"&gt;&lt;/div&gt;
+  &lt;/form&gt;
+  &lt;nav class="site-footer__links" aria-label="Footer"&gt;
     &lt;ul&gt;
-      &lt;li&gt;&lt;a href="/about"&gt;About&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href="/cater-with-us"&gt;Cater with us&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href="/privacy"&gt;Privacy&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href="/terms"&gt;Terms&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="/studios"&gt;Studios&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="/spots" aria-current="page"&gt;Spots&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="/guides"&gt;Guides&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="/editorial-policy"&gt;Editorial policy&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="https://www.youtube.com/@ShotThere" target="_blank" rel="noopener"&gt;YouTube channel&lt;span class="visually-hidden"&gt; (opens in a new tab)&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/nav&gt;
+  &lt;p class="site-footer__copy"&gt;© 2026 ShotThere · No paid placement: order comes only from the sort you choose.&lt;/p&gt;
 &lt;/footer&gt;</code></pre></details>
       </div>
-      <h3>Legacy bordered footer</h3>
-      <div class="ds-example">
-        <div class="ds-example__canvas ds-example__canvas--stack" style="padding: 0;">
-          <div class="footer"><span>ShotThere</span>Privacy</div>
-        </div>
-        <div class="ds-example__caption"><span><code>.footer</code> from the base kit: a top border and a bar. It breaks the flat-surface rule and is unused; shown so nobody mistakes it for the product footer.</span></div>
-      </div>
+      <p>The signup in the footer always starts empty. When it is submitted, the result replaces the form in place as on the home page; see <a href="signup.html">Email signup</a> for the states.</p>
     </section>
 
-    <section class="ds-section" id="sizes" data-na="One size."><h2><a href="#sizes">Sizes</a></h2>
-      <p class="ds-na">The footer has one size. Its spacing comes from the layout tokens, which grow with the viewport (the side margin is 16px on phones and 80px from 75rem), so it never needs a size modifier.</p>
+    <section class="ds-section" id="sizes" data-na="The footer has one size."><h2><a href="#sizes">Sizes</a></h2>
+      <p class="ds-na">One size. Its padding (<code>--space-10</code> top and bottom, <code>--layout-margin</code> at the sides) and width (<code>--layout-container-max</code>) follow the page container, so it lines up with the content above it at every breakpoint.</p>
     </section>
 
     <section class="ds-section" id="states"><h2><a href="#states">States</a></h2>
-      <p>Only the links have states. Hover and focus are forced with <code>data-state</code>; current uses <code>aria-current="page"</code>.</p>
+      <p>Hover and focus are forced with <code>data-state</code>; current uses the real <code>aria-current="page"</code> and disabled the real <code>disabled</code>.</p>
       <div class="ds-matrix"><table>
-        <caption class="visually-hidden">Footer link states</caption>
-        <thead><tr><th scope="col">Part</th><th scope="col">Default</th><th scope="col">Hover</th><th scope="col">Focus</th><th scope="col">Active</th><th scope="col">Disabled</th><th scope="col">Current</th></tr></thead>
+        <caption class="visually-hidden">Footer states by part</caption>
+        <thead><tr><th scope="col">Part</th><th scope="col">Default</th><th scope="col">Hover</th><th scope="col">Focus</th><th scope="col">Active</th><th scope="col">Disabled</th><th scope="col">Current / busy</th></tr></thead>
         <tbody>
           <tr><th scope="row">Footer link</th>
-            <td><div class="site-footer" style="margin: 0; padding: 0;">Privacy</div></td>
-            <td><div class="site-footer" style="margin: 0; padding: 0;">Privacy</div></td>
-            <td><div class="site-footer" style="margin: 0; padding: 0;">Privacy</div></td>
-            <td><span class="text-subtle">Same as hover</span></td>
-            <td><span class="text-subtle">Never</span></td>
-            <td><div class="site-footer" style="margin: 0; padding: 0;">Privacy</div></td></tr>
+            <td><span class="site-footer" style="margin: 0; padding: 0; width: auto;"><a href="../../mocks/pages/guides/default.html">Guides</a></span></td>
+            <td><span class="site-footer" style="margin: 0; padding: 0; width: auto;"><a href="../../mocks/pages/guides/default.html" data-state="hover">Guides</a></span></td>
+            <td><span class="site-footer" style="margin: 0; padding: 0; width: auto;"><a href="../../mocks/pages/guides/default.html" data-state="focus">Guides</a></span></td>
+            <td><small class="text-muted">No pressed look; it navigates</small></td>
+            <td><small class="text-muted">Never disabled</small></td>
+            <td><span class="site-footer" style="margin: 0; padding: 0; width: auto;"><a href="../../mocks/pages/guides/default.html" aria-current="page">Guides</a></span></td></tr>
+          <tr><th scope="row">Subscribe</th>
+            <td><button class="btn" type="button">Subscribe</button></td>
+            <td><button class="btn" type="button" data-state="hover">Subscribe</button></td>
+            <td><button class="btn" type="button" data-state="focus">Subscribe</button></td>
+            <td><button class="btn" type="button" data-state="active">Subscribe</button></td>
+            <td><button class="btn" type="button" disabled>Subscribe</button></td>
+            <td><button class="btn" type="button" aria-busy="true" aria-disabled="true">Subscribe</button></td></tr>
         </tbody>
       </table></div>
+      <p>The email field's own states (invalid "Enter a valid email address, like name@example.com", sending, done, rate-limited) are on <a href="signup.html">Email signup</a> and <a href="text-field.html">Text field</a>.</p>
       <h3>Both themes</h3>
       <div class="ds-themes">
-        <div data-theme="light"><div class="site-footer" style="margin: 0; padding: 0;"><div class="site-footer__brand"><strong>ShotThere</strong><span>Caribbean caterers in Toronto and the GTA.</span></div><ul><li>About</li><li>Privacy</li><li>Terms</li></ul></div></div>
-        <div data-theme="dark"><div class="site-footer" style="margin: 0; padding: 0;"><div class="site-footer__brand"><strong>ShotThere</strong><span>Caribbean caterers in Toronto and the GTA.</span></div><ul><li>About</li><li>Privacy</li><li>Terms</li></ul></div></div>
+        <div data-theme="light"><footer class="site-footer" style="margin: 0; padding: 0;"><div class="site-footer__brand"><strong>ShotThere</strong><span>Toronto photo studios and outdoor spots, reviewed first-hand.</span></div><p class="site-footer__copy">© 2026 ShotThere · No paid placement: order comes only from the sort you choose.</p></footer></div>
+        <div data-theme="dark"><footer class="site-footer" style="margin: 0; padding: 0;"><div class="site-footer__brand"><strong>ShotThere</strong><span>Toronto photo studios and outdoor spots, reviewed first-hand.</span></div><p class="site-footer__copy">© 2026 ShotThere · No paid placement: order comes only from the sort you choose.</p></footer></div>
       </div>
-      <ul>
-        <li><b>Current</b>: on the About, Privacy and Terms pages the matching footer link takes <code>aria-current="page"</code>. The stylesheet does not style it yet, so it looks like the default; ink at medium weight is proposed (see Sources).</li>
-        <li><b>Loading, empty, error</b>: none. The footer renders with the page shell even when the main content fails (pages/server-error/default), so people always have a way to the privacy page.</li>
-      </ul>
     </section>
 
     <section class="ds-section" id="responsive"><h2><a href="#responsive">Responsive behaviour</a></h2>
-      <p>The footer has no breakpoints of its own: it is a wrapping flex row, so the width decides.</p>
-      <div class="ds-example">
-        <div class="ds-example__canvas" style="max-width: 22.5rem;">
-          <footer class="site-footer" style="margin: 0; padding-inline: 0; padding-block: var(--space-4);">
-            <div class="site-footer__brand"><strong>ShotThere</strong><span>Caribbean caterers in Toronto and the GTA.</span></div>
-            <nav aria-label="Footer (phone example)"><ul>
-              <li>About</li>
-              <li>Cater with us</li>
-              <li>Privacy</li>
-              <li>Terms</li>
-            </ul></nav>
-          </footer>
-        </div>
-        <div class="ds-example__caption"><span>At phone width (360px here) the line stacks above the links, which wrap two or three to a row.</span></div>
-      </div>
       <ul>
-        <li><b>XS and SM</b>: brand above links; links wrap with <code>--space-6</code> between them. The bottom padding adds <code>env(safe-area-inset-bottom)</code> so the last row clears the home indicator.</li>
-        <li><b>MD and up</b>: brand on the left, links on the right, top-aligned (<code>justify-content: space-between</code>).</li>
-        <li><b>Caterer page XS to MD</b>: the sticky enquiry bar covers the bottom of the screen, so <code>main.has-sticky-cta</code> pads the page and the footer is never hidden under it (WCAG 2.4.11).</li>
-        <li>From 90rem the footer stops growing and centres with the header (<code>--layout-container-max</code>).</li>
+        <li><b>XS (below 36rem)</b>: one column. Brand, then the signup with the field and a full-width Subscribe stacked (L2-039.5), then the links one per line, then the copy line.</li>
+        <li><b>SM and up (36rem)</b>: the signup field and button share a row, and the links run in one row with <code>--space-6</code> between them, wrapping when they run out of room.</li>
+        <li><b>MD and up</b>: brand and signup sit side by side (<code>flex-wrap</code> with <code>justify-content: space-between</code>); the links and the copy line follow underneath.</li>
+        <li>The bottom padding adds <code>env(safe-area-inset-bottom)</code>; on pages with the <a href="compare-bar.html">compare bar</a>, <code>.has-compare-bar</code> on <code>&lt;body&gt;</code> adds room so the bar never covers the copy line (L2-065.1).</li>
+        <li>Nothing scrolls sideways at 320px: the brand and signup shrink, long words wrap (L2-064.1).</li>
       </ul>
+      <div class="ds-iframes">
+        <iframe class="ds-iframe" src="../../mocks/pages/guides/default.html?chrome=0" title="Guides page at phone width; scroll inside it to reach the footer" loading="lazy"></iframe>
+      </div>
     </section>
 
     <section class="ds-section" id="theming"><h2><a href="#theming">Theming</a></h2>
-      <p>No component tokens. The footer reads <code>--color-fg-muted</code> for the line and links, <code>--color-fg-default</code> for the wordmark and hover, and sits on the page canvas with no surface of its own. In dark the canvas is near-black stone and the muted text flips to a light stone. Because it has no background, a theme never needs a footer override.</p>
+      <p>The footer reads semantic tokens only: <code>--color-fg-muted</code> for text and links, <code>--color-fg-default</code> for the name, a hovered link and the current link, and the page's <code>--color-bg-canvas</code> behind it (it has no surface of its own). It has no component tokens. The Subscribe button and the email field theme with <a href="button.html">Button</a> and <a href="text-field.html">Text field</a>. In dark it stays on the canvas; there is no rule or band to separate it, the <code>--space-24</code> gap does that.</p>
     </section>
 
     <section class="ds-section" id="accessibility"><h2><a href="#accessibility">Accessibility</a></h2>
       <h3>Role and pattern</h3>
-      <p>A top-level <code>&lt;footer&gt;</code> outside <code>&lt;main&gt;</code>, so it is the page's <code>contentinfo</code> landmark (<a href="https://www.w3.org/WAI/ARIA/apg/patterns/landmarks/examples/contentinfo.html">APG contentinfo landmark</a>). Links sit in <code>&lt;nav aria-label="Footer"&gt;</code>, distinct from the header's "Primary".</p>
+      <p><code>&lt;footer&gt;</code> as a direct child of <code>&lt;body&gt;</code> is the content-info landmark. The links are a <code>&lt;nav aria-label="Footer"&gt;</code> around a <code>&lt;ul&gt;</code>; the signup is a native <code>&lt;form&gt;</code> named by its heading through <code>aria-labelledby</code>.</p>
       <h3>Keyboard</h3>
       <div class="ds-table-wrap"><table class="ds-table ds-keys"><thead><tr><th scope="col">Key</th><th scope="col">Action</th></tr></thead><tbody>
-        <tr><td><kbd>Tab</kbd> / <kbd>Shift</kbd>+<kbd>Tab</kbd></td><td>Reaches the footer links last, after pagination and the page content.</td></tr>
-        <tr><td><kbd>Enter</kbd></td><td>Follows the link.</td></tr>
+        <tr><td><kbd>Tab</kbd> / <kbd>Shift</kbd>+<kbd>Tab</kbd></td><td>Email field, Subscribe, then each footer link in order. The honeypot field is skipped (<code>tabindex="-1"</code>).</td></tr>
+        <tr><td><kbd>Enter</kbd></td><td>In the email field, submits the signup; on a link, follows it.</td></tr>
+        <tr><td><kbd>Space</kbd></td><td>On Subscribe, submits.</td></tr>
       </tbody></table></div>
       <h3>Focus</h3>
-      <p>The shared pepper ring wraps each 44px link. The footer is never covered by a sticky bar, so a focused link is always fully visible.</p>
+      <p>The shared 2px <code>--color-focus-ring</code> with a 3px offset. After a submit, focus stays on the form and the result is announced by the signup's live region; it never jumps to the top of the page.</p>
       <h3>Labelling</h3>
-      <p>Link text is the destination ("Privacy", "Terms"). The wordmark is plain text, so it is not announced as a second home link.</p>
+      <p>The email field has a visible "Email address" label. The YouTube link adds " (opens in a new tab)" as visually hidden text, so its name warns about the new tab. The honeypot sits in an <code>aria-hidden="true"</code> wrapper with its own label, so it is labelled for validators and invisible to assistive technology (L2-040.4).</p>
       <h3>Contrast</h3>
       <div class="ds-example__canvas ds-example__canvas--stack" style="padding: 0; gap: var(--space-2);">
-        <div class="ds-pair"><span>Line and links on page</span><span class="ds-pair__ratio" data-contrast="--color-fg-muted|--color-bg-canvas" data-min="4.5"></span></div>
-        <div class="ds-pair"><span>Wordmark and hovered link</span><span class="ds-pair__ratio" data-contrast="--color-fg-default|--color-bg-canvas" data-min="4.5"></span></div>
-        <div class="ds-pair"><span>Focus ring on page</span><span class="ds-pair__ratio" data-contrast="--color-focus-ring|--color-bg-canvas" data-min="3"></span></div>
+        <div class="ds-pair"><span>Links, promise and copy line on canvas</span><span class="ds-pair__ratio" data-contrast="--color-fg-muted|--color-bg-canvas" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Name, hovered and current link on canvas</span><span class="ds-pair__ratio" data-contrast="--color-fg-default|--color-bg-canvas" data-min="4.5"></span></div>
+        <div class="ds-pair"><span>Email field and Subscribe edges on canvas</span><span class="ds-pair__ratio" data-contrast="--color-border-strong|--color-bg-canvas" data-min="3"></span></div>
+        <div class="ds-pair"><span>Focus ring on canvas</span><span class="ds-pair__ratio" data-contrast="--color-focus-ring|--color-bg-canvas" data-min="3"></span></div>
       </div>
+      <p>Hover adds an underline as well as the darker ink, and current adds weight, so neither relies on colour alone.</p>
       <h3>Motion</h3>
-      <p>None. Hover changes colour and underline instantly.</p>
+      <p>None of its own. Links change colour instantly; the Subscribe spinner follows <a href="button.html">Button</a>.</p>
       <h3>Touch</h3>
-      <p>Each link is 44px tall (<code>--target-comfortable</code>) with 24px between neighbours in a row; wrapped rows touch vertically, but each target is already 44px, so the spacing exception in WCAG 2.5.8 applies and the L2-065.1 gap is met horizontally.</p>
+      <p>Every footer link is at least 44px tall (<code>--target-comfortable</code>), and the stacked links at XS each take a full row. The email field and Subscribe are 44px (<code>--control-height-md</code>).</p>
     </section>
 
     <section class="ds-section" id="content"><h2><a href="#content">Content</a></h2>
       <ul>
-        <li>The line is one sentence that says who it is for: "Caribbean caterers in Toronto and the GTA." Don't add a slogan or the founding story; About has that.</li>
-        <li>Links are one or two words in sentence case: "About", "Cater with us", "Privacy", "Terms". "Cater with us" invites caterers; it is not "For business" or "Partners".</li>
-        <li>No copyright line, social icons, newsletter form or app badges. None are in the requirements, and each would add text the brand avoids.</li>
-        <li>Operators always see the audit reminder in the line.</li>
+        <li>The promise is the product's one-line description, word for word: "Toronto photo studios and outdoor spots, reviewed first-hand. Nothing is listed unless it has been shot there."</li>
+        <li>Signup: title "New reviews by email", line "One email when a new studio or spot goes up. Unsubscribe any time.", button "Subscribe".</li>
+        <li>Links in this order: Studios, Spots, Guides, Editorial policy, YouTube channel.</li>
+        <li>The copy line keeps the year and the no-paid-placement promise together: "© 2026 ShotThere · No paid placement: order comes only from the sort you choose."</li>
+        <li>No social icons, no "Advertise with us", no partner logos: they would contradict the copy line.</li>
       </ul>
     </section>
 
     <section class="ds-section" id="do-dont"><h2><a href="#do-dont">Do and don't</a></h2>
       <div class="ds-dodont">
-        <figure class="ds-do"><div class="ds-example__canvas"><div class="site-footer" style="margin: 0; padding: 0;"><div class="site-footer__brand"><strong>ShotThere</strong><span>Caribbean caterers in Toronto and the GTA.</span></div></div></div><figcaption>Text straight on the canvas, like the header.</figcaption></figure>
-        <figure class="ds-dont"><div class="ds-example__canvas ds-example__canvas--stack" style="padding: 0;"><div class="footer"><span>ShotThere</span>Privacy</div></div><figcaption>Don't use the bordered legacy <code>.footer</code>; a band breaks the flat surface.</figcaption></figure>
-        <figure class="ds-do"><div class="ds-example__canvas"><div class="site-footer" style="margin: 0; padding: 0;"><ul><li>About</li><li>Privacy</li><li>Terms</li></ul></div></div><figcaption>In the dashboard, drop "Cater with us": the reader already does.</figcaption></figure>
-        <figure class="ds-dont"><div class="ds-example__canvas"><div class="site-footer" style="margin: 0; padding: 0;"><ul><li>Account</li><li>Sign out</li><li>Privacy</li></ul></div></div><figcaption>Don't put account actions in the footer; they live in the account menu.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas"><span class="site-footer" style="margin: 0; padding: 0;"><a href="https://www.youtube.com/@ShotThere" target="_blank" rel="noopener">YouTube channel<span class="visually-hidden"> (opens in a new tab)</span></a></span></div><figcaption>Say when a link opens a new tab, in its name, and add <code>rel="noopener"</code>.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas"><span class="site-footer" style="margin: 0; padding: 0;"><a href="../../mocks/pages/editorial-policy/default.html" target="_blank">Editorial policy</a></span></div><figcaption>Don't open ShotThere's own pages in a new tab. Only the YouTube channel leaves the site.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas"><span class="site-footer" style="margin: 0; padding: 0;"><a href="../../mocks/pages/studios/default.html" aria-current="page">Studios</a></span></div><figcaption>On the studio list, mark Studios current in the footer as in the header, in every state of the list.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas"><span class="site-footer" style="margin: 0; padding: 0;"><a href="../../mocks/pages/studios/default.html">Studios</a></span></div><figcaption>Don't mark it in some states and not others: <a href="../../mocks/pages/studios/default.html">pages/studios/default</a> leaves it out while the other seven studio list states have it.</figcaption></figure>
+        <figure class="ds-do"><div class="ds-example__canvas"><small>The honeypot is off-screen, <code>aria-hidden</code>, <code>tabindex="-1"</code> and labelled "Leave this field empty".</small></div><figcaption>People never meet it; bots that fill every field do.</figcaption></figure>
+        <figure class="ds-dont"><div class="ds-example__canvas"><small>A visible "Website" field, or one hidden with <code>display: none</code>.</small></div><figcaption>A visible field confuses people; <code>display: none</code> is skipped by the bots it is there to catch.</figcaption></figure>
       </div>
     </section>
 
@@ -284,54 +340,58 @@
       <div class="ds-table-wrap"><table class="ds-table">
         <thead><tr><th scope="col">Part</th><th scope="col">Token</th><th scope="col">Light</th><th scope="col">Dark</th></tr></thead>
         <tbody>
-          <tr><td>Line, links</td><td><code>--color-fg-muted</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-muted" data-swatch></i><span data-token="--color-fg-muted"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-muted" data-swatch></i><span data-token="--color-fg-muted"></span></span></td></tr>
-          <tr><td>Wordmark, hovered link</td><td><code>--color-fg-default</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-default" data-swatch></i><span data-token="--color-fg-default"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-default" data-swatch></i><span data-token="--color-fg-default"></span></span></td></tr>
-          <tr><td>Background (page canvas)</td><td><code>--color-bg-canvas</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-bg-canvas" data-swatch></i><span data-token="--color-bg-canvas"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-bg-canvas" data-swatch></i><span data-token="--color-bg-canvas"></span></span></td></tr>
-          <tr><td>Legacy border</td><td><code>--color-border-default</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-border-default" data-swatch></i><span data-token="--color-border-default"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-border-default" data-swatch></i><span data-token="--color-border-default"></span></span></td></tr>
-          <tr><td>Text, wordmark</td><td><code>--text-body-sm</code> <code>--text-h4</code></td><td colspan="2"><span data-token="--text-body-sm"></span> / <span data-token="--text-h4"></span></td></tr>
-          <tr><td>Max width, side margin</td><td><code>--layout-container-max</code> <code>--layout-margin</code></td><td colspan="2"><span data-token="--layout-container-max"></span> / <span data-token="--layout-margin"></span></td></tr>
-          <tr><td>Space above, padding</td><td><code>--space-24</code> <code>--space-10</code></td><td colspan="2"><span data-token="--space-24"></span> / <span data-token="--space-10"></span></td></tr>
-          <tr><td>Gaps (row, column, links)</td><td><code>--space-4</code> <code>--space-8</code> <code>--space-6</code></td><td colspan="2"><span data-token="--space-4"></span> / <span data-token="--space-8"></span> / <span data-token="--space-6"></span></td></tr>
-          <tr><td>Link target</td><td><code>--target-comfortable</code></td><td colspan="2"><span data-token="--target-comfortable"></span></td></tr>
+          <tr><td>Background (the page's)</td><td><code>--color-bg-canvas</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-bg-canvas" data-swatch></i><span data-token="--color-bg-canvas"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-bg-canvas" data-swatch></i><span data-token="--color-bg-canvas"></span></span></td></tr>
+          <tr><td>Text and links</td><td><code>--color-fg-muted</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-muted" data-swatch></i><span data-token="--color-fg-muted"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-muted" data-swatch></i><span data-token="--color-fg-muted"></span></span></td></tr>
+          <tr><td>Name, hover, current</td><td><code>--color-fg-default</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-fg-default" data-swatch></i><span data-token="--color-fg-default"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-fg-default" data-swatch></i><span data-token="--color-fg-default"></span></span></td></tr>
+          <tr><td>Focus ring</td><td><code>--color-focus-ring</code></td><td><span class="ds-swatch-cell" data-theme="light"><i data-token="--color-focus-ring" data-swatch></i><span data-token="--color-focus-ring"></span></span></td><td><span class="ds-swatch-cell" data-theme="dark"><i data-token="--color-focus-ring" data-swatch></i><span data-token="--color-focus-ring"></span></span></td></tr>
+          <tr><td>Type: text / name</td><td><code>--text-body-sm</code> / <code>--text-h4</code></td><td colspan="2"><span data-token="--text-body-sm"></span> / <span data-token="--text-h4"></span></td></tr>
+          <tr><td>Space above</td><td><code>--space-24</code></td><td colspan="2"><span data-token="--space-24"></span></td></tr>
+          <tr><td>Padding</td><td><code>--space-10</code>, <code>--layout-margin</code></td><td colspan="2"><span data-token="--space-10"></span> / <span data-token="--layout-margin"></span></td></tr>
+          <tr><td>Gaps</td><td><code>--space-4</code> <code>--space-8</code>; links <code>--space-6</code></td><td colspan="2"><span data-token="--space-4"></span> / <span data-token="--space-8"></span> / <span data-token="--space-6"></span></td></tr>
+          <tr><td>Maximum width</td><td><code>--layout-container-max</code></td><td colspan="2"><span data-token="--layout-container-max"></span></td></tr>
+          <tr><td>Link height</td><td><code>--target-comfortable</code></td><td colspan="2"><span data-token="--target-comfortable"></span></td></tr>
         </tbody>
       </table></div>
     </section>
 
     <section class="ds-section" id="code"><h2><a href="#code">Code</a></h2>
-      <pre><code>&lt;div class="page"&gt;
-  &lt;header class="site-header"&gt;…&lt;/header&gt;
-  &lt;main id="main" class="container"&gt;…&lt;/main&gt;
-  &lt;footer class="site-footer"&gt;
-    &lt;div class="site-footer__brand"&gt;&lt;strong&gt;ShotThere&lt;/strong&gt;&lt;span&gt;Operator console. Every action is written to the audit log.&lt;/span&gt;&lt;/div&gt;
-    &lt;nav aria-label="Footer"&gt;&lt;ul&gt;
-      &lt;li&gt;&lt;a href="/privacy" aria-current="page"&gt;Privacy&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href="/terms"&gt;Terms&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;&lt;/nav&gt;
-  &lt;/footer&gt;
-&lt;/div&gt;</code></pre>
+      <pre><code>&lt;footer class="site-footer"&gt;
+  &lt;div class="site-footer__brand"&gt;&lt;strong&gt;ShotThere&lt;/strong&gt;&lt;span&gt;…&lt;/span&gt;&lt;/div&gt;
+  &lt;form class="signup" …&gt;…&lt;/form&gt;
+  &lt;nav class="site-footer__links" aria-label="Footer"&gt;&lt;ul&gt;…&lt;/ul&gt;&lt;/nav&gt;
+  &lt;p class="site-footer__copy"&gt;© 2026 ShotThere · No paid placement: order comes only from the sort you choose.&lt;/p&gt;
+&lt;/footer&gt;</code></pre>
       <div class="ds-table-wrap"><table class="ds-table"><thead><tr><th scope="col">Class / attribute</th><th scope="col">Effect</th></tr></thead><tbody>
-        <tr><td><code>.site-footer</code></td><td>Container: centred, wrapping row, muted small text, safe-area padding. Styles its <code>ul</code> and <code>a</code>.</td></tr>
-        <tr><td><code>.site-footer__brand</code></td><td>Wordmark (<code>strong</code>) over the line, max 22rem.</td></tr>
-        <tr><td><code>.page</code></td><td>Flex column with <code>main</code> growing, so the footer sits at the bottom of short pages.</td></tr>
-        <tr><td><code>aria-current="page"</code></td><td>On the link to the page you are on.</td></tr>
-        <tr><td><code>.footer</code></td><td>Legacy bordered bar. Don't use.</td></tr>
+        <tr><td><code>.site-footer</code></td><td>Wrapping flex row inside the container width; muted small text; <code>--space-24</code> above; safe-area padding below.</td></tr>
+        <tr><td><code>.site-footer__brand</code></td><td>Name and promise, stacked, at most 22rem.</td></tr>
+        <tr><td><code>.site-footer .signup</code></td><td>The signup fills the free space (<code>flex: 1 1 20rem</code>); its button keeps the button colours, not the footer link colours.</td></tr>
+        <tr><td><code>.site-footer__links</code></td><td>The footer nav; its list is a column at XS and a row from 36rem.</td></tr>
+        <tr><td><code>.site-footer__copy</code></td><td>Full-width last line.</td></tr>
+        <tr><td><code>aria-current="page"</code></td><td>On a footer link: ink and medium weight.</td></tr>
         <tr><td><code>data-state="hover|focus"</code></td><td>Documentation and mocks only.</td></tr>
       </tbody></table></div>
     </section>
 
     <section class="ds-section" id="sources"><h2><a href="#sources">Sources</a></h2>
-      <p>Extracted from these mocks (the footer appears on all 242 page mocks):</p>
+      <p>Extracted from these mocks (46 have the footer, all with the same four parts):</p>
       <ul>
-        <li>pages/caterers/default (public)</li>
-        <li>pages/dashboard/default (caterer)</li>
-        <li>pages/admin-queue/default (operator)</li>
-        <li>pages/about/default and pages/privacy/default (the current page is in the link list)</li>
-        <li>pages/caterer/default (footer above the sticky enquiry bar)</li>
+        <li><a href="../../mocks/pages/home/default.html">pages/home/default</a> (footer under the hero signup)</li>
+        <li><a href="../../mocks/pages/studios/default.html">pages/studios/default</a> and <a href="../../mocks/pages/studios/empty.html">pages/studios/empty</a> (current link left out, then present)</li>
+        <li><a href="../../mocks/pages/spots/default.html">pages/spots/default</a> (Spots current)</li>
+        <li><a href="../../mocks/pages/studio/default.html">pages/studio/default</a> and <a href="../../mocks/pages/guide/default.html">pages/guide/default</a></li>
+        <li><a href="../../mocks/pages/not-found/default.html">pages/not-found/default</a> and <a href="../../mocks/pages/server-error/default.html">pages/server-error/default</a></li>
+        <li><a href="../../mocks/notifications/public-toast/success.html">notifications/public-toast/success</a></li>
+        <li><a href="../../mocks/pages/admin-dashboard/default.html">pages/admin-dashboard/default</a> and <a href="../../mocks/pages/sign-in/default.html">pages/sign-in/default</a> (no footer)</li>
       </ul>
-      <p>Drift fixed during extraction: on About, Privacy and Terms the matching footer link had no <code>aria-current="page"</code>; the system adds it, and a style (<code>.site-footer a[aria-current="page"]</code> in ink at medium weight) is proposed. The base kit's bordered <code>.footer</code> is unused and marked legacy. Mocks mixed relative paths (<code>../about/</code> and <code>../../pages/about/</code>) for the same links; the product uses root-relative URLs.</p>
+      <p>Drift fixed during extraction:</p>
+      <ul>
+        <li>Footer <code>aria-current</code>: all six spot list mocks and seven of the eight studio list mocks mark the list link; <a href="../../mocks/pages/studios/default.html">pages/studios/default</a> does not. The system marks it on both lists in every state.</li>
+        <li>All 43 footer Subscribe buttons carry an inline <code>style="align-self: flex-end;"</code> to line up with the labelled field; the examples keep it and a CSS rule is proposed in its place.</li>
+        <li>The footer signup line ("One email when a new studio or spot goes up. Unsubscribe any time.") differs from the home hero's ("One short email per new review. No ads, no sponsors."). Both are kept, one per place; see <a href="signup.html">Email signup</a>.</li>
+      </ul>
     </section>
 
-    <footer class="ds-footer"><span>ShotThere design system · extracted from docs/mocks on 10 October 2026</span><a href="#top">Back to top</a></footer>
+    <footer class="ds-footer"><span>ShotThere design system · extracted from <a href="../../mocks/index.html">docs/mocks</a> on 13 October 2026</span><a href="#top">Back to top</a></footer>
   </main>
 </div>
 <script src="../assets/ds.js"></script>
