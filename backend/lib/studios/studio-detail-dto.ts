@@ -1,4 +1,5 @@
 import type { DisclosureDto } from '@/lib/publishing/disclosure-dto';
+import type { GuideLinkDto } from '@/lib/guides/guide-link-dto';
 import type { ImageDto } from '@/lib/images/image-dto';
 import type { StudioBasicsDto } from '@/lib/studios/studio-basics-dto';
 import type { StudioGearDto } from '@/lib/studios/studio-gear-dto';
@@ -22,4 +23,6 @@ export interface StudioDetailDto {
   disclosure: DisclosureDto;
   /** Null when no video is stored. */
   episode: EpisodeDto | null;
+  /** Published guides that include the studio. */
+  featuredIn: GuideLinkDto[];
 }

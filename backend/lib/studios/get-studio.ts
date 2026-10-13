@@ -1,4 +1,5 @@
 import { getDependencies } from '@/lib/data/dependency-container';
+import { listGuidesForStudio } from '@/lib/guides/list-guides-for-studio';
 import { imagesWithRole, toImageDto } from '@/lib/images/to-image-dto';
 import { isStale } from '@/lib/shared/is-stale';
 import { allInCostOf } from '@/lib/studios/all-in-cost-of';
@@ -70,6 +71,7 @@ export async function getStudio(slug: string): Promise<StudioDetailDto | null> {
     },
     disclosure: { kind: studio.disclosure, provider: studio.disclosureProvider },
     episode: studio.videoId ? { videoId: studio.videoId, title: studio.episodeTitle } : null,
+    featuredIn: await listGuidesForStudio(studio.id),
   };
 }
 
