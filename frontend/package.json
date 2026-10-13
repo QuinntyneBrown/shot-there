@@ -1,14 +1,15 @@
 {
-  "name": "frontend",
+  "name": "shot-there",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "watch": "ng build --watch --configuration development",
-    "serve:ssr:frontend": "node dist/frontend/server/server.mjs",
+    "start": "ng serve shot-there",
+    "build": "ng build shot-there",
+    "watch": "ng build shot-there --watch --configuration development",
     "lint": "eslint .",
-    "e2e": "playwright test"
+    "e2e": "playwright test",
+    "serve:ssr:shot-there": "node dist/shot-there/server/server.mjs",
+    "build:libs": "ng build api && ng build components"
   },
   "private": true,
   "packageManager": "npm@11.19.1",
@@ -37,6 +38,7 @@
     "@types/node": "^20.17.19",
     "angular-eslint": "^21.4.0",
     "eslint": "^9.39.5",
+    "ng-packagr": "^21.2.0",
     "prettier": "^3.8.1",
     "typescript": "~5.9.2",
     "typescript-eslint": "^8.71.2"

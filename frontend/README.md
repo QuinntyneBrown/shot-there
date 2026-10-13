@@ -1,59 +1,41 @@
-# Frontend
+# ShotThere frontend
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.7.
+An Angular 21 workspace (standalone components, signals, zoneless, server-side
+rendering) with three projects:
 
-## Development server
+| Project | Path | Imported as |
+|---------|------|-------------|
+| `shot-there` | `projects/shot-there/` | the application |
+| `api` | `projects/api/` | `@shot-there/api` |
+| `components` | `projects/components/` | `@shot-there/components` |
 
-To start a local development server, run:
+The `@shot-there/*` aliases in `tsconfig.json` point at each library's
+`src/public-api.ts`, so the app compiles the libraries from source; there is
+no need to build them first.
 
-```bash
-ng serve
+The application keeps app-wide pieces (shell, routing, compare selection) in
+`projects/shot-there/src/app/core/` and each product area in
+`projects/shot-there/src/app/features/<area>/`, with its routes in `routes.ts`.
+
+## Commands
+
+```sh
+npm install
+npm start           # ng serve shot-there, http://localhost:4200
+npm run build       # ng build shot-there (browser + SSR server)
+npm run build:libs  # ng build api && ng build components
+npm run lint        # ESLint, including the template i18n rule
+npm run e2e         # Playwright acceptance suite
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Serve the SSR build with `npm run serve:ssr:shot-there` (set
+`NG_ALLOWED_HOSTS` to the host name you browse with).
 
-## Code scaffolding
+## Acceptance tests
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+The Playwright suite lives in `e2e/`: specs at the top, one page object per
+screen in `e2e/pages/`, and faked API responses in `e2e/fakes/`. It runs in
+Chromium only and never needs the backend. `playwright.config.ts` starts
+`ng serve shot-there --configuration e2e` on port 4317; that configuration
+renders in the browser so every `/api` request can be faked with route
+interception, and any request a test does not fake is aborted.

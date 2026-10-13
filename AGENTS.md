@@ -19,11 +19,23 @@ Angular frontend.
 
 ## Frontend (Angular)
 
-- Angular (standalone components, signals, zoneless) in `frontend/`.
+- Angular (standalone components, signals, zoneless, SSR) in `frontend/`, an
+  Angular workspace with three projects under `frontend/projects/`:
+  - `shot-there` — the application (`projects/shot-there/src/app/` holds
+    `core/` and `features/<area>/`).
+  - `api` — the API library, imported as `@shot-there/api`.
+  - `components` — the UI component library, imported as
+    `@shot-there/components`.
+  Import libraries only through their `@shot-there/*` path alias, which maps
+  to each library's `src/public-api.ts`; export everything a library offers
+  from that file. Name the project in CLI commands (`ng serve shot-there`,
+  `ng build api`).
+- Playwright acceptance tests live in `frontend/e2e/` (specs, `pages/` page
+  objects, `fakes/` for faked API responses), with `frontend/playwright.config.ts`.
 - Frontend business rules (validation messages, eligibility, view models, URL
   state) live in plain TypeScript beside the page, never in templates or
   library components. The server remains the authority for every rule.
-- Services that talk to the backend live in a dedicated API library. The
+- Services that talk to the backend live in the `api` library. The
   contract is `abstract class FooService` in `foo.service.ts` and is its own DI
   token; the implementation is `class HttpFooService extends FooService` in
   `http-foo.service.ts`. Register `{ provide: FooService, useClass:
@@ -93,6 +105,10 @@ aligned until the entire feature or behavior change is complete.
 Front end tests use Playwright with the Page Object Model - one page object per
 screen, owning the selectors and the interactions. Tests state intent; page
 objects know the DOM. Never put a selector in a test.
+
+Frontend tests never need the backend running: fake every API response with
+Playwright route interception (`frontend/e2e/fakes/`). The `e2e` build
+configuration renders in the browser so every `/api` call can be faked.
 
 Run frontend tests in Chromium only. Do not configure or run Firefox, WebKit,
 or any other browser for frontend testing.

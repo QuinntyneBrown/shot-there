@@ -6,7 +6,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "frontend": {
+    "shot-there": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:class": {
@@ -34,31 +34,31 @@
           "skipTests": true
         }
       },
-      "root": "",
-      "sourceRoot": "src",
+      "root": "projects/shot-there",
+      "sourceRoot": "projects/shot-there/src",
       "prefix": "st",
       "architect": {
         "build": {
           "builder": "@angular/build:application",
           "options": {
-            "browser": "src/main.ts",
-            "tsConfig": "tsconfig.app.json",
+            "browser": "projects/shot-there/src/main.ts",
+            "tsConfig": "projects/shot-there/tsconfig.app.json",
             "assets": [
               {
                 "glob": "**/*",
-                "input": "public"
+                "input": "projects/shot-there/public"
               }
             ],
             "styles": [
-              "src/styles.css"
+              "projects/shot-there/src/styles.css"
             ],
-            "server": "src/main.server.ts",
+            "server": "projects/shot-there/src/main.server.ts",
             "outputMode": "server",
             "security": {
               "allowedHosts": []
             },
             "ssr": {
-              "entry": "src/server.ts"
+              "entry": "projects/shot-there/src/server.ts"
             },
             "polyfills": [
               "@angular/localize/init"
@@ -91,8 +91,8 @@
               "sourceMap": true,
               "fileReplacements": [
                 {
-                  "replace": "src/app/app.routes.server.ts",
-                  "with": "src/app/app.routes.server.e2e.ts"
+                  "replace": "projects/shot-there/src/app/app.routes.server.ts",
+                  "with": "projects/shot-there/src/app/app.routes.server.e2e.ts"
                 }
               ]
             }
@@ -103,16 +103,90 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "frontend:build:production"
+              "buildTarget": "shot-there:build:production"
             },
             "development": {
-              "buildTarget": "frontend:build:development"
+              "buildTarget": "shot-there:build:development"
             },
             "e2e": {
-              "buildTarget": "frontend:build:e2e"
+              "buildTarget": "shot-there:build:e2e"
             }
           },
           "defaultConfiguration": "development"
+        }
+      }
+    },
+    "api": {
+      "projectType": "library",
+      "root": "projects/api",
+      "sourceRoot": "projects/api/src",
+      "prefix": "st",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/api/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/api/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        }
+      },
+      "schematics": {
+        "@schematics/angular:class": {
+          "skipTests": true
+        },
+        "@schematics/angular:component": {
+          "skipTests": true
+        },
+        "@schematics/angular:directive": {
+          "skipTests": true
+        },
+        "@schematics/angular:pipe": {
+          "skipTests": true
+        },
+        "@schematics/angular:service": {
+          "skipTests": true
+        }
+      }
+    },
+    "components": {
+      "projectType": "library",
+      "root": "projects/components",
+      "sourceRoot": "projects/components/src",
+      "prefix": "st",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/components/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/components/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        }
+      },
+      "schematics": {
+        "@schematics/angular:class": {
+          "skipTests": true
+        },
+        "@schematics/angular:component": {
+          "skipTests": true
+        },
+        "@schematics/angular:directive": {
+          "skipTests": true
+        },
+        "@schematics/angular:pipe": {
+          "skipTests": true
+        },
+        "@schematics/angular:service": {
+          "skipTests": true
         }
       }
     }
