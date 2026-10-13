@@ -128,6 +128,7 @@ shot-there/
 ├── docs/
 │   ├── specs/              L1/L2 requirements
 │   ├── detailed-designs/   detailed designs per feature
+│   ├── icd/                interface control document: Angular ↔ Next.js API
 │   ├── estimates/          estimates per feature
 │   └── design-system/      tokens, foundations, components and patterns
 ├── .claude/skills/ project skills (mirrored in .agents/skills/)
@@ -138,6 +139,7 @@ shot-there/
 
 - **Requirements:** [`docs/specs/`](docs/specs/) ([L1](docs/specs/L1.md), [L2](docs/specs/L2.md))
 - **Designs:** [`docs/detailed-designs/`](docs/detailed-designs/)
+- **Frontend ↔ backend contract:** [`docs/icd/`](docs/icd/README.md) (ICD-001, binding for both sides)
 - **Estimates:** [`docs/estimates/`](docs/estimates/)
 - **Design system:** [`docs/design-system/`](docs/design-system/), open `docs/design-system/index.html` in a browser
 - **Working agreements for contributors and coding agents:** [`AGENTS.md`](AGENTS.md)
