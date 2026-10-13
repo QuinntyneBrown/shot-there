@@ -193,7 +193,7 @@ No control is ever disabled: navigation wraps and Close always works.
 ```html
 <!-- rendered: image failed (inside the frame, from st-responsive-image) -->
 <div class="lightbox__frame">
-  <st-responsive-image><div class="media-fallback"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24">…</svg><span>Full-length fashion frame on the cyc, warm afternoon light from the left.</span></div></st-responsive-image>
+  <st-responsive-image><span class="media-fallback"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24">…</svg><span>Full-length fashion frame on the cyc, warm afternoon light from the left.</span></span></st-responsive-image>
 </div>
 ```
 

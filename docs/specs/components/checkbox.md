@@ -28,7 +28,9 @@ checkbox and a fieldset of checkboxes render them.
 Out of scope:
 
 - Which filters exist, their order and when they apply ("Show 7 studios",
-  "Apply filters"): the application; filters never apply on each tick.
+  "Apply filters"): the application. In the sheet they apply on "Show 7
+  studios"; in the LG side column a group applies on each change, as
+  [filter.md](filter.md) D-11 decides. The group only reports its value.
 - Mapping the group's value to the URL (`hood=junction`, L2-025) and ignoring
   unknown keys: the application.
 - Validation ("Choose at least one best use") and when the error appears: the

@@ -265,7 +265,7 @@ at any width; the grid or the guide entry decides the width. The compact
 ```html
 <!-- rendered: image failed (st-responsive-image, decorative) -->
 <div class="location-card__media">
-  <st-responsive-image><div class="media-fallback"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 16 5-5 4 4 2-2 7 7"/><path d="M3 3l18 18"/></svg></div></st-responsive-image>
+  <st-responsive-image><span class="media-fallback"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 16 5-5 4 4 2-2 7 7"/><path d="M3 3l18 18"/></svg></span></st-responsive-image>
 </div>
 ```
 

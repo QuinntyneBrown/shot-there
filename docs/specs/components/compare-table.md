@@ -191,7 +191,7 @@ inputs.
           <th scope="row" class="compare-table__label">All-in, 2 hours</th>
           <td><div class="compare-table__value"><strong>$145.00</strong></div></td>
           <td><div class="compare-table__value"><strong>$91.00</strong><span class="badge badge--success">Lowest</span></div></td>
-          <td><div class="compare-table__value"><strong>$270.00</strong><span class="badge badge--warning badge--wrap">Prices may be out of date</span></div></td>
+          <td><div class="compare-table__value"><strong>$270.00</strong><span class="badge badge--warning">Prices may be out of date</span></div></td>
         </tr>
         <tr>
           <th scope="row" class="compare-table__label">Mandatory fees</th>
@@ -460,12 +460,10 @@ animation; row hover is an instant fill
   groups, substitutes "—" and maps `isLowestAllInCost` and `priceStale` to the
   all-in cell's `isLowest` and `isStale`.
 - Composes `table[st-table]` (no `stack`), `st-badge` (`tone="success"`;
-  `tone="warning" wrap`), `a[st-link]`, `st-responsive-image`.
-- ICD change (ICD-002 1.1.0, additive): `BadgeComponent` gains `wrap`, input,
-  `boolean`, default `false`: adds `.badge--wrap`, which sets
-  `white-space: normal` so a badge wraps inside a narrow container (D-4).
+  `tone="warning"`), `a[st-link]`, `st-responsive-image`.
+- No ICD change: the stale badge wraps by itself (badge.md D-3; D-4).
 - Mocks drift the component corrects: the inline `white-space: normal` on the
-  stale badge (now `wrap`), the inline `display: block` on the neighbourhood
+  stale badge (the badge wraps by itself, badge.md D-3), the inline `display: block` on the neighbourhood
   caption, the missing `span` around group labels, the missing region
   attributes on the wrap, and raw `img`s in place of `st-responsive-image`.
 
@@ -489,8 +487,8 @@ animation; row hover is an instant fill
   the width allowance. The cells are the application's own markup.
 - **D-4** *The stale badge must wrap in a 160 px column, but `.badge` does not
   wrap and the application may not style a library class (`.compare-table .badge`).*
-  `st-badge` gains an optional `wrap` input (additive ICD change) that adds
-  `.badge--wrap { white-space: normal }`.
+  No input is needed: `st-badge` itself wraps a label wider than its container
+  ([badge.md](badge.md) D-3), so `tone="warning"` alone fits the column.
 - **D-5** *The design system sizes photos with `.compare-table thead th img` and
   `td img`, which would reach inside `st-responsive-image`.* Each image sits in
   an application `span.compare-table__photo` (3:2, `--radius-md`) or

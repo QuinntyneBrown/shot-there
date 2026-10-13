@@ -5,7 +5,7 @@
 | Selector | `ol[st-image-list]`, `li[st-image-row]` |
 | Library path | `frontend/projects/components/src/lib/image-list/` |
 | Status | planned |
-| Traces to | L2-057, L2-058, L2-064, L2-065, L2-066, L2-067, L2-068, L2-069, L2-071 |
+| Traces to | L2-057, L2-058, L2-060, L2-064, L2-065, L2-066, L2-067, L2-068, L2-069, L2-071 |
 | Design system | [`image-manager.html`](../../design-system/components/image-manager.html) |
 | Source mocks | [`pages/studio-editor/default`](../../mocks/pages/studio-editor/default.html), [`pages/studio-editor/new`](../../mocks/pages/studio-editor/new.html), [`pages/studio-editor/published`](../../mocks/pages/studio-editor/published.html), [`pages/studio-editor/uploading`](../../mocks/pages/studio-editor/uploading.html), [`pages/studio-editor/upload-failed`](../../mocks/pages/studio-editor/upload-failed.html), [`pages/studio-editor/invalid`](../../mocks/pages/studio-editor/invalid.html), [`pages/spot-editor/default`](../../mocks/pages/spot-editor/default.html), [`pages/spot-editor/published`](../../mocks/pages/spot-editor/published.html), [`pages/spot-editor/invalid`](../../mocks/pages/spot-editor/invalid.html), [`dialogs/remove-image/default`](../../mocks/dialogs/remove-image/default.html), [`dialogs/remove-image/refused`](../../mocks/dialogs/remove-image/refused.html) |
 | Rendering | [`image-manager.html`](image-manager.html) |
@@ -40,8 +40,9 @@ Out of scope:
   announces the new position").
 - The remove-image dialog: the application's `RemoveImageDialogComponent` on
   [`st-dialog`](dialog.md).
-- The guide editor's entry rows (`.image-row--entry` with a rank disc): not
-  buildable with this API (D-9).
+- The guide editor's entries themselves (picker, duplicate refusal, order
+  saved with the guide): the application's `GuideEditorPageComponent`
+  (L2-060). This CRD specifies only the entry row it renders (D-9).
 
 ## Usage
 
@@ -59,12 +60,13 @@ Every `.image-list` and `.image-row` in `docs/mocks/` (inventory from
 | Studio and spot editors, empty set (`studio-editor/new`, `default` gallery; `spot-editor/new`) | no list | application's muted line and `st-file-upload` | empty | editor section |
 | `dialogs/remove-image/default` | one-row list, `meta` "full-length.jpg · alt text" | default: the alt text as a paragraph; no actions | preview | dialog body |
 | `dialogs/remove-image/refused` | no row; warning `st-alert` | — | refused | dialog body |
-| `pages/guide-editor/*` entry rows | `.image-row--entry`, rank disc, heading, note textarea | — | — | out of scope (D-9) |
+| `pages/guide-editor/*` entry rows | `rank` 1, 2…, no `thumbnailUrl`, `meta` "Studio · Leslieville" | default: `h3` "Leslieville Daylight Studio" with hidden "Entry 1: ", `st-textarea` "Editor's note" + hidden " for Leslieville Daylight Studio", rows 2; actions: Move up / Move down (`softDisabled` at the ends), ghost Remove + hidden name | ready; ends | editor section |
 
-Every image row above is buildable with the API below: the new `state` and
-`statusText` inputs carry the uploading and failed looks (D-1, D-2), the
-body slot holds whatever fields or progress the state needs, and the actions
-slot holds the buttons.
+Every row above is buildable with the API below: the new `state` and
+`statusText` inputs carry the uploading and failed looks (D-1, D-2), the new
+`rank` input and the optional `thumbnailUrl` carry the guide editor's entry
+rows (D-9), the body slot holds whatever heading, fields or progress the row
+needs, and the actions slot holds the buttons.
 
 ## Anatomy
 
@@ -80,6 +82,10 @@ slot holds the buttons.
    body (plus an actions column from 48rem), `--border-width-hairline`
    `--color-border-default`, `--radius-md`, padding `--space-3`.
    `.image-row--uploading` or `.image-row--failed` by state (D-1).
+3. **Rank (entry rows)** — `span.guide-entry__rank` with `aria-hidden="true"`
+   in place of the thumbnail when `rank` is set; the host adds
+   `.image-row--entry` (two columns, three from 48rem). Styled exactly as the
+   rank disc on a guide's card ([location-card.md](location-card.md) D-8).
 3. **Thumbnail** — `div.image-row__thumb`: 4:5 cover crop, `--radius-sm`,
    `--color-bg-photo` behind. Holds `img[alt=""]` (decorative: the alt-text
    field beside it is the description); in the failed state a
@@ -129,7 +135,8 @@ optional help, the list (or, when empty, a `p.text-muted` line), then
 
 | Input | Type | Default | Required | Rule |
 |---|---|---|---|---|
-| `thumbnailUrl` | `string` | — | yes | `src` of the decorative thumbnail: an object URL for a new file, the 480 px variant URL for a saved image. Ignored in the failed state. |
+| `thumbnailUrl` | `string \| null` | `null` | no | **ICD change (additive: widened and made optional).** `src` of the decorative thumbnail: an object URL for a new file, the 480 px variant URL for a saved image. Ignored in the failed state and when `rank` is set. Every image row passes it; only entry rows leave it out (D-9). |
+| `rank` | `number \| null` | `null` | no | **ICD change (additive).** When set, the row is a guide entry row: adds `.image-row--entry` and renders `span.guide-entry__rank[aria-hidden=true]` with the number instead of the thumbnail. The application passes the list position, so ranks never skip (D-9). |
 | `meta` | `string` | — | yes | File line, formatted by the application: "1 of 3 · headshot.jpg · 4.2 MB" (position, file name, size in MB to one decimal). |
 | `state` | `ImageRowState` (`'ready' \| 'uploading' \| 'failed'`) | `'ready'` | no | **ICD change (additive).** `uploading` adds `.image-row--uploading` (thumbnail at 50 %); `failed` adds `.image-row--failed` (danger edge) and swaps the thumbnail for the placeholder (D-1). |
 | `statusText` | `string \| null` | `null` | no | **ICD change (additive).** Rendered only when `state` is not `ready`: uploading → `span.image-row__meta[aria-hidden=true]` ("Uploading… 45%"); failed → `p.field__error[role=alert]` ("gallery-04.jpg didn't upload. Check your connection.") (D-2). |
@@ -144,7 +151,7 @@ optional help, the list (or, when empty, a `p.text-muted` line), then
 
 | Slot | Accepts | Rule |
 |---|---|---|
-| default | Ready: alt-text `st-text-field`, plus a `div.field-row` of sample-shot fields; uploading: `st-progress`; failed: nothing; preview: a `p` | Rendered in `.image-row__body` after the file line and before the status line. |
+| default | Ready: alt-text `st-text-field`, plus a `div.field-row` of sample-shot fields; uploading: `st-progress`; failed: nothing; preview: a `p`; entry row: the entry's heading at the level the application chooses (`h3` under the section's `h2`) and the "Editor's note" `st-textarea` | Rendered in `.image-row__body` after the file line and before the status line. |
 | `actions` | `button[st-button]` with `slot="actions"`: Move up, Move down, Remove; Cancel upload; Retry, Remove | Rendered in `.image-row__actions`. Repeated buttons carry their object in visually hidden text. |
 
 Types: `ImageRowState` is a new shared type in
@@ -174,6 +181,7 @@ additive). The parts have no library strings.
 | Empty set | no images | No list; the muted line and the upload area. |
 | Sample-shot row | body slot holds the extra `.field-row` | Outdoor spots: focal length and angle note under the alt text. Landscape files crop to the 4:5 thumbnail. |
 | Preview row | one-row list, no actions | The remove-image dialog shows the image and its alt text (D-6). |
+| Entry row | `rank` set, no thumbnail | The guide editor's ordered entries: rank disc, heading, kind and neighbourhood line, editor's note, Move up / Move down / Remove (D-9). |
 
 | Size | Thumbnail column | Row padding | Buttons |
 |---|---|---|---|
@@ -198,6 +206,30 @@ Remove is never disabled; the dialog refuses instead (L2-058.4). No mock
 disables the upload or the alt text.
 
 ## Markup
+
+```html
+<!-- rendered: guide editor entry row (first of two) -->
+<ol class="image-list" role="list" aria-label="Entries in rank order">
+  <li class="image-row image-row--entry">
+    <span class="guide-entry__rank" aria-hidden="true">1</span>
+    <div class="image-row__body">
+      <span class="image-row__meta">Studio · Leslieville</span>
+      <h3 class="…"><span class="visually-hidden">Entry 1: </span>Leslieville Daylight Studio</h3>
+      <st-textarea …><div class="field"><label class="field__label" for="entries-0-note">Editor's note<span class="visually-hidden"> for Leslieville Daylight Studio</span></label><textarea class="textarea" id="entries-0-note" name="entries[0].note" rows="2">East windows give clean morning light for a whole headshot day.</textarea></div></st-textarea>
+    </div>
+    <div class="image-row__actions">
+      <button class="btn btn--sm" type="button" aria-disabled="true">Move up<span class="visually-hidden">: Leslieville Daylight Studio</span></button>
+      <button class="btn btn--sm" type="button">Move down<span class="visually-hidden">: Leslieville Daylight Studio</span></button>
+      <button class="btn btn--ghost btn--sm" type="button">Remove<span class="visually-hidden"> Leslieville Daylight Studio</span></button>
+    </div>
+  </li>
+</ol>
+```
+
+The file line renders before the projected body, so in an entry row the
+"Studio · Leslieville" line sits above the heading; the mock puts it below.
+The heading's look is the application's (`--text-h4`, set on its own class,
+never inline).
 
 ```html
 <!-- rendered: ready row (first of three) -->
@@ -467,6 +499,7 @@ never animate ([image-manager.html](../../design-system/components/image-manager
 - **AC-6** Given a gallery of three images, when a keyboard user activates "Move up: gallery image 3" twice, then the row shows "1 of 3 · gallery-03.jpg …" first, the other file lines read "2 of 3" and "3 of 3", focus is on that row's Move up after each move, and after the second move that button has `aria-disabled="true"` and still has focus. (L2-058)
 - **AC-7** Given the same move, when the row reaches position 2, then "Gallery image 3, now 2 of 3" is announced once by a polite live region. (L2-058)
 - **AC-8** Given the studio editor's image section, when a keyboard user tabs through a ready row, then focus visits the alt-text field, Move up, Move down and Remove in that order, then the next row, then "Add gallery images". (L2-067)
+- **AC-28** Given the guide "Best natural light" in the guide editor with entries Leslieville Daylight Studio and Kensington Window Room, when the entry rows render with `rank` 1 and 2 and no `thumbnailUrl`, then each `li` has `image-row image-row--entry`, shows a `.guide-entry__rank` disc "1" or "2" with `aria-hidden="true"` and no thumbnail, and the first row's "Move up: Leslieville Daylight Studio" has `aria-disabled="true"`. (L2-060)
 
 ### Uploads
 
@@ -554,5 +587,5 @@ each value instead of easing
 - **D-6** *The remove-image dialog draws a `div.image-row` preview, which `li[st-image-row]` cannot be.* The dialog renders a one-row `ol[st-image-list]`. Screen readers say "list, 1 item" once, which costs little and keeps the preview identical to the row in the editor without a new selector.
 - **D-7** *A row with nothing in the `actions` slot (the dialog preview) would leave an empty grid row and gap below 48rem.* The actions box is `display: none` when empty (`.image-row__actions:empty`). The row does not query its projected content (ICD-API-9); CSS decides.
 - **D-8** *Does an `ol` with `list-style: none` keep its list semantics?* The host adds `role="list"`, because WebKit with VoiceOver drops list semantics from unstyled lists, and the order is the point of this list (the guide-entry page makes the same call).
-- **D-9** *The guide editor's entry rows reuse `.image-row` with `.image-row--entry`, a rank disc instead of a thumbnail, a heading and a note textarea. Can `li[st-image-row]` build them?* No: `thumbnailUrl` is required, the rank disc is application CSS (`.guide-entry*`, ICD-002 §11.2) and the row has no heading. Covering them needs a boundary change that is not purely additive (an optional `thumbnailUrl`, a rank and a title), so this CRD leaves them out and the gap is reported for the guide editor's owner to settle in ICD-002 first.
+- **D-9** *The guide editor's entry rows reuse `.image-row` with `.image-row--entry`, a rank disc instead of a thumbnail, a heading and a note textarea. How does `li[st-image-row]` build them?* With two additive ICD changes (ICD-002 1.1.0): `thumbnailUrl` widens to `string | null` and becomes optional (relaxing an input is additive under ICD §15), and a new `rank` input renders the disc and `.image-row--entry`. The heading and the note go in the default slot, because the application owns headings and the note is an ordinary `st-textarea`. The rank disc is styled by the library as on the card (location-card D-8). Without this the guide editor would hand-write `.image-row` markup, which ICD-DOM-4 forbids.
 - **D-10** *The upload-and-arrange-images design says removal "deletes at once after confirmation"; the design system and the remove-image mock say it is staged until Save ("It's removed when you save the studio.").* The rows follow the design system and the mock: confirming removes the row from the set; Save makes it permanent. This is the application's behaviour, not the row's, and it is listed for the owner to confirm.

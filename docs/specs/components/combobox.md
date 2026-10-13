@@ -104,6 +104,8 @@ Shared form-control inputs (ICD-002 §9.2):
 | `error` | `string \| null` | `null` | no | ICD-FORM-5: `.field__error`, `aria-invalid="true"`, error ID first in `aria-describedby` (D-9). |
 | `optional` | `boolean` | `false` | no | Appends `optionalLabel` to the label. Not used by the picker. |
 | `optionalLabel` | `string` | §12 `st.field.optional` | no | |
+| `warning` | `string \| null` | `null` | no | **ICD change (additive, shared, [form-field.md](form-field.md) D-1).** Rendered and wired exactly as form-field.md specifies; not used by the picker. |
+| `labelSuffix` | `string \| null` | `null` | no | **ICD change (additive, shared, [form-field.md](form-field.md) D-2).** Visually hidden text inside the label; not used by the picker. |
 
 Combobox inputs:
 
