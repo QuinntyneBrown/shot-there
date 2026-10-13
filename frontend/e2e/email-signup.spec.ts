@@ -18,6 +18,38 @@ test.describe('Email signup', () => {
     expect(received).toEqual([{ email: 'maya.chen@example.com', sourcePath: '/editorial-policy', website: '' }]);
   });
 
+  test('marks an empty address invalid without sending it', async ({ page }) => {
+    // Given the footer form
+    const received = await givenSubscribeAnswers(page, 200);
+    await new EditorialPolicyPage(page).open();
+    const signup = new SignupFormPanel(page, 'footer');
+    // When the visitor submits it empty
+    await signup.subscribe('');
+    // Then the field is invalid, described by the message and focused, and nothing was sent
+    await expect(signup.email).toHaveAttribute('aria-invalid', 'true');
+    await expect(signup.email).toHaveAccessibleDescription('Enter your email address');
+    await expect(signup.email).toBeFocused();
+    expect(received).toEqual([]);
+  });
+
+  test('asks for a valid address when the email is malformed', async ({ page }) => {
+    // Given the footer form
+    const received = await givenSubscribeAnswers(page, 200);
+    await new EditorialPolicyPage(page).open();
+    const signup = new SignupFormPanel(page, 'footer');
+    // When the visitor submits "not-an-email"
+    await signup.subscribe('not-an-email');
+    // Then the field asks for a valid address and nothing was sent
+    await expect(signup.email).toHaveAttribute('aria-invalid', 'true');
+    await expect(signup.email).toHaveAccessibleDescription('Enter a valid email address, like name@example.com');
+    expect(received).toEqual([]);
+    // When they correct it and submit again
+    await signup.subscribe('maya.chen@example.com');
+    // Then it is sent and confirmed
+    await expect(signup.confirmation).toContainText("You're subscribed.");
+    expect(received).toHaveLength(1);
+  });
+
   test('stacks the field and button at full width at phone width', async ({ page }) => {
     // Given a 320px-wide window
     await page.setViewportSize({ width: 320, height: 640 });

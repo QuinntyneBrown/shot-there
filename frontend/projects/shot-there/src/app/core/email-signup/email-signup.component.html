@@ -2,7 +2,7 @@
   @if (state() === 'success') {
     <p class="signup signup__done">
       <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" /><path d="m8 12 3 3 5-6" /></svg>
-      <span i18n>You're subscribed. We'll email {{ email() }} when a new review goes up.</span>
+      <span i18n>You're subscribed. We'll email {{ email().trim() }} when a new review goes up.</span>
     </p>
   }
 </div>
@@ -18,10 +18,13 @@
     <div class="signup__row">
       <div class="field">
         <label class="field__label" [for]="ids().email" i18n>Email address</label>
-        <input #emailInput class="input" [id]="ids().email" name="email" type="email" autocomplete="email" inputmode="email" [value]="email()" (input)="email.set(emailInput.value)" />
+        <input #emailInput class="input" [id]="ids().email" name="email" type="email" autocomplete="email" inputmode="email" [attr.aria-invalid]="error() ? true : null" [attr.aria-describedby]="error() ? ids().error : null" [value]="email()" (input)="email.set(emailInput.value)" />
       </div>
       <button class="btn" [class.btn--primary]="variant() === 'hero'" type="submit" i18n>Subscribe</button>
     </div>
+    @if (error(); as message) {
+      <p class="field__error" [id]="ids().error">{{ message }}</p>
+    }
     <div class="signup__trap" aria-hidden="true">
       <label [for]="ids().website" i18n>Leave this field empty</label>
       <input #websiteInput [id]="ids().website" name="website" type="text" tabindex="-1" autocomplete="off" [value]="website()" (input)="website.set(websiteInput.value)" />

@@ -1,7 +1,8 @@
-import { Component, computed, inject, input, signal } from '@angular/core';
+import { Component, ElementRef, computed, inject, input, signal, viewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { SubscriberService } from '@shot-there/api';
 
+import { validateEmail } from './signup-form';
 import { SignupState } from './signup-state';
 
 /** The email signup form (L2-039, L2-041), placed in the site footer and on the home page. */
@@ -20,15 +21,25 @@ export class EmailSignupComponent {
   protected readonly state = signal<SignupState>('idle');
   protected readonly email = signal('');
   protected readonly website = signal('');
+  protected readonly error = signal<string | null>(null);
+  private readonly emailInput = viewChild<ElementRef<HTMLInputElement>>('emailInput');
   protected readonly ids = computed(() => ({
     title: `${this.variant()}-signup-title`,
     email: `${this.variant()}-email`,
+    error: `${this.variant()}-email-error`,
     website: `${this.variant()}-website`
   }));
 
   submit(): void {
+    const error = validateEmail(this.email());
+    this.error.set(error);
+    if (error) {
+      this.state.set('invalid');
+      this.emailInput()?.nativeElement.focus();
+      return;
+    }
     const sourcePath = this.router.url.split(/[?#]/)[0];
-    this.subscriberService.subscribe({ email: this.email(), sourcePath, website: this.website() }).subscribe({
+    this.subscriberService.subscribe({ email: this.email().trim(), sourcePath, website: this.website() }).subscribe({
       next: () => this.state.set('success')
     });
   }
