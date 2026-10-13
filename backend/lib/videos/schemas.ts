@@ -3,7 +3,7 @@ import { extractVideoId } from '@/lib/videos/extract-video-id';
 
 const MESSAGE = 'Enter a YouTube link or video ID';
 
-/** A pasted YouTube link or ID, stored as the video ID; empty clears the video. */
+/** A pasted YouTube link or ID, stored as the video ID; empty or null clears the video. */
 export const videoIdField = () =>
   z
     .string({ error: MESSAGE })
@@ -15,5 +15,4 @@ export const videoIdField = () =>
       if (id === null) context.addIssue({ code: 'custom', message: MESSAGE, params: { code: 'invalid_video_link' } });
       return id;
     })
-    .nullable()
-    .default(null);
+    .nullable();

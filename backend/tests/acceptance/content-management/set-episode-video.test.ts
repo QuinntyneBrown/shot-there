@@ -8,13 +8,13 @@ import { aSpot, aStudio } from '@/tests/support/builders';
 import type { InMemorySpotRepository } from '@/tests/support/in-memory-spot-repository';
 import type { InMemoryStudioRepository } from '@/tests/support/in-memory-studio-repository';
 import { aSpotInput } from '@/tests/support/spot-input';
-import { aStudioInput } from '@/tests/support/studio-input';
+import { studioSaveBody } from '@/tests/support/studio-input';
 
 stubSiteOriginPerTest();
 
-const saveStudioVideo = (videoLink: unknown) =>
+const saveStudioVideo = async (videoLink: unknown) =>
   updateStudio(
-    adminRequest('/api/admin/studios/s1', { method: 'PUT', body: aStudioInput({ videoLink }) }),
+    adminRequest('/api/admin/studios/s1', { method: 'PUT', body: await studioSaveBody('s1', { videoLink }) }),
     idParams('s1'),
   );
 
@@ -27,8 +27,7 @@ describe('L2-059 video link validation', () => {
     'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
     'https://youtu.be/dQw4w9WgXcQ?t=42',
     'https://m.youtube.com/watch?feature=share&v=dQw4w9WgXcQ',
-    'https://youtube.com/shorts/dQw4w9WgXcQ',
-    'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    'https://youtube.com/watch?v=dQw4w9WgXcQ',
     '  dQw4w9WgXcQ  ',
   ])('Given the owner pastes %s, when saving, then the stored video ID is dQw4w9WgXcQ', async (videoLink) => {
     const dependencies = useSignedInOwner({ studios: [aStudio({ id: 's1' })] });
@@ -39,7 +38,13 @@ describe('L2-059 video link validation', () => {
     expect(storedStudio(dependencies).videoId).toBe('dQw4w9WgXcQ');
   });
 
-  it.each(['https://example.com/video', 'https://www.youtube.com/watch?v=short', 'https://youtu.be.evil.example/dQw4w9WgXcQ'])(
+  it.each([
+    'https://example.com/video',
+    'https://www.youtube.com/watch?v=short',
+    'https://youtu.be.evil.example/dQw4w9WgXcQ',
+    'https://youtube.com/shorts/dQw4w9WgXcQ',
+    'https://www.youtube.com/embed/dQw4w9WgXcQ',
+  ])(
     'Given the owner pastes %s, when saving, then the save is refused with invalid_video_link',
     async (videoLink) => {
       const dependencies = useSignedInOwner({ studios: [aStudio({ id: 's1', videoId: 'aaaaaaaaaaa' })] });

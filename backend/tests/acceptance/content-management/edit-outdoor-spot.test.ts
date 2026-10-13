@@ -49,7 +49,7 @@ describe('L2-055 outdoor spot editor: create', () => {
   it('Given a draft with no best uses, when saved, then the save succeeds', async () => {
     useSignedInOwner({ today: TODAY });
 
-    const response = await create({ name: 'Unfinished Spot', bestUses: [] });
+    const response = await create(aSpotInput({ name: 'Unfinished Spot', bestUses: [] }));
 
     expect(response.status).toBe(201);
   });

@@ -105,7 +105,6 @@ describe('L2-008 logistics', () => {
           loadIn: 'freight_elevator',
           loadInNote: 'small, 1.2 m wide',
           parking: 'street',
-          parkingNote: 'Metered on Queen',
           transit: '501 streetcar',
           washroom: 'Shared',
           changingArea: null,

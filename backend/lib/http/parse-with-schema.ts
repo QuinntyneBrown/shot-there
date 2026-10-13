@@ -20,9 +20,11 @@ export function parseWithSchema<S extends z.ZodType>(schema: S, input: unknown):
 }
 
 function fieldErrorCode(issue: z.core.$ZodIssue): FieldErrorCode {
+  const missing = 'input' in issue && (issue.input === undefined || issue.input === null);
   switch (issue.code) {
     case 'invalid_type':
-      return issue.input === undefined || issue.input === null ? 'required' : 'invalid_type';
+    case 'invalid_value':
+      return missing ? 'required' : issue.code;
     case 'too_small':
       return issue.origin === 'string' && Number(issue.minimum) === 1 ? 'required' : 'out_of_range';
     case 'too_big':
@@ -32,6 +34,8 @@ function fieldErrorCode(issue: z.core.$ZodIssue): FieldErrorCode {
       return 'invalid_format';
     case 'custom':
       return (issue.params?.code as FieldErrorCode | undefined) ?? 'invalid_value';
+    case 'invalid_union':
+      return missing ? 'required' : 'invalid_value';
     default:
       return 'invalid_value';
   }

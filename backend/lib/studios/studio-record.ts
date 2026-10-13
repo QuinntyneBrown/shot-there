@@ -38,7 +38,6 @@ export interface StudioRecord {
   loadIn: LoadIn | null;
   loadInNote: string | null;
   parking: ParkingOption | null;
-  parkingNote: string | null;
   transit: string | null;
   washroom: string | null;
   changingArea: string | null;

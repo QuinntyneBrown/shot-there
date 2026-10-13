@@ -115,7 +115,6 @@ model Studio {
   loadIn                LoadIn?
   loadInNote            String?
   parking               ParkingOption?
-  parkingNote           String?
   transit               String?
   washroom              String?
   changingArea          String?

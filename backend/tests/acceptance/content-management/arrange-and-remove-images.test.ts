@@ -12,7 +12,7 @@ import type { InMemoryObjectStore } from '@/tests/support/in-memory-object-store
 import type { InMemorySpotRepository } from '@/tests/support/in-memory-spot-repository';
 import type { InMemoryStudioRepository } from '@/tests/support/in-memory-studio-repository';
 import { aSpotInput } from '@/tests/support/spot-input';
-import { aStudioInput } from '@/tests/support/studio-input';
+import { studioSaveBody } from '@/tests/support/studio-input';
 
 stubSiteOriginPerTest();
 
@@ -37,11 +37,11 @@ describe('L2-058 image ordering', () => {
 
     const response = await putStudio(
       's1',
-      aStudioInput({
-        images: [
-          { id: 'c', altText: 'Couch corner', sortOrder: 0 },
-          { id: 'a', altText: 'Window wall', sortOrder: 1 },
-          { id: 'b', altText: 'Cyc wall', sortOrder: 2 },
+      await studioSaveBody('s1', {
+        gallery: [
+          { imageId: 'c', alt: 'Couch corner' },
+          { imageId: 'a', alt: 'Window wall' },
+          { imageId: 'b', alt: 'Cyc wall' },
         ],
       }),
     );
@@ -56,7 +56,16 @@ describe('L2-058 image ordering', () => {
       studios: [aStudio({ id: 's1', images: [anImage({ role: 'test_shot', altText: 'Test shot' }), ...gallery()] })],
     });
 
-    await putStudio('s1', aStudioInput({ images: [{ id: 'b', altText: 'White cyc wall, lit', sortOrder: 1 }] }));
+    await putStudio(
+      's1',
+      await studioSaveBody('s1', {
+        gallery: [
+          { imageId: 'a', alt: 'Window wall' },
+          { imageId: 'b', alt: 'White cyc wall, lit' },
+          { imageId: 'c', alt: 'Couch corner' },
+        ],
+      }),
+    );
 
     expect(studioRows(dependencies)[0].images.map((image) => image.altText)).toEqual([
       'Test shot',
@@ -102,20 +111,27 @@ describe('L2-057 alt text is required', () => {
   it('Given an uploaded image without alt text, when the owner saves the location, then the save is refused naming the image alt field with "Describe this image"', async () => {
     const dependencies = useSignedInOwner({ studios: [aStudio({ id: 's1', images: gallery() })] });
 
-    const response = await putStudio('s1', aStudioInput({ images: [{ id: 'a', altText: '  ', sortOrder: 0 }] }));
+    const body = await studioSaveBody('s1', {
+      gallery: [
+        { imageId: 'a', alt: '  ' },
+        { imageId: 'b', alt: 'Cyc wall' },
+        { imageId: 'c', alt: 'Couch corner' },
+      ],
+    });
+    const response = await putStudio('s1', body);
 
     const problem = await expectProblem(response, 'validation-failed', 400);
-    expect(problem.errors).toEqual([{ field: 'images.0.altText', code: 'required', message: 'Describe this image' }]);
+    expect(problem.errors).toEqual([{ field: 'gallery.0.alt', code: 'required', message: 'Describe this image' }]);
     expect(studioRows(dependencies)[0].images[0].altText).toBe('Window wall');
   });
 
   it('Given an image id that belongs to another location, when saved, then the save is refused with 400', async () => {
     useSignedInOwner({ studios: [aStudio({ id: 's1', images: gallery() })] });
 
-    const response = await putStudio('s1', aStudioInput({ images: [{ id: 'elsewhere', altText: 'Hm', sortOrder: 0 }] }));
+    const response = await putStudio('s1', await studioSaveBody('s1', { gallery: [{ imageId: 'elsewhere', alt: 'Hm' }] }));
 
     const problem = await expectProblem(response, 'validation-failed', 400);
-    expect(problem.errors[0]).toMatchObject({ field: 'images.0.id', code: 'invalid_value' });
+    expect(problem.errors).toEqual([{ field: 'gallery', code: 'invalid_value', message: expect.any(String) }]);
   });
 });
 

@@ -52,8 +52,11 @@ export class PrismaStudioRepository implements StudioRepository {
       this.prisma.studioFee.createMany({ data: fees.map((fee, position) => ({ studioId: id, position, ...fee })) }),
       this.prisma.gearItem.deleteMany({ where: { studioId: id } }),
       this.prisma.gearItem.createMany({ data: gear.map((item, position) => ({ studioId: id, position, ...item })) }),
-      ...images.map(({ id: imageId, sortOrder, altText }) =>
-        this.prisma.image.updateMany({ where: { id: imageId, studioId: id }, data: { sortOrder, altText } }),
+      ...images.map(({ id: imageId, sortOrder, altText, caption, focalLengthMm, angleNote }) =>
+        this.prisma.image.updateMany({
+          where: { id: imageId, studioId: id },
+          data: { sortOrder, altText, caption, focalLengthMm, angleNote },
+        }),
       ),
     ]);
   }

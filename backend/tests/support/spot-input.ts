@@ -25,6 +25,7 @@ export function aSpotInput(overrides: Record<string, unknown> = {}): Record<stri
     bestUses: ['portrait', 'engagement'],
     disclosure: 'paid_in_full',
     disclosureProvider: null,
+    videoLink: null,
     ...overrides,
   };
 }

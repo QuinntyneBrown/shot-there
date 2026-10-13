@@ -67,7 +67,6 @@ export function aStudio(overrides: Partial<StudioRecord> = {}): StudioRecord {
     loadIn: 'elevator',
     loadInNote: null,
     parking: 'street',
-    parkingNote: null,
     transit: '501 Queen streetcar',
     washroom: 'Private',
     changingArea: 'Curtained corner',

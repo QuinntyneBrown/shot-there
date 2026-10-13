@@ -30,3 +30,6 @@ ALTER TABLE "Guide" ALTER COLUMN "introduction" DROP NOT NULL;
 UPDATE "Guide" SET "introduction" = NULL WHERE btrim("introduction") = '';
 ALTER TABLE "GuideEntry" ALTER COLUMN "note" DROP NOT NULL;
 UPDATE "GuideEntry" SET "note" = NULL WHERE btrim("note") = '';
+
+-- ICD §13.10: the parking note is not part of the studio contract
+ALTER TABLE "Studio" DROP COLUMN "parkingNote";

@@ -8,7 +8,7 @@ import { aSpot, aStudio } from '@/tests/support/builders';
 import type { InMemorySpotRepository } from '@/tests/support/in-memory-spot-repository';
 import type { InMemoryStudioRepository } from '@/tests/support/in-memory-studio-repository';
 import { aSpotInput } from '@/tests/support/spot-input';
-import { aStudioInput } from '@/tests/support/studio-input';
+import { aStudioInput, studioSaveBody } from '@/tests/support/studio-input';
 
 stubSiteOriginPerTest();
 
@@ -54,7 +54,7 @@ describe('L2-002 a published location keeps its standard data set', () => {
   it('Given a published studio, when the owner clears its ceiling height and saves, then the save is refused naming the field and the studio stays published with its previous value', async () => {
     const dependencies = useSignedInOwner({ studios: [aStudio({ id: 's1', ceilingHeightM: 3.4 })] });
 
-    const response = await saveStudio('s1', aStudioInput({ ceilingHeightM: null }));
+    const response = await saveStudio('s1', await studioSaveBody('s1', { ceilingHeight: null }));
 
     const problem = await expectProblem(response, 'validation-failed', 400);
     expect(problem.errors).toEqual([{ field: 'ceilingHeight', code: 'required_while_published', message: expect.any(String) }]);
@@ -65,7 +65,7 @@ describe('L2-002 a published location keeps its standard data set', () => {
   it('Given a draft studio, when the owner clears its ceiling height and saves, then the save succeeds', async () => {
     useSignedInOwner({ studios: [aStudio({ id: 's1', status: 'draft' })] });
 
-    expect((await saveStudio('s1', aStudioInput({ ceilingHeightM: null }))).status).toBe(200);
+    expect((await saveStudio('s1', await studioSaveBody('s1', { ceilingHeight: null }))).status).toBe(200);
   });
 
   it('Given a published spot, when the owner removes every best use and saves, then the save is refused naming bestUses', async () => {
