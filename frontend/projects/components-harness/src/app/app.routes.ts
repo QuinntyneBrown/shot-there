@@ -1,4 +1,12 @@
 import { Routes } from '@angular/router';
+import { DialogOpenerComponent } from './dialog/dialog-opener.component';
+import { SearchFieldDefaultComponent } from './search-field/search-field-default.component';
+import { MapPopupStatesComponent } from './map-popup/map-popup-states.component';
+import { ImageRowStatesComponent } from './image-row/image-row-states.component';
+import { FileUploadStatesComponent } from './file-upload/file-upload-states.component';
+import { TableStatesComponent } from './table/table-states.component';
+import { ShotGridDefaultComponent } from './shot-grid/shot-grid-default.component';
+import { LocationCardStatesComponent } from './location-card/location-card-states.component';
 import { ActiveFiltersDefaultComponent } from './active-filters/active-filters-default.component';
 import { EditorSectionStatesComponent } from './editor-section/editor-section-states.component';
 import { CompareBarDefaultComponent } from './compare-bar/compare-bar-default.component';
@@ -147,4 +155,12 @@ export const routes: Routes = [
   { path: 'compare-bar/default', component: CompareBarDefaultComponent },
   { path: 'editor-section/states', component: EditorSectionStatesComponent },
   { path: 'active-filters/default', component: ActiveFiltersDefaultComponent },
+  { path: 'location-card/states', component: LocationCardStatesComponent },
+  { path: 'shot-grid/default', component: ShotGridDefaultComponent },
+  { path: 'table/states', component: TableStatesComponent },
+  { path: 'file-upload/states', component: FileUploadStatesComponent },
+  { path: 'image-row/states', component: ImageRowStatesComponent },
+  { path: 'map-popup/states', component: MapPopupStatesComponent },
+  { path: 'search-field/default', component: SearchFieldDefaultComponent },
+  { path: 'dialog/opener', component: DialogOpenerComponent },
 ];

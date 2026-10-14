@@ -1,0 +1,11 @@
+<main class="container">
+  <ol st-image-list>
+    <li st-image-row thumbnailUrl="/test-images/9f2c41/480.jpeg" meta="1 of 3 · headshot.jpg · 3.8 MB">
+      <button st-button slot="actions" size="sm" type="button">Remove headshot.jpg</button>
+    </li>
+    <li st-image-row thumbnailUrl="/test-images/9f2c41/480.jpeg" state="uploading" statusText="45%" meta="2 of 3 · gallery-02.jpg · 2.1 MB">
+      <st-progress [value]="45" label="Uploading gallery-02.jpg" />
+    </li>
+    <li st-image-row state="failed" statusText="gallery-04.jpg did not upload. Check your connection." meta="3 of 3 · gallery-04.jpg"></li>
+  </ol>
+</main>

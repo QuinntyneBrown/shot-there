@@ -1,0 +1,5 @@
+<main class="container stack">
+  <st-file-upload buttonLabel="Add test shots" hint="JPEG, PNG, WebP or AVIF, up to 20 MB each." accept="image/jpeg,image/png" [multiple]="true"
+    [errors]="['raw-export.tif is 25 MB. The limit is 20 MB.']" (filesSelected)="log.set([...log(), 'files: ' + $event.map(f => f.name).join(',')])" />
+  <st-activation-log [entries]="log()" />
+</main>

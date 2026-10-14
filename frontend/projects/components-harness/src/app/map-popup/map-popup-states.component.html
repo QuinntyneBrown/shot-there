@@ -1,0 +1,12 @@
+<main class="container stack">
+  <div style="position: relative; height: 22rem; background: var(--color-bg-surface-sunken)">
+    <st-map-popup kind="Studio" name="The Junction Loft" fact="All-in for 2 hours: $145.00" link="/studios/the-junction-loft" linkText="View the review" style="left: 50%; top: 60%" (closed)="log.set([...log(), 'closed'])" />
+    <st-map-legend studioLabel="Studio" spotLabel="Outdoor spot" [overlay]="true" />
+  </div>
+  <div style="position: relative; height: 12rem">
+    <st-map-unavailable title="The map did not load" text="43.6532, -79.3832">
+      <a st-button slot="actions" href="/studios">Show the list</a>
+    </st-map-unavailable>
+  </div>
+  <st-activation-log [entries]="log()" />
+</main>

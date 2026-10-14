@@ -1,0 +1,8 @@
+<st-dialog title="Delete Corktown Garage Studio?" description="This deletes the draft and its 2 images. It can not be undone." size="sm" [busy]="busy()">
+  <p class="visually-hidden" role="status">{{ busy() ? 'Deleting Corktown Garage Studio…' : '' }}</p>
+  <button st-button slot="footer" type="button" cdkFocusInitial [softDisabled]="busy()" (click)="cancel()">Cancel</button>
+  <button st-button slot="footer" variant="danger" type="button" [busy]="busy()" (click)="remove()">Delete studio</button>
+  @if (busy()) {
+    <button st-button slot="footer" type="button" (click)="finish()">Finish deleting</button>
+  }
+</st-dialog>

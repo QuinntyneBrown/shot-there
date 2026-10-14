@@ -22,10 +22,7 @@
     @for (fact of facts(); track $index) {
       <div>
         <dt>{{ fact.term }}</dt>
-        <dd>{{ fact.detail }}@if (fact.srSuffix) {<span class="visually-hidden">{{ fact.srSuffix }}</span>}</dd>
-        @if (fact.badge) {
-          <st-badge [tone]="'warning'">{{ fact.badge }}</st-badge>
-        }
+        <dd>{{ fact.detail }}@if (fact.srSuffix) {<span class="visually-hidden">{{ fact.srSuffix }}</span>}@if (fact.badge) {&ngsp;<st-badge [tone]="'warning'">{{ fact.badge }}</st-badge>}</dd>
       </div>
     }
   </dl>
