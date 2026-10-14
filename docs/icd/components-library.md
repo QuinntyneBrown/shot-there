@@ -3,9 +3,9 @@
 | Field | Value |
 |---|---|
 | Document | ICD-002, Interface Control Document |
-| Version | 1.0.0 |
+| Version | 1.1.0 |
 | Status | Baseline. Takes effect when merged to `main`. |
-| Date | Tuesday 13 October 2026 |
+| Date | Wednesday 14 October 2026 |
 | Interface provider | Components library `@shot-there/components` (`frontend/projects/components/`) |
 | Interface consumer | ShotThere application project `shot-there` (`frontend/projects/shot-there/`) |
 | Adjacent party | API library `@shot-there/api` (`frontend/projects/api/`) |
@@ -230,7 +230,7 @@ by architecture tests.
 | ICD-DOM-2 | State is expressed with real attributes: `disabled`, `aria-pressed`, `aria-current`, `aria-invalid`, `aria-expanded`, `aria-busy`, `aria-disabled`, `aria-sort`, `open`. `data-state` exists only in DS documentation pages and is never rendered by the library. | T |
 | ICD-DOM-3 | Class names, roles, accessible names and state attributes in rendered DOM are public API. Renaming or removing one is a breaking change ([§15](#15-change-control)). Element and attribute names of hosts (`st-…`) and Angular's `_ngcontent-*`/`_nghost-*` attributes are **not** public API; page objects never select them. | R |
 | ICD-DOM-4 | The application never writes DS markup for something the library renders (for example, it never hand-writes `<div class="empty">`). It may use the global utilities in [§11](#11-styles-global-stylesheet-and-css-ownership). | R |
-| ICD-DOM-5 | The application never styles library internals: no application selector may target a library-owned class. The application may position a library host with global utilities or with its own feature classes on the host element, limited to `margin`, grid and flex placement, and `width`. | R |
+| ICD-DOM-5 | The application never styles library internals: no application selector may target a library-owned class. The application may position a library host with global utilities or with its own feature classes on the host element, limited to `margin`, grid and flex placement, and `width`; and it sets the inline `left` and `top` that place `st-map-popup` over its marker (D-6). | R |
 
 ### 7.5 Styles, tokens and theming (STY)
 
@@ -347,7 +347,7 @@ interface. Arrays in inputs are `readonly`.
 
 ```ts
 // Variants and sizes
-export type ButtonVariant = 'secondary' | 'primary' | 'ghost' | 'link' | 'danger';
+export type ButtonVariant = 'secondary' | 'primary' | 'ghost' | 'ghost-danger' | 'link' | 'danger';
 export type ControlSize = 'sm' | 'md' | 'lg';
 export type Tone = 'neutral' | 'info' | 'success' | 'warning' | 'danger';
 export type HeadingLevel = 2 | 3 | 4;
@@ -357,17 +357,19 @@ export type IconName =
   | 'filters' | 'map-pin' | 'check' | 'mail' | 'lock' | 'sign-out' | 'home' | 'plus'
   | 'edit' | 'trash' | 'arrow-up' | 'arrow-down' | 'camera' | 'upload' | 'eye'
   | 'clock' | 'refresh' | 'offline' | 'info' | 'success' | 'warning' | 'danger'
-  | 'external' | 'play';
+  | 'external' | 'play'
+  | 'copy' | 'image' | 'image-failed' | 'tree' | 'compare' | 'guide' | 'list';
 export type ContentStatus = 'draft' | 'published';
 export type LightLevel = 'none' | 'low' | 'medium' | 'strong';
 export type SaveState = 'idle' | 'dirty' | 'saving' | 'saved' | 'error';
 export type DialogKind = 'dialog' | 'sheet' | 'viewer';
 export type DialogSize = 'sm' | 'md' | 'form' | 'lg';
+export type ImageRowState = 'ready' | 'uploading' | 'failed';
 
 // Navigation
 export interface NavLink { label: string; link: string; external?: boolean; exact?: boolean; }
 export interface BreadcrumbItem { label: string; link?: string; }      // last item is the current page
-export interface SectionLink { label: string; meta?: string; link: string; }
+export interface SectionLink { label: string; meta?: string; link: string; exact?: boolean; attention?: boolean; }
 
 // Form options
 export interface SelectOption { value: string; label: string; disabled?: boolean; }
@@ -402,7 +404,9 @@ export interface ToastOptions {
   title: string;
   text?: string;
   actionLabel?: string;
-  action?: () => void;          // required when actionLabel is set
+  action?: () => void;          // runs, then the toast dismisses
+  actionLink?: string;          // application path: the action is a link; wins over action
+                                // actionLabel needs action or actionLink
 }
 export interface ToastRef { dismiss(): void; }
 ```
@@ -418,6 +422,8 @@ Rules for shared types:
   `core/shell/nav-link.ts` (D-11). `link` is an application path from
   `APP_PATHS`, or an absolute URL when `external` is true.
 - `Fact.srSuffix` is visually hidden text after `detail` (`" out of 5"`).
+- `SectionLink.exact` asks for exact `RouterLinkActive` matching; `attention`
+  renders the row's `data-highlight` (the dashboard's stale-items link).
 - Adding a member to a union used only as an **input** is additive. Adding a
   member to a type the library **emits** is breaking (§15).
 
@@ -446,6 +452,7 @@ DS: `components/button.html` · Block `.btn` · Used by: every page, dialog and 
 | `busy` | input | `boolean` | `false` | Sets `aria-busy` and `aria-disabled`, shows the spinner, keeps width and label, swallows activation (ICD-FORM-8). |
 | `softDisabled` | input | `boolean` | `false` | Sets `aria-disabled="true"`, keeps focusability, swallows activation (editor "Move up" on the first row). Use native `disabled` to remove from tab order. |
 | `pressed` | input | `boolean \| undefined` | `undefined` | When defined, renders `aria-pressed`. `true` shows the DS selected look (compare toggle, password "Show") (D-9). |
+| `iconOnly` | input | `boolean` | `false` | `.btn--icon`: square, icon only. The consumer sets `aria-label` (dialog and sheet Close). |
 | default slot | slot | text, optional `st-icon` before or after | — | Accessible name. Visually hidden context goes in `<span class="visually-hidden">`. |
 
 Native attributes stay on the host and are the consumer's: `type`, `disabled`,
@@ -453,7 +460,7 @@ Native attributes stay on the host and are the consumer's: `type`, `disabled`,
 
 #### `IconButtonComponent` — `button[st-icon-button]`, `a[st-icon-button]`
 
-DS: `components/icon-button.html` · Block `.icon-btn` · Used by: lightbox, map popup, toasts.
+DS: `components/icon-button.html` · Block `.icon-btn` · Used by: lightbox, map popup.
 
 | Member | Kind | Type | Default | Rule |
 |---|---|---|---|---|
@@ -479,7 +486,7 @@ DS: `.filter-trigger` · Used by: studios, spots (below LG).
 
 | Member | Kind | Type | Default | Rule |
 |---|---|---|---|---|
-| `count` | input | `number` | `0` | When above 0, shows a count badge that joins the accessible name. |
+| `count` | input | `number` | `0` | When above 0, shows a count badge (`aria-hidden`) and adds the hidden §12 `st.filterTrigger.count` (", 2 active") to the accessible name. |
 | default slot | slot | text | — | "Filters". The component adds the `filters` icon and `aria-haspopup="dialog"`. Visibility per breakpoint is the application's (`.until-lg`). |
 
 #### `SegmentedControlComponent` — `st-segmented`
@@ -506,10 +513,12 @@ inputs unless stated otherwise:
 | `error` | `string \| null` | `null` | ICD-FORM-5. |
 | `optional` | `boolean` | `false` | Appends `optionalLabel` to the label (DS: "(optional)", no asterisks). |
 | `optionalLabel` | `string` | §12 `st.field.optional` | |
+| `warning` | `string \| null` | `null` | Renders `.field__warning` and `.field--warning`; first in `aria-describedby`; never sets `aria-invalid`; ignored while `error` is non-empty. |
+| `labelSuffix` | `string \| null` | `null` | Visually hidden text inside the label after one space (" for Leslieville Daylight Studio"); part of the accessible name. |
 
 #### `TextFieldComponent` — `st-text-field`
 
-DS: `components/text-field.html`, `form-field.html` · Blocks `.field`, `.input`, `.input-group`, `.addon` · Value `string` · Used by: sign-in, signup, filters (cost), editors, image alt text.
+DS: `components/text-field.html`, `form-field.html` · Blocks `.field`, `.input`, `.input-group`, `.addon`, `.search` · Value `string` · Used by: sign-in, signup, filters (cost), editors, image alt text.
 
 | Member | Kind | Type | Default | Rule |
 |---|---|---|---|---|
@@ -561,6 +570,7 @@ DS: `components/checkbox.html` (fieldset) · Blocks `fieldset`, `.filter-group`,
 | `label` | input req | `string` | — | Rendered as `<legend>`. |
 | `options` | input req | `readonly ChoiceOption[]` | — | Tracked by `value`. Value order follows `options` order. |
 | `appearance` | input | `'form' \| 'filter'` | `'form'` | `filter` adds `.filter-group` classes. |
+| default slot | slot | form controls answering the same question (`st-select` "Minimum usable space") | — | Rendered inside the fieldset after the options; not part of the group's value. |
 
 #### `RadioGroupComponent` — `st-radio-group`
 
@@ -571,7 +581,7 @@ Arrow keys move selection within the group (native radios).
 
 #### `SearchFieldComponent` — `st-search-field`
 
-DS: `.search-field`, `.suggestions`, `.suggestion` (combobox) · Value `string` (the query) · Used by: guide editor's "Add guide entry" dialog.
+DS: `.search`, `.search-field`, `.suggestions`, `.suggestion` (combobox) · Value `string` (the query) · Used by: guide editor's "Add guide entry" dialog.
 
 | Member | Kind | Type | Default | Rule |
 |---|---|---|---|---|
@@ -579,6 +589,8 @@ DS: `.search-field`, `.suggestions`, `.suggestion` (combobox) · Value `string` 
 | `busy` | input | `boolean` | `false` | `aria-busy` on the listbox; shows the spinner. |
 | `listLabel` | input req | `string` | — | Listbox `aria-label` ("Matching studios and spots"). |
 | `noResultsText` | input | `string \| null` | `null` | Shown and announced when `options` is empty and the query is not. |
+| `resultsText` | input | `string \| null` | `null` | Announced while the list is expanded ("3 results"); formatted by the application. |
+| `busyLabel` | input | `string` | §12 `st.searchField.busy` | Busy text and its announcement. |
 | `optionSelected` | output | `SuggestionOption` | — | Enter or click on an option. |
 
 Keyboard: ArrowDown/ArrowUp move `aria-activedescendant`, Enter selects, Escape
@@ -595,6 +607,7 @@ DS: `components/file-upload.html` · Blocks `.upload-drop`, `.file-input` · Not
 | `accept` | input | `string` | `''` | Native `accept`. |
 | `multiple` | input | `boolean` | `false` | |
 | `disabled` | input | `boolean` | `false` | Full or uploading. |
+| `errors` | input | `readonly string[]` | `[]` | Refused files: one `p.field__error` each, in a `role="alert"` group inside `.upload-drop`. The application writes the messages. |
 | `filesSelected` | output | `File[]` | — | From the picker or a drop. Type and size checks are the application's and the server's. |
 
 #### `ErrorSummaryComponent` — `st-error-summary`
@@ -650,7 +663,8 @@ DS: `components/site-header.html` · Blocks `.site-header`, `.wordmark`, `.site-
 | `menuLabel` | input | `string` | §12 `st.siteHeader.menu` | The button shown below MD (L2-064.2). |
 | `menuExpanded` | input | `boolean` | `false` | `aria-expanded` on the menu button. |
 | `menuControls` | input | `string \| null` | `null` | `aria-controls` on the menu button. |
-| `menuToggled` | output | `void` | — | The application opens and closes its menu (D-8). |
+| `menuToggled` | output | `void` | — | The application opens and closes its menu sheet (D-8). |
+| `externalHint` | input | `string` | §12 `st.link.external` | Hidden suffix on external links. |
 | `actions` | slot | e.g. sign-out button | — | Rendered inside the nav after the links. |
 
 #### `SiteFooterComponent` — `st-site-footer`
@@ -664,6 +678,7 @@ DS: `components/footer.html` · Block `.site-footer` · Used by: shell (public).
 | `links` | input req | `readonly NavLink[]` | — | External links per ICD-SEC-2 (YouTube channel, L2-048.1). |
 | `navLabel` | input req | `string` | — | "Footer". |
 | `copy` | input | `string \| null` | `null` | `.site-footer__copy`. |
+| `externalHint` | input | `string` | §12 `st.link.external` | Hidden suffix on external links. |
 | `signup` | slot | the application's `EmailSignupComponent` | — | |
 
 #### `BreadcrumbComponent` — `st-breadcrumb`
@@ -674,6 +689,9 @@ DS: `.breadcrumb` · Used by: editors.
 |---|---|---|---|---|
 | `items` | input req | `readonly BreadcrumbItem[]` | — | Last item renders with `aria-current="page"` and no link. |
 | `label` | input | `string` | §12 `st.breadcrumb.label` | `nav` `aria-label`. |
+| `current` | input | `boolean` | `true` | `false`: no item is current and items with a link stay links (editor error state). |
+| `loading` | input | `boolean` | `false` | The last item shows an `aria-hidden` text skeleton; its label stays visually hidden. |
+| `collapse` | input | `boolean` | `false` | `.breadcrumb--collapse` (phones). |
 
 #### `SectionLinksComponent` — `st-section-links`
 
@@ -691,6 +709,7 @@ DS: `.page-header` · Used by: administration screens, editors.
 | Member | Kind | Type | Default | Rule |
 |---|---|---|---|---|
 | `title` | input req | `string` | — | Renders the page's `h1`. |
+| `loading` | input | `boolean` | `false` | The `h1` holds the title as visually hidden text followed by `st-skeleton shape="title"`. |
 | `subtitle` | slot | status, last saved | — | `.subtitle`. |
 | `actions` | slot | buttons | — | |
 
@@ -698,7 +717,7 @@ DS: `.page-header` · Used by: administration screens, editors.
 
 #### `DialogComponent` — `st-dialog`
 
-DS: `components/dialog.html`, `patterns/dialogs-and-overlays.html` · Blocks `.dialog__panel`, `__header`, `__title`, `__desc`, `__body`, `__footer` · Used by: delete, unpublish, missing fields, remove image, discard changes, guide entry picker, studio and spot filters.
+DS: `components/dialog.html`, `patterns/dialogs-and-overlays.html` · Blocks `.dialog__panel`, `__header`, `__title`, `__desc`, `__body`, `__footer` · Used by: delete, unpublish, missing fields, remove image, discard changes, guide entry picker.
 
 Template root of an application dialog component opened with
 `DialogService.open(..., { kind: 'dialog' })`.
@@ -711,15 +730,16 @@ Template root of an application dialog component opened with
 | `fullScreenBelowSm` | input | `boolean` | `false` | Full-height at XS (filters, L2-022.5). |
 | `busy` | input | `boolean` | `false` | Disables the close button, ignores Escape and backdrop. Footer buttons are the consumer's to disable. |
 | `closeLabel` | input | `string` | §12 `st.dialog.close` | |
+| `describedBy` | input | `string \| null` | `null` | ID of an element in the projected body that describes the dialog; used as `aria-describedby` only when `description` is `null`. |
 | default slot | slot | body | — | `.dialog__body`. |
 | `footer` | slot | buttons | — | `.dialog__footer`. |
 
 #### `SheetComponent` — `st-sheet`
 
-DS: `components/sheet.html` · Block `.sheet` · Used by: site menu.
+DS: `components/sheet.html` · Block `.sheet` · Used by: site menu, studio and spot filters.
 
 Template root of a component opened with `kind: 'sheet'`. Inputs `title` (req),
-`description`, `closeLabel`; default slot and `footer` slot, as `st-dialog`.
+`description`, `describedBy`, `closeLabel`; default slot and `footer` slot, as `st-dialog`.
 
 #### `LightboxComponent` — opened with `kind: 'viewer'`
 
@@ -740,6 +760,8 @@ DS: `.editor-section` (`<details>` with `<summary><hN>`) · Used by: studio, spo
 | `title` | input req | `string` | — | |
 | `headingLevel` | input | `HeadingLevel` | `2` | |
 | `open` | model | `boolean` | `true` | |
+| `errorText` | input | `string \| null` | `null` | When non-empty: `data-invalid` on the `details` and `span.editor-section__errors` at the end of the summary. |
+| `loading` | input | `boolean` | `false` | Renders only `div.editor-section.editor-section--skeleton` (`aria-hidden`). |
 | default slot | slot | fields | — | `.editor-section__body`. |
 
 #### `SummaryPanelComponent` — `st-summary-panel`
@@ -781,11 +803,12 @@ DS: `.compare-bar` · Used by: studios, studio page, compare (L2-030).
 | `label` | input req | `string` | — | `aside` `aria-label` ("Studios to compare"). |
 | `countText` | input req | `string` | — | "4 selected". Announced politely when it changes. |
 | `hint` | input | `string \| null` | `null` | `.compare-bar__hint`. |
+| `hintId` | input | `string` | `'compare-hint'` | `id` of `.compare-bar__hint`, so the projected Compare can reference it with `aria-describedby`. |
 | `names` | input | `string \| null` | `null` | `.compare-bar__names`. |
 | `actions` | slot | Clear, Compare buttons | — | |
 
 The application renders it only when at least one studio is selected and adds
-the global `.has-compare-bar` class to the page container.
+the global `.has-compare-bar` class to `<body>`.
 
 ### 9.5 Data display
 
@@ -848,10 +871,11 @@ DS: `.result-count` (`role="status"`, `aria-live="polite"`) · Used by: studios,
 | Member | Kind | Type | Default | Rule |
 |---|---|---|---|---|
 | `text` | input req | `string` | — | "7 studios" (ICU plural in the application). The only announcer of list counts (D-7, L2-069.3). |
+| `srSuffix` | input | `string \| null` | `null` | Visually hidden text after `text`, announced with it (", sorted by all-in cost"). |
 
 #### `LocationCardComponent` — `st-location-card`
 
-DS: `.location-card` (SHOTTHERE components) · Used by: studio and spot lists, guide entries, home, rain backup.
+DS: `.location-card` (SHOTTHERE components) · Used by: studio and spot lists, guide entries, home.
 
 | Member | Kind | Type | Default | Rule |
 |---|---|---|---|---|
@@ -864,6 +888,9 @@ DS: `.location-card` (SHOTTHERE components) · Used by: studio and spot lists, g
 | `meta` | input | `string \| null` | `null` | "Kensington Market · Reviewed 3 Oct 2026". |
 | `facts` | input | `readonly Fact[]` | `[]` | `.location-card__facts`. `badge` renders a warning badge for stale data (L2-043). |
 | `rank` | input | `number \| null` | `null` | Guide rank (`.guide-entry__rank`, `aria-hidden`). |
+| `secondaryMeta` | input | `string \| null` | `null` | A second `.location-card__meta` line after the body. |
+| `badge` | input | `string \| null` | `null` | Warning badge for stale data not tied to a fact. |
+| default slot | slot | non-interactive body: `st-tag-list` or one `<p>` | — | Between the facts and `secondaryMeta`; stays under the stretched link. |
 | `actions` | slot | compare toggle | — | Above the stretched link, stays clickable. |
 
 #### `LocationCardSkeletonComponent` — `st-location-card-skeleton`
@@ -945,6 +972,10 @@ DS: `.stat-grid`, `.stat-tile` · Used by: administration dashboard (L2-053).
 | `counts` | input req | `string` | — | "7 published · 2 drafts". |
 | `link` | input | `string \| null` | `null` | Makes the title a link. |
 | `headingLevel` | input | `HeadingLevel` | `2` | |
+| default slot | slot | one `a[st-button]` with a `plus` `st-icon` | — | The tile's action; the consumer picks the variant. |
+
+`StatTileSkeletonComponent` — `li[st-stat-tile-skeleton]`: no members; the
+dashboard renders one per tile while it loads.
 
 #### `ImageListComponent` — `ol[st-image-list]` and `ImageRowComponent` — `li[st-image-row]`
 
@@ -952,9 +983,12 @@ DS: `.image-list`, `.image-row` · Used by: editors (L2-057, L2-058).
 
 | Member (row) | Kind | Type | Default | Rule |
 |---|---|---|---|---|
-| `thumbnailUrl` | input req | `string` | — | Object URL or variant URL from the application. Decorative. |
+| `thumbnailUrl` | input | `string \| null` | `null` | Object URL or variant URL from the application. Decorative. Every image row passes it; guide entry rows (`rank`) leave it out. |
+| `rank` | input | `number \| null` | `null` | Guide editor entry row: `.image-row--entry` and a `.guide-entry__rank` disc instead of the thumbnail. |
+| `state` | input | `ImageRowState` | `'ready'` | `uploading` → `.image-row--uploading`; `failed` → `.image-row--failed` with a placeholder thumbnail. |
+| `statusText` | input | `string \| null` | `null` | Uploading: `span.image-row__meta[aria-hidden]`; failed: `p.field__error[role=alert]`. |
 | `meta` | input req | `string` | — | "1 of 2 · headshot.jpg · 3.8 MB". |
-| default slot | slot | alt-text `st-text-field`, `st-progress`, `st-alert` | — | |
+| default slot | slot | alt-text `st-text-field`, `st-progress`, `st-inline-message`; entry rows: heading and note `st-textarea` | — | |
 | `actions` | slot | Move up, Move down, Remove | — | The application announces the new position (L2-058.3). |
 
 ### 9.6 Maps
@@ -985,8 +1019,9 @@ DS: `.popover`, `.map-popup` · Used by: map (L2-028).
 | `studioLabel` | input req | `string` | — | |
 | `spotLabel` | input req | `string` | — | |
 | `overlay` | input | `boolean` | `false` | `.map-legend--overlay`. |
+| `label` | input | `string` | §12 `st.mapLegend.label` | The list's `aria-label`. |
 
-#### `MapUnavailableComponent` — `st-map-unavailable`
+#### `MapUnavailableComponent` — `st-map-unavailable` (live)
 
 Block `.map-unavailable` · Used by: map, spot page (L2-086.2).
 
@@ -1055,6 +1090,15 @@ DS: `components/empty-state.html`, `patterns/empty-and-error-states.html` · Blo
 | `headingLevel` | input | `HeadingLevel` | `2` | |
 | `actions` | slot | retry, clear filters, create | — | |
 
+#### `InlineMessageComponent` — `p[st-inline-message]`
+
+DS: `components/inline-message.html` · Used by: failed uploads, refused files, section help (L2-057).
+
+| Member | Kind | Type | Default | Rule |
+|---|---|---|---|---|
+| `tone` | input | `'help' \| 'error'` | `'help'` | `.field__help` or `.field__error`. The consumer writes `role` and `id`. |
+| default slot | slot | text | — | |
+
 #### `ErrorPageComponent` — `st-error-page`
 
 DS: `components/error-page.html` · Block `.system-page` · Used by: not found, server error (L2-083).
@@ -1065,6 +1109,7 @@ DS: `components/error-page.html` · Block `.system-page` · Used by: not found, 
 | `title` | input req | `string` | — | The page's `h1`. |
 | `text` | input | `string \| null` | `null` | |
 | `reference` | input | `string \| null` | `null` | Support reference on 500; never a stack trace. |
+| default slot | slot | one `<p>` with inline links ("tell us at hello@shotthere.ca") | — | After `text`, before `reference`. |
 | `actions` | slot | home and studio links | — | |
 
 ### 9.8 Media
@@ -1144,6 +1189,8 @@ show(options: ToastOptions): ToastRef;
 
 - Applies ICD-OVL-6.
 - `action` runs and the toast dismisses when its action button is activated.
+- With `actionLink` the action renders as `a.toast__action` with `routerLink`;
+  following it navigates and dismisses the toast ("View public page").
 - `show` called during server rendering is ignored.
 - The application decides which outcomes toast and their copy (mocks:
   `notifications/admin-toast`, `notifications/public-toast`).
@@ -1167,7 +1214,9 @@ are public API):
 
 | Group | Classes |
 |---|---|
-| Layout | `.container`, `.container--narrow`, `.stack`, `.stack--sm`, `.stack--lg`, `.cluster`, `.cluster--between`, `.cluster--end`, `.grid`, `.grid--auto`, `.section-gap`, `.section-head`, `.field-row`, `.table-wrap`, `.has-compare-bar` |
+| Layout | `.container`, `.container--narrow`, `.stack`, `.stack--sm`, `.stack--lg`, `.cluster`, `.cluster--between`, `.cluster--end`, `.grid`, `.grid--auto`, `.section-gap`, `.section-head`, `.field-row`, `.field-row--pair`, `.field-row--fit`, `.field-row--fit-sm`, `.table-wrap`, `.has-compare-bar` |
+| Tables | `.table`, `.table--stack`, `.table--dense` and their cell rules (global because the application writes the cells as projected content) |
+| Overlays | `.backdrop` and the CDK structural rules `.cdk-overlay-container` (at `--z-overlay`), `.cdk-global-overlay-wrapper`, `.cdk-overlay-pane`, `.cdk-overlay-backdrop`, `.cdk-global-scrollblock` (global because CDK creates them outside any component) |
 | Text | `.prose`, `.measure`, `.subtitle`, `.eyebrow`, `.overline`, `.text-muted`, `.text-subtle`, `.text-caption`, `.num`, `.truncate`, `.read-only-value` |
 | Visibility | `.visually-hidden`, `.until-lg` (and the other DS visibility utilities on `foundations/responsive.html`) |
 | Media | `.media-fallback` (used by `img[stFallbackImage]`) |
@@ -1181,9 +1230,9 @@ application ports its parts into feature CSS beside the page.
 
 | Owner | DS blocks |
 |---|---|
-| Library component CSS | `.btn*`, `.icon-btn*`, `.icon*`, `.link--*`, `.segmented`, `.filter-trigger`, `.field*`, `.input*`, `.input-group`, `.addon`, `.optional`, `.textarea`, `.select`, `.choice*`, `.filter-group*`, `.search-field`, `.suggestions`, `.suggestion`, `.upload-drop`, `.file-input`, `.form-summary`, `.form-actions*`, `.save-status*`, `.skip-link`, `.site-header`, `.wordmark*`, `.site-nav*`, `.site-footer*`, `.breadcrumb`, `.section-list`, `.section-link*`, `.page-header`, `.dialog*`, `.backdrop`, `.sheet*`, `.viewer*`, `.lightbox*`, `.editor-section*`, `.summary-panel*`, `.kv`, `.dl`, `.table*`, `.compare-bar*`, `.badge*`, `.status*`, `.tags`, `.tag`, `.chip*`, `.active-filters`, `.result-count`, `.location-card*`, `.location-grid`, `.score*`, `.pips`, `.light-rating`, `.price-block*`, `.disclosure*`, `.shot-grid*`, `.shot`, `.stat-grid`, `.stat-tile*`, `.image-list`, `.image-row*`, `.popover`, `.map-popup*`, `.map-legend*`, `.map-unavailable`, `.alert*`, `.banner`, `.toast*`, `.spinner*`, `.skeleton*`, `.progress*`, `.empty*`, `.system-page*`, `.video-poster*`, `.video-frame` |
+| Library component CSS | `.btn*`, `.icon-btn*`, `.icon*`, `.link--*`, `.segmented`, `.filter-trigger`, `.field*`, `.input*`, `.input-group`, `.addon`, `.optional`, `.textarea`, `.select`, `.choice*`, `.filter-group*`, `.search-field`, `.suggestions`, `.suggestion`, `.upload-drop`, `.file-input`, `.form-summary`, `.form-actions*`, `.save-status*`, `.skip-link`, `.site-header`, `.wordmark*`, `.site-nav*`, `.site-footer*`, `.breadcrumb`, `.section-list`, `.section-link*`, `.page-header`, `.dialog*`, `.sheet*`, `.viewer*`, `.lightbox*`, `.editor-section*`, `.summary-panel*`, `.kv`, `.dl`, `.compare-bar*`, `.badge*`, `.status*`, `.tags`, `.tag`, `.chip*`, `.active-filters`, `.result-count`, `.location-card*`, `.location-grid`, `.guide-entry__rank`, `.score*`, `.pips`, `.light-rating`, `.price-block*`, `.disclosure*`, `.shot-grid*`, `.shot`, `.stat-grid`, `.stat-tile*`, `.image-list`, `.image-row*`, `.popover`, `.map-popup*`, `.map-legend*`, `.map-unavailable`, `.alert*`, `.banner`, `.toast*`, `.spinner*`, `.skeleton*`, `.progress*`, `.empty*`, `.system-page*`, `.video-poster*`, `.video-frame` |
 | Library global (§11.1) | Layout, text, visibility, media fallback and map marker utilities listed above |
-| Application feature CSS | `.browse*`, `.home-hero`, `.review-layout`, `.review-main`, `.review-head*`, `.review-hero`, `.review-section`, `.light-grid*`, `.regions`, `.compare-table*`, `.map-page*`, `.static-map*`, `.preview-map`, `.map-list-item*`, `.guide-index`, `.guide-list`, `.guide-entry*`, `.episode__links`, `.signup*`, `.auth*`, `.editor-layout`, `.editor-form`, `.editor-aside`, `.fee-row`, `.admin-list`, `.admin-row*`, `.mobile-browse-bar` |
+| Application feature CSS | `.browse*`, `.home-hero`, `.review-layout`, `.review-main`, `.review-head*`, `.review-hero`, `.review-section`, `.light-grid*`, `.regions`, `.compare-table*`, `.map-page*`, `.static-map*`, `.preview-map`, `.map-list-item*`, `.guide-index`, `.guide-list`, `.guide-entry*` (except `__rank`), `.list`, `.list__*`, `.episode__links`, `.signup*`, `.auth*`, `.editor-layout`, `.editor-form`, `.editor-aside`, `.fee-row`, `.admin-list`, `.admin-row*`, `.mobile-browse-bar` |
 | Not ported | Sweet Hand leftovers (`.caterer-*`, `.inbox-*`, `.dish*`, `.message*`, `.thread*`, `.certificate`, `.breach*`, `.enquiry-*`, `.launch-*`, …) and mock-only classes (`.mock-bar`, `.mock-note`) |
 
 A new DS block gets an owner row here before either side ports it.
@@ -1204,12 +1253,14 @@ be replaced through the listed input.
 | `st.textField.conceal` | Hide | `st-text-field` `concealLabel` |
 | `st.textField.revealContext` | password | `st-text-field` `revealContext` (visually hidden) |
 | `st.textarea.counter` | {$count} of {$max} characters | — (placeholders) |
-| `st.link.external` | (opens in a new tab) | `a[st-link]` `externalHint` |
+| `st.link.external` | (opens in a new tab) | `a[st-link]`, `st-site-header`, `st-site-footer` `externalHint` |
 | `st.dialog.close` | Close | `st-dialog`, `st-sheet`, `st-map-popup` `closeLabel` |
 | `st.lightbox.close` | Close | — |
 | `st.lightbox.previous` | Previous photo | — |
 | `st.lightbox.next` | Next photo | — |
 | `st.lightbox.count` | Photo {$current} of {$total} | — (placeholders) |
+| `st.lightbox.pagerPrevious` | Previous | — (visible pager text; the name stays "Previous photo") |
+| `st.lightbox.pagerNext` | Next | — (visible pager text; the name stays "Next photo") |
 | `st.activeFilters.label` | Active filters: | `st-active-filters` `label` |
 | `st.activeFilters.remove` | Remove filter: {$label} | `st-active-filters` `removeLabel` |
 | `st.activeFilters.clear` | Clear all | `st-active-filters` `clearLabel` |
@@ -1217,6 +1268,9 @@ be replaced through the listed input.
 | `st.alert.dismiss` | Dismiss | `st-alert` `dismissLabel` |
 | `st.toast.dismiss` | Dismiss | — |
 | `st.spinner.label` | Loading | `st-spinner` `label` |
+| `st.searchField.busy` | Searching… | `st-search-field` `busyLabel` |
+| `st.mapLegend.label` | Legend | `st-map-legend` `label` |
+| `st.filterTrigger.count` | , {$count} active | — (placeholders) |
 | `st.video.play` | Play episode | `st-video-poster` `playLabel` |
 
 Adding a library string is a minor change; changing a default is a patch that
@@ -1247,7 +1301,9 @@ export interface StudioCardViewModel {
 <!-- features/studios/studio-list-page/studio-list-page.component.html (application) -->
 <st-result-count [text]="countText()" />
 
-<ul st-location-grid [attr.aria-busy]="loading() || null">
+<section aria-labelledby="results-heading" [attr.aria-busy]="loading() || null">
+<h2 class="visually-hidden" id="results-heading" i18n>Results</h2>
+<ul st-location-grid [attr.aria-hidden]="loading() || null">
   @if (loading()) {
     @for (n of skeletons; track n) { <li><st-location-card-skeleton /></li> }
   } @else {
@@ -1267,6 +1323,7 @@ export interface StudioCardViewModel {
     }
   }
 </ul>
+</section>
 
 @if (error()) {
   <st-empty-state tone="error" icon="refresh"
@@ -1438,8 +1495,9 @@ these points only.
   element.
 - **D-8 Header menu.** L2-064.2 and `build-app-shell` describe a disclosure;
   the mocks open a sheet (`dialogs/site-menu`). `st-site-header` only reports
-  `menuToggled` and reflects `menuExpanded`, so it supports either. Which one
-  the application builds is a product decision outside this interface.
+  `menuToggled` and reflects `menuExpanded`, so it supports either. The product
+  owner chose the modal sheet on 14 Oct 2026; L2-064.2 now says so, and the
+  application opens `st-sheet` through `DialogService`.
 - **D-9 Pressed buttons.** The DS styles the selected look only on
   `.compare-toggle[aria-pressed="true"]`. The library applies that look to any
   `button[st-button]` with `pressed` true, so one input covers the compare
@@ -1456,9 +1514,34 @@ these points only.
   state.
 - **D-13 One Angular version.** Both projects build from one
   `frontend/package.json`; the library declares peer dependencies only.
+- **D-14 Changes the CRDs needed (1.1.0).** Writing a CRD for every component
+  in §9 against every mock found usages the 1.0.0 API could not build. Each
+  was added here first, all additive (§15): the members and types marked new
+  in §8, §9 and §12, the `InlineMessageComponent` and
+  `StatTileSkeletonComponent`, and the global table and overlay rules in §11.1
+  (encapsulated component CSS cannot reach projected table cells or the
+  elements CDK creates). Each CRD's *Decisions* gives the reason for its part.
+  Wording fixes in the same release: the filters overlays are `st-sheet`, not
+  `st-dialog` (DS and every filter mock); `.has-compare-bar` goes on `<body>`;
+  `st-map-unavailable` is live; the "Used by" lines of the icon button and
+  location card; the §13 example puts `aria-busy` on the results region.
+- **D-15 API with no design-system drawing.** The 1.0.0 API keeps parts the
+  design system no longer draws because no mock uses them: `st-alert`
+  `banner`, `st-progress` `value: null` and `tone`, `st-spinner` `size: 'lg'`,
+  `st-badge` `tone: 'danger'` and `solid`, `table[st-table]` `dense`,
+  `st-dialog` `fullScreenBelowSm`, the `sm` size on `st-select` and
+  `st-text-field`, `st-text-field` `concealLabel`, and the text utilities
+  `.measure`, `.eyebrow`, `.overline`, `.text-subtle`, `.truncate`. The product
+  owner decided on 14 Oct 2026 to keep them; their CRDs specify them from the
+  design system's history so they stay buildable.
+- **D-16 Backdrop.** The dialog design-system page says a backdrop click does
+  nothing; §10.1 says it closes. The product owner kept §10.1 on 14 Oct 2026:
+  a backdrop click closes a dialog or sheet as Escape does, with no result,
+  and never while it is busy.
 
 ## 19. Revision history
 
 | Version | Date | Change |
 |---|---|---|
 | 1.0.0 | 13 Oct 2026 | First baseline. |
+| 1.1.0 | 14 Oct 2026 | Additive changes the component CRDs needed (D-14); owner decisions on the header menu, unused API and the backdrop (D-8, D-15, D-16). |
