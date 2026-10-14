@@ -1,14 +1,7 @@
 <st-sheet title="Filters" i18n-title>
   <form id="studio-filters-form" (submit)="$event.preventDefault(); apply()">
     <p class="subtitle" id="studio-filters-description" i18n>Choose what matters for this shoot. The list updates when you show the results.</p>
-    <div class="field">
-      <label class="field__label" for="dialog-sort" i18n>Sort by</label>
-      <select class="select" id="dialog-sort" (change)="setSort($any($event.target).value)">
-        @for (option of sortOptions; track option.value) {
-          <option [value]="option.value" [selected]="option.value === draft().sort">{{ option.label }}</option>
-        }
-      </select>
-    </div>
+    <st-select label="Sort by" i18n-label inputId="dialog-sort" name="sort" [options]="sortOptions" [ngModel]="draft().sort" (ngModelChange)="setSort($event)" />
     <st-studio-filters [idPrefix]="'dialog'" [query]="draft()" [costError]="costError()" (queryChange)="draft.set($event)" />
   </form>
   <button slot="footer" i18n-slot st-button class="filters-dialog__action" type="button" (click)="clearAll()" i18n>Clear all</button>

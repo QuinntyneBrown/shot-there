@@ -1,8 +1,14 @@
 import { DIALOG_DATA } from '@angular/cdk/dialog';
 import { Component, computed, inject, output, signal } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { toObservable, toSignal } from '@angular/core/rxjs-interop';
 import { StudiosService } from '@shot-there/api';
-import { ButtonComponent, SheetComponent } from '@shot-there/components';
+import {
+  ButtonComponent,
+  SelectComponent,
+  SheetComponent,
+  type SelectOption,
+} from '@shot-there/components';
 import { catchError, debounceTime, map, of, startWith, switchMap } from 'rxjs';
 
 import { StudioFiltersComponent } from '../studio-filters/studio-filters.component';
@@ -17,7 +23,7 @@ import { StudioFiltersDialogData } from './studio-filters-dialog-data';
 /** Full-height filters below LG. Closes with the query to apply, or nothing when dismissed. */
 @Component({
   selector: 'st-studio-filters-dialog',
-  imports: [ButtonComponent, SheetComponent, StudioFiltersComponent],
+  imports: [ButtonComponent, FormsModule, SelectComponent, SheetComponent, StudioFiltersComponent],
   templateUrl: './studio-filters-dialog.component.html',
   styleUrl: './studio-filters-dialog.component.css',
 })
@@ -26,7 +32,7 @@ export class StudioFiltersDialogComponent {
 
   protected readonly draft = signal(inject<StudioFiltersDialogData>(DIALOG_DATA).query);
   readonly applied = output<StudioListQuery>();
-  protected readonly sortOptions = STUDIO_SORT_OPTIONS;
+  protected readonly sortOptions: readonly SelectOption[] = STUDIO_SORT_OPTIONS;
   protected readonly costError = computed(() => costRangeError(this.draft()));
   /** How many studios the draft matches; null while counting, after a failure, or for an invalid range. */
   protected readonly matchCount = toSignal(

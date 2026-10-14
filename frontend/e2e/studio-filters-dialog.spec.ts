@@ -50,6 +50,21 @@ test.describe('Studio filters dialog', () => {
     await expect(list.filtersButton).toBeFocused();
   });
 
+  test('applies the selected sort only when the visitor presses Show', async ({ page }) => {
+    // Given the filters dialog is open on an unsorted list
+    await givenStudios(page, PUBLISHED_STUDIOS);
+    const list = new StudioListPage(page);
+    await list.open();
+    await list.openFiltersDialog();
+    // When the visitor chooses a sort
+    await list.dialogSortBy('cost');
+    // Then it remains unapplied until Show
+    expect(list.currentQuery().toString()).toBe('');
+    await list.dialogShowButton.click();
+    // Then the selected sort is applied
+    await expect.poll(() => list.currentQuery().toString()).toBe('sort=cost');
+  });
+
   test('explains an inverted cost range and will not apply it', async ({ page }) => {
     // Given the filters dialog is open
     await givenStudios(page, PUBLISHED_STUDIOS);
