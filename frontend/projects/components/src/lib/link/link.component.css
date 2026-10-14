@@ -1,0 +1,4 @@
+/* DS components/link.html; the host is the <a>. */
+:host { color: var(--color-fg-link); text-decoration: underline; text-underline-offset: 0.15em; text-decoration-thickness: var(--border-width-hairline); }
+:host(:hover) { color: var(--color-fg-link-hover); text-decoration-thickness: var(--border-width-thick); }
+:host(.link--standalone) { display: inline-flex; align-items: center; gap: var(--space-1); min-height: var(--target-comfortable); font: var(--text-label); font-size: var(--font-size-md); }

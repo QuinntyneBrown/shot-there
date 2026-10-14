@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { LinkVariantsComponent } from './link/link-variants.component';
 import { IconButtonPressedComponent } from './icon-button/icon-button-pressed.component';
 import { IconButtonDefaultComponent } from './icon-button/icon-button-default.component';
 import { ButtonPressedComponent } from './button/button-pressed.component';
@@ -28,4 +29,5 @@ export const routes: Routes = [
   { path: 'button/pressed', component: ButtonPressedComponent },
   { path: 'icon-button/default', component: IconButtonDefaultComponent },
   { path: 'icon-button/pressed', component: IconButtonPressedComponent },
+  { path: 'link/variants', component: LinkVariantsComponent },
 ];

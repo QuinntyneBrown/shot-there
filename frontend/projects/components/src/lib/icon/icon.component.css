@@ -8,3 +8,4 @@
 
 /* Contexts that size the icon to their text (DS .btn .icon). */
 :host-context(.btn) .icon { width: 1.25em; height: 1.25em; }
+:host-context(.link--external) .icon { display: inline-block; width: 0.9em; height: 0.9em; vertical-align: -0.1em; margin-inline-start: var(--space-1); }
