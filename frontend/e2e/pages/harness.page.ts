@@ -3,6 +3,13 @@ import { Locator, Page } from '@playwright/test';
 
 export type HarnessTheme = 'light' | 'dark';
 
+/** A request the harness holds back for `ms`, then answers with an image, or with `status` (for example 404). */
+export interface HeldRequest {
+  url: string | RegExp;
+  ms: number;
+  status?: number;
+}
+
 const PLACEHOLDER_SVG = '<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800"><rect width="1200" height="800" fill="#ccc"/></svg>';
 
 /** A components-harness route: one library component state (ICD-002 D-12). */
@@ -19,8 +26,11 @@ export class HarnessPage {
    * Opens `<component>/<state>` at a viewport size (CSS px, 1280 x 800 by default) in a colour scheme. Images under
    * /test-images/ load as a placeholder and external https sites are stubbed, so nothing reaches the network.
    */
-  async open(path: string, options: { width?: number; height?: number; theme?: HarnessTheme; hydrationDelayMs?: number } = {}): Promise<void> {
-    const { width = 1280, height = 800, theme = 'light', hydrationDelayMs = 0 } = options;
+  async open(
+    path: string,
+    options: { width?: number; height?: number; theme?: HarnessTheme; hydrationDelayMs?: number; held?: HeldRequest } = {},
+  ): Promise<void> {
+    const { width = 1280, height = 800, theme = 'light', hydrationDelayMs = 0, held } = options;
     if (hydrationDelayMs > 0) {
       // Holding back the scripts lets the server-rendered page settle (images load or fail) before Angular hydrates.
       await this.page.route('**/*.js', async (route) => {
@@ -34,6 +44,13 @@ export class HarnessPage {
     await this.page.context().route('https://**', (route) =>
       route.fulfill({ contentType: 'text/html', body: '<!doctype html><title>external</title>' }),
     );
+    if (held) {
+      // Registered last, so it wins over the placeholder route for the URLs it matches.
+      await this.page.route(held.url, async (route) => {
+        await new Promise((done) => setTimeout(done, held.ms));
+        await (held.status ? route.fulfill({ status: held.status, body: '' }) : route.fulfill({ contentType: 'image/svg+xml', body: PLACEHOLDER_SVG }));
+      });
+    }
     await this.page.setViewportSize({ width, height });
     await this.page.emulateMedia({ colorScheme: theme });
     await this.page.goto(`/${path}`);
@@ -127,6 +144,9 @@ export class HarnessPage {
    * the page's interaction-to-next-paint for that interaction (L2-071). Events under 16 ms count as 0.
    */
   async interactionLatency(interaction: () => Promise<void>): Promise<number> {
+    // Measure a settled page, as a visitor's first tap meets it: loaded, hydrated and idle.
+    await this.page.waitForLoadState('networkidle');
+    await this.page.evaluate(() => new Promise((done) => requestIdleCallback(() => done(null), { timeout: 2000 })));
     const cdp = await this.page.context().newCDPSession(this.page);
     await cdp.send('Emulation.setCPUThrottlingRate', { rate: 4 });
     await this.page.evaluate(() => {

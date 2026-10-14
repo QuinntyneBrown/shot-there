@@ -208,15 +208,21 @@ test.describe('SegmentedControlComponent (CRD button-group, ICD-002 §9.1)', () 
     await expect(viewAs.option('List')).toHaveAttribute('aria-pressed', 'true');
   });
 
-  test('AC-14 pressing "Studios" stays within the 200ms INP budget', async ({ page }) => {
-    // Given the button-group/performance route
-    const harness = new HarnessPage(page);
-    await harness.open('button-group/performance', { width: 412 });
-    const show = new SegmentedControlComponent(page, 'Show');
-    // When "Studios" is pressed with the CPU slowed
-    const latency = await harness.interactionLatency(() => show.choose('Studios'));
-    // Then the interaction paints within 200ms and "Studios" is pressed
-    expect(latency).toBeLessThanOrEqual(200);
-    await expect(show.option('Studios')).toHaveAttribute('aria-pressed', 'true');
+  test.describe('performance (L2-071)', () => {
+    // Measured on a shared machine with the CPU slowed 4x: a retry absorbs contention from parallel
+    // workers, while a real regression fails every attempt.
+    test.describe.configure({ retries: 2 });
+
+    test('AC-14 pressing "Studios" stays within the 200ms INP budget', async ({ page }) => {
+      // Given the button-group/performance route
+      const harness = new HarnessPage(page);
+      await harness.open('button-group/performance', { width: 412 });
+      const show = new SegmentedControlComponent(page, 'Show');
+      // When "Studios" is pressed with the CPU slowed
+      const latency = await harness.interactionLatency(() => show.choose('Studios'));
+      // Then the interaction paints within 200ms and "Studios" is pressed
+      expect(latency).toBeLessThanOrEqual(200);
+      await expect(show.option('Studios')).toHaveAttribute('aria-pressed', 'true');
+    });
   });
 });

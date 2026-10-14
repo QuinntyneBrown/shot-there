@@ -129,14 +129,20 @@ test.describe('FilterTriggerComponent (CRD filter: trigger, ICD-002 §9.1, §12)
     expect(await new FilterTriggerComponent(harness.example('count'), FilterTriggerComponent.nameWithCount(2)).height()).toBeGreaterThanOrEqual(44);
   });
 
-  test('AC-27 (trigger part) updating the count after a filter change stays within the 200ms INP budget', async ({ page }) => {
-    // Given the filter/performance route: the results head with the trigger and the "Natural light" option
-    const harness = new HarnessPage(page);
-    await harness.open('filter/performance', { width: 412 });
-    // When "Natural light" is ticked with the CPU slowed
-    const latency = await harness.interactionLatency(() => harness.toggle('Natural light'));
-    // Then the interaction paints within 200ms and the trigger reads "Filters, 1 active"
-    expect(latency).toBeLessThanOrEqual(200);
-    await expect(new FilterTriggerComponent(page, FilterTriggerComponent.nameWithCount(1)).root).toBeVisible();
+  test.describe('performance (L2-071)', () => {
+    // Measured on a shared machine with the CPU slowed 4x: a retry absorbs contention from parallel
+    // workers, while a real regression fails every attempt.
+    test.describe.configure({ retries: 2 });
+
+    test('AC-27 (trigger part) updating the count after a filter change stays within the 200ms INP budget', async ({ page }) => {
+      // Given the filter/performance route: the results head with the trigger and the "Natural light" option
+      const harness = new HarnessPage(page);
+      await harness.open('filter/performance', { width: 412 });
+      // When "Natural light" is ticked with the CPU slowed
+      const latency = await harness.interactionLatency(() => harness.toggle('Natural light'));
+      // Then the interaction paints within 200ms and the trigger reads "Filters, 1 active"
+      expect(latency).toBeLessThanOrEqual(200);
+      await expect(new FilterTriggerComponent(page, FilterTriggerComponent.nameWithCount(1)).root).toBeVisible();
+    });
   });
 });

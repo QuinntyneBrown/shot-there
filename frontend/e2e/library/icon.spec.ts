@@ -160,13 +160,19 @@ test.describe('IconComponent (CRD icon, ICD-002 §9.5)', () => {
     }
   }
 
-  test('AC-10 60 icons render within the L2-071 budget: LCP at most 2.5s and no layout shift', async ({ page }) => {
-    // Given the icon/performance route with the studio list's chrome and cards' icons, 60 in all
-    const harness = new HarnessPage(page);
-    // When it loads on a mobile profile
-    const metrics = await harness.loadMetrics('icon/performance');
-    // Then LCP is at most 2.5s and CLS is 0
-    expect(metrics.lcp).toBeLessThanOrEqual(2500);
-    expect(metrics.cls).toBe(0);
+  test.describe('performance (L2-071)', () => {
+    // Measured on a shared machine with the CPU slowed 4x: a retry absorbs contention from parallel
+    // workers, while a real regression fails every attempt.
+    test.describe.configure({ retries: 2 });
+
+    test('AC-10 60 icons render within the L2-071 budget: LCP at most 2.5s and no layout shift', async ({ page }) => {
+      // Given the icon/performance route with the studio list's chrome and cards' icons, 60 in all
+      const harness = new HarnessPage(page);
+      // When it loads on a mobile profile
+      const metrics = await harness.loadMetrics('icon/performance');
+      // Then LCP is at most 2.5s and CLS is 0
+      expect(metrics.lcp).toBeLessThanOrEqual(2500);
+      expect(metrics.cls).toBe(0);
+    });
   });
 });

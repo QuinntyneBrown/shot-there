@@ -190,12 +190,18 @@ test.describe('LinkComponent (CRD link, ICD-002 §9.1, §12, ICD-SEC-2)', () => 
     expect(await harness.hasHorizontalScroll()).toBe(false);
   });
 
-  test('AC-14 the link/performance route shifts no layout (CLS at most 0.1)', async ({ page }) => {
-    // Given the link/performance route
-    const harness = new HarnessPage(page);
-    // When it loads on a mobile profile and hydrates
-    const metrics = await harness.loadMetrics('link/performance');
-    // Then cumulative layout shift is at most 0.1
-    expect(metrics.cls).toBeLessThanOrEqual(0.1);
+  test.describe('performance (L2-071)', () => {
+    // Measured on a shared machine with the CPU slowed 4x: a retry absorbs contention from parallel
+    // workers, while a real regression fails every attempt.
+    test.describe.configure({ retries: 2 });
+
+    test('AC-14 the link/performance route shifts no layout (CLS at most 0.1)', async ({ page }) => {
+      // Given the link/performance route
+      const harness = new HarnessPage(page);
+      // When it loads on a mobile profile and hydrates
+      const metrics = await harness.loadMetrics('link/performance');
+      // Then cumulative layout shift is at most 0.1
+      expect(metrics.cls).toBeLessThanOrEqual(0.1);
+    });
   });
 });

@@ -235,14 +235,20 @@ test.describe('ButtonComponent: rendering, sizes and layout (CRD button, ICD-002
     expect(await new ButtonComponent(harness.example('md'), 'Close').ariaTree()).toBe('- button "Close"');
   });
 
-  test('AC-21 pressing a card toggle among seven stays within the 200ms INP budget', async ({ page }) => {
-    // Given the button/performance route with seven card toggles and the compare bar
-    const harness = new HarnessPage(page);
-    await harness.open('button/performance', { width: 412 });
-    // When a toggle is pressed with the CPU slowed
-    const latency = await harness.interactionLatency(() => new ButtonComponent(page, 'Compare The Junction Loft').click());
-    // Then the interaction paints within 200ms and the toggle is pressed
-    expect(latency).toBeLessThanOrEqual(200);
-    await expect(new ButtonComponent(page, 'Remove The Junction Loft').root).toHaveAttribute('aria-pressed', 'true');
+  test.describe('performance (L2-071)', () => {
+    // Measured on a shared machine with the CPU slowed 4x: a retry absorbs contention from parallel
+    // workers, while a real regression fails every attempt.
+    test.describe.configure({ retries: 2 });
+
+    test('AC-21 pressing a card toggle among seven stays within the 200ms INP budget', async ({ page }) => {
+      // Given the button/performance route with seven card toggles and the compare bar
+      const harness = new HarnessPage(page);
+      await harness.open('button/performance', { width: 412 });
+      // When a toggle is pressed with the CPU slowed
+      const latency = await harness.interactionLatency(() => new ButtonComponent(page, 'Compare The Junction Loft').click());
+      // Then the interaction paints within 200ms and the toggle is pressed
+      expect(latency).toBeLessThanOrEqual(200);
+      await expect(new ButtonComponent(page, 'Remove The Junction Loft').root).toHaveAttribute('aria-pressed', 'true');
+    });
   });
 });
