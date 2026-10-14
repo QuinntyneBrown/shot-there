@@ -18,6 +18,11 @@ import { VideoPosterFailedComponent } from './video-poster/video-poster-failed.c
 import { VideoPosterDefaultComponent } from './video-poster/video-poster-default.component';
 import { ResponsiveImageFailedComponent } from './responsive-image/responsive-image-failed.component';
 import { ResponsiveImageDefaultComponent } from './responsive-image/responsive-image-default.component';
+import { PageHeaderStatesComponent } from './page-header/page-header-states.component';
+import { SectionLinksDefaultComponent } from './section-links/section-links-default.component';
+import { BreadcrumbStatesComponent } from './breadcrumb/breadcrumb-states.component';
+import { SiteFooterDefaultComponent } from './site-footer/site-footer-default.component';
+import { SiteHeaderDefaultComponent } from './site-header/site-header-default.component';
 import { CheckboxStatesComponent } from './checkbox/checkbox-states.component';
 import { SelectStatesComponent } from './select/select-states.component';
 import { TextareaStatesComponent } from './textarea/textarea-states.component';
@@ -117,4 +122,9 @@ export const routes: Routes = [
   { path: 'textarea/states', component: TextareaStatesComponent },
   { path: 'select/states', component: SelectStatesComponent },
   { path: 'checkbox/states', component: CheckboxStatesComponent },
+  { path: 'site-header/default', component: SiteHeaderDefaultComponent },
+  { path: 'site-footer/default', component: SiteFooterDefaultComponent },
+  { path: 'breadcrumb/states', component: BreadcrumbStatesComponent },
+  { path: 'section-links/default', component: SectionLinksDefaultComponent },
+  { path: 'page-header/states', component: PageHeaderStatesComponent },
 ];
