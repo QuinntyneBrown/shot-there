@@ -520,4 +520,4 @@ animation; row hover is an instant fill
 - **D-13** *Usable space and ceiling height show metres only in the mocks,
   though L2-006 asks the studio page for metres and feet.* Metres only in the
   comparison (L2-031 does not ask for feet, and the mocks fit 160 px columns
-  this way); the view model formats it. Raised for the owner's content decision.
+  this way); the view model formats it. Adding feet later is a view-model change only.
