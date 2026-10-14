@@ -44,23 +44,19 @@
         </ul>
       }
       @case ('error') {
-        <st-empty-state
+        <st-alert
           role="alert"
-          tone="error"
+          tone="danger"
           i18n-tone
           title="We couldn't load the studios"
           i18n-title
-          text="The studio list didn't arrive. Check your connection and try again; your filters are kept."
-          i18n-text
-          icon="danger"
-          i18n-icon
-          [headingLevel]="3"
         >
-          <button st-button type="button" (click)="retry()" slot="actions" i18n-slot>
+          <ng-container i18n>The studio list didn't arrive. Check your connection and try again; your filters are kept.</ng-container>
+          <button st-button type="button" (click)="retry()" slot="action" i18n-slot>
             <st-icon name="refresh" size="sm" i18n-size />
             <ng-container i18n>Try again</ng-container>
           </button>
-        </st-empty-state>
+        </st-alert>
       }
       @case ('loaded') {
         @if (noStudiosYet()) {

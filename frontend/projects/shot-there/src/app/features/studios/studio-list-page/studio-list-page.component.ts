@@ -4,6 +4,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, Router } from '@angular/router';
 import { StudiosService, StudioSummary } from '@shot-there/api';
 import {
+  AlertComponent,
   ButtonComponent,
   EmptyStateComponent,
   IconComponent,
@@ -32,6 +33,7 @@ import { withoutFilters } from './without-filters';
     StudioCardComponent,
     StudioSortControlComponent,
     StudioFiltersComponent,
+    AlertComponent,
     ButtonComponent,
     EmptyStateComponent,
     IconComponent,
