@@ -1,0 +1,5 @@
+section { padding: var(--space-5); border-radius: var(--radius-lg); }
+.surface--0 { background: var(--color-bg-canvas); }
+.surface--1 { background: var(--color-bg-surface); }
+.surface--2 { background: var(--color-bg-surface-raised); }
+.surface--3 { background: var(--color-bg-surface-sunken); }

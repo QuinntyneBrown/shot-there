@@ -17,7 +17,7 @@ export class HarnessPage {
 
   /**
    * Opens `<component>/<state>` at a viewport width (CSS px) in a colour scheme. Images under
-   * /test-images/ load as a placeholder and the YouTube player is stubbed, so nothing reaches the network.
+   * /test-images/ load as a placeholder and external https sites are stubbed, so nothing reaches the network.
    */
   async open(path: string, options: { width?: number; theme?: HarnessTheme; hydrationDelayMs?: number } = {}): Promise<void> {
     const { width = 1280, theme = 'light', hydrationDelayMs = 0 } = options;
@@ -29,8 +29,10 @@ export class HarnessPage {
       });
     }
     await this.page.route('**/test-images/**', (route) => route.fulfill({ contentType: 'image/svg+xml', body: PLACEHOLDER_SVG }));
-    await this.page.route('https://www.youtube-nocookie.com/**', (route) =>
-      route.fulfill({ contentType: 'text/html', body: '<!doctype html><title>player</title>' }),
+    // Every external site (the YouTube player, booking sites, maps, permit sources) is a stub page,
+    // including in tabs the page opens.
+    await this.page.context().route('https://**', (route) =>
+      route.fulfill({ contentType: 'text/html', body: '<!doctype html><title>external</title>' }),
     );
     await this.page.setViewportSize({ width, height: 800 });
     await this.page.emulateMedia({ colorScheme: theme });

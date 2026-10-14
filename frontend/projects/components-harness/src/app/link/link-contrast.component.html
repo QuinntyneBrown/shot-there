@@ -1,0 +1,9 @@
+<main class="container stack">
+  @for (surface of surfaces; track surface) {
+    <section class="stack" [class]="'surface--' + $index" [attr.aria-label]="surface">
+      <p>Tell us at <a st-link href="mailto:corrections@shotthere.ca">corrections&#64;shotthere.ca</a> if anything is wrong.</p>
+      <p><a st-link standalone href="/studios">Change studios</a></p>
+      <p><a st-link external href="https://www.youtube.com/watch?v=Jx7Lq2pT9aE">Watch on YouTube</a></p>
+    </section>
+  }
+</main>

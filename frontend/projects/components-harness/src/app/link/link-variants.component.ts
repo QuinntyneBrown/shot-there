@@ -1,7 +1,11 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { LinkComponent } from '@shot-there/components';
 
-/** a[st-link] inline in a sentence, standalone, external, and external with an application hint. */
+/**
+ * a[st-link] as the mocks use it: inline in a sentence, standalone ("Change studios", a guide's
+ * "Read the full review" links), and external (video, directions, a wrapping permit source, and one
+ * with an application externalHint).
+ */
 @Component({
   selector: 'st-link-variants',
   imports: [LinkComponent],

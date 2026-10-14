@@ -1,4 +1,7 @@
 import { Routes } from '@angular/router';
+import { LinkPerformanceComponent } from './link/link-performance.component';
+import { LinkContrastComponent } from './link/link-contrast.component';
+import { LinkDestinationComponent } from './link/link-destination.component';
 import { FoundationsLinksComponent } from './foundations/foundations-links.component';
 import { ButtonPerformanceComponent } from './button/button-performance.component';
 import { ButtonContrastComponent } from './button/button-contrast.component';
@@ -58,4 +61,7 @@ export const routes: Routes = [
   { path: 'button/contrast', component: ButtonContrastComponent },
   { path: 'button/performance', component: ButtonPerformanceComponent },
   { path: 'foundations/links', component: FoundationsLinksComponent },
+  { path: 'link/destination', component: LinkDestinationComponent },
+  { path: 'link/contrast', component: LinkContrastComponent },
+  { path: 'link/performance', component: LinkPerformanceComponent },
 ];
