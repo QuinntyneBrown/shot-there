@@ -81,42 +81,6 @@
     gap: var(--space-12) var(--space-8);
   }
 }
-.empty {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: var(--space-3);
-  padding: var(--space-12) var(--space-6);
-}
-.empty__icon {
-  width: 4.5rem;
-  height: 4.5rem;
-  border-radius: var(--radius-full);
-  display: grid;
-  place-items: center;
-  background: var(--color-bg-subtle);
-  color: var(--color-fg-default);
-  margin-bottom: var(--space-2);
-}
-.empty__title {
-  font: var(--text-h3);
-}
-.empty__text {
-  color: var(--color-fg-muted);
-  max-width: 36ch;
-}
-.empty--error .empty__icon {
-  background: var(--color-danger-bg);
-  color: var(--color-danger-icon);
-}
-.empty__actions {
-  display: flex;
-  gap: var(--space-3);
-  margin-top: var(--space-2);
-  flex-wrap: wrap;
-  justify-content: center;
-}
 .location-card {
   display: flex;
   flex-direction: column;

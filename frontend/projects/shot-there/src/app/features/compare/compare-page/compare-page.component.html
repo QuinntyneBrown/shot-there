@@ -1,11 +1,23 @@
 @if (state().status === 'too-few') {
   <div class="page-header"><h1 i18n>Compare studios</h1></div>
-  <div class="empty">
-    <div class="empty__icon"><st-icon name="compare" size="xl" i18n-size /></div>
-    <h2 class="empty__title" i18n>Pick at least two studios to compare</h2>
-    <p class="empty__text" i18n>Use Compare on any studio card, then open the comparison from the bar.</p>
-    <div class="empty__actions"><a class="btn btn--primary" [routerLink]="studiosPath" i18n>Browse studios</a></div>
-  </div>
+  <st-empty-state
+    title="Pick at least two studios to compare"
+    i18n-title
+    text="Use Compare on any studio card, then open the comparison from the bar."
+    i18n-text
+    icon="compare"
+    i18n-icon
+  >
+    <a
+      st-button
+      variant="primary"
+      [routerLink]="studiosPath"
+      slot="actions"
+      i18n-slot
+      i18n
+      >Browse studios</a
+    >
+  </st-empty-state>
 }
 @if (view(); as v) {
   <div class="page-header">

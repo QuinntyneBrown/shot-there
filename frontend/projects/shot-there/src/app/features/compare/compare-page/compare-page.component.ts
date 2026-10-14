@@ -5,7 +5,12 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { Meta, Title } from '@angular/platform-browser';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { CompareService } from '@shot-there/api';
-import { FallbackImageDirective, IconComponent } from '@shot-there/components';
+import {
+  ButtonComponent,
+  EmptyStateComponent,
+  FallbackImageDirective,
+  IconComponent,
+} from '@shot-there/components';
 import { map, of, startWith, switchMap } from 'rxjs';
 
 import { AnnouncerService } from '../../../core/a11y/announcer.service';
@@ -18,7 +23,7 @@ import { toComparisonViewModel } from './comparison-view-model';
 
 @Component({
   selector: 'st-compare-page',
-  imports: [RouterLink, FallbackImageDirective, IconComponent],
+  imports: [RouterLink, ButtonComponent, EmptyStateComponent, FallbackImageDirective, IconComponent],
   templateUrl: './compare-page.component.html',
   styleUrl: './compare-page.component.css',
 })

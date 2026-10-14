@@ -9,6 +9,27 @@ const THREE = '?studios=the-junction-loft,leslieville-daylight-studio,ossington-
 test.describe('Comparison page', () => {
   for (const theme of ['light', 'dark'] as const) {
     for (const width of [320, 1280]) {
+      test(`shows an accessible too-few empty state in ${theme} mode at ${width}px`, async ({
+        page,
+      }) => {
+        // Given fewer than two studios, a window width and theme
+        await givenComparison(page, comparisonOf([]));
+        const compare = new ComparePage(page);
+        const shell = new ShellPage(page);
+        await shell.rememberTheme(theme);
+        await compare.useWidth(width);
+        // When the visitor opens the comparison
+        await compare.open('');
+        // Then the request for two studios is accessible without horizontal scrolling
+        await expect(compare.needTwo).toBeVisible();
+        expect(await shell.hasHorizontalScroll()).toBe(false);
+        expect(await shell.accessibilityViolations()).toEqual([]);
+      });
+    }
+  }
+
+  for (const theme of ['light', 'dark'] as const) {
+    for (const width of [320, 1280]) {
       test(`has no accessibility violations in ${theme} mode at ${width}px`, async ({
         page,
       }) => {

@@ -9,6 +9,39 @@ import { ShellPage } from './pages/shell.page';
 import { StudioListPage } from './pages/studio-list.page';
 
 test.describe('Studio list', () => {
+  for (const state of ['empty', 'error', 'no-results'] as const) {
+    for (const theme of ['light', 'dark'] as const) {
+      for (const width of [320, 1280]) {
+        test(`shows an accessible ${state} state in ${theme} mode at ${width}px`, async ({
+          page,
+        }) => {
+          // Given the target empty state, a window width and theme
+          if (state === 'error') {
+            await givenStudioListFails(page);
+          } else {
+            await givenStudios(page, []);
+          }
+          await page.setViewportSize({ width, height: 800 });
+          const shell = new ShellPage(page);
+          await shell.rememberTheme(theme);
+          const list = new StudioListPage(page);
+          // When the visitor opens the studio list
+          await list.open(state === 'no-results' ? '?cyc=yes&parking=none&sort=score' : '');
+          // Then the empty state is accessible without horizontal scrolling
+          if (state === 'error') {
+            await expect(list.errorAlert).toBeVisible();
+          } else if (state === 'no-results') {
+            await expect(list.noMatches).toBeVisible();
+          } else {
+            await expect(list.emptyState).toBeVisible();
+          }
+          expect(await shell.hasHorizontalScroll()).toBe(false);
+          expect(await shell.accessibilityViolations()).toEqual([]);
+        });
+      }
+    }
+  }
+
   test('shows every published studio as a card, in the order the API returns', async ({ page }) => {
     // Given seven published studios
     await givenStudios(page, PUBLISHED_STUDIOS);

@@ -48,32 +48,56 @@
         </ul>
       }
       @case ('error') {
-        <div class="empty empty--error" role="alert">
-          <div class="empty__icon"><st-icon name="danger" size="xl" i18n-size /></div>
-          <h3 class="empty__title" i18n>We couldn't load the studios</h3>
-          <p class="empty__text" i18n>The studio list didn't arrive. Check your connection and try again; your filters are kept.</p>
-          <div class="empty__actions">
-            <button class="btn" type="button" (click)="retry()">
-              <st-icon name="refresh" size="sm" i18n-size />
-              <ng-container i18n>Try again</ng-container>
-            </button>
-          </div>
-        </div>
+        <st-empty-state
+          role="alert"
+          tone="error"
+          i18n-tone
+          title="We couldn't load the studios"
+          i18n-title
+          text="The studio list didn't arrive. Check your connection and try again; your filters are kept."
+          i18n-text
+          icon="danger"
+          i18n-icon
+          [headingLevel]="3"
+        >
+          <button st-button type="button" (click)="retry()" slot="actions" i18n-slot>
+            <st-icon name="refresh" size="sm" i18n-size />
+            <ng-container i18n>Try again</ng-container>
+          </button>
+        </st-empty-state>
       }
       @case ('loaded') {
         @if (noStudiosYet()) {
-          <div class="empty">
-            <div class="empty__icon"><st-icon name="camera" size="xl" i18n-size /></div>
-            <h3 class="empty__title" i18n>No studio reviews yet</h3>
-            <p class="empty__text" i18n>The first reviews are being shot now. Each one goes up only after a full test shoot.</p>
-          </div>
+          <st-empty-state
+            title="No studio reviews yet"
+            i18n-title
+            text="The first reviews are being shot now. Each one goes up only after a full test shoot."
+            i18n-text
+            icon="camera"
+            i18n-icon
+            [headingLevel]="3"
+          />
         } @else if (studios().length === 0) {
-          <div class="empty">
-            <div class="empty__icon"><st-icon name="search" size="xl" i18n-size /></div>
-            <h3 class="empty__title" i18n>No studios match these filters</h3>
-            <p class="empty__text" i18n>Try removing a filter, or clear them all to see every studio.</p>
-            <div class="empty__actions"><button class="btn" type="button" (click)="clearFilters()" i18n>Clear filters</button></div>
-          </div>
+          <st-empty-state
+            title="No studios match these filters"
+            i18n-title
+            text="Try removing a filter, or clear them all to see every studio."
+            i18n-text
+            icon="search"
+            i18n-icon
+            [headingLevel]="3"
+          >
+            <button
+              st-button
+              type="button"
+              (click)="clearFilters()"
+              slot="actions"
+              i18n-slot
+              i18n
+            >
+              Clear filters
+            </button>
+          </st-empty-state>
         } @else {
           <ul class="location-grid" aria-label="Studios" i18n-aria-label>
             @for (studio of studios(); track studio.slug; let i = $index) {
