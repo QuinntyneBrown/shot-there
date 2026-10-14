@@ -1,7 +1,5 @@
 ## Project Overview
 
-This repository is `shot-there`. Full detail is in `shotthere-prd.md`.
-
 ## Product brief
 
 ShotThere is a review and comparison site, with a companion YouTube channel,
@@ -12,10 +10,6 @@ there.**
 
 This repository is the full-stack web solution: a Next.js backend and an
 Angular frontend.
-
-## Boundaries
-
-- `AGENTS.md` is generated. Regenerate it with `primer init`; edits to it are replaced.
 
 ## Frontend (Angular)
 
@@ -67,6 +61,19 @@ Angular frontend.
 - Mobile first: every screen must work at phone width without horizontal
   scrolling and respect device safe areas.
 - Meet WCAG 2.2 AA.
+
+## Components library is mandatory (CRITICAL)
+
+- The `shot-there` application MUST be built from `@shot-there/components`.
+  Never hand-write markup, CSS, icons, overlays or toasts the library already
+  provides. Use the library component, `DialogService` and `ToastService`.
+- `docs/screen-composition.md` is binding. Before implementing any page,
+  dialog, notification or shell part, read its entry and use exactly the
+  components it lists. Build locally only the UI it marks as local.
+- If the library lacks something the entry needs, STOP. Update the ICD
+  (`docs/icd/components-library-application.md`) and the library first. Do not
+  work around it in the app.
+- Keep `docs/screen-composition.md` aligned with the mocks and the ICD.
 
 ## Scope, Simplicity, and Zero-Waste Engineering (CRITICAL)
 
@@ -139,5 +146,6 @@ for other agents. Keep the two copies identical.
   notification in every state
 - `extracting-design-systems` — design system from the HTML mocks
 - `writing-component-requirements-documents` — CRDs for UI components
+- `writing-screen-composition` — screen-to-component map and the library mandate
 - `implementing-incrementally` — thin, verifiable slices (mandatory, see above)
 - `creating-videos` — narrated walkthrough videos
