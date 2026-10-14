@@ -1,6 +1,7 @@
 import { DOCUMENT } from '@angular/common';
 import { Component, computed, effect, inject, Renderer2, signal } from '@angular/core';
-import { Router, RouterOutlet } from '@angular/router';
+import { NavigationStart, Router, RouterOutlet } from '@angular/router';
+import { filter, takeUntil } from 'rxjs';
 
 import {
   ButtonComponent,
@@ -121,8 +122,13 @@ export class ShellComponent {
     this.menuOpen.set(true);
     const ref = this.dialogService.open(SiteMenuDialogComponent, {
       kind: 'sheet',
-      ariaLabelledBy: 'site-menu-title',
     });
     ref.closed.subscribe(() => this.menuOpen.set(false));
+    this.router.events
+      .pipe(
+        filter((event) => event instanceof NavigationStart),
+        takeUntil(ref.closed),
+      )
+      .subscribe(() => ref.close());
   }
 }

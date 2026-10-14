@@ -129,6 +129,39 @@ test.describe('Site header', () => {
     await expect(shell.menuButton).toHaveAttribute('aria-expanded', 'false');
   });
 
+  test('closes the menu when a navigation link is followed', async ({ page }) => {
+    // Given the menu is open at phone width
+    const shell = new ShellPage(page);
+    await shell.usePhoneWidth();
+    await shell.open();
+    await shell.openMenu();
+    // When the visitor follows a menu link
+    await shell.menuLink('Spots').click();
+    // Then navigation completes and the menu closes
+    await expect(page).toHaveURL('/spots');
+    await expect(shell.menuDialog).toBeHidden();
+    await expect(shell.menuButton).toHaveAttribute('aria-expanded', 'false');
+  });
+
+  for (const theme of ['light', 'dark'] as const) {
+    for (const width of [320, 1280]) {
+      test(`has no accessibility violations with the menu open at ${width}px in ${theme} theme`, async ({
+        page,
+      }) => {
+        // Given the menu open in a theme and viewport
+        const shell = new ShellPage(page);
+        await shell.rememberTheme(theme);
+        await shell.usePhoneWidth();
+        await shell.open();
+        await shell.openMenu();
+        if (width === 1280) await shell.useDesktopWidth();
+        // Then axe finds no WCAG A/AA violations
+        await expect(shell.menuDialog).toBeVisible();
+        expect(await shell.accessibilityViolations()).toEqual([]);
+      });
+    }
+  }
+
   for (const theme of ['light', 'dark'] as const) {
     for (const width of [320, 768, 1280]) {
       test(`lays out without horizontal scrolling or accessibility violations at ${width}px in ${theme} theme`, async ({

@@ -106,6 +106,10 @@ export class ShellPage {
     );
   }
 
+  menuLink(name: string): Locator {
+    return this.menuDialog.getByRole('link', { name });
+  }
+
   footerLink(name: string): Locator {
     return this.footer.getByRole('navigation', { name: 'Footer' }).getByRole('link', { name });
   }
