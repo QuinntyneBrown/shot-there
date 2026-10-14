@@ -1,10 +1,13 @@
 import { Component, computed, inject, input } from '@angular/core';
 
+import { ButtonComponent } from '@shot-there/components';
+
 import { CompareSelectionService } from '../../core/compare/compare-selection.service';
 
 /** "Compare" adds the studio to the selection; "Remove" takes it out. */
 @Component({
   selector: 'st-compare-toggle',
+  imports: [ButtonComponent],
   templateUrl: './compare-toggle.component.html',
   styleUrl: './compare-toggle.component.css',
 })

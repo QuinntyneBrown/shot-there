@@ -1,14 +1,3 @@
 :host {
   display: inline-block;
 }
-.btn--sm {
-  min-height: var(--target-comfortable);
-  padding-inline: var(--space-3);
-  font-size: var(--font-size-sm);
-}
-.compare-toggle[aria-pressed='true'] {
-  --btn-bg: var(--color-accent-subtle);
-  --btn-fg: var(--color-fg-accent);
-  --btn-border: var(--color-accent);
-  --btn-bg-hover: var(--color-accent-subtle-hover);
-}
