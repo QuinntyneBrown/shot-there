@@ -1,0 +1,17 @@
+<footer class="site-footer">
+  <div class="site-footer__brand">
+    <strong i18n>ShotThere</strong>
+    <span i18n>Toronto photo studios and outdoor spots, reviewed first-hand. Nothing is listed unless it has been shot there.</span>
+  </div>
+  <st-email-signup class="site-footer__signup" variant="footer" />
+  <nav class="site-footer__links" aria-label="Footer" i18n-aria-label>
+    <ul>
+      <li><a [routerLink]="studiosPath" i18n>Studios</a></li>
+      <li><a [routerLink]="spotsPath" i18n>Spots</a></li>
+      <li><a [routerLink]="guidesPath" i18n>Guides</a></li>
+      <li><a [routerLink]="editorialPolicyPath" i18n>Editorial policy</a></li>
+      <li><a [href]="youTubeChannelUrl" target="_blank" rel="noopener" i18n>YouTube channel<span class="visually-hidden"> (opens in a new tab)</span></a></li>
+    </ul>
+  </nav>
+  <p class="site-footer__copy" i18n>© {{ year }} ShotThere · No paid placement: order comes only from the sort you choose.</p>
+</footer>

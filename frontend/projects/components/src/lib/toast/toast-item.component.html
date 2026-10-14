@@ -1,0 +1,20 @@
+<st-icon [name]="options().tone" />
+<div class="toast__body">
+  <div class="toast__title">{{ options().title }}</div>
+  @if (options().text) {
+    <div class="toast__text">{{ options().text }}</div>
+  }
+  @if (options().actionLabel; as actionLabel) {
+    @if (options().actionLink; as link) {
+      <a class="toast__action" [routerLink]="link" (click)="dismissed.emit()">{{ actionLabel }}</a>
+    } @else {
+      <button class="toast__action" type="button" (click)="act()">{{ actionLabel }}</button>
+    }
+  }
+</div>
+<button class="close" type="button" [attr.aria-label]="dismissLabel" (click)="dismissed.emit()">
+  <st-icon [name]="'close'" [size]="'sm'" />
+</button>
+@if (!persistent()) {
+  <span class="toast__progress" aria-hidden="true"></span>
+}

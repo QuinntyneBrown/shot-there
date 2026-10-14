@@ -1,0 +1,14 @@
+<div class="upload-drop" (dragover)="dragged($event)" (drop)="dropped($event)">
+  <input class="file-input visually-hidden" type="file" [id]="inputId" [attr.accept]="accept() || null" [multiple]="multiple()" [disabled]="disabled()" (change)="picked($event)">
+  <label class="btn" [class.btn--disabled]="disabled()" [attr.for]="inputId">{{ buttonLabel() }}</label>
+  @if (hint()) {
+    <span class="upload-drop__hint">{{ hint() }}</span>
+  }
+  @if (errors().length) {
+    <div role="alert" class="upload-drop__errors">
+      @for (error of errors(); track $index) {
+        <p class="field__error">{{ error }}</p>
+      }
+    </div>
+  }
+</div>

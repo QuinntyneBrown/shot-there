@@ -1,0 +1,7 @@
+<button class="btn btn--sm compare-toggle" type="button" [attr.aria-pressed]="selected()" (click)="toggle()">
+  @if (selected()) {
+    <ng-container i18n>Remove<span class="visually-hidden"> {{ name() }}</span></ng-container>
+  } @else {
+    <ng-container i18n>Compare<span class="visually-hidden"> {{ name() }}</span></ng-container>
+  }
+</button>

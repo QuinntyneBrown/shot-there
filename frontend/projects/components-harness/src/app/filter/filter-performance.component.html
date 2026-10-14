@@ -1,0 +1,12 @@
+<main class="container stack">
+  <div class="cluster cluster--between">
+    <p>{{ countLine() }}</p>
+    <button st-filter-trigger type="button" aria-expanded="false" [count]="chosen().length">Filters</button>
+  </div>
+  <fieldset class="stack">
+    <legend>Space and light</legend>
+    @for (option of options; track option) {
+      <label><input type="checkbox" [checked]="chosen().includes(option)" (change)="toggle(option)"> {{ option }}</label>
+    }
+  </fieldset>
+</main>

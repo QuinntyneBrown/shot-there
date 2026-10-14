@@ -1,0 +1,171 @@
+import { Routes } from '@angular/router';
+import { DialogOpenerComponent } from './dialog/dialog-opener.component';
+import { SearchFieldDefaultComponent } from './search-field/search-field-default.component';
+import { MapPopupStatesComponent } from './map-popup/map-popup-states.component';
+import { ImageRowStatesComponent } from './image-row/image-row-states.component';
+import { FileUploadStatesComponent } from './file-upload/file-upload-states.component';
+import { TableStatesComponent } from './table/table-states.component';
+import { ShotGridDefaultComponent } from './shot-grid/shot-grid-default.component';
+import { LocationCardStatesComponent } from './location-card/location-card-states.component';
+import { ActiveFiltersDefaultComponent } from './active-filters/active-filters-default.component';
+import { EditorSectionStatesComponent } from './editor-section/editor-section-states.component';
+import { CompareBarDefaultComponent } from './compare-bar/compare-bar-default.component';
+import { SummaryPanelDefaultComponent } from './summary-panel/summary-panel-default.component';
+import { FormActionsStatesComponent } from './form-actions/form-actions-states.component';
+import { ErrorSummaryStatesComponent } from './error-summary/error-summary-states.component';
+import { VideoPosterNoVideoComponent } from './video-poster/video-poster-no-video.component';
+import { VideoPosterColumnComponent } from './video-poster/video-poster-column.component';
+import { ResponsiveImagePerformanceComponent } from './responsive-image/responsive-image-performance.component';
+import { ButtonGroupPerformanceComponent } from './button-group/button-group-performance.component';
+import { FilterPerformanceComponent } from './filter/filter-performance.component';
+import { IconButtonPerformanceComponent } from './icon-button/icon-button-performance.component';
+import { LinkPerformanceComponent } from './link/link-performance.component';
+import { LinkContrastComponent } from './link/link-contrast.component';
+import { LinkDestinationComponent } from './link/link-destination.component';
+import { FoundationsLinksComponent } from './foundations/foundations-links.component';
+import { ButtonPerformanceComponent } from './button/button-performance.component';
+import { ButtonContrastComponent } from './button/button-contrast.component';
+import { ButtonDisabledComponent } from './button/button-disabled.component';
+import { ButtonIconOnlyComponent } from './button/button-icon-only.component';
+import { IconPerformanceComponent } from './icon/icon-performance.component';
+import { IconTonesComponent } from './icon/icon-tones.component';
+import { IconInControlsComponent } from './icon/icon-in-controls.component';
+import { VideoPosterFailedComponent } from './video-poster/video-poster-failed.component';
+import { VideoPosterDefaultComponent } from './video-poster/video-poster-default.component';
+import { ResponsiveImageFailedComponent } from './responsive-image/responsive-image-failed.component';
+import { ResponsiveImageDefaultComponent } from './responsive-image/responsive-image-default.component';
+import { ToastShellComponent } from './toast/toast-shell.component';
+import { AlertStatesComponent } from './alert/alert-states.component';
+import { PageHeaderStatesComponent } from './page-header/page-header-states.component';
+import { SectionLinksDefaultComponent } from './section-links/section-links-default.component';
+import { BreadcrumbStatesComponent } from './breadcrumb/breadcrumb-states.component';
+import { SiteFooterDefaultComponent } from './site-footer/site-footer-default.component';
+import { SiteHeaderDefaultComponent } from './site-header/site-header-default.component';
+import { CheckboxStatesComponent } from './checkbox/checkbox-states.component';
+import { SelectStatesComponent } from './select/select-states.component';
+import { TextareaStatesComponent } from './textarea/textarea-states.component';
+import { TextFieldStatesComponent } from './text-field/text-field-states.component';
+import { ResultCountDefaultComponent } from './result-count/result-count-default.component';
+import { StatTileLoadingComponent } from './stat-tile/stat-tile-loading.component';
+import { StatTileDashboardComponent } from './stat-tile/stat-tile-dashboard.component';
+import { DisclosureDefaultComponent } from './disclosure/disclosure-default.component';
+import { ScoreDefaultComponent } from './score/score-default.component';
+import { PriceBlockStatesComponent } from './price-block/price-block-states.component';
+import { DescriptionListPricingComponent } from './description-list/description-list-pricing.component';
+import { SkipLinkDefaultComponent } from './skip-link/skip-link-default.component';
+import { ErrorPageServerErrorComponent } from './error-page/error-page-server-error.component';
+import { ErrorPageNotFoundComponent } from './error-page/error-page-not-found.component';
+import { EmptyStateStatesComponent } from './empty-state/empty-state-states.component';
+import { InlineMessageStatesComponent } from './inline-message/inline-message-states.component';
+import { TagListStatesComponent } from './tag-list/tag-list-states.component';
+import { StatusVariantsComponent } from './status/status-variants.component';
+import { BadgeTonesComponent } from './badge/badge-tones.component';
+import { ProgressStatesComponent } from './progress/progress-states.component';
+import { SkeletonShapesComponent } from './skeleton/skeleton-shapes.component';
+import { SpinnerDefaultComponent } from './spinner/spinner-default.component';
+import { SegmentedDefaultComponent } from './segmented/segmented-default.component';
+import { FilterTriggerStatesComponent } from './filter-trigger/filter-trigger-states.component';
+import { LinkVariantsComponent } from './link/link-variants.component';
+import { IconButtonPressedComponent } from './icon-button/icon-button-pressed.component';
+import { IconButtonDefaultComponent } from './icon-button/icon-button-default.component';
+import { ButtonPressedComponent } from './button/button-pressed.component';
+import { ButtonSoftDisabledComponent } from './button/button-soft-disabled.component';
+import { ButtonBusyComponent } from './button/button-busy.component';
+import { ButtonLinkComponent } from './button/button-link.component';
+import { ButtonBlockComponent } from './button/button-block.component';
+import { ButtonSizesComponent } from './button/button-sizes.component';
+import { ButtonVariantsComponent } from './button/button-variants.component';
+import { FallbackImageBrokenComponent } from './fallback-image/fallback-image-broken.component';
+import { HarnessIndexComponent } from './harness-index/harness-index.component';
+import { IconSheetComponent } from './icon/icon-sheet.component';
+import { IconSizesComponent } from './icon/icon-sizes.component';
+
+/** One route per component state, named <component>/<state>. */
+export const routes: Routes = [
+  { path: '', component: HarnessIndexComponent },
+  { path: 'fallback-image/broken', component: FallbackImageBrokenComponent },
+  { path: 'icon/sheet', component: IconSheetComponent },
+  { path: 'icon/sizes', component: IconSizesComponent },
+  { path: 'button/variants', component: ButtonVariantsComponent },
+  { path: 'button/sizes', component: ButtonSizesComponent },
+  { path: 'button/block', component: ButtonBlockComponent },
+  { path: 'button/link', component: ButtonLinkComponent },
+  { path: 'button/busy', component: ButtonBusyComponent },
+  { path: 'button/soft-disabled', component: ButtonSoftDisabledComponent },
+  { path: 'button/pressed', component: ButtonPressedComponent },
+  { path: 'icon-button/default', component: IconButtonDefaultComponent },
+  { path: 'icon-button/pressed', component: IconButtonPressedComponent },
+  { path: 'link/variants', component: LinkVariantsComponent },
+  { path: 'filter-trigger/states', component: FilterTriggerStatesComponent },
+  { path: 'segmented/default', component: SegmentedDefaultComponent },
+  { path: 'responsive-image/default', component: ResponsiveImageDefaultComponent },
+  { path: 'responsive-image/failed', component: ResponsiveImageFailedComponent },
+  { path: 'video-poster/default', component: VideoPosterDefaultComponent },
+  { path: 'video-poster/failed', component: VideoPosterFailedComponent },
+  { path: 'icon/in-controls', component: IconInControlsComponent },
+  { path: 'icon/tones', component: IconTonesComponent },
+  { path: 'icon/performance', component: IconPerformanceComponent },
+  { path: 'button/icon-only', component: ButtonIconOnlyComponent },
+  { path: 'button/disabled', component: ButtonDisabledComponent },
+  { path: 'button/contrast', component: ButtonContrastComponent },
+  { path: 'button/performance', component: ButtonPerformanceComponent },
+  { path: 'foundations/links', component: FoundationsLinksComponent },
+  { path: 'link/destination', component: LinkDestinationComponent },
+  { path: 'link/contrast', component: LinkContrastComponent },
+  { path: 'link/performance', component: LinkPerformanceComponent },
+  { path: 'icon-button/performance', component: IconButtonPerformanceComponent },
+  { path: 'filter/performance', component: FilterPerformanceComponent },
+  { path: 'button-group/performance', component: ButtonGroupPerformanceComponent },
+  { path: 'responsive-image/performance', component: ResponsiveImagePerformanceComponent },
+  {
+    path: 'responsive-image/performance-failed',
+    component: ResponsiveImagePerformanceComponent,
+    data: { failed: 2 },
+  },
+  { path: 'spinner/default', component: SpinnerDefaultComponent },
+  { path: 'skeleton/shapes', component: SkeletonShapesComponent },
+  { path: 'progress/states', component: ProgressStatesComponent },
+  { path: 'badge/tones', component: BadgeTonesComponent },
+  { path: 'status/variants', component: StatusVariantsComponent },
+  { path: 'tag-list/states', component: TagListStatesComponent },
+  { path: 'inline-message/states', component: InlineMessageStatesComponent },
+  { path: 'empty-state/states', component: EmptyStateStatesComponent },
+  { path: 'error-page/not-found', component: ErrorPageNotFoundComponent },
+  { path: 'error-page/server-error', component: ErrorPageServerErrorComponent },
+  { path: 'skip-link/default', component: SkipLinkDefaultComponent },
+  { path: 'description-list/pricing', component: DescriptionListPricingComponent },
+  { path: 'price-block/states', component: PriceBlockStatesComponent },
+  { path: 'score/default', component: ScoreDefaultComponent },
+  { path: 'disclosure/default', component: DisclosureDefaultComponent },
+  { path: 'stat-tile/dashboard', component: StatTileDashboardComponent },
+  { path: 'stat-tile/loading', component: StatTileLoadingComponent },
+  { path: 'result-count/default', component: ResultCountDefaultComponent },
+  { path: 'text-field/states', component: TextFieldStatesComponent },
+  { path: 'textarea/states', component: TextareaStatesComponent },
+  { path: 'select/states', component: SelectStatesComponent },
+  { path: 'checkbox/states', component: CheckboxStatesComponent },
+  { path: 'site-header/default', component: SiteHeaderDefaultComponent },
+  { path: 'site-footer/default', component: SiteFooterDefaultComponent },
+  { path: 'breadcrumb/states', component: BreadcrumbStatesComponent },
+  { path: 'section-links/default', component: SectionLinksDefaultComponent },
+  { path: 'page-header/states', component: PageHeaderStatesComponent },
+  { path: 'alert/states', component: AlertStatesComponent },
+  { path: 'toast/shell', component: ToastShellComponent },
+  { path: 'error-summary/states', component: ErrorSummaryStatesComponent },
+  { path: 'form-actions/states', component: FormActionsStatesComponent },
+  { path: 'summary-panel/default', component: SummaryPanelDefaultComponent },
+  { path: 'compare-bar/default', component: CompareBarDefaultComponent },
+  { path: 'editor-section/states', component: EditorSectionStatesComponent },
+  { path: 'active-filters/default', component: ActiveFiltersDefaultComponent },
+  { path: 'location-card/states', component: LocationCardStatesComponent },
+  { path: 'shot-grid/default', component: ShotGridDefaultComponent },
+  { path: 'table/states', component: TableStatesComponent },
+  { path: 'file-upload/states', component: FileUploadStatesComponent },
+  { path: 'image-row/states', component: ImageRowStatesComponent },
+  { path: 'map-popup/states', component: MapPopupStatesComponent },
+  { path: 'search-field/default', component: SearchFieldDefaultComponent },
+  { path: 'dialog/opener', component: DialogOpenerComponent },
+  { path: 'video-poster/column', component: VideoPosterColumnComponent },
+  { path: 'video-poster/no-video', component: VideoPosterNoVideoComponent },
+  { path: 'video-poster/performance', component: VideoPosterColumnComponent },
+];

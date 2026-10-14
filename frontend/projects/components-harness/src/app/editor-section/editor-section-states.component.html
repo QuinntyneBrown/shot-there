@@ -1,0 +1,10 @@
+<main class="container stack">
+  <st-editor-section title="Pricing" [(open)]="open">
+    <st-text-field label="Hourly rate" inputId="rate" />
+  </st-editor-section>
+  <p>Pricing open: <output>{{ open() }}</output></p>
+  <st-editor-section title="Logistics" [open]="false" errorText="2 errors">
+    <st-text-field label="Parking notes" inputId="parking-notes" />
+  </st-editor-section>
+  <st-editor-section title="Gear" [loading]="true" />
+</main>

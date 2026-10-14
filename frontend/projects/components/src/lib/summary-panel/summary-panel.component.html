@@ -1,0 +1,9 @@
+<dl class="summary-panel__row">
+  @for (fact of facts(); track $index) {
+    <div>
+      <dt>{{ fact.term }}</dt>
+      <dd>{{ fact.detail }}@if (fact.srSuffix) {<span class="visually-hidden">{{ fact.srSuffix }}</span>}</dd>
+    </div>
+  }
+</dl>
+<ng-content />

@@ -1,0 +1,13 @@
+section {
+  padding: var(--space-5);
+  border-radius: var(--radius-lg);
+}
+.ground--page {
+  background: var(--color-bg-canvas);
+}
+.ground--dialog {
+  background: var(--color-bg-surface-raised);
+}
+.ground--card {
+  background: var(--color-bg-surface);
+}

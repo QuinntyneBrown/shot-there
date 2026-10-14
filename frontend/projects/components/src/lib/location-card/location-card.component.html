@@ -1,0 +1,34 @@
+<div class="location-card__media">
+  @if (image(); as photo) {
+    <st-responsive-image [image]="photo" [sizes]="imageSizes()" [priority]="priority()" [decorative]="true" />
+  }
+</div>
+@if (rank() !== null) {
+  <span class="guide-entry__rank" aria-hidden="true">{{ rank() }}</span>
+}
+@switch (headingLevel()) {
+  @case (2) { <h2 class="location-card__name"><a [routerLink]="link()">{{ name() }}</a></h2> }
+  @case (4) { <h4 class="location-card__name"><a [routerLink]="link()">{{ name() }}</a></h4> }
+  @default { <h3 class="location-card__name"><a [routerLink]="link()">{{ name() }}</a></h3> }
+}
+@if (meta()) {
+  <p class="location-card__meta">{{ meta() }}</p>
+}
+@if (badge()) {
+  <st-badge [tone]="'warning'">{{ badge() }}</st-badge>
+}
+@if (facts().length) {
+  <dl class="location-card__facts">
+    @for (fact of facts(); track $index) {
+      <div>
+        <dt>{{ fact.term }}</dt>
+        <dd>{{ fact.detail }}@if (fact.srSuffix) {<span class="visually-hidden">{{ fact.srSuffix }}</span>}@if (fact.badge) {&ngsp;<st-badge [tone]="'warning'">{{ fact.badge }}</st-badge>}</dd>
+      </div>
+    }
+  </dl>
+}
+<ng-content />
+@if (secondaryMeta()) {
+  <p class="location-card__meta">{{ secondaryMeta() }}</p>
+}
+<div class="location-card__actions"><ng-content select="[slot=actions]" /></div>

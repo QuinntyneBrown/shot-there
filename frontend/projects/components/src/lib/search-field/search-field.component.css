@@ -1,0 +1,15 @@
+@import "../form/control.css";
+/* DS components/combobox.html. */
+.search-field { position: relative; }
+.search-field .input { padding-left: calc(var(--space-4) + var(--icon-size-md) + var(--space-2)); border-radius: var(--radius-full); min-height: var(--control-height-lg); }
+.search-field > st-icon { position: absolute; left: var(--space-4); top: calc(var(--control-height-lg) / 2); translate: 0 -50%; color: var(--color-fg-subtle); pointer-events: none; }
+.search-field__busy { display: flex; align-items: center; gap: var(--space-2); margin-top: var(--space-2); font: var(--text-caption); color: var(--color-fg-muted); }
+.suggestions { list-style: none; margin: var(--space-2) 0 0; padding: var(--space-2); max-height: calc(8 * var(--target-comfortable) + 2 * var(--space-2)); overflow-y: auto; background: var(--color-bg-surface-raised); border: var(--border-width-hairline) solid var(--color-border-default); border-radius: var(--radius-lg); box-shadow: var(--shadow-3); }
+.suggestions[hidden] { display: none; }
+.suggestion { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-3); min-height: var(--target-comfortable); padding: var(--space-2) var(--space-3); border-radius: var(--radius-md); cursor: pointer; color: var(--color-fg-default); }
+.suggestion > span:first-child { overflow-wrap: anywhere; min-width: 0; }
+.suggestion[aria-selected="true"], .suggestion:hover { background: var(--color-bg-subtle); }
+.suggestion[aria-selected="true"] { box-shadow: inset var(--border-width-thick) 0 0 var(--color-accent); }
+.suggestion__hint { font: var(--text-caption); color: var(--color-fg-subtle); }
+.suggestions__empty { padding: var(--space-3); color: var(--color-fg-muted); font: var(--text-body-sm); }
+@media (forced-colors: active) { .suggestion[aria-selected="true"] { forced-color-adjust: none; background: Highlight; color: HighlightText; } }

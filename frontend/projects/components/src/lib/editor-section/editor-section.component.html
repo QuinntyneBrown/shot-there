@@ -1,0 +1,17 @@
+@if (loading()) {
+  <div class="editor-section editor-section--skeleton" aria-hidden="true"><st-skeleton [shape]="'title'" /></div>
+} @else {
+  <details class="editor-section" [open]="open()" [attr.data-invalid]="errorText() ? '' : null" (toggle)="toggled($event)">
+    <summary>
+      @switch (headingLevel()) {
+        @case (3) { <h3>{{ title() }}</h3> }
+        @case (4) { <h4>{{ title() }}</h4> }
+        @default { <h2>{{ title() }}</h2> }
+      }
+      @if (errorText()) {
+        <span class="editor-section__errors">{{ errorText() }}</span>
+      }
+    </summary>
+    <div class="editor-section__body"><ng-content /></div>
+  </details>
+}

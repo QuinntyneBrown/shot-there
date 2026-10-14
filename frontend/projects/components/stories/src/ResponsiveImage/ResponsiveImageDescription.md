@@ -1,0 +1,3 @@
+A content photo as a `<picture>`: `st-responsive-image` renders one `<source>` per format (AVIF, then WebP, then JPEG) and an `<img>` that reserves its box from the image's own `width` and `height` and lazy-loads unless `priority`. The host fills the slot its owner draws (a 3:2 card, a 4:5 shot, the review hero); the owner sizes, clips and rounds it.
+
+When the image fails, it is replaced in the same box by a `.media-fallback` (the `image-failed` icon and the alt text; icon only when `decorative`) until a new `image` arrives. `img[stFallbackImage]` (`FallbackImageDirective`) gives the same `.media-fallback` to a plain `<img>` with a single URL.

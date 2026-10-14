@@ -1,0 +1,9 @@
+<main class="container stack">
+  <h1>The Junction Loft</h1>
+  <section aria-label="hero" class="hero"><st-responsive-image [image]="hero" sizes="(min-width: 80rem) 1280px, 100vw" priority /></section>
+  <ol class="cluster">
+    @for (shot of gallery; track $index) {
+      <li><section class="shot" [attr.aria-label]="'photo ' + ($index + 1)"><st-responsive-image [image]="shot" sizes="(min-width: 62rem) 25vw, (min-width: 48rem) 33vw, 50vw" /></section></li>
+    }
+  </ol>
+</main>

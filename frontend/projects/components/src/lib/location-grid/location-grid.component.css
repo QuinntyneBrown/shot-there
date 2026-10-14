@@ -1,0 +1,4 @@
+/* DS location grid (L2-021.4); the host is the .location-grid list. */
+:host { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-10) var(--space-6); }
+@media (min-width: 36rem) { :host { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 62rem) { :host { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-12) var(--space-8); } }

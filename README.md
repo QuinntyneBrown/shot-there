@@ -109,9 +109,10 @@ npm test           # acceptance tests against the API
 npm run typecheck
 
 cd ../frontend
-npm run e2e        # Playwright acceptance suite (Chromium only)
+npm run e2e        # Playwright acceptance suite (Chromium only, API faked, no backend needed)
 npm run lint
-npm run typecheck
+npm run build      # the shot-there app, server-rendered
+npm run build:libs # the api and components libraries
 ```
 
 ## Repository layout
@@ -120,14 +121,12 @@ npm run typecheck
 shot-there/
 ├── backend/        HTTP API: Next.js, Prisma and PostgreSQL
 ├── frontend/       Angular workspace (standalone, signals, zoneless, SSR)
-│   ├── projects/
-│   │   ├── shot-there/     application project
-│   │   │   ├── src/app/features/   one folder per product area, each with routes.ts
-│   │   │   ├── src/app/core/       auth, SEO and app-wide services
-│   │   │   └── src/server/         SSR server: sitemap, redirects, cache headers
-│   │   ├── api/            library project: backend API services and DTOs
-│   │   └── components/     library project: design-system components
-│   └── e2e/                Playwright acceptance suite (page objects)
+│   ├── projects/shot-there/   the application
+│   │   └── src/app/           core/ (shell, routing, app-wide services) and
+│   │                          features/<area>/ (one folder per product area)
+│   ├── projects/api/          API library, imported as @shot-there/api
+│   ├── projects/components/   UI component library, imported as @shot-there/components
+│   └── e2e/                   Playwright acceptance suite (page objects, API fakes)
 ├── docs/
 │   ├── specs/              L1/L2 requirements
 │   ├── detailed-designs/   detailed designs per feature

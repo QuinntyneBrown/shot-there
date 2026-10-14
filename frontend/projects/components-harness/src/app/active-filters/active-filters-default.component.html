@@ -1,0 +1,5 @@
+<main class="container stack">
+  <st-active-filters [filters]="filters" (filterRemoved)="log.set([...log(), 'removed: ' + $event.label])" (cleared)="log.set([...log(), 'cleared'])" />
+  <st-active-filters [filters]="[]" />
+  <st-activation-log [entries]="log()" />
+</main>

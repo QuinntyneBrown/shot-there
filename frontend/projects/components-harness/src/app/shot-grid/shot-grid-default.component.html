@@ -1,0 +1,4 @@
+<main class="container stack">
+  <st-shot-grid [shots]="shots" setup="Shot on a 35 mm lens at f/2.8." (shotActivated)="log.set([...log(), 'shot: ' + $event])" />
+  <st-activation-log [entries]="log()" />
+</main>

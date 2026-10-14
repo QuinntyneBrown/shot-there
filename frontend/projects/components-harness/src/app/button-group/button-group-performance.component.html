@@ -1,0 +1,8 @@
+<main class="container stack">
+  <st-segmented label="Show" [options]="options" [(value)]="show" />
+  <ul class="stack">
+    @for (location of shown(); track location.name) {
+      <li>{{ location.name }}</li>
+    }
+  </ul>
+</main>

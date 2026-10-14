@@ -1,0 +1,18 @@
+<main class="container stack">
+  <h1>Studios in Toronto</h1>
+  <div class="cluster">
+    <button st-button variant="ghost" type="button"><st-icon name="menu" />Menu</button>
+    <button st-filter-trigger type="button" aria-expanded="false" count="4">Filters</button>
+    @for (chip of chips; track chip) {
+      <button st-icon-button icon="close" [label]="'Remove filter: ' + chip" type="button"></button>
+    }
+  </div>
+  <ul class="stack">
+    @for (card of cards; track card) {
+      <li class="cluster">
+        <a st-link external href="https://studio.example/book">Book {{ card }}</a>
+        <button st-button size="sm" type="button"><st-icon name="plus" />Add {{ card }}</button>
+      </li>
+    }
+  </ul>
+</main>

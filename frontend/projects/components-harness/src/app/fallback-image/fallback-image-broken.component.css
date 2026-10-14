@@ -1,0 +1,4 @@
+/* A 320px slot with no fixed height: the image's width and height attributes give its box. */
+.slot {
+  width: 20rem;
+}

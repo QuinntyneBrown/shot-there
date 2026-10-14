@@ -1,0 +1,15 @@
+<main class="container stack">
+  <ul class="stack">
+    @for (studio of studios; track studio) {
+      <li>
+        <button st-button size="sm" type="button" [pressed]="selected().includes(studio)" (click)="toggle(studio)">
+          @if (selected().includes(studio)) { Remove } @else { Compare }<span class="visually-hidden"> {{ studio }}</span>
+        </button>
+      </li>
+    }
+  </ul>
+  <div class="cluster">
+    <button st-button variant="ghost" type="button" (click)="selected.set([])">Clear</button>
+    <button st-button variant="primary" type="button" [softDisabled]="selected().length < 2">Compare</button>
+  </div>
+</main>

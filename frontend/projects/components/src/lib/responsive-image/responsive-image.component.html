@@ -1,0 +1,13 @@
+@if (failed()) {
+  <span st-media-fallback [alt]="decorative() ? '' : image().alt" [ratio]="ratio()"></span>
+} @else {
+  <picture>
+    @for (source of sources(); track source.format) {
+      <source [attr.type]="'image/' + source.format" [attr.srcset]="source.srcset" [attr.sizes]="sizes()">
+    }
+    <img #img [src]="image().fallbackUrl" [attr.srcset]="jpegSrcset()" [attr.sizes]="sizes()"
+         [alt]="decorative() ? '' : image().alt" [width]="image().width" [height]="image().height"
+         [attr.loading]="priority() ? 'eager' : 'lazy'" [attr.fetchpriority]="priority() ? 'high' : null"
+         (error)="failed.set(true)">
+  </picture>
+}

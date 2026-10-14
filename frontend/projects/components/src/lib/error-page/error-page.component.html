@@ -1,0 +1,12 @@
+@if (code()) {
+  <p class="system-page__code">{{ code() }}</p>
+}
+<h1>{{ title() }}</h1>
+@if (text()) {
+  <p>{{ text() }}</p>
+}
+<ng-content />
+@if (reference()) {
+  <p class="system-page__code">{{ reference() }}</p>
+}
+<div class="system-page__actions"><ng-content select="[slot=actions]" /></div>

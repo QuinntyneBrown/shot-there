@@ -1,0 +1,8 @@
+/* Stand-in for the map page's bar, which owns the margin and placement of the groups. */
+.bar {
+  padding: var(--space-3) 0;
+  background: var(--color-bg-canvas);
+}
+.bar__title {
+  font: var(--text-h4);
+}

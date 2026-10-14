@@ -1,0 +1,8 @@
+/* DS components/compare-bar.html; the host is the fixed .compare-bar. */
+:host { position: fixed; left: 0; right: 0; bottom: 0; z-index: var(--z-sticky); background: var(--color-bg-surface-raised); border-top: var(--border-width-hairline) solid var(--color-border-default); box-shadow: var(--shadow-3); padding: var(--space-3) var(--layout-margin) calc(var(--space-3) + env(safe-area-inset-bottom)); }
+.compare-bar__inner { max-width: calc(var(--layout-container-max) - 2 * var(--layout-margin)); margin-inline: auto; display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2) var(--space-4); }
+.compare-bar__status { flex: 1 1 12rem; min-width: 0; display: flex; flex-direction: column; }
+.compare-bar__count { font: var(--text-label); font-size: var(--font-size-md); }
+.compare-bar__hint, .compare-bar__names { font: var(--text-body-sm); color: var(--color-fg-muted); }
+.compare-bar__names { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.compare-bar__actions { display: flex; gap: var(--space-2); }

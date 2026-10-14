@@ -1,0 +1,12 @@
+<div class="sheet__header">
+  <div class="sheet__heading">
+    <h2 class="sheet__title" [id]="titleId">{{ title() }}</h2>
+    @if (description() !== null) {
+      <p [id]="descId">{{ description() }}</p>
+    }
+  </div>
+  <!-- eslint-disable-next-line @angular-eslint/template/elements-content -->
+  <button st-icon-button type="button" [icon]="'close'" [label]="closeLabel()" [disabled]="busy()" (click)="close()"></button>
+</div>
+<div class="sheet__body"><ng-content /></div>
+<div class="sheet__footer"><ng-content select="[slot=footer]" /></div>

@@ -1,0 +1,15 @@
+@if (setup()) {
+  <p class="shot-grid__setup">{{ setup() }}</p>
+}
+<ul class="shot-grid">
+  @for (shot of shots(); track $index; let index = $index) {
+    <li>
+      <figure>
+        <button class="shot" type="button" (click)="shotActivated.emit(index)">
+          <st-responsive-image [image]="shot.image" [sizes]="sizes()" />
+        </button>
+        <figcaption>@if (shot.title) {<strong>{{ shot.title }}</strong>&ngsp;}{{ shot.caption }}</figcaption>
+      </figure>
+    </li>
+  }
+</ul>

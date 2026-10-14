@@ -1,0 +1,31 @@
+:host {
+  display: block;
+  max-width: 42rem;
+  margin-inline: auto;
+}
+.page-header {
+  margin-block: var(--space-6);
+}
+.subtitle {
+  margin-top: var(--space-1);
+  color: var(--color-fg-muted);
+}
+.prose {
+  margin-bottom: var(--space-16);
+  font: var(--text-body-lg);
+  color: var(--color-fg-default);
+}
+.prose p + p,
+.prose p + h2,
+.prose ul + h2,
+.prose p + ul {
+  margin-top: var(--space-4);
+}
+.prose h2 {
+  font: var(--text-h3);
+  margin-top: var(--space-10);
+  margin-bottom: var(--space-3);
+}
+.prose ul {
+  padding-left: var(--space-5);
+}

@@ -1,0 +1,26 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+import { TokenRows, previews } from './components/TokenBlocks';
+
+<Meta title="Theme/Layout" />
+
+# Layout
+
+Phone first. The viewport classes are XS below 36rem, SM 36rem, MD 48rem, LG 62rem and XL 75rem; content stops
+growing at 90rem. Columns, gutter, margin and the top bar height step up at MD and LG (and the margin again at XL).
+Media queries cannot read custom properties, so components repeat the breakpoint values literally — and only these
+values. Use the **Viewport** toolbar to preview each class.
+
+## Breakpoints and grid
+
+<TokenRows prefix="layout-" preview={previews.none} />
+
+## Interaction sizes
+
+Every phone target is at least 44px (`--target-comfortable`); WCAG 2.5.8's 24px minimum is the floor.
+
+<TokenRows prefix={['target-', 'control-height', 'focus-ring']} preview={previews.size} />
+
+## Icons
+
+<TokenRows prefix="icon-" preview={previews.size} />

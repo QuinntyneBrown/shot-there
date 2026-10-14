@@ -1,0 +1,5 @@
+<main class="container stack">
+  <st-search-field label="Find a studio or spot" inputId="entry" listLabel="Matching studios and spots" [formControl]="query" [options]="options()"
+    noResultsText="No matches" [resultsText]="options().length + ' results'" (optionSelected)="log.set([...log(), 'selected: ' + $event.label])" />
+  <st-activation-log [entries]="log()" />
+</main>

@@ -1,0 +1,11 @@
+/* DS components/sheet.html; the host is the .sheet panel, full height on phones and a side sheet from MD. */
+:host { display: flex; flex-direction: column; height: 100%; width: 100%; box-sizing: border-box; background: var(--color-bg-surface-raised); }
+@media (min-width: 48rem) { :host { box-shadow: var(--shadow-4); } }
+@media (forced-colors: active) { :host { border-left: 1px solid CanvasText; } }
+.sheet__header { display: flex; align-items: center; gap: var(--space-4); padding: var(--space-3) var(--layout-margin); padding-top: calc(var(--space-3) + env(safe-area-inset-top)); border-bottom: var(--border-width-hairline) solid var(--color-border-default); }
+.sheet__heading { flex: 1; min-width: 0; }
+.sheet__title { font: var(--text-h4); }
+.sheet__body { flex: 1; overflow: auto; padding: var(--space-6) var(--layout-margin); display: flex; flex-direction: column; gap: var(--space-8); }
+.sheet__footer { display: flex; gap: var(--space-3); padding: var(--space-4) var(--layout-margin) calc(var(--space-4) + env(safe-area-inset-bottom)); border-top: var(--border-width-hairline) solid var(--color-border-default); }
+.sheet__footer:empty { display: none; }
+@media (min-width: 48rem) { .sheet__header, .sheet__body, .sheet__footer { padding-inline: var(--space-6); } }

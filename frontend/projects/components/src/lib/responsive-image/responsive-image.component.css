@@ -1,0 +1,15 @@
+/* The host fills the slot its owner draws; the owner sizes, clips, rounds and zooms the host (CRD responsive-image D-1). */
+:host {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+picture {
+  display: contents;
+}
+img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

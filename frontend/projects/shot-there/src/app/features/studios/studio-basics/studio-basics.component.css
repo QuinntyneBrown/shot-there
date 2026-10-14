@@ -1,0 +1,37 @@
+.review-head {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-top: var(--space-8);
+}
+.review-head h1 {
+  font: var(--text-display);
+  letter-spacing: var(--letter-spacing-tight);
+  overflow-wrap: anywhere;
+}
+.review-head__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1) var(--space-3);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  color: var(--color-fg-muted);
+  font: var(--text-body-lg);
+}
+.review-head__meta > li:not(:last-child)::after {
+  content: '·';
+  content: '·' / '';
+  margin-left: var(--space-3);
+  color: var(--color-fg-subtle);
+}
+.btn {
+  white-space: normal;
+}
+.icon {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: var(--icon-stroke);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}

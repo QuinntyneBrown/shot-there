@@ -1,0 +1,3 @@
+/* DS components/form-layout.html; the host is the .form-actions row. */
+:host { display: flex; flex-wrap: wrap; gap: var(--space-3); justify-content: flex-start; padding-top: var(--space-4); }
+:host(.form-actions--sticky) { position: sticky; bottom: 0; background: var(--color-bg-canvas); padding-block: var(--space-4) calc(var(--space-4) + env(safe-area-inset-bottom)); border-top: var(--border-width-hairline) solid var(--color-border-default); z-index: var(--z-raised); }

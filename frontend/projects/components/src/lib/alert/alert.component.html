@@ -1,0 +1,11 @@
+<st-icon [name]="icon()" />
+<div class="alert__body">
+  @if (title()) {
+    <p class="alert__title">{{ title() }}</p>
+  }
+  <p><ng-content /></p>
+  <div class="alert__actions"><ng-content select="[slot=action]" /></div>
+</div>
+@if (dismissible()) {
+  <button class="close" type="button" [attr.aria-label]="dismissLabel()" (click)="dismissed.emit()"><st-icon [name]="'close'" /></button>
+}

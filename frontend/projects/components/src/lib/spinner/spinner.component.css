@@ -1,0 +1,36 @@
+/* DS components/spinner.html; the host is a plain inline-flex box (spinner D-1). */
+:host {
+  display: inline-flex;
+  align-items: center;
+}
+.spinner {
+  box-sizing: border-box;
+  display: inline-block;
+  width: var(--icon-size-md);
+  height: var(--icon-size-md);
+  border: var(--border-width-thick) solid var(--color-border-default);
+  border-top-color: var(--color-fg-default);
+  border-radius: 50%;
+  animation: spin var(--duration-loop-fast) linear infinite;
+  flex: none;
+}
+.spinner--sm {
+  width: var(--icon-size-sm);
+  height: var(--icon-size-sm);
+}
+.spinner--lg {
+  width: var(--space-10);
+  height: var(--space-10);
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+/* The turning arc reports status, so it keeps turning under reduced motion; forced colours keep it visible (spinner D-4). */
+@media (forced-colors: active) {
+  .spinner {
+    border-color: GrayText;
+    border-top-color: CanvasText;
+  }
+}

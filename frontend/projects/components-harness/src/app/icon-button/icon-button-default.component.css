@@ -1,0 +1,19 @@
+/* Stand-ins for the map popup's raised card and the lightbox canvas. */
+.popup {
+  position: relative;
+  width: 18rem;
+  max-width: 100%;
+  padding: var(--space-4) var(--space-12) var(--space-4) var(--space-4);
+  background: var(--color-bg-surface-raised);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-3);
+}
+.popup__close {
+  position: absolute;
+  top: var(--space-1);
+  right: var(--space-1);
+}
+.lightbox {
+  padding: var(--space-4);
+  background: var(--color-bg-canvas);
+}

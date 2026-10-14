@@ -1,0 +1,153 @@
+.page-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-block: var(--space-6);
+}
+.page-header .subtitle {
+  margin-top: var(--space-1);
+  color: var(--color-fg-muted);
+}
+.page-header__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+}
+.notice {
+  margin-bottom: var(--space-6);
+}
+.alert .icon {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: var(--icon-stroke);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.btn .icon {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: var(--icon-stroke);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.badge--success {
+  background: var(--color-success-bg);
+  color: var(--color-success-fg);
+}
+.badge--wrap {
+  white-space: normal;
+}
+
+/* The table scrolls inside its own region; the page never scrolls sideways (L2-031.4). */
+.table-wrap {
+  position: relative;
+  overflow-x: auto;
+  border-top: var(--border-width-hairline) solid var(--color-border-default);
+  background: var(--color-bg-surface);
+}
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font: var(--text-body-sm);
+}
+.table th,
+.table td {
+  text-align: left;
+  padding: var(--space-4) var(--space-3);
+  border-bottom: var(--border-width-hairline) solid var(--color-border-default);
+}
+/* 9rem of labels plus at least 10rem (160px) per studio column. */
+.compare-table {
+  table-layout: fixed;
+  min-width: calc(9rem + var(--compare-cols, 3) * 10rem);
+}
+.compare-table th,
+.compare-table td {
+  vertical-align: top;
+}
+.compare-table thead th {
+  white-space: normal;
+  color: var(--color-fg-default);
+  font: var(--text-label);
+  font-size: var(--font-size-md);
+}
+.compare-table thead th a {
+  color: var(--color-fg-default);
+}
+.compare-table col.compare-table__labels {
+  width: 9rem;
+}
+.compare-table .compare-table__label {
+  position: sticky;
+  left: 0;
+  z-index: var(--z-raised);
+  background: var(--color-bg-surface);
+  box-shadow: inset calc(-1 * var(--border-width-hairline)) 0 0 var(--color-border-default);
+  color: var(--color-fg-muted);
+  font: var(--text-label);
+}
+.compare-table__group th {
+  background: var(--color-bg-surface-sunken);
+  color: var(--color-fg-default);
+  font: var(--text-label);
+  font-size: var(--font-size-md);
+}
+.compare-table td img {
+  aspect-ratio: 4 / 5;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+}
+.compare-table__value {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-1);
+  font-variant-numeric: tabular-nums;
+}
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-3);
+  padding: var(--space-12) var(--space-6);
+}
+.empty__icon {
+  width: 4.5rem;
+  height: 4.5rem;
+  border-radius: var(--radius-full);
+  display: grid;
+  place-items: center;
+  background: var(--color-bg-subtle);
+  color: var(--color-fg-default);
+  margin-bottom: var(--space-2);
+}
+.empty__icon .icon {
+  width: var(--icon-size-xl);
+  height: var(--icon-size-xl);
+  fill: none;
+  stroke: currentColor;
+  stroke-width: var(--icon-stroke);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.empty__title {
+  font: var(--text-h3);
+}
+.empty__text {
+  color: var(--color-fg-muted);
+  max-width: 36ch;
+}
+.empty__actions {
+  display: flex;
+  gap: var(--space-3);
+  margin-top: var(--space-2);
+  flex-wrap: wrap;
+  justify-content: center;
+}

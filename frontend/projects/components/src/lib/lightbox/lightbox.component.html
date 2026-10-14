@@ -1,0 +1,29 @@
+<div class="viewer__bar">
+  <h2 class="visually-hidden" [id]="titleId">{{ data.title }}</h2>
+  <p class="viewer__count" role="status" aria-live="polite">{{ countText() }}</p>
+  <!-- eslint-disable-next-line @angular-eslint/template/elements-content -->
+  <button st-icon-button type="button" [icon]="'close'" [label]="closeLabel" [outline]="true" (click)="close()"></button>
+</div>
+<div class="viewer__stage">
+  <!-- eslint-disable-next-line @angular-eslint/template/elements-content -->
+  <button st-icon-button type="button" [icon]="'chevron-left'" [label]="previousLabel" [outline]="true" [disabled]="index() === 0" (click)="step(-1)"></button>
+  <div class="lightbox__frame">
+    @if (data.shots[index()]; as shot) {
+      <st-responsive-image [image]="shot.image" [sizes]="sizes" />
+    }
+  </div>
+  <!-- eslint-disable-next-line @angular-eslint/template/elements-content -->
+  <button st-icon-button type="button" [icon]="'chevron-right'" [label]="nextLabel" [outline]="true" [disabled]="index() === data.shots.length - 1" (click)="step(1)"></button>
+</div>
+@if (data.shots[index()]; as shot) {
+  <div class="viewer__caption">
+    @if (shot.title) {
+      <strong>{{ shot.title }}</strong>
+    }
+    <span>{{ shot.caption }}</span>
+  </div>
+}
+<div class="lightbox__pager">
+  <button type="button" class="pager-button" [disabled]="index() === 0" (click)="step(-1)"><span class="visually-hidden">{{ previousLabel }}</span><span aria-hidden="true">{{ previousText }}</span></button>
+  <button type="button" class="pager-button" [disabled]="index() === data.shots.length - 1" (click)="step(1)"><span class="visually-hidden">{{ nextLabel }}</span><span aria-hidden="true">{{ nextText }}</span></button>
+</div>

@@ -1,0 +1,20 @@
+/* The CDK overlay structure and the DS backdrop and panel positions for DialogService (ICD-002 §10.1, §11.1).
+   Global because CDK renders overlays outside any component. */
+.cdk-overlay-container { position: fixed; inset: 0; pointer-events: none; z-index: var(--z-overlay); }
+.cdk-overlay-container:empty { display: none; }
+.cdk-global-overlay-wrapper { display: flex; position: absolute; inset: 0; pointer-events: none; z-index: var(--z-modal); }
+.cdk-overlay-pane { position: relative; display: flex; max-width: 100%; max-height: 100%; pointer-events: auto; box-sizing: border-box; }
+.cdk-overlay-backdrop { position: absolute; inset: 0; pointer-events: auto; opacity: 0; transition: opacity var(--duration-base) var(--ease-enter); }
+.cdk-overlay-backdrop.cdk-overlay-backdrop-showing { opacity: 1; }
+.backdrop { background: var(--color-bg-backdrop); }
+.cdk-dialog-container { display: block; width: 100%; max-height: 100%; outline: none; }
+.cdk-global-overlay-wrapper:has(.st-dialog-pane) { justify-content: center; align-items: flex-end; }
+@media (min-width: 36rem) { .cdk-global-overlay-wrapper:has(.st-dialog-pane--dialog) { align-items: center; padding: var(--space-6); } }
+.st-dialog-pane--dialog { width: 100%; max-width: var(--layout-dialog-width); }
+.st-dialog-pane--sheet { width: 100%; height: 100%; }
+@media (min-width: 48rem) {
+  .cdk-global-overlay-wrapper:has(.st-dialog-pane--sheet) { justify-content: flex-end; }
+  .st-dialog-pane--sheet { width: min(100%, var(--layout-sheet-width)); }
+}
+.st-dialog-pane--viewer { width: 100%; height: 100%; }
+body:has(.cdk-overlay-container > .cdk-global-overlay-wrapper) { overflow: hidden; }

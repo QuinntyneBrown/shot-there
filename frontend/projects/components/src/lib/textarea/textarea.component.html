@@ -1,0 +1,8 @@
+<st-field-label [for]="id()" [label]="label()" [suffix]="labelSuffix()" [optional]="optional()" [optionalLabel]="optionalLabel()" />
+<textarea class="textarea" [id]="id()" [attr.name]="name() || null" [attr.rows]="rows()" [value]="value()" [disabled]="disabled()"
+  [attr.aria-invalid]="hasError() ? 'true' : null" [attr.aria-describedby]="describedByAll()" (input)="typedText($event)" (blur)="touch()"></textarea>
+<st-field-messages [id]="id()" [error]="error()" [warning]="warning()" [help]="help()" />
+@if (maxlength() !== null) {
+  <span class="field__counter" [class.field__counter--over]="over()" [id]="counterId()">{{ counter() }}</span>
+  <span class="visually-hidden" aria-live="polite">{{ announced() }}</span>
+}

@@ -1,0 +1,8 @@
+@if (error()) {
+  <span class="field__error" [id]="id() + '-error'">{{ error() }}</span>
+} @else if (warning()) {
+  <span class="field__warning" [id]="id() + '-warning'">{{ warning() }}</span>
+}
+@if (help()) {
+  <span class="field__help" [id]="id() + '-help'">{{ help() }}</span>
+}

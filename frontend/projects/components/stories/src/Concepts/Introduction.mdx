@@ -1,0 +1,61 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Concepts/Introduction" />
+
+<div
+  className="sb-unstyled"
+  style={{
+    background: 'var(--color-bg-surface-sunken)',
+    borderRadius: 'var(--radius-lg)',
+    padding: '40px 32px',
+    margin: '0 0 32px',
+  }}
+>
+  <p style={{ color: 'var(--color-fg-accent)', fontWeight: 600, margin: 0 }}>
+    ShotThere Design System
+  </p>
+  <h1
+    style={{
+      font: 'var(--text-h1)',
+      letterSpacing: 'var(--letter-spacing-tight)',
+      margin: '8px 0 12px',
+    }}
+  >
+    Nothing is listed unless it has been shot there.
+  </h1>
+  <p style={{ color: 'var(--color-fg-muted)', maxWidth: 560, margin: 0 }}>
+    Tokens and Angular components for ShotThere — first-hand reviews of places to shoot photos in
+    Toronto. Everything here is the real <code>@shot-there/components</code> library the app ships,
+    rendered live.
+  </p>
+</div>
+
+## What's here
+
+| Section                                                      | What you'll find                                                                         |
+| ------------------------------------------------------------ | ---------------------------------------------------------------------------------------- |
+| [Concepts](?path=/docs/concepts-developer-quick-start--docs) | Quick start, how components are styled, accessibility rules and how to write stories.    |
+| [Theme](?path=/docs/theme-colors--docs)                      | The design tokens, rendered live from `styles/tokens.css` in light and dark.             |
+| Components                                                   | Every `st-*` component with its API table (inputs, outputs, JSDoc), examples and advice. |
+
+## Principles
+
+- **The evidence does the talking.** A white canvas, near-black ink and photos at their real proportions; prices,
+  scores and measurements carry the page.
+- **One hue, one meaning.** The warm red accent means "selected / you are here" — the active filter, the current tab,
+  focus. Info is quiet stone, not blue.
+- **One primary button per screen.** The solid ink action; everything else is secondary, ghost or link.
+- **State is ARIA.** Pressed, busy, invalid and current are `aria-pressed`, `aria-busy`, `aria-invalid` and
+  `aria-current` — never a class alone.
+- **Phone first.** Every screen works at phone width without horizontal scrolling, with 44px targets.
+
+## Where the code lives
+
+| Path                                            | Purpose                                                          |
+| ----------------------------------------------- | ---------------------------------------------------------------- |
+| `frontend/projects/components/src/lib/`         | Component source (`<name>/<name>.component.ts`, `.html`, `.css`) |
+| `frontend/projects/components/styles/`          | `shot-there.css`: tokens, foundations and utilities              |
+| `frontend/projects/components/stories/src/`     | This Storybook: concept and theme MDX, one folder per component  |
+| `frontend/projects/components/.storybook/`      | Storybook configuration and manager theme                        |
+| `frontend/projects/components-harness/`         | One route per component state for the Playwright library tests   |
+| `docs/design-system/`, `docs/specs/components/` | The design system pages and component requirements (CRDs)        |

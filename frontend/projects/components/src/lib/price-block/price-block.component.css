@@ -1,0 +1,26 @@
+/* DS review pages: all-in cost, rate, fees, verified line (L2-004, L2-005); the host is the .price-block. */
+:host {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+.price-block__allin {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  padding: var(--space-5) var(--space-6);
+  background: var(--color-bg-surface-sunken);
+  border-radius: var(--radius-lg);
+}
+.price-block__allin strong {
+  font: var(--text-h1);
+  font-variant-numeric: tabular-nums;
+}
+.price-block__allin span {
+  color: var(--color-fg-muted);
+  font: var(--text-body-sm);
+}
+.price-block__verified {
+  font: var(--text-body-sm);
+  color: var(--color-fg-muted);
+}

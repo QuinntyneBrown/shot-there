@@ -1,0 +1,3 @@
+Toasts confirm the result of an action away from where it happened. Code raises one with `ToastService.show(options)` — `tone`, `title`, optional `text`, and an optional `actionLabel` with either a button `action` or a link `actionLink` — and gets a `ToastRef` whose `dismiss()` removes it. The application renders one `st-toast-region` in its shell: a fixed `.toast-region` with `role="status"` and `aria-live="polite"` that shows the newest three toasts.
+
+Each toast is a `.toast.toast--<tone>` block on the inverse surface with the tone's icon, the title and text, the action and a Dismiss button. Info, success and warning toasts dismiss after 8 seconds (pausing on hover and focus, with a countdown bar); danger toasts carry `role="alert"` and stay until dismissed.

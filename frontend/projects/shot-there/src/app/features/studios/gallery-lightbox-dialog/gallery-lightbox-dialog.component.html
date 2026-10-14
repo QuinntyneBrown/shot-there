@@ -1,0 +1,34 @@
+@let photo = image();
+<div class="viewer">
+  <h2 class="visually-hidden" id="lightbox-title" i18n>Photo viewer: {{ data.studioName }}</h2>
+  <div class="viewer__bar">
+    <p class="viewer__count" aria-live="polite" i18n>Photo {{ index() + 1 }} of {{ data.images.length }}</p>
+    <button type="button" class="icon-btn" aria-label="Close" i18n-aria-label (click)="close()">
+      <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18" /></svg>
+    </button>
+  </div>
+  <div class="viewer__stage">
+    <button type="button" class="icon-btn viewer__side" aria-label="Previous photo" i18n-aria-label (click)="previous()">
+      <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m15 6-6 6 6 6" /></svg>
+    </button>
+    <div class="lightbox__frame">
+      @for (shown of [photo]; track shown.id) {
+        <img stFallbackImage [src]="src(shown)" [srcset]="srcset(shown)" sizes="(min-width: 48rem) 34rem, 100vw" [alt]="shown.alt" width="800" height="1000" />
+      }
+    </div>
+    <button type="button" class="icon-btn viewer__side" aria-label="Next photo" i18n-aria-label (click)="next()">
+      <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6" /></svg>
+    </button>
+  </div>
+  <div class="viewer__caption" id="lightbox-caption"><p>{{ photo.caption ?? photo.alt }}</p></div>
+  <div class="lightbox__pager">
+    <button class="btn" type="button" (click)="previous()">
+      <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m15 6-6 6 6 6" /></svg>
+      <ng-container i18n>Previous<span class="visually-hidden"> photo</span></ng-container>
+    </button>
+    <button class="btn" type="button" (click)="next()">
+      <ng-container i18n>Next<span class="visually-hidden"> photo</span></ng-container>
+      <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6" /></svg>
+    </button>
+  </div>
+</div>

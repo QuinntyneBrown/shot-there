@@ -1,0 +1,20 @@
+/* DS components/inline-message.html; the host is the paragraph. */
+:host {
+  overflow-wrap: anywhere;
+}
+:host(.field__help) {
+  font: var(--text-body-sm);
+  color: var(--color-fg-muted);
+}
+:host(.field__error) {
+  font: var(--text-body-sm);
+  color: var(--color-danger-fg);
+  display: flex;
+  gap: var(--space-1);
+  align-items: flex-start;
+}
+:host(.field__error)::before {
+  content: '⚠\FE0E';
+  content: '⚠\FE0E' / '';
+  flex: none;
+}
