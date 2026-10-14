@@ -1,4 +1,6 @@
 import { Routes } from '@angular/router';
+import { ResponsiveImageFailedComponent } from './responsive-image/responsive-image-failed.component';
+import { ResponsiveImageDefaultComponent } from './responsive-image/responsive-image-default.component';
 import { SegmentedDefaultComponent } from './segmented/segmented-default.component';
 import { FilterTriggerStatesComponent } from './filter-trigger/filter-trigger-states.component';
 import { LinkVariantsComponent } from './link/link-variants.component';
@@ -34,4 +36,6 @@ export const routes: Routes = [
   { path: 'link/variants', component: LinkVariantsComponent },
   { path: 'filter-trigger/states', component: FilterTriggerStatesComponent },
   { path: 'segmented/default', component: SegmentedDefaultComponent },
+  { path: 'responsive-image/default', component: ResponsiveImageDefaultComponent },
+  { path: 'responsive-image/failed', component: ResponsiveImageFailedComponent },
 ];

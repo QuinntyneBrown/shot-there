@@ -3,6 +3,8 @@ import { Locator, Page } from '@playwright/test';
 
 export type HarnessTheme = 'light' | 'dark';
 
+const PLACEHOLDER_SVG = '<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800"><rect width="1200" height="800" fill="#ccc"/></svg>';
+
 /** A components-harness route: one library component state (ICD-002 D-12). */
 export class HarnessPage {
   /** Console errors and uncaught exceptions, including hydration mismatches, since the page object was made. */
@@ -13,9 +15,16 @@ export class HarnessPage {
     page.on('pageerror', (error) => this.errors.push(error.message));
   }
 
-  /** Opens `<component>/<state>` at a viewport width (CSS px) in a colour scheme. */
+  /**
+   * Opens `<component>/<state>` at a viewport width (CSS px) in a colour scheme. Images under
+   * /test-images/ load as a placeholder and the YouTube player is stubbed, so nothing reaches the network.
+   */
   async open(path: string, options: { width?: number; theme?: HarnessTheme } = {}): Promise<void> {
     const { width = 1280, theme = 'light' } = options;
+    await this.page.route('**/test-images/**', (route) => route.fulfill({ contentType: 'image/svg+xml', body: PLACEHOLDER_SVG }));
+    await this.page.route('https://www.youtube-nocookie.com/**', (route) =>
+      route.fulfill({ contentType: 'text/html', body: '<!doctype html><title>player</title>' }),
+    );
     await this.page.setViewportSize({ width, height: 800 });
     await this.page.emulateMedia({ colorScheme: theme });
     await this.page.goto(`/${path}`);

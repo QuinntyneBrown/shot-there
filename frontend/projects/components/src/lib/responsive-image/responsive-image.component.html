@@ -1,0 +1,8 @@
+<picture>
+  @for (source of sources(); track source.format) {
+    <source [attr.type]="'image/' + source.format" [attr.srcset]="source.srcset" [attr.sizes]="sizes()">
+  }
+  <img stFallbackImage [src]="image().fallbackUrl" [attr.srcset]="jpegSrcset()" [attr.sizes]="sizes()"
+       [alt]="decorative() ? '' : image().alt" [width]="image().width" [height]="image().height"
+       [attr.loading]="priority() ? 'eager' : 'lazy'" [attr.fetchpriority]="priority() ? 'high' : null">
+</picture>

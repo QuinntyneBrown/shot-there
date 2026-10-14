@@ -1,0 +1,5 @@
+/* The host and <picture> add no box: the photo fills the slot its container gives it, as every DS photo slot does. */
+:host, picture { display: contents; }
+img { display: block; width: 100%; height: 100%; object-fit: cover; }
+/* A failed image is hidden by img[stFallbackImage]; keep it hidden over the rule above. */
+img[hidden] { display: none; }
