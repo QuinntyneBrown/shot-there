@@ -1,5 +1,14 @@
 <st-skip-link />
-<st-header />
+<st-site-header
+  role="banner"
+  [brand]="headerBrand"
+  [brandTag]="headerBrandTag"
+  [homeLink]="headerHomeLink"
+  [links]="headerLinks"
+  [navLabel]="headerNavLabel"
+  [menuExpanded]="menuOpen()"
+  (menuToggled)="openMenu()"
+/>
 <main id="main" class="container" tabindex="-1">
   <router-outlet />
 </main>

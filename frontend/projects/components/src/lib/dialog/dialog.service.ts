@@ -19,6 +19,7 @@ export class DialogService {
       panelClass: ['st-dialog-pane', 'st-dialog-pane--' + kind],
       role: 'dialog',
       ariaModal: true,
+      ariaLabelledBy: options.ariaLabelledBy,
       autoFocus: 'first-tabbable',
       restoreFocus: false,
       closeOnNavigation: true,
