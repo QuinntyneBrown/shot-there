@@ -158,10 +158,10 @@ test.describe('Site footer', () => {
     await expect(shell.footerLink('Spots')).toHaveAttribute('href', '/spots');
     await expect(shell.footerLink('Guides')).toHaveAttribute('href', '/guides');
     await expect(shell.footerLink('Editorial policy')).toHaveAttribute('href', '/editorial-policy');
-    await expect(shell.footerLink('YouTube channel (opens in a new tab)')).toHaveAttribute(
-      'target',
-      '_blank',
-    );
+    const youtubeLink = shell.footerLink('YouTube channel (opens in a new tab)');
+    await expect(youtubeLink).toHaveAttribute('target', '_blank');
+    await expect(youtubeLink).toHaveAttribute('rel', 'noopener');
+    await expect(youtubeLink).toHaveAccessibleName('YouTube channel (opens in a new tab)');
     await expect(shell.footer).toContainText(
       'No paid placement: order comes only from the sort you choose.',
     );

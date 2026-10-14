@@ -3,5 +3,15 @@
 <main id="main" class="container" tabindex="-1">
   <router-outlet />
 </main>
-<st-site-footer />
+<st-site-footer
+  role="contentinfo"
+  [brand]="footerBrand"
+  [tagline]="footerTagline"
+  [links]="footerLinks"
+  [navLabel]="footerNavLabel"
+  [copy]="footerCopy"
+  [externalHint]="externalHint"
+>
+  <st-email-signup slot="signup" i18n-slot variant="footer" />
+</st-site-footer>
 <st-compare-bar />
