@@ -1,4 +1,6 @@
 import { Routes } from '@angular/router';
+import { IconButtonPressedComponent } from './icon-button/icon-button-pressed.component';
+import { IconButtonDefaultComponent } from './icon-button/icon-button-default.component';
 import { ButtonPressedComponent } from './button/button-pressed.component';
 import { ButtonSoftDisabledComponent } from './button/button-soft-disabled.component';
 import { ButtonBusyComponent } from './button/button-busy.component';
@@ -24,4 +26,6 @@ export const routes: Routes = [
   { path: 'button/busy', component: ButtonBusyComponent },
   { path: 'button/soft-disabled', component: ButtonSoftDisabledComponent },
   { path: 'button/pressed', component: ButtonPressedComponent },
+  { path: 'icon-button/default', component: IconButtonDefaultComponent },
+  { path: 'icon-button/pressed', component: IconButtonPressedComponent },
 ];
