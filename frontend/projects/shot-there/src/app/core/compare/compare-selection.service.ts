@@ -11,11 +11,8 @@ export const COMPARE_MINIMUM = 2;
 @Injectable({ providedIn: 'root' })
 export class CompareSelectionService {
   private readonly selection = signal<CompareSelectionItem[]>([]);
-  /** The studio most recently refused because the selection was full. */
-  private readonly refusedItem = signal<CompareSelectionItem | null>(null);
 
   readonly items = this.selection.asReadonly();
-  readonly refused = this.refusedItem.asReadonly();
   readonly count = computed(() => this.selection().length);
   readonly canCompare = computed(() => this.count() >= COMPARE_MINIMUM);
   readonly isFull = computed(() => this.count() >= COMPARE_LIMIT);
@@ -34,7 +31,6 @@ export class CompareSelectionService {
       return 'already-selected';
     }
     if (this.isFull()) {
-      this.refusedItem.set(item);
       return 'limit-reached';
     }
     this.update([...this.selection(), item]);
@@ -49,13 +45,8 @@ export class CompareSelectionService {
     this.update([]);
   }
 
-  dismissRefusal(): void {
-    this.refusedItem.set(null);
-  }
-
   private update(items: CompareSelectionItem[]): void {
     this.selection.set(items);
-    this.refusedItem.set(null);
     CompareSelectionStore.save(items);
   }
 }

@@ -58,7 +58,6 @@ test.describe('Selecting studios to compare', () => {
     }
     await expect(bar.count).toHaveText('4 selected');
     // When the visitor tries to add a fifth
-    await page.clock.install();
     await list.activateCompareToggle('Ossington Blackbox');
     // Then it is refused, a message states the maximum, and it is announced
     await expect(bar.count).toHaveText('4 selected');
@@ -70,10 +69,10 @@ test.describe('Selecting studios to compare', () => {
     );
     // Clearing the selection does not dismiss a library-owned toast.
     await bar.clearButton.click();
+    await page.mouse.move(0, 0);
     await expect(bar.limitToast).toBeVisible();
     // It then auto-dismisses on the library's eight-second rule.
-    await page.clock.fastForward(8000);
-    await expect(bar.limitToast).toBeHidden();
+    await expect(bar.limitToast).toBeHidden({ timeout: 9000 });
   });
 
   test('opens the comparison of the selected studios', async ({ page }) => {

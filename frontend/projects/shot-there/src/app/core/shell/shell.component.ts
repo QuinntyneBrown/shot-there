@@ -11,18 +11,14 @@ import {
   SiteHeaderComponent,
   SkipLinkComponent,
   ToastRegionComponent,
-  ToastService,
 } from '@shot-there/components';
 import type { NavLink } from '@shot-there/components';
 
-import { COMPARE_LIMIT_TITLE, compareLimitHint } from '../compare/compare-limit-message';
 import { CompareSelectionService } from '../compare/compare-selection.service';
 import { EmailSignupComponent } from '../email-signup/email-signup.component';
 import { APP_PATHS } from '../routing/app-paths';
 import { PRIMARY_NAV_LINKS } from './primary-nav-links';
 import { SiteMenuDialogComponent } from './site-menu-dialog.component';
-
-const TOAST_MS = 6000;
 
 @Component({
   selector: 'st-shell',
@@ -44,7 +40,6 @@ export class ShellComponent {
   private readonly router = inject(Router);
   private readonly document = inject(DOCUMENT);
   private readonly renderer = inject(Renderer2);
-  private readonly toastService = inject(ToastService);
   protected readonly selection = inject(CompareSelectionService);
   protected readonly menuOpen = signal(false);
   protected readonly compareBarLabel = $localize`Studios to compare`;
@@ -88,21 +83,6 @@ export class ShellComponent {
         this.renderer.addClass(this.document.body, 'has-compare-bar');
       } else {
         this.renderer.removeClass(this.document.body, 'has-compare-bar');
-      }
-    });
-    effect((onCleanup) => {
-      const refused = this.selection.refused();
-      if (refused) {
-        const toast = this.toastService.show({
-          tone: 'warning',
-          title: COMPARE_LIMIT_TITLE,
-          text: compareLimitHint(refused.name),
-        });
-        const timer = setTimeout(() => this.selection.dismissRefusal(), TOAST_MS);
-        onCleanup(() => {
-          clearTimeout(timer);
-          toast.dismiss();
-        });
       }
     });
   }

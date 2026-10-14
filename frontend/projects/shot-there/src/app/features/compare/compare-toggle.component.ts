@@ -1,7 +1,8 @@
 import { Component, computed, inject, input } from '@angular/core';
 
-import { ButtonComponent } from '@shot-there/components';
+import { ButtonComponent, ToastService } from '@shot-there/components';
 
+import { COMPARE_LIMIT_TITLE, compareLimitHint } from '../../core/compare/compare-limit-message';
 import { CompareSelectionService } from '../../core/compare/compare-selection.service';
 
 /** "Compare" adds the studio to the selection; "Remove" takes it out. */
@@ -13,6 +14,7 @@ import { CompareSelectionService } from '../../core/compare/compare-selection.se
 })
 export class CompareToggleComponent {
   private readonly selection = inject(CompareSelectionService);
+  private readonly toastService = inject(ToastService);
   readonly slug = input.required<string>();
   readonly name = input.required<string>();
 
@@ -23,6 +25,13 @@ export class CompareToggleComponent {
       this.selection.remove(this.slug());
       return;
     }
-    this.selection.add({ slug: this.slug(), name: this.name() });
+    const result = this.selection.add({ slug: this.slug(), name: this.name() });
+    if (result === 'limit-reached') {
+      this.toastService.show({
+        tone: 'warning',
+        title: COMPARE_LIMIT_TITLE,
+        text: compareLimitHint(this.name()),
+      });
+    }
   }
 }
