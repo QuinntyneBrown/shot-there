@@ -16,11 +16,11 @@ export class HarnessPage {
   }
 
   /**
-   * Opens `<component>/<state>` at a viewport width (CSS px) in a colour scheme. Images under
+   * Opens `<component>/<state>` at a viewport size (CSS px, 1280 x 800 by default) in a colour scheme. Images under
    * /test-images/ load as a placeholder and external https sites are stubbed, so nothing reaches the network.
    */
-  async open(path: string, options: { width?: number; theme?: HarnessTheme; hydrationDelayMs?: number } = {}): Promise<void> {
-    const { width = 1280, theme = 'light', hydrationDelayMs = 0 } = options;
+  async open(path: string, options: { width?: number; height?: number; theme?: HarnessTheme; hydrationDelayMs?: number } = {}): Promise<void> {
+    const { width = 1280, height = 800, theme = 'light', hydrationDelayMs = 0 } = options;
     if (hydrationDelayMs > 0) {
       // Holding back the scripts lets the server-rendered page settle (images load or fail) before Angular hydrates.
       await this.page.route('**/*.js', async (route) => {
@@ -34,7 +34,7 @@ export class HarnessPage {
     await this.page.context().route('https://**', (route) =>
       route.fulfill({ contentType: 'text/html', body: '<!doctype html><title>external</title>' }),
     );
-    await this.page.setViewportSize({ width, height: 800 });
+    await this.page.setViewportSize({ width, height });
     await this.page.emulateMedia({ colorScheme: theme });
     await this.page.goto(`/${path}`);
   }

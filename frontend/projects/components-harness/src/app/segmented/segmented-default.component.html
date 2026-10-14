@@ -1,5 +1,9 @@
 <main class="container stack">
-  <st-segmented label="Show" [options]="options" [value]="value()" (valueChange)="changed($event)" />
-  <label><input type="checkbox" (change)="value.set('spots')"> Show spots only</label>
+  <div class="bar cluster">
+    <h1 class="bar__title">Toronto locations</h1>
+    <st-segmented label="Show" [options]="showOptions" [(value)]="show" (valueChange)="record('Show valueChange: ' + $event)" />
+    <st-segmented class="until-lg" label="View as" [options]="viewOptions" [(value)]="view" (valueChange)="record('View as valueChange: ' + $event)" />
+  </div>
+  <label><input type="checkbox" (change)="show.set('studios')"> Show studios only</label>
   <st-activation-log [entries]="log()" />
 </main>
