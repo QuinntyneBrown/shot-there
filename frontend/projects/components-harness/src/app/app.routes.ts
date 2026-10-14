@@ -1,4 +1,6 @@
 import { Routes } from '@angular/router';
+import { VideoPosterFailedComponent } from './video-poster/video-poster-failed.component';
+import { VideoPosterDefaultComponent } from './video-poster/video-poster-default.component';
 import { ResponsiveImageFailedComponent } from './responsive-image/responsive-image-failed.component';
 import { ResponsiveImageDefaultComponent } from './responsive-image/responsive-image-default.component';
 import { SegmentedDefaultComponent } from './segmented/segmented-default.component';
@@ -38,4 +40,6 @@ export const routes: Routes = [
   { path: 'segmented/default', component: SegmentedDefaultComponent },
   { path: 'responsive-image/default', component: ResponsiveImageDefaultComponent },
   { path: 'responsive-image/failed', component: ResponsiveImageFailedComponent },
+  { path: 'video-poster/default', component: VideoPosterDefaultComponent },
+  { path: 'video-poster/failed', component: VideoPosterFailedComponent },
 ];

@@ -36,3 +36,4 @@ export * from './lib/link/link.component';
 export * from './lib/filter-trigger/filter-trigger.component';
 export * from './lib/segmented-control/segmented-control.component';
 export * from './lib/responsive-image/responsive-image.component';
+export * from './lib/video-poster/video-poster.component';

@@ -1,0 +1,10 @@
+@if (playing()) {
+  <iframe #frame class="video-frame" [src]="embedUrl()" [title]="title()" allow="accelerometer; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+} @else {
+  <a class="video-poster" [href]="watchUrl()" [attr.aria-label]="accessibleName()" (click)="play($event)">
+    @if (poster(); as still) {
+      <st-responsive-image [image]="still" sizes="100vw" decorative />
+    }
+    <span class="video-poster__play"><st-icon name="play" />{{ playLabel() }}@if (playContext(); as context) {<span class="visually-hidden">{{ context }}</span>}</span>
+  </a>
+}

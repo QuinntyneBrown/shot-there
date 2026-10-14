@@ -3,3 +3,5 @@
 img { display: block; width: 100%; height: 100%; object-fit: cover; }
 /* A failed image is hidden by img[stFallbackImage]; keep it hidden over the rule above. */
 img[hidden] { display: none; }
+/* A failed episode still sits on the poster's inverse ground, its content at the top (DS .video-poster .media-fallback). */
+:host-context(.video-poster) .media-fallback { background: var(--color-bg-inverse); color: var(--color-fg-inverse); align-content: start; padding-top: var(--space-6); }
