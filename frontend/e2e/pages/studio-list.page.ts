@@ -106,6 +106,12 @@ export class StudioListPage {
       .getByRole('button', { name: new RegExp(`^(Compare|Remove) ${name}$`) });
   }
 
+  async activateCompareToggle(name: string): Promise<void> {
+    const toggle = this.compareToggle(name);
+    await toggle.focus();
+    await toggle.press('Enter');
+  }
+
   async reload(): Promise<void> {
     await this.page.reload();
   }
