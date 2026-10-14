@@ -10,6 +10,7 @@ export * from './lib/types/light-level';
 export * from './lib/types/save-state';
 export * from './lib/types/dialog-kind';
 export * from './lib/types/dialog-size';
+export * from './lib/types/image-row-state';
 export * from './lib/types/nav-link';
 export * from './lib/types/breadcrumb-item';
 export * from './lib/types/section-link';
