@@ -10,6 +10,7 @@ import {
   EmptyStateComponent,
   FallbackImageDirective,
   IconComponent,
+  LinkComponent,
 } from '@shot-there/components';
 import { map, of, startWith, switchMap } from 'rxjs';
 
@@ -23,7 +24,14 @@ import { toComparisonViewModel } from './comparison-view-model';
 
 @Component({
   selector: 'st-compare-page',
-  imports: [RouterLink, ButtonComponent, EmptyStateComponent, FallbackImageDirective, IconComponent],
+  imports: [
+    RouterLink,
+    ButtonComponent,
+    EmptyStateComponent,
+    FallbackImageDirective,
+    IconComponent,
+    LinkComponent,
+  ],
   templateUrl: './compare-page.component.html',
   styleUrl: './compare-page.component.css',
 })

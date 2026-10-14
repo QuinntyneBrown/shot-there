@@ -26,11 +26,11 @@
       <p class="subtitle" i18n>{{ v.namesList }}, side by side. All-in is a 2-hour shoot with every mandatory fee.</p>
     </div>
     <div class="page-header__actions">
-      <button class="btn" type="button" (click)="copyLink()">
+      <button st-button type="button" (click)="copyLink()">
         <st-icon name="copy" />
         <ng-container i18n>Copy link</ng-container>
       </button>
-      <a [routerLink]="studiosPath" i18n>Change studios</a>
+      <a st-link [routerLink]="studiosPath" i18n>Change studios</a>
     </div>
   </div>
   @for (notice of v.notices; track notice) {
@@ -52,7 +52,7 @@
         <tr>
           <td class="compare-table__label"></td>
           @for (column of v.columns; track column.slug) {
-            <th scope="col"><a [routerLink]="[studiosPath, column.slug]">{{ column.name }}</a></th>
+            <th scope="col"><a st-link [routerLink]="[studiosPath, column.slug]">{{ column.name }}</a></th>
           }
         </tr>
       </thead>
