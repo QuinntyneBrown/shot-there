@@ -27,7 +27,7 @@ came from. Top-level pages (lists, home, map, compare) have no breadcrumb; the
 Out of scope:
 
 - The page title below it and its loading skeleton: the page header
-  ([`st-page-header`](page-header.md)) or the review head (application).
+  ([`st-page-header`](container.md)) or the review head (application).
 - Marking the region busy and announcing "Loading studio…": the application
   (`aria-busy` on `<main>`, a hidden status).
 - The error message and the "Back to studios" action when a record cannot be

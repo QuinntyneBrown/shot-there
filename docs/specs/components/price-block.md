@@ -22,7 +22,7 @@ says the prices are stale, the application projects a warning alert into the
 block.
 
 The figure is repeated without the working in the summary panel
-([`st-summary-panel`](summary-panel.md)), on list cards
+([`st-summary-panel`](review-layout.md)), on list cards
 ([`st-location-card`](location-card.md)), in the comparison table and in
 guides; those surfaces carry their own stale badge. Use
 [`st-description-list`](description-list.md) alone for rate-free fact lists
