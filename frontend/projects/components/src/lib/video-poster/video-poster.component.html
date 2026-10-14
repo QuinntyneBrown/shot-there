@@ -1,9 +1,13 @@
 @if (playing()) {
-  <iframe #frame class="video-frame" [src]="embedUrl()" [title]="title()" allow="accelerometer; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+  <iframe #frame class="video-frame" [src]="embedUrl()" [title]="title()"
+          allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
+          referrerpolicy="strict-origin-when-cross-origin"></iframe>
 } @else {
   <a class="video-poster" [href]="watchUrl()" [attr.aria-label]="accessibleName()" (click)="play($event)">
-    @if (poster(); as still) {
-      <st-responsive-image [image]="still" sizes="100vw" decorative />
+    @if (poster() && !failed()) {
+      <st-responsive-image [image]="poster()!" sizes="(min-width: 62rem) 45rem, 100vw" decorative />
+    } @else {
+      <span st-media-fallback aria-hidden="true" [alt]="title()"></span>
     }
     <span class="video-poster__play"><st-icon name="play" />{{ playLabel() }}@if (playContext(); as context) {<span class="visually-hidden">{{ context }}</span>}</span>
   </a>

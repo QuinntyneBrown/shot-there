@@ -170,6 +170,23 @@ export class HarnessPage {
     return latency;
   }
 
+  /** The page's cumulative layout shift so far, ignoring shifts right after input (as CLS does). */
+  layoutShift(): Promise<number> {
+    return this.page.evaluate(
+      () =>
+        new Promise<number>((resolve) => {
+          let cls = 0;
+          new PerformanceObserver((list) =>
+            list.getEntries().forEach((e) => {
+              const shift = e as PerformanceEntry & { value: number; hadRecentInput: boolean };
+              if (!shift.hadRecentInput) cls += shift.value;
+            }),
+          ).observe({ type: 'layout-shift', buffered: true });
+          setTimeout(() => resolve(cls), 500);
+        }),
+    );
+  }
+
   async accessibilityViolations(): Promise<string[]> {
     const results = await new AxeBuilder({ page: this.page }).withTags(['wcag2a', 'wcag2aa', 'wcag21aa', 'wcag22aa']).analyze();
     return results.violations.map((v) => `${v.id}: ${v.nodes.map((n) => n.target.join(' ')).join(', ')}`);
