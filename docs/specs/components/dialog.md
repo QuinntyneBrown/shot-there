@@ -80,8 +80,8 @@ the refusal's description comes from `describedBy` (D-2).
 ## Anatomy
 
 1. **Backdrop** — `.backdrop`, created by the service behind the panel: fixed,
-   full viewport, `--color-bg-backdrop` at `--z-overlay`. Clicking it does
-   nothing (D-1).
+   full viewport, `--color-bg-backdrop` at `--z-overlay`. Clicking it closes
+   the dialog, as Escape does, unless the dialog is busy (D-1).
 2. **Positioner** — `.dialog`, the element with `role="dialog"`,
    `aria-modal="true"`, `aria-labelledby` and `aria-describedby`. Fixed, full
    viewport at `--z-modal`; docks the panel to the bottom below 36rem and
@@ -125,7 +125,7 @@ child of `.dialog` (D-3).
 | `describedBy` | `string \| null` | `null` | no | ICD change (D-2). The ID of an element inside the projected body that describes the dialog ("Can't remove this test shot": the warning alert). Used as `aria-describedby` only when `description` is `null`; ignored otherwise. |
 | `size` | `DialogSize` (`'sm' \| 'md' \| 'form' \| 'lg'`) | `'md'` | no | `sm` → `.dialog__panel--sm` (24rem), `md` adds no modifier (`--layout-dialog-width`, 32rem), `form` → `.dialog__panel--form` (40rem), `lg` → `.dialog__panel--lg` (48rem) (D-5). |
 | `fullScreenBelowSm` | `boolean` | `false` | no | Adds `.dialog__panel--fullscreen`: below 36rem the panel fills the whole viewport instead of docking (D-11). No effect from 36rem. |
-| `busy` | `boolean` | `false` | no | Close gets native `disabled`; Escape does nothing. The backdrop does nothing in every state (D-1). The footer buttons are the consumer's to disable or mark busy. |
+| `busy` | `boolean` | `false` | no | Close gets native `disabled`; Escape and backdrop clicks do nothing (D-1). The footer buttons are the consumer's to disable or mark busy. |
 | `closeLabel` | `string` | §12 `st.dialog.close` ("Close") | no | `aria-label` of the Close button. |
 
 Inputs are signal inputs; `fullScreenBelowSm` and `busy` use `booleanAttribute`.
@@ -162,7 +162,7 @@ Guarantees for every kind:
 | Rule | Behaviour |
 |---|---|
 | Role | The positioner has `role="dialog"`, `aria-modal="true"`, `aria-labelledby` (the content's title) and `aria-describedby` (its description, when it has one). |
-| Backdrop | `.backdrop` behind `dialog` and `sheet`; none behind `viewer`, which is opaque. Clicking it does nothing (D-1). |
+| Backdrop | `.backdrop` behind `dialog` and `sheet`; none behind `viewer`, which is opaque. Clicking it closes the dialog or sheet, as Escape does, unless busy (D-1). |
 | Inert page | While open, every other child of `body` gets `inert` and `aria-hidden="true"`; both are removed on close. |
 | Scroll | Page scroll is blocked while open and the position is kept; only the overlay's own body scrolls. |
 | Initial focus | The element marked `cdkFocusInitial` (or the first focusable element inside a marked non-focusable host, such as `st-search-field`); otherwise the first focusable element, which for `st-dialog` and `st-sheet` is Close. |
@@ -471,7 +471,7 @@ button keeps turning ([dialog.html](../../design-system/components/dialog.html),
 ### States
 
 - **AC-6** Given the delete dialog with `busy` true, when the owner presses Escape or clicks the backdrop, then the dialog stays open, its Close button has the `disabled` attribute, and the footer's status line reads "Deleting Corktown Garage Studio…". (L2-061)
-- **AC-7** Given the delete dialog in any state, when the owner clicks the backdrop, then the dialog stays open, `DialogRef.closed` has not emitted and nothing is deleted. (L2-061)
+- **AC-7** Given the delete dialog for Corktown Garage Studio, not busy, when the owner clicks the backdrop, then the dialog closes as Cancel does, `DialogRef.closed` emits `undefined`, nothing is deleted, and focus returns to "Delete studio". (L2-061)
 - **AC-8** Given the unpublish dialog after a failed request (`busy` false, a danger alert projected), when it renders, then the body shows "We couldn't unpublish it. Nothing changed. Try again." above the footer, Close is enabled, and Escape closes the dialog with result `undefined`. (L2-056)
 - **AC-9** Given the guide-entry picker opened with `size="form"` and `cdkFocusInitial` on its `st-search-field`, when it opens, then focus is in the "Studio or spot" input, so the owner can type "studio" and choose "Leslieville Daylight Studio" without a pointer. (L2-060)
 
@@ -525,8 +525,9 @@ scale-in take 0 ms ([dialog.html](../../design-system/components/dialog.html), A
 - `DialogService.open` calls CDK `Dialog.open` with: `container:
   OverlayContainerComponent`; `role: 'dialog'`; `ariaModal: true`;
   `hasBackdrop: kind !== 'viewer'`; `backdropClass: 'backdrop'`;
-  `disableClose: true` (the content roots handle Escape, the backdrop does
-  nothing); `autoFocus: 'first-tabbable'` (which honours `cdkFocusInitial`);
+  `disableClose: true` (the content roots handle Escape and backdrop clicks,
+  so both are ignored while `busy`: the root listens to
+  `DialogRef.backdropClick` and `keydownEvents` and closes with `undefined`); `autoFocus: 'first-tabbable'` (which honours `cdkFocusInitial`);
   `restoreFocus: returnFocusTo ?? true`; `scrollStrategy: block()`; a global
   position strategy with the pane at 100 % width and height, so the DS
   positioner rules place the panel; `data`.
@@ -573,7 +574,7 @@ scale-in take 0 ms ([dialog.html](../../design-system/components/dialog.html), A
 
 ## Decisions
 
-- **D-1** *ICD §10.1 says "Escape and the backdrop close it"; the dialog design-system page says clicking the backdrop does nothing.* The backdrop does nothing for every kind; Escape, Close and the safe action close. L2 is silent, and the design system's reason holds for the owner on a phone: a stray tap beside a docked panel must never cancel or confirm a deletion. Recorded as a conflict for the owner; ICD §10.1's wording needs the matching patch.
+- **D-1** *ICD §10.1 says "Escape and the backdrop close it"; the dialog design-system page says clicking the backdrop does nothing.* The backdrop closes the dialog or sheet exactly as Escape does: with no result (`undefined`), never confirming anything, and not while the content root is `busy`. Decided by the product owner on 14 Oct 2026, keeping ICD §10.1. A backdrop click can only ever cancel, so a stray tap cannot delete; the design system's dialog page catches up at the next extraction.
 - **D-2** *The refused remove-image dialog is described by its warning alert, but `st-dialog` can only describe itself with `description`.* `st-dialog` (and `st-sheet`) gain `describedBy` (additive, ICD-002 1.1.0): the ID of an element in the projected content. The consumer puts the ID on the `st-alert` host. No existing input could carry an ID reference to projected content.
 - **D-3** *The design system puts `role="dialog"` on the `.dialog` positioner, which CDK renders as its container, while `st-dialog` is the content.* The CDK container is the positioner and carries the role, `aria-modal`, the labels and the kind's class; `st-dialog`'s host is `.dialog__panel`. The application component's host in between gets `display: contents` from the container, so the DS grid places the panel. This keeps the DS DOM (role on `.dialog`, panel as its grid child) with CDK's focus trap.
 - **D-4** *The DS collapses a body that holds only the hidden status line with `display: none`, which also hides the live region, so "Deleting Corktown Garage Studio…" would never be announced; and `:has()` cannot match projected content under emulated encapsulation.* The busy status line goes in the footer slot (visually hidden and absolutely positioned, so it takes no space), and `.dialog__body` and `.dialog__footer` hide only when `:empty`. The live region stays in the accessibility tree for the whole life of the dialog.
