@@ -1,0 +1,9 @@
+<main class="container stack">
+  <st-form-actions [sticky]="true">
+    <button st-button variant="primary" type="submit">Save changes</button>
+    <a st-button variant="ghost" href="/admin/studios">Cancel</a>
+    <st-save-status state="saved" text="Saved 4:12 pm" />
+  </st-form-actions>
+  <st-save-status state="error" text="Not saved. Fix the 6 things listed above." />
+  <st-save-status state="dirty" text="Unsaved changes" />
+</main>

@@ -1,4 +1,10 @@
 import { Routes } from '@angular/router';
+import { ActiveFiltersDefaultComponent } from './active-filters/active-filters-default.component';
+import { EditorSectionStatesComponent } from './editor-section/editor-section-states.component';
+import { CompareBarDefaultComponent } from './compare-bar/compare-bar-default.component';
+import { SummaryPanelDefaultComponent } from './summary-panel/summary-panel-default.component';
+import { FormActionsStatesComponent } from './form-actions/form-actions-states.component';
+import { ErrorSummaryStatesComponent } from './error-summary/error-summary-states.component';
 import { ResponsiveImagePerformanceComponent } from './responsive-image/responsive-image-performance.component';
 import { ButtonGroupPerformanceComponent } from './button-group/button-group-performance.component';
 import { FilterPerformanceComponent } from './filter/filter-performance.component';
@@ -135,4 +141,10 @@ export const routes: Routes = [
   { path: 'page-header/states', component: PageHeaderStatesComponent },
   { path: 'alert/states', component: AlertStatesComponent },
   { path: 'toast/shell', component: ToastShellComponent },
+  { path: 'error-summary/states', component: ErrorSummaryStatesComponent },
+  { path: 'form-actions/states', component: FormActionsStatesComponent },
+  { path: 'summary-panel/default', component: SummaryPanelDefaultComponent },
+  { path: 'compare-bar/default', component: CompareBarDefaultComponent },
+  { path: 'editor-section/states', component: EditorSectionStatesComponent },
+  { path: 'active-filters/default', component: ActiveFiltersDefaultComponent },
 ];
