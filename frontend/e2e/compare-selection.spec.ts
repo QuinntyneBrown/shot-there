@@ -3,6 +3,7 @@ import { THE_JUNCTION_LOFT } from './fakes/studio-details';
 import { PUBLISHED_STUDIOS } from './fakes/studio-summaries';
 import { expect, test } from './fakes/test';
 import { CompareBarPanel } from './pages/compare-bar.panel';
+import { ShellPage } from './pages/shell.page';
 import { StudioListPage } from './pages/studio-list.page';
 import { StudioPage } from './pages/studio.page';
 
@@ -149,4 +150,42 @@ test.describe('Selecting studios to compare', () => {
     expect(await bar.isPinnedToBottom()).toBe(true);
     expect(await bar.leavesPageEndUncovered()).toBe(true);
   });
+
+  for (const theme of ['light', 'dark'] as const) {
+    for (const width of [320, 1280]) {
+      test(`has no accessibility violations on the studio list at ${width}px in ${theme} theme`, async ({
+        page,
+      }) => {
+        // Given one studio is selected on the list at this width and theme
+        const shell = new ShellPage(page);
+        const list = new StudioListPage(page);
+        await shell.rememberTheme(theme);
+        if (width === 320) await shell.usePhoneWidth();
+        else await shell.useDesktopWidth();
+        await givenStudios(page, PUBLISHED_STUDIOS);
+        await list.open();
+        await list.compareToggle('Kensington Window Room').click();
+        // Then the page has no horizontal scroll or WCAG A/AA violations
+        expect(await shell.hasHorizontalScroll()).toBe(false);
+        expect(await shell.accessibilityViolations()).toEqual([]);
+      });
+
+      test(`has no accessibility violations on a studio page at ${width}px in ${theme} theme`, async ({
+        page,
+      }) => {
+        // Given one studio is selected on its page at this width and theme
+        const shell = new ShellPage(page);
+        const studio = new StudioPage(page);
+        await shell.rememberTheme(theme);
+        if (width === 320) await shell.usePhoneWidth();
+        else await shell.useDesktopWidth();
+        await givenStudio(page, THE_JUNCTION_LOFT);
+        await studio.open('the-junction-loft');
+        await studio.compareToggle('The Junction Loft').click();
+        // Then the page has no horizontal scroll or WCAG A/AA violations
+        expect(await shell.hasHorizontalScroll()).toBe(false);
+        expect(await shell.accessibilityViolations()).toEqual([]);
+      });
+    }
+  }
 });
