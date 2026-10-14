@@ -1,10 +1,11 @@
-import { StudioFeeDto } from '@shot-there/api';
+import { DisplayDate, Fact } from '@shot-there/components';
 
 /** What the pricing section shows, ready for the template. */
 export interface StudioPricingView {
-  /** Hours the all-in cost pays for: the 2-hour shoot or the minimum booking, whichever is longer. */
-  billableHours: number;
-  mandatoryFees: StudioFeeDto[];
-  optionalFees: StudioFeeDto[];
+  allIn: string;
+  allInText: string;
+  items: Fact[];
+  verifiedLabel: string;
+  verified: DisplayDate;
   daysSinceVerified: number;
 }

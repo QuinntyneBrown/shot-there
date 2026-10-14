@@ -9,6 +9,7 @@ export class StudioPage {
   readonly pricing: Locator;
   readonly allInCost: Locator;
   readonly staleWarning: Locator;
+  readonly pricingStatus: Locator;
   readonly notFoundHeading: Locator;
   readonly specifications: Locator;
   readonly gear: Locator;
@@ -46,6 +47,7 @@ export class StudioPage {
     this.staleWarning = this.pricing
       .getByRole('status')
       .filter({ hasText: 'Prices may be out of date' });
+    this.pricingStatus = this.pricing.getByRole('status');
     this.notFoundHeading = page.getByRole('heading', { name: "We couldn't find that page" });
     this.specifications = page.getByRole('region', { name: 'Measured specifications' });
     this.gear = page.getByRole('region', { name: 'Gear' });
