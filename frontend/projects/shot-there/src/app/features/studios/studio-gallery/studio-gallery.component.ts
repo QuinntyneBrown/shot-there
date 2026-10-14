@@ -22,7 +22,7 @@ export class StudioGalleryComponent {
     this.dialog.open<number, LightboxData>(LightboxComponent, {
       kind: 'viewer',
       data: {
-        title: `Photo viewer: ${this.studioName()}`,
+        title: $localize`Photo viewer: ${this.studioName()}:studioName:`,
         shots: toLightboxShots(this.gallery()),
         startIndex: index,
       },
