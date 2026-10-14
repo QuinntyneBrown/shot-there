@@ -118,7 +118,7 @@ test.describe('Studio list', () => {
     await givenStudioListFails(page);
     const list = new StudioListPage(page);
     // When the visitor opens the studio list
-    await list.open();
+    await list.open('?cyc=yes&parking=none&sort=score');
     // Then an error explains it and offers a retry
     await expect(list.errorAlert).toBeVisible();
     await expect(list.cards).toHaveCount(0);
@@ -128,6 +128,9 @@ test.describe('Studio list', () => {
     // Then the studios show
     await expect(list.cards).toHaveCount(7);
     await expect(list.errorAlert).toBeHidden();
+    expect(list.currentQuery().get('cyc')).toBe('yes');
+    expect(list.currentQuery().get('parking')).toBe('none');
+    expect(list.currentQuery().get('sort')).toBe('score');
   });
 
   // Acceptance Test
