@@ -1,1 +1,1 @@
-export type GearCategory = 'lights' | 'modifiers' | 'stands' | 'other';
+export type GearCategory = 'lights' | 'modifiers' | 'stands' | 'backdrops' | 'other';

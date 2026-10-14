@@ -1,1 +1,1 @@
-export type SpotPermitFilter = 'none-needed' | 'any';
+export type SpotPermitFilter = 'none_needed' | 'any';

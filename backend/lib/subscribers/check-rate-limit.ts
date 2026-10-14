@@ -1,6 +1,8 @@
 import { getDependencies } from '@/lib/data/dependency-container';
 
-const WINDOW_MS = 60_000;
+/** Requests older than this no longer count, so a refused client can retry after it. */
+export const SIGNUP_WINDOW_SECONDS = 60;
+const WINDOW_MS = SIGNUP_WINDOW_SECONDS * 1000;
 const MAX_REQUESTS_PER_WINDOW = 6;
 
 /** Request times per client, held in process memory (single-instance deployment). */

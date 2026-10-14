@@ -1,1 +1,1 @@
-export type ParkingOption = 'onSite' | 'street' | 'none';
+export type ParkingOption = 'on_site' | 'street' | 'none';

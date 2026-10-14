@@ -1,5 +1,6 @@
-import { HttpProblem } from '@/lib/http/http-problem';
 import { parseWithSchema } from '@/lib/http/parse-with-schema';
+import { payloadTooLarge } from '@/lib/http/payload-too-large';
+import { unsupportedMediaType } from '@/lib/http/unsupported-media-type';
 import { validationFailed } from '@/lib/http/validation-failed';
 import { MAX_UPLOAD_BYTES } from '@/lib/images/max-upload-bytes';
 import { uploadFieldsSchema } from '@/lib/images/schemas';
@@ -15,7 +16,7 @@ async function readBody(request: Request): Promise<Buffer> {
       size += chunk.value.byteLength;
       if (size > MAX_UPLOAD_BYTES) {
         reader.releaseLock();
-        throw new HttpProblem(Response.json({ status: 413 }, { status: 413 }));
+        throw payloadTooLarge();
       }
       chunks.push(chunk.value);
     }
@@ -23,7 +24,7 @@ async function readBody(request: Request): Promise<Buffer> {
   return Buffer.concat(chunks);
 }
 
-/** Reads a multipart image upload, or throws 413 or 400. */
+/** Reads a multipart image upload, or throws 415, 413 or 400. */
 export async function readUpload(request: Request): Promise<UploadImageInput> {
   const body = await readBody(request);
   const form = await new Response(new Uint8Array(body), {
@@ -31,16 +32,16 @@ export async function readUpload(request: Request): Promise<UploadImageInput> {
   })
     .formData()
     .catch(() => {
-      throw validationFailed([{ field: 'file', message: 'Send the image as multipart form data' }]);
+      throw unsupportedMediaType();
     });
 
   const file = form.get('file');
-  if (!(file instanceof File)) throw validationFailed([{ field: 'file', message: 'Choose an image to upload' }]);
+  if (!(file instanceof File)) throw validationFailed([{ field: 'file', code: 'required', message: 'Choose an image to upload' }]);
   const fields = Object.fromEntries([...form.entries()].filter(([name]) => name !== 'file'));
-  const { role, studioId, spotId } = parseWithSchema(uploadFieldsSchema, fields);
+  const { role, locationKind, locationId } = parseWithSchema(uploadFieldsSchema, fields);
 
   return {
-    owner: studioId ? { kind: 'studio', id: studioId } : { kind: 'spot', id: spotId ?? '' },
+    owner: { kind: locationKind, id: locationId },
     role,
     bytes: Buffer.from(await file.arrayBuffer()),
     declaredType: file.type,

@@ -1,10 +1,11 @@
 import { describe, expect, it } from 'vitest';
+import { expectProblem } from '@/tests/support/expect-problem';
 import { PUT as updateStudio } from '@/app/api/admin/studios/[id]/route';
 import { GET as findRedirect } from '@/app/api/slug-redirects/[type]/[slug]/route';
 import { adminRequest, idParams, stubSiteOriginPerTest, useSignedInOwner } from '@/tests/support/admin-session';
 import { aStudio } from '@/tests/support/builders';
 import type { InMemoryStudioRepository } from '@/tests/support/in-memory-studio-repository';
-import { aStudioInput } from '@/tests/support/studio-input';
+import { studioSaveBody } from '@/tests/support/studio-input';
 
 stubSiteOriginPerTest();
 
@@ -22,7 +23,7 @@ describe('L2-075 stable URLs for published studios', () => {
   it('Given a published studio, when the owner renames it without changing the slug, then its URL stays the same', async () => {
     const dependencies = useSignedInOwner({ studios: [aStudio({ id: 's1', slug: 'old-loft', name: 'Old Loft' })] });
 
-    await update('s1', aStudioInput({ name: 'Brand New Name' }));
+    await update('s1', await studioSaveBody('s1', { name: 'Brand New Name' }));
 
     expect((dependencies.studios as InMemoryStudioRepository).rows[0].slug).toBe('old-loft');
     expect(await redirectFor('old-loft')).toBeNull();
@@ -31,7 +32,7 @@ describe('L2-075 stable URLs for published studios', () => {
   it('Given a published studio whose slug the owner changes, when the old slug is looked up, then it redirects to the new slug', async () => {
     const dependencies = useSignedInOwner({ studios: [aStudio({ id: 's1', slug: 'old-loft' })] });
 
-    const response = await update('s1', aStudioInput({ slug: 'the-junction-loft' }));
+    const response = await update('s1', await studioSaveBody('s1', { slug: 'the-junction-loft' }));
 
     expect(response.status).toBe(200);
     expect((dependencies.studios as InMemoryStudioRepository).rows[0].slug).toBe('the-junction-loft');
@@ -44,7 +45,7 @@ describe('L2-075 stable URLs for published studios', () => {
       slugRedirects: [{ type: 'studio', fromSlug: 'first-name', toSlug: 'second-name' }],
     });
 
-    await update('s1', aStudioInput({ slug: 'third-name' }));
+    await update('s1', await studioSaveBody('s1', { slug: 'third-name' }));
 
     expect(await redirectFor('first-name')).toBe('third-name');
     expect(await redirectFor('second-name')).toBe('third-name');
@@ -56,7 +57,7 @@ describe('L2-075 stable URLs for published studios', () => {
       slugRedirects: [{ type: 'studio', fromSlug: 'first-name', toSlug: 'second-name' }],
     });
 
-    await update('s1', aStudioInput({ slug: 'first-name' }));
+    await update('s1', await studioSaveBody('s1', { slug: 'first-name' }));
 
     expect(await redirectFor('first-name')).toBeNull();
     expect(await redirectFor('second-name')).toBe('first-name');
@@ -65,20 +66,20 @@ describe('L2-075 stable URLs for published studios', () => {
   it('Given a draft studio whose slug changes, when saved, then no redirect is recorded', async () => {
     useSignedInOwner({ studios: [aStudio({ id: 's1', slug: 'draft-loft', status: 'draft' })] });
 
-    await update('s1', aStudioInput({ slug: 'renamed-loft' }));
+    await update('s1', await studioSaveBody('s1', { slug: 'renamed-loft' }));
 
     expect(await redirectFor('draft-loft')).toBeNull();
   });
 
   it.each([
-    ['taken-loft', 'This address is already used by another studio'],
-    ['Not A Slug', 'Use lowercase letters, numbers and single hyphens'],
-  ])('Given the slug %s, when saved, then the save is refused naming slug', async (slug, message) => {
+    ['taken-loft', 'already_in_use'],
+    ['Not A Slug', 'invalid_format'],
+  ])('Given the slug %s, when saved, then the save is refused naming slug with %s', async (slug, code) => {
     useSignedInOwner({ studios: [aStudio({ id: 's1', slug: 'old-loft' }), aStudio({ id: 's2', slug: 'taken-loft' })] });
 
-    const response = await update('s1', aStudioInput({ slug }));
+    const response = await update('s1', await studioSaveBody('s1', { slug }));
 
-    expect(response.status).toBe(400);
-    expect((await response.json()).errors).toContainEqual({ field: 'slug', message });
+    const problem = await expectProblem(response, 'validation-failed', 400);
+    expect(problem.errors).toContainEqual({ field: 'slug', code, message: expect.any(String) });
   });
 });

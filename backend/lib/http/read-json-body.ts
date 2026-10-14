@@ -1,9 +1,12 @@
-import { HttpProblem } from '@/lib/http/http-problem';
 import { MAX_JSON_BODY_BYTES } from '@/lib/http/max-json-body-bytes';
+import { payloadTooLarge } from '@/lib/http/payload-too-large';
+import { unsupportedMediaType } from '@/lib/http/unsupported-media-type';
 import { validationFailed } from '@/lib/http/validation-failed';
 
-/** Reads and parses a JSON body, stopping at 1 MB whatever Content-Length claims. Throws 413 or 400. */
+/** Reads and parses a JSON body, stopping at 1 MB whatever Content-Length claims. Throws 415, 413 or 400. */
 export async function readJsonBody(request: Request): Promise<unknown> {
+  const mediaType = request.headers.get('content-type')?.split(';')[0].trim().toLowerCase();
+  if (mediaType !== 'application/json') throw unsupportedMediaType();
   const chunks: Uint8Array[] = [];
   let size = 0;
   if (request.body) {
@@ -12,7 +15,7 @@ export async function readJsonBody(request: Request): Promise<unknown> {
       size += chunk.value.byteLength;
       if (size > MAX_JSON_BODY_BYTES) {
         await reader.cancel();
-        throw new HttpProblem(Response.json({ status: 413 }, { status: 413 }));
+        throw payloadTooLarge();
       }
       chunks.push(chunk.value);
     }
@@ -20,6 +23,6 @@ export async function readJsonBody(request: Request): Promise<unknown> {
   try {
     return JSON.parse(Buffer.concat(chunks).toString('utf8'));
   } catch {
-    throw validationFailed([{ field: '', message: 'Send a JSON body' }]);
+    throw validationFailed([{ field: '', code: 'invalid_format', message: 'Send a JSON body' }]);
   }
 }

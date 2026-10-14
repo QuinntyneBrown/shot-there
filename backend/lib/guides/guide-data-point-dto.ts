@@ -1,5 +1,7 @@
-/** One server-computed fact about a guide entry; `label` is the data-point key the frontend localizes. */
+import type { GuideDataPointKey } from '@/lib/guides/guide-data-point-key';
+
+/** One server-computed fact about a guide entry; the frontend builds its label from `key`. */
 export interface GuideDataPointDto {
-  label: 'allInCost2h' | 'overallScore' | 'permitSummary';
-  value: number | string | null;
+  key: GuideDataPointKey;
+  value: number;
 }

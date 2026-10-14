@@ -1,8 +1,9 @@
 import type { RubricScoresDto } from '@/lib/studios/rubric-scores-dto';
 
 export interface StudioVerdictDto {
-  whoItsFor: string | null;
-  whoShouldSkip: string | null;
+  whoItsFor: string;
+  whoShouldSkip: string;
   scores: RubricScoresDto;
-  overallScore: number | null;
+  /** One decimal place. */
+  overallScore: number;
 }

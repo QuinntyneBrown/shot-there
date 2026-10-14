@@ -23,9 +23,9 @@ export async function inspectImage(bytes: Buffer, declaredType: string): Promise
     .metadata()
     .catch(() => null);
   const contentType = contentTypeOf(metadata?.format, metadata?.compression);
-  if (!metadata || !contentType) throw validationFailed([{ field: 'file', message: UNSUPPORTED }]);
+  if (!metadata || !contentType) throw validationFailed([{ field: 'file', code: 'unsupported_image_type', message: UNSUPPORTED }]);
   if (!GENERIC_TYPES.includes(declaredType) && declaredType !== contentType) {
-    throw validationFailed([{ field: 'file', message: 'The file content does not match its type' }]);
+    throw validationFailed([{ field: 'file', code: 'image_type_mismatch', message: 'The file content does not match its type' }]);
   }
   const { width, height } = metadata.autoOrient;
   return { contentType, width, height };

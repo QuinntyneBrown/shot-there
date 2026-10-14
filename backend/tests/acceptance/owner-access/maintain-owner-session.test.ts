@@ -5,6 +5,8 @@ import { POST as signOut } from '@/app/api/auth/sign-out/route';
 import { requireOwnerSession } from '@/lib/auth/require-owner-session';
 import { verifyCsrf } from '@/lib/auth/verify-csrf';
 import { HttpProblem } from '@/lib/http/http-problem';
+import { problemResponse } from '@/lib/http/problem-response';
+import { expectProblem } from '@/tests/support/expect-problem';
 import { proxy } from '@/proxy';
 import { useFakeDependencies } from '@/tests/support/fake-dependencies';
 import { fixedClock } from '@/tests/support/fixed-clock';
@@ -35,7 +37,7 @@ async function rejection(action: () => unknown): Promise<Response> {
   try {
     await action();
   } catch (error) {
-    if (error instanceof HttpProblem) return error.response;
+    if (error instanceof HttpProblem) return problemResponse(error, 'test');
     throw error;
   }
   throw new Error('Expected the request to be refused');
@@ -81,10 +83,31 @@ describe('L2-051 sign-out', () => {
     );
 
     expect(response.status).toBe(204);
-    const cleared = response.headers.getSetCookie().find((cookie) => cookie.startsWith('st_session='));
-    expect(cleared).toMatch(/^st_session=;.*Max-Age=0/);
+    expect(response.headers.getSetCookie()).toEqual([
+      'st_session=; HttpOnly; Secure; SameSite=Lax; Path=/api; Max-Age=0',
+      'st_csrf=; Secure; SameSite=Lax; Path=/; Max-Age=0',
+    ]);
     expect(sessionsOf(dependencies)).toEqual([]);
     expect((await sessionState(ownerHeaders('tok'))).body).toEqual({ signedIn: false });
+  });
+
+  it('Given a signed-in owner, when sign-out arrives without the CSRF token, then the response is 403 csrf-rejected and the session remains (ICD S-2)', async () => {
+    const dependencies = useFakeDependencies({ ownerSessions: [anOwnerSession('tok')] });
+    const { 'x-csrf-token': _token, ...headers } = ownerHeaders('tok');
+
+    const response = await signOut(new Request(`${SITE_ORIGIN}/api/auth/sign-out`, { method: 'POST', headers }));
+
+    await expectProblem(response, 'csrf-rejected', 403);
+    expect(sessionsOf(dependencies)).toHaveLength(1);
+  });
+
+  it('Given no valid session, when sign-out arrives, then the response is 204 and both cookies are cleared', async () => {
+    useFakeDependencies();
+
+    const response = await signOut(new Request(`${SITE_ORIGIN}/api/auth/sign-out`, { method: 'POST' }));
+
+    expect(response.status).toBe(204);
+    expect(response.headers.getSetCookie()).toHaveLength(2);
   });
 });
 

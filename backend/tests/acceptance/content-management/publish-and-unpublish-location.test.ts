@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import { expectProblem } from '@/tests/support/expect-problem';
 import {
   DELETE as unpublishSpot,
   POST as publishSpot,
@@ -35,7 +36,7 @@ describe('L2-056 and L2-002 publish a studio', () => {
     const response = await publish('s1');
 
     expect(response.status).toBe(200);
-    expect(await response.json()).toMatchObject({ id: 's1', status: 'published' });
+    expect(await response.json()).toEqual({ status: 'published', publishedAt: dependencies.clock.now().toISOString() });
     expect((dependencies.studios as InMemoryStudioRepository).rows[0].publishedAt).toEqual(dependencies.clock.now());
     expect(await publicStudioStatus('loft')).toBe(200);
   });
@@ -45,8 +46,8 @@ describe('L2-056 and L2-002 publish a studio', () => {
 
     const response = await publish('s1');
 
-    expect(response.status).toBe(422);
-    expect(await response.json()).toEqual({ status: 422, missingFields: ['ceilingHeight'] });
+    const problem = await expectProblem(response, 'publish-incomplete', 422);
+    expect(problem.missingFields).toEqual(['ceilingHeight']);
     expect((dependencies.studios as InMemoryStudioRepository).rows[0].status).toBe('draft');
     expect(revalidatedRoutes(dependencies)).toEqual([]);
   });
@@ -74,33 +75,44 @@ describe('L2-056 and L2-002 publish a studio', () => {
 
     expect((await response.json()).missingFields).toEqual([
       'bookingUrl',
-      'usableSpace',
-      'naturalLight',
-      'power',
-      'cycWall',
+      'usableDepth',
+      'naturalLight.evening',
+      'outletType',
+      'hasCycWall',
       'testShots',
       'gallery',
-      'scores',
-      'verdict',
+      'scores.gear',
+      'whoShouldSkip',
       'disclosure',
     ]);
   });
 
-  it('Given a comped studio without a provider, when the owner publishes it, then publishing is refused naming disclosureProvider', async () => {
-    useSignedInOwner({ studios: [aStudio({ id: 's1', status: 'draft', disclosure: 'comped', disclosureProvider: null })] });
+  it('Given a studio whose only gallery image has no alt text, when the owner publishes it, then gallery is listed as missing (ICD S-8)', async () => {
+    useSignedInOwner({
+      studios: [aStudio({ id: 's1', status: 'draft', images: [anImage({ role: 'test_shot' }), anImage({ role: 'gallery', altText: '' })] })],
+    });
+
+    const problem = await expectProblem(await publish('s1'), 'publish-incomplete', 422);
+
+    expect(problem.missingFields).toEqual(['gallery']);
+  });
+
+  it('Given an already published studio, when the owner publishes it again, then the response is 200 and the publish time is kept (ICD A13)', async () => {
+    const publishedAt = new Date('2026-09-02T12:00:00Z');
+    useSignedInOwner({ studios: [aStudio({ id: 's1', publishedAt })] });
 
     const response = await publish('s1');
 
-    expect(response.status).toBe(422);
-    expect((await response.json()).missingFields).toEqual(['disclosureProvider']);
+    expect(await response.json()).toEqual({ status: 'published', publishedAt: publishedAt.toISOString() });
   });
 
-  it('Given a draft studio that has no review date, when it is published, then the review date becomes today', async () => {
-    const dependencies = useSignedInOwner({ today: '2026-10-13', studios: [aStudio({ id: 's1', status: 'draft', reviewedAt: null })] });
+  it('Given a draft studio, when it is published, then its public review time is the time of that publish (ICD OI-4)', async () => {
+    const dependencies = useSignedInOwner({ studios: [aStudio({ id: 's1', slug: 'loft', status: 'draft', publishedAt: null })] });
 
     await publish('s1');
 
-    expect((dependencies.studios as InMemoryStudioRepository).rows[0].reviewedAt).toBe('2026-10-13');
+    const page = await getPublicStudio(new Request('http://localhost/api/studios/loft'), { params: Promise.resolve({ slug: 'loft' }) });
+    expect((await page.json()).reviewedAt).toBe(dependencies.clock.now().toISOString());
   });
 
   it('Given a studio featured in a published guide, when it is published, then its page, list, map, comparison, sitemap and that guide are revalidated', async () => {
@@ -178,8 +190,9 @@ describe('L2-056, L2-002 and L2-045 publish an outdoor spot', () => {
           id: 'p1',
           status: 'draft',
           latitude: null,
+          lightByTime: [{ timeOfDay: 'morning', rating: 'medium', note: null }],
           lightBySeason: [],
-          permits: [],
+          permits: [{ shootType: 'video', required: true }],
           bestUses: [],
           disclosure: null,
           images: [anImage({ role: 'gallery' })],
@@ -190,10 +203,19 @@ describe('L2-056, L2-002 and L2-045 publish an outdoor spot', () => {
     const response = await publishSpotRequest('p1');
 
     expect((await response.json()).missingFields).toEqual([
-      'coordinates',
-      'lightBySeason',
+      'latitude',
+      'lightByTime.midday',
+      'lightByTime.afternoon',
+      'lightByTime.goldenHour',
+      'lightByTime.blueHour',
+      'lightBySeason.spring',
+      'lightBySeason.summer',
+      'lightBySeason.autumn',
+      'lightBySeason.winter',
       'sampleShots',
-      'permitStatus',
+      'permits.portrait',
+      'permits.weddingEngagement',
+      'permits.commercial',
       'bestUses',
       'disclosure',
     ]);
@@ -205,6 +227,7 @@ describe('L2-056, L2-002 and L2-045 publish an outdoor spot', () => {
     const response = await unpublishSpot(adminRequest('/api/admin/spots/p1/publish', { method: 'DELETE' }), idParams('p1'));
 
     expect(response.status).toBe(200);
+    expect(await response.json()).toEqual({ status: 'draft', publishedAt: null });
     expect(await publicSpotStatus('park')).toBe(404);
   });
 });

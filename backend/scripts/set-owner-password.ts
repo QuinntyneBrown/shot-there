@@ -7,7 +7,7 @@ import { prismaClient } from '@/lib/data/prisma-client';
 
 async function main(): Promise<void> {
   const email = process.env.OWNER_EMAIL?.trim().toLowerCase();
-  const password = process.env.OWNER_PASSWORD;
+  const password = process.env.OWNER_PASSWORD?.trim();
   if (!email || !password) throw new Error('Set OWNER_EMAIL and OWNER_PASSWORD');
 
   const passwordHash = await argon2.hash(password, { type: argon2.argon2id });

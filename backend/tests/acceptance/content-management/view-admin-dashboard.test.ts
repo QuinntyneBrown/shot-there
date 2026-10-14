@@ -53,9 +53,9 @@ describe('L2-044 stale data list for the owner', () => {
     const { body } = await dashboard();
 
     expect(body.verification).toEqual([
-      { kind: 'studio', id: 's2', name: 'Loft B', field: 'price', lastVerifiedAt: '2026-01-10', ageDays: 276, group: 'stale' },
-      { kind: 'spot', id: 'p1', name: 'Riverdale Park', field: 'permit', lastVerifiedAt: '2026-02-15', ageDays: 240, group: 'stale' },
-      { kind: 'studio', id: 's1', name: 'Loft A', field: 'price', lastVerifiedAt: '2026-03-27', ageDays: 200, group: 'stale' },
+      { kind: 'studio', id: 's2', name: 'Loft B', field: 'price', verifiedAt: '2026-01-10', ageDays: 276, group: 'stale' },
+      { kind: 'spot', id: 'p1', name: 'Riverdale Park', field: 'permit', verifiedAt: '2026-02-15', ageDays: 240, group: 'stale' },
+      { kind: 'studio', id: 's1', name: 'Loft A', field: 'price', verifiedAt: '2026-03-27', ageDays: 200, group: 'stale' },
     ]);
   });
 
@@ -64,7 +64,7 @@ describe('L2-044 stale data list for the owner', () => {
 
     const { body } = await dashboard();
 
-    expect(body.verification).toEqual([expect.objectContaining({ id: 's1', ageDays: 170, group: 'dueSoon' })]);
+    expect(body.verification).toEqual([expect.objectContaining({ id: 's1', ageDays: 170, group: 'due_soon' })]);
   });
 
   it('Given verifications 183 and 153 days old, when the owner opens the dashboard, then both are due soon and one 152 days old is not listed', async () => {
@@ -80,8 +80,8 @@ describe('L2-044 stale data list for the owner', () => {
     const { body } = await dashboard();
 
     expect(body.verification.map((item: { id: string; group: string }) => [item.id, item.group])).toEqual([
-      ['d183', 'dueSoon'],
-      ['d153', 'dueSoon'],
+      ['d183', 'due_soon'],
+      ['d153', 'due_soon'],
     ]);
   });
 

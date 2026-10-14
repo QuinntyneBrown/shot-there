@@ -1,15 +1,15 @@
 import { getDependencies } from '@/lib/data/dependency-container';
 import { imagesWithRole, toImageDto } from '@/lib/images/to-image-dto';
 import { isStale } from '@/lib/shared/is-stale';
+import { present } from '@/lib/shared/present';
 import { findNearestStudios } from '@/lib/spots/find-nearest-studios';
+import { inBestUseOrder } from '@/lib/spots/in-best-use-order';
+import type { LightSlotDto } from '@/lib/spots/light-slot-dto';
 import type { Season } from '@/lib/spots/season';
-import type { ShootType } from '@/lib/spots/shoot-type';
 import type { SpotDetailDto } from '@/lib/spots/spot-detail-dto';
+import type { SpotRecord } from '@/lib/spots/spot-record';
 import type { TimeOfDay } from '@/lib/spots/time-of-day';
-
-const TIME_ORDER: TimeOfDay[] = ['morning', 'midday', 'afternoon', 'goldenHour', 'blueHour'];
-const SEASON_ORDER: Season[] = ['spring', 'summer', 'autumn', 'winter'];
-const SHOOT_TYPE_ORDER: ShootType[] = ['portrait', 'weddingEngagement', 'commercial', 'video'];
+import { toPermitsByShootType } from '@/lib/spots/to-permits-by-shoot-type';
 
 /** The published spot with the slug, or null. Drafts are never returned. */
 export async function getSpot(slug: string): Promise<SpotDetailDto | null> {
@@ -17,24 +17,42 @@ export async function getSpot(slug: string): Promise<SpotDetailDto | null> {
   const spot = await spots.findPublishedBySlug(slug);
   if (!spot) return null;
 
+  const latitude = present(spot.latitude, 'latitude');
+  const longitude = present(spot.longitude, 'longitude');
+  const lightAt = (timeOfDay: TimeOfDay): LightSlotDto => {
+    const slot = present(spot.lightByTime.find((row) => row.timeOfDay === timeOfDay) ?? null, `lightByTime.${timeOfDay}`);
+    return { rating: slot.rating, note: slot.note };
+  };
+  const lightIn = (season: Season) =>
+    present(spot.lightBySeason.find((row) => row.season === season)?.note ?? null, `lightBySeason.${season}`);
+
   return {
     slug: spot.slug,
     name: spot.name,
-    neighbourhood: spot.neighbourhood,
-    latitude: spot.latitude,
-    longitude: spot.longitude,
-    directions: spot.directions,
-    lightByTime: [...spot.lightByTime].sort(
-      (a, b) => TIME_ORDER.indexOf(a.timeOfDay) - TIME_ORDER.indexOf(b.timeOfDay),
+    neighbourhood: present(spot.neighbourhood, 'neighbourhood'),
+    type: spot.type,
+    latitude,
+    longitude,
+    directions: present(spot.directions, 'directions'),
+    lightByTime: {
+      morning: lightAt('morning'),
+      midday: lightAt('midday'),
+      afternoon: lightAt('afternoon'),
+      goldenHour: lightAt('goldenHour'),
+      blueHour: lightAt('blueHour'),
+    },
+    lightBySeason: {
+      spring: lightIn('spring'),
+      summer: lightIn('summer'),
+      autumn: lightIn('autumn'),
+      winter: lightIn('winter'),
+    },
+    // A sample shot is public once saved with its lens and angle note.
+    sampleShots: imagesWithRole(spot.images, 'sample_shot').flatMap((image) =>
+      image.focalLengthMm !== null && image.angleNote !== null
+        ? [{ image: toImageDto(image), focalLengthMm: image.focalLengthMm, angleNote: image.angleNote }]
+        : [],
     ),
-    lightBySeason: [...spot.lightBySeason].sort(
-      (a, b) => SEASON_ORDER.indexOf(a.season) - SEASON_ORDER.indexOf(b.season),
-    ),
-    sampleShots: imagesWithRole(spot.images, 'sampleShot').map((image) => ({
-      ...toImageDto(image),
-      focalLengthMm: image.focalLengthMm,
-      angleNote: image.angleNote,
-    })),
     conditions: {
       weekdayCrowds: spot.weekdayCrowds,
       weekendCrowds: spot.weekendCrowds,
@@ -43,17 +61,19 @@ export async function getSpot(slug: string): Promise<SpotDetailDto | null> {
       changing: spot.changing,
     },
     permits: {
-      rows: [...spot.permits].sort(
-        (a, b) => SHOOT_TYPE_ORDER.indexOf(a.shootType) - SHOOT_TYPE_ORDER.indexOf(b.shootType),
-      ),
-      sourceUrl: spot.permitSourceUrl,
-      verifiedOn: spot.permitVerifiedAt,
+      byShootType: present(toPermitsByShootType(spot.permits), 'permits'),
+      sourceUrl: present(spot.permitSourceUrl, 'permitSourceUrl'),
+      verifiedAt: spot.permitVerifiedAt,
       permitStale: isStale(spot.permitVerifiedAt, clock.today()),
     },
-    bestUses: spot.bestUses,
-    disclosure: { kind: spot.disclosure, provider: spot.disclosureProvider },
-    videoId: spot.videoId,
-    rainBackup:
-      spot.latitude !== null && spot.longitude !== null ? await findNearestStudios(spot.latitude, spot.longitude) : [],
+    bestUses: inBestUseOrder(spot.bestUses),
+    disclosure: { kind: present(spot.disclosure, 'disclosure'), provider: spot.disclosureProvider },
+    episode: episodeOf(spot),
+    rainBackup: await findNearestStudios(latitude, longitude),
+    reviewedAt: present(spot.publishedAt, 'publishedAt').toISOString(),
   };
+}
+
+function episodeOf(spot: SpotRecord) {
+  return spot.videoId ? { videoId: spot.videoId, title: spot.episodeTitle ?? spot.name } : null;
 }

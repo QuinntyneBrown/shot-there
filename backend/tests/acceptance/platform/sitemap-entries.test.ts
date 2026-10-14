@@ -25,21 +25,32 @@ describe('L2-077 sitemap entries', () => {
     const { status, body } = await getSitemapEntries();
 
     expect(status).toBe(200);
-    expect(body).toEqual(
-      expect.arrayContaining([
-        { path: '/studios/s1', lastModified: '2026-08-01' },
-        { path: '/studios/s2', lastModified: '2026-09-15' },
-        { path: '/studios/s3', lastModified: '2026-07-01' },
-        { path: '/spots/p1', lastModified: '2026-09-20' },
-        { path: '/spots/p2', lastModified: '2026-06-01' },
-        { path: '/guides/g1', lastModified: '2026-05-05' },
-        { path: '/studios', lastModified: '2026-09-15' },
-        { path: '/spots', lastModified: '2026-09-20' },
-        { path: '/map', lastModified: '2026-09-20' },
-        { path: '/guides', lastModified: '2026-05-05' },
-      ]),
-    );
-    expect(body).toHaveLength(10);
+    expect(body).toEqual([
+      { path: '/studios/s1', lastModified: '2026-08-01T15:00:00.000Z' },
+      { path: '/studios/s2', lastModified: '2026-09-15T15:00:00.000Z' },
+      { path: '/studios/s3', lastModified: '2026-07-01T15:00:00.000Z' },
+      { path: '/spots/p1', lastModified: '2026-09-20T15:00:00.000Z' },
+      { path: '/spots/p2', lastModified: '2026-06-01T15:00:00.000Z' },
+      { path: '/guides/g1', lastModified: '2026-05-05T15:00:00.000Z' },
+      { path: '/studios', lastModified: '2026-09-15T15:00:00.000Z' },
+      { path: '/spots', lastModified: '2026-09-20T15:00:00.000Z' },
+      { path: '/map', lastModified: '2026-09-20T15:00:00.000Z' },
+      { path: '/guides', lastModified: '2026-05-05T15:00:00.000Z' },
+    ]);
+  });
+
+  it('Given nothing published, when the entries are requested, then each list page carries the request time', async () => {
+    const dependencies = useFakeDependencies();
+
+    const { body } = await getSitemapEntries();
+
+    const now = dependencies.clock.now().toISOString();
+    expect(body).toEqual([
+      { path: '/studios', lastModified: now },
+      { path: '/spots', lastModified: now },
+      { path: '/map', lastModified: now },
+      { path: '/guides', lastModified: now },
+    ]);
   });
 });
 

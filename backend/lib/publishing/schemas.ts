@@ -11,6 +11,7 @@ export function requireDisclosureProvider(
     context.addIssue({
       code: 'custom',
       path: ['disclosureProvider'],
+      params: { code: 'required' },
       message: 'The provider is required for a discounted or comped session',
     });
   }

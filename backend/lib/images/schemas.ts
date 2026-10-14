@@ -1,22 +1,21 @@
 import { z } from 'zod';
-import { requiredText } from '@/lib/http/input-fields';
 
-/** The text fields of an image upload: its role and exactly one owning location. */
+const ROLE_KIND = { test_shot: 'studio', gallery: 'studio', sample_shot: 'spot' } as const;
+
+/** The text fields of an image upload (ICD E40): the role and the location it belongs to, which must suit the role. */
 export const uploadFieldsSchema = z
-  .object({
-    role: z.enum(['testShot', 'gallery', 'sampleShot'], { message: 'Choose gallery, standard test shot or sample shot' }),
-    studioId: z.string().min(1).optional(),
-    spotId: z.string().min(1).optional(),
+  .strictObject({
+    role: z.enum(['test_shot', 'gallery', 'sample_shot'], { error: 'Choose gallery, standard test shot or sample shot' }),
+    locationKind: z.enum(['studio', 'spot'], { error: 'Choose a studio or a spot' }),
+    locationId: z.string({ error: 'Choose the location' }).min(1, { error: 'Choose the location' }).max(64),
   })
-  .strict()
-  .refine((fields) => (fields.studioId === undefined) !== (fields.spotId === undefined), {
-    message: 'Choose the studio or spot the image belongs to',
-    path: ['studioId'],
+  .superRefine((fields, context) => {
+    if (ROLE_KIND[fields.role] !== fields.locationKind) {
+      context.addIssue({
+        code: 'custom',
+        path: ['role'],
+        message: `A ${fields.role} image belongs to a ${ROLE_KIND[fields.role]}`,
+        params: { code: 'invalid_value' },
+      });
+    }
   });
-
-/** One image's place and alt text in the editor's save body. */
-export const imageOrderItemSchema = z.strictObject({
-  id: z.string({ error: 'Choose an image' }).min(1, { error: 'Choose an image' }),
-  altText: requiredText('Describe this image', 500),
-  sortOrder: z.number({ error: 'Enter a whole number of 0 or more' }).int({ error: 'Enter a whole number of 0 or more' }).min(0, { error: 'Enter a whole number of 0 or more' }),
-});

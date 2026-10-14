@@ -34,11 +34,10 @@ export interface StudioRecord {
   has20ACircuits: boolean | null;
   hasCycWall: boolean | null;
   cycWallCondition: string | null;
-  backdrops: string | null;
+  backdrops: string[];
   loadIn: LoadIn | null;
   loadInNote: string | null;
   parking: ParkingOption | null;
-  parkingNote: string | null;
   transit: string | null;
   washroom: string | null;
   changingArea: string | null;
@@ -56,9 +55,8 @@ export interface StudioRecord {
   disclosureProvider: string | null;
   videoId: string | null;
   episodeTitle: string | null;
-  /** The 1200×630 Open Graph image made from the first gallery image on publish. */
+  /** The 1200Ã—630 Open Graph image made from the first gallery image on publish. */
   ogImageUrl: string | null;
-  reviewedAt: string | null;
   publishedAt: Date | null;
   updatedAt: Date;
   fees: StudioFeeRecord[];

@@ -42,6 +42,16 @@ describe('L2-032 shareable comparison URL', () => {
     expect(body.notFoundSlugs).toEqual(['hidden']);
   });
 
+  it('Given more than twenty slugs, when compared, then only the first twenty are read (ICD E6)', async () => {
+    useFakeDependencies({ studios: [aStudio({ slug: 'late' })] });
+    const ghosts = Array.from({ length: 20 }, (_, index) => `ghost-${index}`);
+
+    const { body } = await compare(`?studios=${[...ghosts, 'late'].join(',')}`);
+
+    expect(body.studios).toEqual([]);
+    expect(body.notFoundSlugs).toEqual(ghosts);
+  });
+
   it('Given no studios parameter, when compared, then the response is 200 with no studios', async () => {
     useFakeDependencies({ studios: [aStudio({ slug: 'a' })] });
 
@@ -65,7 +75,7 @@ describe('L2-032 shareable comparison URL', () => {
 
 describe('L2-031 and L2-043 comparison columns', () => {
   it('Given three studios, when compared, then each column carries the comparison rows with server-computed values', async () => {
-    const testShot = anImage({ role: 'testShot', altText: 'Standard headshot setup' });
+    const testShot = anImage({ role: 'test_shot', altText: 'Standard headshot setup' });
     useFakeDependencies({
       today: '2026-10-13',
       studios: [
@@ -84,7 +94,7 @@ describe('L2-031 and L2-043 comparison columns', () => {
           hasCycWall: true,
           cycWallCondition: 'scuffed',
           parking: 'street',
-          loadIn: 'freightElevator',
+          loadIn: 'freight_elevator',
           gear: [
             { name: 'Strobe head', category: 'lights', quantity: 2, included: true, extraCost: null },
             { name: 'Paper roll', category: 'other', quantity: 1, included: false, extraCost: 15 },
@@ -106,28 +116,39 @@ describe('L2-031 and L2-043 comparison columns', () => {
     const { body } = await compare('?studios=loft,b,c');
 
     expect(body.studios).toHaveLength(3);
-    expect(body.studios[0]).toMatchObject({
+    expect(body.studios[0]).toEqual({
       slug: 'loft',
       name: 'The Loft',
-      allInCost2h: 145,
-      hourlyRate: 60,
-      minBookingHours: 2,
-      mandatoryFees: [{ name: 'Cleaning', amount: 25, mandatory: true }],
-      usableWidthM: 6.1,
-      usableDepthM: 4.3,
-      ceilingHeightM: 3.4,
-      naturalLight: { morning: 'medium', midday: 'strong', afternoon: 'medium', evening: 'low' },
-      cycWall: { present: true, condition: 'scuffed' },
-      includedGear: [{ name: 'Strobe head', category: 'lights', quantity: 2, extraCost: null }],
+      pricing: {
+        hourlyRate: 60,
+        minBookingHours: 2,
+        fees: [
+          { name: 'Cleaning', amount: 25, mandatory: true },
+          { name: 'Strobe', amount: 40, mandatory: false },
+        ],
+        allInCost2h: 145,
+        priceVerifiedAt: '2026-03-27',
+        priceStale: true,
+      },
+      specifications: {
+        usableWidth: 6.1,
+        usableDepth: 4.3,
+        ceilingHeight: 3.4,
+        windowDirection: 'North',
+        naturalLight: { morning: 'medium', midday: 'strong', afternoon: 'medium', evening: 'low' },
+        power: { outletCount: 8, outletType: '15A household', has20aCircuits: false },
+        hasCycWall: true,
+        cycWallCondition: 'scuffed',
+        backdrops: ['White seamless', 'Grey seamless', 'Black seamless'],
+      },
+      includedGear: [{ name: 'Strobe head', category: 'lights', quantity: 2 }],
       parking: 'street',
-      loadIn: 'freightElevator',
+      loadIn: 'freight_elevator',
       scores: { value: 4, light: 5, space: 3, gear: 4, logistics: 2, condition: 5 },
       overallScore: 3.8,
-      priceVerifiedAt: '2026-03-27',
-      priceStale: true,
+      testShots: [expect.objectContaining({ image: expect.objectContaining({ alt: 'Standard headshot setup' }) })],
+      isLowestAllInCost: false,
     });
-    expect(body.studios[0].testShots).toHaveLength(1);
-    expect(body.studios[0].testShots[0].alt).toBe('Standard headshot setup');
   });
 
   it('Given compared studios with different all-in costs, when compared, then only the cheapest is marked lowest', async () => {

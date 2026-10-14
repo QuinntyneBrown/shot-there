@@ -1,7 +1,17 @@
+import type { GuideDataPointKey } from '@/lib/guides/guide-data-point-key';
 import type { GuideEditorEntry } from '@/lib/guides/guide-editor-entry';
-import type { GuideRecord } from '@/lib/guides/guide-record';
+import type { LocationStatus } from '@/lib/publishing/location-status';
 
-/** One guide of any status with its entries' location names, for the owner's editor. */
-export interface GuideEditorModel extends Omit<GuideRecord, 'entries'> {
+/** A guide of any status as the owner's editor reads it (ICD §13.12). */
+export interface GuideEditorModel {
+  id: string;
+  slug: string;
+  status: LocationStatus;
+  publishedAt: string | null;
+  updatedAt: string;
+  title: string;
+  summary: string | null;
+  introduction: string | null;
+  dataPoints: GuideDataPointKey[];
   entries: GuideEditorEntry[];
 }

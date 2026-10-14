@@ -1,10 +1,11 @@
 import type { StudioFeeDto } from '@/lib/studios/studio-fee-dto';
 
 export interface StudioPricingDto {
-  hourlyRate: number | null;
-  minBookingHours: number | null;
+  hourlyRate: number;
+  minBookingHours: number;
+  /** In configured order. */
   fees: StudioFeeDto[];
-  allInCost2h: number | null;
+  allInCost2h: number;
   priceVerifiedAt: string;
   priceStale: boolean;
 }

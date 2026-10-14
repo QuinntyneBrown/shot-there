@@ -5,8 +5,7 @@ const LIMIT = 20;
 
 /** Studios and spots of any status whose name contains the text, ignoring case, by name; at most 20. */
 export async function searchGuideCandidates(text: string): Promise<GuideCandidate[]> {
-  const needle = text.trim().toLocaleLowerCase('en-CA');
-  if (needle === '') return [];
+  const needle = text.toLocaleLowerCase('en-CA');
 
   const { studios, spots } = getDependencies();
   const [allStudios, allSpots] = await Promise.all([studios.listAll(), spots.listAll()]);

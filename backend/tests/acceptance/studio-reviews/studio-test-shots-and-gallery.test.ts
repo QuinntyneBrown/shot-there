@@ -10,10 +10,10 @@ describe('L2-009 standard test shots', () => {
         aStudio({
           slug: 's',
           images: [
-            anImage({ role: 'testShot', sortOrder: 2, altText: 'Backlit portrait', caption: 'Key at 45°' }),
+            anImage({ role: 'test_shot', sortOrder: 2, altText: 'Backlit portrait', caption: 'Key at 45°' }),
             anImage({ role: 'gallery', sortOrder: 0, altText: 'Gallery shot' }),
-            anImage({ role: 'testShot', sortOrder: 0, altText: 'Window light portrait', caption: 'Window only' }),
-            anImage({ role: 'testShot', sortOrder: 1, altText: 'Strobe portrait', caption: 'One strobe' }),
+            anImage({ role: 'test_shot', sortOrder: 0, altText: 'Window light portrait', caption: 'Window only' }),
+            anImage({ role: 'test_shot', sortOrder: 1, altText: 'Strobe portrait', caption: 'One strobe' }),
           ],
         }),
       ],
@@ -21,12 +21,13 @@ describe('L2-009 standard test shots', () => {
 
     const { body } = await getStudioPage('s');
 
-    expect(body.testShots.map((shot: { alt: string }) => shot.alt)).toEqual([
+    expect(body.testShots.map((shot: { image: { alt: string } }) => shot.image.alt)).toEqual([
       'Window light portrait',
       'Strobe portrait',
       'Backlit portrait',
     ]);
     expect(body.testShots[0].caption).toBe('Window only');
+    expect(body.testShots[0].image).not.toHaveProperty('caption');
   });
 });
 
@@ -36,7 +37,7 @@ describe('L2-010 gallery', () => {
       anImage({ role: 'gallery', sortOrder: 7 - index, altText: `Gallery ${7 - index}` }),
     );
     useFakeDependencies({
-      studios: [aStudio({ slug: 's', images: [anImage({ role: 'testShot', altText: 'Test' }), ...gallery] })],
+      studios: [aStudio({ slug: 's', images: [anImage({ role: 'test_shot', altText: 'Test' }), ...gallery] })],
     });
 
     const { body } = await getStudioPage('s');
@@ -56,7 +57,6 @@ describe('L2-072 responsive image sources', () => {
 
     expect(body.gallery[0]).toEqual({
       alt: image.altText,
-      caption: null,
       width: 4000,
       height: 2667,
       sources: (['avif', 'webp', 'jpeg'] as const).map((format) => {
@@ -70,5 +70,28 @@ describe('L2-072 responsive image sources', () => {
       }),
       fallbackUrl: 'https://cdn.example/images/img1/960.jpg',
     });
+  });
+});
+
+describe('ICD S-8 images need alt text to be public', () => {
+  it('Given a gallery image and a test shot without alt text, when the studio is returned, then neither is served', async () => {
+    useFakeDependencies({
+      studios: [
+        aStudio({
+          slug: 's',
+          images: [
+            anImage({ role: 'test_shot', altText: 'Described test shot', caption: 'Key light' }),
+            anImage({ role: 'test_shot', sortOrder: 1, altText: '', caption: 'Rim light' }),
+            anImage({ role: 'gallery', altText: 'Described gallery image' }),
+            anImage({ role: 'gallery', sortOrder: 1, altText: '' }),
+          ],
+        }),
+      ],
+    });
+
+    const { body } = await getStudioPage('s');
+
+    expect(body.testShots.map((shot: { caption: string }) => shot.caption)).toEqual(['Key light']);
+    expect(body.gallery.map((image: { alt: string }) => image.alt)).toEqual(['Described gallery image']);
   });
 });

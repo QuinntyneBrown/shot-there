@@ -26,7 +26,7 @@ describe('L2-037 nearest studios as rain backup', () => {
     const { body } = await getSpotPage('s');
 
     expect(body.rainBackup.map((studio: { slug: string }) => studio.slug)).toEqual(['near', 'second', 'mid']);
-    expect(body.rainBackup[0]).toEqual({ slug: 'near', name: 'Near Studio', distanceKm: 1.4, allInCost2h: 120 });
+    expect(body.rainBackup[0]).toEqual({ slug: 'near', name: 'Near Studio', distanceKm: 1.4, allInCost2h: 120, priceStale: false });
     expect(body.rainBackup[2].distanceKm).toBe(3.1);
   });
 

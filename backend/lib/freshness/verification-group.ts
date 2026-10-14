@@ -1,1 +1,1 @@
-export type VerificationGroup = 'stale' | 'dueSoon' | 'current';
+export type VerificationGroup = 'stale' | 'due_soon' | 'current';

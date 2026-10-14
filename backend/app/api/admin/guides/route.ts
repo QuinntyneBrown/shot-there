@@ -3,6 +3,7 @@ import { requireOwnerSession } from '@/lib/auth/require-owner-session';
 import { verifyCsrf } from '@/lib/auth/verify-csrf';
 import { createGuide } from '@/lib/guides/create-guide';
 import { parseGuideInput } from '@/lib/guides/parse-guide-input';
+import { toGuideEditorModel } from '@/lib/guides/to-guide-editor-model';
 import { withRequestLogging } from '@/lib/logging/with-request-logging';
 
 export const GET = withRequestLogging(async (request: Request) => {
@@ -13,5 +14,5 @@ export const GET = withRequestLogging(async (request: Request) => {
 export const POST = withRequestLogging(async (request: Request) => {
   verifyCsrf(request, await requireOwnerSession(request));
   const guide = await createGuide(await parseGuideInput(request));
-  return Response.json(guide, { status: 201 });
+  return Response.json(await toGuideEditorModel(guide), { status: 201, headers: { location: `/api/admin/guides/${guide.id}` } });
 });

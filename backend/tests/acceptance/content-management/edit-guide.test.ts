@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import { expectProblem } from '@/tests/support/expect-problem';
 import { GET as searchCandidates } from '@/app/api/admin/guide-candidates/route';
 import { GET as getGuideForEdit, PUT as saveGuide } from '@/app/api/admin/guides/[id]/route';
 import { DELETE as unpublishGuide, POST as publishGuide } from '@/app/api/admin/guides/[id]/publish/route';
@@ -33,81 +34,105 @@ const studios = () => [
 ];
 
 const twoStudioEntries = [
-  { kind: 'studio', locationId: 's2', note: 'Huge north windows.', position: 0 },
-  { kind: 'studio', locationId: 's1', note: 'Cheapest cyc in the west end.', position: 1 },
+  { kind: 'studio', locationId: 's2', note: 'Huge north windows.' },
+  { kind: 'studio', locationId: 's1', note: 'Cheapest cyc in the west end.' },
 ];
 
-describe('L2-060 create and edit a guide', () => {
-  it('Given the owner creates a guide with two studio entries, when saving, then it is stored as a draft with the entries in the chosen order', async () => {
+/** A complete ICD `GuideInput`: every property present. */
+const aGuideInput = (overrides: Record<string, unknown> = {}) => ({
+  title: 'Best natural light under $100',
+  slug: 'best-natural-light-under-100',
+  summary: 'Rooms where daylight does the work.',
+  introduction: 'We shot in each of these rooms.',
+  dataPoints: ['all_in_cost_2h', 'overall_score'],
+  entries: twoStudioEntries,
+  ...overrides,
+});
+const errorsOf = async (response: Response) => (await expectProblem(response, 'validation-failed', 400)).errors;
+
+describe('L2-060 create and edit a guide (ICD E33-E35)', () => {
+  it('Given the owner creates a guide with two studio entries, when saving, then it is a draft with a Location header and the editor model in the chosen order', async () => {
     const dependencies = useSignedInOwner({ studios: studios() });
 
-    const response = await create({
-      title: 'Best natural light under $100',
-      introduction: 'Rooms where daylight does the work.',
-      entries: twoStudioEntries,
-    });
+    const response = await create(aGuideInput());
 
     expect(response.status).toBe(201);
-    const body = await response.json();
-    expect(body).toMatchObject({ slug: 'best-natural-light-under-100', status: 'draft' });
+    const model = await response.json();
+    expect(response.headers.get('location')).toBe(`/api/admin/guides/${model.id}`);
+    expect(model).toEqual({
+      id: expect.any(String),
+      slug: 'best-natural-light-under-100',
+      status: 'draft',
+      publishedAt: null,
+      updatedAt: expect.stringMatching(/Z$/),
+      title: 'Best natural light under $100',
+      summary: 'Rooms where daylight does the work.',
+      introduction: 'We shot in each of these rooms.',
+      dataPoints: ['all_in_cost_2h', 'overall_score'],
+      entries: [
+        { kind: 'studio', locationId: 's2', name: 'Liberty Light Room', status: 'published', note: 'Huge north windows.' },
+        { kind: 'studio', locationId: 's1', name: 'The Junction Loft', status: 'published', note: 'Cheapest cyc in the west end.' },
+      ],
+    });
     expect(guideRows(dependencies)[0].entries.map((entry) => entry.locationId)).toEqual(['s2', 's1']);
   });
 
-  it('Given a guide slug that is taken, when the owner creates another guide with the same title, then it gets a numbered slug', async () => {
-    useSignedInOwner({ guides: [aGuide({ slug: 'best-for-headshots' })] });
+  it('Given a guide slug that is taken, when the owner creates another guide with it, then it gets a numbered slug (ICD §15.3)', async () => {
+    useSignedInOwner({ studios: studios(), guides: [aGuide({ slug: 'best-for-headshots' })] });
 
-    const response = await create({ title: 'Best for headshots', entries: [] });
+    const response = await create(aGuideInput({ slug: 'best-for-headshots' }));
 
     expect((await response.json()).slug).toBe('best-for-headshots-2');
   });
 
-  it('Given the same studio twice, when the owner saves, then the second entry is refused with "This studio is already in the guide"', async () => {
+  it.each([
+    [{ slug: undefined }, 'slug', 'required'],
+    [{ title: '' }, 'title', 'required'],
+    [{ title: 'x'.repeat(151) }, 'title', 'out_of_range'],
+    [{ summary: 'x'.repeat(301) }, 'summary', 'out_of_range'],
+    [{ introduction: 'x'.repeat(5001) }, 'introduction', 'out_of_range'],
+    [{ dataPoints: ['all_in_cost_2h', 'all_in_cost_2h'] }, 'dataPoints.1', 'duplicate'],
+    [{ dataPoints: ['vibes'] }, 'dataPoints.0', 'invalid_value'],
+    [{ entries: [{ kind: 'studio', locationId: 's1', note: null, position: 0 }] }, 'entries.0.position', 'unrecognized_key'],
+    [{ entries: [{ kind: 'studio', locationId: 's1', note: 'x'.repeat(1001) }] }, 'entries.0.note', 'out_of_range'],
+    [{ entries: Array.from({ length: 51 }, () => ({ kind: 'studio', locationId: 's1', note: null })) }, 'entries', 'out_of_range'],
+    [{ isSponsored: true }, 'isSponsored', 'unrecognized_key'],
+  ])('Given %o, when saving, then the save is refused naming %s with %s', async (change, field, code) => {
     const dependencies = useSignedInOwner({ studios: studios() });
 
-    const response = await create({
-      title: 'Best for headshots',
-      entries: [
-        { kind: 'studio', locationId: 's1', note: '', position: 0 },
-        { kind: 'studio', locationId: 's1', note: '', position: 1 },
-      ],
-    });
+    const errors = await errorsOf(await create(aGuideInput(change)));
 
-    expect(response.status).toBe(400);
-    expect((await response.json()).errors).toEqual([
-      { field: 'entries.1.locationId', message: 'This studio is already in the guide' },
-    ]);
+    expect(errors).toContainEqual({ field, code, message: expect.any(String) });
     expect(guideRows(dependencies)).toEqual([]);
   });
 
-  it('Given the same spot twice, when the owner saves, then it is refused with "This spot is already in the guide"', async () => {
-    useSignedInOwner({ spots: [aSpot({ id: 'p1' })] });
+  it('Given the same studio twice, when the owner saves, then the second entry is refused as a duplicate', async () => {
+    const dependencies = useSignedInOwner({ studios: studios() });
 
-    const response = await create({
-      title: 'Best parks',
-      entries: [
-        { kind: 'spot', locationId: 'p1', note: '', position: 0 },
-        { kind: 'spot', locationId: 'p1', note: '', position: 1 },
-      ],
-    });
+    const response = await create(
+      aGuideInput({
+        entries: [
+          { kind: 'studio', locationId: 's1', note: null },
+          { kind: 'studio', locationId: 's1', note: null },
+        ],
+      }),
+    );
 
-    expect((await response.json()).errors[0].message).toBe('This spot is already in the guide');
+    expect(await errorsOf(response)).toEqual([{ field: 'entries.1.locationId', code: 'duplicate', message: expect.any(String) }]);
+    expect(guideRows(dependencies)).toEqual([]);
   });
 
-  it('Given an entry for a location that does not exist, when the owner saves, then the save is refused with 400', async () => {
+  it('Given an entry for a location that does not exist, when the owner saves, then the save is refused with not_found', async () => {
     useSignedInOwner({ studios: studios() });
 
-    const response = await create({
-      title: 'Best for headshots',
-      entries: [{ kind: 'studio', locationId: 'gone', note: '', position: 0 }],
-    });
+    const response = await create(aGuideInput({ entries: [{ kind: 'studio', locationId: 'gone', note: null }] }));
 
-    expect(response.status).toBe(400);
-    expect((await response.json()).errors[0].field).toBe('entries.0.locationId');
+    expect(await errorsOf(response)).toEqual([{ field: 'entries.0.locationId', code: 'not_found', message: expect.any(String) }]);
   });
 
-  it('Given an existing guide, when the owner opens it, then it comes with each entry and its location name', async () => {
+  it('Given an existing guide, when the owner opens it, then each entry comes with its location name and status', async () => {
     useSignedInOwner({
-      studios: studios(),
+      studios: [aStudio({ id: 's1', name: 'The Junction Loft', status: 'draft' })],
       guides: [aGuide({ id: 'g1', status: 'draft', entries: [{ kind: 'studio', locationId: 's1', note: 'Cheap', position: 0 }] })],
     });
 
@@ -115,56 +140,55 @@ describe('L2-060 create and edit a guide', () => {
 
     expect(response.status).toBe(200);
     expect((await response.json()).entries).toEqual([
-      { kind: 'studio', locationId: 's1', note: 'Cheap', position: 0, name: 'The Junction Loft' },
+      { kind: 'studio', locationId: 's1', name: 'The Junction Loft', status: 'draft', note: 'Cheap' },
     ]);
   });
 
   it('Given an existing guide, when the owner saves new entries and title, then they replace the old ones', async () => {
     const dependencies = useSignedInOwner({
       studios: studios(),
-      guides: [aGuide({ id: 'g1', slug: 'old', status: 'draft', entries: [{ kind: 'studio', locationId: 's1', note: '', position: 0 }] })],
+      guides: [aGuide({ id: 'g1', slug: 'old', status: 'draft', entries: [{ kind: 'studio', locationId: 's1', note: null, position: 0 }] })],
     });
 
-    const response = await save('g1', { title: 'Renamed', introduction: 'New intro', entries: twoStudioEntries });
+    const response = await save('g1', aGuideInput({ title: 'Renamed', slug: 'old', introduction: 'New intro' }));
 
     expect(response.status).toBe(200);
-    expect(guideRows(dependencies)[0]).toMatchObject({ title: 'Renamed', introduction: 'New intro', slug: 'old' });
+    expect(await response.json()).toMatchObject({ id: 'g1', title: 'Renamed', introduction: 'New intro', slug: 'old' });
     expect(guideRows(dependencies)[0].entries.map((entry) => entry.locationId)).toEqual(['s2', 's1']);
+  });
+
+  it('Given a slug another guide uses, when the owner saves, then the save is refused with already_in_use (ICD §15.3)', async () => {
+    useSignedInOwner({ studios: studios(), guides: [aGuide({ id: 'g1', slug: 'mine' }), aGuide({ id: 'g2', slug: 'theirs' })] });
+
+    expect(await errorsOf(await save('g1', aGuideInput({ slug: 'theirs' })))).toEqual([
+      { field: 'slug', code: 'already_in_use', message: expect.any(String) },
+    ]);
   });
 
   it("Given a published guide, when the owner changes its slug, then the old slug redirects to the new one", async () => {
     const dependencies = useSignedInOwner({
       studios: studios(),
-      guides: [aGuide({ id: 'g1', slug: 'old-guide', entries: [{ kind: 'studio', locationId: 's1', note: '', position: 0 }] })],
+      guides: [aGuide({ id: 'g1', slug: 'old-guide', entries: [{ kind: 'studio', locationId: 's1', note: null, position: 0 }] })],
     });
 
-    await save('g1', { title: 'Guide', slug: 'new-guide', entries: twoStudioEntries });
+    await save('g1', aGuideInput({ slug: 'new-guide' }));
 
     expect(await (dependencies.slugRedirects as InMemorySlugRedirectRepository).find('guide', 'old-guide')).toMatchObject({
       toSlug: 'new-guide',
     });
   });
 
-  it('Given an unknown field, when the owner saves, then the save is refused naming it', async () => {
-    useSignedInOwner();
-
-    const response = await create({ title: 'Guide', entries: [], isSponsored: true });
-
-    expect(response.status).toBe(400);
-    expect((await response.json()).errors).toEqual([{ field: 'isSponsored', message: 'This field is not allowed' }]);
-  });
-
   it('Given an unknown guide id, when opened or saved, then the response is 404', async () => {
-    useSignedInOwner();
+    useSignedInOwner({ studios: studios() });
 
     expect((await getGuideForEdit(adminRequest('/api/admin/guides/x'), idParams('x'))).status).toBe(404);
-    expect((await save('x', { title: 'Guide', entries: [] })).status).toBe(404);
+    expect((await save('x', aGuideInput())).status).toBe(404);
   });
 
   it('Given no owner session, when a guide is created, then the response is 401 and nothing is stored', async () => {
-    const dependencies = useSignedInOwner();
+    const dependencies = useSignedInOwner({ studios: studios() });
 
-    expect((await create({ title: 'Guide', entries: [] }, false)).status).toBe(401);
+    expect((await create(aGuideInput(), false)).status).toBe(401);
     expect(guideRows(dependencies)).toEqual([]);
   });
 });
@@ -175,8 +199,8 @@ describe('L2-060 publish and unpublish a guide', () => {
 
     const response = await publish('g1');
 
-    expect(response.status).toBe(422);
-    expect(await response.json()).toEqual({ status: 422, missingFields: ['entries'] });
+    const problem = await expectProblem(response, 'publish-incomplete', 422);
+    expect(problem.missingFields).toEqual(['entries']);
     expect(guideRows(dependencies)[0].status).toBe('draft');
   });
 
@@ -191,6 +215,7 @@ describe('L2-060 publish and unpublish a guide', () => {
     const response = await publish('g1');
 
     expect(response.status).toBe(200);
+    expect(await response.json()).toEqual({ status: 'published', publishedAt: dependencies.clock.now().toISOString() });
     expect(guideRows(dependencies)[0]).toMatchObject({ status: 'published', publishedAt: dependencies.clock.now() });
     expect(await publicGuideStatus('best-light')).toBe(200);
     expect((dependencies.pageRevalidator as RecordingPageRevalidator).routes).toEqual([
@@ -204,7 +229,10 @@ describe('L2-060 publish and unpublish a guide', () => {
       guides: [aGuide({ id: 'g1', slug: 'best-light', entries: [{ kind: 'studio', locationId: 's1', note: '', position: 0 }] })],
     });
 
-    expect((await unpublish('g1')).status).toBe(200);
+    const response = await unpublish('g1');
+
+    expect(response.status).toBe(200);
+    expect(await response.json()).toEqual({ status: 'draft', publishedAt: null });
 
     expect(guideRows(dependencies)[0]).toMatchObject({ status: 'draft', publishedAt: null });
     expect(await publicGuideStatus('best-light')).toBe(404);
@@ -242,10 +270,15 @@ describe('L2-060 entry picker', () => {
     expect(await (await search('studio')).json()).toHaveLength(20);
   });
 
-  it('Given a blank search, when the owner searches, then nothing is listed', async () => {
+  it.each([
+    ['a blank search', '  '],
+    ['a search over 100 characters', 'x'.repeat(101)],
+  ])('Given %s, when the owner searches, then the response is 400 naming q (ICD E39)', async (_label, q) => {
     useSignedInOwner({ studios: studios() });
 
-    expect(await (await search('  ')).json()).toEqual([]);
+    const problem = await expectProblem(await search(q), 'validation-failed', 400);
+
+    expect(problem.errors).toEqual([{ field: 'q', code: expect.any(String), message: expect.any(String) }]);
   });
 
   it('Given no owner session, when the picker searches, then the response is 401', async () => {

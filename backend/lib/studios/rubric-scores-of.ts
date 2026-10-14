@@ -1,7 +1,7 @@
-import type { RubricScoresDto } from '@/lib/studios/rubric-scores-dto';
+import type { RubricScoresInput } from '@/lib/studios/rubric-scores-input';
 import type { StudioRecord } from '@/lib/studios/studio-record';
 
-export function rubricScoresOf(studio: StudioRecord): RubricScoresDto {
+export function rubricScoresOf(studio: StudioRecord): RubricScoresInput {
   return {
     value: studio.scoreValue,
     light: studio.scoreLight,

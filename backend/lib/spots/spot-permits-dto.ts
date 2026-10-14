@@ -1,8 +1,8 @@
-import type { PermitRequirementRecord } from '@/lib/spots/permit-requirement-record';
+import type { PermitsByShootTypeDto } from '@/lib/spots/permits-by-shoot-type-dto';
 
 export interface SpotPermitsDto {
-  rows: PermitRequirementRecord[];
-  sourceUrl: string | null;
-  verifiedOn: string;
+  byShootType: PermitsByShootTypeDto;
+  sourceUrl: string;
+  verifiedAt: string;
   permitStale: boolean;
 }

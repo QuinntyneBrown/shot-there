@@ -1,5 +1,6 @@
 import type { DisclosureDto } from '@/lib/publishing/disclosure-dto';
 import type { GuideLinkDto } from '@/lib/guides/guide-link-dto';
+import type { CaptionedImageDto } from '@/lib/images/captioned-image-dto';
 import type { ImageDto } from '@/lib/images/image-dto';
 import type { StudioBasicsDto } from '@/lib/studios/studio-basics-dto';
 import type { StudioGearDto } from '@/lib/studios/studio-gear-dto';
@@ -17,14 +18,16 @@ export interface StudioDetailDto {
   specifications: StudioSpecificationsDto;
   gear: StudioGearDto;
   logistics: StudioLogisticsDto;
-  testShots: ImageDto[];
+  testShots: CaptionedImageDto[];
   gallery: ImageDto[];
   verdict: StudioVerdictDto;
   disclosure: DisclosureDto;
   /** Null when no video is stored. */
   episode: EpisodeDto | null;
-  /** The Open Graph image URL, or null when none was made. */
-  ogImageUrl: string | null;
+  /** The 1200×630 Open Graph image, or a page image when none could be made. */
+  ogImageUrl: string;
+  /** The time of the latest publish (ICD OI-4). */
+  reviewedAt: string;
   /** Published guides that include the studio. */
   featuredIn: GuideLinkDto[];
 }

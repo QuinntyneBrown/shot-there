@@ -6,7 +6,7 @@ export interface VerificationItem {
   id: string;
   name: string;
   field: 'price' | 'permit';
-  lastVerifiedAt: string;
+  verifiedAt: string;
   ageDays: number;
-  group: 'stale' | 'dueSoon';
+  group: 'stale' | 'due_soon';
 }

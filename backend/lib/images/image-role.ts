@@ -1,1 +1,1 @@
-export type ImageRole = 'testShot' | 'gallery' | 'sampleShot';
+export type ImageRole = 'test_shot' | 'gallery' | 'sample_shot';

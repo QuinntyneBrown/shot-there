@@ -32,13 +32,13 @@ describe('L2-022 studio filters', () => {
   it('Given studios in Leslieville, Junction and Liberty Village, when Leslieville and Junction are selected, then both are listed', async () => {
     useFakeDependencies({
       studios: [
-        aStudio({ slug: 'east', neighbourhood: 'Leslieville', reviewedAt: '2026-09-01' }),
-        aStudio({ slug: 'west', neighbourhood: 'Junction', reviewedAt: '2026-08-01' }),
-        aStudio({ slug: 'south', neighbourhood: 'Liberty Village', reviewedAt: '2026-07-01' }),
+        aStudio({ slug: 'east', neighbourhood: 'Leslieville', publishedAt: new Date('2026-09-01T12:00:00Z') }),
+        aStudio({ slug: 'west', neighbourhood: 'Junction', publishedAt: new Date('2026-08-01T12:00:00Z') }),
+        aStudio({ slug: 'south', neighbourhood: 'Liberty Village', publishedAt: new Date('2026-07-01T12:00:00Z') }),
       ],
     });
 
-    const { body } = await listStudiosPage('?hood=Leslieville&hood=Junction');
+    const { body } = await listStudiosPage('?hood=leslieville&hood=&hood=junction');
 
     expect(slugsOf(body)).toEqual(['east', 'west']);
   });
@@ -46,13 +46,13 @@ describe('L2-022 studio filters', () => {
   it('Given cyc wall and on-site parking are selected, when listed, then only studios with both are returned', async () => {
     useFakeDependencies({
       studios: [
-        aStudio({ slug: 'both', hasCycWall: true, parking: 'onSite' }),
+        aStudio({ slug: 'both', hasCycWall: true, parking: 'on_site' }),
         aStudio({ slug: 'cyc-only', hasCycWall: true, parking: 'street' }),
-        aStudio({ slug: 'parking-only', hasCycWall: false, parking: 'onSite' }),
+        aStudio({ slug: 'parking-only', hasCycWall: false, parking: 'on_site' }),
       ],
     });
 
-    const { body } = await listStudiosPage('?cyc=yes&parking=on-site');
+    const { body } = await listStudiosPage('?cyc=true&parking=on_site');
 
     expect(slugsOf(body)).toEqual(['both']);
   });
@@ -92,7 +92,7 @@ describe('L2-022 studio filters', () => {
       ],
     });
 
-    const { body } = await listStudiosPage('?light=yes&space=25&gear=lights');
+    const { body } = await listStudiosPage('?light=true&space=25&gear=lights');
 
     expect(slugsOf(body)).toEqual(['match']);
   });
@@ -100,14 +100,20 @@ describe('L2-022 studio filters', () => {
   it('Given a gear multi-select, when listed, then a studio offering any selected gear matches', async () => {
     useFakeDependencies({
       studios: [
-        aStudio({ slug: 'backdrops', backdrops: 'Grey seamless', gear: [], reviewedAt: '2026-09-01' }),
+        aStudio({
+          slug: 'backdrops',
+          backdrops: ['Grey seamless'],
+          gear: [{ name: 'Paper roll', category: 'backdrops', quantity: 3, included: true, extraCost: null }],
+          publishedAt: new Date('2026-09-01T12:00:00Z'),
+        }),
+        aStudio({ slug: 'listed-backdrop-only', backdrops: ['White seamless'], gear: [], publishedAt: new Date('2026-07-01T12:00:00Z') }),
         aStudio({
           slug: 'stands',
-          backdrops: null,
+          backdrops: [],
           gear: [{ name: 'C-stand', category: 'stands', quantity: 4, included: true, extraCost: null }],
-          reviewedAt: '2026-08-01',
+          publishedAt: new Date('2026-08-01T12:00:00Z'),
         }),
-        aStudio({ slug: 'bare', backdrops: null, gear: [] }),
+        aStudio({ slug: 'bare', backdrops: [], gear: [] }),
       ],
     });
 
@@ -119,7 +125,7 @@ describe('L2-022 studio filters', () => {
   it('Given a filter combination that matches nothing, when listed, then the list is empty', async () => {
     useFakeDependencies({ studios: [aStudio({ slug: 'a', hasCycWall: false })] });
 
-    const { status, body } = await listStudiosPage('?cyc=yes');
+    const { status, body } = await listStudiosPage('?cyc=true');
 
     expect(status).toBe(200);
     expect(body).toEqual([]);
@@ -144,9 +150,9 @@ describe('L2-023 and L2-046 studio sort', () => {
   it('Given overall scores 3.8, 4.5 and 4.5, when sorted by score, then both 4.5s come first with ties by review date descending', async () => {
     useFakeDependencies({
       studios: [
-        aStudio({ slug: 'three-eight', ...scoredAs(4, 5, 3, 4, 2, 5), reviewedAt: '2026-10-01' }),
-        aStudio({ slug: 'older-four-five', ...scoredAs(4, 5, 5, 5, 4, 4), reviewedAt: '2026-06-01' }),
-        aStudio({ slug: 'newer-four-five', ...scoredAs(4, 5, 4, 4, 5, 5), reviewedAt: '2026-08-01' }),
+        aStudio({ slug: 'three-eight', ...scoredAs(4, 5, 3, 4, 2, 5), publishedAt: new Date('2026-10-01T12:00:00Z') }),
+        aStudio({ slug: 'older-four-five', ...scoredAs(4, 5, 5, 5, 4, 4), publishedAt: new Date('2026-06-01T12:00:00Z') }),
+        aStudio({ slug: 'newer-four-five', ...scoredAs(4, 5, 4, 4, 5, 5), publishedAt: new Date('2026-08-01T12:00:00Z') }),
       ],
     });
 
@@ -166,7 +172,7 @@ describe('L2-025 lenient query parsing', () => {
       ],
     });
 
-    const { status, body } = await listStudiosPage('?cyc=yes&parking=helipad&gear=fog-machine&sort=random&hood=Atlantis');
+    const { status, body } = await listStudiosPage('?cyc=true&light=yes&parking=helipad&gear=fog-machine&sort=random&hood=atlantis');
 
     expect(status).toBe(200);
     expect(slugsOf(body)).toEqual(['cyc']);
@@ -175,8 +181,8 @@ describe('L2-025 lenient query parsing', () => {
   it('Given a cost minimum greater than the maximum, when listed, then the range is treated as unset', async () => {
     useFakeDependencies({
       studios: [
-        aStudio({ slug: 'cheap', ...costing(90), reviewedAt: '2026-09-01' }),
-        aStudio({ slug: 'dear', ...costing(200), reviewedAt: '2026-08-01' }),
+        aStudio({ slug: 'cheap', ...costing(90), publishedAt: new Date('2026-09-01T12:00:00Z') }),
+        aStudio({ slug: 'dear', ...costing(200), publishedAt: new Date('2026-08-01T12:00:00Z') }),
       ],
     });
 

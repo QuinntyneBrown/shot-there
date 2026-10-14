@@ -4,6 +4,6 @@ import { validationFailed } from '@/lib/http/validation-failed';
 export function refuseIncompletePublishedSave(wasPublished: boolean, missingFields: string[]): void {
   if (!wasPublished || missingFields.length === 0) return;
   throw validationFailed(
-    missingFields.map((field) => ({ field, message: 'This is required while the location is published' })),
+    missingFields.map((field) => ({ field, code: 'required_while_published' as const, message: 'This is required while the location is published' })),
   );
 }

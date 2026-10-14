@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import { expectProblem } from '@/tests/support/expect-problem';
 import { GET as getMapLocations } from '@/app/api/map/locations/route';
 import { GET as getPublicRoutes } from '@/app/api/public-routes/route';
 import { GET as getSitemapEntries } from '@/app/api/sitemap-entries/route';
@@ -31,7 +32,7 @@ describe('L2-040 signup validation and storage', () => {
   it('Given a valid new email, when submitted, then it is stored lowercase with the subscription time and source path', async () => {
     const dependencies = useFakeDependencies({ today: '2026-10-13' });
 
-    const response = await signUp({ email: '  Jane.Doe@Example.com ', sourcePath: '/studios/the-junction-loft' });
+    const response = await signUp({ email: '  Jane.Doe@Example.com ', sourcePath: ' /studios/the-junction-loft ' });
 
     expect(response.status).toBe(200);
     expect(subscribersOf(dependencies)).toEqual([
@@ -48,10 +49,8 @@ describe('L2-040 signup validation and storage', () => {
 
     const response = await signUp({ email: `${'a'.repeat(250)}@example.com`, sourcePath: '/' });
 
-    expect(response.status).toBe(400);
-    const problem = await response.json();
-    expect(problem.status).toBe(400);
-    expect(problem.errors).toEqual([{ field: 'email', message: expect.any(String) }]);
+    const problem = await expectProblem(response, 'validation-failed', 400);
+    expect(problem.errors).toEqual([{ field: 'email', code: 'out_of_range', message: expect.any(String) }]);
   });
 
   it('Given a syntactically invalid email, when submitted, then the response is 400 and nothing is stored', async () => {
@@ -76,12 +75,14 @@ describe('L2-040 signup validation and storage', () => {
     useFakeDependencies();
     const clientIp = newClientIp();
 
-    const statuses = [];
+    const responses = [];
     for (let attempt = 1; attempt <= 7; attempt++) {
-      statuses.push((await signUp({ email: `fan${attempt}@example.com`, sourcePath: '/' }, clientIp)).status);
+      responses.push(await signUp({ email: `fan${attempt}@example.com`, sourcePath: '/' }, clientIp));
     }
 
-    expect(statuses).toEqual([200, 200, 200, 200, 200, 200, 429]);
+    expect(responses.map((response) => response.status)).toEqual([200, 200, 200, 200, 200, 200, 429]);
+    await expectProblem(responses[6], 'rate-limited', 429);
+    expect(responses[6].headers.get('retry-after')).toBe('60');
     expect((await signUp({ email: 'other@example.com', sourcePath: '/' })).status).toBe(200);
   });
 });
@@ -94,19 +95,32 @@ describe('L2-039 repeat signups', () => {
     const repeat = await signUp({ email: 'JANE@example.com', sourcePath: '/guides' });
 
     expect(repeat.status).toBe(first.status);
-    expect(await repeat.json()).toEqual(await first.json());
+    expect(await first.text()).toBe('');
+    expect(await repeat.text()).toBe('');
     expect(subscribersOf(dependencies)).toEqual([expect.objectContaining({ email: 'jane@example.com', sourcePath: '/' })]);
   });
 });
 
 describe('L2-078 strict input', () => {
+  it('Given a honeypot value over 200 characters, when submitted, then the response is 400 out_of_range on website', async () => {
+    useFakeDependencies();
+
+    const problem = await expectProblem(
+      await signUp({ email: 'jane@example.com', sourcePath: '/', website: 'x'.repeat(201) }),
+      'validation-failed',
+      400,
+    );
+
+    expect(problem.errors).toContainEqual({ field: 'website', code: 'out_of_range', message: expect.any(String) });
+  });
+
   it('Given an unknown field, when submitted, then the response is 400 naming the field', async () => {
     useFakeDependencies();
 
     const response = await signUp({ email: 'jane@example.com', sourcePath: '/', isAdmin: true });
 
-    expect(response.status).toBe(400);
-    expect((await response.json()).errors).toContainEqual({ field: 'isAdmin', message: expect.any(String) });
+    const problem = await expectProblem(response, 'validation-failed', 400);
+    expect(problem.errors).toContainEqual({ field: 'isAdmin', code: 'unrecognized_key', message: expect.any(String) });
   });
 
   it('Given a body that is not JSON, when submitted, then the response is 400', async () => {

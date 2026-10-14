@@ -6,6 +6,7 @@ import type { StudioSort } from '@/lib/studios/studio-sort';
 export interface StudioListQuery {
   costMin?: number;
   costMax?: number;
+  /** Neighbourhood slugs, compared with `toSlug(neighbourhood)`. */
   neighbourhoods: string[];
   naturalLight: boolean;
   cycWall: boolean;

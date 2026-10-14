@@ -4,6 +4,7 @@ import { verifyCsrf } from '@/lib/auth/verify-csrf';
 import { withRequestLogging } from '@/lib/logging/with-request-logging';
 import { createSpot } from '@/lib/spots/create-spot';
 import { parseSpotInput } from '@/lib/spots/parse-spot-input';
+import { toSpotEditorModel } from '@/lib/spots/to-spot-editor-model';
 
 export const GET = withRequestLogging(async (request: Request) => {
   await requireOwnerSession(request);
@@ -13,5 +14,5 @@ export const GET = withRequestLogging(async (request: Request) => {
 export const POST = withRequestLogging(async (request: Request) => {
   verifyCsrf(request, await requireOwnerSession(request));
   const spot = await createSpot(await parseSpotInput(request));
-  return Response.json(spot, { status: 201 });
+  return Response.json(toSpotEditorModel(spot), { status: 201, headers: { location: `/api/admin/spots/${spot.id}` } });
 });

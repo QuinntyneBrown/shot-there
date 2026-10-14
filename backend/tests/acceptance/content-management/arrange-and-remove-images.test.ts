@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import { expectProblem } from '@/tests/support/expect-problem';
 import { DELETE as removeImage } from '@/app/api/admin/images/[id]/route';
 import { PUT as saveSpot } from '@/app/api/admin/spots/[id]/route';
 import { PUT as saveStudio } from '@/app/api/admin/studios/[id]/route';
@@ -10,8 +11,8 @@ import { getStudioPage } from '@/tests/support/get-studio-page';
 import type { InMemoryObjectStore } from '@/tests/support/in-memory-object-store';
 import type { InMemorySpotRepository } from '@/tests/support/in-memory-spot-repository';
 import type { InMemoryStudioRepository } from '@/tests/support/in-memory-studio-repository';
-import { aSpotInput } from '@/tests/support/spot-input';
-import { aStudioInput } from '@/tests/support/studio-input';
+import { spotSaveBody } from '@/tests/support/spot-input';
+import { studioSaveBody } from '@/tests/support/studio-input';
 
 stubSiteOriginPerTest();
 
@@ -31,16 +32,16 @@ const gallery = () => [
 describe('L2-058 image ordering', () => {
   it('Given a gallery of three images, when the owner moves the third to first and saves, then the public page shows it first', async () => {
     useSignedInOwner({
-      studios: [aStudio({ id: 's1', slug: 'loft', images: [anImage({ role: 'testShot' }), ...gallery()] })],
+      studios: [aStudio({ id: 's1', slug: 'loft', images: [anImage({ role: 'test_shot' }), ...gallery()] })],
     });
 
     const response = await putStudio(
       's1',
-      aStudioInput({
-        images: [
-          { id: 'c', altText: 'Couch corner', sortOrder: 0 },
-          { id: 'a', altText: 'Window wall', sortOrder: 1 },
-          { id: 'b', altText: 'Cyc wall', sortOrder: 2 },
+      await studioSaveBody('s1', {
+        gallery: [
+          { imageId: 'c', alt: 'Couch corner' },
+          { imageId: 'a', alt: 'Window wall' },
+          { imageId: 'b', alt: 'Cyc wall' },
         ],
       }),
     );
@@ -52,10 +53,19 @@ describe('L2-058 image ordering', () => {
 
   it('Given an edited alt text, when saved, then the stored image carries it and the other images are unchanged', async () => {
     const dependencies = useSignedInOwner({
-      studios: [aStudio({ id: 's1', images: [anImage({ role: 'testShot', altText: 'Test shot' }), ...gallery()] })],
+      studios: [aStudio({ id: 's1', images: [anImage({ role: 'test_shot', altText: 'Test shot' }), ...gallery()] })],
     });
 
-    await putStudio('s1', aStudioInput({ images: [{ id: 'b', altText: 'White cyc wall, lit', sortOrder: 1 }] }));
+    await putStudio(
+      's1',
+      await studioSaveBody('s1', {
+        gallery: [
+          { imageId: 'a', alt: 'Window wall' },
+          { imageId: 'b', alt: 'White cyc wall, lit' },
+          { imageId: 'c', alt: 'Couch corner' },
+        ],
+      }),
+    );
 
     expect(studioRows(dependencies)[0].images.map((image) => image.altText)).toEqual([
       'Test shot',
@@ -71,8 +81,8 @@ describe('L2-058 image ordering', () => {
         aSpot({
           id: 'p1',
           images: [
-            anImage({ id: 'x', role: 'sampleShot', sortOrder: 0, altText: 'Bridge' }),
-            anImage({ id: 'y', role: 'sampleShot', sortOrder: 1, altText: 'Meadow' }),
+            anImage({ id: 'x', role: 'sample_shot', sortOrder: 0, altText: 'Bridge' }),
+            anImage({ id: 'y', role: 'sample_shot', sortOrder: 1, altText: 'Meadow' }),
           ],
         }),
       ],
@@ -81,10 +91,10 @@ describe('L2-058 image ordering', () => {
     const response = await saveSpot(
       adminRequest('/api/admin/spots/p1', {
         method: 'PUT',
-        body: aSpotInput({
-          images: [
-            { id: 'y', altText: 'Meadow', sortOrder: 0 },
-            { id: 'x', altText: 'Bridge', sortOrder: 1 },
+        body: await spotSaveBody('p1', {
+          sampleShots: [
+            { imageId: 'y', alt: 'Meadow', focalLengthMm: 35, angleNote: 'Low' },
+            { imageId: 'x', alt: 'Bridge', focalLengthMm: 85, angleNote: 'High' },
           ],
         }),
       }),
@@ -101,29 +111,33 @@ describe('L2-057 alt text is required', () => {
   it('Given an uploaded image without alt text, when the owner saves the location, then the save is refused naming the image alt field with "Describe this image"', async () => {
     const dependencies = useSignedInOwner({ studios: [aStudio({ id: 's1', images: gallery() })] });
 
-    const response = await putStudio('s1', aStudioInput({ images: [{ id: 'a', altText: '  ', sortOrder: 0 }] }));
-
-    expect(response.status).toBe(400);
-    expect(await response.json()).toEqual({
-      status: 400,
-      errors: [{ field: 'images.0.altText', message: 'Describe this image' }],
+    const body = await studioSaveBody('s1', {
+      gallery: [
+        { imageId: 'a', alt: '  ' },
+        { imageId: 'b', alt: 'Cyc wall' },
+        { imageId: 'c', alt: 'Couch corner' },
+      ],
     });
+    const response = await putStudio('s1', body);
+
+    const problem = await expectProblem(response, 'validation-failed', 400);
+    expect(problem.errors).toEqual([{ field: 'gallery.0.alt', code: 'required', message: 'Describe this image' }]);
     expect(studioRows(dependencies)[0].images[0].altText).toBe('Window wall');
   });
 
   it('Given an image id that belongs to another location, when saved, then the save is refused with 400', async () => {
     useSignedInOwner({ studios: [aStudio({ id: 's1', images: gallery() })] });
 
-    const response = await putStudio('s1', aStudioInput({ images: [{ id: 'elsewhere', altText: 'Hm', sortOrder: 0 }] }));
+    const response = await putStudio('s1', await studioSaveBody('s1', { gallery: [{ imageId: 'elsewhere', alt: 'Hm' }] }));
 
-    expect(response.status).toBe(400);
-    expect((await response.json()).errors[0].field).toBe('images.0.id');
+    const problem = await expectProblem(response, 'validation-failed', 400);
+    expect(problem.errors).toEqual([{ field: 'gallery', code: 'invalid_value', message: expect.any(String) }]);
   });
 });
 
 describe('L2-058 image removal', () => {
   it('Given a gallery image, when the owner removes it, then it is deleted with its stored objects and no longer appears publicly', async () => {
-    const dependencies = useSignedInOwner({ studios: [aStudio({ id: 's1', slug: 'loft', images: [anImage({ role: 'testShot' }), ...gallery()] })] });
+    const dependencies = useSignedInOwner({ studios: [aStudio({ id: 's1', slug: 'loft', images: [anImage({ role: 'test_shot' }), ...gallery()] })] });
     const removed = gallery()[1];
     for (const key of [removed.storageKey, ...removed.variants.map((variant) => variant.storageKey)]) {
       await objectStore(dependencies).putObject(key, Buffer.from('x'), 'image/jpeg');
@@ -139,28 +153,30 @@ describe('L2-058 image removal', () => {
 
   it("Given a published studio's last standard test shot, when the owner removes it, then the removal is refused with 409 saying at least one is required while published", async () => {
     const dependencies = useSignedInOwner({
-      studios: [aStudio({ id: 's1', images: [anImage({ id: 't', role: 'testShot' }), ...gallery()] })],
+      studios: [aStudio({ id: 's1', images: [anImage({ id: 't', role: 'test_shot' }), ...gallery()] })],
     });
 
     const response = await remove('t');
 
-    expect(response.status).toBe(409);
-    expect(await response.json()).toEqual({
-      status: 409,
-      message: 'At least one standard test shot is required while the studio is published',
-    });
+    await expectProblem(response, 'conflict', 409);
     expect(studioRows(dependencies)[0].images.some((image) => image.id === 't')).toBe(true);
   });
 
-  it("Given a published spot's last sample shot, when the owner removes it, then the removal is refused with 409", async () => {
-    useSignedInOwner({ spots: [aSpot({ id: 'p1', images: [anImage({ id: 'x', role: 'sampleShot' })] })] });
+  it.each([
+    ["a published spot's last sample shot", { spots: [aSpot({ id: 'p1', images: [anImage({ id: 'x', role: 'sample_shot' })] })] }],
+    [
+      "a published studio's last gallery image",
+      { studios: [aStudio({ id: 's1', images: [anImage({ role: 'test_shot' }), anImage({ id: 'x', role: 'gallery' })] })] },
+    ],
+  ])('Given %s, when the owner removes it, then it is removed: only the last test shot is refused (ICD E41)', async (_label, seed) => {
+    useSignedInOwner(seed);
 
-    expect((await remove('x')).status).toBe(409);
+    expect((await remove('x')).status).toBe(204);
   });
 
   it("Given a draft studio's only test shot, when the owner removes it, then it is removed", async () => {
     const dependencies = useSignedInOwner({
-      studios: [aStudio({ id: 's1', status: 'draft', publishedAt: null, images: [anImage({ id: 't', role: 'testShot' })] })],
+      studios: [aStudio({ id: 's1', status: 'draft', publishedAt: null, images: [anImage({ id: 't', role: 'test_shot' })] })],
     });
 
     expect((await remove('t')).status).toBe(204);
@@ -169,7 +185,7 @@ describe('L2-058 image removal', () => {
 
   it('Given the object store fails after the rows are deleted, when the owner removes an image, then the removal still succeeds and the failure is logged', async () => {
     const logs = captureLogs();
-    const dependencies = useSignedInOwner({ studios: [aStudio({ id: 's1', images: [anImage({ role: 'testShot' }), ...gallery()] })] });
+    const dependencies = useSignedInOwner({ studios: [aStudio({ id: 's1', images: [anImage({ role: 'test_shot' }), ...gallery()] })] });
     objectStore(dependencies).deleteObjects = async () => {
       throw new Error('bucket unavailable');
     };

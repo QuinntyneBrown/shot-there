@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import { expectProblem } from '@/tests/support/expect-problem';
 import { PUT as updateSpot } from '@/app/api/admin/spots/[id]/route';
 import { POST as createStudio } from '@/app/api/admin/studios/route';
 import { PUT as updateStudio } from '@/app/api/admin/studios/[id]/route';
@@ -6,8 +7,8 @@ import { adminRequest, idParams, stubSiteOriginPerTest, useSignedInOwner } from 
 import { aSpot, aStudio } from '@/tests/support/builders';
 import type { InMemorySpotRepository } from '@/tests/support/in-memory-spot-repository';
 import type { InMemoryStudioRepository } from '@/tests/support/in-memory-studio-repository';
-import { aSpotInput } from '@/tests/support/spot-input';
-import { aStudioInput } from '@/tests/support/studio-input';
+import { spotSaveBody } from '@/tests/support/spot-input';
+import { aStudioInput, studioSaveBody } from '@/tests/support/studio-input';
 
 stubSiteOriginPerTest();
 
@@ -23,11 +24,8 @@ describe('L2-045 disclosure values on save', () => {
 
       const response = await create(aStudioInput({ disclosure, disclosureProvider: null }));
 
-      expect(response.status).toBe(400);
-      expect((await response.json()).errors).toContainEqual({
-        field: 'disclosureProvider',
-        message: 'The provider is required for a discounted or comped session',
-      });
+      const problem = await expectProblem(response, 'validation-failed', 400);
+      expect(problem.errors).toContainEqual({ field: 'disclosureProvider', code: 'required', message: expect.any(String) });
     },
   );
 
@@ -43,7 +41,7 @@ describe('L2-045 disclosure values on save', () => {
     useSignedInOwner({ spots: [aSpot({ id: 'p1', status: 'draft' })] });
 
     const response = await updateSpot(
-      adminRequest('/api/admin/spots/p1', { method: 'PUT', body: aSpotInput({ disclosure: 'comped', disclosureProvider: '' }) }),
+      adminRequest('/api/admin/spots/p1', { method: 'PUT', body: await spotSaveBody('p1', { disclosure: 'comped', disclosureProvider: '' }) }),
       idParams('p1'),
     );
 
@@ -56,12 +54,10 @@ describe('L2-002 a published location keeps its standard data set', () => {
   it('Given a published studio, when the owner clears its ceiling height and saves, then the save is refused naming the field and the studio stays published with its previous value', async () => {
     const dependencies = useSignedInOwner({ studios: [aStudio({ id: 's1', ceilingHeightM: 3.4 })] });
 
-    const response = await saveStudio('s1', aStudioInput({ ceilingHeightM: null }));
+    const response = await saveStudio('s1', await studioSaveBody('s1', { ceilingHeight: null }));
 
-    expect(response.status).toBe(400);
-    expect((await response.json()).errors).toEqual([
-      { field: 'ceilingHeight', message: 'This is required while the location is published' },
-    ]);
+    const problem = await expectProblem(response, 'validation-failed', 400);
+    expect(problem.errors).toEqual([{ field: 'ceilingHeight', code: 'required_while_published', message: expect.any(String) }]);
     const [stored] = (dependencies.studios as InMemoryStudioRepository).rows;
     expect(stored).toMatchObject({ status: 'published', ceilingHeightM: 3.4 });
   });
@@ -69,14 +65,14 @@ describe('L2-002 a published location keeps its standard data set', () => {
   it('Given a draft studio, when the owner clears its ceiling height and saves, then the save succeeds', async () => {
     useSignedInOwner({ studios: [aStudio({ id: 's1', status: 'draft' })] });
 
-    expect((await saveStudio('s1', aStudioInput({ ceilingHeightM: null }))).status).toBe(200);
+    expect((await saveStudio('s1', await studioSaveBody('s1', { ceilingHeight: null }))).status).toBe(200);
   });
 
   it('Given a published spot, when the owner removes every best use and saves, then the save is refused naming bestUses', async () => {
     const dependencies = useSignedInOwner({ spots: [aSpot({ id: 'p1', bestUses: ['portrait'] })] });
 
     const response = await updateSpot(
-      adminRequest('/api/admin/spots/p1', { method: 'PUT', body: aSpotInput({ bestUses: [] }) }),
+      adminRequest('/api/admin/spots/p1', { method: 'PUT', body: await spotSaveBody('p1', { bestUses: [] }) }),
       idParams('p1'),
     );
 

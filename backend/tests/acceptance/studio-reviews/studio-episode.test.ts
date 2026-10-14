@@ -14,6 +14,14 @@ describe('L2-013 studio video embed', () => {
     expect(body.episode).toEqual({ videoId: 'dQw4w9WgXcQ', title: 'We shot at The Junction Loft' });
   });
 
+  it('Given a stored video without an episode title, when returned, then the title falls back to the studio name (ICD §13.1)', async () => {
+    useFakeDependencies({ studios: [aStudio({ slug: 's', name: 'The Junction Loft', videoId: 'dQw4w9WgXcQ', episodeTitle: null })] });
+
+    const { body } = await getStudioPage('s');
+
+    expect(body.episode).toEqual({ videoId: 'dQw4w9WgXcQ', title: 'The Junction Loft' });
+  });
+
   it('Given a studio with no video ID, when returned, then the episode is null', async () => {
     useFakeDependencies({ studios: [aStudio({ slug: 's', videoId: null, episodeTitle: 'Orphan title' })] });
 

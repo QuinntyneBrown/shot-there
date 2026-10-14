@@ -1,4 +1,5 @@
 export interface EpisodeDto {
   videoId: string;
-  title: string | null;
+  /** The stored episode title, or the location name when none is stored. */
+  title: string;
 }

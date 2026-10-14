@@ -20,21 +20,23 @@ describe('L2-006 measured specifications', () => {
           outletCount: 8,
           outletType: '15A household',
           has20ACircuits: true,
-          backdrops: 'White seamless',
+          backdrops: ['White seamless', 'Grey seamless'],
         }),
       ],
     });
 
     const { body } = await getStudioPage('s');
 
-    expect(body.specifications).toMatchObject({
-      usableWidthM: 6.1,
-      usableDepthM: 4.3,
-      ceilingHeightM: 3.4,
+    expect(body.specifications).toEqual({
+      usableWidth: 6.1,
+      usableDepth: 4.3,
+      ceilingHeight: 3.4,
       windowDirection: 'North',
       naturalLight: { morning: 'low', midday: 'strong', afternoon: 'medium', evening: 'none' },
-      power: { outletCount: 8, outletType: '15A household', has20ACircuits: true },
-      backdrops: 'White seamless',
+      power: { outletCount: 8, outletType: '15A household', has20aCircuits: true },
+      hasCycWall: false,
+      cycWallCondition: null,
+      backdrops: ['White seamless', 'Grey seamless'],
     });
   });
 
@@ -43,7 +45,7 @@ describe('L2-006 measured specifications', () => {
 
     const { body } = await getStudioPage('s');
 
-    expect(body.specifications.cycWall).toEqual({ present: false, condition: null });
+    expect(body.specifications).toMatchObject({ hasCycWall: false, cycWallCondition: null });
   });
 
   it('Given a studio with a scuffed cyc wall, when returned, then the cyc wall is present with condition "scuffed"', async () => {
@@ -51,7 +53,7 @@ describe('L2-006 measured specifications', () => {
 
     const { body } = await getStudioPage('s');
 
-    expect(body.specifications.cycWall).toEqual({ present: true, condition: 'scuffed' });
+    expect(body.specifications).toMatchObject({ hasCycWall: true, cycWallCondition: 'scuffed' });
   });
 });
 
@@ -72,7 +74,7 @@ describe('L2-007 included gear and extras', () => {
     const { body } = await getStudioPage('s');
 
     expect(body.gear).toEqual({
-      included: [{ name: 'Profoto D2', category: 'lights', quantity: 2, extraCost: null }],
+      included: [{ name: 'Profoto D2', category: 'lights', quantity: 2 }],
       extras: [{ name: 'Coloured backdrop', category: 'other', quantity: 1, extraCost: 15 }],
     });
   });
@@ -100,10 +102,9 @@ describe('L2-008 logistics', () => {
       studios: [
         aStudio({
           slug: 's',
-          loadIn: 'freightElevator',
+          loadIn: 'freight_elevator',
           loadInNote: 'small, 1.2 m wide',
           parking: 'street',
-          parkingNote: 'Metered on Queen',
           transit: '501 streetcar',
           washroom: 'Shared',
           changingArea: null,
@@ -116,10 +117,9 @@ describe('L2-008 logistics', () => {
     const { body } = await getStudioPage('s');
 
     expect(body.logistics).toEqual({
-      loadIn: 'freightElevator',
+      loadIn: 'freight_elevator',
       loadInNote: 'small, 1.2 m wide',
       parking: 'street',
-      parkingNote: 'Metered on Queen',
       transit: '501 streetcar',
       washroom: 'Shared',
       changingArea: null,

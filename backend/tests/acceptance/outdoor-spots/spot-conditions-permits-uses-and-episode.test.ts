@@ -52,14 +52,9 @@ describe('L2-018 and L2-043 spot permit status', () => {
     const { body } = await getSpotPage('s');
 
     expect(body.permits).toEqual({
-      rows: [
-        { shootType: 'portrait', required: false },
-        { shootType: 'weddingEngagement', required: false },
-        { shootType: 'commercial', required: true },
-        { shootType: 'video', required: true },
-      ],
+      byShootType: { portrait: 'not_required', weddingEngagement: 'not_required', commercial: 'required', video: 'required' },
       sourceUrl: 'https://www.toronto.ca/parks/permits',
-      verifiedOn: '2026-10-03',
+      verifiedAt: '2026-10-03',
       permitStale: false,
     });
   });
@@ -75,7 +70,7 @@ describe('L2-018 and L2-043 spot permit status', () => {
 
 describe('L2-019 spot best uses', () => {
   it('Given a spot tagged engagement and portrait, when returned, then exactly those uses are listed', async () => {
-    useFakeDependencies({ spots: [aSpot({ slug: 's', bestUses: ['engagement', 'portrait'] })] });
+    useFakeDependencies({ spots: [aSpot({ slug: 's', bestUses: ['portrait', 'engagement'] })] });
 
     const { body } = await getSpotPage('s');
 
@@ -84,22 +79,39 @@ describe('L2-019 spot best uses', () => {
 });
 
 describe('L2-020 spot disclosure and video', () => {
-  it('Given a comped spot shoot with a video, when returned, then disclosure and video ID are present', async () => {
+  it('Given a comped spot shoot with a titled video, when returned, then disclosure and the episode are present', async () => {
     useFakeDependencies({
-      spots: [aSpot({ slug: 's', disclosure: 'comped', disclosureProvider: 'Parks Toronto', videoId: 'dQw4w9WgXcQ' })],
+      spots: [
+        aSpot({
+          slug: 's',
+          disclosure: 'comped',
+          disclosureProvider: 'Parks Toronto',
+          videoId: 'dQw4w9WgXcQ',
+          episodeTitle: 'Golden hour at Riverdale',
+        }),
+      ],
     });
 
     const { body } = await getSpotPage('s');
 
     expect(body.disclosure).toEqual({ kind: 'comped', provider: 'Parks Toronto' });
-    expect(body.videoId).toBe('dQw4w9WgXcQ');
+    expect(body.episode).toEqual({ videoId: 'dQw4w9WgXcQ', title: 'Golden hour at Riverdale' });
   });
 
-  it('Given a spot with no video ID, when returned, then videoId is null', async () => {
+  it('Given a video without an episode title, when returned, then the title falls back to the spot name (ICD A8)', async () => {
+    useFakeDependencies({ spots: [aSpot({ slug: 's', name: 'Riverdale Park East', videoId: 'dQw4w9WgXcQ' })] });
+
+    const { body } = await getSpotPage('s');
+
+    expect(body.episode).toEqual({ videoId: 'dQw4w9WgXcQ', title: 'Riverdale Park East' });
+  });
+
+  it('Given a spot with no video ID, when returned, then the episode is null', async () => {
     useFakeDependencies({ spots: [aSpot({ slug: 's', videoId: null })] });
 
     const { body } = await getSpotPage('s');
 
-    expect(body.videoId).toBeNull();
+    expect(body.episode).toBeNull();
+    expect(body).not.toHaveProperty('videoId');
   });
 });

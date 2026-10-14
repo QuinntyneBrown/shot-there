@@ -17,7 +17,7 @@ const permitsWhere = (portraitRequired: boolean) => [
 ];
 
 describe('L2-024 outdoor spot list', () => {
-  it('Given published and draft spots, when listed, then only published spots are returned as cards, by name', async () => {
+  it('Given published and draft spots, when listed, then only published spots are returned as cards, most recently reviewed first', async () => {
     useFakeDependencies({
       today: '2026-10-13',
       spots: [
@@ -26,12 +26,15 @@ describe('L2-024 outdoor spot list', () => {
           name: 'Riverdale Park East',
           neighbourhood: 'Riverdale',
           type: 'park',
-          bestUses: ['engagement', 'family'],
+          bestUses: ['family', 'engagement'],
           permits: permitsWhere(false),
           permitVerifiedAt: '2026-03-01',
-          images: [anImage({ id: 'cover', role: 'sampleShot', altText: 'Skyline from the hill' })],
+          publishedAt: new Date('2026-09-01T12:00:00Z'),
+          images: [
+            anImage({ id: 'cover', role: 'sample_shot', altText: 'Skyline from the hill', focalLengthMm: 35, angleNote: 'Hilltop' }),
+          ],
         }),
-        aSpot({ slug: 'harbourfront', name: 'Harbourfront', type: 'waterfront' }),
+        aSpot({ slug: 'harbourfront', name: 'Harbourfront', type: 'waterfront', publishedAt: new Date('2026-08-01T12:00:00Z') }),
         aSpot({ slug: 'hidden', name: 'Draft Spot', status: 'draft' }),
       ],
     });
@@ -39,16 +42,16 @@ describe('L2-024 outdoor spot list', () => {
     const { status, body } = await listSpotsPage();
 
     expect(status).toBe(200);
-    expect(slugsOf(body)).toEqual(['harbourfront', 'riverdale']);
-    expect(body[1]).toEqual({
+    expect(slugsOf(body)).toEqual(['riverdale', 'harbourfront']);
+    expect(body[0]).toEqual({
       slug: 'riverdale',
       name: 'Riverdale Park East',
       neighbourhood: 'Riverdale',
       type: 'park',
       bestUses: ['engagement', 'family'],
-      permitSummary: 'someRequired',
+      permits: { portrait: 'not_required', weddingEngagement: 'not_required', commercial: 'required', video: 'required' },
       permitStale: true,
-      thumbnail: { url: 'https://cdn.example/images/cover/480.jpg', alt: 'Skyline from the hill' },
+      thumbnail: expect.objectContaining({ alt: 'Skyline from the hill', fallbackUrl: 'https://cdn.example/images/cover/960.jpg' }),
     });
   });
 
@@ -62,7 +65,7 @@ describe('L2-024 outdoor spot list', () => {
     expect(slugsOf(body)).toEqual(['water']);
   });
 
-  it('Given use case family and permit "none-needed", when listed, then only family spots whose portrait permit is not required are listed', async () => {
+  it('Given use case family and permit "none_needed", when listed, then only family spots whose portrait permit is not required are listed', async () => {
     useFakeDependencies({
       spots: [
         aSpot({ slug: 'family-free', bestUses: ['family'], permits: permitsWhere(false) }),
@@ -71,9 +74,31 @@ describe('L2-024 outdoor spot list', () => {
       ],
     });
 
-    const { body } = await listSpotsPage('?use=family&permit=none-needed');
+    const { body } = await listSpotsPage('?use=family&permit=none_needed');
 
     expect(slugsOf(body)).toEqual(['family-free']);
+  });
+
+  it('Given permit none_needed and no use case, when listed, then spots needing no portrait permit are listed (ICD OI-6)', async () => {
+    useFakeDependencies({
+      spots: [
+        aSpot({ slug: 'portrait-free', permits: permitsWhere(false) }),
+        aSpot({ slug: 'portrait-permit', permits: permitsWhere(true) }),
+      ],
+    });
+
+    const { body } = await listSpotsPage('?permit=none_needed');
+
+    expect(slugsOf(body)).toEqual(['portrait-free']);
+  });
+
+  it('Given spots reviewed at the same time, when listed, then ties fall to slug ascending (ICD C-18)', async () => {
+    const sameTime = { publishedAt: new Date('2026-09-01T12:00:00Z') };
+    useFakeDependencies({ spots: [aSpot({ slug: 'bravo', ...sameTime }), aSpot({ slug: 'alpha', ...sameTime })] });
+
+    const { body } = await listSpotsPage();
+
+    expect(slugsOf(body)).toEqual(['alpha', 'bravo']);
   });
 
   it('Given unknown filter values, when listed, then they are ignored without error', async () => {

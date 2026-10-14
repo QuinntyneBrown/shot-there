@@ -1,3 +1,4 @@
+import type { GuideDataPointKey } from '@/lib/guides/guide-data-point-key';
 import type { GuideEntryRecord } from '@/lib/guides/guide-entry-record';
 import type { LocationStatus } from '@/lib/publishing/location-status';
 
@@ -7,7 +8,9 @@ export interface GuideRecord {
   slug: string;
   status: LocationStatus;
   title: string;
-  introduction: string;
+  summary: string | null;
+  introduction: string | null;
+  dataPoints: GuideDataPointKey[];
   publishedAt: Date | null;
   updatedAt: Date;
   entries: GuideEntryRecord[];

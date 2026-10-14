@@ -1,1 +1,1 @@
-export type LoadIn = 'stairs' | 'elevator' | 'freightElevator';
+export type LoadIn = 'stairs' | 'elevator' | 'freight_elevator';

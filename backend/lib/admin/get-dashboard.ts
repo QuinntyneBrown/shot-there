@@ -13,14 +13,14 @@ export async function getDashboard(): Promise<AdminDashboard> {
   const [allStudios, allSpots, allGuides] = await Promise.all([studios.listAll(), spots.listAll(), guides.listAll()]);
 
   const candidates = [
-    ...allStudios.map((studio) => ({ kind: 'studio', id: studio.id, name: studio.name, field: 'price', lastVerifiedAt: studio.priceVerifiedAt }) as const),
-    ...allSpots.map((spot) => ({ kind: 'spot', id: spot.id, name: spot.name, field: 'permit', lastVerifiedAt: spot.permitVerifiedAt }) as const),
+    ...allStudios.map((studio) => ({ kind: 'studio', id: studio.id, name: studio.name, field: 'price', verifiedAt: studio.priceVerifiedAt }) as const),
+    ...allSpots.map((spot) => ({ kind: 'spot', id: spot.id, name: spot.name, field: 'permit', verifiedAt: spot.permitVerifiedAt }) as const),
   ];
   const verification: VerificationItem[] = [];
   for (const candidate of candidates) {
-    const group = verificationGroup(candidate.lastVerifiedAt, today);
+    const group = verificationGroup(candidate.verifiedAt, today);
     if (group !== 'current') {
-      verification.push({ ...candidate, ageDays: daysBetween(candidate.lastVerifiedAt, today), group });
+      verification.push({ ...candidate, ageDays: daysBetween(candidate.verifiedAt, today), group });
     }
   }
 
