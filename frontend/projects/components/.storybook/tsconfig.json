@@ -1,0 +1,14 @@
+{
+  "extends": "../tsconfig.lib.json",
+  "compilerOptions": {
+    "types": ["node", "@angular/localize"],
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+    "paths": {
+      "@shot-there/components": ["../src/public-api.ts"]
+    }
+  },
+  "exclude": ["../src/**/*.spec.ts"],
+  "include": ["../src/**/*.ts", "../stories/**/*.ts", "./preview.ts"],
+  "files": ["./typings.d.ts"]
+}

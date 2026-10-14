@@ -1,0 +1,35 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+import { TokenRows, previews } from './components/TokenBlocks';
+
+<Meta title="Theme/Typography" />
+
+# Typography
+
+One sans family for everything and a mono for code. Components set type with a `--text-*` role, a complete `font`
+shorthand, so size, weight, line height and family always travel together. `--font-size-4xl` and `--font-size-5xl`
+grow from 62rem.
+
+## Roles
+
+<TokenRows prefix="text-" preview={previews.text} />
+
+## Families
+
+<TokenRows prefix="font-family" preview={previews.fontFamily} />
+
+## Sizes
+
+<TokenRows prefix="font-size" preview={previews.fontSize} />
+
+## Weights
+
+<TokenRows prefix="font-weight" preview={previews.fontWeight} />
+
+## Line heights
+
+<TokenRows prefix="line-height" preview={previews.lineHeight} />
+
+## Letter spacing
+
+<TokenRows prefix="letter-spacing" preview={previews.none} />

@@ -1,29 +1,9 @@
-<label class="choice"
-  ><input
-    type="checkbox"
-    [id]="id()"
-    [attr.name]="name() || null"
-    [checked]="value()"
-    [disabled]="disabled()"
-    [attr.aria-invalid]="hasError() ? 'true' : null"
-    [attr.aria-describedby]="describedBy()"
-    (change)="toggled($event)"
-    (blur)="touch()"
-  />
+<label class="choice"><input type="checkbox" [id]="id()" [attr.name]="name() || null" [checked]="value()" [disabled]="disabled()"
+  [attr.aria-invalid]="hasError() ? 'true' : null" [attr.aria-describedby]="describedBy()" (change)="toggled($event)" (blur)="touch()">
   @if (description()) {
-    <span class="choice__text"
-      >{{ label() }}<small>{{ description() }}</small></span
-    >
+    <span class="choice__text">{{ label() }}<small>{{ description() }}</small></span>
   } @else {
-    <span
-      >{{ label() }}
-      @if (labelSuffix()) {
-        <span class="visually-hidden"> {{ labelSuffix() }}</span>
-      }
-      @if (optional()) {
-        &ngsp;<span class="optional">{{ optionalLabel() }}</span>
-      }
-    </span>
+    <span>{{ label() }}@if (labelSuffix()) {<span class="visually-hidden"> {{ labelSuffix() }}</span>}@if (optional()) {&ngsp;<span class="optional">{{ optionalLabel() }}</span>}</span>
   }
 </label>
 <st-field-messages [id]="id()" [error]="error()" [warning]="warning()" [help]="help()" />

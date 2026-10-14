@@ -2,31 +2,18 @@
 <section class="review-section" aria-labelledby="specs">
   <h2 id="specs" i18n>Measured specifications</h2>
   <dl class="kv">
-    <dt i18n>Usable shooting space</dt>
-    <dd>{{ v.space }}</dd>
-    <dt i18n>Ceiling height</dt>
-    <dd>{{ v.ceiling }}</dd>
-    <dt i18n>Window direction</dt>
-    <dd>{{ specifications().windowDirection }}</dd>
-    <dt i18n>Power</dt>
-    <dd>{{ v.power }}</dd>
-    <dt i18n>Cyc wall</dt>
-    <dd>{{ v.cycWall }}</dd>
-    <dt i18n>Backdrops</dt>
-    <dd>{{ v.backdrops }}</dd>
+    <dt i18n>Usable shooting space</dt><dd>{{ v.space }}</dd>
+    <dt i18n>Ceiling height</dt><dd>{{ v.ceiling }}</dd>
+    <dt i18n>Window direction</dt><dd>{{ specifications().windowDirection }}</dd>
+    <dt i18n>Power</dt><dd>{{ v.power }}</dd>
+    <dt i18n>Cyc wall</dt><dd>{{ v.cycWall }}</dd>
+    <dt i18n>Backdrops</dt><dd>{{ v.backdrops }}</dd>
   </dl>
   <h3 id="specs-light" i18n>Natural light by time of day</h3>
   <ul class="light-grid" aria-labelledby="specs-light">
     @for (slot of v.light; track slot.time) {
       <li class="light-grid__item">
-        <span class="light-grid__time">{{ slot.time }}</span
-        >&ngsp;<span class="light-rating"
-          ><span class="pips" aria-hidden="true">
-            @for (slotIndex of pipSlots; track slotIndex) {
-              <i [attr.data-on]="slotIndex <= slot.pips ? '' : null"></i>
-            }</span
-          >{{ slot.label }}</span
-        >
+        <span class="light-grid__time">{{ slot.time }}</span>&ngsp;<span class="light-rating"><span class="pips" aria-hidden="true">@for (slotIndex of pipSlots; track slotIndex) {<i [attr.data-on]="slotIndex <= slot.pips ? '' : null"></i>}</span>{{ slot.label }}</span>
       </li>
     }
   </ul>

@@ -1,7 +1,7 @@
 import { defineConfig, devices } from '@playwright/test';
 
-const appPort = 4317;
-const harnessPort = 4318;
+const appPort = Number(process.env['PW_APP_PORT'] ?? 4317);
+const harnessPort = Number(process.env['PW_LIB_PORT'] ?? 4318);
 
 export default defineConfig({
   fullyParallel: true,

@@ -4,8 +4,7 @@
       <li>
         @if (last && current()) {
           @if (loading()) {
-            <span class="visually-hidden">{{ item.label }}</span
-            ><st-skeleton />
+            <span class="visually-hidden">{{ item.label }}</span><st-skeleton />
           } @else {
             <span aria-current="page">{{ item.label }}</span>
           }

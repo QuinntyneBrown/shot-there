@@ -13,6 +13,8 @@ import { CompareBarDefaultComponent } from './compare-bar/compare-bar-default.co
 import { SummaryPanelDefaultComponent } from './summary-panel/summary-panel-default.component';
 import { FormActionsStatesComponent } from './form-actions/form-actions-states.component';
 import { ErrorSummaryStatesComponent } from './error-summary/error-summary-states.component';
+import { VideoPosterNoVideoComponent } from './video-poster/video-poster-no-video.component';
+import { VideoPosterColumnComponent } from './video-poster/video-poster-column.component';
 import { ResponsiveImagePerformanceComponent } from './responsive-image/responsive-image-performance.component';
 import { ButtonGroupPerformanceComponent } from './button-group/button-group-performance.component';
 import { FilterPerformanceComponent } from './filter/filter-performance.component';
@@ -163,4 +165,7 @@ export const routes: Routes = [
   { path: 'map-popup/states', component: MapPopupStatesComponent },
   { path: 'search-field/default', component: SearchFieldDefaultComponent },
   { path: 'dialog/opener', component: DialogOpenerComponent },
+  { path: 'video-poster/column', component: VideoPosterColumnComponent },
+  { path: 'video-poster/no-video', component: VideoPosterNoVideoComponent },
+  { path: 'video-poster/performance', component: VideoPosterColumnComponent },
 ];

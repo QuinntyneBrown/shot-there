@@ -18,3 +18,10 @@
   align-content: start;
   padding-top: var(--space-6);
 }
+/* On the poster the episode title is clamped to two lines, so it never runs under the pill (CRD video-poster D-1). */
+:host-context(.video-poster) span {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

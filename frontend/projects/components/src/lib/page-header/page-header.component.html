@@ -1,9 +1,6 @@
 <div>
   @if (loading()) {
-    <h1>
-      <span class="visually-hidden">{{ title() }}</span
-      ><st-skeleton />
-    </h1>
+    <h1><span class="visually-hidden">{{ title() }}</span><st-skeleton /></h1>
   } @else {
     <h1>{{ title() }}</h1>
   }

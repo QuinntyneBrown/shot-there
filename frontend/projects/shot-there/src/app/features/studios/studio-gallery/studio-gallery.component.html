@@ -1,25 +1,13 @@
 <section class="review-section" aria-labelledby="gallery">
   <div class="section-head">
     <h2 id="gallery" i18n>From a real shoot</h2>
-    <span class="text-caption" i18n>{gallery().length, plural,
-      =1 {1 photo}
-      other {{{gallery().length}} photos}
-    }</span>
+    <span class="text-caption" i18n>{gallery().length, plural, =1 {1 photo} other {{{gallery().length}} photos}}</span>
   </div>
   <ul class="shot-grid">
     @for (photo of gallery(); track photo.id; let i = $index) {
       <li>
         <button type="button" class="shot" aria-haspopup="dialog" (click)="open(i)">
-          <img
-            stFallbackImage
-            [src]="src(photo)"
-            [srcset]="srcset(photo)"
-            sizes="(min-width: 62rem) 25vw, (min-width: 48rem) 33vw, 50vw"
-            [alt]="photo.alt"
-            width="800"
-            height="1000"
-            loading="lazy"
-          />
+          <img stFallbackImage [src]="src(photo)" [srcset]="srcset(photo)" sizes="(min-width: 62rem) 25vw, (min-width: 48rem) 33vw, 50vw" [alt]="photo.alt" width="800" height="1000" loading="lazy" />
         </button>
       </li>
     }

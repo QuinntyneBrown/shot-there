@@ -1,33 +1,20 @@
 @let v = verdict();
 <section class="review-section" aria-labelledby="verdict">
   <h2 id="verdict" i18n>Verdict</h2>
-  <p class="score-overall">
-    <span class="score-overall__value">{{ v.overallScore | number: '1.1-1' }}</span
-    >&ngsp;<span class="score-overall__max" i18n>overall, out of 5</span>
-  </p>
+  <p class="score-overall"><span class="score-overall__value">{{ v.overallScore | number: '1.1-1' }}</span>&ngsp;<span class="score-overall__max" i18n>overall, out of 5</span></p>
   <ul class="score-list" aria-label="Rubric scores" i18n-aria-label>
     @for (item of scores(); track item.label) {
       <li class="score">
         <span class="score__label" aria-hidden="true">{{ item.label }}</span>
-        <span class="pips" aria-hidden="true">
-          @for (slot of pipSlots; track slot) {
-            <i [attr.data-on]="slot <= item.score ? '' : null"></i>
-          }
-        </span>
+        <span class="pips" aria-hidden="true">@for (slot of pipSlots; track slot) {<i [attr.data-on]="slot <= item.score ? '' : null"></i>}</span>
         <span class="score__value" aria-hidden="true">{{ item.score }}</span>
         <span class="visually-hidden" i18n>{{ item.label }}: {{ item.score }} out of 5</span>
       </li>
     }
   </ul>
   <dl class="regions">
-    <div>
-      <dt i18n>Who it's for</dt>
-      <dd>{{ v.whoItsFor }}</dd>
-    </div>
-    <div>
-      <dt i18n>Who should skip it</dt>
-      <dd>{{ v.whoShouldSkip }}</dd>
-    </div>
+    <div><dt i18n>Who it's for</dt><dd>{{ v.whoItsFor }}</dd></div>
+    <div><dt i18n>Who should skip it</dt><dd>{{ v.whoShouldSkip }}</dd></div>
   </dl>
   <ng-content />
 </section>

@@ -1,0 +1,3 @@
+The DS radio group: a question with exactly one answer and every option in view — the parking a studio must have, whether a spot needs a permit, how the session behind a review was paid for. `st-radio-group` renders a `<fieldset>` whose `<legend>` asks the question, an optional error and help, then one native radio per `ChoiceOption` in a wrapping `label.choice`, all sharing one `name`.
+
+`appearance="form"` lays the radios out with `.stack.stack--sm`; `appearance="filter"` uses `.filter-group` with a `.filter-group__title` legend. It is a `ControlValueAccessor` whose value is the chosen option's `value` (`''` when nothing is chosen).

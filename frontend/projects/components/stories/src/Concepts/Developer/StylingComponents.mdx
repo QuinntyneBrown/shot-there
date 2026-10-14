@@ -1,0 +1,41 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Concepts/Developer/Styling Components" />
+
+# Styling components
+
+## Tokens by role
+
+Read tokens by role, never by hex value. Tokens come in three tiers (see `styles/tokens.css`):
+
+1. **Primitives** — `--palette-*`, `--font-*`, `--line-height-*`: raw values. Components never use them.
+2. **Semantic** — `--color-*`, `--text-*`, `--space-*`, `--radius-*`, `--shadow-*`, `--duration-*`, `--ease-*`,
+   `--z-*`, `--layout-*`, `--target-*`, `--control-height-*`. Components consume these; themes override only this tier.
+3. **Component** — `--btn-*`, `--field-*`, … always aliasing tier 2.
+
+```css
+.price-block {
+  padding: var(--space-5);
+  border-radius: var(--radius-lg);
+  background: var(--color-bg-surface-sunken);
+  font: var(--text-body);
+}
+```
+
+If a colour is missing, add a semantic token (in both light and dark) first.
+
+## Encapsulated styles
+
+Every component keeps its template in `<name>.component.html` and its styles in `<name>.component.css`. Styles stay
+encapsulated; global CSS is limited to the shared foundations and utilities (`stack`, `cluster`, `container`,
+`visually-hidden`, …).
+
+## Themes
+
+Light is the default. Dark applies with `[data-theme="dark"]`, or when the OS prefers dark and the page has not
+forced `[data-theme="light"]`. Use the **Theme** toolbar to preview each.
+
+## Responsive
+
+Phone first. Media queries repeat the `--layout-breakpoint-*` values literally (36, 48, 62, 75 and 90rem) — and only
+those values.

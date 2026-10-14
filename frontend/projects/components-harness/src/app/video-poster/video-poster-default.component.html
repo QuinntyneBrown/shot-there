@@ -1,13 +1,13 @@
 <main class="container stack">
   <section aria-label="default" class="column">
-    <st-video-poster
-      [poster]="poster"
-      watchUrl="https://www.youtube.com/watch?v=Jx7Lq2pT9aE"
-      [embedUrl]="embedUrl"
-      title="Episode 4: The Junction Loft — big north light, tiny elevator"
-      playContext=": Episode 4, The Junction Loft"
-      (played)="record('played')"
-    />
+    <st-video-poster [poster]="poster" watchUrl="https://www.youtube.com/watch?v=Jx7Lq2pT9aE" [embedUrl]="embedUrl"
+      title="Episode 4: The Junction Loft — big north light, tiny elevator" playContext=": Episode 4, The Junction Loft"
+      (played)="record('played')" />
+  </section>
+  <section aria-label="no poster" class="column">
+    <st-video-poster watchUrl="https://www.youtube.com/watch?v=Jx7Lq2pT9aE" [embedUrl]="embedUrl"
+      title="Episode 4: The Junction Loft — big north light, tiny elevator" playLabel="Watch the episode"
+      (played)="record('played: no poster')" />
   </section>
   <st-activation-log [entries]="log()" />
 </main>

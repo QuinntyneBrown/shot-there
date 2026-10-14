@@ -1,0 +1,56 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+import { ColorGrid } from './components/TokenBlocks';
+
+<Meta title="Theme/Colors" />
+
+# Colors
+
+A white canvas, near-black ink and one warm red accent for "selected / you are here". Photos, prices, scores and
+measurements do the talking, so the interface stays quiet.
+
+Every swatch on this page is read from `styles/tokens.css` and painted with its live custom property — switch the
+**Theme** toolbar to Dark to see the dark values. Components read the semantic `--color-*` roles, never a `--palette-*`
+primitive and never a hex value.
+
+## Backgrounds
+
+<ColorGrid prefix="color-bg-" />
+
+## Foregrounds
+
+<ColorGrid prefix="color-fg-" />
+
+## Borders
+
+<ColorGrid prefix="color-border-" />
+
+## Accent
+
+The accent marks "selected / you are here": the active filter, the current tab and the focus ring.
+
+<ColorGrid prefix={['color-accent', 'color-focus']} />
+
+## Action
+
+The one primary button on a screen: solid ink, like the wordmark.
+
+<ColorGrid prefix="color-action" />
+
+## Status
+
+Info is quiet stone, not blue — the brand has one hue and it means "selected". Pair each `-bg` with its `-fg`.
+
+<ColorGrid prefix="color-info" />
+
+<ColorGrid prefix="color-success" />
+
+<ColorGrid prefix="color-warning" />
+
+<ColorGrid prefix="color-danger" />
+
+## Palette primitives
+
+The raw ramps the roles alias. Components never use them directly.
+
+<ColorGrid prefix="palette-" />

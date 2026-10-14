@@ -1,10 +1,7 @@
 @if (selection.refused(); as refused) {
   <div class="toast-region">
     <div class="toast">
-      <svg class="icon" aria-hidden="true" viewBox="0 0 24 24">
-        <path d="M12 3 2 20h20L12 3z" />
-        <path d="M12 10v4M12 17h.01" />
-      </svg>
+      <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3 2 20h20L12 3z" /><path d="M12 10v4M12 17h.01" /></svg>
       <div class="toast__body">
         <div class="toast__title">{{ limitTitle }}</div>
         <div class="toast__text">{{ limitHint(refused.name) }}</div>
@@ -16,9 +13,7 @@
   <aside class="compare-bar" aria-label="Studios to compare" i18n-aria-label>
     <div class="compare-bar__inner">
       <div class="compare-bar__status">
-        <p class="compare-bar__count" role="status" aria-live="polite" i18n>
-          {{ selection.count() }} selected
-        </p>
+        <p class="compare-bar__count" role="status" aria-live="polite" i18n>{{ selection.count() }} selected</p>
         <p class="compare-bar__names">{{ names() }}</p>
         @if (!selection.canCompare()) {
           <p class="compare-bar__hint" id="compare-hint" i18n>Pick at least 2 studios to compare</p>
@@ -26,16 +21,7 @@
       </div>
       <div class="compare-bar__actions">
         <button class="btn btn--ghost" type="button" (click)="selection.clear()" i18n>Clear</button>
-        <button
-          class="btn btn--primary"
-          type="button"
-          [disabled]="!selection.canCompare()"
-          [attr.aria-describedby]="selection.canCompare() ? null : 'compare-hint'"
-          (click)="compare()"
-          i18n
-        >
-          Compare
-        </button>
+        <button class="btn btn--primary" type="button" [disabled]="!selection.canCompare()" [attr.aria-describedby]="selection.canCompare() ? null : 'compare-hint'" (click)="compare()" i18n>Compare</button>
       </div>
     </div>
   </aside>

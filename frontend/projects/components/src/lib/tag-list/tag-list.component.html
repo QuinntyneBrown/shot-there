@@ -2,9 +2,7 @@
   <ul class="tags" [attr.aria-label]="label()">
     @for (item of items(); track item.label) {
       @if (item.link) {
-        <li>
-          <a class="tag tag--link" [routerLink]="item.link">{{ item.label }}</a>
-        </li>
+        <li><a class="tag tag--link" [routerLink]="item.link">{{ item.label }}</a></li>
       } @else {
         <li class="tag">{{ item.label }}</li>
       }

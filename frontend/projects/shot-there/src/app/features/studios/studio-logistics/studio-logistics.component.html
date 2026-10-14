@@ -2,23 +2,17 @@
 <section class="review-section" aria-labelledby="logistics">
   <h2 id="logistics" i18n>Logistics</h2>
   <dl class="kv">
-    <dt i18n>Load-in</dt>
-    <dd>{{ loadIn() }}</dd>
-    <dt i18n>Parking</dt>
-    <dd>{{ l.parking }}</dd>
-    <dt i18n>Transit</dt>
-    <dd>{{ l.transit }}</dd>
-    <dt i18n>Washroom</dt>
-    <dd>{{ l.washroom }}</dd>
+    <dt i18n>Load-in</dt><dd>{{ loadIn() }}</dd>
+    <dt i18n>Parking</dt><dd>{{ l.parking }}</dd>
+    <dt i18n>Transit</dt><dd>{{ l.transit }}</dd>
+    <dt i18n>Washroom</dt><dd>{{ l.washroom }}</dd>
     <dt i18n>Changing area</dt>
     @if (l.changingArea) {
       <dd>{{ l.changingArea }}</dd>
     } @else {
       <dd i18n>None</dd>
     }
-    <dt i18n>Client seating</dt>
-    <dd>{{ l.clientSeating }}</dd>
-    <dt i18n>Noise</dt>
-    <dd>{{ l.noise }}</dd>
+    <dt i18n>Client seating</dt><dd>{{ l.clientSeating }}</dd>
+    <dt i18n>Noise</dt><dd>{{ l.noise }}</dd>
   </dl>
 </section>

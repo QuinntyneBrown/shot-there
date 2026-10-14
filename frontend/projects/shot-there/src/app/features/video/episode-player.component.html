@@ -1,18 +1,7 @@
 @if (playing()) {
-  <iframe
-    class="video-frame"
-    [src]="embedUrl()"
-    [title]="iframeTitle()"
-    allow="accelerometer; encrypted-media; picture-in-picture"
-    allowfullscreen
-  ></iframe>
+  <iframe class="video-frame" [src]="embedUrl()" [title]="iframeTitle()" allow="accelerometer; encrypted-media; picture-in-picture" allowfullscreen></iframe>
 } @else {
-  <a
-    class="video-poster"
-    [href]="watchUrl()"
-    [attr.aria-label]="playLabel()"
-    (click)="play($event)"
-  >
+  <a class="video-poster" [href]="watchUrl()" [attr.aria-label]="playLabel()" (click)="play($event)">
     <img stFallbackImage [src]="posterUrl()" alt="" width="1200" height="675" loading="lazy" />
     <span class="video-poster__play" aria-hidden="true">
       <svg class="icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
@@ -22,8 +11,5 @@
 }
 <div class="episode__links">
   <p class="text-muted">{{ episodeTitle() }}</p>
-  <a [href]="watchUrl()" target="_blank" rel="noopener"
-    ><ng-container i18n>Watch on YouTube</ng-container
-    ><span class="visually-hidden" i18n> (opens in a new tab)</span></a
-  >
+  <a [href]="watchUrl()" target="_blank" rel="noopener"><ng-container i18n>Watch on YouTube</ng-container><span class="visually-hidden" i18n> (opens in a new tab)</span></a>
 </div>

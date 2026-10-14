@@ -1,8 +1,6 @@
 <main class="container stack">
   <section aria-label="none">
-    <button st-filter-trigger type="button" [attr.aria-expanded]="expanded()" (click)="toggle()">
-      Filters
-    </button>
+    <button st-filter-trigger type="button" [attr.aria-expanded]="expanded()" (click)="toggle()">Filters</button>
   </section>
   <section aria-label="count">
     <button st-filter-trigger type="button" aria-expanded="false" count="2">Filters</button>
@@ -11,14 +9,7 @@
     <button st-filter-trigger type="button" aria-expanded="false" disabled>Filters</button>
   </section>
   <section aria-label="sheet" class="sheet">
-    <button
-      st-filter-trigger
-      type="button"
-      [attr.aria-expanded]="sheetExpanded()"
-      (click)="sheetExpanded.set(!sheetExpanded())"
-    >
-      Filters
-    </button>
+    <button st-filter-trigger type="button" [attr.aria-expanded]="sheetExpanded()" (click)="sheetExpanded.set(!sheetExpanded())">Filters</button>
   </section>
   <st-activation-log [entries]="log()" />
 </main>

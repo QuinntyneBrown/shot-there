@@ -10,17 +10,9 @@
     @for (link of links(); track link.link) {
       <li>
         @if (link.external) {
-          <a [href]="link.link" target="_blank" rel="noopener"
-            >{{ link.label }}<span class="visually-hidden"> {{ externalHint() }}</span></a
-          >
+          <a [href]="link.link" target="_blank" rel="noopener">{{ link.label }}<span class="visually-hidden"> {{ externalHint() }}</span></a>
         } @else {
-          <a
-            [routerLink]="link.link"
-            routerLinkActive
-            ariaCurrentWhenActive="page"
-            [routerLinkActiveOptions]="{ exact: !!link.exact }"
-            >{{ link.label }}</a
-          >
+          <a [routerLink]="link.link" routerLinkActive ariaCurrentWhenActive="page" [routerLinkActiveOptions]="{ exact: !!link.exact }">{{ link.label }}</a>
         }
       </li>
     }

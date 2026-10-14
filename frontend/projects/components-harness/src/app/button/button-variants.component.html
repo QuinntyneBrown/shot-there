@@ -2,16 +2,10 @@
   <form class="cluster" (submit)="record('submit', $event)">
     <button st-button variant="primary" type="submit">Save changes</button>
     <button st-button type="button" (click)="record('click: Apply filters')">Apply filters</button>
-    <button st-button variant="ghost" type="button">
-      Remove<span class="visually-hidden"> Cleaning fee</span>
-    </button>
+    <button st-button variant="ghost" type="button">Remove<span class="visually-hidden"> Cleaning fee</span></button>
     <button st-button variant="link" type="button">Clear all</button>
   </form>
-  <section aria-label="status panel">
-    <button st-button variant="ghost-danger" type="button">Delete studio</button>
-  </section>
-  <section aria-label="dialog">
-    <button st-button variant="danger" type="button">Delete studio</button>
-  </section>
+  <section aria-label="status panel"><button st-button variant="ghost-danger" type="button">Delete studio</button></section>
+  <section aria-label="dialog"><button st-button variant="danger" type="button">Delete studio</button></section>
   <st-activation-log [entries]="log()" />
 </main>

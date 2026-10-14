@@ -1,0 +1,3 @@
+The DS checkbox group: a question that takes any number of answers — the neighbourhoods and included gear in the studio filters, a spot's best uses in the editor. `st-checkbox-group` renders a `<fieldset>` whose `<legend>` is the question, an optional error and help, then one native checkbox per `ChoiceOption` in a wrapping `label.choice`. Content projected into it (such as a related select) renders after the boxes.
+
+`appearance="form"` lays the boxes out with `.stack.stack--sm`; `appearance="filter"` uses `.filter-group` with a `.filter-group__title` legend. It is a `ControlValueAccessor` whose value is the ticked values, in option order.

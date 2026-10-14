@@ -1,26 +1,11 @@
 <main class="container stack">
-  <st-empty-state
-    title="No studio reviews yet"
-    text="The first reviews are being shot now. Each one goes up only after a full test shoot."
-    icon="camera"
-  >
+  <st-empty-state title="No studio reviews yet" text="The first reviews are being shot now. Each one goes up only after a full test shoot." icon="camera">
     <a st-button slot="actions" href="/spots">Browse outdoor spots</a>
   </st-empty-state>
-  <st-empty-state
-    tone="error"
-    icon="danger"
-    title="We couldn't load the studios"
-    text="Check your connection and try again."
-  >
+  <st-empty-state tone="error" icon="danger" title="We couldn't load the studios" text="Check your connection and try again.">
     <button st-button slot="actions" type="button">Try again</button>
     <a st-button slot="actions" variant="ghost" href="/">Go to the home page</a>
   </st-empty-state>
-  <st-empty-state
-    compact
-    tone="success"
-    icon="success"
-    title="Everything is up to date"
-    text="No prices or permits are older than 153 days."
-  />
+  <st-empty-state compact tone="success" icon="success" title="Everything is up to date" text="No prices or permits are older than 153 days." />
   <st-empty-state compact [headingLevel]="4" title="Studio reviews are coming" />
 </main>

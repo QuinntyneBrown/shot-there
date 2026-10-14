@@ -114,6 +114,7 @@ module.exports = tseslint.config(
           ignoreAttributes: [
             'd',
             'rel',
+            'referrerpolicy',
             'loading',
             'inputmode',
             'form',

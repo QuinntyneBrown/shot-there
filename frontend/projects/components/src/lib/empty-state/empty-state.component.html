@@ -2,15 +2,9 @@
   <div class="empty__icon" aria-hidden="true"><st-icon [name]="name" [size]="'xl'" /></div>
 }
 @switch (headingLevel()) {
-  @case (3) {
-    <h3 class="empty__title">{{ title() }}</h3>
-  }
-  @case (4) {
-    <h4 class="empty__title">{{ title() }}</h4>
-  }
-  @default {
-    <h2 class="empty__title">{{ title() }}</h2>
-  }
+  @case (3) { <h3 class="empty__title">{{ title() }}</h3> }
+  @case (4) { <h4 class="empty__title">{{ title() }}</h4> }
+  @default { <h2 class="empty__title">{{ title() }}</h2> }
 }
 @if (text()) {
   <p class="empty__text">{{ text() }}</p>

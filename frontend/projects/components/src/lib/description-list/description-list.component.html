@@ -3,17 +3,7 @@
     @for (item of items(); track $index) {
       <dt>{{ item.term }}</dt>
       <dd>
-        @if (item.numeric) {
-          <span class="num">{{ item.detail }}</span>
-        } @else {
-          {{ item.detail }}
-        }
-        @if (item.srSuffix) {
-          <span class="visually-hidden">{{ item.srSuffix }}</span>
-        }
-        @if (item.badge) {
-          &ngsp;<st-badge>{{ item.badge }}</st-badge>
-        }
+        @if (item.numeric) {<span class="num">{{ item.detail }}</span>} @else {{{ item.detail }}}@if (item.srSuffix) {<span class="visually-hidden">{{ item.srSuffix }}</span>}@if (item.badge) {&ngsp;<st-badge>{{ item.badge }}</st-badge>}
       </dd>
     }
   </dl>

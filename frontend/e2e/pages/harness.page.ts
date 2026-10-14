@@ -15,11 +15,14 @@ const PLACEHOLDER_SVG =
 
 /** A components-harness route: one library component state (ICD-002 D-12). */
 export class HarnessPage {
-  /** Console errors and uncaught exceptions, including hydration mismatches, since the page object was made. */
+  /** Console errors (other than failed resource loads) and uncaught exceptions, including hydration mismatches. */
   readonly errors: string[] = [];
 
   constructor(readonly page: Page) {
-    page.on('console', (message) => message.type() === 'error' && this.errors.push(message.text()));
+    // A deliberately broken image logs "Failed to load resource"; that is the network, not the page.
+    page.on('console', (message) => {
+      if (message.type() === 'error' && !message.text().startsWith('Failed to load resource')) this.errors.push(message.text());
+    });
     page.on('pageerror', (error) => this.errors.push(error.message));
   }
 
@@ -194,6 +197,23 @@ export class HarnessPage {
     );
     await cdp.send('Emulation.setCPUThrottlingRate', { rate: 1 });
     return latency;
+  }
+
+  /** The page's cumulative layout shift so far, ignoring shifts right after input (as CLS does). */
+  layoutShift(): Promise<number> {
+    return this.page.evaluate(
+      () =>
+        new Promise<number>((resolve) => {
+          let cls = 0;
+          new PerformanceObserver((list) =>
+            list.getEntries().forEach((e) => {
+              const shift = e as PerformanceEntry & { value: number; hadRecentInput: boolean };
+              if (!shift.hadRecentInput) cls += shift.value;
+            }),
+          ).observe({ type: 'layout-shift', buffered: true });
+          setTimeout(() => resolve(cls), 500);
+        }),
+    );
   }
 
   async accessibilityViolations(): Promise<string[]> {
