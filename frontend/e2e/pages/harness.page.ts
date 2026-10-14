@@ -19,8 +19,15 @@ export class HarnessPage {
    * Opens `<component>/<state>` at a viewport width (CSS px) in a colour scheme. Images under
    * /test-images/ load as a placeholder and the YouTube player is stubbed, so nothing reaches the network.
    */
-  async open(path: string, options: { width?: number; theme?: HarnessTheme } = {}): Promise<void> {
-    const { width = 1280, theme = 'light' } = options;
+  async open(path: string, options: { width?: number; theme?: HarnessTheme; hydrationDelayMs?: number } = {}): Promise<void> {
+    const { width = 1280, theme = 'light', hydrationDelayMs = 0 } = options;
+    if (hydrationDelayMs > 0) {
+      // Holding back the scripts lets the server-rendered page settle (images load or fail) before Angular hydrates.
+      await this.page.route('**/*.js', async (route) => {
+        await new Promise((done) => setTimeout(done, hydrationDelayMs));
+        await route.continue();
+      });
+    }
     await this.page.route('**/test-images/**', (route) => route.fulfill({ contentType: 'image/svg+xml', body: PLACEHOLDER_SVG }));
     await this.page.route('https://www.youtube-nocookie.com/**', (route) =>
       route.fulfill({ contentType: 'text/html', body: '<!doctype html><title>player</title>' }),
