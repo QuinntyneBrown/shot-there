@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { FilterTriggerStatesComponent } from './filter-trigger/filter-trigger-states.component';
 import { LinkVariantsComponent } from './link/link-variants.component';
 import { IconButtonPressedComponent } from './icon-button/icon-button-pressed.component';
 import { IconButtonDefaultComponent } from './icon-button/icon-button-default.component';
@@ -30,4 +31,5 @@ export const routes: Routes = [
   { path: 'icon-button/default', component: IconButtonDefaultComponent },
   { path: 'icon-button/pressed', component: IconButtonPressedComponent },
   { path: 'link/variants', component: LinkVariantsComponent },
+  { path: 'filter-trigger/states', component: FilterTriggerStatesComponent },
 ];
