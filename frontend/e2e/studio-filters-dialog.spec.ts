@@ -1,6 +1,7 @@
 import { givenStudios } from './fakes/fake-studios-api';
 import { PUBLISHED_STUDIOS } from './fakes/studio-summaries';
 import { expect, test } from './fakes/test';
+import { ShellPage } from './pages/shell.page';
 import { StudioListPage } from './pages/studio-list.page';
 
 const leslievilleOnly = PUBLISHED_STUDIOS.filter((s) => s.slug === 'leslieville-daylight-studio');
@@ -92,4 +93,24 @@ test.describe('Studio filters dialog', () => {
     // Then only the sort remains
     await expect.poll(() => list.currentQuery().toString()).toBe('sort=score');
   });
+
+  for (const theme of ['light', 'dark'] as const) {
+    for (const width of [320, 1280]) {
+      test(`has no accessibility violations in the ${theme} theme at ${width}px`, async ({
+        page,
+      }) => {
+        // Given the filters dialog is open in the requested theme
+        const shell = new ShellPage(page);
+        const list = new StudioListPage(page);
+        await shell.rememberTheme(theme);
+        await givenStudios(page, PUBLISHED_STUDIOS);
+        await list.usePhoneWidth();
+        await list.open();
+        await list.openFiltersDialog();
+        if (width === 1280) await list.useDesktopWidth();
+        // Then axe finds no WCAG A/AA violations
+        expect(await shell.accessibilityViolations()).toEqual([]);
+      });
+    }
+  }
 });

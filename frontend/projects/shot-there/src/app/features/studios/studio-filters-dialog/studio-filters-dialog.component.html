@@ -1,11 +1,5 @@
-<div class="sheet">
-  <div class="sheet__header">
-    <h2 class="sheet__title" id="studio-filters-title" i18n>Filters</h2>
-    <button type="button" class="icon-btn" aria-label="Close" i18n-aria-label (click)="close()">
-      <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18" /></svg>
-    </button>
-  </div>
-  <form class="sheet__body" id="studio-filters-form" (submit)="$event.preventDefault(); apply()">
+<st-sheet title="Filters" i18n-title>
+  <form id="studio-filters-form" (submit)="$event.preventDefault(); apply()">
     <p class="subtitle" id="studio-filters-description" i18n>Choose what matters for this shoot. The list updates when you show the results.</p>
     <div class="field">
       <label class="field__label" for="dialog-sort" i18n>Sort by</label>
@@ -17,14 +11,12 @@
     </div>
     <st-studio-filters [idPrefix]="'dialog'" [query]="draft()" [costError]="costError()" (queryChange)="draft.set($event)" />
   </form>
-  <div class="sheet__footer">
-    <button class="btn" type="button" (click)="clearAll()" i18n>Clear all</button>
-    <button class="btn btn--primary" type="submit" form="studio-filters-form" [disabled]="costError() !== null" [attr.aria-describedby]="costError() ? 'dialog-cost-max-error' : null">
-      @if (costError() === null && matchCount() !== null) {
-        <ng-container i18n>{matchCount(), plural, =1 {Show 1 studio} other {Show {{matchCount()}} studios}}</ng-container>
-      } @else {
-        <ng-container i18n>Show studios</ng-container>
-      }
-    </button>
-  </div>
-</div>
+  <button slot="footer" i18n-slot st-button class="filters-dialog__action" type="button" (click)="clearAll()" i18n>Clear all</button>
+  <button slot="footer" i18n-slot st-button class="filters-dialog__action" variant="primary" type="submit" form="studio-filters-form" [disabled]="costError() !== null" [attr.aria-describedby]="costError() ? 'dialog-cost-max-error' : null">
+    @if (costError() === null && matchCount() !== null) {
+      <ng-container i18n>{matchCount(), plural, =1 {Show 1 studio} other {Show {{matchCount()}} studios}}</ng-container>
+    } @else {
+      <ng-container i18n>Show studios</ng-container>
+    }
+  </button>
+</st-sheet>
