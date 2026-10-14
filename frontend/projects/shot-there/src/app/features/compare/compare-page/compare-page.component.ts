@@ -6,6 +6,7 @@ import { Meta, Title } from '@angular/platform-browser';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { CompareService } from '@shot-there/api';
 import {
+  AlertComponent,
   ButtonComponent,
   EmptyStateComponent,
   FallbackImageDirective,
@@ -26,6 +27,7 @@ import { toComparisonViewModel } from './comparison-view-model';
   selector: 'st-compare-page',
   imports: [
     RouterLink,
+    AlertComponent,
     ButtonComponent,
     EmptyStateComponent,
     FallbackImageDirective,
