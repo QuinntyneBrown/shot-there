@@ -18,6 +18,7 @@ test.describe('Selecting studios to compare', () => {
     await list.compareToggle('Kensington Window Room').click();
     // Then the bar shows one selected and the card's control becomes Remove
     await expect(bar.count).toHaveText('1 selected');
+    await expect(bar.count).toHaveCount(1);
     await expect(bar.names).toHaveText('Kensington Window Room');
     await expect(list.compareToggle('Kensington Window Room')).toHaveAccessibleName(
       'Remove Kensington Window Room',
