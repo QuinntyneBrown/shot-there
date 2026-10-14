@@ -41,8 +41,8 @@ export class LightboxComponent {
   }
 
   protected step(delta: number): void {
-    const next = this.index() + delta;
-    if (next >= 0 && next < this.data.shots.length) this.index.set(next);
+    const count = this.data.shots.length;
+    this.index.set((this.index() + delta + count) % count);
   }
 
   protected close(): void {

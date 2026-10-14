@@ -121,6 +121,10 @@ export class StudioPage {
     return this.lightbox.evaluate((dialog) => dialog.contains(document.activeElement));
   }
 
+  lightboxImageIsLoaded(): Promise<boolean> {
+    return this.lightboxImage.evaluate((image: HTMLImageElement) => image.complete && image.naturalWidth > 0);
+  }
+
   /** Level-two headings of the review, in page order. */
   sectionHeadings(): Promise<string[]> {
     return this.page.getByRole('main').getByRole('heading', { level: 2 }).allInnerTexts();

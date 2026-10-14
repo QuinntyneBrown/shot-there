@@ -6,14 +6,14 @@
 </div>
 <div class="viewer__stage">
   <!-- eslint-disable-next-line @angular-eslint/template/elements-content -->
-  <button st-icon-button type="button" [icon]="'chevron-left'" [label]="previousLabel" [outline]="true" [disabled]="index() === 0" (click)="step(-1)"></button>
+  <button st-icon-button type="button" [icon]="'chevron-left'" [label]="previousLabel" [outline]="true" (click)="step(-1)"></button>
   <div class="lightbox__frame">
     @if (data.shots[index()]; as shot) {
       <st-responsive-image [image]="shot.image" [sizes]="sizes" />
     }
   </div>
   <!-- eslint-disable-next-line @angular-eslint/template/elements-content -->
-  <button st-icon-button type="button" [icon]="'chevron-right'" [label]="nextLabel" [outline]="true" [disabled]="index() === data.shots.length - 1" (click)="step(1)"></button>
+  <button st-icon-button type="button" [icon]="'chevron-right'" [label]="nextLabel" [outline]="true" (click)="step(1)"></button>
 </div>
 @if (data.shots[index()]; as shot) {
   <div class="viewer__caption">

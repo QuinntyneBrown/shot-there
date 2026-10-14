@@ -79,9 +79,14 @@ test.describe('Dialog, Sheet, Lightbox and DialogService (ICD-002 §9.4, §10.1)
     await expect(viewer).toContainText('Window light only.');
     // When the visitor presses the right arrow
     await page.keyboard.press('ArrowRight');
-    // Then it shows the last photo and the next control is disabled
+    // Then it shows the last photo
     await expect(viewer.getByRole('status')).toHaveText('Photo 3 of 3');
-    await expect(viewer.getByRole('button', { name: 'Next photo' })).toBeDisabled();
+    // When they move past the last photo and then back from the first
+    await page.keyboard.press('ArrowRight');
+    await expect(viewer.getByRole('status')).toHaveText('Photo 1 of 3');
+    await page.keyboard.press('ArrowLeft');
+    // Then the last photo is shown again
+    await expect(viewer.getByRole('status')).toHaveText('Photo 3 of 3');
     // When closed
     await viewer.getByRole('button', { name: 'Close' }).click();
     // Then the application receives the index shown last
