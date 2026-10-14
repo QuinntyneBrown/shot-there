@@ -115,20 +115,23 @@ test.describe('Site header', () => {
     await expect(shell.menuButton).toBeFocused();
   });
 
-  for (const width of [320, 768, 1280]) {
-    test(`lays out without horizontal scrolling or accessibility violations at ${width}px`, async ({
-      page,
-    }) => {
-      // Given a window of this width
-      const shell = new ShellPage(page);
-      await page.setViewportSize({ width, height: 800 });
-      // When the home page loads
-      await shell.open();
-      await expect(shell.skipLink).toBeAttached();
-      // Then the page does not scroll sideways and axe finds no WCAG A/AA violations
-      expect(await shell.hasHorizontalScroll()).toBe(false);
-      expect(await shell.accessibilityViolations()).toEqual([]);
-    });
+  for (const theme of ['light', 'dark'] as const) {
+    for (const width of [320, 768, 1280]) {
+      test(`lays out without horizontal scrolling or accessibility violations at ${width}px in ${theme} theme`, async ({
+        page,
+      }) => {
+        // Given a window of this width and theme
+        const shell = new ShellPage(page);
+        await shell.rememberTheme(theme);
+        await page.setViewportSize({ width, height: 800 });
+        // When the home page loads
+        await shell.open();
+        await expect(shell.skipLink).toBeAttached();
+        // Then the page does not scroll sideways and axe finds no WCAG A/AA violations
+        expect(await shell.hasHorizontalScroll()).toBe(false);
+        expect(await shell.accessibilityViolations()).toEqual([]);
+      });
+    }
   }
 
   test('keeps working at 200% zoom', async ({ page }) => {

@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
+import { SkipLinkComponent } from '@shot-there/components';
+
 import { CompareBarComponent } from '../compare/compare-bar.component';
 import { SiteFooterComponent } from '../layout/site-footer.component';
 import { HeaderComponent } from './header.component';
-import { SkipLinkComponent } from './skip-link.component';
 
 @Component({
   selector: 'st-shell',
