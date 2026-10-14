@@ -1,3 +1,4 @@
+import AxeBuilder from '@axe-core/playwright';
 import { Locator, Page } from '@playwright/test';
 
 export class StudioPage {
@@ -91,6 +92,20 @@ export class StudioPage {
 
   async usePhoneWidth(): Promise<void> {
     await this.page.setViewportSize({ width: 320, height: 700 });
+  }
+
+  async useTheme(theme: 'light' | 'dark'): Promise<void> {
+    await this.page.addInitScript((choice) => localStorage.setItem('theme', choice), theme);
+  }
+
+  async accessibilityViolations(): Promise<string[]> {
+    const results = await new AxeBuilder({ page: this.page })
+      .withTags(['wcag2a', 'wcag2aa', 'wcag21aa', 'wcag22aa'])
+      .analyze();
+    return results.violations.map(
+      (violation) =>
+        `${violation.id}: ${violation.nodes.map((node) => node.target.join(' ')).join(', ')}`,
+    );
   }
 
   async open(slug: string): Promise<void> {

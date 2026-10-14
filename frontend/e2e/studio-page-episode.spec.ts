@@ -71,4 +71,20 @@ test.describe('Studio page: episode', () => {
     expect(Math.abs(box.height - (box.width * 9) / 16)).toBeLessThan(1);
     expect(await studio.hasHorizontalScroll()).toBe(false);
   });
+
+  for (const theme of ['light', 'dark'] as const) {
+    for (const width of [320, 1280]) {
+      test(`has no accessibility violations at ${width}px in the ${theme} theme`, async ({
+        page,
+      }) => {
+        const studio = new StudioPage(page);
+        await studio.useTheme(theme);
+        await studio.useWidth(width);
+        await givenStudio(page, THE_JUNCTION_LOFT);
+        await studio.open('the-junction-loft');
+
+        expect(await studio.accessibilityViolations()).toEqual([]);
+      });
+    }
+  }
 });

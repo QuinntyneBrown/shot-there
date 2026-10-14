@@ -1,6 +1,10 @@
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+
 /** The privacy-enhanced player for a video, with no autoplay (L2-047). */
-export function embedUrl(videoId: string): string {
-  return `https://www.youtube-nocookie.com/embed/${encodeURIComponent(videoId)}`;
+export function embedUrl(videoId: string, sanitizer: DomSanitizer): SafeResourceUrl {
+  return sanitizer.bypassSecurityTrustResourceUrl(
+    `https://www.youtube-nocookie.com/embed/${encodeURIComponent(videoId)}`,
+  );
 }
 
 /** The video's page on YouTube. */
