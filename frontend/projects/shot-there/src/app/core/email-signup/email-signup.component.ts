@@ -1,7 +1,10 @@
+import { DOCUMENT } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, ElementRef, computed, inject, input, signal, viewChild } from '@angular/core';
+import { Component, computed, inject, input, signal } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SubscriberService } from '@shot-there/api';
+import { AlertComponent, ButtonComponent, TextFieldComponent } from '@shot-there/components';
 
 import { toSignupState, validateEmail } from './signup-form';
 import { SignupState } from './signup-state';
@@ -9,6 +12,7 @@ import { SignupState } from './signup-state';
 /** The email signup form (L2-039, L2-041), placed in the site footer and on the home page. */
 @Component({
   selector: 'st-email-signup',
+  imports: [FormsModule, TextFieldComponent, ButtonComponent, AlertComponent],
   templateUrl: './email-signup.component.html',
   styleUrl: './email-signup.component.css',
 })
@@ -18,16 +22,16 @@ export class EmailSignupComponent {
 
   private readonly subscriberService = inject(SubscriberService);
   private readonly router = inject(Router);
+  private readonly document = inject(DOCUMENT);
 
   protected readonly state = signal<SignupState>('idle');
   protected readonly email = signal('');
   protected readonly website = signal('');
   protected readonly error = signal<string | null>(null);
-  private readonly emailInput = viewChild<ElementRef<HTMLInputElement>>('emailInput');
+  protected readonly standaloneNgModel = { standalone: true };
   protected readonly ids = computed(() => ({
     title: `${this.variant()}-signup-title`,
     email: `${this.variant()}-email`,
-    error: `${this.variant()}-email-error`,
     website: `${this.variant()}-website`,
   }));
 
@@ -36,7 +40,7 @@ export class EmailSignupComponent {
     this.error.set(error);
     if (error) {
       this.state.set('invalid');
-      this.emailInput()?.nativeElement.focus();
+      this.document.getElementById(this.ids().email)?.focus();
       return;
     }
     const sourcePath = this.router.url.split(/[?#]/)[0];
