@@ -1,24 +1,4 @@
-<div class="sheet">
-  <div class="sheet__header">
-    <h2 class="sheet__title" id="site-menu-title" i18n>Menu</h2>
-    <button type="button" class="icon-btn" aria-label="Close" i18n-aria-label (click)="close()">
-      <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18" /></svg>
-    </button>
-  </div>
-  <div class="sheet__body">
-    <nav aria-label="Primary" i18n-aria-label>
-      <ul class="section-list">
-        @for (link of links; track link.path) {
-          <li><a class="section-link" [routerLink]="link.path" (click)="close()"><span class="section-link__body"><span class="section-link__title">{{ link.label }}</span><span class="section-link__meta">{{ link.description }}</span></span></a></li>
-        }
-      </ul>
-    </nav>
-    <nav aria-label="About ShotThere" i18n-aria-label>
-      <ul class="section-list">
-        @for (link of aboutLinks; track link.path) {
-          <li><a class="section-link" [routerLink]="link.path" (click)="close()"><span class="section-link__body"><span class="section-link__title">{{ link.label }}</span><span class="section-link__meta">{{ link.description }}</span></span></a></li>
-        }
-      </ul>
-    </nav>
-  </div>
-</div>
+<st-sheet id="site-menu" title="Menu" i18n-title>
+  <st-section-links [items]="links" navLabel="Primary" i18n-navLabel></st-section-links>
+  <st-section-links [items]="aboutLinks" navLabel="About ShotThere" i18n-navLabel></st-section-links>
+</st-sheet>
