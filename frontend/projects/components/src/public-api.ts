@@ -1,4 +1,4 @@
-export * from './lib/fallback-image.directive';
+export * from './lib/responsive-image/fallback-image.directive';
 export * from './lib/types/button-variant';
 export * from './lib/types/control-size';
 export * from './lib/types/tone';

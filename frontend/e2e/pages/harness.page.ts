@@ -14,11 +14,14 @@ const PLACEHOLDER_SVG = '<svg xmlns="http://www.w3.org/2000/svg" width="1200" he
 
 /** A components-harness route: one library component state (ICD-002 D-12). */
 export class HarnessPage {
-  /** Console errors and uncaught exceptions, including hydration mismatches, since the page object was made. */
+  /** Console errors (other than failed resource loads) and uncaught exceptions, including hydration mismatches. */
   readonly errors: string[] = [];
 
   constructor(readonly page: Page) {
-    page.on('console', (message) => message.type() === 'error' && this.errors.push(message.text()));
+    // A deliberately broken image logs "Failed to load resource"; that is the network, not the page.
+    page.on('console', (message) => {
+      if (message.type() === 'error' && !message.text().startsWith('Failed to load resource')) this.errors.push(message.text());
+    });
     page.on('pageerror', (error) => this.errors.push(error.message));
   }
 
