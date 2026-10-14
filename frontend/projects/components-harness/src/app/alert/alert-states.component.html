@@ -1,0 +1,8 @@
+<main class="container stack">
+  <st-alert tone="warning" role="status" title="Prices may be out of date">We last checked these prices 225 days ago.</st-alert>
+  <st-alert>You can compare up to 4 studios.</st-alert>
+  <st-alert tone="danger" role="alert" title="We could not load the list">Try again to see what needs checking.<button st-button slot="action" size="sm" type="button">Try again</button></st-alert>
+  <st-alert tone="success" role="status" title="Studio created as a draft" [dismissible]="true" (dismissed)="log.set([...log(), 'dismissed'])">Its address will be set.</st-alert>
+  <st-alert tone="info" role="status" [banner]="true">Banner text.</st-alert>
+  <st-activation-log [entries]="log()" />
+</main>

@@ -18,6 +18,7 @@ import { VideoPosterFailedComponent } from './video-poster/video-poster-failed.c
 import { VideoPosterDefaultComponent } from './video-poster/video-poster-default.component';
 import { ResponsiveImageFailedComponent } from './responsive-image/responsive-image-failed.component';
 import { ResponsiveImageDefaultComponent } from './responsive-image/responsive-image-default.component';
+import { AlertStatesComponent } from './alert/alert-states.component';
 import { PageHeaderStatesComponent } from './page-header/page-header-states.component';
 import { SectionLinksDefaultComponent } from './section-links/section-links-default.component';
 import { BreadcrumbStatesComponent } from './breadcrumb/breadcrumb-states.component';
@@ -127,4 +128,5 @@ export const routes: Routes = [
   { path: 'breadcrumb/states', component: BreadcrumbStatesComponent },
   { path: 'section-links/default', component: SectionLinksDefaultComponent },
   { path: 'page-header/states', component: PageHeaderStatesComponent },
+  { path: 'alert/states', component: AlertStatesComponent },
 ];
