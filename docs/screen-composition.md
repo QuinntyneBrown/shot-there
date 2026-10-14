@@ -35,7 +35,7 @@ Build these once in `core/` or the owning feature and reuse.
 
 | Local UI | Used by | Notes |
 |---|---|---|
-| Email signup (`signup`, `signup__row`, `signup__trap`, `signup__done`) | footer on all public pages, home | Uses `TextFieldComponent`, `ButtonComponent`, `InlineMessageComponent`. The honeypot trap field and the done state are local. States: default, invalid, submitting, success, error, rate-limited (see `pages/home`). |
+| Email signup (`signup`, `signup__row`, `signup__trap`) | footer on all public pages, home | Uses `TextFieldComponent`, `ButtonComponent`, and `AlertComponent` for rate-limited and failed states. The honeypot trap field and success status region are local. States: default, invalid, submitting, success, error, rate-limited (see `pages/home`). |
 | Compare toggle (`compare-toggle`) | studios list cards, studio page, filters dialog preview | A pressed/unpressed toggle built on `ButtonComponent`; wires to the compare selection state. |
 | Review layout (`review-layout`, `review-main`, `review-section`, `regions`, `review-head`, `review-head__meta`) | studio, spot, guide | Page-level layout only; sections are filled with library components. |
 | Episode links (`episode__links`) | studio, spot | Row of `LinkComponent`s to the video. |
@@ -47,7 +47,7 @@ Build these once in `core/` or the owning feature and reuse.
 ## 3. Public pages
 
 ### Home — `/` (`pages/home`: default, empty, error, invalid, submitting, success, rate-limited)
-- **Library:** `PageHeaderComponent` or hero heading content, `LocationGridComponent` + `LocationCardComponent`, `TagListComponent`, `ButtonComponent`, `LinkComponent`, `AlertComponent` (error), `EmptyStateComponent` (empty), `InlineMessageComponent` (signup errors).
+- **Library:** `PageHeaderComponent` or hero heading content, `LocationGridComponent` + `LocationCardComponent`, `TagListComponent`, `ButtonComponent`, `LinkComponent`, `AlertComponent` (error and signup request failures), `EmptyStateComponent` (empty), `TextFieldComponent` (signup email error).
 - **Local:** home hero (`home-hero`) copy and layout; guide index teasers (`guide-index`); email signup block with its states.
 
 ### Studios — `/studios` (`pages/studios`: default, loading, empty, error, no-results, filtered, selected-one, selected)
