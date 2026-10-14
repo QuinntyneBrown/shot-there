@@ -23,33 +23,22 @@ test.describe('ButtonComponent: busy, soft-disabled and pressed (ICD-002 §9.1, 
     expect(harness.errors).toEqual([]);
   });
 
-  test('a busy submit button ignores Enter, Space and click: no listener runs and the form does not submit', async ({ page }) => {
+  test('a busy submit button ignores Enter, Space and click, and activates again once not busy', async ({ page }) => {
     // Given a busy "Save changes" submit button
     const harness = new HarnessPage(page);
     await harness.open('button/busy');
     await harness.toggle('Busy');
     const save = new ButtonComponent(page, 'Save changes');
-    // When it is activated with Enter, Space and a click event
+    // When it is activated with Enter, Space and a click event, then made idle and activated once more
     await save.press('Enter');
     await save.press('Space');
     await save.activate();
-    // Then neither the consumer's click listener nor the form's submit listener ran
-    expect(await harness.activations()).toEqual([]);
-  });
-
-  test('activates again once it is no longer busy', async ({ page }) => {
-    // Given a "Save changes" submit button that was busy
-    const harness = new HarnessPage(page);
-    await harness.open('button/busy');
     await harness.toggle('Busy');
-    await harness.toggle('Busy');
-    const save = new ButtonComponent(page, 'Save changes');
-    // When it is activated
-    await save.activate();
-    // Then the click listener runs and the form submits, and busy attributes are gone
-    expect(await harness.activations()).toEqual(['click: Save changes', 'submit']);
     await expect(save.root).not.toHaveAttribute('aria-busy');
     await expect(save.root).not.toHaveAttribute('aria-disabled');
+    await save.activate();
+    // Then the click listener and the form's submit listener ran only for the last, idle activation
+    await expect.poll(() => harness.activations()).toEqual(['click: Save changes', 'submit']);
   });
 
   test('a soft-disabled button stays in the tab order, looks disabled and swallows activation', async ({ page }) => {
@@ -63,13 +52,12 @@ test.describe('ButtonComponent: busy, soft-disabled and pressed (ICD-002 §9.1, 
     await moveUp.press('Enter');
     await moveUp.press('Space');
     await moveUp.activate();
-    // Then it is aria-disabled at the DS disabled opacity, and no listener ran
+    // Then it is aria-disabled at the DS disabled opacity
     await expect(moveUp.root).toHaveAttribute('aria-disabled', 'true');
     expect(await moveUp.opacity()).toBe(0.5);
-    expect(await harness.activations()).toEqual([]);
-    // And the next row's "Move up" still works
+    // And when the next row's "Move up" is activated, only that activation reaches a listener
     await new ButtonComponent(page, 'Move up test shot 2').activate();
-    expect(await harness.activations()).toEqual(['click: Move up test shot 2']);
+    await expect.poll(() => harness.activations()).toEqual(['click: Move up test shot 2']);
   });
 
   test('renders aria-pressed only when pressed is set, and the DS selected look while pressed (D-9)', async ({ page }) => {

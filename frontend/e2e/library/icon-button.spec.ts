@@ -51,7 +51,7 @@ test.describe('IconButtonComponent (ICD-002 §9.1, DS icon-button)', () => {
     await close.press('Enter');
     await close.press('Space');
     // Then the consumer's listener ran each time
-    expect(await harness.activations()).toEqual(['click: Close', 'click: Close', 'click: Close']);
+    await expect.poll(() => harness.activations()).toEqual(['click: Close', 'click: Close', 'click: Close']);
   });
 
   test('keeps link semantics on a[st-icon-button]', async ({ page }) => {

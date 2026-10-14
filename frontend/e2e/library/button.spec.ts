@@ -28,7 +28,7 @@ test.describe('ButtonComponent: variants, sizes, block, links and icons (ICD-002
     await save.press('Enter');
     await save.press('Space');
     // Then the consumer's click listener ran three times
-    expect(await harness.activations()).toEqual(['click: Save changes', 'click: Save changes', 'click: Save changes']);
+    await expect.poll(() => harness.activations()).toEqual(['click: Save changes', 'click: Save changes', 'click: Save changes']);
     // And keyboard focus shows a solid ring at least 2px wide (L2-067.2)
     const ring = await save.focusRing();
     expect(ring.style).toBe('solid');
