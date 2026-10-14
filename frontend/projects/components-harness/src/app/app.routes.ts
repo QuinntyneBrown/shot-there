@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { IconButtonPerformanceComponent } from './icon-button/icon-button-performance.component';
 import { LinkPerformanceComponent } from './link/link-performance.component';
 import { LinkContrastComponent } from './link/link-contrast.component';
 import { LinkDestinationComponent } from './link/link-destination.component';
@@ -64,4 +65,5 @@ export const routes: Routes = [
   { path: 'link/destination', component: LinkDestinationComponent },
   { path: 'link/contrast', component: LinkContrastComponent },
   { path: 'link/performance', component: LinkPerformanceComponent },
+  { path: 'icon-button/performance', component: IconButtonPerformanceComponent },
 ];

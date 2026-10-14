@@ -1,8 +1,16 @@
 <main class="container stack">
+  <section aria-label="map popup" class="popup">
+    <p>Leslieville Daylight Studio</p>
+    <span class="popup__close"><button st-icon-button icon="close" label="Close" type="button"></button></span>
+  </section>
+  <section aria-label="lightbox" class="lightbox cluster">
+    <button st-icon-button icon="close" label="Close" outline type="button" (click)="record('click: Close')"></button>
+    <button st-icon-button icon="chevron-left" label="Previous photo" outline type="button" (click)="record('click: Previous photo')"></button>
+    <button st-icon-button icon="chevron-right" label="Next photo" outline type="button" (click)="record('click: Next photo')"></button>
+  </section>
   <div class="cluster">
-    <button st-icon-button icon="close" label="Close" type="button" (click)="record('click: Close')"></button>
-    <button st-icon-button icon="chevron-right" label="Next photo" outline type="button"></button>
-    <a st-icon-button icon="chevron-left" label="Back to The Junction Loft" href="/studios/the-junction-loft"></a>
+    <a st-icon-button icon="home" label="Home" href="/" aria-current="page"></a>
+    <button st-icon-button icon="trash" label="Remove test shot 2" type="button" disabled></button>
   </div>
   <st-activation-log [entries]="log()" />
 </main>

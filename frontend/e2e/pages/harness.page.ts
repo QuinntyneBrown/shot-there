@@ -49,6 +49,11 @@ export class HarnessPage {
     return this.page.getByRole('log', { name: 'Activations' }).getByRole('listitem').allInnerTexts();
   }
 
+  /** The harness's own status line (role="status"), where a route reports what the component changed. */
+  status(): Locator {
+    return this.page.getByRole('status');
+  }
+
   /** Flips a harness checkbox that drives a component input (for example "Busy"). */
   async toggle(label: string): Promise<void> {
     await this.page.getByRole('checkbox', { name: label, exact: true }).click();

@@ -1,13 +1,11 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { IconButtonComponent } from '@shot-there/components';
 
-/** An icon toggle whose pressed state the harness flips on activation. */
+/** An icon toggle not pressed, one pressed, and an icon button that is not a toggle. */
 @Component({
   selector: 'st-icon-button-pressed',
   imports: [IconButtonComponent],
   templateUrl: './icon-button-pressed.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class IconButtonPressedComponent {
-  protected readonly pressed = signal(false);
-}
+export class IconButtonPressedComponent {}
