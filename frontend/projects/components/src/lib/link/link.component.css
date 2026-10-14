@@ -1,4 +1,4 @@
-/* DS components/link.html; the host is the <a>, drawn by the foundations' native link rule (CRD link D-1). */
+/* DS components/link.html; the host is the <a>, drawn by the foundations' native link rule. */
 :host(.link--standalone) {
   display: inline-flex;
   align-items: center;

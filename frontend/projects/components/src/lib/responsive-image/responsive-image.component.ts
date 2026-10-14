@@ -18,7 +18,7 @@ const FORMAT_ORDER = ['avif', 'webp', 'jpeg'];
  * A content photo as <picture>: one <source> per format, AVIF, WebP then JPEG, and an <img> that
  * reserves its box from the data's width and height and lazy-loads unless `priority`. The host fills
  * its slot. A failed image is replaced by a .media-fallback in the same box until a new `image`
- * arrives (ICD-MEDIA-1..3, CRD responsive-image).
+ * arrives (ICD-MEDIA-1..3).
  */
 @Component({
   selector: 'st-responsive-image',
@@ -45,7 +45,7 @@ export class ResponsiveImageComponent {
   private readonly img = viewChild<ElementRef<HTMLImageElement>>('img');
 
   constructor() {
-    // An image that broke before hydration attached the error listener (CRD responsive-image D-3).
+    // An image that broke before hydration attached the error listener.
     afterNextRender(() => {
       const img = this.img()?.nativeElement;
       if (img?.getAttribute('src') && img.complete && img.naturalWidth === 0) {

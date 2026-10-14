@@ -3,7 +3,7 @@
   overflow: hidden;
 }
 
-/* In a shot the alt text is a caption clamped to six lines (CRD shot-grid D-7). */
+/* In a shot the alt text is a caption clamped to six lines. */
 :host-context(.shot) span {
   font: var(--text-caption);
   display: -webkit-box;
@@ -18,7 +18,7 @@
   align-content: start;
   padding-top: var(--space-6);
 }
-/* On the poster the episode title is clamped to two lines, so it never runs under the pill (CRD video-poster D-1). */
+/* On the poster the episode title is clamped to two lines, so it never runs under the pill. */
 :host-context(.video-poster) span {
   display: -webkit-box;
   -webkit-line-clamp: 2;

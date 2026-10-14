@@ -2,7 +2,7 @@ import { expect, test } from '@playwright/test';
 import { FieldComponent } from '../components/field.component';
 import { HarnessPage, HarnessTheme } from '../pages/harness.page';
 
-test.describe('TextFieldComponent (ICD-002 §9.2, CRD text-field)', () => {
+test.describe('TextFieldComponent (ICD-002 §9.2)', () => {
   test('renders a labelled input with its help, wired by for and aria-describedby, and reports typing', async ({
     page,
   }) => {

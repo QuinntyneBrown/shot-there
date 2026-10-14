@@ -2,7 +2,7 @@ import { expect, test } from '@playwright/test';
 import { ScoreComponent } from '../components/score.component';
 import { HarnessPage, HarnessTheme } from '../pages/harness.page';
 
-test.describe('Score components (ICD-002 §9.5, CRD score)', () => {
+test.describe('Score components (ICD-002 §9.5)', () => {
   test('score-overall shows the value and its max text', async ({ page }) => {
     // Given the overall score 3.8
     const harness = new HarnessPage(page);

@@ -9,7 +9,7 @@ const EMBED_URL = 'https://www.youtube-nocookie.com/embed/Jx7Lq2pT9aE';
 const PLAY_GLYPH = '<path d="M8 5v14l11-7z" fill="currentColor" stroke="none"/>';
 const THEMES: HarnessTheme[] = ['light', 'dark'];
 
-test.describe('VideoPosterComponent (CRD video-poster, ICD-002 §9.8, §12, ICD-MEDIA-4)', () => {
+test.describe('VideoPosterComponent (ICD-002 §9.8, §12, ICD-MEDIA-4)', () => {
   test('AC-1, AC-15 on load the poster links to YouTube with a lazy decorative still and the play pill, and no iframe exists', async ({
     page,
   }) => {
@@ -21,7 +21,7 @@ test.describe('VideoPosterComponent (CRD video-poster, ICD-002 §9.8, §12, ICD-
     // Then a.video-poster links to the watch URL
     await expect(video.poster).toHaveAttribute('href', WATCH_URL);
     await expect(video.poster).toHaveClass('video-poster');
-    // And the still has alt="", lazy loading and the CRD's sizes
+    // And the still has alt="", lazy loading and its sizes
     const still = await video.still.imageAttributes();
     expect([still['alt'], still['loading'], still['sizes']]).toEqual([
       '',

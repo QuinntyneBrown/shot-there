@@ -2,7 +2,7 @@ import { expect, test } from '@playwright/test';
 import { InlineMessageComponent } from '../components/inline-message.component';
 import { HarnessPage, HarnessTheme } from '../pages/harness.page';
 
-test.describe('InlineMessageComponent (ICD-002 §9.7, CRD inline-message)', () => {
+test.describe('InlineMessageComponent (ICD-002 §9.7)', () => {
   test('is help by default and keeps the id the consumer writes', async ({ page }) => {
     // Given help text with an id
     const harness = new HarnessPage(page);

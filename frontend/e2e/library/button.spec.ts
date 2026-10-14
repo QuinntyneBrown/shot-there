@@ -4,7 +4,7 @@ import { HarnessPage, HarnessTheme } from '../pages/harness.page';
 
 const THEMES: HarnessTheme[] = ['light', 'dark'];
 
-test.describe('ButtonComponent: rendering, sizes and layout (CRD button, ICD-002 §9.1)', () => {
+test.describe('ButtonComponent: rendering, sizes and layout (ICD-002 §9.1)', () => {
   test('AC-1 a primary submit button is the native button itself with btn btn--primary and its label as name', async ({
     page,
   }) => {

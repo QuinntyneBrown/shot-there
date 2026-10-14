@@ -2,7 +2,7 @@ import { expect, test } from '@playwright/test';
 import { SpinnerComponent } from '../components/spinner.component';
 import { HarnessPage, HarnessTheme } from '../pages/harness.page';
 
-test.describe('SpinnerComponent (ICD-002 §9.7, CRD spinner)', () => {
+test.describe('SpinnerComponent (ICD-002 §9.7)', () => {
   test('renders a 20px aria-hidden ring and the default hidden label "Loading"', async ({
     page,
   }) => {

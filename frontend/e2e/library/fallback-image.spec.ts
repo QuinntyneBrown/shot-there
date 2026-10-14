@@ -5,7 +5,7 @@ import { HarnessPage } from '../pages/harness.page';
 const EVERGREEN = 'Evergreen Brick Works: the kiln buildings from the Beltline';
 const IMAGE_FAILED = '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 16 5-5 4 4 2-2 7 7"/><path d="M3 3l18 18"/>';
 
-test.describe('FallbackImageDirective (CRD responsive-image, ICD-MEDIA-3, L2-086.1)', () => {
+test.describe('FallbackImageDirective (ICD-MEDIA-3, L2-086.1)', () => {
   test('AC-18 a failed image is hidden and followed by the fallback with the icon and its alt text, in the same box', async ({ page }) => {
     // Given <img stFallbackImage alt="Evergreen Brick Works: …" width="1200" height="675"> whose URL fails, in a 320px slot
     const harness = new HarnessPage(page);
@@ -35,7 +35,7 @@ test.describe('FallbackImageDirective (CRD responsive-image, ICD-MEDIA-3, L2-086
     await expect(image.placeholderText).toHaveCount(0);
   });
 
-  test('replaces an image that failed before the page hydrated (CRD responsive-image D-3, ICD-SSR-1)', async ({ page }) => {
+  test('replaces an image that failed before the page hydrated (ICD-SSR-1)', async ({ page }) => {
     // Given a server-rendered image slot whose image fails while the scripts are still loading
     const harness = new HarnessPage(page);
     // When the page hydrates a second later

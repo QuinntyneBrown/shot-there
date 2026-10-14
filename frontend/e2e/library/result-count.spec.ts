@@ -2,7 +2,7 @@ import { expect, test } from '@playwright/test';
 import { ResultCountComponent } from '../components/result-count.component';
 import { HarnessPage, HarnessTheme } from '../pages/harness.page';
 
-test.describe('ResultCountComponent (ICD-002 §9.5, CRD filter)', () => {
+test.describe('ResultCountComponent (ICD-002 §9.5)', () => {
   test('is a polite status carrying the text and a visually hidden suffix', async ({ page }) => {
     // Given "7 studios" with the suffix ", sorted by all-in cost"
     const harness = new HarnessPage(page);

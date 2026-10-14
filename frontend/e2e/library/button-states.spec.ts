@@ -2,7 +2,7 @@ import { expect, test } from '@playwright/test';
 import { ButtonComponent } from '../components/button.component';
 import { HarnessPage, HarnessTheme } from '../pages/harness.page';
 
-test.describe('ButtonComponent: busy, disabled, soft-disabled and pressed (CRD button, ICD-FORM-8, D-9)', () => {
+test.describe('ButtonComponent: busy, disabled, soft-disabled and pressed (ICD-FORM-8, D-9)', () => {
   test('AC-7 a busy button keeps its name, width and focusability, shows the spinner and has no disabled attribute', async ({
     page,
   }) => {

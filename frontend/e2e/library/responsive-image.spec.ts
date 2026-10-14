@@ -13,7 +13,7 @@ const IMAGE_FAILED =
 const srcset = (format: string) =>
   ['480', '960', '1440'].map((w) => `/test-images/9f2c41/${w}.${format} ${w}w`).join(', ');
 
-test.describe('ResponsiveImageComponent (CRD responsive-image, ICD-002 §9.8, ICD-MEDIA-1..3)', () => {
+test.describe('ResponsiveImageComponent (ICD-002 §9.8, ICD-MEDIA-1..3)', () => {
   test('AC-1, AC-3 one typed <source> per format in AVIF, WebP, JPEG order, whatever order the data has', async ({
     page,
   }) => {

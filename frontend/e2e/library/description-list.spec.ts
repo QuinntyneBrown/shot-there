@@ -2,7 +2,7 @@ import { expect, test } from '@playwright/test';
 import { DescriptionListComponent } from '../components/description-list.component';
 import { HarnessPage, HarnessTheme } from '../pages/harness.page';
 
-test.describe('DescriptionListComponent (ICD-002 §9.4, CRD description-list)', () => {
+test.describe('DescriptionListComponent (ICD-002 §9.4)', () => {
   test('renders one dt and dd per fact, flat inside dl.kv', async ({ page }) => {
     // Given the pricing facts
     const harness = new HarnessPage(page);

@@ -1,4 +1,4 @@
-/* DS components/video-poster.html. The host is a plain block holding the poster link, then the player (CRD video-poster D-8). */
+/* DS components/video-poster.html. The host is a plain block holding the poster link, then the player. */
 :host {
   display: block;
 }

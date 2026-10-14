@@ -2,7 +2,7 @@ import { expect, test } from '@playwright/test';
 import { DisclosureComponent } from '../components/disclosure.component';
 import { HarnessPage, HarnessTheme } from '../pages/harness.page';
 
-test.describe('DisclosureComponent (ICD-002 §9.5, CRD disclosure)', () => {
+test.describe('DisclosureComponent (ICD-002 §9.5)', () => {
   test('is a callout with a hidden info icon, a title and the projected statement and link', async ({
     page,
   }) => {

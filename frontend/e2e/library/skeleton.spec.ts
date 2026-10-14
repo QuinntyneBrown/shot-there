@@ -2,7 +2,7 @@ import { expect, test } from '@playwright/test';
 import { SkeletonComponent } from '../components/skeleton.component';
 import { HarnessPage, HarnessTheme } from '../pages/harness.page';
 
-test.describe('SkeletonComponent (ICD-002 §9.7, CRD skeleton)', () => {
+test.describe('SkeletonComponent (ICD-002 §9.7)', () => {
   test('is a text skeleton by default and carries a modifier per shape, each aria-hidden', async ({
     page,
   }) => {

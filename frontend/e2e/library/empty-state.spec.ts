@@ -2,7 +2,7 @@ import { expect, test } from '@playwright/test';
 import { EmptyStateComponent } from '../components/empty-state.component';
 import { HarnessPage, HarnessTheme } from '../pages/harness.page';
 
-test.describe('EmptyStateComponent (ICD-002 §9.7, CRD empty-state)', () => {
+test.describe('EmptyStateComponent (ICD-002 §9.7)', () => {
   test('renders an icon, an h2 title by default, text and actions', async ({ page }) => {
     // Given the default empty state with one action
     const harness = new HarnessPage(page);

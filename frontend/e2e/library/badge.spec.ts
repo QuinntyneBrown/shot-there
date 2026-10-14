@@ -2,7 +2,7 @@ import { expect, test } from '@playwright/test';
 import { BadgeComponent } from '../components/badge.component';
 import { HarnessPage, HarnessTheme } from '../pages/harness.page';
 
-test.describe('BadgeComponent (ICD-002 §9.5, CRD badge)', () => {
+test.describe('BadgeComponent (ICD-002 §9.5)', () => {
   test('is a plain .badge by default and reads in place after its value', async ({ page }) => {
     // Given "$25.00 Mandatory"
     const harness = new HarnessPage(page);

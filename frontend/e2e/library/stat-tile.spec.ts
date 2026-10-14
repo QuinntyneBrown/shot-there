@@ -2,7 +2,7 @@ import { expect, test } from '@playwright/test';
 import { StatTileComponent } from '../components/stat-tile.component';
 import { HarnessPage, HarnessTheme } from '../pages/harness.page';
 
-test.describe('StatGrid and StatTile (ICD-002 §9.5, CRD stat-tile)', () => {
+test.describe('StatGrid and StatTile (ICD-002 §9.5)', () => {
   test('renders a title heading at the given level, the counts and the slotted action in each tile', async ({
     page,
   }) => {
