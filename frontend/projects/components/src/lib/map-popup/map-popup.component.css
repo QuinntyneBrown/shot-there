@@ -1,0 +1,9 @@
+/* DS components/popover.html and the map popup; the application sets the inline left and top (ICD-DOM-5). */
+:host { position: absolute; z-index: var(--z-popover); translate: -50% calc(-100% - var(--space-8)); width: min(17rem, calc(100vw - 2 * var(--layout-margin))); max-width: none; display: flex; flex-direction: column; gap: var(--space-1); box-sizing: border-box; padding: var(--space-4); background: var(--color-bg-surface-raised); border: var(--border-width-hairline) solid var(--color-border-default); border-radius: var(--radius-md); box-shadow: var(--shadow-3); }
+/* Phones: the popup docks as a card along the bottom of the map. */
+@media (max-width: 47.99rem) { :host(.map-popup--dock) { left: var(--space-3) !important; right: var(--space-3); top: auto !important; bottom: var(--space-3); translate: none; width: auto; } }
+.map-popup__kind { font: var(--text-overline); letter-spacing: var(--letter-spacing-wide); text-transform: uppercase; color: var(--color-fg-muted); }
+.map-popup__name { font: var(--text-h4); padding-right: var(--space-10); }
+.map-popup__fact { font: var(--text-body-sm); color: var(--color-fg-muted); }
+a { color: var(--color-fg-link); min-height: var(--target-comfortable); display: inline-flex; align-items: center; }
+button { position: absolute; top: var(--space-1); right: var(--space-1); }

@@ -1,0 +1,15 @@
+/* DS components/dialog.html; the host is the .dialog__panel. */
+:host { width: 100%; max-height: calc(100dvh - var(--space-12)); overflow: auto; box-sizing: border-box; background: var(--color-bg-surface-raised); color: var(--color-fg-default); border-radius: var(--radius-xl) var(--radius-xl) 0 0; box-shadow: var(--shadow-4); display: flex; flex-direction: column; padding-bottom: env(safe-area-inset-bottom); }
+@media (min-width: 36rem) { :host { border-radius: var(--radius-lg); } }
+:host(.dialog__panel--sm) { max-width: 24rem; }
+:host(.dialog__panel--form) { max-width: 40rem; }
+@media (max-width: 35.99rem) { :host(.dialog__panel--full) { max-height: 100dvh; height: 100dvh; border-radius: 0; } }
+@media (forced-colors: active) { :host { outline: 1px solid CanvasText; } }
+.dialog__header { display: flex; align-items: flex-start; gap: var(--space-4); padding: var(--space-6) var(--space-6) 0; }
+.dialog__heading { flex: 1; min-width: 0; }
+.dialog__title { font: var(--text-h3); }
+.dialog__desc { color: var(--color-fg-muted); margin-top: var(--space-1); }
+.dialog__body { padding: var(--space-4) var(--space-6); flex: 1; }
+.dialog__body:empty { display: none; }
+.dialog__footer { display: flex; flex-wrap: wrap; gap: var(--space-3); justify-content: flex-end; padding: var(--space-4) var(--space-6) var(--space-6); position: sticky; bottom: 0; background: var(--color-bg-surface-raised); }
+.dialog__footer:empty { display: none; }

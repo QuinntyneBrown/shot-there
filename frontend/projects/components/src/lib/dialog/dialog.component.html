@@ -1,0 +1,12 @@
+<div class="dialog__header">
+  <div class="dialog__heading">
+    <h2 class="dialog__title" [id]="titleId">{{ title() }}</h2>
+    @if (description() !== null) {
+      <p class="dialog__desc" [id]="descId">{{ description() }}</p>
+    }
+  </div>
+  <!-- eslint-disable-next-line @angular-eslint/template/elements-content -->
+  <button st-icon-button type="button" [icon]="'close'" [label]="closeLabel()" [disabled]="busy()" (click)="close()"></button>
+</div>
+<div class="dialog__body"><ng-content /></div>
+<div class="dialog__footer"><ng-content select="[slot=footer]" /></div>

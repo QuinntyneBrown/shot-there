@@ -1,0 +1,12 @@
+<p class="map-popup__kind">{{ kind() }}</p>
+@switch (headingLevel()) {
+  @case (3) { <h3 class="map-popup__name" [id]="nameId">{{ name() }}</h3> }
+  @case (4) { <h4 class="map-popup__name" [id]="nameId">{{ name() }}</h4> }
+  @default { <h2 class="map-popup__name" [id]="nameId">{{ name() }}</h2> }
+}
+@if (fact()) {
+  <p class="map-popup__fact">{{ fact() }}</p>
+}
+<a [routerLink]="link()">{{ linkText() }}<span class="visually-hidden"> {{ name() }}</span></a>
+<!-- eslint-disable-next-line @angular-eslint/template/elements-content -->
+<button st-icon-button type="button" [icon]="'close'" [label]="closeLabel()" (click)="closed.emit()"></button>
