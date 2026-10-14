@@ -54,11 +54,12 @@ test.describe('Selecting studios to compare', () => {
     const bar = new CompareBarPanel(page);
     await list.open();
     for (const studio of PUBLISHED_STUDIOS.slice(0, 4)) {
-      await list.compareToggle(studio.name).click();
+      await list.activateCompareToggle(studio.name);
     }
     await expect(bar.count).toHaveText('4 selected');
     // When the visitor tries to add a fifth
-    await list.compareToggle('Ossington Blackbox').click();
+    await page.clock.install();
+    await list.activateCompareToggle('Ossington Blackbox');
     // Then it is refused, a message states the maximum, and it is announced
     await expect(bar.count).toHaveText('4 selected');
     await expect(bar.limitToast).toContainText(
@@ -67,10 +68,12 @@ test.describe('Selecting studios to compare', () => {
     await expect(list.compareToggle('Ossington Blackbox')).toHaveAccessibleName(
       'Compare Ossington Blackbox',
     );
-    await expect(bar.limitAnnouncement).toContainText('You can compare up to 4 studios');
-    await expect(bar.limitAnnouncement).toContainText(
-      'Remove one from the bar to add Ossington Blackbox.',
-    );
+    // Clearing the selection does not dismiss a library-owned toast.
+    await bar.clearButton.click();
+    await expect(bar.limitToast).toBeVisible();
+    // It then auto-dismisses on the library's eight-second rule.
+    await page.clock.fastForward(8000);
+    await expect(bar.limitToast).toBeHidden();
   });
 
   test('opens the comparison of the selected studios', async ({ page }) => {
