@@ -1,0 +1,44 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+import { TokenRows, previews } from './components/TokenBlocks';
+
+<Meta title="Theme/Motion" />
+
+<style>{`
+  .st-motion-demo {
+    position: relative;
+    width: 160px;
+    height: 24px;
+    border-radius: var(--radius-full);
+    background: var(--color-bg-subtle);
+  }
+  .st-motion-demo__dot {
+    position: absolute;
+    inset-block: 4px;
+    left: 4px;
+    width: 16px;
+    border-radius: 50%;
+    background: var(--color-accent);
+    transition: transform var(--_duration, var(--duration-slow)) var(--_ease, var(--ease-standard));
+  }
+  .st-motion-demo:hover .st-motion-demo__dot {
+    transform: translateX(132px);
+  }
+`}</style>
+
+# Motion
+
+Motion is brief and useful: `fast` for hover and press, `base` for fades and toasts, `slow` for dialogs and sheets.
+Under `prefers-reduced-motion: reduce` every transition duration drops to 0.01ms, so components need no media queries
+of their own. The loop durations stay: components stop decorative loops (shimmer, pulse) themselves, and the spinner
+keeps turning because it reports status.
+
+Hover a row to watch the dot travel.
+
+## Durations
+
+<TokenRows prefix="duration-" preview={previews.duration} />
+
+## Easing
+
+<TokenRows prefix="ease-" preview={previews.ease} />

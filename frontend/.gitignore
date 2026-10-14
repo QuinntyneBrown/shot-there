@@ -46,3 +46,6 @@ Thumbs.db
 # Playwright
 /test-results
 /playwright-report
+
+# Storybook: compodoc output for the components docs
+/projects/components/documentation.json
