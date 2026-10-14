@@ -32,7 +32,6 @@ export class EmailSignupComponent {
   protected readonly ids = computed(() => ({
     title: `${this.variant()}-signup-title`,
     email: `${this.variant()}-email`,
-    error: `${this.variant()}-email-error`,
     website: `${this.variant()}-website`,
   }));
 
