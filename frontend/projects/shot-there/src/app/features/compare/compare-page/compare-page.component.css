@@ -19,20 +19,6 @@
 .notice {
   margin-bottom: var(--space-6);
 }
-.alert .icon {
-  fill: none;
-  stroke: currentColor;
-  stroke-width: var(--icon-stroke);
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-.btn .icon {
-  fill: none;
-  stroke: currentColor;
-  stroke-width: var(--icon-stroke);
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
 .badge--success {
   background: var(--color-success-bg);
   color: var(--color-success-fg);
@@ -127,15 +113,6 @@
   background: var(--color-bg-subtle);
   color: var(--color-fg-default);
   margin-bottom: var(--space-2);
-}
-.empty__icon .icon {
-  width: var(--icon-size-xl);
-  height: var(--icon-size-xl);
-  fill: none;
-  stroke: currentColor;
-  stroke-width: var(--icon-stroke);
-  stroke-linecap: round;
-  stroke-linejoin: round;
 }
 .empty__title {
   font: var(--text-h3);

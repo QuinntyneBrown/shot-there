@@ -92,13 +92,6 @@
   --alert-border: var(--color-warning-border);
   --alert-icon: var(--color-warning-icon);
 }
-.alert .icon {
-  width: var(--icon-size-md);
-  height: var(--icon-size-md);
-  flex: none;
-  color: var(--alert-icon);
-  margin-top: 0.1rem;
-}
 .alert__body {
   flex: 1;
   min-width: 0;

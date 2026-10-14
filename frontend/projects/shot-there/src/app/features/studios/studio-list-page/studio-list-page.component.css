@@ -106,15 +106,6 @@
   color: var(--color-fg-muted);
   max-width: 36ch;
 }
-.icon {
-  width: var(--icon-size-xl);
-  height: var(--icon-size-xl);
-  fill: none;
-  stroke: currentColor;
-  stroke-width: var(--icon-stroke);
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
 .empty--error .empty__icon {
   background: var(--color-danger-bg);
   color: var(--color-danger-icon);
@@ -125,10 +116,6 @@
   margin-top: var(--space-2);
   flex-wrap: wrap;
   justify-content: center;
-}
-.icon--sm {
-  width: 1.25em;
-  height: 1.25em;
 }
 .location-card {
   display: flex;
