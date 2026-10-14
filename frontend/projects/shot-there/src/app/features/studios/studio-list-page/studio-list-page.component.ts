@@ -3,7 +3,13 @@ import { Component, computed, effect, inject, linkedSignal } from '@angular/core
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, Router } from '@angular/router';
 import { StudiosService, StudioSummary } from '@shot-there/api';
-import { ButtonComponent, EmptyStateComponent, IconComponent } from '@shot-there/components';
+import {
+  ButtonComponent,
+  EmptyStateComponent,
+  IconComponent,
+  LocationCardSkeletonComponent,
+  LocationGridComponent,
+} from '@shot-there/components';
 import { BehaviorSubject, catchError, combineLatest, map, of, startWith, switchMap } from 'rxjs';
 
 import { AnnouncerService } from '../../../core/a11y/announcer.service';
@@ -29,6 +35,8 @@ import { withoutFilters } from './without-filters';
     ButtonComponent,
     EmptyStateComponent,
     IconComponent,
+    LocationCardSkeletonComponent,
+    LocationGridComponent,
   ],
   templateUrl: './studio-list-page.component.html',
   styleUrl: './studio-list-page.component.css',
