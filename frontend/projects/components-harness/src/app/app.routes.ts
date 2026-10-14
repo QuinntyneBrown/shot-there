@@ -18,6 +18,11 @@ import { VideoPosterFailedComponent } from './video-poster/video-poster-failed.c
 import { VideoPosterDefaultComponent } from './video-poster/video-poster-default.component';
 import { ResponsiveImageFailedComponent } from './responsive-image/responsive-image-failed.component';
 import { ResponsiveImageDefaultComponent } from './responsive-image/responsive-image-default.component';
+import { StatusVariantsComponent } from './status/status-variants.component';
+import { BadgeTonesComponent } from './badge/badge-tones.component';
+import { ProgressStatesComponent } from './progress/progress-states.component';
+import { SkeletonShapesComponent } from './skeleton/skeleton-shapes.component';
+import { SpinnerDefaultComponent } from './spinner/spinner-default.component';
 import { SegmentedDefaultComponent } from './segmented/segmented-default.component';
 import { FilterTriggerStatesComponent } from './filter-trigger/filter-trigger-states.component';
 import { LinkVariantsComponent } from './link/link-variants.component';
@@ -73,4 +78,9 @@ export const routes: Routes = [
   { path: 'button-group/performance', component: ButtonGroupPerformanceComponent },
   { path: 'responsive-image/performance', component: ResponsiveImagePerformanceComponent },
   { path: 'responsive-image/performance-failed', component: ResponsiveImagePerformanceComponent, data: { failed: 2 } },
+  { path: 'spinner/default', component: SpinnerDefaultComponent },
+  { path: 'skeleton/shapes', component: SkeletonShapesComponent },
+  { path: 'progress/states', component: ProgressStatesComponent },
+  { path: 'badge/tones', component: BadgeTonesComponent },
+  { path: 'status/variants', component: StatusVariantsComponent },
 ];

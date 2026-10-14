@@ -1,0 +1,5 @@
+/* DS components/status-label.html; always a word plus a shape (L2-069.5). */
+:host { display: inline-flex; align-items: center; gap: var(--space-2); font: var(--text-label); white-space: nowrap; color: var(--color-fg-muted); }
+:host::before { content: ""; width: var(--space-2); height: var(--space-2); border-radius: 50%; background: currentColor; flex: none; }
+:host(.status--published) { color: var(--color-success-fg); }
+:host(.status--draft)::before { background: transparent; border: var(--border-width-thick) solid currentColor; }
