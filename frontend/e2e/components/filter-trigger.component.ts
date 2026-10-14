@@ -21,13 +21,8 @@ export class FilterTriggerComponent {
     this.countWords = this.count.locator('.visually-hidden');
   }
 
-  /**
-   * The name a trigger with `count` active filters has: "Filters, 2 active". Chrome puts a space before
-   * the comma, because the hidden words sit in a block-level box (the bubble is a flex item), so the
-   * match allows that one space.
-   */
-  static nameWithCount(count: number): RegExp {
-    return new RegExp(`^Filters ?, ${count} active$`);
+  static nameWithCount(count: number): string {
+    return `Filters, ${count} active`;
   }
 
   async classes(): Promise<string[]> {

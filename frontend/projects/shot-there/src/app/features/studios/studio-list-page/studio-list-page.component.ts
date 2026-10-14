@@ -7,6 +7,7 @@ import {
   AlertComponent,
   ButtonComponent,
   EmptyStateComponent,
+  FilterTriggerComponent,
   IconComponent,
   LocationCardSkeletonComponent,
   LocationGridComponent,
@@ -36,6 +37,7 @@ import { withoutFilters } from './without-filters';
     AlertComponent,
     ButtonComponent,
     EmptyStateComponent,
+    FilterTriggerComponent,
     IconComponent,
     LocationCardSkeletonComponent,
     LocationGridComponent,
@@ -55,10 +57,6 @@ export class StudioListPageComponent {
 
   protected readonly query = toSignal(this.query$, { requireSync: true });
   protected readonly activeFilterCount = computed(() => countActiveFilters(this.query()));
-  protected readonly filtersButtonLabel = computed(() => {
-    const count = this.activeFilterCount();
-    return count > 0 ? $localize`Filters, ${count}:count: active` : $localize`Filters`;
-  });
   /** The sidebar's unapplied filters; reset whenever the URL changes. */
   protected readonly sidebarDraft = linkedSignal(() => this.query());
   protected readonly state = toSignal(

@@ -21,11 +21,16 @@ import { IconComponent } from '../icon/icon.component';
   host: {
     class: 'filter-trigger',
     'aria-haspopup': 'dialog',
+    '[attr.aria-label]': 'accessibleName()',
   },
 })
 export class FilterTriggerComponent {
   readonly count = input(0, { transform: numberAttribute });
 
+  protected readonly label = $localize`:@@st.filterTrigger.label:Filters`;
+  protected readonly accessibleName = computed(
+    () => `${this.label}${this.count() > 0 ? this.countText() : ''}`,
+  );
   protected readonly countText = computed(
     () => $localize`:@@st.filterTrigger.count:, ${this.count()}:count: active`,
   );
