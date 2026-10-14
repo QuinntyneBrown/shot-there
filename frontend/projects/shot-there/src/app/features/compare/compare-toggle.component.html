@@ -1,4 +1,4 @@
-<button class="btn btn--sm compare-toggle" type="button" [attr.aria-pressed]="selected()" (click)="toggle()">
+<button st-button [size]="'sm'" [pressed]="selected()" type="button" (click)="toggle()">
   @if (selected()) {
     <ng-container i18n>Remove<span class="visually-hidden"> {{ name() }}</span></ng-container>
   } @else {
