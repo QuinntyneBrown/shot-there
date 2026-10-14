@@ -5,6 +5,7 @@ import {
 } from './fakes/fake-studios-api';
 import { PUBLISHED_STUDIOS } from './fakes/studio-summaries';
 import { expect, test } from './fakes/test';
+import { ShellPage } from './pages/shell.page';
 import { StudioListPage } from './pages/studio-list.page';
 
 test.describe('Studio list', () => {
@@ -95,4 +96,25 @@ test.describe('Studio list', () => {
     await expect(list.cards).toHaveCount(7);
     await expect(list.errorAlert).toBeHidden();
   });
+
+  // Acceptance Test
+  // Traces to: L2-021, L2-069
+  // Description: Verify the studio list at phone and desktop widths in both color schemes.
+  for (const colorScheme of ['light', 'dark'] as const) {
+    for (const width of [320, 1280]) {
+      test(`has no accessibility violations or horizontal scroll in ${colorScheme} mode at ${width}px`, async ({
+        page,
+      }) => {
+        await givenStudios(page, PUBLISHED_STUDIOS);
+        await page.setViewportSize({ width, height: 800 });
+        await page.emulateMedia({ colorScheme });
+        const list = new StudioListPage(page);
+        await list.open();
+        await expect(list.cards).toHaveCount(PUBLISHED_STUDIOS.length);
+        const shell = new ShellPage(page);
+        expect(await shell.hasHorizontalScroll()).toBe(false);
+        expect(await shell.accessibilityViolations()).toEqual([]);
+      });
+    }
+  }
 });
