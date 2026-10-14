@@ -1,6 +1,7 @@
 import { givenStudios } from './fakes/fake-studios-api';
 import { PUBLISHED_STUDIOS } from './fakes/studio-summaries';
 import { expect, test } from './fakes/test';
+import { ShellPage } from './pages/shell.page';
 import { StudioListPage } from './pages/studio-list.page';
 
 const leslievilleAndJunction = PUBLISHED_STUDIOS.filter((s) =>
@@ -93,4 +94,19 @@ test.describe('Studio filters sidebar', () => {
     await expect(list.cards).toHaveCount(7);
     await expect(list.filtersSidebar.root).toBeHidden();
   });
+
+  for (const theme of ['light', 'dark'] as const) {
+    test(`has no accessibility violations in the ${theme} theme at desktop width`, async ({
+      page,
+    }) => {
+      const shell = new ShellPage(page);
+      const list = new StudioListPage(page);
+      await shell.rememberTheme(theme);
+      await givenStudios(page, PUBLISHED_STUDIOS);
+      await list.useDesktopWidth();
+      await list.open();
+      await expect(list.filtersSidebar.root).toBeVisible();
+      expect(await shell.accessibilityViolations()).toEqual([]);
+    });
+  }
 });

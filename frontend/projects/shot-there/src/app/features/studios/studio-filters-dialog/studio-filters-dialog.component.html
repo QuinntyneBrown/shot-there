@@ -5,7 +5,7 @@
     <st-studio-filters [idPrefix]="'dialog'" [query]="draft()" [costError]="costError()" (queryChange)="draft.set($event)" />
   </form>
   <button slot="footer" i18n-slot st-button class="filters-dialog__action" type="button" (click)="clearAll()" i18n>Clear all</button>
-  <button slot="footer" i18n-slot st-button class="filters-dialog__action" variant="primary" type="submit" form="studio-filters-form" [disabled]="costError() !== null" [attr.aria-describedby]="costError() ? 'dialog-cost-max-error' : null">
+  <button slot="footer" i18n-slot st-button class="filters-dialog__action" variant="primary" type="submit" form="studio-filters-form" [disabled]="costError() !== null">
     @if (costError() === null && matchCount() !== null) {
       <ng-container i18n>{matchCount(), plural, =1 {Show 1 studio} other {Show {{matchCount()}} studios}}</ng-container>
     } @else {
