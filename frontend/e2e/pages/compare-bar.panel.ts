@@ -9,6 +9,7 @@ export class CompareBarPanel {
   readonly compareButton: Locator;
   readonly clearButton: Locator;
   readonly limitToast: Locator;
+  readonly limitAnnouncement: Locator;
 
   constructor(private readonly page: Page) {
     this.root = page.getByRole('complementary', { name: 'Studios to compare' });
@@ -18,6 +19,9 @@ export class CompareBarPanel {
     this.compareButton = this.root.getByRole('button', { name: 'Compare' });
     this.clearButton = this.root.getByRole('button', { name: 'Clear' });
     this.limitToast = page.locator('.toast').filter({ hasText: 'You can compare up to 4 studios' });
+    this.limitAnnouncement = page
+      .getByRole('status')
+      .filter({ hasText: 'You can compare up to 4 studios' });
   }
 
   /** Whether the bar sits on the bottom edge of the viewport. */

@@ -67,8 +67,9 @@ test.describe('Selecting studios to compare', () => {
     await expect(list.compareToggle('Ossington Blackbox')).toHaveAccessibleName(
       'Compare Ossington Blackbox',
     );
-    await expect(list.announcer).toHaveText(
-      'You can compare up to 4 studios. Remove one from the bar to add Ossington Blackbox.',
+    await expect(bar.limitAnnouncement).toContainText('You can compare up to 4 studios');
+    await expect(bar.limitAnnouncement).toContainText(
+      'Remove one from the bar to add Ossington Blackbox.',
     );
   });
 

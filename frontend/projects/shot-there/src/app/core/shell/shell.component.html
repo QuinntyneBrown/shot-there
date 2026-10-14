@@ -23,4 +23,37 @@
 >
   <st-email-signup slot="signup" i18n-slot variant="footer" />
 </st-site-footer>
-<st-compare-bar />
+@if (selection.count() > 0) {
+  <st-compare-bar
+    [label]="compareBarLabel"
+    [countText]="compareBarCountText()"
+    [hint]="compareBarHint()"
+    [names]="compareBarNames()"
+  >
+    <button
+      st-button
+      slot="actions"
+      i18n-slot
+      variant="ghost"
+      type="button"
+      (click)="selection.clear()"
+      i18n
+    >
+      Clear
+    </button>
+    <button
+      st-button
+      slot="actions"
+      i18n-slot
+      variant="primary"
+      type="button"
+      [disabled]="!selection.canCompare()"
+      [attr.aria-describedby]="selection.canCompare() ? null : 'compare-hint'"
+      (click)="compare()"
+      i18n
+    >
+      Compare
+    </button>
+  </st-compare-bar>
+}
+<st-toast-region />

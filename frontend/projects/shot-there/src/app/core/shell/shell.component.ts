@@ -1,36 +1,61 @@
-import { Component, inject, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { DOCUMENT } from '@angular/common';
+import { Component, computed, effect, inject, Renderer2, signal } from '@angular/core';
+import { Router, RouterOutlet } from '@angular/router';
 
 import {
+  ButtonComponent,
+  CompareBarComponent,
   DialogService,
   SiteFooterComponent,
   SiteHeaderComponent,
   SkipLinkComponent,
+  ToastRegionComponent,
+  ToastService,
 } from '@shot-there/components';
 import type { NavLink } from '@shot-there/components';
 
-import { CompareBarComponent } from '../compare/compare-bar.component';
+import { COMPARE_LIMIT_TITLE, compareLimitHint } from '../compare/compare-limit-message';
+import { CompareSelectionService } from '../compare/compare-selection.service';
 import { EmailSignupComponent } from '../email-signup/email-signup.component';
 import { APP_PATHS } from '../routing/app-paths';
 import { PRIMARY_NAV_LINKS } from './primary-nav-links';
 import { SiteMenuDialogComponent } from './site-menu-dialog.component';
 
+const TOAST_MS = 6000;
+
 @Component({
   selector: 'st-shell',
   imports: [
     RouterOutlet,
+    ButtonComponent,
+    CompareBarComponent,
     SkipLinkComponent,
     SiteHeaderComponent,
     SiteFooterComponent,
     EmailSignupComponent,
-    CompareBarComponent,
+    ToastRegionComponent,
   ],
   templateUrl: './shell.component.html',
   styleUrl: './shell.component.css',
 })
 export class ShellComponent {
   private readonly dialogService = inject(DialogService);
+  private readonly router = inject(Router);
+  private readonly document = inject(DOCUMENT);
+  private readonly renderer = inject(Renderer2);
+  private readonly toastService = inject(ToastService);
+  protected readonly selection = inject(CompareSelectionService);
   protected readonly menuOpen = signal(false);
+  protected readonly compareBarLabel = $localize`Studios to compare`;
+  protected readonly compareBarCountText = computed(
+    () => $localize`${this.selection.count()} selected`,
+  );
+  protected readonly compareBarHint = computed(() =>
+    this.selection.canCompare() ? null : $localize`Pick at least 2 studios to compare`,
+  );
+  protected readonly compareBarNames = computed(() =>
+    this.selection.items().map((item) => item.name).join(', '),
+  );
   protected readonly headerBrand = $localize`ShotThere`;
   protected readonly headerBrandTag = $localize`Toronto`;
   protected readonly headerHomeLink = `/${APP_PATHS.home}`;
@@ -55,6 +80,42 @@ export class ShellComponent {
       external: true,
     },
   ];
+
+  constructor() {
+    effect(() => {
+      if (this.selection.count() > 0) {
+        this.renderer.addClass(this.document.body, 'has-compare-bar');
+      } else {
+        this.renderer.removeClass(this.document.body, 'has-compare-bar');
+      }
+    });
+    effect((onCleanup) => {
+      const refused = this.selection.refused();
+      if (refused) {
+        const toast = this.toastService.show({
+          tone: 'warning',
+          title: COMPARE_LIMIT_TITLE,
+          text: compareLimitHint(refused.name),
+        });
+        const timer = setTimeout(() => this.selection.dismissRefusal(), TOAST_MS);
+        onCleanup(() => {
+          clearTimeout(timer);
+          toast.dismiss();
+        });
+      }
+    });
+  }
+
+  protected compare(): void {
+    void this.router.navigate([`/${APP_PATHS.compare}`], {
+      queryParams: {
+        studios: this.selection
+          .items()
+          .map((item) => item.slug)
+          .join(','),
+      },
+    });
+  }
 
   protected openMenu(): void {
     this.menuOpen.set(true);
