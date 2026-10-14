@@ -1,0 +1,3 @@
+The DS text field: one labelled native `<input>` for a short, single-line value — a studio's name, an hourly rate, the date prices were last verified, a search of the admin lists. `st-text-field` renders the whole field: label, optional marker, the input, an optional `$` prefix, a search icon or a joined "Show" toggle for passwords, one error or warning, then help.
+
+The host carries the `.field` class (plus `.field--warning` and `.field--inline`); the input is `.input` (`.input--sm`, `.input--lg`), wrapped in `.input-group` or `.search` when it has a prefix, a reveal toggle or a search icon. It is a `ControlValueAccessor`, so its value and disabled state come from Angular forms.

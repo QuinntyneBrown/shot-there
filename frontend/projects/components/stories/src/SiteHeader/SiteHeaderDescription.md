@@ -1,0 +1,3 @@
+The DS site header: the wordmark with its area tag (`.wordmark`, `.wordmark__tag`), then a `nav.site-nav` named by `navLabel` holding one `.site-nav__link` per `NavLink`, the `[slot=actions]` content, and an icon-button "Menu" (`.site-nav__menu`) shown only below 48rem, where the links hide. `st-site-header` carries `.site-header`.
+
+Internal links use `routerLink` and get `aria-current="page"` through `RouterLinkActive` (exact when `exact`); external ones open a new tab with the arrow and the hidden `externalHint`. The header only reports Menu presses through `menuToggled` and reflects `menuExpanded`; the menu sheet belongs to the application.
