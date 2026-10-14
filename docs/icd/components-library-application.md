@@ -99,8 +99,8 @@ application needs something it does not provide, change this document first
 | L1 and L2 requirements | `docs/specs/L1.md`, `docs/specs/L2.md` | Product behaviour, accessibility, performance, security |
 | Design system | `docs/design-system/` | Visuals, tokens, class names, states, patterns |
 | Mocks | `docs/mocks/` | Every screen and state that must be buildable |
-| This ICD | `docs/icd/components-library.md` | The boundary: exports, APIs, ownership |
-| ICD-001 | `docs/icd/README.md` | The HTTP contract between the application (through `@shot-there/api`) and the Next.js API, including every DTO |
+| This ICD | `docs/icd/components-library-application.md` | The boundary: exports, APIs, ownership |
+| ICD-001 | `docs/icd/backend-frontend-api.md` | The HTTP contract between the application (through `@shot-there/api`) and the Next.js API, including every DTO |
 | CRDs | `docs/specs/components/*.md` | Full requirements of one component, within this ICD |
 | Detailed designs | `docs/detailed-designs/` | Feature design; for boundary matters this ICD wins (§18) |
 | Working agreement | `AGENTS.md` | Repository rules both parties follow |
