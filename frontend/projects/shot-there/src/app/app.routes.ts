@@ -11,5 +11,5 @@ export const routes: Routes = [
   ...studioRoutes,
   ...compareRoutes,
   ...editorialRoutes,
-  ...errorRoutes
+  ...errorRoutes,
 ];

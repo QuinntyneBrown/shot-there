@@ -3,27 +3,27 @@ import { RenderMode, ServerRoute } from '@angular/ssr';
 export const serverRoutes: ServerRoute[] = [
   {
     path: '',
-    renderMode: RenderMode.Server
+    renderMode: RenderMode.Server,
   },
   {
     path: 'studios',
-    renderMode: RenderMode.Server
+    renderMode: RenderMode.Server,
   },
   {
     path: 'studios/:slug',
-    renderMode: RenderMode.Server
+    renderMode: RenderMode.Server,
   },
   {
     path: 'compare',
-    renderMode: RenderMode.Server
+    renderMode: RenderMode.Server,
   },
   {
     path: 'editorial-policy',
-    renderMode: RenderMode.Prerender
+    renderMode: RenderMode.Prerender,
   },
   {
     path: '**',
     renderMode: RenderMode.Server,
-    status: 404
-  }
+    status: 404,
+  },
 ];

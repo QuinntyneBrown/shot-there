@@ -10,7 +10,7 @@ import { CompareToggleComponent } from '../../compare/compare-toggle.component';
   selector: 'st-studio-card',
   imports: [RouterLink, CurrencyPipe, DatePipe, DecimalPipe, CompareToggleComponent],
   templateUrl: './studio-card.component.html',
-  styleUrl: './studio-card.component.css'
+  styleUrl: './studio-card.component.css',
 })
 export class StudioCardComponent {
   readonly studio = input.required<StudioSummary>();

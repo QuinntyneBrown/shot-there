@@ -1,0 +1,119 @@
+/* DS components/toast.html; the host is the .toast block on the inverse surface. */
+:host {
+  position: relative;
+  overflow: hidden;
+  pointer-events: auto;
+  display: flex;
+  gap: var(--space-3);
+  align-items: flex-start;
+  padding: var(--space-4);
+  background: var(--color-bg-inverse);
+  color: var(--color-fg-inverse);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-3);
+  animation: slide-up var(--duration-base) var(--ease-enter);
+}
+st-icon {
+  flex: none;
+  margin-top: 0.1rem;
+  color: currentColor;
+}
+.toast__body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-0-5);
+}
+.toast__title {
+  font: var(--text-label);
+  font-size: var(--font-size-md);
+  overflow-wrap: anywhere;
+}
+.toast__text {
+  font: var(--text-body-sm);
+  opacity: 0.9;
+  overflow-wrap: anywhere;
+}
+.toast__action {
+  align-self: flex-start;
+  font: var(--text-label);
+  color: inherit;
+  background: none;
+  border: 0;
+  padding: var(--space-1) 0;
+  text-decoration: underline;
+  cursor: pointer;
+  min-height: var(--target-min);
+}
+.toast__action:hover {
+  text-decoration-thickness: var(--border-width-thick);
+}
+.close {
+  background: none;
+  border: 0;
+  color: inherit;
+  cursor: pointer;
+  width: var(--target-min);
+  height: var(--target-min);
+  display: grid;
+  place-items: center;
+  border-radius: var(--radius-sm);
+  opacity: 0.8;
+}
+.close:hover {
+  opacity: 1;
+  background: color-mix(in srgb, currentColor 12%, transparent);
+}
+:focus-visible {
+  outline-color: var(--color-fg-inverse);
+}
+.toast__progress {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: var(--border-width-thick);
+  background: currentColor;
+  opacity: 0.4;
+  width: 100%;
+  transform-origin: left;
+  animation: countdown 8s linear forwards;
+}
+:host(:hover) .toast__progress,
+:host(:focus-within) .toast__progress {
+  animation-play-state: paused;
+}
+@keyframes countdown {
+  from {
+    transform: scaleX(1);
+  }
+  to {
+    transform: scaleX(0);
+  }
+}
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(var(--space-3));
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@media (max-width: 47.99rem) {
+  .close {
+    width: var(--target-comfortable);
+    height: var(--target-comfortable);
+  }
+}
+@media (forced-colors: active) {
+  :host {
+    border: 1px solid CanvasText;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  :host,
+  .toast__progress {
+    animation: none;
+  }
+}

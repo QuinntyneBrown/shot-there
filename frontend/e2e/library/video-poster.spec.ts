@@ -10,7 +10,9 @@ const PLAY_GLYPH = '<path d="M8 5v14l11-7z" fill="currentColor" stroke="none"/>'
 const THEMES: HarnessTheme[] = ['light', 'dark'];
 
 test.describe('VideoPosterComponent (CRD video-poster, ICD-002 §9.8, §12, ICD-MEDIA-4)', () => {
-  test('AC-1, AC-15 on load the poster links to YouTube with a lazy decorative still and the play pill, and no iframe exists', async ({ page }) => {
+  test('AC-1, AC-15 on load the poster links to YouTube with a lazy decorative still and the play pill, and no iframe exists', async ({
+    page,
+  }) => {
     // Given The Junction Loft's episode inputs
     const harness = new HarnessPage(page);
     // When the page first loads
@@ -21,7 +23,11 @@ test.describe('VideoPosterComponent (CRD video-poster, ICD-002 §9.8, §12, ICD-
     await expect(video.poster).toHaveClass('video-poster');
     // And the still has alt="", lazy loading and the CRD's sizes
     const still = await video.still.imageAttributes();
-    expect([still['alt'], still['loading'], still['sizes']]).toEqual(['', 'lazy', '(min-width: 62rem) 45rem, 100vw']);
+    expect([still['alt'], still['loading'], still['sizes']]).toEqual([
+      '',
+      'lazy',
+      '(min-width: 62rem) 45rem, 100vw',
+    ]);
     // And the pill holds the play glyph and "Play episode", and there is no player
     expect(await video.playIcon.drawing()).toBe(PLAY_GLYPH);
     expect(await video.playLabel()).toBe('Play episode');
@@ -38,10 +44,14 @@ test.describe('VideoPosterComponent (CRD video-poster, ICD-002 §9.8, §12, ICD-
     await harness.open('video-poster/default');
     await page.waitForLoadState('networkidle');
     // Then no request went to youtube.com, youtube-nocookie.com or ytimg.com
-    expect(hosts.filter((host) => /youtube\.com|youtube-nocookie\.com|ytimg\.com/.test(host))).toEqual([]);
+    expect(
+      hosts.filter((host) => /youtube\.com|youtube-nocookie\.com|ytimg\.com/.test(host)),
+    ).toEqual([]);
   });
 
-  test('AC-3, AC-5 a click swaps in the 16:9 nocookie player with its title, full screen allowed and no autoplay, without navigating', async ({ page }) => {
+  test('AC-3, AC-5 a click swaps in the 16:9 nocookie player with its title, full screen allowed and no autoplay, without navigating', async ({
+    page,
+  }) => {
     // Given the poster in a 320px column
     const harness = new HarnessPage(page);
     await harness.open('video-poster/default');
@@ -64,7 +74,9 @@ test.describe('VideoPosterComponent (CRD video-poster, ICD-002 §9.8, §12, ICD-
     expect(new URL(page.url()).pathname).toBe('/video-poster/default');
   });
 
-  test('AC-10 Enter swaps in the player, moves focus into it and emits played once', async ({ page }) => {
+  test('AC-10 Enter swaps in the player, moves focus into it and emits played once', async ({
+    page,
+  }) => {
     // Given focus on the poster
     const harness = new HarnessPage(page);
     await harness.open('video-poster/default');
@@ -77,25 +89,36 @@ test.describe('VideoPosterComponent (CRD video-poster, ICD-002 §9.8, §12, ICD-
     await expect.poll(() => harness.activations()).toEqual(['played']);
   });
 
-  test('D-3 a modified click opens YouTube in a new tab and leaves the poster as it is', async ({ page }) => {
+  test('D-3 a modified click opens YouTube in a new tab and leaves the poster as it is', async ({
+    page,
+  }) => {
     // Given the poster
     const harness = new HarnessPage(page);
     await harness.open('video-poster/default');
     const video = new VideoPosterComponent(harness.example('default'), PLAY, TITLE);
     // When the visitor Ctrl-clicks it
-    const [tab] = await Promise.all([page.context().waitForEvent('page'), video.click(['Control'])]);
+    const [tab] = await Promise.all([
+      page.context().waitForEvent('page'),
+      video.click(['Control']),
+    ]);
     // Then the watch URL opens in a new tab, the poster stays and played is not emitted
     await tab.waitForURL(WATCH_URL);
     await expect(video.poster).toBeVisible();
     await expect(video.player).toHaveCount(0);
-    await new VideoPosterComponent(harness.example('no poster'), 'Watch the episode', TITLE).click();
+    await new VideoPosterComponent(
+      harness.example('no poster'),
+      'Watch the episode',
+      TITLE,
+    ).click();
     await expect.poll(() => harness.activations()).toEqual(['played: no poster']);
   });
 
   test.describe('without JavaScript', () => {
     test.use({ javaScriptEnabled: false });
 
-    test('AC-4 activating the server-rendered poster follows the link to YouTube', async ({ page }) => {
+    test('AC-4 activating the server-rendered poster follows the link to YouTube', async ({
+      page,
+    }) => {
       // Given the page loaded with JavaScript disabled
       const harness = new HarnessPage(page);
       await harness.open('video-poster/default');
@@ -107,11 +130,17 @@ test.describe('VideoPosterComponent (CRD video-poster, ICD-002 §9.8, §12, ICD-
     });
   });
 
-  test('AC-6 the poster and then the player are 16:9 boxes filling the main column', async ({ page }) => {
+  test('AC-6 the poster and then the player are 16:9 boxes filling the main column', async ({
+    page,
+  }) => {
     // Given Evergreen Brick Works' episode in a 45rem main column
     const harness = new HarnessPage(page);
     await harness.open('video-poster/column');
-    const video = new VideoPosterComponent(harness.example('column'), 'Play episode: Episode 7, Evergreen Brick Works', 'Episode 7: Evergreen Brick Works at golden hour');
+    const video = new VideoPosterComponent(
+      harness.example('column'),
+      'Play episode: Episode 7, Evergreen Brick Works',
+      'Episode 7: Evergreen Brick Works at golden hour',
+    );
     // When the poster renders, and then the player
     // Then each is 720 x 405
     expect(await video.posterSize()).toEqual({ width: 720, height: 405 });
@@ -120,7 +149,9 @@ test.describe('VideoPosterComponent (CRD video-poster, ICD-002 §9.8, §12, ICD-
     expect(await video.playerSize()).toEqual({ width: 720, height: 405 });
   });
 
-  test('AC-7 a review without a video renders no poster, player or placeholder', async ({ page }) => {
+  test('AC-7 a review without a video renders no poster, player or placeholder', async ({
+    page,
+  }) => {
     // Given Trinity Bellwoods Park, which has no video ID
     const harness = new HarnessPage(page);
     // When its section renders
@@ -132,7 +163,9 @@ test.describe('VideoPosterComponent (CRD video-poster, ICD-002 §9.8, §12, ICD-
   });
 
   for (const width of [1280, 320]) {
-    test(`AC-8 at ${width}px a failed still gives way to the hidden title fallback, the pill drops to the bottom and still plays`, async ({ page }) => {
+    test(`AC-8 at ${width}px a failed still gives way to the hidden title fallback, the pill drops to the bottom and still plays`, async ({
+      page,
+    }) => {
       // Given the still returning 404
       const harness = new HarnessPage(page);
       await harness.open('video-poster/failed', { width });
@@ -153,22 +186,32 @@ test.describe('VideoPosterComponent (CRD video-poster, ICD-002 §9.8, §12, ICD-
     });
   }
 
-  test('AC-9, AC-13 with no poster the same fallback shows and the link plays; playLabel replaces the library string', async ({ page }) => {
+  test('AC-9, AC-13 with no poster the same fallback shows and the link plays; playLabel replaces the library string', async ({
+    page,
+  }) => {
     // Given an episode with no poster and playLabel "Watch the episode", beside a poster with no playLabel
     const harness = new HarnessPage(page);
     await harness.open('video-poster/failed');
-    const video = new VideoPosterComponent(harness.example('no poster'), 'Watch the episode', TITLE);
+    const video = new VideoPosterComponent(
+      harness.example('no poster'),
+      'Watch the episode',
+      TITLE,
+    );
     // When it renders
     // Then the fallback shows the title and the pill reads "Watch the episode", while the default reads "Play episode"
     await expect(video.fallbackText).toHaveText(TITLE);
     expect(await video.playLabel()).toBe('Watch the episode');
-    expect(await new VideoPosterComponent(harness.example('failed'), PLAY, TITLE).playLabel()).toBe('Play episode');
+    expect(await new VideoPosterComponent(harness.example('failed'), PLAY, TITLE).playLabel()).toBe(
+      'Play episode',
+    );
     // And the link plays the episode
     await video.click();
     await expect(video.player).toHaveAttribute('src', EMBED_URL);
   });
 
-  test('AC-11 keyboard focus draws the 2px ring around the whole poster at 3:1 against the canvas', async ({ page }) => {
+  test('AC-11 keyboard focus draws the 2px ring around the whole poster at 3:1 against the canvas', async ({
+    page,
+  }) => {
     // Given a keyboard user
     const harness = new HarnessPage(page);
     await harness.open('video-poster/default');
@@ -177,11 +220,17 @@ test.describe('VideoPosterComponent (CRD video-poster, ICD-002 §9.8, §12, ICD-
     await page.keyboard.press('Tab');
     await expect(video.poster).toBeFocused();
     // Then a solid 2px ring in --color-focus-ring surrounds it at 3:1
-    expect(await video.focusRing()).toEqual({ width: 2, style: 'solid', colour: await harness.tokenColour('--color-focus-ring') });
+    expect(await video.focusRing()).toEqual({
+      width: 2,
+      style: 'solid',
+      colour: await harness.tokenColour('--color-focus-ring'),
+    });
     expect(await video.ringContrast()).toBeGreaterThanOrEqual(3);
   });
 
-  test('AC-12 the link is named "Play episode: Episode 4, The Junction Loft" and the still and glyph add nothing', async ({ page }) => {
+  test('AC-12 the link is named "Play episode: Episode 4, The Junction Loft" and the still and glyph add nothing', async ({
+    page,
+  }) => {
     // Given the poster with playContext ": Episode 4, The Junction Loft"
     const harness = new HarnessPage(page);
     // When the accessibility tree is read
@@ -193,7 +242,9 @@ test.describe('VideoPosterComponent (CRD video-poster, ICD-002 §9.8, §12, ICD-
   });
 
   for (const theme of THEMES) {
-    test(`AC-14 the play label keeps 4.5:1 at rest, hovered and pressed, and the fallback title 4.5:1, in the ${theme} theme`, async ({ page }) => {
+    test(`AC-14 the play label keeps 4.5:1 at rest, hovered and pressed, and the fallback title 4.5:1, in the ${theme} theme`, async ({
+      page,
+    }) => {
       // Given the poster and the failed poster
       const harness = new HarnessPage(page);
       await harness.open('video-poster/failed', { theme });
@@ -210,7 +261,9 @@ test.describe('VideoPosterComponent (CRD video-poster, ICD-002 §9.8, §12, ICD-
     });
 
     for (const width of [320, 1280]) {
-      test(`AC-12 axe finds no violations for the poster and the player at ${width}px in the ${theme} theme`, async ({ page }) => {
+      test(`AC-12 axe finds no violations for the poster and the player at ${width}px in the ${theme} theme`, async ({
+        page,
+      }) => {
         // Given the poster, the failed poster and the player in the ${theme} theme at ${width}px
         const harness = new HarnessPage(page);
         // When axe scans them
@@ -219,7 +272,9 @@ test.describe('VideoPosterComponent (CRD video-poster, ICD-002 §9.8, §12, ICD-
         await harness.open('video-poster/default', { width, theme });
         const poster = await harness.accessibilityViolations();
         await new VideoPosterComponent(harness.example('default'), PLAY, TITLE).click();
-        await expect(new VideoPosterComponent(harness.example('default'), PLAY, TITLE).player).toBeVisible();
+        await expect(
+          new VideoPosterComponent(harness.example('default'), PLAY, TITLE).player,
+        ).toBeVisible();
         // Then it reports no violations
         expect(failed).toEqual([]);
         expect(poster).toEqual([]);
@@ -228,12 +283,18 @@ test.describe('VideoPosterComponent (CRD video-poster, ICD-002 §9.8, §12, ICD-
     }
   }
 
-  test('AC-16, AC-17 at 320px the poster is 16:9 across the content width, the pill fits on one line, and the target is large', async ({ page }) => {
+  test('AC-16, AC-17 at 320px the poster is 16:9 across the content width, the pill fits on one line, and the target is large', async ({
+    page,
+  }) => {
     // Given The Junction Loft's poster at 320px
     const harness = new HarnessPage(page);
     // When it renders
     await harness.open('video-poster/column', { width: 320 });
-    const video = new VideoPosterComponent(harness.example('column'), 'Play episode: Episode 7, Evergreen Brick Works', 'Episode 7: Evergreen Brick Works at golden hour');
+    const video = new VideoPosterComponent(
+      harness.example('column'),
+      'Play episode: Episode 7, Evergreen Brick Works',
+      'Episode 7: Evergreen Brick Works at golden hour',
+    );
     // Then it is 16:9, the pill fits on one line, the target is at least 44 x 44 and nothing scrolls sideways
     const size = await video.posterSize();
     expect(Math.abs(size.height - (size.width * 9) / 16)).toBeLessThanOrEqual(1);
@@ -243,11 +304,17 @@ test.describe('VideoPosterComponent (CRD video-poster, ICD-002 §9.8, §12, ICD-
     expect(await harness.hasHorizontalScroll()).toBe(false);
   });
 
-  test('AC-18 at 200% zoom the poster is visible and operable with no sideways scroll', async ({ page }) => {
+  test('AC-18 at 200% zoom the poster is visible and operable with no sideways scroll', async ({
+    page,
+  }) => {
     // Given the episode in a 1280px window at 200% zoom (640 CSS px)
     const harness = new HarnessPage(page);
     await harness.open('video-poster/column', { width: 640 });
-    const video = new VideoPosterComponent(harness.example('column'), 'Play episode: Episode 7, Evergreen Brick Works', 'Episode 7: Evergreen Brick Works at golden hour');
+    const video = new VideoPosterComponent(
+      harness.example('column'),
+      'Play episode: Episode 7, Evergreen Brick Works',
+      'Episode 7: Evergreen Brick Works at golden hour',
+    );
     // When the visitor reaches it
     await video.poster.scrollIntoViewIfNeeded();
     // Then it is visible, nothing scrolls sideways, and it plays
@@ -262,11 +329,17 @@ test.describe('VideoPosterComponent (CRD video-poster, ICD-002 §9.8, §12, ICD-
     // workers, while a real regression fails every attempt.
     test.describe.configure({ retries: 2 });
 
-    test('AC-19 activating the poster stays within the 200ms INP budget and CLS stays at most 0.1', async ({ page }) => {
+    test('AC-19 activating the poster stays within the 200ms INP budget and CLS stays at most 0.1', async ({
+      page,
+    }) => {
       // Given the video-poster/performance route on a mobile profile
       const harness = new HarnessPage(page);
       const load = await harness.loadMetrics('video-poster/performance');
-      const video = new VideoPosterComponent(harness.example('column'), 'Play episode: Episode 7, Evergreen Brick Works', 'Episode 7: Evergreen Brick Works at golden hour');
+      const video = new VideoPosterComponent(
+        harness.example('column'),
+        'Play episode: Episode 7, Evergreen Brick Works',
+        'Episode 7: Evergreen Brick Works at golden hour',
+      );
       // When the poster is activated
       const latency = await harness.interactionLatency(() => video.click());
       // Then the interaction paints within 200ms and nothing shifted, the activation included

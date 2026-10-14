@@ -8,7 +8,7 @@ import { APP_PATHS } from '../routing/app-paths';
   selector: 'st-site-footer',
   imports: [RouterLink, EmailSignupComponent],
   templateUrl: './site-footer.component.html',
-  styleUrl: './site-footer.component.css'
+  styleUrl: './site-footer.component.css',
 })
 export class SiteFooterComponent {
   protected readonly studiosPath = `/${APP_PATHS.studios}`;

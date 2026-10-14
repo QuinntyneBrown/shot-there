@@ -8,7 +8,7 @@ export const NEIGHBOURHOOD_OPTIONS: readonly NeighbourhoodOption[] = [
   { slug: 'leslieville', label: $localize`Leslieville` },
   { slug: 'liberty-village', label: $localize`Liberty Village` },
   { slug: 'ossington', label: $localize`Ossington` },
-  { slug: 'riverside', label: $localize`Riverside` }
+  { slug: 'riverside', label: $localize`Riverside` },
 ];
 
 /** Minimum usable space choices, in square metres. */

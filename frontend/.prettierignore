@@ -1,0 +1,3 @@
+# Angular templates: Prettier adds line breaks that Angular renders as spaces
+# (e.g. "Score 3.2", a space before a hidden suffix), so it never formats them.
+*.html

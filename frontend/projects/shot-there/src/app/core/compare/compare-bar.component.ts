@@ -11,7 +11,7 @@ const TOAST_MS = 6000;
 @Component({
   selector: 'st-compare-bar',
   templateUrl: './compare-bar.component.html',
-  styleUrl: './compare-bar.component.css'
+  styleUrl: './compare-bar.component.css',
 })
 export class CompareBarComponent {
   private readonly router = inject(Router);
@@ -29,12 +29,20 @@ export class CompareBarComponent {
   }
 
   protected names(): string {
-    return this.selection.items().map((item) => item.name).join(', ');
+    return this.selection
+      .items()
+      .map((item) => item.name)
+      .join(', ');
   }
 
   compare(): void {
     void this.router.navigate([`/${APP_PATHS.compare}`], {
-      queryParams: { studios: this.selection.items().map((item) => item.slug).join(',') }
+      queryParams: {
+        studios: this.selection
+          .items()
+          .map((item) => item.slug)
+          .join(','),
+      },
     });
   }
 }

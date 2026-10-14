@@ -8,7 +8,7 @@ import { CompareSelectionService } from '../../core/compare/compare-selection.se
 @Component({
   selector: 'st-compare-toggle',
   templateUrl: './compare-toggle.component.html',
-  styleUrl: './compare-toggle.component.css'
+  styleUrl: './compare-toggle.component.css',
 })
 export class CompareToggleComponent {
   private readonly selection = inject(CompareSelectionService);

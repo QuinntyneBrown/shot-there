@@ -9,7 +9,7 @@ import { embedUrl, iframeTitle, watchUrl } from './episode-urls';
   selector: 'st-episode-player',
   imports: [FallbackImageDirective],
   templateUrl: './episode-player.component.html',
-  styleUrl: './episode-player.component.css'
+  styleUrl: './episode-player.component.css',
 })
 export class EpisodePlayerComponent {
   private readonly sanitizer = inject(DomSanitizer);
@@ -20,9 +20,13 @@ export class EpisodePlayerComponent {
   protected readonly playing = signal(false);
   protected readonly watchUrl = computed(() => watchUrl(this.videoId()));
   /** Built only from the fixed youtube-nocookie.com origin and an encoded video ID. */
-  protected readonly embedUrl = computed(() => this.sanitizer.bypassSecurityTrustResourceUrl(embedUrl(this.videoId())));
+  protected readonly embedUrl = computed(() =>
+    this.sanitizer.bypassSecurityTrustResourceUrl(embedUrl(this.videoId())),
+  );
   protected readonly iframeTitle = computed(() => iframeTitle(this.episodeTitle()));
-  protected readonly playLabel = computed(() => $localize`Play episode: ${this.episodeTitle()}:episodeTitle:`);
+  protected readonly playLabel = computed(
+    () => $localize`Play episode: ${this.episodeTitle()}:episodeTitle:`,
+  );
 
   play(event: Event): void {
     event.preventDefault();

@@ -4,5 +4,5 @@ export const PAGE_TITLES = {
   studios: $localize`Studios`,
   compare: $localize`Compare studios`,
   editorialPolicy: $localize`Editorial policy`,
-  notFound: $localize`Page not found`
+  notFound: $localize`Page not found`,
 } as const;

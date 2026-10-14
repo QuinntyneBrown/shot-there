@@ -14,7 +14,9 @@ export class ButtonComponent {
 
   /** The DS .btn classes on the element, in order: the block first, then modifiers. */
   async classes(): Promise<string[]> {
-    return ((await this.root.getAttribute('class')) ?? '').split(/\s+/).filter((c) => c.startsWith('btn'));
+    return ((await this.root.getAttribute('class')) ?? '')
+      .split(/\s+/)
+      .filter((c) => c.startsWith('btn'));
   }
 
   /** True when the element carries the DS toggle class .compare-toggle. */
@@ -48,7 +50,9 @@ export class ButtonComponent {
     await this.root.scrollIntoViewIfNeeded();
     return this.root.evaluate((el) => {
       const r = el.getBoundingClientRect();
-      return r.left >= 0 && r.top >= 0 && r.right <= window.innerWidth && r.bottom <= window.innerHeight;
+      return (
+        r.left >= 0 && r.top >= 0 && r.right <= window.innerWidth && r.bottom <= window.innerHeight
+      );
     });
   }
 

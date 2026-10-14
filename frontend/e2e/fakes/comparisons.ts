@@ -18,12 +18,20 @@ export interface FakeComparedStudio {
   parking: string | null;
   loadIn: 'stairs' | 'elevator' | 'freightElevator' | null;
   loadInNote: string | null;
-  rubricScores: { category: 'value' | 'light' | 'space' | 'gear' | 'logistics' | 'condition'; score: number }[];
+  rubricScores: {
+    category: 'value' | 'light' | 'space' | 'gear' | 'logistics' | 'condition';
+    score: number;
+  }[];
   overallScore: number;
   priceLastVerified: string;
   priceStale: boolean;
   isLowestAllInCost: boolean;
-  testShots: { id: string; alt: string; caption: string | null; variants: { width: number; url: string }[] }[];
+  testShots: {
+    id: string;
+    alt: string;
+    caption: string | null;
+    variants: { width: number; url: string }[];
+  }[];
 }
 
 export interface FakeComparison {
@@ -32,10 +40,17 @@ export interface FakeComparison {
   truncated: boolean;
 }
 
-const scores = (value: number, light: number, space: number, gear: number, logistics: number, condition: number) =>
+const scores = (
+  value: number,
+  light: number,
+  space: number,
+  gear: number,
+  logistics: number,
+  condition: number,
+) =>
   (['value', 'light', 'space', 'gear', 'logistics', 'condition'] as const).map((category, i) => ({
     category,
-    score: [value, light, space, gear, logistics, condition][i]
+    score: [value, light, space, gear, logistics, condition][i],
   }));
 
 const shots = (slug: string, name: string) =>
@@ -43,7 +58,7 @@ const shots = (slug: string, name: string) =>
     id: `test-${slug}-${i + 1}`,
     alt: `${name}, test shot ${i + 1}, ${caption.toLowerCase()}.`,
     caption,
-    variants: [{ width: 480, url: `/test-images/test-${slug}-${i + 1}-480.svg` }]
+    variants: [{ width: 480, url: `/test-images/test-${slug}-${i + 1}-480.svg` }],
   }));
 
 export const JUNCTION: FakeComparedStudio = {
@@ -68,7 +83,7 @@ export const JUNCTION: FakeComparedStudio = {
   priceLastVerified: '2026-09-22',
   priceStale: false,
   isLowestAllInCost: false,
-  testShots: shots('the-junction-loft', 'The Junction Loft')
+  testShots: shots('the-junction-loft', 'The Junction Loft'),
 };
 
 export const LESLIEVILLE: FakeComparedStudio = {
@@ -90,7 +105,7 @@ export const LESLIEVILLE: FakeComparedStudio = {
   overallScore: 4.0,
   priceLastVerified: '2026-08-10',
   isLowestAllInCost: true,
-  testShots: shots('leslieville-daylight-studio', 'Leslieville Daylight Studio')
+  testShots: shots('leslieville-daylight-studio', 'Leslieville Daylight Studio'),
 };
 
 export const OSSINGTON: FakeComparedStudio = {
@@ -105,7 +120,7 @@ export const OSSINGTON: FakeComparedStudio = {
   overallScore: 3.8,
   priceLastVerified: '2026-03-02',
   priceStale: true,
-  testShots: shots('ossington-blackbox', 'Ossington Blackbox')
+  testShots: shots('ossington-blackbox', 'Ossington Blackbox'),
 };
 
 export const LIBERTY: FakeComparedStudio = {
@@ -115,12 +130,15 @@ export const LIBERTY: FakeComparedStudio = {
   allInCost2h: 185,
   hourlyRate: 75,
   overallScore: 4.2,
-  testShots: shots('liberty-cyc-house', 'Liberty Cyc House')
+  testShots: shots('liberty-cyc-house', 'Liberty Cyc House'),
 };
 
-export const comparisonOf = (studios: FakeComparedStudio[], extra: Partial<FakeComparison> = {}): FakeComparison => ({
+export const comparisonOf = (
+  studios: FakeComparedStudio[],
+  extra: Partial<FakeComparison> = {},
+): FakeComparison => ({
   studios,
   notFoundSlugs: [],
   truncated: false,
-  ...extra
+  ...extra,
 });

@@ -37,17 +37,25 @@ export class StudioListPage {
     this.tryAgainButton = page.getByRole('button', { name: 'Try again' });
     this.sortControl = page.getByRole('combobox', { name: 'Sort by' });
     this.announcer = page.locator('.cdk-live-announcer-element');
-    this.filtersSidebar = new StudioFiltersPanel(page.getByRole('complementary', { name: 'Filter studios' }));
-    this.applyFiltersButton = this.filtersSidebar.root.getByRole('button', { name: 'Apply filters' });
+    this.filtersSidebar = new StudioFiltersPanel(
+      page.getByRole('complementary', { name: 'Filter studios' }),
+    );
+    this.applyFiltersButton = this.filtersSidebar.root.getByRole('button', {
+      name: 'Apply filters',
+    });
     this.noMatches = page.getByRole('heading', { name: 'No studios match these filters' });
     this.clearFiltersButton = page.getByRole('main').getByRole('button', { name: 'Clear filters' });
     // The open dialog is modal, so the page behind it (and this button) leaves the accessibility tree.
-    this.filtersButton = page.getByRole('main', { includeHidden: true }).getByRole('button', { name: /^Filters/, includeHidden: true });
+    this.filtersButton = page
+      .getByRole('main', { includeHidden: true })
+      .getByRole('button', { name: /^Filters/, includeHidden: true });
     this.filtersDialog = page.getByRole('dialog', { name: 'Filters' });
     this.dialogFilters = new StudioFiltersPanel(this.filtersDialog);
     this.dialogShowButton = this.filtersDialog.getByRole('button', { name: /^Show/ });
     this.dialogClearAllButton = this.filtersDialog.getByRole('button', { name: 'Clear all' });
-    this.dialogCostError = this.filtersDialog.getByText('The minimum must be lower than the maximum');
+    this.dialogCostError = this.filtersDialog.getByText(
+      'The minimum must be lower than the maximum',
+    );
   }
 
   async useDesktopWidth(): Promise<void> {
@@ -87,7 +95,9 @@ export class StudioListPage {
   }
 
   compareToggle(name: string): Locator {
-    return this.page.getByRole('main').getByRole('button', { name: new RegExp(`^(Compare|Remove) ${name}$`) });
+    return this.page
+      .getByRole('main')
+      .getByRole('button', { name: new RegExp(`^(Compare|Remove) ${name}$`) });
   }
 
   async reload(): Promise<void> {

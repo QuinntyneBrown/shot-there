@@ -4,7 +4,7 @@ import { Component, inject } from '@angular/core';
 @Component({
   selector: 'st-skip-link',
   templateUrl: './skip-link.component.html',
-  styleUrl: './skip-link.component.css'
+  styleUrl: './skip-link.component.css',
 })
 export class SkipLinkComponent {
   private readonly document = inject(DOCUMENT);

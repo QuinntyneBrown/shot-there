@@ -21,18 +21,27 @@ export class SegmentedControlComponent {
   /** Every option button's name, type and data-text, in order. */
   items(): Promise<{ name: string; type: string | null; dataText: string | null }[]> {
     return this.root.getByRole('button').evaluateAll((buttons) =>
-      buttons.map((b) => ({ name: (b as HTMLElement).innerText.trim(), type: b.getAttribute('type'), dataText: b.getAttribute('data-text') })),
+      buttons.map((b) => ({
+        name: (b as HTMLElement).innerText.trim(),
+        type: b.getAttribute('type'),
+        dataText: b.getAttribute('data-text'),
+      })),
     );
   }
 
   async classes(): Promise<string[]> {
-    return ((await this.root.getAttribute('class')) ?? '').split(/\s+/).filter((c) => c.startsWith('segmented'));
+    return ((await this.root.getAttribute('class')) ?? '')
+      .split(/\s+/)
+      .filter((c) => c.startsWith('segmented'));
   }
 
   /** An option's text colour as rgb(r, g, b) and font weight. */
   async optionLook(name: string): Promise<{ colour: string; weight: number }> {
     const option = this.option(name);
-    return { colour: await option.evaluate(colourOf, 'color'), weight: await option.evaluate((el) => Number(getComputedStyle(el).fontWeight)) };
+    return {
+      colour: await option.evaluate(colourOf, 'color'),
+      weight: await option.evaluate((el) => Number(getComputedStyle(el).fontWeight)),
+    };
   }
 
   /** WCAG contrast of an option's text, or of its focus ring, against the ground behind it. */
@@ -61,7 +70,12 @@ export class SegmentedControlComponent {
     return this.root.getByRole('button').evaluateAll((buttons) =>
       buttons.every((b) => {
         const r = b.getBoundingClientRect();
-        return r.left >= 0 && r.top >= 0 && r.right <= window.innerWidth && r.bottom <= window.innerHeight;
+        return (
+          r.left >= 0 &&
+          r.top >= 0 &&
+          r.right <= window.innerWidth &&
+          r.bottom <= window.innerHeight
+        );
       }),
     );
   }

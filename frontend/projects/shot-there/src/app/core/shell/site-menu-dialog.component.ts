@@ -9,7 +9,7 @@ import { PRIMARY_NAV_LINKS } from './primary-nav-links';
   selector: 'st-site-menu-dialog',
   imports: [RouterLink],
   templateUrl: './site-menu-dialog.component.html',
-  styleUrl: './site-menu-dialog.component.css'
+  styleUrl: './site-menu-dialog.component.css',
 })
 export class SiteMenuDialogComponent {
   private readonly dialogRef = inject(DialogRef);

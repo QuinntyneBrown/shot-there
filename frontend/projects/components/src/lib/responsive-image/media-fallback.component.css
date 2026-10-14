@@ -1,9 +1,27 @@
 /* The rest of the look is the global .media-fallback utility (ICD-002 §11.1). */
-:host { overflow: hidden; }
+:host {
+  overflow: hidden;
+}
 
 /* In a shot the alt text is a caption clamped to six lines (CRD shot-grid D-7). */
-:host-context(.shot) span { font: var(--text-caption); display: -webkit-box; -webkit-line-clamp: 6; -webkit-box-orient: vertical; overflow: hidden; }
+:host-context(.shot) span {
+  font: var(--text-caption);
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
 /* A failed episode still sits on the poster's inverse ground, its content at the top (DS .video-poster .media-fallback). */
-:host-context(.video-poster) { background: var(--color-bg-inverse); color: var(--color-fg-inverse); align-content: start; padding-top: var(--space-6); }
+:host-context(.video-poster) {
+  background: var(--color-bg-inverse);
+  color: var(--color-fg-inverse);
+  align-content: start;
+  padding-top: var(--space-6);
+}
 /* On the poster the episode title is clamped to two lines, so it never runs under the pill (CRD video-poster D-1). */
-:host-context(.video-poster) span { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+:host-context(.video-poster) span {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

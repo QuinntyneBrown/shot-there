@@ -1,0 +1,10 @@
+<main class="container cluster">
+  <button type="button" (click)="success()">Raise success</button>
+  <button type="button" (click)="failure()">Raise failure</button>
+  <button type="button" (click)="info(1)">Raise one</button>
+  <button type="button" (click)="info(2)">Raise two</button>
+  <button type="button" (click)="info(3)">Raise three</button>
+  <button type="button" (click)="info(4)">Raise four</button>
+  <st-activation-log [entries]="log()" />
+</main>
+<st-toast-region />

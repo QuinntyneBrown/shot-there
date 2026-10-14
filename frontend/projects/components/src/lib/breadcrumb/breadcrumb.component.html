@@ -1,0 +1,19 @@
+<nav [attr.aria-label]="label()">
+  <ol class="breadcrumb" [class.breadcrumb--collapse]="collapse()">
+    @for (item of items(); track $index; let last = $last) {
+      <li>
+        @if (last && current()) {
+          @if (loading()) {
+            <span class="visually-hidden">{{ item.label }}</span><st-skeleton />
+          } @else {
+            <span aria-current="page">{{ item.label }}</span>
+          }
+        } @else if (item.link) {
+          <a [routerLink]="item.link">{{ item.label }}</a>
+        } @else {
+          <span>{{ item.label }}</span>
+        }
+      </li>
+    }
+  </ol>
+</nav>

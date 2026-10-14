@@ -16,7 +16,9 @@ export class LinkComponent {
 
   /** The DS link modifiers on the element (.link--standalone, .link--external). */
   async classes(): Promise<string[]> {
-    return ((await this.root.getAttribute('class')) ?? '').split(/\s+/).filter((c) => c.startsWith('link--'));
+    return ((await this.root.getAttribute('class')) ?? '')
+      .split(/\s+/)
+      .filter((c) => c.startsWith('link--'));
   }
 
   /** Every class on the element, if any. */
@@ -95,7 +97,9 @@ export class LinkComponent {
     await this.root.scrollIntoViewIfNeeded();
     return this.root.evaluate((el) => {
       const r = el.getBoundingClientRect();
-      return r.left >= 0 && r.top >= 0 && r.right <= window.innerWidth && r.bottom <= window.innerHeight;
+      return (
+        r.left >= 0 && r.top >= 0 && r.right <= window.innerWidth && r.bottom <= window.innerHeight
+      );
     });
   }
 

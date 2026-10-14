@@ -20,6 +20,35 @@ import { VideoPosterFailedComponent } from './video-poster/video-poster-failed.c
 import { VideoPosterDefaultComponent } from './video-poster/video-poster-default.component';
 import { ResponsiveImageFailedComponent } from './responsive-image/responsive-image-failed.component';
 import { ResponsiveImageDefaultComponent } from './responsive-image/responsive-image-default.component';
+import { ToastShellComponent } from './toast/toast-shell.component';
+import { AlertStatesComponent } from './alert/alert-states.component';
+import { PageHeaderStatesComponent } from './page-header/page-header-states.component';
+import { SectionLinksDefaultComponent } from './section-links/section-links-default.component';
+import { BreadcrumbStatesComponent } from './breadcrumb/breadcrumb-states.component';
+import { SiteFooterDefaultComponent } from './site-footer/site-footer-default.component';
+import { SiteHeaderDefaultComponent } from './site-header/site-header-default.component';
+import { CheckboxStatesComponent } from './checkbox/checkbox-states.component';
+import { SelectStatesComponent } from './select/select-states.component';
+import { TextareaStatesComponent } from './textarea/textarea-states.component';
+import { TextFieldStatesComponent } from './text-field/text-field-states.component';
+import { ResultCountDefaultComponent } from './result-count/result-count-default.component';
+import { StatTileLoadingComponent } from './stat-tile/stat-tile-loading.component';
+import { StatTileDashboardComponent } from './stat-tile/stat-tile-dashboard.component';
+import { DisclosureDefaultComponent } from './disclosure/disclosure-default.component';
+import { ScoreDefaultComponent } from './score/score-default.component';
+import { PriceBlockStatesComponent } from './price-block/price-block-states.component';
+import { DescriptionListPricingComponent } from './description-list/description-list-pricing.component';
+import { SkipLinkDefaultComponent } from './skip-link/skip-link-default.component';
+import { ErrorPageServerErrorComponent } from './error-page/error-page-server-error.component';
+import { ErrorPageNotFoundComponent } from './error-page/error-page-not-found.component';
+import { EmptyStateStatesComponent } from './empty-state/empty-state-states.component';
+import { InlineMessageStatesComponent } from './inline-message/inline-message-states.component';
+import { TagListStatesComponent } from './tag-list/tag-list-states.component';
+import { StatusVariantsComponent } from './status/status-variants.component';
+import { BadgeTonesComponent } from './badge/badge-tones.component';
+import { ProgressStatesComponent } from './progress/progress-states.component';
+import { SkeletonShapesComponent } from './skeleton/skeleton-shapes.component';
+import { SpinnerDefaultComponent } from './spinner/spinner-default.component';
 import { SegmentedDefaultComponent } from './segmented/segmented-default.component';
 import { FilterTriggerStatesComponent } from './filter-trigger/filter-trigger-states.component';
 import { LinkVariantsComponent } from './link/link-variants.component';
@@ -74,7 +103,40 @@ export const routes: Routes = [
   { path: 'filter/performance', component: FilterPerformanceComponent },
   { path: 'button-group/performance', component: ButtonGroupPerformanceComponent },
   { path: 'responsive-image/performance', component: ResponsiveImagePerformanceComponent },
-  { path: 'responsive-image/performance-failed', component: ResponsiveImagePerformanceComponent, data: { failed: 2 } },
+  {
+    path: 'responsive-image/performance-failed',
+    component: ResponsiveImagePerformanceComponent,
+    data: { failed: 2 },
+  },
+  { path: 'spinner/default', component: SpinnerDefaultComponent },
+  { path: 'skeleton/shapes', component: SkeletonShapesComponent },
+  { path: 'progress/states', component: ProgressStatesComponent },
+  { path: 'badge/tones', component: BadgeTonesComponent },
+  { path: 'status/variants', component: StatusVariantsComponent },
+  { path: 'tag-list/states', component: TagListStatesComponent },
+  { path: 'inline-message/states', component: InlineMessageStatesComponent },
+  { path: 'empty-state/states', component: EmptyStateStatesComponent },
+  { path: 'error-page/not-found', component: ErrorPageNotFoundComponent },
+  { path: 'error-page/server-error', component: ErrorPageServerErrorComponent },
+  { path: 'skip-link/default', component: SkipLinkDefaultComponent },
+  { path: 'description-list/pricing', component: DescriptionListPricingComponent },
+  { path: 'price-block/states', component: PriceBlockStatesComponent },
+  { path: 'score/default', component: ScoreDefaultComponent },
+  { path: 'disclosure/default', component: DisclosureDefaultComponent },
+  { path: 'stat-tile/dashboard', component: StatTileDashboardComponent },
+  { path: 'stat-tile/loading', component: StatTileLoadingComponent },
+  { path: 'result-count/default', component: ResultCountDefaultComponent },
+  { path: 'text-field/states', component: TextFieldStatesComponent },
+  { path: 'textarea/states', component: TextareaStatesComponent },
+  { path: 'select/states', component: SelectStatesComponent },
+  { path: 'checkbox/states', component: CheckboxStatesComponent },
+  { path: 'site-header/default', component: SiteHeaderDefaultComponent },
+  { path: 'site-footer/default', component: SiteFooterDefaultComponent },
+  { path: 'breadcrumb/states', component: BreadcrumbStatesComponent },
+  { path: 'section-links/default', component: SectionLinksDefaultComponent },
+  { path: 'page-header/states', component: PageHeaderStatesComponent },
+  { path: 'alert/states', component: AlertStatesComponent },
+  { path: 'toast/shell', component: ToastShellComponent },
   { path: 'video-poster/column', component: VideoPosterColumnComponent },
   { path: 'video-poster/no-video', component: VideoPosterNoVideoComponent },
   { path: 'video-poster/performance', component: VideoPosterColumnComponent },

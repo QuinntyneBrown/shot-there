@@ -7,7 +7,7 @@ import { APP_PATHS } from '../../core/routing/app-paths';
   selector: 'st-not-found-page',
   imports: [RouterLink],
   templateUrl: './not-found-page.component.html',
-  styleUrl: './not-found-page.component.css'
+  styleUrl: './not-found-page.component.css',
 })
 export class NotFoundPageComponent {
   protected readonly homePath = `/${APP_PATHS.home}`;

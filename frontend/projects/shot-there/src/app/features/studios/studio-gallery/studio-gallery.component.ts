@@ -11,7 +11,7 @@ import { imageSrc, imageSrcset } from '../studio-page/image-srcset';
   selector: 'st-studio-gallery',
   imports: [FallbackImageDirective],
   templateUrl: './studio-gallery.component.html',
-  styleUrl: './studio-gallery.component.css'
+  styleUrl: './studio-gallery.component.css',
 })
 export class StudioGalleryComponent {
   private readonly dialog = inject(Dialog);
@@ -27,7 +27,7 @@ export class StudioGalleryComponent {
       ariaDescribedBy: 'lightbox-caption',
       width: '100%',
       height: '100%',
-      maxWidth: '100%'
+      maxWidth: '100%',
     });
   }
 }

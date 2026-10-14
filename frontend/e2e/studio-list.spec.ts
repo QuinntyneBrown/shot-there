@@ -1,4 +1,8 @@
-import { givenStudioListFails, givenStudioListPending, givenStudios } from './fakes/fake-studios-api';
+import {
+  givenStudioListFails,
+  givenStudioListPending,
+  givenStudios,
+} from './fakes/fake-studios-api';
 import { PUBLISHED_STUDIOS } from './fakes/studio-summaries';
 import { expect, test } from './fakes/test';
 import { StudioListPage } from './pages/studio-list.page';
@@ -17,7 +21,9 @@ test.describe('Studio list', () => {
     await expect(page).toHaveTitle('Studios · ShotThere');
   });
 
-  test('shows name, neighbourhood, review date, all-in cost and score on each card', async ({ page }) => {
+  test('shows name, neighbourhood, review date, all-in cost and score on each card', async ({
+    page,
+  }) => {
     // Given seven published studios
     await givenStudios(page, PUBLISHED_STUDIOS);
     const list = new StudioListPage(page);
@@ -28,7 +34,10 @@ test.describe('Studio list', () => {
     await expect(card).toContainText('Kensington Market · Reviewed 3 Oct 2026');
     await expect(card).toContainText('All-in 2 h$80.00');
     await expect(card).toContainText('Score3.2 out of 5');
-    await expect(list.cardLink('Kensington Window Room')).toHaveAttribute('href', '/studios/kensington-window-room');
+    await expect(list.cardLink('Kensington Window Room')).toHaveAttribute(
+      'href',
+      '/studios/kensington-window-room',
+    );
     await expect(card).not.toContainText('Prices may be out of date');
   });
 

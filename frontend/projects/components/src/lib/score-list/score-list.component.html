@@ -1,0 +1,10 @@
+<ul class="score-list" [attr.aria-label]="label()">
+  @for (score of scores(); track score.label) {
+    <li class="score">
+      <span class="score__label" aria-hidden="true">{{ score.label }}</span>
+      <span class="pips" aria-hidden="true">@for (pip of pips(); track pip) {<i [attr.data-on]="pip < score.value ? '' : null"></i>}</span>
+      <span class="score__value" aria-hidden="true">{{ score.value }}</span>
+      <span class="visually-hidden">{{ spoken(score) }}</span>
+    </li>
+  }
+</ul>

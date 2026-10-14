@@ -9,7 +9,7 @@ import { SiteMenuDialogComponent } from './site-menu-dialog.component';
   selector: 'st-header',
   imports: [RouterLink, RouterLinkActive],
   templateUrl: './header.component.html',
-  styleUrl: './header.component.css'
+  styleUrl: './header.component.css',
 })
 export class HeaderComponent {
   private readonly dialog = inject(Dialog);
@@ -18,7 +18,12 @@ export class HeaderComponent {
 
   openMenu(): void {
     this.menuOpen.set(true);
-    const ref = this.dialog.open(SiteMenuDialogComponent, { ariaLabelledBy: 'site-menu-title', width: '100%', height: '100%', maxWidth: '100%' });
+    const ref = this.dialog.open(SiteMenuDialogComponent, {
+      ariaLabelledBy: 'site-menu-title',
+      width: '100%',
+      height: '100%',
+      maxWidth: '100%',
+    });
     ref.closed.subscribe(() => this.menuOpen.set(false));
   }
 }

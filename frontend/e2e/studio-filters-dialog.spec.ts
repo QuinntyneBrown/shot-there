@@ -20,7 +20,9 @@ test.describe('Studio filters dialog', () => {
     await expect(list.filtersButton).toHaveAccessibleName('Filters, 2 active');
   });
 
-  test('opens full height, counts matches as filters change and applies them with Show', async ({ page }) => {
+  test('opens full height, counts matches as filters change and applies them with Show', async ({
+    page,
+  }) => {
     // Given the studio list at phone width
     await givenStudios(page, PUBLISHED_STUDIOS);
     const list = new StudioListPage(page);

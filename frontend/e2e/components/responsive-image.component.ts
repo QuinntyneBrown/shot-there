@@ -32,7 +32,11 @@ export class ResponsiveImageComponent {
   /** The <source> elements in document order. */
   sources(): Promise<PictureSource[]> {
     return this.picture.locator('source').evaluateAll((sources) =>
-      sources.map((s) => ({ type: s.getAttribute('type'), srcset: s.getAttribute('srcset'), sizes: s.getAttribute('sizes') })),
+      sources.map((s) => ({
+        type: s.getAttribute('type'),
+        srcset: s.getAttribute('srcset'),
+        sizes: s.getAttribute('sizes'),
+      })),
     );
   }
 
@@ -40,7 +44,9 @@ export class ResponsiveImageComponent {
   imageAttributes(): Promise<Record<string, string | null>> {
     return this.image.evaluate((img) =>
       Object.fromEntries(
-        ['src', 'srcset', 'sizes', 'alt', 'width', 'height', 'loading', 'fetchpriority'].map((name) => [name, img.getAttribute(name)]),
+        ['src', 'srcset', 'sizes', 'alt', 'width', 'height', 'loading', 'fetchpriority'].map(
+          (name) => [name, img.getAttribute(name)],
+        ),
       ),
     );
   }
@@ -52,14 +58,22 @@ export class ResponsiveImageComponent {
 
   /** The path of the URL the browser chose to load, once it has loaded. */
   async loadedUrl(): Promise<string> {
-    await this.image.evaluate((img: HTMLImageElement) => (img.complete ? null : new Promise((done) => img.addEventListener('load', done, { once: true }))));
+    await this.image.evaluate((img: HTMLImageElement) =>
+      img.complete
+        ? null
+        : new Promise((done) => img.addEventListener('load', done, { once: true })),
+    );
     return this.image.evaluate((img: HTMLImageElement) => new URL(img.currentSrc).pathname);
   }
 
   /** The placeholder's text and rendered size in whole CSS pixels. */
   async placeholderBox(): Promise<{ text: string } & Box> {
     const box = await this.placeholder.boundingBox();
-    return { text: (await this.placeholder.innerText()).trim(), width: Math.round(box?.width ?? 0), height: Math.round(box?.height ?? 0) };
+    return {
+      text: (await this.placeholder.innerText()).trim(),
+      width: Math.round(box?.width ?? 0),
+      height: Math.round(box?.height ?? 0),
+    };
   }
 
   /** The image's rendered size in whole CSS pixels. */

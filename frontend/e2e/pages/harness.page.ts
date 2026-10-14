@@ -10,7 +10,8 @@ export interface HeldRequest {
   status?: number;
 }
 
-const PLACEHOLDER_SVG = '<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800"><rect width="1200" height="800" fill="#ccc"/></svg>';
+const PLACEHOLDER_SVG =
+  '<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800"><rect width="1200" height="800" fill="#ccc"/></svg>';
 
 /** A components-harness route: one library component state (ICD-002 D-12). */
 export class HarnessPage {
@@ -31,7 +32,13 @@ export class HarnessPage {
    */
   async open(
     path: string,
-    options: { width?: number; height?: number; theme?: HarnessTheme; hydrationDelayMs?: number; held?: HeldRequest } = {},
+    options: {
+      width?: number;
+      height?: number;
+      theme?: HarnessTheme;
+      hydrationDelayMs?: number;
+      held?: HeldRequest;
+    } = {},
   ): Promise<void> {
     const { width = 1280, height = 800, theme = 'light', hydrationDelayMs = 0, held } = options;
     if (hydrationDelayMs > 0) {
@@ -41,17 +48,23 @@ export class HarnessPage {
         await route.continue();
       });
     }
-    await this.page.route('**/test-images/**', (route) => route.fulfill({ contentType: 'image/svg+xml', body: PLACEHOLDER_SVG }));
+    await this.page.route('**/test-images/**', (route) =>
+      route.fulfill({ contentType: 'image/svg+xml', body: PLACEHOLDER_SVG }),
+    );
     // Every external site (the YouTube player, booking sites, maps, permit sources) is a stub page,
     // including in tabs the page opens.
-    await this.page.context().route('https://**', (route) =>
-      route.fulfill({ contentType: 'text/html', body: '<!doctype html><title>external</title>' }),
-    );
+    await this.page
+      .context()
+      .route('https://**', (route) =>
+        route.fulfill({ contentType: 'text/html', body: '<!doctype html><title>external</title>' }),
+      );
     if (held) {
       // Registered last, so it wins over the placeholder route for the URLs it matches.
       await this.page.route(held.url, async (route) => {
         await new Promise((done) => setTimeout(done, held.ms));
-        await (held.status ? route.fulfill({ status: held.status, body: '' }) : route.fulfill({ contentType: 'image/svg+xml', body: PLACEHOLDER_SVG }));
+        await (held.status
+          ? route.fulfill({ status: held.status, body: '' })
+          : route.fulfill({ contentType: 'image/svg+xml', body: PLACEHOLDER_SVG }));
       });
     }
     await this.page.setViewportSize({ width, height });
@@ -66,7 +79,10 @@ export class HarnessPage {
 
   /** What the harness's listeners received, oldest first: each line names one event (`click: Save changes`). */
   activations(): Promise<string[]> {
-    return this.page.getByRole('log', { name: 'Activations' }).getByRole('listitem').allInnerTexts();
+    return this.page
+      .getByRole('log', { name: 'Activations' })
+      .getByRole('listitem')
+      .allInnerTexts();
   }
 
   /** The harness's own status line (role="status"), where a route reports what the component changed. */
@@ -80,7 +96,9 @@ export class HarnessPage {
   }
 
   hasHorizontalScroll(): Promise<boolean> {
-    return this.page.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth);
+    return this.page.evaluate(
+      () => document.documentElement.scrollWidth > document.documentElement.clientWidth,
+    );
   }
 
   /** A colour token's current value as `rgb(r, g, b)`, for comparing with computed colours. */
@@ -106,7 +124,8 @@ export class HarnessPage {
       stops.push(
         await this.page.evaluate(() => {
           const el = document.activeElement;
-          const name = el?.getAttribute('aria-label') ?? (el as HTMLElement | null)?.innerText ?? '';
+          const name =
+            el?.getAttribute('aria-label') ?? (el as HTMLElement | null)?.innerText ?? '';
           return `${el?.tagName.toLowerCase()} ${name.replace(/\s+/g, ' ').trim()}`;
         }),
       );
@@ -127,7 +146,9 @@ export class HarnessPage {
         new Promise<{ lcp: number; cls: number }>((resolve) => {
           let lcp = 0;
           let cls = 0;
-          new PerformanceObserver((list) => list.getEntries().forEach((e) => (lcp = e.startTime))).observe({
+          new PerformanceObserver((list) =>
+            list.getEntries().forEach((e) => (lcp = e.startTime)),
+          ).observe({
             type: 'largest-contentful-paint',
             buffered: true,
           });
@@ -149,7 +170,9 @@ export class HarnessPage {
   async interactionLatency(interaction: () => Promise<void>): Promise<number> {
     // Measure a settled page, as a visitor's first tap meets it: loaded, hydrated and idle.
     await this.page.waitForLoadState('networkidle');
-    await this.page.evaluate(() => new Promise((done) => requestIdleCallback(() => done(null), { timeout: 2000 })));
+    await this.page.evaluate(
+      () => new Promise((done) => requestIdleCallback(() => done(null), { timeout: 2000 })),
+    );
     const cdp = await this.page.context().newCDPSession(this.page);
     await cdp.send('Emulation.setCPUThrottlingRate', { rate: 4 });
     await this.page.evaluate(() => {
@@ -161,11 +184,17 @@ export class HarnessPage {
             w.__longestInteraction = Math.max(w.__longestInteraction, e.duration);
           }
         }),
-      ).observe({ type: 'event', durationThreshold: 16, buffered: true } as PerformanceObserverInit);
+      ).observe({
+        type: 'event',
+        durationThreshold: 16,
+        buffered: true,
+      } as PerformanceObserverInit);
     });
     await interaction();
     await this.page.waitForTimeout(500);
-    const latency = await this.page.evaluate(() => (window as unknown as { __longestInteraction: number }).__longestInteraction);
+    const latency = await this.page.evaluate(
+      () => (window as unknown as { __longestInteraction: number }).__longestInteraction,
+    );
     await cdp.send('Emulation.setCPUThrottlingRate', { rate: 1 });
     return latency;
   }
@@ -188,7 +217,11 @@ export class HarnessPage {
   }
 
   async accessibilityViolations(): Promise<string[]> {
-    const results = await new AxeBuilder({ page: this.page }).withTags(['wcag2a', 'wcag2aa', 'wcag21aa', 'wcag22aa']).analyze();
-    return results.violations.map((v) => `${v.id}: ${v.nodes.map((n) => n.target.join(' ')).join(', ')}`);
+    const results = await new AxeBuilder({ page: this.page })
+      .withTags(['wcag2a', 'wcag2aa', 'wcag21aa', 'wcag22aa'])
+      .analyze();
+    return results.violations.map(
+      (v) => `${v.id}: ${v.nodes.map((n) => n.target.join(' ')).join(', ')}`,
+    );
   }
 }

@@ -20,16 +20,25 @@ export function contrastOf(el: Element, part: ColourPart): number {
     return 0.2126 * lr + 0.7152 * lg + 0.0722 * lb;
   };
   const style = getComputedStyle(el);
-  const foreground = { text: style.color, border: style.borderTopColor, outline: style.outlineColor, stroke: style.stroke }[part];
+  const foreground = {
+    text: style.color,
+    border: style.borderTopColor,
+    outline: style.outlineColor,
+    stroke: style.stroke,
+  }[part];
   let ground: Element | null = part === 'text' ? el : el.parentElement;
-  while (ground && rgba(getComputedStyle(ground).backgroundColor)[3] === 0) ground = ground.parentElement;
+  while (ground && rgba(getComputedStyle(ground).backgroundColor)[3] === 0)
+    ground = ground.parentElement;
   const fg = luminance(rgba(foreground));
   const bg = luminance(rgba(getComputedStyle(ground ?? document.documentElement).backgroundColor));
   return (Math.max(fg, bg) + 0.05) / (Math.min(fg, bg) + 0.05);
 }
 
 /** A computed colour as `rgb(r, g, b)`. Self-contained, for `locator.evaluate`. */
-export function colourOf(el: Element, property: 'color' | 'backgroundColor' | 'borderTopColor' | 'outlineColor' | 'stroke'): string {
+export function colourOf(
+  el: Element,
+  property: 'color' | 'backgroundColor' | 'borderTopColor' | 'outlineColor' | 'stroke',
+): string {
   const ctx = document.createElement('canvas').getContext('2d')!;
   ctx.fillStyle = getComputedStyle(el)[property];
   ctx.fillRect(0, 0, 1, 1);

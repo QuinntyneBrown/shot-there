@@ -8,7 +8,7 @@ import { toStudioPricingView } from './studio-pricing.view-model';
   selector: 'st-studio-pricing',
   imports: [CurrencyPipe, DatePipe],
   templateUrl: './studio-pricing.component.html',
-  styleUrl: './studio-pricing.component.css'
+  styleUrl: './studio-pricing.component.css',
 })
 export class StudioPricingComponent {
   readonly pricing = input.required<StudioPricingDto>();

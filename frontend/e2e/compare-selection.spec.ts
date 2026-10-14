@@ -19,8 +19,13 @@ test.describe('Selecting studios to compare', () => {
     // Then the bar shows one selected and the card's control becomes Remove
     await expect(bar.count).toHaveText('1 selected');
     await expect(bar.names).toHaveText('Kensington Window Room');
-    await expect(list.compareToggle('Kensington Window Room')).toHaveAccessibleName('Remove Kensington Window Room');
-    await expect(list.compareToggle('Kensington Window Room')).toHaveAttribute('aria-pressed', 'true');
+    await expect(list.compareToggle('Kensington Window Room')).toHaveAccessibleName(
+      'Remove Kensington Window Room',
+    );
+    await expect(list.compareToggle('Kensington Window Room')).toHaveAttribute(
+      'aria-pressed',
+      'true',
+    );
   });
 
   test('needs at least two studios before it will compare', async ({ page }) => {
@@ -54,9 +59,15 @@ test.describe('Selecting studios to compare', () => {
     await list.compareToggle('Ossington Blackbox').click();
     // Then it is refused, a message states the maximum, and it is announced
     await expect(bar.count).toHaveText('4 selected');
-    await expect(bar.limitToast).toContainText('Remove one from the bar to add Ossington Blackbox.');
-    await expect(list.compareToggle('Ossington Blackbox')).toHaveAccessibleName('Compare Ossington Blackbox');
-    await expect(list.announcer).toHaveText('You can compare up to 4 studios. Remove one from the bar to add Ossington Blackbox.');
+    await expect(bar.limitToast).toContainText(
+      'Remove one from the bar to add Ossington Blackbox.',
+    );
+    await expect(list.compareToggle('Ossington Blackbox')).toHaveAccessibleName(
+      'Compare Ossington Blackbox',
+    );
+    await expect(list.announcer).toHaveText(
+      'You can compare up to 4 studios. Remove one from the bar to add Ossington Blackbox.',
+    );
   });
 
   test('opens the comparison of the selected studios', async ({ page }) => {
@@ -70,7 +81,9 @@ test.describe('Selecting studios to compare', () => {
     // When the visitor activates Compare in the bar
     await bar.compareButton.click();
     // Then the comparison page opens for those two
-    await expect.poll(() => list.currentPath()).toBe('/compare?studios=the-junction-loft,leslieville-daylight-studio');
+    await expect
+      .poll(() => list.currentPath())
+      .toBe('/compare?studios=the-junction-loft,leslieville-daylight-studio');
   });
 
   test('keeps the selection when the page reloads', async ({ page }) => {
@@ -85,7 +98,10 @@ test.describe('Selecting studios to compare', () => {
     await list.reload();
     // Then the selection is still there
     await expect(bar.count).toHaveText('2 selected');
-    await expect(list.compareToggle('Riverside Rooftop Studio')).toHaveAttribute('aria-pressed', 'true');
+    await expect(list.compareToggle('Riverside Rooftop Studio')).toHaveAttribute(
+      'aria-pressed',
+      'true',
+    );
   });
 
   test('clears the selection from the bar', async ({ page }) => {
@@ -112,10 +128,14 @@ test.describe('Selecting studios to compare', () => {
     await studio.compareToggle('The Junction Loft').click();
     // Then the bar shows it
     await expect(bar.count).toHaveText('1 selected');
-    await expect(studio.compareToggle('The Junction Loft')).toHaveAccessibleName('Remove The Junction Loft');
+    await expect(studio.compareToggle('The Junction Loft')).toHaveAccessibleName(
+      'Remove The Junction Loft',
+    );
   });
 
-  test('pins the bar to the bottom on a phone without covering the end of the page', async ({ page }) => {
+  test('pins the bar to the bottom on a phone without covering the end of the page', async ({
+    page,
+  }) => {
     // Given a selection at phone width
     await givenStudios(page, PUBLISHED_STUDIOS);
     const list = new StudioListPage(page);

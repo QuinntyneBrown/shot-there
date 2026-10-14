@@ -21,7 +21,9 @@ export class VideoPosterComponent {
     this.still = new ResponsiveImageComponent(this.poster);
     this.fallback = this.poster.locator(':scope > .media-fallback');
     this.fallbackText = this.fallback.locator(':scope > span');
-    this.player = scope.locator('iframe.video-frame').and(scope.getByTitle(playerTitle, { exact: true }));
+    this.player = scope
+      .locator('iframe.video-frame')
+      .and(scope.getByTitle(playerTitle, { exact: true }));
   }
 
   /** The poster's rendered width and height in whole CSS pixels. */
@@ -81,7 +83,12 @@ export class VideoPosterComponent {
   /** The iframe attributes that decide what the player may do. */
   playerAttributes(): Promise<Record<string, string | null>> {
     return this.player.evaluate((frame) =>
-      Object.fromEntries(['src', 'title', 'allow', 'allowfullscreen', 'referrerpolicy'].map((name) => [name, frame.getAttribute(name)])),
+      Object.fromEntries(
+        ['src', 'title', 'allow', 'allowfullscreen', 'referrerpolicy'].map((name) => [
+          name,
+          frame.getAttribute(name),
+        ]),
+      ),
     );
   }
 

@@ -1,17 +1,101 @@
 /* Sticky at the end of the shell: pinned to the bottom edge while scrolling, yet it takes its own room, so it never covers the end of the page. */
-:host { position: sticky; bottom: 0; z-index: var(--z-sticky); }
-.compare-bar { background: var(--color-bg-surface-raised); border-top: var(--border-width-hairline) solid var(--color-border-default); box-shadow: var(--shadow-3); padding: var(--space-3) var(--layout-margin) calc(var(--space-3) + env(safe-area-inset-bottom)); }
-.compare-bar__inner { max-width: calc(var(--layout-container-max) - 2 * var(--layout-margin)); margin-inline: auto; display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2) var(--space-4); }
-.compare-bar__status { flex: 1 1 12rem; min-width: 0; display: flex; flex-direction: column; }
-.compare-bar__count { font: var(--text-label); font-size: var(--font-size-md); }
-.compare-bar__hint, .compare-bar__names { font: var(--text-body-sm); color: var(--color-fg-muted); }
-.compare-bar__names { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.compare-bar__actions { display: flex; gap: var(--space-2); }
+:host {
+  position: sticky;
+  bottom: 0;
+  z-index: var(--z-sticky);
+}
+.compare-bar {
+  background: var(--color-bg-surface-raised);
+  border-top: var(--border-width-hairline) solid var(--color-border-default);
+  box-shadow: var(--shadow-3);
+  padding: var(--space-3) var(--layout-margin) calc(var(--space-3) + env(safe-area-inset-bottom));
+}
+.compare-bar__inner {
+  max-width: calc(var(--layout-container-max) - 2 * var(--layout-margin));
+  margin-inline: auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2) var(--space-4);
+}
+.compare-bar__status {
+  flex: 1 1 12rem;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+.compare-bar__count {
+  font: var(--text-label);
+  font-size: var(--font-size-md);
+}
+.compare-bar__hint,
+.compare-bar__names {
+  font: var(--text-body-sm);
+  color: var(--color-fg-muted);
+}
+.compare-bar__names {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.compare-bar__actions {
+  display: flex;
+  gap: var(--space-2);
+}
 /* Just above the bar: a refusal only happens while the bar shows a full selection. */
-.toast-region { position: absolute; z-index: var(--z-toast); bottom: calc(100% + var(--space-3)); left: var(--space-4); right: var(--space-4); display: flex; flex-direction: column; gap: var(--space-3); pointer-events: none; }
-@media (min-width: 36rem) { .toast-region { left: auto; width: 24rem; right: var(--space-6); } }
-.toast { pointer-events: auto; display: flex; gap: var(--space-3); align-items: flex-start; padding: var(--space-4); background: var(--color-bg-inverse); color: var(--color-fg-inverse); border-radius: var(--radius-md); box-shadow: var(--shadow-3); }
-.toast__body { flex: 1; display: flex; flex-direction: column; gap: var(--space-0-5); }
-.toast__title { font: var(--text-label); font-size: var(--font-size-md); overflow-wrap: anywhere; }
-.toast__text { font: var(--text-body-sm); opacity: 0.9; overflow-wrap: anywhere; }
-.icon { width: var(--icon-size-md); height: var(--icon-size-md); flex: none; margin-top: 0.1rem; fill: none; stroke: currentColor; stroke-width: var(--icon-stroke); stroke-linecap: round; stroke-linejoin: round; }
+.toast-region {
+  position: absolute;
+  z-index: var(--z-toast);
+  bottom: calc(100% + var(--space-3));
+  left: var(--space-4);
+  right: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  pointer-events: none;
+}
+@media (min-width: 36rem) {
+  .toast-region {
+    left: auto;
+    width: 24rem;
+    right: var(--space-6);
+  }
+}
+.toast {
+  pointer-events: auto;
+  display: flex;
+  gap: var(--space-3);
+  align-items: flex-start;
+  padding: var(--space-4);
+  background: var(--color-bg-inverse);
+  color: var(--color-fg-inverse);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-3);
+}
+.toast__body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-0-5);
+}
+.toast__title {
+  font: var(--text-label);
+  font-size: var(--font-size-md);
+  overflow-wrap: anywhere;
+}
+.toast__text {
+  font: var(--text-body-sm);
+  opacity: 0.9;
+  overflow-wrap: anywhere;
+}
+.icon {
+  width: var(--icon-size-md);
+  height: var(--icon-size-md);
+  flex: none;
+  margin-top: 0.1rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: var(--icon-stroke);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}

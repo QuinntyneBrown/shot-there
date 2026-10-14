@@ -13,7 +13,9 @@ export class ShellPage {
     this.skipLink = page.getByRole('link', { name: 'Skip to content' });
     this.main = page.getByRole('main');
     // The open menu is modal, so the page behind it (and this button) leaves the accessibility tree.
-    this.menuButton = page.getByRole('banner', { includeHidden: true }).getByRole('button', { name: 'Menu', includeHidden: true });
+    this.menuButton = page
+      .getByRole('banner', { includeHidden: true })
+      .getByRole('button', { name: 'Menu', includeHidden: true });
     this.menuDialog = page.getByRole('dialog', { name: 'Menu' });
     this.menuCloseButton = this.menuDialog.getByRole('button', { name: 'Close' });
     this.footer = page.getByRole('contentinfo');
@@ -48,10 +50,19 @@ export class ShellPage {
   async usesSelfHostedFigtree(): Promise<boolean> {
     const loaded = await this.page.evaluate(async () => {
       await document.fonts.ready;
-      return [...document.fonts].some((face) => face.family.replace(/"/g, '') === 'Figtree' && face.status === 'loaded');
+      return [...document.fonts].some(
+        (face) => face.family.replace(/"/g, '') === 'Figtree' && face.status === 'loaded',
+      );
     });
     const fromOwnHost = await this.page.evaluate(() =>
-      performance.getEntriesByType('resource').some((entry) => new URL(entry.name).origin === location.origin && entry.name.includes('/fonts/figtree-')));
+      performance
+        .getEntriesByType('resource')
+        .some(
+          (entry) =>
+            new URL(entry.name).origin === location.origin &&
+            entry.name.includes('/fonts/figtree-'),
+        ),
+    );
     return loaded && fromOwnHost;
   }
 
@@ -68,16 +79,25 @@ export class ShellPage {
   }
 
   headerLink(name: string): Locator {
-    return this.page.getByRole('banner').getByRole('navigation', { name: 'Primary' }).getByRole('link', { name, exact: true });
+    return this.page
+      .getByRole('banner')
+      .getByRole('navigation', { name: 'Primary' })
+      .getByRole('link', { name, exact: true });
   }
 
   headerLinks(): Promise<{ name: string; href: string | null }[]> {
-    return this.linkList(this.page.getByRole('banner').getByRole('navigation', { name: 'Primary' }).getByRole('link'));
+    return this.linkList(
+      this.page.getByRole('banner').getByRole('navigation', { name: 'Primary' }).getByRole('link'),
+    );
   }
 
   menuLinks(): Promise<{ name: string; href: string | null }[]> {
     return this.menuDialog.getByRole('link').evaluateAll((links) =>
-      links.map((link) => ({ name: link.querySelector('.section-link__title')?.textContent?.trim() ?? '', href: link.getAttribute('href') })));
+      links.map((link) => ({
+        name: link.querySelector('.section-link__title')?.textContent?.trim() ?? '',
+        href: link.getAttribute('href'),
+      })),
+    );
   }
 
   footerLink(name: string): Locator {
@@ -85,7 +105,12 @@ export class ShellPage {
   }
 
   private linkList(links: Locator): Promise<{ name: string; href: string | null }[]> {
-    return links.evaluateAll((all) => all.map((link) => ({ name: link.textContent?.trim() ?? '', href: link.getAttribute('href') })));
+    return links.evaluateAll((all) =>
+      all.map((link) => ({
+        name: link.textContent?.trim() ?? '',
+        href: link.getAttribute('href'),
+      })),
+    );
   }
 
   async openMenu(): Promise<void> {
@@ -97,11 +122,17 @@ export class ShellPage {
   }
 
   hasHorizontalScroll(): Promise<boolean> {
-    return this.page.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth);
+    return this.page.evaluate(
+      () => document.documentElement.scrollWidth > document.documentElement.clientWidth,
+    );
   }
 
   async accessibilityViolations(): Promise<string[]> {
-    const results = await new AxeBuilder({ page: this.page }).withTags(['wcag2a', 'wcag2aa', 'wcag21aa', 'wcag22aa']).analyze();
-    return results.violations.map((v) => `${v.id}: ${v.nodes.map((n) => n.target.join(' ')).join(', ')}`);
+    const results = await new AxeBuilder({ page: this.page })
+      .withTags(['wcag2a', 'wcag2aa', 'wcag21aa', 'wcag22aa'])
+      .analyze();
+    return results.violations.map(
+      (v) => `${v.id}: ${v.nodes.map((n) => n.target.join(' ')).join(', ')}`,
+    );
   }
 }

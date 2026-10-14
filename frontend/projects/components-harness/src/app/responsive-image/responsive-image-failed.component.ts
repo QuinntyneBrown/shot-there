@@ -2,7 +2,10 @@ import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { ResponsiveImage, ResponsiveImageComponent } from '@shot-there/components';
 
 const missing = (id: string): ResponsiveImage['sources'] =>
-  ['avif', 'webp', 'jpeg'].map((format) => ({ format, srcset: `/missing/${id}/480.${format} 480w` }));
+  ['avif', 'webp', 'jpeg'].map((format) => ({
+    format,
+    srcset: `/missing/${id}/480.${format} 480w`,
+  }));
 
 /**
  * Photos whose files return 404: gallery photo 2 in a shot button (the "Use a working photo" checkbox

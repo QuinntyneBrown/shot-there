@@ -8,7 +8,7 @@ export async function givenSubscribeAnswers(page: Page, status: number): Promise
     (route: Route) => {
       received.push(route.request().postDataJSON());
       return route.fulfill({ status, json: status === 200 ? {} : { message: 'failed' } });
-    }
+    },
   );
   return received;
 }
@@ -22,7 +22,7 @@ export async function givenSubscribeIsPending(page: Page): Promise<() => void> {
     async (route: Route) => {
       await released;
       await route.fulfill({ status: 200, json: {} });
-    }
+    },
   );
   return release;
 }

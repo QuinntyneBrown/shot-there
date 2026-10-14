@@ -20,13 +20,21 @@ export function parseStudioListQuery(params: ParamMap): StudioListQuery {
   return {
     costMin,
     costMax,
-    neighbourhoods: unique(params.getAll('hood').filter((hood) => NEIGHBOURHOOD_OPTIONS.some((option) => option.slug === hood))),
+    neighbourhoods: unique(
+      params
+        .getAll('hood')
+        .filter((hood) => NEIGHBOURHOOD_OPTIONS.some((option) => option.slug === hood)),
+    ),
     naturalLight: params.get('light') === 'medium',
     cycWall: params.get('cyc') === 'yes',
     minSpaceSqm: MIN_SPACE_OPTIONS.includes(space) ? space : undefined,
-    gear: unique(params.getAll('gear').filter((gear): gear is GearFilter => GEAR_FILTER_VALUES.includes(gear as GearFilter))),
+    gear: unique(
+      params
+        .getAll('gear')
+        .filter((gear): gear is GearFilter => GEAR_FILTER_VALUES.includes(gear as GearFilter)),
+    ),
     parking: PARKING_VALUES.includes(parking) ? parking : undefined,
-    sort: STUDIO_SORTS.includes(sort) ? sort : DEFAULT_STUDIO_SORT
+    sort: STUDIO_SORTS.includes(sort) ? sort : DEFAULT_STUDIO_SORT,
   };
 }
 

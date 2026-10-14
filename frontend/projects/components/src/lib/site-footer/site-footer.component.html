@@ -1,0 +1,23 @@
+<div class="site-footer__brand">
+  <strong>{{ brand() }}</strong>
+  @if (tagline()) {
+    <span>{{ tagline() }}</span>
+  }
+  <ng-content select="[slot=signup]" />
+</div>
+<nav [attr.aria-label]="navLabel()">
+  <ul>
+    @for (link of links(); track link.link) {
+      <li>
+        @if (link.external) {
+          <a [href]="link.link" target="_blank" rel="noopener">{{ link.label }}<span class="visually-hidden"> {{ externalHint() }}</span></a>
+        } @else {
+          <a [routerLink]="link.link" routerLinkActive ariaCurrentWhenActive="page" [routerLinkActiveOptions]="{ exact: !!link.exact }">{{ link.label }}</a>
+        }
+      </li>
+    }
+  </ul>
+</nav>
+@if (copy()) {
+  <p class="site-footer__copy">{{ copy() }}</p>
+}

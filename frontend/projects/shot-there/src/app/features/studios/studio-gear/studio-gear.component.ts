@@ -8,7 +8,7 @@ import { gearItemLabel, groupIncludedGear } from './studio-gear.view-model';
   selector: 'st-studio-gear',
   imports: [CurrencyPipe],
   templateUrl: './studio-gear.component.html',
-  styleUrl: './studio-gear.component.css'
+  styleUrl: './studio-gear.component.css',
 })
 export class StudioGearComponent {
   readonly gear = input.required<StudioGearDto>();

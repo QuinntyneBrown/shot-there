@@ -51,7 +51,10 @@ export class ComparePage {
 
   /** The cells of the row whose header is `label`, one per studio. */
   rowCells(label: string): Locator {
-    return this.table.getByRole('row').filter({ has: this.page.getByRole('rowheader', { name: label, exact: true }) }).getByRole('cell');
+    return this.table
+      .getByRole('row')
+      .filter({ has: this.page.getByRole('rowheader', { name: label, exact: true }) })
+      .getByRole('cell');
   }
 
   rowHeader(label: string): Locator {
@@ -59,7 +62,9 @@ export class ComparePage {
   }
 
   hasPageHorizontalScroll(): Promise<boolean> {
-    return this.page.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth);
+    return this.page.evaluate(
+      () => document.documentElement.scrollWidth > document.documentElement.clientWidth,
+    );
   }
 
   tableScrollsSideways(): Promise<boolean> {
@@ -72,7 +77,9 @@ export class ComparePage {
 
   /** Narrowest studio column, in CSS pixels. */
   async narrowestStudioColumn(): Promise<number> {
-    const widths = await this.table.getByRole('columnheader').evaluateAll((cells) => cells.map((c) => c.getBoundingClientRect().width));
+    const widths = await this.table
+      .getByRole('columnheader')
+      .evaluateAll((cells) => cells.map((c) => c.getBoundingClientRect().width));
     return Math.min(...widths);
   }
 }

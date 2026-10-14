@@ -8,7 +8,10 @@ export const CompareSelectionStore = {
     try {
       const stored: unknown = JSON.parse(localStorage.getItem(STORAGE_KEY) ?? '[]');
       return Array.isArray(stored)
-        ? stored.filter((item): item is CompareSelectionItem => typeof item?.slug === 'string' && typeof item?.name === 'string')
+        ? stored.filter(
+            (item): item is CompareSelectionItem =>
+              typeof item?.slug === 'string' && typeof item?.name === 'string',
+          )
         : [];
     } catch {
       return [];
@@ -21,5 +24,5 @@ export const CompareSelectionStore = {
     } catch {
       // Storage is full or blocked: the selection lasts for this page only.
     }
-  }
+  },
 };

@@ -7,5 +7,7 @@ export function imageSrcset(image: ImageDto): string {
 
 /** The largest stored size, for browsers that ignore srcset. */
 export function imageSrc(image: ImageDto): string {
-  return image.variants.reduce((largest, variant) => (variant.width > largest.width ? variant : largest)).url;
+  return image.variants.reduce((largest, variant) =>
+    variant.width > largest.width ? variant : largest,
+  ).url;
 }

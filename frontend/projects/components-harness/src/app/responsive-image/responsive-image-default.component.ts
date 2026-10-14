@@ -1,7 +1,8 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ResponsiveImage, ResponsiveImageComponent } from '@shot-there/components';
 
-const variants = (id: string, format: string) => ['480', '960', '1440'].map((w) => `/test-images/${id}/${w}.${format} ${w}w`).join(', ');
+const variants = (id: string, format: string) =>
+  ['480', '960', '1440'].map((w) => `/test-images/${id}/${w}.${format} ${w}w`).join(', ');
 
 /**
  * Loaded photos in their slots: a gallery photo in a 4:5 shot (sources arriving JPEG, WebP, AVIF),
@@ -40,14 +41,20 @@ export class ResponsiveImageDefaultComponent {
     alt: 'The Junction Loft: two tall north windows over a brick wall, a white cyc in the right corner and a softbox on a stand.',
     width: 3000,
     height: 2000,
-    sources: ['avif', 'webp', 'jpeg'].map((format) => ({ format, srcset: variants('a01b22', format) })),
+    sources: ['avif', 'webp', 'jpeg'].map((format) => ({
+      format,
+      srcset: variants('a01b22', format),
+    })),
     fallbackUrl: '/test-images/a01b22/960.jpeg',
   };
   protected readonly card: ResponsiveImage = {
     alt: 'Kensington Window Room: tall windows over a wooden floor',
     width: 1200,
     height: 800,
-    sources: ['avif', 'webp', 'jpeg'].map((format) => ({ format, srcset: variants('c33d44', format) })),
+    sources: ['avif', 'webp', 'jpeg'].map((format) => ({
+      format,
+      srcset: variants('c33d44', format),
+    })),
     fallbackUrl: '/test-images/c33d44/960.jpeg',
   };
 }

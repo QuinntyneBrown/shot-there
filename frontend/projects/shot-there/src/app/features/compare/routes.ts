@@ -6,5 +6,5 @@ import { ComparePageComponent } from './compare-page/compare-page.component';
 
 export const compareRoutes: Routes = [
   // The page refines the title with the compared studios' names.
-  { path: APP_PATHS.compare, title: PAGE_TITLES.compare, component: ComparePageComponent }
+  { path: APP_PATHS.compare, title: PAGE_TITLES.compare, component: ComparePageComponent },
 ];

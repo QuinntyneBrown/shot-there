@@ -7,5 +7,5 @@ export const APP_PATHS = {
   map: 'map',
   compare: 'compare',
   guides: 'guides',
-  editorialPolicy: 'editorial-policy'
+  editorialPolicy: 'editorial-policy',
 } as const;

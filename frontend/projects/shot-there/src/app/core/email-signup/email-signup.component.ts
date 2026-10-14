@@ -10,7 +10,7 @@ import { SignupState } from './signup-state';
 @Component({
   selector: 'st-email-signup',
   templateUrl: './email-signup.component.html',
-  styleUrl: './email-signup.component.css'
+  styleUrl: './email-signup.component.css',
 })
 export class EmailSignupComponent {
   /** The hero form on the home page has its own copy and a primary button. */
@@ -28,7 +28,7 @@ export class EmailSignupComponent {
     title: `${this.variant()}-signup-title`,
     email: `${this.variant()}-email`,
     error: `${this.variant()}-email-error`,
-    website: `${this.variant()}-website`
+    website: `${this.variant()}-website`,
   }));
 
   submit(): void {
@@ -41,9 +41,11 @@ export class EmailSignupComponent {
     }
     const sourcePath = this.router.url.split(/[?#]/)[0];
     this.state.set('submitting');
-    this.subscriberService.subscribe({ email: this.email().trim(), sourcePath, website: this.website() }).subscribe({
-      next: () => this.state.set(toSignupState(200)),
-      error: (response: HttpErrorResponse) => this.state.set(toSignupState(response.status))
-    });
+    this.subscriberService
+      .subscribe({ email: this.email().trim(), sourcePath, website: this.website() })
+      .subscribe({
+        next: () => this.state.set(toSignupState(200)),
+        error: (response: HttpErrorResponse) => this.state.set(toSignupState(response.status)),
+      });
   }
 }

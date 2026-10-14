@@ -6,21 +6,32 @@ import { HomePage } from './pages/home.page';
 import { ShellPage } from './pages/shell.page';
 
 test.describe('Home page', () => {
-  test('states the promise, offers the signup and shows the three latest reviews', async ({ page }) => {
+  test('states the promise, offers the signup and shows the three latest reviews', async ({
+    page,
+  }) => {
     // Given seven published studios, newest review first
     await givenStudios(page, PUBLISHED_STUDIOS);
     const home = new HomePage(page);
     // When the visitor opens the home page
     await home.open();
     // Then it states the promise and offers the signup form
-    await expect(home.heading).toHaveText('Toronto photo studios and outdoor spots, reviewed first-hand');
+    await expect(home.heading).toHaveText(
+      'Toronto photo studios and outdoor spots, reviewed first-hand',
+    );
     await expect(home.signup.email).toBeVisible();
     // And it shows the three most recent reviews with their facts, and links to every studio
-    await expect.poll(() => home.cardNames()).toEqual(['Kensington Window Room', 'The Junction Loft', 'Leslieville Daylight Studio']);
-    await expect(home.card('Kensington Window Room')).toContainText('Kensington Market · Reviewed 3 Oct 2026');
+    await expect
+      .poll(() => home.cardNames())
+      .toEqual(['Kensington Window Room', 'The Junction Loft', 'Leslieville Daylight Studio']);
+    await expect(home.card('Kensington Window Room')).toContainText(
+      'Kensington Market · Reviewed 3 Oct 2026',
+    );
     await expect(home.card('Kensington Window Room')).toContainText('All-in 2 h$80.00');
     await expect(home.card('Kensington Window Room')).toContainText('Score3.2 out of 5');
-    await expect(home.card('Kensington Window Room').getByRole('link')).toHaveAttribute('href', '/studios/kensington-window-room');
+    await expect(home.card('Kensington Window Room').getByRole('link')).toHaveAttribute(
+      'href',
+      '/studios/kensington-window-room',
+    );
     await expect(home.allStudiosLink).toHaveAttribute('href', '/studios');
     // And the title is the site name
     await expect.poll(() => home.title()).toBe('ShotThere');
@@ -35,7 +46,9 @@ test.describe('Home page', () => {
     // When the visitor subscribes from the hero form
     await home.signup.subscribe('maya.chen@example.com');
     // Then the hero confirms it and the request names the home page
-    await expect(home.signup.confirmation).toHaveText("You're subscribed. We'll email maya.chen@example.com when a new review goes up.");
+    await expect(home.signup.confirmation).toHaveText(
+      "You're subscribed. We'll email maya.chen@example.com when a new review goes up.",
+    );
     expect(received).toEqual([{ email: 'maya.chen@example.com', sourcePath: '/', website: '' }]);
   });
 
@@ -65,7 +78,9 @@ test.describe('Home page', () => {
   });
 
   for (const width of [320, 1280]) {
-    test(`lays out without horizontal scrolling or accessibility violations at ${width}px`, async ({ page }) => {
+    test(`lays out without horizontal scrolling or accessibility violations at ${width}px`, async ({
+      page,
+    }) => {
       // Given published studios and a window of this width
       await givenStudios(page, PUBLISHED_STUDIOS);
       await page.setViewportSize({ width, height: 800 });

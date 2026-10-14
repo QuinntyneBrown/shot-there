@@ -32,7 +32,9 @@ test.describe('Editorial policy page', () => {
   });
 
   for (const width of [320, 1280]) {
-    test(`lays out without horizontal scrolling or accessibility violations at ${width}px`, async ({ page }) => {
+    test(`lays out without horizontal scrolling or accessibility violations at ${width}px`, async ({
+      page,
+    }) => {
       // Given a window of this width
       const shell = new ShellPage(page);
       await page.setViewportSize({ width, height: 800 });

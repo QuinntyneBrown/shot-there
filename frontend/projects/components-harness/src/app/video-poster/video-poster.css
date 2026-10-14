@@ -1,3 +1,9 @@
-.column { width: 20rem; max-width: 100%; }
+.column {
+  width: 20rem;
+  max-width: 100%;
+}
 /* The review's main column: 45rem beside the summary panel, the content width below LG. */
-.main-column { width: 45rem; max-width: 100%; }
+.main-column {
+  width: 45rem;
+  max-width: 100%;
+}

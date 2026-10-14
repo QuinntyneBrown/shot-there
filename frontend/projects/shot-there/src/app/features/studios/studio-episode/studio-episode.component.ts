@@ -7,7 +7,7 @@ import { EpisodePlayerComponent } from '../../video/episode-player.component';
   selector: 'st-studio-episode',
   imports: [EpisodePlayerComponent],
   templateUrl: './studio-episode.component.html',
-  styleUrl: './studio-episode.component.css'
+  styleUrl: './studio-episode.component.css',
 })
 export class StudioEpisodeComponent {
   readonly episode = input.required<StudioEpisodeDto>();

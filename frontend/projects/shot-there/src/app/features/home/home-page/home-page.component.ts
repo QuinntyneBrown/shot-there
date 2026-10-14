@@ -16,7 +16,7 @@ const LATEST_REVIEW_COUNT = 3;
   selector: 'st-home-page',
   imports: [RouterLink, CurrencyPipe, DatePipe, DecimalPipe, EmailSignupComponent],
   templateUrl: './home-page.component.html',
-  styleUrl: './home-page.component.css'
+  styleUrl: './home-page.component.css',
 })
 export class HomePageComponent {
   private readonly document = inject(DOCUMENT);
@@ -27,11 +27,14 @@ export class HomePageComponent {
     inject(StudiosService)
       .listStudios({})
       .pipe(
-        map((studios): HomePageState => ({ status: 'loaded', latestStudios: studios.slice(0, LATEST_REVIEW_COUNT) })),
+        map((studios): HomePageState => ({
+          status: 'loaded',
+          latestStudios: studios.slice(0, LATEST_REVIEW_COUNT),
+        })),
         catchError(() => of<HomePageState>({ status: 'error' })),
-        startWith<HomePageState>({ status: 'loading' })
+        startWith<HomePageState>({ status: 'loading' }),
       ),
-    { initialValue: { status: 'loading' } as HomePageState }
+    { initialValue: { status: 'loading' } as HomePageState },
   );
 
   focusSignup(event: Event): void {

@@ -15,6 +15,11 @@ export class ButtonGroupPerformanceComponent {
     { value: 'spots', label: 'Spots' },
   ];
   protected readonly show = signal('both');
-  private readonly locations = Array.from({ length: 40 }, (_, i) => ({ name: `Location ${i + 1}`, type: i % 2 ? 'spots' : 'studios' }));
-  protected readonly shown = computed(() => this.locations.filter((l) => this.show() === 'both' || l.type === this.show()));
+  private readonly locations = Array.from({ length: 40 }, (_, i) => ({
+    name: `Location ${i + 1}`,
+    type: i % 2 ? 'spots' : 'studios',
+  }));
+  protected readonly shown = computed(() =>
+    this.locations.filter((l) => this.show() === 'both' || l.type === this.show()),
+  );
 }
