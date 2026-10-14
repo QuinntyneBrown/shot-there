@@ -73,34 +73,3 @@
   background: var(--color-danger-bg);
   color: var(--color-danger-fg);
 }
-.alert {
-  --alert-bg: var(--color-info-bg);
-  --alert-fg: var(--color-info-fg);
-  --alert-border: var(--color-info-border);
-  --alert-icon: var(--color-info-icon);
-  display: flex;
-  gap: var(--space-3);
-  padding: var(--space-4);
-  border: var(--border-width-hairline) solid var(--alert-border);
-  border-radius: var(--radius-md);
-  background: var(--alert-bg);
-  color: var(--alert-fg);
-}
-.alert--warning {
-  --alert-bg: var(--color-warning-bg);
-  --alert-fg: var(--color-warning-fg);
-  --alert-border: var(--color-warning-border);
-  --alert-icon: var(--color-warning-icon);
-}
-.alert__body {
-  flex: 1;
-  min-width: 0;
-  overflow-wrap: anywhere;
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-1);
-}
-.alert__title {
-  font: var(--text-label);
-  font-size: var(--font-size-md);
-}

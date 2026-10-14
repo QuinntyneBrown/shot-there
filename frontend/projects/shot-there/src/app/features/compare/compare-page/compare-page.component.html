@@ -34,10 +34,7 @@
     </div>
   </div>
   @for (notice of v.notices; track notice) {
-    <div class="alert alert--info notice" role="status">
-      <st-icon name="info" />
-      <div class="alert__body"><p>{{ notice }}</p></div>
-    </div>
+    <st-alert class="notice" tone="info" i18n-tone role="status">{{ notice }}</st-alert>
   }
   <div class="table-wrap" role="region" [attr.aria-labelledby]="'compare-caption'" tabindex="0">
     <table class="table compare-table" [style.--compare-cols]="v.columns.length">
