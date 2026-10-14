@@ -4,7 +4,7 @@ import { Tone } from '../types/tone';
 /** The DS badge: a short word in a pill, toned and optionally solid. */
 @Component({
   selector: 'st-badge',
-  template: '<ng-content />',
+  templateUrl: './badge.component.html',
   styleUrl: './badge.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {

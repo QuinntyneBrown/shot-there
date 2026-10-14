@@ -1,0 +1,5 @@
+/* DS review pages: the overall score; the host has display: contents. */
+:host { display: contents; }
+.score-overall { display: flex; align-items: baseline; gap: var(--space-2); max-width: none; }
+.score-overall__value { font: var(--text-display); font-variant-numeric: tabular-nums; }
+.score-overall__max { color: var(--color-fg-muted); }

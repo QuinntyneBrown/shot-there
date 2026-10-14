@@ -1,0 +1,5 @@
+/* DS review pages: a quiet, fixed callout near the verdict (L2-012, L1-011); the host is the .disclosure block. */
+:host { display: flex; gap: var(--space-3); align-items: flex-start; padding: var(--space-4) var(--space-5); border-left: var(--border-width-thick) solid var(--color-border-strong); background: var(--color-bg-surface-sunken); border-radius: 0 var(--radius-md) var(--radius-md) 0; }
+st-icon { flex: none; margin-top: var(--space-0-5); color: var(--color-fg-muted); }
+p { max-width: none; }
+.disclosure__title { font: var(--text-label); font-size: var(--font-size-md); }

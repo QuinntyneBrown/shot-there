@@ -18,6 +18,13 @@ import { VideoPosterFailedComponent } from './video-poster/video-poster-failed.c
 import { VideoPosterDefaultComponent } from './video-poster/video-poster-default.component';
 import { ResponsiveImageFailedComponent } from './responsive-image/responsive-image-failed.component';
 import { ResponsiveImageDefaultComponent } from './responsive-image/responsive-image-default.component';
+import { ResultCountDefaultComponent } from './result-count/result-count-default.component';
+import { StatTileLoadingComponent } from './stat-tile/stat-tile-loading.component';
+import { StatTileDashboardComponent } from './stat-tile/stat-tile-dashboard.component';
+import { DisclosureDefaultComponent } from './disclosure/disclosure-default.component';
+import { ScoreDefaultComponent } from './score/score-default.component';
+import { PriceBlockStatesComponent } from './price-block/price-block-states.component';
+import { DescriptionListPricingComponent } from './description-list/description-list-pricing.component';
 import { SkipLinkDefaultComponent } from './skip-link/skip-link-default.component';
 import { ErrorPageServerErrorComponent } from './error-page/error-page-server-error.component';
 import { ErrorPageNotFoundComponent } from './error-page/error-page-not-found.component';
@@ -95,4 +102,11 @@ export const routes: Routes = [
   { path: 'error-page/not-found', component: ErrorPageNotFoundComponent },
   { path: 'error-page/server-error', component: ErrorPageServerErrorComponent },
   { path: 'skip-link/default', component: SkipLinkDefaultComponent },
+  { path: 'description-list/pricing', component: DescriptionListPricingComponent },
+  { path: 'price-block/states', component: PriceBlockStatesComponent },
+  { path: 'score/default', component: ScoreDefaultComponent },
+  { path: 'disclosure/default', component: DisclosureDefaultComponent },
+  { path: 'stat-tile/dashboard', component: StatTileDashboardComponent },
+  { path: 'stat-tile/loading', component: StatTileLoadingComponent },
+  { path: 'result-count/default', component: ResultCountDefaultComponent },
 ];

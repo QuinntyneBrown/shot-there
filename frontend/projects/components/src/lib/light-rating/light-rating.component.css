@@ -1,0 +1,9 @@
+/* DS review pages: the light rating; the host is the .light-rating block. */
+:host { display: inline-flex; align-items: center; gap: var(--space-2); font: var(--text-label); }
+.pips { display: inline-flex; gap: var(--space-1); flex: none; }
+.pips > i { width: var(--space-4); height: var(--space-2); border-radius: var(--radius-full); background: transparent; box-shadow: inset 0 0 0 var(--border-width-hairline) var(--color-border-strong); }
+.pips > i[data-on] { background: var(--color-fg-default); box-shadow: none; }
+@media (forced-colors: active) {
+  .pips > i { forced-color-adjust: none; box-shadow: none; border: 1px solid CanvasText; }
+  .pips > i[data-on] { background: CanvasText; }
+}

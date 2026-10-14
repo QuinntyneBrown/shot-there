@@ -1,0 +1,2 @@
+/* DS components/filter.html; the host is the .result-count status line. */
+:host { display: block; font: var(--text-body-sm); color: var(--color-fg-muted); }

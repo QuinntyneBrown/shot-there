@@ -1,0 +1,11 @@
+/* DS components/description-list.html. */
+:host { display: block; }
+.kv { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-1) var(--space-6); margin: 0; }
+@media (min-width: 36rem) { .kv { grid-template-columns: 12rem minmax(0, 1fr); } }
+.kv dt { font: var(--text-label); color: var(--color-fg-subtle); padding-top: var(--space-4); }
+.kv dd { overflow-wrap: anywhere; margin: 0; padding-block: var(--space-1) var(--space-4); border-bottom: var(--border-width-hairline) solid var(--color-border-default); display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--space-2); align-items: center; }
+@media (min-width: 36rem) {
+  .kv dt { border-bottom: var(--border-width-hairline) solid var(--color-border-default); padding-block: var(--space-4); }
+  .kv dd { padding-block: var(--space-3); }
+}
+.num { font-variant-numeric: tabular-nums; }

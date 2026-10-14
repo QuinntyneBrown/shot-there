@@ -3,7 +3,7 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 /** The DS skeleton placeholder. Hidden from assistive technology; the application marks the region busy. */
 @Component({
   selector: 'st-skeleton',
-  template: '',
+  templateUrl: './skeleton.component.html',
   styleUrl: './skeleton.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {

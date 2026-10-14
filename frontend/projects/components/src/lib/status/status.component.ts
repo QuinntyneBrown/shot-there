@@ -4,7 +4,7 @@ import { ContentStatus } from '../types/content-status';
 /** The DS status label: a word plus a shape, a hollow ring for a draft and a filled dot once published. */
 @Component({
   selector: 'st-status',
-  template: '<ng-content />',
+  templateUrl: './status.component.html',
   styleUrl: './status.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {

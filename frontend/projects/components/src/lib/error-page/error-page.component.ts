@@ -6,7 +6,7 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
   templateUrl: './error-page.component.html',
   styleUrl: './error-page.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { class: 'system-page' },
+  host: { class: 'system-page', '[attr.title]': 'null' },
 })
 export class ErrorPageComponent {
   readonly code = input<string | null>(null);

@@ -12,6 +12,7 @@ import { IconName } from '../types/icon-name';
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
     class: 'empty',
+    '[attr.title]': 'null',
     '[class.empty--info]': "tone() === 'info'",
     '[class.empty--success]': "tone() === 'success'",
     '[class.empty--error]': "tone() === 'error'",
