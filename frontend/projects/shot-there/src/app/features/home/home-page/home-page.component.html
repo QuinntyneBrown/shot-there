@@ -10,7 +10,7 @@
     @if (s.latestStudios.length > 0) {
       <div class="section-head">
         <h2 id="latest-title" i18n>Latest reviews</h2>
-        <a [routerLink]="studiosPath" i18n>All studios</a>
+        <a st-link [routerLink]="studiosPath" i18n>All studios</a>
       </div>
       <ul class="location-grid">
         @for (studio of s.latestStudios; track studio.slug) {
@@ -18,7 +18,7 @@
             <div class="location-card__media">
               <img [src]="studio.thumbnail.url" alt="" [width]="studio.thumbnail.width" [height]="studio.thumbnail.height" loading="lazy" />
             </div>
-            <h3 class="location-card__name"><a [routerLink]="[studiosPath, studio.slug]">{{ studio.name }}</a></h3>
+            <h3 class="location-card__name"><a st-link [routerLink]="[studiosPath, studio.slug]">{{ studio.name }}</a></h3>
             <p class="location-card__meta" i18n>{{ studio.neighbourhood }} · Reviewed {{ studio.reviewedAt | date: 'd MMM y' }}</p>
             <dl class="location-card__facts">
               <div><dt i18n>All-in 2 h</dt><dd>{{ studio.allInCost2h | currency: 'CAD' : 'symbol-narrow' : '1.2-2' }}</dd></div>

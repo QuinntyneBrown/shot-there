@@ -8,7 +8,7 @@
     <form class="filters-form" (submit)="$event.preventDefault(); applyFilters(sidebarDraft())">
       <h2 class="filters-title" id="filters-title" i18n>Filter studios</h2>
       <st-studio-filters [idPrefix]="'aside'" [query]="sidebarDraft()" (queryChange)="sidebarDraft.set($event)" />
-      <div><button class="btn" type="submit" i18n>Apply filters</button></div>
+      <div><button st-button type="submit" i18n>Apply filters</button></div>
     </form>
   </aside>
 
