@@ -115,6 +115,31 @@ export class HarnessPage {
     );
   }
 
+  /**
+   * Runs an interaction with the CPU slowed 4x and returns the longest event duration it produced, in ms:
+   * the page's interaction-to-next-paint for that interaction (L2-071). Events under 16 ms count as 0.
+   */
+  async interactionLatency(interaction: () => Promise<void>): Promise<number> {
+    const cdp = await this.page.context().newCDPSession(this.page);
+    await cdp.send('Emulation.setCPUThrottlingRate', { rate: 4 });
+    await this.page.evaluate(() => {
+      const w = window as unknown as { __longestInteraction: number };
+      w.__longestInteraction = 0;
+      new PerformanceObserver((list) =>
+        list.getEntries().forEach((e) => {
+          if ((e as PerformanceEntry & { interactionId?: number }).interactionId) {
+            w.__longestInteraction = Math.max(w.__longestInteraction, e.duration);
+          }
+        }),
+      ).observe({ type: 'event', durationThreshold: 16, buffered: true } as PerformanceObserverInit);
+    });
+    await interaction();
+    await this.page.waitForTimeout(500);
+    const latency = await this.page.evaluate(() => (window as unknown as { __longestInteraction: number }).__longestInteraction);
+    await cdp.send('Emulation.setCPUThrottlingRate', { rate: 1 });
+    return latency;
+  }
+
   async accessibilityViolations(): Promise<string[]> {
     const results = await new AxeBuilder({ page: this.page }).withTags(['wcag2a', 'wcag2aa', 'wcag21aa', 'wcag22aa']).analyze();
     return results.violations.map((v) => `${v.id}: ${v.nodes.map((n) => n.target.join(' ')).join(', ')}`);

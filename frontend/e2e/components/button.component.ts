@@ -1,4 +1,5 @@
 import { Locator, Page } from '@playwright/test';
+import { colourOf, ColourPart, contrastOf } from './contrast';
 import { IconComponent } from './icon.component';
 
 /** A button[st-button] or a[st-button]: the DS .btn, found by role and accessible name. */
@@ -11,9 +12,19 @@ export class ButtonComponent {
     this.icon = new IconComponent(this.root);
   }
 
-  /** The DS classes on the element, in order: the block first, then modifiers. */
+  /** The DS .btn classes on the element, in order: the block first, then modifiers. */
   async classes(): Promise<string[]> {
     return ((await this.root.getAttribute('class')) ?? '').split(/\s+/).filter((c) => c.startsWith('btn'));
+  }
+
+  /** True when the element carries the DS toggle class .compare-toggle. */
+  async isToggle(): Promise<boolean> {
+    return ((await this.root.getAttribute('class')) ?? '').split(/\s+/).includes('compare-toggle');
+  }
+
+  /** The element's tag name, lower case: `button` or `a`. */
+  tag(): Promise<string> {
+    return this.root.evaluate((el) => el.tagName.toLowerCase());
   }
 
   /** The element's accessibility subtree as Playwright's ARIA snapshot (`- button "Close"`). */
@@ -27,11 +38,34 @@ export class ButtonComponent {
     return { width: Math.round(box?.width ?? 0), height: Math.round(box?.height ?? 0) };
   }
 
-  /** The focus outline the element shows now: width in px, style, and colour. */
-  focusRing(): Promise<{ width: number; style: string }> {
+  /** True when the label fits the element without being cut off. */
+  labelFits(): Promise<boolean> {
+    return this.root.evaluate((el) => el.scrollWidth <= el.clientWidth);
+  }
+
+  /** True when the whole element lies inside the viewport once scrolled to. */
+  async isFullyInView(): Promise<boolean> {
+    await this.root.scrollIntoViewIfNeeded();
+    return this.root.evaluate((el) => {
+      const r = el.getBoundingClientRect();
+      return r.left >= 0 && r.top >= 0 && r.right <= window.innerWidth && r.bottom <= window.innerHeight;
+    });
+  }
+
+  /** The focus outline the element shows now: width and offset in px, style, and colour. */
+  focusRing(): Promise<{ width: number; offset: number; style: string; colour: string }> {
     return this.root.evaluate((el) => {
       const style = getComputedStyle(el);
-      return { width: parseFloat(style.outlineWidth), style: style.outlineStyle };
+      const ctx = document.createElement('canvas').getContext('2d')!;
+      ctx.fillStyle = style.outlineColor;
+      ctx.fillRect(0, 0, 1, 1);
+      const [r, g, b] = ctx.getImageData(0, 0, 1, 1).data;
+      return {
+        width: parseFloat(style.outlineWidth),
+        offset: parseFloat(style.outlineOffset),
+        style: style.outlineStyle,
+        colour: `rgb(${r}, ${g}, ${b})`,
+      };
     });
   }
 
@@ -48,12 +82,18 @@ export class ButtonComponent {
     });
   }
 
-  /** Computed fill, text and edge colours. */
-  colours(): Promise<{ background: string; text: string; border: string }> {
-    return this.root.evaluate((el) => {
-      const style = getComputedStyle(el);
-      return { background: style.backgroundColor, text: style.color, border: style.borderTopColor };
-    });
+  /** Computed fill, text and edge colours as `rgb(r, g, b)`. */
+  async colours(): Promise<{ background: string; text: string; border: string }> {
+    return {
+      background: await this.root.evaluate(colourOf, 'backgroundColor'),
+      text: await this.root.evaluate(colourOf, 'color'),
+      border: await this.root.evaluate(colourOf, 'borderTopColor'),
+    };
+  }
+
+  /** WCAG contrast of the label against the fill, or of the edge or focus ring against the ground around it. */
+  contrast(part: ColourPart): Promise<number> {
+    return this.root.evaluate(contrastOf, part);
   }
 
   /** The element's opacity: 0.5 is the DS disabled look. */
@@ -68,6 +108,10 @@ export class ButtonComponent {
 
   async click(): Promise<void> {
     await this.root.click();
+  }
+
+  async focus(): Promise<void> {
+    await this.root.focus();
   }
 
   async press(key: string): Promise<void> {

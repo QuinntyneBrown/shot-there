@@ -15,11 +15,14 @@ import { ControlSize } from '../types/control-size';
     class: 'btn',
     '[class.btn--primary]': "variant() === 'primary'",
     '[class.btn--ghost]': "variant() === 'ghost'",
+    '[class.btn--ghost-danger]': "variant() === 'ghost-danger'",
     '[class.btn--link]': "variant() === 'link'",
     '[class.btn--danger]': "variant() === 'danger'",
     '[class.btn--sm]': "size() === 'sm'",
     '[class.btn--lg]': "size() === 'lg'",
     '[class.btn--block]': 'block()',
+    '[class.btn--icon]': 'iconOnly()',
+    '[class.compare-toggle]': 'pressed() !== undefined',
     '[attr.aria-busy]': 'busy() || null',
     '[attr.aria-disabled]': 'busy() || softDisabled() || null',
     '[attr.aria-pressed]': 'pressed() ?? null',
@@ -29,9 +32,11 @@ export class ButtonComponent {
   readonly variant = input<ButtonVariant>('secondary');
   readonly size = input<ControlSize>('md');
   readonly block = input(false, { transform: booleanAttribute });
+  /** Square and icon only; the consumer sets aria-label on the host. */
+  readonly iconOnly = input(false, { transform: booleanAttribute });
   readonly busy = input(false, { transform: booleanAttribute });
   readonly softDisabled = input(false, { transform: booleanAttribute });
-  /** When defined, the button is a toggle; true shows the DS selected look (D-9). */
+  /** When defined, the button is a toggle (.compare-toggle, aria-pressed); true shows the selected look (D-9). */
   readonly pressed = input<boolean | undefined>(undefined);
 
   constructor() {

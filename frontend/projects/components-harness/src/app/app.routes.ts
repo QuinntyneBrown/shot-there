@@ -1,4 +1,8 @@
 import { Routes } from '@angular/router';
+import { ButtonPerformanceComponent } from './button/button-performance.component';
+import { ButtonContrastComponent } from './button/button-contrast.component';
+import { ButtonDisabledComponent } from './button/button-disabled.component';
+import { ButtonIconOnlyComponent } from './button/button-icon-only.component';
 import { IconPerformanceComponent } from './icon/icon-performance.component';
 import { IconTonesComponent } from './icon/icon-tones.component';
 import { IconInControlsComponent } from './icon/icon-in-controls.component';
@@ -48,4 +52,8 @@ export const routes: Routes = [
   { path: 'icon/in-controls', component: IconInControlsComponent },
   { path: 'icon/tones', component: IconTonesComponent },
   { path: 'icon/performance', component: IconPerformanceComponent },
+  { path: 'button/icon-only', component: ButtonIconOnlyComponent },
+  { path: 'button/disabled', component: ButtonDisabledComponent },
+  { path: 'button/contrast', component: ButtonContrastComponent },
+  { path: 'button/performance', component: ButtonPerformanceComponent },
 ];
