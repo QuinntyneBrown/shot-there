@@ -159,16 +159,21 @@ test.describe('Selecting studios to compare', () => {
       test(`has no accessibility violations on the studio list at ${width}px in ${theme} theme`, async ({
         page,
       }) => {
-        // Given one studio is selected on the list at this width and theme
+        // Given the compare-limit warning is shown on the list at this width and theme
         const shell = new ShellPage(page);
         const list = new StudioListPage(page);
+        const bar = new CompareBarPanel(page);
         await shell.rememberTheme(theme);
         if (width === 320) await shell.usePhoneWidth();
         else await shell.useDesktopWidth();
         await givenStudios(page, PUBLISHED_STUDIOS);
         await list.open();
-        await list.compareToggle('Kensington Window Room').click();
-        // Then the page has no horizontal scroll or WCAG A/AA violations
+        for (const studio of PUBLISHED_STUDIOS.slice(0, 4)) {
+          await list.activateCompareToggle(studio.name);
+        }
+        await list.activateCompareToggle('Ossington Blackbox');
+        await expect(bar.limitToast).toBeVisible();
+        // Then the toast fits without horizontal scroll or WCAG A/AA violations
         expect(await shell.hasHorizontalScroll()).toBe(false);
         expect(await shell.accessibilityViolations()).toEqual([]);
       });
