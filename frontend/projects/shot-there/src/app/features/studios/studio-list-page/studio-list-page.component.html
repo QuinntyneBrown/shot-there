@@ -24,13 +24,7 @@
           }
         </p>
         <div class="results-actions">
-          <button class="filter-trigger until-lg" type="button" aria-haspopup="dialog" [attr.aria-label]="filtersButtonLabel()" (click)="openFiltersDialog()">
-            <st-icon name="filters" size="sm" i18n-size />
-            <ng-container i18n>Filters</ng-container>
-            @if (activeFilterCount() > 0) {
-              <span class="filter-trigger__count">{{ activeFilterCount() }}</span>
-            }
-          </button>
+          <button st-filter-trigger class="until-lg" type="button" [count]="activeFilterCount()" (click)="openFiltersDialog()" i18n>Filters</button>
           <st-studio-sort-control [sort]="query().sort" (sortChange)="changeSort($event)" />
         </div>
       </div>

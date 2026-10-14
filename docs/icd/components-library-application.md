@@ -483,7 +483,7 @@ DS: `.filter-trigger` · Used by: studios, spots (below LG).
 
 | Member | Kind | Type | Default | Rule |
 |---|---|---|---|---|
-| `count` | input | `number` | `0` | When above 0, shows a count badge (`aria-hidden`) and adds the hidden §12 `st.filterTrigger.count` (", 2 active") to the accessible name. |
+| `count` | input | `number` | `0` | Shows an `aria-hidden` count badge above 0 and composes the exact accessible name from the localized §12 `st.filterTrigger.label` and `st.filterTrigger.count` strings. |
 | default slot | slot | text | — | "Filters". The component adds the `filters` icon and `aria-haspopup="dialog"`. Visibility per breakpoint is the application's (`.until-lg`). |
 
 #### `SegmentedControlComponent` — `st-segmented`
@@ -1267,6 +1267,7 @@ be replaced through the listed input.
 | `st.spinner.label` | Loading | `st-spinner` `label` |
 | `st.searchField.busy` | Searching… | `st-search-field` `busyLabel` |
 | `st.mapLegend.label` | Legend | `st-map-legend` `label` |
+| `st.filterTrigger.label` | Filters | — |
 | `st.filterTrigger.count` | , {$count} active | — (placeholders) |
 | `st.video.play` | Play episode | `st-video-poster` `playLabel` |
 
