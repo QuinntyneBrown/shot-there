@@ -37,13 +37,9 @@
     }
     @switch (state().status) {
       @case ('loading') {
-        <ul class="location-grid" aria-hidden="true">
+        <ul st-location-grid aria-hidden="true">
           @for (placeholder of skeletons; track placeholder) {
-            <li class="location-card location-card--skeleton">
-              <div class="location-card__media"><span class="skeleton skeleton--rect"></span></div>
-              <span class="skeleton skeleton--title"></span>
-              <span class="skeleton skeleton--text"></span>
-            </li>
+            <li><st-location-card-skeleton /></li>
           }
         </ul>
       }

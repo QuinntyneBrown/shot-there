@@ -8,6 +8,8 @@ import {
   ButtonComponent,
   EmptyStateComponent,
   IconComponent,
+  LocationCardSkeletonComponent,
+  LocationGridComponent,
 } from '@shot-there/components';
 import { BehaviorSubject, catchError, combineLatest, map, of, startWith, switchMap } from 'rxjs';
 
@@ -35,6 +37,8 @@ import { withoutFilters } from './without-filters';
     ButtonComponent,
     EmptyStateComponent,
     IconComponent,
+    LocationCardSkeletonComponent,
+    LocationGridComponent,
   ],
   templateUrl: './studio-list-page.component.html',
   styleUrl: './studio-list-page.component.css',
