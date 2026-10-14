@@ -34,3 +34,4 @@ export * from './lib/button/button.component';
 export * from './lib/icon-button/icon-button.component';
 export * from './lib/link/link.component';
 export * from './lib/filter-trigger/filter-trigger.component';
+export * from './lib/segmented-control/segmented-control.component';

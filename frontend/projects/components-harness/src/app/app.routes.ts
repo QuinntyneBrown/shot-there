@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { SegmentedDefaultComponent } from './segmented/segmented-default.component';
 import { FilterTriggerStatesComponent } from './filter-trigger/filter-trigger-states.component';
 import { LinkVariantsComponent } from './link/link-variants.component';
 import { IconButtonPressedComponent } from './icon-button/icon-button-pressed.component';
@@ -32,4 +33,5 @@ export const routes: Routes = [
   { path: 'icon-button/pressed', component: IconButtonPressedComponent },
   { path: 'link/variants', component: LinkVariantsComponent },
   { path: 'filter-trigger/states', component: FilterTriggerStatesComponent },
+  { path: 'segmented/default', component: SegmentedDefaultComponent },
 ];

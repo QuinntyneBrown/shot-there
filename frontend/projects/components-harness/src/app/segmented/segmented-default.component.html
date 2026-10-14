@@ -1,0 +1,5 @@
+<main class="container stack">
+  <st-segmented label="Show" [options]="options" [value]="value()" (valueChange)="changed($event)" />
+  <label><input type="checkbox" (change)="value.set('spots')"> Show spots only</label>
+  <st-activation-log [entries]="log()" />
+</main>

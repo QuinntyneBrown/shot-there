@@ -1,0 +1,16 @@
+/* DS components/button-group.html (segmented); the host is the .segmented group. */
+:host { display: flex; flex-wrap: wrap; gap: 0 var(--space-5); margin-bottom: var(--space-4); list-style: none; padding: 0; }
+button { font: var(--text-body); color: var(--color-fg-muted); text-decoration: none; background: none; border: 0; padding: 0; min-height: var(--target-comfortable); cursor: pointer; display: inline-flex; align-items: center; gap: var(--space-1); transition: color var(--duration-fast) var(--ease-standard); }
+button:hover { color: var(--color-fg-default); }
+[aria-pressed="true"] { color: var(--color-fg-accent); font-weight: var(--font-weight-semibold); }
+button:disabled { color: var(--color-fg-disabled); cursor: not-allowed; }
+/* Each item reserves its semibold width, so selecting never shifts the row (button-group D-9). */
+[data-text] { display: inline-grid; grid-auto-flow: column; grid-template-rows: auto 0; row-gap: 0; justify-content: start; }
+[data-text]::after { content: attr(data-text) / ""; grid-row: 2; grid-column: 1; height: 0; overflow: hidden; visibility: hidden; font-weight: var(--font-weight-semibold); }
+/* Phones: segments and wrapped rows sit 8 px apart (button-group D-11, L2-065.3). */
+@media (max-width: 47.99rem) {
+  :host { row-gap: var(--space-2); }
+}
+@media (forced-colors: active) {
+  [aria-pressed="true"] { text-decoration: underline; }
+}
