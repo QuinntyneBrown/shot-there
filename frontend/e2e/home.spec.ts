@@ -65,6 +65,27 @@ test.describe('Home page', () => {
     await expect(home.signup.email).toBeFocused();
   });
 
+  for (const theme of ['light', 'dark'] as const) {
+    for (const width of [320, 1280]) {
+      test(`shows an accessible empty reviews state in ${theme} mode at ${width}px`, async ({
+        page,
+      }) => {
+        // Given no published studios, a window width and theme
+        await givenStudios(page, []);
+        await page.setViewportSize({ width, height: 800 });
+        const shell = new ShellPage(page);
+        await shell.rememberTheme(theme);
+        const home = new HomePage(page);
+        // When the home page loads
+        await home.open();
+        // Then the empty reviews state is accessible without horizontal scrolling
+        await expect(home.firstReviewsComing).toBeVisible();
+        expect(await shell.hasHorizontalScroll()).toBe(false);
+        expect(await shell.accessibilityViolations()).toEqual([]);
+      });
+    }
+  }
+
   test('still offers the signup when the latest reviews cannot load', async ({ page }) => {
     // Given the studio list fails
     await givenStudioListFails(page);
