@@ -115,6 +115,20 @@ test.describe('Site header', () => {
     await expect(shell.menuButton).toBeFocused();
   });
 
+  test('closes the menu with the backdrop', async ({ page }) => {
+    // Given the menu is open at phone width
+    const shell = new ShellPage(page);
+    await shell.usePhoneWidth();
+    await shell.open();
+    await shell.openMenu();
+    await shell.useBackdropWidth();
+    // When the visitor clicks the backdrop
+    await shell.clickMenuBackdrop();
+    // Then the menu closes
+    await expect(shell.menuDialog).toBeHidden();
+    await expect(shell.menuButton).toHaveAttribute('aria-expanded', 'false');
+  });
+
   for (const theme of ['light', 'dark'] as const) {
     for (const width of [320, 768, 1280]) {
       test(`lays out without horizontal scrolling or accessibility violations at ${width}px in ${theme} theme`, async ({

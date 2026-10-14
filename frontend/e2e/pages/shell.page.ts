@@ -7,6 +7,7 @@ export class ShellPage {
   readonly menuButton: Locator;
   readonly menuDialog: Locator;
   readonly menuCloseButton: Locator;
+  readonly menuBackdrop: Locator;
   readonly footer: Locator;
 
   constructor(private readonly page: Page) {
@@ -18,6 +19,7 @@ export class ShellPage {
       .getByRole('button', { name: 'Menu', includeHidden: true });
     this.menuDialog = page.getByRole('dialog', { name: 'Menu' });
     this.menuCloseButton = this.menuDialog.getByRole('button', { name: 'Close' });
+    this.menuBackdrop = page.locator('.cdk-overlay-backdrop');
     this.footer = page.getByRole('contentinfo');
   }
 
@@ -27,6 +29,10 @@ export class ShellPage {
 
   async usePhoneWidth(): Promise<void> {
     await this.page.setViewportSize({ width: 320, height: 640 });
+  }
+
+  async useBackdropWidth(): Promise<void> {
+    await this.page.setViewportSize({ width: 768, height: 640 });
   }
 
   async useDesktopWidth(): Promise<void> {
@@ -115,6 +121,10 @@ export class ShellPage {
 
   async openMenu(): Promise<void> {
     await this.menuButton.click();
+  }
+
+  async clickMenuBackdrop(): Promise<void> {
+    await this.menuBackdrop.click({ position: { x: 10, y: 320 } });
   }
 
   async menuButtonHeight(): Promise<number> {
