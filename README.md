@@ -141,8 +141,8 @@ shot-there/
 
 - **Requirements:** [`docs/specs/`](docs/specs/) ([L1](docs/specs/L1.md), [L2](docs/specs/L2.md))
 - **Designs:** [`docs/detailed-designs/`](docs/detailed-designs/)
-- **Frontend ↔ backend contract:** [`docs/icd/`](docs/icd/README.md) (ICD-001, binding for both sides)
-- **Components library ↔ application contract:** [`docs/icd/components-library.md`](docs/icd/components-library.md) (ICD-002, binding for both sides)
+- **Frontend ↔ backend contract:** [`docs/icd/backend-frontend-api.md`](docs/icd/backend-frontend-api.md) (ICD-001, binding for both sides)
+- **Components library ↔ application contract:** [`docs/icd/components-library-application.md`](docs/icd/components-library-application.md) (ICD-002, binding for both sides)
 - **Estimates:** [`docs/estimates/`](docs/estimates/)
 - **Design system:** [`docs/design-system/`](docs/design-system/), open `docs/design-system/index.html` in a browser
 - **Working agreements for contributors and coding agents:** [`AGENTS.md`](AGENTS.md)

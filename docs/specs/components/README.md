@@ -7,7 +7,7 @@ light and dark with the design system's real stylesheets. `<component>` is the
 design-system page slug; the two library parts with no component page use their
 library folder name (`icon`, `responsive-image`).
 
-Each CRD works inside [ICD-002](../../icd/components-library.md), which fixes
+Each CRD works inside [ICD-002](../../icd/components-library-application.md), which fixes
 every selector, input, output, slot and type that crosses the boundary between
 the components library and the application. A CRD adds states, styling,
 behaviour and acceptance criteria; it never changes the boundary. Where a CRD
