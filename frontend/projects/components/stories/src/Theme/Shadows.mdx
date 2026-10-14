@@ -1,0 +1,16 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+import { TokenRows, previews } from './components/TokenBlocks';
+
+<Meta title="Theme/Shadows" />
+
+# Shadows
+
+Flat by default: white space separates things, and shadows only lift overlays. `--shadow-focus` draws the two-ring
+focus indicator.
+
+<TokenRows prefix="shadow-" preview={previews.shadow} />
+
+## Z-order
+
+<TokenRows prefix="z-" preview={previews.none} />

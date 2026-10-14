@@ -1,0 +1,22 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Concepts/Developer/Accessibility" />
+
+# Accessibility
+
+ShotThere meets **WCAG 2.2 AA**. Every story runs axe through the Accessibility panel (`a11y.test: 'error'`), so a
+violation shows as a failure — open the panel from the addon bar.
+
+## Rules
+
+- **Use native elements.** Buttons are `<button>`, links are `<a>`; `st-button` and `st-link` are attributes on them,
+  so keyboard behaviour and semantics come for free.
+- **Every control has an accessible name.** Icon-only buttons set `aria-label`; icons are decorative.
+- **State is ARIA.** `aria-pressed`, `aria-busy`, `aria-disabled`, `aria-invalid`, `aria-current` — never a class
+  alone.
+- **Targets are 44px on phones** (`--target-comfortable`), never below WCAG 2.5.8's 24px.
+- **Focus is always visible.** `--shadow-focus` draws a two-ring indicator that clears any background.
+- **Contrast** is AA in both themes; check with the Theme toolbar and the Accessibility panel.
+- **Motion respects `prefers-reduced-motion`** through the duration tokens.
+- **All user-facing text is marked for i18n** (`i18n` in templates, `$localize` in code).
+- **Overlays use the CDK's accessible primitives.** Don't hand-roll modals.

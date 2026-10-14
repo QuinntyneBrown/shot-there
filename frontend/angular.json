@@ -169,6 +169,32 @@
             }
           },
           "defaultConfiguration": "production"
+        },
+        "storybook": {
+          "builder": "@storybook/angular:start-storybook",
+          "options": {
+            "configDir": "projects/components/.storybook",
+            "browserTarget": "components:build",
+            "tsConfig": "projects/components/.storybook/tsconfig.json",
+            "compodoc": true,
+            "compodocArgs": ["-e", "json", "-d", "projects/components", "--disableRoutesGraph"],
+            "styles": ["projects/components/styles/shot-there.css"],
+            "experimentalZoneless": true,
+            "port": 6006
+          }
+        },
+        "build-storybook": {
+          "builder": "@storybook/angular:build-storybook",
+          "options": {
+            "configDir": "projects/components/.storybook",
+            "browserTarget": "components:build",
+            "tsConfig": "projects/components/.storybook/tsconfig.json",
+            "compodoc": true,
+            "compodocArgs": ["-e", "json", "-d", "projects/components", "--disableRoutesGraph"],
+            "styles": ["projects/components/styles/shot-there.css"],
+            "experimentalZoneless": true,
+            "outputDir": "dist/storybook"
+          }
         }
       },
       "schematics": {

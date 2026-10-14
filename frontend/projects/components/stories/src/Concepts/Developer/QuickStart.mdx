@@ -1,0 +1,49 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Concepts/Developer/Quick Start" />
+
+# Quick start
+
+## Run Storybook
+
+From `frontend/`:
+
+```sh
+npm ci
+npm run storybook        # ng run components:storybook → http://localhost:6006
+npm run build-storybook  # static build → frontend/dist/storybook
+```
+
+Storybook is an Angular builder target on the `components` project (`angular.json` → `storybook` /
+`build-storybook`). It compiles the library from source — no `npm run build:components` needed — runs zoneless like
+the app, and generates the API tables with compodoc on every start.
+
+## Use a component
+
+Components are standalone. Import the class through the `@shot-there/components` alias and use its `st-*` selector:
+
+```ts
+import { Component } from '@angular/core';
+import { ButtonComponent, IconComponent } from '@shot-there/components';
+
+@Component({
+  selector: 'app-close-filters',
+  imports: [ButtonComponent, IconComponent],
+  templateUrl: './close-filters.component.html',
+})
+export class CloseFiltersComponent {}
+```
+
+```html
+<button st-button variant="ghost" iconOnly type="button" aria-label="Close filters" i18n-aria-label>
+  <st-icon name="close" />
+</button>
+```
+
+The app and the components harness compile against the built package (`tsconfig` paths point at `dist/components`),
+so run `npm run build:components` after a library change.
+
+## Load the global styles
+
+`styles/shot-there.css` is the only global stylesheet: tokens, then foundations, then utilities. The app lists it once
+in `angular.json` → `styles`; components need nothing else.
