@@ -1,0 +1,10 @@
+/* DS components/file-upload.html. */
+:host { display: block; }
+.upload-drop { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3); padding: var(--space-4); border: var(--border-width-thick) dashed var(--color-border-strong); border-radius: var(--radius-md); color: var(--color-fg-muted); font: var(--text-body-sm); }
+.upload-drop__errors { flex-basis: 100%; display: flex; flex-direction: column; gap: var(--space-1); }
+.btn { display: inline-flex; align-items: center; justify-content: center; min-height: var(--control-height-md); padding: 0 var(--space-4); font: var(--text-label); font-size: var(--font-size-md); color: var(--color-fg-default); background: var(--color-bg-surface); border: var(--border-width-hairline) solid var(--color-border-strong); border-radius: var(--radius-full); cursor: pointer; white-space: nowrap; }
+.btn:hover { background: var(--color-bg-subtle); }
+.file-input:focus-visible + .btn { outline: var(--focus-ring-width) solid var(--color-focus-ring); outline-offset: var(--focus-ring-offset); }
+.file-input:disabled + .btn { opacity: 0.5; cursor: not-allowed; }
+.field__error { font: var(--text-body-sm); color: var(--color-danger-fg); display: flex; gap: var(--space-1); }
+.field__error::before { content: "⚠\FE0E"; content: "⚠\FE0E" / ""; flex: none; }

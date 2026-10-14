@@ -1,0 +1,9 @@
+@if (filters().length) {
+  <div class="active-filters">
+    <span class="visually-hidden">{{ label() }}</span>
+    @for (filter of filters(); track filter.key) {
+      <span class="chip chip--filter">{{ filter.label }}<button class="remove" type="button" (click)="filterRemoved.emit(filter)"><st-icon [name]="'close'" [size]="'sm'" /><span class="visually-hidden">{{ removeLabel() }} {{ filter.label }}</span></button></span>
+    }
+    <button class="clear" type="button" (click)="cleared.emit()">{{ clearLabel() }}</button>
+  </div>
+}

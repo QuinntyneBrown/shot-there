@@ -1,0 +1,22 @@
+@if (rank() !== null) {
+  <span class="guide-entry__rank" aria-hidden="true">{{ rank() }}</span>
+} @else {
+  <div class="image-row__thumb" aria-hidden="true">
+    @if (state() === 'failed' || !thumbnailUrl()) {
+      <st-icon [name]="'image-failed'" />
+    } @else {
+      <img [src]="thumbnailUrl()" alt="">
+    }
+  </div>
+}
+<div class="image-row__body">
+  <span class="image-row__meta">{{ meta() }}</span>
+  @if (statusText() && state() === 'uploading') {
+    <span class="image-row__meta" aria-hidden="true">{{ statusText() }}</span>
+  }
+  @if (statusText() && state() === 'failed') {
+    <p class="field__error" role="alert">{{ statusText() }}</p>
+  }
+  <ng-content />
+</div>
+<div class="image-row__actions"><ng-content select="[slot=actions]" /></div>

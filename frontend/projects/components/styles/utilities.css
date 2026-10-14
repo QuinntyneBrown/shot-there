@@ -256,3 +256,30 @@ html:has(body.has-compare-bar) {
   border: var(--border-width-thick) solid var(--color-fg-default);
   border-radius: var(--radius-full);
 }
+
+/* ---------- Table (table[st-table]): global because the rows are the application's markup (table D-6). ---------- */
+.table { width: 100%; border-collapse: collapse; font: var(--text-body-sm); }
+.table caption { text-align: left; font: var(--text-label); color: var(--color-fg-muted); padding-block: var(--space-2); caption-side: top; }
+.table th, .table td { text-align: left; padding: var(--space-4) var(--space-3); border-bottom: var(--border-width-hairline) solid var(--color-border-default); vertical-align: middle; }
+.table th { background: var(--color-bg-surface); font: var(--text-label); color: var(--color-fg-muted); white-space: nowrap; position: sticky; top: 0; }
+.table tbody th { position: static; white-space: normal; background: none; color: var(--color-fg-default); font: var(--text-body-sm); font-weight: var(--font-weight-medium); }
+.table tbody tr:last-child > * { border-bottom: 0; }
+.table tbody tr:hover { background: var(--color-bg-subtle); }
+.table tbody tr[aria-current="true"], .table tbody tr[aria-selected="true"] { background: var(--color-accent-subtle); }
+.table td.num, .table th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.table th[aria-sort] button { all: unset; cursor: pointer; display: inline-flex; gap: var(--space-1); align-items: center; }
+.table th[aria-sort] button:focus-visible { outline: var(--focus-ring-width) solid var(--color-focus-ring); outline-offset: var(--focus-ring-offset); }
+.table th[aria-sort="ascending"] button::after { content: "↑"; }
+.table th[aria-sort="descending"] button::after { content: "↓"; }
+.table--dense th, .table--dense td { padding-block: var(--space-2); }
+/* Tables that become label-over-value cards below MD (L2-015.3, L2-017.3, L2-063.3). */
+@media (max-width: 47.99rem) {
+  .table--stack thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+  .table--stack, .table--stack tbody, .table--stack tr, .table--stack td, .table--stack tbody th { display: block; width: 100%; }
+  .table--stack tr { padding: var(--space-4); margin-bottom: var(--space-3); border: var(--border-width-hairline) solid var(--color-border-default); border-radius: var(--radius-md); background: var(--color-bg-surface); }
+  .table--stack tbody tr:hover { background: var(--color-bg-surface); }
+  .table--stack td, .table--stack tbody th { padding: var(--space-1) 0; border: 0; }
+  .table--stack tbody th { font: var(--text-label); font-size: var(--font-size-md); padding-bottom: var(--space-2); }
+  .table--stack td[data-label]::before { content: attr(data-label); display: block; font: var(--text-label); color: var(--color-fg-subtle); }
+  .table-wrap:has(> .table--stack) { border-top: 0; overflow: visible; background: none; }
+}
