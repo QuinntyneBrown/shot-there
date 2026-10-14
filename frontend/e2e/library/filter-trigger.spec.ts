@@ -5,7 +5,7 @@ import { HarnessPage, HarnessTheme } from '../pages/harness.page';
 const THEMES: HarnessTheme[] = ['light', 'dark'];
 const FILTERS_ICON = 'M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12M20 18h0';
 
-test.describe('FilterTriggerComponent (CRD filter: trigger, ICD-002 §9.1, §12)', () => {
+test.describe('FilterTriggerComponent (ICD-002 §9.1, §12)', () => {
   test('AC-1 with no active filters it is a native button.filter-trigger that opens a dialog, named "Filters", with no bubble', async ({
     page,
   }) => {

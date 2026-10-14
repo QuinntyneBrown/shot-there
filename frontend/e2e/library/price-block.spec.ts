@@ -2,7 +2,7 @@ import { expect, test } from '@playwright/test';
 import { PriceBlockComponent } from '../components/price-block.component';
 import { HarnessPage, HarnessTheme } from '../pages/harness.page';
 
-test.describe('PriceBlockComponent (ICD-002 §9.5, CRD price-block)', () => {
+test.describe('PriceBlockComponent (ICD-002 §9.5)', () => {
   test('shows the all-in figure, its explanation, the facts and the verified date in order', async ({
     page,
   }) => {

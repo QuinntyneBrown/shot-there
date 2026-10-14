@@ -74,10 +74,8 @@ application needs something it does not provide, change this document first
 
 - The HTTP contract between `@shot-there/api` and the backend, which
   [ICD-001](README.md) governs.
-- The internal design of individual components. Each component's Component
-  Requirements Document (CRD, `docs/specs/components/<component>.md`) holds
-  its full requirements, states and acceptance criteria. A CRD must conform to
-  this document and may not change anything it fixes.
+- The internal design of individual components, including their states and
+  acceptance criteria.
 - Page and feature behaviour (filters, URL state, publishing rules), which
   belongs to L2 and the detailed designs.
 - The interactive map engine. The detailed designs leave the map library open;
@@ -101,7 +99,6 @@ application needs something it does not provide, change this document first
 | Mocks | `docs/mocks/` | Every screen and state that must be buildable |
 | This ICD | `docs/icd/components-library-application.md` | The boundary: exports, APIs, ownership |
 | ICD-001 | `docs/icd/backend-frontend-api.md` | The HTTP contract between the application (through `@shot-there/api`) and the Next.js API, including every DTO |
-| CRDs | `docs/specs/components/*.md` | Full requirements of one component, within this ICD |
 | Detailed designs | `docs/detailed-designs/` | Feature design; for boundary matters this ICD wins (§18) |
 | Working agreement | `AGENTS.md` | Repository rules both parties follow |
 
@@ -111,7 +108,6 @@ Precedence when two sources disagree:
 2. The design system decides **how it looks** and **which classes and tokens
    render it**.
 3. This ICD decides **which side does it and through what API**.
-4. A CRD details one component inside those limits.
 
 If L2 and the design system conflict, neither party resolves it in code. Raise
 it, settle it upstream, then update this ICD if the boundary changes.
@@ -332,7 +328,7 @@ The full split is in [§14](#14-responsibility-matrix). These are the boundary r
 
 | ID | Requirement | Verify |
 |---|---|---|
-| ICD-TEST-1 | Each library component is built test-first against its CRD acceptance criteria with Playwright in Chromium, mounted in the harness application `components-harness` (`frontend/projects/components-harness/`, one route per component state, never deployed) (D-12). | T |
+| ICD-TEST-1 | Each library component is built test-first against its acceptance criteria with Playwright in Chromium, mounted in the harness application `components-harness` (`frontend/projects/components-harness/`, one route per component state, never deployed) (D-12). | T |
 | ICD-TEST-2 | Each component has one component object in `frontend/e2e/components/<component>.component.ts` that owns its selectors and interactions. Application page objects in `frontend/e2e/pages/` compose component objects and never repeat their selectors. Tests never contain selectors. | R |
 | ICD-TEST-3 | Component objects locate elements by role and accessible name first, then by DS classes and state attributes (§7.4). Never by `st-` tag names or Angular attributes. | R |
 | ICD-TEST-4 | The application's acceptance tests run against the built package (ICD-PKG-3), so a passing application suite proves the integration. | B, T |
@@ -431,8 +427,8 @@ Rules for shared types:
 
 This catalogue is the complete public component surface for Phase 1. It covers
 every component the design system defines that the ShotThere mocks use. Each
-entry fixes the boundary; its CRD adds states, styling and acceptance
-criteria.
+entry fixes the boundary; states, styling and acceptance criteria
+are added per component.
 
 Legend: **req** required input · **live** has a built-in live region
 (ICD-A11Y-4) · `—` none. Defaults in `code`. All string inputs that hold copy
@@ -1393,7 +1389,7 @@ This document is versioned with semantic versioning. The library's
 
 | Class | Examples | Version | Process |
 |---|---|---|---|
-| **Major (breaking)** | Remove or rename a component, selector, input, output, slot, type member, service method, rendered class, role or ARIA attribute, token or utility; narrow an input type; widen an emitted type; change a default; make an optional input required | `x.0.0` | Change this ICD, the affected CRDs, the library and every application use in **one** pull request. Library and application suites pass on it. |
+| **Major (breaking)** | Remove or rename a component, selector, input, output, slot, type member, service method, rendered class, role or ARIA attribute, token or utility; narrow an input type; widen an emitted type; change a default; make an optional input required | `x.0.0` | Change this ICD, the library and every application use in **one** pull request. Library and application suites pass on it. |
 | **Minor (additive)** | New component, optional input, output, slot, utility, library string, union member on an input-only type | `1.x.0` | Change this ICD first (or in the same pull request), then the library. The application may adopt it later. |
 | **Patch** | Wording, typo, clarification that changes no code | `1.0.x` | Edit this ICD. |
 
@@ -1401,8 +1397,8 @@ Rules:
 
 1. Nothing crosses the boundary unless it is in this document.
 2. A change to `public-api.ts` with no matching ICD change is rejected in review.
-3. A CRD that needs an API this ICD does not allow stops and changes the ICD
-   first; the CRD never overrides it.
+3. A component that needs an API this ICD does not allow stops and changes
+   the ICD first; the component never overrides it.
 4. Deprecation: mark the member `@deprecated` with its replacement, list it in
    §19, and remove it in the next major version.
 5. Upstream first: a change that comes from L2, the design system or the mocks
@@ -1418,7 +1414,7 @@ Rules:
 - [ ] No business rules, formatting, router calls, HTTP or API imports.
 - [ ] No static template text; library strings use `$localize` with `@@st.*` IDs and have overrides.
 - [ ] Server-renders and hydrates in the harness without errors or mismatches.
-- [ ] Every CRD acceptance criterion has a passing Playwright test in Chromium, written first; axe reports no violations in both themes at 320px and 1280px.
+- [ ] Every acceptance criterion has a passing Playwright test in Chromium, written first; axe reports no violations in both themes at 320px and 1280px.
 - [ ] Component object in `frontend/e2e/components/` owns all its selectors.
 - [ ] `ng build components` succeeds; the application builds against the new `dist`.
 
@@ -1466,13 +1462,13 @@ these points only.
 - **D-1 Workspace layout.** One Angular CLI workspace in `frontend/` with the
   default `newProjectRoot` of `projects`: the libraries `projects/api` and
   `projects/components`, and the application project `projects/shot-there`.
-  `README.md` and the CRD skill use this layout. Where a detailed design says
+  `README.md` uses this layout. Where a detailed design says
   `libs/api/…` read `frontend/projects/api/src/lib/…`; `frontend/libs/components/…`
   is `frontend/projects/components/src/lib/…`; `frontend/src/…` is
-  `frontend/projects/shot-there/src/…`. CRDs use
+  `frontend/projects/shot-there/src/…`. Components live in
   `frontend/projects/components/src/lib/<component>/`.
 - **D-2 Selector prefix.** `st` (`st-button`, `stFallbackImage`), as the
-  detailed designs use. The CRD skill's `sh-` examples are inherited.
+  detailed designs use.
 - **D-3 Class and token names.** The DS names are used unchanged: `.container`,
   `.visually-hidden`, `--color-focus-ring`. The `build-app-shell` design's
   `.st-container`, `.st-visually-hidden` and `--st-color-focus-ring` refer to
@@ -1514,13 +1510,13 @@ these points only.
   state.
 - **D-13 One Angular version.** Both projects build from one
   `frontend/package.json`; the library declares peer dependencies only.
-- **D-14 Changes the CRDs needed (1.1.0).** Writing a CRD for every component
+- **D-14 Additive changes (1.1.0).** Specifying every component
   in §9 against every mock found usages the 1.0.0 API could not build. Each
   was added here first, all additive (§15): the members and types marked new
   in §8, §9 and §12, the `InlineMessageComponent` and
   `StatTileSkeletonComponent`, and the global table and overlay rules in §11.1
   (encapsulated component CSS cannot reach projected table cells or the
-  elements CDK creates). Each CRD's *Decisions* gives the reason for its part.
+  elements CDK creates).
   Wording fixes in the same release: the filters overlays are `st-sheet`, not
   `st-dialog` (DS and every filter mock); `.has-compare-bar` goes on `<body>`;
   `st-map-unavailable` is live; the "Used by" lines of the icon button and
@@ -1532,7 +1528,7 @@ these points only.
   `st-dialog` `fullScreenBelowSm`, the `sm` size on `st-select` and
   `st-text-field`, `st-text-field` `concealLabel`, and the text utilities
   `.measure`, `.eyebrow`, `.overline`, `.text-subtle`, `.truncate`. The product
-  owner decided on 14 Oct 2026 to keep them; their CRDs specify them from the
+  owner decided on 14 Oct 2026 to keep them; they are specified from the
   design system's history so they stay buildable.
 - **D-16 Backdrop.** The dialog design-system page says a backdrop click does
   nothing; §10.1 says it closes. The product owner kept §10.1 on 14 Oct 2026:
@@ -1544,4 +1540,4 @@ these points only.
 | Version | Date | Change |
 |---|---|---|
 | 1.0.0 | 13 Oct 2026 | First baseline. |
-| 1.1.0 | 14 Oct 2026 | Additive changes the component CRDs needed (D-14); owner decisions on the header menu, unused API and the backdrop (D-8, D-15, D-16). |
+| 1.1.0 | 14 Oct 2026 | Additive changes found by checking every component against the mocks (D-14); owner decisions on the header menu, unused API and the backdrop (D-8, D-15, D-16). |

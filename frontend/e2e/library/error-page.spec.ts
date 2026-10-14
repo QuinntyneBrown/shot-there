@@ -2,7 +2,7 @@ import { expect, test } from '@playwright/test';
 import { ErrorPageComponent } from '../components/error-page.component';
 import { HarnessPage, HarnessTheme } from '../pages/harness.page';
 
-test.describe('ErrorPageComponent (ICD-002 §9.7, CRD error-page)', () => {
+test.describe('ErrorPageComponent (ICD-002 §9.7)', () => {
   test('not found renders the code, the h1, the text and the actions in order', async ({
     page,
   }) => {

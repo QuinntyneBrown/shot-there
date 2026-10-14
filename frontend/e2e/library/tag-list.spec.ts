@@ -2,7 +2,7 @@ import { expect, test } from '@playwright/test';
 import { TagListComponent } from '../components/tag-list.component';
 import { HarnessPage, HarnessTheme } from '../pages/harness.page';
 
-test.describe('TagListComponent (ICD-002 §9.5, CRD tag)', () => {
+test.describe('TagListComponent (ICD-002 §9.5)', () => {
   test('renders a named .tags list of static .tag items', async ({ page }) => {
     // Given a tag list labelled "Best uses" with three static items
     const harness = new HarnessPage(page);

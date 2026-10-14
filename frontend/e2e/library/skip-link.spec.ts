@@ -2,7 +2,7 @@ import { expect, test } from '@playwright/test';
 import { SkipLinkComponent } from '../components/skip-link.component';
 import { HarnessPage, HarnessTheme } from '../pages/harness.page';
 
-test.describe('SkipLinkComponent (ICD-002 §9.3, CRD skip-link)', () => {
+test.describe('SkipLinkComponent (ICD-002 §9.3)', () => {
   test('is a link to #main named "Skip to content", parked above the screen until focused', async ({
     page,
   }) => {

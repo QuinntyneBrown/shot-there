@@ -2,7 +2,7 @@ import { expect, test } from '@playwright/test';
 import { FieldComponent } from '../components/field.component';
 import { HarnessPage, HarnessTheme } from '../pages/harness.page';
 
-test.describe('Checkbox, CheckboxGroup and RadioGroup (ICD-002 §9.2, CRDs checkbox and radio-group)', () => {
+test.describe('Checkbox, CheckboxGroup and RadioGroup (ICD-002 §9.2)', () => {
   test('a single checkbox reports true and false and is described by its help', async ({
     page,
   }) => {

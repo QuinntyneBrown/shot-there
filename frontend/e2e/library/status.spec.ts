@@ -2,7 +2,7 @@ import { expect, test } from '@playwright/test';
 import { StatusComponent } from '../components/status.component';
 import { HarnessPage, HarnessTheme } from '../pages/harness.page';
 
-test.describe('StatusComponent (ICD-002 §9.5, CRD status-label)', () => {
+test.describe('StatusComponent (ICD-002 §9.5)', () => {
   test('draft is a hollow 2px ring', async ({ page }) => {
     // Given a Draft label
     const harness = new HarnessPage(page);

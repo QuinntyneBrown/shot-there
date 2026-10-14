@@ -2,7 +2,7 @@ import { expect, test } from '@playwright/test';
 import { FieldComponent } from '../components/field.component';
 import { HarnessPage, HarnessTheme } from '../pages/harness.page';
 
-test.describe('SelectComponent (ICD-002 §9.2, CRD select)', () => {
+test.describe('SelectComponent (ICD-002 §9.2)', () => {
   test('shows the bound option, reports a new choice and is inline when asked', async ({
     page,
   }) => {

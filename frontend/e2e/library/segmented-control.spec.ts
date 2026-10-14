@@ -4,7 +4,7 @@ import { HarnessPage, HarnessTheme } from '../pages/harness.page';
 
 const THEMES: HarnessTheme[] = ['light', 'dark'];
 
-test.describe('SegmentedControlComponent (CRD button-group, ICD-002 §9.1)', () => {
+test.describe('SegmentedControlComponent (ICD-002 §9.1)', () => {
   test('AC-1 "Show" is a .segmented group of three typed toggle buttons with data-text, "Both" alone pressed', async ({
     page,
   }) => {

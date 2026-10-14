@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test';
 import { HarnessPage, HarnessTheme } from '../pages/harness.page';
 
-test.describe('Form layout parts (ICD-002 §9.2, CRD form-layout)', () => {
+test.describe('Form layout parts (ICD-002 §9.2)', () => {
   test('the error summary takes focus when errors appear and its items focus the fields', async ({ page }) => {
     // Given a form with no errors
     const harness = new HarnessPage(page);

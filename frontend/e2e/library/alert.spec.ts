@@ -2,7 +2,7 @@ import { expect, test } from '@playwright/test';
 import { AlertComponent } from '../components/alert.component';
 import { HarnessPage, HarnessTheme } from '../pages/harness.page';
 
-test.describe('AlertComponent (ICD-002 §9.7, CRD alert)', () => {
+test.describe('AlertComponent (ICD-002 §9.7)', () => {
   test('carries its tone class, role, title and a hidden icon', async ({ page }) => {
     // Given the stale-prices warning with the status role
     const harness = new HarnessPage(page);

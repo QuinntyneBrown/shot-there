@@ -2,7 +2,7 @@ import { expect, test } from '@playwright/test';
 import { ToastComponent } from '../components/toast.component';
 import { HarnessPage, HarnessTheme } from '../pages/harness.page';
 
-test.describe('ToastRegionComponent and ToastService (ICD-002 §9.7, §10.2, CRD toast)', () => {
+test.describe('ToastRegionComponent and ToastService (ICD-002 §9.7, §10.2)', () => {
   test('the region is a polite status that is present and empty from the first render', async ({
     page,
   }) => {

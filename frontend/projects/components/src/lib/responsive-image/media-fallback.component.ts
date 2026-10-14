@@ -4,7 +4,7 @@ import { IconComponent } from '../icon/icon.component';
 /**
  * Internal, not exported: the .media-fallback that stands in for a photo that failed to load, with
  * the image-failed glyph and the alt text (none when the image is decorative). `ratio` keeps the
- * image's box where the slot has no fixed height (CRD responsive-image D-2).
+ * image's box where the slot has no fixed height.
  */
 @Component({
   selector: 'span[st-media-fallback]',

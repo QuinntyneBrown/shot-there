@@ -4,7 +4,7 @@ import { HarnessPage, HarnessTheme } from '../pages/harness.page';
 
 const THEMES: HarnessTheme[] = ['light', 'dark'];
 
-test.describe('IconButtonComponent (CRD icon-button, ICD-002 §9.1)', () => {
+test.describe('IconButtonComponent (ICD-002 §9.1)', () => {
   test('AC-1 the map popup Close is a native button with only icon-btn, named by aria-label, holding one hidden svg and no text', async ({
     page,
   }) => {

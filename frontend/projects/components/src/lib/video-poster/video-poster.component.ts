@@ -21,7 +21,7 @@ import { ResponsiveImage } from '../types/responsive-image';
 /**
  * An episode poster: a link to the episode on YouTube (so it works without JavaScript) that, on an
  * unmodified click or Enter, is replaced by the youtube-nocookie player, which takes focus (L2-047).
- * A missing or failed still shows the episode title on the poster instead (CRD video-poster D-1, D-2).
+ * A missing or failed still shows the episode title on the poster instead (D-2).
  */
 @Component({
   selector: 'st-video-poster',
@@ -49,7 +49,7 @@ export class VideoPosterComponent {
   constructor() {
     // st-responsive-image catches every failure of the still (an error event, one replayed from before
     // hydration, or one found after it) and shows its own fallback. The poster watches for that
-    // fallback and swaps in its own, which shows the episode title (CRD video-poster D-2).
+    // fallback and swaps in its own, which shows the episode title.
     const host = inject<ElementRef<HTMLElement>>(ElementRef).nativeElement;
     const destroyRef = inject(DestroyRef);
     afterNextRender(() => {

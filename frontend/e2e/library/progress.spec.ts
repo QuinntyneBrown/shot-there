@@ -2,7 +2,7 @@ import { expect, test } from '@playwright/test';
 import { ProgressComponent } from '../components/progress.component';
 import { HarnessPage, HarnessTheme } from '../pages/harness.page';
 
-test.describe('ProgressComponent (ICD-002 §9.7, CRD progress)', () => {
+test.describe('ProgressComponent (ICD-002 §9.7)', () => {
   test('is a named progressbar whose value and fill follow `value`', async ({ page }) => {
     // Given an upload at 45 %
     const harness = new HarnessPage(page);

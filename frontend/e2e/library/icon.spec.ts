@@ -4,7 +4,7 @@ import { FilterTriggerComponent } from '../components/filter-trigger.component';
 import { IconComponent } from '../components/icon.component';
 import { HarnessPage, HarnessTheme } from '../pages/harness.page';
 
-/** The CRD drawing table (docs/specs/components/icon.md, Variants and sizes): every IconName and its children. */
+/** The drawing table (docs/specs/components/icon.md, Variants and sizes): every IconName and its children. */
 const SHEET: Record<string, string> = {
   search: '<circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>',
   menu: '<path d="M4 7h16M4 12h16M4 17h16"/>',
@@ -53,7 +53,7 @@ const SHEET: Record<string, string> = {
 
 const THEMES: HarnessTheme[] = ['light', 'dark'];
 
-test.describe('IconComponent (CRD icon, ICD-002 §9.5)', () => {
+test.describe('IconComponent (ICD-002 §9.5)', () => {
   test('AC-1, AC-2 and the drawing table: every name renders exactly its drawing as hidden SVG', async ({
     page,
   }) => {

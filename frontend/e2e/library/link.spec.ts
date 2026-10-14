@@ -5,7 +5,7 @@ import { HarnessPage, HarnessTheme } from '../pages/harness.page';
 const THEMES: HarnessTheme[] = ['light', 'dark'];
 const EXTERNAL_ARROW = '<path d="M14 4h6v6M20 4l-9 9M18 14v6H4V6h6"/>';
 
-test.describe('LinkComponent (CRD link, ICD-002 §9.1, §12, ICD-SEC-2)', () => {
+test.describe('LinkComponent (ICD-002 §9.1, §12, ICD-SEC-2)', () => {
   test('AC-1 an inline a[st-link] is a plain native link: no class, no target or rel, link colour and hairline underline', async ({
     page,
   }) => {

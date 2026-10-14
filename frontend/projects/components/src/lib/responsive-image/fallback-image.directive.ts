@@ -4,7 +4,7 @@ import { MediaFallbackComponent } from './media-fallback.component';
 /**
  * When the image fails to load, hides it and puts the .media-fallback right after it: the
  * image-failed glyph and the alt text (none when alt is empty), in the box the image's width and
- * height reserved, so the layout does not shift (ICD-MEDIA-3, CRD responsive-image).
+ * height reserved, so the layout does not shift (ICD-MEDIA-3).
  */
 @Directive({
   selector: 'img[stFallbackImage]',
@@ -17,7 +17,7 @@ export class FallbackImageDirective {
   private fallbackShown = false;
 
   constructor() {
-    // An image that broke before hydration attached the error listener (CRD responsive-image D-3).
+    // An image that broke before hydration attached the error listener.
     afterNextRender(() => {
       if (this.image.getAttribute('src') && this.image.complete && this.image.naturalWidth === 0) {
         this.showFallback();

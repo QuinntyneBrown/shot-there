@@ -2,7 +2,7 @@ import { expect, test } from '@playwright/test';
 import { FieldComponent } from '../components/field.component';
 import { HarnessPage, HarnessTheme } from '../pages/harness.page';
 
-test.describe('TextareaComponent (ICD-002 §9.2, CRD textarea)', () => {
+test.describe('TextareaComponent (ICD-002 §9.2)', () => {
   test('renders rows, error then help as its description', async ({ page }) => {
     // Given the verdict textarea with an error and help
     const harness = new HarnessPage(page);
