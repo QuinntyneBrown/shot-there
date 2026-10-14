@@ -1,4 +1,7 @@
 import { Routes } from '@angular/router';
+import { IconPerformanceComponent } from './icon/icon-performance.component';
+import { IconTonesComponent } from './icon/icon-tones.component';
+import { IconInControlsComponent } from './icon/icon-in-controls.component';
 import { VideoPosterFailedComponent } from './video-poster/video-poster-failed.component';
 import { VideoPosterDefaultComponent } from './video-poster/video-poster-default.component';
 import { ResponsiveImageFailedComponent } from './responsive-image/responsive-image-failed.component';
@@ -42,4 +45,7 @@ export const routes: Routes = [
   { path: 'responsive-image/failed', component: ResponsiveImageFailedComponent },
   { path: 'video-poster/default', component: VideoPosterDefaultComponent },
   { path: 'video-poster/failed', component: VideoPosterFailedComponent },
+  { path: 'icon/in-controls', component: IconInControlsComponent },
+  { path: 'icon/tones', component: IconTonesComponent },
+  { path: 'icon/performance', component: IconPerformanceComponent },
 ];

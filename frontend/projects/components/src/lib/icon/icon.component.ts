@@ -4,7 +4,7 @@ import { IconSize } from '../types/icon-size';
 
 /**
  * A decorative icon from the DS icon sheet (foundations/iconography.html). Meaning comes from
- * adjacent text or the parent's accessible name. Names the sheet does not draw yet render empty.
+ * adjacent text or the parent's accessible name. The drawings are CRD icon.md's table.
  */
 @Component({
   selector: 'st-icon',

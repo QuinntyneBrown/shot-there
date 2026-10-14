@@ -3,4 +3,5 @@ export type IconName =
   | 'filters' | 'map-pin' | 'check' | 'mail' | 'lock' | 'sign-out' | 'home' | 'plus'
   | 'edit' | 'trash' | 'arrow-up' | 'arrow-down' | 'camera' | 'upload' | 'eye'
   | 'clock' | 'refresh' | 'offline' | 'info' | 'success' | 'warning' | 'danger'
-  | 'external' | 'play';
+  | 'external' | 'play'
+  | 'copy' | 'image' | 'image-failed' | 'tree' | 'compare' | 'guide' | 'list';

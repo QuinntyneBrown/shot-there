@@ -16,6 +16,11 @@ export class ButtonComponent {
     return ((await this.root.getAttribute('class')) ?? '').split(/\s+/).filter((c) => c.startsWith('btn'));
   }
 
+  /** The element's accessibility subtree as Playwright's ARIA snapshot (`- button "Close"`). */
+  ariaTree(): Promise<string> {
+    return this.root.ariaSnapshot();
+  }
+
   /** The rendered width and height in whole CSS pixels. */
   async size(): Promise<{ width: number; height: number }> {
     const box = await this.root.boundingBox();

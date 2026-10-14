@@ -1,0 +1,5 @@
+/* Stand-ins for the alert, empty-state and toast blocks: only the ground and colour each gives its icon. */
+.alert, .toast { display: flex; gap: var(--space-3); padding: var(--space-4); border-radius: var(--radius-md); }
+.alert { --alert-icon: var(--color-warning-icon); background: var(--color-warning-bg); color: var(--color-fg-default); }
+.toast { background: var(--color-bg-inverse); color: var(--color-fg-inverse); }
+.empty__icon { display: inline-grid; place-items: center; width: 4rem; height: 4rem; border-radius: var(--radius-full); background: var(--color-danger-bg); color: var(--color-danger-icon); }
