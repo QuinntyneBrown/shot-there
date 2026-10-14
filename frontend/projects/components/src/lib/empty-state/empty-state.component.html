@@ -1,5 +1,5 @@
 @if (icon(); as name) {
-  <div class="empty__icon" aria-hidden="true"><st-icon [name]="name" size="xl" /></div>
+  <div class="empty__icon" aria-hidden="true"><st-icon [name]="name" [size]="'xl'" /></div>
 }
 @switch (headingLevel()) {
   @case (3) { <h3 class="empty__title">{{ title() }}</h3> }
