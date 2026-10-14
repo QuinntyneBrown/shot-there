@@ -1,4 +1,5 @@
 import { Locator, Page } from '@playwright/test';
+import { colourOf } from './contrast';
 import { IconComponent } from './icon.component';
 
 /** An a[st-link]: a native link, found by its accessible name. */
@@ -20,11 +21,21 @@ export class LinkComponent {
     return Math.round((await this.root.boundingBox())?.height ?? 0);
   }
 
-  /** Text colour and underline. */
-  look(): Promise<{ colour: string; underline: boolean }> {
-    return this.root.evaluate((el) => {
+  /** Text colour as rgb(r, g, b), whether it is underlined, and the underline's thickness and offset in px. */
+  async look(): Promise<{ colour: string; underline: boolean; thickness: number; offset: number }> {
+    const colour = await this.root.evaluate(colourOf, 'color');
+    return this.root.evaluate((el, c) => {
       const style = getComputedStyle(el);
-      return { colour: style.color, underline: style.textDecorationLine.includes('underline') };
-    });
+      return {
+        colour: c,
+        underline: style.textDecorationLine.includes('underline'),
+        thickness: parseFloat(style.textDecorationThickness),
+        offset: Math.round(parseFloat(style.textUnderlineOffset) * 10) / 10,
+      };
+    }, colour);
+  }
+
+  async hover(): Promise<void> {
+    await this.root.hover();
   }
 }

@@ -27,6 +27,10 @@ img, svg, video { max-width: 100%; height: auto; display: block; }
 img[hidden] { display: none; }
 ::selection { background: var(--color-accent-subtle-hover); }
 
+/* Native links (DS components/link.html): ink, underlined, accent and a thicker underline on hover. */
+a { color: var(--color-fg-link); text-decoration: underline; text-underline-offset: 0.15em; text-decoration-thickness: var(--border-width-hairline); }
+a:hover { color: var(--color-fg-link-hover); text-decoration-thickness: var(--border-width-thick); }
+
 /* One focus ring everywhere (WCAG 2.4.7, 2.4.11). */
 :focus-visible {
   outline: var(--focus-ring-width) solid var(--color-focus-ring);

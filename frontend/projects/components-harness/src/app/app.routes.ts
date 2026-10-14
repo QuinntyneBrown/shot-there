@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { FoundationsLinksComponent } from './foundations/foundations-links.component';
 import { ButtonPerformanceComponent } from './button/button-performance.component';
 import { ButtonContrastComponent } from './button/button-contrast.component';
 import { ButtonDisabledComponent } from './button/button-disabled.component';
@@ -56,4 +57,5 @@ export const routes: Routes = [
   { path: 'button/disabled', component: ButtonDisabledComponent },
   { path: 'button/contrast', component: ButtonContrastComponent },
   { path: 'button/performance', component: ButtonPerformanceComponent },
+  { path: 'foundations/links', component: FoundationsLinksComponent },
 ];
