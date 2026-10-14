@@ -1,0 +1,6 @@
+/* DS components/error-page.html; the host is the .system-page block. */
+:host { display: flex; flex-direction: column; align-items: center; text-align: center; gap: var(--space-4); padding-block: var(--space-16) var(--space-8); max-width: 34rem; margin-inline: auto; }
+h1 { font: var(--text-display); }
+.system-page__code { font: var(--text-body-sm); color: var(--color-fg-subtle); }
+.system-page__actions { display: flex; flex-wrap: wrap; gap: var(--space-3); justify-content: center; margin-top: var(--space-4); }
+.system-page__actions:empty { display: none; }

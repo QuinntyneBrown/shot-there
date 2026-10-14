@@ -18,6 +18,12 @@ import { VideoPosterFailedComponent } from './video-poster/video-poster-failed.c
 import { VideoPosterDefaultComponent } from './video-poster/video-poster-default.component';
 import { ResponsiveImageFailedComponent } from './responsive-image/responsive-image-failed.component';
 import { ResponsiveImageDefaultComponent } from './responsive-image/responsive-image-default.component';
+import { SkipLinkDefaultComponent } from './skip-link/skip-link-default.component';
+import { ErrorPageServerErrorComponent } from './error-page/error-page-server-error.component';
+import { ErrorPageNotFoundComponent } from './error-page/error-page-not-found.component';
+import { EmptyStateStatesComponent } from './empty-state/empty-state-states.component';
+import { InlineMessageStatesComponent } from './inline-message/inline-message-states.component';
+import { TagListStatesComponent } from './tag-list/tag-list-states.component';
 import { StatusVariantsComponent } from './status/status-variants.component';
 import { BadgeTonesComponent } from './badge/badge-tones.component';
 import { ProgressStatesComponent } from './progress/progress-states.component';
@@ -83,4 +89,10 @@ export const routes: Routes = [
   { path: 'progress/states', component: ProgressStatesComponent },
   { path: 'badge/tones', component: BadgeTonesComponent },
   { path: 'status/variants', component: StatusVariantsComponent },
+  { path: 'tag-list/states', component: TagListStatesComponent },
+  { path: 'inline-message/states', component: InlineMessageStatesComponent },
+  { path: 'empty-state/states', component: EmptyStateStatesComponent },
+  { path: 'error-page/not-found', component: ErrorPageNotFoundComponent },
+  { path: 'error-page/server-error', component: ErrorPageServerErrorComponent },
+  { path: 'skip-link/default', component: SkipLinkDefaultComponent },
 ];

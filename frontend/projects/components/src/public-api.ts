@@ -43,3 +43,8 @@ export * from './lib/skeleton/skeleton.component';
 export * from './lib/progress/progress.component';
 export * from './lib/badge/badge.component';
 export * from './lib/status/status.component';
+export * from './lib/tag-list/tag-list.component';
+export * from './lib/inline-message/inline-message.component';
+export * from './lib/empty-state/empty-state.component';
+export * from './lib/error-page/error-page.component';
+export * from './lib/skip-link/skip-link.component';
