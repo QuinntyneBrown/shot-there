@@ -29,14 +29,25 @@
       </ul>
     } @else {
       <h2 class="visually-hidden" id="latest-title" i18n>Latest reviews</h2>
-      <div class="empty">
-        <div class="empty__icon">
-          <st-icon name="camera" size="xl" i18n-size />
-        </div>
-        <h3 class="empty__title" i18n>The first studio reviews are coming</h3>
-        <p class="empty__text" i18n>Each studio is reviewed only after a full test shoot. Leave your email and we'll tell you when the first one is up.</p>
-        <div class="empty__actions"><a class="btn" href="#hero-email" (click)="focusSignup($event)" i18n>Get an email when they go up</a></div>
-      </div>
+      <st-empty-state
+        title="The first studio reviews are coming"
+        i18n-title
+        text="Each studio is reviewed only after a full test shoot. Leave your email and we'll tell you when the first one is up."
+        i18n-text
+        icon="camera"
+        i18n-icon
+        [headingLevel]="3"
+      >
+        <a
+          st-button
+          href="#hero-email"
+          (click)="focusSignup($event)"
+          slot="actions"
+          i18n-slot
+          i18n
+          >Get an email when they go up</a
+        >
+      </st-empty-state>
     }
   </section>
 }

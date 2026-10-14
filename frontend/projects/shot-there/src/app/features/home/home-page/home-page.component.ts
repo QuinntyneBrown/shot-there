@@ -3,7 +3,7 @@ import { Component, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { RouterLink } from '@angular/router';
 import { StudiosService } from '@shot-there/api';
-import { IconComponent } from '@shot-there/components';
+import { ButtonComponent, EmptyStateComponent } from '@shot-there/components';
 import { catchError, map, of, startWith } from 'rxjs';
 
 import { EmailSignupComponent } from '../../../core/email-signup/email-signup.component';
@@ -15,7 +15,15 @@ const LATEST_REVIEW_COUNT = 3;
 
 @Component({
   selector: 'st-home-page',
-  imports: [RouterLink, CurrencyPipe, DatePipe, DecimalPipe, EmailSignupComponent, IconComponent],
+  imports: [
+    RouterLink,
+    CurrencyPipe,
+    DatePipe,
+    DecimalPipe,
+    EmailSignupComponent,
+    ButtonComponent,
+    EmptyStateComponent,
+  ],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.css',
 })
