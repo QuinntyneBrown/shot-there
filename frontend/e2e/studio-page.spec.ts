@@ -48,6 +48,7 @@ test.describe('Studio page: basics and pricing', () => {
     );
     await expect(studio.pricing).toContainText('Prices verified 22 September 2026');
     await expect(studio.staleWarning).toHaveCount(0);
+    await expect(studio.pricingStatus).toHaveCount(0);
   });
 
   test('warns in a status region when the prices are stale', async ({ page }) => {
