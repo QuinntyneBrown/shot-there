@@ -31,6 +31,9 @@ export class ScoreComponent {
 
   async lightPips(word: string): Promise<{ filled: number; total: number }> {
     const rating = this.lightRating(word);
-    return { filled: await rating.locator('.pips > i[data-on]').count(), total: await rating.locator('.pips > i').count() };
+    return {
+      filled: await rating.locator('.pips > i[data-on]').count(),
+      total: await rating.locator('.pips > i').count(),
+    };
   }
 }

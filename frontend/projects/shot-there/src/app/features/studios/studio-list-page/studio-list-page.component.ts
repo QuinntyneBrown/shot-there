@@ -23,7 +23,7 @@ import { withoutFilters } from './without-filters';
   selector: 'st-studio-list-page',
   imports: [StudioCardComponent, StudioSortControlComponent, StudioFiltersComponent],
   templateUrl: './studio-list-page.component.html',
-  styleUrl: './studio-list-page.component.css'
+  styleUrl: './studio-list-page.component.css',
 })
 export class StudioListPageComponent {
   private readonly studiosService = inject(StudiosService);
@@ -49,11 +49,11 @@ export class StudioListPageComponent {
         this.studiosService.listStudios(toStudioListQueryParams(query)).pipe(
           map((studios): StudioListState => ({ status: 'loaded', studios })),
           catchError(() => of<StudioListState>({ status: 'error' })),
-          startWith<StudioListState>({ status: 'loading' })
-        )
-      )
+          startWith<StudioListState>({ status: 'loading' }),
+        ),
+      ),
     ),
-    { initialValue: { status: 'loading' } as StudioListState }
+    { initialValue: { status: 'loading' } as StudioListState },
   );
   /** Six placeholder cards: two rows at LG. */
   protected readonly skeletons = [1, 2, 3, 4, 5, 6];
@@ -62,14 +62,21 @@ export class StudioListPageComponent {
     return state.status === 'loaded' ? state.studios : [];
   });
   /** Nothing is published at all, so there is nothing to filter or sort. */
-  protected readonly noStudiosYet = computed(() => this.state().status === 'loaded' && this.studios().length === 0 && this.activeFilterCount() === 0);
+  protected readonly noStudiosYet = computed(
+    () =>
+      this.state().status === 'loaded' &&
+      this.studios().length === 0 &&
+      this.activeFilterCount() === 0,
+  );
 
   constructor() {
     effect(() => {
       if (this.state().status === 'loaded' && this.announceNextCount) {
         this.announceNextCount = false;
         const count = this.studios().length;
-        this.announcer.announcePolite(count === 1 ? $localize`1 studio` : $localize`${count}:count: studios`);
+        this.announcer.announcePolite(
+          count === 1 ? $localize`1 studio` : $localize`${count}:count: studios`,
+        );
       }
     });
   }
@@ -88,14 +95,17 @@ export class StudioListPageComponent {
   }
 
   openFiltersDialog(): void {
-    const ref = this.dialog.open<StudioListQuery, StudioFiltersDialogData>(StudioFiltersDialogComponent, {
-      data: { query: this.query() },
-      ariaLabelledBy: 'studio-filters-title',
-      ariaDescribedBy: 'studio-filters-description',
-      width: '100%',
-      height: '100%',
-      maxWidth: '100%'
-    });
+    const ref = this.dialog.open<StudioListQuery, StudioFiltersDialogData>(
+      StudioFiltersDialogComponent,
+      {
+        data: { query: this.query() },
+        ariaLabelledBy: 'studio-filters-title',
+        ariaDescribedBy: 'studio-filters-description',
+        width: '100%',
+        height: '100%',
+        maxWidth: '100%',
+      },
+    );
     ref.closed.subscribe((query) => {
       if (query) {
         this.applyFilters(query);
@@ -108,6 +118,9 @@ export class StudioListPageComponent {
   }
 
   private applyQuery(query: StudioListQuery): void {
-    void this.router.navigate([], { relativeTo: this.route, queryParams: toStudioListQueryParams(query) });
+    void this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams: toStudioListQueryParams(query),
+    });
   }
 }

@@ -5,7 +5,9 @@ export class PageHeaderComponent {
   readonly root: Locator;
 
   constructor(scope: Page | Locator, title: string) {
-    this.root = scope.locator('.page-header').filter({ has: scope.getByRole('heading', { level: 1, name: title, exact: true }) });
+    this.root = scope
+      .locator('.page-header')
+      .filter({ has: scope.getByRole('heading', { level: 1, name: title, exact: true }) });
   }
 
   heading(): Locator {

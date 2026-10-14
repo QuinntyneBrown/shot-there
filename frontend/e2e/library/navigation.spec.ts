@@ -7,7 +7,9 @@ import { SiteHeaderComponent } from '../components/site-header.component';
 import { HarnessPage, HarnessTheme } from '../pages/harness.page';
 
 test.describe('Navigation components (ICD-002 §9.3)', () => {
-  test('site header shows the wordmark with its tag, the links, and external links open in a new tab', async ({ page }) => {
+  test('site header shows the wordmark with its tag, the links, and external links open in a new tab', async ({
+    page,
+  }) => {
     // Given the public header at desktop width
     const harness = new HarnessPage(page);
     await harness.open('site-header/default');
@@ -23,7 +25,9 @@ test.describe('Navigation components (ICD-002 §9.3)', () => {
     expect(harness.errors).toEqual([]);
   });
 
-  test('site header on a phone hides the links, shows the menu button and reports its press', async ({ page }) => {
+  test('site header on a phone hides the links, shows the menu button and reports its press', async ({
+    page,
+  }) => {
     // Given the header at 360px
     const harness = new HarnessPage(page);
     await harness.open('site-header/default', { width: 360 });
@@ -45,12 +49,17 @@ test.describe('Navigation components (ICD-002 §9.3)', () => {
     const footer = new SiteFooterComponent(page, 'Footer');
     // Then the nav holds the links and the copy line shows
     await expect(footer.nav.getByRole('link')).toHaveCount(2);
-    await expect(footer.nav.getByRole('link', { name: 'YouTube channel' })).toHaveAttribute('target', '_blank');
+    await expect(footer.nav.getByRole('link', { name: 'YouTube channel' })).toHaveAttribute(
+      'target',
+      '_blank',
+    );
     await expect(footer.copy()).toHaveText('© 2026 ShotThere');
     await expect(footer.root).toContainText('Toronto photo locations, shot first-hand.');
   });
 
-  test('breadcrumb marks the last item as current without a link, and keeps links when not current', async ({ page }) => {
+  test('breadcrumb marks the last item as current without a link, and keeps links when not current', async ({
+    page,
+  }) => {
     // Given the three breadcrumbs
     const harness = new HarnessPage(page);
     await harness.open('breadcrumb/states');
@@ -66,7 +75,9 @@ test.describe('Navigation components (ICD-002 §9.3)', () => {
     await expect(new BreadcrumbComponent(page, 'No current').current()).toHaveCount(0);
   });
 
-  test('section links are full-row links with a meta line, and attention highlights it', async ({ page }) => {
+  test('section links are full-row links with a meta line, and attention highlights it', async ({
+    page,
+  }) => {
     // Given the dashboard section links
     const harness = new HarnessPage(page);
     await harness.open('section-links/default');
@@ -77,7 +88,9 @@ test.describe('Navigation components (ICD-002 §9.3)', () => {
     await expect(links.row('Needs re-verification')).toHaveAttribute('data-highlight', '');
   });
 
-  test('page header renders the h1, subtitle and actions, and a loading title as hidden text plus skeleton', async ({ page }) => {
+  test('page header renders the h1, subtitle and actions, and a loading title as hidden text plus skeleton', async ({
+    page,
+  }) => {
     // Given the page headers
     const harness = new HarnessPage(page);
     await harness.open('page-header/states');
@@ -90,10 +103,18 @@ test.describe('Navigation components (ICD-002 §9.3)', () => {
     await expect(page.getByRole('heading', { level: 1, name: 'Loading studio' })).toHaveCount(1);
   });
 
-  for (const route of ['site-header/default', 'site-footer/default', 'breadcrumb/states', 'section-links/default', 'page-header/states']) {
+  for (const route of [
+    'site-header/default',
+    'site-footer/default',
+    'breadcrumb/states',
+    'section-links/default',
+    'page-header/states',
+  ]) {
     for (const theme of ['light', 'dark'] as HarnessTheme[]) {
       for (const width of [320, 1280]) {
-        test(`${route} has no WCAG A/AA violations at ${width}px in the ${theme} theme`, async ({ page }) => {
+        test(`${route} has no WCAG A/AA violations at ${width}px in the ${theme} theme`, async ({
+          page,
+        }) => {
           const harness = new HarnessPage(page);
           await harness.open(route, { width, theme });
           expect(await harness.accessibilityViolations()).toEqual([]);

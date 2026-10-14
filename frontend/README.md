@@ -3,11 +3,11 @@
 An Angular 21 workspace (standalone components, signals, zoneless, server-side
 rendering) with three projects:
 
-| Project | Path | Imported as |
-|---------|------|-------------|
-| `shot-there` | `projects/shot-there/` | the application |
-| `api` | `projects/api/` | `@shot-there/api` |
-| `components` | `projects/components/` | `@shot-there/components` |
+| Project              | Path                           | Imported as                               |
+| -------------------- | ------------------------------ | ----------------------------------------- |
+| `shot-there`         | `projects/shot-there/`         | the application                           |
+| `api`                | `projects/api/`                | `@shot-there/api`                         |
+| `components`         | `projects/components/`         | `@shot-there/components`                  |
 | `components-harness` | `projects/components-harness/` | test host for the library, never deployed |
 
 `@shot-there/api` resolves to the API library's source. `@shot-there/components`
@@ -49,10 +49,10 @@ interception, and any request a test does not fake is aborted.
 `playwright.config.ts` has two Chromium projects, and starts both web servers
 in order (the first builds the components library):
 
-| Project | Specs | Server |
-|---------|-------|--------|
-| `app` | `e2e/*.spec.ts` | `ng serve shot-there --configuration e2e`, port 4317 |
-| `library` | `e2e/library/*.spec.ts` | `ng serve components-harness`, port 4318 |
+| Project   | Specs                   | Server                                               |
+| --------- | ----------------------- | ---------------------------------------------------- |
+| `app`     | `e2e/*.spec.ts`         | `ng serve shot-there --configuration e2e`, port 4317 |
+| `library` | `e2e/library/*.spec.ts` | `ng serve components-harness`, port 4318             |
 
 The harness mounts one library component state per route
 (`<component>/<state>`, listed on its index page) and renders on the server, so

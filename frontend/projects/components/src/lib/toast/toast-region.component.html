@@ -1,0 +1,3 @@
+@for (toast of visible(); track toast.id) {
+  <st-toast-item [options]="toast.options" (dismissed)="dismiss(toast.id)" />
+}

@@ -1,12 +1,35 @@
 <main class="container stack">
   <section aria-label="map popup" class="popup">
     <p>Leslieville Daylight Studio</p>
-    <span class="popup__close"><button st-icon-button icon="close" label="Close" type="button"></button></span>
+    <span class="popup__close"
+      ><button st-icon-button icon="close" label="Close" type="button"></button
+    ></span>
   </section>
   <section aria-label="lightbox" class="lightbox cluster">
-    <button st-icon-button icon="close" label="Close" outline type="button" (click)="record('click: Close')"></button>
-    <button st-icon-button icon="chevron-left" label="Previous photo" outline type="button" (click)="record('click: Previous photo')"></button>
-    <button st-icon-button icon="chevron-right" label="Next photo" outline type="button" (click)="record('click: Next photo')"></button>
+    <button
+      st-icon-button
+      icon="close"
+      label="Close"
+      outline
+      type="button"
+      (click)="record('click: Close')"
+    ></button>
+    <button
+      st-icon-button
+      icon="chevron-left"
+      label="Previous photo"
+      outline
+      type="button"
+      (click)="record('click: Previous photo')"
+    ></button>
+    <button
+      st-icon-button
+      icon="chevron-right"
+      label="Next photo"
+      outline
+      type="button"
+      (click)="record('click: Next photo')"
+    ></button>
   </section>
   <div class="cluster">
     <a st-icon-button icon="home" label="Home" href="/" aria-current="page"></a>

@@ -1,15 +1,88 @@
 /* DS components/alert.html; the host is the .alert block. */
-:host { --alert-bg: var(--color-info-bg); --alert-fg: var(--color-info-fg); --alert-border: var(--color-info-border); --alert-icon: var(--color-info-icon); display: flex; gap: var(--space-3); padding: var(--space-4); border: var(--border-width-hairline) solid var(--alert-border); border-radius: var(--radius-md); background: var(--alert-bg); color: var(--alert-fg); }
-:host(.alert--success) { --alert-bg: var(--color-success-bg); --alert-fg: var(--color-success-fg); --alert-border: var(--color-success-border); --alert-icon: var(--color-success-icon); }
-:host(.alert--warning) { --alert-bg: var(--color-warning-bg); --alert-fg: var(--color-warning-fg); --alert-border: var(--color-warning-border); --alert-icon: var(--color-warning-icon); }
-:host(.alert--danger) { --alert-bg: var(--color-danger-bg); --alert-fg: var(--color-danger-fg); --alert-border: var(--color-danger-border); --alert-icon: var(--color-danger-icon); }
-:host(.banner) { border-radius: 0; border-inline: 0; }
-st-icon { flex: none; color: var(--alert-icon); margin-top: 0.1rem; }
-.alert__body { flex: 1; min-width: 0; overflow-wrap: anywhere; display: flex; flex-direction: column; gap: var(--space-1); }
-.alert__body p { max-width: none; }
-.alert__title { font: var(--text-label); font-size: var(--font-size-md); }
-.alert__actions { display: flex; flex-wrap: wrap; gap: var(--space-3); margin-top: var(--space-1); color: inherit; font: var(--text-label); }
-.alert__actions:empty { display: none; }
-.close { background: none; border: 0; color: inherit; cursor: pointer; width: var(--target-min); height: var(--target-min); display: grid; place-items: center; border-radius: var(--radius-sm); margin: calc(-1 * var(--space-1)) calc(-1 * var(--space-1)) 0 0; }
-.close:hover { background: color-mix(in srgb, currentColor 8%, transparent); }
-@media (max-width: 47.99rem) { .close { width: var(--target-comfortable); height: var(--target-comfortable); } }
+:host {
+  --alert-bg: var(--color-info-bg);
+  --alert-fg: var(--color-info-fg);
+  --alert-border: var(--color-info-border);
+  --alert-icon: var(--color-info-icon);
+  display: flex;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  border: var(--border-width-hairline) solid var(--alert-border);
+  border-radius: var(--radius-md);
+  background: var(--alert-bg);
+  color: var(--alert-fg);
+}
+:host(.alert--success) {
+  --alert-bg: var(--color-success-bg);
+  --alert-fg: var(--color-success-fg);
+  --alert-border: var(--color-success-border);
+  --alert-icon: var(--color-success-icon);
+}
+:host(.alert--warning) {
+  --alert-bg: var(--color-warning-bg);
+  --alert-fg: var(--color-warning-fg);
+  --alert-border: var(--color-warning-border);
+  --alert-icon: var(--color-warning-icon);
+}
+:host(.alert--danger) {
+  --alert-bg: var(--color-danger-bg);
+  --alert-fg: var(--color-danger-fg);
+  --alert-border: var(--color-danger-border);
+  --alert-icon: var(--color-danger-icon);
+}
+:host(.banner) {
+  border-radius: 0;
+  border-inline: 0;
+}
+st-icon {
+  flex: none;
+  color: var(--alert-icon);
+  margin-top: 0.1rem;
+}
+.alert__body {
+  flex: 1;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+.alert__body p {
+  max-width: none;
+}
+.alert__title {
+  font: var(--text-label);
+  font-size: var(--font-size-md);
+}
+.alert__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-1);
+  color: inherit;
+  font: var(--text-label);
+}
+.alert__actions:empty {
+  display: none;
+}
+.close {
+  background: none;
+  border: 0;
+  color: inherit;
+  cursor: pointer;
+  width: var(--target-min);
+  height: var(--target-min);
+  display: grid;
+  place-items: center;
+  border-radius: var(--radius-sm);
+  margin: calc(-1 * var(--space-1)) calc(-1 * var(--space-1)) 0 0;
+}
+.close:hover {
+  background: color-mix(in srgb, currentColor 8%, transparent);
+}
+@media (max-width: 47.99rem) {
+  .close {
+    width: var(--target-comfortable);
+    height: var(--target-comfortable);
+  }
+}

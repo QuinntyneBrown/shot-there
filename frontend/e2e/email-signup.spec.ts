@@ -12,10 +12,14 @@ test.describe('Email signup', () => {
     // When the visitor subscribes from the footer
     await signup.subscribe('maya.chen@example.com');
     // Then the form is replaced by a confirmation in a status region
-    await expect(signup.confirmation).toHaveText("You're subscribed. We'll email maya.chen@example.com when a new review goes up.");
+    await expect(signup.confirmation).toHaveText(
+      "You're subscribed. We'll email maya.chen@example.com when a new review goes up.",
+    );
     await expect(signup.form).toBeHidden();
     // And the server received the address, the page it came from and the empty honeypot
-    expect(received).toEqual([{ email: 'maya.chen@example.com', sourcePath: '/editorial-policy', website: '' }]);
+    expect(received).toEqual([
+      { email: 'maya.chen@example.com', sourcePath: '/editorial-policy', website: '' },
+    ]);
   });
 
   test('marks an empty address invalid without sending it', async ({ page }) => {
@@ -41,7 +45,9 @@ test.describe('Email signup', () => {
     await signup.subscribe('not-an-email');
     // Then the field asks for a valid address and nothing was sent
     await expect(signup.email).toHaveAttribute('aria-invalid', 'true');
-    await expect(signup.email).toHaveAccessibleDescription('Enter a valid email address, like name@example.com');
+    await expect(signup.email).toHaveAccessibleDescription(
+      'Enter a valid email address, like name@example.com',
+    );
     expect(received).toEqual([]);
     // When they correct it and submit again
     await signup.subscribe('maya.chen@example.com');
@@ -74,7 +80,9 @@ test.describe('Email signup', () => {
     // When the visitor subscribes
     await signup.subscribe('maya.chen@example.com');
     // Then an error shows, the address stays and the button is enabled
-    await expect(signup.alert).toHaveText("We couldn't subscribe you just now. Your email is still here — try again.");
+    await expect(signup.alert).toHaveText(
+      "We couldn't subscribe you just now. Your email is still here — try again.",
+    );
     await expect(signup.email).toHaveValue('maya.chen@example.com');
     await expect(signup.subscribeButton).toBeEnabled();
     // When the server recovers and the visitor tries again

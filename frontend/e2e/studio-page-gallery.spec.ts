@@ -4,7 +4,9 @@ import { expect, test } from './fakes/test';
 import { StudioPage } from './pages/studio.page';
 
 test.describe('Studio page: test shots and gallery', () => {
-  test('shows the three standard test shots in order with alt text and the setup caption', async ({ page }) => {
+  test('shows the three standard test shots in order with alt text and the setup caption', async ({
+    page,
+  }) => {
     // Given a studio with three standard test shots
     await givenStudio(page, THE_JUNCTION_LOFT);
     const studio = new StudioPage(page);
@@ -52,7 +54,9 @@ test.describe('Studio page: test shots and gallery', () => {
     await expect.poll(() => studio.galleryColumnCount()).toBe(4);
   });
 
-  test('opens a photo in a lightbox and returns focus to its thumbnail on Escape', async ({ page }) => {
+  test('opens a photo in a lightbox and returns focus to its thumbnail on Escape', async ({
+    page,
+  }) => {
     // Given the gallery
     await givenStudio(page, THE_JUNCTION_LOFT);
     const studio = new StudioPage(page);
@@ -71,7 +75,9 @@ test.describe('Studio page: test shots and gallery', () => {
     await expect(studio.thumbnail(3)).toBeFocused();
   });
 
-  test('wraps from the last photo to the first with Next, and back with Previous', async ({ page }) => {
+  test('wraps from the last photo to the first with Next, and back with Previous', async ({
+    page,
+  }) => {
     // Given the lightbox is open on the last photo
     await givenStudio(page, THE_JUNCTION_LOFT);
     const studio = new StudioPage(page);

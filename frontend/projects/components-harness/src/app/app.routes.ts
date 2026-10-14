@@ -18,6 +18,7 @@ import { VideoPosterFailedComponent } from './video-poster/video-poster-failed.c
 import { VideoPosterDefaultComponent } from './video-poster/video-poster-default.component';
 import { ResponsiveImageFailedComponent } from './responsive-image/responsive-image-failed.component';
 import { ResponsiveImageDefaultComponent } from './responsive-image/responsive-image-default.component';
+import { ToastShellComponent } from './toast/toast-shell.component';
 import { AlertStatesComponent } from './alert/alert-states.component';
 import { PageHeaderStatesComponent } from './page-header/page-header-states.component';
 import { SectionLinksDefaultComponent } from './section-links/section-links-default.component';
@@ -100,7 +101,11 @@ export const routes: Routes = [
   { path: 'filter/performance', component: FilterPerformanceComponent },
   { path: 'button-group/performance', component: ButtonGroupPerformanceComponent },
   { path: 'responsive-image/performance', component: ResponsiveImagePerformanceComponent },
-  { path: 'responsive-image/performance-failed', component: ResponsiveImagePerformanceComponent, data: { failed: 2 } },
+  {
+    path: 'responsive-image/performance-failed',
+    component: ResponsiveImagePerformanceComponent,
+    data: { failed: 2 },
+  },
   { path: 'spinner/default', component: SpinnerDefaultComponent },
   { path: 'skeleton/shapes', component: SkeletonShapesComponent },
   { path: 'progress/states', component: ProgressStatesComponent },
@@ -129,4 +134,5 @@ export const routes: Routes = [
   { path: 'section-links/default', component: SectionLinksDefaultComponent },
   { path: 'page-header/states', component: PageHeaderStatesComponent },
   { path: 'alert/states', component: AlertStatesComponent },
+  { path: 'toast/shell', component: ToastShellComponent },
 ];

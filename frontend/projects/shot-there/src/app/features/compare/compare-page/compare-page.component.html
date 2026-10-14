@@ -1,21 +1,35 @@
 @if (state().status === 'too-few') {
   <div class="page-header"><h1 i18n>Compare studios</h1></div>
   <div class="empty">
-    <div class="empty__icon"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="4" width="7" height="16" rx="1.5" /><rect x="14" y="4" width="7" height="16" rx="1.5" /></svg></div>
+    <div class="empty__icon">
+      <svg class="icon" aria-hidden="true" viewBox="0 0 24 24">
+        <rect x="3" y="4" width="7" height="16" rx="1.5" />
+        <rect x="14" y="4" width="7" height="16" rx="1.5" />
+      </svg>
+    </div>
     <h2 class="empty__title" i18n>Pick at least two studios to compare</h2>
-    <p class="empty__text" i18n>Use Compare on any studio card, then open the comparison from the bar.</p>
-    <div class="empty__actions"><a class="btn btn--primary" [routerLink]="studiosPath" i18n>Browse studios</a></div>
+    <p class="empty__text" i18n>
+      Use Compare on any studio card, then open the comparison from the bar.
+    </p>
+    <div class="empty__actions">
+      <a class="btn btn--primary" [routerLink]="studiosPath" i18n>Browse studios</a>
+    </div>
   </div>
 }
 @if (view(); as v) {
   <div class="page-header">
     <div>
       <h1 i18n>Compare {{ v.columns.length }} studios</h1>
-      <p class="subtitle" i18n>{{ v.namesList }}, side by side. All-in is a 2-hour shoot with every mandatory fee.</p>
+      <p class="subtitle" i18n>
+        {{ v.namesList }}, side by side. All-in is a 2-hour shoot with every mandatory fee.
+      </p>
     </div>
     <div class="page-header__actions">
       <button class="btn" type="button" (click)="copyLink()">
-        <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2" /><path d="M5 15V5a1 1 0 0 1 1-1h10" /></svg>
+        <svg class="icon" aria-hidden="true" viewBox="0 0 24 24">
+          <rect x="9" y="9" width="11" height="11" rx="2" />
+          <path d="M5 15V5a1 1 0 0 1 1-1h10" />
+        </svg>
         <ng-container i18n>Copy link</ng-container>
       </button>
       <a [routerLink]="studiosPath" i18n>Change studios</a>
@@ -23,13 +37,23 @@
   </div>
   @for (notice of v.notices; track notice) {
     <div class="alert alert--info notice" role="status">
-      <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" /><path d="M12 11v5M12 8h0" /></svg>
-      <div class="alert__body"><p>{{ notice }}</p></div>
+      <svg class="icon" aria-hidden="true" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="9" />
+        <path d="M12 11v5M12 8h0" />
+      </svg>
+      <div class="alert__body">
+        <p>{{ notice }}</p>
+      </div>
     </div>
   }
   <div class="table-wrap" role="region" [attr.aria-labelledby]="'compare-caption'" tabindex="0">
     <table class="table compare-table" [style.--compare-cols]="v.columns.length">
-      <caption class="visually-hidden" id="compare-caption" i18n>Comparison of {{ v.namesList }}</caption>
+      <caption class="visually-hidden" id="compare-caption" i18n>
+        Comparison of
+        {{
+          v.namesList
+        }}
+      </caption>
       <colgroup>
         <col class="compare-table__labels" />
         @for (column of v.columns; track column.slug) {
@@ -40,13 +64,17 @@
         <tr>
           <td class="compare-table__label"></td>
           @for (column of v.columns; track column.slug) {
-            <th scope="col"><a [routerLink]="[studiosPath, column.slug]">{{ column.name }}</a></th>
+            <th scope="col">
+              <a [routerLink]="[studiosPath, column.slug]">{{ column.name }}</a>
+            </th>
           }
         </tr>
       </thead>
       @for (group of v.groups; track group.label) {
         <tbody>
-          <tr class="compare-table__group"><th scope="rowgroup" [attr.colspan]="v.columns.length + 1">{{ group.label }}</th></tr>
+          <tr class="compare-table__group">
+            <th scope="rowgroup" [attr.colspan]="v.columns.length + 1">{{ group.label }}</th>
+          </tr>
           @for (row of group.rows; track row.label) {
             <tr>
               <th scope="row" class="compare-table__label">{{ row.label }}</th>
@@ -54,16 +82,29 @@
                 <td>
                   <div class="compare-table__value">
                     @if (cell.image; as image) {
-                      <img stFallbackImage [src]="image.variants[0].url" [alt]="image.alt" width="800" height="1000" loading="lazy" />
+                      <img
+                        stFallbackImage
+                        [src]="image.variants[0].url"
+                        [alt]="image.alt"
+                        width="800"
+                        height="1000"
+                        loading="lazy"
+                      />
                     } @else if (cell.lines) {
                       @for (line of cell.lines; track line) {
                         <span>{{ line }}</span>
                       }
                     } @else if (cell.isScore) {
                       @if (cell.isStrong) {
-                        <strong>{{ cell.text }}<span aria-hidden="true"> / 5</span><span class="visually-hidden" i18n> out of 5</span></strong>
+                        <strong
+                          >{{ cell.text }}<span aria-hidden="true"> / 5</span
+                          ><span class="visually-hidden" i18n> out of 5</span></strong
+                        >
                       } @else {
-                        <span>{{ cell.text }}<span aria-hidden="true"> / 5</span><span class="visually-hidden" i18n> out of 5</span></span>
+                        <span
+                          >{{ cell.text }}<span aria-hidden="true"> / 5</span
+                          ><span class="visually-hidden" i18n> out of 5</span></span
+                        >
                       }
                     } @else if (cell.isStrong) {
                       <strong>{{ cell.text }}</strong>
@@ -74,7 +115,9 @@
                       &ngsp;<span class="badge badge--success" i18n>Lowest</span>
                     }
                     @if (cell.isStale) {
-                      &ngsp;<span class="badge badge--warning badge--wrap" i18n>Prices may be out of date</span>
+                      &ngsp;<span class="badge badge--warning badge--wrap" i18n
+                        >Prices may be out of date</span
+                      >
                     }
                   </div>
                 </td>

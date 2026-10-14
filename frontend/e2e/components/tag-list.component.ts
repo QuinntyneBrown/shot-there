@@ -15,7 +15,11 @@ export class TagListComponent {
 
   /** The links among the tags: their text and href. */
   links(): Promise<{ text: string; href: string | null }[]> {
-    return this.root.getByRole('link').evaluateAll((els) => els.map((el) => ({ text: el.textContent ?? '', href: el.getAttribute('href') })));
+    return this.root
+      .getByRole('link')
+      .evaluateAll((els) =>
+        els.map((el) => ({ text: el.textContent ?? '', href: el.getAttribute('href') })),
+      );
   }
 
   async rootClasses(): Promise<string[]> {

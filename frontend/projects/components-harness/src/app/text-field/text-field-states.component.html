@@ -1,12 +1,45 @@
 <main class="container stack">
-  <st-text-field label="Name" inputId="name" name="name" [formControl]="name" help="Shown on the card." />
-  <p>Name value: <output>{{ name.value }}</output></p>
-  <st-text-field label="Hourly rate" inputId="hourlyRate" name="hourlyRate" type="number" inputmode="decimal" min="0" step="0.01" prefix="$" [formControl]="rate" [error]="error()" />
-  <p>Rate value: <output>{{ rate.value }}</output></p>
+  <st-text-field
+    label="Name"
+    inputId="name"
+    name="name"
+    [formControl]="name"
+    help="Shown on the card."
+  />
+  <p>
+    Name value: <output>{{ name.value }}</output>
+  </p>
+  <st-text-field
+    label="Hourly rate"
+    inputId="hourlyRate"
+    name="hourlyRate"
+    type="number"
+    inputmode="decimal"
+    min="0"
+    step="0.01"
+    prefix="$"
+    [formControl]="rate"
+    [error]="error()"
+  />
+  <p>
+    Rate value: <output>{{ rate.value }}</output>
+  </p>
   <button type="button" (click)="error.set('Enter an amount of 0 or more')">Fail rate</button>
   <button type="button" (click)="error.set(null)">Clear rate error</button>
-  <st-text-field label="Password" inputId="password" type="password" size="lg" autocomplete="current-password" />
+  <st-text-field
+    label="Password"
+    inputId="password"
+    type="password"
+    size="lg"
+    autocomplete="current-password"
+  />
   <st-text-field label="Search by name" inputId="q" type="search" [spellcheck]="false" />
   <st-text-field label="Backdrops" inputId="backdrops" optional />
-  <st-text-field label="Prices last verified" inputId="verified" type="date" warning="You changed a price." help="Previously 11 Oct 2026." />
+  <st-text-field
+    label="Prices last verified"
+    inputId="verified"
+    type="date"
+    warning="You changed a price."
+    help="Previously 11 Oct 2026."
+  />
 </main>

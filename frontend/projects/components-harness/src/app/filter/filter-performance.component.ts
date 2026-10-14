@@ -12,11 +12,20 @@ import { FilterTriggerComponent } from '@shot-there/components';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FilterPerformanceComponent {
-  protected readonly options = ['Natural light', 'Cyc wall', 'Freight elevator', 'Blackout', 'Kitchen', 'Wi-Fi'];
+  protected readonly options = [
+    'Natural light',
+    'Cyc wall',
+    'Freight elevator',
+    'Blackout',
+    'Kitchen',
+    'Wi-Fi',
+  ];
   protected readonly chosen = signal<readonly string[]>([]);
   protected readonly countLine = computed(() => `${7 - this.chosen().length * 2} studios`);
 
   protected toggle(option: string): void {
-    this.chosen.update((c) => (c.includes(option) ? c.filter((o) => o !== option) : [...c, option]));
+    this.chosen.update((c) =>
+      c.includes(option) ? c.filter((o) => o !== option) : [...c, option],
+    );
   }
 }

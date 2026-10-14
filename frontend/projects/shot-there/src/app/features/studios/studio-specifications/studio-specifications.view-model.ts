@@ -20,7 +20,9 @@ export function cycWallLabel(specifications: StudioSpecificationsDto): string {
   if (!specifications.hasCycWall) {
     return $localize`No`;
   }
-  return specifications.cycWallCondition ? $localize`Yes · ${specifications.cycWallCondition}:condition:` : $localize`Yes`;
+  return specifications.cycWallCondition
+    ? $localize`Yes · ${specifications.cycWallCondition}:condition:`
+    : $localize`Yes`;
 }
 
 /** "8 outlets, standard 15 A · 20 A circuits: Yes". */
@@ -33,8 +35,13 @@ export const LIGHT_RATING_LABELS: Record<LightRating, string> = {
   none: $localize`None`,
   low: $localize`Low`,
   medium: $localize`Medium`,
-  strong: $localize`Strong`
+  strong: $localize`Strong`,
 };
 
 /** Filled pips out of three for each rating. */
-export const LIGHT_RATING_PIPS: Record<LightRating, number> = { none: 0, low: 1, medium: 2, strong: 3 };
+export const LIGHT_RATING_PIPS: Record<LightRating, number> = {
+  none: 0,
+  low: 1,
+  medium: 2,
+  strong: 3,
+};

@@ -15,13 +15,18 @@ test.describe('TagListComponent (ICD-002 §9.5, CRD tag)', () => {
     expect(harness.errors).toEqual([]);
   });
 
-  test('renders an item with a link as an a.tag to its path, named by the section heading', async ({ page }) => {
+  test('renders an item with a link as an a.tag to its path, named by the section heading', async ({
+    page,
+  }) => {
     // Given a tag list of two links under the heading "Featured in"
     const harness = new HarnessPage(page);
     await harness.open('tag-list/states');
     // Then each is a link tag to its path
     const list = new TagListComponent(harness.page.getByRole('region', { name: 'Featured in' }));
-    expect(await list.tags()).toEqual(['Best studios under $120 for 2 hours', 'Best natural light']);
+    expect(await list.tags()).toEqual([
+      'Best studios under $120 for 2 hours',
+      'Best natural light',
+    ]);
     expect(await list.links()).toEqual([
       { text: 'Best studios under $120 for 2 hours', href: '/guides/best-studios-under-120' },
       { text: 'Best natural light', href: '/guides/best-natural-light' },

@@ -1,5 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { CheckboxComponent, CheckboxGroupComponent, RadioGroupComponent } from '@shot-there/components';
+import {
+  CheckboxComponent,
+  CheckboxGroupComponent,
+  RadioGroupComponent,
+} from '@shot-there/components';
 import { ReactiveFormsModule, FormControl } from '@angular/forms';
 
 /** A checkbox, a filter checkbox group, a form group with an error and a radio group. */

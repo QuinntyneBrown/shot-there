@@ -3,7 +3,9 @@ import { PriceBlockComponent } from '../components/price-block.component';
 import { HarnessPage, HarnessTheme } from '../pages/harness.page';
 
 test.describe('PriceBlockComponent (ICD-002 §9.5, CRD price-block)', () => {
-  test('shows the all-in figure, its explanation, the facts and the verified date in order', async ({ page }) => {
+  test('shows the all-in figure, its explanation, the facts and the verified date in order', async ({
+    page,
+  }) => {
     // Given The Junction Loft pricing
     const harness = new HarnessPage(page);
     await harness.open('price-block/states');
@@ -13,16 +15,28 @@ test.describe('PriceBlockComponent (ICD-002 §9.5, CRD price-block)', () => {
     await expect(block.allInText()).toContainText('All-in for a standard 2-hour shoot');
     expect(await block.facts.terms()).toEqual(['Hourly rate', 'Minimum booking', 'Cleaning fee']);
     await expect(block.verified()).toHaveText('Prices verified 22 September 2026');
-    expect(await block.isStackedInOrder(block.allIn(), block.facts.root, block.verified(), page.getByRole('status'))).toBe(true);
+    expect(
+      await block.isStackedInOrder(
+        block.allIn(),
+        block.facts.root,
+        block.verified(),
+        page.getByRole('status'),
+      ),
+    ).toBe(true);
     expect(harness.errors).toEqual([]);
   });
 
-  test('renders the verified date as a time element with its machine-readable value', async ({ page }) => {
+  test('renders the verified date as a time element with its machine-readable value', async ({
+    page,
+  }) => {
     // Given the verified date
     const harness = new HarnessPage(page);
     await harness.open('price-block/states');
     // Then it is a time element carrying the ISO date
-    await expect(new PriceBlockComponent(page).verifiedDate()).toHaveAttribute('datetime', '2026-09-22');
+    await expect(new PriceBlockComponent(page).verifiedDate()).toHaveAttribute(
+      'datetime',
+      '2026-09-22',
+    );
   });
 
   test('renders the projected stale notice after the verified line', async ({ page }) => {

@@ -15,7 +15,9 @@ test.describe('DescriptionListComponent (ICD-002 §9.4, CRD description-list)', 
     expect(harness.errors).toEqual([]);
   });
 
-  test('wraps a numeric detail in span.num with tabular figures and puts a badge after it', async ({ page }) => {
+  test('wraps a numeric detail in span.num with tabular figures and puts a badge after it', async ({
+    page,
+  }) => {
     // Given a numeric fact with a badge
     const harness = new HarnessPage(page);
     await harness.open('description-list/pricing');

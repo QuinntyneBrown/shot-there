@@ -58,7 +58,7 @@ test.describe('Site header', () => {
       { name: 'Spots', href: '/spots' },
       { name: 'Map', href: '/map' },
       { name: 'Compare', href: '/compare' },
-      { name: 'Guides', href: '/guides' }
+      { name: 'Guides', href: '/guides' },
     ]);
     await expect(shell.menuButton).toBeHidden();
   });
@@ -82,7 +82,7 @@ test.describe('Site header', () => {
       { name: 'Map', href: '/map' },
       { name: 'Compare', href: '/compare' },
       { name: 'Guides', href: '/guides' },
-      { name: 'Editorial policy', href: '/editorial-policy' }
+      { name: 'Editorial policy', href: '/editorial-policy' },
     ]);
     await expect(shell.menuButton).toHaveAttribute('aria-expanded', 'true');
   });
@@ -116,7 +116,9 @@ test.describe('Site header', () => {
   });
 
   for (const width of [320, 768, 1280]) {
-    test(`lays out without horizontal scrolling or accessibility violations at ${width}px`, async ({ page }) => {
+    test(`lays out without horizontal scrolling or accessibility violations at ${width}px`, async ({
+      page,
+    }) => {
       // Given a window of this width
       const shell = new ShellPage(page);
       await page.setViewportSize({ width, height: 800 });
@@ -153,7 +155,12 @@ test.describe('Site footer', () => {
     await expect(shell.footerLink('Spots')).toHaveAttribute('href', '/spots');
     await expect(shell.footerLink('Guides')).toHaveAttribute('href', '/guides');
     await expect(shell.footerLink('Editorial policy')).toHaveAttribute('href', '/editorial-policy');
-    await expect(shell.footerLink('YouTube channel (opens in a new tab)')).toHaveAttribute('target', '_blank');
-    await expect(shell.footer).toContainText('No paid placement: order comes only from the sort you choose.');
+    await expect(shell.footerLink('YouTube channel (opens in a new tab)')).toHaveAttribute(
+      'target',
+      '_blank',
+    );
+    await expect(shell.footer).toContainText(
+      'No paid placement: order comes only from the sort you choose.',
+    );
   });
 });

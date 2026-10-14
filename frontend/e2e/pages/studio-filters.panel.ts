@@ -17,7 +17,9 @@ export class StudioFiltersPanel {
   }
 
   parking(label: string): Locator {
-    return this.root.getByRole('group', { name: 'Parking' }).getByRole('radio', { name: label, exact: true });
+    return this.root
+      .getByRole('group', { name: 'Parking' })
+      .getByRole('radio', { name: label, exact: true });
   }
 
   async setCostRange(minimum: string, maximum: string): Promise<void> {

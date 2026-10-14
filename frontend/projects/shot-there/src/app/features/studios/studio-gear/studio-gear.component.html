@@ -3,7 +3,8 @@
   <h3 i18n>Included in the hourly rate</h3>
   <dl class="kv">
     @for (group of included(); track group.category) {
-      <dt>{{ group.category }}</dt><dd>{{ group.items }}</dd>
+      <dt>{{ group.category }}</dt>
+      <dd>{{ group.items }}</dd>
     }
   </dl>
   <h3 i18n>Costs extra</h3>
@@ -12,7 +13,8 @@
   } @else {
     <dl class="kv">
       @for (extra of gear().extras; track extra.name) {
-        <dt>{{ itemLabel(extra) }}</dt><dd class="num">{{ extra.extraCost | currency: 'CAD' : 'symbol-narrow' : '1.2-2' }}</dd>
+        <dt>{{ itemLabel(extra) }}</dt>
+        <dd class="num">{{ extra.extraCost | currency: 'CAD' : 'symbol-narrow' : '1.2-2' }}</dd>
       }
     </dl>
   }

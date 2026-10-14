@@ -4,7 +4,11 @@ import { Locator, Page } from '@playwright/test';
 export class FieldComponent {
   readonly input: Locator;
 
-  constructor(private readonly page: Page, readonly label: string, role: 'textbox' | 'spinbutton' | 'combobox' | 'checkbox' = 'textbox') {
+  constructor(
+    private readonly page: Page,
+    readonly label: string,
+    role: 'textbox' | 'spinbutton' | 'combobox' | 'checkbox' = 'textbox',
+  ) {
     this.input = page.getByRole(role, { name: label, exact: true });
   }
 

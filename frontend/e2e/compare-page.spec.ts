@@ -14,55 +14,106 @@ test.describe('Comparison page', () => {
     await compare.open(THREE);
     // Then the studios are compared in the URL's order, each row holding one value per studio
     await expect(compare.heading).toHaveText('Compare 3 studios');
-    expect(requested.at(-1)).toBe('the-junction-loft,leslieville-daylight-studio,ossington-blackbox');
-    expect(await compare.columnHeaders()).toEqual(['The Junction Loft', 'Leslieville Daylight Studio', 'Ossington Blackbox']);
+    expect(requested.at(-1)).toBe(
+      'the-junction-loft,leslieville-daylight-studio,ossington-blackbox',
+    );
+    expect(await compare.columnHeaders()).toEqual([
+      'The Junction Loft',
+      'Leslieville Daylight Studio',
+      'Ossington Blackbox',
+    ]);
     await expect(compare.rowCells('Hourly rate')).toHaveText(['$60.00', '$45.50', '$90.00']);
     await expect(compare.rowCells('Minimum booking')).toHaveText(['2 hours', '2 hours', '3 hours']);
-    await expect(compare.rowCells('Usable space')).toHaveText(['6.1 m × 4.3 m', '6.4 m × 4.9 m', '6.1 m × 4.3 m']);
+    await expect(compare.rowCells('Usable space')).toHaveText([
+      '6.1 m × 4.3 m',
+      '6.4 m × 4.9 m',
+      '6.1 m × 4.3 m',
+    ]);
     await expect(compare.rowCells('Cyc wall')).toHaveText(['Yes · scuffed', 'No', 'Yes · scuffed']);
-    await expect(compare.rowCells('Light')).toHaveText(['5 / 5 out of 5', '5 / 5 out of 5', '2 / 5 out of 5']);
-    await expect(compare.rowCells('Overall')).toHaveText(['3.8 / 5 out of 5', '4.0 / 5 out of 5', '3.8 / 5 out of 5']);
-    await expect(compare.rowCells('Prices verified')).toHaveText(['22 Sep 2026', '10 Aug 2026', '2 Mar 2026']);
+    await expect(compare.rowCells('Light')).toHaveText([
+      '5 / 5 out of 5',
+      '5 / 5 out of 5',
+      '2 / 5 out of 5',
+    ]);
+    await expect(compare.rowCells('Overall')).toHaveText([
+      '3.8 / 5 out of 5',
+      '4.0 / 5 out of 5',
+      '3.8 / 5 out of 5',
+    ]);
+    await expect(compare.rowCells('Prices verified')).toHaveText([
+      '22 Sep 2026',
+      '10 Aug 2026',
+      '2 Mar 2026',
+    ]);
     // And the test shots sit side by side, shot for shot
     const firstShots = compare.rowCells('Shot 1 · Headshot').getByRole('img');
     await expect(firstShots).toHaveCount(3);
-    await expect(firstShots.nth(1)).toHaveAttribute('alt', 'Leslieville Daylight Studio, test shot 1, headshot.');
-    await expect.poll(() => compare.title()).toBe('Compare The Junction Loft, Leslieville Daylight Studio and Ossington Blackbox · ShotThere');
+    await expect(firstShots.nth(1)).toHaveAttribute(
+      'alt',
+      'Leslieville Daylight Studio, test shot 1, headshot.',
+    );
+    await expect
+      .poll(() => compare.title())
+      .toBe(
+        'Compare The Junction Loft, Leslieville Daylight Studio and Ossington Blackbox · ShotThere',
+      );
   });
 
-  test('marks the lowest all-in cost, flags stale prices and fills gaps with a dash', async ({ page }) => {
+  test('marks the lowest all-in cost, flags stale prices and fills gaps with a dash', async ({
+    page,
+  }) => {
     // Given a comparison where Leslieville is cheapest, Ossington's prices are stale and some values are missing
     await givenComparison(page, comparisonOf([JUNCTION, LESLIEVILLE, OSSINGTON]));
     const compare = new ComparePage(page);
     // When the visitor opens it
     await compare.open(THREE);
     // Then the cheapest says "Lowest", the stale one says so, and missing values show "—"
-    await expect(compare.rowCells('All-in, 2 hours')).toHaveText(['$145.00', '$91.00 Lowest', '$270.00 Prices may be out of date']);
+    await expect(compare.rowCells('All-in, 2 hours')).toHaveText([
+      '$145.00',
+      '$91.00 Lowest',
+      '$270.00 Prices may be out of date',
+    ]);
     await expect(compare.rowCells('Mandatory fees')).toHaveText(['Cleaning $25.00', '—', '—']);
     await expect(compare.rowCells('Parking')).toHaveText(['Street, paid', '—', 'Street, paid']);
-    await expect(compare.rowCells('Load-in')).toHaveText(['Freight elevator, small', 'Stairs', 'Freight elevator, small']);
+    await expect(compare.rowCells('Load-in')).toHaveText([
+      'Freight elevator, small',
+      'Stairs',
+      'Freight elevator, small',
+    ]);
   });
 
   test('explains when a studio in the link could not be found', async ({ page }) => {
     // Given a link with one unknown slug and two valid ones
-    await givenComparison(page, comparisonOf([JUNCTION, LESLIEVILLE], { notFoundSlugs: ['nowhere-studio'] }));
+    await givenComparison(
+      page,
+      comparisonOf([JUNCTION, LESLIEVILLE], { notFoundSlugs: ['nowhere-studio'] }),
+    );
     const compare = new ComparePage(page);
     // When the visitor opens it
     await compare.open('?studios=the-junction-loft,nowhere-studio,leslieville-daylight-studio');
     // Then the two are compared with a message about the missing one
     await expect(compare.heading).toHaveText('Compare 2 studios');
-    await expect(compare.notice).toHaveText("One studio in this link couldn't be found, so we're comparing the other two.");
+    await expect(compare.notice).toHaveText(
+      "One studio in this link couldn't be found, so we're comparing the other two.",
+    );
   });
 
   test('compares only the first four and says why', async ({ page }) => {
     // Given a link with more than four studios
-    await givenComparison(page, comparisonOf([JUNCTION, LESLIEVILLE, OSSINGTON, LIBERTY], { truncated: true }));
+    await givenComparison(
+      page,
+      comparisonOf([JUNCTION, LESLIEVILLE, OSSINGTON, LIBERTY], { truncated: true }),
+    );
     const compare = new ComparePage(page);
     // When the visitor opens it
-    await compare.open('?studios=the-junction-loft,leslieville-daylight-studio,ossington-blackbox,liberty-cyc-house,riverside-rooftop-studio');
+    await compare.open(
+      '?studios=the-junction-loft,leslieville-daylight-studio,ossington-blackbox,liberty-cyc-house,riverside-rooftop-studio',
+    );
     // Then four are compared with a message stating the limit
     await expect(compare.heading).toHaveText('Compare 4 studios');
-    await expect(compare.notice).toHaveText("You can compare up to 4 studios. We're showing the first 4 from this link.");
+    await expect(compare.notice).toHaveText(
+      "You can compare up to 4 studios. We're showing the first 4 from this link.",
+    );
   });
 
   test('asks for at least two studios when the link has fewer', async ({ page }) => {
@@ -101,7 +152,9 @@ test.describe('Comparison page', () => {
     await expect(compare.announcer).toHaveText('Link copied');
   });
 
-  test('scrolls the table, not the page, on a phone, keeping the row labels in view', async ({ page }) => {
+  test('scrolls the table, not the page, on a phone, keeping the row labels in view', async ({
+    page,
+  }) => {
     // Given three studios compared on a phone
     await givenComparison(page, comparisonOf([JUNCTION, LESLIEVILLE, OSSINGTON]));
     const compare = new ComparePage(page);
@@ -124,7 +177,9 @@ test.describe('Comparison page', () => {
     await givenComparison(page, comparisonOf([JUNCTION, LESLIEVILLE, OSSINGTON, LIBERTY]));
     const compare = new ComparePage(page);
     await compare.useWidth(1280);
-    await compare.open('?studios=the-junction-loft,leslieville-daylight-studio,ossington-blackbox,liberty-cyc-house');
+    await compare.open(
+      '?studios=the-junction-loft,leslieville-daylight-studio,ossington-blackbox,liberty-cyc-house',
+    );
     await expect(compare.table).toBeVisible();
     // Then the table needs no sideways scrolling
     expect(await compare.tableScrollsSideways()).toBe(false);

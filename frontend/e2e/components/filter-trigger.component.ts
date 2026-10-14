@@ -31,7 +31,9 @@ export class FilterTriggerComponent {
   }
 
   async classes(): Promise<string[]> {
-    return ((await this.root.getAttribute('class')) ?? '').split(/\s+/).filter((c) => c.startsWith('filter-trigger'));
+    return ((await this.root.getAttribute('class')) ?? '')
+      .split(/\s+/)
+      .filter((c) => c.startsWith('filter-trigger'));
   }
 
   tag(): Promise<string> {

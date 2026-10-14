@@ -10,8 +10,15 @@ import { LinkComponent } from '@shot-there/components';
 })
 export class LinkPerformanceComponent {
   protected readonly studios = [
-    'Kensington Window Room', 'The Junction Loft', 'Leslieville Daylight Studio', 'Corktown Garage Studio',
-    'Bloordale Sun Studio', 'Liberty Village Cyc', 'Ossington Blackbox', 'Parkdale Brick Room', 'Danforth Light House',
+    'Kensington Window Room',
+    'The Junction Loft',
+    'Leslieville Daylight Studio',
+    'Corktown Garage Studio',
+    'Bloordale Sun Studio',
+    'Liberty Village Cyc',
+    'Ossington Blackbox',
+    'Parkdale Brick Room',
+    'Danforth Light House',
     'Roncesvalles North Room',
   ];
 }

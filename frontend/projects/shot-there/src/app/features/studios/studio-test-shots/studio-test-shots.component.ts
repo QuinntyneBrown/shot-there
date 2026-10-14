@@ -8,7 +8,7 @@ import { imageSrc, imageSrcset } from '../studio-page/image-srcset';
   selector: 'st-studio-test-shots',
   imports: [FallbackImageDirective],
   templateUrl: './studio-test-shots.component.html',
-  styleUrl: './studio-test-shots.component.css'
+  styleUrl: './studio-test-shots.component.css',
 })
 export class StudioTestShotsComponent {
   readonly testShots = input.required<ImageDto[]>();

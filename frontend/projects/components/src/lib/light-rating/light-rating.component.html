@@ -1,1 +1,5 @@
-<span class="pips" aria-hidden="true">@for (on of pips(); track $index) {<i [attr.data-on]="on ? '' : null"></i>}</span>{{ text() }}
+<span class="pips" aria-hidden="true">
+  @for (on of pips(); track $index) {
+    <i [attr.data-on]="on ? '' : null"></i>
+  }</span
+>{{ text() }}

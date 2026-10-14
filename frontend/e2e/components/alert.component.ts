@@ -9,7 +9,10 @@ export class AlertComponent {
   }
 
   async classes(): Promise<string[]> {
-    return ((await this.root.getAttribute('class')) ?? '').split(/\s+/).filter((c) => c.startsWith('alert') || c === 'banner').sort();
+    return ((await this.root.getAttribute('class')) ?? '')
+      .split(/\s+/)
+      .filter((c) => c.startsWith('alert') || c === 'banner')
+      .sort();
   }
 
   title(): Locator {

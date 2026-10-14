@@ -14,7 +14,9 @@ test.describe('Score components (ICD-002 §9.5, CRD score)', () => {
     expect(harness.errors).toEqual([]);
   });
 
-  test('score-list is a named list of rows with pips, each spoken as "label: value out of max"', async ({ page }) => {
+  test('score-list is a named list of rows with pips, each spoken as "label: value out of max"', async ({
+    page,
+  }) => {
     // Given the rubric scores
     const harness = new HarnessPage(page);
     await harness.open('score/default');
@@ -44,7 +46,10 @@ test.describe('Score components (ICD-002 §9.5, CRD score)', () => {
     expect(await score.lightPips('None')).toEqual({ filled: 0, total: 3 });
     expect(await score.lightPips('Medium')).toEqual({ filled: 2, total: 3 });
     expect(await score.lightPips('Strong')).toEqual({ filled: 3, total: 3 });
-    await expect(score.lightRating('Medium').locator('.pips')).toHaveAttribute('aria-hidden', 'true');
+    await expect(score.lightRating('Medium').locator('.pips')).toHaveAttribute(
+      'aria-hidden',
+      'true',
+    );
   });
 
   for (const theme of ['light', 'dark'] as HarnessTheme[]) {

@@ -1,1 +1,9 @@
-<label class="field__label" [attr.for]="for()">{{ label() }}@if (suffix()) {<span class="visually-hidden"> {{ suffix() }}</span>}@if (optional()) {&ngsp;<span class="optional">{{ optionalLabel() }}</span>}</label>
+<label class="field__label" [attr.for]="for()"
+  >{{ label() }}
+  @if (suffix()) {
+    <span class="visually-hidden"> {{ suffix() }}</span>
+  }
+  @if (optional()) {
+    &ngsp;<span class="optional">{{ optionalLabel() }}</span>
+  }
+</label>

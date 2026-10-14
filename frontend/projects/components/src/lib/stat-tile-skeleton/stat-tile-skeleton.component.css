@@ -1,4 +1,17 @@
 /* DS administration: the skeleton tile keeps the card box and sizes its placeholders (stat-tile D-3). */
-:host { display: flex; flex-direction: column; gap: var(--space-3); height: 100%; padding: var(--space-5) var(--space-6); border: var(--border-width-hairline) solid var(--color-border-default); border-radius: var(--radius-lg); }
-st-skeleton:nth-child(2) { width: 70%; }
-st-skeleton:nth-child(3) { width: 8rem; height: var(--control-height-md); }
+:host {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  height: 100%;
+  padding: var(--space-5) var(--space-6);
+  border: var(--border-width-hairline) solid var(--color-border-default);
+  border-radius: var(--radius-lg);
+}
+st-skeleton:nth-child(2) {
+  width: 70%;
+}
+st-skeleton:nth-child(3) {
+  width: 8rem;
+  height: var(--control-height-md);
+}

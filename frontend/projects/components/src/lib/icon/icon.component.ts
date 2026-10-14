@@ -16,5 +16,7 @@ export class IconComponent {
   readonly name = input.required<IconName>();
   readonly size = input<IconSize>('md');
 
-  protected readonly sizeClass = computed(() => (this.size() === 'md' ? null : `icon--${this.size()}`));
+  protected readonly sizeClass = computed(() =>
+    this.size() === 'md' ? null : `icon--${this.size()}`,
+  );
 }

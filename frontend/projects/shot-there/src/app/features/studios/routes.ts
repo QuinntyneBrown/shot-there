@@ -8,5 +8,5 @@ import { StudioPageComponent } from './studio-page/studio-page.component';
 export const studioRoutes: Routes = [
   { path: APP_PATHS.studios, title: PAGE_TITLES.studios, component: StudioListPageComponent },
   // The page sets its own title from the studio's name.
-  { path: APP_PATHS.studio, component: StudioPageComponent }
+  { path: APP_PATHS.studio, component: StudioPageComponent },
 ];

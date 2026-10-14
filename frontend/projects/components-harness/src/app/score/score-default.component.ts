@@ -1,5 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ScoreListComponent, ScoreOverallComponent, LightRatingComponent } from '@shot-there/components';
+import {
+  ScoreListComponent,
+  ScoreOverallComponent,
+  LightRatingComponent,
+} from '@shot-there/components';
 
 /** Overall score, rubric scores and light ratings at each level. */
 @Component({

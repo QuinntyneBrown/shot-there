@@ -1,4 +1,9 @@
-<fieldset [class.filter-group]="appearance() === 'filter'" [class.stack]="appearance() === 'form'" [class.stack--sm]="appearance() === 'form'" [attr.aria-describedby]="describedBy()">
+<fieldset
+  [class.filter-group]="appearance() === 'filter'"
+  [class.stack]="appearance() === 'form'"
+  [class.stack--sm]="appearance() === 'form'"
+  [attr.aria-describedby]="describedBy()"
+>
   <legend [class.filter-group__title]="appearance() === 'filter'">{{ label() }}</legend>
   @if (error()) {
     <p class="field__error" [id]="id() + '-error'">{{ error() }}</p>
@@ -7,10 +12,22 @@
     <p class="field__help" [id]="id() + '-help'">{{ help() }}</p>
   }
   @for (option of options(); track option.value; let i = $index) {
-    <label class="choice"><input type="checkbox" [id]="optionId(i)" [attr.name]="name() || null" [value]="option.value" [checked]="value().includes(option.value)"
-      [disabled]="disabled() || option.disabled" [attr.aria-invalid]="hasError() ? 'true' : null" (change)="toggled(option, $any($event.target).checked)" (blur)="touch()">
+    <label class="choice"
+      ><input
+        type="checkbox"
+        [id]="optionId(i)"
+        [attr.name]="name() || null"
+        [value]="option.value"
+        [checked]="value().includes(option.value)"
+        [disabled]="disabled() || option.disabled"
+        [attr.aria-invalid]="hasError() ? 'true' : null"
+        (change)="toggled(option, $any($event.target).checked)"
+        (blur)="touch()"
+      />
       @if (option.description) {
-        <span class="choice__text">{{ option.label }}<small>{{ option.description }}</small></span>
+        <span class="choice__text"
+          >{{ option.label }}<small>{{ option.description }}</small></span
+        >
       } @else {
         <span>{{ option.label }}</span>
       }

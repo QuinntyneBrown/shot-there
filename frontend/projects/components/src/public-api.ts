@@ -70,3 +70,5 @@ export * from './lib/breadcrumb/breadcrumb.component';
 export * from './lib/section-links/section-links.component';
 export * from './lib/page-header/page-header.component';
 export * from './lib/alert/alert.component';
+export * from './lib/toast/toast.service';
+export * from './lib/toast/toast-region.component';

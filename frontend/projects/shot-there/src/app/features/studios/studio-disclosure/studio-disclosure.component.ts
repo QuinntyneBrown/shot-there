@@ -9,7 +9,7 @@ import { disclosureMessage } from './studio-disclosure.view-model';
   selector: 'st-studio-disclosure',
   imports: [RouterLink],
   templateUrl: './studio-disclosure.component.html',
-  styleUrl: './studio-disclosure.component.css'
+  styleUrl: './studio-disclosure.component.css',
 })
 export class StudioDisclosureComponent {
   readonly disclosure = input.required<StudioDisclosureDto>();

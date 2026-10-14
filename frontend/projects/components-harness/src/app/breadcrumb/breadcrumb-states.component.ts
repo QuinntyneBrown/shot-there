@@ -9,5 +9,8 @@ import { BreadcrumbComponent } from '@shot-there/components';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BreadcrumbStatesComponent {
-  protected readonly items = [{ label: 'Studios', link: '/admin/studios' }, { label: 'The Junction Loft' }];
+  protected readonly items = [
+    { label: 'Studios', link: '/admin/studios' },
+    { label: 'The Junction Loft' },
+  ];
 }

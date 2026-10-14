@@ -54,10 +54,18 @@ test.describe('ProgressComponent (ICD-002 §9.7, CRD progress)', () => {
     const harness = new HarnessPage(page);
     await harness.open('progress/states');
     // Then each carries its modifier and a different fill from the neutral bar
-    expect(await new ProgressComponent(page, 'Uploaded gallery-04.jpg').classes()).toEqual(['progress', 'progress--success']);
-    expect(await new ProgressComponent(page, 'Failed gallery-06.jpg').classes()).toEqual(['progress', 'progress--danger']);
+    expect(await new ProgressComponent(page, 'Uploaded gallery-04.jpg').classes()).toEqual([
+      'progress',
+      'progress--success',
+    ]);
+    expect(await new ProgressComponent(page, 'Failed gallery-06.jpg').classes()).toEqual([
+      'progress',
+      'progress--danger',
+    ]);
     const neutral = await new ProgressComponent(page, 'Uploading gallery-02.jpg').fillColour();
-    expect(await new ProgressComponent(page, 'Failed gallery-06.jpg').fillColour()).not.toBe(neutral);
+    expect(await new ProgressComponent(page, 'Failed gallery-06.jpg').fillColour()).not.toBe(
+      neutral,
+    );
   });
 
   for (const theme of ['light', 'dark'] as HarnessTheme[]) {

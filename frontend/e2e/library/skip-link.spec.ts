@@ -3,7 +3,9 @@ import { SkipLinkComponent } from '../components/skip-link.component';
 import { HarnessPage, HarnessTheme } from '../pages/harness.page';
 
 test.describe('SkipLinkComponent (ICD-002 §9.3, CRD skip-link)', () => {
-  test('is a link to #main named "Skip to content", parked above the screen until focused', async ({ page }) => {
+  test('is a link to #main named "Skip to content", parked above the screen until focused', async ({
+    page,
+  }) => {
     // Given the page with a skip link before main
     const harness = new HarnessPage(page);
     await harness.open('skip-link/default');
@@ -15,7 +17,9 @@ test.describe('SkipLinkComponent (ICD-002 §9.3, CRD skip-link)', () => {
     expect(harness.errors).toEqual([]);
   });
 
-  test('is the first tab stop, shows on focus, and activating it moves focus to main', async ({ page }) => {
+  test('is the first tab stop, shows on focus, and activating it moves focus to main', async ({
+    page,
+  }) => {
     // Given the page just loaded
     const harness = new HarnessPage(page);
     await harness.open('skip-link/default');

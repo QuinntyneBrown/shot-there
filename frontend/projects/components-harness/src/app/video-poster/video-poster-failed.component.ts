@@ -11,7 +11,9 @@ import { ResponsiveImage, VideoPosterComponent } from '@shot-there/components';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class VideoPosterFailedComponent {
-  protected readonly embedUrl = inject(DomSanitizer).bypassSecurityTrustResourceUrl('https://www.youtube-nocookie.com/embed/Jx7Lq2pT9aE');
+  protected readonly embedUrl = inject(DomSanitizer).bypassSecurityTrustResourceUrl(
+    'https://www.youtube-nocookie.com/embed/Jx7Lq2pT9aE',
+  );
   protected readonly poster: ResponsiveImage = {
     alt: 'The Junction Loft from the doorway',
     width: 1280,

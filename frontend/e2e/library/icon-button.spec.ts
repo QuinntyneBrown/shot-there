@@ -5,7 +5,9 @@ import { HarnessPage, HarnessTheme } from '../pages/harness.page';
 const THEMES: HarnessTheme[] = ['light', 'dark'];
 
 test.describe('IconButtonComponent (CRD icon-button, ICD-002 §9.1)', () => {
-  test('AC-1 the map popup Close is a native button with only icon-btn, named by aria-label, holding one hidden svg and no text', async ({ page }) => {
+  test('AC-1 the map popup Close is a native button with only icon-btn, named by aria-label, holding one hidden svg and no text', async ({
+    page,
+  }) => {
     // Given <button st-icon-button type="button" icon="close" label="Close"> in the map popup
     const harness = new HarnessPage(page);
     // When it renders
@@ -21,12 +23,18 @@ test.describe('IconButtonComponent (CRD icon-button, ICD-002 §9.1)', () => {
     expect(harness.errors).toEqual([]);
   });
 
-  test('AC-2 the lightbox Close, Previous and Next carry icon-btn--outline and the 1px --color-border-default ring', async ({ page }) => {
+  test('AC-2 the lightbox Close, Previous and Next carry icon-btn--outline and the 1px --color-border-default ring', async ({
+    page,
+  }) => {
     // Given the lightbox's three icon buttons with outline
     const harness = new HarnessPage(page);
     // When they render
     await harness.open('icon-button/default');
-    const ring = { width: 1, style: 'solid', colour: await harness.tokenColour('--color-border-default') };
+    const ring = {
+      width: 1,
+      style: 'solid',
+      colour: await harness.tokenColour('--color-border-default'),
+    };
     // Then each is named, carries icon-btn icon-btn--outline and draws the ring
     for (const name of ['Close', 'Previous photo', 'Next photo']) {
       const button = new IconButtonComponent(harness.example('lightbox'), name);
@@ -35,7 +43,9 @@ test.describe('IconButtonComponent (CRD icon-button, ICD-002 §9.1)', () => {
     }
   });
 
-  test('AC-3, AC-4 aria-pressed only when pressed is set; pressed keeps the subtle fill and the accent glyph', async ({ page }) => {
+  test('AC-3, AC-4 aria-pressed only when pressed is set; pressed keeps the subtle fill and the accent glyph', async ({
+    page,
+  }) => {
     // Given an icon toggle not pressed, one pressed, and a plain icon button
     const harness = new HarnessPage(page);
     await harness.open('icon-button/pressed');
@@ -54,7 +64,9 @@ test.describe('IconButtonComponent (CRD icon-button, ICD-002 §9.1)', () => {
     expect(await on.glyphColour()).toBe(await harness.tokenColour('--color-fg-accent'));
   });
 
-  test('AC-5 a current icon link keeps its href and the accent glyph at rest and on hover', async ({ page }) => {
+  test('AC-5 a current icon link keeps its href and the accent glyph at rest and on hover', async ({
+    page,
+  }) => {
     // Given <a st-icon-button href="/" icon="home" label="Home" aria-current="page">
     const harness = new HarnessPage(page);
     await harness.open('icon-button/default');
@@ -69,7 +81,9 @@ test.describe('IconButtonComponent (CRD icon-button, ICD-002 §9.1)', () => {
     await expect.poll(() => home.glyphColour()).toBe(accent);
   });
 
-  test('AC-6 hover fills --color-bg-subtle, pressing fills --color-bg-subtle-hover, and the glyph stays default', async ({ page }) => {
+  test('AC-6 hover fills --color-bg-subtle, pressing fills --color-bg-subtle-hover, and the glyph stays default', async ({
+    page,
+  }) => {
     // Given the map popup's Close
     const harness = new HarnessPage(page);
     await harness.open('icon-button/default');
@@ -83,12 +97,16 @@ test.describe('IconButtonComponent (CRD icon-button, ICD-002 §9.1)', () => {
     // When it is pressed
     await close.pressDown();
     // Then the fill is --color-bg-subtle-hover
-    await expect.poll(() => close.fill()).toBe(await harness.tokenColour('--color-bg-subtle-hover'));
+    await expect
+      .poll(() => close.fill())
+      .toBe(await harness.tokenColour('--color-bg-subtle-hover'));
     expect(await close.glyphColour()).toBe(ink);
     await close.release();
   });
 
-  test('AC-7 a natively disabled icon button is skipped by Tab, at 50% with no hover fill, and unavailable', async ({ page }) => {
+  test('AC-7 a natively disabled icon button is skipped by Tab, at 50% with no hover fill, and unavailable', async ({
+    page,
+  }) => {
     // Given a disabled "Remove test shot 2" icon button
     const harness = new HarnessPage(page);
     await harness.open('icon-button/default');
@@ -103,7 +121,9 @@ test.describe('IconButtonComponent (CRD icon-button, ICD-002 §9.1)', () => {
     await expect(remove.root).toBeDisabled();
   });
 
-  test('AC-8, AC-11 Tab moves Close → Previous → Next, and Enter or Space on Next activates once and keeps focus', async ({ page }) => {
+  test('AC-8, AC-11 Tab moves Close → Previous → Next, and Enter or Space on Next activates once and keeps focus', async ({
+    page,
+  }) => {
     // Given the lightbox with focus on Close
     const harness = new HarnessPage(page);
     await harness.open('icon-button/default');
@@ -121,12 +141,16 @@ test.describe('IconButtonComponent (CRD icon-button, ICD-002 §9.1)', () => {
     await page.keyboard.press('Enter');
     await page.keyboard.press('Space');
     // Then each activates it once and focus stays on it
-    await expect.poll(() => harness.activations()).toEqual(['click: Next photo', 'click: Next photo']);
+    await expect
+      .poll(() => harness.activations())
+      .toEqual(['click: Next photo', 'click: Next photo']);
     await expect(next.root).toBeFocused();
   });
 
   for (const theme of THEMES) {
-    test(`AC-9, AC-12 glyph 3:1 at rest, hovered and pressed, and a 2px focus ring at 3:1, in the ${theme} theme`, async ({ page }) => {
+    test(`AC-9, AC-12 glyph 3:1 at rest, hovered and pressed, and a 2px focus ring at 3:1, in the ${theme} theme`, async ({
+      page,
+    }) => {
       // Given the ghost Close on the map popup's raised surface and the outline Close on the lightbox canvas
       const harness = new HarnessPage(page);
       await harness.open('icon-button/default', { theme });
@@ -136,22 +160,33 @@ test.describe('IconButtonComponent (CRD icon-button, ICD-002 §9.1)', () => {
         // Then the glyph is at least 3:1 against what is behind it
         expect(await close.contrast('text'), `${surface} rest`).toBeGreaterThanOrEqual(3);
         await close.hover();
-        await expect.poll(() => close.contrast('text'), `${surface} hover`).toBeGreaterThanOrEqual(3);
+        await expect
+          .poll(() => close.contrast('text'), `${surface} hover`)
+          .toBeGreaterThanOrEqual(3);
         await close.pressDown();
-        await expect.poll(() => close.contrast('text'), `${surface} pressed`).toBeGreaterThanOrEqual(3);
+        await expect
+          .poll(() => close.contrast('text'), `${surface} pressed`)
+          .toBeGreaterThanOrEqual(3);
         await close.release();
         // And a mouse click draws no ring, but keyboard focus draws the 2px ring 3px out at 3:1
         expect((await close.focusRing()).style, `${surface} mouse`).toBe('none');
         await page.keyboard.press('Shift+Tab');
         await page.keyboard.press('Tab');
         await expect(close.root).toBeFocused();
-        expect(await close.focusRing(), surface).toEqual({ width: 2, offset: 3, style: 'solid', colour: await harness.tokenColour('--color-focus-ring') });
+        expect(await close.focusRing(), surface).toEqual({
+          width: 2,
+          offset: 3,
+          style: 'solid',
+          colour: await harness.tokenColour('--color-focus-ring'),
+        });
         expect(await close.contrast('outline'), `${surface} ring`).toBeGreaterThanOrEqual(3);
       }
     });
 
     for (const width of [320, 1280]) {
-      test(`AC-10 axe finds no violations at ${width}px in the ${theme} theme`, async ({ page }) => {
+      test(`AC-10 axe finds no violations at ${width}px in the ${theme} theme`, async ({
+        page,
+      }) => {
         // Given the lightbox, map popup and toggles in the ${theme} theme at ${width}px
         const harness = new HarnessPage(page);
         // When axe scans them
@@ -173,19 +208,31 @@ test.describe('IconButtonComponent (CRD icon-button, ICD-002 §9.1)', () => {
       // When each icon button is measured at ${width}px
       await harness.open('icon-button/default', { width });
       // Then it is 44 x 44
-      for (const [surface, name] of [['lightbox', 'Close'], ['lightbox', 'Previous photo'], ['lightbox', 'Next photo'], ['map popup', 'Close']]) {
-        expect(await new IconButtonComponent(harness.example(surface), name).size(), `${width}px ${surface} ${name}`).toEqual({ width: 44, height: 44 });
+      for (const [surface, name] of [
+        ['lightbox', 'Close'],
+        ['lightbox', 'Previous photo'],
+        ['lightbox', 'Next photo'],
+        ['map popup', 'Close'],
+      ]) {
+        expect(
+          await new IconButtonComponent(harness.example(surface), name).size(),
+          `${width}px ${surface} ${name}`,
+        ).toEqual({ width: 44, height: 44 });
       }
     }
   });
 
-  test('AC-14 at 320px the docked popup Close is fully visible with no sideways scroll', async ({ page }) => {
+  test('AC-14 at 320px the docked popup Close is fully visible with no sideways scroll', async ({
+    page,
+  }) => {
     // Given the docked map popup for Leslieville Daylight Studio at 320px
     const harness = new HarnessPage(page);
     // When it renders
     await harness.open('icon-button/default', { width: 320 });
     // Then Close is fully in view and the page does not scroll sideways
-    expect(await new IconButtonComponent(harness.example('map popup'), 'Close').isFullyInView()).toBe(true);
+    expect(
+      await new IconButtonComponent(harness.example('map popup'), 'Close').isFullyInView(),
+    ).toBe(true);
     expect(await harness.hasHorizontalScroll()).toBe(false);
   });
 
@@ -199,7 +246,9 @@ test.describe('IconButtonComponent (CRD icon-button, ICD-002 §9.1)', () => {
       const harness = new HarnessPage(page);
       await harness.open('icon-button/performance', { width: 412 });
       // When "Next photo" is pressed with the CPU slowed
-      const latency = await harness.interactionLatency(() => new IconButtonComponent(page, 'Next photo').click());
+      const latency = await harness.interactionLatency(() =>
+        new IconButtonComponent(page, 'Next photo').click(),
+      );
       // Then the interaction paints within 200ms and the next photo shows
       expect(latency).toBeLessThanOrEqual(200);
       await expect(harness.status()).toHaveText('Photo 2 of 24');

@@ -1,11 +1,48 @@
-@import "../form/control.css";
-.input-group { display: flex; align-items: stretch; }
-.input-group .input { border-radius: 0; }
-.input-group > :first-child { border-radius: var(--radius-md) 0 0 var(--radius-md); }
-.input-group > :last-child { border-radius: 0 var(--radius-md) var(--radius-md) 0; }
-.input-group .addon { display: inline-flex; align-items: center; padding-inline: var(--space-3); background: var(--color-bg-subtle); border: var(--border-width-hairline) solid var(--color-border-strong); color: var(--color-fg-muted); font: var(--text-body-sm); }
-.input-group .addon + .input, .input-group .input + .addon, .input-group .input + button { margin-left: calc(-1 * var(--border-width-hairline)); }
-.input-group > :is(:focus-visible) { position: relative; z-index: 1; }
-.search { position: relative; min-width: 0; display: block; }
-.search .input { padding-left: var(--space-10); }
-.search st-icon { position: absolute; left: var(--space-3); top: 50%; translate: 0 -50%; color: var(--color-fg-subtle); pointer-events: none; }
+@import '../form/control.css';
+.input-group {
+  display: flex;
+  align-items: stretch;
+}
+.input-group .input {
+  border-radius: 0;
+}
+.input-group > :first-child {
+  border-radius: var(--radius-md) 0 0 var(--radius-md);
+}
+.input-group > :last-child {
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+}
+.input-group .addon {
+  display: inline-flex;
+  align-items: center;
+  padding-inline: var(--space-3);
+  background: var(--color-bg-subtle);
+  border: var(--border-width-hairline) solid var(--color-border-strong);
+  color: var(--color-fg-muted);
+  font: var(--text-body-sm);
+}
+.input-group .addon + .input,
+.input-group .input + .addon,
+.input-group .input + button {
+  margin-left: calc(-1 * var(--border-width-hairline));
+}
+.input-group > :is(:focus-visible) {
+  position: relative;
+  z-index: 1;
+}
+.search {
+  position: relative;
+  min-width: 0;
+  display: block;
+}
+.search .input {
+  padding-left: var(--space-10);
+}
+.search st-icon {
+  position: absolute;
+  left: var(--space-3);
+  top: 50%;
+  translate: 0 -50%;
+  color: var(--color-fg-subtle);
+  pointer-events: none;
+}

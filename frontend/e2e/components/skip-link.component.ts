@@ -9,7 +9,9 @@ export class SkipLinkComponent {
   }
 
   async classes(): Promise<string[]> {
-    return ((await this.root.getAttribute('class')) ?? '').split(/\s+/).filter((c) => c.startsWith('skip-link'));
+    return ((await this.root.getAttribute('class')) ?? '')
+      .split(/\s+/)
+      .filter((c) => c.startsWith('skip-link'));
   }
 
   /** The top edge of the link relative to the viewport. */

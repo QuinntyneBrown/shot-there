@@ -12,12 +12,19 @@ import { ActivationLogComponent } from '../activation-log/activation-log.compone
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class VideoPosterDefaultComponent {
-  protected readonly embedUrl = inject(DomSanitizer).bypassSecurityTrustResourceUrl('https://www.youtube-nocookie.com/embed/Jx7Lq2pT9aE');
+  protected readonly embedUrl = inject(DomSanitizer).bypassSecurityTrustResourceUrl(
+    'https://www.youtube-nocookie.com/embed/Jx7Lq2pT9aE',
+  );
   protected readonly poster: ResponsiveImage = {
     alt: 'The Junction Loft from the doorway',
     width: 1280,
     height: 720,
-    sources: [{ format: 'jpeg', srcset: '/test-images/episode-4-640.jpg 640w, /test-images/episode-4-1280.jpg 1280w' }],
+    sources: [
+      {
+        format: 'jpeg',
+        srcset: '/test-images/episode-4-640.jpg 640w, /test-images/episode-4-1280.jpg 1280w',
+      },
+    ],
     fallbackUrl: '/test-images/episode-4-1280.jpg',
   };
   protected readonly log = signal<readonly string[]>([]);

@@ -8,8 +8,14 @@ import { SkipLinkComponent } from './skip-link.component';
 
 @Component({
   selector: 'st-shell',
-  imports: [RouterOutlet, SkipLinkComponent, HeaderComponent, SiteFooterComponent, CompareBarComponent],
+  imports: [
+    RouterOutlet,
+    SkipLinkComponent,
+    HeaderComponent,
+    SiteFooterComponent,
+    CompareBarComponent,
+  ],
   templateUrl: './shell.component.html',
-  styleUrl: './shell.component.css'
+  styleUrl: './shell.component.css',
 })
 export class ShellComponent {}

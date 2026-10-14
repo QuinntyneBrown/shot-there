@@ -9,7 +9,9 @@ export class BadgeComponent {
   }
 
   async classes(): Promise<string[]> {
-    return ((await this.root.getAttribute('class')) ?? '').split(/\s+/).filter((c) => c.startsWith('badge'));
+    return ((await this.root.getAttribute('class')) ?? '')
+      .split(/\s+/)
+      .filter((c) => c.startsWith('badge'));
   }
 
   colours(): Promise<{ colour: string; background: string }> {

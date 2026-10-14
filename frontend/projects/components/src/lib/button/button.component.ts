@@ -1,4 +1,12 @@
-import { booleanAttribute, ChangeDetectionStrategy, Component, ElementRef, inject, input, Renderer2 } from '@angular/core';
+import {
+  booleanAttribute,
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  inject,
+  input,
+  Renderer2,
+} from '@angular/core';
 import { ButtonVariant } from '../types/button-variant';
 import { ControlSize } from '../types/control-size';
 

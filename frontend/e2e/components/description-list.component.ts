@@ -32,7 +32,9 @@ export class DescriptionListComponent {
 
   /** Whether every dt and dd is a direct child of the dl (no wrapping divs). */
   async isFlat(): Promise<boolean> {
-    return this.root.evaluate((dl) => [...dl.children].every((child) => child.tagName === 'DT' || child.tagName === 'DD'));
+    return this.root.evaluate((dl) =>
+      [...dl.children].every((child) => child.tagName === 'DT' || child.tagName === 'DD'),
+    );
   }
 
   /** The tabular-figures setting of the numeric part. */

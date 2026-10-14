@@ -1,13 +1,38 @@
 <main class="container stack">
   <div class="cluster">
     <button st-button size="sm" type="button" [pressed]="carded()" (click)="carded.set(!carded())">
-      @if (carded()) { Remove } @else { Compare }<span class="visually-hidden"> Kensington Window Room</span>
+      @if (carded()) {
+        Remove
+      } @else {
+        Compare
+      }
+      <span class="visually-hidden"> Kensington Window Room</span>
     </button>
   </div>
   <div class="panel stack">
-    <a st-button variant="primary" block href="https://thejunctionloft.example/book" target="_blank" rel="noopener">Book on the studio's site<st-icon name="external" /><span class="visually-hidden"> (opens in a new tab)</span></a>
-    <button st-button block type="button" [pressed]="selected()" (click)="selected.set(!selected())">
-      @if (selected()) { Remove from compare } @else { Add to compare }
+    <a
+      st-button
+      variant="primary"
+      block
+      href="https://thejunctionloft.example/book"
+      target="_blank"
+      rel="noopener"
+      >Book on the studio's site<st-icon name="external" /><span class="visually-hidden">
+        (opens in a new tab)</span
+      ></a
+    >
+    <button
+      st-button
+      block
+      type="button"
+      [pressed]="selected()"
+      (click)="selected.set(!selected())"
+    >
+      @if (selected()) {
+        Remove from compare
+      } @else {
+        Add to compare
+      }
     </button>
   </div>
 </main>

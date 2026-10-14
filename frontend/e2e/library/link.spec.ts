@@ -6,7 +6,9 @@ const THEMES: HarnessTheme[] = ['light', 'dark'];
 const EXTERNAL_ARROW = '<path d="M14 4h6v6M20 4l-9 9M18 14v6H4V6h6"/>';
 
 test.describe('LinkComponent (CRD link, ICD-002 §9.1, §12, ICD-SEC-2)', () => {
-  test('AC-1 an inline a[st-link] is a plain native link: no class, no target or rel, link colour and hairline underline', async ({ page }) => {
+  test('AC-1 an inline a[st-link] is a plain native link: no class, no target or rel, link colour and hairline underline', async ({
+    page,
+  }) => {
     // Given <a st-link href="mailto:corrections@shotthere.ca"> in the editorial policy's sentence
     const harness = new HarnessPage(page);
     // When it renders
@@ -16,11 +18,18 @@ test.describe('LinkComponent (CRD link, ICD-002 §9.1, §12, ICD-SEC-2)', () => 
     expect(await corrections.allClasses()).toEqual([]);
     await expect(corrections.root).not.toHaveAttribute('target');
     await expect(corrections.root).not.toHaveAttribute('rel');
-    expect(await corrections.look()).toEqual({ colour: await harness.tokenColour('--color-fg-link'), underline: true, thickness: 1, offset: 2.4 });
+    expect(await corrections.look()).toEqual({
+      colour: await harness.tokenColour('--color-fg-link'),
+      underline: true,
+      thickness: 1,
+      offset: 2.4,
+    });
     expect(harness.errors).toEqual([]);
   });
 
-  test('AC-2 a standalone link is .link--standalone, points to the studio and is named with its hidden context', async ({ page }) => {
+  test('AC-2 a standalone link is .link--standalone, points to the studio and is named with its hidden context', async ({
+    page,
+  }) => {
     // Given a guide entry's standalone "Read the full review" with the hidden " of Kensington Window Room"
     const harness = new HarnessPage(page);
     // When the guide renders
@@ -31,7 +40,9 @@ test.describe('LinkComponent (CRD link, ICD-002 §9.1, §12, ICD-SEC-2)', () => 
     await expect(review.root).toHaveAttribute('href', '/studios/kensington-window-room');
   });
 
-  test('AC-3 an external link opens a new tab with noopener and trails the hidden arrow straight after its text', async ({ page }) => {
+  test('AC-3 an external link opens a new tab with noopener and trails the hidden arrow straight after its text', async ({
+    page,
+  }) => {
     // Given <a st-link external href="https://www.youtube.com/watch?v=Jx7Lq2pT9aE">Watch on YouTube</a>
     const harness = new HarnessPage(page);
     // When it renders
@@ -48,11 +59,16 @@ test.describe('LinkComponent (CRD link, ICD-002 §9.1, §12, ICD-SEC-2)', () => 
     expect(await watch.icon.size()).toEqual({ width: 14, height: 14 });
   });
 
-  test('AC-4 activating an external permit source opens it in a new tab with no opener', async ({ page }) => {
+  test('AC-4 activating an external permit source opens it in a new tab with no opener', async ({
+    page,
+  }) => {
     // Given Evergreen Brick Works' permit source link
     const harness = new HarnessPage(page);
     await harness.open('link/variants');
-    const source = new LinkComponent(page, 'Evergreen: photography and filming (opens in a new tab)');
+    const source = new LinkComponent(
+      page,
+      'Evergreen: photography and filming (opens in a new tab)',
+    );
     // When the visitor activates it
     const [tab] = await Promise.all([page.context().waitForEvent('page'), source.click()]);
     await tab.waitForLoadState();
@@ -62,7 +78,9 @@ test.describe('LinkComponent (CRD link, ICD-002 §9.1, §12, ICD-SEC-2)', () => 
     expect(new URL(page.url()).pathname).toBe('/link/variants');
   });
 
-  test('AC-5 "Open in Google Maps" is an external link to the spot\'s coordinates', async ({ page }) => {
+  test('AC-5 "Open in Google Maps" is an external link to the spot\'s coordinates', async ({
+    page,
+  }) => {
     // Given the unavailable map's "Open in Google Maps" for Evergreen Brick Works
     const harness = new HarnessPage(page);
     // When it renders
@@ -70,21 +88,32 @@ test.describe('LinkComponent (CRD link, ICD-002 §9.1, §12, ICD-SEC-2)', () => 
     // Then it is an external a[st-link] to the Google Maps search URL that opens in a new tab
     const maps = new LinkComponent(page, 'Open in Google Maps (opens in a new tab)');
     expect(await maps.classes()).toEqual(['link--external']);
-    await expect(maps.root).toHaveAttribute('href', 'https://www.google.com/maps/search/?api=1&query=43.6846,-79.3653');
+    await expect(maps.root).toHaveAttribute(
+      'href',
+      'https://www.google.com/maps/search/?api=1&query=43.6846,-79.3653',
+    );
     await expect(maps.root).toHaveAttribute('target', '_blank');
   });
 
-  test('AC-6 externalHint replaces the hidden suffix; without it the suffix is @@st.link.external', async ({ page }) => {
+  test('AC-6 externalHint replaces the hidden suffix; without it the suffix is @@st.link.external', async ({
+    page,
+  }) => {
     // Given one external link with externalHint "(s'ouvre dans un nouvel onglet)" and others without
     const harness = new HarnessPage(page);
     // When they render
     await harness.open('link/variants');
     // Then the first is named with the application's hint after one space, the others with the library default
-    await expect(new LinkComponent(page, "Watch on YouTube (s'ouvre dans un nouvel onglet)").root).toHaveAttribute('target', '_blank');
-    await expect(new LinkComponent(page, 'Watch on YouTube (opens in a new tab)').hiddenSuffix).toHaveText(' (opens in a new tab)');
+    await expect(
+      new LinkComponent(page, "Watch on YouTube (s'ouvre dans un nouvel onglet)").root,
+    ).toHaveAttribute('target', '_blank');
+    await expect(
+      new LinkComponent(page, 'Watch on YouTube (opens in a new tab)').hiddenSuffix,
+    ).toHaveText(' (opens in a new tab)');
   });
 
-  test('AC-7 on hover "Change studios" turns --color-fg-link-hover with a thick underline at 4.5:1', async ({ page }) => {
+  test('AC-7 on hover "Change studios" turns --color-fg-link-hover with a thick underline at 4.5:1', async ({
+    page,
+  }) => {
     // Given "Change studios" on the comparison page
     const harness = new HarnessPage(page);
     await harness.open('link/variants');
@@ -108,7 +137,11 @@ test.describe('LinkComponent (CRD link, ICD-002 §9.1, §12, ICD-SEC-2)', () => 
     await page.keyboard.press('Tab');
     await expect(review.root).toBeFocused();
     // Then a solid 2px ring in --color-focus-ring shows at 3:1
-    expect(await review.focusRing()).toEqual({ width: 2, style: 'solid', colour: await harness.tokenColour('--color-focus-ring') });
+    expect(await review.focusRing()).toEqual({
+      width: 2,
+      style: 'solid',
+      colour: await harness.tokenColour('--color-focus-ring'),
+    });
     expect(await review.contrast('outline')).toBeGreaterThanOrEqual(3);
     // When they press Enter
     await page.keyboard.press('Enter');
@@ -117,28 +150,40 @@ test.describe('LinkComponent (CRD link, ICD-002 §9.1, §12, ICD-SEC-2)', () => 
   });
 
   for (const theme of THEMES) {
-    test(`AC-10 links and hovered links keep 4.5:1 and focus rings 3:1 on every surface in the ${theme} theme`, async ({ page }) => {
+    test(`AC-10 links and hovered links keep 4.5:1 and focus rings 3:1 on every surface in the ${theme} theme`, async ({
+      page,
+    }) => {
       // Given inline, standalone and external links on the page, a guide entry, the map popup and a sunken panel
       const harness = new HarnessPage(page);
       await harness.open('link/contrast', { theme });
       for (const surface of ['page', 'guide entry', 'map popup', 'sunken panel']) {
-        for (const name of ['corrections@shotthere.ca', 'Change studios', 'Watch on YouTube (opens in a new tab)']) {
+        for (const name of [
+          'corrections@shotthere.ca',
+          'Change studios',
+          'Watch on YouTube (opens in a new tab)',
+        ]) {
           const link = new LinkComponent(harness.example(surface), name);
           // When the contrast check runs at rest, on hover and with focus
           // Then the text is at least 4.5:1 and the ring at least 3:1
           expect(await link.contrast('text'), `${surface}: ${name}`).toBeGreaterThanOrEqual(4.5);
           await link.hover();
-          await expect.poll(() => link.contrast('text'), `${surface}: ${name} hovered`).toBeGreaterThanOrEqual(4.5);
+          await expect
+            .poll(() => link.contrast('text'), `${surface}: ${name} hovered`)
+            .toBeGreaterThanOrEqual(4.5);
           await link.root.focus();
           await page.keyboard.press('Shift+Tab');
           await page.keyboard.press('Tab');
-          expect(await link.contrast('outline'), `${surface}: ${name} ring`).toBeGreaterThanOrEqual(3);
+          expect(await link.contrast('outline'), `${surface}: ${name} ring`).toBeGreaterThanOrEqual(
+            3,
+          );
         }
       }
     });
 
     for (const width of [320, 1280]) {
-      test(`AC-9 axe finds no empty link name and no link-in-text-block at ${width}px in the ${theme} theme`, async ({ page }) => {
+      test(`AC-9 axe finds no empty link name and no link-in-text-block at ${width}px in the ${theme} theme`, async ({
+        page,
+      }) => {
         // Given the link variants and the link surfaces in the ${theme} theme at ${width}px
         const harness = new HarnessPage(page);
         // When axe scans them
@@ -153,7 +198,9 @@ test.describe('LinkComponent (CRD link, ICD-002 §9.1, §12, ICD-SEC-2)', () => 
     }
   }
 
-  test('AC-11 at 360px "Change studios" and every "Read the full review" are at least 44px tall', async ({ page }) => {
+  test('AC-11 at 360px "Change studios" and every "Read the full review" are at least 44px tall', async ({
+    page,
+  }) => {
     // Given the standalone links at 360px
     const harness = new HarnessPage(page);
     await harness.open('link/variants', { width: 360 });
@@ -169,24 +216,33 @@ test.describe('LinkComponent (CRD link, ICD-002 §9.1, §12, ICD-SEC-2)', () => 
     }
   });
 
-  test('AC-12 at 320px a wrapping external link keeps its arrow on the line of its last word', async ({ page }) => {
+  test('AC-12 at 320px a wrapping external link keeps its arrow on the line of its last word', async ({
+    page,
+  }) => {
     // Given Evergreen Brick Works' permit line at 320px
     const harness = new HarnessPage(page);
     // When "Evergreen: photography and filming" wraps
     await harness.open('link/variants', { width: 320 });
     // Then the arrow sits on the same line as "filming" and the page does not scroll sideways
-    const source = new LinkComponent(page, 'Evergreen: photography and filming (opens in a new tab)');
+    const source = new LinkComponent(
+      page,
+      'Evergreen: photography and filming (opens in a new tab)',
+    );
     expect(await source.arrowOnLastWordLine()).toBe(true);
     expect(await harness.hasHorizontalScroll()).toBe(false);
   });
 
-  test('AC-13 at 200% zoom "Watch on YouTube" and its arrow are fully visible with no sideways scroll', async ({ page }) => {
+  test('AC-13 at 200% zoom "Watch on YouTube" and its arrow are fully visible with no sideways scroll', async ({
+    page,
+  }) => {
     // Given the video section's link in a 1280px window at 200% zoom (640 CSS px)
     const harness = new HarnessPage(page);
     // When the visitor reaches it
     await harness.open('link/variants', { width: 640 });
     // Then it is fully visible and the page does not scroll sideways
-    expect(await new LinkComponent(page, 'Watch on YouTube (opens in a new tab)').isFullyInView()).toBe(true);
+    expect(
+      await new LinkComponent(page, 'Watch on YouTube (opens in a new tab)').isFullyInView(),
+    ).toBe(true);
     expect(await harness.hasHorizontalScroll()).toBe(false);
   });
 
@@ -195,7 +251,9 @@ test.describe('LinkComponent (CRD link, ICD-002 §9.1, §12, ICD-SEC-2)', () => 
     // workers, while a real regression fails every attempt.
     test.describe.configure({ retries: 2 });
 
-    test('AC-14 the link/performance route shifts no layout (CLS at most 0.1)', async ({ page }) => {
+    test('AC-14 the link/performance route shifts no layout (CLS at most 0.1)', async ({
+      page,
+    }) => {
       // Given the link/performance route
       const harness = new HarnessPage(page);
       // When it loads on a mobile profile and hydrates

@@ -10,7 +10,7 @@ import { nextIndex, previousIndex } from './gallery-lightbox.view-model';
   selector: 'st-gallery-lightbox-dialog',
   imports: [FallbackImageDirective],
   templateUrl: './gallery-lightbox-dialog.component.html',
-  styleUrl: './gallery-lightbox-dialog.component.css'
+  styleUrl: './gallery-lightbox-dialog.component.css',
 })
 export class GalleryLightboxDialogComponent {
   private readonly dialogRef = inject(DialogRef);

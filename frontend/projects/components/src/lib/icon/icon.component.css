@@ -1,20 +1,94 @@
 /* The host adds no box: the block is the <svg class="icon"> (ICD-DOM-1). */
-:host { display: contents; }
+:host {
+  display: contents;
+}
 
-.icon { width: var(--icon-size-md); height: var(--icon-size-md); fill: none; stroke: currentColor; stroke-width: var(--icon-stroke); stroke-linecap: round; stroke-linejoin: round; flex: none; }
-.icon--sm { width: var(--icon-size-sm); height: var(--icon-size-sm); }
-.icon--lg { width: var(--icon-size-lg); height: var(--icon-size-lg); }
-.icon--xl { width: var(--icon-size-xl); height: var(--icon-size-xl); }
+.icon {
+  width: var(--icon-size-md);
+  height: var(--icon-size-md);
+  fill: none;
+  stroke: currentColor;
+  stroke-width: var(--icon-stroke);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex: none;
+}
+.icon--sm {
+  width: var(--icon-size-sm);
+  height: var(--icon-size-sm);
+}
+.icon--lg {
+  width: var(--icon-size-lg);
+  height: var(--icon-size-lg);
+}
+.icon--xl {
+  width: var(--icon-size-xl);
+  height: var(--icon-size-xl);
+}
 
 /* Every DS rule ending in .icon, by the block around the icon (CRD icon D-4). A context rule wins over the size modifier. */
-:host-context(.btn) .icon { width: 1.25em; height: 1.25em; flex: none; }
-:host-context(.link--external) .icon { display: inline-block; width: 0.9em; height: 0.9em; vertical-align: -0.1em; margin-inline-start: var(--space-1); }
-:host-context(.search) .icon { position: absolute; left: var(--space-3); top: 50%; translate: 0 -50%; width: var(--icon-size-md); height: var(--icon-size-md); color: var(--color-fg-subtle); pointer-events: none; }
-:host-context(.search-field) .icon { position: absolute; left: var(--space-4); top: calc(var(--control-height-lg) / 2); translate: 0 -50%; color: var(--color-fg-subtle); pointer-events: none; }
-:host-context(.tag) .icon { width: var(--icon-size-xs); height: var(--icon-size-xs); }
-:host-context(.alert) .icon { width: var(--icon-size-md); height: var(--icon-size-md); flex: none; color: var(--alert-icon); margin-top: 0.1rem; }
-:host-context(.toast) .icon { width: var(--icon-size-md); height: var(--icon-size-md); flex: none; margin-top: 0.1rem; color: currentColor; }
-:host-context(.empty__icon) .icon { width: var(--icon-size-xl); height: var(--icon-size-xl); }
-:host-context(.media-fallback) .icon { color: var(--color-fg-subtle); }
-:host-context(.disclosure) .icon { flex: none; margin-top: var(--space-0-5); color: var(--color-fg-muted); }
-:host-context(.signup__done) .icon { color: var(--color-success-icon); flex: none; margin-top: var(--space-0-5); }
+:host-context(.btn) .icon {
+  width: 1.25em;
+  height: 1.25em;
+  flex: none;
+}
+:host-context(.link--external) .icon {
+  display: inline-block;
+  width: 0.9em;
+  height: 0.9em;
+  vertical-align: -0.1em;
+  margin-inline-start: var(--space-1);
+}
+:host-context(.search) .icon {
+  position: absolute;
+  left: var(--space-3);
+  top: 50%;
+  translate: 0 -50%;
+  width: var(--icon-size-md);
+  height: var(--icon-size-md);
+  color: var(--color-fg-subtle);
+  pointer-events: none;
+}
+:host-context(.search-field) .icon {
+  position: absolute;
+  left: var(--space-4);
+  top: calc(var(--control-height-lg) / 2);
+  translate: 0 -50%;
+  color: var(--color-fg-subtle);
+  pointer-events: none;
+}
+:host-context(.tag) .icon {
+  width: var(--icon-size-xs);
+  height: var(--icon-size-xs);
+}
+:host-context(.alert) .icon {
+  width: var(--icon-size-md);
+  height: var(--icon-size-md);
+  flex: none;
+  color: var(--alert-icon);
+  margin-top: 0.1rem;
+}
+:host-context(.toast) .icon {
+  width: var(--icon-size-md);
+  height: var(--icon-size-md);
+  flex: none;
+  margin-top: 0.1rem;
+  color: currentColor;
+}
+:host-context(.empty__icon) .icon {
+  width: var(--icon-size-xl);
+  height: var(--icon-size-xl);
+}
+:host-context(.media-fallback) .icon {
+  color: var(--color-fg-subtle);
+}
+:host-context(.disclosure) .icon {
+  flex: none;
+  margin-top: var(--space-0-5);
+  color: var(--color-fg-muted);
+}
+:host-context(.signup__done) .icon {
+  color: var(--color-success-icon);
+  flex: none;
+  margin-top: var(--space-0-5);
+}

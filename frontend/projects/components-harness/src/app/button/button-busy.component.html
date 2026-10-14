@@ -1,7 +1,15 @@
 <main class="container stack">
-  <label><input type="checkbox" [checked]="busy()" (change)="busy.set(!busy())"> Busy</label>
+  <label><input type="checkbox" [checked]="busy()" (change)="busy.set(!busy())" /> Busy</label>
   <form (submit)="record('submit', $event)">
-    <button st-button variant="primary" type="submit" [busy]="busy()" (click)="record('click: Save changes')">Save changes</button>
+    <button
+      st-button
+      variant="primary"
+      type="submit"
+      [busy]="busy()"
+      (click)="record('click: Save changes')"
+    >
+      Save changes
+    </button>
   </form>
   <st-activation-log [entries]="log()" />
 </main>

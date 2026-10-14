@@ -1,4 +1,10 @@
-import { booleanAttribute, ChangeDetectionStrategy, Component, forwardRef, input } from '@angular/core';
+import {
+  booleanAttribute,
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  input,
+} from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { FieldControl } from '../form/field-control';
 import { FieldLabelComponent } from '../form/field-label.component';
@@ -13,7 +19,9 @@ import { SelectOption } from '../types/select-option';
   templateUrl: './select.component.html',
   styleUrl: './select.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => SelectComponent), multi: true }],
+  providers: [
+    { provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => SelectComponent), multi: true },
+  ],
   host: {
     class: 'field',
     '[class.field--warning]': 'hasWarning()',

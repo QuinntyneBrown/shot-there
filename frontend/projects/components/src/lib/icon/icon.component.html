@@ -1,44 +1,143 @@
 <!-- The drawing table of CRD icon.md, copied exactly; one branch per IconName. -->
 <svg class="icon" [class]="sizeClass()" aria-hidden="true" viewBox="0 0 24 24">
   @switch (name()) {
-    @case ('search') { <circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/> }
-    @case ('menu') { <path d="M4 7h16M4 12h16M4 17h16"/> }
-    @case ('close') { <path d="M6 6l12 12M18 6 6 18"/> }
-    @case ('chevron-left') { <path d="m15 6-6 6 6 6"/> }
-    @case ('chevron-right') { <path d="m9 6 6 6-6 6"/> }
-    @case ('chevron-down') { <path d="m6 9 6 6 6-6"/> }
-    @case ('filters') {
-      <path d="M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12M20 18h0"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/>
+    @case ('search') {
+      <circle cx="11" cy="11" r="7" />
+      <path d="m20 20-3.5-3.5" />
     }
-    @case ('map-pin') { <path d="M12 21s-7-6.5-7-12a7 7 0 0 1 14 0c0 5.5-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/> }
-    @case ('check') { <path d="m5 12 5 5 9-10"/> }
-    @case ('mail') { <rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/> }
-    @case ('lock') { <rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/> }
-    @case ('sign-out') { <path d="M10 4H5v16h5M15 8l4 4-4 4M19 12H9"/> }
-    @case ('home') { <path d="m3 11 9-7 9 7"/><path d="M5 10v10h14V10"/> }
-    @case ('plus') { <path d="M12 5v14M5 12h14"/> }
-    @case ('edit') { <path d="M4 20h4L19 9l-4-4L4 16z"/><path d="m13 7 4 4"/> }
-    @case ('trash') { <path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"/> }
-    @case ('arrow-up') { <path d="M12 19V5m-6 6 6-6 6 6"/> }
-    @case ('arrow-down') { <path d="M12 5v14m-6-6 6 6 6-6"/> }
-    @case ('camera') { <path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/> }
-    @case ('upload') { <path d="M12 16V4M7 9l5-5 5 5M4 20h16"/> }
-    @case ('eye') { <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/> }
-    @case ('clock') { <circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/> }
-    @case ('refresh') { <path d="M20 12a8 8 0 1 1-2.3-5.7M20 4v5h-5"/> }
-    @case ('offline') { <path d="M3 3l18 18"/><path d="M5 12.5a10 10 0 0 1 4.5-2.7M14.5 9.8A10 10 0 0 1 19 12.5M8.5 16a5 5 0 0 1 7 0M12 20h.01"/> }
-    @case ('info') { <circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/> }
-    @case ('success') { <circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/> }
-    @case ('warning') { <path d="M12 3 2 20h20L12 3z"/><path d="M12 10v4M12 17h.01"/> }
-    @case ('danger') { <circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16h.01"/> }
-    @case ('external') { <path d="M14 4h6v6M20 4l-9 9M18 14v6H4V6h6"/> }
-    @case ('play') { <path d="M8 5v14l11-7z" fill="currentColor" stroke="none"/> }
-    @case ('copy') { <rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a1 1 0 0 1 1-1h10"/> }
-    @case ('image') { <rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 16 5-5 4 4 3-3 6 6"/> }
-    @case ('image-failed') { <rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 16 5-5 4 4 2-2 7 7"/><path d="M3 3l18 18"/> }
-    @case ('tree') { <path d="M12 3 6 12h4l-4 6h12l-4-6h4z"/><path d="M12 18v3"/> }
-    @case ('compare') { <rect x="3" y="4" width="7" height="16" rx="1.5"/><rect x="14" y="4" width="7" height="16" rx="1.5"/> }
-    @case ('guide') { <path d="M4 5h6a2 2 0 0 1 2 2v12a2 2 0 0 0-2-2H4zM20 5h-6a2 2 0 0 0-2 2v12a2 2 0 0 1 2-2h6z"/> }
-    @case ('list') { <path d="M9 6h11M9 12h11M9 18h11M4 6h.5M4 12h.5M4 18h.5"/> }
+    @case ('menu') {
+      <path d="M4 7h16M4 12h16M4 17h16" />
+    }
+    @case ('close') {
+      <path d="M6 6l12 12M18 6 6 18" />
+    }
+    @case ('chevron-left') {
+      <path d="m15 6-6 6 6 6" />
+    }
+    @case ('chevron-right') {
+      <path d="m9 6 6 6-6 6" />
+    }
+    @case ('chevron-down') {
+      <path d="m6 9 6 6 6-6" />
+    }
+    @case ('filters') {
+      <path d="M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12M20 18h0" />
+      <circle cx="16" cy="6" r="2" />
+      <circle cx="10" cy="12" r="2" />
+      <circle cx="18" cy="18" r="2" />
+    }
+    @case ('map-pin') {
+      <path d="M12 21s-7-6.5-7-12a7 7 0 0 1 14 0c0 5.5-7 12-7 12z" />
+      <circle cx="12" cy="9" r="2.5" />
+    }
+    @case ('check') {
+      <path d="m5 12 5 5 9-10" />
+    }
+    @case ('mail') {
+      <rect x="3" y="5" width="18" height="14" rx="2" />
+      <path d="m3 7 9 6 9-6" />
+    }
+    @case ('lock') {
+      <rect x="5" y="11" width="14" height="10" rx="2" />
+      <path d="M8 11V7a4 4 0 0 1 8 0v4" />
+    }
+    @case ('sign-out') {
+      <path d="M10 4H5v16h5M15 8l4 4-4 4M19 12H9" />
+    }
+    @case ('home') {
+      <path d="m3 11 9-7 9 7" />
+      <path d="M5 10v10h14V10" />
+    }
+    @case ('plus') {
+      <path d="M12 5v14M5 12h14" />
+    }
+    @case ('edit') {
+      <path d="M4 20h4L19 9l-4-4L4 16z" />
+      <path d="m13 7 4 4" />
+    }
+    @case ('trash') {
+      <path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13" />
+    }
+    @case ('arrow-up') {
+      <path d="M12 19V5m-6 6 6-6 6 6" />
+    }
+    @case ('arrow-down') {
+      <path d="M12 5v14m-6-6 6 6 6-6" />
+    }
+    @case ('camera') {
+      <path d="M4 8h3l2-3h6l2 3h3v11H4z" />
+      <circle cx="12" cy="13" r="3.5" />
+    }
+    @case ('upload') {
+      <path d="M12 16V4M7 9l5-5 5 5M4 20h16" />
+    }
+    @case ('eye') {
+      <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z" />
+      <circle cx="12" cy="12" r="3" />
+    }
+    @case ('clock') {
+      <circle cx="12" cy="12" r="9" />
+      <path d="M12 7v5l3 2" />
+    }
+    @case ('refresh') {
+      <path d="M20 12a8 8 0 1 1-2.3-5.7M20 4v5h-5" />
+    }
+    @case ('offline') {
+      <path d="M3 3l18 18" />
+      <path
+        d="M5 12.5a10 10 0 0 1 4.5-2.7M14.5 9.8A10 10 0 0 1 19 12.5M8.5 16a5 5 0 0 1 7 0M12 20h.01"
+      />
+    }
+    @case ('info') {
+      <circle cx="12" cy="12" r="9" />
+      <path d="M12 11v5M12 8h.01" />
+    }
+    @case ('success') {
+      <circle cx="12" cy="12" r="9" />
+      <path d="m8 12 3 3 5-6" />
+    }
+    @case ('warning') {
+      <path d="M12 3 2 20h20L12 3z" />
+      <path d="M12 10v4M12 17h.01" />
+    }
+    @case ('danger') {
+      <circle cx="12" cy="12" r="9" />
+      <path d="M12 7v6M12 16h.01" />
+    }
+    @case ('external') {
+      <path d="M14 4h6v6M20 4l-9 9M18 14v6H4V6h6" />
+    }
+    @case ('play') {
+      <path d="M8 5v14l11-7z" fill="currentColor" stroke="none" />
+    }
+    @case ('copy') {
+      <rect x="9" y="9" width="11" height="11" rx="2" />
+      <path d="M5 15V5a1 1 0 0 1 1-1h10" />
+    }
+    @case ('image') {
+      <rect x="3" y="5" width="18" height="14" rx="2" />
+      <path d="m3 16 5-5 4 4 3-3 6 6" />
+    }
+    @case ('image-failed') {
+      <rect x="3" y="5" width="18" height="14" rx="2" />
+      <path d="m3 16 5-5 4 4 2-2 7 7" />
+      <path d="M3 3l18 18" />
+    }
+    @case ('tree') {
+      <path d="M12 3 6 12h4l-4 6h12l-4-6h4z" />
+      <path d="M12 18v3" />
+    }
+    @case ('compare') {
+      <rect x="3" y="4" width="7" height="16" rx="1.5" />
+      <rect x="14" y="4" width="7" height="16" rx="1.5" />
+    }
+    @case ('guide') {
+      <path
+        d="M4 5h6a2 2 0 0 1 2 2v12a2 2 0 0 0-2-2H4zM20 5h-6a2 2 0 0 0-2 2v12a2 2 0 0 1 2-2h6z"
+      />
+    }
+    @case ('list') {
+      <path d="M9 6h11M9 12h11M9 18h11M4 6h.5M4 12h.5M4 18h.5" />
+    }
   }
 </svg>

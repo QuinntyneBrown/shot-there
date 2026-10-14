@@ -13,6 +13,6 @@ export function toStudioPricingView(pricing: StudioPricingDto, today: Date): Stu
     billableHours: Math.max(2, pricing.minBookingHours),
     mandatoryFees: pricing.fees.filter((fee) => fee.mandatory),
     optionalFees: pricing.fees.filter((fee) => !fee.mandatory),
-    daysSinceVerified: Math.round((now - verified) / DAY_MS)
+    daysSinceVerified: Math.round((now - verified) / DAY_MS),
   };
 }

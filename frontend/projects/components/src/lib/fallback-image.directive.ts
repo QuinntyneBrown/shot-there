@@ -9,7 +9,7 @@ const BROKEN_IMAGE_PATHS = ['m3 16 5-5 4 4 2-2 7 7', 'M3 3l18 18'];
  */
 @Directive({
   selector: 'img[stFallbackImage]',
-  host: { '(error)': 'showFallback()' }
+  host: { '(error)': 'showFallback()' },
 })
 export class FallbackImageDirective {
   private readonly image = inject<ElementRef<HTMLImageElement>>(ElementRef).nativeElement;
@@ -37,7 +37,13 @@ export class FallbackImageDirective {
     this.renderer.setAttribute(svg, 'aria-hidden', 'true');
     this.renderer.setAttribute(svg, 'viewBox', '0 0 24 24');
     const frame = this.renderer.createElement('rect', SVG_NAMESPACE);
-    for (const [name, value] of [['x', '3'], ['y', '5'], ['width', '18'], ['height', '14'], ['rx', '2']]) {
+    for (const [name, value] of [
+      ['x', '3'],
+      ['y', '5'],
+      ['width', '18'],
+      ['height', '14'],
+      ['rx', '2'],
+    ]) {
       this.renderer.setAttribute(frame, name, value);
     }
     this.renderer.appendChild(svg, frame);

@@ -1,5 +1,14 @@
 <main class="container stack">
-  <st-select label="Sort by" inputId="sort" name="sort" inline [options]="options" [formControl]="sort" />
-  <p>Sort value: <output>{{ sort.value }}</output></p>
+  <st-select
+    label="Sort by"
+    inputId="sort"
+    name="sort"
+    inline
+    [options]="options"
+    [formControl]="sort"
+  />
+  <p>
+    Sort value: <output>{{ sort.value }}</output>
+  </p>
   <st-select label="Type" inputId="type" [options]="options" error="Choose a type" />
 </main>

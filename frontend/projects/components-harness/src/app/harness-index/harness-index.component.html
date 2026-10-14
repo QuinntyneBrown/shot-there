@@ -2,7 +2,9 @@
   <h1>Components harness</h1>
   <ul>
     @for (path of paths; track path) {
-      <li><a [routerLink]="'/' + path">{{ path }}</a></li>
+      <li>
+        <a [routerLink]="'/' + path">{{ path }}</a>
+      </li>
     }
   </ul>
 </main>

@@ -9,7 +9,9 @@ export class SkeletonComponent {
   }
 
   async classes(): Promise<string[]> {
-    return ((await this.root.getAttribute('class')) ?? '').split(/\s+/).filter((c) => c.startsWith('skeleton'));
+    return ((await this.root.getAttribute('class')) ?? '')
+      .split(/\s+/)
+      .filter((c) => c.startsWith('skeleton'));
   }
 
   /** Rounded ends: the computed border radius of the first corner. */

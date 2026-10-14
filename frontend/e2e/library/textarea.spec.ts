@@ -12,11 +12,16 @@ test.describe('TextareaComponent (ICD-002 §9.2, CRD textarea)', () => {
     await expect(verdict.input).toHaveClass('textarea');
     await expect(verdict.input).toHaveAttribute('rows', '3');
     await expect(verdict.input).toHaveAttribute('aria-invalid', 'true');
-    expect(await verdict.description()).toEqual(['Write who this studio is for', 'Visitors read this first.']);
+    expect(await verdict.description()).toEqual([
+      'Write who this studio is for',
+      'Visitors read this first.',
+    ]);
     expect(harness.errors).toEqual([]);
   });
 
-  test('counts characters against maxlength and flags the over-limit state without truncating', async ({ page }) => {
+  test('counts characters against maxlength and flags the over-limit state without truncating', async ({
+    page,
+  }) => {
     // Given a textarea limited to 20 characters
     const harness = new HarnessPage(page);
     await harness.open('textarea/states');

@@ -9,7 +9,9 @@ test.describe('Studio filters in the URL', () => {
     const requests = await givenStudios(page, PUBLISHED_STUDIOS);
     const list = new StudioListPage(page);
     // When the visitor opens it
-    await list.open('?costMin=100&costMax=150&hood=leslieville&hood=junction&light=medium&cyc=yes&space=30&gear=lights&gear=stands&parking=on-site&sort=cost');
+    await list.open(
+      '?costMin=100&costMax=150&hood=leslieville&hood=junction&light=medium&cyc=yes&space=30&gear=lights&gear=stands&parking=on-site&sort=cost',
+    );
     // Then the studio request carries the same filters and sort
     await expect(list.cards).toHaveCount(7);
     const sent = requests.at(-1)!;
@@ -29,7 +31,9 @@ test.describe('Studio filters in the URL', () => {
     const requests = await givenStudios(page, PUBLISHED_STUDIOS);
     const list = new StudioListPage(page);
     // When the visitor opens it
-    await list.open('?hood=atlantis&hood=riverside&gear=drones&parking=boat&space=12&costMin=cheap&light=bright&cyc=maybe');
+    await list.open(
+      '?hood=atlantis&hood=riverside&gear=drones&parking=boat&space=12&costMin=cheap&light=bright&cyc=maybe',
+    );
     // Then only the valid filter reaches the request and the list shows without an error
     await expect(list.cards).toHaveCount(7);
     const sent = requests.at(-1)!;

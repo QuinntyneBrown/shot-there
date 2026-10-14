@@ -19,13 +19,21 @@ test.describe('BadgeComponent (ICD-002 §9.5, CRD badge)', () => {
     const harness = new HarnessPage(page);
     await harness.open('badge/tones');
     // Then each has its modifier
-    expect(await new BadgeComponent(page, 'Not required').classes()).toEqual(['badge', 'badge--success']);
-    expect(await new BadgeComponent(page, 'Prices may be out of date').classes()).toEqual(['badge', 'badge--warning']);
+    expect(await new BadgeComponent(page, 'Not required').classes()).toEqual([
+      'badge',
+      'badge--success',
+    ]);
+    expect(await new BadgeComponent(page, 'Prices may be out of date').classes()).toEqual([
+      'badge',
+      'badge--warning',
+    ]);
     expect(await new BadgeComponent(page, 'Due soon').classes()).toEqual(['badge', 'badge--info']);
     expect(await new BadgeComponent(page, 'Removed').classes()).toEqual(['badge', 'badge--danger']);
   });
 
-  test('adds .badge--solid when solid, with a different fill from the soft badge', async ({ page }) => {
+  test('adds .badge--solid when solid, with a different fill from the soft badge', async ({
+    page,
+  }) => {
     // Given a soft and a solid success badge
     const harness = new HarnessPage(page);
     await harness.open('badge/tones');

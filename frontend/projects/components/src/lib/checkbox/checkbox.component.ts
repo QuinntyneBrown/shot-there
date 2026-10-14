@@ -10,7 +10,9 @@ import { FieldMessagesComponent } from '../form/field-messages.component';
   templateUrl: './checkbox.component.html',
   styleUrl: './checkbox.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => CheckboxComponent), multi: true }],
+  providers: [
+    { provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => CheckboxComponent), multi: true },
+  ],
   host: {
     class: 'field',
     '[class.field--warning]': 'hasWarning()',

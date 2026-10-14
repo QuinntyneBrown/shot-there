@@ -61,9 +61,7 @@
             "ssr": {
               "entry": "projects/shot-there/src/server.ts"
             },
-            "polyfills": [
-              "@angular/localize/init"
-            ]
+            "polyfills": ["@angular/localize/init"]
           },
           "configurations": {
             "production": {
@@ -234,9 +232,7 @@
                 "input": "projects/components-harness/public"
               }
             ],
-            "styles": [
-              "dist/components/styles/shot-there.css"
-            ],
+            "styles": ["dist/components/styles/shot-there.css"],
             "server": "projects/components-harness/src/main.server.ts",
             "outputMode": "server",
             "security": {
@@ -245,9 +241,7 @@
             "ssr": {
               "entry": "projects/components-harness/src/server.ts"
             },
-            "polyfills": [
-              "@angular/localize/init"
-            ]
+            "polyfills": ["@angular/localize/init"]
           },
           "configurations": {
             "production": {

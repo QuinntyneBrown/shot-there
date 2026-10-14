@@ -3,7 +3,9 @@ import { ButtonComponent } from '../components/button.component';
 import { HarnessPage, HarnessTheme } from '../pages/harness.page';
 
 test.describe('ButtonComponent: busy, disabled, soft-disabled and pressed (CRD button, ICD-FORM-8, D-9)', () => {
-  test('AC-7 a busy button keeps its name, width and focusability, shows the spinner and has no disabled attribute', async ({ page }) => {
+  test('AC-7 a busy button keeps its name, width and focusability, shows the spinner and has no disabled attribute', async ({
+    page,
+  }) => {
     // Given the primary submit button "Save changes" in a form, not busy
     const harness = new HarnessPage(page);
     await harness.open('button/busy');
@@ -23,7 +25,9 @@ test.describe('ButtonComponent: busy, disabled, soft-disabled and pressed (CRD b
     expect(harness.errors).toEqual([]);
   });
 
-  test('AC-8 a busy submit button ignores Enter, Space and click, and activates again once not busy', async ({ page }) => {
+  test('AC-8 a busy submit button ignores Enter, Space and click, and activates again once not busy', async ({
+    page,
+  }) => {
     // Given a busy "Save changes" submit button
     const harness = new HarnessPage(page);
     await harness.open('button/busy');
@@ -57,7 +61,9 @@ test.describe('ButtonComponent: busy, disabled, soft-disabled and pressed (CRD b
     await expect(save.root).toBeFocused();
   });
 
-  test('AC-10 a soft-disabled button stays in the tab order, looks disabled and swallows Enter', async ({ page }) => {
+  test('AC-10 a soft-disabled button stays in the tab order, looks disabled and swallows Enter', async ({
+    page,
+  }) => {
     // Given the first row's small "Move up test shot 1", soft-disabled
     const harness = new HarnessPage(page);
     await harness.open('button/soft-disabled');
@@ -76,7 +82,9 @@ test.describe('ButtonComponent: busy, disabled, soft-disabled and pressed (CRD b
     await expect.poll(() => harness.activations()).toEqual(['click: Move up test shot 2']);
   });
 
-  test('AC-11 a natively disabled ghost-danger "Delete studio" is skipped by Tab, unavailable and described by its hint', async ({ page }) => {
+  test('AC-11 a natively disabled ghost-danger "Delete studio" is skipped by Tab, unavailable and described by its hint', async ({
+    page,
+  }) => {
     // Given the published studio's disabled "Delete studio" with aria-describedby pointing at its hint
     const harness = new HarnessPage(page);
     await harness.open('button/disabled');
@@ -90,7 +98,9 @@ test.describe('ButtonComponent: busy, disabled, soft-disabled and pressed (CRD b
     expect(await remove.classes()).toEqual(['btn', 'btn--ghost-danger', 'btn--block']);
   });
 
-  test('AC-12 the soft-disabled bar "Compare" is focusable, dimmed, described by its hint, and Enter does nothing', async ({ page }) => {
+  test('AC-12 the soft-disabled bar "Compare" is focusable, dimmed, described by its hint, and Enter does nothing', async ({
+    page,
+  }) => {
     // Given the compare bar's primary "Compare" with one studio selected
     const harness = new HarnessPage(page);
     await harness.open('button/soft-disabled');
@@ -106,7 +116,9 @@ test.describe('ButtonComponent: busy, disabled, soft-disabled and pressed (CRD b
     await expect.poll(() => harness.activations()).toEqual(['click: Move up test shot 2']);
   });
 
-  test('AC-4, AC-5 a toggle renders aria-pressed and .compare-toggle, with the accent tint, edge and label when pressed', async ({ page }) => {
+  test('AC-4, AC-5 a toggle renders aria-pressed and .compare-toggle, with the accent tint, edge and label when pressed', async ({
+    page,
+  }) => {
     // Given the card toggle "Compare" with the hidden " Kensington Window Room", not pressed
     const harness = new HarnessPage(page);
     await harness.open('button/pressed');
@@ -142,12 +154,17 @@ test.describe('ButtonComponent: busy, disabled, soft-disabled and pressed (CRD b
     // When the visitor presses Enter
     await page.keyboard.press('Enter');
     // Then it is not pressed
-    await expect(new ButtonComponent(page, 'Add to compare').root).toHaveAttribute('aria-pressed', 'false');
+    await expect(new ButtonComponent(page, 'Add to compare').root).toHaveAttribute(
+      'aria-pressed',
+      'false',
+    );
   });
 
   for (const theme of ['light', 'dark'] as HarnessTheme[]) {
     for (const width of [320, 1280]) {
-      test(`busy and pressed have no WCAG A/AA violations at ${width}px in the ${theme} theme`, async ({ page }) => {
+      test(`busy and pressed have no WCAG A/AA violations at ${width}px in the ${theme} theme`, async ({
+        page,
+      }) => {
         // Given a busy button and a pressed toggle in the ${theme} theme at ${width}px
         const harness = new HarnessPage(page);
         await harness.open('button/busy', { width, theme });
@@ -155,7 +172,10 @@ test.describe('ButtonComponent: busy, disabled, soft-disabled and pressed (CRD b
         const busy = await harness.accessibilityViolations();
         await harness.open('button/pressed', { width, theme });
         await new ButtonComponent(page, 'Add to compare').click();
-        await expect(new ButtonComponent(page, 'Remove from compare').root).toHaveAttribute('aria-pressed', 'true');
+        await expect(new ButtonComponent(page, 'Remove from compare').root).toHaveAttribute(
+          'aria-pressed',
+          'true',
+        );
         // When axe scans them
         // Then it finds no violations
         expect(busy).toEqual([]);

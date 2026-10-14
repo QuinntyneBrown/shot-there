@@ -3,7 +3,9 @@ import { SkeletonComponent } from '../components/skeleton.component';
 import { HarnessPage, HarnessTheme } from '../pages/harness.page';
 
 test.describe('SkeletonComponent (ICD-002 §9.7, CRD skeleton)', () => {
-  test('is a text skeleton by default and carries a modifier per shape, each aria-hidden', async ({ page }) => {
+  test('is a text skeleton by default and carries a modifier per shape, each aria-hidden', async ({
+    page,
+  }) => {
     // Given a busy region with one skeleton per shape
     const harness = new HarnessPage(page);
     await harness.open('skeleton/shapes');
@@ -18,7 +20,9 @@ test.describe('SkeletonComponent (ICD-002 §9.7, CRD skeleton)', () => {
     expect(harness.errors).toEqual([]);
   });
 
-  test('exposes no skeleton in the accessibility tree: only the status words remain', async ({ page }) => {
+  test('exposes no skeleton in the accessibility tree: only the status words remain', async ({
+    page,
+  }) => {
     // Given the busy region
     const harness = new HarnessPage(page);
     await harness.open('skeleton/shapes');
@@ -26,7 +30,9 @@ test.describe('SkeletonComponent (ICD-002 §9.7, CRD skeleton)', () => {
     await expect(harness.example('Loading studios')).toHaveText('Loading studios…');
   });
 
-  test('keeps the size the consumer sets and rounds the pill and circle fully', async ({ page }) => {
+  test('keeps the size the consumer sets and rounds the pill and circle fully', async ({
+    page,
+  }) => {
     // Given a pill 5rem × 2.75rem and a circle 3rem square
     const harness = new HarnessPage(page);
     await harness.open('skeleton/shapes');

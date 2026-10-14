@@ -1,6 +1,9 @@
 <section class="home-hero" aria-labelledby="home-title">
   <h1 id="home-title" i18n>Toronto photo studios and outdoor spots, reviewed first-hand</h1>
-  <p class="subtitle" i18n>Nothing is listed unless it has been shot there. Same measurements, same test setup, side by side.</p>
+  <p class="subtitle" i18n>
+    Nothing is listed unless it has been shot there. Same measurements, same test setup, side by
+    side.
+  </p>
   <st-email-signup variant="hero" />
 </section>
 
@@ -16,13 +19,32 @@
         @for (studio of s.latestStudios; track studio.slug) {
           <li class="location-card">
             <div class="location-card__media">
-              <img [src]="studio.thumbnail.url" alt="" [width]="studio.thumbnail.width" [height]="studio.thumbnail.height" loading="lazy" />
+              <img
+                [src]="studio.thumbnail.url"
+                alt=""
+                [width]="studio.thumbnail.width"
+                [height]="studio.thumbnail.height"
+                loading="lazy"
+              />
             </div>
-            <h3 class="location-card__name"><a [routerLink]="[studiosPath, studio.slug]">{{ studio.name }}</a></h3>
-            <p class="location-card__meta" i18n>{{ studio.neighbourhood }} · Reviewed {{ studio.reviewedAt | date: 'd MMM y' }}</p>
+            <h3 class="location-card__name">
+              <a [routerLink]="[studiosPath, studio.slug]">{{ studio.name }}</a>
+            </h3>
+            <p class="location-card__meta" i18n>
+              {{ studio.neighbourhood }} · Reviewed {{ studio.reviewedAt | date: 'd MMM y' }}
+            </p>
             <dl class="location-card__facts">
-              <div><dt i18n>All-in 2 h</dt><dd>{{ studio.allInCost2h | currency: 'CAD' : 'symbol-narrow' : '1.2-2' }}</dd></div>
-              <div><dt i18n>Score</dt><dd>{{ studio.overallScore | number: '1.1-1' }}<span class="visually-hidden" i18n> out of 5</span></dd></div>
+              <div>
+                <dt i18n>All-in 2 h</dt>
+                <dd>{{ studio.allInCost2h | currency: 'CAD' : 'symbol-narrow' : '1.2-2' }}</dd>
+              </div>
+              <div>
+                <dt i18n>Score</dt>
+                <dd>
+                  {{ studio.overallScore | number: '1.1-1'
+                  }}<span class="visually-hidden" i18n> out of 5</span>
+                </dd>
+              </div>
             </dl>
           </li>
         }
@@ -31,11 +53,21 @@
       <h2 class="visually-hidden" id="latest-title" i18n>Latest reviews</h2>
       <div class="empty">
         <div class="empty__icon">
-          <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M4 8h3l2-3h6l2 3h3v11H4z" /><circle cx="12" cy="13" r="3.5" /></svg>
+          <svg class="icon" aria-hidden="true" viewBox="0 0 24 24">
+            <path d="M4 8h3l2-3h6l2 3h3v11H4z" />
+            <circle cx="12" cy="13" r="3.5" />
+          </svg>
         </div>
         <h3 class="empty__title" i18n>The first studio reviews are coming</h3>
-        <p class="empty__text" i18n>Each studio is reviewed only after a full test shoot. Leave your email and we'll tell you when the first one is up.</p>
-        <div class="empty__actions"><a class="btn" href="#hero-email" (click)="focusSignup($event)" i18n>Get an email when they go up</a></div>
+        <p class="empty__text" i18n>
+          Each studio is reviewed only after a full test shoot. Leave your email and we'll tell you
+          when the first one is up.
+        </p>
+        <div class="empty__actions">
+          <a class="btn" href="#hero-email" (click)="focusSignup($event)" i18n
+            >Get an email when they go up</a
+          >
+        </div>
       </div>
     }
   </section>

@@ -1,4 +1,10 @@
-import { ChangeDetectionStrategy, Component, computed, input, numberAttribute } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  input,
+  numberAttribute,
+} from '@angular/core';
 import { IconComponent } from '../icon/icon.component';
 
 /**
@@ -20,5 +26,7 @@ import { IconComponent } from '../icon/icon.component';
 export class FilterTriggerComponent {
   readonly count = input(0, { transform: numberAttribute });
 
-  protected readonly countText = computed(() => $localize`:@@st.filterTrigger.count:, ${this.count()}:count: active`);
+  protected readonly countText = computed(
+    () => $localize`:@@st.filterTrigger.count:, ${this.count()}:count: active`,
+  );
 }

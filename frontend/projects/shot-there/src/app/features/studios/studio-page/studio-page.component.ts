@@ -36,10 +36,10 @@ import { StudioPageState } from './studio-page-state';
     StudioTestShotsComponent,
     StudioGalleryComponent,
     StudioEpisodeComponent,
-    CompareToggleComponent
+    CompareToggleComponent,
   ],
   templateUrl: './studio-page.component.html',
-  styleUrl: './studio-page.component.css'
+  styleUrl: './studio-page.component.css',
 })
 export class StudioPageComponent {
   private readonly studioService = inject(StudioService);
@@ -54,13 +54,15 @@ export class StudioPageComponent {
         this.studioService.getStudio(slug).pipe(
           map((studio): StudioPageState => ({ status: 'loaded', studio })),
           catchError((error: unknown) =>
-            error instanceof HttpErrorResponse && error.status === 404 ? of<StudioPageState>({ status: 'not-found' }) : throwError(() => error)
+            error instanceof HttpErrorResponse && error.status === 404
+              ? of<StudioPageState>({ status: 'not-found' })
+              : throwError(() => error),
           ),
-          startWith<StudioPageState>({ status: 'loading' })
-        )
-      )
+          startWith<StudioPageState>({ status: 'loading' }),
+        ),
+      ),
     ),
-    { initialValue: { status: 'loading' } as StudioPageState }
+    { initialValue: { status: 'loading' } as StudioPageState },
   );
   protected readonly studio = computed(() => {
     const state = this.state();

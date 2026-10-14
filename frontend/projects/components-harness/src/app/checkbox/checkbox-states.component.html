@@ -1,9 +1,41 @@
 <main class="container stack">
-  <st-checkbox label="20 A circuits available" inputId="has20A" [formControl]="has20A" help="Needed for strobes." />
-  <p>20A value: <output>{{ has20A.value }}</output></p>
-  <st-checkbox-group label="Neighbourhood" inputId="hood" name="hood" appearance="filter" [options]="hoodOptions" [formControl]="hoods" />
-  <p>Hood value: <output>{{ hoods.value.join(',') }}</output></p>
-  <st-checkbox-group label="Best for" inputId="uses" name="bestUses" [options]="hoodOptions" error="Choose at least one best use" help="Choose one before publishing." />
-  <st-radio-group label="Parking" inputId="parking" name="parking" appearance="filter" [options]="parkingOptions" [formControl]="parking" />
-  <p>Parking value: <output>{{ parking.value }}</output></p>
+  <st-checkbox
+    label="20 A circuits available"
+    inputId="has20A"
+    [formControl]="has20A"
+    help="Needed for strobes."
+  />
+  <p>
+    20A value: <output>{{ has20A.value }}</output>
+  </p>
+  <st-checkbox-group
+    label="Neighbourhood"
+    inputId="hood"
+    name="hood"
+    appearance="filter"
+    [options]="hoodOptions"
+    [formControl]="hoods"
+  />
+  <p>
+    Hood value: <output>{{ hoods.value.join(',') }}</output>
+  </p>
+  <st-checkbox-group
+    label="Best for"
+    inputId="uses"
+    name="bestUses"
+    [options]="hoodOptions"
+    error="Choose at least one best use"
+    help="Choose one before publishing."
+  />
+  <st-radio-group
+    label="Parking"
+    inputId="parking"
+    name="parking"
+    appearance="filter"
+    [options]="parkingOptions"
+    [formControl]="parking"
+  />
+  <p>
+    Parking value: <output>{{ parking.value }}</output>
+  </p>
 </main>

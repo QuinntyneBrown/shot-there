@@ -27,7 +27,9 @@ test.describe('EmptyStateComponent (ICD-002 §9.7, CRD empty-state)', () => {
     expect(await empty.actionNames()).toEqual(['Try again', 'Go to the home page']);
   });
 
-  test('compact success adds both modifiers and takes no space for missing actions', async ({ page }) => {
+  test('compact success adds both modifiers and takes no space for missing actions', async ({
+    page,
+  }) => {
     // Given the compact success empty state without actions
     const harness = new HarnessPage(page);
     await harness.open('empty-state/states');
@@ -37,7 +39,9 @@ test.describe('EmptyStateComponent (ICD-002 §9.7, CRD empty-state)', () => {
     await expect(empty.actions()).toBeHidden();
   });
 
-  test('renders the title at the heading level it is given and no icon without one', async ({ page }) => {
+  test('renders the title at the heading level it is given and no icon without one', async ({
+    page,
+  }) => {
     // Given a compact empty state at level 4 with no icon
     const harness = new HarnessPage(page);
     await harness.open('empty-state/states');

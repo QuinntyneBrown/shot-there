@@ -18,7 +18,7 @@ import { StudioFiltersDialogData } from './studio-filters-dialog-data';
   selector: 'st-studio-filters-dialog',
   imports: [StudioFiltersComponent],
   templateUrl: './studio-filters-dialog.component.html',
-  styleUrl: './studio-filters-dialog.component.css'
+  styleUrl: './studio-filters-dialog.component.css',
 })
 export class StudioFiltersDialogComponent {
   private readonly dialogRef = inject<DialogRef<StudioListQuery>>(DialogRef);
@@ -37,11 +37,11 @@ export class StudioFiltersDialogComponent {
           : this.studiosService.listStudios(toStudioListQueryParams(query)).pipe(
               map((studios) => studios.length),
               catchError(() => of(null)),
-              startWith(null)
-            )
-      )
+              startWith(null),
+            ),
+      ),
     ),
-    { initialValue: null }
+    { initialValue: null },
   );
 
   setSort(sort: string): void {

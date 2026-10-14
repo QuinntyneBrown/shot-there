@@ -1,15 +1,53 @@
 /* DS components/icon-button.html; the host is the .icon-btn element. */
-:host { display: inline-grid; place-items: center; width: var(--target-comfortable); height: var(--target-comfortable); padding: 0; border: 0; border-radius: var(--radius-full); background: transparent; color: var(--color-fg-default); cursor: pointer; text-decoration: none; position: relative; flex: none; transition: background-color var(--duration-fast) var(--ease-standard); }
-:host(:hover) { background: var(--color-bg-subtle); }
-:host(:active) { background: var(--color-bg-subtle-hover); }
-:host(:disabled), :host([aria-disabled="true"]) { opacity: 0.5; cursor: not-allowed; background: transparent; }
-:host([aria-pressed="true"]), :host([aria-expanded="true"]) { background: var(--color-bg-subtle); }
-:host([aria-current="page"]), :host([aria-pressed="true"]) { color: var(--color-fg-accent); }
+:host {
+  display: inline-grid;
+  place-items: center;
+  width: var(--target-comfortable);
+  height: var(--target-comfortable);
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-full);
+  background: transparent;
+  color: var(--color-fg-default);
+  cursor: pointer;
+  text-decoration: none;
+  position: relative;
+  flex: none;
+  transition: background-color var(--duration-fast) var(--ease-standard);
+}
+:host(:hover) {
+  background: var(--color-bg-subtle);
+}
+:host(:active) {
+  background: var(--color-bg-subtle-hover);
+}
+:host(:disabled),
+:host([aria-disabled='true']) {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background: transparent;
+}
+:host([aria-pressed='true']),
+:host([aria-expanded='true']) {
+  background: var(--color-bg-subtle);
+}
+:host([aria-current='page']),
+:host([aria-pressed='true']) {
+  color: var(--color-fg-accent);
+}
 /* A link icon button keeps its ink on hover; only the fill changes (site-header D-13). */
-:host(a:not([aria-current="page"]):hover) { color: var(--color-fg-default); }
+:host(a:not([aria-current='page']):hover) {
+  color: var(--color-fg-default);
+}
 /* The hairline ring the DS draws on icon buttons in the viewer (.viewer .icon-btn). */
-:host(.icon-btn--outline) { border: var(--border-width-hairline) solid var(--color-border-default); }
+:host(.icon-btn--outline) {
+  border: var(--border-width-hairline) solid var(--color-border-default);
+}
 
 @media (forced-colors: active) {
-  :host([aria-pressed="true"]), :host([aria-expanded="true"]), :host([aria-current="page"]) { border: var(--border-width-thick) solid Highlight; }
+  :host([aria-pressed='true']),
+  :host([aria-expanded='true']),
+  :host([aria-current='page']) {
+    border: var(--border-width-thick) solid Highlight;
+  }
 }

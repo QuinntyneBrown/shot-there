@@ -6,7 +6,9 @@ const THEMES: HarnessTheme[] = ['light', 'dark'];
 const FILTERS_ICON = 'M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12M20 18h0';
 
 test.describe('FilterTriggerComponent (CRD filter: trigger, ICD-002 §9.1, §12)', () => {
-  test('AC-1 with no active filters it is a native button.filter-trigger that opens a dialog, named "Filters", with no bubble', async ({ page }) => {
+  test('AC-1 with no active filters it is a native button.filter-trigger that opens a dialog, named "Filters", with no bubble', async ({
+    page,
+  }) => {
     // Given <button st-filter-trigger type="button" [count]="0">Filters</button> at 360px
     const harness = new HarnessPage(page);
     // When it renders
@@ -22,19 +24,26 @@ test.describe('FilterTriggerComponent (CRD filter: trigger, ICD-002 §9.1, §12)
     expect(harness.errors).toEqual([]);
   });
 
-  test('AC-2 with two active filters the bubble shows "2" and the name is "Filters, 2 active"', async ({ page }) => {
+  test('AC-2 with two active filters the bubble shows "2" and the name is "Filters, 2 active"', async ({
+    page,
+  }) => {
     // Given count 2
     const harness = new HarnessPage(page);
     // When the trigger renders
     await harness.open('filter-trigger/states');
     // Then it is named "Filters, 2 active" from the hidden library string, and its bubble shows 2, hidden from assistive technology
-    const trigger = new FilterTriggerComponent(harness.example('count'), FilterTriggerComponent.nameWithCount(2));
+    const trigger = new FilterTriggerComponent(
+      harness.example('count'),
+      FilterTriggerComponent.nameWithCount(2),
+    );
     await expect(trigger.countWords).toHaveText(', 2 active');
     await expect(trigger.countNumber).toHaveText('2');
     await expect(trigger.countNumber).toBeVisible();
   });
 
-  test('AC-4 aria-expanded follows the open sheet, with the 2px ink edge while open', async ({ page }) => {
+  test('AC-4 aria-expanded follows the open sheet, with the 2px ink edge while open', async ({
+    page,
+  }) => {
     // Given the trigger whose application opens and closes a sheet on activation
     const harness = new HarnessPage(page);
     await harness.open('filter-trigger/states', { width: 360 });
@@ -54,7 +63,9 @@ test.describe('FilterTriggerComponent (CRD filter: trigger, ICD-002 §9.1, §12)
     await expect.poll(() => harness.activations()).toEqual(['click: Filters', 'click: Filters']);
   });
 
-  test('AC-21 keyboard focus draws the 2px ring at 3:1, and a mouse click draws none', async ({ page }) => {
+  test('AC-21 keyboard focus draws the 2px ring at 3:1, and a mouse click draws none', async ({
+    page,
+  }) => {
     // Given the trigger
     const harness = new HarnessPage(page);
     await harness.open('filter-trigger/states');
@@ -68,7 +79,11 @@ test.describe('FilterTriggerComponent (CRD filter: trigger, ICD-002 §9.1, §12)
     await page.keyboard.press('Tab');
     await expect(trigger.root).toBeFocused();
     // Then a solid 2px ring in --color-focus-ring shows at 3:1 against the page
-    expect(await trigger.focusRing()).toEqual({ width: 2, style: 'solid', colour: await harness.tokenColour('--color-focus-ring') });
+    expect(await trigger.focusRing()).toEqual({
+      width: 2,
+      style: 'solid',
+      colour: await harness.tokenColour('--color-focus-ring'),
+    });
     expect(await trigger.contrast('outline')).toBeGreaterThanOrEqual(3);
   });
 
@@ -84,7 +99,9 @@ test.describe('FilterTriggerComponent (CRD filter: trigger, ICD-002 §9.1, §12)
   });
 
   for (const theme of THEMES) {
-    test(`AC-22 label 4.5:1 and edges 3:1 at rest, hovered, open and with a count, on the page and in a sheet, in the ${theme} theme`, async ({ page }) => {
+    test(`AC-22 label 4.5:1 and edges 3:1 at rest, hovered, open and with a count, on the page and in a sheet, in the ${theme} theme`, async ({
+      page,
+    }) => {
       // Given triggers on the page and on a sheet surface
       const harness = new HarnessPage(page);
       await harness.open('filter-trigger/states', { theme });
@@ -95,13 +112,18 @@ test.describe('FilterTriggerComponent (CRD filter: trigger, ICD-002 §9.1, §12)
         expect(await trigger.contrast('text'), `${surface} rest`).toBeGreaterThanOrEqual(4.5);
         expect(await trigger.contrast('border'), `${surface} edge`).toBeGreaterThanOrEqual(3);
         await trigger.hover();
-        await expect.poll(() => trigger.contrast('text'), `${surface} hover`).toBeGreaterThanOrEqual(4.5);
+        await expect
+          .poll(() => trigger.contrast('text'), `${surface} hover`)
+          .toBeGreaterThanOrEqual(4.5);
         await trigger.click();
         await expect(trigger.root).toHaveAttribute('aria-expanded', 'true');
         expect(await trigger.contrast('border'), `${surface} open edge`).toBeGreaterThanOrEqual(3);
       }
       // And with a count the label and the bubble's number are at least 4.5:1
-      const counted = new FilterTriggerComponent(harness.example('count'), FilterTriggerComponent.nameWithCount(2));
+      const counted = new FilterTriggerComponent(
+        harness.example('count'),
+        FilterTriggerComponent.nameWithCount(2),
+      );
       expect(await counted.contrast('text')).toBeGreaterThanOrEqual(4.5);
       expect(await counted.countContrast()).toBeGreaterThanOrEqual(4.5);
     });
@@ -125,8 +147,15 @@ test.describe('FilterTriggerComponent (CRD filter: trigger, ICD-002 §9.1, §12)
     // When it is measured
     await harness.open('filter-trigger/states', { width: 360 });
     // Then each is at least 44px tall
-    expect(await new FilterTriggerComponent(harness.example('none'), 'Filters').height()).toBeGreaterThanOrEqual(44);
-    expect(await new FilterTriggerComponent(harness.example('count'), FilterTriggerComponent.nameWithCount(2)).height()).toBeGreaterThanOrEqual(44);
+    expect(
+      await new FilterTriggerComponent(harness.example('none'), 'Filters').height(),
+    ).toBeGreaterThanOrEqual(44);
+    expect(
+      await new FilterTriggerComponent(
+        harness.example('count'),
+        FilterTriggerComponent.nameWithCount(2),
+      ).height(),
+    ).toBeGreaterThanOrEqual(44);
   });
 
   test.describe('performance (L2-071)', () => {
@@ -134,7 +163,9 @@ test.describe('FilterTriggerComponent (CRD filter: trigger, ICD-002 §9.1, §12)
     // workers, while a real regression fails every attempt.
     test.describe.configure({ retries: 2 });
 
-    test('AC-27 (trigger part) updating the count after a filter change stays within the 200ms INP budget', async ({ page }) => {
+    test('AC-27 (trigger part) updating the count after a filter change stays within the 200ms INP budget', async ({
+      page,
+    }) => {
       // Given the filter/performance route: the results head with the trigger and the "Natural light" option
       const harness = new HarnessPage(page);
       await harness.open('filter/performance', { width: 412 });
@@ -142,7 +173,9 @@ test.describe('FilterTriggerComponent (CRD filter: trigger, ICD-002 §9.1, §12)
       const latency = await harness.interactionLatency(() => harness.toggle('Natural light'));
       // Then the interaction paints within 200ms and the trigger reads "Filters, 1 active"
       expect(latency).toBeLessThanOrEqual(200);
-      await expect(new FilterTriggerComponent(page, FilterTriggerComponent.nameWithCount(1)).root).toBeVisible();
+      await expect(
+        new FilterTriggerComponent(page, FilterTriggerComponent.nameWithCount(1)).root,
+      ).toBeVisible();
     });
   });
 });

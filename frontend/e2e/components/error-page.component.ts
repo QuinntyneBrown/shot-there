@@ -18,7 +18,9 @@ export class ErrorPageComponent {
 
   /** Every direct child's text, in reading order, as a flat list of lines. */
   async lines(): Promise<string[]> {
-    return this.root.locator(':scope > *').evaluateAll((els) => els.map((el) => (el.textContent ?? '').trim()));
+    return this.root
+      .locator(':scope > *')
+      .evaluateAll((els) => els.map((el) => (el.textContent ?? '').trim()));
   }
 
   actions(): Locator {
@@ -27,6 +29,8 @@ export class ErrorPageComponent {
 
   /** The system-page classes. */
   async classes(): Promise<string[]> {
-    return ((await this.root.getAttribute('class')) ?? '').split(/\s+/).filter((c) => c.startsWith('system-page'));
+    return ((await this.root.getAttribute('class')) ?? '')
+      .split(/\s+/)
+      .filter((c) => c.startsWith('system-page'));
   }
 }

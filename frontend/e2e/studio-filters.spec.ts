@@ -3,10 +3,14 @@ import { PUBLISHED_STUDIOS } from './fakes/studio-summaries';
 import { expect, test } from './fakes/test';
 import { StudioListPage } from './pages/studio-list.page';
 
-const leslievilleAndJunction = PUBLISHED_STUDIOS.filter((s) => ['leslieville-daylight-studio', 'the-junction-loft'].includes(s.slug));
+const leslievilleAndJunction = PUBLISHED_STUDIOS.filter((s) =>
+  ['leslieville-daylight-studio', 'the-junction-loft'].includes(s.slug),
+);
 
 test.describe('Studio filters sidebar', () => {
-  test('applies the chosen filters, keeping the sort, and announces the new count', async ({ page }) => {
+  test('applies the chosen filters, keeping the sort, and announces the new count', async ({
+    page,
+  }) => {
     // Given the studio list sorted by cost on a desktop
     await givenStudios(page, PUBLISHED_STUDIOS);
     const list = new StudioListPage(page);
@@ -22,9 +26,11 @@ test.describe('Studio filters sidebar', () => {
     await filters.chooseParking('On-site');
     await list.applyFiltersButton.click();
     // Then the URL and the request carry the filters and the sort, and the count is announced
-    await expect.poll(() => list.currentQuery().toString()).toBe(
-      'costMin=100&costMax=150&hood=junction&hood=leslieville&light=medium&cyc=yes&space=30&gear=lights&parking=on-site&sort=cost'
-    );
+    await expect
+      .poll(() => list.currentQuery().toString())
+      .toBe(
+        'costMin=100&costMax=150&hood=junction&hood=leslieville&light=medium&cyc=yes&space=30&gear=lights&parking=on-site&sort=cost',
+      );
     await expect(list.cards).toHaveCount(2);
     expect(requests.at(-1)?.getAll('hood')).toEqual(['junction', 'leslieville']);
     await expect(list.announcer).toHaveText('2 studios');

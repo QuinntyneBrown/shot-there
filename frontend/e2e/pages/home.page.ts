@@ -17,8 +17,12 @@ export class HomePage {
     this.latestReviews = page.getByRole('region', { name: 'Latest reviews' });
     this.latestCards = this.latestReviews.getByRole('listitem');
     this.allStudiosLink = this.latestReviews.getByRole('link', { name: 'All studios' });
-    this.firstReviewsComing = this.latestReviews.getByRole('heading', { name: 'The first studio reviews are coming' });
-    this.emailMeLink = this.latestReviews.getByRole('link', { name: 'Get an email when they go up' });
+    this.firstReviewsComing = this.latestReviews.getByRole('heading', {
+      name: 'The first studio reviews are coming',
+    });
+    this.emailMeLink = this.latestReviews.getByRole('link', {
+      name: 'Get an email when they go up',
+    });
   }
 
   async open(): Promise<void> {

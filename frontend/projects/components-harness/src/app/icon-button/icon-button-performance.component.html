@@ -4,7 +4,21 @@
     <p role="status">{{ position() }}</p>
   </div>
   <div class="cluster">
-    <button st-icon-button icon="chevron-left" label="Previous photo" outline type="button" (click)="step(-1)"></button>
-    <button st-icon-button icon="chevron-right" label="Next photo" outline type="button" (click)="step(1)"></button>
+    <button
+      st-icon-button
+      icon="chevron-left"
+      label="Previous photo"
+      outline
+      type="button"
+      (click)="step(-1)"
+    ></button>
+    <button
+      st-icon-button
+      icon="chevron-right"
+      label="Next photo"
+      outline
+      type="button"
+      (click)="step(1)"
+    ></button>
   </div>
 </main>

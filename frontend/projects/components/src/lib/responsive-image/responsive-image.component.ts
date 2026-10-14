@@ -38,7 +38,9 @@ export class ResponsiveImageComponent {
   protected readonly sources = computed(() =>
     [...this.image().sources].sort((a, b) => rank(a.format) - rank(b.format)),
   );
-  protected readonly jpegSrcset = computed(() => this.image().sources.find((s) => s.format === 'jpeg')?.srcset ?? null);
+  protected readonly jpegSrcset = computed(
+    () => this.image().sources.find((s) => s.format === 'jpeg')?.srcset ?? null,
+  );
   protected readonly ratio = computed(() => `${this.image().width} / ${this.image().height}`);
   private readonly img = viewChild<ElementRef<HTMLImageElement>>('img');
 

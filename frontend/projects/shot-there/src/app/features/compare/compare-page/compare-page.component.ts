@@ -20,7 +20,7 @@ import { toComparisonViewModel } from './comparison-view-model';
   selector: 'st-compare-page',
   imports: [RouterLink, FallbackImageDirective],
   templateUrl: './compare-page.component.html',
-  styleUrl: './compare-page.component.css'
+  styleUrl: './compare-page.component.css',
 })
 export class ComparePageComponent {
   private readonly compareService = inject(CompareService);
@@ -43,11 +43,11 @@ export class ComparePageComponent {
                 const view = toComparisonViewModel(dto, this.locale);
                 return view.canShowTable ? { status: 'loaded', view } : { status: 'too-few' };
               }),
-              startWith<ComparePageState>({ status: 'loading' })
-            )
-      )
+              startWith<ComparePageState>({ status: 'loading' }),
+            ),
+      ),
     ),
-    { initialValue: { status: 'loading' } as ComparePageState }
+    { initialValue: { status: 'loading' } as ComparePageState },
   );
   protected readonly view = computed(() => {
     const state = this.state();
@@ -61,7 +61,7 @@ export class ComparePageComponent {
         this.title.setTitle(formatPageTitle($localize`Compare ${view.namesList}:names:`));
         this.meta.updateTag({
           name: 'description',
-          content: $localize`${view.namesList}:names: side by side: all-in cost, measured space and light, scores and the standard test shots.`
+          content: $localize`${view.namesList}:names: side by side: all-in cost, measured space and light, scores and the standard test shots.`,
         });
       } else if (this.state().status === 'too-few') {
         this.title.setTitle(formatPageTitle(PAGE_TITLES.compare));

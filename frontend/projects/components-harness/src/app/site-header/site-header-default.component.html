@@ -1,4 +1,12 @@
-<st-site-header brand="ShotThere" brandTag="Toronto" homeLink="/" navLabel="Primary" [links]="links" menuControls="site-menu" (menuToggled)="log.set([...log(), 'menuToggled'])">
+<st-site-header
+  brand="ShotThere"
+  brandTag="Toronto"
+  homeLink="/"
+  navLabel="Primary"
+  [links]="links"
+  menuControls="site-menu"
+  (menuToggled)="log.set([...log(), 'menuToggled'])"
+>
   <button st-button slot="actions" variant="ghost" type="button">Sign out</button>
 </st-site-header>
 <main class="container"><st-activation-log [entries]="log()" /></main>

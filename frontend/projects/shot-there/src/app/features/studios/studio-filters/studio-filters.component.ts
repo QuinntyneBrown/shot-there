@@ -2,14 +2,17 @@ import { Component, input, output } from '@angular/core';
 
 import { GearFilter } from '../studio-list-page/gear-filter';
 import { Parking } from '../studio-list-page/parking';
-import { MIN_SPACE_OPTIONS, NEIGHBOURHOOD_OPTIONS } from '../studio-list-page/studio-filter-options';
+import {
+  MIN_SPACE_OPTIONS,
+  NEIGHBOURHOOD_OPTIONS,
+} from '../studio-list-page/studio-filter-options';
 import { StudioListQuery } from '../studio-list-page/studio-list-query';
 
 /** The studio filter controls. Controlled: it shows `query` and emits every change as a new query. */
 @Component({
   selector: 'st-studio-filters',
   templateUrl: './studio-filters.component.html',
-  styleUrl: './studio-filters.component.css'
+  styleUrl: './studio-filters.component.css',
 })
 export class StudioFiltersComponent {
   readonly query = input.required<StudioListQuery>();
@@ -25,18 +28,20 @@ export class StudioFiltersComponent {
     { value: 'lights', label: $localize`Lights` },
     { value: 'modifiers', label: $localize`Modifiers` },
     { value: 'stands', label: $localize`Stands` },
-    { value: 'backdrops', label: $localize`Backdrops` }
+    { value: 'backdrops', label: $localize`Backdrops` },
   ];
   protected readonly parkingOptions: readonly { value: Parking | undefined; label: string }[] = [
     { value: undefined, label: $localize`Any` },
     { value: 'on-site', label: $localize`On-site` },
     { value: 'street', label: $localize`Street` },
-    { value: 'none', label: $localize`None` }
+    { value: 'none', label: $localize`None` },
   ];
 
   setCost(field: 'costMin' | 'costMax', value: string): void {
     const cost = value.trim() === '' ? undefined : Number(value);
-    this.update({ [field]: cost !== undefined && Number.isFinite(cost) && cost >= 0 ? cost : undefined });
+    this.update({
+      [field]: cost !== undefined && Number.isFinite(cost) && cost >= 0 ? cost : undefined,
+    });
   }
 
   toggleNeighbourhood(slug: string, checked: boolean): void {
@@ -46,7 +51,9 @@ export class StudioFiltersComponent {
     } else {
       selected.delete(slug);
     }
-    this.update({ neighbourhoods: this.neighbourhoods.map((n) => n.slug).filter((s) => selected.has(s)) });
+    this.update({
+      neighbourhoods: this.neighbourhoods.map((n) => n.slug).filter((s) => selected.has(s)),
+    });
   }
 
   toggleGear(gear: GearFilter, checked: boolean): void {

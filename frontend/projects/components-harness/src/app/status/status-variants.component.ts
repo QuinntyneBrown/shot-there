@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { StatusComponent } from '@shot-there/components';
 
-
 /** A published and a draft status label. */
 @Component({
   selector: 'st-status-variants',
@@ -9,6 +8,4 @@ import { StatusComponent } from '@shot-there/components';
   templateUrl: './status-variants.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class StatusVariantsComponent {
-
-}
+export class StatusVariantsComponent {}

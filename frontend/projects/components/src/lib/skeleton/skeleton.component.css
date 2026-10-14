@@ -1,12 +1,48 @@
 /* DS components/skeleton.html; the host is the .skeleton block. */
-:host { display: block; max-width: 100%; background: linear-gradient(90deg, var(--color-bg-subtle) 25%, var(--color-bg-subtle-hover) 37%, var(--color-bg-subtle) 63%); background-size: 400% 100%; border-radius: var(--radius-sm); animation: shimmer var(--duration-loop) var(--ease-standard) infinite; min-height: 1em; }
-:host(.skeleton--text) { height: 0.9em; margin-block: 0.3em; }
-:host(.skeleton--text:last-child) { width: 60%; }
-:host(.skeleton--title) { height: 1.5em; width: 40%; }
-:host(.skeleton--rect) { border-radius: var(--radius-md); }
-:host(.skeleton--pill) { border-radius: var(--radius-full); }
-:host(.skeleton--circle) { border-radius: 50%; }
-@keyframes shimmer { from { background-position: 100% 0; } to { background-position: 0 0; } }
+:host {
+  display: block;
+  max-width: 100%;
+  background: linear-gradient(
+    90deg,
+    var(--color-bg-subtle) 25%,
+    var(--color-bg-subtle-hover) 37%,
+    var(--color-bg-subtle) 63%
+  );
+  background-size: 400% 100%;
+  border-radius: var(--radius-sm);
+  animation: shimmer var(--duration-loop) var(--ease-standard) infinite;
+  min-height: 1em;
+}
+:host(.skeleton--text) {
+  height: 0.9em;
+  margin-block: 0.3em;
+}
+:host(.skeleton--text:last-child) {
+  width: 60%;
+}
+:host(.skeleton--title) {
+  height: 1.5em;
+  width: 40%;
+}
+:host(.skeleton--rect) {
+  border-radius: var(--radius-md);
+}
+:host(.skeleton--pill) {
+  border-radius: var(--radius-full);
+}
+:host(.skeleton--circle) {
+  border-radius: 50%;
+}
+@keyframes shimmer {
+  from {
+    background-position: 100% 0;
+  }
+  to {
+    background-position: 0 0;
+  }
+}
 @media (prefers-reduced-motion: reduce) {
-  :host { animation: none; }
+  :host {
+    animation: none;
+  }
 }

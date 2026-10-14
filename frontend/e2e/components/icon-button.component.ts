@@ -73,7 +73,12 @@ export class IconButtonComponent {
     const colour = await this.root.evaluate(colourOf, 'outlineColor');
     return this.root.evaluate((el, c) => {
       const style = getComputedStyle(el);
-      return { width: parseFloat(style.outlineWidth), offset: parseFloat(style.outlineOffset), style: style.outlineStyle, colour: c };
+      return {
+        width: parseFloat(style.outlineWidth),
+        offset: parseFloat(style.outlineOffset),
+        style: style.outlineStyle,
+        colour: c,
+      };
     }, colour);
   }
 
@@ -85,7 +90,9 @@ export class IconButtonComponent {
   isFullyInView(): Promise<boolean> {
     return this.root.evaluate((el) => {
       const r = el.getBoundingClientRect();
-      return r.left >= 0 && r.top >= 0 && r.right <= window.innerWidth && r.bottom <= window.innerHeight;
+      return (
+        r.left >= 0 && r.top >= 0 && r.right <= window.innerWidth && r.bottom <= window.innerHeight
+      );
     });
   }
 

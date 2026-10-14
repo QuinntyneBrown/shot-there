@@ -3,7 +3,9 @@ import { FieldComponent } from '../components/field.component';
 import { HarnessPage, HarnessTheme } from '../pages/harness.page';
 
 test.describe('SelectComponent (ICD-002 §9.2, CRD select)', () => {
-  test('shows the bound option, reports a new choice and is inline when asked', async ({ page }) => {
+  test('shows the bound option, reports a new choice and is inline when asked', async ({
+    page,
+  }) => {
     // Given the inline "Sort by" select bound to "recent"
     const harness = new HarnessPage(page);
     await harness.open('select/states');

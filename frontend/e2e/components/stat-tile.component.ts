@@ -14,7 +14,9 @@ export class StatTileComponent {
 
   /** The tile named by its title heading. */
   tile(title: string): Locator {
-    return this.tiles().filter({ has: this.grid.page().getByRole('heading', { name: title, exact: true }) });
+    return this.tiles().filter({
+      has: this.grid.page().getByRole('heading', { name: title, exact: true }),
+    });
   }
 
   titleHeading(title: string): Locator {

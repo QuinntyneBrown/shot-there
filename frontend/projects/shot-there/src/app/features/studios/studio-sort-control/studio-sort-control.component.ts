@@ -7,7 +7,7 @@ import { STUDIO_SORT_OPTIONS } from './studio-sort-options';
 @Component({
   selector: 'st-studio-sort-control',
   templateUrl: './studio-sort-control.component.html',
-  styleUrl: './studio-sort-control.component.css'
+  styleUrl: './studio-sort-control.component.css',
 })
 export class StudioSortControlComponent {
   private readonly announcer = inject(AnnouncerService);

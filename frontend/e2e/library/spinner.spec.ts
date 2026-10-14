@@ -3,7 +3,9 @@ import { SpinnerComponent } from '../components/spinner.component';
 import { HarnessPage, HarnessTheme } from '../pages/harness.page';
 
 test.describe('SpinnerComponent (ICD-002 §9.7, CRD spinner)', () => {
-  test('renders a 20px aria-hidden ring and the default hidden label "Loading"', async ({ page }) => {
+  test('renders a 20px aria-hidden ring and the default hidden label "Loading"', async ({
+    page,
+  }) => {
     // Given a spinner with no inputs
     const harness = new HarnessPage(page);
     // When the route opens
@@ -18,7 +20,9 @@ test.describe('SpinnerComponent (ICD-002 §9.7, CRD spinner)', () => {
     expect(harness.errors).toEqual([]);
   });
 
-  test('is 16px when small and 40px when large, and takes its label from the input', async ({ page }) => {
+  test('is 16px when small and 40px when large, and takes its label from the input', async ({
+    page,
+  }) => {
     // Given a small spinner labelled "Searching…" and a large one labelled "Loading studios…"
     const harness = new HarnessPage(page);
     await harness.open('spinner/default');

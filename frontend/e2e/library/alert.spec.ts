@@ -53,7 +53,11 @@ test.describe('AlertComponent (ICD-002 §9.7, CRD alert)', () => {
     const harness = new HarnessPage(page);
     await harness.open('alert/states');
     // Then it carries .banner
-    expect(await new AlertComponent(page, 'Banner text.').classes()).toEqual(['alert', 'alert--info', 'banner']);
+    expect(await new AlertComponent(page, 'Banner text.').classes()).toEqual([
+      'alert',
+      'alert--info',
+      'banner',
+    ]);
   });
 
   for (const theme of ['light', 'dark'] as HarnessTheme[]) {

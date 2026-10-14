@@ -1,5 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ButtonComponent, FilterTriggerComponent, IconButtonComponent, IconComponent } from '@shot-there/components';
+import {
+  ButtonComponent,
+  FilterTriggerComponent,
+  IconButtonComponent,
+  IconComponent,
+} from '@shot-there/components';
 
 /** Icons inside the controls that hold them on the studio list and a studio page. */
 @Component({

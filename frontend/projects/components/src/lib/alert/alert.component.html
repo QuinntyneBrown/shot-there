@@ -7,5 +7,7 @@
   <div class="alert__actions"><ng-content select="[slot=action]" /></div>
 </div>
 @if (dismissible()) {
-  <button class="close" type="button" [attr.aria-label]="dismissLabel()" (click)="dismissed.emit()"><st-icon [name]="'close'" /></button>
+  <button class="close" type="button" [attr.aria-label]="dismissLabel()" (click)="dismissed.emit()">
+    <st-icon [name]="'close'" />
+  </button>
 }

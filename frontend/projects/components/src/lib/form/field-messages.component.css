@@ -1,6 +1,43 @@
-:host { display: contents; }
-.field__help { font: var(--text-body-sm); color: var(--color-fg-muted); overflow-wrap: anywhere; }
-.field__error { font: var(--text-body-sm); color: var(--color-danger-fg); display: flex; gap: var(--space-1); align-items: flex-start; overflow-wrap: anywhere; }
-.field__error::before { content: "⚠\FE0E"; content: "⚠\FE0E" / ""; flex: none; }
-.field__warning { font: var(--text-body-sm); color: var(--color-warning-fg); display: flex; gap: var(--space-2); align-items: flex-start; overflow-wrap: anywhere; }
-.field__warning::before { content: "!"; content: "!" / ""; flex: none; display: inline-grid; place-items: center; width: 1.125rem; height: 1.125rem; border-radius: 50%; border: var(--border-width-thick) solid currentColor; font: var(--text-caption); font-weight: var(--font-weight-bold); margin-top: var(--space-0-5); }
+:host {
+  display: contents;
+}
+.field__help {
+  font: var(--text-body-sm);
+  color: var(--color-fg-muted);
+  overflow-wrap: anywhere;
+}
+.field__error {
+  font: var(--text-body-sm);
+  color: var(--color-danger-fg);
+  display: flex;
+  gap: var(--space-1);
+  align-items: flex-start;
+  overflow-wrap: anywhere;
+}
+.field__error::before {
+  content: '⚠\FE0E';
+  content: '⚠\FE0E' / '';
+  flex: none;
+}
+.field__warning {
+  font: var(--text-body-sm);
+  color: var(--color-warning-fg);
+  display: flex;
+  gap: var(--space-2);
+  align-items: flex-start;
+  overflow-wrap: anywhere;
+}
+.field__warning::before {
+  content: '!';
+  content: '!' / '';
+  flex: none;
+  display: inline-grid;
+  place-items: center;
+  width: 1.125rem;
+  height: 1.125rem;
+  border-radius: 50%;
+  border: var(--border-width-thick) solid currentColor;
+  font: var(--text-caption);
+  font-weight: var(--font-weight-bold);
+  margin-top: var(--space-0-5);
+}

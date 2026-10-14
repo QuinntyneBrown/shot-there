@@ -9,7 +9,13 @@ import { ChoiceOption } from '../types/choice-option';
   templateUrl: './checkbox-group.component.html',
   styleUrl: './checkbox-group.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => CheckboxGroupComponent), multi: true }],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => CheckboxGroupComponent),
+      multi: true,
+    },
+  ],
 })
 export class CheckboxGroupComponent extends FieldControl<string[]> {
   readonly options = input.required<readonly ChoiceOption[]>();
@@ -27,6 +33,10 @@ export class CheckboxGroupComponent extends FieldControl<string[]> {
     const ticked = new Set(this.value());
     if (checked) ticked.add(option.value);
     else ticked.delete(option.value);
-    this.commit(this.options().filter((o) => ticked.has(o.value)).map((o) => o.value));
+    this.commit(
+      this.options()
+        .filter((o) => ticked.has(o.value))
+        .map((o) => o.value),
+    );
   }
 }

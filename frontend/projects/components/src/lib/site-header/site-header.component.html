@@ -1,13 +1,38 @@
-<a class="wordmark" [routerLink]="homeLink()">{{ brand() }}@if (brandTag()) {<span class="wordmark__tag">{{ brandTag() }}</span>}</a>
+<a class="wordmark" [routerLink]="homeLink()"
+  >{{ brand() }}
+  @if (brandTag()) {
+    <span class="wordmark__tag">{{ brandTag() }}</span>
+  }
+</a>
 <nav class="site-nav" [attr.aria-label]="navLabel()">
   @for (link of links(); track link.link) {
     @if (link.external) {
-      <a class="site-nav__link site-nav__extra" [href]="link.link" target="_blank" rel="noopener">{{ link.label }}<st-icon name="external" [size]="'sm'" /><span class="visually-hidden"> {{ externalHint() }}</span></a>
+      <a class="site-nav__link site-nav__extra" [href]="link.link" target="_blank" rel="noopener"
+        >{{ link.label }}<st-icon name="external" [size]="'sm'" /><span class="visually-hidden">
+          {{ externalHint() }}</span
+        ></a
+      >
     } @else {
-      <a class="site-nav__link site-nav__extra" [routerLink]="link.link" routerLinkActive ariaCurrentWhenActive="page" [routerLinkActiveOptions]="{ exact: !!link.exact }">{{ link.label }}</a>
+      <a
+        class="site-nav__link site-nav__extra"
+        [routerLink]="link.link"
+        routerLinkActive
+        ariaCurrentWhenActive="page"
+        [routerLinkActiveOptions]="{ exact: !!link.exact }"
+        >{{ link.label }}</a
+      >
     }
   }
   <ng-content select="[slot=actions]" />
   <!-- eslint-disable-next-line @angular-eslint/template/elements-content -->
-  <button st-icon-button class="site-nav__menu" type="button" [icon]="'menu'" [label]="menuLabel()" [attr.aria-expanded]="menuExpanded()" [attr.aria-controls]="menuControls()" (click)="menuToggled.emit()"></button>
+  <button
+    st-icon-button
+    class="site-nav__menu"
+    type="button"
+    [icon]="'menu'"
+    [label]="menuLabel()"
+    [attr.aria-expanded]="menuExpanded()"
+    [attr.aria-controls]="menuControls()"
+    (click)="menuToggled.emit()"
+  ></button>
 </nav>

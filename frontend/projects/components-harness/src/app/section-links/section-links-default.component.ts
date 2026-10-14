@@ -11,6 +11,11 @@ import { SectionLinksComponent } from '@shot-there/components';
 export class SectionLinksDefaultComponent {
   protected readonly items = [
     { label: 'Studios', meta: '7 published', link: '/admin/studios' },
-    { label: 'Needs re-verification', meta: '2 items are stale', link: '/admin/stale', attention: true },
+    {
+      label: 'Needs re-verification',
+      meta: '2 items are stale',
+      link: '/admin/stale',
+      attention: true,
+    },
   ];
 }

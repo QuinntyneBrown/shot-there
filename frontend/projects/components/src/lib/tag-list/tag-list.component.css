@@ -1,10 +1,42 @@
 /* DS components/tag.html. */
-:host { display: block; }
-.tags { list-style: none; padding: 0; margin: var(--space-1) 0 0; display: flex; flex-wrap: wrap; gap: var(--space-2); }
-.tag { display: inline-flex; align-items: center; gap: var(--space-1); min-height: var(--target-min); padding: 0 var(--space-2); border: var(--border-width-hairline) solid var(--color-border-default); border-radius: var(--radius-full); font: var(--text-caption); color: var(--color-fg-muted); white-space: nowrap; }
+:host {
+  display: block;
+}
+.tags {
+  list-style: none;
+  padding: 0;
+  margin: var(--space-1) 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  min-height: var(--target-min);
+  padding: 0 var(--space-2);
+  border: var(--border-width-hairline) solid var(--color-border-default);
+  border-radius: var(--radius-full);
+  font: var(--text-caption);
+  color: var(--color-fg-muted);
+  white-space: nowrap;
+}
 /* Link tags are the large size: 44px at every width. */
-a.tag { min-height: var(--target-comfortable); padding-inline: var(--space-3); font: var(--text-body); text-decoration: none; color: var(--color-fg-default); }
-a.tag:hover { border-color: var(--color-border-strong); background: var(--color-bg-subtle); }
+a.tag {
+  min-height: var(--target-comfortable);
+  padding-inline: var(--space-3);
+  font: var(--text-body);
+  text-decoration: none;
+  color: var(--color-fg-default);
+}
+a.tag:hover {
+  border-color: var(--color-border-strong);
+  background: var(--color-bg-subtle);
+}
 @media (forced-colors: active) {
-  .tag { forced-color-adjust: none; border: var(--border-width-hairline) solid CanvasText; }
+  .tag {
+    forced-color-adjust: none;
+    border: var(--border-width-hairline) solid CanvasText;
+  }
 }

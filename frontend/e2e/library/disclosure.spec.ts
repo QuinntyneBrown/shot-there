@@ -3,7 +3,9 @@ import { DisclosureComponent } from '../components/disclosure.component';
 import { HarnessPage, HarnessTheme } from '../pages/harness.page';
 
 test.describe('DisclosureComponent (ICD-002 §9.5, CRD disclosure)', () => {
-  test('is a callout with a hidden info icon, a title and the projected statement and link', async ({ page }) => {
+  test('is a callout with a hidden info icon, a title and the projected statement and link', async ({
+    page,
+  }) => {
     // Given the paid-for disclosure
     const harness = new HarnessPage(page);
     await harness.open('disclosure/default');
@@ -11,7 +13,9 @@ test.describe('DisclosureComponent (ICD-002 §9.5, CRD disclosure)', () => {
     // Then it shows the title, the statement and the policy link, with a decorative icon
     await expect(disclosure.title()).toHaveText('How this session was paid for');
     await expect(disclosure.statement()).toContainText('I paid the full rate for this session.');
-    await expect(disclosure.statement().getByRole('link', { name: 'Editorial policy' })).toHaveAttribute('href', '/editorial-policy');
+    await expect(
+      disclosure.statement().getByRole('link', { name: 'Editorial policy' }),
+    ).toHaveAttribute('href', '/editorial-policy');
     await expect(disclosure.icon()).toHaveAttribute('aria-hidden', 'true');
     // And it has the thick left edge of the DS callout
     expect(await disclosure.edgeWidth()).toBe(2);

@@ -1,15 +1,64 @@
 /* DS components/badge.html; the host is the .badge pill. */
-:host { display: inline-flex; align-items: center; gap: var(--space-1); padding: 0 var(--space-2); min-height: var(--target-min); max-width: 100%; border-radius: var(--radius-full); font: var(--text-label); font-size: var(--font-size-xs); background: var(--color-bg-subtle); color: var(--color-fg-muted); white-space: normal; }
-:host::before { content: ""; width: 0.375rem; height: 0.375rem; border-radius: 50%; background: currentColor; flex: none; }
-:host(.badge--info) { background: var(--color-info-bg); color: var(--color-info-fg); }
-:host(.badge--success) { background: var(--color-success-bg); color: var(--color-success-fg); }
-:host(.badge--warning) { background: var(--color-warning-bg); color: var(--color-warning-fg); }
-:host(.badge--danger) { background: var(--color-danger-bg); color: var(--color-danger-fg); }
-:host(.badge--solid) { background: var(--color-fg-muted); color: var(--color-bg-surface); }
-:host(.badge--solid.badge--info) { background: var(--color-info-solid); color: var(--color-bg-surface); }
-:host(.badge--solid.badge--success) { background: var(--color-success-solid); color: var(--color-bg-surface); }
-:host(.badge--solid.badge--warning) { background: var(--color-warning-solid); color: var(--color-bg-surface); }
-:host(.badge--solid.badge--danger) { background: var(--color-danger-solid); color: var(--color-bg-surface); }
+:host {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: 0 var(--space-2);
+  min-height: var(--target-min);
+  max-width: 100%;
+  border-radius: var(--radius-full);
+  font: var(--text-label);
+  font-size: var(--font-size-xs);
+  background: var(--color-bg-subtle);
+  color: var(--color-fg-muted);
+  white-space: normal;
+}
+:host::before {
+  content: '';
+  width: 0.375rem;
+  height: 0.375rem;
+  border-radius: 50%;
+  background: currentColor;
+  flex: none;
+}
+:host(.badge--info) {
+  background: var(--color-info-bg);
+  color: var(--color-info-fg);
+}
+:host(.badge--success) {
+  background: var(--color-success-bg);
+  color: var(--color-success-fg);
+}
+:host(.badge--warning) {
+  background: var(--color-warning-bg);
+  color: var(--color-warning-fg);
+}
+:host(.badge--danger) {
+  background: var(--color-danger-bg);
+  color: var(--color-danger-fg);
+}
+:host(.badge--solid) {
+  background: var(--color-fg-muted);
+  color: var(--color-bg-surface);
+}
+:host(.badge--solid.badge--info) {
+  background: var(--color-info-solid);
+  color: var(--color-bg-surface);
+}
+:host(.badge--solid.badge--success) {
+  background: var(--color-success-solid);
+  color: var(--color-bg-surface);
+}
+:host(.badge--solid.badge--warning) {
+  background: var(--color-warning-solid);
+  color: var(--color-bg-surface);
+}
+:host(.badge--solid.badge--danger) {
+  background: var(--color-danger-solid);
+  color: var(--color-bg-surface);
+}
 @media (forced-colors: active) {
-  :host { border: var(--border-width-hairline) solid CanvasText; }
+  :host {
+    border: var(--border-width-hairline) solid CanvasText;
+  }
 }

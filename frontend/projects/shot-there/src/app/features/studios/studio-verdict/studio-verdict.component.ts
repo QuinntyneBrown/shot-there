@@ -6,7 +6,7 @@ import { StudioVerdictDto } from '@shot-there/api';
   selector: 'st-studio-verdict',
   imports: [DecimalPipe],
   templateUrl: './studio-verdict.component.html',
-  styleUrl: './studio-verdict.component.css'
+  styleUrl: './studio-verdict.component.css',
 })
 export class StudioVerdictComponent {
   readonly verdict = input.required<StudioVerdictDto>();
@@ -20,7 +20,7 @@ export class StudioVerdictComponent {
       { label: $localize`Space`, score: s.space },
       { label: $localize`Gear`, score: s.gear },
       { label: $localize`Logistics`, score: s.logistics },
-      { label: $localize`Condition`, score: s.condition }
+      { label: $localize`Condition`, score: s.condition },
     ];
   });
 }

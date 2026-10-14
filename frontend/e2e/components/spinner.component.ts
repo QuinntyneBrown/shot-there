@@ -10,12 +10,17 @@ export class SpinnerComponent {
 
   /** The ring classes. */
   async classes(): Promise<string[]> {
-    return ((await this.ring.getAttribute('class')) ?? '').split(/\s+/).filter((c) => c.startsWith('spinner'));
+    return ((await this.ring.getAttribute('class')) ?? '')
+      .split(/\s+/)
+      .filter((c) => c.startsWith('spinner'));
   }
 
   /** Layout size, unaffected by the turning. */
   size(): Promise<{ width: number; height: number }> {
-    return this.ring.evaluate((el) => ({ width: (el as HTMLElement).offsetWidth, height: (el as HTMLElement).offsetHeight }));
+    return this.ring.evaluate((el) => ({
+      width: (el as HTMLElement).offsetWidth,
+      height: (el as HTMLElement).offsetHeight,
+    }));
   }
 
   /** The ring border width in px. */

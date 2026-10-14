@@ -15,7 +15,9 @@ export class VideoPosterComponent {
     this.play = this.poster.locator('.video-poster__play');
     this.playIcon = new IconComponent(this.play);
     this.still = new ResponsiveImageComponent(this.poster);
-    this.player = scope.locator('iframe.video-frame').and(scope.getByTitle(playerTitle, { exact: true }));
+    this.player = scope
+      .locator('iframe.video-frame')
+      .and(scope.getByTitle(playerTitle, { exact: true }));
   }
 
   /** The poster's rendered width and height in whole CSS pixels. */

@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { BadgeComponent } from '@shot-there/components';
 
-
 /** A badge of every tone, then solid. */
 @Component({
   selector: 'st-badge-tones',
@@ -9,6 +8,4 @@ import { BadgeComponent } from '@shot-there/components';
   templateUrl: './badge-tones.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class BadgeTonesComponent {
-
-}
+export class BadgeTonesComponent {}

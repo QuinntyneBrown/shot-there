@@ -1,4 +1,9 @@
-<p class="price-block__allin"><strong>{{ allIn() }}</strong><span>{{ allInText() }}</span></p>
+<p class="price-block__allin">
+  <strong>{{ allIn() }}</strong
+  ><span>{{ allInText() }}</span>
+</p>
 <st-description-list [items]="items()" />
-<p class="price-block__verified">{{ verifiedLabel() }} <time [attr.datetime]="verified().datetime">{{ verified().text }}</time></p>
+<p class="price-block__verified">
+  {{ verifiedLabel() }} <time [attr.datetime]="verified().datetime">{{ verified().text }}</time>
+</p>
 <ng-content />

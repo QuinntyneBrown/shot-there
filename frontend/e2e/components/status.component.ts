@@ -9,11 +9,18 @@ export class StatusComponent {
   }
 
   async classes(): Promise<string[]> {
-    return ((await this.root.getAttribute('class')) ?? '').split(/\s+/).filter((c) => c.startsWith('status'));
+    return ((await this.root.getAttribute('class')) ?? '')
+      .split(/\s+/)
+      .filter((c) => c.startsWith('status'));
   }
 
   /** The ::before shape: its fill and border. */
-  shape(): Promise<{ background: string; borderWidth: number; borderColour: string; colour: string }> {
+  shape(): Promise<{
+    background: string;
+    borderWidth: number;
+    borderColour: string;
+    colour: string;
+  }> {
     return this.root.evaluate((el) => {
       const before = getComputedStyle(el, '::before');
       return {

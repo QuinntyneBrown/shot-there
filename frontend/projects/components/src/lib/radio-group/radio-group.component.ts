@@ -9,7 +9,9 @@ import { ChoiceOption } from '../types/choice-option';
   templateUrl: './radio-group.component.html',
   styleUrl: './radio-group.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => RadioGroupComponent), multi: true }],
+  providers: [
+    { provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => RadioGroupComponent), multi: true },
+  ],
 })
 export class RadioGroupComponent extends FieldControl<string> {
   readonly options = input.required<readonly ChoiceOption[]>();

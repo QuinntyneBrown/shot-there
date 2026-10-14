@@ -1,7 +1,31 @@
 @switch (headingLevel()) {
-  @case (3) { <h3 class="stat-tile__title">@if (link(); as path) {<a [routerLink]="path">{{ title() }}</a>} @else {{{ title() }}}</h3> }
-  @case (4) { <h4 class="stat-tile__title">@if (link(); as path) {<a [routerLink]="path">{{ title() }}</a>} @else {{{ title() }}}</h4> }
-  @default { <h2 class="stat-tile__title">@if (link(); as path) {<a [routerLink]="path">{{ title() }}</a>} @else {{{ title() }}}</h2> }
+  @case (3) {
+    <h3 class="stat-tile__title">
+      @if (link(); as path) {
+        <a [routerLink]="path">{{ title() }}</a>
+      } @else {
+        {{ title() }}
+      }
+    </h3>
+  }
+  @case (4) {
+    <h4 class="stat-tile__title">
+      @if (link(); as path) {
+        <a [routerLink]="path">{{ title() }}</a>
+      } @else {
+        {{ title() }}
+      }
+    </h4>
+  }
+  @default {
+    <h2 class="stat-tile__title">
+      @if (link(); as path) {
+        <a [routerLink]="path">{{ title() }}</a>
+      } @else {
+        {{ title() }}
+      }
+    </h2>
+  }
 }
 <p class="stat-tile__counts">{{ counts() }}</p>
 <div class="stat-tile__action"><ng-content /></div>

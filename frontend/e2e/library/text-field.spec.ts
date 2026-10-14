@@ -3,7 +3,9 @@ import { FieldComponent } from '../components/field.component';
 import { HarnessPage, HarnessTheme } from '../pages/harness.page';
 
 test.describe('TextFieldComponent (ICD-002 §9.2, CRD text-field)', () => {
-  test('renders a labelled input with its help, wired by for and aria-describedby, and reports typing', async ({ page }) => {
+  test('renders a labelled input with its help, wired by for and aria-describedby, and reports typing', async ({
+    page,
+  }) => {
     // Given a text field "Name" with help, bound to a form control holding "Junction"
     const harness = new HarnessPage(page);
     await harness.open('text-field/states');
@@ -21,7 +23,9 @@ test.describe('TextFieldComponent (ICD-002 §9.2, CRD text-field)', () => {
     expect(harness.errors).toEqual([]);
   });
 
-  test('puts a prefix in an input group, outside the accessible name, and reports a string', async ({ page }) => {
+  test('puts a prefix in an input group, outside the accessible name, and reports a string', async ({
+    page,
+  }) => {
     // Given the prefixed hourly rate
     const harness = new HarnessPage(page);
     await harness.open('text-field/states');
@@ -34,7 +38,9 @@ test.describe('TextFieldComponent (ICD-002 §9.2, CRD text-field)', () => {
     await expect(rate.value('Rate')).toHaveText('');
   });
 
-  test('shows an error first, flags aria-invalid and removes both when cleared', async ({ page }) => {
+  test('shows an error first, flags aria-invalid and removes both when cleared', async ({
+    page,
+  }) => {
     // Given the rate field
     const harness = new HarnessPage(page);
     await harness.open('text-field/states');
@@ -51,7 +57,9 @@ test.describe('TextFieldComponent (ICD-002 §9.2, CRD text-field)', () => {
     expect(await rate.messages()).toEqual([]);
   });
 
-  test('toggles the password between hidden and shown with a named pressed button', async ({ page }) => {
+  test('toggles the password between hidden and shown with a named pressed button', async ({
+    page,
+  }) => {
     // Given the large password field
     const harness = new HarnessPage(page);
     await harness.open('text-field/states');
@@ -70,7 +78,9 @@ test.describe('TextFieldComponent (ICD-002 §9.2, CRD text-field)', () => {
     await expect(toggle).toBeFocused();
   });
 
-  test('marks optional fields in the label and warning fields without aria-invalid', async ({ page }) => {
+  test('marks optional fields in the label and warning fields without aria-invalid', async ({
+    page,
+  }) => {
     // Given an optional field and a field with a warning
     const harness = new HarnessPage(page);
     await harness.open('text-field/states');

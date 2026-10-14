@@ -1,7 +1,12 @@
 /** Studio review pages from the mock catalogue (docs/mocks/README.md and docs/mocks/pages/studio). */
 export interface FakeStudioDetail {
   slug: string;
-  basics: { name: string; neighbourhood: string; addressOrCrossStreets: string; bookingUrl: string };
+  basics: {
+    name: string;
+    neighbourhood: string;
+    addressOrCrossStreets: string;
+    bookingUrl: string;
+  };
   pricing: {
     hourlyRate: number;
     minBookingHours: number;
@@ -15,7 +20,10 @@ export interface FakeStudioDetail {
     usableDepthM: number;
     ceilingHeightM: number;
     windowDirection: string;
-    naturalLight: Record<'morning' | 'midday' | 'afternoon' | 'evening', 'none' | 'low' | 'medium' | 'strong'>;
+    naturalLight: Record<
+      'morning' | 'midday' | 'afternoon' | 'evening',
+      'none' | 'low' | 'medium' | 'strong'
+    >;
     outletCount: number;
     outletType: string;
     has20ACircuits: boolean;
@@ -59,8 +67,8 @@ const image = (id: string, alt: string, caption: string | null = null): FakeImag
   caption,
   variants: [
     { width: 480, url: `/test-images/${id}-480.svg` },
-    { width: 1200, url: `/test-images/${id}-1200.svg` }
-  ]
+    { width: 1200, url: `/test-images/${id}-1200.svg` },
+  ],
 });
 
 interface FakeGearItem {
@@ -76,18 +84,18 @@ export const THE_JUNCTION_LOFT: FakeStudioDetail = {
     name: 'The Junction Loft',
     neighbourhood: 'Junction',
     addressOrCrossStreets: 'Dundas St W at Pacific Ave, 2nd floor',
-    bookingUrl: 'https://thejunctionloft.example/book'
+    bookingUrl: 'https://thejunctionloft.example/book',
   },
   pricing: {
     hourlyRate: 60,
     minBookingHours: 2,
     fees: [
       { name: 'Cleaning fee', amount: 25, mandatory: true },
-      { name: 'After-hours access', amount: 30, mandatory: false }
+      { name: 'After-hours access', amount: 30, mandatory: false },
     ],
     allInCost2h: 145,
     priceVerifiedAt: '2026-09-22',
-    priceStale: false
+    priceStale: false,
   },
   specifications: {
     usableWidthM: 6.1,
@@ -100,7 +108,7 @@ export const THE_JUNCTION_LOFT: FakeStudioDetail = {
     has20ACircuits: true,
     hasCycWall: true,
     cycWallCondition: 'scuffed',
-    backdrops: ['White, grey and black seamless, 2.7 m']
+    backdrops: ['White, grey and black seamless, 2.7 m'],
   },
   gear: {
     included: [
@@ -109,12 +117,12 @@ export const THE_JUNCTION_LOFT: FakeStudioDetail = {
       { name: '120 cm octabox', category: 'modifiers', quantity: 1, extraCost: null },
       { name: '5-in-1 reflector', category: 'modifiers', quantity: 2, extraCost: null },
       { name: 'C-stand', category: 'stands', quantity: 4, extraCost: null },
-      { name: 'Garment steamer', category: 'other', quantity: null, extraCost: null }
+      { name: 'Garment steamer', category: 'other', quantity: null, extraCost: null },
     ],
     extras: [
       { name: 'Hazer', category: 'other', quantity: null, extraCost: 20 },
-      { name: 'Extra seamless roll', category: 'other', quantity: null, extraCost: 15 }
-    ]
+      { name: 'Extra seamless roll', category: 'other', quantity: null, extraCost: 15 },
+    ],
   },
   logistics: {
     loadIn: 'freightElevator',
@@ -124,35 +132,55 @@ export const THE_JUNCTION_LOFT: FakeStudioDetail = {
     washroom: 'Private, in the studio',
     changingArea: 'Curtained corner with a mirror',
     clientSeating: 'Sofa for 4',
-    noise: 'Streetcar rumble every few minutes; fine for stills, plan around it for video'
+    noise: 'Streetcar rumble every few minutes; fine for stills, plan around it for video',
   },
   verdict: {
-    whoItsFor: 'Portrait and fashion shooters who want big north light and a usable cyc on a mid-range budget.',
-    whoShouldSkip: 'Video crews, because of the streetcar, and anyone hauling heavy cases: the freight elevator is tiny.',
+    whoItsFor:
+      'Portrait and fashion shooters who want big north light and a usable cyc on a mid-range budget.',
+    whoShouldSkip:
+      'Video crews, because of the streetcar, and anyone hauling heavy cases: the freight elevator is tiny.',
     scores: { value: 4, light: 5, space: 3, gear: 4, logistics: 2, condition: 5 },
-    overallScore: 3.8
+    overallScore: 3.8,
   },
   disclosure: { kind: 'paidFull', provider: null },
   testShots: [
-    image('test-the-junction-loft-1', 'Test shot 1, headshot: even falloff from the octabox, grey seamless, soft shadow under the chin.', 'Headshot'),
-    image('test-the-junction-loft-2', 'Test shot 2, full length on the cyc: the scuffs show as faint marks behind the feet.', 'Full length'),
-    image('test-the-junction-loft-3', 'Test shot 3, product on a table: clean highlight on the bottle, neutral background.', 'Product on table')
+    image(
+      'test-the-junction-loft-1',
+      'Test shot 1, headshot: even falloff from the octabox, grey seamless, soft shadow under the chin.',
+      'Headshot',
+    ),
+    image(
+      'test-the-junction-loft-2',
+      'Test shot 2, full length on the cyc: the scuffs show as faint marks behind the feet.',
+      'Full length',
+    ),
+    image(
+      'test-the-junction-loft-3',
+      'Test shot 3, product on a table: clean highlight on the bottle, neutral background.',
+      'Product on table',
+    ),
   ],
   gallery: [
-    image('gallery-1', 'Portrait in window light, subject turned three-quarters toward the north windows.'),
+    image(
+      'gallery-1',
+      'Portrait in window light, subject turned three-quarters toward the north windows.',
+    ),
     image('gallery-2', 'Close portrait against the brick wall with the octabox as fill.'),
     image('gallery-3', 'Full-length fashion frame on the cyc, warm afternoon light from the left.'),
     image('gallery-4', 'Low-key portrait with a black seamless and a single strobe.'),
     image('gallery-5', 'Seated portrait on the studio sofa, window light only.'),
     image('gallery-6', 'Standing portrait by the freight door, mixed daylight and LED.'),
     image('gallery-7', 'Headshot on grey seamless with a reflector under the chin.'),
-    image('gallery-8', 'Wide frame of the whole space showing the cyc, the windows and the light stands.')
+    image(
+      'gallery-8',
+      'Wide frame of the whole space showing the cyc, the windows and the light stands.',
+    ),
   ],
   episode: {
     videoId: 'Jx7Lq2pT9aE',
     title: 'Episode 4: The Junction Loft — big north light, tiny elevator',
-    posterUrl: '/test-images/episode-the-junction-loft.svg'
-  }
+    posterUrl: '/test-images/episode-the-junction-loft.svg',
+  },
 };
 
 export const OSSINGTON_BLACKBOX: FakeStudioDetail = {
@@ -161,7 +189,7 @@ export const OSSINGTON_BLACKBOX: FakeStudioDetail = {
     name: 'Ossington Blackbox',
     neighbourhood: 'Ossington',
     addressOrCrossStreets: 'Ossington Ave at Dundas St W',
-    bookingUrl: 'https://ossingtonblackbox.example/book'
+    bookingUrl: 'https://ossingtonblackbox.example/book',
   },
   pricing: {
     hourlyRate: 90,
@@ -169,7 +197,7 @@ export const OSSINGTON_BLACKBOX: FakeStudioDetail = {
     fees: [],
     allInCost2h: 270,
     priceVerifiedAt: '2026-03-02',
-    priceStale: true
+    priceStale: true,
   },
   specifications: { ...THE_JUNCTION_LOFT.specifications },
   gear: THE_JUNCTION_LOFT.gear,
@@ -178,12 +206,12 @@ export const OSSINGTON_BLACKBOX: FakeStudioDetail = {
     whoItsFor: 'Large crews and video shoots that need space and full blackout.',
     whoShouldSkip: 'Anyone who wants daylight, or a quick one-hour session.',
     scores: { value: 3, light: 2, space: 5, gear: 5, logistics: 4, condition: 4 },
-    overallScore: 3.8
+    overallScore: 3.8,
   },
   disclosure: { kind: 'paidFull', provider: null },
   testShots: THE_JUNCTION_LOFT.testShots,
   gallery: THE_JUNCTION_LOFT.gallery,
-  episode: null
+  episode: null,
 };
 
 /** The "minimal" studio: no cyc wall, no paid extras, no changing area. */
@@ -193,7 +221,7 @@ export const BLOORDALE_SUN_STUDIO: FakeStudioDetail = {
     name: 'Bloordale Sun Studio',
     neighbourhood: 'Bloordale',
     addressOrCrossStreets: 'Bloor St W at Brock Ave',
-    bookingUrl: 'https://bloordalesun.example/book'
+    bookingUrl: 'https://bloordalesun.example/book',
   },
   pricing: {
     hourlyRate: 55,
@@ -201,7 +229,7 @@ export const BLOORDALE_SUN_STUDIO: FakeStudioDetail = {
     fees: [{ name: 'Cleaning fee', amount: 20, mandatory: true }],
     allInCost2h: 130,
     priceVerifiedAt: '2026-07-15',
-    priceStale: false
+    priceStale: false,
   },
   specifications: {
     usableWidthM: 7.0,
@@ -214,14 +242,14 @@ export const BLOORDALE_SUN_STUDIO: FakeStudioDetail = {
     has20ACircuits: false,
     hasCycWall: false,
     cycWallCondition: null,
-    backdrops: ['White and grey seamless, 2.7 m']
+    backdrops: ['White and grey seamless, 2.7 m'],
   },
   gear: {
     included: [
       { name: 'Godox SL150 LED', category: 'lights', quantity: 2, extraCost: null },
-      { name: 'Light stand', category: 'stands', quantity: 4, extraCost: null }
+      { name: 'Light stand', category: 'stands', quantity: 4, extraCost: null },
     ],
-    extras: []
+    extras: [],
   },
   logistics: {
     loadIn: 'stairs',
@@ -231,31 +259,47 @@ export const BLOORDALE_SUN_STUDIO: FakeStudioDetail = {
     washroom: 'Shared, down the hall',
     changingArea: null,
     clientSeating: '2 chairs',
-    noise: 'Quiet on weekdays; the café below gets busy on weekend mornings'
+    noise: 'Quiet on weekdays; the café below gets busy on weekend mornings',
   },
   verdict: {
     whoItsFor: 'Natural-light portraits on a budget.',
     whoShouldSkip: 'Anyone who needs a cyc wall.',
     scores: { value: 3, light: 3, space: 3, gear: 3, logistics: 3, condition: 3 },
-    overallScore: 3.0
+    overallScore: 3.0,
   },
   disclosure: { kind: 'comped', provider: 'Bloordale Sun Studio' },
   testShots: [
-    image('test-bloordale-sun-studio-1', 'Test shot 1, headshot: soft south light, white seamless.', 'Headshot'),
-    image('test-bloordale-sun-studio-2', 'Test shot 2, full length on white seamless; no cyc, so the floor line shows.', 'Full length'),
-    image('test-bloordale-sun-studio-3', 'Test shot 3, product on a table by the window.', 'Product on table')
+    image(
+      'test-bloordale-sun-studio-1',
+      'Test shot 1, headshot: soft south light, white seamless.',
+      'Headshot',
+    ),
+    image(
+      'test-bloordale-sun-studio-2',
+      'Test shot 2, full length on white seamless; no cyc, so the floor line shows.',
+      'Full length',
+    ),
+    image(
+      'test-bloordale-sun-studio-3',
+      'Test shot 3, product on a table by the window.',
+      'Product on table',
+    ),
   ],
   gallery: [
     image('bloordale-gallery-1', 'Portrait by the south window at midday.'),
-    image('bloordale-gallery-2', 'Seated portrait against grey seamless.')
+    image('bloordale-gallery-2', 'Seated portrait against grey seamless.'),
   ],
-  episode: null
+  episode: null,
 };
 
 /** A discounted session, otherwise like The Junction Loft. */
 export const LESLIEVILLE_DAYLIGHT_STUDIO: FakeStudioDetail = {
   ...THE_JUNCTION_LOFT,
   slug: 'leslieville-daylight-studio',
-  basics: { ...THE_JUNCTION_LOFT.basics, name: 'Leslieville Daylight Studio', neighbourhood: 'Leslieville' },
-  disclosure: { kind: 'discounted', provider: 'Leslieville Daylight Studio' }
+  basics: {
+    ...THE_JUNCTION_LOFT.basics,
+    name: 'Leslieville Daylight Studio',
+    neighbourhood: 'Leslieville',
+  },
+  disclosure: { kind: 'discounted', provider: 'Leslieville Daylight Studio' },
 };
