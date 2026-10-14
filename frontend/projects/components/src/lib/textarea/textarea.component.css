@@ -1,0 +1,5 @@
+@import "../form/control.css";
+.textarea { resize: vertical; min-height: var(--control-height-md); }
+.field__counter { font: var(--text-body-sm); color: var(--color-fg-muted); font-variant-numeric: tabular-nums; }
+.field__counter--over { color: var(--color-danger-fg); }
+.field__counter--over::before { content: "⚠\FE0E "; content: "⚠\FE0E " / ""; }

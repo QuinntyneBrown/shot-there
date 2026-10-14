@@ -1,0 +1,3 @@
+:host { display: contents; }
+.field__label { font: var(--text-label); color: var(--color-fg-default); display: block; overflow-wrap: anywhere; }
+.optional { color: var(--color-fg-subtle); font-weight: var(--font-weight-regular); }

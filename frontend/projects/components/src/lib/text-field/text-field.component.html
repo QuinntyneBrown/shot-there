@@ -1,0 +1,21 @@
+<st-field-label [for]="id()" [label]="label()" [suffix]="labelSuffix()" [optional]="optional()" [optionalLabel]="optionalLabel()" />
+<ng-template #control>
+  <input class="input" [class.input--sm]="size() === 'sm'" [class.input--lg]="size() === 'lg'" [id]="id()" [attr.name]="name() || null"
+    [type]="typed()" [value]="value()" [attr.autocomplete]="autocomplete()" [attr.inputmode]="inputmode()" [attr.spellcheck]="spellcheck()"
+    [attr.min]="min()" [attr.max]="max()" [attr.step]="step()" [attr.maxlength]="maxlength()" [readOnly]="readonly()" [disabled]="disabled()"
+    [attr.aria-invalid]="hasError() ? 'true' : null" [attr.aria-describedby]="describedBy()"
+    (input)="typedText($event)" (blur)="touch()">
+</ng-template>
+@if (type() === 'password') {
+  <span class="input-group">
+    <ng-container *ngTemplateOutlet="control" />
+    <button st-button type="button" class="compare-toggle" [size]="size()" [pressed]="revealed()" [attr.aria-controls]="id()" [disabled]="readonly() || disabled()" (click)="toggleReveal()">{{ revealLabel() }}<span class="visually-hidden"> {{ revealContext() }}</span></button>
+  </span>
+} @else if (prefix()) {
+  <span class="input-group"><span class="addon" aria-hidden="true">{{ prefix() }}</span><ng-container *ngTemplateOutlet="control" /></span>
+} @else if (type() === 'search') {
+  <span class="search"><st-icon name="search" /><ng-container *ngTemplateOutlet="control" /></span>
+} @else {
+  <ng-container *ngTemplateOutlet="control" />
+}
+<st-field-messages [id]="id()" [error]="error()" [warning]="warning()" [help]="help()" />

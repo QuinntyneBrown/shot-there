@@ -1,0 +1,20 @@
+/* Shared by every field host and native control (DS components/text-field.html, form-field.html). */
+:host { display: flex; flex-direction: column; gap: var(--space-1); min-width: 0; }
+:host(.field--inline) { flex-direction: row; flex-wrap: wrap; align-items: center; gap: var(--space-2); }
+:host(.field--inline) .input, :host(.field--inline) .select { width: auto; }
+:host(.field--warning) { padding: var(--space-4); border-radius: var(--radius-md); background: var(--color-warning-bg); }
+.input, .select, .textarea {
+  --field-bg: var(--color-bg-surface); --field-border: var(--color-border-strong); --field-fg: var(--color-fg-default);
+  box-sizing: border-box; width: 100%; min-height: var(--control-height-md); padding: var(--space-2) var(--space-3);
+  font: var(--text-body); color: var(--field-fg); background-color: var(--field-bg);
+  border: var(--border-width-hairline) solid var(--field-border); border-radius: var(--radius-md);
+  transition: border-color var(--duration-fast) var(--ease-standard), box-shadow var(--duration-fast) var(--ease-standard);
+}
+.input::placeholder, .textarea::placeholder { color: var(--color-fg-subtle); }
+.input:hover, .select:hover, .textarea:hover { --field-border: var(--color-fg-muted); }
+.input:focus-visible, .select:focus-visible, .textarea:focus-visible { outline: var(--focus-ring-width) solid var(--color-focus-ring); outline-offset: 0; --field-border: var(--color-focus-ring); border-radius: var(--radius-md); }
+.input[aria-invalid="true"], .select[aria-invalid="true"], .textarea[aria-invalid="true"] { --field-border: var(--color-danger-solid); box-shadow: inset 0 0 0 var(--border-width-hairline) var(--color-danger-solid); }
+.input:disabled, .select:disabled, .textarea:disabled { --field-bg: var(--color-bg-subtle); --field-fg: var(--color-fg-disabled); --field-border: var(--color-border-default); cursor: not-allowed; }
+.input:read-only:not(:disabled), .textarea:read-only:not(:disabled) { --field-bg: var(--color-bg-surface-sunken); }
+.input--sm { min-height: var(--control-height-sm); font-size: var(--font-size-sm); }
+.input--lg { min-height: var(--control-height-lg); font-size: var(--font-size-lg); }
