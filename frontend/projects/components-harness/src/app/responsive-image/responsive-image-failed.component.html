@@ -1,4 +1,10 @@
 <main class="container stack">
-  <section aria-label="informative" class="slot slot--fixed"><st-responsive-image [image]="image" sizes="20rem" /></section>
-  <section aria-label="decorative" class="slot slot--fixed"><st-responsive-image [image]="image" sizes="20rem" decorative /></section>
+  <section aria-label="gallery photo"><button class="shot" type="button"><st-responsive-image [image]="gallery()" sizes="15rem" /></button></section>
+  <label><input type="checkbox" (change)="useWorking()"> Use a working photo</label>
+  <section aria-label="card photo" class="stack">
+    <div class="card"><st-responsive-image [image]="card" sizes="20rem" decorative /></div>
+    <a href="/studios/kensington-window-room">Kensington Window Room</a>
+  </section>
+  <section aria-label="hero" class="hero hero--3x2"><st-responsive-image [image]="hero" sizes="100vw" priority /></section>
+  <section aria-label="lightbox" class="frame"><st-responsive-image [image]="lightbox" sizes="20rem" /></section>
 </main>

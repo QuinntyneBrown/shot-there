@@ -1,7 +1,4 @@
-/* The host and <picture> add no box: the photo fills the slot its container gives it, as every DS photo slot does. */
-:host, picture { display: contents; }
+/* The host fills the slot its owner draws; the owner sizes, clips, rounds and zooms the host (CRD responsive-image D-1). */
+:host { display: block; width: 100%; height: 100%; }
+picture { display: contents; }
 img { display: block; width: 100%; height: 100%; object-fit: cover; }
-/* A failed image is hidden by img[stFallbackImage]; keep it hidden over the rule above. */
-img[hidden] { display: none; }
-/* A failed episode still sits on the poster's inverse ground, its content at the top (DS .video-poster .media-fallback). */
-:host-context(.video-poster) .media-fallback { background: var(--color-bg-inverse); color: var(--color-fg-inverse); align-content: start; padding-top: var(--space-6); }

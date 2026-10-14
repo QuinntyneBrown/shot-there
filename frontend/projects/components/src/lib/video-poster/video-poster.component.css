@@ -5,6 +5,6 @@
 .video-poster:hover .video-poster__play { background: var(--color-action-hover); }
 .video-poster:active .video-poster__play { background: var(--color-action-active); }
 /* A failed still keeps its slot; the play pill moves to the bottom (L2-086.3). */
-.video-poster:has(img[hidden]) .video-poster__play { top: auto; bottom: var(--space-4); translate: -50% 0; }
+.video-poster:has(.media-fallback) .video-poster__play { top: auto; bottom: var(--space-4); translate: -50% 0; }
 .video-poster:focus-visible { border-radius: var(--radius-lg); }
 .video-frame { width: 100%; aspect-ratio: 16 / 9; border: 0; border-radius: var(--radius-lg); background: var(--color-bg-inverse); display: block; }

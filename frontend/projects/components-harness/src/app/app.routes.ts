@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { ResponsiveImagePerformanceComponent } from './responsive-image/responsive-image-performance.component';
 import { ButtonGroupPerformanceComponent } from './button-group/button-group-performance.component';
 import { FilterPerformanceComponent } from './filter/filter-performance.component';
 import { IconButtonPerformanceComponent } from './icon-button/icon-button-performance.component';
@@ -70,4 +71,6 @@ export const routes: Routes = [
   { path: 'icon-button/performance', component: IconButtonPerformanceComponent },
   { path: 'filter/performance', component: FilterPerformanceComponent },
   { path: 'button-group/performance', component: ButtonGroupPerformanceComponent },
+  { path: 'responsive-image/performance', component: ResponsiveImagePerformanceComponent },
+  { path: 'responsive-image/performance-failed', component: ResponsiveImagePerformanceComponent, data: { failed: 2 } },
 ];
