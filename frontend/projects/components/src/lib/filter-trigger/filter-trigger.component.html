@@ -1,4 +1,1 @@
-<st-icon name="filters" /><ng-content />
-@if (count() > 0) {
-  &ngsp;<span class="filter-trigger__count">{{ count() }}</span>
-}
+<st-icon name="filters" /><ng-content />@if (count() > 0) {<span class="filter-trigger__count"><span aria-hidden="true">{{ count() }}</span><span class="visually-hidden">{{ countText() }}</span></span>}

@@ -8,5 +8,8 @@
   <section aria-label="disabled">
     <button st-filter-trigger type="button" aria-expanded="false" disabled>Filters</button>
   </section>
+  <section aria-label="sheet" class="sheet">
+    <button st-filter-trigger type="button" [attr.aria-expanded]="sheetExpanded()" (click)="sheetExpanded.set(!sheetExpanded())">Filters</button>
+  </section>
   <st-activation-log [entries]="log()" />
 </main>
