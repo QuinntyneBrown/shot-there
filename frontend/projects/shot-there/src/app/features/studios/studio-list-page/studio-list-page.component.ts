@@ -95,17 +95,21 @@ export class StudioListPageComponent {
   }
 
   openFiltersDialog(): void {
-    const ref = this.dialog.open<StudioListQuery, StudioFiltersDialogData>(
+    const ref = this.dialog.open<
+      StudioListQuery,
+      StudioFiltersDialogData,
+      StudioFiltersDialogComponent
+    >(
       StudioFiltersDialogComponent,
       {
         data: { query: this.query() },
-        ariaLabelledBy: 'studio-filters-title',
         ariaDescribedBy: 'studio-filters-description',
         width: '100%',
         height: '100%',
         maxWidth: '100%',
       },
     );
+    ref.componentInstance?.applied.subscribe((query) => ref.close(query));
     ref.closed.subscribe((query) => {
       if (query) {
         this.applyFilters(query);
