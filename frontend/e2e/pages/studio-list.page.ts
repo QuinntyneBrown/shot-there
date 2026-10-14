@@ -20,6 +20,7 @@ export class StudioListPage {
   readonly clearFiltersButton: Locator;
   readonly filtersButton: Locator;
   readonly filtersDialog: Locator;
+  readonly dialogSortControl: Locator;
   readonly dialogFilters: StudioFiltersPanel;
   readonly dialogShowButton: Locator;
   readonly dialogClearAllButton: Locator;
@@ -50,6 +51,7 @@ export class StudioListPage {
       .getByRole('main', { includeHidden: true })
       .getByRole('button', { name: /^Filters/, includeHidden: true });
     this.filtersDialog = page.getByRole('dialog', { name: 'Filters' });
+    this.dialogSortControl = this.filtersDialog.getByRole('combobox', { name: 'Sort by' });
     this.dialogFilters = new StudioFiltersPanel(this.filtersDialog);
     this.dialogShowButton = this.filtersDialog.getByRole('button', { name: /^Show/ });
     this.dialogClearAllButton = this.filtersDialog.getByRole('button', { name: 'Clear all' });
@@ -80,6 +82,10 @@ export class StudioListPage {
 
   async openFiltersDialog(): Promise<void> {
     await this.filtersButton.click();
+  }
+
+  async dialogSortBy(value: string): Promise<void> {
+    await this.dialogSortControl.selectOption(value);
   }
 
   async closeDialogWithEscape(): Promise<void> {
