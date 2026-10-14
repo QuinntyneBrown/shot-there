@@ -1,6 +1,7 @@
 import { givenImageFails, givenStudio } from './fakes/fake-studios-api';
 import { BLOORDALE_SUN_STUDIO, THE_JUNCTION_LOFT } from './fakes/studio-details';
 import { expect, test } from './fakes/test';
+import { ShellPage } from './pages/shell.page';
 import { StudioPage } from './pages/studio.page';
 
 test.describe('Studio page: test shots and gallery', () => {
@@ -66,6 +67,10 @@ test.describe('Studio page: test shots and gallery', () => {
     // Then a named lightbox shows that photo and takes focus
     await expect(studio.lightbox).toHaveAccessibleName('Photo viewer: The Junction Loft');
     await expect(studio.lightboxImage).toHaveAttribute('alt', THE_JUNCTION_LOFT.gallery[2].alt);
+    await expect.poll(() => studio.lightboxImageIsLoaded()).toBe(true);
+    await expect(studio.lightbox).toContainText(
+      THE_JUNCTION_LOFT.gallery[2].caption ?? THE_JUNCTION_LOFT.gallery[2].alt,
+    );
     await expect(studio.lightboxCount).toHaveText('Photo 3 of 8');
     await expect.poll(() => studio.focusIsInLightbox()).toBe(true);
     // When they press Escape
@@ -109,6 +114,26 @@ test.describe('Studio page: test shots and gallery', () => {
       expect(await studio.focusIsInLightbox()).toBe(true);
     }
   });
+
+  for (const theme of ['light', 'dark'] as const) {
+    for (const width of [320, 1280]) {
+      test(`has no accessibility violations in the ${theme} theme at ${width}px with the lightbox open`, async ({
+        page,
+      }) => {
+        // Given a studio page at the requested viewport and theme
+        await givenStudio(page, THE_JUNCTION_LOFT);
+        const shell = new ShellPage(page);
+        await shell.rememberTheme(theme);
+        const studio = new StudioPage(page);
+        await studio.useWidth(width);
+        await studio.open('the-junction-loft');
+        // When the visitor opens a gallery photo
+        await studio.thumbnail(3).click();
+        // Then axe finds no WCAG A/AA violations
+        expect(await shell.accessibilityViolations()).toEqual([]);
+      });
+    }
+  }
 
   test('keeps the slot and shows the alt text when a photo fails to load', async ({ page }) => {
     // Given the second gallery photo cannot be loaded
