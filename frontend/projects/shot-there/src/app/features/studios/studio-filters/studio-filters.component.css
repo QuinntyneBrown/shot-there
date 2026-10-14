@@ -3,26 +3,23 @@
   flex-direction: column;
   gap: var(--space-8);
 }
-.filter-group {
+
+.filter-section {
   display: flex;
   flex-direction: column;
-  border: 0;
-  padding: 0;
-  margin: 0;
-  min-width: 0;
 }
-.filter-group__title {
+
+.filter-section__title {
   font: var(--text-label);
   color: var(--color-fg-subtle);
-  margin-bottom: var(--space-2);
-  padding: 0;
+  margin: 0 0 var(--space-2);
 }
-.field-row--pair {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+.filter-section__choices {
+  display: flex;
+  flex-direction: column;
 }
-.field--spaced {
+
+.filter-section__select {
   margin-top: var(--space-2);
-}
-.input-group .addon + .input {
-  margin-left: calc(-1 * var(--border-width-hairline));
 }

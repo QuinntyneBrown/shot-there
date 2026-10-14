@@ -1,4 +1,14 @@
 import { Component, input, output } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import {
+  CheckboxComponent,
+  CheckboxGroupComponent,
+  RadioGroupComponent,
+  SelectComponent,
+  TextFieldComponent,
+  type ChoiceOption,
+  type SelectOption,
+} from '@shot-there/components';
 
 import { GearFilter } from '../studio-list-page/gear-filter';
 import { Parking } from '../studio-list-page/parking';
@@ -11,6 +21,14 @@ import { StudioListQuery } from '../studio-list-page/studio-list-query';
 /** The studio filter controls. Controlled: it shows `query` and emits every change as a new query. */
 @Component({
   selector: 'st-studio-filters',
+  imports: [
+    CheckboxComponent,
+    CheckboxGroupComponent,
+    FormsModule,
+    RadioGroupComponent,
+    SelectComponent,
+    TextFieldComponent,
+  ],
   templateUrl: './studio-filters.component.html',
   styleUrl: './studio-filters.component.css',
 })
@@ -22,16 +40,25 @@ export class StudioFiltersComponent {
   readonly costError = input<string | null>(null);
   readonly queryChange = output<StudioListQuery>();
 
-  protected readonly neighbourhoods = NEIGHBOURHOOD_OPTIONS;
-  protected readonly spaces = MIN_SPACE_OPTIONS;
+  protected readonly standaloneNgModel = { standalone: true };
+  protected readonly neighbourhoodOptions: readonly ChoiceOption[] = NEIGHBOURHOOD_OPTIONS.map(
+    (neighbourhood) => ({ value: neighbourhood.slug, label: neighbourhood.label }),
+  );
+  protected readonly spaceOptions: readonly SelectOption[] = [
+    { value: '', label: $localize`Any size` },
+    ...MIN_SPACE_OPTIONS.map((space) => ({
+      value: String(space),
+      label: $localize`${space} m² or more`,
+    })),
+  ];
   protected readonly gearOptions: readonly { value: GearFilter; label: string }[] = [
     { value: 'lights', label: $localize`Lights` },
     { value: 'modifiers', label: $localize`Modifiers` },
     { value: 'stands', label: $localize`Stands` },
     { value: 'backdrops', label: $localize`Backdrops` },
   ];
-  protected readonly parkingOptions: readonly { value: Parking | undefined; label: string }[] = [
-    { value: undefined, label: $localize`Any` },
+  protected readonly parkingOptions: readonly ChoiceOption[] = [
+    { value: '', label: $localize`Any` },
     { value: 'on-site', label: $localize`On-site` },
     { value: 'street', label: $localize`Street` },
     { value: 'none', label: $localize`None` },
@@ -44,30 +71,26 @@ export class StudioFiltersComponent {
     });
   }
 
-  toggleNeighbourhood(slug: string, checked: boolean): void {
-    const selected = new Set(this.query().neighbourhoods);
-    if (checked) {
-      selected.add(slug);
-    } else {
-      selected.delete(slug);
-    }
+  setNeighbourhoods(selected: string[]): void {
     this.update({
-      neighbourhoods: this.neighbourhoods.map((n) => n.slug).filter((s) => selected.has(s)),
+      neighbourhoods: NEIGHBOURHOOD_OPTIONS.map((neighbourhood) => neighbourhood.slug).filter(
+        (slug) => selected.includes(slug),
+      ),
     });
   }
 
-  toggleGear(gear: GearFilter, checked: boolean): void {
-    const selected = new Set(this.query().gear);
-    if (checked) {
-      selected.add(gear);
-    } else {
-      selected.delete(gear);
-    }
-    this.update({ gear: this.gearOptions.map((g) => g.value).filter((g) => selected.has(g)) });
+  setGear(selected: string[]): void {
+    this.update({
+      gear: this.gearOptions.map((gear) => gear.value).filter((gear) => selected.includes(gear)),
+    });
   }
 
   setSpace(value: string): void {
     this.update({ minSpaceSqm: value === '' ? undefined : Number(value) });
+  }
+
+  setParking(value: string): void {
+    this.update({ parking: value === '' ? undefined : (value as Parking) });
   }
 
   update(change: Partial<StudioListQuery>): void {

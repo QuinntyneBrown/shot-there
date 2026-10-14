@@ -80,6 +80,9 @@ test.describe('Studio filters dialog', () => {
     // Then the dialog explains it and Show is disabled
     await expect(list.dialogCostError).toBeVisible();
     await expect(list.dialogFilters.costMaximum).toHaveAttribute('aria-invalid', 'true');
+    await expect(list.dialogFilters.costMaximum).toHaveAccessibleDescription(
+      'The minimum must be lower than the maximum',
+    );
     await expect(list.dialogShowButton).toBeDisabled();
   });
 
