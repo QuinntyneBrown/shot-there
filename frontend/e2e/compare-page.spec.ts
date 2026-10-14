@@ -2,10 +2,31 @@ import { JUNCTION, LESLIEVILLE, LIBERTY, OSSINGTON, comparisonOf } from './fakes
 import { givenComparison } from './fakes/fake-compare-api';
 import { expect, test } from './fakes/test';
 import { ComparePage } from './pages/compare.page';
+import { ShellPage } from './pages/shell.page';
 
 const THREE = '?studios=the-junction-loft,leslieville-daylight-studio,ossington-blackbox';
 
 test.describe('Comparison page', () => {
+  for (const theme of ['light', 'dark'] as const) {
+    for (const width of [320, 1280]) {
+      test(`has no accessibility violations in ${theme} mode at ${width}px`, async ({
+        page,
+      }) => {
+        // Given a comparison, window width and theme
+        await givenComparison(page, comparisonOf([JUNCTION, LESLIEVILLE, OSSINGTON]));
+        const compare = new ComparePage(page);
+        const shell = new ShellPage(page);
+        await shell.rememberTheme(theme);
+        await compare.useWidth(width);
+        // When the visitor opens the comparison
+        await compare.open(THREE);
+        // Then axe finds no WCAG A/AA violations
+        await expect(compare.heading).toBeVisible();
+        expect(await shell.accessibilityViolations()).toEqual([]);
+      });
+    }
+  }
+
   test('compares the studios in the URL, in that order, in aligned rows', async ({ page }) => {
     // Given three published studios in a comparison URL
     const requested = await givenComparison(page, comparisonOf([JUNCTION, LESLIEVILLE, OSSINGTON]));

@@ -4,6 +4,25 @@ import { expect, test } from './fakes/test';
 import { StudioPage } from './pages/studio.page';
 
 test.describe('Studio page: basics and pricing', () => {
+  for (const theme of ['light', 'dark'] as const) {
+    for (const width of [320, 1280]) {
+      test(`has no accessibility violations in ${theme} mode at ${width}px`, async ({
+        page,
+      }) => {
+        // Given a published studio, window width and theme
+        await givenStudio(page, THE_JUNCTION_LOFT);
+        const studio = new StudioPage(page);
+        await studio.useTheme(theme);
+        await studio.useWidth(width);
+        // When the visitor opens the studio
+        await studio.open('the-junction-loft');
+        // Then axe finds no WCAG A/AA violations
+        await expect(studio.heading).toBeVisible();
+        expect(await studio.accessibilityViolations()).toEqual([]);
+      });
+    }
+  }
+
   test('names the studio once, says where it is and links to its booking page', async ({
     page,
   }) => {

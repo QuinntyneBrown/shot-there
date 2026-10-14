@@ -77,21 +77,24 @@ test.describe('Home page', () => {
     await expect(home.latestReviews).toHaveCount(0);
   });
 
-  for (const width of [320, 1280]) {
-    test(`lays out without horizontal scrolling or accessibility violations at ${width}px`, async ({
-      page,
-    }) => {
-      // Given published studios and a window of this width
-      await givenStudios(page, PUBLISHED_STUDIOS);
-      await page.setViewportSize({ width, height: 800 });
-      const home = new HomePage(page);
-      // When the home page loads
-      await home.open();
-      await expect(home.latestCards).toHaveCount(3);
-      // Then nothing scrolls sideways and axe finds no WCAG A/AA violations
-      const shell = new ShellPage(page);
-      expect(await shell.hasHorizontalScroll()).toBe(false);
-      expect(await shell.accessibilityViolations()).toEqual([]);
-    });
+  for (const theme of ['light', 'dark'] as const) {
+    for (const width of [320, 1280]) {
+      test(`lays out without accessibility violations in ${theme} mode at ${width}px`, async ({
+        page,
+      }) => {
+        // Given published studios and a window of this width and theme
+        await givenStudios(page, PUBLISHED_STUDIOS);
+        await page.setViewportSize({ width, height: 800 });
+        const shell = new ShellPage(page);
+        await shell.rememberTheme(theme);
+        const home = new HomePage(page);
+        // When the home page loads
+        await home.open();
+        await expect(home.latestCards).toHaveCount(3);
+        // Then nothing scrolls sideways and axe finds no WCAG A/AA violations
+        expect(await shell.hasHorizontalScroll()).toBe(false);
+        expect(await shell.accessibilityViolations()).toEqual([]);
+      });
+    }
   }
 });

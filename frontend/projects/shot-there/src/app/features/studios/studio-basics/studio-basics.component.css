@@ -28,10 +28,3 @@
 .btn {
   white-space: normal;
 }
-.icon {
-  fill: none;
-  stroke: currentColor;
-  stroke-width: var(--icon-stroke);
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
