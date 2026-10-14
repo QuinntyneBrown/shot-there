@@ -1,3 +1,7 @@
+// Acceptance Test
+// Traces to: L2-023, L2-025
+// Description: Verify the filters dialog applies a selected studio sort on Show.
+
 import { givenStudios } from './fakes/fake-studios-api';
 import { PUBLISHED_STUDIOS } from './fakes/studio-summaries';
 import { expect, test } from './fakes/test';
