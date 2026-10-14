@@ -1,0 +1,12 @@
+@if (items().length) {
+  @switch (headingLevel()) {
+    @case (3) { <h3 [id]="titleId">{{ title() }}</h3> }
+    @case (4) { <h4 [id]="titleId">{{ title() }}</h4> }
+    @default { <h2 [id]="titleId">{{ title() }}</h2> }
+  }
+  <ul>
+    @for (item of items(); track item.targetId) {
+      <li><a [href]="'#' + item.targetId" (click)="goTo($event, item)">{{ item.message }}</a></li>
+    }
+  </ul>
+}

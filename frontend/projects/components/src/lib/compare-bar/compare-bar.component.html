@@ -1,0 +1,12 @@
+<div class="compare-bar__inner">
+  <div class="compare-bar__status">
+    <span class="compare-bar__count" role="status" aria-live="polite">{{ countText() }}</span>
+    @if (hint()) {
+      <span class="compare-bar__hint" [id]="hintId()">{{ hint() }}</span>
+    }
+    @if (names()) {
+      <span class="compare-bar__names">{{ names() }}</span>
+    }
+  </div>
+  <div class="compare-bar__actions"><ng-content select="[slot=actions]" /></div>
+</div>

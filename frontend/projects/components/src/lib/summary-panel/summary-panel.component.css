@@ -1,0 +1,7 @@
+/* DS review pages; the host is the .summary-panel aside. */
+:host { display: flex; flex-direction: column; gap: var(--space-5); padding: var(--space-6); border: var(--border-width-hairline) solid var(--color-border-default); border-radius: var(--radius-lg); }
+@media (min-width: 62rem) { :host { position: sticky; top: var(--space-8); align-self: start; margin-top: var(--space-16); } }
+@media (max-width: 61.99rem) { :host { order: -1; margin-top: var(--space-8); } }
+.summary-panel__row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-4); margin: 0; }
+dt { font: var(--text-label); color: var(--color-fg-subtle); }
+dd { margin: var(--space-0-5) 0 0; font: var(--text-h3); font-variant-numeric: tabular-nums; }

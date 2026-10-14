@@ -1,0 +1,4 @@
+/* DS components/inline-message.html; the host is the .save-status line. */
+:host { display: inline-flex; align-items: center; gap: var(--space-2); font: var(--text-body-sm); color: var(--color-fg-muted); min-height: var(--target-comfortable); }
+:host(.save-status--saved) { color: var(--color-success-fg); }
+:host(.save-status--error) { color: var(--color-danger-fg); }
