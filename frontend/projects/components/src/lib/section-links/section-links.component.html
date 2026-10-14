@@ -1,0 +1,17 @@
+<nav [attr.aria-label]="navLabel()">
+  <ul class="section-list">
+    @for (item of items(); track item.link) {
+      <li>
+        <a class="section-link" [routerLink]="item.link" routerLinkActive ariaCurrentWhenActive="page" [routerLinkActiveOptions]="{ exact: !!item.exact }" [attr.data-highlight]="item.attention ? '' : null">
+          <span class="section-link__body">
+            <span class="section-link__title">{{ item.label }}</span>
+            @if (item.meta) {
+              <span class="section-link__meta">{{ item.meta }}</span>
+            }
+          </span>
+          <st-icon name="chevron-right" />
+        </a>
+      </li>
+    }
+  </ul>
+</nav>

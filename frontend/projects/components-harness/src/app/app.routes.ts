@@ -18,6 +18,10 @@ import { VideoPosterFailedComponent } from './video-poster/video-poster-failed.c
 import { VideoPosterDefaultComponent } from './video-poster/video-poster-default.component';
 import { ResponsiveImageFailedComponent } from './responsive-image/responsive-image-failed.component';
 import { ResponsiveImageDefaultComponent } from './responsive-image/responsive-image-default.component';
+import { CheckboxStatesComponent } from './checkbox/checkbox-states.component';
+import { SelectStatesComponent } from './select/select-states.component';
+import { TextareaStatesComponent } from './textarea/textarea-states.component';
+import { TextFieldStatesComponent } from './text-field/text-field-states.component';
 import { ResultCountDefaultComponent } from './result-count/result-count-default.component';
 import { StatTileLoadingComponent } from './stat-tile/stat-tile-loading.component';
 import { StatTileDashboardComponent } from './stat-tile/stat-tile-dashboard.component';
@@ -109,4 +113,8 @@ export const routes: Routes = [
   { path: 'stat-tile/dashboard', component: StatTileDashboardComponent },
   { path: 'stat-tile/loading', component: StatTileLoadingComponent },
   { path: 'result-count/default', component: ResultCountDefaultComponent },
+  { path: 'text-field/states', component: TextFieldStatesComponent },
+  { path: 'textarea/states', component: TextareaStatesComponent },
+  { path: 'select/states', component: SelectStatesComponent },
+  { path: 'checkbox/states', component: CheckboxStatesComponent },
 ];

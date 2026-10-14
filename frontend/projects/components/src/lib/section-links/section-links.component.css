@@ -1,0 +1,11 @@
+/* DS components/list.html. */
+:host { display: block; }
+.section-list { list-style: none; padding: 0; margin: 0; border-top: var(--border-width-hairline) solid var(--color-border-default); }
+.section-link { display: flex; align-items: center; gap: var(--space-4); min-height: 4.5rem; padding: var(--space-3) var(--space-1); border-bottom: var(--border-width-hairline) solid var(--color-border-default); color: inherit; text-decoration: none; }
+.section-link:hover { background: var(--color-bg-surface-sunken); color: inherit; }
+.section-link__body { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.section-link__title { font: var(--text-body-lg); font-weight: var(--font-weight-medium); }
+.section-link__meta { font: var(--text-body-sm); color: var(--color-fg-muted); }
+.section-link[data-highlight] .section-link__meta { color: var(--color-danger-fg); }
+.section-link[aria-current="page"] { box-shadow: inset var(--border-width-thick) 0 0 var(--color-accent); }
+.section-link[aria-current="page"] .section-link__title { color: var(--color-fg-accent); }

@@ -64,3 +64,8 @@ export * from './lib/select/select.component';
 export * from './lib/checkbox/checkbox.component';
 export * from './lib/checkbox-group/checkbox-group.component';
 export * from './lib/radio-group/radio-group.component';
+export * from './lib/site-header/site-header.component';
+export * from './lib/site-footer/site-footer.component';
+export * from './lib/breadcrumb/breadcrumb.component';
+export * from './lib/section-links/section-links.component';
+export * from './lib/page-header/page-header.component';

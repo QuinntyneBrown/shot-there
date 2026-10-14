@@ -1,0 +1,9 @@
+<div>
+  @if (loading()) {
+    <h1><span class="visually-hidden">{{ title() }}</span><st-skeleton /></h1>
+  } @else {
+    <h1>{{ title() }}</h1>
+  }
+  <div class="subtitle"><ng-content select="[slot=subtitle]" /></div>
+</div>
+<div class="page-header__actions"><ng-content select="[slot=actions]" /></div>
