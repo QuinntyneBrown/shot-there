@@ -393,6 +393,7 @@ export interface LightboxData { title: string; shots: readonly Shot[]; startInde
 export interface DialogOptions<D = unknown> {
   kind?: DialogKind;            // default 'dialog'
   data?: D;
+  ariaLabelledBy?: string;      // ID of the content's title
   returnFocusTo?: HTMLElement | string;  // element or CSS selector; default: the invoking element
 }
 export interface ToastOptions {
@@ -1164,7 +1165,7 @@ open<R = unknown, D = unknown, C = unknown>(
 
 The service guarantees, for every kind:
 
-- `role="dialog"`, `aria-modal="true"`, labelled by the content's title;
+- `role="dialog"`, `aria-modal="true"`, labelled by `ariaLabelledBy`;
 - the DS backdrop (`.backdrop`) and panel classes for the `kind`; `sheet`
   slides up on phones and in from the side from MD; `viewer` is full screen;
 - page scroll blocked while open; the rest of the page inert;
