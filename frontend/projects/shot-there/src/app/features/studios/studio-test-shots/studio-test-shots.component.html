@@ -1,16 +1,4 @@
 <section class="review-section" aria-labelledby="test-shots">
   <h2 id="test-shots" i18n>Standard test shots</h2>
-  <p class="shot-grid__setup" i18n>Same setup in every studio: one Godox AD600 in a 120 cm octabox at 45°, 1.5 m from the subject · f/8 · 1/160 s · ISO 100 · 85 mm.</p>
-  <ul class="shot-grid">
-    @for (shot of testShots(); track shot.id; let i = $index) {
-      <li>
-        <figure>
-          <span class="shot">
-            <img stFallbackImage [src]="src(shot)" [srcset]="srcset(shot)" sizes="(min-width: 62rem) 25vw, (min-width: 48rem) 33vw, 50vw" [alt]="shot.alt" width="800" height="1000" loading="lazy" />
-          </span>
-          <figcaption><strong>{{ i + 1 }} · {{ shot.caption }}</strong></figcaption>
-        </figure>
-      </li>
-    }
-  </ul>
+  <st-shot-grid [shots]="shots()" [setup]="setup" (shotActivated)="open($event)" />
 </section>

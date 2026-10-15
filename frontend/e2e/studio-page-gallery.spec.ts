@@ -39,6 +39,20 @@ test.describe('Studio page: test shots and gallery', () => {
     expect(second.indexOf('Standard test shots')).toBe(first.indexOf('Standard test shots'));
   });
 
+  test('opens a standard test shot in the lightbox and returns focus on Escape', async ({ page }) => {
+    // Given a studio with standard test shots
+    await givenStudio(page, THE_JUNCTION_LOFT);
+    const studio = new StudioPage(page);
+    await studio.open('the-junction-loft');
+    // When the visitor activates the second shot
+    await studio.testShotButtons.nth(1).click();
+    // Then the lightbox shows that shot and returns focus when closed
+    await expect(studio.lightboxImage).toHaveAttribute('alt', THE_JUNCTION_LOFT.testShots[1].alt);
+    await expect(studio.lightboxCount).toHaveText('Photo 2 of 3');
+    await studio.pressKey('Escape');
+    await expect(studio.testShotButtons.nth(1)).toBeFocused();
+  });
+
   test('lays the gallery out in 2, 3 and 4 columns as the window widens', async ({ page }) => {
     // Given a studio with eight gallery photos
     await givenStudio(page, THE_JUNCTION_LOFT);
