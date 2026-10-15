@@ -38,10 +38,3 @@ export const LIGHT_RATING_LABELS: Record<LightRating, string> = {
   strong: $localize`Strong`,
 };
 
-/** Filled pips out of three for each rating. */
-export const LIGHT_RATING_PIPS: Record<LightRating, number> = {
-  none: 0,
-  low: 1,
-  medium: 2,
-  strong: 3,
-};
