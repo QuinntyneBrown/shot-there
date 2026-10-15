@@ -1,4 +1,3 @@
-import { Dialog } from '@angular/cdk/dialog';
 import { Component, computed, effect, inject, linkedSignal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -6,6 +5,7 @@ import { StudiosService, StudioSummary } from '@shot-there/api';
 import {
   AlertComponent,
   ButtonComponent,
+  DialogService,
   EmptyStateComponent,
   FilterTriggerComponent,
   IconComponent,
@@ -50,7 +50,7 @@ export class StudioListPageComponent {
   private readonly route = inject(ActivatedRoute);
   private readonly router = inject(Router);
   private readonly announcer = inject(AnnouncerService);
-  private readonly dialog = inject(Dialog);
+  private readonly dialog = inject(DialogService);
   private readonly retries = new BehaviorSubject<void>(undefined);
   private readonly query$ = this.route.queryParamMap.pipe(map(parseStudioListQuery));
   private announceNextCount = false;
@@ -117,13 +117,7 @@ export class StudioListPageComponent {
       StudioFiltersDialogComponent
     >(
       StudioFiltersDialogComponent,
-      {
-        data: { query: this.query() },
-        ariaDescribedBy: 'studio-filters-description',
-        width: '100%',
-        height: '100%',
-        maxWidth: '100%',
-      },
+      { kind: 'sheet', data: { query: this.query() } },
     );
     ref.componentInstance?.applied.subscribe((query) => ref.close(query));
     ref.closed.subscribe((query) => {
