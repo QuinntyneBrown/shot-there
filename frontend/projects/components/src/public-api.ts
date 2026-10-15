@@ -95,3 +95,4 @@ export * from './lib/sheet/sheet.component';
 export * from './lib/lightbox/lightbox.component';
 export * from './lib/search-field/search-field.component';
 export * from './lib/dialog/dialog.service';
+export { DIALOG_DATA, DialogRef } from '@angular/cdk/dialog';

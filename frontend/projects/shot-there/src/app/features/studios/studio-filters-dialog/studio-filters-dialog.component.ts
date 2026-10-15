@@ -1,10 +1,10 @@
-import { DIALOG_DATA } from '@angular/cdk/dialog';
 import { Component, computed, inject, output, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { toObservable, toSignal } from '@angular/core/rxjs-interop';
 import { StudiosService } from '@shot-there/api';
 import {
   ButtonComponent,
+  DIALOG_DATA,
   SelectComponent,
   SheetComponent,
   type SelectOption,
