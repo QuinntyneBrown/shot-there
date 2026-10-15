@@ -68,6 +68,13 @@ export class StudioListPage {
     await this.page.setViewportSize({ width: 320, height: 700 });
   }
 
+  async cardColumnCount(): Promise<number> {
+    const tops = await this.cards.evaluateAll((items) =>
+      items.map((item) => Math.round(item.getBoundingClientRect().top)),
+    );
+    return tops.filter((top) => top === tops[0]).length;
+  }
+
   async open(query = ''): Promise<void> {
     await this.page.goto(`/studios${query}`);
   }
