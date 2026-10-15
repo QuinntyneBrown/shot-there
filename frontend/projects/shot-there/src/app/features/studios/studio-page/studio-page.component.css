@@ -11,3 +11,15 @@
 .review-actions {
   margin-top: var(--space-3);
 }
+/* The review sections are rendered by child components, so their rules reach through encapsulation. */
+:host ::ng-deep .review-section {
+  margin-top: var(--space-16);
+  scroll-margin-top: var(--space-8);
+}
+:host ::ng-deep .review-section > h2,
+:host ::ng-deep .review-section > .section-head {
+  margin-bottom: var(--space-6);
+}
+:host ::ng-deep .review-section h3 {
+  margin-block: var(--space-8) var(--space-3);
+}
