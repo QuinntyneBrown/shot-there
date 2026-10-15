@@ -85,7 +85,7 @@
             </button>
           </st-empty-state>
         } @else {
-          <ul class="location-grid" aria-label="Studios" i18n-aria-label>
+          <ul st-location-grid aria-label="Studios" i18n-aria-label>
             @for (studio of studios(); track studio.slug; let i = $index) {
               <li><st-studio-card [studio]="studio" [eager]="i < 3" /></li>
             }

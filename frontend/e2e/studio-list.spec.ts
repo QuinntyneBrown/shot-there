@@ -55,6 +55,18 @@ test.describe('Studio list', () => {
     await expect(page).toHaveTitle('Studios · ShotThere');
   });
 
+  test('shows three studio cards per row at the large breakpoint', async ({ page }) => {
+    // Given published studios and a 1000px viewport
+    await givenStudios(page, PUBLISHED_STUDIOS);
+    await page.setViewportSize({ width: 1000, height: 800 });
+    const list = new StudioListPage(page);
+    // When the visitor opens the list
+    await list.open();
+    // Then the shared location grid uses three columns at LG
+    await expect(list.cards).toHaveCount(PUBLISHED_STUDIOS.length);
+    expect(await list.cardColumnCount()).toBe(3);
+  });
+
   test('shows name, neighbourhood, review date, all-in cost and score on each card', async ({
     page,
   }) => {
