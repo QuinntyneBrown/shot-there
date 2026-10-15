@@ -1,19 +1,11 @@
 <section class="review-section" aria-labelledby="gear">
   <h2 id="gear" i18n>Gear</h2>
   <h3 i18n>Included in the hourly rate</h3>
-  <dl class="kv">
-    @for (group of included(); track group.category) {
-      <dt>{{ group.category }}</dt><dd>{{ group.items }}</dd>
-    }
-  </dl>
+  <st-description-list [items]="included()" />
   <h3 i18n>Costs extra</h3>
   @if (gear().extras.length === 0) {
     <p i18n>Nothing costs extra at this studio.</p>
   } @else {
-    <dl class="kv">
-      @for (extra of gear().extras; track extra.name) {
-        <dt>{{ itemLabel(extra) }}</dt><dd class="num">{{ extra.extraCost | currency: 'CAD' : 'symbol-narrow' : '1.2-2' }}</dd>
-      }
-    </dl>
+    <st-description-list [items]="extras()" />
   }
 </section>
