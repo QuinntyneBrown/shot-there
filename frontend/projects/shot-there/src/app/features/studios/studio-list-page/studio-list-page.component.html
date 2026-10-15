@@ -16,13 +16,7 @@
     <h2 class="visually-hidden" id="results-title" i18n>Results</h2>
     @if (!noStudiosYet()) {
       <div class="results-head">
-        <p class="result-count" role="status" aria-live="polite">
-          @if (state().status === 'loading') {
-            <ng-container i18n>Loading studios…</ng-container>
-          } @else if (state().status === 'loaded') {
-            <ng-container i18n>{studios().length, plural, =1 {1 studio} other {{{studios().length}} studios}}</ng-container>
-          }
-        </p>
+        <st-result-count [text]="resultCountText()" />
         <div class="results-actions">
           <button st-filter-trigger class="until-lg" type="button" [count]="activeFilterCount()" (click)="openFiltersDialog()" i18n>Filters</button>
           <st-studio-sort-control [sort]="query().sort" (sortChange)="changeSort($event)" />

@@ -11,6 +11,7 @@ import {
   IconComponent,
   LocationCardSkeletonComponent,
   LocationGridComponent,
+  ResultCountComponent,
 } from '@shot-there/components';
 import { BehaviorSubject, catchError, combineLatest, map, of, startWith, switchMap } from 'rxjs';
 
@@ -31,6 +32,7 @@ import { withoutFilters } from './without-filters';
 @Component({
   selector: 'st-studio-list-page',
   imports: [
+    ResultCountComponent,
     StudioCardComponent,
     StudioSortControlComponent,
     StudioFiltersComponent,
@@ -56,6 +58,17 @@ export class StudioListPageComponent {
   private announceNextCount = false;
 
   protected readonly query = toSignal(this.query$, { requireSync: true });
+  protected readonly resultCountText = computed(() => {
+    const state = this.state();
+    if (state.status === 'loading') {
+      return $localize`Loading studios…`;
+    }
+    if (state.status !== 'loaded') {
+      return '';
+    }
+    const count = state.studios.length;
+    return count === 1 ? $localize`1 studio` : $localize`${count}:count: studios`;
+  });
   protected readonly activeFilterCount = computed(() => countActiveFilters(this.query()));
   /** The sidebar's unapplied filters; reset whenever the URL changes. */
   protected readonly sidebarDraft = linkedSignal(() => this.query());

@@ -10,4 +10,5 @@ import { ButtonComponent, IconComponent } from '@shot-there/components';
 })
 export class StudioBasicsComponent {
   readonly basics = input.required<StudioBasicsDto>();
+  protected readonly externalHint = $localize`:@@st.link.external:(opens in a new tab)`;
 }
