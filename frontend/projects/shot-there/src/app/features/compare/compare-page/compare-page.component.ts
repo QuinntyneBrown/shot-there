@@ -7,6 +7,7 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { CompareService } from '@shot-there/api';
 import {
   AlertComponent,
+  BadgeComponent,
   ButtonComponent,
   EmptyStateComponent,
   FallbackImageDirective,
@@ -28,6 +29,7 @@ import { toComparisonViewModel } from './comparison-view-model';
   imports: [
     RouterLink,
     AlertComponent,
+    BadgeComponent,
     ButtonComponent,
     EmptyStateComponent,
     FallbackImageDirective,
