@@ -21,8 +21,8 @@
 }
 @if (view(); as v) {
   <st-page-header [title]="heading(v.columns.length)">
-    <span slot="subtitle" i18n>{{ v.namesList }}, side by side. All-in is a 2-hour shoot with every mandatory fee.</span>
-    <ng-container slot="actions">
+    <span slot="subtitle" i18n-slot i18n>{{ v.namesList }}, side by side. All-in is a 2-hour shoot with every mandatory fee.</span>
+    <ng-container slot="actions" i18n-slot>
       <button st-button type="button" (click)="copyLink()">
         <st-icon name="copy" />
         <ng-container i18n>Copy link</ng-container>
@@ -77,10 +77,10 @@
                       {{ cell.text }}
                     }
                     @if (cell.isLowest) {
-                      &ngsp;<st-badge tone="success" i18n>Lowest</st-badge>
+                      &ngsp;<st-badge tone="success" i18n-tone i18n>Lowest</st-badge>
                     }
                     @if (cell.isStale) {
-                      &ngsp;<st-badge tone="warning" i18n>Prices may be out of date</st-badge>
+                      &ngsp;<st-badge tone="warning" i18n-tone i18n>Prices may be out of date</st-badge>
                     }
                   </div>
                 </td>
