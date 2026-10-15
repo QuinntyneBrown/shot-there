@@ -12,19 +12,9 @@
         <h2 id="latest-title" i18n>Latest reviews</h2>
         <a st-link [routerLink]="studiosPath" i18n>All studios</a>
       </div>
-      <ul class="location-grid">
-        @for (studio of s.latestStudios; track studio.slug) {
-          <li class="location-card">
-            <div class="location-card__media">
-              <img [src]="studio.thumbnail.url" alt="" [width]="studio.thumbnail.width" [height]="studio.thumbnail.height" loading="lazy" />
-            </div>
-            <h3 class="location-card__name"><a st-link [routerLink]="[studiosPath, studio.slug]">{{ studio.name }}</a></h3>
-            <p class="location-card__meta" i18n>{{ studio.neighbourhood }} · Reviewed {{ studio.reviewedAt | date: 'd MMM y' }}</p>
-            <dl class="location-card__facts">
-              <div><dt i18n>All-in 2 h</dt><dd>{{ studio.allInCost2h | currency: 'CAD' : 'symbol-narrow' : '1.2-2' }}</dd></div>
-              <div><dt i18n>Score</dt><dd>{{ studio.overallScore | number: '1.1-1' }}<span class="visually-hidden" i18n> out of 5</span></dd></div>
-            </dl>
-          </li>
+      <ul st-location-grid>
+        @for (card of latestCards(); track card.studio.slug) {
+          <li><st-location-card [name]="card.studio.name" [link]="card.view.link" [image]="card.view.image" [meta]="card.view.meta" [facts]="card.view.facts" /></li>
         }
       </ul>
     } @else {
