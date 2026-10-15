@@ -22,6 +22,7 @@ export class StudioPage {
   readonly disclosureEditorialPolicyLink: Locator;
   readonly testShots: Locator;
   readonly testShotImages: Locator;
+  readonly testShotButtons: Locator;
   readonly gallery: Locator;
   readonly thumbnails: Locator;
   readonly lightbox: Locator;
@@ -64,6 +65,7 @@ export class StudioPage {
     });
     this.testShots = page.getByRole('region', { name: 'Standard test shots' });
     this.testShotImages = this.testShots.getByRole('img');
+    this.testShotButtons = this.testShots.getByRole('button');
     this.gallery = page.getByRole('region', { name: 'From a real shoot' });
     this.thumbnails = this.gallery.getByRole('listitem');
     this.lightbox = page.getByRole('dialog', { name: /^Photo viewer/ });
