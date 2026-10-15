@@ -3,13 +3,6 @@
   max-width: 42rem;
   margin-inline: auto;
 }
-.page-header {
-  margin-block: var(--space-6);
-}
-.subtitle {
-  margin-top: var(--space-1);
-  color: var(--color-fg-muted);
-}
 .prose {
   margin-bottom: var(--space-16);
   font: var(--text-body-lg);
