@@ -158,7 +158,7 @@ The interface has eight channels. Each has its own requirements in §7.
 | 4 | Styles | library → app | Global stylesheet, tokens, utilities |
 | 5 | Strings | both | Library strings (§12); product copy through inputs and slots |
 | 6 | Forms | both | `ControlValueAccessor` on every form control |
-| 7 | Overlays and notifications | app → library | `DialogService`, `ToastService`, CDK `DialogRef` |
+| 7 | Overlays and notifications | app → library | `DialogService`, `ToastService`, `DialogRef`, `DIALOG_DATA` |
 | 8 | Tests | library → app | Component objects composed by page objects |
 
 ---
@@ -285,7 +285,7 @@ The full split is in [§14](#14-responsibility-matrix). These are the boundary r
 |---|---|---|
 | ICD-OVL-1 | Overlays are built on Angular CDK (`@angular/cdk/dialog`, `overlay`, `a11y`) (D-4). Neither project hand-rolls a modal. | R |
 | ICD-OVL-2 | The application opens every dialog, sheet and viewer through the library's `DialogService` ([§10.1](#101-dialogservice)). It never calls CDK `Dialog.open` directly, so backdrop, panel classes, scroll blocking, phone layout and focus return are the same everywhere. | L (`no-restricted-imports` of `Dialog` in the app), R |
-| ICD-OVL-3 | A dialog's content is an application component (for example `DeleteContentDialogComponent`) whose template root is `st-dialog` or `st-sheet`. It receives data with `inject(DIALOG_DATA)` and closes with `inject(DialogRef).close(result)` from `@angular/cdk/dialog`. | B |
+| ICD-OVL-3 | A dialog's content is an application component (for example `DeleteContentDialogComponent`) whose template root is `st-dialog` or `st-sheet`. It receives data with `inject(DIALOG_DATA)` and closes with `inject(DialogRef).close(result)`, both imported from `@shot-there/components` (which re-exports CDK's). The app never imports `@angular/cdk/dialog`. | B |
 | ICD-OVL-4 | No dialog opens another dialog (DS pattern: no stacking). | R |
 | ICD-OVL-5 | Toasts are raised only through `ToastService` ([§10.2](#102-toastservice)). The application renders `st-toast-region` exactly once, in the shell. | T |
 | ICD-OVL-6 | Toast rules (DS notifications pattern): at most 3 visible, newest last; `danger` never auto-dismisses and uses `role="alert"`; other tones dismiss after 8 s, pausing while hovered or focused, and are announced politely. | T |
