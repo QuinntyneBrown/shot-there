@@ -23,7 +23,7 @@ import { StudioVerdictComponent } from '../studio-verdict/studio-verdict.compone
 import { StudioPageState } from './studio-page-state';
 
 @Component({
-  selector: 'st-studio-page',
+  selector: 'app-studio-page',
   imports: [
     NotFoundPageComponent,
     StudioBasicsComponent,

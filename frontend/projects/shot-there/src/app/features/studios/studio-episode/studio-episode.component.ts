@@ -4,7 +4,7 @@ import { StudioEpisodeDto } from '@shot-there/api';
 import { EpisodePlayerComponent } from '../../video/episode-player.component';
 
 @Component({
-  selector: 'st-studio-episode',
+  selector: 'app-studio-episode',
   imports: [EpisodePlayerComponent],
   templateUrl: './studio-episode.component.html',
   styleUrl: './studio-episode.component.css',

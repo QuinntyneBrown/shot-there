@@ -11,7 +11,7 @@ import { SignupState } from './signup-state';
 
 /** The email signup form (L2-039, L2-041), placed in the site footer and on the home page. */
 @Component({
-  selector: 'st-email-signup',
+  selector: 'app-email-signup',
   imports: [FormsModule, TextFieldComponent, ButtonComponent, AlertComponent],
   templateUrl: './email-signup.component.html',
   styleUrl: './email-signup.component.css',

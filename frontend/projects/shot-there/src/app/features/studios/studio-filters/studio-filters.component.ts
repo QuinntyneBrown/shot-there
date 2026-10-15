@@ -20,7 +20,7 @@ import { StudioListQuery } from '../studio-list-page/studio-list-query';
 
 /** The studio filter controls. Controlled: it shows `query` and emits every change as a new query. */
 @Component({
-  selector: 'st-studio-filters',
+  selector: 'app-studio-filters',
   imports: [
     CheckboxComponent,
     CheckboxGroupComponent,

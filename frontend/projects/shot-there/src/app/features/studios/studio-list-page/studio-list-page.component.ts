@@ -30,7 +30,7 @@ import { toStudioListQueryParams } from './to-studio-list-query-params';
 import { withoutFilters } from './without-filters';
 
 @Component({
-  selector: 'st-studio-list-page',
+  selector: 'app-studio-list-page',
   imports: [
     ResultCountComponent,
     StudioCardComponent,

@@ -7,7 +7,7 @@ import { StudioSort } from '../studio-list-page/studio-sort';
 import { STUDIO_SORT_OPTIONS } from './studio-sort-options';
 
 @Component({
-  selector: 'st-studio-sort-control',
+  selector: 'app-studio-sort-control',
   imports: [FormsModule, SelectComponent],
   templateUrl: './studio-sort-control.component.html',
   styleUrl: './studio-sort-control.component.css',

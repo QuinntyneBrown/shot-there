@@ -1,22 +1,22 @@
 @if (state().status === 'not-found') {
-  <st-not-found-page />
+  <app-not-found-page />
 }
 @if (studio(); as s) {
   <article class="review">
-    <st-studio-basics [basics]="s.basics" />
-    <div class="review-actions"><st-compare-toggle [slug]="s.slug" [name]="s.basics.name" /></div>
+    <app-studio-basics [basics]="s.basics" />
+    <div class="review-actions"><app-compare-toggle [slug]="s.slug" [name]="s.basics.name" /></div>
     <div class="review-main">
-      <st-studio-pricing [pricing]="s.pricing" />
-      <st-studio-specifications [specifications]="s.specifications" />
-      <st-studio-gear [gear]="s.gear" />
-      <st-studio-logistics [logistics]="s.logistics" />
-      <st-studio-test-shots [testShots]="s.testShots" />
-      <st-studio-gallery [gallery]="s.gallery" [studioName]="s.basics.name" />
-      <st-studio-verdict [verdict]="s.verdict">
-        <st-studio-disclosure [disclosure]="s.disclosure" />
-      </st-studio-verdict>
+      <app-studio-pricing [pricing]="s.pricing" />
+      <app-studio-specifications [specifications]="s.specifications" />
+      <app-studio-gear [gear]="s.gear" />
+      <app-studio-logistics [logistics]="s.logistics" />
+      <app-studio-test-shots [testShots]="s.testShots" />
+      <app-studio-gallery [gallery]="s.gallery" [studioName]="s.basics.name" />
+      <app-studio-verdict [verdict]="s.verdict">
+        <app-studio-disclosure [disclosure]="s.disclosure" />
+      </app-studio-verdict>
       @if (s.episode; as episode) {
-        <st-studio-episode [episode]="episode" />
+        <app-studio-episode [episode]="episode" />
       }
     </div>
   </article>

@@ -5,7 +5,7 @@ import { AlertComponent, PriceBlockComponent } from '@shot-there/components';
 import { toStudioPricingView } from './studio-pricing.view-model';
 
 @Component({
-  selector: 'st-studio-pricing',
+  selector: 'app-studio-pricing',
   imports: [PriceBlockComponent, AlertComponent],
   templateUrl: './studio-pricing.component.html',
 })

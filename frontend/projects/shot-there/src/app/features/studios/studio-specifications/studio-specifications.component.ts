@@ -11,7 +11,7 @@ import {
 } from './studio-specifications.view-model';
 
 @Component({
-  selector: 'st-studio-specifications',
+  selector: 'app-studio-specifications',
   imports: [DescriptionListComponent, LightRatingComponent],
   templateUrl: './studio-specifications.component.html',
   styleUrl: './studio-specifications.component.css',

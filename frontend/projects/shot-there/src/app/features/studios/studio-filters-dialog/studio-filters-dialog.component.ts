@@ -22,7 +22,7 @@ import { StudioFiltersDialogData } from './studio-filters-dialog-data';
 
 /** Full-height filters below LG. Closes with the query to apply, or nothing when dismissed. */
 @Component({
-  selector: 'st-studio-filters-dialog',
+  selector: 'app-studio-filters-dialog',
   imports: [ButtonComponent, FormsModule, SelectComponent, SheetComponent, StudioFiltersComponent],
   templateUrl: './studio-filters-dialog.component.html',
   styleUrl: './studio-filters-dialog.component.css',

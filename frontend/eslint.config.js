@@ -24,6 +24,8 @@ module.exports = tseslint.config(
   {
     files: ['projects/shot-there/src/**/*.ts'],
     rules: {
+      '@angular-eslint/directive-selector': ['error', { type: 'attribute', prefix: 'app', style: 'camelCase' }],
+      '@angular-eslint/component-selector': ['error', { type: ['element', 'attribute'], prefix: 'app', style: 'kebab-case' }],
       'no-restricted-imports': [
         'error',
         {

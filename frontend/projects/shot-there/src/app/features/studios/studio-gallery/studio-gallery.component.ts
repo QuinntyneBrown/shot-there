@@ -5,7 +5,7 @@ import { DialogService, LightboxComponent, LightboxData, ShotGridComponent } fro
 import { toLightboxShots } from './to-lightbox-shots';
 
 @Component({
-  selector: 'st-studio-gallery',
+  selector: 'app-studio-gallery',
   imports: [ShotGridComponent],
   templateUrl: './studio-gallery.component.html',
 })
