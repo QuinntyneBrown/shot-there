@@ -19,13 +19,6 @@
 .notice {
   margin-bottom: var(--space-6);
 }
-.badge--success {
-  background: var(--color-success-bg);
-  color: var(--color-success-fg);
-}
-.badge--wrap {
-  white-space: normal;
-}
 
 /* The table scrolls inside its own region; the page never scrolls sideways (L2-031.4). */
 .table-wrap {
