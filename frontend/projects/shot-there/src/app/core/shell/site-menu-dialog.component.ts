@@ -5,7 +5,7 @@ import { ABOUT_NAV_LINKS } from './about-nav-links';
 import { PRIMARY_NAV_LINKS } from './primary-nav-links';
 
 @Component({
-  selector: 'st-site-menu-dialog',
+  selector: 'app-site-menu-dialog',
   imports: [SheetComponent, SectionLinksComponent],
   templateUrl: './site-menu-dialog.component.html',
 })

@@ -9,7 +9,7 @@ const LOAD_IN_LABELS: Record<LoadIn, string> = {
 };
 
 @Component({
-  selector: 'st-studio-logistics',
+  selector: 'app-studio-logistics',
   imports: [DescriptionListComponent],
   templateUrl: './studio-logistics.component.html',
   styleUrl: './studio-logistics.component.css',

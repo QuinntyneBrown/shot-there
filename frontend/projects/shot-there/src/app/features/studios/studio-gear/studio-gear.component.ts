@@ -6,7 +6,7 @@ import { DescriptionListComponent } from '@shot-there/components';
 import { gearItemLabel, groupIncludedGear } from './studio-gear.view-model';
 
 @Component({
-  selector: 'st-studio-gear',
+  selector: 'app-studio-gear',
   imports: [DescriptionListComponent],
   templateUrl: './studio-gear.component.html',
   styleUrl: './studio-gear.component.css',

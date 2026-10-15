@@ -5,7 +5,7 @@ import { ButtonComponent, ErrorPageComponent } from '@shot-there/components';
 import { APP_PATHS } from '../../core/routing/app-paths';
 
 @Component({
-  selector: 'st-not-found-page',
+  selector: 'app-not-found-page',
   imports: [ButtonComponent, ErrorPageComponent, RouterLink],
   templateUrl: './not-found-page.component.html',
 })

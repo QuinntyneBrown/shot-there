@@ -5,7 +5,7 @@ import { LinkComponent, ResponsiveImage, VideoPosterComponent } from '@shot-ther
 import { embedUrl, iframeTitle, watchUrl } from './episode-urls';
 
 @Component({
-  selector: 'st-episode-player',
+  selector: 'app-episode-player',
   imports: [LinkComponent, VideoPosterComponent],
   templateUrl: './episode-player.component.html',
   styleUrl: './episode-player.component.css',

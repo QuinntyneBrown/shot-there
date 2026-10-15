@@ -15,7 +15,7 @@ import { HomePageState } from './home-page-state';
 const LATEST_REVIEW_COUNT = 3;
 
 @Component({
-  selector: 'st-home-page',
+  selector: 'app-home-page',
   imports: [
     RouterLink,
     EmailSignupComponent,

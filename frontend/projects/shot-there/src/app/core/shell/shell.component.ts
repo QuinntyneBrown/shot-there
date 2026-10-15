@@ -21,7 +21,7 @@ import { PRIMARY_NAV_LINKS } from './primary-nav-links';
 import { SiteMenuDialogComponent } from './site-menu-dialog.component';
 
 @Component({
-  selector: 'st-shell',
+  selector: 'app-shell',
   imports: [
     RouterOutlet,
     ButtonComponent,

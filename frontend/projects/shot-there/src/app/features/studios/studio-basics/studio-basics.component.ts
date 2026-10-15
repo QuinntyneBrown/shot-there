@@ -3,7 +3,7 @@ import { StudioBasicsDto } from '@shot-there/api';
 import { ButtonComponent, IconComponent } from '@shot-there/components';
 
 @Component({
-  selector: 'st-studio-basics',
+  selector: 'app-studio-basics',
   imports: [ButtonComponent, IconComponent],
   templateUrl: './studio-basics.component.html',
   styleUrl: './studio-basics.component.css',

@@ -7,7 +7,7 @@
   <aside class="browse__aside" aria-labelledby="filters-title">
     <form class="filters-form" (submit)="$event.preventDefault(); applyFilters(sidebarDraft())">
       <h2 class="filters-title" id="filters-title" i18n>Filter studios</h2>
-      <st-studio-filters [idPrefix]="'aside'" [query]="sidebarDraft()" (queryChange)="sidebarDraft.set($event)" />
+      <app-studio-filters [idPrefix]="'aside'" [query]="sidebarDraft()" (queryChange)="sidebarDraft.set($event)" />
       <div><button st-button type="submit" i18n>Apply filters</button></div>
     </form>
   </aside>
@@ -19,7 +19,7 @@
         <st-result-count [text]="resultCountText()" />
         <div class="results-actions">
           <button st-filter-trigger class="until-lg" type="button" [count]="activeFilterCount()" (click)="openFiltersDialog()" i18n>Filters</button>
-          <st-studio-sort-control [sort]="query().sort" (sortChange)="changeSort($event)" />
+          <app-studio-sort-control [sort]="query().sort" (sortChange)="changeSort($event)" />
         </div>
       </div>
     }
@@ -81,7 +81,7 @@
         } @else {
           <ul st-location-grid aria-label="Studios" i18n-aria-label>
             @for (studio of studios(); track studio.slug; let i = $index) {
-              <li><st-studio-card [studio]="studio" [eager]="i < 3" /></li>
+              <li><app-studio-card [studio]="studio" [eager]="i < 3" /></li>
             }
           </ul>
         }

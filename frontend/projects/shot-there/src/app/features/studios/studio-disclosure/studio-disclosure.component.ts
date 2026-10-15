@@ -7,7 +7,7 @@ import { APP_PATHS } from '../../../core/routing/app-paths';
 import { disclosureMessage } from './studio-disclosure.view-model';
 
 @Component({
-  selector: 'st-studio-disclosure',
+  selector: 'app-studio-disclosure',
   imports: [RouterLink, DisclosureComponent],
   templateUrl: './studio-disclosure.component.html',
 })

@@ -6,7 +6,7 @@ import { CompareToggleComponent } from '../../compare/compare-toggle.component';
 import { toStudioCardViewModel } from './studio-card.view-model';
 
 @Component({
-  selector: 'st-studio-card',
+  selector: 'app-studio-card',
   imports: [LocationCardComponent, CompareToggleComponent],
   templateUrl: './studio-card.component.html',
 })

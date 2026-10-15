@@ -27,7 +27,7 @@ import { parseCompareSlugs } from './compare-url';
 import { toComparisonViewModel } from './comparison-view-model';
 
 @Component({
-  selector: 'st-compare-page',
+  selector: 'app-compare-page',
   imports: [
     RouterLink,
     AlertComponent,

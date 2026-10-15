@@ -4,7 +4,7 @@ import { StudioVerdictDto } from '@shot-there/api';
 import { RubricScore, ScoreListComponent, ScoreOverallComponent } from '@shot-there/components';
 
 @Component({
-  selector: 'st-studio-verdict',
+  selector: 'app-studio-verdict',
   imports: [DecimalPipe, ScoreOverallComponent, ScoreListComponent],
   templateUrl: './studio-verdict.component.html',
   styleUrl: './studio-verdict.component.css',
