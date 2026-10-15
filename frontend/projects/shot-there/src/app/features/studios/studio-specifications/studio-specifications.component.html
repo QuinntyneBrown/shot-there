@@ -6,7 +6,7 @@
   <ul class="light-grid" aria-labelledby="specs-light">
     @for (slot of v.light; track slot.time) {
       <li class="light-grid__item">
-        <span class="light-grid__time">{{ slot.time }}</span>&ngsp;<span class="light-rating"><span class="pips" aria-hidden="true">@for (slotIndex of pipSlots; track slotIndex) {<i [attr.data-on]="slotIndex <= slot.pips ? '' : null"></i>}</span>{{ slot.label }}</span>
+        <span class="light-grid__time">{{ slot.time }}</span>&ngsp;<st-light-rating [level]="slot.rating" [text]="slot.label" />
       </li>
     }
   </ul>

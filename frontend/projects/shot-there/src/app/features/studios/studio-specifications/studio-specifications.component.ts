@@ -1,10 +1,9 @@
 import { Component, computed, input } from '@angular/core';
 import { StudioSpecificationsDto } from '@shot-there/api';
-import { DescriptionListComponent } from '@shot-there/components';
+import { DescriptionListComponent, LightRatingComponent } from '@shot-there/components';
 
 import {
   LIGHT_RATING_LABELS,
-  LIGHT_RATING_PIPS,
   cycWallLabel,
   formatDimensions,
   formatHeight,
@@ -13,7 +12,7 @@ import {
 
 @Component({
   selector: 'st-studio-specifications',
-  imports: [DescriptionListComponent],
+  imports: [DescriptionListComponent, LightRatingComponent],
   templateUrl: './studio-specifications.component.html',
   styleUrl: './studio-specifications.component.css',
 })
@@ -32,7 +31,6 @@ export class StudioSpecificationsComponent {
     ];
   });
 
-  protected readonly pipSlots = [1, 2, 3];
   protected readonly view = computed(() => {
     const s = this.specifications();
     return {
@@ -49,7 +47,7 @@ export class StudioSpecificationsComponent {
       ].map((slot) => ({
         time: slot.time,
         label: LIGHT_RATING_LABELS[slot.rating],
-        pips: LIGHT_RATING_PIPS[slot.rating],
+        rating: slot.rating,
       })),
     };
   });
