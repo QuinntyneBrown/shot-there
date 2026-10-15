@@ -2,16 +2,30 @@ import { formatCurrency, formatDate, formatNumber } from '@angular/common';
 import {
   ComparedStudioDto,
   ComparisonDto,
+  ImageDto,
   LightRating,
   LoadIn,
   RubricCategory,
 } from '@shot-there/api';
+import { ResponsiveImage } from '@shot-there/components';
+
+import { imageSrc, imageSrcset } from '../../studios/studio-page/image-srcset';
 
 import { ComparisonCell } from './comparison-cell';
 import { ComparisonRow } from './comparison-row';
 import { ComparisonViewModel } from './comparison-view-model-type';
 
 const MISSING = '—';
+
+function toResponsiveImage(image: ImageDto): ResponsiveImage {
+  return {
+    alt: image.alt,
+    width: 800,
+    height: 1000,
+    sources: [{ format: 'jpeg', srcset: imageSrcset(image) }],
+    fallbackUrl: imageSrc(image),
+  };
+}
 
 const LIGHT_LABELS: Record<LightRating, string> = {
   none: $localize`None`,
@@ -63,7 +77,7 @@ export function toComparisonViewModel(dto: ComparisonDto, locale: string): Compa
       : $localize`Shot ${i + 1}:number:`;
     return row(label, (studio) =>
       studio.testShots[i]
-        ? { text: studio.testShots[i].alt, image: studio.testShots[i] }
+        ? { text: studio.testShots[i].alt, image: toResponsiveImage(studio.testShots[i]) }
         : text(null),
     );
   });
