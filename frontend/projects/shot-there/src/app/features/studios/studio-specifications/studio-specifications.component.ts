@@ -1,5 +1,6 @@
 import { Component, computed, input } from '@angular/core';
 import { StudioSpecificationsDto } from '@shot-there/api';
+import { DescriptionListComponent } from '@shot-there/components';
 
 import {
   LIGHT_RATING_LABELS,
@@ -12,11 +13,24 @@ import {
 
 @Component({
   selector: 'st-studio-specifications',
+  imports: [DescriptionListComponent],
   templateUrl: './studio-specifications.component.html',
   styleUrl: './studio-specifications.component.css',
 })
 export class StudioSpecificationsComponent {
   readonly specifications = input.required<StudioSpecificationsDto>();
+
+  protected readonly facts = computed(() => {
+    const v = this.view();
+    return [
+      { term: $localize`Usable shooting space`, detail: v.space },
+      { term: $localize`Ceiling height`, detail: v.ceiling },
+      { term: $localize`Window direction`, detail: this.specifications().windowDirection },
+      { term: $localize`Power`, detail: v.power },
+      { term: $localize`Cyc wall`, detail: v.cycWall },
+      { term: $localize`Backdrops`, detail: v.backdrops },
+    ];
+  });
 
   protected readonly pipSlots = [1, 2, 3];
   protected readonly view = computed(() => {
