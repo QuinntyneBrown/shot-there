@@ -39,7 +39,6 @@
 }
 .compare-table td st-responsive-image {
   width: 100%;
-  border-radius: var(--radius-sm);
 }
 .compare-table__value {
   display: flex;
