@@ -1,7 +1,9 @@
-<div class="disclosure" role="note" aria-labelledby="disclosure-title">
-  <st-icon name="info" />
-  <div>
-    <p class="disclosure__title" id="disclosure-title" i18n>How this session was paid for</p>
-    <p>{{ message() }}&ngsp;<a [routerLink]="editorialPolicyPath" i18n>Editorial policy</a></p>
-  </div>
-</div>
+<st-disclosure
+  role="note"
+  title="How this session was paid for"
+  i18n-title
+  aria-label="How this session was paid for"
+  i18n-aria-label
+>
+  {{ message() }}&ngsp;<a [routerLink]="editorialPolicyPath" i18n>Editorial policy</a>
+</st-disclosure>
