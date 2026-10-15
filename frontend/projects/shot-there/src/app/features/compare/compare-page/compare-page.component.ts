@@ -13,6 +13,7 @@ import {
   FallbackImageDirective,
   IconComponent,
   LinkComponent,
+  PageHeaderComponent,
   TableComponent,
 } from '@shot-there/components';
 import { map, of, startWith, switchMap } from 'rxjs';
@@ -36,6 +37,7 @@ import { toComparisonViewModel } from './comparison-view-model';
     FallbackImageDirective,
     IconComponent,
     LinkComponent,
+    PageHeaderComponent,
     TableComponent,
   ],
   templateUrl: './compare-page.component.html',
@@ -86,6 +88,10 @@ export class ComparePageComponent {
         this.title.setTitle(formatPageTitle(PAGE_TITLES.compare));
       }
     });
+  }
+
+  protected heading(count: number): string {
+    return $localize`Compare ${count}:count: studios`;
   }
 
   copyLink(): void {

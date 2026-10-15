@@ -1,21 +1,3 @@
-.page-header {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: var(--space-4);
-  margin-block: var(--space-6);
-}
-.page-header .subtitle {
-  margin-top: var(--space-1);
-  color: var(--color-fg-muted);
-}
-.page-header__actions {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: var(--space-3);
-}
 .notice {
   margin-bottom: var(--space-6);
 }
