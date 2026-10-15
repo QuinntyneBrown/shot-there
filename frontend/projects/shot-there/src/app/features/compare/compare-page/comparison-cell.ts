@@ -1,4 +1,4 @@
-import { ImageDto } from '@shot-there/api';
+import { ResponsiveImage } from '@shot-there/components';
 
 /** One studio's value in a comparison row. */
 export interface ComparisonCell {
@@ -10,5 +10,5 @@ export interface ComparisonCell {
   isStrong?: boolean;
   isLowest?: boolean;
   isStale?: boolean;
-  image?: ImageDto;
+  image?: ResponsiveImage;
 }

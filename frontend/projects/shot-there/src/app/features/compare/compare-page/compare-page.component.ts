@@ -10,10 +10,10 @@ import {
   BadgeComponent,
   ButtonComponent,
   EmptyStateComponent,
-  FallbackImageDirective,
   IconComponent,
   LinkComponent,
   PageHeaderComponent,
+  ResponsiveImageComponent,
   TableComponent,
 } from '@shot-there/components';
 import { map, of, startWith, switchMap } from 'rxjs';
@@ -34,10 +34,10 @@ import { toComparisonViewModel } from './comparison-view-model';
     BadgeComponent,
     ButtonComponent,
     EmptyStateComponent,
-    FallbackImageDirective,
     IconComponent,
     LinkComponent,
     PageHeaderComponent,
+    ResponsiveImageComponent,
     TableComponent,
   ],
   templateUrl: './compare-page.component.html',

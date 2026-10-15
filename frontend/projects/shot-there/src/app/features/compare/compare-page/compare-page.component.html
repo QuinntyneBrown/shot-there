@@ -60,7 +60,7 @@
                 <td>
                   <div class="compare-table__value">
                     @if (cell.image; as image) {
-                      <img stFallbackImage [src]="image.variants[0].url" [alt]="image.alt" width="800" height="1000" loading="lazy" />
+                      <st-responsive-image [image]="image" sizes="(min-width: 64rem) 25vw, 50vw" />
                     } @else if (cell.lines) {
                       @for (line of cell.lines; track line) {
                         <span>{{ line }}</span>
