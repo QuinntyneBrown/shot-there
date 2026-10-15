@@ -13,6 +13,7 @@ import {
   FallbackImageDirective,
   IconComponent,
   LinkComponent,
+  TableComponent,
 } from '@shot-there/components';
 import { map, of, startWith, switchMap } from 'rxjs';
 
@@ -35,6 +36,7 @@ import { toComparisonViewModel } from './comparison-view-model';
     FallbackImageDirective,
     IconComponent,
     LinkComponent,
+    TableComponent,
   ],
   templateUrl: './compare-page.component.html',
   styleUrl: './compare-page.component.css',
